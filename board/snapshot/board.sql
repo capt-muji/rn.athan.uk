@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict oQaxhZO6vG4s4zm2BvXNApjStg1D5LGsgePGxzVNaScub3hIfgzIhuvykWfomrb
+\restrict afaIIBWsZtcd13xuk2vFVsVL5q0TzAFJKULNOEbYVv2ojJcxSmVnctOvfhjPS4g
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -5659,6 +5659,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 Status note: 2026-10-15, audited: the ago badge renders the countdown''s lettered duration in every language - unpadded Latin digits with lowercase h m at 55 percent size on the digits'' baseline behind the 2 point gap span (the badge''s own ink at 40 percent), 5h 20m at five hours twenty, 33m under an hour, the zero-minute group dropping, seconds never; the surrounding catalog words alone localise and the now sentence is unchanged; the badge''s colon shape is gone while splitSingleColon stays for the row time. The two-reviewer audit (plan-conformance clean, blind) fixed two cosmetic findings at 2.0.738 (the stale splitSingleColon doc, the exported AgoLetterGroup) and rejected one nice (the countdown''s styles stay row 85''s approved face); one plan defect was repaired mid-execution (the unreachable match.index fallback the coverage gate refused) with the gate log as evidence
 
 Needs first: #85, #88', NULL, NULL, NULL, 37000, '2026-10-18 23:35:56.472517+00', '2026-10-19 02:54:08.188234+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (579, 1, 579, NULL, 1, 'Step 4: The pilot verdicts applied - failures re-translated and re-presented, nine catalogs locked', '', NULL, NULL, NULL, 24500, '2026-11-02 04:22:57.557618+00', '2026-11-02 04:35:57.489233+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (427, 1, 427, 3, 4, 'Fifty languages, wave one of three: the Arabic-script and West African eight (pa-Arab, sd, ug, ckb, ku, yo, jv, su)', 'Goal: take the app from twenty-six locale catalogs to fifty by shipping this wave''s eight languages, one of three parallel waves that together add twenty-four. Code only: no phone, no simulator, no screenshot, no build, no install. The owner reads the result afterwards and rules.
 
 Languages: pa-Arab (Shahmukhi Punjabi, Arabic script, ~110M in Pakistan, the largest unserved Muslim reading public), sd (Sindhi, Arabic script, ~30M), ug (Uyghur, Arabic script, ~11M), ckb (Sorani Kurdish, Arabic script, ~10M), ku (Kurmanji Kurdish, Latin script, the one unshipped catalog R6 already carries), yo (Yoruba, Latin, ~20M Muslims of Nigeria''s southwest), jv (Javanese, Latin, ~40M Muslims of Java), su (Sundanese, Latin, ~30M).
@@ -5719,6 +5720,7 @@ Acceptance:
 - [ ] no physical iPhone rotates: the portrait lock verified on a phone-class simulator geometry, and the orientation gate covered by unit tests
 - [ ] portrait poses and every other form factor otherwise unchanged; yarn validate green', NULL, NULL, NULL, 4000, '2026-10-20 02:11:41.411923+00', '2026-10-20 05:27:58.948866+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 8, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (233, 1, 233, 5, 4, 'Dead-code hook: delete the device-locale patch hunks when expo-widgets ships them', 'Recorded by ticket 143 on the owner''s order. When a published `expo-widgets` release carries `__expoWidgetDeviceLocale`, this row deletes the local patch''s device-locale hunks (`patches/expo-widgets+58.0.20.patch`), records the shipped state on the board (the tracking rows are #239 and #232), and re-proves the widget faces on a phone at that re-pin. Do nothing before the release exists.', NULL, NULL, NULL, 7000, '2026-10-19 07:36:59.693263+00', '2026-10-19 19:49:05.936272+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (581, 1, 581, NULL, 1, 'Step 6: All seventy-four catalogs locked and the ticket closed', '', NULL, NULL, NULL, 26500, '2026-11-02 04:22:57.610114+00', '2026-11-02 04:22:57.610114+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (282, 1, 282, NULL, 4, 'Step 2: the orientation opt-in lands', 'Step of T-280. See the plan doc T-280 on the parent row.', NULL, NULL, NULL, 7000, '2026-10-20 05:29:29.95604+00', '2026-10-20 11:19:36.2755+00', NULL, NULL, NULL, NULL, NULL, 280, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (352, 1, 352, NULL, 4, 'Step 3: Verify every claim against the 2.4.40 tree and rewrite README.md', 'Goal: produce this step''s output per the T-347 plan doc.
 
@@ -5841,6 +5843,7 @@ Acceptance:
 - [x] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit
 - [x] yarn validate green at full coverage; the version ritual on every commit
 - [x] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/. (done 2026-11-01: production 2.43.16 gated and installed on both phones, record under out/owner-read-2.43.16/, comment 5487)', NULL, NULL, NULL, 1000, '2026-10-31 20:30:14.958958+00', '2026-11-01 05:56:21.123766+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 5, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (577, 1, 577, NULL, 4, 'Step 2: The verification generator - scripts/i18n-verify.js (CommonJS) with network-free tests', '', NULL, NULL, NULL, 22500, '2026-11-02 04:22:57.479348+00', '2026-11-02 04:53:39.473759+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (302, 1, 302, 2, 4, 'Help modal: question dividers render in pairs - every second question loses its separator, and an opened question alone gains one below', 'Goal: every pair of adjacent questions in the Help modal shows exactly one divider between them, opened or closed, on both phones - as it read before the regression.
 
 Where: components/modals/Help.tsx - the question list''s separator rendering against Android''s physical-pixel snap. The mechanism and the density arithmetic are in the plan doc (T-302): each divider is a one-physical-pixel child at the bottom of a wrap-content, overflow-hidden, layout-animated row; at the 3T''s 2.625 density a two-line row is 179.5 physical pixels tall, so boundaries alternate whole and half pixels and the snap drops every second rule.
@@ -6005,6 +6008,7 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (335, 1, 335, NULL, 4, 'Step 8: close-out on the final branch', '', NULL, NULL, NULL, 8000, '2026-10-24 20:03:04.014376+00', '2026-10-25 04:44:08.425431+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (279, 1, 279, NULL, 4, 'Step 2b: the live-unfold re-span lands or is recorded impossible', '', NULL, NULL, NULL, 8000, '2026-10-20 03:59:18.186428+00', '2026-10-20 05:10:43.959584+00', NULL, NULL, NULL, NULL, NULL, 271, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (341, 1, 341, NULL, 4, 'Step 4: Post-crossing coherence: display and the offline stored rows', 'Device, 3 points. 02:20-02:50 GMT. Foreground read against Step 1''s transcription, airplane-mode relaunch proving the stored rows serve the day offline, remaining prayers displaying, 3T alarm dump transcribed when the extension ran. The bell state stays as Step 2 left it. Plan doc T-337, Step 4.', NULL, NULL, NULL, 12000, '2026-10-24 20:51:44.083515+00', '2026-10-25 04:44:15.82974+00', NULL, NULL, NULL, NULL, NULL, 337, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (576, 1, 576, NULL, 4, 'Step 1: The verified-lock mechanism - catalog-lock.json''s extended shape, writer and gates', '', NULL, NULL, NULL, 21500, '2026-11-02 04:22:57.422542+00', '2026-11-02 04:43:39.56969+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (276, 1, 276, 9, 4, 'Bottom bar: ten prototype arrangements screenshotted for the owner''s pick, then the picked Design 1 shipped as the real bar', 'Goal: ten quick prototype arrangements of the Settings button and the two schedule dots compressing the bottom bar''s vertical space, screenshotted on the owner''s iPhone XS and attached here for the owner to choose from.
 
 Where: the app screen''s bottom bar area, prototyped on a throwaway branch that never merges to uat. The shipped face does not change.
@@ -6043,6 +6047,7 @@ Acceptance:
 Provenance: split from row 117''s inventory (seam 6, the v1-snapshot fallback words; row 69''s re-test scope). The widget park is lifted by the owner''s order to run it now. Item (1), the gallery''s en fallback, was ANSWERED and closed 2026-10-18: the English base fallback is the intended shape on both platforms, so this ticket carried item (2) only.', NULL, NULL, NULL, 11000, '2026-10-18 23:35:55.668532+00', '2026-10-19 21:03:20.520722+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (360, 1, 360, NULL, 4, 'Step 15: the XS after-picture', '', NULL, NULL, NULL, 14500, '2026-10-25 07:53:19.727342+00', '2026-10-30 16:57:18.322569+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (260, 1, 260, 5, 4, 'Step 2: Proof on the 3T at one minute, both languages', 'Apply the patch to the main checkout''s node_modules, build the mock from the branch, install with the badging gate, stage the one-minute state in English and Arabic, measure the centring by screencap with the vision reader, transcribe the numbers, write new coordinates back to the 3T atlas. One commit, patch bump.', NULL, NULL, NULL, 18000, '2026-10-19 20:52:52.944356+00', '2026-10-19 21:48:18.567955+00', NULL, NULL, NULL, NULL, NULL, 241, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (578, 1, 578, NULL, 4, 'Step 3: The nine pilot artifacts pre-flighted, generated and staged for the owner''s read', '', NULL, NULL, NULL, 23500, '2026-11-02 04:22:57.527005+00', '2026-11-02 05:19:11.434818+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (363, 1, 363, NULL, 4, 'Step 2: the measured floor wired into the reminder rows and its suite', 'Wires the hidden measurers, the row onLayout, the shared minWidth hosts and the flexShrink label into ReminderCard.tsx, with ReminderCard.test.tsx driving all six shipped locales; Alert.test.tsx and SegmentedControl.test.tsx stay green; yarn validate green. Version bump 2.4.42.', NULL, NULL, NULL, 17500, '2026-10-25 07:53:41.316123+00', '2026-10-25 08:42:46.064728+00', NULL, NULL, NULL, NULL, NULL, 345, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (357, 1, 357, NULL, 4, 'Step 12: the widened bisect or the degradation record', '', NULL, NULL, NULL, 11500, '2026-10-25 07:53:19.64955+00', '2026-10-25 17:37:34.684786+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (358, 1, 358, NULL, 4, 'Step 13: the root cause named and the fix implemented', '', NULL, NULL, NULL, 12500, '2026-10-25 07:53:19.682623+00', '2026-10-28 17:27:25.550525+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
@@ -6184,6 +6189,12 @@ Acceptance:
 - [x] yarn validate green at full coverage; the version ritual on the commit', NULL, NULL, NULL, 35500, '2026-11-01 05:56:54.505295+00', '2026-11-01 07:55:11.880975+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 4, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (502, 1, 502, NULL, 4, 'Step 1: The plan doc, the ticket shape and the gate', '', NULL, NULL, NULL, 31500, '2026-10-29 15:12:12.606017+00', '2026-10-29 15:12:51.352809+00', NULL, NULL, NULL, NULL, NULL, 491, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (497, 1, 497, NULL, 4, 'Step 1: the shared sheet height and the one darker dim ink', 'Plan step 1 of T-489, from the plan doc "T-489". 2 points: code.', NULL, NULL, NULL, 26500, '2026-10-29 15:06:46.980774+00', '2026-10-29 15:31:37.240612+00', NULL, NULL, NULL, NULL, NULL, 489, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (583, 1, 583, NULL, 1, 'Step 8: The 75-locale run - both engines over every catalog, gaps re-run and judge-filled, the staged pages colored and counted', 'Goal: the step named in the title, per the plan doc (document 75, the extension section).
+
+Where: the plan doc''s step list and its Files section.
+
+Acceptance:
+- [ ] the step''s proof line in the plan doc passes', NULL, NULL, NULL, 28500, '2026-11-02 05:29:49.488229+00', '2026-11-02 05:29:49.488229+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (496, 1, 496, NULL, 4, 'Step 5: the Android frame-by-frame proof on the OnePlus 3T', '', NULL, NULL, NULL, 25500, '2026-10-29 15:06:31.092431+00', '2026-10-30 02:14:16.776624+00', NULL, NULL, NULL, NULL, NULL, 490, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (506, 1, 506, NULL, 4, 'Step 5: One copy of the sounds, notification protocol on both phones', '', NULL, NULL, NULL, 35500, '2026-10-29 15:12:12.701283+00', '2026-10-30 12:58:03.977311+00', NULL, NULL, NULL, NULL, NULL, 491, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (361, 1, 361, NULL, 4, 'Step 16: close-out on the final branch', '', NULL, NULL, NULL, 15500, '2026-10-25 07:53:19.749509+00', '2026-10-30 16:59:22.284617+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
@@ -6332,6 +6343,12 @@ Acceptance:
 - [ ] yarn jest shared/__tests__/progressWording.test.ts green for all 75, and the mutation pass (one locale flipped back to old wording) fails then restores
 - [ ] yarn i18n:lock retaken; catalogLock.test.ts and cjkSubset.test.ts green
 - [ ] yarn validate green at full coverage; the commit carries the version ritual', NULL, NULL, NULL, 36500, '2026-11-01 06:06:52.12678+00', '2026-11-01 06:43:47.110034+00', NULL, NULL, NULL, NULL, NULL, 557, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (584, 1, 584, NULL, 4, 'Step 9: The landing - the tool and its tests on uat through full discipline, the lock mechanism preserved on its side branch', 'Goal: the step named in the title, per the plan doc (document 75, the extension section).
+
+Where: the plan doc''s step list and its Files section.
+
+Acceptance:
+- [ ] the step''s proof line in the plan doc passes', NULL, NULL, NULL, 29500, '2026-11-02 05:29:49.536024+00', '2026-11-02 12:21:40.573692+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (432, 1, 432, 3, 4, 'Step 3: nl lands', 'Plan step of T-429. Step 3: nl lands.', NULL, NULL, NULL, 23500, '2026-10-28 23:25:19.873483+00', '2026-10-28 23:39:46.332431+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (439, 1, 439, 3, 4, 'Step 10: The full sweep is green and the README names thirty-four', 'Plan step of T-429. Step 10: The full sweep is green and the README names thirty-four.', NULL, NULL, NULL, 30500, '2026-10-28 23:25:20.060043+00', '2026-10-28 23:58:12.486814+00', NULL, NULL, NULL, NULL, NULL, 429, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (365, 1, 365, NULL, 4, 'Step 1: the time-ago spacing gate and the Thai byte', '', NULL, NULL, NULL, 19500, '2026-10-25 08:53:39.843768+00', '2026-10-25 09:11:05.234769+00', NULL, NULL, NULL, NULL, NULL, 346, false, NULL, 2, NULL);
@@ -6541,6 +6558,15 @@ Acceptance:
 
 Fallback route, if the track''s rollout hygiene gets in the way: internal app sharing, Google''s own lighter recipe for in-app update testing - same hard rules, no track or rollout: share-install A via the link, upload B with a higher code, click B''s share link WITHOUT installing, open the app, the update is offered. Chosen only if the owner rules the track route heavier than the proof is worth.', NULL, NULL, NULL, 17500, '2026-10-27 10:13:27.920682+00', '2026-10-27 15:04:19.549939+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (404, 1, 404, NULL, 4, 'Step 1: The crash reproduced on the iPad simulator, its own stack or console line transcribed onto the ticket', '', NULL, NULL, NULL, 21500, '2026-10-28 01:15:31.006462+00', '2026-10-28 02:40:31.986827+00', NULL, NULL, NULL, NULL, NULL, 401, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (588, 1, 588, 5, 1, 'Chunk 3 green: ff, fr, gu, ha, hi, hil, it, ja, jv, kas', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/ff, fr, gu, ha, hi, hil, it, ja, jv, kas; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 33500, '2026-11-02 06:02:52.203987+00', '2026-11-02 06:02:52.244262+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (485, 1, 485, NULL, 4, 'Step 1: Layouts 4 and 5 land in the lock module as their own widget-directive bodies', 'AthanLockWidgetTimeBelowName and AthanLockWidgetCountdownBelowName, each the layout-3 body copied whole (static table, locale resolution, neutral, stale and catch cards) with its live rectangular composition reduced to the two stacked lines, plus the four createWidget exports. Rectangular renderer rows pin each face''s readings, order and absence.', NULL, NULL, NULL, 22500, '2026-10-29 09:37:10.41164+00', '2026-10-29 09:53:47.464345+00', NULL, NULL, NULL, NULL, NULL, 484, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (440, 1, 440, 3, 4, 'Step 1: The sourcing record completes for the eight languages', '', NULL, NULL, NULL, 31500, '2026-10-28 23:26:34.451914+00', '2026-10-28 23:45:46.520696+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (445, 1, 445, 3, 4, 'Step 6: The full sweep is green and the README names thirty-four', '', NULL, NULL, NULL, 36500, '2026-10-28 23:26:34.583136+00', '2026-10-29 00:08:56.478732+00', NULL, NULL, NULL, NULL, NULL, 427, false, NULL, 2, NULL);
@@ -6802,6 +6828,15 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (528, 1, 528, NULL, 4, 'Step 18: sheets stay warm - mounted once at first open, 60fps every open after', 'Goal: see the ticket''s owner order of 2026-10-30.', NULL, NULL, NULL, 27500, '2026-10-30 18:17:11.658672+00', '2026-10-30 19:10:06.201306+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (543, 1, 543, NULL, 4, 'Step 1: The English pattern quoted on the ticket, canonical per ruling 5375', '', NULL, NULL, NULL, 21500, '2026-11-01 00:40:35.421737+00', '2026-11-01 07:57:13.002646+00', NULL, NULL, NULL, NULL, NULL, 542, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (499, 1, 499, NULL, 4, 'Step 3: the settled centre row becomes the staged candidate', 'Plan step 3 of T-489, from the plan doc "T-489". 2 points: code.', NULL, NULL, NULL, 28500, '2026-10-29 15:06:47.02645+00', '2026-10-29 15:31:37.318785+00', NULL, NULL, NULL, NULL, NULL, 489, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (586, 1, 586, 5, 1, 'Chunk 1 green: ar, so, id, ms, min, mad, bug, ceb, ilo, am', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/ar, so, id, ms, min, mad, bug, ceb, ilo, am; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 31500, '2026-11-02 06:02:52.065423+00', '2026-11-02 06:02:52.118568+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (517, 1, 517, NULL, 4, 'Step 1: The card''s leaned background and continuous outline, tokens and guards', '', NULL, NULL, NULL, 38500, '2026-10-30 03:37:46.26131+00', '2026-10-30 04:11:43.773826+00', NULL, NULL, NULL, NULL, NULL, 515, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (563, 1, 563, NULL, 4, 'Step 5: The on-glass candidate screen on the 3T', '', NULL, NULL, NULL, 36000, '2026-11-01 10:48:56.610067+00', '2026-11-01 13:45:10.417068+00', NULL, NULL, NULL, NULL, NULL, 538, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (524, 1, 524, NULL, 4, 'Step 3: Dead code and tests deleted; the full suite green', 'Goal: Nothing the wheel owned survives in code or tests.', NULL, NULL, NULL, 26500, '2026-10-30 15:18:41.821398+00', '2026-10-30 16:04:27.095655+00', NULL, NULL, NULL, NULL, NULL, 519, false, NULL, 2, NULL);
@@ -6818,6 +6853,24 @@ Acceptance:
 - [x] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first (nudged to the grey''s own bluish hue at 2.43.38 by the owner''s second read)
 - [x] yarn validate green at full coverage; the version ritual on the commit
 - [x] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass', NULL, NULL, NULL, 1000, '2026-11-02 02:17:38.861007+00', '2026-11-02 03:58:45.237738+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (591, 1, 591, 5, 1, 'Chunk 6 green: ru, sd, skr, sq, su, sw, ta, te, tg, th', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/ru, sd, skr, sq, su, sw, ta, te, tg, th; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 36500, '2026-11-02 06:02:52.392805+00', '2026-11-02 06:02:52.438063+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (592, 1, 592, 5, 1, 'Chunk 7 green: ti, tk, tl, tr, tt, ug, uk, ur, uz, vi', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/ti, tk, tl, tr, tt, ug, uk, ur, uz, vi; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 37500, '2026-11-02 06:02:52.458222+00', '2026-11-02 06:02:52.50274+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (491, 1, 491, 11, 4, 'Shrink the production bundle: one copy of the sounds, a Release widget extension, and a measured strip pass', 'Goal: shrink the shipped app from the measured 105 MB on disk / 45.7 MB compressed — the widget extension built Release like the app, the main binary stripped by measurement, each athan sound riding the bundle once or not at all, and every other measured dead byte removed — with identical behaviour on both platforms (owner orders 2026-10-29: the athan set is final; the widened strip research is plan v3''s findings table).
 
 Where: plugins/iosReleaseSettings.js (steps 1-3, done), plugins/androidPackagingExcludes.js (new, step 6) with its test, app.json (plugin registrations), assets/audio/index.ts and components/sheets/screens/Sound.tsx (step 5, spike-gated), modules/soundpath (new, step 5, only if the spike demands it), and the iOS Release build path. No source under components/prayer, widgets/ or shared/i18n; ios/ and android/ are never edited by hand.
@@ -6847,6 +6900,32 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (525, 1, 525, NULL, 4, 'Step 2: The purple seat slides to the tap; the number crossfades on matched timings', 'Goal: Selection behaves exactly like the sound sheet''s.', NULL, NULL, NULL, 27500, '2026-10-30 15:18:41.822968+00', '2026-10-30 16:01:29.494547+00', NULL, NULL, NULL, NULL, NULL, 519, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (530, 1, 530, NULL, 4, 'Step 20: the pager swipe holds 60fps from the second swipe - second page warm, zero writes mid-slide', 'Goal: see the ticket''s owner order of 2026-10-30.', NULL, NULL, NULL, 29500, '2026-10-30 18:17:11.912086+00', '2026-10-31 01:18:16.623797+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (573, 1, 573, NULL, 4, 'Step 3: the development build on both platforms in parallel, installed on both phones', '', NULL, NULL, NULL, 22500, '2026-11-02 02:18:13.793068+00', '2026-11-02 03:00:38.029254+00', NULL, NULL, NULL, NULL, NULL, 571, false, NULL, 3, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (587, 1, 587, 5, 1, 'Chunk 2 green: az, bal, bcl, bm, bn, bs, ckb, de, es, fa', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/az, bal, bcl, bm, bn, bs, ckb, de, es, fa; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 32500, '2026-11-02 06:02:52.137532+00', '2026-11-02 06:02:52.184748+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (582, 1, 582, NULL, 4, 'Step 7: The generator rework - two engines per row, verdict coloring, modern pages, language names, the reference page, resume and fill v2', 'Goal: the step named in the title, per the plan doc (document 75, the extension section).
+
+Where: the plan doc''s step list and its Files section.
+
+Acceptance:
+- [ ] the step''s proof line in the plan doc passes', NULL, NULL, NULL, 27500, '2026-11-02 05:29:49.423549+00', '2026-11-02 12:21:40.508406+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (575, 1, 575, 10, 3, 'Every string in all 74 translated catalogs verified line by line through the owner''s eyes, then locked', 'Goal: every string in the 74 translated catalogs is verified to carry our English string''s meaning - the owner''s eyes on a pilot wave of ten languages, an automated or semi-automated flow for the long tail if the pilot earns confidence - and every verified string becomes permanently locked against change.
+
+Where: the 74 non-English catalogs in shared/i18n/, in a strict priority order: the prayer names first (the five standard names and the extras - Midnight, Last Third, Duha, Istijaba, Sunrise - what users read all the time), the extras info-box descriptions second (Midnight says halfway between Maghrib and Fajr, and its peers), everything else last (settings, sheets, help: minor). The pilot wave the owner validates personally: ar, so, id, ms, min, mad, bug, ceb, ilo (English is the source of truth). The plan doc carries the workflow, the arbitration rule, the comparison shape and every fact a fresh session needs.
+
+Acceptance:
+- [ ] the plan considers MULTIPLE flows and picks the easiest and quickest for visual verification - a text file, a visible browser, a CLI tool, and full automation are all candidates; removing the owner from the loop for the long tail is a first-class goal, not an afterthought
+- [ ] the comparison shows, per string, our English, our language string, and the machine round-trip (the language string rendered back to English), so the owner judges whether the meaning survives both directions - no app involved, eyes only, nothing to type, click or navigate
+- [ ] the pilot wave passes the owner''s personal read language by language; only then does the chosen flow roll out to the rest
+- [ ] the arbitration rule holds: meaning, not wording, is what a yes judges; an uncertain case goes to a second independent engine, and the owner''s word is final
+- [ ] every language''s every string passes or is re-translated and re-verified until it does; each verified catalog stands locked in catalog-lock.json and never changes again without an explicit owner order naming the string
+- [ ] round-by-round progress rides this ticket''s comments, so any session resumes where the last stopped', NULL, NULL, NULL, 21500, '2026-11-02 03:58:53.098948+00', '2026-11-02 12:21:40.652624+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 18, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (552, 1, 552, 2, 4, 'Step 1: The description restoration lands in all 75 catalogs with the guard flipped red-first', '', NULL, NULL, NULL, 30500, '2026-11-01 00:41:18.064534+00', '2026-11-01 02:49:43.489899+00', NULL, NULL, NULL, NULL, NULL, 541, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (515, 1, 515, 9, 4, 'The info box outline carries the arrow, its background leans a touch navy, and the overlay''s glow matches the gradient''s top', 'Goal: three visual changes to the Extras info box and the open overlay, on both platforms (owner order 2026-10-30): the info box gains a very faint, vibrant purple outline tracing its full pill silhouette INCLUDING the arrow (the outline never slices through or cuts off the arrow), the card''s background shifts about 5 percent toward a purplish navy blue from the colour it has today (the current background stays liked; the step is literally around 5 percent), and the glow at the top of the open overlay matches exactly the navy-blue top colour of the resting page''s gradient.
 
@@ -6861,6 +6940,15 @@ Acceptance:
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (545, 1, 545, NULL, 4, 'Step 3: The 12 unrecorded rows closed through fresh chains, lockstep guard red first', '', NULL, NULL, NULL, 23500, '2026-11-01 00:40:35.51495+00', '2026-11-01 08:12:05.423796+00', NULL, NULL, NULL, NULL, NULL, 542, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (554, 1, 554, NULL, 4, 'Step 2: On-glass diagnosis of the language sheet on the 3T', '', NULL, NULL, NULL, 32500, '2026-11-01 00:49:12.787155+00', '2026-11-01 11:02:21.493741+00', NULL, NULL, NULL, NULL, NULL, 538, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (574, 1, 574, NULL, 4, 'Step 2: the dim ink pulled back - the bands red-first, the token flipped to the midpoint derivation', '', NULL, NULL, NULL, 23500, '2026-11-02 02:18:13.797767+00', '2026-11-02 02:32:28.514607+00', NULL, NULL, NULL, NULL, NULL, 571, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (589, 1, 589, 5, 1, 'Chunk 4 green: kk, kn, ko, kr, ku, ky, mdh, mfa, ml, mr', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/kk, kn, ko, kr, ku, ky, mdh, mfa, ml, mr; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 34500, '2026-11-02 06:02:52.262475+00', '2026-11-02 06:02:52.308754+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (548, 1, 548, NULL, 4, 'Step 6: The golden pattern suite, red-first proven, mutation pass on its guards', '', NULL, NULL, NULL, 26500, '2026-11-01 00:40:35.591998+00', '2026-11-01 08:21:56.84669+00', NULL, NULL, NULL, NULL, NULL, 542, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (555, 1, 555, NULL, 4, 'Step 3: On-glass countdown-block diagnosis on the 3T', '', NULL, NULL, NULL, 33500, '2026-11-01 00:49:12.813287+00', '2026-11-01 10:15:55.912434+00', NULL, NULL, NULL, NULL, NULL, 538, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (531, 1, 531, NULL, 4, 'Step 21: toggles and lists hold 60fps - cached widths, deferred writes', 'Goal: see the ticket''s owner order of 2026-10-30.', NULL, NULL, NULL, 30500, '2026-10-30 18:17:12.007673+00', '2026-10-30 21:14:24.592225+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
@@ -6897,6 +6985,15 @@ Acceptance:
 - [x] no other surface''s dim tokens change
 - [x] yarn validate green at full coverage; the version ritual on the commit', NULL, NULL, NULL, 42500, '2026-11-01 14:24:23.379911+00', '2026-11-01 15:14:49.864104+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (569, 1, 569, NULL, 4, 'Step 2: the open-side page gate (pagerPageAtom and the openOverlay guard)', '', NULL, NULL, NULL, 43500, '2026-11-01 14:33:41.837178+00', '2026-11-01 15:24:24.841749+00', NULL, NULL, NULL, NULL, NULL, 565, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (590, 1, 590, 5, 1, 'Chunk 5 green: mrw, my, nl, om, pa-Arab, pl, ps, pt, qu, ro', 'Goal: every string in this chunk''s 10 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/mrw, my, nl, om, pa-Arab, pl, ps, pt, qu, ro; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 35500, '2026-11-02 06:02:52.330069+00', '2026-11-02 06:02:52.37377+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (521, 1, 521, NULL, 4, 'Step 1: The outline token and the seam-free arrow geometry, guards red first', 'Goal: The outline derives from the card background and the arrow covers the border band.', NULL, NULL, NULL, 23500, '2026-10-30 15:18:41.817651+00', '2026-10-30 17:12:18.197812+00', NULL, NULL, NULL, NULL, NULL, 520, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (522, 1, 522, NULL, 4, 'Step 2: The build, the screenshots and the vision analysis on the 3T and the simulator', 'Goal: Pixel proof on both platforms that no line crosses the arrow''s base.', NULL, NULL, NULL, 24500, '2026-10-30 15:18:41.819163+00', '2026-10-30 17:12:18.201195+00', NULL, NULL, NULL, NULL, NULL, 520, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (549, 1, 549, NULL, 4, 'Step 7: The owner''s read build - production both platforms, gates, installs, Awaiting Owner', '', NULL, NULL, NULL, 27500, '2026-11-01 00:40:35.615368+00', '2026-11-01 09:38:40.27315+00', NULL, NULL, NULL, NULL, NULL, 542, false, NULL, 3, NULL);
@@ -6921,17 +7018,6 @@ Acceptance:
 - [x] the fix costs no frame rate: the frame audit against the 30fps floor shows no regression on the overlaid screens
 - [x] normal taps still open the overlay instantly and normal swipes still page freely
 - [x] yarn validate green at full coverage; the version ritual on the commit', NULL, NULL, NULL, 41500, '2026-11-01 14:24:23.197902+00', '2026-11-02 02:17:28.892242+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (575, 1, 575, 10, 1, 'Every string in all 74 translated catalogs verified line by line through the owner''s eyes, then locked', 'Goal: every string in the 74 translated catalogs is verified to carry our English string''s meaning - the owner''s eyes on a pilot wave of ten languages, an automated or semi-automated flow for the long tail if the pilot earns confidence - and every verified string becomes permanently locked against change.
-
-Where: the 74 non-English catalogs in shared/i18n/, in a strict priority order: the prayer names first (the five standard names and the extras - Midnight, Last Third, Duha, Istijaba, Sunrise - what users read all the time), the extras info-box descriptions second (Midnight says halfway between Maghrib and Fajr, and its peers), everything else last (settings, sheets, help: minor). The pilot wave the owner validates personally: ar, so, id, ms, min, mad, bug, ceb, ilo (English is the source of truth). The plan doc carries the workflow, the arbitration rule, the comparison shape and every fact a fresh session needs.
-
-Acceptance:
-- [ ] the plan considers MULTIPLE flows and picks the easiest and quickest for visual verification - a text file, a visible browser, a CLI tool, and full automation are all candidates; removing the owner from the loop for the long tail is a first-class goal, not an afterthought
-- [ ] the comparison shows, per string, our English, our language string, and the machine round-trip (the language string rendered back to English), so the owner judges whether the meaning survives both directions - no app involved, eyes only, nothing to type, click or navigate
-- [ ] the pilot wave passes the owner''s personal read language by language; only then does the chosen flow roll out to the rest
-- [ ] the arbitration rule holds: meaning, not wording, is what a yes judges; an uncertain case goes to a second independent engine, and the owner''s word is final
-- [ ] every language''s every string passes or is re-translated and re-verified until it does; each verified catalog stands locked in catalog-lock.json and never changes again without an explicit owner order naming the string
-- [ ] round-by-round progress rides this ticket''s comments, so any session resumes where the last stopped', NULL, NULL, NULL, 21500, '2026-11-02 03:58:53.098948+00', '2026-11-02 04:12:36.328876+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (550, 1, 550, 2, 4, 'Step 3: The splash icon evaluation is recorded with its numbers', '', NULL, NULL, NULL, 28500, '2026-11-01 00:41:18.030151+00', '2026-11-01 03:05:12.34308+00', NULL, NULL, NULL, NULL, NULL, 541, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (419, 1, 419, 3, 4, 'The next ten languages after #410''s sixteen, proven on the XS with a fresh development build', 'Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.
 
@@ -6964,6 +7050,15 @@ Acceptance:
 - [ ] after the fix, frame audits of the alert and settings sheet entrances pass the same floor
 - [ ] the iPhone XS is measurably unchanged
 - [ ] yarn validate green', NULL, NULL, NULL, 2000, '2026-10-24 19:55:29.353833+00', '2026-10-31 17:23:47.557497+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 68, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (593, 1, 593, 5, 1, 'Chunk 8 green: war, wo, yo, zh-Hans', 'Goal: every string in this chunk''s 4 catalogs passes the two-engine verification - zero red rows - with the transliteration class and the context rule holding; any catalog the verification finds wrong is fixed in the codebase (owner permission 2026-11-02).
+
+Where: shared/i18n/war, wo, yo, zh-Hans; runs after the reference table on the parent''s research child lands and the two-engine tool is on uat. Fixes follow the repo''s full discipline; the lead integrates and re-pins the lock.
+
+Acceptance:
+- [ ] the chunk''s verification page shows zero red rows on both engines (Google first, the second site second), judge-arbitrated greens annotated
+- [ ] the eight names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) carry each language''s established spelling per the reference, inside every string that uses them
+- [ ] every other string reads correctly in its key''s UI context
+- [ ] fixes ride this ticket''s lane branch; round-by-round progress rides this ticket''s comments', NULL, NULL, NULL, 38500, '2026-11-02 06:02:52.522644+00', '2026-11-02 06:02:52.562244+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (567, 1, 567, NULL, 4, 'Step 1: the tinted labelOverlay token with its red-first guards and cold audit', 'Goal: shift the overlay''s two dim labels to the glow''s blue tint as one token change.
 
 Where: shared/constants.ts (labelOverlay), Countdown.test.tsx (pin, recipe comment, cold audit), DayLines.test.tsx (location pin), package.json, app.json, shared/whatsNew.ts (WHATS_NEW.version stamp, value only).
@@ -6994,6 +7089,17 @@ Acceptance:
 - [ ] mock builds for the owner''s read on both phones (badging + User 0), installed only when the owner says testing is done', NULL, NULL, NULL, 29500, '2026-10-31 11:45:50.472423+00', '2026-10-31 17:06:08.057947+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (551, 1, 551, 2, 4, 'Step 2: The disabled track darkens by token and the off-season decorations override comes out whole', '', NULL, NULL, NULL, 29500, '2026-11-01 00:41:18.040395+00', '2026-11-01 03:01:59.433893+00', NULL, NULL, NULL, NULL, NULL, 541, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (568, 1, 568, NULL, 4, 'Step 1: the red-first guard reproducing the tap-then-swipe interleave', '', NULL, NULL, NULL, 42500, '2026-11-01 14:33:41.803839+00', '2026-11-01 15:24:24.783296+00', NULL, NULL, NULL, NULL, NULL, 565, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (580, 1, 580, NULL, 1, 'Step 5: Calibration and the long tail verified round by round under the machine flow', '', NULL, NULL, NULL, 25500, '2026-11-02 04:22:57.58435+00', '2026-11-02 04:35:57.51786+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (585, 1, 585, 6, 4, 'The transliteration reference: each language''s established spellings of the eight names, grounded in where it is spoken', 'Goal: the per-locale reference table for the eight transliterated names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) - each language''s established spellings grounded in where the language is spoken - plus a key-by-key compliance list of today''s 74 catalogs.
+
+Where: the 74 non-English catalogs in shared/i18n/, read-only; the reference lands as a doc on this ticket; fixes flow through the chunk tickets, never here.
+
+Acceptance:
+- [x] each of the 74 locales carries its established spelling of each of the eight names, sourced to that language''s own Islamic convention; local phonetic spellings like Indonesian Zuhor stand
+- [x] each locale names the countries where it is spoken
+- [x] every catalog''s eight name rows and every extras description using a name is marked compliant or listed for fix, key by key
+- [x] a language whose established practice translates a name (Turkish Diyanet usage) is flagged with its source and ruled by local convention, agent-side
+- [x] the reference doc is linked on this ticket and named in the parent', NULL, NULL, NULL, 30500, '2026-11-02 06:02:25.822456+00', '2026-11-02 07:21:17.751557+00', NULL, NULL, NULL, NULL, NULL, 575, false, NULL, 2, NULL);
 
 
 --
@@ -11796,6 +11902,9 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5761, 571, 'comment', 'owner', 'Closed by the owner''s read (2026-11-02): the sliding is fine, the dim text is fine after the four-percent nudge, the language default is fine, and both phones'' dev builds open straight into the app. Everything asked for is done.', NULL, '2026-11-02 03:58:45.22569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5763, 571, 'activity', 'owner', NULL, 'description', '2026-11-02 03:58:45.246403+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a tap-then-quick-swipe never leaves the veil and glow open over a page showing every prayer row, and the overlay''s two dim texts read as the grey they shipped with plus a hint of the blue and a hint of the purple, not the heavy purple of 2.43.27.\n\nWhere: app/Navigation.tsx''s pager rest and trailing-page-selected paths, and the labelOverlay ink in shared/constants.ts with its banded audits; both platforms; delivered as a development build installed on both phones for the owner''s on-glass read.\n\nAcceptance:\n- [x] the swipe''s rest always closes an open overlay, and a pageSelected trailing that rest closes it too, both red-first in the Navigation suite before the fix\n- [x] a plain tap still opens the overlay and it stays open with no swipe; normal paging stays free\n- [x] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first (nudged to the grey''s own bluish hue at 2.43.38 by the owner''s second read)\n- [x] yarn validate green at full coverage; the version ritual on the commit\n- [x] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5770, 575, 'activity', 'owner', NULL, 'field', '2026-11-02 03:58:53.164088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "575"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5788, 580, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.587475+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5792, 581, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.61493+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5793, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.61493+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 581, "value": "T-581"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3316, 333, 'activity', 'owner', NULL, 'status', '2026-10-25 04:44:08.480085+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3318, 327, 'comment', 'owner', 'Closed into Deferred on the owner''s verdict (2026-10-25): performance tested personally on the production builds - absolutely perfect on the Samsung Galaxy S23, not acceptable on the 1+3T. The owner defers the 3T deep-dive until after the release; the remaining measurement steps close owner-ruled. The investigation''s standing record: JS marks never regressed, the frame signature is version- and env-invariant, and the harness findings (maestro''s APP_ID breakage, the capture-layer degradation candidate) are on this row for the deep-dive to pick up.', NULL, '2026-10-25 04:44:08.552872+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3319, 337, 'comment', 'owner', 'Step 4 closes partial, lead-adjudicated: the offline stored-rows proof - the step''s core - landed clean against the oracle, the Suhoor and Duha displays read exact, and the anomalous Standard reads are explained by the lead''s mock-serving install landing mid-proof (a build mistake, named, not an app defect); the missing Standard re-read is covered by R1-R4''s continuity verdict on the correct build. Step 6 closes owner-ruled: every finding stands recorded in this row''s comments, the bell restore is dropped per the owner''s order, and the fires were the owner''s own test. The DST proof is complete.', NULL, '2026-10-25 04:44:15.811845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11915,6 +12024,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4938, 490, 'activity', 'owner', NULL, 'status', '2026-10-30 02:17:05.521063+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5332, 538, 'comment', 'owner', 'Owner read 2026-10-31: row 74 (Chinese) still reads tall on glass - the pinned lineHeight did not hold on the device. Reopened for the real cause: 5247''s own lead is Android''s fallback line spacing (TextLayoutManager setUseLineSpacingFromFallbacks adds the fallback run''s metrics on top of a pinned lineHeight), so the pin alone cannot equalize a fallback-rendered row. The owner licensed device work on this ticket.', NULL, '2026-10-31 20:29:54.203387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5762, 571, 'activity', 'owner', NULL, 'field', '2026-11-02 03:58:45.236595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5774, 575, 'activity', 'owner', NULL, 'estimate', '2026-11-02 04:22:53.968748+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "12"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5785, 579, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.562107+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3378, 352, 'activity', 'owner', NULL, 'parent', '2026-10-25 07:48:25.058337+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 347, "value": "T-347"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3379, 347, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 07:48:25.058337+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 352, "value": "T-352"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3388, 354, 'activity', 'owner', NULL, 'created', '2026-10-25 07:53:19.539836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11932,6 +12043,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5768, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 149, "value": "Testing"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5769, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5771, 575, 'activity', 'owner', NULL, 'description', '2026-11-02 04:12:36.341394+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: every string in the 74 translated catalogs is verified to carry our English string''s meaning - the owner''s eyes on a pilot wave of ten languages, an automated or semi-automated flow for the long tail if the pilot earns confidence - and every verified string becomes permanently locked against change.\n\nWhere: the 74 non-English catalogs in shared/i18n/, in a strict priority order: the prayer names first (the five standard names and the extras - Midnight, Last Third, Duha, Istijaba, Sunrise - what users read all the time), the extras info-box descriptions second (Midnight says halfway between Maghrib and Fajr, and its peers), everything else last (settings, sheets, help: minor). The pilot wave the owner validates personally: ar, so, id, ms, min, mad, bug, ceb, ilo (English is the source of truth). The plan doc carries the workflow, the arbitration rule, the comparison shape and every fact a fresh session needs.\n\nAcceptance:\n- [ ] the plan considers MULTIPLE flows and picks the easiest and quickest for visual verification - a text file, a visible browser, a CLI tool, and full automation are all candidates; removing the owner from the loop for the long tail is a first-class goal, not an afterthought\n- [ ] the comparison shows, per string, our English, our language string, and the machine round-trip (the language string rendered back to English), so the owner judges whether the meaning survives both directions - no app involved, eyes only, nothing to type, click or navigate\n- [ ] the pilot wave passes the owner''s personal read language by language; only then does the chosen flow roll out to the rest\n- [ ] the arbitration rule holds: meaning, not wording, is what a yes judges; an uncertain case goes to a second independent engine, and the owner''s word is final\n- [ ] every language''s every string passes or is re-translated and re-verified until it does; each verified catalog stands locked in catalog-lock.json and never changes again without an explicit owner order naming the string\n- [ ] round-by-round progress rides this ticket''s comments, so any session resumes where the last stopped"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5772, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 04:16:27.378069+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3417, 363, 'activity', 'owner', NULL, 'parent', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 345, "value": "T-345"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3418, 345, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 363, "value": "T-363"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3424, 347, 'comment', 'owner', 'Survey source list: each README section and the commits or ranges it was written from (app.json is the version spine; subjects walked unique per era).
@@ -11972,9 +12084,15 @@ Every clause passes on both schedules: the words'' ink reads as exactly alpha-in
 To record plainly: a second, independently dispatched executor proved the same step on the same phone in the same window (its verdict at out/t490-s10/xs/VERDICT.md, its takes likewise frame-proven single-owner) and concurs on every clause - two independent instruments, one answer. The two sessions contended on the runner daemon (DEVICE_IN_USE faults, one lost take each side); the dispatch of one device to two executors is flagged for the lead. The vision legibility leg, which neither executor could host at its nesting depth, ran as a countersign from the lane over both executors'' crops: 22 images, zero dark or grey states, per-channel alpha in lockstep to within 0.03 on both sets, recovered alphas matching the labelled phases, no words after the card on any close or settle frame. Verdict: the owner''s ordered ramp is proven on glass, both schedules.', NULL, '2026-10-30 02:17:19.841295+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5338, 541, 'activity', 'owner', NULL, 'status', '2026-10-31 20:30:15.053433+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5766, 575, 'activity', 'owner', NULL, 'created', '2026-11-02 03:58:53.109133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5777, 576, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.438541+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5778, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.438541+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 576, "value": "T-576"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5780, 577, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.491171+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5781, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.491171+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 577, "value": "T-577"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3430, 327, 'activity', 'owner', NULL, 'status', '2026-10-25 08:03:00.139522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4941, 491, 'activity', 'owner', NULL, 'field', '2026-10-30 03:06:54.396608+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5343, 541, 'activity', 'owner', NULL, 'description', '2026-10-31 21:44:27.77397+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: fix everything the owner''s 2.43.1 on-glass read named, in one batch: the mosque icon''s first-frame gap, the iPhone XS error screen, the redundant What''s New entry, over-long or wrong extras labels under the short-noun rule, the still-too-bright disabled alert ink, and a settings toggle that shows the Ramadan decorations outside Ramadan.\n\nWhere: the mosque icon''s render path above the prayer list (the owner''s PNG precedent is the Ramadan sprites), the iOS launch error on the XS (capture the cause from the device first), shared/whatsNew.ts plus all 75 catalogs'' whatsNew keys, every catalog''s extras labels (midnight, last third, sunrise, the 20-minute rows) and the sound-sheet hint and qibla subtitle, the alert sheet''s disabled ink tokens, and the Ramadan decorations'' seasonal gate with a new settings row.\n\nAcceptance:\n- [ ] The mosque icon paints with the first content frame on both platforms, no 300ms gap and no snap; the PNG conversion (the Ramadan sprites'' precedent) is evaluated against preloading and whichever lands is named in the closing comment\n- [ ] The XS launches the production build with no error screen; the captured cause and the fix are recorded in a comment\n- [ ] The What''s New 2.43 language-wave entry is gone - its title/body keys leave all 75 catalogs and the earlier unreleased more-languages entry stands alone - and the What''s New gate stays green\n- [ ] Every locale''s extras rows carry the short-noun rule (owner order, restated 2026-10-31): the locale''s own single word for midnight - never \"the middle of the night\" or \"halfway between Maghrib and Fajr\" - the short \"last third\", never \"the last third of the night\", and the short sunrise noun, never \"the rising of the sun\"; a red-first golden test pins the rule for every catalog\n- [ ] The Bikol sunrise row (\"Pagsirang kan saldog\" class), the sound-sheet hint and the qibla subtitle are re-sourced against their chains: each becomes the correct short native form, or is recorded as naturally long with the sourcing chain named - the owner''s question, correct or gibberish-long, answered per string in a comment\n- [ ] The alert sheet''s disabled title and circular icon read as dark as the \"notification before prayer time\" subtitle - ink moved toward the card background by opacity or token - cold-audited from the code, the owner reads the glass\n- [ ] A settings toggle enables the Ramadan decorations outside Ramadan: default off, the seasonal gate intact when off, the decorations show immediately when on, and the README gains the feature line\n- [ ] yarn validate green at full coverage; the version ritual on every commit; no phone navigation beyond what the ticket''s own verification names (the XS capture and one decorations check), everything else code-only until the owner''s next read\n\nThe owner''s chat rulings that shape this: the countdown-bar-color label STAYS unchanged (five alternatives were tabled in chat, no change without the owner''s pick); T-538 stays open separately for the row height.\n- [ ] The overlay''s prayer name (above the countdown timer) and location (above the date) lose their text shadows - the countdown timer KEEPS its shadow - so the overlay matches the non-overlay version, which has none\n- [ ] The same two dimmed texts move from their purple hint to a slight hint of blue, consistent with the glow''s new ink (owner order 2026-10-31 evening, added mid-lane)"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5773, 575, 'activity', 'owner', NULL, 'field', '2026-11-02 04:20:55.330189+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Lane 1"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5791, 581, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.613303+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3432, 347, 'comment', 'owner', 'Executed: the README rewritten from the history walk, the source list recorded above, yarn validate green at 2.4.41 (25b3adc0 on lane3/T-347). Moving to Audit.', NULL, '2026-10-25 08:03:04.41451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3433, 327, 'activity', 'owner', NULL, 'status', '2026-10-25 08:03:10.391927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3434, 347, 'comment', 'owner', 'Blind review of 25b3adc0 (README rewrite + 2.4.41 bump). Verified every count, version, module and toggle against the tree; most claims hold (32 mp3s, 6+5 prayers, 6 locales, reminders 5-30, budget 64, expo ~58/RN 0.88/React 19/2.4.41, deploymentTarget 16.4, four modules, sheet screens, settings atoms, sweeps, ritual numbers, Duo lines carried verbatim, no device/person leaks).
@@ -12028,6 +12146,12 @@ nit: components/overlay/__tests__/Overlay.test.tsx line 174, the words-on-reveal
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4955, 515, 'activity', 'owner', NULL, 'type', '2026-10-30 03:37:47.222023+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Design"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4956, 515, 'activity', 'owner', NULL, 'estimate', '2026-10-30 03:37:47.222023+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "4"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5344, 541, 'comment', 'owner', 'Owner order added to the batch (2026-10-31, mid-flight): on the OVERLAY only, remove the text shadow from the prayer name above the countdown timer and the location above the date - the countdown timer itself keeps its shadow, and the non-overlay version''s no-shadow look is the reference. The same two dimmed texts drop their purple hint for a slight hint of blue, matching the glow''s new blue ink. Executing lane: re-read the description before your next commit; these two boxes are part of this ticket''s close.', NULL, '2026-10-31 21:44:27.797981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5775, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 04:22:53.982943+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 11, "value": "needs-owner"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5782, 578, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.53262+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5796, 578, 'activity', 'owner', NULL, 'title', '2026-11-02 04:35:57.463487+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 3: The nine pilot artifacts pre-flighted, generated and staged for the owner''s read"}, "from": {"value": "Step 3: The nine pilot artifacts generated and staged for the owner''s read"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5798, 580, 'activity', 'owner', NULL, 'title', '2026-11-02 04:35:57.522069+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 5: Calibration and the long tail verified round by round under the machine flow"}, "from": {"value": "Step 5: The long tail verified round by round under the machine flow"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5800, 575, 'comment', 'owner', 'Planned: the plan doc "T-575 - the plan" (grill findings answered, 7 of 7) carries six steps at 12 points; steps 1-3 build the flow and stage the pilot artifacts, then the ticket parks for the owner''s read of the nine pilot languages.', NULL, '2026-11-02 04:35:57.576111+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5801, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 04:36:10.664325+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3462, 346, 'activity', 'owner', NULL, 'status', '2026-10-25 08:45:45.836958+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3463, 348, 'activity', 'owner', NULL, 'status', '2026-10-25 08:45:59.44356+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4943, 490, 'comment', 'owner', 'Blind review of the overlay/ghost range (read-only; full unit suite green, 189 suites / 6435 tests): the opacity ramp, the scoped sweep exemption and the worklet cuts are correct, and nothing outside the info box''s open/close path moved. Two nits:
@@ -12038,6 +12162,10 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4948, 515, 'activity', 'owner', NULL, 'field', '2026-10-30 03:26:04.437168+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4959, 515, 'comment', 'owner', 'Plan v1 landed (doc T-515, linked): two code steps, 4 points, type Design, surface Both. Executing now in the lane worktree; no build or device work - the owner reads the merged uat build on glass.', NULL, '2026-10-30 03:37:55.008644+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5345, 538, 'comment', 'owner', 'Lane 1: the merged state''s row boxes measured uniform on the 3T under English at font scale 1.0 (rows 63-75 all 48dp, labels 16dp), so on this glass the pinned box held; what the pin cannot control is the OS fallback face that drew the CJK endonyms - RN 0.86 turns fallback line spacing on for every Text. The fix removes the fallback from the sheet entirely: each row''s label now rides its own record''s bundled face and its own record''s line box (16-24px, all inside the row''s 24px budget), under every active locale and on both platforms, with uz measured onto the Noto Sans pair because Roboto lacks its ʻ. A new gate test parses the shipped fonts'' own character maps and fails naming any endonym codepoint its resolved face lacks - the measurement the style sweep could not be. Validate green at full coverage (253 suites, 8221 tests); committed as 2.43.2 on branch t538-row-height-2 (fd34b93f). Device verify install under way.', NULL, '2026-10-31 21:51:08.220817+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5776, 576, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.434851+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5783, 578, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.534136+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5784, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.534136+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 578, "value": "T-578"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5802, 576, 'activity', 'owner', NULL, 'status', '2026-11-02 04:43:39.583241+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3467, 346, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 08:53:39.859036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 365, "value": "T-365"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3469, 366, 'activity', 'owner', NULL, 'parent', '2026-10-25 08:53:39.893431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 346, "value": "T-346"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3470, 346, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 08:53:39.893431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 366, "value": "T-366"}}', NULL);
@@ -12049,6 +12177,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5346, 538, 'comment', 'owner', 'Verify done on the 3T: with the mock 2.43.2 installed, rows 66-75 measure an identical 48dp box under both an English and a Chinese active, row 74 included, and every row''s ink sits inside its band with air - the two actives now produce the same geometry because each row rides its own record''s bundled face and box instead of the active face plus the OS fallback. The before read on production 2.43.1 measured the same uniform 48dp boxes under English, so on this glass the pin itself held and the fallback governed only which face drew the glyphs - the thing no pin controls, and the reopen''s mechanism on any Android that lets fallback spacing ride. The phone now carries the mock build (dev data namespace only); transcripts in the ticket''s out directory. Ready for the lead''s merge from branch t538-row-height-2.', NULL, '2026-10-31 22:06:51.088592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5349, 538, 'comment', 'owner', 'Blocker adjudicated (lead, 2026-10-31): extraction artifact, not a build defect. A live re-read on the 3T (Maestro hierarchy, stepwise navigation after the AX bridge wedged and the phone was rebooted) shows every label TextView exactly on its record''s box: row 67 Kannada 63px = 24dp, row 68 Malayalam 56px, row 70 Myanmar 56px, Thai/Ethiopic/CJK 42px = Latin parity, row tops 136-137px apart through the block. The lane''s transcript column read the INDEX TextView (the 16dp box, uniform 42 under en, in every row) - the first of each row''s two TextViews - so it read 42 before and after alike; its container and ink columns were read from the right nodes and stand. Corrected transcript: $HOME/athan-gitree/out/t538-row-ink/reconciliation.md. The census count is corrected to your replication: 133 red lines / 127 distinct pairs on uat (the 135 does not reproduce). Both reviews now PASS with the record straight; merging.', NULL, '2026-10-31 22:28:16.328468+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 5348, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5350, 538, 'activity', 'owner', NULL, 'status', '2026-10-31 22:31:10.318473+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5779, 577, 'activity', 'owner', NULL, 'created', '2026-11-02 04:22:57.488092+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3471, 367, 'activity', 'owner', NULL, 'created', '2026-10-25 08:53:39.916625+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4945, 490, 'activity', 'owner', NULL, 'field', '2026-10-30 03:25:19.434021+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s frame-by-frame read on glass of the merged 2.42 line (both phones, the run''s final mock build) - the modal, the overlay ghosts and the info box all read in one install"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5347, 538, 'comment', 'owner', 'Blind audit of fd34b93f (t538-row-height-2, on uat c985e44f) - PASS clean.
@@ -12056,6 +12185,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 Verified against the repository, not the change''s own tests: an independent cmap census over the shipped TTFs replicating the diff''s row-to-record mapping resolves all 75 endonyms with zero missing codepoints, and the new gate itself parses real font bytes (node:fs in the components jest project, where fs is unmocked and fonts are only path-transformed for require, never for readFileSync). Every record''s box at size 14 (16, 17, 21, 22, and Kannada''s 24) sits inside the 24px content budget (minHeight 48, paddingVertical 12), so no row outgrows the minimum and the seat''s row-0 pitch holds. The uz exception is measured true: U+02BB is absent from both Roboto weights and present in NotoSans-Regular. The index digits cannot move a row''s height - the slot is position absolute top 0 bottom 0, and the digits falling back on the Thai and Myanmar active faces is pre-existing and isolated. The Android premise is real in this repo''s RN 0.88.0: TextLayoutManager sets setUseLineSpacingFromFallbacks(true) on every layout at SDK P+, so a pinned lineHeight cannot equalize a fallback run - the per-row own-face fix is the only escape. The rewritten sweep and suite assert strictly more than before (faces and boxes per row, the full census, the en/my equivalence, the per-record budget loop), the sweep''s import and TEXT.family guards still pass, no console.log, no node_modules edits, and the version stamps move in lockstep (package.json, app.json and What''s New at 2.43.2; android/ is gitignored prebuild output, so no gradle stamp exists to bump, matching c985e44f''s precedent) with a valid 2.43.2 allowlist entry.
 
 FINDINGS: none', NULL, '2026-10-31 22:14:15.689147+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5786, 579, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.563334+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5787, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.563334+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 579, "value": "T-579"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3474, 346, 'activity', 'owner', NULL, 'description', '2026-10-25 08:53:56.510088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: two visual defects in the time-ago badge below the prayer list. Thai on both platforms renders the sentence''s trailing word touching the interpolated time''s last letter with no space; Somali, Malay, Arabic and English space correctly today. Hindi on Android only wraps the badge into two lines, the second cropped to a sliver; the badge must stay one line, and there is ample room to grow. The spacing rule is general, never language-specific.\n\nWhere: components/prayer/Ago.tsx and the ago string composition in the catalogs (shared/i18n/*.ts). The owner''s screenshots on the S23 and the XS, Thai and Hindi, are the reference reads.\n\nAcceptance:\n- [ ] a catalog gate holds, for every shipped locale, that the time.ago template carries a space or the string''s edge on both sides of the {duration} token (npx jest catalogGates green, red on today''s Thai first)\n- [ ] the badge''s Text carries numberOfLines={1} and renders each of the six locales'' composed ago string under that constraint (npx jest Ago green, red on today''s badge first)\n- [ ] transcribed device reads: Hindi''s badge on one line on the S23 with no cropped second line, and Thai''s badge spaced before and after the time on both the S23 and the XS\n- [ ] yarn validate green"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3475, 346, 'activity', 'owner', NULL, 'estimate', '2026-10-25 08:53:56.510088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "7"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3478, 346, 'activity', 'owner', NULL, 'status', '2026-10-25 08:54:43.743407+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
@@ -12168,6 +12299,8 @@ Verified: the fix is the mechanism the reopen named. Every row''s label now reso
 blocker: out/t538-row-ink/after-2.43.2.txt, the "label TextView (px)" column - rows 67 (Kannada), 68 (Malayalam) and 70 (Myanmar) read 42, but their records pin 24/21/21dp, which is 63/55/55px on the transcript''s own 2.625px/dp glass, and the before read itself proved the lineHeight span lands exactly (fallback CJK rows read 42 under the 16 pin on 2.43.1). That column cannot come from fd34b93f: either it was carried from the before read or the per-record boxes do not land on glass. Reconcile or re-read before merge - the same document is the only device witness for the uniform-row and ink-identity claims.
 
 question: the census count - replicating the gate''s logic verbatim (same parser, fonts and names) over uat counts 133 named fallbacks, 127 distinct row-and-codepoint pairs, not the claimed 135. The gate reddens either way; if 135 is recorded anywhere, correct it to the reproducible number.', NULL, '2026-10-31 22:17:02.038876+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5789, 580, 'activity', 'owner', NULL, 'parent', '2026-11-02 04:22:57.588669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5790, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 04:22:57.588669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 580, "value": "T-580"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3527, 370, 'activity', 'owner', NULL, 'created', '2026-10-25 14:17:44.092719+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3539, 368, 'activity', 'owner', NULL, 'field', '2026-10-25 14:18:04.501679+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3545, 346, 'comment', 'owner', 'Blind review of the two commits: clean. Version stamps move together in both commits with no twin number on any ref, the Thai fix is the one owed space byte with a gate that covers every use of the {duration} token, the badge''s one-line cap changes behaviour only, and the six-locale pin reads the cap off the real badge. All touched suites pass on the lane tree.', NULL, '2026-10-25 14:22:05.231711+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -12177,6 +12310,25 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5352, 538, 'comment', 'owner', 'Merged to uat as 5e9494a0 (2.43.2), pushed. Both reviews PASS with the blocker reconciled as an extraction artifact (comment 5349, corrected transcript in out/t538-row-ink/reconciliation.md). Parking for the owner''s re-read of the rows.', NULL, '2026-10-31 22:31:10.730246+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5354, 541, 'comment', 'owner', 'The three named strings, answered per string. The Bikol sunrise row was wrong twice over: Wiktionary''s sunrise table lists Central Bikol pagsirang, and the old row was the long rising-of-the-sun phrase misspelling the sun word itself (saldang, not saldog), so the row now reads Pagsirang. The Bikol qibla subtitle was wrong: its conjunction asg is not a Bikol word (Wiktionary carries asin), so the line now reads Kaptan na patag asin luway-luway na magrikos, with the accent asin carries. The Bikol sound-sheet hint is correct and naturally long: every word is attested (tanog is Wiktionary''s Central Bikol noun for sound) and the purpose clause is the register''s own, so it stands and the sourcing record now says so. The wider pattern the read may want next: the same asg spelling sits in about a dozen other Bikol strings, left alone here because the order named three.', NULL, '2026-10-31 22:39:56.220014+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5355, 541, 'comment', 'owner', 'The batch is code-complete on the lane branch, six commits from 2.43.2 to 2.43.7, validate green at 8230 passing. The mosque icon verdict, named as ordered: the PNG conversion had already landed before the read, so the bisect fell to the launch path and landed on the reveal latch - the splash lifted at the first drawn frame while the bitmap decoded behind it, so the reveal now holds through the decode, the Ramadan sprites'' own precedent, and the first frame the owner sees carries the icon. The decorations check on glass could not run: no device build was signable from this machine''s session (no Xcode account for the team), so the toggle is pinned by its red-first suites and waits for the owner''s next read.', NULL, '2026-10-31 22:40:02.332714+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5794, 575, 'comment', 'owner', 'FINDINGS
+
+1. FATAL - Design/The engines + Files + Proof Step 2: the network-free unit tests cannot load the generator as specified. No test in this repo imports an .mjs module, and under the jest unit project''s transform (''^.+\\.[jt]sx?$'', no .mjs) importing scripts/i18n-verify.mjs fails (''Must use import to load ES Module''), reproduced with the repo''s own jest binary and a copied transform; the repo''s convention for .mjs scripts (cjkSubsetScript.test.ts) is readFileSync text assertions, which cannot inject a fetch. Fix: name the mechanism - add .mjs to the unit transform pattern in jest.config.js (a file missing from the plan''s Files list), or put the testable core in a CJS .js or .ts module the .mjs entry thin-wraps.
+
+2. Lock extension: plain ''yarn i18n:lock'' re-pins source for all 74 locales and preserves every existing verified entry, so after any en.ts edit that command turns the gate green while every verified hash still pins catalogs never verified against the new English - the lock then asserts a falsehood, and today''s lock-test message names exactly this command as the recovery. Fix: plain re-lock drops (or refuses to touch) verified on any locale whose source hash changes; only --verify re-establishes it.
+
+3. Arbitration (pilot) + Step 4: ''a failed string is re-translated and re-verified until it passes'' never says the owner re-reads the re-translated string - the owner''s personal read covered the old wording, and as written an implementer may machine-pass the new string and lock wave: pilot. Fix: state that re-translated pilot rows are re-presented to the owner, and a pilot locale locks only when the owner''s yes covers every final string.
+
+4. Decisions 2 + Risks (Engine coverage): ''Google''s keyless gtx endpoint renders the round-trip'' - from this machine a single first request drew HTTP 429 with Google''s block page for all nine pilot codes, and the named detection (''whole locales reading engine:llm'') misses engine 1 dying mid-flight with rows silently riding engine 2. Fix: Step 3 pre-flights one request per locale; a 429 locale runs MyMemory-first, and the artifact index prints the per-locale engine mix.
+
+5. Design/The artifact: section 3 is ''the remaining 191 keys in catalog order'', but the owner''s priority 3 orders ''category by category: settings, sheets, help, calendar, qibla, widget, and the rest'', and en.ts''s order interleaves categories (help at three positions, qibla two, settings two) - the plan''s own preamble makes an unstated divergence from the owner''s doc a defect. Fix: order section 3 by the protocol''s category sequence, or record the divergence and its reason.
+
+6. Design/The artifact: ''reads catalogs through @babel/parser exactly as scripts/catalog-lock.mjs does'' is impossible verbatim - that script hard-codes the en declarator and reads only en.ts, while the 74 locale files export under their own names (zh-Hans exports zhHans, pa-Arab exports paArab) beside PRAYER_LABELS; two implementers read this two ways. Fix: specify the rule - the file''s non-PRAYER_LABELS exported object literal, or loader.ts''s locale-to-export-name table.
+
+7. Design/The engines: engine-1 failure includes ''the input returned unchanged'', which misfires on loanword rows (a catalog string equal to the English source legitimately round-trips to itself) and inflates the engine:llm counts the coverage risk reads as its signal. Fix: define unchanged as the unsupported-language echo, and treat unchanged output as valid when the catalog string equals the English string.
+
+Facts verified clean: 207 keys (babel parse), the 11-5-191 split, all 74 catalogs parse at exactly 207 keys, the lock test pins English only, languageWave and conformancePattern pass unchanged under the new lock shape (key counts only), scripts/__tests__ is the script-test home and the unit project''s testMatch picks it up, Node v24.14.1, MyMemory reachable and keyless. Hedge-word scan of the plan: clean (the only ''etc'' hits sit inside the word fetch).', NULL, '2026-11-02 04:34:02.22915+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5799, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 04:35:57.554287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5803, 577, 'activity', 'owner', NULL, 'status', '2026-11-02 04:53:39.487767+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3528, 370, 'activity', 'owner', NULL, 'parent', '2026-10-25 14:17:44.097898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 368, "value": "T-368"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3529, 368, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 14:17:44.097898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 370, "value": "T-370"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4950, 517, 'activity', 'owner', NULL, 'parent', '2026-10-30 03:37:46.453013+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 515, "value": "T-515"}}', NULL);
@@ -12186,6 +12338,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4963, 515, 'comment', 'owner', 'Both steps executed and merged to uat at e62adf24 (2.42.5): the outline now traces one continuous faint violet pill that carries the arrow - a cover path erases the border line under each arrow''s base, so the border''s ends meet the arrow''s side strokes at the corners - and the card''s background stepped 5 percent toward the gradient''s navy top (each channel bounded within 2 counts). The open overlay''s glow now reads the gradient''s own top constant exactly, on both lists, and the dead per-list purples are gone. All guards were red first and mutation-proven; the full suite is green at 100 percent coverage. The version line was shared with lane1/T-491 (it took 2.42.4 through 2.42.8 on its branch): this lane''s 2.42.4 and 2.42.5 are grandfathered in the collisions allowlist per the standing ruling, and this merge landed first from uat''s 2.42.3, so T-491 merges above 2.42.5 without a renumber here. No visual proof was run in the lane - the owner reads the merged build on glass (order 2026-10-30).', NULL, '2026-10-30 04:11:49.363298+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4966, 515, 'activity', 'owner', NULL, 'status', '2026-10-30 04:19:44.54496+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5353, 541, 'comment', 'owner', 'The XS capture is closed and the fix is in. The phone still shows the Oh no screen today, cold launch to error in under two seconds, no crash, no network attempt, and the API answers the build''s own key from this network. A fresh production-env install of the exact tree was healthy on iOS 18.5 and 26.5 simulators, and the whole production-run diff changed no launch-path reader, which leaves one failure class standing: a stored record whose bytes a kill tore mid-write, read through a bare JSON parse whose guard then reads the same torn record and throws the same way, so sync rejects with nothing usable shown. The app''s own container is backup-excluded, so the exact key is not reachable from here. The landed fix reads unparseable bytes as absent, drops the torn day and its year marker, and has the next sync re-ask the API: the XS recovers on the owner''s next install, and no torn record can brick a launch again. The evidence trail is transcribed outside the repository under the capture directory.', NULL, '2026-10-31 22:39:49.366503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5795, 577, 'activity', 'owner', NULL, 'title', '2026-11-02 04:35:57.416935+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 2: The verification generator - scripts/i18n-verify.js (CommonJS) with network-free tests"}, "from": {"value": "Step 2: The verification generator - scripts/i18n-verify.mjs with network-free tests"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5797, 579, 'activity', 'owner', NULL, 'title', '2026-11-02 04:35:57.494125+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Step 4: The pilot verdicts applied - failures re-translated and re-presented, nine catalogs locked"}, "from": {"value": "Step 4: The pilot verdicts applied - nine catalogs locked, failures re-translated"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3530, 371, 'activity', 'owner', NULL, 'created', '2026-10-25 14:17:44.177426+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3531, 371, 'activity', 'owner', NULL, 'parent', '2026-10-25 14:17:44.184515+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 368, "value": "T-368"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3532, 368, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 14:17:44.184515+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 371, "value": "T-371"}}', NULL);
@@ -12208,6 +12362,7 @@ blocker: shared/constants.ts:702, components/countdown/Countdown.tsx, components
 nitpick: stores/database.ts:42 - getItem''s MMKV READ log dropped unmentioned in e7e4a756; name the removal or restore the line.
 nitpick: shared/i18n/sourced-names.json - no record for the Bikol sound-sheet hint or qibla subtitle despite comment 5354''s claim; the chains live only in the comment and commit message.', NULL, '2026-10-31 22:50:06.404942+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5359, 541, 'activity', 'owner', NULL, 'status', '2026-10-31 22:58:25.268886+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5804, 575, 'comment', 'owner', 'Owner order 2026-11-02: this ticket is read-only until the owner says otherwise. No codebase changes without an explicit owner say - the pilot verification is external files only, nothing inside the app or the repo lands. The lane branch''s tooling and lock commits stay unlanded; the owner reads the nine staged artifacts and rules on what, if anything, lands later.', NULL, '2026-11-02 05:06:31.855708+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3537, 373, 'activity', 'owner', NULL, 'parent', '2026-10-25 14:17:44.300515+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 368, "value": "T-368"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3538, 368, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 14:17:44.300515+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 373, "value": "T-373"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3547, 370, 'activity', 'owner', NULL, 'status', '2026-10-25 14:22:37.650845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -12225,6 +12380,7 @@ nitpick: commit 40c6fb18''s message says the ja subset re-cut "two" glyphs light
 nitpick: shared/i18n/bcl.ts qibla.subtitleReady ("asg" to "asín") is the sweep''s only non-extras edit. The commit message names it as one of the owner''s three re-sourced strings with the Wiktionary attestation, so it is accounted for; flagged because a catalog-by-catalog diff shows a qibla copy change inside a billed extras-only sweep.
 
 FINDINGS: PASS clean of blockers and suggestions; 4 nitpicks above.', NULL, '2026-10-31 22:53:44.907393+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5805, 575, 'comment', 'owner', 'Owner ask 2026-11-02, done: the staged artifacts'' titles and the index now carry the language name beside the code (so - Somali, min - Minangkabau, ...). The generator itself still emits code-only titles; the one-line fix rides the lane branch and lands only with it, or is redone if the artifacts are ever regenerated.', NULL, '2026-11-02 05:10:19.935158+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3541, 368, 'comment', 'owner', 'Planned. The plan doc (T-368) pins the reviewed pair - the FINISHED STORE builds at 2.4.39, Android AAB build 11 and iOS IPA build 74, both from git 340bd90e - across five steps: pin, download and identify, measure both phones without displacing anything, smoke the exact binary on the sanctioned emulator, and table the owner decisions with the verdict.', NULL, '2026-10-25 14:18:17.027179+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3554, 346, 'activity', 'owner', NULL, 'field', '2026-10-25 14:28:18.612387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s approval to close (run order 2026-10-25)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3555, 347, 'activity', 'owner', NULL, 'status', '2026-10-25 14:30:59.435142+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
@@ -12273,6 +12429,10 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3570, 347, 'activity', 'owner', NULL, 'field', '2026-10-25 15:03:33.096836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s approval to close the redo (run order 2026-10-25)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4962, 515, 'activity', 'owner', NULL, 'status', '2026-10-30 04:11:43.852043+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5358, 541, 'comment', 'owner', 'Adjudicated (lead, 2026-10-31): the blocker is CONFIRMED and fixed - my order (5344) landed after the lane''s last board read, and the audit fix now carries it: labelOverlay re-inks #585c8c to #58628c (hue 235 to 228, the blue family the owner named, saturation and lightness held), red-first against the old purple pin; and the shadow order is answered with the code''s own truth - no textShadow rides the prayer name or the location anywhere in the app, the timer''s three shadow styles are the only ones and stay, so what read as a shadow on glass was the dark purple ink over the glow, which this re-ink replaces. If a shadow still reads on glass after this, the owner names it and the renderer gets hunted. The nitpicks: the MMKV READ log''s payload trim is hereby named (the hardened reader logs failures only); the bcl chains now live in the sourcing record itself; the blind review''s JSDoc dangle is reattached; its mad nitpick is REJECTED - the catalog''s sunrise row is the two-word compound Mata''are kalowar, not a one-word Mata, so its naturally-long listing is honest; and its commit-message glyph count (two vs three) is corrected here, history untouched.', NULL, '2026-10-31 22:55:02.627665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 5356, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5806, 578, 'activity', 'owner', NULL, 'status', '2026-11-02 05:19:11.462379+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5808, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 05:19:20.742537+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5810, 575, 'comment', 'owner', 'Owner order 2026-11-02, second: the verification pages get modern CSS styling and quick-glance coloring - a row whose round-trip does not carry the English meaning reads red, one that does reads green, the index shows which languages hold mismatches - and the wave widens from the nine pilots to all 75 catalogs. The tool joins the project (the owner''s explicit say; the earlier read-only order stands lifted for the verification tool alone). Work continues autonomously.', NULL, '2026-11-02 05:20:10.85798+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5820, 584, 'activity', 'owner', NULL, 'created', '2026-11-02 05:29:49.542157+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3569, 347, 'activity', 'owner', NULL, 'status', '2026-10-25 15:03:32.996431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4964, 515, 'comment', 'owner', 'Plan-conformance audit: the code matches the plan on all three ordered changes, and I found nothing wrong. The outline is the promised pill - each arrow SVG carries the cover path erasing the border band under the base at the pinned y-bands, the face border and both strokes read the new 0.29-alpha violet token, and the separator keeps the old border token as its one remaining reader. The background is the derived rgb(17,7,44) lean, bounded within 2 counts a channel against the #05134a anchor, and the anchor is the same constant BackgroundGradients paints. The veil''s glow hands Glow the gradient''s own top constant unconverted on both lists, with the dead per-list purples deleted and a guard holding them gone. The guards redden by arithmetic against every pre-change value; the three suites pass (409 tests) and yarn validate is green at 100 percent coverage; the merge carries 2.42.5 above uat''s 2.42.3 with both lane collisions allowlisted, each commit bumping the two tracked version files together. The silent-ship reads correct against whatsNew.ts''s own ritual: the banner version moved to 2.42.5, no item stamped, so nothing pops by construction.
 
@@ -12280,6 +12440,8 @@ nit: the plan''s file list names android/app/build.gradle among the bump files, 
 
 nit: the plan''s risk says the test pins the cover band "to the border band''s derivation (the 1px borderWidth against the SVG''s base edge)", but the guards pin the band''s exact literals (the ds equality plus the band regex) with the derivation stated in comments - the pin holds against any one-off shift, the derivation is just not computed inside the guard.', NULL, '2026-10-30 04:18:25.696109+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5360, 541, 'activity', 'owner', NULL, 'field', '2026-10-31 22:58:25.31244+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s on-glass read of the whole batch: XS launches clean, mosque icon on the first frame, short labels, darker disabled alert, decorations toggle, shadow-free blue-hinted overlay labels"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5807, 575, 'activity', 'owner', NULL, 'field', '2026-11-02 05:19:20.693607+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner reads the nine pilot languages one by one at $HOME/athan-i18n-verify/ (index.html links ar so id ms min mad bug ceb ilo; each row shows our English, our string, the round-trip and the engine) and answers per language in a comment here: pass, or the keys that fail or feel uncertain."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5823, 575, 'activity', 'owner', NULL, 'estimate', '2026-11-02 05:29:49.578191+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "18"}, "from": {"value": "12"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3571, 347, 'comment', 'owner', 'Redone on the owner''s verdict and merged to uat at 2.5.4 (6df3bf84): the README stands as the original 2.4.40 text with its structure and voice untouched, the record''s wrongs corrected in place and the missing features added as single lines where they belong. The blind reviewer passed the diff against the original with every claim tree-verified. Parked for the owner''s approval to close the redo.', NULL, '2026-10-25 15:03:33.161521+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3572, 327, 'activity', 'owner', NULL, 'field', '2026-10-25 17:13:02.174633+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3573, 356, 'activity', 'owner', NULL, 'status', '2026-10-25 17:13:02.229952+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -12320,6 +12482,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3619, 374, 'activity', 'owner', NULL, 'status', '2026-10-25 19:06:50.640454+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 10, "value": "Deferred", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4965, 515, 'comment', 'owner', 'Blind review of the merged range: nothing wrong found. The lean lands exactly on rgb(17,7,44), the outline keeps the old 0.29 faintness a small hue step away, the cover path matches the arrow''s one-pixel overlap so the outline runs around the arrow instead of slicing it, the glow reads the gradient''s own top constant on both lists, and the deleted glow constants have no reference left anywhere in the tree. Both jest projects green (unit 6440, components 1695) and the version and what''s-new ritual rode both commits; the owner''s glass read is the one proof that remains.', NULL, '2026-10-30 04:18:37.242162+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5361, 541, 'comment', 'owner', 'Merged to uat as 5174d806 (2.43.9), pushed. Both reviews PASS with every finding adjudicated (5358): the mid-flight re-ink landed red-first, the sourcing chains moved into the record, the JSDoc reattached, the mad nitpick rejected with the catalog''s own compound as the disproof. Production builds of the merged tip are installing on both phones for the owner''s read; the decorations on-glass check rides the same read.', NULL, '2026-10-31 22:58:25.341918+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5809, 575, 'comment', 'owner', 'The pilot wave is staged for the owner''s read: nine languages x 207 strings at $HOME/athan-i18n-verify (start at index.html; every row carries our English, our string, the machine round-trip and the engine that rendered it - 1,144 rows by the two keyless engines, 719 by the judge pass marked engine:llm after MyMemory''s anonymous quota died mid-run and gtx throttled). The judge flagged eighteen strings it doubted while rendering, listed in judge-flags.md beside the artifacts - advisory only, the owner''s read rules, and the verdict protocol on the index page says how to answer.', NULL, '2026-11-02 05:19:20.76808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5814, 582, 'activity', 'owner', NULL, 'created', '2026-11-02 05:29:49.435573+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3597, 374, 'activity', 'owner', NULL, 'field', '2026-10-25 18:39:24.273042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "369"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3602, 375, 'activity', 'owner', NULL, 'field', '2026-10-25 18:39:24.360868+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "370"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3605, 375, 'activity', 'owner', NULL, 'label_add', '2026-10-25 18:39:31.49729+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 199, "value": "#375"}}', NULL);
@@ -12330,6 +12494,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5363, 538, 'activity', 'owner', NULL, 'description', '2026-11-01 00:09:26.079152+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the language sheet''s Japanese (row 73) and Chinese-Simplified (row 74) rows read extremely tall on the OnePlus 3T ONLY - Korean (row 75) and every other row render correctly there, and the iPhone XS renders rows 73, 74 and 75 all correctly. Fix the Android-only line-height break.\n\nWhere: the language rows'' per-record face resolution (components/sheets/screens/Language.tsx, shared/typography.ts), the three CJK subset fonts (NotoSansSC-Subset, NotoSansJP-Subset, NotoSansKR-Subset), and Android 9''s text layout path.\n\nFacts the fix starts from (the owner''s read of production 2.43.9 on both phones, 2026-11-01):\n- 3T: row 73 (ja) TALL, row 74 (zh-Hans) TALL, row 75 (ko) CORRECT, row 72 (am) and everything below correct.\n- XS: 73, 74, 75 all correct.\n- The shipped design (merged 5e9494a0): each row''s label rides its OWN record''s bundled face at the 16px Latin-parity pin, no OS fallback renders any endonym. Korean renders right while Simplified-Chinese and Japanese do not - the working control is the Korean subset: diff the three subsets'' hhea/typo/win metrics and their behaviour under Android''s CustomLineHeightSpan, and find what SC and JP carry that KR does not.\n- Device licence (owner order, 2026-11-01): the executing session drives the phone ITSELF for this ticket - set languages, take screenshots, analyse them, read logs. Nothing is committed: transcripts, dumps and images live under $HOME/athan-gitree/out/t538-*/, placeholders only (3T_SERIAL, IPHONE_UDID) in any record.\n\nAcceptance:\n- [ ] rows 73, 74 and 75 render at exactly their neighbours'' height on the 3T, proven by a transcribed device read under at least two active locales\n- [ ] the XS stays correct: a regression read after the change\n- [ ] a red-first guard that would have caught the SC/JP break (font-metric level if jest cannot drive the renderer)\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel (build-prod.zsh then t491-ios-build.zsh - never two Gradle), aapt2-badging gate and User 0 assertion, install on 3T_SERIAL and IPHONE_UDID so the owner reads the same build on both phones"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5364, 538, 'activity', 'owner', NULL, 'status', '2026-11-01 00:09:26.079152+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5371, 542, 'activity', 'owner', NULL, 'label_add', '2026-11-01 00:09:43.47442+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 238, "value": "#542"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5811, 575, 'comment', 'owner', 'Owner order 2026-11-02, third: every row carries TWO independent round-trips - Google Translate first, a second distinct translation site second - both shown in the table, so a pass rests on two engines agreeing; the pages stay human-friendly and easy to follow.', NULL, '2026-11-02 05:21:20.745469+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5812, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 05:23:25.595892+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3598, 374, 'activity', 'owner', NULL, 'field', '2026-10-25 18:39:24.300218+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner starting the redesign (owner order 2026-10-25)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3609, 348, 'activity', 'owner', NULL, 'status', '2026-10-25 18:42:55.400716+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4968, 515, 'comment', 'owner', 'Audit passed: both reviews green (comments 4964, 4965), the two plan-doc nits corrected by the lead in doc 63 v2 (the build.gradle leg named as prebuild-generated, the cover-band guard described as literal pins with the derivation stated). Merged at 2.42.5, parked for the owner''s read on glass.', NULL, '2026-10-30 04:19:44.597171+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -12337,15 +12503,36 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5366, 541, 'activity', 'owner', NULL, 'title', '2026-11-01 00:09:26.156665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s follow-up batch: long descriptions restored everywhere, darker disabled toggle track, decorations toggle removed, splash icon evaluated"}, "from": {"value": "The owner''s read batch: instant mosque icon, XS launch error, short-form labels, darker disabled alert, Ramadan toggle"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5367, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 00:09:26.156665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix. The DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title. The short-noun rule (T-541''s first pass) applies to TITLES ONLY - the sweep wrongly reached the descriptions too. English shape: title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" (read the en catalog for the exact strings and match the pair in every locale). The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (already owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), and guard red-first: the description must differ from the title in every locale that has distinct words.\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [ ] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [ ] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [ ] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5368, 541, 'activity', 'owner', NULL, 'status', '2026-11-01 00:09:26.156665+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "Backlog", "stateType": "backlog"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5813, 575, 'comment', 'owner', 'Owner orders second and third received (styling, coloring, two engines, 75 catalogs, the tool joins the project). The extension is running: plan doc amended first, then the generator rework, then the 75-locale run.', NULL, '2026-11-02 05:23:25.633149+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3599, 374, 'comment', 'owner', 'Placeholder created on the owner''s order (2026-10-25) while confirming T-327''s deferral: the shade system goes, one dim colour arrives, the gradient lightens, and the 3T''s floor is expected to move with it. Deferred until the owner starts it.', NULL, '2026-10-25 18:39:24.316635+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4969, 491, 'comment', 'owner', 'Lead order (owner order 2026-10-30, parallelise the phones): the 3T notification protocol and sound previews run NOW in the lead''s own executor, in parallel with the lane''s XS wait - the LANE does not drive the 3T; the transcript lands on the ticket from the lead. The lane keeps the XS protocol, the savings table and the close.', NULL, '2026-10-30 07:41:57.075659+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5369, 541, 'activity', 'owner', NULL, 'field', '2026-11-01 00:09:26.183432+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5815, 582, 'activity', 'owner', NULL, 'parent', '2026-11-02 05:29:49.439309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5816, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 05:29:49.439309+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 582, "value": "T-582"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5851, 589, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.269055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5852, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.269055+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 589, "value": "T-589"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5869, 592, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.461632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5870, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.461632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 592, "value": "T-592"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5875, 593, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.52694+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5876, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.52694+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 593, "value": "T-593"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5884, 582, 'activity', 'owner', NULL, 'label_remove', '2026-11-02 06:03:35.155662+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 254, "value": "#582"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5885, 582, 'activity', 'owner', NULL, 'label_remove', '2026-11-02 06:03:35.155662+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 145, "value": "Research"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5886, 582, 'activity', 'owner', NULL, 'label_remove', '2026-11-02 06:03:35.155662+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3601, 375, 'activity', 'owner', NULL, 'label_add', '2026-10-25 18:39:24.340717+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 196, "value": "#349"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3610, 348, 'activity', 'owner', NULL, 'field', '2026-10-25 18:42:55.431661+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3614, 374, 'activity', 'owner', NULL, 'description', '2026-10-25 18:49:04.74766+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the per-component shade system born in the colour-carried dim conversion gives way to a single dim colour serving every dimmed-text surface, with a lighter, more subtle background gradient - removing the shade machinery the owner suspects costs the 3T its animation floor, and simplifying the visual system.\n\nWhere: the ink and shade constants and every surface that consumes them (the colour-carried dim system and the per-row shades across the prayer list, overlay and sheets), and the app''s background gradient.\n\nAcceptance:\n- [ ] one dim token serves every dimmed-text surface, asserted by a sweep test that fails on any surface carrying its own shade\n- [ ] the per-component shade constants leave the tree\n- [ ] the background gradient matches the owner''s chosen direction\n- [ ] the 3T''s overlay and sheet interactions hold the 30fps floor recorder-free on a Release gate-ON build\n- [ ] yarn validate green\n\nThis is a placeholder: the owner refines the direction and planning refines the steps when work starts.\n\nThe T-327 interplay, for whoever plans this: this redesign''s floor proof IS T-327''s acceptance criterion. If the 3T holds the 30fps floor recorder-free when this lands, T-327 closes as fixed-by-this-redesign and its remaining steps dissolve; if it does not, T-327 re-enters planning for its steps 13-16 with the instrument fold standing on lane1/T-327. The blocks-relation (this ticket blocks T-327) carries the dependency and removes itself by rule when this completes."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3616, 368, 'activity', 'owner', NULL, 'status', '2026-10-25 18:51:15.861951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4970, 491, 'comment', 'owner', 'Owner order 2026-10-30, standing from now on: device testing parallelises across both phones - one executor per device, no phone idles while the other waits on an alarm. Only the build slot serialises. Recorded in e2e/README.md at 0f46dd82; the lane applies it to every remaining device step this run.', NULL, '2026-10-30 07:45:16.251419+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5370, 542, 'activity', 'owner', NULL, 'created', '2026-11-01 00:09:43.462642+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5817, 583, 'activity', 'owner', NULL, 'created', '2026-11-02 05:29:49.496517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5856, 590, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.333668+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5859, 590, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.374963+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 250, "value": "#590"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5860, 590, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.374963+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5861, 590, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.374963+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5862, 591, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.395847+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5865, 591, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.439042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 251, "value": "#591"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5866, 591, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.439042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5867, 591, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.439042+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3603, 374, 'activity', 'owner', NULL, 'label_add', '2026-10-25 18:39:31.459345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 198, "value": "#374"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3604, 374, 'activity', 'owner', NULL, 'label_remove', '2026-10-25 18:39:31.459345+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"from": {"id": 196, "value": "#349"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3607, 374, 'activity', 'owner', NULL, 'field', '2026-10-25 18:39:31.519743+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "374"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -12409,6 +12596,21 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5408, 547, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:40:35.57241+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 542, "value": "T-542"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5409, 542, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:40:35.57241+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 547, "value": "T-547"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5422, 551, 'activity', 'owner', NULL, 'created', '2026-11-01 00:41:18.057801+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5818, 583, 'activity', 'owner', NULL, 'parent', '2026-11-02 05:29:49.49955+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5819, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 05:29:49.49955+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 583, "value": "T-583"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5824, 575, 'comment', 'owner', 'Plan doc amended (v4): the extension section carries the owner''s orders two and three - two engine slots per row, green/red/amber verdicts on a meaning heuristic, modern pages, language names, all 75 catalogs, the tool joining the project - with new steps 7-9 at 6 points (ticket 12 to 18). Step 7 starts now: the generator rework, tests red first.', NULL, '2026-11-02 05:31:35.00376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5833, 586, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.074277+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5834, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.074277+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 586, "value": "T-586"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5838, 587, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.141591+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5844, 588, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.207452+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5847, 588, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.245615+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 248, "value": "#588"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5848, 588, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.245615+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5849, 588, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.245615+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5850, 589, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.267622+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5868, 592, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.460737+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5871, 592, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.50382+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 252, "value": "#592"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5872, 592, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.50382+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5873, 592, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.50382+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3666, 376, 'activity', 'owner', NULL, 'status', '2026-10-26 23:59:36.854312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3667, 376, 'activity', 'owner', NULL, 'type', '2026-10-26 23:59:36.854312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Feature"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3668, 376, 'activity', 'owner', NULL, 'estimate', '2026-10-26 23:59:36.854312+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"value": "points"}}', NULL);
@@ -12418,6 +12620,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5374, 542, 'activity', 'owner', NULL, 'description', '2026-11-01 00:25:06.673594+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: NO language leaves the list (owner order, 2026-11-01, reversing the removal question - keep all 75). Instead, make every language CORRECT: spelling everywhere, and every string class following the ENGLISH pattern exactly - the prayer names'' format, the info-box title''s format, and the info-box description''s format. The owner states this as a hard rule, restated multiple times: look at how English formats the prayer names, the info-box title and the info-box description, then make every other language follow that same pattern.\n\nWhere: all 75 shared/i18n catalogs and shared/i18n/sourced-names.json; the English catalog is the canonical pattern; the wave''s sourcing chains (T-537 comments 5188 and 5217, the records in sourced-names.json) name the authority for each language''s words.\n\nThe pattern to extract from English first, then enforce everywhere:\n1. Prayer names: the exact word set English uses (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha - loans kept as loans where the naming rule loans them), correct spelling and diacritics per the language''s own orthography, no wrong-word substitutions, no truncations.\n2. Info-box title: the SHORT noun (the short-noun rule, T-541''s first pass) - midnight is the locale''s word for midnight, last third the short form.\n3. Info-box description: the FULL sentence that translates the English description - never a repeat of the title, never a different meaning (the Bikol \"late night\" class of error). Long is correct here.\n\nAcceptance:\n- [ ] the English pattern is written down on the ticket first: every string class with its exact en strings, agreed as canonical\n- [ ] a per-locale conformance table: every deviation found, per catalog - wrong spelling, wrong word, title/description collisions, format breaks\n- [ ] every deviation fixed through the sourcing chains, each change recorded with its chain in sourced-names.json\n- [ ] golden red-first tests pin the pattern for every catalog: title differs from description wherever the language has distinct words, descriptions match their English meaning class, prayer-name key sets exact\n- [ ] no language is added or removed; the count reads exactly 75 on every registry\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, aapt2 and User 0 gates, install on 3T_SERIAL and IPHONE_UDID for the owner''s read"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5377, 538, 'activity', 'owner', NULL, 'field', '2026-11-01 00:31:44.231759+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5380, 542, 'activity', 'owner', NULL, 'field', '2026-11-01 00:31:44.243796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5821, 584, 'activity', 'owner', NULL, 'parent', '2026-11-02 05:29:49.544413+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5822, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 05:29:49.544413+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 584, "value": "T-584"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3669, 376, 'activity', 'owner', NULL, 'label_add', '2026-10-26 23:59:36.865981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 142, "value": "Feature"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3670, 376, 'activity', 'owner', NULL, 'label_add', '2026-10-26 23:59:36.865981+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3671, 376, 'activity', 'owner', NULL, 'field', '2026-10-27 00:00:05.490115+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "376"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -12426,6 +12630,22 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4973, 491, 'comment', 'owner', 'Lead order to the ORIGINAL phase-B session (ses_e7538dee0ffe7PaVjEeAku6oDh): stand down NOW and return - the XS protocol, the savings table and the close belong to the resume session alone; two agents cycling one phone during the 11:39/11:44 fires voids both takes. The Android leg is already proven and transcribed (previous comment); nothing of yours is needed.', NULL, '2026-10-30 10:46:55.404491+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5376, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 00:25:06.747888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix, restated by the owner as a HARD RULE (2026-11-01): the DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title or drift in meaning. The short-noun rule applies to TITLES ONLY - the first pass wrongly swept the descriptions too. English shape (canonical): title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" - read the en catalog for the exact strings and restore that PAIR in every locale. The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), red-first guarded: the description differs from the title in every locale with distinct words. (T-542 then audits the whole surface class - spelling and format conformance everywhere - as its own pass.)\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [ ] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [ ] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [ ] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDIC as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5383, 542, 'activity', 'owner', NULL, 'field', '2026-11-01 00:31:44.24667+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "542"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5825, 575, 'comment', 'owner', 'Owner orders 2026-11-02, fourth and fifth - the transliteration ruling, the context rule, and the green loop.
+
+Transliterated in every language, spelled the way each language itself writes them: the five daily prayers Fajr, Dhuhr, Asr, Maghrib, Isha, and the Arabic extras Suhoor, Duha, Istijaba. No language translates these eight; local spellings (Indonesian Zuhor) are exactly right; Maghrib is sunset, never Morocco. Translated normally: Sunrise, Midnight, Last Third. The class rule holds everywhere a name appears - info-box titles, descriptions like ''Halfway between Maghrib and Fajr'' keep the names transliterated inside the translated sentence, settings, help, alerts.
+
+Pass rules for the tool: a transliterated name''s round-trip is judged against the name''s meaning (Fajr ~ dawn, Dhuhr ~ noon, Asr ~ afternoon, Maghrib ~ sunset, Isha ~ nightfall, Suhoor ~ the pre-dawn meal, Duha ~ forenoon, Istijaba ~ the answered supplication) or a cognate of the name itself - never against the English spelling alone. Every other string is judged in its key''s UI context: a settings toggle, an alert title, a sound-sheet row, a help answer. The same word may read differently per context; the judge layer weighs context explicitly.
+
+The owner licenses catalog fixes in the codebase for this (explicit permission, recorded), orders research into where each language is spoken to ground its established spellings, and orders the loop: iterate the two-engine table until no red remains - chunked about ten languages per child ticket under this parent, up to three lanes in parallel, kept in sync. The owner''s word stays final.', NULL, '2026-11-02 06:02:25.786908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5835, 586, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.119914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 246, "value": "#586"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5836, 586, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.119914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5837, 586, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.119914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5841, 587, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.186245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 247, "value": "#587"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5842, 587, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.186245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5843, 587, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.186245+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5881, 582, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:03:13.12797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 254, "value": "#582"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5882, 582, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:03:13.12797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 145, "value": "Research"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5883, 582, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:03:13.12797+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3674, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 00:00:18.778148+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3683, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 00:15:19.944146+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3684, 375, 'comment', 'owner', 'The Android settings shadow is solved (6e25ddfe, 2.10.8). The deep dive''s conclusion held twice over: the legacy shadow props are iOS-only, and neither elevation from a translucent fill nor a border-box boxShadow drew anything on the 3T (both measured by pixel-residual analysis of device captures - 0.5/255 residual, zero shadow pixels). The fix: on Android the fill bakes opaque at its measured composite over the local gradient (86,44,191 - the pixel-identical value the 51% translucency produced), which gives elevation the opaque background its outline rule requires; elevation 10 with a near-black shadow colour now casts a measured soft crescent (31 blue-units under the rim, decaying over ~30px, absent above) on the fleet''s oldest renderer, verified by vision analysis of a 3T capture. iOS keeps its translucent fill and its proven shadow trio untouched. A dev APK carrying the fix is building for the owner''s S23 install; the production APKs remain on standby untouched.', NULL, '2026-10-27 00:18:49.083376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -12467,6 +12687,17 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 8. nitpick - Step 2''s "the highest OS font scale" reads name no route: neither atlas nor e2e/README documents how to set the 3T''s font scale (adb settings put system font_scale) or its highest step. Fix: name the command and write the measured scale steps back into the atlas.
 
 Verified against the repository, no finding: all six subsets'' hhea 1160/-288/0, typo 880/-120/0, win 1160/288, UPM 1000, fsSelection 0x0040, cmap (0,3)+(3,1) both format 4, name IDs 1/4/6, endonym contours and advances (13/7/3/4, 3/5/12, 8/5/4 at 1000/920 units), digits 11/11, glyph history SC 621-620-619 / JP 770-770-765 / KR 507 constant, app.json''s 34 faces, OPTION_LINE_HEIGHT 16 with HANS/JAPANESE/KOREAN carrying no box record and both app files unchanged since 5e9494a0, TextLayoutManager.kt 871-873 on RN 0.88.0, the unit jest project''s unmocked node:fs precedent, and the points arithmetic 2+3+2+3=10 on the ticket and subtasks 553-556.', NULL, '2026-11-01 00:58:10.677348+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5826, 585, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:25.832339+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5857, 590, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.335341+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5858, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.335341+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 590, "value": "T-590"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5863, 591, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.396845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5864, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.396845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 591, "value": "T-591"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5874, 593, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.525612+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5877, 593, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.56348+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 253, "value": "#593"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5878, 593, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.56348+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5879, 593, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.56348+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5880, 575, 'comment', 'owner', 'Structure note: the board allows no grandchild steps, so each child ticket of this parent carries its estimate (2) on itself with no step-subtasks. The points-arithmetic rule is waived for that shape by structure, recorded here once.', NULL, '2026-11-02 06:02:52.586822+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5891, 575, 'comment', 'owner', 'Owner order 2026-11-02, seventh: execution scales back to serial - one language at a time, one execution lane in flight, and a language is driven to fully green (both engines, nothing red, nothing doubted, judge-arbitrated) before the next language starts. The chunk tickets remain the containers, worked strictly in order: chunk 1''s locales first (ar, then so, id, ms, min, mad, bug, ceb, ilo, am), one at a time to green, then chunk 2, and so on. The translation-engine wave runs per language, never as a mass sweep; the research audit finishes untouched (it hits no translation API). Round-by-round progress rides this ticket''s comments, language by language.', NULL, '2026-11-02 06:21:48.259562+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3676, 379, 'activity', 'owner', NULL, 'status', '2026-10-27 00:11:05.240736+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3677, 377, 'activity', 'owner', NULL, 'type', '2026-10-27 00:14:31.262844+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Bug"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3678, 377, 'activity', 'owner', NULL, 'label_add', '2026-10-27 00:14:31.284976+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 201, "value": "#377"}}', NULL);
@@ -12514,6 +12745,12 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5435, 553, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:49:12.765388+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 538, "value": "T-538"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5436, 538, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:49:12.765388+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 553, "value": "T-553"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5446, 541, 'activity', 'owner', NULL, 'status', '2026-11-01 00:51:01.810329+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5827, 585, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:25.835393+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5828, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:25.835393+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 585, "value": "T-585"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5839, 587, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.142871+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5840, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.142871+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 587, "value": "T-587"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5845, 588, 'activity', 'owner', NULL, 'parent', '2026-11-02 06:02:52.208634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 575, "value": "T-575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5846, 575, 'activity', 'owner', NULL, 'subtask_add', '2026-11-02 06:02:52.208634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 588, "value": "T-588"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3682, 376, 'comment', 'owner', 'All three steps are executed on branch t376-check-updates (three commits, validate green, 100% coverage). Moving to Audit.', NULL, '2026-10-27 00:15:19.841883+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3685, 376, 'comment', 'owner', 'Blind review of the three commits on t376-check-updates (41c5c65c, 1d1106ae, 53bb14a6) against origin/uat.
 
@@ -12587,6 +12824,13 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5399, 544, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:40:35.494852+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 542, "value": "T-542"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5400, 542, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:40:35.494852+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 544, "value": "T-544"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5440, 555, 'activity', 'owner', NULL, 'created', '2026-11-01 00:49:12.817246+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5829, 585, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:25.89804+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 245, "value": "#585"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5830, 585, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:25.89804+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 145, "value": "Research"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5831, 585, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:25.89804+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5853, 589, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.309663+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 249, "value": "#589"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5854, 589, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.309663+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5855, 589, 'activity', 'owner', NULL, 'label_add', '2026-11-02 06:02:52.309663+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5889, 585, 'comment', 'owner', 'Research pass started: 74 catalogs read (eight name rows plus extras descriptions), reference research running in eight parallel batches. Read-only; fixes stay with the chunk tickets.', NULL, '2026-11-02 06:07:39.248048+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3710, 376, 'activity', 'owner', NULL, 'status', '2026-10-27 04:47:38.279508+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3711, 381, 'comment', 'owner', 'Owner''s session-close additions (2026-10-27): the update-found path is confirmed as specced - the sheet closes and the update modal presents on iOS, the store in-app flow on Android - and the ticket carries the repo''s full gate: 100 percent unit coverage of every changed line, red before green. The planner''s first open question is how the update-found path is proven on glass without a store version ahead of the build (T-376 never solved that either - only the suites pin it); plan it and grill it heavily, per the owner''s order.', NULL, '2026-10-27 04:49:20.772577+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3712, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 05:00:37.960231+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -12647,6 +12891,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5384, 541, 'activity', 'owner', NULL, 'status', '2026-11-01 00:31:44.284944+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5428, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 00:41:29.808669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix, restated by the owner as a HARD RULE (2026-11-01): the DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title or drift in meaning. The short-noun rule applies to TITLES ONLY - the first pass wrongly swept the descriptions too. English shape (canonical): title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" - read the en catalog for the exact strings and restore that PAIR in every locale. The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), red-first guarded: the description differs from the title in every locale with distinct words. (T-542 then audits the whole surface class - spelling and format conformance everywhere - as its own pass.)\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [ ] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [ ] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [ ] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5429, 541, 'activity', 'owner', NULL, 'estimate', '2026-11-01 00:41:29.808669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "5"}, "from": {"value": "13"}, "subject": {"value": "points"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5832, 586, 'activity', 'owner', NULL, 'created', '2026-11-02 06:02:52.071934+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3768, 381, 'activity', 'owner', NULL, 'status', '2026-10-27 10:13:54.838808+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3771, 389, 'activity', 'owner', NULL, 'field', '2026-10-27 10:18:20.302418+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner''s Play Console internal-test release, ahead of a build the 3T installs from Play"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3772, 389, 'comment', 'owner', 'Parked at Awaiting Owner: nothing in the repository can advance this - the ticket needs the owner''s Play Console internal-test release and a Play-installed build on the 3T first. It moves the moment that release exists.', NULL, '2026-10-27 10:18:20.323168+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -12788,6 +13033,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5392, 542, 'activity', 'owner', NULL, 'label_add', '2026-11-01 00:40:28.575548+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 141, "value": "Bug"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5393, 542, 'activity', 'owner', NULL, 'label_add', '2026-11-01 00:40:28.575548+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5394, 542, 'activity', 'owner', NULL, 'label_add', '2026-11-01 00:40:28.575548+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "prayer-times"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5887, 585, 'activity', 'owner', NULL, 'status', '2026-11-02 06:03:43.993994+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5888, 585, 'activity', 'owner', NULL, 'field', '2026-11-02 06:07:30.113175+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3841, 388, 'activity', 'owner', NULL, 'estimate', '2026-10-27 15:20:34.792668+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "from": {"value": "6"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4980, 491, 'comment', 'owner', 'Phase B done: steps 4-7 landed on lane1/T-491 (afcbd240 and f39dd174/e6bb9ee9, validate green throughout) and every proof passed - the protocols, the artefact censuses and the savings table are in the two comments above. One record for the audit: the step 6 commits and the four builds were landed by a second session working this same ticket in the same worktree while the phones were being driven (the 2.42.9 prebuild crash it hit and fixed is the 2.42.10 commit); nothing collided and the branch tip is the reviewed shape. The ticket moves to Audit; nothing has merged to uat, and the Awaiting Owner park named in the acceptance waits on the lead''s ruling after the review.', NULL, '2026-10-30 12:59:58.214178+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5396, 543, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:40:35.433722+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 542, "value": "T-542"}}', NULL);
@@ -12801,6 +13048,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5433, 538, 'activity', 'owner', NULL, 'estimate', '2026-11-01 00:49:06.806886+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "10"}, "from": {"value": "2"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5444, 556, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:49:12.84381+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 538, "value": "T-538"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5445, 538, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:49:12.84381+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 556, "value": "T-556"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5890, 575, 'comment', 'owner', 'Owner order 2026-11-02, sixth: MyMemory is out entirely - not the second site, not a fallback. The second comparison site is chosen by coverage across the 74 locales (keyless candidates: Bing''s web endpoint, Yandex''s web endpoint, LibreTranslate mirrors, Papago); where no site serves a locale, the judge fills that row marked engine:llm, never presented as a site. Any engine''s error or quota payload is engine-dead and never renders as a round-trip (the guard gets a red test). Google stays site one.', NULL, '2026-11-02 06:20:48.393392+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3842, 394, 'activity', 'owner', NULL, 'status', '2026-10-27 15:37:50.4692+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3843, 388, 'comment', 'owner', 'Step 4 landed (2026-10-27): the exhaustive rig runs 25 rows over stored days and found five real throwers - the upgrade check, both update-needed reads, the sequence rebuild, the countdowns, and the fetch gate''s own read - each now caught and warned over stored days exactly as the fetch gate already was, every guard killed under mutation. The already-guarded steps (the fetch, the download writes, the gate reopen, both widget pushes, the notification-refresh wiring) ran green on first pass. The deep cleanup is next.', NULL, '2026-10-27 15:37:50.499366+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3844, 395, 'activity', 'owner', NULL, 'status', '2026-10-27 15:44:21.751215+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
@@ -12880,6 +13128,13 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5430, 542, 'activity', 'owner', NULL, 'status', '2026-11-01 00:47:47.229809+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5443, 556, 'activity', 'owner', NULL, 'created', '2026-11-01 00:49:12.842412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5448, 541, 'activity', 'owner', NULL, 'status', '2026-11-01 00:51:34.66861+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5892, 575, 'comment', 'owner', 'Owner order 2026-11-02, eighth - two phases. Phase one: Google Translate only - one round-trip column, no second engine, nothing else queried; the serial per-language loop runs to 100% green on Google alone (transliteration rules and context judging in force, catalog fixes applied) before any second engine exists. Phase two, after phase one''s loop completes: add the second translation site (never MyMemory) and re-verify language by language the same serial way. The generator keeps its multi-engine row model so phase two adds a column without rework.', NULL, '2026-11-02 06:55:00.06974+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5895, 575, 'activity', 'owner', NULL, 'field', '2026-11-02 07:05:21.865447+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Owner reads the staged v2 pages at $HOME/athan-i18n-verify/ (index.html links all 75, the English reference pinned first; red rows first per language) and answers per language in a comment: pass, or the keys that fail or feel uncertain. The lead pushes lane1/T-575-land to uat. The lock mechanism waits on lane1/T-575-lock for its own ruling. Steps 4-6 of the plan still wait on the pilot read."}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5897, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 07:07:26.124955+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5902, 585, 'activity', 'owner', NULL, 'field', '2026-11-02 07:21:42.17448+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5905, 575, 'comment', 'owner', 'Plan-conformance review of the landing (origin/uat..lane1/T-575-land, 10 commits, tip 54ddef12): verified from the code - MyMemory is out of the chain, pre-flight, links and resume (order six); the phase flag defaults one with order eight''s exact verdict semantics and the two-slot model kept pending; the index rebuilds from disk so a one-locale refresh cannot shrink it; the version set moved one patch on every commit (2.43.48-57, no gradle file is tracked in this repo); no lock-mechanism files in the range; the generator suite runs 45/45 on the tree. Two findings:
+FINDING suggestion: scripts/i18n-verify.js:1036 - the --fill path''s ok ignores remainingGaps and no log line names them, so a partial fill file exits 0 silently while dark rows stand, against the module header''s own contract (lines 23-28: exits non-zero listing any engine slot still missing without a judge fill); fold remainingGaps into ok and log them.
+FINDING nitpick: scripts/__tests__/i18nVerifyScript.test.ts:400,412 - the phase-two verdict fixtures name the second slot ''mymemory'', the engine orders six and eight removed for phase two; a neutral stand-in name keeps the suite consistent with the orders.', NULL, '2026-11-02 07:31:22.335025+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3872, 396, 'activity', 'owner', NULL, 'status', '2026-10-27 16:29:38.353987+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3876, 396, 'comment', 'owner', 'Lane 2 merged: the failed check settles its own state now (red circle, white X, the ring kept, ''Failed to check. Try again'' in all six locales) and the budget is consumed only by a verdict, so a failed check retries without the sheet closing - merged to local uat as 2.11.26 (merge a22c9c34), validate green at 100 percent coverage, no push. The lead''s audit is next, then the iPhone XS glass read and the owner''s copy sign-off (step 3 stays open for it). One note: the merge message''s prose carries a typo (''Try answers'' for ''Try again''); the shipped string is correct in the catalogs and on screen.', NULL, '2026-10-27 16:43:20.808717+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3880, 388, 'activity', 'owner', NULL, 'description', '2026-10-27 16:50:07.425451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: no failure anywhere in the launch or foreground sync may leave the home screen on the error screen while good cached prayer days sit in storage - the state-invariant, proven exhaustively, not through one journey.\n\nWhere: stores/sync.ts (initializeAppState, both the deferred and awaited widget-push paths), the sync suites (every awaited step of the sync chain), the mimic rig retired.\n\nAcceptance:\n- [x] Every awaited step of the launch and foreground sync chain, rejected one per test over stored days, leaves syncLoadable hasData: fetch, storage, notifications, the upgrade path, both widget pushes - a red here names a real thrower and gets fixed inside this goal\n- [x] The deep cleanup: every line the ticket''s arc added re-read against the goal, dead or unnecessary code removed, validate green at full coverage\n- [x] The iPhone XS restored to a real build once the rig passes\n\nHow it was found and re-ruled: the owner''s below-store mimic (new code stamped 1.0.0, build 1, over carried 2.11.14 data) blanked to the error page on a plain open and stayed blanked through Refresh. The mimic is retired as an acceptance rig (owner order, 2026-10-27): a journey through a state no real user occupies cannot prove a state-invariant, and a release build is mute on glass - syslog, devicectl console attach and the log store all carry native lines only. The undiagnosed recurrence is the reason the exhaustive rig is acceptance, not decoration. The real update journeys ride the store tracks: TestFlight on iOS (T-393, with a test-gated check source because iTunes Lookup cannot see TestFlight) and the Play internal track on Android (T-389)."}}', NULL);
@@ -12889,6 +13144,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4991, 521, 'activity', 'owner', NULL, 'parent', '2026-10-30 15:18:41.834151+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 520, "value": "T-520"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4992, 520, 'activity', 'owner', NULL, 'subtask_add', '2026-10-30 15:18:41.834151+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 521, "value": "T-521"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5434, 553, 'activity', 'owner', NULL, 'created', '2026-11-01 00:49:12.761471+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5893, 575, 'comment', 'owner', 'The extension is staged for the read: all 75 catalogs render at $HOME/athan-i18n-verify with two independent round-trips per row (Google first, MyMemory second), quick-glance coloring - green when both engines carry the meaning, red when neither does, amber on missing slots, diverging engines or judge doubt, the index sorted red-first with per-language counts - language names beside codes everywhere, the English reference page, and the judge''s renderings marked engine:llm, never as a site''s. The keyless engines quota-wall fast (627 green, 79 red, 14,612 amber so far of 15,318 rows): a self-terminating supervisor keeps resume passes running until about 10:57 UTC as quotas reset, the judge filled the prayer names of the ten largest still-dark languages (two rows doubted: Pashto and Turkish name the last third as Tahajjud), and the amber queue is exactly that - the re-run and judge queue, shrinking with each pass. The tool joins the project on branch lane1/T-575-land (seven commits at 2.43.48-2.43.54, validate green, both-platform prebuilds stamped) awaiting the lead''s push; the verified-lock mechanism stays preserved on lane1/T-575-lock for the owner''s separate ruling.', NULL, '2026-11-02 07:04:51.547396+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5896, 575, 'comment', 'owner', 'The lane''s self-resuming supervisor is stopped: it sought both engine columns across all 75 locales at once, which the owner''s orders supersede - MyMemory is out entirely, phase one is Google alone, and the wave runs serial per language. The staged artifacts stand as they are; the phase-one loop re-renders them language by language.', NULL, '2026-11-02 07:07:21.406546+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3873, 396, 'activity', 'owner', NULL, 'status', '2026-10-27 16:29:41.997354+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3874, 398, 'activity', 'owner', NULL, 'status', '2026-10-27 16:43:20.740318+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3875, 396, 'activity', 'owner', NULL, 'status', '2026-10-27 16:43:20.780062+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
@@ -13017,6 +13274,19 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5439, 538, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:49:12.79422+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 554, "value": "T-554"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5441, 555, 'activity', 'owner', NULL, 'parent', '2026-11-01 00:49:12.81889+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 538, "value": "T-538"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5442, 538, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 00:49:12.81889+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 555, "value": "T-555"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5894, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 07:04:51.598427+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5904, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 07:25:25.894295+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5906, 575, 'comment', 'owner', 'Blind review of lane1/T-575-land (54ddef12). Suite re-run 45/45 green, biome clean, versions consistent at 2.43.57 (android/ untracked, so no third file to bump). Three defects, two minor:
+
+FINDING suggestion: scripts/i18n-verify.js:98 - RTL_LOCALES copies catalogGates'' 7-item set while the canonical RTL_IDS in shared/i18n/locale.ts:97 holds 11, so the Arabic-script locales pa-Arab, sd, ug and ckb (all among the 75 verified) render their catalog column dir="ltr" (verified live), misaligning the column and misordering bidi punctuation; read the set from locale.ts the way the name table is read from its source.
+
+FINDING suggestion: scripts/i18n-verify.js:1036 - fillLocales derives ok from fillErrors alone, so a partial --fill (verified: 1 of 3 dark rows filled) exits 0 and logs nothing about the rows still dark without a judge fill, against the file''s own contract at line 26; fold remainingGaps into ok and log them as the run path does.
+
+FINDING suggestion: scripts/i18n-verify.js:1008 - the supersede guard requires row.llm === undefined, so a row whose earlier judge fill outlives an engine recovery never supersedes: a re-listed fill re-marks the row amber over a rendered engine slot, and with the key absent from the fill file the stale llm and amber verdict persist on an engine-rendered row (both verified live); when the engine has rendered, clear row.llm and recompute the verdict.
+
+FINDING nitpick: scripts/i18n-verify.js:1210-1235 - ROW_SLOTS, LOCALE_ALIASES, PRAYER_KEYS, EXPLANATION_KEYS, RTL_LOCALES, sectionOf and referenceRowsOf are exported but nothing imports them (the suite uses none); drop them from module.exports.
+
+FINDING nitpick: scripts/__tests__/i18nVerifyScript.test.ts:770 - the {green: 189, red: 18} pin derives from the meaning heuristic over the live en.ts strings'' first six characters, so any catalog wording edit flips the split and fails this phase-semantics test on an unrelated diff; pin the phase rule on a fixture catalog instead.', NULL, '2026-11-02 07:32:36.678209+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3947, 400, 'activity', 'owner', NULL, 'label_add', '2026-10-28 01:18:19.555966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 148, "value": "Design"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3948, 400, 'activity', 'owner', NULL, 'label_add', '2026-10-28 01:18:19.555966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 1, "value": "iOS"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3949, 400, 'activity', 'owner', NULL, 'label_add', '2026-10-28 01:18:19.555966+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "widgets"}}', NULL);
@@ -13049,6 +13319,9 @@ blocker - row A''s guard derivation lives only on the branch that ships nothing:
 blocker - row B is unsatisfiable in its own trigger world: B fires when 73/74 labels measure taller than 75''s, and the owner''s tall read means the tallest measured label box has crossed the 24px content budget, where "equal to the tallest measured label box (rounded, at most 24, rows stay 48)" caps below the measurement and re-creates the pin-vs-face fight B exists to remove ("no pin fights any face"). Fix: B carries C''s escape - a tallest measured box above 24 means no in-budget equalizing box exists; report BLOCKED with the reads, no box ships.
 
 Verified, no further finding: every observable reading maps to a row (the A/B/C/KR/no-match triggers are mutually exclusive and exhaustive); the steps'' commands run as written; all Files exist, including the "existing cmap oracle" (cjkSubset.test.ts already parses the subsets'' cmaps) and the LanguageRowFaces DataView precedent; the three CJK records carry identity lineHeight and no box record, so B''s red-first premise holds on the repo today; points untouched at 2+3+2+3=10 across the doc, subtasks T-553 to T-556 and the ticket estimate.', NULL, '2026-11-01 02:51:48.52348+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 5451, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5898, 585, 'activity', 'owner', NULL, 'description', '2026-11-02 07:21:06.7632+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the per-locale reference table for the eight transliterated names (Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba) - each language''s established spellings grounded in where the language is spoken - plus a key-by-key compliance list of today''s 74 catalogs.\n\nWhere: the 74 non-English catalogs in shared/i18n/, read-only; the reference lands as a doc on this ticket; fixes flow through the chunk tickets, never here.\n\nAcceptance:\n- [x] each of the 74 locales carries its established spelling of each of the eight names, sourced to that language''s own Islamic convention; local phonetic spellings like Indonesian Zuhor stand\n- [x] each locale names the countries where it is spoken\n- [x] every catalog''s eight name rows and every extras description using a name is marked compliant or listed for fix, key by key\n- [x] a language whose established practice translates a name (Turkish Diyanet usage) is flagged with its source and ruled by local convention, agent-side\n- [x] the reference doc is linked on this ticket and named in the parent"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5899, 585, 'comment', 'owner', 'The reference stands as the doc on this ticket: 74 locales, each of the eight names grounded in that language''s own Islamic sources. 20 catalogs are fully compliant; the other 54 carry 150 key-level fixes and 2 sentences to rebuild, listed per locale for the chunk tickets. Research was read-only: no repo changes, no commits.', NULL, '2026-11-02 07:21:11.94752+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5900, 575, 'comment', 'owner', 'Lane 2''s research pass is done: the transliteration reference for all 74 locales is the doc linked on T-585 (''T-585 The transliteration reference: the eight names in 74 languages''). The chunk tickets T-586 to T-593 consume its per-locale fix lists directly.', NULL, '2026-11-02 07:21:11.980121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3951, 407, 'activity', 'owner', NULL, 'parent', '2026-10-28 01:18:19.588377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 400, "value": "T-400"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3952, 400, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 01:18:19.588377+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 407, "value": "T-407"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4993, 522, 'activity', 'owner', NULL, 'created', '2026-10-30 15:18:41.836732+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -13057,6 +13330,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5019, 519, 'activity', 'owner', NULL, 'status', '2026-10-30 15:21:08.586905+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5029, 519, 'comment', 'owner', 'Step 1 landed: the wheel, the grey band and the search are gone, and every shipped language now sits in one freely scrolling numbered list that fills the card, with the purple seat marking the row a close would save. The tap keeps the sound sheet''s own impact and the close still commits the staged row exactly once.', NULL, '2026-10-30 15:55:34.905547+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5451, 538, 'comment', 'owner', 'All eight findings answered in plan doc v2: both build commands named per build with the mock badging expectation (1, 7), the A-guard redefined to the isolation''s named byte property hand-parsed in jest (2), row C rewritten to the elevated-scale verdict with no box derived (3), catch-all and KR rows added (4), the AX recovery cited to comment 5349 with the atlas write-back (5), the KR sha256 assertion added to row A (6), and the font-scale route named with its write-back (8). Re-grilling v2.', NULL, '2026-11-01 02:45:53.772178+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 5449, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5901, 585, 'activity', 'owner', NULL, 'status', '2026-11-02 07:21:17.76742+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3954, 408, 'activity', 'owner', NULL, 'parent', '2026-10-28 01:18:19.620667+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 400, "value": "T-400"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3955, 400, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 01:18:19.620667+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 408, "value": "T-408"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3957, 409, 'activity', 'owner', NULL, 'parent', '2026-10-28 01:18:19.663888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 400, "value": "T-400"}}', NULL);
@@ -13071,6 +13345,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5453, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 02:49:52.018728+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix, restated by the owner as a HARD RULE (2026-11-01): the DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title or drift in meaning. The short-noun rule applies to TITLES ONLY - the first pass wrongly swept the descriptions too. English shape (canonical): title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" - read the en catalog for the exact strings and restore that PAIR in every locale. The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), red-first guarded: the description differs from the title in every locale with distinct words. (T-542 then audits the whole surface class - spelling and format conformance everywhere - as its own pass.)\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [x] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [ ] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [ ] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5458, 538, 'comment', 'owner', 'Lane 1: plan passed the griller''s two passes (5449 answered in v2, 5455 answered in v4, the lead''s 5450 rebase ruling folded in). Plan doc T-538 carries 4 steps: the parity gate, the on-glass diagnosis, the fix per decision table, the verification read. 10 points. Ticket Ready.', NULL, '2026-11-01 02:54:14.887114+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5475, 538, 'comment', 'owner', 'Step 1 landed: the subset gate pins all six faces byte by byte (metric parity, endonym/digit coverage with outline and advance integrity, checksum recalc), red-first and mutation-proven, validate green at 255 suites and full coverage. Committed as e37adfe9 (2.43.13) on t538-line-box-3. The on-glass diagnosis runs next in its own session.', NULL, '2026-11-01 03:22:06.541931+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5903, 575, 'comment', 'owner', 'The landing is amended for owner orders six and eight on lane1/T-575-land (three commits at 2.43.55-57, validate green, both-platform prebuilds stamped at 2.43.57): MyMemory is out of the generator entirely - Google''s gtx alone in the chain, the pre-flight, and the spot-check column, historical MyMemory data dropped on resume - and the phase flag now rules the verdict, phase one the default: Google alone, green when its round-trip carries the meaning, red when it does not, amber where it did not render; phase two keeps the both-engines semantics for the day the second site is named. The ar proof is staged in the phase-one shape (order seven, no other locale touched): 130 green, 7 red (Magrib->Morocco and Isha->dinner among them), 70 amber where gtx still throttles, slot two visibly pending, and the index keeps all 75 cards.', NULL, '2026-11-02 07:24:28.892324+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3962, 400, 'comment', 'owner', 'Grill returned 2 blockers, 3 majors, 5 minors; all ten are answered in the plan doc''s findings section (floor 0.83, the full iOS build recipe, one-widget-at-a-time placement across all four kinds, arithmetic stale branch, sim fallback named in criterion 4). Ticket stays Ready; claiming for execution.', NULL, '2026-10-28 01:39:12.692303+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4997, 523, 'activity', 'owner', NULL, 'parent', '2026-10-30 15:18:41.846975+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 519, "value": "T-519"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4998, 519, 'activity', 'owner', NULL, 'subtask_add', '2026-10-30 15:18:41.846975+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 523, "value": "T-523"}}', NULL);
@@ -13078,6 +13353,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5028, 520, 'comment', 'owner', 'Owner order (2026-10-30): the 3T is reserved for T-327''s whole run - no 3T work from this lane. Screenshot proof moves to the XS and the iOS simulator, with the Android seam checked on the athan-smoke-28 AVD (visual only); the owner reads the final 3T build on glass. Plan doc amended.', NULL, '2026-10-30 15:25:21.056998+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5454, 541, 'comment', 'owner', 'Step 1 landed (9e7f18c6, 2.43.13): the long descriptions restored across all 75 catalogs from the pre-sweep bytes, the Bikol midnight taking the owner''s exact string, and the golden guard flipped red-first - it named all 75 locales on both rows before the restore and passes after, with zero exemptions. One deviation from the plan: the KR subset binaries are not byte-identical, only their head.modified build stamp moved; every glyph-bearing table is byte-equal and the character set is unchanged.', NULL, '2026-11-01 02:49:58.383673+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5473, 538, 'comment', 'owner', 'Gate passed: three grill passes after the resume (5460, 5471, 5472 PASS), every finding folded - the plan doc now carries the precedence rule, the table-level bisection tail, the KR byte truth and the corrected row reads at v7. The claim from 5459 stands; execution begins with step 1.', NULL, '2026-11-01 03:21:42.350972+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5907, 575, 'comment', 'owner', 'Owner order 2026-11-02, ninth: Google only (the second site waits for a possible later implementation), one language at a time, and the loop runs with no subagents at all - the lead does the work itself, lane by lane language by language, because children burn context. Audit reviews move to the very end: the two landing reviews already ran (their findings are fixed in the audit-fix commit), and the loop''s rounds defer their review to one final pass. Progress updates land on this ticket as often as the work moves.', NULL, '2026-11-02 12:06:30.148097+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3964, 401, 'activity', 'owner', NULL, 'status', '2026-10-28 01:41:08.919669+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3967, 401, 'comment', 'owner', 'agent-ruled (2026-10-28): rotation rides maestro''s setOrientation against the iPad simulator, replacing the plan''s Simulator.app menu route - Xcode 27.1 (27A9275) ships no Simulator.app anywhere on this rig and its replacement DeviceHub.app exposes no scriptable window or menu bar, while maestro is the run''s named driver and provably rotated the sim (screenshot dims 1668x2420 portrait to 2420x1668 landscape, exit 0); portrait geometry still reads from screenshot dimensions via sips, nothing committed.', NULL, '2026-10-28 01:55:29.853703+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3968, 400, 'comment', 'owner', 'Owner order (2026-10-28): only ONE simulator runs on this machine at a time - the iPad Pro 11-inch (M5) is this run''s only simulator, and it belongs to T-401. Athan-76 is shut down and its in-flight build was killed by the lead. Step 1''s baseline measurement and the Step 3 read both move to the iPhone XS physical device, which the ticket''s direction already permits. Any plan wording naming Athan-76 is superseded.', NULL, '2026-10-28 01:59:28.451908+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -13152,6 +13428,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5456, 538, 'comment', 'owner', 'Both new blockers answered in doc v4: row A now names and guards the byte property on BOTH branches (the shipping branch diffs shipped-vs-fresh at table level and isolates from that diff), and row B carries the above-24 escape (tallest measured box over the budget -> BLOCKED with the reads, no box ships). The 5450 rebase rule is folded into row A, the Decisions and the Risks.', NULL, '2026-11-01 02:54:11.084006+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 5455, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5468, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 03:06:21.231116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix, restated by the owner as a HARD RULE (2026-11-01): the DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title or drift in meaning. The short-noun rule applies to TITLES ONLY - the first pass wrongly swept the descriptions too. English shape (canonical): title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" - read the en catalog for the exact strings and restore that PAIR in every locale. The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), red-first guarded: the description differs from the title in every locale with distinct words. (T-542 then audits the whole surface class - spelling and format conformance everywhere - as its own pass.)\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [x] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [x] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [x] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [x] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5469, 541, 'activity', 'owner', NULL, 'status', '2026-11-01 03:06:21.231116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5908, 575, 'comment', 'owner', 'The landing is on uat: 11 commits, c7abb8aa to 627f8f57, the verification tool in the project by the owner''s say. Both reviews'' findings are adjudicated and fixed in the audit-fix commit (partial fills exit non-zero naming dark rows, stale judge fills yield to recovered engines, the RTL set reads locale.ts''s own eleven ids, the brittle phase pin sits on a fixture). The lock mechanism stays unlanded on lane1/T-575-lock awaiting the owner''s separate word. The serial phase-one loop (Google only, one language at a time, no subagents - order nine) starts with Arabic now; per-language progress rides this ticket.', NULL, '2026-11-02 12:21:40.461161+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3998, 400, 'activity', 'owner', NULL, 'status', '2026-10-28 05:54:02.650898+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3999, 400, 'comment', 'owner', 'Step 3 done and merged to local uat at 2.11.41: both platforms compiled green (the Android mock APK built in 616s; the iOS tree built clean under the simulator destination), and the atlas carries the measured customize-sheet route, the true-size gallery-card surface, and the fleettest signing wall. The XS glass read of the landed live faces could not happen headlessly and is parked for the owner''s eyeball: headless signing cannot give a new bundle id the app-group entitlement (the team''s only grouped profile is the store id, which iOS refuses to install beside the store app, and the extension always carries a group), and the criterion''s sim fallback is dead on iOS 18.5 - the same wall that moved the baseline. Interleaving with Lane 2 recorded: uat advanced 2.11.31 to 2.11.39 during my measurement, my lane commits took 2.11.40 and 2.11.41, and the merge is a no-ff onto uat''s 2.11.39 head. A good-night LEAD-NOTE ordering the sim-only route was found superseded by the lead''s dispatch of today (which names the XS); the note is deleted per its own instruction and was never committed.', NULL, '2026-10-28 05:54:10.193742+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4000, 400, 'comment', 'owner', 'Plan-conformance audit of 710e64f4..024a7498: the type scale matches the plan''s design exactly on every layout (17/17/16 with 0.83/0.88 floors, stale and neutral +1, inline stands at 14), the home widgets and Android are untouched, and both named suites pass (re-ran: renderer 35/35 with 15 under the "sizes" filter, load suite green; validate recorded green on each lane commit).
@@ -13181,6 +13458,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 Verified against the repository, no finding: build-mock.zsh <commit-or-branch> <mocks-file> <out.apk> and t491-ios-build.zsh <sha> <out.app> local exist with exactly the plan''s usage, mock badging values and versionCode 1000000 are what build-mock.zsh itself enforces, aapt2 exists at build-tools 37.0.0, and the branch resolves from the main repo the scripts build; scripts/cjk-subset.mjs takes <dir>, cuts all three pairs, writes the lock carrying exactly two NotoSansKR sha256 entries, and its header holds the three curl lines; shared/__tests__/cjkSubset.test.ts and the LanguageRowFaces DataView precedent exist, and Language.test.tsx''s "the row''s line box" sweep reads record.rowLineHeight so B''s guard has a home; OPTION_LINE_HEIGHT 16 with HANS/JAPANESE/KOREAN carrying no box record, rows 71-76 are ti/am/ja/zh-Hans/ko and one more, Language.tsx and typography.ts unchanged since 5e9494a0, numGlyphs 619/765/507, app.json''s 34 faces including the six subsets; hhea 1160/-288/0, typo 880/-120/0, win 1160/288, UPM 1000, fsSelection 0x0040 on all six faces, glyf and loca present so the outline read is real; e2e/README''s three named Gotchas, the 3T atlas''s add-what-you-learn write-back rule, the XS atlas''s devicectl install row, comment 5349''s recovery precedent, the font-scale route with its read-back and reset; and the points arithmetic 2+3+2+3 = 10 on the ticket with subtasks 553-556 all present and titled to the steps.', NULL, '2026-11-01 02:56:37.150697+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5461, 541, 'comment', 'owner', 'Lead ruling (agent-ruled, 2026-11-01, de-duplication): a redundant parallel lane chain was deleted by the lead; your Step 2 executor (dispatched 02:51) is the SOLE owner and author of the Step 2 diff - let it finish, commit, validate, and tick subtask 551. For Step 3 (subtask 550): a read-only verification already stands - the splash icon is ALREADY a PNG (1024x1024 RGBA, 25996 bytes, wired in app.json''s expo-splash-screen plugin on both platforms, commit 23e24992 named in its subject); verdict NOTHING TO CONVERT, nothing lands. Verify those numbers yourself in one read, tick 550 with the verdict recorded in your boundary comment, then move to Audit as planned. Do not redispatch Step 3 as code work.', NULL, '2026-11-01 03:00:31.596053+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5470, 541, 'comment', 'owner', 'Execution complete on t541-read-batch-2, tip 14c33ab8 (2.43.14) over uat f420d090: 9e7f18c6 (2.43.13) restores the long descriptions in all 75 catalogs with the guard flipped red-first and the subsets re-cut, 14c33ab8 (2.43.14) darkens the disabled track by token with the cold audit and takes the off-season override out whole; the splash evaluation is comment 5465 - already a PNG, nothing to convert, nothing lands. Validate green at the tip: 255 suites, 8243 passing, full coverage. Box 2 waits on the owner''s glass, box 6 on the lead''s post-audit builds. Audit is next.', NULL, '2026-11-01 03:06:21.252471+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5909, 582, 'activity', 'owner', NULL, 'status', '2026-11-02 12:21:40.524697+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5910, 584, 'activity', 'owner', NULL, 'status', '2026-11-02 12:21:40.595218+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4001, 400, 'comment', 'owner', 'Blind review of 710e64f4..024a7498. Verified clean: the five size pins match the widget constants exactly (17 bold at floor 0.83 on layouts 1-2, 16 medium at 0.88 on layout 3, inline 14 unfloored, stale 18/15/icon 18, neutral 12/18); both touched suites pass live (62 tests); the type-scale arithmetic holds (17 x 0.83 = 14.11, 16 x 0.88 = 14.08, old floor 14 x 0.6 = 8.4); the red-first claim (5 failed, 10 passed) matches a sizes-filtered run of 15; the What''s New restamp is the documented ritual with its oracle green; the version triple rides app.json through prebuild under the merge convention the repo already uses; the atlas rows hold only tool-unreachable geometry, the signing wall, and placeholders.
 
 suggestion: widgets/LockPrayerWidget.tsx:22-23 and shared/__tests__/widgetLockRenderer.test.ts:277-281 - the comments say "One size throughout" / "One size across every live face", which this change makes false: live faces now run 17 on layouts 1-2 and 16 on layout 3, with the surrounding cards at 12/14/15/18. Update both so the next type-scale change is not made against a stale policy line.
@@ -13229,6 +13508,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5018, 520, 'activity', 'owner', NULL, 'field', '2026-10-30 15:19:51.995482+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Lane 3"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5037, 519, 'activity', 'owner', NULL, 'status', '2026-10-30 16:04:54.259783+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5462, 541, 'activity', 'owner', NULL, 'description', '2026-11-01 03:01:59.407165+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the owner''s follow-up batch: restore the long info-box descriptions across every language (they wrongly copy the short titles), darken the alert toggle''s disabled track so the thumb reads, remove the now-approved Ramadan decorations toggle, and evaluate the splash mosque icon for PNG conversion.\n\nWhere: every shared/i18n catalog''s explanation strings; the Toggle''s disabled track tokens (components/sheets/parts/Toggle.tsx, dim tokens); Settings.tsx, the decorations gate and README (the toggle''s removal); the splash icon assets and app.json.\n\nThe spec:\n1. Info-box descriptions - THE core fix, restated by the owner as a HARD RULE (2026-11-01): the DESCRIPTION is the faithful translation of the ENGLISH description and may be long; it must NEVER repeat the title or drift in meaning. The short-noun rule applies to TITLES ONLY - the first pass wrongly swept the descriptions too. English shape (canonical): title \"Midnight\", description \"Halfway between Maghrib and Fajr\"; title \"Last third\", description \"Start of the last third of the night\" - read the en catalog for the exact strings and restore that PAIR in every locale. The owner''s worked example, Bikol: midnight title \"Matanga\", description \"Sa kabangaan kan Magrib asin Fajr\"; last-third title \"Huring ikatolo\" (owner-approved), description the full last-third-of-the-night sentence. Sweep all 75 catalogs, sourcing each description per the wave''s chains (sourced-names.json), red-first guarded: the description differs from the title in every locale with distinct words. (T-542 then audits the whole surface class - spelling and format conformance everywhere - as its own pass.)\n2. Alert toggle disabled state: darken the TRACK (outer background) so the circular thumb stands out - today thumb and track share one ink and it reads as a single oval. Do NOT brighten the thumb; darken the track. The owner judges the result on glass.\n3. Decorations toggle removal: the owner approved the decorations on glass - remove the settings toggle so the seasonal gate is sole again, and adjust the README line it added.\n4. Splash mosque icon: the in-app mosque icon is already a PNG (the reveal-latch gate fixed the first-frame gap, comment 5355) - evaluate converting the SPLASH icon the same way, the Ramadan sprites'' precedent. Land it only if it measurably helps the splash path; record the numbers either way.\n\nAcceptance:\n- [x] every catalog''s explanation rows are faithful translations of the English descriptions, long where the language is long, none repeating its title - red-first guarded\n- [ ] the disabled toggle''s track is darker than its thumb, cold-audited from tokens, the owner reads the glass\n- [x] the decorations toggle is gone, the seasonal gate is sole, the README adjusted\n- [ ] the splash icon evaluation is recorded with numbers; the conversion lands only on measured benefit\n- [ ] yarn validate green at full coverage; the version ritual on every commit\n- [ ] after audit passes and BEFORE the ticket parks in Awaiting Owner: build PRODUCTION both platforms of the merged tip in parallel, gates and installs on 3T_SERIAL and IPHONE_UDID as above, so the owner reads both phones. No screenshot or recording ever enters the repository - transcribe under $HOME/athan-gitree/out/."}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5911, 575, 'activity', 'owner', NULL, 'status', '2026-11-02 12:21:40.661412+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4045, 417, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.210613+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4055, 410, 'comment', 'owner', 'All eight findings fixed in plan doc v3: catalogLock.test.ts named in Files and every lock step (1); locale.test.ts named with per-step lookup rows and the fr-FR fixtures moved to es-ES in Step 3 (2); typography.test.ts named in Steps 5/6 with the filter and record cases (3); i18nBridge and chevronDirection named, the latter direction-aware per decision 14 (4); key count corrected to 201 (5); the endonym order given as measured with the hand-verified caveat and the compiler-forcing claim dropped (6); the Bengali floor attributed to this wave''s own hhea measurement, decision 3 (7); fr''s row corrected to Istijaba-null-only with Duha unreviewed, Step 1''s loan list matching (8).', NULL, '2026-10-28 16:12:26.525928+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 4054, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5016, 519, 'activity', 'owner', NULL, 'status', '2026-10-30 15:19:16.2198+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -13237,6 +13517,10 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5024, 520, 'activity', 'owner', NULL, 'status', '2026-10-30 15:21:44.172425+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5463, 551, 'activity', 'owner', NULL, 'status', '2026-11-01 03:01:59.44755+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5467, 550, 'activity', 'owner', NULL, 'status', '2026-11-01 03:05:12.354116+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5912, 575, 'comment', 'owner', 'Arabic is phase-one green: 207 of 207 rows, zero red, zero amber, one standing judge ruling (settings.display - al-arud the standard UI word, the engine picked the homograph''s offer sense). The loop taught the tool eight meaning rules on the way (Morocco and dinner name the prayer words'' own cognates per the owner''s order-four reading; Safar and zero share their spelling; Done~completed, reminder~warning, the out-of-date, oh-no and Rabi-II phrase pairs) and two fixes: a judge ruling now survives resumes, and the index rebuild skips the rulings side file. Loop commits 2.43.59-61 sit on lane1/T-575-land awaiting the end review the owner ordered; uat holds the reviewed landing at 2.43.58.
+
+One question flagged for the owner, agent-ruled conservative for now: the reference doc''s single Arabic fix (istijaba: استجابة -> ساعة الاستجابة) collides with the earlier localisation chain''s deliberate width ruling (the glossary note keeps the bare form as the row label for length, the explanation carries the full sense) and with the settled-visuals rule - the longer label changes the prayer row''s width and the string is a filter key in shared/prayer.ts. The catalog stands unchanged; the owner''s word decides. Somali starts now.', NULL, '2026-11-02 12:43:22.073741+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5913, 575, 'comment', 'owner', 'Somali lands at its honest phase-one state: 196 green (11 visible judge rulings - homographs and gtx misreads like Axd the Sunday read as covenant, Lul the July read as swing, Dul xijjah read as ''put it on the table''), 6 judge-filled ambers (gtx hard-refuses six short calendar words; the fills render Suhoor, Aug, Tue through Fri), and 5 rows red ONLY on two words the owner must rule on: Aqaan (the athan word across alert.card, soundItem, channel - no Somali authority grounds it, every neighbour and service uses the Arabic loan Azaan/Aadhan) and Habbooshka (the settings button - untranslatable to verify, gtx reads ''the system''; the qibla sentence shares it). The reference doc''s five Somali name fixes were REJECTED agent-side: they are variant-spelling calls against the prior chain''s high-confidence masjidbox sources (Maqrib, Cishaa''i are masjidbox''s own printings; duha was never independently retrieved per the doc''s own note). The shipped names stand. Tool lessons landed in 2.43.62 (evening sense, settings~arrangements, instruction verbs, plural update phrases, Safar''s travel homograph, idempotent --rule). Indonesian is next.', NULL, '2026-11-02 12:59:00.311288+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4046, 417, 'activity', 'owner', NULL, 'parent', '2026-10-28 15:53:37.211922+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 410, "value": "T-410"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4047, 410, 'activity', 'owner', NULL, 'subtask_add', '2026-10-28 15:53:37.211922+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 417, "value": "T-417"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4048, 418, 'activity', 'owner', NULL, 'created', '2026-10-28 15:53:37.237854+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -13260,6 +13544,9 @@ nitpick - "rows 71-76" names a row that does not exist: the sheet''s list ends a
 nitpick - the tail names no tool that can run it: scripts/cjk-subset.mjs accepts VF statics only (it instances wght) and takes its text from the committed closed set, so neither the 2.43.2 static binaries nor an explicit glyph list can pass through it. Name fontTools directly (fontTools.subset over the 2.43.2 binaries with an explicit text) as the tail''s engine - or the bisection above replaces it.
 
 Verified against the repository, no finding: step 1(c)''s checksum row recomputed on all six shipped faces (hhea, OS/2 and cmap recalc-match the naive sum; head matches only with checkSumAdjustment zeroed - JP-Regular stored 2e488466, naive 885dd509, zeroed 2e488466; every lock sha256 live at this base); step 1(a)/(b)''s values hold on all six faces (hhea 1160/-288/0, typo 880/-120/0, win 1160/288, UPM 1000, fsSelection 0x0040, cmap exactly (0,3)+(3,1) both format 4, name IDs 1/4/6, numGlyphs 619/765/507), so the gate can go green and the corrupted fixture reddens it; shared/__tests__/versionLockstep.test.ts exists; build-mock.zsh <branch> <mocks-file> <out.apk> and t491-ios-build.zsh <sha> <out.app> local match their usage lines, the mock gate''s com.example.athan.fleettest / versionCode 1000000 are the script''s own constants, and the out paths pass its location rules; mocks/simple.ts is the shipped mock; e2e/README''s three Gotchas, the 3T atlas''s write-back rule, the XS atlas''s devicectl row, comment 5349''s recovery precedent; row A''s rebase rule matches ruling 5450 verbatim and the lock carries exactly two NotoSansKR sha256 entries; OPTION_LINE_HEIGHT 16 with the three CJK records carrying identity lineHeight and no box record, Language.tsx and typography.ts unchanged since 5e9494a0; the LanguageRowFaces DataView precedent and the existing cmap oracle; and the points 2+3+2+3=10 across the doc, subtasks T-553 to T-556 and the ticket estimate.', NULL, '2026-11-01 03:12:26.992742+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5914, 575, 'comment', 'owner', 'Indonesian is phase-one clean: 194 green, ZERO red, 2 visible rulings (Jumadilakhir read as ''Final Friday'', Sel the Tuesday abbreviation read as ''cell''), and 13 rows the engine hard-refuses carrying exact-cognate judge fills (Maghrib, Suhoor, Istijaba, Athan, the weekday and hijri shorts) under the honest llm-amber mark. No catalog changes: every Indonesian row stood correct. Tool lessons in 2.43.63.
+
+Session resume point: Malay (ms) is next, then min, mad, bug, ceb, ilo, am to finish chunk 1 (T-586), then chunks 2-8 (T-587 to T-593). The protocol per language: resume gtx, judge the reds (map lesson vs ruling vs catalog question), judge-fill hard-refused rows, zero the reds, comment here. The owner''s two flagged Somali words (Aqaan, Habbooshka) and Arabic''s width question (istijaba''s long form) await the owner''s word; the loop commits 2.43.59-63 sit on lane1/T-575-land for the end review the owner ordered.', NULL, '2026-11-02 13:06:29.892826+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4051, 410, 'comment', 'owner', 'agent-ruled 2026-10-28 (plan doc T-410, twelve decisions, each dated there): the ten are R9 section 4''s launch set minus the shipped en/ar/ms plus uz (ps outranks uz on raw section-1 rank but section 4''s readiness-applied set excludes it); fa and ur join RTL_IDS on the landed relaunch machinery; fa reuses the Arabic Rubik record (measured: Rubik covers all six Persian letters), ur bundles a Noto Naskh pair (measured: Rubik lacks all five Urdu letters), bn bundles a Noto Sans Bengali pair; prose digits per R12 (bn Bengali, fa Persian, rest Latin) with times Latin everywhere per the landed row-82 law; unsourced name slots ship as the rule''s own transliteration loans recorded low-confidence, the so precedent; sw Last Third re-shortened to the attested substring "Theluthi ya mwisho"; pt sourced fresh from Brazilian/Portuguese mosque tables; tr ships the documented Diyanet exception labels; feat-typed commits take the minor line from 2.11.45, higher number wins a Lane 2 collision; app.json fonts/locales/version edits agent-ruled as R4 B.10''s mechanical carriers; no What''s New item, one README bullet.', NULL, '2026-10-28 15:53:49.199316+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5031, 520, 'comment', 'owner', 'Step 1 landed on lane3/T-520 at 2.42.10 (commit e93e73e8): the outline token returns as the card''s own colour lifted inside the plan''s bounds with its hue held, and the seam closes by a cover that spans the border band and reaches past it, so the band under the arrow''s base stays covered through the pixel the arrow rides high. Guards flipped red first, all green at full coverage with a 14-mutant pass, and yarn validate exits 0.', NULL, '2026-10-30 16:00:48.700176+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5472, 538, 'comment', 'owner', 'FINDINGS (fourth pass, plan doc v6, judged against the worktree t538-line-box-3 at f420d090 and the repository)
@@ -14876,6 +15163,8 @@ INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (56
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (565, 2, 3);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (566, 2, 2);
 INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (571, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (575, 2, 1);
+INSERT INTO public.issue_field_option (issue_id, field_id, option_id) VALUES (585, 2, 2);
 
 
 --
@@ -15151,6 +15440,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (759, 557, 1, NULL, 557, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (766, 565, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (768, 571, 1, NULL, 571, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (773, 575, 3, 'Owner reads the staged v2 pages at $HOME/athan-i18n-verify/ (index.html links all 75, the English reference pinned first; red rows first per language) and answers per language in a comment: pass, or the keys that fail or feel uncertain. The lead pushes lane1/T-575-land to uat. The lock mechanism waits on lane1/T-575-lock for its own ruling. Steps 4-6 of the plan still wait on the pilot read.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (769, 571, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (772, 575, 1, NULL, 575, NULL, NULL, NULL, NULL, NULL);
 
@@ -15741,6 +16031,34 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (571, 6);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 244);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 149);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 11);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (586, 246);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (586, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (586, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (587, 247);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (587, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (587, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (588, 248);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (588, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (588, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (589, 249);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (589, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (589, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (590, 250);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (590, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (590, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (591, 251);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (591, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (591, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (592, 252);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (592, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (592, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (593, 253);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (593, 144);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (593, 3);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (585, 245);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (585, 145);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (585, 3);
 
 
 --
@@ -16719,6 +17037,11 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1435, 568, 4, 'Done', 'completed', '2026-11-01 15:24:24.800796+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1441, 565, 4, 'Done', 'completed', '2026-11-02 02:17:28.8992+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1449, 574, 4, 'Done', 'completed', '2026-11-02 02:32:28.523588+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1455, 576, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.422+00', '2026-11-02 04:43:39.578697+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1465, 578, 4, 'Done', 'completed', '2026-11-02 05:19:11.454324+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1474, 588, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.203+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1467, 575, 3, 'In progress', 'started', '2026-11-02 05:23:25.591169+00', '2026-11-02 07:04:51.594747+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1485, 582, 4, 'Done', 'completed', '2026-11-02 12:21:40.518647+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1000, 432, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.873+00', '2026-10-28 23:39:46.335242+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1032, 432, 4, 'Done', 'completed', '2026-10-28 23:39:46.335242+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1165, 488, 4, 'Done', 'completed', '2026-10-29 09:53:47.580386+00', NULL);
@@ -16771,6 +17094,13 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1446, 571, 2, 'Ready', 'unstarted', '2026-11-02 02:18:13.843189+00', '2026-11-02 02:18:27.126951+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1443, 572, 1, 'Backlog', 'backlog', '2026-11-02 02:18:13.792+00', '2026-11-02 02:32:28.524412+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1450, 573, 4, 'Done', 'completed', '2026-11-02 03:00:38.03943+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1459, 580, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.584+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1460, 581, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.61+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1456, 577, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.479+00', '2026-11-02 04:53:39.483326+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1466, 575, 9, 'Awaiting Owner', 'started', '2026-11-02 05:19:20.739859+00', '2026-11-02 05:23:25.591169+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1475, 589, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.262+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1480, 585, 3, 'In progress', 'started', '2026-11-02 06:03:43.991074+00', '2026-11-02 07:21:17.763119+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1486, 584, 4, 'Done', 'completed', '2026-11-02 12:21:40.585943+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1161, 484, 8, 'Audit', 'started', '2026-10-29 09:46:27.680282+00', '2026-10-29 09:53:47.610428+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1033, 429, 3, 'In progress', 'started', '2026-10-28 23:39:46.368217+00', '2026-10-28 23:46:41.78594+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1166, 484, 9, 'Awaiting Owner', 'started', '2026-10-29 09:53:47.610428+00', '2026-10-29 10:14:41.516333+00');
@@ -16821,6 +17151,10 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1437, 570, 4, 'Done', 'completed', '2026-11-01 16:49:12.753525+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1444, 573, 1, 'Backlog', 'backlog', '2026-11-02 02:18:13.793+00', '2026-11-02 03:00:38.03943+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1451, 571, 9, 'Awaiting Owner', 'started', '2026-11-02 03:00:38.104257+00', '2026-11-02 03:58:45.247121+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1457, 578, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.527+00', '2026-11-02 05:19:11.454324+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1476, 590, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.33+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1468, 582, 1, 'Backlog', 'backlog', '2026-11-02 05:29:49.423+00', '2026-11-02 12:21:40.518647+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1487, 575, 3, 'In progress', 'started', '2026-11-02 12:21:40.658242+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1034, 433, 4, 'Done', 'completed', '2026-10-28 23:42:18.22997+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1047, 442, 4, 'Done', 'completed', '2026-10-28 23:52:41.077365+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1167, 490, 1, 'Backlog', 'backlog', '2026-10-29 09:55:42.394+00', '2026-10-29 14:52:45.09107+00');
@@ -16873,6 +17207,11 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1438, 565, 8, 'Audit', 'started', '2026-11-01 16:59:34.498801+00', '2026-11-02 01:54:42.991663+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1445, 574, 1, 'Backlog', 'backlog', '2026-11-02 02:18:13.797+00', '2026-11-02 02:32:28.523588+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1452, 571, 4, 'Done', 'completed', '2026-11-02 03:58:45.247121+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1458, 579, 1, 'Backlog', 'backlog', '2026-11-02 04:22:57.557+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1469, 583, 1, 'Backlog', 'backlog', '2026-11-02 05:29:49.488+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1477, 591, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.392+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1478, 592, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.458+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1470, 584, 1, 'Backlog', 'backlog', '2026-11-02 05:29:49.536+00', '2026-11-02 12:21:40.585943+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1035, 434, 4, 'Done', 'completed', '2026-10-28 23:44:52.78298+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1048, 437, 4, 'Done', 'completed', '2026-10-28 23:54:34.702833+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1021, 449, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.208+00', '2026-10-28 23:55:38.066456+00');
@@ -16927,7 +17266,12 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1431, 566, 8, 'Audit', 'started', '2026-11-01 14:54:04.482785+00', '2026-11-01 15:14:49.893772+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1439, 565, 9, 'Awaiting Owner', 'started', '2026-11-02 01:54:42.991663+00', '2026-11-02 02:17:28.8992+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1447, 571, 3, 'In progress', 'started', '2026-11-02 02:18:27.126951+00', '2026-11-02 03:00:38.104257+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1453, 575, 1, 'Backlog', 'backlog', '2026-11-02 03:58:53.098+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1453, 575, 1, 'Backlog', 'backlog', '2026-11-02 03:58:53.098+00', '2026-11-02 04:16:27.373219+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1461, 575, 2, 'Ready', 'unstarted', '2026-11-02 04:35:57.550109+00', '2026-11-02 04:36:10.660241+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1463, 576, 4, 'Done', 'completed', '2026-11-02 04:43:39.578697+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1462, 575, 3, 'In progress', 'started', '2026-11-02 04:36:10.660241+00', '2026-11-02 05:19:20.739859+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1471, 585, 1, 'Backlog', 'backlog', '2026-11-02 06:02:25.822+00', '2026-11-02 06:03:43.991074+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1481, 575, 9, 'Awaiting Owner', 'started', '2026-11-02 07:04:51.594747+00', '2026-11-02 07:07:26.120533+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1037, 441, 4, 'Done', 'completed', '2026-10-28 23:45:46.550249+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1003, 435, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.962+00', '2026-10-28 23:46:35.364735+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1038, 435, 4, 'Done', 'completed', '2026-10-28 23:46:35.364735+00', NULL);
@@ -16989,6 +17333,14 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1422, 567, 1, 'Backlog', 'backlog', '2026-11-01 14:33:29.766+00', '2026-11-02 02:17:28.897265+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1440, 567, 4, 'Done', 'completed', '2026-11-02 02:17:28.897265+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1448, 572, 4, 'Done', 'completed', '2026-11-02 02:32:28.524412+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1454, 575, 6, 'Planning', 'unstarted', '2026-11-02 04:16:27.373219+00', '2026-11-02 04:35:57.550109+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1464, 577, 4, 'Done', 'completed', '2026-11-02 04:53:39.483326+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1472, 586, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.065+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1473, 587, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.137+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1479, 593, 1, 'Backlog', 'backlog', '2026-11-02 06:02:52.522+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1483, 585, 4, 'Done', 'completed', '2026-11-02 07:21:17.763119+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1482, 575, 3, 'In progress', 'started', '2026-11-02 07:07:26.120533+00', '2026-11-02 07:25:25.890736+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1484, 575, 8, 'Audit', 'started', '2026-11-02 07:25:25.890736+00', '2026-11-02 12:21:40.658242+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1158, 484, 3, 'In progress', 'started', '2026-10-29 09:37:25.738056+00', '2026-10-29 09:46:27.680282+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1050, 438, 4, 'Done', 'completed', '2026-10-28 23:56:44.744183+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1159, 485, 3, 'In progress', 'started', '2026-10-29 09:37:58.72635+00', '2026-10-29 09:53:47.474111+00');
@@ -17496,6 +17848,16 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (242, 1, 3, '#566', '#ffffff', '2026-11-01 14:24:23.434239+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (243, 1, 3, '#571', '#ffffff', '2026-11-02 02:17:28.878083+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (244, 1, 3, '#575', '#ffffff', '2026-11-02 03:58:45.229734+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (245, 1, 3, '#585', '#ffffff', '2026-11-02 06:02:25.870681+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (246, 1, 3, '#586', '#ffffff', '2026-11-02 06:02:52.096473+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (247, 1, 3, '#587', '#ffffff', '2026-11-02 06:02:52.161451+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (248, 1, 3, '#588', '#ffffff', '2026-11-02 06:02:52.226412+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (249, 1, 3, '#589', '#ffffff', '2026-11-02 06:02:52.289407+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (250, 1, 3, '#590', '#ffffff', '2026-11-02 06:02:52.352119+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (251, 1, 3, '#591', '#ffffff', '2026-11-02 06:02:52.417686+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (252, 1, 3, '#592', '#ffffff', '2026-11-02 06:02:52.48217+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (253, 1, 3, '#593', '#ffffff', '2026-11-02 06:02:52.543254+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (254, 1, 3, '#582', '#ffffff', '2026-11-02 06:03:13.103666+00');
 
 
 --
@@ -17806,7 +18168,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 576, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 594, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -24746,6 +25108,163 @@ The whole: yarn validate green, 256 suites, 8471 tests, statements/branches/func
 
 
 Audit, 2026-11-01: the blind review returned CLEAN-of-blockers (one MINOR, one NIT). The MINOR - both ja subset binaries re-cut over an unchanged closed set - folded by restoring the two NotoSansJP faces and their lock file-hashes to their pre-change bytes in add5b60f (zh-Hans and ko keep their re-cut: their sets moved). The NIT - the main commit''s ja survival counts misread - conceded and corrected here: the measured per-character key counts are 15/8/12/17/42, and the load-bearing claim (ja''s set unchanged) is independently verified from the lock. Branch state: 64323be7 then add5b60f, validate green at 256 suites and 100 percent coverage, awaiting the lead''s merge.', NULL, NULL, '{}', false, false, false, NULL, NULL, 69632, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-01 06:06:31.280762+00', '2026-11-01 07:46:46.985556+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (75, 1, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Findings answered (grill, comment 5794)
+
+1. Generator rewritten as CommonJS `scripts/i18n-verify.js` (the `check-*.js` precedent) so jest''s unit transform loads it directly; the `.mjs` precedent fails that (verified by the griller).
+2. Plain `yarn i18n:lock` now drops `verified` on every locale whose `source` hash changed; only `--verify` re-establishes it.
+3. Re-translated pilot rows are re-presented to the owner; a pilot locale locks only when the owner''s yes covers every final string.
+4. A per-locale engine pre-flight picks the primary engine; gtx drew HTTP 429 from this machine on 2026-11-02 (griller probe), so MyMemory-first is the expected pilot configuration.
+5. Section 3 now orders rows by the owner''s category order through an explicit prefix rank table.
+6. The locale parse rule names the exact declarator: the exported object literal that is not `PRAYER_LABELS`.
+7. Unchanged round-trip output counts as engine failure only when the catalog string differs from the English source; equal-to-English rows (loanwords) treat it as a valid result.
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Two keyless engines behind a per-locale pre-flight: Google''s gtx endpoint and MyMemory''s API.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). The pre-flight sends one request per locale and the locale runs on the engine that answers, the other held as second opinion; where neither serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes; a plain run drops `verified` on any locale whose `source` changed.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.js` - new: the verification flow, CommonJS (the `check-*.js` precedent) so the unit tests import it under jest''s transform.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.js --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order:
+  - **Section 1, the 11 `prayer.*` keys:** fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba.
+  - **Section 2, the 5 `extras.explanation.*` keys:** midnight, last third, suhoor, duha, istijaba.
+  - **Section 3, the remaining 191 keys ordered by the owner''s category sequence through this prefix rank table** (a prefix is the key''s first dot-segment; unranked prefixes follow in catalog order after the ranked ones): rank 1 `settings`, `settingsButton`, `language`; rank 2 the sheets and their parts `sheet`, `modal`, `dialog`, `alert`, `prayerAlert`, `overlay`, `colorPicker`, `stepper`, `sound`, `soundItem`, `volume`; rank 3 `help`; rank 4 `calendar`; rank 5 `qibla`; rank 6 `widget`; then `whatsNew`, `notification`, `notifications`, `reminder`, `channel`, `update`, `countdown`, `day`, `time`, `duration`, `error`, `app` in catalog order. Row order never affects a verdict; it exists so the owner''s reading order matches the priority order.
+  
+  Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt, plus the locale''s engine mix (rows per engine). The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, that locale''s engine mix, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` (the approach `scripts/catalog-lock.mjs` uses, generalized): per locale module, the exported object literal whose declarator is not `PRAYER_LABELS` (the same export `loader.ts` reads; `zh-Hans` exports `zhHans`, `pa-Arab` exports `paArab`, the rule is name-independent). It prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Two keyless engines: Google''s translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`) and MyMemory (`api.mymemory.translated.net`). Before each locale''s run, the generator sends one pre-flight round-trip request per engine and runs the locale on the engine that answers, the other held as the second opinion. On 2026-11-02 gtx answered HTTP 429 with a block page for all nine pilot codes from this machine while MyMemory answered, so MyMemory-first is the expected pilot configuration; the pre-flight re-decides at every run. Per row: one request, concurrency 4, retry with backoff. A row fails over to the second engine on HTTP error, empty body, or unchanged output when the catalog string differs from the English source; a row whose catalog string equals the English source (a loanword) treats unchanged output as a valid round-trip, not an engine miss. A row both engines fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine, and the locale''s engine mix prints in the index and rides the JSON - engine 1 dying mid-flight shows as a mix shift, not silence. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated, and the re-translated row is re-presented to the owner with its own round-trip - the owner''s yes must cover every final string before the locale locks.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments re-pins `source` for all 74 locales and **drops `verified` on every locale whose `source` hash changed**, naming the dropped locales on stdout - a re-taken English is a new verification debt, not a silent carry-over. Locales whose `source` is unchanged keep their `verified` entry. Only `--verify` re-establishes a `verified` pin, after the changed strings have passed the flow again.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.js` (CommonJS) with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - engines pre-flighted, artifacts generated and coverage-checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated, re-verified and re-presented until the owner''s yes covers every final string, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+7. **Step 7: The generator rework** - two engine slots per row, the verdict coloring with the meaning heuristic, modern CSS, language names beside codes, the English reference page, --resume and --fill v2, red-first with a mutation pass (2 points).
+8. **Step 8: The 75-locale run** - both engines over all 74 catalogs plus the English reference page, gaps re-run through resume passes and judge-filled, the staged pages colored and counted for the owner''s read (2 points).
+9. **Step 9: The landing** - the tool and its tests on uat through full discipline, the lock mechanism preserved on the side branch, the lead handed the exact push (2 points).
+
+Sum: 18 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## The extension (owner orders two and three, 2026-11-02)
+
+After the pilot staged and the ticket parked, the owner ruled twice (ticket comments, 2026-11-02). The orders amend this plan; the pilot read (steps 4-6) still waits for the owner and is untouched by the extension.
+
+1. **Modern, simple, human-friendly CSS** on every page (the owner called the current pages ugly).
+2. **Quick-glance coloring**: a row whose round-trip does not carry the English meaning reads RED, one that does reads GREEN, missing or doubted data reads AMBER; the index shows per language how many rows need checking, so the owner follows the red.
+3. **Language names beside codes everywhere** (so - Somali, min - Minangkabau; the full 74 + English).
+4. **The wave widens** from the nine pilots to ALL 75 catalogs, English included as the reference page.
+5. **Two independent round-trips per row, both in the table**: Google Translate (gtx) as comparison one, MyMemory as comparison two; the judge LLM fills rows both engines refuse, marked engine:llm, never presented as a site''s rendering. Green when the meaning survives in the engines'' round-trips, red when it does not, amber when data is missing or the judge doubted it. Both spot-check links stay.
+6. **The verification tool joins the project** (the owner''s explicit say; the earlier read-only order lifted for the verification tool alone).
+
+### The meaning heuristic (agent-ruled, tuned by the lead''s live read)
+
+The verdict color rests on a meaning heuristic comparing the English source with one round-trip: stopword-filtered token overlap over the shorter set (|A intersect B| / min(|A|,|B|)) at threshold 0.5, PLUS a cognate rule (two tokens of at least 5 characters match when their first 4 characters are equal or their edit distance is at most 2) and a small synonym map for the UI vocabulary (the prayer-name glosses above all: fajr~dawn, dhuhr~noon, maghrib~sunset, isha~evening). The tuning bar, measured on the staged ar artifacts: Arabic''s false reds cut from 57 to 31 while keeping the true catches (Dhuhr->Back, Magrib->MOROCCO, Isha->Dinner). The landed heuristic must match or better that bar, with tests anchoring the three catches and the saat worked example.
+
+### The row verdict (agent-ruled from order three)
+
+Order three makes a pass rest on two engines agreeing, so the row verdict maps: GREEN when both engine slots rendered and BOTH round-trips carry the meaning; RED when both rendered and NEITHER carries it; AMBER when any engine slot is missing (refused, awaiting re-run or judge fill), when the engines diverge (one carries the meaning, the other does not - doubted data), or when the judge doubted the row. A row both engines refuse carries the judge LLM''s rendering in a single cell marked engine:llm (never a site''s rendering) and reads AMBER: no independent machine vouched for it. Red therefore requires two engines agreeing the meaning is lost, which strictly reduces false reds below the single-trip measurement while a divergent true catch still surfaces as amber.
+
+### The artifact v2
+
+- Row shape: key, en, catalog, sites (two slots: gtx then MyMemory, each engine + roundtrip, or miss), llm (present only where both engines refused and the judge filled: roundtrip, optional doubt), url (Google spot-check), url2 (MyMemory spot-check), verdict (green|red|amber).
+- <locale>.html: modern styled page, sections in the owner priority order, language name beside the code, both round-trips side by side, per-row verdict tint, both spot-check links.
+- en.html: the reference page - every key with its English string in the same sections, no engines, no verdicts.
+- index.html: one card per language (all 75, English marked as the reference) with the language name, row count, green/red/amber counts and the engine mix, sorted red desc then amber desc then code, plus the color legend and the verdict protocol.
+- --resume: a re-run reuses a slot''s rendering only when the stored row''s catalog text equals the current catalog text, refetches every missing slot, then recomputes verdicts and rewrites html/json/index. The 31k-request wave rides repeated resume passes as quotas reset.
+- --fill v2: merges <locale>.llm-fill.json into rows where BOTH slots miss, accepts an optional doubt note (an amber row), refuses duplicates and unknown keys, SKIPS entries an engine has since rendered (a resume pass recovering a row supersedes its judge fill - agent-ruled 2026-11-02, the first live wave showed stale fill files would otherwise block a locale''s fresh fills), and lists still-unfilled both-miss rows as gaps, refreshing the artifacts.
+
+### The landing (the lead''s ruling, recorded)
+
+The verification tool and its tests land on uat through full discipline (red-first, mutation pass, version bump, yarn validate, both-platform prebuild stamps). The verified-lock mechanism (step 1: catalog-lock.mjs rewrite, catalog-lock.json shape, catalogLock.test.ts) does NOT land: it stays preserved on the side branch lane1/T-575-lock for the owner''s separate ruling. Artifacts stay generated output outside the repository ($HOME/athan-i18n-verify), regenerable by the tool; only the tool enters git.
+
+## Risks
+
+- **Engine coverage and death.** gtx is already refusing this machine (429, 2026-11-02); MyMemory covers fewer of the rarest locales (mfa and mrw are the likeliest gaps). What shows it: the pre-flight''s engine pick, the per-locale engine mix in the index and JSON, whole locales reading `engine:llm`. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` imports the CommonJS generator directly and covers catalog parsing (the not-`PRAYER_LABELS` declarator rule), HTML escaping, the 11-5-191 row order with the section-3 rank table, the engine fallback chain with the loanword rule, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the index shows each locale''s engine mix; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, NULL, 75776, 6, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:22:50.512493+00', '2026-11-02 06:56:00.756143+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (60, 1, NULL, 'T-490', '# T-490 — Two overlay ghosts
 
 ## Goal
@@ -24893,6 +25412,4003 @@ The lane''s first act was the ordered frame-by-frame read of the owner''s own re
 12. **Step 5, re-scoped: the Android frame-by-frame proof on the OnePlus 3T** (3 points, device, the 3T now attached) - the same judgement on Android, per e2e/README.md and the frame-audit script, alone in a fresh session.
 
 The estimate moves 21 to 23 (step 10 adds 2; steps 9 and 5 keep their 3, re-scoped).', NULL, NULL, '{}', false, false, false, NULL, NULL, 60416, 8, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-10-29 15:06:12.694875+00', '2026-10-30 00:13:48.059821+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (76, 1, NULL, 'T-585 The transliteration reference: the eight names in 74 languages', '# T-585 The transliteration reference: the eight names in 74 languages
+
+The ruling this reference serves (owner orders 2026-11-02, fourth and fifth, on T-575): the eight names Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba are transliterated in every language, spelled the way each language itself writes them. Local established spellings stand (Indonesian Subuh, Zohor). Maghrib is sunset, never Morocco. Sunrise, Midnight and Last Third translate normally. Where a language''s established Islamic practice uses its own word or phrase for a name (Turkish Diyanet, Chinese wushi bai, Albanian KMSH rows), that convention is recorded with its source and followed - each language''s established prayer-name practice, never a machine''s literal word.
+
+Method: eight parallel research passes, one per language family, each grounding every spelling in that language''s own Islamic sources - official prayer-time services (Diyanet, KEMENAG, JAKIM, KMSH, DUM RT, muftiyats), prayer-time sites and Islamic calendars written in the language, Qur''an translations and fatwa literature for Suhoor, Duha and Istijaba. Reference spellings are Title-cased where a Latin-script catalog label expects it; nothing else was normalized. Compliance compares every catalog''s eight name rows and every extras description that carries a name against the reference below. Fixes land through the chunk tickets T-586 to T-593, never here.
+
+Summary: 74 locales - 20 fully compliant (bs, id, ja, jv, kas, ko, kr, ms, my, pa-Arab, pt, ro, ru, skr, su, th, tl, tr, tt, vi), 54 carrying 150 fixes, 2 sentence rebuild to author by hand. Class-rule sweep of the other 191 keys per catalog: no key embeds one of the eight names; the three apparent hits (Cebuano/Hiligaynon/Waray help text) were the word "duha" meaning the number two, dropped as false positives.
+
+Confidence: high 35, medium 29, low 10 (bal, bcl, bug, ff, hil, ilo, kr, mfa, qu, war - thin or no in-language Islamic publishing; the recorded form is the closest attested naturalization, flagged for the owner''s read).
+
+Established-practice (translate/own-word) conventions, each with its source in its locale section: bal, bs, ckb, fa, kk, ku, ps, so, sq, tk, tr, tt, ug, uz, zh-Hans.
+
+Reading the fix lines: `key: "current" -> "expected"`. Rows marked REVIEW need a fluent sentence authored around the reference name. Variant notes are compliant prose forms (Persian bare مغرب, Malayalam and Tamil inflected stems, Tatar case forms) and need no change.
+
+
+---
+
+## am - Amharic (Ethiopia)
+
+Convention: Ethiopian Muslim materials write the five prayers as Ge''ez-script Arabic loans: ፈጅር، ዙህር، አስር، መግሪብ، ኢሻ, with ሱሁር for the meal and ሶላተ ዱሃ for the forenoon prayer.
+
+Sources: sajda.com/am + namazvakti.com AM rows (ፈጅር، ዙህር، አስር، መግሪብ، ኢሻ); quran.et prayer pages (ፈጅር ዙሁር አስር መግሪብ ኢሻ) and eg.tawkit.net (መዕሪብ، ዒሻእ variants); byenah.com/am ለሰለሙ ጠቃሚ መመሪያ (ፈጅር، ዙሁር، ...) and ethiomuslims.net (የሱብሂ = ፈጅር); facebook.com/ethiodawa (ሶላተ-ዱሃ) + learningislam.com (ዱሃ ሶላት) + islamicbook.ws (ሶላቱል ዱሃ); Ethiopian Muslim community posts (ኢፍጣር እና ሱሁር)
+
+Confidence: high. Accepted variants across sources: ዙሁር, ዐስር, መዕሪብ/ምግሪብ, ዒሻ/ዒሻእ, ሱሑር (catalog), ዱሓ (catalog); sources write ሱሁር and ዱሃ. ሱብህ/ሱብሂ is a live synonym for fajr. istijaba is the one unverified name: no Amharic source retrieved, kept as the Arabic-loan transliteration.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ፈጅር | ፈጅር | OK |
+| dhuhr | `prayer.dhuhr` | ዙህር | ዙህር | OK |
+| asr | `prayer.asr` | አስር | አስር | OK |
+| magrib | `prayer.magrib` | መግሪብ | መግሪብ | OK |
+| isha | `prayer.isha` | ኢሻ | ኢሻ | OK |
+| suhoor | `prayer.suhoor` | ሱሁር | ሱሑር | FIX |
+| duha | `prayer.duha` | ዱሃ | ዱሓ | FIX |
+| istijaba | `prayer.istijaba` | ኢስቲጃባ | ኢስቲጃባ | OK |
+
+Fixes:
+- `prayer.suhoor`: "ሱሑር" -> "ሱሁር"
+- `prayer.duha`: "ዱሓ" -> "ዱሃ"
+
+---
+
+## ar - Arabic (Across the Arab world (source language))
+
+Convention: The Arabic originals: prayer-time services and fatwa sites use الفجر، الظهر، العصر، المغرب، العشاء, السحور for the meal, صلاة الضحى for the forenoon prayer, and the Friday hour as ساعة الاستجابة/ساعة الإجابة.
+
+Sources: saudiprayertimes.com / timesprayer.com / tawkit.net (مواقيت الصلاة row labels); ar.wikipedia سحور + islamweb.net fatwa 99658 (السحور = the meal); islamqa.info/ar/answers/82609 (ساعة الاستجابة) and islamweb fatwa 4205 + binbaz.org.sa (ساعة الإجابة)
+
+Confidence: high. Duha appears in sources as the full صلاة الضحى. For istijaba, ساعة الإجابة (Islamweb, Binbaz fatwa titles) is an equally established runner-up to ساعة الاستجابة (islamqa title). Catalog''s bare استجابة drifts: every source writes it with ساعة and the ending ة.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | الفجر | الفجر | OK |
+| dhuhr | `prayer.dhuhr` | الظهر | الظهر | OK |
+| asr | `prayer.asr` | العصر | العصر | OK |
+| magrib | `prayer.magrib` | المغرب | المغرب | OK |
+| isha | `prayer.isha` | العشاء | العشاء | OK |
+| suhoor | `prayer.suhoor` | السحور | السحور | OK |
+| duha | `prayer.duha` | الضحى | الضحى | OK |
+| istijaba | `prayer.istijaba` | ساعة الاستجابة | استجابة | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجابة" -> "ساعة الاستجابة"
+
+---
+
+## az - Azerbaijani (Azerbaijan (and Iranian Azerbaijan))
+
+Convention: Arabic-derived row names per Azerbaijani prayer calendars and the Caucasus Muslims Board convention (Sübh, Zöhr, Əsr, Məğrib, İşa); extras from Azerbaijani Islamic sites and scholars
+
+Sources: namazvaxti.az; islam.az/namaz-vaxti (rows Sübh/Gün çıxır/Zöhr/Əsr/Məğrib/İşa); ixlasla.com (''Cümə günü icabət saatı'', ''Duha namazı'', ''Sahur yeməyi''); metbuat.az/namaz
+
+Confidence: high. Five prayers stand (runner-up calendar style İmsaq/Şam on namazvaxti.org). Drifts vs catalog: duha Düha→Duha (sources consistently write ''Duha namazı''; ''İşraq namazı'' is the earlier-time variant), istijaba İsticabə→İcabət saatı (ixlasla.com, Yaşar Qurbanov). Sahur stands; QMI Ramadan calendars print İmsak/İftar for the times, BBC Azeri and ixlasla.com keep ''sahur'' for the meal.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sübh | Sübh | OK |
+| dhuhr | `prayer.dhuhr` | Zöhr | Zöhr | OK |
+| asr | `prayer.asr` | Əsr | Əsr | OK |
+| magrib | `prayer.magrib` | Məğrib | Məğrib | OK |
+| isha | `prayer.isha` | İşa | İşa | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Düha | FIX |
+| istijaba | `prayer.istijaba` | İcabət saatı | İsticabə | FIX |
+
+Fixes:
+- `prayer.duha`: "Düha" -> "Duha"
+- `prayer.istijaba`: "İsticabə" -> "İcabət saatı"
+
+---
+
+## bal - Balochi (Balochistan (Pakistan, Iran))
+
+Convention: Balochi keeps Persianate time-of-day names for the prayers (پیشین، دیګر، نماشام، خفتن) alongside Arabic فجر, and its own word اسور for the pre-dawn meal.
+
+Sources: mahkoh._baloch Instagram post 2025-03-14, Balochi Ramadan vocabulary: Assur اسور = Suhoor, Fijar فجر = Fajr, Deeghar دیګر = Asr, Nimasham نماشام = Maghrib, khaftan = Isha; lughat.blogspot.com (Lameen Souag), Diversity in Islamic prayer names: Persianate pēšīn (Dhuhr), dīgar (Asr), namāz-i-xuftan (Isha) system, and Kumzari parallels pīšin/xastin
+
+**Established-practice convention** (followed): Baloch practice names the prayers by Persianate time words (Deeghar, Nimasham, khaftan) rather than the Arabic names, and uses اسور for the pre-dawn meal Source: mahkoh._baloch Instagram (Balochi Ramadan names); lughat.blogspot.com on the Persianate prayer-name system
+
+Confidence: low. No Balochi prayer-time page was found; the grounding is a Balochi-language educator post (whose Arabic script is partly garbled: نماشام appears as نتاشام, khaftan as فتين) plus the linguistics literature. پیشین for Dhuhr is inferred from the Persianate parallels (lughat; Saraiki peshi) because the post omits Dhuhr. چاشت and استجابہ (catalog values) had no Balochi source. Verify with Balochi speakers before shipping.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | پیشین | ظہر | FIX |
+| asr | `prayer.asr` | دیګر | عصر | FIX |
+| magrib | `prayer.magrib` | نماشام | نماشاں | FIX |
+| isha | `prayer.isha` | خفتن | عشاء | FIX |
+| suhoor | `prayer.suhoor` | اسور | اسور | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes:
+- `prayer.dhuhr`: "ظہر" -> "پیشین"
+- `prayer.asr`: "عصر" -> "دیګر"
+- `prayer.magrib`: "نماشاں" -> "نماشام"
+- `prayer.isha`: "عشاء" -> "خفتن"
+- `extras.explanation.midnight`: "نماشاں و فجر دا وچکار" -> "نماشام و فجر دا وچکار"
+- `extras.explanation.istijaba`: "نماشاں 1 گھنٹہ پہلے (صرف جمعہ)" -> "نماشام 1 گھنٹہ پہلے (صرف جمعہ)"
+
+---
+
+## bcl - Central Bicolano (Philippines (Bicol region, Southern Luzon))
+
+Convention: No Islamic literature exists in Central Bicolano (no Quran translation, no islamhouse section, Wikipedia Islam article carries no prayer names); Bicol''s small Muslim communities read Filipino/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse language list, quranenc translations, Bicolano Wikipedia Islam article, MindaNews reporting on Bicol Muslims - all carry no prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Bicolano carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur" (Filipino dawah usage); flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+- `extras.explanation.midnight`: "Sa kabangaan kan Magrib asin Fajr" -> "Sa kabangaan kan Maghrib asin Fajr"
+
+---
+
+## bm - Bambara (Bamanankan) (Mali (also Burkina Faso, Côte d''Ivoire))
+
+Convention: Bambara has its own established Islamic day-marks for the five prayers, Arabic loans naturalized in Manding; the Bambara phrasebook''s prayer-times section and the standard dictionaries print fajiri, selifana, lansara, fitiri, saafo.
+
+Sources: en.wikivoyage.org Bambara phrasebook, Prayer times section (fajiri/selifana ~2pm/lansara ~4pm/fitiri/safo waati); An ka taa dictionary (fajiri = dawn prayer; saafo = fourth Muslim prayer, early night); fr.wiktionary per Bamadaba and Dumestre (seli; selifana = prière de 14h; fitiri; saafo)
+
+Confidence: medium. Catalog five stand and now carry dictionary grounding; variant safo (phrasebook) beside saafo. Caveat: Dumestre defines selifana as «prière de 14h», the early-afternoon mark, and the phrasebook times selifana ~2pm and lansara ~4pm, so the dhuhr/asr slot order follows the phrasebook''s five-row mapping. Suhoor/Duha/Istijaba unattested in Bambara materials (one AI-generated course compounds descriptive sɔgɔma/tile bi/sariya/wulafɛ/su seli - not followed); Suhuri kept as the Arabic loan in Manding shape. The two extras sentences swap the inflected Magribii for the reference Fitiri; a Bambara reader should confirm the natural prose form.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajiri | fajiri | FIX |
+| dhuhr | `prayer.dhuhr` | Selifana | selifana | FIX |
+| asr | `prayer.asr` | Lansara | lansara | FIX |
+| magrib | `prayer.magrib` | Fitiri | fitiri | FIX |
+| isha | `prayer.isha` | Saafo | saafo | FIX |
+| suhoor | `prayer.suhoor` | Suhuri | Suhuri | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "fajiri" -> "Fajiri"
+- `prayer.dhuhr`: "selifana" -> "Selifana"
+- `prayer.asr`: "lansara" -> "Lansara"
+- `prayer.magrib`: "fitiri" -> "Fitiri"
+- `prayer.isha`: "saafo" -> "Saafo"
+- `extras.explanation.midnight`: "Magribi ni fajiri cɛ" -> "Fitiri ni fajiri cɛ"
+- `extras.explanation.istijaba`: "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)" -> "Fitiri 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)"
+
+---
+
+## bn - Bengali (Bangladesh and West Bengal, India)
+
+Convention: Arabic-origin names in Bengali script exactly as Bangladeshi prayer-time pages and the Islamic Foundation calendar print them
+
+Sources: jugantor.com/namaz-sehri-iftar-time; islamicfoundation.gov.bd (Ramadan sehri-iftar schedule); bn.wikipedia.org (চাশতের নামাজ); alkawsar.com/bn/article/3084
+
+Confidence: high. যুহর/জোহর compete with যোহর (Jugantor''s row label); সাহরি (Prothom Alo) runs behind সেহরি (Islamic Foundation, Jugantor). Bengali literature names the Friday hour ''দোয়া কবুলের সময়''; ইস্তিজাবা is unattested in Bengali sources. Catalog suhoor সাহরি drifts; rest stands.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ফজর | ফজর | OK |
+| dhuhr | `prayer.dhuhr` | যোহর | যোহর | OK |
+| asr | `prayer.asr` | আসর | আসর | OK |
+| magrib | `prayer.magrib` | মাগরিব | মাগরিব | OK |
+| isha | `prayer.isha` | ইশা | ইশা | OK |
+| suhoor | `prayer.suhoor` | সেহরি | সাহরি | FIX |
+| duha | `prayer.duha` | চাশত | চাশত | OK |
+| istijaba | `prayer.istijaba` | দোয়া কবুলের সময় | ইস্তিজাবা | FIX |
+
+Fixes:
+- `prayer.suhoor`: "সাহরি" -> "সেহরি"
+- `prayer.istijaba`: "ইস্তিজাবা" -> "দোয়া কবুলের সময়"
+
+---
+
+## bs - Bosnian (Bosnia and Herzegovina)
+
+Convention: Bosnian established practice names the five prayers with its own Slavic/Ottanian words (sabah, podne, ikindija, aksam, jacija) and the Ramadan meal ''sehur''; this is the ticket''s translation-convention exception
+
+Sources: islam.ba ilmihal (Sabah-namaz; Podne-namaz; Ikindija-namaz (salatul-asr); Aksam-namaz (salatul-magrib); Jacija-namaz); islamhouse.com Bosnian article (Od adaba posta je sehur - jelo pri samom kraju noci); zijadljakic.ba and akos.ba (vrijeme kada se petkom prima/uslisava dova); Facebook Islamic community posts (Duha namaz se klanja dvadesetak minuta nakon izlaska sunca)
+
+**Established-practice convention** (followed): Bosnian established practice uses its own prayer names - sabah, podne, ikindija, akšam, jacija - and ''sehur'' for the pre-dawn meal, per the Islamic Community''s ilmihal literature and vaktija practice, not Arabic transliterations Source: islam.ba ilmihal, Cetvrti uvjet za namaz (Ikindija-namaz (salatul-asr), Aksam-namaz (salatul-magrib)); Bosnian mosque vaktija rows SABAH/PODNE/IKINDIJA/AKSAM/JACIJA
+
+Confidence: high. All eight rows match the catalog. Modern vaktije also print ''Zora (Imsak)'' as a separate fasting-start row beside sabah. Istidžaba follows Bosnian Arabic orthography (dz for j, as džuma/hadž); Bosnian texts mostly describe the concept (''vrijeme kada se petkom prima dova'', zijadljakic.ba, akos.ba) rather than transliterate - low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sabah | Sabah | OK |
+| dhuhr | `prayer.dhuhr` | Podne | Podne | OK |
+| asr | `prayer.asr` | Ikindija | Ikindija | OK |
+| magrib | `prayer.magrib` | Akšam | Akšam | OK |
+| isha | `prayer.isha` | Jacija | Jacija | OK |
+| suhoor | `prayer.suhoor` | Sehur | Sehur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidžaba | Istidžaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## bug - Buginese (South Sulawesi, Indonesia)
+
+Convention: Bugis-language religious speech and South Sulawesi usage keep Arabic loans with final vowels (Subu) and Lohor for Dhuhr.
+
+Sources: sulfianaopet.blogspot.com, Bugis-language ceramah Alebbirenna Wettu Subue (wettu subue); makassarglobal.com funeral report (Salat mulai subu, lohor, asar, magrib, isah); akurat.co niat puasa Ramadhan in Bugis (Mapuasaka'' baja reulang rammalang...)
+
+Confidence: low. Correction vs catalog: Subu''->Subu (attested without hamza). Only Subu has a Bugis-language source; lohor/asar/magrib ride one Sulawesi report, isah is that source''s spelling of Isya; Sahur, Dhuha, Istijabah are ungrounded Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subu | Subu'' | FIX |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subu''" -> "Subu"
+
+---
+
+## ceb - Cebuano / Bisaya (Philippines (Central and Southern Philippines: Cebu, Bohol, Mindanao coasts))
+
+Convention: Cebuano Islamic pages transliterate the Arabic names with Cebuano glosses in parentheses (kaadlawon (Fajr), udto (Dhuhr), hapon (ʿAsr)...); the Rowwad Bisayan Quran translation renders verse meanings in Cebuano, consistent with names staying Arabic.
+
+Sources: whatistheislam.com/ceb/pag-ampo-sa-islam/ (sa kaadlawon (Fajr), sa udto (Dhuhr), sa hapon (ʿAsr), sa pagsalop sa adlaw (Maghrib), ug sa gabii (Ishāʾ)); whatistheislam.com/ceb/pagpuasa-sa-islam/ ("mokaon ug suhoor sa wala pa mobuntag"); quranenc.com bisayan_rwwad (Bisayan Quran translation v1.1.3; 24:58 renders "pag-ampo sa kabuntagon/kagabhion" by meaning, names not localized); Cebuano dawah YouTube playlist "Unsaon Pag ampo sa Salah" (Cebuano-language salah guides)
+
+Confidence: medium. Names carried by one Cebuano Islamic site (natural prose, not MT-looking) corroborated by the professional Bisayan Quran translation''s transliteration practice; the site writes ʿAsr/Ishāʾ with diacritics, plain forms stand. Suhoor: the site spells it "suhoor" - catalog "Suhur" should move to "Suhoor". Duha and Istijaba ungrounded in Cebuano; plain transliterations kept.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Suhoor"
+
+---
+
+## ckb - Central Kurdish (Sorani) (Kurdistan region of Iraq)
+
+Convention: Sorani prayer-time rows use بەیانی، نیوەڕۆ، عەسر، مەغریب، عیشا; duha is چێشتەنگاو, the pre-dawn meal is پاشێو, and the Friday hour is phrased descriptively.
+
+Sources: kati-nwezh.com کاتەکانی نوێژ rows (بەیانی، نیوەڕۆ، عەسر، مەغریب، عیشا); speemedia.com کاتی بانگەکان (بانگی بەیانی/نیوەڕۆ/عەسر/مەغریب/عیشا); ckb.wikipedia نوێژی نیوەڕۆ + نوێژی چێشتەنگاو; walamakan.com and zaniary.com (چێشتەنگاو = صلاة الضحى); Kurdistan24 video تەندروستی و ڕۆژوو - گرنگی خواردنی پاشێو; Sorani Islamic posts: کاتی وەڵامدانەوەی دووعا لە ڕۆژی هەینی
+
+**Established-practice convention** (followed): Sorani uses the heritage word پاشێو for the Ramadan pre-dawn meal and phrases the Friday hour as کاتی وەڵامدانەوەی دوعا (time of du''a answering) Source: Kurdistan24 (خواردنی پاشێو); Sorani Islamic posts on وەڵامدانەوەی دووعا
+
+Confidence: high. Five prayers and چێشتەنگاو match the catalog exactly. Catalog drifts on two extras: سەحەر is the Arabic loan runner-up to the living پاشێو, and ئیستیجابە was not seen in Sorani sources, which phrase the Friday hour descriptively.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | بەیانی | بەیانی | OK |
+| dhuhr | `prayer.dhuhr` | نیوەڕۆ | نیوەڕۆ | OK |
+| asr | `prayer.asr` | عەسر | عەسر | OK |
+| magrib | `prayer.magrib` | مەغریب | مەغریب | OK |
+| isha | `prayer.isha` | عیشا | عیشا | OK |
+| suhoor | `prayer.suhoor` | پاشێو | سەحەر | FIX |
+| duha | `prayer.duha` | چێشتەنگاو | چێشتەنگاو | OK |
+| istijaba | `prayer.istijaba` | کاتی وەڵامدانەوەی دوعا | ئیستیجابە | FIX |
+
+Fixes:
+- `prayer.suhoor`: "سەحەر" -> "پاشێو"
+- `prayer.istijaba`: "ئیستیجابە" -> "کاتی وەڵامدانەوەی دوعا"
+
+---
+
+## de - German (Germany, Austria)
+
+Convention: German Islamic literature and Wikipedia write the names in German transliteration (Fadschr, Ischa), while prayer-time sites mix in the international forms; the German orthography is the language''s own spelling
+
+Sources: de.wikipedia.org (Salat; Fadschr (Gebet); Zuhr (Gebet); Ischa (Gebet); Sahur); islam.de / Gebetszeiten (ZMD umbrella: Fadjr, Magreb rows; fadschr/dsuhr in its prayer guide); islamische-zeitung.de (Sa''at Al-Istidschaba); diegebetszeiten.de (Fadjr/Duhr/Assr/Ishaa rows; ''Fajr, Dhuhr, Asr, Maghrib und Ishaa'' in prose)
+
+Confidence: high. Wikipedia''s lemma for the midday prayer is ''Zuhr'' with Dhuhr/Duhr/Thuhr listed as variants; mosque sites print Fadjr/Dohr/Assr/Ishaa (mawaqit.net) or Fajr/Dhuhr/Isha. Suhoor drifts: catalog ''Suhur'' -> ''Sahur'' (de.wikipedia lemma Sahur; DFB-Akademie ''Sahur (auch Suhoor)''). Duha attested as ''Duha'' / ''Duha-Gebet'' (islam.de ''Gebet am Vormittag''; deenup.app). Istidschaba attested as ''Sa''at Al-Istidschaba'' (islamische-zeitung.de); also described as ''Stunde der Erhoerung''.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fadschr | Fadschr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Ischa | Ischa | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidschaba | Istidschaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## es - Spanish (Spain, Latin America)
+
+Convention: Spanish Islamic sites keep the Arabic names in the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); academic Spanish (es.wikipedia) uses RAE-style faŷr/magrib but that is not community practice
+
+Sources: islamic-relief.es horarios de salat (Fajr, Dhuhr, Asr, Maghrib, Isha); mawaqit.net/es Spanish mosque pages (Mezquita Central de Madrid: Fajr, Duhr, Asr, Maghrib, Isha); es.wikipedia.org (Dhuhr; Ramadan ''As-suhur''; Zahora (islam)); islamqa.info/es (Duha; ''Hora de respuesta del viernes'')
+
+Confidence: high. Catalog drift: magrib ''Magreb'' -> ''Maghrib'' (Magreb/Maghreb is the runner-up, printed by horarios-salat.org which also writes Fejr/Asser/Icha). Suhoor: es.wikipedia Ramadan uses ''As-suhur'' and the meal''s lemma is ''Zahora''; community media also write ''suhoor''; ''Sahur'' recorded as mainstream. Istijaba is thinly attested as a loan; Spanish materials describe the concept as ''hora de respuesta/aceptacion del viernes'' (islamqa.info/es); kept per the transliteration ruling, low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Magreb | FIX |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.magrib`: "Magreb" -> "Maghrib"
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+- `extras.explanation.midnight`: "Punto medio entre Magreb y Fajr" -> "Punto medio entre Maghrib y Fajr"
+- `extras.explanation.istijaba`: "1 hora antes del Magreb (solo los viernes)" -> "1 hora antes del Maghrib (solo los viernes)"
+
+---
+
+## fa - Persian (Iran, Afghanistan, Tajikistan (Persian script))
+
+Convention: Iranian اوقات شرعی tables label the rows اذان صبح، اذان ظهر، اذان عصر، اذان مغرب، اذان عشاء; the extras use Persian heritage words سحری and نماز چاشت, and the Friday hour is ساعت استجابت/ساعت اجابت.
+
+Sources: bahesab.ir اوقات شرعی rows (اذان صبح / اذان ظهر / اذان عصر / اذان مغرب / اذان عشاء); badesaba.ir + tala.ir + prayer.aviny.com (same row labels); fa.wikipedia سحری + fa.wikifeqh (سحری); alamto.com and delgarm.com (نماز چاشت یا ضحی); hawzahnews.com ساعات استجابت دعا در روز جمعه + erfan.ir ساعت اجابت
+
+**Established-practice convention** (followed): Persian uses its heritage words for the extras: سحری for the Ramadan meal and نماز چاشت for the forenoon prayer (sources always pair it with ضحی: نماز چاشت یا ضحی) Source: fa.wikipedia سحری; alamto.com/delgarm.com نماز چاشت یا ضحی
+
+Confidence: high. isha: Iranian sites write both اذان عشاء (bahesab row) and اذان عشا (todaytime); catalog''s اذان عشا stands, عشاء is the fuller row spelling. istijaba: ساعت اجابت (erfan.ir, namnak) is an equal runner-up; catalog''s استجابه was a spelling drift (Persian writes استجابت).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | اذان صبح | اذان صبح | OK |
+| dhuhr | `prayer.dhuhr` | اذان ظهر | اذان ظهر | OK |
+| asr | `prayer.asr` | اذان عصر | اذان عصر | OK |
+| magrib | `prayer.magrib` | اذان مغرب | اذان مغرب | OK |
+| isha | `prayer.isha` | اذان عشاء | اذان عشا | FIX |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | نماز چاشت | نماز چاشت | OK |
+| istijaba | `prayer.istijaba` | ساعت استجابت | استجابه | FIX |
+
+Fixes:
+- `prayer.isha`: "اذان عشا" -> "اذان عشاء"
+- `prayer.istijaba`: "استجابه" -> "ساعت استجابت"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "مغرب" of reference "اذان مغرب" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "صبح" of reference "اذان صبح" - compliant variant, no change
+
+---
+
+## ff - Fulah / Fulfulde (Latin script) (Across the Sahel: Guinea, Senegal, Mali, Nigeria, Cameroon)
+
+Convention: No Latin-script Fulfulde prayer-name service or text was reachable; the only attested Arabic-Islamic time loans are Fajira (morning) and Asira (evening) in the Fulfulde phrasebook, so the set is recorded as unadapted Arabic forms with those two attested anchors.
+
+Sources: en.wikivoyage.org Fulfulde phrasebook (Fajira/bimmbi morning; Kikide/asira evening); glosbe.com Arabic-Fulah and English-Fulah dictionaries (no prayer entries found)
+
+Confidence: low. Honest gap: no Fulfulde prayer-time site, radio transcript, or Qur''an material surfaced in Latin script. Fajira and Asira are attested day-words (phrasebook); the other six stay as plain Arabic loans. The catalog''s tiisbaar/takkusaan/furura/geeƴe could not be verified anywhere and look Wolof-mixed (tisbaar/taakusaan are Wolof prayer names) - flagged, not followed. Needs a Fulfulde-speaking source (Adlam or radio) to settle.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajira | fajiri | FIX |
+| dhuhr | `prayer.dhuhr` | Zuhur | tiisbaar | FIX |
+| asr | `prayer.asr` | Asira | takkusaan | FIX |
+| magrib | `prayer.magrib` | Magrib | furura | FIX |
+| isha | `prayer.isha` | Isha | geeƴe | FIX |
+| suhoor | `prayer.suhoor` | Suhur | suhuur | FIX |
+| duha | `prayer.duha` | Duha | dhuhaa | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | istijaabaa | FIX |
+
+Fixes:
+- `prayer.fajr`: "fajiri" -> "Fajira"
+- `prayer.dhuhr`: "tiisbaar" -> "Zuhur"
+- `prayer.asr`: "takkusaan" -> "Asira"
+- `prayer.magrib`: "furura" -> "Magrib"
+- `prayer.isha`: "geeƴe" -> "Isha"
+- `prayer.suhoor`: "suhuur" -> "Suhur"
+- `prayer.duha`: "dhuhaa" -> "Duha"
+- `prayer.istijaba`: "istijaabaa" -> "Istijaba"
+- `extras.explanation.midnight`: "Hakkunde Magrib e Fajiri" -> "Hakkunde Magrib e Fajira"
+- `extras.explanation.suhoor`: "Minutooji 20 ado Fajiri" -> "Minutooji 20 ado Fajira"
+
+---
+
+## fr - French (France)
+
+Convention: French mosques and prayer services print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha), the Grande Mosquee de Paris included; older printed calendars also show Icha/Dhouhr
+
+Sources: mawaqit.net Grande Mosquee de Paris page (Fajr, Dhuhr, Asr, Maghrib, Isha; Chourouk, Imsak); grandemosqueedeparis.fr horaires announcement (''fin du sahour'') and Mosquee Mirail Toulouse (le sahour); albayyinah.fr and fr.al-imen.com (salat Doha); masjidbox.com/fr (salat Doha)
+
+Confidence: high. Catalog drift on duha: ''Duha'' -> ''Doha'' (three French Islamic sites spell the forenoon prayer Doha; ''Duha'' appears on translated sources). Suhoor ''Sahour'' holds (mosque usage); ''S''hour'' dominates general French media and ''Suhur'' is the literal transliteration. Istijaba attested as ''Sa''at al-Istijaba'' / ''l''heure exaucee'' (French-language TikTok/scribd religious content) - medium on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahour | Sahour | OK |
+| duha | `prayer.duha` | Doha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.duha`: "Duha" -> "Doha"
+
+---
+
+## gu - Gujarati (Gujarat, India)
+
+Convention: Arabic-origin names in Gujarati script as Gujarati Islamic literature and Saudi da''wah Gujarati publications write them
+
+Sources: risala.prh.gov.sa/pl/contents/222 (Gujarati Namaz pamphlet); gu.wikipedia.org (નમાઝના ફર્ઝ); gujarati.news18.com (સહેરી article); archive.org Gujarati Islamic classics (ચાસ્ત)
+
+Confidence: medium. Five names confirmed by the Saudi-risala Gujarati text and gu.wikipedia; સહરી (without matra) appears in madrasa posts; ચાસ્ત attested in classical and modern Gujarati Islamic text. No Gujarati source names the Friday hour; ઇસ્તિજાબા is a transliteration fallback, Urdu-style phrasing unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ફજર | ફજર | OK |
+| dhuhr | `prayer.dhuhr` | ઝોહર | ઝોહર | OK |
+| asr | `prayer.asr` | અસર | અસર | OK |
+| magrib | `prayer.magrib` | મગરિબ | મગરિબ | OK |
+| isha | `prayer.isha` | ઈશા | ઈશા | OK |
+| suhoor | `prayer.suhoor` | સહેરી | સહર | FIX |
+| duha | `prayer.duha` | ચાસ્ત | દુહા | FIX |
+| istijaba | `prayer.istijaba` | ઇસ્તિજાબા | ઇસ્તિજાબા | OK |
+
+Fixes:
+- `prayer.suhoor`: "સહર" -> "સહેરી"
+- `prayer.duha`: "દુહા" -> "ચાસ્ત"
+
+---
+
+## ha - Hausa (Nigeria, Niger (Latin-script mainstream))
+
+Convention: Hausa Islamic literature transliterates the five prayers (Urdu-Arabic scholastic tradition); the Friday answered-supplication hour is named by the established phrase, not a transliteration
+
+Sources: imuslimguide.com/ha (Magariba, Isha''i, Azahar, La''asar) and hausa.legit.ng (''Azahar, La''asar, Magriba, Isha`i da Asubah''); ha.wikipedia (Sallar la''asar) and islamhouse.com/ha ''Lokutan Sallah''; BBC Hausa and hausa.legit.ng Ramadan (lokacin/sahur); sirassalafeey.wordpress.com (Sallar Duha); lightofislam.com.ng ''Allah yana amsa addu''a ranar Juma''a''
+
+Confidence: high. Five and Sahur stand as cataloged (variants Asubah, Magariba; Az-zuhurain pairing in fiqh texts). Duha attested as Sallar Duha. Istijaba: no Hausa source uses the transliteration; Hausa literature names the concept ''lokacin amsa/karbar addu''a ranar Juma''a'' (lightofislam.com.ng, lecture titles), so the established phrase is recorded with that grounding.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Asuba | Asuba | OK |
+| dhuhr | `prayer.dhuhr` | Azahar | Azahar | OK |
+| asr | `prayer.asr` | La''asar | La''asar | OK |
+| magrib | `prayer.magrib` | Magriba | Magriba | OK |
+| isha | `prayer.isha` | Isha''i | Isha''i | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Lokacin amsa addu''a | Istijaba | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Istijaba" -> "Lokacin amsa addu''a"
+
+---
+
+## hi - Hindi (North India)
+
+Convention: Arabic-origin names in Devanagari as Hindi Islamic sites (IslamQA Hindi, namazium) and Hindi media write them, with nuqtas where Hindi Islamic publishing keeps them
+
+Sources: islamqa.info/hi/answers/22389; boldsky Hindi namaz coverage; namazium.com; jansatta.com (सहरी)
+
+Confidence: high. Nuqta-less फजर/जुहर/मगरिब are equally common in Hindi media; सेहरी runs behind सहरी. Hindi Islamic discourse names the Friday hour ''दुआ कबूल होने का वक़्त'', never इस्तिजाबा. Catalog duha जुहा was a machine-looking form; चाश्त replaces it.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | फज्र | फज्र | OK |
+| dhuhr | `prayer.dhuhr` | ज़ुहर | ज़ुहर | OK |
+| asr | `prayer.asr` | असर | असर | OK |
+| magrib | `prayer.magrib` | मग़रिब | मग़रिब | OK |
+| isha | `prayer.isha` | ईशा | ईशा | OK |
+| suhoor | `prayer.suhoor` | सहरी | सहरी | OK |
+| duha | `prayer.duha` | चाश्त | जुहा | FIX |
+| istijaba | `prayer.istijaba` | दुआ कबूल होने का वक़्त | इस्तिजाबा | FIX |
+
+Fixes:
+- `prayer.duha`: "जुहा" -> "चाश्त"
+- `prayer.istijaba`: "इस्तिजाबा" -> "दुआ कबूल होने का वक़्त"
+
+---
+
+## hil - Hiligaynon / Ilonggo (Philippines (Western Visayas: Iloilo, Negros Occidental))
+
+Convention: No Islamic literature exists in Hiligaynon (no Quran translation, no islamhouse section, no Islamic site); Ilonggo Muslims read Filipino/Cebuano/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Hiligaynon Wikipedia, Iloilo Muslim-community reporting - nothing carries the prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Hiligaynon carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## id - Indonesian (Indonesia)
+
+Convention: National Arabic-loan convention fixed by KEMENAG''s SIHAT data and the big prayer-time portals; row labels are the living spellings.
+
+Sources: bimasislam.kemenag.go.id/jadwal-sholat and sumsel.kemenag.go.id/jadwal-shalat (rows: Subuh, Dzuhur, Asar, Magrib, Isya); jadwalsholat.nu.or.id (rows: Imsak, Subuh, Terbit, Dhuha, Zuhur, Ashar, Maghrib, Isya); nu.or.id and ppsd.id on Sa''atul Ijabah/istijabah on Friday
+
+Confidence: high. KEMENAG kanwil rows spell Asar/Magrib; NU writes Zuhur. Ashar, Dzuhur, Maghrib dominate portals, so the catalog stands on all eight.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Dzuhur | Dzuhur | OK |
+| asr | `prayer.asr` | Ashar | Ashar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ilo - Ilocano (Philippines (Northern Luzon: Ilocos, Cagayan Valley))
+
+Convention: No Islamic literature exists in Ilocano (no Quran translation, no islamhouse section, Ilocano Wikipedia Islam article is a stub with no prayer names); Ilocano Muslims read Filipino/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Ilocano Wikipedia Islam article - a 1.3 KB stub, no prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Ilocano carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## it - Italian (Italy)
+
+Convention: Italian Islamic organisations print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); some mosques write Dohr and Maghreb
+
+Sources: uamionline.it (UCOII) Orario Preghiere (Fajr/Alba, Dhuhr/Mezzogiorno, Asr, Maghrib/Tramonto, Isha/Sera); alislam.it orario delle preghiere (Fajr, Zuhr, Asr, Maghrib, Isha); it.wikipedia.org Ramadan (il pasto prima dell''alba e chiamato suhur); mawlanasultan.org Italian hadith lesson PDF (preghiera di Duha)
+
+Confidence: high. Runner-ups: Dohr/Maghreb (moscheaomar.it, orariopreghiere.it). Suhoor drifts: catalog ''Suhoor'' -> ''Suhur'' (it.wikipedia ''suhur''; casadellacarita.org ''Suhur''; islamic-relief.it keeps ''Suhoor''). Duha attested in Italian original texts (mawlanasultan.org, umrahexpress.it). Istijaba is unattested in Italian sources found; the concept is ''l''ora dell''esaudizione del venerdi''; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhoor | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhoor" -> "Suhur"
+
+---
+
+## ja - Japanese (Japan (Japanese Muslim community, mosques, Islamic materials))
+
+Convention: Systematic katakana transliteration is the established convention of Japanese mosque and prayer-time materials; row labels read ファジュル, ズフル, アスル, マグリブ, イシャー.
+
+Sources: islam.ne.jp 礼拝時刻表 (rows ファジュル/ズフル/アスル/マグリブ/イシャー); ja.wikipedia.org 礼拝時刻, szgmc.gov.ae ja, masjidbox.com Tokyo Camii rows; japanforunhcr.org, whyislam.org ja (スフール); wikiHow ja, note.com (ドゥハー礼拝)
+
+Confidence: high. Catalog stands. Runner-ups: イシャーウ (ja.wikipedia''s long form), ファジル (qiblafinder.io, f-tsunemi.com), サフール (al-fanar.jp) - mainstream services use the catalog forms. ドゥハー is attested as ドゥハー礼拝 (wikiHow ja, note.com); イスティジャーバ could not be found in any Japanese Islamic text - Japanese materials describe the concept (金曜日の最後の時間にドゥアが受け入れられる, islammessage.org jp), so the name stays as the systematic katakana form, unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ファジュル | ファジュル | OK |
+| dhuhr | `prayer.dhuhr` | ズフル | ズフル | OK |
+| asr | `prayer.asr` | アスル | アスル | OK |
+| magrib | `prayer.magrib` | マグリブ | マグリブ | OK |
+| isha | `prayer.isha` | イシャー | イシャー | OK |
+| suhoor | `prayer.suhoor` | スフール | スフール | OK |
+| duha | `prayer.duha` | ドゥハー | ドゥハー | OK |
+| istijaba | `prayer.istijaba` | イスティジャーバ | イスティジャーバ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## jv - Javanese (Central and East Java, Indonesia; Suriname)
+
+Convention: KBJI, the official Javanese dictionary, and the Javanese Wikipedia fix the names: Arabic loans with Javanese lohor/luhur for Dhuhr.
+
+Sources: kbji.kemendikdasmen.go.id (subuh KN; lohor luhur; dhuwur=zuhur; asar; isa (wayah isa); saur KN sahur; salat lukha=salat duha; mahrib); jv.wikipedia (Salat: dzuhur, ashar, maghrib, isya; Dhuha: Salat Duha)
+
+Confidence: medium. Luhur (krama) vs Lohor (ngoko) per KBJI, dhuwur is a third word for zuhur; KBJI''s own sahur lemma is saur; duha also lukha. Catalog stands; Istijabah is an ungrounded loan.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Luhur | Luhur | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kas - Kashmiri (Perso-Arabic) (Kashmir)
+
+Convention: Persian-origin time names in Kashmiri Perso-Arabic script, as the Kashmiri Wikipedia infobox carries them; Kashmiri religious print runs largely through Urdu
+
+Sources: ks.wikipedia.org/wiki/نؠماز (infobox: صُبُح، پیٚشِن، دِگر; شام، خۄفتَن); ur.wikipedia.org/wiki/کشمیری_زبان (Persian-script literary tradition)
+
+Confidence: medium. Kashmiri Wikipedia is the only direct Kashmiri-script source found and matches the catalog five exactly (صُبُح، پیٚشِن، دِگر، شام، خۄفتَن); مگرب also occurs for maghrib in Urdu-mediated Kashmir timetables. No Kashmiri-language source found for suhoor/duha/istijaba: سحری، چاشت، استجابہ are Urdu-mediated fallbacks, honestly flagged.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | صُبُح | صُبُح | OK |
+| dhuhr | `prayer.dhuhr` | پیٚشِن | پیٚشِن | OK |
+| asr | `prayer.asr` | دِگر | دِگر | OK |
+| magrib | `prayer.magrib` | شام | شام | OK |
+| isha | `prayer.isha` | خۄفتَن | خۄفتَن | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kk - Kazakh (Kazakhstan)
+
+Convention: Kazakh heritage calendar printed by SAMK-linked and muftyat services: local and Persian-Tatar words (Таң, Бесін, Екінті, Ақшам, Құптан; Ramadan Сәресі), with the Friday answered hour phrased descriptively
+
+Sources: azan.kz (rows Таң/Күн/Бесін/Аср/Ақшам/Құптан, Ramadan Сәресі); namaz.muftyat.kz (''бамдат (таң), бесін, екінті (асыр), ақшам, құптан''); islam.kz (''Жұма күнгі дұға қабыл болатын уақыт''); islamdini.kz (''Духа намазы'')
+
+**Established-practice convention** (followed): Kazakh calendars print Kazakh words for fajr (Таң) and asr (Екінті per muftyat.kz/sajda.com) rather than Arabic loans, and the Friday hour only exists as the descriptive phrase Дұға қабыл болатын уақыт Source: azan.kz; namaz.muftyat.kz; islam.kz
+
+Confidence: high. Seven stand. asr: two live conventions - azan.kz calendar row prints Аср, while the Kazakh-language name Екінті (muftyat.kz ''екінті (асыр)'', sajda.com, religious books) is recorded; kk.wikipedia offers ''Намаздыгер''. duha: Дұха is an equally common variant spelling (asyldin.kz, zharar.com). istijaba drifts Истижаба→descriptive phrase; no single-word Kazakh form attested (islam.kz, ihsan.kz).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Таң | Таң | OK |
+| dhuhr | `prayer.dhuhr` | Бесін | Бесін | OK |
+| asr | `prayer.asr` | Екінті | Екінті | OK |
+| magrib | `prayer.magrib` | Ақшам | Ақшам | OK |
+| isha | `prayer.isha` | Құптан | Құптан | OK |
+| suhoor | `prayer.suhoor` | Сәресі | Сәресі | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Дұға қабыл болатын уақыт | Истижаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истижаба" -> "Дұға қабыл болатын уақыт"
+
+---
+
+## kn - Kannada (Karnataka, India)
+
+Convention: Kannada Islamic apps, dailies and madrasa media transliterate the Arabic names in Kannada script (Urdu-flavored); no translation practice
+
+Sources: MySalah Kannada App Store listing (apps.apple.com/in/app/id6781011615?l=kn): ''ಫಜರ್, ಜುಹರ್, ಅಸರ್, ಮಗ್ರಿಬ್ ಅಥವಾ ಇಶಾ''; sanjevani.com Kannada report (ಫಜರ್ ನಮಾಜ್ / ಮಗ್ರಿಬ್ ನಮಾಜ್) and etvbharat.com/kn (ಫಜರ್); kannada.oneindia.com Ramadan sehri-iftar timetable (ಸಹರಿ/ಇಫ್ತಾರ್) and vijaykarnataka.com (ಸೆಹ್ರಿ)
+
+Confidence: medium. Five names stand as cataloged (ಜೋಹರ್ is a runner-up for dhuhr; ಇಷಾ also seen). Suhoor drifts: Kannada Ramadan media write ಸಹರಿ (ಸೆಹ್ರಿ runner-up), not ಸಹರ್. Duha and Istijaba have no Kannada-language Islamic source this research could find; kept as transliterations with low trust on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ಫಜರ್ | ಫಜರ್ | OK |
+| dhuhr | `prayer.dhuhr` | ಜುಹರ್ | ಜುಹರ್ | OK |
+| asr | `prayer.asr` | ಅಸರ್ | ಅಸರ್ | OK |
+| magrib | `prayer.magrib` | ಮಗ್ರಿಬ್ | ಮಗ್ರಿಬ್ | OK |
+| isha | `prayer.isha` | ಇಶಾ | ಇಶಾ | OK |
+| suhoor | `prayer.suhoor` | ಸಹರಿ | ಸಹರ್ | FIX |
+| duha | `prayer.duha` | ದುಹಾ | ದುಹಾ | OK |
+| istijaba | `prayer.istijaba` | ಇಸ್ತಿಜಾಬಾ | ಇಸ್ತಿಜಾಬಾ | OK |
+
+Fixes:
+- `prayer.suhoor`: "ಸಹರ್" -> "ಸಹರಿ"
+
+---
+
+## ko - Korean (Korea (Korea Muslim Federation community, Seoul Central Masjid))
+
+Convention: Hangul transliteration of the Arabic names, as printed by Korean-language prayer-time services and Korean media covering Islam; rows read 파즈르, 주흐르, 아스르, 마그립, 이샤.
+
+Sources: way2quran.com/ko prayer rows (파즈르/주흐르/아스르/마그립/이샤); ko.true-time.com Seoul and getrevertly.app/ko (same rows); news.samsung.com, voakorea.com, weekly.chosun.com (수후르)
+
+Confidence: medium. Catalog stands. Runners-up: 두흐르 (qiblafinder.io), 주흐 (namu.wiki), 파즈루 (variant heard); 마그립 is the service norm (마그리브 appears rarely). KMF''s own site (koreaislam.org) yielded no readable schedule to confirm against. 수후르 is well attested in Korean media (Samsung, VOA, Chosun); 두하 appears in Korean prayer-time apps and translations; 이스티자바 appears only in machine-translated text (사앗 알 이스티자바) - unverified, concept phrased 금요일에 기도가 응답되는 시간.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | 파즈르 | 파즈르 | OK |
+| dhuhr | `prayer.dhuhr` | 주흐르 | 주흐르 | OK |
+| asr | `prayer.asr` | 아스르 | 아스르 | OK |
+| magrib | `prayer.magrib` | 마그립 | 마그립 | OK |
+| isha | `prayer.isha` | 이샤 | 이샤 | OK |
+| suhoor | `prayer.suhoor` | 수후르 | 수후르 | OK |
+| duha | `prayer.duha` | 두하 | 두하 | OK |
+| istijaba | `prayer.istijaba` | 이스티자바 | 이스티자바 | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kr - Kanuri (Nigeria (Borno, Yobe), Niger)
+
+Convention: No Kanuri-language prayer-time material was reachable (Kanuri Wikipedia has no relevant article; Glosbe''s Kanuri dictionary carries no prayer entries), so the catalog''s Kanuri-shaped Arabic loans are retained unverified.
+
+Sources: kr.wikipedia.org (search for sala/wakti returned no prayer article); glosbe.com English-Kanuri dictionary (no entry for prayer; only unrelated vocabulary)
+
+Confidence: low. Honest gap: despite the old Borno Islamic tradition, no online Kanuri prayer schedule, Qur''an text, or Islamic vocabulary list was found; the forms follow Kanuri naturalization of Arabic loans (final vowels, articles dropped) and are carried over from the catalog unverified. Needs a Borno source (BRTV Kanuri broadcasts, Kanuri Mosque announcements) to confirm.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Faaji | Faaji | OK |
+| dhuhr | `prayer.dhuhr` | Zuhuru | Zuhuru | OK |
+| asr | `prayer.asr` | Asara | Asara | OK |
+| magrib | `prayer.magrib` | Magaribi | Magaribi | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duhaa | Duhaa | OK |
+| istijaba | `prayer.istijaba` | Istijaaba | Istijaaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ku - Kurdish Kurmanji (Turkey, Syria, Iraq Kurdistan (Latin script))
+
+Convention: Kurmanji Wikipedia''s prayer table uses the Kurdish heritage names Sibe, Nîvro, Esir, Mexreb, Eşa; mosque sites abroad use Arabic loan rows (Fecir, Ziwa, Esir, Mexrib, Îşa). The pre-dawn meal is Paşîv.
+
+Sources: ku.wikipedia.org/wiki/Nimêj (row table: Sibe, Nîvro, Esir/Piştî Nivro, Mexreb/Êvar, Eşa/Şev); khutba.world/ku prayer pages (Fecir, Ziwa, Esir, Mexrib, Îşa); ku.wikipedia.org/wiki/Rojî (paşîv = pre-dawn meal)
+
+**Established-practice convention** (followed): Kurmanji uses the heritage word Paşîv for the Ramadan pre-dawn meal Source: ku.wikipedia.org/wiki/Rojî
+
+Confidence: medium. The five match ku.wikipedia exactly and the catalog. khutba.world''s Arabic-loan set (Fecir/Ziwa/Mexrib/Îşa) is the visible runner-up in the diaspora; wikipedia itself alternates Êvar/Şev/Piştî Nivro. Duha and Îstîcab found no Kurmanji source: they are Arabic-loan transliterations by the ruling''s default and need verification. Catalog''s Xwarina seherê is a descriptive runner-up to Paşîv.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sibe | Sibe | OK |
+| dhuhr | `prayer.dhuhr` | Nîvro | Nîvro | OK |
+| asr | `prayer.asr` | Esir | Esir | OK |
+| magrib | `prayer.magrib` | Mexreb | Mexreb | OK |
+| isha | `prayer.isha` | Eşa | Eşa | OK |
+| suhoor | `prayer.suhoor` | Paşîv | Xwarina seherê | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Îstîcab | Istijabe | FIX |
+
+Fixes:
+- `prayer.suhoor`: "Xwarina seherê" -> "Paşîv"
+- `prayer.istijaba`: "Istijabe" -> "Îstîcab"
+
+---
+
+## ky - Kyrgyz (Kyrgyzstan)
+
+Convention: Persian-Arabic heritage names printed by the Muftiyat of Kyrgyzstan''s calendar (Багымдат, Бешим, Аср, Шам, Куптан; Ramadan Сухур/Ифтар)
+
+Sources: muftiyat.kg/kg/calendar (rows Багымдат/Сухур/Күн/Бешим/Аср/Шам/Ифтар/Куптан); namaztime.kg; islamdini.kg (''Кушлук намазы'')
+
+Confidence: high. Five + suhoor stand on the official muftiyat.kg calendar rows. duha Духа stands (''ад-Духа намазы'', adepbashaty, vk.ru posts); runner-up ''Кушлук намазы'' (islamdini.kg, Diyanet-derived) and ''Ишрак''. istijaba is the weakest name: no muftiyat source found; the phrase comes from organic Kyrgyz Islamic social posts (''Жума күнүндөгү дуба кабыл болуучу өзгөчө убакыт''), single-word Истижаба unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Багымдат | Багымдат | OK |
+| dhuhr | `prayer.dhuhr` | Бешим | Бешим | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Шам | Шам | OK |
+| isha | `prayer.isha` | Куптан | Куптан | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Дуба кабыл болуучу убакыт | Истижаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истижаба" -> "Дуба кабыл болуучу убакыт"
+
+---
+
+## mad - Madurese (Madura island and East Java, Indonesia)
+
+Convention: Madurese Wikipedia and Madurese-language posts nativize the names with o-vowels and gemination (sobbu, sahor), sharing lohor with the Javanese-Sundanese sphere.
+
+Sources: kbbi.co.id/arti-kata/lohor (lohor = zuhur, shalat lohor); mad.wikipedia Poasa_Romadon_è_India (è bâkto sahor bân buka poasa; saor variant); Madurese Facebook posts (jema''ah sholat sobbu; sabellunna sobbu)
+
+Confidence: medium. Corrections vs catalog: Subuh->Sobbu and Sahur->Sahor (Madurese-attested forms). Magreb and Isya'' follow Madurese phonology but were not directly attested; Dhuha and Istijabah ungrounded locally.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sobbu | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magreb | Magreb | OK |
+| isha | `prayer.isha` | Isya'' | Isya'' | OK |
+| suhoor | `prayer.suhoor` | Sahor | Sahur | FIX |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Sobbu"
+- `prayer.suhoor`: "Sahur" -> "Sahor"
+- `extras.explanation.midnight`: "E tengnga antara Magreb ban Subuh" -> "E tengnga antara Magreb ban Sobbu"
+- `extras.explanation.suhoor`: "20 menit sabellunna Subuh" -> "20 menit sabellunna Sobbu"
+
+---
+
+## mdh - Maguindanao (Philippines (Maguindanao provinces and Cotabato, Mindanao - Muslim-majority))
+
+Convention: Maguindanaon Islamic convention keeps Malay/Arabic-sphere names naturalized per Maguindanao orthography, attested verbatim in the complete Rowwad Maguindanaon Quran translation (2025) and Maguindanao fiqh literature.
+
+Sources: quranenc.com maguindanao_rwwad (Maguindanaon Quran v1.0.4: 24:58 "makadsambayang sa subbuh... ulyan na dhuhur... sambayang na isya"; 17:78 gloss "(dhuhur, as''r, maghrib, isya)... sambayang a sub''h"; 89:1 "Faj''r"; 103:1 "''Asr"); Al Mulakkhasul Fiqh, Maguindanao fiqh text (Scribd doc 607928716): "Sambahayang duha (maynaat)... di pa sumud waktu dhuhur"; Maguindanao community posts (Facebook, Maguindanaon-language religious pages): "sambayang a Subuh"; islamhouse.com/mdh (78 Maguindanao items: Pagpatindug sin Sambahayang, Pagpuasa ha Bulan Ramadhan - prayer is sambahayang)
+
+Confidence: medium. Five prayers grounded in the language''s own Quran translation plus fiqh: subbuh/sub''h (also Faj''r), dhuhur, as''r/''Asr, maghrib, isya. Record uses the community form Subuh with Faj''r/subbuh as variants. Catalog drifts: "Luhur" unattested (should be Dhuhur), "Asar" vs attested ''Asr/as''r, "Magrib" vs attested maghrib. Sahur and Istijaba have no in-language source (2:187 meaning-translates); spellings follow the Malay-sphere practice the language sits in, low certainty on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhur | Luhur | FIX |
+| asr | `prayer.asr` | Asr | Asar | FIX |
+| magrib | `prayer.magrib` | Maghrib | Magrib | FIX |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.dhuhr`: "Luhur" -> "Dhuhur"
+- `prayer.asr`: "Asar" -> "Asr"
+- `prayer.magrib`: "Magrib" -> "Maghrib"
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+- `extras.explanation.midnight`: "Antara Magrib dan Subuh" -> "Antara Maghrib dan Subuh"
+- `extras.explanation.istijaba`: "1 jam sebelum Magrib (Jumaat sahaja)" -> "1 jam sebelum Maghrib (Jumaat sahaja)"
+
+---
+
+## mfa - Pattani Malay (Bahasa Melayu Patani) (southern Thailand (Pattani, Yala, Narathiwat, Songkhla))
+
+Convention: No Latin-script Pattani Malay prayer-time publishing found; the community''s written religious life runs in Thai or standard Malay while the spoken dialect is baso/kecek nayu, so Malay (JAKIM) spellings are the only attested written forms.
+
+Sources: studentsrepo.um.edu.my Noorhayatee thesis (PM speakers call the dialect baso nayu / kecek nayu); e-solat.gov.my as the written Malay proxy; kelateblog.blogspot.com (kecek nayu/Kelantan phonology: -ah>-oh, final -r drops)
+
+Confidence: low. Do not mistake this for confirmed native spellings: no Pattani Malay source names the prayers in Latin script. Spoken forms drift per Kelantan-Patani phonology (Suboh, Asor, Sahor); catalog Istijaba corrected to Istijabah.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Zohor | Zohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isyak | Isyak | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+
+---
+
+## min - Minangkabau (West Sumatra, Indonesia)
+
+Convention: Minang-language Wikipedia, a famous Minang pantun and Minang linguistics papers all nativize the names (subuah, luhua, mugarik).
+
+Sources: min.wikipedia (Puaso dalam Islam, Sumbayang tarawih: subuah, salat Isya, salat mugarik, sahur); Pitaruah Ayah pantun, kamangdarussalam.wordpress.com (subuah, luhua, asar, mugarib, isya; 24434 rakat); ejurnal.bunghatta.ac.id JFIB 3057 (waktu subuah, luhua aRi); kamangdarussalam.wordpress.com (wakatu duha lah masuak, molah kito sumbayang duha)
+
+Confidence: medium. Corrections vs catalog: Magrib->Mugarik (min.wikipedia''s own spelling for the prayer; pantun variant mugarib), Dhuha->Duha and Sahua->Sahur (both unattested in Minang text as catalog wrote them). Istijabah is an ungrounded Arabic loan; native sahur meal is makan parak siang.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuah | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Luhua | Luhua | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Mugarik | Magrib | FIX |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahua | FIX |
+| duha | `prayer.duha` | Duha | Dhuha | FIX |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Subuah"
+- `prayer.magrib`: "Magrib" -> "Mugarik"
+- `prayer.suhoor`: "Sahua" -> "Sahur"
+- `prayer.duha`: "Dhuha" -> "Duha"
+- `extras.explanation.midnight`: "Di tangah antaro Magrib jo Subuh" -> "Di tangah antaro Mugarik jo Subuah"
+- `extras.explanation.suhoor`: "20 minik sabalun Subuh" -> "20 minik sabalun Subuah"
+- `extras.explanation.istijaba`: "1 jam sabalun Magrib (hanyo hari Jumaik)" -> "1 jam sabalun Mugarik (hanyo hari Jumaik)"
+
+---
+
+## ml - Malayalam (Kerala, India)
+
+Convention: Arabic-origin names in Malayalam script as Kerala''s mainstream calendar (Manorama) and Malayalam Islamic sites write them; fajr goes by its Kerala name സുബഹ്
+
+Sources: manoramaonline.com (നമസ്കാര സമയം); ml.wikipedia.org (അസ്വർ); islamkavadam.com (ദുഹാ നമസ്കാരം); malayalam.indiatoday.in (സഹർ)
+
+Confidence: high. Manorama rows read ളുഹർ/അസർ/മഗ്രിബ്/ഇശാ with സുബ്ഹി as the fajr variant; സഹർ attested by India Today Malayalam. Duha is ദുഹാ (islamkavadam) with ളുഹാ (retroflex) a live variant; Malayalam content names the Friday hour ''ദുആ സ്വീകരിക്കപ്പെടുന്ന സമയം'', so catalog ഇസ്തിജാബ and ളുഹാ drift.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | സുബഹ് | സുബഹ് | OK |
+| dhuhr | `prayer.dhuhr` | ളുഹർ | ളുഹർ | OK |
+| asr | `prayer.asr` | അസർ | അസർ | OK |
+| magrib | `prayer.magrib` | മഗ്രിബ് | മഗ്രിബ് | OK |
+| isha | `prayer.isha` | ഇശാ | ഇശാ | OK |
+| suhoor | `prayer.suhoor` | സഹർ | സഹർ | OK |
+| duha | `prayer.duha` | ദുഹാ | ളുഹാ | FIX |
+| istijaba | `prayer.istijaba` | ദുആ സ്വീകരണ സമയം | ഇസ്തിജാബ | FIX |
+
+Fixes:
+- `prayer.duha`: "ളുഹാ" -> "ദുഹാ"
+- `prayer.istijaba`: "ഇസ്തിജാബ" -> "ദുആ സ്വീകരണ സമയം"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "മഗ്രിബ" of reference "മഗ്രിബ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "സുബഹ" of reference "സുബഹ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.suhoor` - name fajr present as inflected/short prose form "സുബഹ" of reference "സുബഹ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "മഗ്രിബ" of reference "മഗ്രിബ്" - compliant variant, no change
+
+---
+
+## mr - Marathi (Maharashtra, India)
+
+Convention: Arabic-origin names in Devanagari as Marathi Wikipedia''s namaz articles and Marathi Muslim literature write them
+
+Sources: mr.wikipedia.org (नमाज); mr.wikipedia.org (नमाज वेळा); islammarathi.com
+
+Confidence: medium. mr.wikipedia नमाज uses नमाज-ए-जुहर/असर/मगरीब; its नमाज वेळा article shows runner-ups धुहर and अस्र. Marathi Islamic publishing (islammarathi.com) is thin for the extras: सेहरी and चाश्त follow the Devanagari Muslim convention; no Marathi source names the Friday hour, इस्तिजाबा is a fallback.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | फजर | फजर | OK |
+| dhuhr | `prayer.dhuhr` | जुहर | जुहर | OK |
+| asr | `prayer.asr` | असर | असर | OK |
+| magrib | `prayer.magrib` | मगरीब | मगरीब | OK |
+| isha | `prayer.isha` | ईशा | ईशा | OK |
+| suhoor | `prayer.suhoor` | सेहरी | सहरी | FIX |
+| duha | `prayer.duha` | चाश्त | दुहा | FIX |
+| istijaba | `prayer.istijaba` | इस्तिजाबा | इस्तिजाबा | OK |
+
+Fixes:
+- `prayer.suhoor`: "सहरी" -> "सेहरी"
+- `prayer.duha`: "दुहा" -> "चाश्त"
+
+---
+
+## mrw - Maranao (Philippines (Lanao del Sur and Lanao del Norte, Mindanao - Muslim-majority))
+
+Convention: Maranao Islamic convention naturalizes the Arabic names through Maranao phonology, attested verbatim in the Maranao Quran (Saromantang translation), Maranao fiqh texts and khutbah literature.
+
+Sources: Maranao Quran, Saromantang translation via quran.com (mrn-unknown) and forghan.com/translation/260: 24:58 "ko onaan o sambayang a Sobo... oriyan o sambayang a Aysah"; 2:238 gloss "so sambayang (a Asar) a millbi"; So Sambayang 2, Maranao fiqh (Scribd doc 689774224): "sambayang a Asar... oriyan o sambayang a Magrib"; Maranao religious posts (Facebook): "sambayang a duhur go asr, so duhr na pat ka rakaat so asr na pat ka rakaat"; muslimtents.com/maranao-khutbah (Maranao khutbah archive); KOTA O MUSLIM (Maranao Hisnul Muslim, islamhouse PDF) "oriyan o sambayang a Sobo"; forghan.com Maranao Surah 93 titled "Ad-Duha"
+
+Confidence: medium. Five prayers triple-sourced (Quran, fiqh, community): Sobo, Duhur (runner-up spelling "duhr"), Asar (runner-up "asr"), Magrib (no h, per fiqh text; "Maghrib" variant), Aysah (variant "aisha"). Catalog''s Malay-style Subuh/Luhur/Asar/Magrib/Isya set drifts badly: only Asar survives; Fajr is Sobo and Isha is Aysah in Maranao''s own Quran. Duha rests on the Ad-Duha surah title plus Danao-sphere usage; Sahur and Istijaba have no in-language source - Malay-sphere spellings recorded with low certainty.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sobo | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Duhur | Luhur | FIX |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Aysah | Isya | FIX |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Sobo"
+- `prayer.dhuhr`: "Luhur" -> "Duhur"
+- `prayer.isha`: "Isya" -> "Aysah"
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+- `extras.explanation.midnight`: "Sa gitna ng Magrib at Subuh" -> "Sa gitna ng Magrib at Sobo"
+- `extras.explanation.suhoor`: "20 minuto bago ang Subuh" -> "20 minuto bago ang Sobo"
+
+---
+
+## ms - Malay (Malaysia, Brunei, Singapore, coastal Indonesia)
+
+Convention: JAKIM e-Solat row labels are the de facto national standard for Malaysian Malay.
+
+Sources: e-solat.gov.my (rows: Subuh, Zohor, Asar, Maghrib, Isyak; Syuruk); muftiwp.gov.my (Waktu Solat Zohor FAQ); waktusolat.com.my and negara.org (Solat Dhuha); ikhlas.com (Sa''at al-Istijabah)
+
+Confidence: high. JAKIM''s own page is verbatim evidence for the five; Dhuha and Istijabah grounded in Malaysian Islamic portals. Catalog stands unchanged.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Zohor | Zohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isyak | Isyak | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## my - Burmese (Myanmar (Bamar and Rohingya Muslim communities; Burmese script))
+
+Convention: Myanmar Islamic organizations publish adhan timetables with the Arabic names transliterated in Burmese script
+
+Sources: mmislamic.znnt.org Myanmar Islamic Program adhan timetable (columns: ဖဂျရ်, ဇဟိုရ်, အဆွရ်, မဂ်ရိဗ်, အီရှာ); Burmese Muslim community pages (facebook.com/Komin233 ''မဂ်ရိဘ်နမာဇ်'', ''ဖဂျရ်နမာဇ်'' posts)
+
+Confidence: medium. Five match the znnt.org table exactly (variants seen: ဇိုဟ်ရ် for dhuhr, မဂ်ရိဘ် for maghrib). Two targeted searches found no Burmese-script source for suhoor, duha or istijaba; those three stay as cataloged transliterations with low trust. The znnt table itself uses ဝါပိတ်/ဝါဖြေ columns for imsak/iftar rather than a suhoor label.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ဖဂျရ် | ဖဂျရ် | OK |
+| dhuhr | `prayer.dhuhr` | ဇဟိုရ် | ဇဟိုရ် | OK |
+| asr | `prayer.asr` | အဆွရ် | အဆွရ် | OK |
+| magrib | `prayer.magrib` | မဂ်ရိဗ် | မဂ်ရိဗ် | OK |
+| isha | `prayer.isha` | အီရှာ | အီရှာ | OK |
+| suhoor | `prayer.suhoor` | ဆူဟူရ် | ဆူဟူရ် | OK |
+| duha | `prayer.duha` | ဒူဟာ | ဒူဟာ | OK |
+| istijaba | `prayer.istijaba` | အစ်တီဂျာဘာ | အစ်တီဂျာဘာ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## nl - Dutch (Netherlands)
+
+Convention: Dutch-language prayer-time sites print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); the Moroccan-Dutch community writes a Dutch-phonetic set (Fadjr, Dhoehr, ''Ishaa)
+
+Sources: koran.nl gebedstijden (Fajr, Dohr/Dhor, Asr, Maghrib, Isha); elislam.nl and alihsane.nl gebedstijden (Fajr, Shurooq, Dhuhr, Asr, Maghrib, Isha); al-yaqeen.com (Fadjr, Shoeroeq, Dhoehr, Asr, Maghrib, Ishaa; Doeha-gebed); nporadio1.nl / deliciousmagazine.nl (suhoor)
+
+Confidence: high. Runner-up convention named: Fadjr/Dhoehr/''Ishaa on Moroccan-Dutch mosque screens (al-yaqeen.com, mawaqit.net/nl) with ''Doeha-gebed'' for duha (rasoulallah.net/nl ''adh-dhoehaa''). Suhoor drifts: catalog ''Suhur'' -> ''Suhoor'' (NPO, deliciousmagazine, groenevrouw ''Suhoor/Suhur''). Istijaba unattested in Dutch sources found; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Suhoor"
+
+---
+
+## om - Oromo (Ethiopia (large Muslim population))
+
+Convention: Oromo Islamic materials use Arabic loans with Oromo endings: Fajrii, Zuhrii, Asrii, Magribii, Ishaa, and Duhaa for the forenoon prayer.
+
+Sources: risala.prh.gov.sa afaan oromoo content 769 (Yeroowwan salaata dirqamaa: Fajrii..., Zuhrii...); byenah.com Oromo pages (Zuhrii, Asrii, Ishaa''ii, Maghrib) and facebook Oromo dawah (Salaata Fajrii/Subhii, Salaata Zuhrii, Salaata Ishaa''ii); sajda.com/om (prose: Fajjir, Zuhr, Asrii, Magrib fi Ishaa); archive.org Salaata Duhaa 28 Afaan Oromoo
+
+Confidence: medium. Fajrii/Zuhrii are grounded by the official Saudi Risala page; sajda writes Fajjir/Zuhr/Magrib and byenah writes Maghrib(a) - the -ii endings match the Oromo-language sources and the catalog. Suhoor (Suhuur) and istijaba (Istijaabaa) found no Oromo source: Arabic-loan transliterations, verify with Oromo speakers. Catalog Dhuhaa vs sourced Duhaa noted.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajrii | Fajrii | OK |
+| dhuhr | `prayer.dhuhr` | Zuhrii | Zuhrii | OK |
+| asr | `prayer.asr` | Asrii | Asrii | OK |
+| magrib | `prayer.magrib` | Magribii | Magribii | OK |
+| isha | `prayer.isha` | Ishaa | Ishaa | OK |
+| suhoor | `prayer.suhoor` | Suhuur | Suhuur | OK |
+| duha | `prayer.duha` | Duhaa | Dhuhaa | FIX |
+| istijaba | `prayer.istijaba` | Istijaabaa | Istijaabaa | OK |
+
+Fixes:
+- `prayer.duha`: "Dhuhaa" -> "Duhaa"
+
+---
+
+## pa-Arab - Punjabi (Shahmukhi) (Punjab, Pakistan)
+
+Convention: Native Punjabi time-of-day names for the five prayers, exactly the list Western-Punjabi Wikipedia states; extras ride the shared Pakistani Perso-Arabic convention
+
+Sources: pnb.wikipedia.org/wiki/نماز; facebook.com/groups/PunjabiDictionary (پنج نمازاں دا ناں thread); scribd: سوۓ حرم پنجابی کیلنڈر
+
+Confidence: high. pnb.wikipedia names all five verbatim (سرگی، پیشی، ڈیگر، نماشاں، کفتاں); community threads confirm them as the elders'' usage. شاماں competes for maghrib in some dialects; urban timetables print Urdu names. سحری and چاشت come through Urdu-mediated Punjabi religious usage; استجابہ is a fallback, Punjabi print names the hour only in Urdu (قبولیت کی گھڑی).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | سرگی | سرگی | OK |
+| dhuhr | `prayer.dhuhr` | پیشی | پیشی | OK |
+| asr | `prayer.asr` | ڈیگر | ڈیگر | OK |
+| magrib | `prayer.magrib` | نماشاں | نماشاں | OK |
+| isha | `prayer.isha` | کفتاں | کفتاں | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## pl - Polish (Poland)
+
+Convention: Polish-language Islamic materials and the PWN language advisory Polonize the names (fadżr, zuhr, asr, maghrib, isza); Polish prayer-time services (mzr.pl, godzina.org, ckikatowice.pl) print the international Fajr/Dhuhr/Isha
+
+Sources: sjp.pwn.pl Poradnia Jezykowa PWN 2019 (fadżr; zuhr // dhuhr; asr; maghrib; isza); oislamie.sgh.waw.pl and islam-sunna.pl (fadżr, zuhr); webcal.guru Kalendarz modlitw (Fadżr, Zuhr); ahmadiyya-islam.org/pl (Czas zamykania Suhur)
+
+Confidence: medium. Catalog drifts on three rows: fajr Fajr->Fadżr, dhuhr Dhuhr->Zuhr, isha Isha->Isza, per the PWN advisory and Polish-language prose; the international spellings are the runner-up (official MZR site, godzina.org). PWN gives zuhr // dhuhr as equals. Duha weakly attested (Polish ''modlitwa duha'', surah name Ad-Duha); Istidżaba is constructed on Polish Arabic orthography (dz for j, as fadżr) - no Polish source found; low confidence on those two names.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fadżr | Fajr | FIX |
+| dhuhr | `prayer.dhuhr` | Zuhr | Dhuhr | FIX |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isza | Isha | FIX |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidżaba | Istijaba | FIX |
+
+Fixes:
+- `prayer.fajr`: "Fajr" -> "Fadżr"
+- `prayer.dhuhr`: "Dhuhr" -> "Zuhr"
+- `prayer.isha`: "Isha" -> "Isza"
+- `prayer.istijaba`: "Istijaba" -> "Istidżaba"
+- `extras.explanation.midnight`: "W połowie między Maghrib a Fajr" -> "W połowie między Maghrib a Fadżr"
+- `extras.explanation.suhoor`: "20 minut przed Fajr" -> "20 minut przed Fadżr"
+
+---
+
+## ps - Pashto (Afghanistan, Pakistan (Perso-Arabic script))
+
+Convention: Pashto prayer-time rows use Pashto time-of-day names: فجر/د سهار لمونځ، ماسپښین، مازدیګر، ماښام، عشاء; suhoor is پېشلمی (glossed سحري), duha is د چاښت لمونځ.
+
+Sources: ps.wikipedia.org د لمانځه وختونه (د سهار لمونځ، ماسپښین، مازدیګر، ماښام); sajda.com/ps prayer times (فجر، ماسپښین، مازیګر، ماښام او عشاء); dawat610.com (صلاة الضحی = د چاښت لمونځ; د سهار د لمانځه وخت); Shamshad TV Pashto caption (پېشلمی (سحري)) + Afghan calendar posts (د پيشلمې او روژه ماتي وختونه); getnafs.com/ps Jumuah guide (د دعا تر ټولو غوره وخت)
+
+**Established-practice convention** (followed): Pashto uses the heritage word پېشلمی for suhoor (Afghan TV glosses it with سحري), چاښت for the forenoon prayer, and phrases the Friday hour descriptively rather than as a bare loan Source: Shamshad TV Pashto; dawat610.com صلاة الضحی (د چاښت لمونځ); getnafs.com/ps
+
+Confidence: high. Runner-ups: سهار for fajr (dawat610, ps.wikipedia use د سهار لمونځ), سحری for suhoor, د استجابت وخت for the Friday hour. The catalog drifted on four names: صبح/ظهر/عصر/مغرب are Arabic-Dari words, not the Pashto row labels; الضحى and bare استجابة are not Pashto practice.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | صبح | FIX |
+| dhuhr | `prayer.dhuhr` | ماسپښین | ظهر | FIX |
+| asr | `prayer.asr` | مازدیګر | عصر | FIX |
+| magrib | `prayer.magrib` | ماښام | مغرب | FIX |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | پېشلمی | سهاري | FIX |
+| duha | `prayer.duha` | چاښت | الضحى | FIX |
+| istijaba | `prayer.istijaba` | د دعا د قبلېدو وخت | استجابة | FIX |
+
+Fixes:
+- `prayer.fajr`: "صبح" -> "فجر"
+- `prayer.dhuhr`: "ظهر" -> "ماسپښین"
+- `prayer.asr`: "عصر" -> "مازدیګر"
+- `prayer.magrib`: "مغرب" -> "ماښام"
+- `prayer.suhoor`: "سهاري" -> "پېشلمی"
+- `prayer.duha`: "الضحى" -> "چاښت"
+- `prayer.istijaba`: "استجابة" -> "د دعا د قبلېدو وخت"
+- `extras.explanation.midnight`: "د مغرب او صبح په منځ کې" -> "د ماښام او فجر په منځ کې"
+- `extras.explanation.suhoor`: "له صبح ۲۰ دقيقې دمخه" -> "له فجر ۲۰ دقيقې دمخه"
+- `extras.explanation.istijaba`: "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)" -> "له ماښام ۱ ساعت دمخه (يوازې د جمعې ورځ)"
+
+---
+
+## pt - Portuguese (Portugal, Brazil)
+
+Convention: Brazilian and Portuguese Islamic bodies print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha)
+
+Sources: fambras.org.br Horario de Oracao (Fajr, Dhuhr, Asr, Maghrib, Isha with definitions); institutoislamico.org.br horarios salat and arresala.org.br (Fajr, Shuruq, Dhuhr, Asr, Maghrib, Isha); islamqa.info/pt and luzdoislam.com.br (oracao Duha); cdial.org.br Ramadan guide (''Facam o sahur, pois no sahur ha bencao'')
+
+Confidence: high. Catalog holds unchanged. Sahur confirmed by Brazilian Islamic literature (cdial.org.br, community media); ''suhur'' also appears. Istijaba is unattested as a Portuguese loan; islamqa.info/pt describes ''a hora em que os pedidos sao atendidos'' - low-medium confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## qu - Quechua (Cusco-Collao standard) (Peru, Bolivia, Ecuador)
+
+Convention: Essentially no established Quechua Islamic convention exists; the only real Quechua material about Islam (the Wikipedia article) keeps Arabic terms as unadapted loans (Quran, Allah, Muslim), which is the naturalization model followed here.
+
+Sources: qu.wikipedia.org Islam article (keeps Quran/Allah/Muslimkuna as loans); glosbe.com es/qu (Corán rendered Quran, unadapted)
+
+Confidence: low. No Quechua Qur''an or Islamic prayer material was found; recorded as unadapted Latin loans because that is what the closest real material (qu.wikipedia) does with Islamic terms. The catalog''s Dhuhr/Asr/Maghrib/Isha rows (Chawpi p''unchaw, Chisi, Inti chinkay, Tuta) are Quechua time-of-day translations, not prayer names - replaced per the ruling''s transliteration-first rule.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Chawpi p''unchaw | FIX |
+| asr | `prayer.asr` | Asr | Chisi | FIX |
+| magrib | `prayer.magrib` | Magrib | Inti chinkay | FIX |
+| isha | `prayer.isha` | Isha | Tuta | FIX |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.dhuhr`: "Chawpi p''unchaw" -> "Dhuhr"
+- `prayer.asr`: "Chisi" -> "Asr"
+- `prayer.magrib`: "Inti chinkay" -> "Magrib"
+- `prayer.isha`: "Tuta" -> "Isha"
+- `extras.explanation.midnight`: "Chawpin Inti chinkaywan Fajrpa" -> "Chawpin Magribwan Fajrpa"
+- `extras.explanation.istijaba`: "Inti chinkayman 1 ura ñawpaq (viernesllallapunim)" -> "Magribman 1 ura ñawpaq (viernesllallapunim)"
+
+---
+
+## ro - Romanian (Romania)
+
+Convention: Romanian Islamic materials keep the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); the old Dobruja community''s own materials do not impose a Romanian-phonetic set
+
+Sources: islamhouse.com/ro Fiqh pe intelesul tuturor (rugaciunea Isha, Fajr; Rugaciunea Duha); ro.wikipedia.org Ramadan (suhur) and Rugaciunea in islam; tawhid.ro (suhurul este masa de dinainte de fajr); philarchive.org Boboc 2022 Romanian fiqh text (zuhr, ''asr, maghrib, isha)
+
+Confidence: medium. Catalog holds unchanged; zuhr also appears beside Dhuhr in Romanian texts. The Muftiat''s own site was not retrieved directly; grounding is translated Romanian fiqh literature plus Wikipedia and tawhid.ro. Istijaba unattested in Romanian; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ru - Russian (Russia (Tatarstan, Bashkortostan, Caucasus; large Muslim population))
+
+Convention: Cyrillic transliteration of the Arabic names is the universal Russian muftiyat and prayer-site convention; row labels everywhere read Фаджр, Зухр, Аср, Магриб, Иша.
+
+Sources: time-namaz.ru, azan.su, azan.today, islam-today.ru (prayer-time row labels); umma.ru, islam.ru (Духа-намаз); islam-today.ru, muslim.ru, namaz.today (Сухур); al-hakk.ru, surahquran.com (аль-истиджаба)
+
+Confidence: high. Catalog stands unchanged. Духа appears as «духа-намаз» / «намаз ад-духа» (islam-today.ru, islam.ru). Истиджаба is rare: the concept is usually phrased «час принятия дуа в пятницу», but the word itself is attested (al-hakk.ru «аль-истиджаба», «саатуль-истиджаба» in circulation). One-off spelling Фаждр (raspisanie-namaza.su) is a typo, not a variant.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Фаджр | Фаджр | OK |
+| dhuhr | `prayer.dhuhr` | Зухр | Зухр | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Магриб | Магриб | OK |
+| isha | `prayer.isha` | Иша | Иша | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Истиджаба | Истиджаба | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## sd - Sindhi (Sindh, Pakistan)
+
+Convention: Arabic-origin names in the Sindhi Arabic script as Sindhi Wikipedia and Sindhi religious publishing write them
+
+Sources: sd.wikipedia.org/wiki/نماز; dawateislami.net Sindhi pamphlets (دعا قبول ٿيڻ جا واقعا); Sindhi-language religious posts naming all five prayers
+
+Confidence: medium. sd.wikipedia lists فجر، ظهر، عصر، مغرب، عشاء in a table; Sindhi posts and Dawat-e-Islami Sindhi pamphlets corroborate. سحري confirmed (''سحري ۽ افطاري جا شيڊول''); چاشت follows the Perso-Arabic convention without a directly quoted Sindhi page. Catalog istijaba استجاب (bare Arabic) replaced by the attested Sindhi phrase دعا جي قبوليت جو وقت.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | ظهر | ظهر | OK |
+| asr | `prayer.asr` | عصر | عصر | OK |
+| magrib | `prayer.magrib` | مغرب | مغرب | OK |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | سحري | سحري | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | دعا جي قبوليت جو وقت | استجاب | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجاب" -> "دعا جي قبوليت جو وقت"
+
+---
+
+## skr - Saraiki (South Punjab, Pakistan)
+
+Convention: Native Saraiki time-of-day names (the Punjabi pattern in Saraiki phonology), documented in Saraiki community and classical-name listings
+
+Sources: facebook.com/mmgh07 post (سرائیکی زَبان ئچ پنج نمازاں دے کلاسِیکل ناں: ۱. دَھمِّی...); facebook.com/groups/PunjabiDictionary (دھمی۔۔پیشیں۔۔دیگر۔۔نماشاں...); skr.wikipedia.org/wiki/نماز
+
+Confidence: medium. The classical-names post confirms دَھمِّی = فجر with i''raab; the dictionary-thread reply gives the set دھمی/پیشیں/دیگر/نماشاں with ''سوتے دی نماز'' as an isha variant. Saraiki religious print runs through Urdu, so سحری، چاشت، استجابہ are Urdu-mediated fallbacks; no Saraiki page names the Friday hour.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | دَھمِّی | دَھمِّی | OK |
+| dhuhr | `prayer.dhuhr` | پیشِیں | پیشِیں | OK |
+| asr | `prayer.asr` | دِیگَر | دِیگَر | OK |
+| magrib | `prayer.magrib` | نِماشَاں | نِماشَاں | OK |
+| isha | `prayer.isha` | خُفتاں | خُفتاں | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## so - Somali (Somalia, Somaliland, Djibouti, Somali regions of Ethiopia and Kenya)
+
+Convention: Somali prayer discourse uses the established forms Subax, Duhur, Casar, Magrib, Cisho; the pre-dawn meal is Suxuur/Suquur and the Friday hour is described as the hour du''a is accepted.
+
+Sources: so.wikipedia Salaad (Salaada Subax, Duhur, Casir, Magrib iyo Cishe) and so.wikipedia Salaada Subax; namazvakti.com SO pages (Subax, Duhur, Casir, Maqrib, Cishaha); Somali YouTube/Facebook dawah (SALAADA CASAR IYO DUHUR; Fadliga Salaada Casar); facebook.com/Midabsan.so (saacad la aqbalo ducada - the Friday hour); waxkabaro.net Somali Ramadan series (suxuur)
+
+**Established-practice convention** (followed): For the Friday hour Somali usage is descriptive - saacad la aqbalo ducada (the hour du''a is accepted) - rather than the Arabic loan Source: facebook.com/Midabsan.so
+
+Confidence: medium. Five prayers are strongly grounded (Somali Wikipedia, namazvakti SO, Somali dawah posts); variants in circulation: Casir (Wikipedia/namazvakti) vs mainstream Casar, Maqrib vs Magrib, Cishe/Cishaha vs colloquial Cisho. Catalog drifts: Cishaa''i and Sahri. Suhoor spelling wavers (Suxuur waxkabaro vs Suquur common online); duha was not independently retrieved; istijaba rests on one Somali page.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subax | Subax | OK |
+| dhuhr | `prayer.dhuhr` | Duhur | Duhur | OK |
+| asr | `prayer.asr` | Casar | Casar | OK |
+| magrib | `prayer.magrib` | Magrib | Maqrib | FIX |
+| isha | `prayer.isha` | Cisho | Cishaa''i | FIX |
+| suhoor | `prayer.suhoor` | Suxuur | Sahri | FIX |
+| duha | `prayer.duha` | Dhuha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Saacadda la aqbalo ducada | Istijaabo | FIX |
+
+Fixes:
+- `prayer.magrib`: "Maqrib" -> "Magrib"
+- `prayer.isha`: "Cishaa''i" -> "Cisho"
+- `prayer.suhoor`: "Sahri" -> "Suxuur"
+- `prayer.duha`: "Duha" -> "Dhuha"
+- `prayer.istijaba`: "Istijaabo" -> "Saacadda la aqbalo ducada"
+- `extras.explanation.midnight`: "Dhexdhexaadxada Maqrib iyo Subax" -> "Dhexdhexaadxada Magrib iyo Subax"
+- `extras.explanation.istijaba`: "1 saac ka hor Maqrib (Jimcaha oo kaliya)" -> "1 saac ka hor Magrib (Jimcaha oo kaliya)"
+
+---
+
+## sq - Albanian (Albania, Kosovo, North Macedonia)
+
+Convention: Albania''s established row names are its own heritage words (Ottoman-Albanian Islamic usage), printed by the official Muslim Community''s prayer service; this is the ticket''s translation-convention exception
+
+Sources: namaz.kmsh.al - Komuniteti Mysliman i Shqiperise official prayer times (Imsaku, Lindja, Yleja, Ikindia, Akshami, Jacia); sq.wikipedia.org Namazi i Duhase; albislam.com (Namazi i Duhasë); telegrafi.com / teve1.info / agroweb.org (iftar dhe syfyr); dituriaislame.com (KMSH magazine; ''istixhabe'')
+
+**Established-practice convention** (followed): Albanian established practice names the five prayers and the pre-dawn meal with its own heritage words - Imsaku, Yleja, Ikindia, Akshami, Jacia, Syfyri - inherited from Ottoman-era Islamic Albanian, not Arabic transliterations; diaspora mosques pair them with the Arabic names (Sabahu (Fajr), Dreka (Dhuhr)) Source: namaz.kmsh.al, the Komuniteti Mysliman i Shqiperise (KMSH) official prayer-times service, rows: Imsaku / Lindja / Yleja / Ikindia / Akshami / Jacia
+
+Confidence: high. All five prayer rows match the catalog exactly (KMSH official). Suhoor drifts: catalog ''Sahur'' -> ''Syfyri'', the living Albanian word for the meal (syfyr; ''mbaroni syfyrin'' in Albanian Ramadan materials). Istijaba drifts: ''Istixhaba'' -> ''Istixhabe'' per Dituria Islame (KMSH magazine) and alislam.cloud (''Ed-dua vel-istixhabe''); thinner evidence, medium on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Imsaku | Imsaku | OK |
+| dhuhr | `prayer.dhuhr` | Yleja | Yleja | OK |
+| asr | `prayer.asr` | Ikindia | Ikindia | OK |
+| magrib | `prayer.magrib` | Akshami | Akshami | OK |
+| isha | `prayer.isha` | Jacia | Jacia | OK |
+| suhoor | `prayer.suhoor` | Syfyri | Sahur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istixhabe | Istixhaba | FIX |
+
+Fixes:
+- `prayer.suhoor`: "Sahur" -> "Syfyri"
+- `prayer.istijaba`: "Istixhaba" -> "Istixhabe"
+
+---
+
+## su - Sundanese (West Java, Indonesia)
+
+Convention: Sundanese Wikipedia states the five outright and keeps Arabic loans with Lohor for Dhuhr.
+
+Sources: su.wikipedia Solat (nyaéta Subuh, Lohor, Asar, Magrib, jeung Isya) and Magrib article''s list; su.wikipedia Sahur/Saur (lemma: Saur atawa sahur); kompasiana.com Kata Serapan Sholat Dzuhur Menjadi Sholat Lohor (Sunda: Isya, Shubuh, Lohor, Ashar, Maghrib)
+
+Confidence: medium. Five names verbatim from su.wikipedia. Native variant Saur for Sahur; Isha also written Isa (article Solat Isa); Dhuha and Istijabah have no Sundanese source, kept as regional Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## sw - Swahili (Tanzania, Kenya, East African coast (Muslim coastal tradition))
+
+Convention: Coastal Islamic Swahili calendars use naturalized Arabic-derived names (Alfajiri, Adhuhuri, Alasiri, Magharibi, Isha); these are the living convention, not machine translations
+
+Sources: sajda.com/sw and tz.tawkit.net Dar es Salaam timetables (Alfajiri, Adhuhuri, Alasiri, Magharibi, Isha); sw.wikishia.net ''Nyakati za Swala'' and bongoclass.com (Adhuhuri, al''asiri); BBC News Swahili (Suhur) and ing.org Swahili Ramadan sheet (mlo unaoitwa suhur); Facebook ''MAADILI YA SWAUMU: SWALA YA DHUHA'' posts
+
+Confidence: high. Five stand as cataloged; Al''asiri spelling variant common, and Subhi is used for fajr in some (Shia-leaning) literature. Suhoor: Suhur attested by BBC Swahili; the indigenous coastal word daku is an equal runner-up. Duha attested as ''Swala ya Dhuha'' (Adhuha variant). Istijaba unattested as a Swahili word; dar-alifta.org Swahili fatwas describe ''saa ambayo dua hairudishwi'' on Ijumaa.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Alfajiri | Alfajiri | OK |
+| dhuhr | `prayer.dhuhr` | Adhuhuri | Adhuhuri | OK |
+| asr | `prayer.asr` | Alasiri | Alasiri | OK |
+| magrib | `prayer.magrib` | Magharibi | Magharibi | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Dhuha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.duha`: "Duha" -> "Dhuha"
+
+---
+
+## ta - Tamil (Tamil Nadu India, Sri Lanka, Singapore, Malaysia (Tamil Muslim tradition))
+
+Convention: Tamil Muslim sites and ta.wikipedia transliterate the Arabic names in Tamil script; competing naturalizations of the emphatic consonants coexist
+
+Sources: piraivasi.com prayer-time article (table rows: ஃபஜ்ர், ளுஹர், அஸ்ர், மக்ரிப், இஷா); ta.wikipedia ழுஹர் தொழுகை (ழுஹர், அஸர், மஃரிப், இஷா); tamilquran.org fasting article (ஸஹர்), Mail of Islam mailofislam.com/tam-dhuha_prayer (ழுஹா தொழுகை), onlinepj.in (லுஹா தொழுகை)
+
+Confidence: high. Dhuhr spells three ways in the wild (ழுஹர் wikipedia, லுஹர் app listings, ளுஹர் piraivasi); ழுஹர் kept. Maghrib variants மஃரிப்/மக்ரிப்; asr அஸர் runner-up. Duha: catalog துஹா drifts; Tamil Islamic material writes ழுஹா/லுஹா. Istijaba unattested in Tamil literature; concept phrased as வெள்ளிக்கிழமை இறுதி மணி.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ஃபஜ்ர் | ஃபஜ்ர் | OK |
+| dhuhr | `prayer.dhuhr` | ழுஹர் | ழுஹர் | OK |
+| asr | `prayer.asr` | அஸ்ர் | அஸ்ர் | OK |
+| magrib | `prayer.magrib` | மஃகிரிப் | மஃகிரிப் | OK |
+| isha | `prayer.isha` | இஷா | இஷா | OK |
+| suhoor | `prayer.suhoor` | சஹர் | சஹர் | OK |
+| duha | `prayer.duha` | ழுஹா | துஹா | FIX |
+| istijaba | `prayer.istijaba` | இஸ்திஜாபா | இஸ்திஜாபா | OK |
+
+Fixes:
+- `prayer.duha`: "துஹா" -> "ழுஹா"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "மஃகிரிப" of reference "மஃகிரிப்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "ஃபஜ்ர" of reference "ஃபஜ்ர்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.suhoor` - name fajr present as inflected/short prose form "ஃபஜ்ர" of reference "ஃபஜ்ர்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "மஃகிரிப" of reference "மஃகிரிப்" - compliant variant, no change
+
+---
+
+## te - Telugu (Andhra Pradesh and Telangana, India)
+
+Convention: Telugu Islamic media transliterate the Arabic names in Telugu script; the forenoon prayer follows the Indo-Persian practice (Ishraq/Chasht), not Duha
+
+Sources: te.wikipedia నమాజ్ article (ఫజ్ర్, జుహర్/జుహ్ర్, అసర్/అస్ర్, మగ్రిబ్, ఇషా; special prayers ఇష్రాఖ్ and చాష్ట్); teluguislam.net (సహర్ and ఇఫ్తార్ tags) and andhrajyothy.com Ramadan article (సహరీ); Telugu Islamic channels (facebook.com/abu4451 ఫజర్ నమాజ్, Instagram islamtelugu reels)
+
+Confidence: high. Five stand as cataloged (జుహ్ర్/అస్ర్ runner-up spellings). Suhoor సహర్ per teluguislam.net, సహరీ in mainstream press. Duha: Telugu practice names the post-sunrise forenoon prayer ఇష్రాఖ్ (or చాష్ట్) per te.wikipedia; దుహా has no Telugu currency, so the established name is recorded. Istijaba unattested in Telugu.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ఫజ్ర్ | ఫజ్ర్ | OK |
+| dhuhr | `prayer.dhuhr` | జుహర్ | జుహర్ | OK |
+| asr | `prayer.asr` | అసర్ | అసర్ | OK |
+| magrib | `prayer.magrib` | మగ్రిబ్ | మగ్రిబ్ | OK |
+| isha | `prayer.isha` | ఇషా | ఇషా | OK |
+| suhoor | `prayer.suhoor` | సహర్ | సహర్ | OK |
+| duha | `prayer.duha` | ఇష్రాఖ్ | దుహా | FIX |
+| istijaba | `prayer.istijaba` | ఇస్తిజాబా | ఇస్తిజాబా | OK |
+
+Fixes:
+- `prayer.duha`: "దుహా" -> "ఇష్రాఖ్"
+
+---
+
+## tg - Tajik (Tajikistan)
+
+Convention: Persian-Arabic heritage names in Cyrillic per Tajik prayer-time services and the Council of Ulema (Бомдод, Пешин, Аср, Шом, Хуфтан)
+
+Sources: takvim.tj (rows Бомдод/Пешин/Аср/Шом/Хуфтан); shuroiulamo.tj (Council of Ulema of Tajikistan, ''Вақти намоз дар Душанбе''); islamqa.info/tg (''Вақти намози зуҳо (чошт)''); tg.wikishia.net (''Саҳарӣ'')
+
+Confidence: medium. Five stand on official-adjacent sites (takvim.tj, shuroiulamo.tj). suhoor drifts Саҳар→Саҳарӣ, the -ӣ meal form the Council of Ulema''s own FAQ and tg.wikishia use. duha Зуҳо stands with чошт (and ишроқ) as attested equivalents. istijaba is thin: Истиҷоба appears only once as a transliteration (tg.wikishia news title); Tajik sources otherwise describe the hour (''рӯзи ҷумъа соате муайян аст'') - treat as low-confidence name.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Бомдод | Бомдод | OK |
+| dhuhr | `prayer.dhuhr` | Пешин | Пешин | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Шом | Шом | OK |
+| isha | `prayer.isha` | Хуфтан | Хуфтан | OK |
+| suhoor | `prayer.suhoor` | Саҳарӣ | Саҳар | FIX |
+| duha | `prayer.duha` | Зуҳо | Зуҳо | OK |
+| istijaba | `prayer.istijaba` | Истиҷоба | Истиҷоба | OK |
+
+Fixes:
+- `prayer.suhoor`: "Саҳар" -> "Саҳарӣ"
+
+---
+
+## th - Thai (Thailand (Malay-Muslim south plus Thai Muslim communities))
+
+Convention: Thai Muslim prayer-time sites and Islamic councils use established Thai-script transliterations as timetable row labels
+
+Sources: prayertimes.muslimthaipost.com (rows: อิมซาก, ซุบฮิ, ซุฮฺริ, อัศริ, มัฆริบ); whitechannel.tv/solahtimes (ศุบฮิ, ซุฮฺริ, อัศริ, มัฆริบ, อิชาอฺ) and islamiccenterthailand Facebook; islaminthailand.org (สะฮูร, ละหมาดดุฮา) and islamhouse.muslimthaipost.com (''อิฟตาร์ และ ซูฮูร์ คืออะไร?'')
+
+Confidence: high. Catalog row matches muslimthaipost exactly; competing spellings abound (ศุบฮี/ซุบฮี, ซุห์รี/ดุฮริ, อัศรี/อัสริ, มักริบ, อิชาอ์/อิซาอฺ) and any is defensible. Suhoor attested as ซูฮูร์ (muslimthaipost/islamhouse) with สะฮูร/ซะฮูร equally common on council sites. Duha ดุฮา well attested (islaminthailand.org, islammore ''ฎุฮา'' variant). Istijaba unattested; Thai literature says เวลาตอบรับดุอาอ์ในวันศุกร์.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ซุบฮิ | ซุบฮิ | OK |
+| dhuhr | `prayer.dhuhr` | ซุฮฺริ | ซุฮฺริ | OK |
+| asr | `prayer.asr` | อัศริ | อัศริ | OK |
+| magrib | `prayer.magrib` | มัฆริบ | มัฆริบ | OK |
+| isha | `prayer.isha` | อิชาอฺ | อิชาอฺ | OK |
+| suhoor | `prayer.suhoor` | ซูฮูร์ | ซูฮูร์ | OK |
+| duha | `prayer.duha` | ดุฮา | ดุฮา | OK |
+| istijaba | `prayer.istijaba` | อิสติญาบะฮฺ | อิสติญาบะฮฺ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ti - Tigrinya (Eritrea, Ethiopia)
+
+Convention: Eritrean/Ethiopian Muslims share the Ge''ez-script Arabic-loan convention: ፈጅር، ዙሁር، አስር، መግሪብ، ኢሻ.
+
+Sources: Tigrinya-language YouTube listing naming the five (ፈጅር፣ ዙሁር፣ አስር፣ መግሪብ ፡ ኢሻ); islamhouse.com/ti (full Tigrinya dawah corpus, confirms the register these loans live in)
+
+Confidence: medium. The five rest on one Tigrinya listing plus the Ge''ez-script convention shared with the well-sourced Amharic rows; catalog variants ዙሓር/ዓስር/ምግሪብ also circulate. The three extras (ሱሕር، ዱሓ، ኢስቲጃባ) found no Tigrinya source and stay as catalog transliterations; a native Eritrean review is needed.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ፈጅር | ፈጅር | OK |
+| dhuhr | `prayer.dhuhr` | ዙሁር | ዙሓር | FIX |
+| asr | `prayer.asr` | አስር | ዓስር | FIX |
+| magrib | `prayer.magrib` | መግሪብ | ምግሪብ | FIX |
+| isha | `prayer.isha` | ኢሻ | ኢሻ | OK |
+| suhoor | `prayer.suhoor` | ሱሕር | ሱሕር | OK |
+| duha | `prayer.duha` | ዱሓ | ዱሓ | OK |
+| istijaba | `prayer.istijaba` | ኢስቲጃባ | ኢስቲጃባ | OK |
+
+Fixes:
+- `prayer.dhuhr`: "ዙሓር" -> "ዙሁር"
+- `prayer.asr`: "ዓስር" -> "አስር"
+- `prayer.magrib`: "ምግሪብ" -> "መግሪብ"
+- `extras.explanation.midnight`: "ኣብ ማእከል ምግሪብን ፈጅርን" -> "ኣብ ማእከል መግሪብን ፈጅርን"
+- `extras.explanation.istijaba`: "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)" -> "1 ሰዓት ቅድሚ መግሪብ (ዓርቢ ጥራይ)"
+
+---
+
+## tk - Turkmen (Turkmenistan)
+
+Convention: Turkmen calendar vocabulary as printed by the Turkmen prayer-time service and tk.wikipedia: Turkic words for fajr/dhuhr (Ertir, Öýlen) and local fasting terms (Agyz wagty)
+
+Sources: namazvakti.com Turkmen localization (rows Ertir/Dogýan wagty/Öýlen/Ikindi/Agşam/Ýassy, Agyz wagt); tk.wikipedia.org ''Namaz'' (ertir/öýle/ikindi/agşam/ýassy namazy); tk.wikipedia.org ''Oraza'' (agyz beklenýän wagt); enedilim.com Türkmen explanatory dictionary (''Guşluk'')
+
+**Established-practice convention** (followed): Turkmen rows use Turkic words (Ertir, Öýlen) and local fasting vocabulary: imsak/suhoor time is Agyz wagt (agyz beklenýän wagt), not an Arabic loan; forenoon is Guşluk Source: namazvakti.com TM; tk.wikipedia.org ''Oraza''; enedilim.com
+
+Confidence: medium. Five stand (namazvakti.com TM rows; tk.wikipedia gives öýle as a variant of Öýlen). suhoor drifts Sahur→Agyz wagt: ''saharlyk'' is absent from the Turkmen explanatory dictionary; Turkmen Ramadan content says ''agyz beklenýän wagtlar''. duha drifts Duha→Guşluk (dictionary word for forenoon); no Turkmen prayer-calendar row prints this time. istijaba unverified: no Turkmen source found at all - Turkmen religious web is scarce (state-controlled); keep catalog value as low-confidence placeholder.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Ertir | Ertir | OK |
+| dhuhr | `prayer.dhuhr` | Öýlen | Öýlen | OK |
+| asr | `prayer.asr` | Ikindi | Ikindi | OK |
+| magrib | `prayer.magrib` | Agşam | Agşam | OK |
+| isha | `prayer.isha` | Ýassy | Ýassy | OK |
+| suhoor | `prayer.suhoor` | Agyz wagt | Sahur | FIX |
+| duha | `prayer.duha` | Guşluk | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Sahur" -> "Agyz wagt"
+- `prayer.duha`: "Duha" -> "Guşluk"
+
+---
+
+## tl - Tagalog / Filipino (Philippines (Manila, Luzon, nationwide lingua franca))
+
+Convention: Filipino Islamic materials transliterate the Arabic names with a Tagalog gloss in parentheses, never machine-literal translations; attested in islamhouse Tagalog dawah books and the whatistheislam Filipino pages.
+
+Sources: islamhouse.com/tl/books/5671/ (AS-SALAH - Ang Pagdarasal sa Islam, lists Fajr, Dhuhr, ...); whatistheislam.com/tl/panalangin-sa-islam/ and /pag-aayuno-sa-islam/ (Fajr, Dhuhr, ʿAsr, Maghrib, Ishāʾ; suhoor); Filipino Muslim dawah posts on Facebook ("Ang Sahur (ang pagkain at pag-inom sa madaling araw...)"; "Pamamaraan at gantimpala ng Salah Ad-Duha"); quranenc.com tagalog_rwwad (Tagalog Quran translation - renders verse meanings, keeps Arabic names as names)
+
+Confidence: medium. Five prayers double-sourced in Tagalog Islamic texts; whatistheislam tl writes them with transliteration marks (ʿAsr, Ishāʾ), islamhouse plain - plain forms stand. Suhoor: "Sahur" is the Filipino-Muslim mainstream spelling, "suhoor" (whatistheislam, trykaiwa.com) is the runner-up; catalog Sahur stands. Istijaba has no Tagalog source found; kept as plain transliteration. Duha attested as "Salah Ad-Duha".
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## tr - Turkish (Türkiye)
+
+Convention: Diyanet (state Islamic authority) translates all prayer-time names into Turkish on its calendars; extras follow Diyanet/Sorularla İslamiyet usage (Sahur, Kuşluk, İcabet saati)
+
+Sources: namazvakitleri.diyanet.gov.tr (rows İmsak/Güneş/Öğle/İkindi/Akşam/Yatsı); kurul.diyanet.gov.tr fetva ''Kuşluk (duha) namazı ne zaman ve nasıl kılınır?''; sorularlaislamiyet.com ''Sâat-i İcâbe - Eşref Saat''; islamansiklopedisi.org.tr ''Kuşluk Namazı''
+
+**Established-practice convention** (followed): Owner ruling 2026-11-02 confirmed: Diyanet calendars print Turkish words for every name (İmsak, Öğle, İkindi, Akşam, Yatsı; Ramadan Sahur; forenoon Kuşluk; Friday hour İcabet saati) Source: namazvakitleri.diyanet.gov.tr; kurul.diyanet.gov.tr
+
+Confidence: high. All eight catalog values stand. Kuşluk per Diyanet fetva runs from ~40-50 min after sunrise; İcabet saati also appears in Ottomanist form ''sâat-i icâbe''; the Turkish sources place it in the last hour of Friday (ikindi-akşam arası), matching the app''s Akşam-1h row.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | İmsak | İmsak | OK |
+| dhuhr | `prayer.dhuhr` | Öğle | Öğle | OK |
+| asr | `prayer.asr` | İkindi | İkindi | OK |
+| magrib | `prayer.magrib` | Akşam | Akşam | OK |
+| isha | `prayer.isha` | Yatsı | Yatsı | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Kuşluk | Kuşluk | OK |
+| istijaba | `prayer.istijaba` | İcabet saati | İcabet saati | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## tt - Tatar (Tatarstan, Russia)
+
+Convention: DUM RT (Tatarstan Muslim Board) calendars print fully Tatar names for all five prayers (Иртәнге намаз through Ястү намазы), the strongest translation practice in the batch
+
+Sources: dumrt.ru/help-info/prayertime (rows Иртәнге намаз/Кояш чыга/Зәвәл/Өйлә намазы/Икенде намазы/Ахшам намазы/Ястү намазы); tt.wikipedia.org ''Намаз'' (''иртәнге намаз, өйлә намазы, икенде намазы, ахшам намазы, ястү намазы''); tatarica.org ''Намаз''; garap-farsy.narod.ru (Tatar Arabic-Persian loanword dictionary, ''Истиҗабә''); intertat.tatar (''сәхәр'')
+
+**Established-practice convention** (followed): Tatar calendars translate all five names into Tatar (Иртәнге намаз ... Ястү намазы) per the official DUM RT prayer table Source: dumrt.ru/help-info/prayertime; tatarica.org
+
+Confidence: medium. Five + suhoor stand (DUM RT rows; intertat.tatar uses сәхәр for the pre-dawn meal). istijaba stands at word level: Истиҗабә is confirmed in the Tatar Arabic-Persian loanword dictionary, though the full phrase ''истиҗабә сәгате'' was not found in print. duha is the weakest name: ''Дүһә'' did not surface in any searched Tatar source (Kazakh/Turkish cognates Духа/Куштук dominate results); needs print confirmation from Tatar Islamic literature.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Иртәнге намаз | Иртәнге намаз | OK |
+| dhuhr | `prayer.dhuhr` | Өйлә намазы | Өйлә намазы | OK |
+| asr | `prayer.asr` | Икенде намазы | Икенде намазы | OK |
+| magrib | `prayer.magrib` | Ахшам намазы | Ахшам намазы | OK |
+| isha | `prayer.isha` | Ястү намазы | Ястү намазы | OK |
+| suhoor | `prayer.suhoor` | Сәхәр | Сәхәр | OK |
+| duha | `prayer.duha` | Дүһә | Дүһә | OK |
+| istijaba | `prayer.istijaba` | Истиҗабә | Истиҗабә | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "Ахшам" of reference "Ахшам намазы" - compliant variant, no change
+
+---
+
+## ug - Uyghur (Xinjiang, China (and diaspora))
+
+Convention: Uyghur Islamic materials in Arabic script use heritage names (بامدات، پېشىن، ئەسىر، شام، خۇپتەن) and descriptive phrases for the Friday hour
+
+Sources: ug.wikipedia.org ''ناماز ۋاقتى'' (بامدات/پېشىن/ئەسىر/شام/خۇپتەن); kuranyoli.com (''زۇھا نامىزى قانداق ناماز؟'', ''بەش ۋاخ ناماز رىسالىسى''); islamqa.info/ug answer 112165 (''جۈمە كۈنىدىكى دۇئا ئىجابەت بولىدىغان ۋاقىت''); sajiya.biz
+
+**Established-practice convention** (followed): For istijaba, Uyghur practice names the Friday hour descriptively as دۇئا ئىجابەت بولىدىغان ۋاقىت rather than a borrowed single word Source: islamqa.info/ug; sajiya.biz
+
+Confidence: medium. Five + duha stand (ug.wikipedia; kuranyoli variants نامازدىگەر for asr and نامازشام for maghrib). istijaba drifts ئىستىجابە→the attested phrase (islamqa.info/ug title, sajiya.biz, uyghur-archive Bukhari translation; catalog coinage unattested). suhoor is the weakest name: the root سەھەر and the parallel ئىپتار/ئىپتارلىق are attested, but no Uyghur Islamic source printing سەھەرلىك surfaced (diaspora sites deindexed, kantesti.net bot-blocked) - treat as low-confidence, catalog value kept.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | بامدات | بامدات | OK |
+| dhuhr | `prayer.dhuhr` | پېشىن | پېشىن | OK |
+| asr | `prayer.asr` | ئەسىر | ئەسىر | OK |
+| magrib | `prayer.magrib` | شام | شام | OK |
+| isha | `prayer.isha` | خۇپتەن | خۇپتەن | OK |
+| suhoor | `prayer.suhoor` | سەھەرلىك | سەھەرلىك | OK |
+| duha | `prayer.duha` | زۇھا | زۇھا | OK |
+| istijaba | `prayer.istijaba` | دۇئا ئىجابەت بولىدىغان ۋاقىت | ئىستىجابە | FIX |
+
+Fixes:
+- `prayer.istijaba`: "ئىستىجابە" -> "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+
+---
+
+## uk - Ukrainian (Ukraine (Crimean Tatar and diaspora Muslim communities))
+
+Convention: Ukrainian Cyrillic transliteration matching the Russian pattern with Ukrainian orthography (і for и, і); Ukrainian Wikipedia carries dedicated articles Фаджр, Зухр, Магріб, Іша, and Ukrainian-language prayer pages use the same forms.
+
+Sources: uk.wikipedia.org (articles Фаджр, Зухр, Магріб (молитва), Іша (молитва), Сухур); часу.com (Ukrainian prayer-time text: Фаджр, Зухр, Аср, Магріб, Іша); amu.org.ua (Рамадан program: Сухур, «ад-духа»)
+
+Confidence: high. Correction: catalog istijaba «Истіджаба» mixes the Russian и; Ukrainian form is Істіджаба (unattested in Ukrainian Islamic texts either way; the concept is phrased «година прийняття дуа в п''ятницю»). amu.org.ua grounds Сухур and «ад-духа» in Ukrainian running text. DUMU''s own schedule page (umma.in.ua/ua) unfortunately prints Latin Dhohr/Asr/Maghrib/Isha beside Ukrainian Фаджр; the Ukrainian Wikipedia and часу.com set the Ukrainian standard.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Фаджр | Фаджр | OK |
+| dhuhr | `prayer.dhuhr` | Зухр | Зухр | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Магріб | Магріб | OK |
+| isha | `prayer.isha` | Іша | Іша | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Істіджаба | Истіджаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истіджаба" -> "Істіджаба"
+
+---
+
+## ur - Urdu (Pakistan and India)
+
+Convention: Arabic-origin names exactly as Pakistan''s mainstream prayer-time pages and fatwa bodies print them
+
+Sources: banuri.edu.pk/namaz-times; urdupoint.com islamic prayer timings; ur.wikipedia.org (سحری); dar-alifta.org/ur (نماز چاشت کی فضیلت)
+
+Confidence: high. All five confirmed in Banuri Town''s table and UrduPoint rows; نمازِ چاشت is the established duha name (Banuri, Dar al-Ifta Egypt Urdu, Dawat-e-Islami). The Friday hour is ''قبولیت کی گھڑی'' in mainstream Urdu fatwa prose (Banuri, DarulIfta Deoband); استجابہ alone is rare. Catalog stands except istijaba, where the phrase replaces the bare transliteration.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | ظہر | ظہر | OK |
+| asr | `prayer.asr` | عصر | عصر | OK |
+| magrib | `prayer.magrib` | مغرب | مغرب | OK |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | قبولیت کی گھڑی | استجابہ | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجابہ" -> "قبولیت کی گھڑی"
+
+---
+
+## uz - Uzbek (Uzbekistan)
+
+Convention: Persian-Arabic heritage calendar per Uzbek Muslim Board-linked services (Bomdod, Peshin, Asr, Shom, Xufton; Saharlik); forenoon prayer named Zuho (choshgoh) by the Board''s own site
+
+Sources: namozvaqti.uz (rows Bomdod/Quyosh/Peshin/Asr/Shom/Xufton, Saharlik); islom.uz/taqvim (rows Бомдод/Саҳарлик/Ишроқ/Пешин/Аср/Шом/Ифторлик/Хуфтон); muslim.uz (Muslim Board of Uzbekistan, ''Zuho (choshgoh) namozi''); hadis.uz (''Жумъа кунида дуо ижобат бўладиган соат'')
+
+**Established-practice convention** (followed): For istijaba, Uzbek practice names the hour descriptively: Duo ijobat bo''ladigan soat (hadis.uz hadith title; islom.uz article uses ''дуо ижобат бўлади''); the forenoon prayer is Zuho (choshgoh), though calendars print Ishroq for the sunrise+20min row Source: hadis.uz; muslim.uz
+
+Confidence: high. Five + suhoor stand on multiple Uzbek services incl. Board-linked ones. duha drifts Ishroq→Zuho (muslim.uz ''Zuho (choshgoh) namozi'', uz.wikipedia, qalampir.uz; islom.uz''s own article says Zuho starts ~20 min after sunrise) - note the catalog''s Ishroq exactly matches islom.uz''s calendar row for sunrise+20min, so keep Ishroq only if the row is meant to mirror that calendar line. istijaba drifts Istijoba→the attested phrase (hadis.uz, islom.uz); single-word Istijoba lives only in other senses (''Истижоба тавбаси'').
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Bomdod | Bomdod | OK |
+| dhuhr | `prayer.dhuhr` | Peshin | Peshin | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Shom | Shom | OK |
+| isha | `prayer.isha` | Xufton | Xufton | OK |
+| suhoor | `prayer.suhoor` | Saharlik | Saharlik | OK |
+| duha | `prayer.duha` | Zuho | Ishroq | FIX |
+| istijaba | `prayer.istijaba` | Duo ijobat bo''ladigan soat | Istijoba | FIX |
+
+Fixes:
+- `prayer.duha`: "Ishroq" -> "Zuho"
+- `prayer.istijaba`: "Istijoba" -> "Duo ijobat bo''ladigan soat"
+
+---
+
+## vi - Vietnamese (Vietnam (Cham Muslim minority, plus Mekong Delta Muslim communities))
+
+Convention: Vietnamese Muslim sites and national press keep the Arabic names romanized in Latin script inside Vietnamese sentences; no Vietnamese-script prayer names
+
+Sources: toiyeuislam.com/p/salah.html ''Giờ Hành Lễ Salah'' (table: Fajr, Dhuhr, Asr, Maghrib, Isha by province); tuoitre.vn Ramadan explainer (Suhoor/Iftar) and BLVhaithanh Facebook (''bữa sáng gọi là suhoor''); giadinhhoigiaomientay Facebook (''5 buổi lễ Salah'', ''Salah Fajr'') and machzen80 Islamic lessons
+
+Confidence: medium. The five and Suhoor are grounded in real Vietnamese Muslim and press usage, all Latin-script. Duha and Istijaba found no Vietnamese-language Islamic source within search limits; they remain plain transliterations with low trust on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhoor | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## war - Waray (Philippines (Eastern Visayas: Samar, Leyte))
+
+Convention: No Islamic literature exists in Waray (no Quran translation, no islamhouse section, the sizable Waray Wikipedia Islam article names no prayers); Waray Muslims read Filipino/Cebuano/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Waray Wikipedia Islam article - 30 KB, no prayer names anywhere); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Waray carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## wo - Wolof (Senegal, Gambia, Mauritania)
+
+Convention: Wolof has its own established prayer names, documented explicitly by Gambian reference material and used in running Wolof religious text: suba (Fajr), tisbaar (Zuhr), taakusaan (Asr), timis (Maghrib), gee (Isha); the pre-dawn meal is Xëdd.
+
+Sources: accessgambia.com Muslim Prayers in Gambia (Fajr (suba), Zuhr (tisbaar), Asr (taakusaan), Maghrib (timis), Isha (gee)); fr.wikipedia.org Takussan Ndar (tàkkusaan) and Wolof religious text (Jëwharuh Nafiis: tisbaar; Senegalese Wolof posts: tisbaar, takussan, timis); au-senegal.com Ramadan lexicon and lequotidien.sn (Xëdd = pre-dawn meal; ndogou = iftar)
+
+Confidence: high. Correction: catalog had fajr as Fajar with sunrise as Suba - inverted; Wolof practice names the dawn prayer itself Suba, and the catalog''s five mostly tracked the Arabic loan instead of the Wolof name. Spelling variants recorded: taakusaan / tàkkusaan / takussan; gee also seen as gii/géejji. Suhoor = Xëdd (au-senegal.com, lequotidien.sn «kheudd»); ndogou is the IFTAR meal, not suhoor. Duha and Istijaba unattested in Wolof Islamic vocabulary - kept as naturalized Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Suba | Fajar | FIX |
+| dhuhr | `prayer.dhuhr` | Tisbaar | Tisbaar | OK |
+| asr | `prayer.asr` | Taakusaan | Takusaan | FIX |
+| magrib | `prayer.magrib` | Timis | Timis | OK |
+| isha | `prayer.isha` | Gee | Isha | FIX |
+| suhoor | `prayer.suhoor` | Xëdd | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "Fajar" -> "Suba"
+- `prayer.asr`: "Takusaan" -> "Taakusaan"
+- `prayer.isha`: "Isha" -> "Gee"
+- `prayer.suhoor`: "Suhur" -> "Xëdd"
+- `extras.explanation.midnight`: "Diggante Timis ak Fajar" -> "Diggante Timis ak Suba"
+- `extras.explanation.suhoor`: "20 min laata Fajar" -> "20 min laata Suba"
+
+---
+
+## yo - Yoruba (Nigeria, Benin (large Muslim population))
+
+Convention: Yoruba mosque practice and Yoruba Quran translation embed naturalized Arabic names in the frame ''irun X'' (irun Fajr, irun Ẹlẹ́ẹ̀rì, irun Magrib, irun Ishai)
+
+Sources: surahquran.com Yoruba Quran translation of Hud 114 (''ìrun Fajr ní ìbẹ̀rẹ̀ ọjọ́, ìrun Ẹlẹ́ẹ̀rì àti Asr ní apá ọ̀sán, ìrun Magrib àti Ishā ní àwọn wákàtí òru''); Hon. Dr AbdulHakeem AbdulLateef Yoruba da''wah videos (IRUN SALATUL FAJR, BI A SE NKI IRUN SALATUL ISHAI, IRUN MAGHRIB); imuslimguide.com/yo and islamhouse.com/yo (Irun category)
+
+Confidence: medium. Catalog''s time-of-day forms (Irun Àárọ̀, Irun Ọ̀sán, Irun Àsárì, Irun Ìṣàá) drift from mosque practice; Ìṣàá for isha is unattested while Ishai/Ishā is used by both sources. Subhi and ìrun àárọ̀ are common alternates for fajr; Ẹlẹ́ẹ̀rì is the established naturalization of dhuhr. Suhoor, Duha and Istijaba found no Yoruba-language Islamic source; kept as transliterations with low trust.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Ìrun Fajr | Irun Àárọ̀ | FIX |
+| dhuhr | `prayer.dhuhr` | Ìrun Ẹlẹ́ẹ̀rì | Irun Ọ̀sán | FIX |
+| asr | `prayer.asr` | Ìrun Asr | Irun Àsárì | FIX |
+| magrib | `prayer.magrib` | Ìrun Magrib | Irun Magrib | FIX |
+| isha | `prayer.isha` | Ìrun Ishai | Irun Ìṣàá | FIX |
+| suhoor | `prayer.suhoor` | Sahur | Sahuri | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "Irun Àárọ̀" -> "Ìrun Fajr"
+- `prayer.dhuhr`: "Irun Ọ̀sán" -> "Ìrun Ẹlẹ́ẹ̀rì"
+- `prayer.asr`: "Irun Àsárì" -> "Ìrun Asr"
+- `prayer.magrib`: "Irun Magrib" -> "Ìrun Magrib"
+- `prayer.isha`: "Irun Ìṣàá" -> "Ìrun Ishai"
+- `prayer.suhoor`: "Sahuri" -> "Sahur"
+- `extras.explanation.istijaba`: "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)" -> "Wákàtí 1 ṣáájú Ìrun Magrib (ọjọ́ Jímọ̀ nìkan)"
+
+REVIEW (author the sentence with the reference names):
+- `extras.explanation.suhoor`: "Ìṣẹ́jú 20 ṣáájú Àárọ̀" - name fajr not present in any form; current sentence uses a translated word - rebuild with the established name Ìrun Fajr
+- `extras.explanation.midnight`: "Àárín Magrib àti Àárọ̀" - fajr named as Àárọ̀ (translated word); rebuild naming both prayers per Yoruba practice, e.g. Àárín ìrun Magrib àti ìrun Fajr
+
+---
+
+## zh-Hans - Simplified Chinese (China (Hui, Uyghur and other Muslim communities))
+
+Convention: Chinese Islam''s centuries-old practice TRANSLATES the five prayer names (五时拜: 晨礼/晌礼/晡礼/昏礼/宵礼) - confirmed by government religious-affairs material and Chinese prayer-time row labels; Suhoor likewise reads 封斋饭.
+
+Sources: mzzjj.gz.gov.cn Guangzhou religious-affairs FAQ (「五时拜」即…晨礼晌礼晡礼昏礼宵礼); app.muslimpro.com/zh row labels (晨礼/晌礼/晡礼/昏礼/宵礼); islamqa.info/zh, byenah.com (same five; 上午拜（杜哈拜）); saudipedia.com, baike.baidu.com, zh.wikipedia 斋戒 (封斋饭)
+
+**Established-practice convention** (followed): Established Chinese Islamic practice translates the five prayer names rather than transliterating them: 晨礼 (Fajr), 晌礼 (Dhuhr), 晡礼 (Asr), 昏礼 (Maghrib), 宵礼 (Isha); the pre-dawn meal is 封斋饭. Recorded per the ticket''s exception. Source: mzzjj.gz.gov.cn (Guangzhou ethnic and religious affairs bureau) and muslimpro.com zh row labels; islamqa.info/zh; Saudipedia
+
+Confidence: high. Five prayers and 封斋饭 stand exactly as translated convention; also seen in People''s Daily coverage (paper.people.com.cn). Duha: literature pairs the translated 上午拜 with 杜哈拜 (islamqa.info/zh «上午拜（杜哈拜）», muslimwww.com); Chinese Islamic app labels print 杜哈拜 (IslamApp), recorded as the name-form with 上午拜 as the translated runner-up. 伊斯提贾巴 is unattested; Chinese texts describe the concept as 主麻日中应答祈祷的时辰 (islamreligion.com/cn).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | 晨礼 | 晨礼 | OK |
+| dhuhr | `prayer.dhuhr` | 晌礼 | 晌礼 | OK |
+| asr | `prayer.asr` | 晡礼 | 晡礼 | OK |
+| magrib | `prayer.magrib` | 昏礼 | 昏礼 | OK |
+| isha | `prayer.isha` | 宵礼 | 宵礼 | OK |
+| suhoor | `prayer.suhoor` | 封斋饭 | 封斋饭 | OK |
+| duha | `prayer.duha` | 杜哈拜 | 杜哈 | FIX |
+| istijaba | `prayer.istijaba` | 伊斯提贾巴 | 伊斯提贾巴 | OK |
+
+Fixes:
+- `prayer.duha`: "杜哈" -> "杜哈拜"
+
+---
+
+## Machine-readable reference
+
+```json
+{
+ "am": {
+  "language": "Amharic",
+  "countries": "Ethiopia",
+  "names": {
+   "fajr": "ፈጅር",
+   "dhuhr": "ዙህር",
+   "asr": "አስር",
+   "magrib": "መግሪብ",
+   "isha": "ኢሻ",
+   "suhoor": "ሱሁር",
+   "duha": "ዱሃ",
+   "istijaba": "ኢስቲጃባ"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "ሱሑር",
+    "expected": "ሱሁር"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "ዱሓ",
+    "expected": "ዱሃ"
+   }
+  ],
+  "reviews": []
+ },
+ "ar": {
+  "language": "Arabic",
+  "countries": "Across the Arab world (source language)",
+  "names": {
+   "fajr": "الفجر",
+   "dhuhr": "الظهر",
+   "asr": "العصر",
+   "magrib": "المغرب",
+   "isha": "العشاء",
+   "suhoor": "السحور",
+   "duha": "الضحى",
+   "istijaba": "ساعة الاستجابة"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابة",
+    "expected": "ساعة الاستجابة"
+   }
+  ],
+  "reviews": []
+ },
+ "az": {
+  "language": "Azerbaijani",
+  "countries": "Azerbaijan (and Iranian Azerbaijan)",
+  "names": {
+   "fajr": "Sübh",
+   "dhuhr": "Zöhr",
+   "asr": "Əsr",
+   "magrib": "Məğrib",
+   "isha": "İşa",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "İcabət saatı"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Düha",
+    "expected": "Duha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "İsticabə",
+    "expected": "İcabət saatı"
+   }
+  ],
+  "reviews": []
+ },
+ "bal": {
+  "language": "Balochi",
+  "countries": "Balochistan (Pakistan, Iran)",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "پیشین",
+   "asr": "دیګر",
+   "magrib": "نماشام",
+   "isha": "خفتن",
+   "suhoor": "اسور",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "ظہر",
+    "expected": "پیشین"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "عصر",
+    "expected": "دیګر"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "نماشاں",
+    "expected": "نماشام"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "عشاء",
+    "expected": "خفتن"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "نماشاں و فجر دا وچکار",
+    "expected": "نماشام و فجر دا وچکار"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "نماشاں 1 گھنٹہ پہلے (صرف جمعہ)",
+    "expected": "نماشام 1 گھنٹہ پہلے (صرف جمعہ)"
+   }
+  ],
+  "reviews": []
+ },
+ "bcl": {
+  "language": "Central Bicolano",
+  "countries": "Philippines (Bicol region, Southern Luzon)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Sa kabangaan kan Magrib asin Fajr",
+    "expected": "Sa kabangaan kan Maghrib asin Fajr"
+   }
+  ],
+  "reviews": []
+ },
+ "bm": {
+  "language": "Bambara (Bamanankan)",
+  "countries": "Mali (also Burkina Faso, Côte d''Ivoire)",
+  "names": {
+   "fajr": "Fajiri",
+   "dhuhr": "Selifana",
+   "asr": "Lansara",
+   "magrib": "Fitiri",
+   "isha": "Saafo",
+   "suhoor": "Suhuri",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "fajiri",
+    "expected": "Fajiri"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "selifana",
+    "expected": "Selifana"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "lansara",
+    "expected": "Lansara"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "fitiri",
+    "expected": "Fitiri"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "saafo",
+    "expected": "Saafo"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Magribi ni fajiri cɛ",
+    "expected": "Fitiri ni fajiri cɛ"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)",
+    "expected": "Fitiri 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)"
+   }
+  ],
+  "reviews": []
+ },
+ "bn": {
+  "language": "Bengali",
+  "countries": "Bangladesh and West Bengal, India",
+  "names": {
+   "fajr": "ফজর",
+   "dhuhr": "যোহর",
+   "asr": "আসর",
+   "magrib": "মাগরিব",
+   "isha": "ইশা",
+   "suhoor": "সেহরি",
+   "duha": "চাশত",
+   "istijaba": "দোয়া কবুলের সময়"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "সাহরি",
+    "expected": "সেহরি"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ইস্তিজাবা",
+    "expected": "দোয়া কবুলের সময়"
+   }
+  ],
+  "reviews": []
+ },
+ "bs": {
+  "language": "Bosnian",
+  "countries": "Bosnia and Herzegovina",
+  "names": {
+   "fajr": "Sabah",
+   "dhuhr": "Podne",
+   "asr": "Ikindija",
+   "magrib": "Akšam",
+   "isha": "Jacija",
+   "suhoor": "Sehur",
+   "duha": "Duha",
+   "istijaba": "Istidžaba"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "bug": {
+  "language": "Buginese",
+  "countries": "South Sulawesi, Indonesia",
+  "names": {
+   "fajr": "Subu",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subu''",
+    "expected": "Subu"
+   }
+  ],
+  "reviews": []
+ },
+ "ceb": {
+  "language": "Cebuano / Bisaya",
+  "countries": "Philippines (Central and Southern Philippines: Cebu, Bohol, Mindanao coasts)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Suhoor"
+   }
+  ],
+  "reviews": []
+ },
+ "ckb": {
+  "language": "Central Kurdish (Sorani)",
+  "countries": "Kurdistan region of Iraq",
+  "names": {
+   "fajr": "بەیانی",
+   "dhuhr": "نیوەڕۆ",
+   "asr": "عەسر",
+   "magrib": "مەغریب",
+   "isha": "عیشا",
+   "suhoor": "پاشێو",
+   "duha": "چێشتەنگاو",
+   "istijaba": "کاتی وەڵامدانەوەی دوعا"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "سەحەر",
+    "expected": "پاشێو"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ئیستیجابە",
+    "expected": "کاتی وەڵامدانەوەی دوعا"
+   }
+  ],
+  "reviews": []
+ },
+ "de": {
+  "language": "German",
+  "countries": "Germany, Austria",
+  "names": {
+   "fajr": "Fadschr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Ischa",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istidschaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "es": {
+  "language": "Spanish",
+  "countries": "Spain, Latin America",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.magrib",
+    "current": "Magreb",
+    "expected": "Maghrib"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Punto medio entre Magreb y Fajr",
+    "expected": "Punto medio entre Maghrib y Fajr"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 hora antes del Magreb (solo los viernes)",
+    "expected": "1 hora antes del Maghrib (solo los viernes)"
+   }
+  ],
+  "reviews": []
+ },
+ "fa": {
+  "language": "Persian",
+  "countries": "Iran, Afghanistan, Tajikistan (Persian script)",
+  "names": {
+   "fajr": "اذان صبح",
+   "dhuhr": "اذان ظهر",
+   "asr": "اذان عصر",
+   "magrib": "اذان مغرب",
+   "isha": "اذان عشاء",
+   "suhoor": "سحری",
+   "duha": "نماز چاشت",
+   "istijaba": "ساعت استجابت"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.isha",
+    "current": "اذان عشا",
+    "expected": "اذان عشاء"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابه",
+    "expected": "ساعت استجابت"
+   }
+  ],
+  "reviews": []
+ },
+ "ff": {
+  "language": "Fulah / Fulfulde (Latin script)",
+  "countries": "Across the Sahel: Guinea, Senegal, Mali, Nigeria, Cameroon",
+  "names": {
+   "fajr": "Fajira",
+   "dhuhr": "Zuhur",
+   "asr": "Asira",
+   "magrib": "Magrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "fajiri",
+    "expected": "Fajira"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "tiisbaar",
+    "expected": "Zuhur"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "takkusaan",
+    "expected": "Asira"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "furura",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "geeƴe",
+    "expected": "Isha"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "suhuur",
+    "expected": "Suhur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "dhuhaa",
+    "expected": "Duha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "istijaabaa",
+    "expected": "Istijaba"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Hakkunde Magrib e Fajiri",
+    "expected": "Hakkunde Magrib e Fajira"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "Minutooji 20 ado Fajiri",
+    "expected": "Minutooji 20 ado Fajira"
+   }
+  ],
+  "reviews": []
+ },
+ "fr": {
+  "language": "French",
+  "countries": "France",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahour",
+   "duha": "Doha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Doha"
+   }
+  ],
+  "reviews": []
+ },
+ "gu": {
+  "language": "Gujarati",
+  "countries": "Gujarat, India",
+  "names": {
+   "fajr": "ફજર",
+   "dhuhr": "ઝોહર",
+   "asr": "અસર",
+   "magrib": "મગરિબ",
+   "isha": "ઈશા",
+   "suhoor": "સહેરી",
+   "duha": "ચાસ્ત",
+   "istijaba": "ઇસ્તિજાબા"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "સહર",
+    "expected": "સહેરી"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "દુહા",
+    "expected": "ચાસ્ત"
+   }
+  ],
+  "reviews": []
+ },
+ "ha": {
+  "language": "Hausa",
+  "countries": "Nigeria, Niger (Latin-script mainstream)",
+  "names": {
+   "fajr": "Asuba",
+   "dhuhr": "Azahar",
+   "asr": "La''asar",
+   "magrib": "Magriba",
+   "isha": "Isha''i",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Lokacin amsa addu''a"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Lokacin amsa addu''a"
+   }
+  ],
+  "reviews": []
+ },
+ "hi": {
+  "language": "Hindi",
+  "countries": "North India",
+  "names": {
+   "fajr": "फज्र",
+   "dhuhr": "ज़ुहर",
+   "asr": "असर",
+   "magrib": "मग़रिब",
+   "isha": "ईशा",
+   "suhoor": "सहरी",
+   "duha": "चाश्त",
+   "istijaba": "दुआ कबूल होने का वक़्त"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "जुहा",
+    "expected": "चाश्त"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "इस्तिजाबा",
+    "expected": "दुआ कबूल होने का वक़्त"
+   }
+  ],
+  "reviews": []
+ },
+ "hil": {
+  "language": "Hiligaynon / Ilonggo",
+  "countries": "Philippines (Western Visayas: Iloilo, Negros Occidental)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "id": {
+  "language": "Indonesian",
+  "countries": "Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Dzuhur",
+   "asr": "Ashar",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "ilo": {
+  "language": "Ilocano",
+  "countries": "Philippines (Northern Luzon: Ilocos, Cagayan Valley)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "it": {
+  "language": "Italian",
+  "countries": "Italy",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhoor",
+    "expected": "Suhur"
+   }
+  ],
+  "reviews": []
+ },
+ "ja": {
+  "language": "Japanese",
+  "countries": "Japan (Japanese Muslim community, mosques, Islamic materials)",
+  "names": {
+   "fajr": "ファジュル",
+   "dhuhr": "ズフル",
+   "asr": "アスル",
+   "magrib": "マグリブ",
+   "isha": "イシャー",
+   "suhoor": "スフール",
+   "duha": "ドゥハー",
+   "istijaba": "イスティジャーバ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "jv": {
+  "language": "Javanese",
+  "countries": "Central and East Java, Indonesia; Suriname",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Luhur",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kas": {
+  "language": "Kashmiri (Perso-Arabic)",
+  "countries": "Kashmir",
+  "names": {
+   "fajr": "صُبُح",
+   "dhuhr": "پیٚشِن",
+   "asr": "دِگر",
+   "magrib": "شام",
+   "isha": "خۄفتَن",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kk": {
+  "language": "Kazakh",
+  "countries": "Kazakhstan",
+  "names": {
+   "fajr": "Таң",
+   "dhuhr": "Бесін",
+   "asr": "Екінті",
+   "magrib": "Ақшам",
+   "isha": "Құптан",
+   "suhoor": "Сәресі",
+   "duha": "Духа",
+   "istijaba": "Дұға қабыл болатын уақыт"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истижаба",
+    "expected": "Дұға қабыл болатын уақыт"
+   }
+  ],
+  "reviews": []
+ },
+ "kn": {
+  "language": "Kannada",
+  "countries": "Karnataka, India",
+  "names": {
+   "fajr": "ಫಜರ್",
+   "dhuhr": "ಜುಹರ್",
+   "asr": "ಅಸರ್",
+   "magrib": "ಮಗ್ರಿಬ್",
+   "isha": "ಇಶಾ",
+   "suhoor": "ಸಹರಿ",
+   "duha": "ದುಹಾ",
+   "istijaba": "ಇಸ್ತಿಜಾಬಾ"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "ಸಹರ್",
+    "expected": "ಸಹರಿ"
+   }
+  ],
+  "reviews": []
+ },
+ "ko": {
+  "language": "Korean",
+  "countries": "Korea (Korea Muslim Federation community, Seoul Central Masjid)",
+  "names": {
+   "fajr": "파즈르",
+   "dhuhr": "주흐르",
+   "asr": "아스르",
+   "magrib": "마그립",
+   "isha": "이샤",
+   "suhoor": "수후르",
+   "duha": "두하",
+   "istijaba": "이스티자바"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kr": {
+  "language": "Kanuri",
+  "countries": "Nigeria (Borno, Yobe), Niger",
+  "names": {
+   "fajr": "Faaji",
+   "dhuhr": "Zuhuru",
+   "asr": "Asara",
+   "magrib": "Magaribi",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duhaa",
+   "istijaba": "Istijaaba"
+  },
+  "confidence": "low",
+  "fixes": [],
+  "reviews": []
+ },
+ "ku": {
+  "language": "Kurdish Kurmanji",
+  "countries": "Turkey, Syria, Iraq Kurdistan (Latin script)",
+  "names": {
+   "fajr": "Sibe",
+   "dhuhr": "Nîvro",
+   "asr": "Esir",
+   "magrib": "Mexreb",
+   "isha": "Eşa",
+   "suhoor": "Paşîv",
+   "duha": "Duha",
+   "istijaba": "Îstîcab"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Xwarina seherê",
+    "expected": "Paşîv"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijabe",
+    "expected": "Îstîcab"
+   }
+  ],
+  "reviews": []
+ },
+ "ky": {
+  "language": "Kyrgyz",
+  "countries": "Kyrgyzstan",
+  "names": {
+   "fajr": "Багымдат",
+   "dhuhr": "Бешим",
+   "asr": "Аср",
+   "magrib": "Шам",
+   "isha": "Куптан",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Дуба кабыл болуучу убакыт"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истижаба",
+    "expected": "Дуба кабыл болуучу убакыт"
+   }
+  ],
+  "reviews": []
+ },
+ "mad": {
+  "language": "Madurese",
+  "countries": "Madura island and East Java, Indonesia",
+  "names": {
+   "fajr": "Sobbu",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magreb",
+   "isha": "Isya''",
+   "suhoor": "Sahor",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Sobbu"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Sahor"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "E tengnga antara Magreb ban Subuh",
+    "expected": "E tengnga antara Magreb ban Sobbu"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 menit sabellunna Subuh",
+    "expected": "20 menit sabellunna Sobbu"
+   }
+  ],
+  "reviews": []
+ },
+ "mdh": {
+  "language": "Maguindanao",
+  "countries": "Philippines (Maguindanao provinces and Cotabato, Mindanao - Muslim-majority)",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Dhuhur",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "Luhur",
+    "expected": "Dhuhur"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Asar",
+    "expected": "Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Magrib",
+    "expected": "Maghrib"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Antara Magrib dan Subuh",
+    "expected": "Antara Maghrib dan Subuh"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 jam sebelum Magrib (Jumaat sahaja)",
+    "expected": "1 jam sebelum Maghrib (Jumaat sahaja)"
+   }
+  ],
+  "reviews": []
+ },
+ "mfa": {
+  "language": "Pattani Malay (Bahasa Melayu Patani)",
+  "countries": "southern Thailand (Pattani, Yala, Narathiwat, Songkhla)",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Zohor",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isyak",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   }
+  ],
+  "reviews": []
+ },
+ "min": {
+  "language": "Minangkabau",
+  "countries": "West Sumatra, Indonesia",
+  "names": {
+   "fajr": "Subuah",
+   "dhuhr": "Luhua",
+   "asr": "Asar",
+   "magrib": "Mugarik",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Subuah"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Magrib",
+    "expected": "Mugarik"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahua",
+    "expected": "Sahur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Dhuha",
+    "expected": "Duha"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Di tangah antaro Magrib jo Subuh",
+    "expected": "Di tangah antaro Mugarik jo Subuah"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minik sabalun Subuh",
+    "expected": "20 minik sabalun Subuah"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 jam sabalun Magrib (hanyo hari Jumaik)",
+    "expected": "1 jam sabalun Mugarik (hanyo hari Jumaik)"
+   }
+  ],
+  "reviews": []
+ },
+ "ml": {
+  "language": "Malayalam",
+  "countries": "Kerala, India",
+  "names": {
+   "fajr": "സുബഹ്",
+   "dhuhr": "ളുഹർ",
+   "asr": "അസർ",
+   "magrib": "മഗ്രിബ്",
+   "isha": "ഇശാ",
+   "suhoor": "സഹർ",
+   "duha": "ദുഹാ",
+   "istijaba": "ദുആ സ്വീകരണ സമയം"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "ളുഹാ",
+    "expected": "ദുഹാ"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ഇസ്തിജാബ",
+    "expected": "ദുആ സ്വീകരണ സമയം"
+   }
+  ],
+  "reviews": []
+ },
+ "mr": {
+  "language": "Marathi",
+  "countries": "Maharashtra, India",
+  "names": {
+   "fajr": "फजर",
+   "dhuhr": "जुहर",
+   "asr": "असर",
+   "magrib": "मगरीब",
+   "isha": "ईशा",
+   "suhoor": "सेहरी",
+   "duha": "चाश्त",
+   "istijaba": "इस्तिजाबा"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "सहरी",
+    "expected": "सेहरी"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "दुहा",
+    "expected": "चाश्त"
+   }
+  ],
+  "reviews": []
+ },
+ "mrw": {
+  "language": "Maranao",
+  "countries": "Philippines (Lanao del Sur and Lanao del Norte, Mindanao - Muslim-majority)",
+  "names": {
+   "fajr": "Sobo",
+   "dhuhr": "Duhur",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Aysah",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Sobo"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Luhur",
+    "expected": "Duhur"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isya",
+    "expected": "Aysah"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Sa gitna ng Magrib at Subuh",
+    "expected": "Sa gitna ng Magrib at Sobo"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minuto bago ang Subuh",
+    "expected": "20 minuto bago ang Sobo"
+   }
+  ],
+  "reviews": []
+ },
+ "ms": {
+  "language": "Malay",
+  "countries": "Malaysia, Brunei, Singapore, coastal Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Zohor",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isyak",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "my": {
+  "language": "Burmese",
+  "countries": "Myanmar (Bamar and Rohingya Muslim communities; Burmese script)",
+  "names": {
+   "fajr": "ဖဂျရ်",
+   "dhuhr": "ဇဟိုရ်",
+   "asr": "အဆွရ်",
+   "magrib": "မဂ်ရိဗ်",
+   "isha": "အီရှာ",
+   "suhoor": "ဆူဟူရ်",
+   "duha": "ဒူဟာ",
+   "istijaba": "အစ်တီဂျာဘာ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "nl": {
+  "language": "Dutch",
+  "countries": "Netherlands",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Suhoor"
+   }
+  ],
+  "reviews": []
+ },
+ "om": {
+  "language": "Oromo",
+  "countries": "Ethiopia (large Muslim population)",
+  "names": {
+   "fajr": "Fajrii",
+   "dhuhr": "Zuhrii",
+   "asr": "Asrii",
+   "magrib": "Magribii",
+   "isha": "Ishaa",
+   "suhoor": "Suhuur",
+   "duha": "Duhaa",
+   "istijaba": "Istijaabaa"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Dhuhaa",
+    "expected": "Duhaa"
+   }
+  ],
+  "reviews": []
+ },
+ "pa-Arab": {
+  "language": "Punjabi (Shahmukhi)",
+  "countries": "Punjab, Pakistan",
+  "names": {
+   "fajr": "سرگی",
+   "dhuhr": "پیشی",
+   "asr": "ڈیگر",
+   "magrib": "نماشاں",
+   "isha": "کفتاں",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "pl": {
+  "language": "Polish",
+  "countries": "Poland",
+  "names": {
+   "fajr": "Fadżr",
+   "dhuhr": "Zuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isza",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istidżaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Fajr",
+    "expected": "Fadżr"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Dhuhr",
+    "expected": "Zuhr"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isha",
+    "expected": "Isza"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istidżaba"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "W połowie między Maghrib a Fajr",
+    "expected": "W połowie między Maghrib a Fadżr"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minut przed Fajr",
+    "expected": "20 minut przed Fadżr"
+   }
+  ],
+  "reviews": []
+ },
+ "ps": {
+  "language": "Pashto",
+  "countries": "Afghanistan, Pakistan (Perso-Arabic script)",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ماسپښین",
+   "asr": "مازدیګر",
+   "magrib": "ماښام",
+   "isha": "عشاء",
+   "suhoor": "پېشلمی",
+   "duha": "چاښت",
+   "istijaba": "د دعا د قبلېدو وخت"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "صبح",
+    "expected": "فجر"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "ظهر",
+    "expected": "ماسپښین"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "عصر",
+    "expected": "مازدیګر"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "مغرب",
+    "expected": "ماښام"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "سهاري",
+    "expected": "پېشلمی"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "الضحى",
+    "expected": "چاښت"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابة",
+    "expected": "د دعا د قبلېدو وخت"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "د مغرب او صبح په منځ کې",
+    "expected": "د ماښام او فجر په منځ کې"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "له صبح ۲۰ دقيقې دمخه",
+    "expected": "له فجر ۲۰ دقيقې دمخه"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)",
+    "expected": "له ماښام ۱ ساعت دمخه (يوازې د جمعې ورځ)"
+   }
+  ],
+  "reviews": []
+ },
+ "pt": {
+  "language": "Portuguese",
+  "countries": "Portugal, Brazil",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "qu": {
+  "language": "Quechua (Cusco-Collao standard)",
+  "countries": "Peru, Bolivia, Ecuador",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Magrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "Chawpi p''unchaw",
+    "expected": "Dhuhr"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Chisi",
+    "expected": "Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Inti chinkay",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Tuta",
+    "expected": "Isha"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Chawpin Inti chinkaywan Fajrpa",
+    "expected": "Chawpin Magribwan Fajrpa"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Inti chinkayman 1 ura ñawpaq (viernesllallapunim)",
+    "expected": "Magribman 1 ura ñawpaq (viernesllallapunim)"
+   }
+  ],
+  "reviews": []
+ },
+ "ro": {
+  "language": "Romanian",
+  "countries": "Romania",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "ru": {
+  "language": "Russian",
+  "countries": "Russia (Tatarstan, Bashkortostan, Caucasus; large Muslim population)",
+  "names": {
+   "fajr": "Фаджр",
+   "dhuhr": "Зухр",
+   "asr": "Аср",
+   "magrib": "Магриб",
+   "isha": "Иша",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Истиджаба"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "sd": {
+  "language": "Sindhi",
+  "countries": "Sindh, Pakistan",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ظهر",
+   "asr": "عصر",
+   "magrib": "مغرب",
+   "isha": "عشاء",
+   "suhoor": "سحري",
+   "duha": "چاشت",
+   "istijaba": "دعا جي قبوليت جو وقت"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجاب",
+    "expected": "دعا جي قبوليت جو وقت"
+   }
+  ],
+  "reviews": []
+ },
+ "skr": {
+  "language": "Saraiki",
+  "countries": "South Punjab, Pakistan",
+  "names": {
+   "fajr": "دَھمِّی",
+   "dhuhr": "پیشِیں",
+   "asr": "دِیگَر",
+   "magrib": "نِماشَاں",
+   "isha": "خُفتاں",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "so": {
+  "language": "Somali",
+  "countries": "Somalia, Somaliland, Djibouti, Somali regions of Ethiopia and Kenya",
+  "names": {
+   "fajr": "Subax",
+   "dhuhr": "Duhur",
+   "asr": "Casar",
+   "magrib": "Magrib",
+   "isha": "Cisho",
+   "suhoor": "Suxuur",
+   "duha": "Dhuha",
+   "istijaba": "Saacadda la aqbalo ducada"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.magrib",
+    "current": "Maqrib",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Cishaa''i",
+    "expected": "Cisho"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahri",
+    "expected": "Suxuur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Dhuha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaabo",
+    "expected": "Saacadda la aqbalo ducada"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Dhexdhexaadxada Maqrib iyo Subax",
+    "expected": "Dhexdhexaadxada Magrib iyo Subax"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 saac ka hor Maqrib (Jimcaha oo kaliya)",
+    "expected": "1 saac ka hor Magrib (Jimcaha oo kaliya)"
+   }
+  ],
+  "reviews": []
+ },
+ "sq": {
+  "language": "Albanian",
+  "countries": "Albania, Kosovo, North Macedonia",
+  "names": {
+   "fajr": "Imsaku",
+   "dhuhr": "Yleja",
+   "asr": "Ikindia",
+   "magrib": "Akshami",
+   "isha": "Jacia",
+   "suhoor": "Syfyri",
+   "duha": "Duha",
+   "istijaba": "Istixhabe"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Syfyri"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istixhaba",
+    "expected": "Istixhabe"
+   }
+  ],
+  "reviews": []
+ },
+ "su": {
+  "language": "Sundanese",
+  "countries": "West Java, Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "sw": {
+  "language": "Swahili",
+  "countries": "Tanzania, Kenya, East African coast (Muslim coastal tradition)",
+  "names": {
+   "fajr": "Alfajiri",
+   "dhuhr": "Adhuhuri",
+   "asr": "Alasiri",
+   "magrib": "Magharibi",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Dhuha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Dhuha"
+   }
+  ],
+  "reviews": []
+ },
+ "ta": {
+  "language": "Tamil",
+  "countries": "Tamil Nadu India, Sri Lanka, Singapore, Malaysia (Tamil Muslim tradition)",
+  "names": {
+   "fajr": "ஃபஜ்ர்",
+   "dhuhr": "ழுஹர்",
+   "asr": "அஸ்ர்",
+   "magrib": "மஃகிரிப்",
+   "isha": "இஷா",
+   "suhoor": "சஹர்",
+   "duha": "ழுஹா",
+   "istijaba": "இஸ்திஜாபா"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "துஹா",
+    "expected": "ழுஹா"
+   }
+  ],
+  "reviews": []
+ },
+ "te": {
+  "language": "Telugu",
+  "countries": "Andhra Pradesh and Telangana, India",
+  "names": {
+   "fajr": "ఫజ్ర్",
+   "dhuhr": "జుహర్",
+   "asr": "అసర్",
+   "magrib": "మగ్రిబ్",
+   "isha": "ఇషా",
+   "suhoor": "సహర్",
+   "duha": "ఇష్రాఖ్",
+   "istijaba": "ఇస్తిజాబా"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "దుహా",
+    "expected": "ఇష్రాఖ్"
+   }
+  ],
+  "reviews": []
+ },
+ "tg": {
+  "language": "Tajik",
+  "countries": "Tajikistan",
+  "names": {
+   "fajr": "Бомдод",
+   "dhuhr": "Пешин",
+   "asr": "Аср",
+   "magrib": "Шом",
+   "isha": "Хуфтан",
+   "suhoor": "Саҳарӣ",
+   "duha": "Зуҳо",
+   "istijaba": "Истиҷоба"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Саҳар",
+    "expected": "Саҳарӣ"
+   }
+  ],
+  "reviews": []
+ },
+ "th": {
+  "language": "Thai",
+  "countries": "Thailand (Malay-Muslim south plus Thai Muslim communities)",
+  "names": {
+   "fajr": "ซุบฮิ",
+   "dhuhr": "ซุฮฺริ",
+   "asr": "อัศริ",
+   "magrib": "มัฆริบ",
+   "isha": "อิชาอฺ",
+   "suhoor": "ซูฮูร์",
+   "duha": "ดุฮา",
+   "istijaba": "อิสติญาบะฮฺ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "ti": {
+  "language": "Tigrinya",
+  "countries": "Eritrea, Ethiopia",
+  "names": {
+   "fajr": "ፈጅር",
+   "dhuhr": "ዙሁር",
+   "asr": "አስር",
+   "magrib": "መግሪብ",
+   "isha": "ኢሻ",
+   "suhoor": "ሱሕር",
+   "duha": "ዱሓ",
+   "istijaba": "ኢስቲጃባ"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "ዙሓር",
+    "expected": "ዙሁር"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "ዓስር",
+    "expected": "አስር"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "ምግሪብ",
+    "expected": "መግሪብ"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "ኣብ ማእከል ምግሪብን ፈጅርን",
+    "expected": "ኣብ ማእከል መግሪብን ፈጅርን"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)",
+    "expected": "1 ሰዓት ቅድሚ መግሪብ (ዓርቢ ጥራይ)"
+   }
+  ],
+  "reviews": []
+ },
+ "tk": {
+  "language": "Turkmen",
+  "countries": "Turkmenistan",
+  "names": {
+   "fajr": "Ertir",
+   "dhuhr": "Öýlen",
+   "asr": "Ikindi",
+   "magrib": "Agşam",
+   "isha": "Ýassy",
+   "suhoor": "Agyz wagt",
+   "duha": "Guşluk",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Agyz wagt"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Guşluk"
+   }
+  ],
+  "reviews": []
+ },
+ "tl": {
+  "language": "Tagalog / Filipino",
+  "countries": "Philippines (Manila, Luzon, nationwide lingua franca)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "tr": {
+  "language": "Turkish",
+  "countries": "Türkiye",
+  "names": {
+   "fajr": "İmsak",
+   "dhuhr": "Öğle",
+   "asr": "İkindi",
+   "magrib": "Akşam",
+   "isha": "Yatsı",
+   "suhoor": "Sahur",
+   "duha": "Kuşluk",
+   "istijaba": "İcabet saati"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "tt": {
+  "language": "Tatar",
+  "countries": "Tatarstan, Russia",
+  "names": {
+   "fajr": "Иртәнге намаз",
+   "dhuhr": "Өйлә намазы",
+   "asr": "Икенде намазы",
+   "magrib": "Ахшам намазы",
+   "isha": "Ястү намазы",
+   "suhoor": "Сәхәр",
+   "duha": "Дүһә",
+   "istijaba": "Истиҗабә"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "ug": {
+  "language": "Uyghur",
+  "countries": "Xinjiang, China (and diaspora)",
+  "names": {
+   "fajr": "بامدات",
+   "dhuhr": "پېشىن",
+   "asr": "ئەسىر",
+   "magrib": "شام",
+   "isha": "خۇپتەن",
+   "suhoor": "سەھەرلىك",
+   "duha": "زۇھا",
+   "istijaba": "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "ئىستىجابە",
+    "expected": "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+   }
+  ],
+  "reviews": []
+ },
+ "uk": {
+  "language": "Ukrainian",
+  "countries": "Ukraine (Crimean Tatar and diaspora Muslim communities)",
+  "names": {
+   "fajr": "Фаджр",
+   "dhuhr": "Зухр",
+   "asr": "Аср",
+   "magrib": "Магріб",
+   "isha": "Іша",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Істіджаба"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истіджаба",
+    "expected": "Істіджаба"
+   }
+  ],
+  "reviews": []
+ },
+ "ur": {
+  "language": "Urdu",
+  "countries": "Pakistan and India",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ظہر",
+   "asr": "عصر",
+   "magrib": "مغرب",
+   "isha": "عشاء",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "قبولیت کی گھڑی"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابہ",
+    "expected": "قبولیت کی گھڑی"
+   }
+  ],
+  "reviews": []
+ },
+ "uz": {
+  "language": "Uzbek",
+  "countries": "Uzbekistan",
+  "names": {
+   "fajr": "Bomdod",
+   "dhuhr": "Peshin",
+   "asr": "Asr",
+   "magrib": "Shom",
+   "isha": "Xufton",
+   "suhoor": "Saharlik",
+   "duha": "Zuho",
+   "istijaba": "Duo ijobat bo''ladigan soat"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Ishroq",
+    "expected": "Zuho"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijoba",
+    "expected": "Duo ijobat bo''ladigan soat"
+   }
+  ],
+  "reviews": []
+ },
+ "vi": {
+  "language": "Vietnamese",
+  "countries": "Vietnam (Cham Muslim minority, plus Mekong Delta Muslim communities)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "war": {
+  "language": "Waray",
+  "countries": "Philippines (Eastern Visayas: Samar, Leyte)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "wo": {
+  "language": "Wolof",
+  "countries": "Senegal, Gambia, Mauritania",
+  "names": {
+   "fajr": "Suba",
+   "dhuhr": "Tisbaar",
+   "asr": "Taakusaan",
+   "magrib": "Timis",
+   "isha": "Gee",
+   "suhoor": "Xëdd",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Fajar",
+    "expected": "Suba"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Takusaan",
+    "expected": "Taakusaan"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isha",
+    "expected": "Gee"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Xëdd"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Diggante Timis ak Fajar",
+    "expected": "Diggante Timis ak Suba"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 min laata Fajar",
+    "expected": "20 min laata Suba"
+   }
+  ],
+  "reviews": []
+ },
+ "yo": {
+  "language": "Yoruba",
+  "countries": "Nigeria, Benin (large Muslim population)",
+  "names": {
+   "fajr": "Ìrun Fajr",
+   "dhuhr": "Ìrun Ẹlẹ́ẹ̀rì",
+   "asr": "Ìrun Asr",
+   "magrib": "Ìrun Magrib",
+   "isha": "Ìrun Ishai",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Irun Àárọ̀",
+    "expected": "Ìrun Fajr"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Irun Ọ̀sán",
+    "expected": "Ìrun Ẹlẹ́ẹ̀rì"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Irun Àsárì",
+    "expected": "Ìrun Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Irun Magrib",
+    "expected": "Ìrun Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Irun Ìṣàá",
+    "expected": "Ìrun Ishai"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahuri",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)",
+    "expected": "Wákàtí 1 ṣáájú Ìrun Magrib (ọjọ́ Jímọ̀ nìkan)"
+   }
+  ],
+  "reviews": [
+   "extras.explanation.suhoor",
+   "extras.explanation.midnight"
+  ]
+ },
+ "zh-Hans": {
+  "language": "Simplified Chinese",
+  "countries": "China (Hui, Uyghur and other Muslim communities)",
+  "names": {
+   "fajr": "晨礼",
+   "dhuhr": "晌礼",
+   "asr": "晡礼",
+   "magrib": "昏礼",
+   "isha": "宵礼",
+   "suhoor": "封斋饭",
+   "duha": "杜哈拜",
+   "istijaba": "伊斯提贾巴"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "杜哈",
+    "expected": "杜哈拜"
+   }
+  ],
+  "reviews": []
+ }
+}
+```
+', NULL, NULL, '{}', false, false, false, NULL, NULL, 76800, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 07:20:51.610546+00', '2026-11-02 07:20:51.610546+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (63, 1, NULL, 'T-515', '# T-515
 
 ## Goal
@@ -26069,6 +30585,8 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (72, 565, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-01 14:33:30.597794+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (73, 571, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 02:18:13.744005+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (74, 575, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.642031+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (75, 575, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:22:53.928236+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (76, 585, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 07:20:58.118132+00');
 
 
 --
@@ -48658,6 +53176,4808 @@ catalog-lock.json carries a hash per catalog, and the lockstep test fails on any
 - Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
 - The owner does not read the languages; only the English renderings. Never present a language string alone.
 - The 2026-11-02 spot-check (three strings each in ar and ms) was a demo of a medium, not a verification; every string still goes through the flow.', NULL, NULL, '{}', false, false, false, NULL, 74752, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:13:04.622644+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (220, 75, 1, NULL, 'T-575', '# T-575 - verify and lock every string in the 74 translated catalogs
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 195 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from; no record anywhere says a translated string carries the English meaning. When this ticket closes: every one of the 211 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again without an explicit owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads static HTML files in a browser.** Four media weighed (see Design). Browser typography renders every script the catalogs carry, HTML tables keep the three columns aligned across Arabic, Thaana, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive: eyes only, nothing to type, click or navigate.
+2. **Engines: Google''s keyless gtx endpoint renders the round-trip; MyMemory''s keyless API is the second independent engine.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). When neither engine serves a locale, the judge LLM renders the round-trip and the row names `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The acceptance names this file as the lock''s home, and a bare string cannot carry a per-catalog content pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The lane renders engine 2''s round-trip for exactly the keys named uncertain, and the owner''s word is final.
+5. **The long tail runs machine-only, with a dispute queue as the owner''s only touch.** The judge rules pass, uncertain or fail per row; uncertain and fail rows get the second engine and a second judge pass; what still stands uncertain or failed forms the dispute queue the owner reads. Removing the owner from the long tail is the ticket''s first-class goal; the queue is the safety net, and no locale locks while a dispute stands open.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add prose the repo''s own law says goes stale. The catalogs themselves are already public, so the artifacts carry nothing new.
+7. **The pilot wave gates the tail.** The tail does not start until the pilot''s nine languages have each passed the owner''s personal read (the ticket''s acceptance). This session builds the flow and stages the pilot artifacts, then parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 211-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes and preserves the rest.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.mjs` - new: the verification flow.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium
+
+Weighed, all four candidates the acceptance names:
+
+- **Plain text or markdown file per locale, opened in an editor - rejected as the primary medium.** Fixed-width columns misalign across script widths in proportional editor fonts, pipe characters inside strings need escaping, and RTL rows inside a monospace table read against the column order.
+- **Static HTML file per locale, opened in the browser - chosen.** Correct typography for every script, aligned columns, no server, no interaction; the row carries `lang` and `dir` so Arabic-script rows render right to left.
+- **A CLI pager in the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging 211 rows is interaction, not reading.
+- **Full automation with no human read - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language, before anything rolls out.
+
+### The artifact
+
+`node scripts/i18n-verify.mjs --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes, per locale:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key. Columns: the key, our English, our language string, the machine round-trip of our language string back to English, and the engine that rendered the round-trip. Rows follow the fixed priority: the 11 `prayer.*` keys (fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba), then the 5 `extras.explanation.*` keys (midnight, last third, suhoor, duha, istijaba), then the remaining 195 keys in catalog order. Every value is HTML-escaped.
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, generated-at. The long tail''s judge reads this file; verdict records cite it.
+
+The generator reads catalogs through `@babel/parser` exactly as `scripts/catalog-lock.mjs` does (the package is CommonJS; the modules use ESM exports), never re-parses what it can hash, prints a per-locale row count, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Engine 1, the round-trip: Google''s keyless translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`), one request per row, concurrency 4, retry with backoff. Engine 2, the independent second opinion on uncertain cases: MyMemory''s keyless API (`api.mymemory.translated.net`). A row where engine 1 fails (HTTP error, empty body, or the input returned unchanged) falls to engine 2; a row where both fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule
+
+The ticket''s rule, restated as the flow executes it. A string passes when its meaning survives; wording differences never fail a string.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; the owner''s word is final. A failed string is re-translated and re-verified until it passes.
+- **Long tail:** the judge (an LLM session dispatched by the lane) reads `<locale>.json` and rules pass, uncertain or fail per row against the meaning rule. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads; the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate. Whitespace-only edits do not. Re-taking a verified lock is conscious: `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the owner''s order and the string.
+- `yarn i18n:lock` without arguments keeps its meaning: it re-pins `source` for all 74 locales and preserves every existing verified entry.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.mjs` with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - generated through the engines, coverage checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated and re-verified, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: The long tail** - the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+
+Sum: 12 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## Risks
+
+- **Engine coverage.** Google''s endpoint may not serve the rarest locales (mfa and mrw are the likeliest gaps); MyMemory covers fewer. What shows it: whole locales reading `engine:llm` in the artifact. The owner still reads those rows against the LLM round-trip; the mark tells the owner no independent machine vouched for them, and the pilot read itself prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,899 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate even though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` covers catalog parsing, HTML escaping, the 11-5-195 row order, the engine fallback chain and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine files; the generator prints 211 rows per locale and its exit code fails on any shortfall; the Awaiting Owner move carries the Waiting on line naming the files.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:22:50.512493+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (221, 75, 2, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Engines: Google''s keyless gtx endpoint renders the round-trip; MyMemory''s keyless API is the second independent engine.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). Where neither engine serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes and preserves the rest.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.mjs` - new: the verification flow.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.mjs --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order: the 11 `prayer.*` keys first (fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba), the 5 `extras.explanation.*` keys second (midnight, last third, suhoor, duha, istijaba), the remaining 191 keys in catalog order last. Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt. The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` exactly as `scripts/catalog-lock.mjs` does (the package is CommonJS; the catalog modules use ESM exports), prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Engine 1, the round-trip: Google''s keyless translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`), one request per row, concurrency 4, retry with backoff. Engine 2, the independent second opinion on uncertain cases: MyMemory''s keyless API (`api.mymemory.translated.net`). A row where engine 1 fails (HTTP error, empty body, or the input returned unchanged) falls to engine 2; a row where both fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated and re-verified until it passes.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments keeps its meaning: it re-pins `source` for all 74 locales and preserves every existing verified entry.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.mjs` with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - generated through the engines, coverage checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated and re-verified, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+
+Sum: 12 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## Risks
+
+- **Engine coverage.** Google''s endpoint may not serve the rarest locales (mfa and mrw are the likeliest gaps); MyMemory covers fewer. What shows it: whole locales reading `engine:llm` in the artifact. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` covers catalog parsing, HTML escaping, the 11-5-191 row order, the engine fallback chain, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:25:10.670627+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (222, 75, 3, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Findings answered (grill, comment 5794)
+
+1. Generator rewritten as CommonJS `scripts/i18n-verify.js` (the `check-*.js` precedent) so jest''s unit transform loads it directly; the `.mjs` precedent fails that (verified by the griller).
+2. Plain `yarn i18n:lock` now drops `verified` on every locale whose `source` hash changed; only `--verify` re-establishes it.
+3. Re-translated pilot rows are re-presented to the owner; a pilot locale locks only when the owner''s yes covers every final string.
+4. A per-locale engine pre-flight picks the primary engine; gtx drew HTTP 429 from this machine on 2026-11-02 (griller probe), so MyMemory-first is the expected pilot configuration.
+5. Section 3 now orders rows by the owner''s category order through an explicit prefix rank table.
+6. The locale parse rule names the exact declarator: the exported object literal that is not `PRAYER_LABELS`.
+7. Unchanged round-trip output counts as engine failure only when the catalog string differs from the English source; equal-to-English rows (loanwords) treat it as a valid result.
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Two keyless engines behind a per-locale pre-flight: Google''s gtx endpoint and MyMemory''s API.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). The pre-flight sends one request per locale and the locale runs on the engine that answers, the other held as second opinion; where neither serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes; a plain run drops `verified` on any locale whose `source` changed.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.js` - new: the verification flow, CommonJS (the `check-*.js` precedent) so the unit tests import it under jest''s transform.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.js --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order:
+  - **Section 1, the 11 `prayer.*` keys:** fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba.
+  - **Section 2, the 5 `extras.explanation.*` keys:** midnight, last third, suhoor, duha, istijaba.
+  - **Section 3, the remaining 191 keys ordered by the owner''s category sequence through this prefix rank table** (a prefix is the key''s first dot-segment; unranked prefixes follow in catalog order after the ranked ones): rank 1 `settings`, `settingsButton`, `language`; rank 2 the sheets and their parts `sheet`, `modal`, `dialog`, `alert`, `prayerAlert`, `overlay`, `colorPicker`, `stepper`, `sound`, `soundItem`, `volume`; rank 3 `help`; rank 4 `calendar`; rank 5 `qibla`; rank 6 `widget`; then `whatsNew`, `notification`, `notifications`, `reminder`, `channel`, `update`, `countdown`, `day`, `time`, `duration`, `error`, `app` in catalog order. Row order never affects a verdict; it exists so the owner''s reading order matches the priority order.
+  
+  Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt, plus the locale''s engine mix (rows per engine). The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, that locale''s engine mix, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` (the approach `scripts/catalog-lock.mjs` uses, generalized): per locale module, the exported object literal whose declarator is not `PRAYER_LABELS` (the same export `loader.ts` reads; `zh-Hans` exports `zhHans`, `pa-Arab` exports `paArab`, the rule is name-independent). It prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Two keyless engines: Google''s translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`) and MyMemory (`api.mymemory.translated.net`). Before each locale''s run, the generator sends one pre-flight round-trip request per engine and runs the locale on the engine that answers, the other held as the second opinion. On 2026-11-02 gtx answered HTTP 429 with a block page for all nine pilot codes from this machine while MyMemory answered, so MyMemory-first is the expected pilot configuration; the pre-flight re-decides at every run. Per row: one request, concurrency 4, retry with backoff. A row fails over to the second engine on HTTP error, empty body, or unchanged output when the catalog string differs from the English source; a row whose catalog string equals the English source (a loanword) treats unchanged output as a valid round-trip, not an engine miss. A row both engines fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine, and the locale''s engine mix prints in the index and rides the JSON - engine 1 dying mid-flight shows as a mix shift, not silence. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated, and the re-translated row is re-presented to the owner with its own round-trip - the owner''s yes must cover every final string before the locale locks.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments re-pins `source` for all 74 locales and **drops `verified` on every locale whose `source` hash changed**, naming the dropped locales on stdout - a re-taken English is a new verification debt, not a silent carry-over. Locales whose `source` is unchanged keep their `verified` entry. Only `--verify` re-establishes a `verified` pin, after the changed strings have passed the flow again.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.js` (CommonJS) with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - engines pre-flighted, artifacts generated and coverage-checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated, re-verified and re-presented until the owner''s yes covers every final string, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+
+Sum: 12 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## Risks
+
+- **Engine coverage and death.** gtx is already refusing this machine (429, 2026-11-02); MyMemory covers fewer of the rarest locales (mfa and mrw are the likeliest gaps). What shows it: the pre-flight''s engine pick, the per-locale engine mix in the index and JSON, whole locales reading `engine:llm`. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` imports the CommonJS generator directly and covers catalog parsing (the not-`PRAYER_LABELS` declarator rule), HTML escaping, the 11-5-191 row order with the section-3 rank table, the engine fallback chain with the loanword rule, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the index shows each locale''s engine mix; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:35:45.947806+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (223, 75, 4, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Findings answered (grill, comment 5794)
+
+1. Generator rewritten as CommonJS `scripts/i18n-verify.js` (the `check-*.js` precedent) so jest''s unit transform loads it directly; the `.mjs` precedent fails that (verified by the griller).
+2. Plain `yarn i18n:lock` now drops `verified` on every locale whose `source` hash changed; only `--verify` re-establishes it.
+3. Re-translated pilot rows are re-presented to the owner; a pilot locale locks only when the owner''s yes covers every final string.
+4. A per-locale engine pre-flight picks the primary engine; gtx drew HTTP 429 from this machine on 2026-11-02 (griller probe), so MyMemory-first is the expected pilot configuration.
+5. Section 3 now orders rows by the owner''s category order through an explicit prefix rank table.
+6. The locale parse rule names the exact declarator: the exported object literal that is not `PRAYER_LABELS`.
+7. Unchanged round-trip output counts as engine failure only when the catalog string differs from the English source; equal-to-English rows (loanwords) treat it as a valid result.
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Two keyless engines behind a per-locale pre-flight: Google''s gtx endpoint and MyMemory''s API.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). The pre-flight sends one request per locale and the locale runs on the engine that answers, the other held as second opinion; where neither serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes; a plain run drops `verified` on any locale whose `source` changed.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.js` - new: the verification flow, CommonJS (the `check-*.js` precedent) so the unit tests import it under jest''s transform.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.js --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order:
+  - **Section 1, the 11 `prayer.*` keys:** fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba.
+  - **Section 2, the 5 `extras.explanation.*` keys:** midnight, last third, suhoor, duha, istijaba.
+  - **Section 3, the remaining 191 keys ordered by the owner''s category sequence through this prefix rank table** (a prefix is the key''s first dot-segment; unranked prefixes follow in catalog order after the ranked ones): rank 1 `settings`, `settingsButton`, `language`; rank 2 the sheets and their parts `sheet`, `modal`, `dialog`, `alert`, `prayerAlert`, `overlay`, `colorPicker`, `stepper`, `sound`, `soundItem`, `volume`; rank 3 `help`; rank 4 `calendar`; rank 5 `qibla`; rank 6 `widget`; then `whatsNew`, `notification`, `notifications`, `reminder`, `channel`, `update`, `countdown`, `day`, `time`, `duration`, `error`, `app` in catalog order. Row order never affects a verdict; it exists so the owner''s reading order matches the priority order.
+  
+  Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt, plus the locale''s engine mix (rows per engine). The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, that locale''s engine mix, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` (the approach `scripts/catalog-lock.mjs` uses, generalized): per locale module, the exported object literal whose declarator is not `PRAYER_LABELS` (the same export `loader.ts` reads; `zh-Hans` exports `zhHans`, `pa-Arab` exports `paArab`, the rule is name-independent). It prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Two keyless engines: Google''s translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`) and MyMemory (`api.mymemory.translated.net`). Before each locale''s run, the generator sends one pre-flight round-trip request per engine and runs the locale on the engine that answers, the other held as the second opinion. On 2026-11-02 gtx answered HTTP 429 with a block page for all nine pilot codes from this machine while MyMemory answered, so MyMemory-first is the expected pilot configuration; the pre-flight re-decides at every run. Per row: one request, concurrency 4, retry with backoff. A row fails over to the second engine on HTTP error, empty body, or unchanged output when the catalog string differs from the English source; a row whose catalog string equals the English source (a loanword) treats unchanged output as a valid round-trip, not an engine miss. A row both engines fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine, and the locale''s engine mix prints in the index and rides the JSON - engine 1 dying mid-flight shows as a mix shift, not silence. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated, and the re-translated row is re-presented to the owner with its own round-trip - the owner''s yes must cover every final string before the locale locks.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments re-pins `source` for all 74 locales and **drops `verified` on every locale whose `source` hash changed**, naming the dropped locales on stdout - a re-taken English is a new verification debt, not a silent carry-over. Locales whose `source` is unchanged keep their `verified` entry. Only `--verify` re-establishes a `verified` pin, after the changed strings have passed the flow again.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.js` (CommonJS) with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - engines pre-flighted, artifacts generated and coverage-checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated, re-verified and re-presented until the owner''s yes covers every final string, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+7. **Step 7: The generator rework** - two engine slots per row, the verdict coloring with the meaning heuristic, modern CSS, language names beside codes, the English reference page, --resume and --fill v2, red-first with a mutation pass (2 points).
+8. **Step 8: The 75-locale run** - both engines over all 74 catalogs plus the English reference page, gaps re-run through resume passes and judge-filled, the staged pages colored and counted for the owner''s read (2 points).
+9. **Step 9: The landing** - the tool and its tests on uat through full discipline, the lock mechanism preserved on the side branch, the lead handed the exact push (2 points).
+
+Sum: 18 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## The extension (owner orders two and three, 2026-11-02)
+
+After the pilot staged and the ticket parked, the owner ruled twice (ticket comments, 2026-11-02). The orders amend this plan; the pilot read (steps 4-6) still waits for the owner and is untouched by the extension.
+
+1. **Modern, simple, human-friendly CSS** on every page (the owner called the current pages ugly).
+2. **Quick-glance coloring**: a row whose round-trip does not carry the English meaning reads RED, one that does reads GREEN, missing or doubted data reads AMBER; the index shows per language how many rows need checking, so the owner follows the red.
+3. **Language names beside codes everywhere** (so - Somali, min - Minangkabau; the full 74 + English).
+4. **The wave widens** from the nine pilots to ALL 75 catalogs, English included as the reference page.
+5. **Two independent round-trips per row, both in the table**: Google Translate (gtx) as comparison one, MyMemory as comparison two; the judge LLM fills rows both engines refuse, marked engine:llm, never presented as a site''s rendering. Green when the meaning survives in the engines'' round-trips, red when it does not, amber when data is missing or the judge doubted it. Both spot-check links stay.
+6. **The verification tool joins the project** (the owner''s explicit say; the earlier read-only order lifted for the verification tool alone).
+
+### The meaning heuristic (agent-ruled, tuned by the lead''s live read)
+
+The verdict color rests on a meaning heuristic comparing the English source with one round-trip: stopword-filtered token overlap over the shorter set (|A intersect B| / min(|A|,|B|)) at threshold 0.5, PLUS a cognate rule (two tokens of at least 5 characters match when their first 4 characters are equal or their edit distance is at most 2) and a small synonym map for the UI vocabulary (the prayer-name glosses above all: fajr~dawn, dhuhr~noon, maghrib~sunset, isha~evening). The tuning bar, measured on the staged ar artifacts: Arabic''s false reds cut from 57 to 31 while keeping the true catches (Dhuhr->Back, Magrib->MOROCCO, Isha->Dinner). The landed heuristic must match or better that bar, with tests anchoring the three catches and the saat worked example.
+
+### The row verdict (agent-ruled from order three)
+
+Order three makes a pass rest on two engines agreeing, so the row verdict maps: GREEN when both engine slots rendered and BOTH round-trips carry the meaning; RED when both rendered and NEITHER carries it; AMBER when any engine slot is missing (refused, awaiting re-run or judge fill), when the engines diverge (one carries the meaning, the other does not - doubted data), or when the judge doubted the row. A row both engines refuse carries the judge LLM''s rendering in a single cell marked engine:llm (never a site''s rendering) and reads AMBER: no independent machine vouched for it. Red therefore requires two engines agreeing the meaning is lost, which strictly reduces false reds below the single-trip measurement while a divergent true catch still surfaces as amber.
+
+### The artifact v2
+
+- Row shape: key, en, catalog, sites (two slots: gtx then MyMemory, each engine + roundtrip, or miss), llm (present only where both engines refused and the judge filled: roundtrip, optional doubt), url (Google spot-check), url2 (MyMemory spot-check), verdict (green|red|amber).
+- <locale>.html: modern styled page, sections in the owner priority order, language name beside the code, both round-trips side by side, per-row verdict tint, both spot-check links.
+- en.html: the reference page - every key with its English string in the same sections, no engines, no verdicts.
+- index.html: one card per language (all 75, English marked as the reference) with the language name, row count, green/red/amber counts and the engine mix, sorted red desc then amber desc then code, plus the color legend and the verdict protocol.
+- --resume: a re-run reuses a slot''s rendering only when the stored row''s catalog text equals the current catalog text, refetches every missing slot, then recomputes verdicts and rewrites html/json/index. The 31k-request wave rides repeated resume passes as quotas reset.
+- --fill v2: merges <locale>.llm-fill.json into rows where BOTH slots miss, accepts an optional doubt note (an amber row), refuses both directions of mismatch, refreshes the artifacts.
+
+### The landing (the lead''s ruling, recorded)
+
+The verification tool and its tests land on uat through full discipline (red-first, mutation pass, version bump, yarn validate, both-platform prebuild stamps). The verified-lock mechanism (step 1: catalog-lock.mjs rewrite, catalog-lock.json shape, catalogLock.test.ts) does NOT land: it stays preserved on the side branch lane1/T-575-lock for the owner''s separate ruling. Artifacts stay generated output outside the repository ($HOME/athan-i18n-verify), regenerable by the tool; only the tool enters git.
+
+## Risks
+
+- **Engine coverage and death.** gtx is already refusing this machine (429, 2026-11-02); MyMemory covers fewer of the rarest locales (mfa and mrw are the likeliest gaps). What shows it: the pre-flight''s engine pick, the per-locale engine mix in the index and JSON, whole locales reading `engine:llm`. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` imports the CommonJS generator directly and covers catalog parsing (the not-`PRAYER_LABELS` declarator rule), HTML escaping, the 11-5-191 row order with the section-3 rank table, the engine fallback chain with the loanword rule, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the index shows each locale''s engine mix; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 05:29:40.230979+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (224, 75, 5, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Findings answered (grill, comment 5794)
+
+1. Generator rewritten as CommonJS `scripts/i18n-verify.js` (the `check-*.js` precedent) so jest''s unit transform loads it directly; the `.mjs` precedent fails that (verified by the griller).
+2. Plain `yarn i18n:lock` now drops `verified` on every locale whose `source` hash changed; only `--verify` re-establishes it.
+3. Re-translated pilot rows are re-presented to the owner; a pilot locale locks only when the owner''s yes covers every final string.
+4. A per-locale engine pre-flight picks the primary engine; gtx drew HTTP 429 from this machine on 2026-11-02 (griller probe), so MyMemory-first is the expected pilot configuration.
+5. Section 3 now orders rows by the owner''s category order through an explicit prefix rank table.
+6. The locale parse rule names the exact declarator: the exported object literal that is not `PRAYER_LABELS`.
+7. Unchanged round-trip output counts as engine failure only when the catalog string differs from the English source; equal-to-English rows (loanwords) treat it as a valid result.
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Two keyless engines behind a per-locale pre-flight: Google''s gtx endpoint and MyMemory''s API.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). The pre-flight sends one request per locale and the locale runs on the engine that answers, the other held as second opinion; where neither serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes; a plain run drops `verified` on any locale whose `source` changed.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.js` - new: the verification flow, CommonJS (the `check-*.js` precedent) so the unit tests import it under jest''s transform.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.js --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order:
+  - **Section 1, the 11 `prayer.*` keys:** fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba.
+  - **Section 2, the 5 `extras.explanation.*` keys:** midnight, last third, suhoor, duha, istijaba.
+  - **Section 3, the remaining 191 keys ordered by the owner''s category sequence through this prefix rank table** (a prefix is the key''s first dot-segment; unranked prefixes follow in catalog order after the ranked ones): rank 1 `settings`, `settingsButton`, `language`; rank 2 the sheets and their parts `sheet`, `modal`, `dialog`, `alert`, `prayerAlert`, `overlay`, `colorPicker`, `stepper`, `sound`, `soundItem`, `volume`; rank 3 `help`; rank 4 `calendar`; rank 5 `qibla`; rank 6 `widget`; then `whatsNew`, `notification`, `notifications`, `reminder`, `channel`, `update`, `countdown`, `day`, `time`, `duration`, `error`, `app` in catalog order. Row order never affects a verdict; it exists so the owner''s reading order matches the priority order.
+  
+  Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt, plus the locale''s engine mix (rows per engine). The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, that locale''s engine mix, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` (the approach `scripts/catalog-lock.mjs` uses, generalized): per locale module, the exported object literal whose declarator is not `PRAYER_LABELS` (the same export `loader.ts` reads; `zh-Hans` exports `zhHans`, `pa-Arab` exports `paArab`, the rule is name-independent). It prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Two keyless engines: Google''s translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`) and MyMemory (`api.mymemory.translated.net`). Before each locale''s run, the generator sends one pre-flight round-trip request per engine and runs the locale on the engine that answers, the other held as the second opinion. On 2026-11-02 gtx answered HTTP 429 with a block page for all nine pilot codes from this machine while MyMemory answered, so MyMemory-first is the expected pilot configuration; the pre-flight re-decides at every run. Per row: one request, concurrency 4, retry with backoff. A row fails over to the second engine on HTTP error, empty body, or unchanged output when the catalog string differs from the English source; a row whose catalog string equals the English source (a loanword) treats unchanged output as a valid round-trip, not an engine miss. A row both engines fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine, and the locale''s engine mix prints in the index and rides the JSON - engine 1 dying mid-flight shows as a mix shift, not silence. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated, and the re-translated row is re-presented to the owner with its own round-trip - the owner''s yes must cover every final string before the locale locks.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments re-pins `source` for all 74 locales and **drops `verified` on every locale whose `source` hash changed**, naming the dropped locales on stdout - a re-taken English is a new verification debt, not a silent carry-over. Locales whose `source` is unchanged keep their `verified` entry. Only `--verify` re-establishes a `verified` pin, after the changed strings have passed the flow again.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.js` (CommonJS) with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - engines pre-flighted, artifacts generated and coverage-checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated, re-verified and re-presented until the owner''s yes covers every final string, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+7. **Step 7: The generator rework** - two engine slots per row, the verdict coloring with the meaning heuristic, modern CSS, language names beside codes, the English reference page, --resume and --fill v2, red-first with a mutation pass (2 points).
+8. **Step 8: The 75-locale run** - both engines over all 74 catalogs plus the English reference page, gaps re-run through resume passes and judge-filled, the staged pages colored and counted for the owner''s read (2 points).
+9. **Step 9: The landing** - the tool and its tests on uat through full discipline, the lock mechanism preserved on the side branch, the lead handed the exact push (2 points).
+
+Sum: 18 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## The extension (owner orders two and three, 2026-11-02)
+
+After the pilot staged and the ticket parked, the owner ruled twice (ticket comments, 2026-11-02). The orders amend this plan; the pilot read (steps 4-6) still waits for the owner and is untouched by the extension.
+
+1. **Modern, simple, human-friendly CSS** on every page (the owner called the current pages ugly).
+2. **Quick-glance coloring**: a row whose round-trip does not carry the English meaning reads RED, one that does reads GREEN, missing or doubted data reads AMBER; the index shows per language how many rows need checking, so the owner follows the red.
+3. **Language names beside codes everywhere** (so - Somali, min - Minangkabau; the full 74 + English).
+4. **The wave widens** from the nine pilots to ALL 75 catalogs, English included as the reference page.
+5. **Two independent round-trips per row, both in the table**: Google Translate (gtx) as comparison one, MyMemory as comparison two; the judge LLM fills rows both engines refuse, marked engine:llm, never presented as a site''s rendering. Green when the meaning survives in the engines'' round-trips, red when it does not, amber when data is missing or the judge doubted it. Both spot-check links stay.
+6. **The verification tool joins the project** (the owner''s explicit say; the earlier read-only order lifted for the verification tool alone).
+
+### The meaning heuristic (agent-ruled, tuned by the lead''s live read)
+
+The verdict color rests on a meaning heuristic comparing the English source with one round-trip: stopword-filtered token overlap over the shorter set (|A intersect B| / min(|A|,|B|)) at threshold 0.5, PLUS a cognate rule (two tokens of at least 5 characters match when their first 4 characters are equal or their edit distance is at most 2) and a small synonym map for the UI vocabulary (the prayer-name glosses above all: fajr~dawn, dhuhr~noon, maghrib~sunset, isha~evening). The tuning bar, measured on the staged ar artifacts: Arabic''s false reds cut from 57 to 31 while keeping the true catches (Dhuhr->Back, Magrib->MOROCCO, Isha->Dinner). The landed heuristic must match or better that bar, with tests anchoring the three catches and the saat worked example.
+
+### The row verdict (agent-ruled from order three)
+
+Order three makes a pass rest on two engines agreeing, so the row verdict maps: GREEN when both engine slots rendered and BOTH round-trips carry the meaning; RED when both rendered and NEITHER carries it; AMBER when any engine slot is missing (refused, awaiting re-run or judge fill), when the engines diverge (one carries the meaning, the other does not - doubted data), or when the judge doubted the row. A row both engines refuse carries the judge LLM''s rendering in a single cell marked engine:llm (never a site''s rendering) and reads AMBER: no independent machine vouched for it. Red therefore requires two engines agreeing the meaning is lost, which strictly reduces false reds below the single-trip measurement while a divergent true catch still surfaces as amber.
+
+### The artifact v2
+
+- Row shape: key, en, catalog, sites (two slots: gtx then MyMemory, each engine + roundtrip, or miss), llm (present only where both engines refused and the judge filled: roundtrip, optional doubt), url (Google spot-check), url2 (MyMemory spot-check), verdict (green|red|amber).
+- <locale>.html: modern styled page, sections in the owner priority order, language name beside the code, both round-trips side by side, per-row verdict tint, both spot-check links.
+- en.html: the reference page - every key with its English string in the same sections, no engines, no verdicts.
+- index.html: one card per language (all 75, English marked as the reference) with the language name, row count, green/red/amber counts and the engine mix, sorted red desc then amber desc then code, plus the color legend and the verdict protocol.
+- --resume: a re-run reuses a slot''s rendering only when the stored row''s catalog text equals the current catalog text, refetches every missing slot, then recomputes verdicts and rewrites html/json/index. The 31k-request wave rides repeated resume passes as quotas reset.
+- --fill v2: merges <locale>.llm-fill.json into rows where BOTH slots miss, accepts an optional doubt note (an amber row), refuses both directions of mismatch, refreshes the artifacts.
+
+### The landing (the lead''s ruling, recorded)
+
+The verification tool and its tests land on uat through full discipline (red-first, mutation pass, version bump, yarn validate, both-platform prebuild stamps). The verified-lock mechanism (step 1: catalog-lock.mjs rewrite, catalog-lock.json shape, catalogLock.test.ts) does NOT land: it stays preserved on the side branch lane1/T-575-lock for the owner''s separate ruling. Artifacts stay generated output outside the repository ($HOME/athan-i18n-verify), regenerable by the tool; only the tool enters git.
+
+## Risks
+
+- **Engine coverage and death.** gtx is already refusing this machine (429, 2026-11-02); MyMemory covers fewer of the rarest locales (mfa and mrw are the likeliest gaps). What shows it: the pre-flight''s engine pick, the per-locale engine mix in the index and JSON, whole locales reading `engine:llm`. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` imports the CommonJS generator directly and covers catalog parsing (the not-`PRAYER_LABELS` declarator rule), HTML escaping, the 11-5-191 row order with the section-3 rank table, the engine fallback chain with the loanword rule, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the index shows each locale''s engine mix; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 06:55:44.343262+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (225, 75, 6, NULL, 'T-575 - the plan', '# T-575 - the plan
+
+This plan implements the owner''s protocol doc (the Docs page "T-575 - the owner''s translation verification, the full protocol", linked to this ticket). Where the two differ, the owner''s doc rules and this plan says so. The string count is measured, not quoted: the babel parse of `shared/i18n/en.ts` counts **207 keys** (the owner''s protocol says 198, the correction is recorded here; 74 locales x 207 = 15,318 verifications).
+
+## Findings answered (grill, comment 5794)
+
+1. Generator rewritten as CommonJS `scripts/i18n-verify.js` (the `check-*.js` precedent) so jest''s unit transform loads it directly; the `.mjs` precedent fails that (verified by the griller).
+2. Plain `yarn i18n:lock` now drops `verified` on every locale whose `source` hash changed; only `--verify` re-establishes it.
+3. Re-translated pilot rows are re-presented to the owner; a pilot locale locks only when the owner''s yes covers every final string.
+4. A per-locale engine pre-flight picks the primary engine; gtx drew HTTP 429 from this machine on 2026-11-02 (griller probe), so MyMemory-first is the expected pilot configuration.
+5. Section 3 now orders rows by the owner''s category order through an explicit prefix rank table.
+6. The locale parse rule names the exact declarator: the exported object literal that is not `PRAYER_LABELS`.
+7. Unchanged round-trip output counts as engine failure only when the catalog string differs from the English source; equal-to-English rows (loanwords) treat it as a valid result.
+
+## Goal
+
+Today the 74 non-English catalogs in `shared/i18n/` hold planning-draft machine translations for the 191 general strings beside the 16 natively sourced glossary strings (the 11 prayer names and the 5 extras explanations, sourced per `shared/i18n/sourced-names.json` through T-410, T-419, T-428, T-452, T-537 and T-542). `catalog-lock.json` pins only the English each locale was translated from - the lock test (`shared/__tests__/catalogLock.test.ts`, read before this plan) compares each locale''s entry against a hash of `en` and nothing else, so a translated string can change today without any gate failing. When this ticket closes: every one of the 207 strings in each of the 74 catalogs has passed a meaning check (the owner''s personal read for the pilot wave ar, so, id, ms, min, mad, bug, ceb, ilo; the machine flow for the 65-locale long tail), every failed string has been re-translated and re-verified until it passed, and `catalog-lock.json` pins each verified catalog''s own content hash so no translated string changes again except for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string.
+
+## Decisions taken
+
+Agent-ruled, 2026-11-02:
+
+1. **The owner reads generated HTML files in a browser.** The four candidate flows weighed in Design; the deciding facts: browser typography renders every script the catalogs carry, HTML tables keep the columns aligned across Arabic, Thaani, Thai and CJK widths, a `file://` URL needs no server, and reading stays passive - eyes only, nothing to type, nothing to navigate. Each row also carries the owner-protocol''s spot-check URL.
+2. **Two keyless engines behind a per-locale pre-flight: Google''s gtx endpoint and MyMemory''s API.** No API keys, no accounts, no cost, no new dependencies (Node 24 native fetch). The pre-flight sends one request per locale and the locale runs on the engine that answers, the other held as second opinion; where neither serves a row, the judge LLM renders the round-trip and the row is marked `engine:llm` so the reader knows no independent machine vouched for it. The ask-first list is untouched: no installs, no deletions of non-empty files, no MMKV keys, no notification logic, and `app.json` is touched only in its version fields under the standing version-bump law.
+3. **Lock shape: the per-locale value in `catalog-lock.json` grows from a bare string into an object** `{ source, verified, verifiedAt, wave }`. The owner''s protocol says the lock "already exists"; it half-exists - today''s entry locks the English side only. The extension puts the owner''s stated policy on a per-catalog pin.
+4. **Verdict protocol: the owner answers per language in a ticket comment.** A pass names the language; a fail or an uncertain case names the language and the exact keys. The settlement rule is the owner''s own, verbatim: an uncertain case goes to the second independent engine; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+5. **The long tail runs machine-only, calibrated by the pilot.** The judge is an LLM session; before the tail starts it re-rules the nine pilot locales and must reproduce the owner''s actual rulings: zero false YES (no string the owner failed or flagged that the judge passes), and every string the owner flagged comes out uncertain or fail from the judge. False-uncertain is tolerated - it escalates, the safe direction. Calibration failing means the rubric is corrected and re-run, never overridden. After calibration, the owner''s eyes touch only the dispute queue.
+6. **Artifacts live outside the repository at `$HOME/athan-i18n-verify/`.** They are derived views, regenerable by the committed generator; committing them would add files the repo''s own law lets go stale. The catalogs are already public, so the artifacts carry nothing new.
+7. **The pilot gates the tail.** Nothing rolls out to the 65 remaining locales until the pilot''s nine languages have each passed the owner''s personal read (ticket acceptance). This session builds the flow, generates the pilot artifacts, stages them, and parks the ticket in Awaiting Owner.
+
+## Files
+
+- `shared/i18n/en.ts` - read: the 207-key source of truth.
+- `shared/i18n/<locale>.ts` (74 files) - read; edited only where a string fails verification.
+- `shared/i18n/catalog-lock.json` - changed: per-locale entries gain verified hashes.
+- `scripts/catalog-lock.mjs` - changed: writes the extended shape; `--verify <locales>` records verified hashes; a plain run drops `verified` on any locale whose `source` changed.
+- `shared/__tests__/catalogLock.test.ts` - changed: gates the extended shape, red-first.
+- `scripts/i18n-verify.js` - new: the verification flow, CommonJS (the `check-*.js` precedent) so the unit tests import it under jest''s transform.
+- `scripts/__tests__/i18nVerifyScript.test.ts` - new: the generator''s unit tests.
+- `package.json`, `app.json` (version fields only), `android/app/build.gradle` - the version bump on every commit.
+
+## Design
+
+### The read medium - the four candidate flows weighed
+
+- **(a) A visible browser window the owner can see, Google Translate pre-filled per category - rejected.** The 2026-11-02 attempt failed exactly here: the agent-browser CLI opens tabs in its own instance, invisible to the owner''s Zen browser. A headed launch fixes visibility but keeps the medium mediated by a driving tool, one category at a time, with a consent wall on first use. Too slow for 1,863 rows.
+- **(b) A generated side-by-side file the owner opens once and scrolls - chosen, as HTML.** One file per language, every row visible together: the key, our English, our language string, the machine round-trip back to English, the engine that rendered it, and the owner-protocol''s spot-check URL (`https://translate.google.com/?sl=<lang>&tl=en&text=<urlencoded>&op=translate`) so any row can be checked against Google''s own UI. The owner''s protocol notes the cost of mediating third-party content; the generator mediates nothing - it renders our catalogs and the engines'' output verbatim, escaped, and the URL takes the owner to the unmediated source.
+- **(c) A CLI translation tool rendering the comparison into the terminal - rejected.** Terminal fonts and bidi handling mangle complex scripts, and paging is interaction, not reading.
+- **(d) Full automation - adopted for the long tail, rejected for the pilot.** The ticket binds the pilot to the owner''s personal read, language by language. The pilot then stands as the calibration that the automation''s judgements match the owner''s (the owner''s protocol says exactly this).
+
+### The artifact
+
+`node scripts/i18n-verify.js --locales ar,so,id,ms,min,mad,bug,ceb,ilo [--out DIR]` writes:
+
+- `$HOME/athan-i18n-verify/<locale>.html` - one row per key, three sections in the owner''s priority order:
+  - **Section 1, the 11 `prayer.*` keys:** fajr, sunrise, dhuhr, asr, magrib, isha, midnight, last third, suhoor, duha, istijaba.
+  - **Section 2, the 5 `extras.explanation.*` keys:** midnight, last third, suhoor, duha, istijaba.
+  - **Section 3, the remaining 191 keys ordered by the owner''s category sequence through this prefix rank table** (a prefix is the key''s first dot-segment; unranked prefixes follow in catalog order after the ranked ones): rank 1 `settings`, `settingsButton`, `language`; rank 2 the sheets and their parts `sheet`, `modal`, `dialog`, `alert`, `prayerAlert`, `overlay`, `colorPicker`, `stepper`, `sound`, `soundItem`, `volume`; rank 3 `help`; rank 4 `calendar`; rank 5 `qibla`; rank 6 `widget`; then `whatsNew`, `notification`, `notifications`, `reminder`, `channel`, `update`, `countdown`, `day`, `time`, `duration`, `error`, `app` in catalog order. Row order never affects a verdict; it exists so the owner''s reading order matches the priority order.
+  
+  Each row: key (the context - the saat worked example: meaning is judged in the key''s context), our English, our language string, the round-trip English, the engine name, the spot-check URL. Every value HTML-escaped; each row carries `lang` and `dir` so Arabic-script strings render right to left. A language string never appears alone - always with its English and its round-trip (the owner''s rule).
+- `$HOME/athan-i18n-verify/<locale>.json` - the same rows as data: key, en, catalog, roundtrip, engine, url, generatedAt, plus the locale''s engine mix (rows per engine). The long tail''s judge reads this file; verdict records cite it.
+- `$HOME/athan-i18n-verify/index.html` - one line per pilot language: file, row count, that locale''s engine mix, the verdict protocol in three sentences.
+
+The generator reads catalogs through `@babel/parser` (the approach `scripts/catalog-lock.mjs` uses, generalized): per locale module, the exported object literal whose declarator is not `PRAYER_LABELS` (the same export `loader.ts` reads; `zh-Hans` exports `zhHans`, `pa-Arab` exports `paArab`, the rule is name-independent). It prints per-locale row counts, fails its exit code on any shortfall from 207, and writes through `process.stdout` (the repo''s no-`console.log` rule).
+
+### The engines
+
+Two keyless engines: Google''s translate endpoint (`translate.googleapis.com/translate_a/single?client=gtx`) and MyMemory (`api.mymemory.translated.net`). Before each locale''s run, the generator sends one pre-flight round-trip request per engine and runs the locale on the engine that answers, the other held as the second opinion. On 2026-11-02 gtx answered HTTP 429 with a block page for all nine pilot codes from this machine while MyMemory answered, so MyMemory-first is the expected pilot configuration; the pre-flight re-decides at every run. Per row: one request, concurrency 4, retry with backoff. A row fails over to the second engine on HTTP error, empty body, or unchanged output when the catalog string differs from the English source; a row whose catalog string equals the English source (a loanword) treats unchanged output as a valid round-trip, not an engine miss. A row both engines fail carries the judge LLM''s round-trip and the mark `engine:llm`. Every row names its engine, and the locale''s engine mix prints in the index and rides the JSON - engine 1 dying mid-flight shows as a mix shift, not silence. The unit tests never touch the network: the engines sit behind a fetch function the tests inject.
+
+### The arbitration rule - the owner''s, executed exactly
+
+A string passes when its meaning survives in the key''s context; wording differences never fail a string. The worked example anchors the rubric: the Malay `saat` renders as *moment* out of context and *seconds* in the timer context; the key names the context.
+
+- **Pilot:** the owner reads each language''s HTML top to bottom. A language passes when every row passes. An uncertain or failed row is named by key; the lane renders engine 2''s round-trip for exactly those keys and re-presents them; two engines agreeing on one meaning settles YES, still divergent the divergence is laid out plainly and the owner rules. A failed string is re-translated, and the re-translated row is re-presented to the owner with its own round-trip - the owner''s yes must cover every final string before the locale locks.
+- **Calibration:** the judge re-rules the nine pilot locales from their JSON and is compared against the owner''s actual rulings. Bar: zero false YES, and every owner-flagged string comes out uncertain or fail. Failing the bar corrects the rubric and re-runs; the tail does not start until calibration passes.
+- **Long tail:** the judge rules pass, uncertain or fail per row from `<locale>.json`. Uncertain and fail rows get engine 2''s round-trip appended and a second judge pass; two engines agreeing settles YES; what still stands uncertain or failed enters `$HOME/athan-i18n-verify/disputes.md`, which the owner reads - the owner''s word is final. Verdicts land in `$HOME/athan-i18n-verify/<locale>.verdicts.json`; each round''s summary lands in a ticket comment, so a fresh session resumes from the comments and the lock file alone. No long-tail locale locks while a dispute stands open.
+
+### The lock extension
+
+`catalog-lock.json`''s per-locale value becomes:
+
+```json
+{ "source": "<sha256 of JSON.stringify(en)>", "verified": "<sha256 of JSON.stringify(catalog)>", "verifiedAt": "<ISO date>", "wave": "pilot" | "tail" }
+```
+
+- `source` keeps today''s meaning: the English the locale was translated and verified against. An `en.ts` edit makes every locale stale and the gate fails, exactly as today.
+- `verified` is the new pin: the content hash of the locale''s own catalog at the moment its last string passed. Any change to a verified catalog that alters `JSON.stringify` output - a value, a key order - fails the gate; whitespace-only edits do not. Re-taking a verified lock happens only for (a) this verification''s owner-ruled fixes and (b) an explicit later owner order naming the string, per the owner''s protocol; the re-take is `node scripts/catalog-lock.mjs --verify <locales>`, recorded in a ticket comment naming the order and the string.
+- `yarn i18n:lock` without arguments re-pins `source` for all 74 locales and **drops `verified` on every locale whose `source` hash changed**, naming the dropped locales on stdout - a re-taken English is a new verification debt, not a silent carry-over. Locales whose `source` is unchanged keep their `verified` entry. Only `--verify` re-establishes a `verified` pin, after the changed strings have passed the flow again.
+- A locale not yet verified carries `{ "source": "<hash>" }` alone; the gate skips its verified field. Step 6 adds the closing pin: a test that fails until every one of the 74 locales carries a verified hash.
+- `languageWave.test.ts` passes unchanged: the file still holds exactly 74 locale keys.
+
+### Out of scope
+
+`native-strings.json` and `widget-statics.json` rows keep their own gates and are not verified here. `en.ts` is the source of truth and is never re-translated. No app code, no UI, no notification or widget logic changes; a re-translation touches only catalog values in `shared/i18n/<locale>.ts` under the full catalog discipline (red verdict first, gates green after, version bump).
+
+## Steps
+
+1. **Step 1: The verified-lock mechanism** - the extended `catalog-lock.json` shape, its writer and its gates, red-first against today''s flat file (2 points).
+2. **Step 2: The verification generator** - `scripts/i18n-verify.js` (CommonJS) with its network-free unit tests (2 points).
+3. **Step 3: The nine pilot artifacts** - engines pre-flighted, artifacts generated and coverage-checked, staged at `$HOME/athan-i18n-verify/`, ticket parked in Awaiting Owner (2 points).
+4. **Step 4: The pilot verdicts applied** - failed and owner-ruled strings re-translated, re-verified and re-presented until the owner''s yes covers every final string, the nine catalogs locked with `wave: pilot` (2 points).
+5. **Step 5: Calibration and the long tail** - the judge calibrated against the owner''s pilot rulings, then the 65 remaining locales verified round by round under the machine flow, disputes queued, round summaries in ticket comments (2 points).
+6. **Step 6: The close** - every locale locked, the all-74-verified gate added and green, closing comment (2 points).
+7. **Step 7: The generator rework** - two engine slots per row, the verdict coloring with the meaning heuristic, modern CSS, language names beside codes, the English reference page, --resume and --fill v2, red-first with a mutation pass (2 points).
+8. **Step 8: The 75-locale run** - both engines over all 74 catalogs plus the English reference page, gaps re-run through resume passes and judge-filled, the staged pages colored and counted for the owner''s read (2 points).
+9. **Step 9: The landing** - the tool and its tests on uat through full discipline, the lock mechanism preserved on the side branch, the lead handed the exact push (2 points).
+
+Sum: 18 points. Steps 1 through 3 (6 points) land in this session and end at the owner boundary; steps 4 through 6 run after the owner''s read.
+
+## The extension (owner orders two and three, 2026-11-02)
+
+After the pilot staged and the ticket parked, the owner ruled twice (ticket comments, 2026-11-02). The orders amend this plan; the pilot read (steps 4-6) still waits for the owner and is untouched by the extension.
+
+1. **Modern, simple, human-friendly CSS** on every page (the owner called the current pages ugly).
+2. **Quick-glance coloring**: a row whose round-trip does not carry the English meaning reads RED, one that does reads GREEN, missing or doubted data reads AMBER; the index shows per language how many rows need checking, so the owner follows the red.
+3. **Language names beside codes everywhere** (so - Somali, min - Minangkabau; the full 74 + English).
+4. **The wave widens** from the nine pilots to ALL 75 catalogs, English included as the reference page.
+5. **Two independent round-trips per row, both in the table**: Google Translate (gtx) as comparison one, MyMemory as comparison two; the judge LLM fills rows both engines refuse, marked engine:llm, never presented as a site''s rendering. Green when the meaning survives in the engines'' round-trips, red when it does not, amber when data is missing or the judge doubted it. Both spot-check links stay.
+6. **The verification tool joins the project** (the owner''s explicit say; the earlier read-only order lifted for the verification tool alone).
+
+### The meaning heuristic (agent-ruled, tuned by the lead''s live read)
+
+The verdict color rests on a meaning heuristic comparing the English source with one round-trip: stopword-filtered token overlap over the shorter set (|A intersect B| / min(|A|,|B|)) at threshold 0.5, PLUS a cognate rule (two tokens of at least 5 characters match when their first 4 characters are equal or their edit distance is at most 2) and a small synonym map for the UI vocabulary (the prayer-name glosses above all: fajr~dawn, dhuhr~noon, maghrib~sunset, isha~evening). The tuning bar, measured on the staged ar artifacts: Arabic''s false reds cut from 57 to 31 while keeping the true catches (Dhuhr->Back, Magrib->MOROCCO, Isha->Dinner). The landed heuristic must match or better that bar, with tests anchoring the three catches and the saat worked example.
+
+### The row verdict (agent-ruled from order three)
+
+Order three makes a pass rest on two engines agreeing, so the row verdict maps: GREEN when both engine slots rendered and BOTH round-trips carry the meaning; RED when both rendered and NEITHER carries it; AMBER when any engine slot is missing (refused, awaiting re-run or judge fill), when the engines diverge (one carries the meaning, the other does not - doubted data), or when the judge doubted the row. A row both engines refuse carries the judge LLM''s rendering in a single cell marked engine:llm (never a site''s rendering) and reads AMBER: no independent machine vouched for it. Red therefore requires two engines agreeing the meaning is lost, which strictly reduces false reds below the single-trip measurement while a divergent true catch still surfaces as amber.
+
+### The artifact v2
+
+- Row shape: key, en, catalog, sites (two slots: gtx then MyMemory, each engine + roundtrip, or miss), llm (present only where both engines refused and the judge filled: roundtrip, optional doubt), url (Google spot-check), url2 (MyMemory spot-check), verdict (green|red|amber).
+- <locale>.html: modern styled page, sections in the owner priority order, language name beside the code, both round-trips side by side, per-row verdict tint, both spot-check links.
+- en.html: the reference page - every key with its English string in the same sections, no engines, no verdicts.
+- index.html: one card per language (all 75, English marked as the reference) with the language name, row count, green/red/amber counts and the engine mix, sorted red desc then amber desc then code, plus the color legend and the verdict protocol.
+- --resume: a re-run reuses a slot''s rendering only when the stored row''s catalog text equals the current catalog text, refetches every missing slot, then recomputes verdicts and rewrites html/json/index. The 31k-request wave rides repeated resume passes as quotas reset.
+- --fill v2: merges <locale>.llm-fill.json into rows where BOTH slots miss, accepts an optional doubt note (an amber row), refuses duplicates and unknown keys, SKIPS entries an engine has since rendered (a resume pass recovering a row supersedes its judge fill - agent-ruled 2026-11-02, the first live wave showed stale fill files would otherwise block a locale''s fresh fills), and lists still-unfilled both-miss rows as gaps, refreshing the artifacts.
+
+### The landing (the lead''s ruling, recorded)
+
+The verification tool and its tests land on uat through full discipline (red-first, mutation pass, version bump, yarn validate, both-platform prebuild stamps). The verified-lock mechanism (step 1: catalog-lock.mjs rewrite, catalog-lock.json shape, catalogLock.test.ts) does NOT land: it stays preserved on the side branch lane1/T-575-lock for the owner''s separate ruling. Artifacts stay generated output outside the repository ($HOME/athan-i18n-verify), regenerable by the tool; only the tool enters git.
+
+## Risks
+
+- **Engine coverage and death.** gtx is already refusing this machine (429, 2026-11-02); MyMemory covers fewer of the rarest locales (mfa and mrw are the likeliest gaps). What shows it: the pre-flight''s engine pick, the per-locale engine mix in the index and JSON, whole locales reading `engine:llm`. The owner still reads those rows against the LLM round-trip; the mark says no independent machine vouched for them, and the pilot read prices this risk before the tail runs.
+- **Endpoint throttling.** The pilot makes 1,863 round-trip requests keyless. The generator caps concurrency at 4, retries with backoff, and reports per-locale counts; a half-generated locale is regenerated, never hand-edited.
+- **Lock sensitivity.** A key reorder in a verified catalog fails the gate though no string changed; that is the conservative pin working, and the re-take is one command plus one comment.
+- **Judgement drift across sessions.** The meaning rule rides every artifact and every verdict record; every re-translation cites the failed row it answers; the pilot calibration pins the judge''s rubric to the owner''s actual rulings.
+- **Interruption mid-tail.** The lock file is the progress record: verified locales are done, the rest are not. The comments carry the rounds.
+
+## Proof
+
+- `yarn validate` green after every step.
+- Step 1: the new gate fails against the flat lock file before the writer and the file change land (red first), then passes with zero verified locales.
+- Step 2: `npx jest scripts/__tests__/i18nVerifyScript.test.ts` imports the CommonJS generator directly and covers catalog parsing (the not-`PRAYER_LABELS` declarator rule), HTML escaping, the 11-5-191 row order with the section-3 rank table, the engine fallback chain with the loanword rule, the spot-check URL and the artifact shape, with the network injected as fixtures.
+- Step 3: `ls $HOME/athan-i18n-verify/*.html` lists nine language files plus the index; the generator prints 207 rows per locale and its exit code fails on any shortfall; the index shows each locale''s engine mix; the Awaiting Owner move carries the Waiting on line naming the files and the verdict protocol.
+- Steps 4 to 6: `npx jest shared/__tests__/catalogLock.test.ts` green with verified hashes present; the calibration bar reported in a ticket comment before the first tail round; the closing pin fails before the last locale locks and passes after; the closing comment counts 74 verified locales.
+', NULL, '🔒', '{}', false, false, false, NULL, 75776, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 06:56:00.756143+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (226, 76, 1, NULL, 'T-585 The transliteration reference: the eight names in 74 languages', '# T-585 The transliteration reference: the eight names in 74 languages
+
+The ruling this reference serves (owner orders 2026-11-02, fourth and fifth, on T-575): the eight names Fajr, Dhuhr, Asr, Maghrib, Isha, Suhoor, Duha, Istijaba are transliterated in every language, spelled the way each language itself writes them. Local established spellings stand (Indonesian Subuh, Zohor). Maghrib is sunset, never Morocco. Sunrise, Midnight and Last Third translate normally. Where a language''s established Islamic practice uses its own word or phrase for a name (Turkish Diyanet, Chinese wushi bai, Albanian KMSH rows), that convention is recorded with its source and followed - each language''s established prayer-name practice, never a machine''s literal word.
+
+Method: eight parallel research passes, one per language family, each grounding every spelling in that language''s own Islamic sources - official prayer-time services (Diyanet, KEMENAG, JAKIM, KMSH, DUM RT, muftiyats), prayer-time sites and Islamic calendars written in the language, Qur''an translations and fatwa literature for Suhoor, Duha and Istijaba. Reference spellings are Title-cased where a Latin-script catalog label expects it; nothing else was normalized. Compliance compares every catalog''s eight name rows and every extras description that carries a name against the reference below. Fixes land through the chunk tickets T-586 to T-593, never here.
+
+Summary: 74 locales - 20 fully compliant (bs, id, ja, jv, kas, ko, kr, ms, my, pa-Arab, pt, ro, ru, skr, su, th, tl, tr, tt, vi), 54 carrying 150 fixes, 2 sentence rebuild to author by hand. Class-rule sweep of the other 191 keys per catalog: no key embeds one of the eight names; the three apparent hits (Cebuano/Hiligaynon/Waray help text) were the word "duha" meaning the number two, dropped as false positives.
+
+Confidence: high 35, medium 29, low 10 (bal, bcl, bug, ff, hil, ilo, kr, mfa, qu, war - thin or no in-language Islamic publishing; the recorded form is the closest attested naturalization, flagged for the owner''s read).
+
+Established-practice (translate/own-word) conventions, each with its source in its locale section: bal, bs, ckb, fa, kk, ku, ps, so, sq, tk, tr, tt, ug, uz, zh-Hans.
+
+Reading the fix lines: `key: "current" -> "expected"`. Rows marked REVIEW need a fluent sentence authored around the reference name. Variant notes are compliant prose forms (Persian bare مغرب, Malayalam and Tamil inflected stems, Tatar case forms) and need no change.
+
+
+---
+
+## am - Amharic (Ethiopia)
+
+Convention: Ethiopian Muslim materials write the five prayers as Ge''ez-script Arabic loans: ፈጅር، ዙህር، አስር، መግሪብ، ኢሻ, with ሱሁር for the meal and ሶላተ ዱሃ for the forenoon prayer.
+
+Sources: sajda.com/am + namazvakti.com AM rows (ፈጅር، ዙህር، አስር، መግሪብ، ኢሻ); quran.et prayer pages (ፈጅር ዙሁር አስር መግሪብ ኢሻ) and eg.tawkit.net (መዕሪብ، ዒሻእ variants); byenah.com/am ለሰለሙ ጠቃሚ መመሪያ (ፈጅር، ዙሁር، ...) and ethiomuslims.net (የሱብሂ = ፈጅር); facebook.com/ethiodawa (ሶላተ-ዱሃ) + learningislam.com (ዱሃ ሶላት) + islamicbook.ws (ሶላቱል ዱሃ); Ethiopian Muslim community posts (ኢፍጣር እና ሱሁር)
+
+Confidence: high. Accepted variants across sources: ዙሁር, ዐስር, መዕሪብ/ምግሪብ, ዒሻ/ዒሻእ, ሱሑር (catalog), ዱሓ (catalog); sources write ሱሁር and ዱሃ. ሱብህ/ሱብሂ is a live synonym for fajr. istijaba is the one unverified name: no Amharic source retrieved, kept as the Arabic-loan transliteration.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ፈጅር | ፈጅር | OK |
+| dhuhr | `prayer.dhuhr` | ዙህር | ዙህር | OK |
+| asr | `prayer.asr` | አስር | አስር | OK |
+| magrib | `prayer.magrib` | መግሪብ | መግሪብ | OK |
+| isha | `prayer.isha` | ኢሻ | ኢሻ | OK |
+| suhoor | `prayer.suhoor` | ሱሁር | ሱሑር | FIX |
+| duha | `prayer.duha` | ዱሃ | ዱሓ | FIX |
+| istijaba | `prayer.istijaba` | ኢስቲጃባ | ኢስቲጃባ | OK |
+
+Fixes:
+- `prayer.suhoor`: "ሱሑር" -> "ሱሁር"
+- `prayer.duha`: "ዱሓ" -> "ዱሃ"
+
+---
+
+## ar - Arabic (Across the Arab world (source language))
+
+Convention: The Arabic originals: prayer-time services and fatwa sites use الفجر، الظهر، العصر، المغرب، العشاء, السحور for the meal, صلاة الضحى for the forenoon prayer, and the Friday hour as ساعة الاستجابة/ساعة الإجابة.
+
+Sources: saudiprayertimes.com / timesprayer.com / tawkit.net (مواقيت الصلاة row labels); ar.wikipedia سحور + islamweb.net fatwa 99658 (السحور = the meal); islamqa.info/ar/answers/82609 (ساعة الاستجابة) and islamweb fatwa 4205 + binbaz.org.sa (ساعة الإجابة)
+
+Confidence: high. Duha appears in sources as the full صلاة الضحى. For istijaba, ساعة الإجابة (Islamweb, Binbaz fatwa titles) is an equally established runner-up to ساعة الاستجابة (islamqa title). Catalog''s bare استجابة drifts: every source writes it with ساعة and the ending ة.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | الفجر | الفجر | OK |
+| dhuhr | `prayer.dhuhr` | الظهر | الظهر | OK |
+| asr | `prayer.asr` | العصر | العصر | OK |
+| magrib | `prayer.magrib` | المغرب | المغرب | OK |
+| isha | `prayer.isha` | العشاء | العشاء | OK |
+| suhoor | `prayer.suhoor` | السحور | السحور | OK |
+| duha | `prayer.duha` | الضحى | الضحى | OK |
+| istijaba | `prayer.istijaba` | ساعة الاستجابة | استجابة | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجابة" -> "ساعة الاستجابة"
+
+---
+
+## az - Azerbaijani (Azerbaijan (and Iranian Azerbaijan))
+
+Convention: Arabic-derived row names per Azerbaijani prayer calendars and the Caucasus Muslims Board convention (Sübh, Zöhr, Əsr, Məğrib, İşa); extras from Azerbaijani Islamic sites and scholars
+
+Sources: namazvaxti.az; islam.az/namaz-vaxti (rows Sübh/Gün çıxır/Zöhr/Əsr/Məğrib/İşa); ixlasla.com (''Cümə günü icabət saatı'', ''Duha namazı'', ''Sahur yeməyi''); metbuat.az/namaz
+
+Confidence: high. Five prayers stand (runner-up calendar style İmsaq/Şam on namazvaxti.org). Drifts vs catalog: duha Düha→Duha (sources consistently write ''Duha namazı''; ''İşraq namazı'' is the earlier-time variant), istijaba İsticabə→İcabət saatı (ixlasla.com, Yaşar Qurbanov). Sahur stands; QMI Ramadan calendars print İmsak/İftar for the times, BBC Azeri and ixlasla.com keep ''sahur'' for the meal.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sübh | Sübh | OK |
+| dhuhr | `prayer.dhuhr` | Zöhr | Zöhr | OK |
+| asr | `prayer.asr` | Əsr | Əsr | OK |
+| magrib | `prayer.magrib` | Məğrib | Məğrib | OK |
+| isha | `prayer.isha` | İşa | İşa | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Düha | FIX |
+| istijaba | `prayer.istijaba` | İcabət saatı | İsticabə | FIX |
+
+Fixes:
+- `prayer.duha`: "Düha" -> "Duha"
+- `prayer.istijaba`: "İsticabə" -> "İcabət saatı"
+
+---
+
+## bal - Balochi (Balochistan (Pakistan, Iran))
+
+Convention: Balochi keeps Persianate time-of-day names for the prayers (پیشین، دیګر، نماشام، خفتن) alongside Arabic فجر, and its own word اسور for the pre-dawn meal.
+
+Sources: mahkoh._baloch Instagram post 2025-03-14, Balochi Ramadan vocabulary: Assur اسور = Suhoor, Fijar فجر = Fajr, Deeghar دیګر = Asr, Nimasham نماشام = Maghrib, khaftan = Isha; lughat.blogspot.com (Lameen Souag), Diversity in Islamic prayer names: Persianate pēšīn (Dhuhr), dīgar (Asr), namāz-i-xuftan (Isha) system, and Kumzari parallels pīšin/xastin
+
+**Established-practice convention** (followed): Baloch practice names the prayers by Persianate time words (Deeghar, Nimasham, khaftan) rather than the Arabic names, and uses اسور for the pre-dawn meal Source: mahkoh._baloch Instagram (Balochi Ramadan names); lughat.blogspot.com on the Persianate prayer-name system
+
+Confidence: low. No Balochi prayer-time page was found; the grounding is a Balochi-language educator post (whose Arabic script is partly garbled: نماشام appears as نتاشام, khaftan as فتين) plus the linguistics literature. پیشین for Dhuhr is inferred from the Persianate parallels (lughat; Saraiki peshi) because the post omits Dhuhr. چاشت and استجابہ (catalog values) had no Balochi source. Verify with Balochi speakers before shipping.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | پیشین | ظہر | FIX |
+| asr | `prayer.asr` | دیګر | عصر | FIX |
+| magrib | `prayer.magrib` | نماشام | نماشاں | FIX |
+| isha | `prayer.isha` | خفتن | عشاء | FIX |
+| suhoor | `prayer.suhoor` | اسور | اسور | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes:
+- `prayer.dhuhr`: "ظہر" -> "پیشین"
+- `prayer.asr`: "عصر" -> "دیګر"
+- `prayer.magrib`: "نماشاں" -> "نماشام"
+- `prayer.isha`: "عشاء" -> "خفتن"
+- `extras.explanation.midnight`: "نماشاں و فجر دا وچکار" -> "نماشام و فجر دا وچکار"
+- `extras.explanation.istijaba`: "نماشاں 1 گھنٹہ پہلے (صرف جمعہ)" -> "نماشام 1 گھنٹہ پہلے (صرف جمعہ)"
+
+---
+
+## bcl - Central Bicolano (Philippines (Bicol region, Southern Luzon))
+
+Convention: No Islamic literature exists in Central Bicolano (no Quran translation, no islamhouse section, Wikipedia Islam article carries no prayer names); Bicol''s small Muslim communities read Filipino/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse language list, quranenc translations, Bicolano Wikipedia Islam article, MindaNews reporting on Bicol Muslims - all carry no prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Bicolano carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur" (Filipino dawah usage); flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+- `extras.explanation.midnight`: "Sa kabangaan kan Magrib asin Fajr" -> "Sa kabangaan kan Maghrib asin Fajr"
+
+---
+
+## bm - Bambara (Bamanankan) (Mali (also Burkina Faso, Côte d''Ivoire))
+
+Convention: Bambara has its own established Islamic day-marks for the five prayers, Arabic loans naturalized in Manding; the Bambara phrasebook''s prayer-times section and the standard dictionaries print fajiri, selifana, lansara, fitiri, saafo.
+
+Sources: en.wikivoyage.org Bambara phrasebook, Prayer times section (fajiri/selifana ~2pm/lansara ~4pm/fitiri/safo waati); An ka taa dictionary (fajiri = dawn prayer; saafo = fourth Muslim prayer, early night); fr.wiktionary per Bamadaba and Dumestre (seli; selifana = prière de 14h; fitiri; saafo)
+
+Confidence: medium. Catalog five stand and now carry dictionary grounding; variant safo (phrasebook) beside saafo. Caveat: Dumestre defines selifana as «prière de 14h», the early-afternoon mark, and the phrasebook times selifana ~2pm and lansara ~4pm, so the dhuhr/asr slot order follows the phrasebook''s five-row mapping. Suhoor/Duha/Istijaba unattested in Bambara materials (one AI-generated course compounds descriptive sɔgɔma/tile bi/sariya/wulafɛ/su seli - not followed); Suhuri kept as the Arabic loan in Manding shape. The two extras sentences swap the inflected Magribii for the reference Fitiri; a Bambara reader should confirm the natural prose form.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajiri | fajiri | FIX |
+| dhuhr | `prayer.dhuhr` | Selifana | selifana | FIX |
+| asr | `prayer.asr` | Lansara | lansara | FIX |
+| magrib | `prayer.magrib` | Fitiri | fitiri | FIX |
+| isha | `prayer.isha` | Saafo | saafo | FIX |
+| suhoor | `prayer.suhoor` | Suhuri | Suhuri | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "fajiri" -> "Fajiri"
+- `prayer.dhuhr`: "selifana" -> "Selifana"
+- `prayer.asr`: "lansara" -> "Lansara"
+- `prayer.magrib`: "fitiri" -> "Fitiri"
+- `prayer.isha`: "saafo" -> "Saafo"
+- `extras.explanation.midnight`: "Magribi ni fajiri cɛ" -> "Fitiri ni fajiri cɛ"
+- `extras.explanation.istijaba`: "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)" -> "Fitiri 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)"
+
+---
+
+## bn - Bengali (Bangladesh and West Bengal, India)
+
+Convention: Arabic-origin names in Bengali script exactly as Bangladeshi prayer-time pages and the Islamic Foundation calendar print them
+
+Sources: jugantor.com/namaz-sehri-iftar-time; islamicfoundation.gov.bd (Ramadan sehri-iftar schedule); bn.wikipedia.org (চাশতের নামাজ); alkawsar.com/bn/article/3084
+
+Confidence: high. যুহর/জোহর compete with যোহর (Jugantor''s row label); সাহরি (Prothom Alo) runs behind সেহরি (Islamic Foundation, Jugantor). Bengali literature names the Friday hour ''দোয়া কবুলের সময়''; ইস্তিজাবা is unattested in Bengali sources. Catalog suhoor সাহরি drifts; rest stands.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ফজর | ফজর | OK |
+| dhuhr | `prayer.dhuhr` | যোহর | যোহর | OK |
+| asr | `prayer.asr` | আসর | আসর | OK |
+| magrib | `prayer.magrib` | মাগরিব | মাগরিব | OK |
+| isha | `prayer.isha` | ইশা | ইশা | OK |
+| suhoor | `prayer.suhoor` | সেহরি | সাহরি | FIX |
+| duha | `prayer.duha` | চাশত | চাশত | OK |
+| istijaba | `prayer.istijaba` | দোয়া কবুলের সময় | ইস্তিজাবা | FIX |
+
+Fixes:
+- `prayer.suhoor`: "সাহরি" -> "সেহরি"
+- `prayer.istijaba`: "ইস্তিজাবা" -> "দোয়া কবুলের সময়"
+
+---
+
+## bs - Bosnian (Bosnia and Herzegovina)
+
+Convention: Bosnian established practice names the five prayers with its own Slavic/Ottanian words (sabah, podne, ikindija, aksam, jacija) and the Ramadan meal ''sehur''; this is the ticket''s translation-convention exception
+
+Sources: islam.ba ilmihal (Sabah-namaz; Podne-namaz; Ikindija-namaz (salatul-asr); Aksam-namaz (salatul-magrib); Jacija-namaz); islamhouse.com Bosnian article (Od adaba posta je sehur - jelo pri samom kraju noci); zijadljakic.ba and akos.ba (vrijeme kada se petkom prima/uslisava dova); Facebook Islamic community posts (Duha namaz se klanja dvadesetak minuta nakon izlaska sunca)
+
+**Established-practice convention** (followed): Bosnian established practice uses its own prayer names - sabah, podne, ikindija, akšam, jacija - and ''sehur'' for the pre-dawn meal, per the Islamic Community''s ilmihal literature and vaktija practice, not Arabic transliterations Source: islam.ba ilmihal, Cetvrti uvjet za namaz (Ikindija-namaz (salatul-asr), Aksam-namaz (salatul-magrib)); Bosnian mosque vaktija rows SABAH/PODNE/IKINDIJA/AKSAM/JACIJA
+
+Confidence: high. All eight rows match the catalog. Modern vaktije also print ''Zora (Imsak)'' as a separate fasting-start row beside sabah. Istidžaba follows Bosnian Arabic orthography (dz for j, as džuma/hadž); Bosnian texts mostly describe the concept (''vrijeme kada se petkom prima dova'', zijadljakic.ba, akos.ba) rather than transliterate - low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sabah | Sabah | OK |
+| dhuhr | `prayer.dhuhr` | Podne | Podne | OK |
+| asr | `prayer.asr` | Ikindija | Ikindija | OK |
+| magrib | `prayer.magrib` | Akšam | Akšam | OK |
+| isha | `prayer.isha` | Jacija | Jacija | OK |
+| suhoor | `prayer.suhoor` | Sehur | Sehur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidžaba | Istidžaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## bug - Buginese (South Sulawesi, Indonesia)
+
+Convention: Bugis-language religious speech and South Sulawesi usage keep Arabic loans with final vowels (Subu) and Lohor for Dhuhr.
+
+Sources: sulfianaopet.blogspot.com, Bugis-language ceramah Alebbirenna Wettu Subue (wettu subue); makassarglobal.com funeral report (Salat mulai subu, lohor, asar, magrib, isah); akurat.co niat puasa Ramadhan in Bugis (Mapuasaka'' baja reulang rammalang...)
+
+Confidence: low. Correction vs catalog: Subu''->Subu (attested without hamza). Only Subu has a Bugis-language source; lohor/asar/magrib ride one Sulawesi report, isah is that source''s spelling of Isya; Sahur, Dhuha, Istijabah are ungrounded Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subu | Subu'' | FIX |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subu''" -> "Subu"
+
+---
+
+## ceb - Cebuano / Bisaya (Philippines (Central and Southern Philippines: Cebu, Bohol, Mindanao coasts))
+
+Convention: Cebuano Islamic pages transliterate the Arabic names with Cebuano glosses in parentheses (kaadlawon (Fajr), udto (Dhuhr), hapon (ʿAsr)...); the Rowwad Bisayan Quran translation renders verse meanings in Cebuano, consistent with names staying Arabic.
+
+Sources: whatistheislam.com/ceb/pag-ampo-sa-islam/ (sa kaadlawon (Fajr), sa udto (Dhuhr), sa hapon (ʿAsr), sa pagsalop sa adlaw (Maghrib), ug sa gabii (Ishāʾ)); whatistheislam.com/ceb/pagpuasa-sa-islam/ ("mokaon ug suhoor sa wala pa mobuntag"); quranenc.com bisayan_rwwad (Bisayan Quran translation v1.1.3; 24:58 renders "pag-ampo sa kabuntagon/kagabhion" by meaning, names not localized); Cebuano dawah YouTube playlist "Unsaon Pag ampo sa Salah" (Cebuano-language salah guides)
+
+Confidence: medium. Names carried by one Cebuano Islamic site (natural prose, not MT-looking) corroborated by the professional Bisayan Quran translation''s transliteration practice; the site writes ʿAsr/Ishāʾ with diacritics, plain forms stand. Suhoor: the site spells it "suhoor" - catalog "Suhur" should move to "Suhoor". Duha and Istijaba ungrounded in Cebuano; plain transliterations kept.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Suhoor"
+
+---
+
+## ckb - Central Kurdish (Sorani) (Kurdistan region of Iraq)
+
+Convention: Sorani prayer-time rows use بەیانی، نیوەڕۆ، عەسر، مەغریب، عیشا; duha is چێشتەنگاو, the pre-dawn meal is پاشێو, and the Friday hour is phrased descriptively.
+
+Sources: kati-nwezh.com کاتەکانی نوێژ rows (بەیانی، نیوەڕۆ، عەسر، مەغریب، عیشا); speemedia.com کاتی بانگەکان (بانگی بەیانی/نیوەڕۆ/عەسر/مەغریب/عیشا); ckb.wikipedia نوێژی نیوەڕۆ + نوێژی چێشتەنگاو; walamakan.com and zaniary.com (چێشتەنگاو = صلاة الضحى); Kurdistan24 video تەندروستی و ڕۆژوو - گرنگی خواردنی پاشێو; Sorani Islamic posts: کاتی وەڵامدانەوەی دووعا لە ڕۆژی هەینی
+
+**Established-practice convention** (followed): Sorani uses the heritage word پاشێو for the Ramadan pre-dawn meal and phrases the Friday hour as کاتی وەڵامدانەوەی دوعا (time of du''a answering) Source: Kurdistan24 (خواردنی پاشێو); Sorani Islamic posts on وەڵامدانەوەی دووعا
+
+Confidence: high. Five prayers and چێشتەنگاو match the catalog exactly. Catalog drifts on two extras: سەحەر is the Arabic loan runner-up to the living پاشێو, and ئیستیجابە was not seen in Sorani sources, which phrase the Friday hour descriptively.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | بەیانی | بەیانی | OK |
+| dhuhr | `prayer.dhuhr` | نیوەڕۆ | نیوەڕۆ | OK |
+| asr | `prayer.asr` | عەسر | عەسر | OK |
+| magrib | `prayer.magrib` | مەغریب | مەغریب | OK |
+| isha | `prayer.isha` | عیشا | عیشا | OK |
+| suhoor | `prayer.suhoor` | پاشێو | سەحەر | FIX |
+| duha | `prayer.duha` | چێشتەنگاو | چێشتەنگاو | OK |
+| istijaba | `prayer.istijaba` | کاتی وەڵامدانەوەی دوعا | ئیستیجابە | FIX |
+
+Fixes:
+- `prayer.suhoor`: "سەحەر" -> "پاشێو"
+- `prayer.istijaba`: "ئیستیجابە" -> "کاتی وەڵامدانەوەی دوعا"
+
+---
+
+## de - German (Germany, Austria)
+
+Convention: German Islamic literature and Wikipedia write the names in German transliteration (Fadschr, Ischa), while prayer-time sites mix in the international forms; the German orthography is the language''s own spelling
+
+Sources: de.wikipedia.org (Salat; Fadschr (Gebet); Zuhr (Gebet); Ischa (Gebet); Sahur); islam.de / Gebetszeiten (ZMD umbrella: Fadjr, Magreb rows; fadschr/dsuhr in its prayer guide); islamische-zeitung.de (Sa''at Al-Istidschaba); diegebetszeiten.de (Fadjr/Duhr/Assr/Ishaa rows; ''Fajr, Dhuhr, Asr, Maghrib und Ishaa'' in prose)
+
+Confidence: high. Wikipedia''s lemma for the midday prayer is ''Zuhr'' with Dhuhr/Duhr/Thuhr listed as variants; mosque sites print Fadjr/Dohr/Assr/Ishaa (mawaqit.net) or Fajr/Dhuhr/Isha. Suhoor drifts: catalog ''Suhur'' -> ''Sahur'' (de.wikipedia lemma Sahur; DFB-Akademie ''Sahur (auch Suhoor)''). Duha attested as ''Duha'' / ''Duha-Gebet'' (islam.de ''Gebet am Vormittag''; deenup.app). Istidschaba attested as ''Sa''at Al-Istidschaba'' (islamische-zeitung.de); also described as ''Stunde der Erhoerung''.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fadschr | Fadschr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Ischa | Ischa | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidschaba | Istidschaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## es - Spanish (Spain, Latin America)
+
+Convention: Spanish Islamic sites keep the Arabic names in the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); academic Spanish (es.wikipedia) uses RAE-style faŷr/magrib but that is not community practice
+
+Sources: islamic-relief.es horarios de salat (Fajr, Dhuhr, Asr, Maghrib, Isha); mawaqit.net/es Spanish mosque pages (Mezquita Central de Madrid: Fajr, Duhr, Asr, Maghrib, Isha); es.wikipedia.org (Dhuhr; Ramadan ''As-suhur''; Zahora (islam)); islamqa.info/es (Duha; ''Hora de respuesta del viernes'')
+
+Confidence: high. Catalog drift: magrib ''Magreb'' -> ''Maghrib'' (Magreb/Maghreb is the runner-up, printed by horarios-salat.org which also writes Fejr/Asser/Icha). Suhoor: es.wikipedia Ramadan uses ''As-suhur'' and the meal''s lemma is ''Zahora''; community media also write ''suhoor''; ''Sahur'' recorded as mainstream. Istijaba is thinly attested as a loan; Spanish materials describe the concept as ''hora de respuesta/aceptacion del viernes'' (islamqa.info/es); kept per the transliteration ruling, low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Magreb | FIX |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.magrib`: "Magreb" -> "Maghrib"
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+- `extras.explanation.midnight`: "Punto medio entre Magreb y Fajr" -> "Punto medio entre Maghrib y Fajr"
+- `extras.explanation.istijaba`: "1 hora antes del Magreb (solo los viernes)" -> "1 hora antes del Maghrib (solo los viernes)"
+
+---
+
+## fa - Persian (Iran, Afghanistan, Tajikistan (Persian script))
+
+Convention: Iranian اوقات شرعی tables label the rows اذان صبح، اذان ظهر، اذان عصر، اذان مغرب، اذان عشاء; the extras use Persian heritage words سحری and نماز چاشت, and the Friday hour is ساعت استجابت/ساعت اجابت.
+
+Sources: bahesab.ir اوقات شرعی rows (اذان صبح / اذان ظهر / اذان عصر / اذان مغرب / اذان عشاء); badesaba.ir + tala.ir + prayer.aviny.com (same row labels); fa.wikipedia سحری + fa.wikifeqh (سحری); alamto.com and delgarm.com (نماز چاشت یا ضحی); hawzahnews.com ساعات استجابت دعا در روز جمعه + erfan.ir ساعت اجابت
+
+**Established-practice convention** (followed): Persian uses its heritage words for the extras: سحری for the Ramadan meal and نماز چاشت for the forenoon prayer (sources always pair it with ضحی: نماز چاشت یا ضحی) Source: fa.wikipedia سحری; alamto.com/delgarm.com نماز چاشت یا ضحی
+
+Confidence: high. isha: Iranian sites write both اذان عشاء (bahesab row) and اذان عشا (todaytime); catalog''s اذان عشا stands, عشاء is the fuller row spelling. istijaba: ساعت اجابت (erfan.ir, namnak) is an equal runner-up; catalog''s استجابه was a spelling drift (Persian writes استجابت).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | اذان صبح | اذان صبح | OK |
+| dhuhr | `prayer.dhuhr` | اذان ظهر | اذان ظهر | OK |
+| asr | `prayer.asr` | اذان عصر | اذان عصر | OK |
+| magrib | `prayer.magrib` | اذان مغرب | اذان مغرب | OK |
+| isha | `prayer.isha` | اذان عشاء | اذان عشا | FIX |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | نماز چاشت | نماز چاشت | OK |
+| istijaba | `prayer.istijaba` | ساعت استجابت | استجابه | FIX |
+
+Fixes:
+- `prayer.isha`: "اذان عشا" -> "اذان عشاء"
+- `prayer.istijaba`: "استجابه" -> "ساعت استجابت"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "مغرب" of reference "اذان مغرب" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "صبح" of reference "اذان صبح" - compliant variant, no change
+
+---
+
+## ff - Fulah / Fulfulde (Latin script) (Across the Sahel: Guinea, Senegal, Mali, Nigeria, Cameroon)
+
+Convention: No Latin-script Fulfulde prayer-name service or text was reachable; the only attested Arabic-Islamic time loans are Fajira (morning) and Asira (evening) in the Fulfulde phrasebook, so the set is recorded as unadapted Arabic forms with those two attested anchors.
+
+Sources: en.wikivoyage.org Fulfulde phrasebook (Fajira/bimmbi morning; Kikide/asira evening); glosbe.com Arabic-Fulah and English-Fulah dictionaries (no prayer entries found)
+
+Confidence: low. Honest gap: no Fulfulde prayer-time site, radio transcript, or Qur''an material surfaced in Latin script. Fajira and Asira are attested day-words (phrasebook); the other six stay as plain Arabic loans. The catalog''s tiisbaar/takkusaan/furura/geeƴe could not be verified anywhere and look Wolof-mixed (tisbaar/taakusaan are Wolof prayer names) - flagged, not followed. Needs a Fulfulde-speaking source (Adlam or radio) to settle.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajira | fajiri | FIX |
+| dhuhr | `prayer.dhuhr` | Zuhur | tiisbaar | FIX |
+| asr | `prayer.asr` | Asira | takkusaan | FIX |
+| magrib | `prayer.magrib` | Magrib | furura | FIX |
+| isha | `prayer.isha` | Isha | geeƴe | FIX |
+| suhoor | `prayer.suhoor` | Suhur | suhuur | FIX |
+| duha | `prayer.duha` | Duha | dhuhaa | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | istijaabaa | FIX |
+
+Fixes:
+- `prayer.fajr`: "fajiri" -> "Fajira"
+- `prayer.dhuhr`: "tiisbaar" -> "Zuhur"
+- `prayer.asr`: "takkusaan" -> "Asira"
+- `prayer.magrib`: "furura" -> "Magrib"
+- `prayer.isha`: "geeƴe" -> "Isha"
+- `prayer.suhoor`: "suhuur" -> "Suhur"
+- `prayer.duha`: "dhuhaa" -> "Duha"
+- `prayer.istijaba`: "istijaabaa" -> "Istijaba"
+- `extras.explanation.midnight`: "Hakkunde Magrib e Fajiri" -> "Hakkunde Magrib e Fajira"
+- `extras.explanation.suhoor`: "Minutooji 20 ado Fajiri" -> "Minutooji 20 ado Fajira"
+
+---
+
+## fr - French (France)
+
+Convention: French mosques and prayer services print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha), the Grande Mosquee de Paris included; older printed calendars also show Icha/Dhouhr
+
+Sources: mawaqit.net Grande Mosquee de Paris page (Fajr, Dhuhr, Asr, Maghrib, Isha; Chourouk, Imsak); grandemosqueedeparis.fr horaires announcement (''fin du sahour'') and Mosquee Mirail Toulouse (le sahour); albayyinah.fr and fr.al-imen.com (salat Doha); masjidbox.com/fr (salat Doha)
+
+Confidence: high. Catalog drift on duha: ''Duha'' -> ''Doha'' (three French Islamic sites spell the forenoon prayer Doha; ''Duha'' appears on translated sources). Suhoor ''Sahour'' holds (mosque usage); ''S''hour'' dominates general French media and ''Suhur'' is the literal transliteration. Istijaba attested as ''Sa''at al-Istijaba'' / ''l''heure exaucee'' (French-language TikTok/scribd religious content) - medium on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahour | Sahour | OK |
+| duha | `prayer.duha` | Doha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.duha`: "Duha" -> "Doha"
+
+---
+
+## gu - Gujarati (Gujarat, India)
+
+Convention: Arabic-origin names in Gujarati script as Gujarati Islamic literature and Saudi da''wah Gujarati publications write them
+
+Sources: risala.prh.gov.sa/pl/contents/222 (Gujarati Namaz pamphlet); gu.wikipedia.org (નમાઝના ફર્ઝ); gujarati.news18.com (સહેરી article); archive.org Gujarati Islamic classics (ચાસ્ત)
+
+Confidence: medium. Five names confirmed by the Saudi-risala Gujarati text and gu.wikipedia; સહરી (without matra) appears in madrasa posts; ચાસ્ત attested in classical and modern Gujarati Islamic text. No Gujarati source names the Friday hour; ઇસ્તિજાબા is a transliteration fallback, Urdu-style phrasing unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ફજર | ફજર | OK |
+| dhuhr | `prayer.dhuhr` | ઝોહર | ઝોહર | OK |
+| asr | `prayer.asr` | અસર | અસર | OK |
+| magrib | `prayer.magrib` | મગરિબ | મગરિબ | OK |
+| isha | `prayer.isha` | ઈશા | ઈશા | OK |
+| suhoor | `prayer.suhoor` | સહેરી | સહર | FIX |
+| duha | `prayer.duha` | ચાસ્ત | દુહા | FIX |
+| istijaba | `prayer.istijaba` | ઇસ્તિજાબા | ઇસ્તિજાબા | OK |
+
+Fixes:
+- `prayer.suhoor`: "સહર" -> "સહેરી"
+- `prayer.duha`: "દુહા" -> "ચાસ્ત"
+
+---
+
+## ha - Hausa (Nigeria, Niger (Latin-script mainstream))
+
+Convention: Hausa Islamic literature transliterates the five prayers (Urdu-Arabic scholastic tradition); the Friday answered-supplication hour is named by the established phrase, not a transliteration
+
+Sources: imuslimguide.com/ha (Magariba, Isha''i, Azahar, La''asar) and hausa.legit.ng (''Azahar, La''asar, Magriba, Isha`i da Asubah''); ha.wikipedia (Sallar la''asar) and islamhouse.com/ha ''Lokutan Sallah''; BBC Hausa and hausa.legit.ng Ramadan (lokacin/sahur); sirassalafeey.wordpress.com (Sallar Duha); lightofislam.com.ng ''Allah yana amsa addu''a ranar Juma''a''
+
+Confidence: high. Five and Sahur stand as cataloged (variants Asubah, Magariba; Az-zuhurain pairing in fiqh texts). Duha attested as Sallar Duha. Istijaba: no Hausa source uses the transliteration; Hausa literature names the concept ''lokacin amsa/karbar addu''a ranar Juma''a'' (lightofislam.com.ng, lecture titles), so the established phrase is recorded with that grounding.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Asuba | Asuba | OK |
+| dhuhr | `prayer.dhuhr` | Azahar | Azahar | OK |
+| asr | `prayer.asr` | La''asar | La''asar | OK |
+| magrib | `prayer.magrib` | Magriba | Magriba | OK |
+| isha | `prayer.isha` | Isha''i | Isha''i | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Lokacin amsa addu''a | Istijaba | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Istijaba" -> "Lokacin amsa addu''a"
+
+---
+
+## hi - Hindi (North India)
+
+Convention: Arabic-origin names in Devanagari as Hindi Islamic sites (IslamQA Hindi, namazium) and Hindi media write them, with nuqtas where Hindi Islamic publishing keeps them
+
+Sources: islamqa.info/hi/answers/22389; boldsky Hindi namaz coverage; namazium.com; jansatta.com (सहरी)
+
+Confidence: high. Nuqta-less फजर/जुहर/मगरिब are equally common in Hindi media; सेहरी runs behind सहरी. Hindi Islamic discourse names the Friday hour ''दुआ कबूल होने का वक़्त'', never इस्तिजाबा. Catalog duha जुहा was a machine-looking form; चाश्त replaces it.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | फज्र | फज्र | OK |
+| dhuhr | `prayer.dhuhr` | ज़ुहर | ज़ुहर | OK |
+| asr | `prayer.asr` | असर | असर | OK |
+| magrib | `prayer.magrib` | मग़रिब | मग़रिब | OK |
+| isha | `prayer.isha` | ईशा | ईशा | OK |
+| suhoor | `prayer.suhoor` | सहरी | सहरी | OK |
+| duha | `prayer.duha` | चाश्त | जुहा | FIX |
+| istijaba | `prayer.istijaba` | दुआ कबूल होने का वक़्त | इस्तिजाबा | FIX |
+
+Fixes:
+- `prayer.duha`: "जुहा" -> "चाश्त"
+- `prayer.istijaba`: "इस्तिजाबा" -> "दुआ कबूल होने का वक़्त"
+
+---
+
+## hil - Hiligaynon / Ilonggo (Philippines (Western Visayas: Iloilo, Negros Occidental))
+
+Convention: No Islamic literature exists in Hiligaynon (no Quran translation, no islamhouse section, no Islamic site); Ilonggo Muslims read Filipino/Cebuano/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Hiligaynon Wikipedia, Iloilo Muslim-community reporting - nothing carries the prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Hiligaynon carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## id - Indonesian (Indonesia)
+
+Convention: National Arabic-loan convention fixed by KEMENAG''s SIHAT data and the big prayer-time portals; row labels are the living spellings.
+
+Sources: bimasislam.kemenag.go.id/jadwal-sholat and sumsel.kemenag.go.id/jadwal-shalat (rows: Subuh, Dzuhur, Asar, Magrib, Isya); jadwalsholat.nu.or.id (rows: Imsak, Subuh, Terbit, Dhuha, Zuhur, Ashar, Maghrib, Isya); nu.or.id and ppsd.id on Sa''atul Ijabah/istijabah on Friday
+
+Confidence: high. KEMENAG kanwil rows spell Asar/Magrib; NU writes Zuhur. Ashar, Dzuhur, Maghrib dominate portals, so the catalog stands on all eight.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Dzuhur | Dzuhur | OK |
+| asr | `prayer.asr` | Ashar | Ashar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ilo - Ilocano (Philippines (Northern Luzon: Ilocos, Cagayan Valley))
+
+Convention: No Islamic literature exists in Ilocano (no Quran translation, no islamhouse section, Ilocano Wikipedia Islam article is a stub with no prayer names); Ilocano Muslims read Filipino/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Ilocano Wikipedia Islam article - a 1.3 KB stub, no prayer names); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Ilocano carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## it - Italian (Italy)
+
+Convention: Italian Islamic organisations print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); some mosques write Dohr and Maghreb
+
+Sources: uamionline.it (UCOII) Orario Preghiere (Fajr/Alba, Dhuhr/Mezzogiorno, Asr, Maghrib/Tramonto, Isha/Sera); alislam.it orario delle preghiere (Fajr, Zuhr, Asr, Maghrib, Isha); it.wikipedia.org Ramadan (il pasto prima dell''alba e chiamato suhur); mawlanasultan.org Italian hadith lesson PDF (preghiera di Duha)
+
+Confidence: high. Runner-ups: Dohr/Maghreb (moscheaomar.it, orariopreghiere.it). Suhoor drifts: catalog ''Suhoor'' -> ''Suhur'' (it.wikipedia ''suhur''; casadellacarita.org ''Suhur''; islamic-relief.it keeps ''Suhoor''). Duha attested in Italian original texts (mawlanasultan.org, umrahexpress.it). Istijaba is unattested in Italian sources found; the concept is ''l''ora dell''esaudizione del venerdi''; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhoor | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhoor" -> "Suhur"
+
+---
+
+## ja - Japanese (Japan (Japanese Muslim community, mosques, Islamic materials))
+
+Convention: Systematic katakana transliteration is the established convention of Japanese mosque and prayer-time materials; row labels read ファジュル, ズフル, アスル, マグリブ, イシャー.
+
+Sources: islam.ne.jp 礼拝時刻表 (rows ファジュル/ズフル/アスル/マグリブ/イシャー); ja.wikipedia.org 礼拝時刻, szgmc.gov.ae ja, masjidbox.com Tokyo Camii rows; japanforunhcr.org, whyislam.org ja (スフール); wikiHow ja, note.com (ドゥハー礼拝)
+
+Confidence: high. Catalog stands. Runner-ups: イシャーウ (ja.wikipedia''s long form), ファジル (qiblafinder.io, f-tsunemi.com), サフール (al-fanar.jp) - mainstream services use the catalog forms. ドゥハー is attested as ドゥハー礼拝 (wikiHow ja, note.com); イスティジャーバ could not be found in any Japanese Islamic text - Japanese materials describe the concept (金曜日の最後の時間にドゥアが受け入れられる, islammessage.org jp), so the name stays as the systematic katakana form, unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ファジュル | ファジュル | OK |
+| dhuhr | `prayer.dhuhr` | ズフル | ズフル | OK |
+| asr | `prayer.asr` | アスル | アスル | OK |
+| magrib | `prayer.magrib` | マグリブ | マグリブ | OK |
+| isha | `prayer.isha` | イシャー | イシャー | OK |
+| suhoor | `prayer.suhoor` | スフール | スフール | OK |
+| duha | `prayer.duha` | ドゥハー | ドゥハー | OK |
+| istijaba | `prayer.istijaba` | イスティジャーバ | イスティジャーバ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## jv - Javanese (Central and East Java, Indonesia; Suriname)
+
+Convention: KBJI, the official Javanese dictionary, and the Javanese Wikipedia fix the names: Arabic loans with Javanese lohor/luhur for Dhuhr.
+
+Sources: kbji.kemendikdasmen.go.id (subuh KN; lohor luhur; dhuwur=zuhur; asar; isa (wayah isa); saur KN sahur; salat lukha=salat duha; mahrib); jv.wikipedia (Salat: dzuhur, ashar, maghrib, isya; Dhuha: Salat Duha)
+
+Confidence: medium. Luhur (krama) vs Lohor (ngoko) per KBJI, dhuwur is a third word for zuhur; KBJI''s own sahur lemma is saur; duha also lukha. Catalog stands; Istijabah is an ungrounded loan.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Luhur | Luhur | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kas - Kashmiri (Perso-Arabic) (Kashmir)
+
+Convention: Persian-origin time names in Kashmiri Perso-Arabic script, as the Kashmiri Wikipedia infobox carries them; Kashmiri religious print runs largely through Urdu
+
+Sources: ks.wikipedia.org/wiki/نؠماز (infobox: صُبُح، پیٚشِن، دِگر; شام، خۄفتَن); ur.wikipedia.org/wiki/کشمیری_زبان (Persian-script literary tradition)
+
+Confidence: medium. Kashmiri Wikipedia is the only direct Kashmiri-script source found and matches the catalog five exactly (صُبُح، پیٚشِن، دِگر، شام، خۄفتَن); مگرب also occurs for maghrib in Urdu-mediated Kashmir timetables. No Kashmiri-language source found for suhoor/duha/istijaba: سحری، چاشت، استجابہ are Urdu-mediated fallbacks, honestly flagged.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | صُبُح | صُبُح | OK |
+| dhuhr | `prayer.dhuhr` | پیٚشِن | پیٚشِن | OK |
+| asr | `prayer.asr` | دِگر | دِگر | OK |
+| magrib | `prayer.magrib` | شام | شام | OK |
+| isha | `prayer.isha` | خۄفتَن | خۄفتَن | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kk - Kazakh (Kazakhstan)
+
+Convention: Kazakh heritage calendar printed by SAMK-linked and muftyat services: local and Persian-Tatar words (Таң, Бесін, Екінті, Ақшам, Құптан; Ramadan Сәресі), with the Friday answered hour phrased descriptively
+
+Sources: azan.kz (rows Таң/Күн/Бесін/Аср/Ақшам/Құптан, Ramadan Сәресі); namaz.muftyat.kz (''бамдат (таң), бесін, екінті (асыр), ақшам, құптан''); islam.kz (''Жұма күнгі дұға қабыл болатын уақыт''); islamdini.kz (''Духа намазы'')
+
+**Established-practice convention** (followed): Kazakh calendars print Kazakh words for fajr (Таң) and asr (Екінті per muftyat.kz/sajda.com) rather than Arabic loans, and the Friday hour only exists as the descriptive phrase Дұға қабыл болатын уақыт Source: azan.kz; namaz.muftyat.kz; islam.kz
+
+Confidence: high. Seven stand. asr: two live conventions - azan.kz calendar row prints Аср, while the Kazakh-language name Екінті (muftyat.kz ''екінті (асыр)'', sajda.com, religious books) is recorded; kk.wikipedia offers ''Намаздыгер''. duha: Дұха is an equally common variant spelling (asyldin.kz, zharar.com). istijaba drifts Истижаба→descriptive phrase; no single-word Kazakh form attested (islam.kz, ihsan.kz).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Таң | Таң | OK |
+| dhuhr | `prayer.dhuhr` | Бесін | Бесін | OK |
+| asr | `prayer.asr` | Екінті | Екінті | OK |
+| magrib | `prayer.magrib` | Ақшам | Ақшам | OK |
+| isha | `prayer.isha` | Құптан | Құптан | OK |
+| suhoor | `prayer.suhoor` | Сәресі | Сәресі | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Дұға қабыл болатын уақыт | Истижаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истижаба" -> "Дұға қабыл болатын уақыт"
+
+---
+
+## kn - Kannada (Karnataka, India)
+
+Convention: Kannada Islamic apps, dailies and madrasa media transliterate the Arabic names in Kannada script (Urdu-flavored); no translation practice
+
+Sources: MySalah Kannada App Store listing (apps.apple.com/in/app/id6781011615?l=kn): ''ಫಜರ್, ಜುಹರ್, ಅಸರ್, ಮಗ್ರಿಬ್ ಅಥವಾ ಇಶಾ''; sanjevani.com Kannada report (ಫಜರ್ ನಮಾಜ್ / ಮಗ್ರಿಬ್ ನಮಾಜ್) and etvbharat.com/kn (ಫಜರ್); kannada.oneindia.com Ramadan sehri-iftar timetable (ಸಹರಿ/ಇಫ್ತಾರ್) and vijaykarnataka.com (ಸೆಹ್ರಿ)
+
+Confidence: medium. Five names stand as cataloged (ಜೋಹರ್ is a runner-up for dhuhr; ಇಷಾ also seen). Suhoor drifts: Kannada Ramadan media write ಸಹರಿ (ಸೆಹ್ರಿ runner-up), not ಸಹರ್. Duha and Istijaba have no Kannada-language Islamic source this research could find; kept as transliterations with low trust on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ಫಜರ್ | ಫಜರ್ | OK |
+| dhuhr | `prayer.dhuhr` | ಜುಹರ್ | ಜುಹರ್ | OK |
+| asr | `prayer.asr` | ಅಸರ್ | ಅಸರ್ | OK |
+| magrib | `prayer.magrib` | ಮಗ್ರಿಬ್ | ಮಗ್ರಿಬ್ | OK |
+| isha | `prayer.isha` | ಇಶಾ | ಇಶಾ | OK |
+| suhoor | `prayer.suhoor` | ಸಹರಿ | ಸಹರ್ | FIX |
+| duha | `prayer.duha` | ದುಹಾ | ದುಹಾ | OK |
+| istijaba | `prayer.istijaba` | ಇಸ್ತಿಜಾಬಾ | ಇಸ್ತಿಜಾಬಾ | OK |
+
+Fixes:
+- `prayer.suhoor`: "ಸಹರ್" -> "ಸಹರಿ"
+
+---
+
+## ko - Korean (Korea (Korea Muslim Federation community, Seoul Central Masjid))
+
+Convention: Hangul transliteration of the Arabic names, as printed by Korean-language prayer-time services and Korean media covering Islam; rows read 파즈르, 주흐르, 아스르, 마그립, 이샤.
+
+Sources: way2quran.com/ko prayer rows (파즈르/주흐르/아스르/마그립/이샤); ko.true-time.com Seoul and getrevertly.app/ko (same rows); news.samsung.com, voakorea.com, weekly.chosun.com (수후르)
+
+Confidence: medium. Catalog stands. Runners-up: 두흐르 (qiblafinder.io), 주흐 (namu.wiki), 파즈루 (variant heard); 마그립 is the service norm (마그리브 appears rarely). KMF''s own site (koreaislam.org) yielded no readable schedule to confirm against. 수후르 is well attested in Korean media (Samsung, VOA, Chosun); 두하 appears in Korean prayer-time apps and translations; 이스티자바 appears only in machine-translated text (사앗 알 이스티자바) - unverified, concept phrased 금요일에 기도가 응답되는 시간.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | 파즈르 | 파즈르 | OK |
+| dhuhr | `prayer.dhuhr` | 주흐르 | 주흐르 | OK |
+| asr | `prayer.asr` | 아스르 | 아스르 | OK |
+| magrib | `prayer.magrib` | 마그립 | 마그립 | OK |
+| isha | `prayer.isha` | 이샤 | 이샤 | OK |
+| suhoor | `prayer.suhoor` | 수후르 | 수후르 | OK |
+| duha | `prayer.duha` | 두하 | 두하 | OK |
+| istijaba | `prayer.istijaba` | 이스티자바 | 이스티자바 | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## kr - Kanuri (Nigeria (Borno, Yobe), Niger)
+
+Convention: No Kanuri-language prayer-time material was reachable (Kanuri Wikipedia has no relevant article; Glosbe''s Kanuri dictionary carries no prayer entries), so the catalog''s Kanuri-shaped Arabic loans are retained unverified.
+
+Sources: kr.wikipedia.org (search for sala/wakti returned no prayer article); glosbe.com English-Kanuri dictionary (no entry for prayer; only unrelated vocabulary)
+
+Confidence: low. Honest gap: despite the old Borno Islamic tradition, no online Kanuri prayer schedule, Qur''an text, or Islamic vocabulary list was found; the forms follow Kanuri naturalization of Arabic loans (final vowels, articles dropped) and are carried over from the catalog unverified. Needs a Borno source (BRTV Kanuri broadcasts, Kanuri Mosque announcements) to confirm.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Faaji | Faaji | OK |
+| dhuhr | `prayer.dhuhr` | Zuhuru | Zuhuru | OK |
+| asr | `prayer.asr` | Asara | Asara | OK |
+| magrib | `prayer.magrib` | Magaribi | Magaribi | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duhaa | Duhaa | OK |
+| istijaba | `prayer.istijaba` | Istijaaba | Istijaaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ku - Kurdish Kurmanji (Turkey, Syria, Iraq Kurdistan (Latin script))
+
+Convention: Kurmanji Wikipedia''s prayer table uses the Kurdish heritage names Sibe, Nîvro, Esir, Mexreb, Eşa; mosque sites abroad use Arabic loan rows (Fecir, Ziwa, Esir, Mexrib, Îşa). The pre-dawn meal is Paşîv.
+
+Sources: ku.wikipedia.org/wiki/Nimêj (row table: Sibe, Nîvro, Esir/Piştî Nivro, Mexreb/Êvar, Eşa/Şev); khutba.world/ku prayer pages (Fecir, Ziwa, Esir, Mexrib, Îşa); ku.wikipedia.org/wiki/Rojî (paşîv = pre-dawn meal)
+
+**Established-practice convention** (followed): Kurmanji uses the heritage word Paşîv for the Ramadan pre-dawn meal Source: ku.wikipedia.org/wiki/Rojî
+
+Confidence: medium. The five match ku.wikipedia exactly and the catalog. khutba.world''s Arabic-loan set (Fecir/Ziwa/Mexrib/Îşa) is the visible runner-up in the diaspora; wikipedia itself alternates Êvar/Şev/Piştî Nivro. Duha and Îstîcab found no Kurmanji source: they are Arabic-loan transliterations by the ruling''s default and need verification. Catalog''s Xwarina seherê is a descriptive runner-up to Paşîv.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sibe | Sibe | OK |
+| dhuhr | `prayer.dhuhr` | Nîvro | Nîvro | OK |
+| asr | `prayer.asr` | Esir | Esir | OK |
+| magrib | `prayer.magrib` | Mexreb | Mexreb | OK |
+| isha | `prayer.isha` | Eşa | Eşa | OK |
+| suhoor | `prayer.suhoor` | Paşîv | Xwarina seherê | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Îstîcab | Istijabe | FIX |
+
+Fixes:
+- `prayer.suhoor`: "Xwarina seherê" -> "Paşîv"
+- `prayer.istijaba`: "Istijabe" -> "Îstîcab"
+
+---
+
+## ky - Kyrgyz (Kyrgyzstan)
+
+Convention: Persian-Arabic heritage names printed by the Muftiyat of Kyrgyzstan''s calendar (Багымдат, Бешим, Аср, Шам, Куптан; Ramadan Сухур/Ифтар)
+
+Sources: muftiyat.kg/kg/calendar (rows Багымдат/Сухур/Күн/Бешим/Аср/Шам/Ифтар/Куптан); namaztime.kg; islamdini.kg (''Кушлук намазы'')
+
+Confidence: high. Five + suhoor stand on the official muftiyat.kg calendar rows. duha Духа stands (''ад-Духа намазы'', adepbashaty, vk.ru posts); runner-up ''Кушлук намазы'' (islamdini.kg, Diyanet-derived) and ''Ишрак''. istijaba is the weakest name: no muftiyat source found; the phrase comes from organic Kyrgyz Islamic social posts (''Жума күнүндөгү дуба кабыл болуучу өзгөчө убакыт''), single-word Истижаба unattested.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Багымдат | Багымдат | OK |
+| dhuhr | `prayer.dhuhr` | Бешим | Бешим | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Шам | Шам | OK |
+| isha | `prayer.isha` | Куптан | Куптан | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Дуба кабыл болуучу убакыт | Истижаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истижаба" -> "Дуба кабыл болуучу убакыт"
+
+---
+
+## mad - Madurese (Madura island and East Java, Indonesia)
+
+Convention: Madurese Wikipedia and Madurese-language posts nativize the names with o-vowels and gemination (sobbu, sahor), sharing lohor with the Javanese-Sundanese sphere.
+
+Sources: kbbi.co.id/arti-kata/lohor (lohor = zuhur, shalat lohor); mad.wikipedia Poasa_Romadon_è_India (è bâkto sahor bân buka poasa; saor variant); Madurese Facebook posts (jema''ah sholat sobbu; sabellunna sobbu)
+
+Confidence: medium. Corrections vs catalog: Subuh->Sobbu and Sahur->Sahor (Madurese-attested forms). Magreb and Isya'' follow Madurese phonology but were not directly attested; Dhuha and Istijabah ungrounded locally.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sobbu | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magreb | Magreb | OK |
+| isha | `prayer.isha` | Isya'' | Isya'' | OK |
+| suhoor | `prayer.suhoor` | Sahor | Sahur | FIX |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Sobbu"
+- `prayer.suhoor`: "Sahur" -> "Sahor"
+- `extras.explanation.midnight`: "E tengnga antara Magreb ban Subuh" -> "E tengnga antara Magreb ban Sobbu"
+- `extras.explanation.suhoor`: "20 menit sabellunna Subuh" -> "20 menit sabellunna Sobbu"
+
+---
+
+## mdh - Maguindanao (Philippines (Maguindanao provinces and Cotabato, Mindanao - Muslim-majority))
+
+Convention: Maguindanaon Islamic convention keeps Malay/Arabic-sphere names naturalized per Maguindanao orthography, attested verbatim in the complete Rowwad Maguindanaon Quran translation (2025) and Maguindanao fiqh literature.
+
+Sources: quranenc.com maguindanao_rwwad (Maguindanaon Quran v1.0.4: 24:58 "makadsambayang sa subbuh... ulyan na dhuhur... sambayang na isya"; 17:78 gloss "(dhuhur, as''r, maghrib, isya)... sambayang a sub''h"; 89:1 "Faj''r"; 103:1 "''Asr"); Al Mulakkhasul Fiqh, Maguindanao fiqh text (Scribd doc 607928716): "Sambahayang duha (maynaat)... di pa sumud waktu dhuhur"; Maguindanao community posts (Facebook, Maguindanaon-language religious pages): "sambayang a Subuh"; islamhouse.com/mdh (78 Maguindanao items: Pagpatindug sin Sambahayang, Pagpuasa ha Bulan Ramadhan - prayer is sambahayang)
+
+Confidence: medium. Five prayers grounded in the language''s own Quran translation plus fiqh: subbuh/sub''h (also Faj''r), dhuhur, as''r/''Asr, maghrib, isya. Record uses the community form Subuh with Faj''r/subbuh as variants. Catalog drifts: "Luhur" unattested (should be Dhuhur), "Asar" vs attested ''Asr/as''r, "Magrib" vs attested maghrib. Sahur and Istijaba have no in-language source (2:187 meaning-translates); spellings follow the Malay-sphere practice the language sits in, low certainty on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhur | Luhur | FIX |
+| asr | `prayer.asr` | Asr | Asar | FIX |
+| magrib | `prayer.magrib` | Maghrib | Magrib | FIX |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.dhuhr`: "Luhur" -> "Dhuhur"
+- `prayer.asr`: "Asar" -> "Asr"
+- `prayer.magrib`: "Magrib" -> "Maghrib"
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+- `extras.explanation.midnight`: "Antara Magrib dan Subuh" -> "Antara Maghrib dan Subuh"
+- `extras.explanation.istijaba`: "1 jam sebelum Magrib (Jumaat sahaja)" -> "1 jam sebelum Maghrib (Jumaat sahaja)"
+
+---
+
+## mfa - Pattani Malay (Bahasa Melayu Patani) (southern Thailand (Pattani, Yala, Narathiwat, Songkhla))
+
+Convention: No Latin-script Pattani Malay prayer-time publishing found; the community''s written religious life runs in Thai or standard Malay while the spoken dialect is baso/kecek nayu, so Malay (JAKIM) spellings are the only attested written forms.
+
+Sources: studentsrepo.um.edu.my Noorhayatee thesis (PM speakers call the dialect baso nayu / kecek nayu); e-solat.gov.my as the written Malay proxy; kelateblog.blogspot.com (kecek nayu/Kelantan phonology: -ah>-oh, final -r drops)
+
+Confidence: low. Do not mistake this for confirmed native spellings: no Pattani Malay source names the prayers in Latin script. Spoken forms drift per Kelantan-Patani phonology (Suboh, Asor, Sahor); catalog Istijaba corrected to Istijabah.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Zohor | Zohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isyak | Isyak | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+
+---
+
+## min - Minangkabau (West Sumatra, Indonesia)
+
+Convention: Minang-language Wikipedia, a famous Minang pantun and Minang linguistics papers all nativize the names (subuah, luhua, mugarik).
+
+Sources: min.wikipedia (Puaso dalam Islam, Sumbayang tarawih: subuah, salat Isya, salat mugarik, sahur); Pitaruah Ayah pantun, kamangdarussalam.wordpress.com (subuah, luhua, asar, mugarib, isya; 24434 rakat); ejurnal.bunghatta.ac.id JFIB 3057 (waktu subuah, luhua aRi); kamangdarussalam.wordpress.com (wakatu duha lah masuak, molah kito sumbayang duha)
+
+Confidence: medium. Corrections vs catalog: Magrib->Mugarik (min.wikipedia''s own spelling for the prayer; pantun variant mugarib), Dhuha->Duha and Sahua->Sahur (both unattested in Minang text as catalog wrote them). Istijabah is an ungrounded Arabic loan; native sahur meal is makan parak siang.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuah | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Luhua | Luhua | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Mugarik | Magrib | FIX |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahua | FIX |
+| duha | `prayer.duha` | Duha | Dhuha | FIX |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Subuah"
+- `prayer.magrib`: "Magrib" -> "Mugarik"
+- `prayer.suhoor`: "Sahua" -> "Sahur"
+- `prayer.duha`: "Dhuha" -> "Duha"
+- `extras.explanation.midnight`: "Di tangah antaro Magrib jo Subuh" -> "Di tangah antaro Mugarik jo Subuah"
+- `extras.explanation.suhoor`: "20 minik sabalun Subuh" -> "20 minik sabalun Subuah"
+- `extras.explanation.istijaba`: "1 jam sabalun Magrib (hanyo hari Jumaik)" -> "1 jam sabalun Mugarik (hanyo hari Jumaik)"
+
+---
+
+## ml - Malayalam (Kerala, India)
+
+Convention: Arabic-origin names in Malayalam script as Kerala''s mainstream calendar (Manorama) and Malayalam Islamic sites write them; fajr goes by its Kerala name സുബഹ്
+
+Sources: manoramaonline.com (നമസ്കാര സമയം); ml.wikipedia.org (അസ്വർ); islamkavadam.com (ദുഹാ നമസ്കാരം); malayalam.indiatoday.in (സഹർ)
+
+Confidence: high. Manorama rows read ളുഹർ/അസർ/മഗ്രിബ്/ഇശാ with സുബ്ഹി as the fajr variant; സഹർ attested by India Today Malayalam. Duha is ദുഹാ (islamkavadam) with ളുഹാ (retroflex) a live variant; Malayalam content names the Friday hour ''ദുആ സ്വീകരിക്കപ്പെടുന്ന സമയം'', so catalog ഇസ്തിജാബ and ളുഹാ drift.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | സുബഹ് | സുബഹ് | OK |
+| dhuhr | `prayer.dhuhr` | ളുഹർ | ളുഹർ | OK |
+| asr | `prayer.asr` | അസർ | അസർ | OK |
+| magrib | `prayer.magrib` | മഗ്രിബ് | മഗ്രിബ് | OK |
+| isha | `prayer.isha` | ഇശാ | ഇശാ | OK |
+| suhoor | `prayer.suhoor` | സഹർ | സഹർ | OK |
+| duha | `prayer.duha` | ദുഹാ | ളുഹാ | FIX |
+| istijaba | `prayer.istijaba` | ദുആ സ്വീകരണ സമയം | ഇസ്തിജാബ | FIX |
+
+Fixes:
+- `prayer.duha`: "ളുഹാ" -> "ദുഹാ"
+- `prayer.istijaba`: "ഇസ്തിജാബ" -> "ദുആ സ്വീകരണ സമയം"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "മഗ്രിബ" of reference "മഗ്രിബ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "സുബഹ" of reference "സുബഹ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.suhoor` - name fajr present as inflected/short prose form "സുബഹ" of reference "സുബഹ്" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "മഗ്രിബ" of reference "മഗ്രിബ്" - compliant variant, no change
+
+---
+
+## mr - Marathi (Maharashtra, India)
+
+Convention: Arabic-origin names in Devanagari as Marathi Wikipedia''s namaz articles and Marathi Muslim literature write them
+
+Sources: mr.wikipedia.org (नमाज); mr.wikipedia.org (नमाज वेळा); islammarathi.com
+
+Confidence: medium. mr.wikipedia नमाज uses नमाज-ए-जुहर/असर/मगरीब; its नमाज वेळा article shows runner-ups धुहर and अस्र. Marathi Islamic publishing (islammarathi.com) is thin for the extras: सेहरी and चाश्त follow the Devanagari Muslim convention; no Marathi source names the Friday hour, इस्तिजाबा is a fallback.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | फजर | फजर | OK |
+| dhuhr | `prayer.dhuhr` | जुहर | जुहर | OK |
+| asr | `prayer.asr` | असर | असर | OK |
+| magrib | `prayer.magrib` | मगरीब | मगरीब | OK |
+| isha | `prayer.isha` | ईशा | ईशा | OK |
+| suhoor | `prayer.suhoor` | सेहरी | सहरी | FIX |
+| duha | `prayer.duha` | चाश्त | दुहा | FIX |
+| istijaba | `prayer.istijaba` | इस्तिजाबा | इस्तिजाबा | OK |
+
+Fixes:
+- `prayer.suhoor`: "सहरी" -> "सेहरी"
+- `prayer.duha`: "दुहा" -> "चाश्त"
+
+---
+
+## mrw - Maranao (Philippines (Lanao del Sur and Lanao del Norte, Mindanao - Muslim-majority))
+
+Convention: Maranao Islamic convention naturalizes the Arabic names through Maranao phonology, attested verbatim in the Maranao Quran (Saromantang translation), Maranao fiqh texts and khutbah literature.
+
+Sources: Maranao Quran, Saromantang translation via quran.com (mrn-unknown) and forghan.com/translation/260: 24:58 "ko onaan o sambayang a Sobo... oriyan o sambayang a Aysah"; 2:238 gloss "so sambayang (a Asar) a millbi"; So Sambayang 2, Maranao fiqh (Scribd doc 689774224): "sambayang a Asar... oriyan o sambayang a Magrib"; Maranao religious posts (Facebook): "sambayang a duhur go asr, so duhr na pat ka rakaat so asr na pat ka rakaat"; muslimtents.com/maranao-khutbah (Maranao khutbah archive); KOTA O MUSLIM (Maranao Hisnul Muslim, islamhouse PDF) "oriyan o sambayang a Sobo"; forghan.com Maranao Surah 93 titled "Ad-Duha"
+
+Confidence: medium. Five prayers triple-sourced (Quran, fiqh, community): Sobo, Duhur (runner-up spelling "duhr"), Asar (runner-up "asr"), Magrib (no h, per fiqh text; "Maghrib" variant), Aysah (variant "aisha"). Catalog''s Malay-style Subuh/Luhur/Asar/Magrib/Isya set drifts badly: only Asar survives; Fajr is Sobo and Isha is Aysah in Maranao''s own Quran. Duha rests on the Ad-Duha surah title plus Danao-sphere usage; Sahur and Istijaba have no in-language source - Malay-sphere spellings recorded with low certainty.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Sobo | Subuh | FIX |
+| dhuhr | `prayer.dhuhr` | Duhur | Luhur | FIX |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Aysah | Isya | FIX |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijaba | FIX |
+
+Fixes:
+- `prayer.fajr`: "Subuh" -> "Sobo"
+- `prayer.dhuhr`: "Luhur" -> "Duhur"
+- `prayer.isha`: "Isya" -> "Aysah"
+- `prayer.istijaba`: "Istijaba" -> "Istijabah"
+- `extras.explanation.midnight`: "Sa gitna ng Magrib at Subuh" -> "Sa gitna ng Magrib at Sobo"
+- `extras.explanation.suhoor`: "20 minuto bago ang Subuh" -> "20 minuto bago ang Sobo"
+
+---
+
+## ms - Malay (Malaysia, Brunei, Singapore, coastal Indonesia)
+
+Convention: JAKIM e-Solat row labels are the de facto national standard for Malaysian Malay.
+
+Sources: e-solat.gov.my (rows: Subuh, Zohor, Asar, Maghrib, Isyak; Syuruk); muftiwp.gov.my (Waktu Solat Zohor FAQ); waktusolat.com.my and negara.org (Solat Dhuha); ikhlas.com (Sa''at al-Istijabah)
+
+Confidence: high. JAKIM''s own page is verbatim evidence for the five; Dhuha and Istijabah grounded in Malaysian Islamic portals. Catalog stands unchanged.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Zohor | Zohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isyak | Isyak | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## my - Burmese (Myanmar (Bamar and Rohingya Muslim communities; Burmese script))
+
+Convention: Myanmar Islamic organizations publish adhan timetables with the Arabic names transliterated in Burmese script
+
+Sources: mmislamic.znnt.org Myanmar Islamic Program adhan timetable (columns: ဖဂျရ်, ဇဟိုရ်, အဆွရ်, မဂ်ရိဗ်, အီရှာ); Burmese Muslim community pages (facebook.com/Komin233 ''မဂ်ရိဘ်နမာဇ်'', ''ဖဂျရ်နမာဇ်'' posts)
+
+Confidence: medium. Five match the znnt.org table exactly (variants seen: ဇိုဟ်ရ် for dhuhr, မဂ်ရိဘ် for maghrib). Two targeted searches found no Burmese-script source for suhoor, duha or istijaba; those three stay as cataloged transliterations with low trust. The znnt table itself uses ဝါပိတ်/ဝါဖြေ columns for imsak/iftar rather than a suhoor label.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ဖဂျရ် | ဖဂျရ် | OK |
+| dhuhr | `prayer.dhuhr` | ဇဟိုရ် | ဇဟိုရ် | OK |
+| asr | `prayer.asr` | အဆွရ် | အဆွရ် | OK |
+| magrib | `prayer.magrib` | မဂ်ရိဗ် | မဂ်ရိဗ် | OK |
+| isha | `prayer.isha` | အီရှာ | အီရှာ | OK |
+| suhoor | `prayer.suhoor` | ဆူဟူရ် | ဆူဟူရ် | OK |
+| duha | `prayer.duha` | ဒူဟာ | ဒူဟာ | OK |
+| istijaba | `prayer.istijaba` | အစ်တီဂျာဘာ | အစ်တီဂျာဘာ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## nl - Dutch (Netherlands)
+
+Convention: Dutch-language prayer-time sites print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); the Moroccan-Dutch community writes a Dutch-phonetic set (Fadjr, Dhoehr, ''Ishaa)
+
+Sources: koran.nl gebedstijden (Fajr, Dohr/Dhor, Asr, Maghrib, Isha); elislam.nl and alihsane.nl gebedstijden (Fajr, Shurooq, Dhuhr, Asr, Maghrib, Isha); al-yaqeen.com (Fadjr, Shoeroeq, Dhoehr, Asr, Maghrib, Ishaa; Doeha-gebed); nporadio1.nl / deliciousmagazine.nl (suhoor)
+
+Confidence: high. Runner-up convention named: Fadjr/Dhoehr/''Ishaa on Moroccan-Dutch mosque screens (al-yaqeen.com, mawaqit.net/nl) with ''Doeha-gebed'' for duha (rasoulallah.net/nl ''adh-dhoehaa''). Suhoor drifts: catalog ''Suhur'' -> ''Suhoor'' (NPO, deliciousmagazine, groenevrouw ''Suhoor/Suhur''). Istijaba unattested in Dutch sources found; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Suhoor"
+
+---
+
+## om - Oromo (Ethiopia (large Muslim population))
+
+Convention: Oromo Islamic materials use Arabic loans with Oromo endings: Fajrii, Zuhrii, Asrii, Magribii, Ishaa, and Duhaa for the forenoon prayer.
+
+Sources: risala.prh.gov.sa afaan oromoo content 769 (Yeroowwan salaata dirqamaa: Fajrii..., Zuhrii...); byenah.com Oromo pages (Zuhrii, Asrii, Ishaa''ii, Maghrib) and facebook Oromo dawah (Salaata Fajrii/Subhii, Salaata Zuhrii, Salaata Ishaa''ii); sajda.com/om (prose: Fajjir, Zuhr, Asrii, Magrib fi Ishaa); archive.org Salaata Duhaa 28 Afaan Oromoo
+
+Confidence: medium. Fajrii/Zuhrii are grounded by the official Saudi Risala page; sajda writes Fajjir/Zuhr/Magrib and byenah writes Maghrib(a) - the -ii endings match the Oromo-language sources and the catalog. Suhoor (Suhuur) and istijaba (Istijaabaa) found no Oromo source: Arabic-loan transliterations, verify with Oromo speakers. Catalog Dhuhaa vs sourced Duhaa noted.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajrii | Fajrii | OK |
+| dhuhr | `prayer.dhuhr` | Zuhrii | Zuhrii | OK |
+| asr | `prayer.asr` | Asrii | Asrii | OK |
+| magrib | `prayer.magrib` | Magribii | Magribii | OK |
+| isha | `prayer.isha` | Ishaa | Ishaa | OK |
+| suhoor | `prayer.suhoor` | Suhuur | Suhuur | OK |
+| duha | `prayer.duha` | Duhaa | Dhuhaa | FIX |
+| istijaba | `prayer.istijaba` | Istijaabaa | Istijaabaa | OK |
+
+Fixes:
+- `prayer.duha`: "Dhuhaa" -> "Duhaa"
+
+---
+
+## pa-Arab - Punjabi (Shahmukhi) (Punjab, Pakistan)
+
+Convention: Native Punjabi time-of-day names for the five prayers, exactly the list Western-Punjabi Wikipedia states; extras ride the shared Pakistani Perso-Arabic convention
+
+Sources: pnb.wikipedia.org/wiki/نماز; facebook.com/groups/PunjabiDictionary (پنج نمازاں دا ناں thread); scribd: سوۓ حرم پنجابی کیلنڈر
+
+Confidence: high. pnb.wikipedia names all five verbatim (سرگی، پیشی، ڈیگر، نماشاں، کفتاں); community threads confirm them as the elders'' usage. شاماں competes for maghrib in some dialects; urban timetables print Urdu names. سحری and چاشت come through Urdu-mediated Punjabi religious usage; استجابہ is a fallback, Punjabi print names the hour only in Urdu (قبولیت کی گھڑی).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | سرگی | سرگی | OK |
+| dhuhr | `prayer.dhuhr` | پیشی | پیشی | OK |
+| asr | `prayer.asr` | ڈیگر | ڈیگر | OK |
+| magrib | `prayer.magrib` | نماشاں | نماشاں | OK |
+| isha | `prayer.isha` | کفتاں | کفتاں | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## pl - Polish (Poland)
+
+Convention: Polish-language Islamic materials and the PWN language advisory Polonize the names (fadżr, zuhr, asr, maghrib, isza); Polish prayer-time services (mzr.pl, godzina.org, ckikatowice.pl) print the international Fajr/Dhuhr/Isha
+
+Sources: sjp.pwn.pl Poradnia Jezykowa PWN 2019 (fadżr; zuhr // dhuhr; asr; maghrib; isza); oislamie.sgh.waw.pl and islam-sunna.pl (fadżr, zuhr); webcal.guru Kalendarz modlitw (Fadżr, Zuhr); ahmadiyya-islam.org/pl (Czas zamykania Suhur)
+
+Confidence: medium. Catalog drifts on three rows: fajr Fajr->Fadżr, dhuhr Dhuhr->Zuhr, isha Isha->Isza, per the PWN advisory and Polish-language prose; the international spellings are the runner-up (official MZR site, godzina.org). PWN gives zuhr // dhuhr as equals. Duha weakly attested (Polish ''modlitwa duha'', surah name Ad-Duha); Istidżaba is constructed on Polish Arabic orthography (dz for j, as fadżr) - no Polish source found; low confidence on those two names.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fadżr | Fajr | FIX |
+| dhuhr | `prayer.dhuhr` | Zuhr | Dhuhr | FIX |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isza | Isha | FIX |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istidżaba | Istijaba | FIX |
+
+Fixes:
+- `prayer.fajr`: "Fajr" -> "Fadżr"
+- `prayer.dhuhr`: "Dhuhr" -> "Zuhr"
+- `prayer.isha`: "Isha" -> "Isza"
+- `prayer.istijaba`: "Istijaba" -> "Istidżaba"
+- `extras.explanation.midnight`: "W połowie między Maghrib a Fajr" -> "W połowie między Maghrib a Fadżr"
+- `extras.explanation.suhoor`: "20 minut przed Fajr" -> "20 minut przed Fadżr"
+
+---
+
+## ps - Pashto (Afghanistan, Pakistan (Perso-Arabic script))
+
+Convention: Pashto prayer-time rows use Pashto time-of-day names: فجر/د سهار لمونځ، ماسپښین، مازدیګر، ماښام، عشاء; suhoor is پېشلمی (glossed سحري), duha is د چاښت لمونځ.
+
+Sources: ps.wikipedia.org د لمانځه وختونه (د سهار لمونځ، ماسپښین، مازدیګر، ماښام); sajda.com/ps prayer times (فجر، ماسپښین، مازیګر، ماښام او عشاء); dawat610.com (صلاة الضحی = د چاښت لمونځ; د سهار د لمانځه وخت); Shamshad TV Pashto caption (پېشلمی (سحري)) + Afghan calendar posts (د پيشلمې او روژه ماتي وختونه); getnafs.com/ps Jumuah guide (د دعا تر ټولو غوره وخت)
+
+**Established-practice convention** (followed): Pashto uses the heritage word پېشلمی for suhoor (Afghan TV glosses it with سحري), چاښت for the forenoon prayer, and phrases the Friday hour descriptively rather than as a bare loan Source: Shamshad TV Pashto; dawat610.com صلاة الضحی (د چاښت لمونځ); getnafs.com/ps
+
+Confidence: high. Runner-ups: سهار for fajr (dawat610, ps.wikipedia use د سهار لمونځ), سحری for suhoor, د استجابت وخت for the Friday hour. The catalog drifted on four names: صبح/ظهر/عصر/مغرب are Arabic-Dari words, not the Pashto row labels; الضحى and bare استجابة are not Pashto practice.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | صبح | FIX |
+| dhuhr | `prayer.dhuhr` | ماسپښین | ظهر | FIX |
+| asr | `prayer.asr` | مازدیګر | عصر | FIX |
+| magrib | `prayer.magrib` | ماښام | مغرب | FIX |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | پېشلمی | سهاري | FIX |
+| duha | `prayer.duha` | چاښت | الضحى | FIX |
+| istijaba | `prayer.istijaba` | د دعا د قبلېدو وخت | استجابة | FIX |
+
+Fixes:
+- `prayer.fajr`: "صبح" -> "فجر"
+- `prayer.dhuhr`: "ظهر" -> "ماسپښین"
+- `prayer.asr`: "عصر" -> "مازدیګر"
+- `prayer.magrib`: "مغرب" -> "ماښام"
+- `prayer.suhoor`: "سهاري" -> "پېشلمی"
+- `prayer.duha`: "الضحى" -> "چاښت"
+- `prayer.istijaba`: "استجابة" -> "د دعا د قبلېدو وخت"
+- `extras.explanation.midnight`: "د مغرب او صبح په منځ کې" -> "د ماښام او فجر په منځ کې"
+- `extras.explanation.suhoor`: "له صبح ۲۰ دقيقې دمخه" -> "له فجر ۲۰ دقيقې دمخه"
+- `extras.explanation.istijaba`: "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)" -> "له ماښام ۱ ساعت دمخه (يوازې د جمعې ورځ)"
+
+---
+
+## pt - Portuguese (Portugal, Brazil)
+
+Convention: Brazilian and Portuguese Islamic bodies print the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha)
+
+Sources: fambras.org.br Horario de Oracao (Fajr, Dhuhr, Asr, Maghrib, Isha with definitions); institutoislamico.org.br horarios salat and arresala.org.br (Fajr, Shuruq, Dhuhr, Asr, Maghrib, Isha); islamqa.info/pt and luzdoislam.com.br (oracao Duha); cdial.org.br Ramadan guide (''Facam o sahur, pois no sahur ha bencao'')
+
+Confidence: high. Catalog holds unchanged. Sahur confirmed by Brazilian Islamic literature (cdial.org.br, community media); ''suhur'' also appears. Istijaba is unattested as a Portuguese loan; islamqa.info/pt describes ''a hora em que os pedidos sao atendidos'' - low-medium confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## qu - Quechua (Cusco-Collao standard) (Peru, Bolivia, Ecuador)
+
+Convention: Essentially no established Quechua Islamic convention exists; the only real Quechua material about Islam (the Wikipedia article) keeps Arabic terms as unadapted loans (Quran, Allah, Muslim), which is the naturalization model followed here.
+
+Sources: qu.wikipedia.org Islam article (keeps Quran/Allah/Muslimkuna as loans); glosbe.com es/qu (Corán rendered Quran, unadapted)
+
+Confidence: low. No Quechua Qur''an or Islamic prayer material was found; recorded as unadapted Latin loans because that is what the closest real material (qu.wikipedia) does with Islamic terms. The catalog''s Dhuhr/Asr/Maghrib/Isha rows (Chawpi p''unchaw, Chisi, Inti chinkay, Tuta) are Quechua time-of-day translations, not prayer names - replaced per the ruling''s transliteration-first rule.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Chawpi p''unchaw | FIX |
+| asr | `prayer.asr` | Asr | Chisi | FIX |
+| magrib | `prayer.magrib` | Magrib | Inti chinkay | FIX |
+| isha | `prayer.isha` | Isha | Tuta | FIX |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.dhuhr`: "Chawpi p''unchaw" -> "Dhuhr"
+- `prayer.asr`: "Chisi" -> "Asr"
+- `prayer.magrib`: "Inti chinkay" -> "Magrib"
+- `prayer.isha`: "Tuta" -> "Isha"
+- `extras.explanation.midnight`: "Chawpin Inti chinkaywan Fajrpa" -> "Chawpin Magribwan Fajrpa"
+- `extras.explanation.istijaba`: "Inti chinkayman 1 ura ñawpaq (viernesllallapunim)" -> "Magribman 1 ura ñawpaq (viernesllallapunim)"
+
+---
+
+## ro - Romanian (Romania)
+
+Convention: Romanian Islamic materials keep the international transliteration (Fajr, Dhuhr, Asr, Maghrib, Isha); the old Dobruja community''s own materials do not impose a Romanian-phonetic set
+
+Sources: islamhouse.com/ro Fiqh pe intelesul tuturor (rugaciunea Isha, Fajr; Rugaciunea Duha); ro.wikipedia.org Ramadan (suhur) and Rugaciunea in islam; tawhid.ro (suhurul este masa de dinainte de fajr); philarchive.org Boboc 2022 Romanian fiqh text (zuhr, ''asr, maghrib, isha)
+
+Confidence: medium. Catalog holds unchanged; zuhr also appears beside Dhuhr in Romanian texts. The Muftiat''s own site was not retrieved directly; grounding is translated Romanian fiqh literature plus Wikipedia and tawhid.ro. Istijaba unattested in Romanian; low confidence on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ru - Russian (Russia (Tatarstan, Bashkortostan, Caucasus; large Muslim population))
+
+Convention: Cyrillic transliteration of the Arabic names is the universal Russian muftiyat and prayer-site convention; row labels everywhere read Фаджр, Зухр, Аср, Магриб, Иша.
+
+Sources: time-namaz.ru, azan.su, azan.today, islam-today.ru (prayer-time row labels); umma.ru, islam.ru (Духа-намаз); islam-today.ru, muslim.ru, namaz.today (Сухур); al-hakk.ru, surahquran.com (аль-истиджаба)
+
+Confidence: high. Catalog stands unchanged. Духа appears as «духа-намаз» / «намаз ад-духа» (islam-today.ru, islam.ru). Истиджаба is rare: the concept is usually phrased «час принятия дуа в пятницу», but the word itself is attested (al-hakk.ru «аль-истиджаба», «саатуль-истиджаба» in circulation). One-off spelling Фаждр (raspisanie-namaza.su) is a typo, not a variant.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Фаджр | Фаджр | OK |
+| dhuhr | `prayer.dhuhr` | Зухр | Зухр | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Магриб | Магриб | OK |
+| isha | `prayer.isha` | Иша | Иша | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Истиджаба | Истиджаба | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## sd - Sindhi (Sindh, Pakistan)
+
+Convention: Arabic-origin names in the Sindhi Arabic script as Sindhi Wikipedia and Sindhi religious publishing write them
+
+Sources: sd.wikipedia.org/wiki/نماز; dawateislami.net Sindhi pamphlets (دعا قبول ٿيڻ جا واقعا); Sindhi-language religious posts naming all five prayers
+
+Confidence: medium. sd.wikipedia lists فجر، ظهر، عصر، مغرب، عشاء in a table; Sindhi posts and Dawat-e-Islami Sindhi pamphlets corroborate. سحري confirmed (''سحري ۽ افطاري جا شيڊول''); چاشت follows the Perso-Arabic convention without a directly quoted Sindhi page. Catalog istijaba استجاب (bare Arabic) replaced by the attested Sindhi phrase دعا جي قبوليت جو وقت.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | ظهر | ظهر | OK |
+| asr | `prayer.asr` | عصر | عصر | OK |
+| magrib | `prayer.magrib` | مغرب | مغرب | OK |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | سحري | سحري | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | دعا جي قبوليت جو وقت | استجاب | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجاب" -> "دعا جي قبوليت جو وقت"
+
+---
+
+## skr - Saraiki (South Punjab, Pakistan)
+
+Convention: Native Saraiki time-of-day names (the Punjabi pattern in Saraiki phonology), documented in Saraiki community and classical-name listings
+
+Sources: facebook.com/mmgh07 post (سرائیکی زَبان ئچ پنج نمازاں دے کلاسِیکل ناں: ۱. دَھمِّی...); facebook.com/groups/PunjabiDictionary (دھمی۔۔پیشیں۔۔دیگر۔۔نماشاں...); skr.wikipedia.org/wiki/نماز
+
+Confidence: medium. The classical-names post confirms دَھمِّی = فجر with i''raab; the dictionary-thread reply gives the set دھمی/پیشیں/دیگر/نماشاں with ''سوتے دی نماز'' as an isha variant. Saraiki religious print runs through Urdu, so سحری، چاشت، استجابہ are Urdu-mediated fallbacks; no Saraiki page names the Friday hour.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | دَھمِّی | دَھمِّی | OK |
+| dhuhr | `prayer.dhuhr` | پیشِیں | پیشِیں | OK |
+| asr | `prayer.asr` | دِیگَر | دِیگَر | OK |
+| magrib | `prayer.magrib` | نِماشَاں | نِماشَاں | OK |
+| isha | `prayer.isha` | خُفتاں | خُفتاں | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | استجابہ | استجابہ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## so - Somali (Somalia, Somaliland, Djibouti, Somali regions of Ethiopia and Kenya)
+
+Convention: Somali prayer discourse uses the established forms Subax, Duhur, Casar, Magrib, Cisho; the pre-dawn meal is Suxuur/Suquur and the Friday hour is described as the hour du''a is accepted.
+
+Sources: so.wikipedia Salaad (Salaada Subax, Duhur, Casir, Magrib iyo Cishe) and so.wikipedia Salaada Subax; namazvakti.com SO pages (Subax, Duhur, Casir, Maqrib, Cishaha); Somali YouTube/Facebook dawah (SALAADA CASAR IYO DUHUR; Fadliga Salaada Casar); facebook.com/Midabsan.so (saacad la aqbalo ducada - the Friday hour); waxkabaro.net Somali Ramadan series (suxuur)
+
+**Established-practice convention** (followed): For the Friday hour Somali usage is descriptive - saacad la aqbalo ducada (the hour du''a is accepted) - rather than the Arabic loan Source: facebook.com/Midabsan.so
+
+Confidence: medium. Five prayers are strongly grounded (Somali Wikipedia, namazvakti SO, Somali dawah posts); variants in circulation: Casir (Wikipedia/namazvakti) vs mainstream Casar, Maqrib vs Magrib, Cishe/Cishaha vs colloquial Cisho. Catalog drifts: Cishaa''i and Sahri. Suhoor spelling wavers (Suxuur waxkabaro vs Suquur common online); duha was not independently retrieved; istijaba rests on one Somali page.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subax | Subax | OK |
+| dhuhr | `prayer.dhuhr` | Duhur | Duhur | OK |
+| asr | `prayer.asr` | Casar | Casar | OK |
+| magrib | `prayer.magrib` | Magrib | Maqrib | FIX |
+| isha | `prayer.isha` | Cisho | Cishaa''i | FIX |
+| suhoor | `prayer.suhoor` | Suxuur | Sahri | FIX |
+| duha | `prayer.duha` | Dhuha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Saacadda la aqbalo ducada | Istijaabo | FIX |
+
+Fixes:
+- `prayer.magrib`: "Maqrib" -> "Magrib"
+- `prayer.isha`: "Cishaa''i" -> "Cisho"
+- `prayer.suhoor`: "Sahri" -> "Suxuur"
+- `prayer.duha`: "Duha" -> "Dhuha"
+- `prayer.istijaba`: "Istijaabo" -> "Saacadda la aqbalo ducada"
+- `extras.explanation.midnight`: "Dhexdhexaadxada Maqrib iyo Subax" -> "Dhexdhexaadxada Magrib iyo Subax"
+- `extras.explanation.istijaba`: "1 saac ka hor Maqrib (Jimcaha oo kaliya)" -> "1 saac ka hor Magrib (Jimcaha oo kaliya)"
+
+---
+
+## sq - Albanian (Albania, Kosovo, North Macedonia)
+
+Convention: Albania''s established row names are its own heritage words (Ottoman-Albanian Islamic usage), printed by the official Muslim Community''s prayer service; this is the ticket''s translation-convention exception
+
+Sources: namaz.kmsh.al - Komuniteti Mysliman i Shqiperise official prayer times (Imsaku, Lindja, Yleja, Ikindia, Akshami, Jacia); sq.wikipedia.org Namazi i Duhase; albislam.com (Namazi i Duhasë); telegrafi.com / teve1.info / agroweb.org (iftar dhe syfyr); dituriaislame.com (KMSH magazine; ''istixhabe'')
+
+**Established-practice convention** (followed): Albanian established practice names the five prayers and the pre-dawn meal with its own heritage words - Imsaku, Yleja, Ikindia, Akshami, Jacia, Syfyri - inherited from Ottoman-era Islamic Albanian, not Arabic transliterations; diaspora mosques pair them with the Arabic names (Sabahu (Fajr), Dreka (Dhuhr)) Source: namaz.kmsh.al, the Komuniteti Mysliman i Shqiperise (KMSH) official prayer-times service, rows: Imsaku / Lindja / Yleja / Ikindia / Akshami / Jacia
+
+Confidence: high. All five prayer rows match the catalog exactly (KMSH official). Suhoor drifts: catalog ''Sahur'' -> ''Syfyri'', the living Albanian word for the meal (syfyr; ''mbaroni syfyrin'' in Albanian Ramadan materials). Istijaba drifts: ''Istixhaba'' -> ''Istixhabe'' per Dituria Islame (KMSH magazine) and alislam.cloud (''Ed-dua vel-istixhabe''); thinner evidence, medium on this name alone.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Imsaku | Imsaku | OK |
+| dhuhr | `prayer.dhuhr` | Yleja | Yleja | OK |
+| asr | `prayer.asr` | Ikindia | Ikindia | OK |
+| magrib | `prayer.magrib` | Akshami | Akshami | OK |
+| isha | `prayer.isha` | Jacia | Jacia | OK |
+| suhoor | `prayer.suhoor` | Syfyri | Sahur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istixhabe | Istixhaba | FIX |
+
+Fixes:
+- `prayer.suhoor`: "Sahur" -> "Syfyri"
+- `prayer.istijaba`: "Istixhaba" -> "Istixhabe"
+
+---
+
+## su - Sundanese (West Java, Indonesia)
+
+Convention: Sundanese Wikipedia states the five outright and keeps Arabic loans with Lohor for Dhuhr.
+
+Sources: su.wikipedia Solat (nyaéta Subuh, Lohor, Asar, Magrib, jeung Isya) and Magrib article''s list; su.wikipedia Sahur/Saur (lemma: Saur atawa sahur); kompasiana.com Kata Serapan Sholat Dzuhur Menjadi Sholat Lohor (Sunda: Isya, Shubuh, Lohor, Ashar, Maghrib)
+
+Confidence: medium. Five names verbatim from su.wikipedia. Native variant Saur for Sahur; Isha also written Isa (article Solat Isa); Dhuha and Istijabah have no Sundanese source, kept as regional Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Subuh | Subuh | OK |
+| dhuhr | `prayer.dhuhr` | Lohor | Lohor | OK |
+| asr | `prayer.asr` | Asar | Asar | OK |
+| magrib | `prayer.magrib` | Magrib | Magrib | OK |
+| isha | `prayer.isha` | Isya | Isya | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Dhuha | Dhuha | OK |
+| istijaba | `prayer.istijaba` | Istijabah | Istijabah | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## sw - Swahili (Tanzania, Kenya, East African coast (Muslim coastal tradition))
+
+Convention: Coastal Islamic Swahili calendars use naturalized Arabic-derived names (Alfajiri, Adhuhuri, Alasiri, Magharibi, Isha); these are the living convention, not machine translations
+
+Sources: sajda.com/sw and tz.tawkit.net Dar es Salaam timetables (Alfajiri, Adhuhuri, Alasiri, Magharibi, Isha); sw.wikishia.net ''Nyakati za Swala'' and bongoclass.com (Adhuhuri, al''asiri); BBC News Swahili (Suhur) and ing.org Swahili Ramadan sheet (mlo unaoitwa suhur); Facebook ''MAADILI YA SWAUMU: SWALA YA DHUHA'' posts
+
+Confidence: high. Five stand as cataloged; Al''asiri spelling variant common, and Subhi is used for fajr in some (Shia-leaning) literature. Suhoor: Suhur attested by BBC Swahili; the indigenous coastal word daku is an equal runner-up. Duha attested as ''Swala ya Dhuha'' (Adhuha variant). Istijaba unattested as a Swahili word; dar-alifta.org Swahili fatwas describe ''saa ambayo dua hairudishwi'' on Ijumaa.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Alfajiri | Alfajiri | OK |
+| dhuhr | `prayer.dhuhr` | Adhuhuri | Adhuhuri | OK |
+| asr | `prayer.asr` | Alasiri | Alasiri | OK |
+| magrib | `prayer.magrib` | Magharibi | Magharibi | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhur | Suhur | OK |
+| duha | `prayer.duha` | Dhuha | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.duha`: "Duha" -> "Dhuha"
+
+---
+
+## ta - Tamil (Tamil Nadu India, Sri Lanka, Singapore, Malaysia (Tamil Muslim tradition))
+
+Convention: Tamil Muslim sites and ta.wikipedia transliterate the Arabic names in Tamil script; competing naturalizations of the emphatic consonants coexist
+
+Sources: piraivasi.com prayer-time article (table rows: ஃபஜ்ர், ளுஹர், அஸ்ர், மக்ரிப், இஷா); ta.wikipedia ழுஹர் தொழுகை (ழுஹர், அஸர், மஃரிப், இஷா); tamilquran.org fasting article (ஸஹர்), Mail of Islam mailofislam.com/tam-dhuha_prayer (ழுஹா தொழுகை), onlinepj.in (லுஹா தொழுகை)
+
+Confidence: high. Dhuhr spells three ways in the wild (ழுஹர் wikipedia, லுஹர் app listings, ளுஹர் piraivasi); ழுஹர் kept. Maghrib variants மஃரிப்/மக்ரிப்; asr அஸர் runner-up. Duha: catalog துஹா drifts; Tamil Islamic material writes ழுஹா/லுஹா. Istijaba unattested in Tamil literature; concept phrased as வெள்ளிக்கிழமை இறுதி மணி.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ஃபஜ்ர் | ஃபஜ்ர் | OK |
+| dhuhr | `prayer.dhuhr` | ழுஹர் | ழுஹர் | OK |
+| asr | `prayer.asr` | அஸ்ர் | அஸ்ர் | OK |
+| magrib | `prayer.magrib` | மஃகிரிப் | மஃகிரிப் | OK |
+| isha | `prayer.isha` | இஷா | இஷா | OK |
+| suhoor | `prayer.suhoor` | சஹர் | சஹர் | OK |
+| duha | `prayer.duha` | ழுஹா | துஹா | FIX |
+| istijaba | `prayer.istijaba` | இஸ்திஜாபா | இஸ்திஜாபா | OK |
+
+Fixes:
+- `prayer.duha`: "துஹா" -> "ழுஹா"
+
+Variant (compliant, no change): `extras.explanation.midnight` - name magrib present as inflected/short prose form "மஃகிரிப" of reference "மஃகிரிப்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.midnight` - name fajr present as inflected/short prose form "ஃபஜ்ர" of reference "ஃபஜ்ர்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.suhoor` - name fajr present as inflected/short prose form "ஃபஜ்ர" of reference "ஃபஜ்ர்" - compliant variant, no change
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "மஃகிரிப" of reference "மஃகிரிப்" - compliant variant, no change
+
+---
+
+## te - Telugu (Andhra Pradesh and Telangana, India)
+
+Convention: Telugu Islamic media transliterate the Arabic names in Telugu script; the forenoon prayer follows the Indo-Persian practice (Ishraq/Chasht), not Duha
+
+Sources: te.wikipedia నమాజ్ article (ఫజ్ర్, జుహర్/జుహ్ర్, అసర్/అస్ర్, మగ్రిబ్, ఇషా; special prayers ఇష్రాఖ్ and చాష్ట్); teluguislam.net (సహర్ and ఇఫ్తార్ tags) and andhrajyothy.com Ramadan article (సహరీ); Telugu Islamic channels (facebook.com/abu4451 ఫజర్ నమాజ్, Instagram islamtelugu reels)
+
+Confidence: high. Five stand as cataloged (జుహ్ర్/అస్ర్ runner-up spellings). Suhoor సహర్ per teluguislam.net, సహరీ in mainstream press. Duha: Telugu practice names the post-sunrise forenoon prayer ఇష్రాఖ్ (or చాష్ట్) per te.wikipedia; దుహా has no Telugu currency, so the established name is recorded. Istijaba unattested in Telugu.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ఫజ్ర్ | ఫజ్ర్ | OK |
+| dhuhr | `prayer.dhuhr` | జుహర్ | జుహర్ | OK |
+| asr | `prayer.asr` | అసర్ | అసర్ | OK |
+| magrib | `prayer.magrib` | మగ్రిబ్ | మగ్రిబ్ | OK |
+| isha | `prayer.isha` | ఇషా | ఇషా | OK |
+| suhoor | `prayer.suhoor` | సహర్ | సహర్ | OK |
+| duha | `prayer.duha` | ఇష్రాఖ్ | దుహా | FIX |
+| istijaba | `prayer.istijaba` | ఇస్తిజాబా | ఇస్తిజాబా | OK |
+
+Fixes:
+- `prayer.duha`: "దుహా" -> "ఇష్రాఖ్"
+
+---
+
+## tg - Tajik (Tajikistan)
+
+Convention: Persian-Arabic heritage names in Cyrillic per Tajik prayer-time services and the Council of Ulema (Бомдод, Пешин, Аср, Шом, Хуфтан)
+
+Sources: takvim.tj (rows Бомдод/Пешин/Аср/Шом/Хуфтан); shuroiulamo.tj (Council of Ulema of Tajikistan, ''Вақти намоз дар Душанбе''); islamqa.info/tg (''Вақти намози зуҳо (чошт)''); tg.wikishia.net (''Саҳарӣ'')
+
+Confidence: medium. Five stand on official-adjacent sites (takvim.tj, shuroiulamo.tj). suhoor drifts Саҳар→Саҳарӣ, the -ӣ meal form the Council of Ulema''s own FAQ and tg.wikishia use. duha Зуҳо stands with чошт (and ишроқ) as attested equivalents. istijaba is thin: Истиҷоба appears only once as a transliteration (tg.wikishia news title); Tajik sources otherwise describe the hour (''рӯзи ҷумъа соате муайян аст'') - treat as low-confidence name.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Бомдод | Бомдод | OK |
+| dhuhr | `prayer.dhuhr` | Пешин | Пешин | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Шом | Шом | OK |
+| isha | `prayer.isha` | Хуфтан | Хуфтан | OK |
+| suhoor | `prayer.suhoor` | Саҳарӣ | Саҳар | FIX |
+| duha | `prayer.duha` | Зуҳо | Зуҳо | OK |
+| istijaba | `prayer.istijaba` | Истиҷоба | Истиҷоба | OK |
+
+Fixes:
+- `prayer.suhoor`: "Саҳар" -> "Саҳарӣ"
+
+---
+
+## th - Thai (Thailand (Malay-Muslim south plus Thai Muslim communities))
+
+Convention: Thai Muslim prayer-time sites and Islamic councils use established Thai-script transliterations as timetable row labels
+
+Sources: prayertimes.muslimthaipost.com (rows: อิมซาก, ซุบฮิ, ซุฮฺริ, อัศริ, มัฆริบ); whitechannel.tv/solahtimes (ศุบฮิ, ซุฮฺริ, อัศริ, มัฆริบ, อิชาอฺ) and islamiccenterthailand Facebook; islaminthailand.org (สะฮูร, ละหมาดดุฮา) and islamhouse.muslimthaipost.com (''อิฟตาร์ และ ซูฮูร์ คืออะไร?'')
+
+Confidence: high. Catalog row matches muslimthaipost exactly; competing spellings abound (ศุบฮี/ซุบฮี, ซุห์รี/ดุฮริ, อัศรี/อัสริ, มักริบ, อิชาอ์/อิซาอฺ) and any is defensible. Suhoor attested as ซูฮูร์ (muslimthaipost/islamhouse) with สะฮูร/ซะฮูร equally common on council sites. Duha ดุฮา well attested (islaminthailand.org, islammore ''ฎุฮา'' variant). Istijaba unattested; Thai literature says เวลาตอบรับดุอาอ์ในวันศุกร์.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ซุบฮิ | ซุบฮิ | OK |
+| dhuhr | `prayer.dhuhr` | ซุฮฺริ | ซุฮฺริ | OK |
+| asr | `prayer.asr` | อัศริ | อัศริ | OK |
+| magrib | `prayer.magrib` | มัฆริบ | มัฆริบ | OK |
+| isha | `prayer.isha` | อิชาอฺ | อิชาอฺ | OK |
+| suhoor | `prayer.suhoor` | ซูฮูร์ | ซูฮูร์ | OK |
+| duha | `prayer.duha` | ดุฮา | ดุฮา | OK |
+| istijaba | `prayer.istijaba` | อิสติญาบะฮฺ | อิสติญาบะฮฺ | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## ti - Tigrinya (Eritrea, Ethiopia)
+
+Convention: Eritrean/Ethiopian Muslims share the Ge''ez-script Arabic-loan convention: ፈጅር، ዙሁር، አስር، መግሪብ، ኢሻ.
+
+Sources: Tigrinya-language YouTube listing naming the five (ፈጅር፣ ዙሁር፣ አስር፣ መግሪብ ፡ ኢሻ); islamhouse.com/ti (full Tigrinya dawah corpus, confirms the register these loans live in)
+
+Confidence: medium. The five rest on one Tigrinya listing plus the Ge''ez-script convention shared with the well-sourced Amharic rows; catalog variants ዙሓር/ዓስር/ምግሪብ also circulate. The three extras (ሱሕር، ዱሓ، ኢስቲጃባ) found no Tigrinya source and stay as catalog transliterations; a native Eritrean review is needed.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | ፈጅር | ፈጅር | OK |
+| dhuhr | `prayer.dhuhr` | ዙሁር | ዙሓር | FIX |
+| asr | `prayer.asr` | አስር | ዓስር | FIX |
+| magrib | `prayer.magrib` | መግሪብ | ምግሪብ | FIX |
+| isha | `prayer.isha` | ኢሻ | ኢሻ | OK |
+| suhoor | `prayer.suhoor` | ሱሕር | ሱሕር | OK |
+| duha | `prayer.duha` | ዱሓ | ዱሓ | OK |
+| istijaba | `prayer.istijaba` | ኢስቲጃባ | ኢስቲጃባ | OK |
+
+Fixes:
+- `prayer.dhuhr`: "ዙሓር" -> "ዙሁር"
+- `prayer.asr`: "ዓስር" -> "አስር"
+- `prayer.magrib`: "ምግሪብ" -> "መግሪብ"
+- `extras.explanation.midnight`: "ኣብ ማእከል ምግሪብን ፈጅርን" -> "ኣብ ማእከል መግሪብን ፈጅርን"
+- `extras.explanation.istijaba`: "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)" -> "1 ሰዓት ቅድሚ መግሪብ (ዓርቢ ጥራይ)"
+
+---
+
+## tk - Turkmen (Turkmenistan)
+
+Convention: Turkmen calendar vocabulary as printed by the Turkmen prayer-time service and tk.wikipedia: Turkic words for fajr/dhuhr (Ertir, Öýlen) and local fasting terms (Agyz wagty)
+
+Sources: namazvakti.com Turkmen localization (rows Ertir/Dogýan wagty/Öýlen/Ikindi/Agşam/Ýassy, Agyz wagt); tk.wikipedia.org ''Namaz'' (ertir/öýle/ikindi/agşam/ýassy namazy); tk.wikipedia.org ''Oraza'' (agyz beklenýän wagt); enedilim.com Türkmen explanatory dictionary (''Guşluk'')
+
+**Established-practice convention** (followed): Turkmen rows use Turkic words (Ertir, Öýlen) and local fasting vocabulary: imsak/suhoor time is Agyz wagt (agyz beklenýän wagt), not an Arabic loan; forenoon is Guşluk Source: namazvakti.com TM; tk.wikipedia.org ''Oraza''; enedilim.com
+
+Confidence: medium. Five stand (namazvakti.com TM rows; tk.wikipedia gives öýle as a variant of Öýlen). suhoor drifts Sahur→Agyz wagt: ''saharlyk'' is absent from the Turkmen explanatory dictionary; Turkmen Ramadan content says ''agyz beklenýän wagtlar''. duha drifts Duha→Guşluk (dictionary word for forenoon); no Turkmen prayer-calendar row prints this time. istijaba unverified: no Turkmen source found at all - Turkmen religious web is scarce (state-controlled); keep catalog value as low-confidence placeholder.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Ertir | Ertir | OK |
+| dhuhr | `prayer.dhuhr` | Öýlen | Öýlen | OK |
+| asr | `prayer.asr` | Ikindi | Ikindi | OK |
+| magrib | `prayer.magrib` | Agşam | Agşam | OK |
+| isha | `prayer.isha` | Ýassy | Ýassy | OK |
+| suhoor | `prayer.suhoor` | Agyz wagt | Sahur | FIX |
+| duha | `prayer.duha` | Guşluk | Duha | FIX |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Sahur" -> "Agyz wagt"
+- `prayer.duha`: "Duha" -> "Guşluk"
+
+---
+
+## tl - Tagalog / Filipino (Philippines (Manila, Luzon, nationwide lingua franca))
+
+Convention: Filipino Islamic materials transliterate the Arabic names with a Tagalog gloss in parentheses, never machine-literal translations; attested in islamhouse Tagalog dawah books and the whatistheislam Filipino pages.
+
+Sources: islamhouse.com/tl/books/5671/ (AS-SALAH - Ang Pagdarasal sa Islam, lists Fajr, Dhuhr, ...); whatistheislam.com/tl/panalangin-sa-islam/ and /pag-aayuno-sa-islam/ (Fajr, Dhuhr, ʿAsr, Maghrib, Ishāʾ; suhoor); Filipino Muslim dawah posts on Facebook ("Ang Sahur (ang pagkain at pag-inom sa madaling araw...)"; "Pamamaraan at gantimpala ng Salah Ad-Duha"); quranenc.com tagalog_rwwad (Tagalog Quran translation - renders verse meanings, keeps Arabic names as names)
+
+Confidence: medium. Five prayers double-sourced in Tagalog Islamic texts; whatistheislam tl writes them with transliteration marks (ʿAsr, Ishāʾ), islamhouse plain - plain forms stand. Suhoor: "Sahur" is the Filipino-Muslim mainstream spelling, "suhoor" (whatistheislam, trykaiwa.com) is the runner-up; catalog Sahur stands. Istijaba has no Tagalog source found; kept as plain transliteration. Duha attested as "Salah Ad-Duha".
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## tr - Turkish (Türkiye)
+
+Convention: Diyanet (state Islamic authority) translates all prayer-time names into Turkish on its calendars; extras follow Diyanet/Sorularla İslamiyet usage (Sahur, Kuşluk, İcabet saati)
+
+Sources: namazvakitleri.diyanet.gov.tr (rows İmsak/Güneş/Öğle/İkindi/Akşam/Yatsı); kurul.diyanet.gov.tr fetva ''Kuşluk (duha) namazı ne zaman ve nasıl kılınır?''; sorularlaislamiyet.com ''Sâat-i İcâbe - Eşref Saat''; islamansiklopedisi.org.tr ''Kuşluk Namazı''
+
+**Established-practice convention** (followed): Owner ruling 2026-11-02 confirmed: Diyanet calendars print Turkish words for every name (İmsak, Öğle, İkindi, Akşam, Yatsı; Ramadan Sahur; forenoon Kuşluk; Friday hour İcabet saati) Source: namazvakitleri.diyanet.gov.tr; kurul.diyanet.gov.tr
+
+Confidence: high. All eight catalog values stand. Kuşluk per Diyanet fetva runs from ~40-50 min after sunrise; İcabet saati also appears in Ottomanist form ''sâat-i icâbe''; the Turkish sources place it in the last hour of Friday (ikindi-akşam arası), matching the app''s Akşam-1h row.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | İmsak | İmsak | OK |
+| dhuhr | `prayer.dhuhr` | Öğle | Öğle | OK |
+| asr | `prayer.asr` | İkindi | İkindi | OK |
+| magrib | `prayer.magrib` | Akşam | Akşam | OK |
+| isha | `prayer.isha` | Yatsı | Yatsı | OK |
+| suhoor | `prayer.suhoor` | Sahur | Sahur | OK |
+| duha | `prayer.duha` | Kuşluk | Kuşluk | OK |
+| istijaba | `prayer.istijaba` | İcabet saati | İcabet saati | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## tt - Tatar (Tatarstan, Russia)
+
+Convention: DUM RT (Tatarstan Muslim Board) calendars print fully Tatar names for all five prayers (Иртәнге намаз through Ястү намазы), the strongest translation practice in the batch
+
+Sources: dumrt.ru/help-info/prayertime (rows Иртәнге намаз/Кояш чыга/Зәвәл/Өйлә намазы/Икенде намазы/Ахшам намазы/Ястү намазы); tt.wikipedia.org ''Намаз'' (''иртәнге намаз, өйлә намазы, икенде намазы, ахшам намазы, ястү намазы''); tatarica.org ''Намаз''; garap-farsy.narod.ru (Tatar Arabic-Persian loanword dictionary, ''Истиҗабә''); intertat.tatar (''сәхәр'')
+
+**Established-practice convention** (followed): Tatar calendars translate all five names into Tatar (Иртәнге намаз ... Ястү намазы) per the official DUM RT prayer table Source: dumrt.ru/help-info/prayertime; tatarica.org
+
+Confidence: medium. Five + suhoor stand (DUM RT rows; intertat.tatar uses сәхәр for the pre-dawn meal). istijaba stands at word level: Истиҗабә is confirmed in the Tatar Arabic-Persian loanword dictionary, though the full phrase ''истиҗабә сәгате'' was not found in print. duha is the weakest name: ''Дүһә'' did not surface in any searched Tatar source (Kazakh/Turkish cognates Духа/Куштук dominate results); needs print confirmation from Tatar Islamic literature.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Иртәнге намаз | Иртәнге намаз | OK |
+| dhuhr | `prayer.dhuhr` | Өйлә намазы | Өйлә намазы | OK |
+| asr | `prayer.asr` | Икенде намазы | Икенде намазы | OK |
+| magrib | `prayer.magrib` | Ахшам намазы | Ахшам намазы | OK |
+| isha | `prayer.isha` | Ястү намазы | Ястү намазы | OK |
+| suhoor | `prayer.suhoor` | Сәхәр | Сәхәр | OK |
+| duha | `prayer.duha` | Дүһә | Дүһә | OK |
+| istijaba | `prayer.istijaba` | Истиҗабә | Истиҗабә | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+Variant (compliant, no change): `extras.explanation.istijaba` - name magrib present as inflected/short prose form "Ахшам" of reference "Ахшам намазы" - compliant variant, no change
+
+---
+
+## ug - Uyghur (Xinjiang, China (and diaspora))
+
+Convention: Uyghur Islamic materials in Arabic script use heritage names (بامدات، پېشىن، ئەسىر، شام، خۇپتەن) and descriptive phrases for the Friday hour
+
+Sources: ug.wikipedia.org ''ناماز ۋاقتى'' (بامدات/پېشىن/ئەسىر/شام/خۇپتەن); kuranyoli.com (''زۇھا نامىزى قانداق ناماز؟'', ''بەش ۋاخ ناماز رىسالىسى''); islamqa.info/ug answer 112165 (''جۈمە كۈنىدىكى دۇئا ئىجابەت بولىدىغان ۋاقىت''); sajiya.biz
+
+**Established-practice convention** (followed): For istijaba, Uyghur practice names the Friday hour descriptively as دۇئا ئىجابەت بولىدىغان ۋاقىت rather than a borrowed single word Source: islamqa.info/ug; sajiya.biz
+
+Confidence: medium. Five + duha stand (ug.wikipedia; kuranyoli variants نامازدىگەر for asr and نامازشام for maghrib). istijaba drifts ئىستىجابە→the attested phrase (islamqa.info/ug title, sajiya.biz, uyghur-archive Bukhari translation; catalog coinage unattested). suhoor is the weakest name: the root سەھەر and the parallel ئىپتار/ئىپتارلىق are attested, but no Uyghur Islamic source printing سەھەرلىك surfaced (diaspora sites deindexed, kantesti.net bot-blocked) - treat as low-confidence, catalog value kept.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | بامدات | بامدات | OK |
+| dhuhr | `prayer.dhuhr` | پېشىن | پېشىن | OK |
+| asr | `prayer.asr` | ئەسىر | ئەسىر | OK |
+| magrib | `prayer.magrib` | شام | شام | OK |
+| isha | `prayer.isha` | خۇپتەن | خۇپتەن | OK |
+| suhoor | `prayer.suhoor` | سەھەرلىك | سەھەرلىك | OK |
+| duha | `prayer.duha` | زۇھا | زۇھا | OK |
+| istijaba | `prayer.istijaba` | دۇئا ئىجابەت بولىدىغان ۋاقىت | ئىستىجابە | FIX |
+
+Fixes:
+- `prayer.istijaba`: "ئىستىجابە" -> "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+
+---
+
+## uk - Ukrainian (Ukraine (Crimean Tatar and diaspora Muslim communities))
+
+Convention: Ukrainian Cyrillic transliteration matching the Russian pattern with Ukrainian orthography (і for и, і); Ukrainian Wikipedia carries dedicated articles Фаджр, Зухр, Магріб, Іша, and Ukrainian-language prayer pages use the same forms.
+
+Sources: uk.wikipedia.org (articles Фаджр, Зухр, Магріб (молитва), Іша (молитва), Сухур); часу.com (Ukrainian prayer-time text: Фаджр, Зухр, Аср, Магріб, Іша); amu.org.ua (Рамадан program: Сухур, «ад-духа»)
+
+Confidence: high. Correction: catalog istijaba «Истіджаба» mixes the Russian и; Ukrainian form is Істіджаба (unattested in Ukrainian Islamic texts either way; the concept is phrased «година прийняття дуа в п''ятницю»). amu.org.ua grounds Сухур and «ад-духа» in Ukrainian running text. DUMU''s own schedule page (umma.in.ua/ua) unfortunately prints Latin Dhohr/Asr/Maghrib/Isha beside Ukrainian Фаджр; the Ukrainian Wikipedia and часу.com set the Ukrainian standard.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Фаджр | Фаджр | OK |
+| dhuhr | `prayer.dhuhr` | Зухр | Зухр | OK |
+| asr | `prayer.asr` | Аср | Аср | OK |
+| magrib | `prayer.magrib` | Магріб | Магріб | OK |
+| isha | `prayer.isha` | Іша | Іша | OK |
+| suhoor | `prayer.suhoor` | Сухур | Сухур | OK |
+| duha | `prayer.duha` | Духа | Духа | OK |
+| istijaba | `prayer.istijaba` | Істіджаба | Истіджаба | FIX |
+
+Fixes:
+- `prayer.istijaba`: "Истіджаба" -> "Істіджаба"
+
+---
+
+## ur - Urdu (Pakistan and India)
+
+Convention: Arabic-origin names exactly as Pakistan''s mainstream prayer-time pages and fatwa bodies print them
+
+Sources: banuri.edu.pk/namaz-times; urdupoint.com islamic prayer timings; ur.wikipedia.org (سحری); dar-alifta.org/ur (نماز چاشت کی فضیلت)
+
+Confidence: high. All five confirmed in Banuri Town''s table and UrduPoint rows; نمازِ چاشت is the established duha name (Banuri, Dar al-Ifta Egypt Urdu, Dawat-e-Islami). The Friday hour is ''قبولیت کی گھڑی'' in mainstream Urdu fatwa prose (Banuri, DarulIfta Deoband); استجابہ alone is rare. Catalog stands except istijaba, where the phrase replaces the bare transliteration.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | فجر | فجر | OK |
+| dhuhr | `prayer.dhuhr` | ظہر | ظہر | OK |
+| asr | `prayer.asr` | عصر | عصر | OK |
+| magrib | `prayer.magrib` | مغرب | مغرب | OK |
+| isha | `prayer.isha` | عشاء | عشاء | OK |
+| suhoor | `prayer.suhoor` | سحری | سحری | OK |
+| duha | `prayer.duha` | چاشت | چاشت | OK |
+| istijaba | `prayer.istijaba` | قبولیت کی گھڑی | استجابہ | FIX |
+
+Fixes:
+- `prayer.istijaba`: "استجابہ" -> "قبولیت کی گھڑی"
+
+---
+
+## uz - Uzbek (Uzbekistan)
+
+Convention: Persian-Arabic heritage calendar per Uzbek Muslim Board-linked services (Bomdod, Peshin, Asr, Shom, Xufton; Saharlik); forenoon prayer named Zuho (choshgoh) by the Board''s own site
+
+Sources: namozvaqti.uz (rows Bomdod/Quyosh/Peshin/Asr/Shom/Xufton, Saharlik); islom.uz/taqvim (rows Бомдод/Саҳарлик/Ишроқ/Пешин/Аср/Шом/Ифторлик/Хуфтон); muslim.uz (Muslim Board of Uzbekistan, ''Zuho (choshgoh) namozi''); hadis.uz (''Жумъа кунида дуо ижобат бўладиган соат'')
+
+**Established-practice convention** (followed): For istijaba, Uzbek practice names the hour descriptively: Duo ijobat bo''ladigan soat (hadis.uz hadith title; islom.uz article uses ''дуо ижобат бўлади''); the forenoon prayer is Zuho (choshgoh), though calendars print Ishroq for the sunrise+20min row Source: hadis.uz; muslim.uz
+
+Confidence: high. Five + suhoor stand on multiple Uzbek services incl. Board-linked ones. duha drifts Ishroq→Zuho (muslim.uz ''Zuho (choshgoh) namozi'', uz.wikipedia, qalampir.uz; islom.uz''s own article says Zuho starts ~20 min after sunrise) - note the catalog''s Ishroq exactly matches islom.uz''s calendar row for sunrise+20min, so keep Ishroq only if the row is meant to mirror that calendar line. istijaba drifts Istijoba→the attested phrase (hadis.uz, islom.uz); single-word Istijoba lives only in other senses (''Истижоба тавбаси'').
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Bomdod | Bomdod | OK |
+| dhuhr | `prayer.dhuhr` | Peshin | Peshin | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Shom | Shom | OK |
+| isha | `prayer.isha` | Xufton | Xufton | OK |
+| suhoor | `prayer.suhoor` | Saharlik | Saharlik | OK |
+| duha | `prayer.duha` | Zuho | Ishroq | FIX |
+| istijaba | `prayer.istijaba` | Duo ijobat bo''ladigan soat | Istijoba | FIX |
+
+Fixes:
+- `prayer.duha`: "Ishroq" -> "Zuho"
+- `prayer.istijaba`: "Istijoba" -> "Duo ijobat bo''ladigan soat"
+
+---
+
+## vi - Vietnamese (Vietnam (Cham Muslim minority, plus Mekong Delta Muslim communities))
+
+Convention: Vietnamese Muslim sites and national press keep the Arabic names romanized in Latin script inside Vietnamese sentences; no Vietnamese-script prayer names
+
+Sources: toiyeuislam.com/p/salah.html ''Giờ Hành Lễ Salah'' (table: Fajr, Dhuhr, Asr, Maghrib, Isha by province); tuoitre.vn Ramadan explainer (Suhoor/Iftar) and BLVhaithanh Facebook (''bữa sáng gọi là suhoor''); giadinhhoigiaomientay Facebook (''5 buổi lễ Salah'', ''Salah Fajr'') and machzen80 Islamic lessons
+
+Confidence: medium. The five and Suhoor are grounded in real Vietnamese Muslim and press usage, all Latin-script. Duha and Istijaba found no Vietnamese-language Islamic source within search limits; they remain plain transliterations with low trust on those two.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Suhoor | Suhoor | OK |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes: none - all eight name rows and every name-bearing extras description comply.
+
+---
+
+## war - Waray (Philippines (Eastern Visayas: Samar, Leyte))
+
+Convention: No Islamic literature exists in Waray (no Quran translation, no islamhouse section, the sizable Waray Wikipedia Islam article names no prayers); Waray Muslims read Filipino/Cebuano/Arabic materials, so names stay Arabic-transliterated per Philippine Muslim practice.
+
+Sources: No in-language Islamic source found (probed: islamhouse, quranenc, Waray Wikipedia Islam article - 30 KB, no prayer names anywhere); Nearest anchors: Filipino-language materials islamhouse.com/tl/books/5671/ and whatistheislam.com/tl (PH-Muslim spelling practice)
+
+Confidence: low. Zero real sources in Waray carry these names; spellings follow the Arabic transliteration as used across Philippine Islamic practice. Catalog''s "Suhur" drifts from the PH-Muslim norm "Sahur"; flagged, not in-language verified.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Fajr | Fajr | OK |
+| dhuhr | `prayer.dhuhr` | Dhuhr | Dhuhr | OK |
+| asr | `prayer.asr` | Asr | Asr | OK |
+| magrib | `prayer.magrib` | Maghrib | Maghrib | OK |
+| isha | `prayer.isha` | Isha | Isha | OK |
+| suhoor | `prayer.suhoor` | Sahur | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.suhoor`: "Suhur" -> "Sahur"
+
+---
+
+## wo - Wolof (Senegal, Gambia, Mauritania)
+
+Convention: Wolof has its own established prayer names, documented explicitly by Gambian reference material and used in running Wolof religious text: suba (Fajr), tisbaar (Zuhr), taakusaan (Asr), timis (Maghrib), gee (Isha); the pre-dawn meal is Xëdd.
+
+Sources: accessgambia.com Muslim Prayers in Gambia (Fajr (suba), Zuhr (tisbaar), Asr (taakusaan), Maghrib (timis), Isha (gee)); fr.wikipedia.org Takussan Ndar (tàkkusaan) and Wolof religious text (Jëwharuh Nafiis: tisbaar; Senegalese Wolof posts: tisbaar, takussan, timis); au-senegal.com Ramadan lexicon and lequotidien.sn (Xëdd = pre-dawn meal; ndogou = iftar)
+
+Confidence: high. Correction: catalog had fajr as Fajar with sunrise as Suba - inverted; Wolof practice names the dawn prayer itself Suba, and the catalog''s five mostly tracked the Arabic loan instead of the Wolof name. Spelling variants recorded: taakusaan / tàkkusaan / takussan; gee also seen as gii/géejji. Suhoor = Xëdd (au-senegal.com, lequotidien.sn «kheudd»); ndogou is the IFTAR meal, not suhoor. Duha and Istijaba unattested in Wolof Islamic vocabulary - kept as naturalized Arabic loans.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Suba | Fajar | FIX |
+| dhuhr | `prayer.dhuhr` | Tisbaar | Tisbaar | OK |
+| asr | `prayer.asr` | Taakusaan | Takusaan | FIX |
+| magrib | `prayer.magrib` | Timis | Timis | OK |
+| isha | `prayer.isha` | Gee | Isha | FIX |
+| suhoor | `prayer.suhoor` | Xëdd | Suhur | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "Fajar" -> "Suba"
+- `prayer.asr`: "Takusaan" -> "Taakusaan"
+- `prayer.isha`: "Isha" -> "Gee"
+- `prayer.suhoor`: "Suhur" -> "Xëdd"
+- `extras.explanation.midnight`: "Diggante Timis ak Fajar" -> "Diggante Timis ak Suba"
+- `extras.explanation.suhoor`: "20 min laata Fajar" -> "20 min laata Suba"
+
+---
+
+## yo - Yoruba (Nigeria, Benin (large Muslim population))
+
+Convention: Yoruba mosque practice and Yoruba Quran translation embed naturalized Arabic names in the frame ''irun X'' (irun Fajr, irun Ẹlẹ́ẹ̀rì, irun Magrib, irun Ishai)
+
+Sources: surahquran.com Yoruba Quran translation of Hud 114 (''ìrun Fajr ní ìbẹ̀rẹ̀ ọjọ́, ìrun Ẹlẹ́ẹ̀rì àti Asr ní apá ọ̀sán, ìrun Magrib àti Ishā ní àwọn wákàtí òru''); Hon. Dr AbdulHakeem AbdulLateef Yoruba da''wah videos (IRUN SALATUL FAJR, BI A SE NKI IRUN SALATUL ISHAI, IRUN MAGHRIB); imuslimguide.com/yo and islamhouse.com/yo (Irun category)
+
+Confidence: medium. Catalog''s time-of-day forms (Irun Àárọ̀, Irun Ọ̀sán, Irun Àsárì, Irun Ìṣàá) drift from mosque practice; Ìṣàá for isha is unattested while Ishai/Ishā is used by both sources. Subhi and ìrun àárọ̀ are common alternates for fajr; Ẹlẹ́ẹ̀rì is the established naturalization of dhuhr. Suhoor, Duha and Istijaba found no Yoruba-language Islamic source; kept as transliterations with low trust.
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | Ìrun Fajr | Irun Àárọ̀ | FIX |
+| dhuhr | `prayer.dhuhr` | Ìrun Ẹlẹ́ẹ̀rì | Irun Ọ̀sán | FIX |
+| asr | `prayer.asr` | Ìrun Asr | Irun Àsárì | FIX |
+| magrib | `prayer.magrib` | Ìrun Magrib | Irun Magrib | FIX |
+| isha | `prayer.isha` | Ìrun Ishai | Irun Ìṣàá | FIX |
+| suhoor | `prayer.suhoor` | Sahur | Sahuri | FIX |
+| duha | `prayer.duha` | Duha | Duha | OK |
+| istijaba | `prayer.istijaba` | Istijaba | Istijaba | OK |
+
+Fixes:
+- `prayer.fajr`: "Irun Àárọ̀" -> "Ìrun Fajr"
+- `prayer.dhuhr`: "Irun Ọ̀sán" -> "Ìrun Ẹlẹ́ẹ̀rì"
+- `prayer.asr`: "Irun Àsárì" -> "Ìrun Asr"
+- `prayer.magrib`: "Irun Magrib" -> "Ìrun Magrib"
+- `prayer.isha`: "Irun Ìṣàá" -> "Ìrun Ishai"
+- `prayer.suhoor`: "Sahuri" -> "Sahur"
+- `extras.explanation.istijaba`: "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)" -> "Wákàtí 1 ṣáájú Ìrun Magrib (ọjọ́ Jímọ̀ nìkan)"
+
+REVIEW (author the sentence with the reference names):
+- `extras.explanation.suhoor`: "Ìṣẹ́jú 20 ṣáájú Àárọ̀" - name fajr not present in any form; current sentence uses a translated word - rebuild with the established name Ìrun Fajr
+- `extras.explanation.midnight`: "Àárín Magrib àti Àárọ̀" - fajr named as Àárọ̀ (translated word); rebuild naming both prayers per Yoruba practice, e.g. Àárín ìrun Magrib àti ìrun Fajr
+
+---
+
+## zh-Hans - Simplified Chinese (China (Hui, Uyghur and other Muslim communities))
+
+Convention: Chinese Islam''s centuries-old practice TRANSLATES the five prayer names (五时拜: 晨礼/晌礼/晡礼/昏礼/宵礼) - confirmed by government religious-affairs material and Chinese prayer-time row labels; Suhoor likewise reads 封斋饭.
+
+Sources: mzzjj.gz.gov.cn Guangzhou religious-affairs FAQ (「五时拜」即…晨礼晌礼晡礼昏礼宵礼); app.muslimpro.com/zh row labels (晨礼/晌礼/晡礼/昏礼/宵礼); islamqa.info/zh, byenah.com (same five; 上午拜（杜哈拜）); saudipedia.com, baike.baidu.com, zh.wikipedia 斋戒 (封斋饭)
+
+**Established-practice convention** (followed): Established Chinese Islamic practice translates the five prayer names rather than transliterating them: 晨礼 (Fajr), 晌礼 (Dhuhr), 晡礼 (Asr), 昏礼 (Maghrib), 宵礼 (Isha); the pre-dawn meal is 封斋饭. Recorded per the ticket''s exception. Source: mzzjj.gz.gov.cn (Guangzhou ethnic and religious affairs bureau) and muslimpro.com zh row labels; islamqa.info/zh; Saudipedia
+
+Confidence: high. Five prayers and 封斋饭 stand exactly as translated convention; also seen in People''s Daily coverage (paper.people.com.cn). Duha: literature pairs the translated 上午拜 with 杜哈拜 (islamqa.info/zh «上午拜（杜哈拜）», muslimwww.com); Chinese Islamic app labels print 杜哈拜 (IslamApp), recorded as the name-form with 上午拜 as the translated runner-up. 伊斯提贾巴 is unattested; Chinese texts describe the concept as 主麻日中应答祈祷的时辰 (islamreligion.com/cn).
+
+| name | key | reference | current | verdict |
+|---|---|---|---|---|
+| fajr | `prayer.fajr` | 晨礼 | 晨礼 | OK |
+| dhuhr | `prayer.dhuhr` | 晌礼 | 晌礼 | OK |
+| asr | `prayer.asr` | 晡礼 | 晡礼 | OK |
+| magrib | `prayer.magrib` | 昏礼 | 昏礼 | OK |
+| isha | `prayer.isha` | 宵礼 | 宵礼 | OK |
+| suhoor | `prayer.suhoor` | 封斋饭 | 封斋饭 | OK |
+| duha | `prayer.duha` | 杜哈拜 | 杜哈 | FIX |
+| istijaba | `prayer.istijaba` | 伊斯提贾巴 | 伊斯提贾巴 | OK |
+
+Fixes:
+- `prayer.duha`: "杜哈" -> "杜哈拜"
+
+---
+
+## Machine-readable reference
+
+```json
+{
+ "am": {
+  "language": "Amharic",
+  "countries": "Ethiopia",
+  "names": {
+   "fajr": "ፈጅር",
+   "dhuhr": "ዙህር",
+   "asr": "አስር",
+   "magrib": "መግሪብ",
+   "isha": "ኢሻ",
+   "suhoor": "ሱሁር",
+   "duha": "ዱሃ",
+   "istijaba": "ኢስቲጃባ"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "ሱሑር",
+    "expected": "ሱሁር"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "ዱሓ",
+    "expected": "ዱሃ"
+   }
+  ],
+  "reviews": []
+ },
+ "ar": {
+  "language": "Arabic",
+  "countries": "Across the Arab world (source language)",
+  "names": {
+   "fajr": "الفجر",
+   "dhuhr": "الظهر",
+   "asr": "العصر",
+   "magrib": "المغرب",
+   "isha": "العشاء",
+   "suhoor": "السحور",
+   "duha": "الضحى",
+   "istijaba": "ساعة الاستجابة"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابة",
+    "expected": "ساعة الاستجابة"
+   }
+  ],
+  "reviews": []
+ },
+ "az": {
+  "language": "Azerbaijani",
+  "countries": "Azerbaijan (and Iranian Azerbaijan)",
+  "names": {
+   "fajr": "Sübh",
+   "dhuhr": "Zöhr",
+   "asr": "Əsr",
+   "magrib": "Məğrib",
+   "isha": "İşa",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "İcabət saatı"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Düha",
+    "expected": "Duha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "İsticabə",
+    "expected": "İcabət saatı"
+   }
+  ],
+  "reviews": []
+ },
+ "bal": {
+  "language": "Balochi",
+  "countries": "Balochistan (Pakistan, Iran)",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "پیشین",
+   "asr": "دیګر",
+   "magrib": "نماشام",
+   "isha": "خفتن",
+   "suhoor": "اسور",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "ظہر",
+    "expected": "پیشین"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "عصر",
+    "expected": "دیګر"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "نماشاں",
+    "expected": "نماشام"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "عشاء",
+    "expected": "خفتن"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "نماشاں و فجر دا وچکار",
+    "expected": "نماشام و فجر دا وچکار"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "نماشاں 1 گھنٹہ پہلے (صرف جمعہ)",
+    "expected": "نماشام 1 گھنٹہ پہلے (صرف جمعہ)"
+   }
+  ],
+  "reviews": []
+ },
+ "bcl": {
+  "language": "Central Bicolano",
+  "countries": "Philippines (Bicol region, Southern Luzon)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Sa kabangaan kan Magrib asin Fajr",
+    "expected": "Sa kabangaan kan Maghrib asin Fajr"
+   }
+  ],
+  "reviews": []
+ },
+ "bm": {
+  "language": "Bambara (Bamanankan)",
+  "countries": "Mali (also Burkina Faso, Côte d''Ivoire)",
+  "names": {
+   "fajr": "Fajiri",
+   "dhuhr": "Selifana",
+   "asr": "Lansara",
+   "magrib": "Fitiri",
+   "isha": "Saafo",
+   "suhoor": "Suhuri",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "fajiri",
+    "expected": "Fajiri"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "selifana",
+    "expected": "Selifana"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "lansara",
+    "expected": "Lansara"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "fitiri",
+    "expected": "Fitiri"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "saafo",
+    "expected": "Saafo"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Magribi ni fajiri cɛ",
+    "expected": "Fitiri ni fajiri cɛ"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)",
+    "expected": "Fitiri 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)"
+   }
+  ],
+  "reviews": []
+ },
+ "bn": {
+  "language": "Bengali",
+  "countries": "Bangladesh and West Bengal, India",
+  "names": {
+   "fajr": "ফজর",
+   "dhuhr": "যোহর",
+   "asr": "আসর",
+   "magrib": "মাগরিব",
+   "isha": "ইশা",
+   "suhoor": "সেহরি",
+   "duha": "চাশত",
+   "istijaba": "দোয়া কবুলের সময়"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "সাহরি",
+    "expected": "সেহরি"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ইস্তিজাবা",
+    "expected": "দোয়া কবুলের সময়"
+   }
+  ],
+  "reviews": []
+ },
+ "bs": {
+  "language": "Bosnian",
+  "countries": "Bosnia and Herzegovina",
+  "names": {
+   "fajr": "Sabah",
+   "dhuhr": "Podne",
+   "asr": "Ikindija",
+   "magrib": "Akšam",
+   "isha": "Jacija",
+   "suhoor": "Sehur",
+   "duha": "Duha",
+   "istijaba": "Istidžaba"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "bug": {
+  "language": "Buginese",
+  "countries": "South Sulawesi, Indonesia",
+  "names": {
+   "fajr": "Subu",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subu''",
+    "expected": "Subu"
+   }
+  ],
+  "reviews": []
+ },
+ "ceb": {
+  "language": "Cebuano / Bisaya",
+  "countries": "Philippines (Central and Southern Philippines: Cebu, Bohol, Mindanao coasts)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Suhoor"
+   }
+  ],
+  "reviews": []
+ },
+ "ckb": {
+  "language": "Central Kurdish (Sorani)",
+  "countries": "Kurdistan region of Iraq",
+  "names": {
+   "fajr": "بەیانی",
+   "dhuhr": "نیوەڕۆ",
+   "asr": "عەسر",
+   "magrib": "مەغریب",
+   "isha": "عیشا",
+   "suhoor": "پاشێو",
+   "duha": "چێشتەنگاو",
+   "istijaba": "کاتی وەڵامدانەوەی دوعا"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "سەحەر",
+    "expected": "پاشێو"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ئیستیجابە",
+    "expected": "کاتی وەڵامدانەوەی دوعا"
+   }
+  ],
+  "reviews": []
+ },
+ "de": {
+  "language": "German",
+  "countries": "Germany, Austria",
+  "names": {
+   "fajr": "Fadschr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Ischa",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istidschaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "es": {
+  "language": "Spanish",
+  "countries": "Spain, Latin America",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.magrib",
+    "current": "Magreb",
+    "expected": "Maghrib"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Punto medio entre Magreb y Fajr",
+    "expected": "Punto medio entre Maghrib y Fajr"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 hora antes del Magreb (solo los viernes)",
+    "expected": "1 hora antes del Maghrib (solo los viernes)"
+   }
+  ],
+  "reviews": []
+ },
+ "fa": {
+  "language": "Persian",
+  "countries": "Iran, Afghanistan, Tajikistan (Persian script)",
+  "names": {
+   "fajr": "اذان صبح",
+   "dhuhr": "اذان ظهر",
+   "asr": "اذان عصر",
+   "magrib": "اذان مغرب",
+   "isha": "اذان عشاء",
+   "suhoor": "سحری",
+   "duha": "نماز چاشت",
+   "istijaba": "ساعت استجابت"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.isha",
+    "current": "اذان عشا",
+    "expected": "اذان عشاء"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابه",
+    "expected": "ساعت استجابت"
+   }
+  ],
+  "reviews": []
+ },
+ "ff": {
+  "language": "Fulah / Fulfulde (Latin script)",
+  "countries": "Across the Sahel: Guinea, Senegal, Mali, Nigeria, Cameroon",
+  "names": {
+   "fajr": "Fajira",
+   "dhuhr": "Zuhur",
+   "asr": "Asira",
+   "magrib": "Magrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "fajiri",
+    "expected": "Fajira"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "tiisbaar",
+    "expected": "Zuhur"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "takkusaan",
+    "expected": "Asira"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "furura",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "geeƴe",
+    "expected": "Isha"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "suhuur",
+    "expected": "Suhur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "dhuhaa",
+    "expected": "Duha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "istijaabaa",
+    "expected": "Istijaba"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Hakkunde Magrib e Fajiri",
+    "expected": "Hakkunde Magrib e Fajira"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "Minutooji 20 ado Fajiri",
+    "expected": "Minutooji 20 ado Fajira"
+   }
+  ],
+  "reviews": []
+ },
+ "fr": {
+  "language": "French",
+  "countries": "France",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahour",
+   "duha": "Doha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Doha"
+   }
+  ],
+  "reviews": []
+ },
+ "gu": {
+  "language": "Gujarati",
+  "countries": "Gujarat, India",
+  "names": {
+   "fajr": "ફજર",
+   "dhuhr": "ઝોહર",
+   "asr": "અસર",
+   "magrib": "મગરિબ",
+   "isha": "ઈશા",
+   "suhoor": "સહેરી",
+   "duha": "ચાસ્ત",
+   "istijaba": "ઇસ્તિજાબા"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "સહર",
+    "expected": "સહેરી"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "દુહા",
+    "expected": "ચાસ્ત"
+   }
+  ],
+  "reviews": []
+ },
+ "ha": {
+  "language": "Hausa",
+  "countries": "Nigeria, Niger (Latin-script mainstream)",
+  "names": {
+   "fajr": "Asuba",
+   "dhuhr": "Azahar",
+   "asr": "La''asar",
+   "magrib": "Magriba",
+   "isha": "Isha''i",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Lokacin amsa addu''a"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Lokacin amsa addu''a"
+   }
+  ],
+  "reviews": []
+ },
+ "hi": {
+  "language": "Hindi",
+  "countries": "North India",
+  "names": {
+   "fajr": "फज्र",
+   "dhuhr": "ज़ुहर",
+   "asr": "असर",
+   "magrib": "मग़रिब",
+   "isha": "ईशा",
+   "suhoor": "सहरी",
+   "duha": "चाश्त",
+   "istijaba": "दुआ कबूल होने का वक़्त"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "जुहा",
+    "expected": "चाश्त"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "इस्तिजाबा",
+    "expected": "दुआ कबूल होने का वक़्त"
+   }
+  ],
+  "reviews": []
+ },
+ "hil": {
+  "language": "Hiligaynon / Ilonggo",
+  "countries": "Philippines (Western Visayas: Iloilo, Negros Occidental)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "id": {
+  "language": "Indonesian",
+  "countries": "Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Dzuhur",
+   "asr": "Ashar",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "ilo": {
+  "language": "Ilocano",
+  "countries": "Philippines (Northern Luzon: Ilocos, Cagayan Valley)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "it": {
+  "language": "Italian",
+  "countries": "Italy",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhoor",
+    "expected": "Suhur"
+   }
+  ],
+  "reviews": []
+ },
+ "ja": {
+  "language": "Japanese",
+  "countries": "Japan (Japanese Muslim community, mosques, Islamic materials)",
+  "names": {
+   "fajr": "ファジュル",
+   "dhuhr": "ズフル",
+   "asr": "アスル",
+   "magrib": "マグリブ",
+   "isha": "イシャー",
+   "suhoor": "スフール",
+   "duha": "ドゥハー",
+   "istijaba": "イスティジャーバ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "jv": {
+  "language": "Javanese",
+  "countries": "Central and East Java, Indonesia; Suriname",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Luhur",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kas": {
+  "language": "Kashmiri (Perso-Arabic)",
+  "countries": "Kashmir",
+  "names": {
+   "fajr": "صُبُح",
+   "dhuhr": "پیٚشِن",
+   "asr": "دِگر",
+   "magrib": "شام",
+   "isha": "خۄفتَن",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kk": {
+  "language": "Kazakh",
+  "countries": "Kazakhstan",
+  "names": {
+   "fajr": "Таң",
+   "dhuhr": "Бесін",
+   "asr": "Екінті",
+   "magrib": "Ақшам",
+   "isha": "Құптан",
+   "suhoor": "Сәресі",
+   "duha": "Духа",
+   "istijaba": "Дұға қабыл болатын уақыт"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истижаба",
+    "expected": "Дұға қабыл болатын уақыт"
+   }
+  ],
+  "reviews": []
+ },
+ "kn": {
+  "language": "Kannada",
+  "countries": "Karnataka, India",
+  "names": {
+   "fajr": "ಫಜರ್",
+   "dhuhr": "ಜುಹರ್",
+   "asr": "ಅಸರ್",
+   "magrib": "ಮಗ್ರಿಬ್",
+   "isha": "ಇಶಾ",
+   "suhoor": "ಸಹರಿ",
+   "duha": "ದುಹಾ",
+   "istijaba": "ಇಸ್ತಿಜಾಬಾ"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "ಸಹರ್",
+    "expected": "ಸಹರಿ"
+   }
+  ],
+  "reviews": []
+ },
+ "ko": {
+  "language": "Korean",
+  "countries": "Korea (Korea Muslim Federation community, Seoul Central Masjid)",
+  "names": {
+   "fajr": "파즈르",
+   "dhuhr": "주흐르",
+   "asr": "아스르",
+   "magrib": "마그립",
+   "isha": "이샤",
+   "suhoor": "수후르",
+   "duha": "두하",
+   "istijaba": "이스티자바"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "kr": {
+  "language": "Kanuri",
+  "countries": "Nigeria (Borno, Yobe), Niger",
+  "names": {
+   "fajr": "Faaji",
+   "dhuhr": "Zuhuru",
+   "asr": "Asara",
+   "magrib": "Magaribi",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duhaa",
+   "istijaba": "Istijaaba"
+  },
+  "confidence": "low",
+  "fixes": [],
+  "reviews": []
+ },
+ "ku": {
+  "language": "Kurdish Kurmanji",
+  "countries": "Turkey, Syria, Iraq Kurdistan (Latin script)",
+  "names": {
+   "fajr": "Sibe",
+   "dhuhr": "Nîvro",
+   "asr": "Esir",
+   "magrib": "Mexreb",
+   "isha": "Eşa",
+   "suhoor": "Paşîv",
+   "duha": "Duha",
+   "istijaba": "Îstîcab"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Xwarina seherê",
+    "expected": "Paşîv"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijabe",
+    "expected": "Îstîcab"
+   }
+  ],
+  "reviews": []
+ },
+ "ky": {
+  "language": "Kyrgyz",
+  "countries": "Kyrgyzstan",
+  "names": {
+   "fajr": "Багымдат",
+   "dhuhr": "Бешим",
+   "asr": "Аср",
+   "magrib": "Шам",
+   "isha": "Куптан",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Дуба кабыл болуучу убакыт"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истижаба",
+    "expected": "Дуба кабыл болуучу убакыт"
+   }
+  ],
+  "reviews": []
+ },
+ "mad": {
+  "language": "Madurese",
+  "countries": "Madura island and East Java, Indonesia",
+  "names": {
+   "fajr": "Sobbu",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magreb",
+   "isha": "Isya''",
+   "suhoor": "Sahor",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Sobbu"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Sahor"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "E tengnga antara Magreb ban Subuh",
+    "expected": "E tengnga antara Magreb ban Sobbu"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 menit sabellunna Subuh",
+    "expected": "20 menit sabellunna Sobbu"
+   }
+  ],
+  "reviews": []
+ },
+ "mdh": {
+  "language": "Maguindanao",
+  "countries": "Philippines (Maguindanao provinces and Cotabato, Mindanao - Muslim-majority)",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Dhuhur",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "Luhur",
+    "expected": "Dhuhur"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Asar",
+    "expected": "Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Magrib",
+    "expected": "Maghrib"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Antara Magrib dan Subuh",
+    "expected": "Antara Maghrib dan Subuh"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 jam sebelum Magrib (Jumaat sahaja)",
+    "expected": "1 jam sebelum Maghrib (Jumaat sahaja)"
+   }
+  ],
+  "reviews": []
+ },
+ "mfa": {
+  "language": "Pattani Malay (Bahasa Melayu Patani)",
+  "countries": "southern Thailand (Pattani, Yala, Narathiwat, Songkhla)",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Zohor",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isyak",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   }
+  ],
+  "reviews": []
+ },
+ "min": {
+  "language": "Minangkabau",
+  "countries": "West Sumatra, Indonesia",
+  "names": {
+   "fajr": "Subuah",
+   "dhuhr": "Luhua",
+   "asr": "Asar",
+   "magrib": "Mugarik",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Subuah"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Magrib",
+    "expected": "Mugarik"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahua",
+    "expected": "Sahur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Dhuha",
+    "expected": "Duha"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Di tangah antaro Magrib jo Subuh",
+    "expected": "Di tangah antaro Mugarik jo Subuah"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minik sabalun Subuh",
+    "expected": "20 minik sabalun Subuah"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 jam sabalun Magrib (hanyo hari Jumaik)",
+    "expected": "1 jam sabalun Mugarik (hanyo hari Jumaik)"
+   }
+  ],
+  "reviews": []
+ },
+ "ml": {
+  "language": "Malayalam",
+  "countries": "Kerala, India",
+  "names": {
+   "fajr": "സുബഹ്",
+   "dhuhr": "ളുഹർ",
+   "asr": "അസർ",
+   "magrib": "മഗ്രിബ്",
+   "isha": "ഇശാ",
+   "suhoor": "സഹർ",
+   "duha": "ദുഹാ",
+   "istijaba": "ദുആ സ്വീകരണ സമയം"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "ളുഹാ",
+    "expected": "ദുഹാ"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "ഇസ്തിജാബ",
+    "expected": "ദുആ സ്വീകരണ സമയം"
+   }
+  ],
+  "reviews": []
+ },
+ "mr": {
+  "language": "Marathi",
+  "countries": "Maharashtra, India",
+  "names": {
+   "fajr": "फजर",
+   "dhuhr": "जुहर",
+   "asr": "असर",
+   "magrib": "मगरीब",
+   "isha": "ईशा",
+   "suhoor": "सेहरी",
+   "duha": "चाश्त",
+   "istijaba": "इस्तिजाबा"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "सहरी",
+    "expected": "सेहरी"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "दुहा",
+    "expected": "चाश्त"
+   }
+  ],
+  "reviews": []
+ },
+ "mrw": {
+  "language": "Maranao",
+  "countries": "Philippines (Lanao del Sur and Lanao del Norte, Mindanao - Muslim-majority)",
+  "names": {
+   "fajr": "Sobo",
+   "dhuhr": "Duhur",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Aysah",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Subuh",
+    "expected": "Sobo"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Luhur",
+    "expected": "Duhur"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isya",
+    "expected": "Aysah"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istijabah"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Sa gitna ng Magrib at Subuh",
+    "expected": "Sa gitna ng Magrib at Sobo"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minuto bago ang Subuh",
+    "expected": "20 minuto bago ang Sobo"
+   }
+  ],
+  "reviews": []
+ },
+ "ms": {
+  "language": "Malay",
+  "countries": "Malaysia, Brunei, Singapore, coastal Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Zohor",
+   "asr": "Asar",
+   "magrib": "Maghrib",
+   "isha": "Isyak",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "my": {
+  "language": "Burmese",
+  "countries": "Myanmar (Bamar and Rohingya Muslim communities; Burmese script)",
+  "names": {
+   "fajr": "ဖဂျရ်",
+   "dhuhr": "ဇဟိုရ်",
+   "asr": "အဆွရ်",
+   "magrib": "မဂ်ရိဗ်",
+   "isha": "အီရှာ",
+   "suhoor": "ဆူဟူရ်",
+   "duha": "ဒူဟာ",
+   "istijaba": "အစ်တီဂျာဘာ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "nl": {
+  "language": "Dutch",
+  "countries": "Netherlands",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Suhoor"
+   }
+  ],
+  "reviews": []
+ },
+ "om": {
+  "language": "Oromo",
+  "countries": "Ethiopia (large Muslim population)",
+  "names": {
+   "fajr": "Fajrii",
+   "dhuhr": "Zuhrii",
+   "asr": "Asrii",
+   "magrib": "Magribii",
+   "isha": "Ishaa",
+   "suhoor": "Suhuur",
+   "duha": "Duhaa",
+   "istijaba": "Istijaabaa"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Dhuhaa",
+    "expected": "Duhaa"
+   }
+  ],
+  "reviews": []
+ },
+ "pa-Arab": {
+  "language": "Punjabi (Shahmukhi)",
+  "countries": "Punjab, Pakistan",
+  "names": {
+   "fajr": "سرگی",
+   "dhuhr": "پیشی",
+   "asr": "ڈیگر",
+   "magrib": "نماشاں",
+   "isha": "کفتاں",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "pl": {
+  "language": "Polish",
+  "countries": "Poland",
+  "names": {
+   "fajr": "Fadżr",
+   "dhuhr": "Zuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isza",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istidżaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Fajr",
+    "expected": "Fadżr"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Dhuhr",
+    "expected": "Zuhr"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isha",
+    "expected": "Isza"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaba",
+    "expected": "Istidżaba"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "W połowie między Maghrib a Fajr",
+    "expected": "W połowie między Maghrib a Fadżr"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 minut przed Fajr",
+    "expected": "20 minut przed Fadżr"
+   }
+  ],
+  "reviews": []
+ },
+ "ps": {
+  "language": "Pashto",
+  "countries": "Afghanistan, Pakistan (Perso-Arabic script)",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ماسپښین",
+   "asr": "مازدیګر",
+   "magrib": "ماښام",
+   "isha": "عشاء",
+   "suhoor": "پېشلمی",
+   "duha": "چاښت",
+   "istijaba": "د دعا د قبلېدو وخت"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "صبح",
+    "expected": "فجر"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "ظهر",
+    "expected": "ماسپښین"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "عصر",
+    "expected": "مازدیګر"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "مغرب",
+    "expected": "ماښام"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "سهاري",
+    "expected": "پېشلمی"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "الضحى",
+    "expected": "چاښت"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابة",
+    "expected": "د دعا د قبلېدو وخت"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "د مغرب او صبح په منځ کې",
+    "expected": "د ماښام او فجر په منځ کې"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "له صبح ۲۰ دقيقې دمخه",
+    "expected": "له فجر ۲۰ دقيقې دمخه"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)",
+    "expected": "له ماښام ۱ ساعت دمخه (يوازې د جمعې ورځ)"
+   }
+  ],
+  "reviews": []
+ },
+ "pt": {
+  "language": "Portuguese",
+  "countries": "Portugal, Brazil",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "qu": {
+  "language": "Quechua (Cusco-Collao standard)",
+  "countries": "Peru, Bolivia, Ecuador",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Magrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "Chawpi p''unchaw",
+    "expected": "Dhuhr"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Chisi",
+    "expected": "Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Inti chinkay",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Tuta",
+    "expected": "Isha"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Chawpin Inti chinkaywan Fajrpa",
+    "expected": "Chawpin Magribwan Fajrpa"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Inti chinkayman 1 ura ñawpaq (viernesllallapunim)",
+    "expected": "Magribman 1 ura ñawpaq (viernesllallapunim)"
+   }
+  ],
+  "reviews": []
+ },
+ "ro": {
+  "language": "Romanian",
+  "countries": "Romania",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "ru": {
+  "language": "Russian",
+  "countries": "Russia (Tatarstan, Bashkortostan, Caucasus; large Muslim population)",
+  "names": {
+   "fajr": "Фаджр",
+   "dhuhr": "Зухр",
+   "asr": "Аср",
+   "magrib": "Магриб",
+   "isha": "Иша",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Истиджаба"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "sd": {
+  "language": "Sindhi",
+  "countries": "Sindh, Pakistan",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ظهر",
+   "asr": "عصر",
+   "magrib": "مغرب",
+   "isha": "عشاء",
+   "suhoor": "سحري",
+   "duha": "چاشت",
+   "istijaba": "دعا جي قبوليت جو وقت"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجاب",
+    "expected": "دعا جي قبوليت جو وقت"
+   }
+  ],
+  "reviews": []
+ },
+ "skr": {
+  "language": "Saraiki",
+  "countries": "South Punjab, Pakistan",
+  "names": {
+   "fajr": "دَھمِّی",
+   "dhuhr": "پیشِیں",
+   "asr": "دِیگَر",
+   "magrib": "نِماشَاں",
+   "isha": "خُفتاں",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "استجابہ"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "so": {
+  "language": "Somali",
+  "countries": "Somalia, Somaliland, Djibouti, Somali regions of Ethiopia and Kenya",
+  "names": {
+   "fajr": "Subax",
+   "dhuhr": "Duhur",
+   "asr": "Casar",
+   "magrib": "Magrib",
+   "isha": "Cisho",
+   "suhoor": "Suxuur",
+   "duha": "Dhuha",
+   "istijaba": "Saacadda la aqbalo ducada"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.magrib",
+    "current": "Maqrib",
+    "expected": "Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Cishaa''i",
+    "expected": "Cisho"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahri",
+    "expected": "Suxuur"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Dhuha"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijaabo",
+    "expected": "Saacadda la aqbalo ducada"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Dhexdhexaadxada Maqrib iyo Subax",
+    "expected": "Dhexdhexaadxada Magrib iyo Subax"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 saac ka hor Maqrib (Jimcaha oo kaliya)",
+    "expected": "1 saac ka hor Magrib (Jimcaha oo kaliya)"
+   }
+  ],
+  "reviews": []
+ },
+ "sq": {
+  "language": "Albanian",
+  "countries": "Albania, Kosovo, North Macedonia",
+  "names": {
+   "fajr": "Imsaku",
+   "dhuhr": "Yleja",
+   "asr": "Ikindia",
+   "magrib": "Akshami",
+   "isha": "Jacia",
+   "suhoor": "Syfyri",
+   "duha": "Duha",
+   "istijaba": "Istixhabe"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Syfyri"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istixhaba",
+    "expected": "Istixhabe"
+   }
+  ],
+  "reviews": []
+ },
+ "su": {
+  "language": "Sundanese",
+  "countries": "West Java, Indonesia",
+  "names": {
+   "fajr": "Subuh",
+   "dhuhr": "Lohor",
+   "asr": "Asar",
+   "magrib": "Magrib",
+   "isha": "Isya",
+   "suhoor": "Sahur",
+   "duha": "Dhuha",
+   "istijaba": "Istijabah"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "sw": {
+  "language": "Swahili",
+  "countries": "Tanzania, Kenya, East African coast (Muslim coastal tradition)",
+  "names": {
+   "fajr": "Alfajiri",
+   "dhuhr": "Adhuhuri",
+   "asr": "Alasiri",
+   "magrib": "Magharibi",
+   "isha": "Isha",
+   "suhoor": "Suhur",
+   "duha": "Dhuha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Dhuha"
+   }
+  ],
+  "reviews": []
+ },
+ "ta": {
+  "language": "Tamil",
+  "countries": "Tamil Nadu India, Sri Lanka, Singapore, Malaysia (Tamil Muslim tradition)",
+  "names": {
+   "fajr": "ஃபஜ்ர்",
+   "dhuhr": "ழுஹர்",
+   "asr": "அஸ்ர்",
+   "magrib": "மஃகிரிப்",
+   "isha": "இஷா",
+   "suhoor": "சஹர்",
+   "duha": "ழுஹா",
+   "istijaba": "இஸ்திஜாபா"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "துஹா",
+    "expected": "ழுஹா"
+   }
+  ],
+  "reviews": []
+ },
+ "te": {
+  "language": "Telugu",
+  "countries": "Andhra Pradesh and Telangana, India",
+  "names": {
+   "fajr": "ఫజ్ర్",
+   "dhuhr": "జుహర్",
+   "asr": "అసర్",
+   "magrib": "మగ్రిబ్",
+   "isha": "ఇషా",
+   "suhoor": "సహర్",
+   "duha": "ఇష్రాఖ్",
+   "istijaba": "ఇస్తిజాబా"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "దుహా",
+    "expected": "ఇష్రాఖ్"
+   }
+  ],
+  "reviews": []
+ },
+ "tg": {
+  "language": "Tajik",
+  "countries": "Tajikistan",
+  "names": {
+   "fajr": "Бомдод",
+   "dhuhr": "Пешин",
+   "asr": "Аср",
+   "magrib": "Шом",
+   "isha": "Хуфтан",
+   "suhoor": "Саҳарӣ",
+   "duha": "Зуҳо",
+   "istijaba": "Истиҷоба"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Саҳар",
+    "expected": "Саҳарӣ"
+   }
+  ],
+  "reviews": []
+ },
+ "th": {
+  "language": "Thai",
+  "countries": "Thailand (Malay-Muslim south plus Thai Muslim communities)",
+  "names": {
+   "fajr": "ซุบฮิ",
+   "dhuhr": "ซุฮฺริ",
+   "asr": "อัศริ",
+   "magrib": "มัฆริบ",
+   "isha": "อิชาอฺ",
+   "suhoor": "ซูฮูร์",
+   "duha": "ดุฮา",
+   "istijaba": "อิสติญาบะฮฺ"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "ti": {
+  "language": "Tigrinya",
+  "countries": "Eritrea, Ethiopia",
+  "names": {
+   "fajr": "ፈጅር",
+   "dhuhr": "ዙሁር",
+   "asr": "አስር",
+   "magrib": "መግሪብ",
+   "isha": "ኢሻ",
+   "suhoor": "ሱሕር",
+   "duha": "ዱሓ",
+   "istijaba": "ኢስቲጃባ"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.dhuhr",
+    "current": "ዙሓር",
+    "expected": "ዙሁር"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "ዓስር",
+    "expected": "አስር"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "ምግሪብ",
+    "expected": "መግሪብ"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "ኣብ ማእከል ምግሪብን ፈጅርን",
+    "expected": "ኣብ ማእከል መግሪብን ፈጅርን"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)",
+    "expected": "1 ሰዓት ቅድሚ መግሪብ (ዓርቢ ጥራይ)"
+   }
+  ],
+  "reviews": []
+ },
+ "tk": {
+  "language": "Turkmen",
+  "countries": "Turkmenistan",
+  "names": {
+   "fajr": "Ertir",
+   "dhuhr": "Öýlen",
+   "asr": "Ikindi",
+   "magrib": "Agşam",
+   "isha": "Ýassy",
+   "suhoor": "Agyz wagt",
+   "duha": "Guşluk",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahur",
+    "expected": "Agyz wagt"
+   },
+   {
+    "key": "prayer.duha",
+    "current": "Duha",
+    "expected": "Guşluk"
+   }
+  ],
+  "reviews": []
+ },
+ "tl": {
+  "language": "Tagalog / Filipino",
+  "countries": "Philippines (Manila, Luzon, nationwide lingua franca)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "tr": {
+  "language": "Turkish",
+  "countries": "Türkiye",
+  "names": {
+   "fajr": "İmsak",
+   "dhuhr": "Öğle",
+   "asr": "İkindi",
+   "magrib": "Akşam",
+   "isha": "Yatsı",
+   "suhoor": "Sahur",
+   "duha": "Kuşluk",
+   "istijaba": "İcabet saati"
+  },
+  "confidence": "high",
+  "fixes": [],
+  "reviews": []
+ },
+ "tt": {
+  "language": "Tatar",
+  "countries": "Tatarstan, Russia",
+  "names": {
+   "fajr": "Иртәнге намаз",
+   "dhuhr": "Өйлә намазы",
+   "asr": "Икенде намазы",
+   "magrib": "Ахшам намазы",
+   "isha": "Ястү намазы",
+   "suhoor": "Сәхәр",
+   "duha": "Дүһә",
+   "istijaba": "Истиҗабә"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "ug": {
+  "language": "Uyghur",
+  "countries": "Xinjiang, China (and diaspora)",
+  "names": {
+   "fajr": "بامدات",
+   "dhuhr": "پېشىن",
+   "asr": "ئەسىر",
+   "magrib": "شام",
+   "isha": "خۇپتەن",
+   "suhoor": "سەھەرلىك",
+   "duha": "زۇھا",
+   "istijaba": "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "ئىستىجابە",
+    "expected": "دۇئا ئىجابەت بولىدىغان ۋاقىت"
+   }
+  ],
+  "reviews": []
+ },
+ "uk": {
+  "language": "Ukrainian",
+  "countries": "Ukraine (Crimean Tatar and diaspora Muslim communities)",
+  "names": {
+   "fajr": "Фаджр",
+   "dhuhr": "Зухр",
+   "asr": "Аср",
+   "magrib": "Магріб",
+   "isha": "Іша",
+   "suhoor": "Сухур",
+   "duha": "Духа",
+   "istijaba": "Істіджаба"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "Истіджаба",
+    "expected": "Істіджаба"
+   }
+  ],
+  "reviews": []
+ },
+ "ur": {
+  "language": "Urdu",
+  "countries": "Pakistan and India",
+  "names": {
+   "fajr": "فجر",
+   "dhuhr": "ظہر",
+   "asr": "عصر",
+   "magrib": "مغرب",
+   "isha": "عشاء",
+   "suhoor": "سحری",
+   "duha": "چاشت",
+   "istijaba": "قبولیت کی گھڑی"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.istijaba",
+    "current": "استجابہ",
+    "expected": "قبولیت کی گھڑی"
+   }
+  ],
+  "reviews": []
+ },
+ "uz": {
+  "language": "Uzbek",
+  "countries": "Uzbekistan",
+  "names": {
+   "fajr": "Bomdod",
+   "dhuhr": "Peshin",
+   "asr": "Asr",
+   "magrib": "Shom",
+   "isha": "Xufton",
+   "suhoor": "Saharlik",
+   "duha": "Zuho",
+   "istijaba": "Duo ijobat bo''ladigan soat"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "Ishroq",
+    "expected": "Zuho"
+   },
+   {
+    "key": "prayer.istijaba",
+    "current": "Istijoba",
+    "expected": "Duo ijobat bo''ladigan soat"
+   }
+  ],
+  "reviews": []
+ },
+ "vi": {
+  "language": "Vietnamese",
+  "countries": "Vietnam (Cham Muslim minority, plus Mekong Delta Muslim communities)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Suhoor",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [],
+  "reviews": []
+ },
+ "war": {
+  "language": "Waray",
+  "countries": "Philippines (Eastern Visayas: Samar, Leyte)",
+  "names": {
+   "fajr": "Fajr",
+   "dhuhr": "Dhuhr",
+   "asr": "Asr",
+   "magrib": "Maghrib",
+   "isha": "Isha",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "low",
+  "fixes": [
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Sahur"
+   }
+  ],
+  "reviews": []
+ },
+ "wo": {
+  "language": "Wolof",
+  "countries": "Senegal, Gambia, Mauritania",
+  "names": {
+   "fajr": "Suba",
+   "dhuhr": "Tisbaar",
+   "asr": "Taakusaan",
+   "magrib": "Timis",
+   "isha": "Gee",
+   "suhoor": "Xëdd",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Fajar",
+    "expected": "Suba"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Takusaan",
+    "expected": "Taakusaan"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Isha",
+    "expected": "Gee"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Suhur",
+    "expected": "Xëdd"
+   },
+   {
+    "key": "extras.explanation.midnight",
+    "current": "Diggante Timis ak Fajar",
+    "expected": "Diggante Timis ak Suba"
+   },
+   {
+    "key": "extras.explanation.suhoor",
+    "current": "20 min laata Fajar",
+    "expected": "20 min laata Suba"
+   }
+  ],
+  "reviews": []
+ },
+ "yo": {
+  "language": "Yoruba",
+  "countries": "Nigeria, Benin (large Muslim population)",
+  "names": {
+   "fajr": "Ìrun Fajr",
+   "dhuhr": "Ìrun Ẹlẹ́ẹ̀rì",
+   "asr": "Ìrun Asr",
+   "magrib": "Ìrun Magrib",
+   "isha": "Ìrun Ishai",
+   "suhoor": "Sahur",
+   "duha": "Duha",
+   "istijaba": "Istijaba"
+  },
+  "confidence": "medium",
+  "fixes": [
+   {
+    "key": "prayer.fajr",
+    "current": "Irun Àárọ̀",
+    "expected": "Ìrun Fajr"
+   },
+   {
+    "key": "prayer.dhuhr",
+    "current": "Irun Ọ̀sán",
+    "expected": "Ìrun Ẹlẹ́ẹ̀rì"
+   },
+   {
+    "key": "prayer.asr",
+    "current": "Irun Àsárì",
+    "expected": "Ìrun Asr"
+   },
+   {
+    "key": "prayer.magrib",
+    "current": "Irun Magrib",
+    "expected": "Ìrun Magrib"
+   },
+   {
+    "key": "prayer.isha",
+    "current": "Irun Ìṣàá",
+    "expected": "Ìrun Ishai"
+   },
+   {
+    "key": "prayer.suhoor",
+    "current": "Sahuri",
+    "expected": "Sahur"
+   },
+   {
+    "key": "extras.explanation.istijaba",
+    "current": "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)",
+    "expected": "Wákàtí 1 ṣáájú Ìrun Magrib (ọjọ́ Jímọ̀ nìkan)"
+   }
+  ],
+  "reviews": [
+   "extras.explanation.suhoor",
+   "extras.explanation.midnight"
+  ]
+ },
+ "zh-Hans": {
+  "language": "Simplified Chinese",
+  "countries": "China (Hui, Uyghur and other Muslim communities)",
+  "names": {
+   "fajr": "晨礼",
+   "dhuhr": "晌礼",
+   "asr": "晡礼",
+   "magrib": "昏礼",
+   "isha": "宵礼",
+   "suhoor": "封斋饭",
+   "duha": "杜哈拜",
+   "istijaba": "伊斯提贾巴"
+  },
+  "confidence": "high",
+  "fixes": [
+   {
+    "key": "prayer.duha",
+    "current": "杜哈",
+    "expected": "杜哈拜"
+   }
+  ],
+  "reviews": []
+ }
+}
+```
+', NULL, NULL, '{}', false, false, false, NULL, 76800, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 07:20:51.610546+00');
 
 
 --
@@ -49100,6 +58420,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:464', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:468', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:458', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:470', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 346);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:489', 1, 53);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:410', 1, 61);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:471', 1, 5);
@@ -49139,7 +58460,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:553', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:563', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:559', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:560', 1, 14);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 337);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:574', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:564', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:520', 1, 41);
@@ -49151,22 +58471,35 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:556', 1, 13)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:524', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:545', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:548', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:585', 1, 28);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:551', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5538);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:575', 1, 14);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:582', 1, 19);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5641);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:522', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:575', 1, 95);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:589', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:542', 1, 68);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:590', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:578', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:523', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:539', 1, 37);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:572', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:552', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:583', 1, 3);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:579', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:580', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:557', 1, 42);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:576', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:543', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:586', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:549', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:561', 1, 41);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:566', 1, 36);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:569', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:591', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:592', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:565', 1, 68);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:593', 1, 10);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:529', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:525', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:526', 1, 36);
@@ -49178,13 +58511,18 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:544', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:546', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:567', 1, 8);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:527', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:581', 1, 3);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:530', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:528', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:540', 1, 44);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:577', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:532', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:534', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:535', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:533', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:587', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:588', 1, 10);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:584', 1, 5);
 
 
 --
@@ -49446,7 +58784,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 5771, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 5914, true);
 
 
 --
@@ -49495,14 +58833,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 772, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 774, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 575, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 593, true);
 
 
 --
@@ -49523,7 +58861,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 131, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1453, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1487, true);
 
 
 --
@@ -49558,7 +58896,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 244, true);
+SELECT pg_catalog.setval('public.label_id_seq', 254, true);
 
 
 --
@@ -49614,14 +58952,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 74, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 76, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 219, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 226, true);
 
 
 --
@@ -54006,5 +63344,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict oQaxhZO6vG4s4zm2BvXNApjStg1D5LGsgePGxzVNaScub3hIfgzIhuvykWfomrb
+\unrestrict afaIIBWsZtcd13xuk2vFVsVL5q0TzAFJKULNOEbYVv2ojJcxSmVnctOvfhjPS4g
 
