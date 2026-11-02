@@ -18,9 +18,11 @@ const verify = require('../i18n-verify.js') as {
   displayName(english: string): string;
   languageLabel(id: string, names: LanguageName[]): string;
   loadLanguageNames(deps?: { readNamesSource?: () => string }): LanguageName[];
+  parseRtlIds(source: string, file: string): Set<string>;
+  loadRtlIds(deps?: { readLocaleSource?: () => string }): Set<string>;
   orderedKeys(en: Catalog): string[];
   escapeHtml(value: string): string;
-  dirFor(locale: string): string;
+  dirFor(locale: string, rtl: Set<string>): string;
   spotCheckUrl(locale: string, text: string): string;
   gtxUrl(locale: string, text: string): string;
   extractGtx(body: string): string | null;
@@ -112,6 +114,7 @@ interface LocaleOpts {
   resumeRows?: Map<string, Row>;
   liveEngines?: string[];
   label?: string;
+  rtl?: Set<string>;
   phase?: string;
 }
 interface LocaleResult {
@@ -249,10 +252,11 @@ describe('HTML escaping, direction and the spot-check link', () => {
     );
   });
 
-  it('answers rtl for the Arabic-script locales and ltr elsewhere', () => {
-    expect(verify.dirFor('ar')).toBe('rtl');
-    expect(verify.dirFor('skr')).toBe('rtl');
-    expect(verify.dirFor('so')).toBe('ltr');
+  it('answers rtl for the Arabic-script locales and ltr elsewhere, off the parsed locale.ts set', () => {
+    const rtl = verify.loadRtlIds();
+    expect(verify.dirFor('ar', rtl)).toBe('rtl');
+    expect(verify.dirFor('skr', rtl)).toBe('rtl');
+    expect(verify.dirFor('so', rtl)).toBe('ltr');
   });
 
   it('builds the Google spot-check link - the only site link (owner order six: MyMemory is out)', () => {
@@ -397,7 +401,7 @@ describe('the meaning heuristic behind the verdict colors', () => {
 describe('the row verdict (owner order eight: phase one is Google alone, phase two needs both agreeing)', () => {
   const both = (a: string | null, b: string | null): Site[] => [
     { engine: 'gtx', roundtrip: a },
-    { engine: 'mymemory', roundtrip: b },
+    { engine: 'secondsite', roundtrip: b },
   ];
 
   it('phase one (the default): green when gtx carries the meaning, red when it does not, amber where gtx did not render', () => {
@@ -409,7 +413,7 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(
       verify.verdictOf('Fajr', [
         { engine: 'gtx', roundtrip: null },
-        { engine: 'mymemory', roundtrip: 'Fajr' },
+        { engine: 'secondsite', roundtrip: 'Fajr' },
       ])
     ).toBe('amber');
     expect(verify.verdictOf('Fajr', both(null, null), { roundtrip: 'Fajr' })).toBe('amber');
@@ -701,6 +705,41 @@ describe('the rendered pages (order two: modern, human-friendly, colored)', () =
   });
 });
 
+describe('direction: the RTL set reads from locale.ts, the one source of truth (review 5906)', () => {
+  const localeSource = `type LocaleId = string;
+export const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas']);`;
+  const rtlFixtureFetch: FetchFn = async (url) => {
+    const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
+    return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, 'x', null, null]]]));
+  };
+
+  it('parses the exported set and marks the canonical ids rtl', () => {
+    const rtl = verify.parseRtlIds(localeSource, 'locale.ts');
+    expect(rtl.has('pa-Arab')).toBe(true);
+    expect(rtl.has('sd')).toBe(true);
+    expect(rtl.has('ug')).toBe(true);
+    expect(rtl.has('ckb')).toBe(true);
+    expect(verify.dirFor('sd', rtl)).toBe('rtl');
+    expect(verify.dirFor('en', rtl)).toBe('ltr');
+  });
+
+  it('renders the catalog column rtl for a locale the old copy missed', async () => {
+    const rtl = verify.loadRtlIds({ readLocaleSource: () => localeSource });
+    await verify.runLocale('sd', {
+      en: realEn,
+      catalog: { ...realEn },
+      outDir: SCRATCH,
+      fetch: rtlFixtureFetch,
+      sleep: noSleep,
+      now: fixedNow,
+      label: 'sd',
+      rtl,
+    });
+    const html = readFileSync(join(SCRATCH, 'sd.html'), 'utf8');
+    expect(html).toContain('dir="rtl"');
+  });
+});
+
 describe('the command line flow', () => {
   const readCatalogFile = async (locale: string) =>
     locale === 'en' ? realEn : { ...realEn, 'prayer.fajr': `t:${locale}` };
@@ -708,7 +747,7 @@ describe('the command line flow', () => {
     fetch: fetchFn,
     sleep: noSleep,
     now: fixedNow,
-    log: () => {},
+    log: (_line: string) => {},
     home: SCRATCH,
     readCatalogFile,
   });
@@ -758,27 +797,32 @@ describe('the command line flow', () => {
     expect(report.locales[0]).toBe('en');
   });
 
-  it('verdicts follow --phase: Google alone by default, both-slots semantics under --phase two', async () => {
+  it('verdicts follow --phase on a fixture catalog, immune to catalog wording edits', async () => {
+    const fixtureEn: Catalog = { 'prayer.fajr': 'Fajr', 'a.two': 'Dhuhr', 'a.three': 'Asr' };
+    const fixtureDeps = (fetchFn: FetchFn) => {
+      const deps = baseDeps(fetchFn);
+      deps.readCatalogFile = async () => fixtureEn;
+      return deps;
+    };
     const oneDir = join(SCRATCH, 'cli-phase-one');
-    const one = await verify.run(['--locales', 'ar', '--out', oneDir], baseDeps(fetchOk));
+    const one = await verify.run(['--locales', 'ar', '--out', oneDir], fixtureDeps(fetchOk));
     expect(one.ok).toBe(true);
     const oneJson = JSON.parse(readFileSync(join(oneDir, 'ar.json'), 'utf8'));
     expect(oneJson.phase).toBe('one');
-    // The fixture renders 'g: ' plus the catalog text's first six characters: the 189
-    // rows whose meaning survives that truncation read green, the 18 longer strings
-    // whose truncation loses it read red - phase one judges Google's slot alone
-    expect(oneJson.counts).toEqual({ green: 189, red: 18, amber: 0 });
+    // Every fixture string survives the 'g: ' prefix round-trip whole, so phase one
+    // (Google's slot alone) reads all three green
+    expect(oneJson.counts).toEqual({ green: 3, red: 0, amber: 0 });
 
     const twoDir = join(SCRATCH, 'cli-phase-two');
-    const two = await verify.run(['--locales', 'ar', '--out', twoDir, '--phase', 'two'], baseDeps(fetchOk));
+    const two = await verify.run(['--locales', 'ar', '--out', twoDir, '--phase', 'two'], fixtureDeps(fetchOk));
     expect(two.ok).toBe(true);
     const twoJson = JSON.parse(readFileSync(join(twoDir, 'ar.json'), 'utf8'));
     expect(twoJson.phase).toBe('two');
     // Slot two is structurally empty in this batch, so phase two ambers every row
-    expect(twoJson.counts).toEqual({ green: 0, red: 0, amber: 207 });
+    expect(twoJson.counts).toEqual({ green: 0, red: 0, amber: 3 });
 
     await expect(
-      verify.run(['--locales', 'ar', '--out', join(SCRATCH, 'cli-phase-x'), '--phase', 'three'], baseDeps(fetchOk))
+      verify.run(['--locales', 'ar', '--out', join(SCRATCH, 'cli-phase-x'), '--phase', 'three'], fixtureDeps(fetchOk))
     ).rejects.toThrow('--phase');
   });
 
@@ -863,6 +907,84 @@ describe('the command line flow', () => {
     expect(after.rows[0].llm).toBeUndefined();
     expect(after.rows[1].llm?.roundtrip).toBe('the judge rendering');
     expect(after.rows[1].verdict).toBe('amber');
+  });
+
+  it('a partial fill exits non-zero and names the rows still dark (review 5905/5906)', async () => {
+    const outDir = join(SCRATCH, 'cli-fill-partial');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    const darkRows = before.rows.slice(0, 2).map((row: Row) => ({
+      ...row,
+      sites: [
+        { engine: 'gtx', roundtrip: null },
+        { engine: 'pending', roundtrip: null },
+      ],
+    }));
+    writeFileSync(join(outDir, 'ar.json'), JSON.stringify({ ...before, rows: [...darkRows, ...before.rows.slice(2)] }));
+    writeFileSync(
+      join(outDir, 'ar.llm-fill.json'),
+      JSON.stringify([{ key: darkRows[0].key, roundtrip: 'the judge rendering' }])
+    );
+    const lines: string[] = [];
+    const deps = baseDeps(fetchOk);
+    deps.log = (line: string) => {
+      lines.push(line);
+    };
+    const report = await verify.run(['--fill', 'ar', '--out', outDir], deps);
+    expect(report.ok).toBe(false);
+    expect(report.misses).toEqual([{ locale: 'ar', key: darkRows[1].key }]);
+    expect(lines.some((line) => line.includes('still dark') && line.includes(`ar/${darkRows[1].key}`))).toBe(true);
+  });
+
+  it('an engine recovery supersedes a stale judge fill even when the fill file no longer names the row', async () => {
+    const outDir = join(SCRATCH, 'cli-fill-stale-llm');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    const green = before.rows.find((row: Row) => row.verdict === 'green');
+    const stale = { ...green };
+    stale.llm = { roundtrip: 'an old judge rendering' };
+    stale.verdict = 'amber';
+    const staleIndex = before.rows.indexOf(green);
+    writeFileSync(
+      join(outDir, 'ar.json'),
+      JSON.stringify({ ...before, rows: before.rows.map((row: Row, i: number) => (i === staleIndex ? stale : row)) })
+    );
+    writeFileSync(join(outDir, 'ar.llm-fill.json'), JSON.stringify([]));
+    const report = await verify.run(['--fill', 'ar', '--out', outDir], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    expect(after.rows[staleIndex].llm).toBeUndefined();
+    expect(after.rows[staleIndex].verdict).toBe('green');
+  });
+
+  it('an engine recovery supersedes a stale judge fill that the fill file still names', async () => {
+    const outDir = join(SCRATCH, 'cli-fill-stale-llm-named');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    const before = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    const green = before.rows.find((row: Row) => row.verdict === 'green');
+    const stale = { ...green };
+    stale.llm = { roundtrip: 'an old judge rendering' };
+    stale.verdict = 'amber';
+    const staleIndex = before.rows.indexOf(green);
+    writeFileSync(
+      join(outDir, 'ar.json'),
+      JSON.stringify({ ...before, rows: before.rows.map((row: Row, i: number) => (i === staleIndex ? stale : row)) })
+    );
+    writeFileSync(
+      join(outDir, 'ar.llm-fill.json'),
+      JSON.stringify([{ key: stale.key, roundtrip: 'a fresher judge rendering' }])
+    );
+    const lines: string[] = [];
+    const deps = baseDeps(fetchOk);
+    deps.log = (line: string) => {
+      lines.push(line);
+    };
+    const report = await verify.run(['--fill', 'ar', '--out', outDir], deps);
+    expect(report.ok).toBe(true);
+    const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    expect(after.rows[staleIndex].llm).toBeUndefined();
+    expect(after.rows[staleIndex].verdict).toBe('green');
+    expect(lines.some((line) => line.includes('superseded'))).toBe(true);
   });
 
   it('marks a doubted judge fill amber even where the engine agrees, and a phase-two artifact refreshes as phase two', async () => {

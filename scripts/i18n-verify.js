@@ -94,10 +94,40 @@ const SECTION3_RANKS = [
   'widget',
 ];
 
-/** The Arabic-script locales render right to left (catalogGates' own list) */
-const RTL_LOCALES = new Set(['ar', 'ur', 'fa', 'ps', 'skr', 'bal', 'kas']);
+/** Parses shared/i18n/locale.ts: the exported RTL_IDS set, the one source of direction truth */
+const parseRtlIds = (source, file) => {
+  const ast = parse(source, { sourceType: 'module', plugins: ['typescript'] });
+  for (const node of ast.program.body) {
+    const declaration = node.type === 'VariableDeclaration' ? node : node.declaration;
+    if (node.type !== 'VariableDeclaration' && node.type !== 'ExportNamedDeclaration') continue;
+    if (declaration?.type !== 'VariableDeclaration') continue;
+    for (const declarator of declaration.declarations) {
+      if (declarator.id.type !== 'Identifier' || declarator.id.name !== 'RTL_IDS') continue;
+      const call = declarator.init;
+      if (call?.type !== 'NewExpression' || call.callee?.type !== 'Identifier' || call.callee.name !== 'Set') break;
+      const ids = call.arguments[0]?.elements ?? [];
+      return new Set(
+        ids.map((element) => {
+          if (element?.type !== 'StringLiteral') {
+            throw new Error(`i18n verify: ${file} holds a non-literal RTL id`);
+          }
+          return element.value;
+        })
+      );
+    }
+  }
+  throw new Error(`i18n verify: could not find the RTL_IDS set in ${file}`);
+};
 
-const dirFor = (locale) => (RTL_LOCALES.has(locale) ? 'rtl' : 'ltr');
+const loadRtlIds = (deps = {}) =>
+  parseRtlIds(
+    deps.readLocaleSource
+      ? deps.readLocaleSource()
+      : readFileSync(join(__dirname, '..', 'shared', 'i18n', 'locale.ts'), 'utf8'),
+    'locale.ts'
+  );
+
+const dirFor = (locale, rtl) => (rtl.has(locale) ? 'rtl' : 'ltr');
 
 const sectionOf = (key) => {
   if (key.startsWith('prayer.')) return 1;
@@ -667,7 +697,7 @@ const runLocale = async (locale, opts) => {
   mkdirSync(outDir, { recursive: true });
   const htmlPath = join(outDir, `${locale}.html`);
   const jsonPath = join(outDir, `${locale}.json`);
-  writeFileSync(htmlPath, renderLocaleHtml(locale, label, rows, phase));
+  writeFileSync(htmlPath, renderLocaleHtml(locale, label, rows, phase, opts.rtl ?? loadRtlIds()));
   writeFileSync(
     jsonPath,
     `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
@@ -758,7 +788,7 @@ const PAGE_SHELL_CLOSE = ['  </div>', '</body>', '</html>', ''].join('\n');
 
 const verdictClass = { green: 'g', red: 'r', amber: 'a' };
 
-const renderRow = (locale, row) => {
+const renderRow = (locale, row, rtl) => {
   const bothMiss = row.sites.every((site) => site.roundtrip === null);
   const roundtripCells =
     row.llm && bothMiss
@@ -780,7 +810,7 @@ const renderRow = (locale, row) => {
     `      <tr class="${verdictClass[row.verdict]}">`,
     `        <td class="key">${escapeHtml(row.key)}</td>`,
     `        <td dir="ltr" lang="en">${escapeHtml(row.en)}</td>`,
-    `        <td dir="${dirFor(locale)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
+    `        <td dir="${dirFor(locale, rtl)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
     roundtripCells,
     `        <td><span class="v">${escapeHtml(row.verdict)}</span></td>`,
     `        <td><a href="${escapeHtml(row.url)}">Google</a></td>`,
@@ -788,7 +818,7 @@ const renderRow = (locale, row) => {
   ].join('\n');
 };
 
-const renderSection = (locale, rows, section, title) => {
+const renderSection = (locale, rows, section, title, rtl) => {
   const sectionRows = rows.filter((row) => sectionOf(row.key) === section);
   const counts = { green: 0, red: 0, amber: 0 };
   for (const row of sectionRows) counts[row.verdict] += 1;
@@ -801,7 +831,7 @@ const renderSection = (locale, rows, section, title) => {
     '          <tr><th>key</th><th>our English</th><th>our language string</th><th>Google round-trip</th><th>round-trip 2 (phase two)</th><th>verdict</th><th>check</th></tr>',
     '        </thead>',
     '        <tbody>',
-    ...sectionRows.map((row) => renderRow(locale, row)),
+    ...sectionRows.map((row) => renderRow(locale, row, rtl)),
     '        </tbody>',
     '      </table>',
     '    </section>',
@@ -809,7 +839,7 @@ const renderSection = (locale, rows, section, title) => {
 };
 
 /** The locale's comparison page: a language string never appears without its English and its round-trips */
-const renderLocaleHtml = (locale, label, rows, phase = 'one') => {
+const renderLocaleHtml = (locale, label, rows, phase = 'one', rtl = loadRtlIds()) => {
   const counts = { green: 0, red: 0, amber: 0 };
   const mix = {};
   let filled = 0;
@@ -836,9 +866,9 @@ const renderLocaleHtml = (locale, label, rows, phase = 'one') => {
     `    <p class="muted">${rows.length} rows - ${phaseLine} Green: the meaning survives. Red: it does not - follow the red. Amber: the engine did not render, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
     `    <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span><span class="chip n">${escapeHtml(mixLine)}</span></div>`,
     '  </header>',
-    renderSection(locale, rows, 1, 'Section 1 - the eleven prayer.* names'),
-    renderSection(locale, rows, 2, 'Section 2 - the five extras.explanation.* strings'),
-    renderSection(locale, rows, 3, 'Section 3 - the remaining keys in the owner category order'),
+    renderSection(locale, rows, 1, 'Section 1 - the eleven prayer.* names', rtl),
+    renderSection(locale, rows, 2, 'Section 2 - the five extras.explanation.* strings', rtl),
+    renderSection(locale, rows, 3, 'Section 3 - the remaining keys in the owner category order', rtl),
     PAGE_SHELL_CLOSE,
   ].join('\n');
 };
@@ -975,7 +1005,7 @@ const writeIndexFromDisk = (outDir, names) => {
  * site's rendering), keeps an optional doubt note as amber, and refreshes the
  * artifacts. The generator itself never invents a round-trip.
  */
-const fillLocales = async (locales, { outDir, log, now, names }) => {
+const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds() }) => {
   const written = [];
   const fillErrors = [];
   const remainingGaps = [];
@@ -1004,9 +1034,15 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
     const phase = artifact.phase ?? 'one';
     for (const row of rows) {
       const bothMiss = (row.sites ?? []).every((site) => site.roundtrip === null);
+      const engineRendered = (row.sites ?? []).some((site) => site.roundtrip !== null);
+      if (engineRendered && row.llm !== undefined) {
+        // The engine recovered this row after an earlier judge fill - its rendering supersedes
+        delete row.llm;
+        row.verdict = verdictOf(row.en, row.sites ?? [], undefined, null, phase);
+      }
       const fill = fillByKey.get(row.key);
-      if (fill !== undefined && !bothMiss && row.llm === undefined) {
-        // The engine recovered this row since the judge pass - its rendering supersedes
+      if (fill !== undefined && !bothMiss) {
+        // The engine rendered this row - its rendering supersedes any fill
         superseded += 1;
         continue;
       }
@@ -1024,7 +1060,7 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
       join(outDir, `${locale}.json`),
       `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
     );
-    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase));
+    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase, rtl));
     written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
     log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
   }
@@ -1032,8 +1068,18 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
   const indexPath = writeIndexFromDisk(outDir, names);
   written.push(indexPath);
 
+  if (remainingGaps.length > 0) {
+    const head = remainingGaps
+      .slice(0, 40)
+      .map((gap) => `${gap.locale}/${gap.key}`)
+      .join(', ');
+    log(
+      `engine slot gaps still dark without a judge fill: ${remainingGaps.length} rows - ${head}${remainingGaps.length > 40 ? ' ...' : ''}`
+    );
+  }
+
   return {
-    ok: fillErrors.length === 0,
+    ok: fillErrors.length === 0 && remainingGaps.length === 0,
     locales,
     written,
     shortfalls: [],
@@ -1064,6 +1110,7 @@ const run = async (argv, deps = {}) => {
   }
   const phase = phaseFlag ?? 'one';
   const names = loadLanguageNames(deps);
+  const rtl = loadRtlIds(deps);
   const allLocales = ['en', ...names.map((entry) => entry.id).filter((id) => id !== 'en')];
   const locales = fillFlag
     ? fillFlag
@@ -1091,7 +1138,7 @@ const run = async (argv, deps = {}) => {
   const outDir = outFlag ?? defaultOutDir(deps);
 
   if (fillFlag !== undefined) {
-    return fillLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names });
+    return fillLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
   }
 
   const readCatalogFile =
@@ -1146,6 +1193,7 @@ const run = async (argv, deps = {}) => {
       resumeRows,
       label: languageLabel(locale, names),
       phase,
+      rtl,
     });
     written.push(...result.files);
     const mix = Object.entries(result.engineMix)
@@ -1207,19 +1255,15 @@ if (require.main === module) {
 module.exports = {
   PILOT_WAVE,
   SITE_ENGINES,
-  ROW_SLOTS,
-  LOCALE_ALIASES,
-  PRAYER_KEYS,
-  EXPLANATION_KEYS,
   SECTION3_RANKS,
-  RTL_LOCALES,
   parseCatalogSource,
   parseLanguageNames,
   loadLanguageNames,
+  parseRtlIds,
+  loadRtlIds,
   displayName,
   languageLabel,
   orderedKeys,
-  sectionOf,
   escapeHtml,
   dirFor,
   spotCheckUrl,
@@ -1232,7 +1276,6 @@ module.exports = {
   verdictOf,
   slotAccepts,
   runLocale,
-  referenceRowsOf,
   renderLocaleHtml,
   renderReferenceHtml,
   buildLocaleJson,
