@@ -367,7 +367,7 @@ const SYNONYM_GROUPS = [
   ['silent', 'silence', 'mute', 'muted', 'dumb'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
   // Azerbaijani ekran is the display word and renders as screen, its own sense
-  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen'],
+  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen', 'reveal'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
@@ -414,6 +414,8 @@ const SYNONYM_GROUPS = [
   ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
+  // Bambara ɲɛfɛ renders as ahead - before's own directional sense
+  ['before', 'ahead'],
   // Owner order twelve: Qibla is transliterated in every language; the local spellings
   // name the same Arabic word the way even English does
   ['qibla', 'kibla', 'kiblat', 'kible', 'qible', 'qiblah', 'kıble'],
@@ -429,6 +431,9 @@ const PHRASE_SYNONYMS = [
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
   ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah'],
+  // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
+  ['sunrise', 'rising of the sun'],
+  ['midnight', 'middle of the night'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
   ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda'],
 ];

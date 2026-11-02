@@ -542,6 +542,13 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhajjah', 'x'))).toBe('green');
   });
 
+  it('the Bambara loop lessons: whole-sense phrases, reveal, and ahead', () => {
+    expect(verify.verdictOf('Sunrise', both('the rising of the sun', 'x'))).toBe('green');
+    expect(verify.verdictOf('Midnight', both('the middle of the night', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Reveal', 'x'))).toBe('green');
+    expect(verify.verdictOf('Before', both('Ahead', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
