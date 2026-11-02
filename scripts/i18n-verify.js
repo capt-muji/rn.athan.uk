@@ -364,8 +364,9 @@ const SYNONYM_GROUPS = [
   ['silent', 'silence', 'mute', 'muted'],
   ['show', 'display', 'view', 'visible', 'appearance'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
-  // mati is Indonesian's standard device-off word; the engine renders its literal sense
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead'],
+  // mati is Indonesian's standard device-off word; the engine renders its literal sense.
+  // Minangkabau shares the word, and die is that literal sense's own verb
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die'],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut'],
@@ -381,7 +382,7 @@ const SYNONYM_GROUPS = [
   ['disturb', 'bother', 'interrupt'],
   ['focus', 'concentrate'],
   ['name', 'title'],
-  ['help', 'assist', 'assistance', 'guide', 'guidance'],
+  ['help', 'assist', 'assistance', 'guide', 'guidance', 'aid'],
   ['last', 'final', 'end', 'ending'],
   ['add', 'added'],
   ['minute', 'minutes', 'min', 'mins'],
