@@ -133,6 +133,7 @@ interface RunReport {
   shortfalls: Array<{ locale: string; count: number }>;
   misses: Array<{ locale: string; key: string; missing: string[] }>;
   fillErrors: string[];
+  rulingErrors?: string[];
 }
 interface Deps {
   fetch: FetchFn;
@@ -330,10 +331,12 @@ describe('the engine behind an injected fetch (Google alone, owner order six)', 
 });
 
 describe('the meaning heuristic behind the verdict colors', () => {
-  it('keeps the three true catches red: the round-trip loses the prayer meaning', () => {
+  it('keeps the true catches red while the owner-named ambiguities carry', () => {
     expect(verify.carriesMeaning('Dhuhr', 'Back')).toBe(false);
-    expect(verify.carriesMeaning('Magrib', 'MOROCCO')).toBe(false);
-    expect(verify.carriesMeaning('Isha', 'Dinner')).toBe(false);
+    // The owner's own reading (order four): Morocco is al-Maghrib and dinner is al-isha -
+    // the engine names the word's own cognate, so these carry, they are not catalog bugs
+    expect(verify.carriesMeaning('Magrib', 'MOROCCO')).toBe(true);
+    expect(verify.carriesMeaning('Isha', 'Dinner')).toBe(true);
   });
 
   it('carries the meaning through stopwords, synonyms and cognates', () => {
@@ -418,6 +421,20 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     ).toBe('amber');
     expect(verify.verdictOf('Fajr', both(null, null), { roundtrip: 'Fajr' })).toBe('amber');
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, 'judge doubted the rendering')).toBe('amber');
+  });
+
+  it('the Arabic loop lessons: engine renderings that carry the meaning read green', () => {
+    // المغرب is also the Arabic name of Morocco - the engine names the word's own cognate
+    expect(verify.verdictOf('Magrib', both('Morocco', 'x'))).toBe('green');
+    // العشاء is the Arabic word for supper - the name derives from the meal
+    expect(verify.verdictOf('Isha', both('dinner', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('It was completed', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Not updated', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Sorry!', 'x'))).toBe('green');
+    expect(verify.verdictOf('Rabiʻ II', both('Spring of the other', 'x'))).toBe('green');
+    expect(verify.verdictOf('Each prayer now has 2 reminders', both('Every prayer now has two warnings', 'x'))).toBe(
+      'green'
+    );
   });
 
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
@@ -777,6 +794,89 @@ describe('the command line flow', () => {
     expect(calls).toBe(208);
     const enHtml = readFileSync(join(outDir, 'en.html'), 'utf8');
     expect(enHtml).toContain('reference');
+  });
+
+  describe('the judge rulings (the loop phase one: a fluent judge greens a correct catalog the engine misread)', () => {
+    const buildArtifact = async (outDir: string) => {
+      await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+      return JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    };
+    const makeRed = (before: { rows: Row[]; counts: Record<string, number> }, key: string) => {
+      const row = before.rows.find((r: Row) => r.key === key);
+      if (!row) throw new Error(`fixture artifact holds no ${key} row`);
+      row.sites = [
+        { engine: 'gtx', roundtrip: 'an engine rendering that loses the meaning' },
+        { engine: 'pending', roundtrip: null },
+      ];
+      row.verdict = 'red';
+      return before;
+    };
+
+    it('rules a red row green with a mandatory note, visibly marked, and recounts', async () => {
+      const outDir = join(SCRATCH, 'cli-rule');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([
+          {
+            key: 'prayer.fajr',
+            note: 'the engine picked the country sense; the catalog name is the established prayer name',
+          },
+        ])
+      );
+      const lines: string[] = [];
+      const deps = baseDeps(fetchOk);
+      deps.log = (line: string) => {
+        lines.push(line);
+      };
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], deps);
+      expect(report.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('green');
+      expect(row.ruling).toBe('the engine picked the country sense; the catalog name is the established prayer name');
+      expect(after.counts.red).toBe(before.counts.red - 1);
+      expect(after.judgeRuled).toBe(1);
+      const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
+      expect(html).toContain('judge');
+      expect(lines.some((line) => line.includes('ar: 1 ruling applied'))).toBe(true);
+    });
+
+    it('refuses a ruling without a note', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-no-note');
+      const before = await buildArtifact(outDir);
+      const red = before.rows.find((r: Row) => r.verdict === 'red');
+      if (!red) throw new Error('fixture artifact holds no red row');
+      writeFileSync(join(outDir, 'ar.judge-rulings.json'), JSON.stringify([{ key: red.key, note: '' }]));
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.rulingErrors).toEqual([`ar/${red.key} carries no note`]);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      expect(after.judgeRuled ?? 0).toBe(0);
+    });
+
+    it('refuses a ruling on a row the engine did not read red, a missing note, and an unknown key', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-refused');
+      await buildArtifact(outDir);
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([
+          { key: 'settings.title', note: 'not a red row' },
+          { key: 'settings.help', note: 'also not a red row' },
+          { key: 'unknown.key', note: 'typo guard' },
+        ])
+      );
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.rulingErrors).toEqual([
+        'ar/settings.title is not a red row',
+        'ar/settings.help is not a red row',
+        'ar/unknown.key is not a row in the artifact',
+      ]);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      expect(after.judgeRuled ?? 0).toBe(0);
+    });
   });
 
   it("rebuilds the index from every artifact on disk, not only this run's locales", async () => {

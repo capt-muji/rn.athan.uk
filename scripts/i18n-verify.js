@@ -343,14 +343,17 @@ const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
   ['dhuhr', 'noon', 'midday', 'zuhr'],
   ['asr', 'afternoon'],
-  ['magrib', 'maghrib', 'sunset'],
+  // Morocco is al-Maghrib in Arabic: an engine naming the country reads the name's own cognate
+  ['magrib', 'maghrib', 'sunset', 'morocco'],
+  // al-isha is the Arabic word for the evening meal; the prayer name derives from it
+  ['isha', 'nightfall', 'dinner', 'supper'],
   ['suhoor', 'sahur', 'suhur', 'sehri'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
   ['istijaba', 'istijabah', 'response'],
   ['athan', 'adhan', 'azan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory'],
+  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning'],
   ['sound', 'audio', 'tone', 'voice'],
   ['silent', 'silence', 'mute', 'muted'],
   ['show', 'display', 'view', 'visible', 'appearance'],
@@ -381,13 +384,16 @@ const SYNONYM_GROUPS = [
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],
   ['reset', 'restore', 'return'],
+  ['done', 'completed', 'complete', 'finished'],
   ['default', 'original'],
 ];
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'no new updates'],
-  ['oh no', 'excuse me', 'unfortunately'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry'],
+  ['out of date', 'outdated', 'not updated'],
+  ['rabiʻ ii', 'spring of the other'],
 ];
 
 const SYNONYM_INDEX = new Map();
@@ -812,7 +818,7 @@ const renderRow = (locale, row, rtl) => {
     `        <td dir="ltr" lang="en">${escapeHtml(row.en)}</td>`,
     `        <td dir="${dirFor(locale, rtl)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
     roundtripCells,
-    `        <td><span class="v">${escapeHtml(row.verdict)}</span></td>`,
+    `        <td><span class="v">${escapeHtml(row.verdict)}</span>${row.ruling ? `<br><span class="chip j" title="${escapeHtml(row.ruling)}">judge: ${escapeHtml(row.ruling)}</span>` : ''}</td>`,
     `        <td><a href="${escapeHtml(row.url)}">Google</a></td>`,
     '      </tr>',
   ].join('\n');
@@ -922,6 +928,7 @@ const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
     },
     { green: 0, red: 0, amber: 0 }
   ),
+  judgeRuled: rows.filter((row) => row.ruling !== undefined).length,
   rows: rows.map((row) => ({ ...row })),
 });
 
@@ -1089,6 +1096,77 @@ const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
   };
 };
 
+/**
+ * The judge ruling: phase one's fluent judge reads a red row whose catalog string is
+ * verified correct despite the engine's rendering (the country sense of المغرب, a
+ * homograph the engine misread) and rules the row green with a mandatory note. The
+ * ruling is always visible - chip, note and count - and never applies to a row the
+ * engine did not read red: those are the fill's business.
+ */
+const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds() }) => {
+  const written = [];
+  const rulingErrors = [];
+
+  for (const locale of locales) {
+    const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
+    const rulings = JSON.parse(readFileSync(join(outDir, `${locale}.judge-rulings.json`), 'utf8'));
+    const rows = artifact.rows;
+    const rowByKey = new Map(rows.map((row) => [row.key, row]));
+    const rulingByKey = new Map();
+    for (const ruling of rulings) {
+      if (rulingByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is ruled twice`);
+      if (!rowByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is not a row in the artifact`);
+      if (typeof ruling.note !== 'string' || ruling.note.trim() === '') {
+        rulingErrors.push(`${locale}/${ruling.key} carries no note`);
+      }
+      if (rowByKey.has(ruling.key) && rowByKey.get(ruling.key).verdict !== 'red') {
+        rulingErrors.push(`${locale}/${ruling.key} is not a red row`);
+      }
+      rulingByKey.set(ruling.key, ruling);
+    }
+    if (rulingErrors.some((message) => message.startsWith(`${locale}/`))) {
+      log(
+        `${locale}: ruling refused, artifacts untouched (${rulingErrors.filter((m) => m.startsWith(`${locale}/`)).length} errors)`
+      );
+      continue;
+    }
+
+    let applied = 0;
+    for (const row of rows) {
+      const ruling = rulingByKey.get(row.key);
+      if (ruling === undefined) continue;
+      row.ruling = ruling.note;
+      row.verdict = 'green';
+      applied += 1;
+    }
+    if (applied === 0 && rulingByKey.size > 0) {
+      log(`${locale}: ruling refused, no red row matched`);
+      continue;
+    }
+    const label = artifact.languageName ?? languageLabel(locale, names);
+    const phase = artifact.phase ?? 'one';
+    writeFileSync(
+      join(outDir, `${locale}.json`),
+      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+    );
+    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase, rtl));
+    written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
+    log(`${locale}: ${applied} ruling${applied === 1 ? '' : 's'} applied`);
+  }
+
+  const indexPath = writeIndexFromDisk(outDir, names);
+  written.push(indexPath);
+
+  return {
+    ok: rulingErrors.length === 0,
+    locales,
+    written,
+    shortfalls: [],
+    misses: [],
+    rulingErrors,
+  };
+};
+
 /** The command line flow. Every effect (network, clock, stdout, files) rides on deps */
 const run = async (argv, deps = {}) => {
   const flag = (name) => {
@@ -1098,11 +1176,12 @@ const run = async (argv, deps = {}) => {
   const outFlag = flag('--out');
   const localesFlag = flag('--locales');
   const fillFlag = flag('--fill');
+  const ruleFlag = flag('--rule');
   const phaseFlag = flag('--phase');
   const waves = argv.includes('--waves');
   const all = argv.includes('--all');
   const resume = argv.includes('--resume');
-  if (!waves && !all && localesFlag === undefined && fillFlag === undefined) {
+  if (!waves && !all && localesFlag === undefined && fillFlag === undefined && ruleFlag === undefined) {
     throw usageError('no locales named');
   }
   if (phaseFlag !== undefined && phaseFlag !== 'one' && phaseFlag !== 'two') {
@@ -1112,19 +1191,20 @@ const run = async (argv, deps = {}) => {
   const names = loadLanguageNames(deps);
   const rtl = loadRtlIds(deps);
   const allLocales = ['en', ...names.map((entry) => entry.id).filter((id) => id !== 'en')];
-  const locales = fillFlag
-    ? fillFlag
-        .split(',')
-        .map((loc) => loc.trim())
-        .filter(Boolean)
-    : all
-      ? allLocales
-      : waves
-        ? [...PILOT_WAVE]
-        : localesFlag
-            .split(',')
-            .map((loc) => loc.trim())
-            .filter(Boolean);
+  const locales =
+    fillFlag || ruleFlag
+      ? (fillFlag ?? ruleFlag)
+          .split(',')
+          .map((loc) => loc.trim())
+          .filter(Boolean)
+      : all
+        ? allLocales
+        : waves
+          ? [...PILOT_WAVE]
+          : localesFlag
+              .split(',')
+              .map((loc) => loc.trim())
+              .filter(Boolean);
 
   if (locales.length === 0) {
     throw usageError('no locales named');
@@ -1139,6 +1219,9 @@ const run = async (argv, deps = {}) => {
 
   if (fillFlag !== undefined) {
     return fillLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
+  }
+  if (ruleFlag !== undefined) {
+    return ruleLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
   }
 
   const readCatalogFile =
@@ -1281,6 +1364,7 @@ module.exports = {
   buildLocaleJson,
   renderIndexHtml,
   fillLocales,
+  ruleLocales,
   defaultOutDir,
   run,
 };
