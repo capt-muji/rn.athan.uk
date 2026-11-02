@@ -427,6 +427,15 @@ for (const group of PHRASE_SYNONYMS) {
   }
 }
 
+/** The phrase group a token run lands in, tolerating one stray edge word */
+const phraseGroupOf = (tokens) => {
+  const direct = PHRASE_INDEX.get(tokens.join(' '));
+  if (direct !== undefined) return direct;
+  const withoutFirst = PHRASE_INDEX.get(tokens.slice(1).join(' '));
+  if (withoutFirst !== undefined) return withoutFirst;
+  return PHRASE_INDEX.get(tokens.slice(0, -1).join(' '));
+};
+
 /**
  * The verdict's meaning test: does the round-trip carry the English string's meaning?
  * Stopword-filtered token overlap over the shorter set at threshold 0.5, with cognate
@@ -443,8 +452,8 @@ const carriesMeaning = (en, roundtrip) => {
     tokensA = rawA;
     tokensB = rawB;
   }
-  const phraseA = PHRASE_INDEX.get(tokensA.join(' '));
-  const phraseB = PHRASE_INDEX.get(tokensB.join(' '));
+  const phraseA = phraseGroupOf(tokensA);
+  const phraseB = phraseGroupOf(tokensB);
   if (phraseA !== undefined && phraseA === phraseB) return true;
   const [shorter, longer] = tokensA.length <= tokensB.length ? [tokensA, tokensB] : [tokensB, tokensA];
   const matched = shorter.filter((token) => longer.some((other) => tokenMatch(token, other))).length;

@@ -384,8 +384,9 @@ describe('the meaning heuristic behind the verdict colors', () => {
     expect(verify.carriesMeaning('2 reminders', 'two alerts')).toBe(true);
     // N/A normalizes to a token the unavailable group holds
     expect(verify.carriesMeaning('unavailable', 'N/A')).toBe(true);
-    // The phrase pairs the token matcher cannot see
+    // The phrase pairs the token matcher cannot see, with one stray edge word tolerated
     expect(verify.carriesMeaning("You're up to date", 'No new updates')).toBe(true);
+    expect(verify.carriesMeaning("You're up to date", 'You are on the latest version')).toBe(true);
     // A short abbreviation round-trips a weekday or month it prefixes
     expect(verify.carriesMeaning('Mon', 'M')).toBe(true);
     expect(verify.carriesMeaning('Jun', 'June')).toBe(true);
