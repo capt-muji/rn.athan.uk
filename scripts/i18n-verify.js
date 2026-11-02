@@ -27,7 +27,8 @@
  * uses (zh-Hans exports zhHans, pa-Arab exports paArab).
  */
 const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
-const { basename, homedir, join } = require('node:path');
+const { basename, join } = require('node:path');
+const { homedir } = require('node:os');
 const { parse } = require('@babel/parser');
 
 /** The pilot wave the owner reads personally (the owner's protocol, T-575) */
@@ -430,7 +431,7 @@ const run = async (argv, deps = {}) => {
       return parseCatalogSource(readFileSync(file, 'utf8'), `${locale}.ts`);
     });
   const log = deps.log ?? ((line) => process.stdout.write(`${line}\n`));
-  const outDir = outFlag ?? join(deps.home ?? homedir(), 'athan-i18n-verify');
+  const outDir = outFlag ?? join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
 
   const en = await readCatalogFile('en');
   const expectedCount = Object.keys(en).length;

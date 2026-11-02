@@ -82,6 +82,7 @@ interface Deps {
   now: () => Date;
   log?: (line: string) => void;
   home?: string;
+  homedir?: () => string;
   readCatalogFile?: (locale: string) => Promise<Catalog>;
 }
 
@@ -479,6 +480,13 @@ describe('the command line flow', () => {
     expect(report.ok).toBe(true);
     expect(report.locales).toEqual(['ar', 'so', 'id', 'ms', 'min', 'mad', 'bug', 'ceb', 'ilo']);
     expect(report.written).toContain(join(deps.home, 'athan-i18n-verify', 'index.html'));
+  });
+
+  it('resolves the default out dir through the OS home when no home is injected', async () => {
+    const { home, ...withoutHome } = baseDeps(fetchOk);
+    const report = await verify.run(['--locales', 'ar'], { ...withoutHome, homedir: () => SCRATCH });
+    expect(report.ok).toBe(true);
+    expect(report.written).toContain(join(SCRATCH, 'athan-i18n-verify', 'index.html'));
   });
 
   it('exits non-zero when engines fail rows, listing them, and never invents an LLM round-trip', async () => {
