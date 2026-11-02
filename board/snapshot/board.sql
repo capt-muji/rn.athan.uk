@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict LcX64euvlRnd5aPISklDYguT1xAOmNOox9hIk1VKcUVNbfiAhpXRZEPuFNIu74D
+\restrict oQaxhZO6vG4s4zm2BvXNApjStg1D5LGsgePGxzVNaScub3hIfgzIhuvykWfomrb
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6921,16 +6921,17 @@ Acceptance:
 - [x] the fix costs no frame rate: the frame audit against the 30fps floor shows no regression on the overlaid screens
 - [x] normal taps still open the overlay instantly and normal swipes still page freely
 - [x] yarn validate green at full coverage; the version ritual on the commit', NULL, NULL, NULL, 41500, '2026-11-01 14:24:23.197902+00', '2026-11-02 02:17:28.892242+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (575, 1, 575, 10, 1, 'Every string in all 74 translated catalogs verified line by line through the owner''s eyes, then locked', 'Goal: the owner visually verifies, string by string and language by language, that every translation we ship carries our English string''s meaning, through an independent machine translation they can see with their eyes only - and every verified string becomes permanently locked against change.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (575, 1, 575, 10, 1, 'Every string in all 74 translated catalogs verified line by line through the owner''s eyes, then locked', 'Goal: every string in the 74 translated catalogs is verified to carry our English string''s meaning - the owner''s eyes on a pilot wave of ten languages, an automated or semi-automated flow for the long tail if the pilot earns confidence - and every verified string becomes permanently locked against change.
 
-Where: the 74 non-English catalogs in shared/i18n/ (English is the source of truth and needs no verification), category by category (help, calendar, prayer, settings, qibla, alert, extras, widget, update, error, stepper, reminder and the rest), with catalog-lock.json as the mechanical lock. The workflow, the arbitration rule and every fact a fresh session needs live on this ticket''s plan doc.
+Where: the 74 non-English catalogs in shared/i18n/, in a strict priority order: the prayer names first (the five standard names and the extras - Midnight, Last Third, Duha, Istijaba, Sunrise - what users read all the time), the extras info-box descriptions second (Midnight says halfway between Maghrib and Fajr, and its peers), everything else last (settings, sheets, help: minor). The pilot wave the owner validates personally: ar, so, id, ms, min, mad, bug, ceb, ilo (English is the source of truth). The plan doc carries the workflow, the arbitration rule, the comparison shape and every fact a fresh session needs.
 
 Acceptance:
-- [ ] a verification loop the owner can run with eyes only: each round presents, already opened and visible, our string in the language, an independent engine''s English rendering of it, and our English string, with nothing for the owner to type, click or navigate
-- [ ] the arbitration rule is fixed: meaning, not wording, is what a yes judges - wording that preserves our English meaning (synonyms, transliterations, a literal rendering of a word like athan) is correct; a genuine meaning divergence is a no; an uncertain case goes to a second independent engine, and two engines agreeing on the meaning settles it, with the owner''s yes or no final either way
-- [ ] every language''s every string passes the owner''s yes or is re-translated and re-verified until it does
-- [ ] each fully verified catalog stands locked in catalog-lock.json, and no verified string changes again without an explicit owner order naming it
-- [ ] the round-by-round progress is recorded on this ticket as comments, language by language, so any session resumes where the last stopped', NULL, NULL, NULL, 21500, '2026-11-02 03:58:53.098948+00', '2026-11-02 03:58:53.118624+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
+- [ ] the plan considers MULTIPLE flows and picks the easiest and quickest for visual verification - a text file, a visible browser, a CLI tool, and full automation are all candidates; removing the owner from the loop for the long tail is a first-class goal, not an afterthought
+- [ ] the comparison shows, per string, our English, our language string, and the machine round-trip (the language string rendered back to English), so the owner judges whether the meaning survives both directions - no app involved, eyes only, nothing to type, click or navigate
+- [ ] the pilot wave passes the owner''s personal read language by language; only then does the chosen flow roll out to the rest
+- [ ] the arbitration rule holds: meaning, not wording, is what a yes judges; an uncertain case goes to a second independent engine, and the owner''s word is final
+- [ ] every language''s every string passes or is re-translated and re-verified until it does; each verified catalog stands locked in catalog-lock.json and never changes again without an explicit owner order naming the string
+- [ ] round-by-round progress rides this ticket''s comments, so any session resumes where the last stopped', NULL, NULL, NULL, 21500, '2026-11-02 03:58:53.098948+00', '2026-11-02 04:12:36.328876+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (550, 1, 550, 2, 4, 'Step 3: The splash icon evaluation is recorded with its numbers', '', NULL, NULL, NULL, 28500, '2026-11-01 00:41:18.030151+00', '2026-11-01 03:05:12.34308+00', NULL, NULL, NULL, NULL, NULL, 541, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (419, 1, 419, 3, 4, 'The next ten languages after #410''s sixteen, proven on the XS with a fresh development build', 'Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.
 
@@ -11930,6 +11931,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5767, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 244, "value": "#575"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5768, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 149, "value": "Testing"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5769, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5771, 575, 'activity', 'owner', NULL, 'description', '2026-11-02 04:12:36.341394+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: every string in the 74 translated catalogs is verified to carry our English string''s meaning - the owner''s eyes on a pilot wave of ten languages, an automated or semi-automated flow for the long tail if the pilot earns confidence - and every verified string becomes permanently locked against change.\n\nWhere: the 74 non-English catalogs in shared/i18n/, in a strict priority order: the prayer names first (the five standard names and the extras - Midnight, Last Third, Duha, Istijaba, Sunrise - what users read all the time), the extras info-box descriptions second (Midnight says halfway between Maghrib and Fajr, and its peers), everything else last (settings, sheets, help: minor). The pilot wave the owner validates personally: ar, so, id, ms, min, mad, bug, ceb, ilo (English is the source of truth). The plan doc carries the workflow, the arbitration rule, the comparison shape and every fact a fresh session needs.\n\nAcceptance:\n- [ ] the plan considers MULTIPLE flows and picks the easiest and quickest for visual verification - a text file, a visible browser, a CLI tool, and full automation are all candidates; removing the owner from the loop for the long tail is a first-class goal, not an afterthought\n- [ ] the comparison shows, per string, our English, our language string, and the machine round-trip (the language string rendered back to English), so the owner judges whether the meaning survives both directions - no app involved, eyes only, nothing to type, click or navigate\n- [ ] the pilot wave passes the owner''s personal read language by language; only then does the chosen flow roll out to the rest\n- [ ] the arbitration rule holds: meaning, not wording, is what a yes judges; an uncertain case goes to a second independent engine, and the owner''s word is final\n- [ ] every language''s every string passes or is re-translated and re-verified until it does; each verified catalog stands locked in catalog-lock.json and never changes again without an explicit owner order naming the string\n- [ ] round-by-round progress rides this ticket''s comments, so any session resumes where the last stopped"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3417, 363, 'activity', 'owner', NULL, 'parent', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 345, "value": "T-345"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3418, 345, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 363, "value": "T-363"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3424, 347, 'comment', 'owner', 'Survey source list: each README section and the commits or ranges it was written from (app.json is the version spine; subjects walked unique per era).
@@ -25787,43 +25789,57 @@ INSERT INTO public.project_document (id, project_id, parent_id, title, content, 
 
 ## What this is
 
-The owner''s plan, in their words: language by language, category by category, string by string. For every text in the app the owner sees the independent machine''s English rendering of our string beside our own English, reads both, and says yes or no. Yes ticks the string; a ticked string is never changed again. The agent does everything else - the owner''s part is eyes and a yes or a no.
+The owner''s plan, in their words: language by language, string by string, with the machine''s English rendering of our string beside our own English - and, once the approach earns confidence on a pilot wave, as automated as it can be made. The owner''s part is eyes and a yes or a no; the agent owns everything else, and the long-term goal is for the owner to be OUT of the loop entirely.
 
-## The workflow per round
+## Priority order (owner order 2026-11-02, later the same day)
 
-1. The session picks the next unverified language in LOCALE_IDS order (shared/i18n/locale.ts - en first, skipped as the source of truth; ar, ms, so, hi, th and the 72 after them), then the next category within it. Order inside one language: help (33 strings), calendar (31), prayer (22), settings (21), qibla (12), alert (8), extras (5), widget (4), update (4), error (4), stepper (3), reminder (3), then whatever remains - en.ts''s 198 keys are the canonical map, count it at planning.
-2. For each string the round presents three things already visible together: our string in the language, the independent engine''s English rendering of it, our English string.
-3. The medium - the owner''s constraints, their words: eyes only, no keyboard navigation at all, no mouse navigation at all. Two viable shapes; the first round''s medium is the owner''s ruling:
-   a. Tabs in a browser window the owner can SEE, driven by the agent-browser CLI (the owner''s stated preference). The 2026-11-02 failure to avoid: the CLI opened tabs in its own instance and the owner, in the Zen browser, saw nothing - the window must be launched headed and visible on the desktop, one tab per category, Google Translate pre-filled, with the English reference table in the chat beside it. Google may show a one-time consent wall: accept it.
-   b. A generated side-by-side file the owner opens once and scrolls: language string, the engine''s English, our English, one line each, with the exact URL per line so any line can be spot-checked independently. Faster, but third-party content mediated by the agent rather than read off Google''s own page - the browser is the more independent read.
-4. The owner answers per string in the chat, by line number: yes or no. Yes is ticked. No is flagged with what read wrong; the agent re-translates that one string in that catalog, regenerates the lock, re-presents it.
-5. Round done: a comment on this ticket - language, category, strings verified, the nos and what fixed them. The comment list is the resume point for the next session.
+1. The prayer names, above all the extras schedule''s - Midnight, Last Third, Duha, Istijaba, Sunrise - and the five standard names. These are what users read all the time; everything else is minor beside them.
+2. The extras info-box descriptions - Midnight says halfway between Maghrib and Fajr, and each extra''s own sentence - because the info box is the app''s own explanation of the times users are counting down to.
+3. Everything else, category by category: settings, sheets, help, calendar, qibla, widget, and the rest.
+
+## The pilot wave
+
+Ten languages the owner validates personally before anything rolls out: en (the source of truth, reference side only), ar, so, id, ms, min, mad, bug, ceb, ilo - Arabic, Somali, the Indonesian family, and the Philippine languages. The pilot exists to build confidence in the approach and in our translation capabilities as such; the current translations may well be perfect, and this is how we come to know it. Only after the pilot passes does the chosen flow apply to the remaining 64.
+
+## The comparison shape
+
+Per string, already visible together, with no app involved:
+- our English string (the source of truth),
+- our string in the language,
+- the machine''s rendering of our language string back into English - and, where the flow chooses, the machine''s English-to-language rendering beside it, so the owner sees the round trip both ways.
+
+The confidence signal is the round trip: does the meaning survive out of English and back into it? Languages do not map word for word - synonyms, reordering and transliterations are correct - but the meaning returning intact is what a yes judges. The worked example stands: the Malay settings word saat renders as moment out of context and seconds in the timer context; meaning in context is the test.
+
+## The planning mandate: many flows, the easiest and quickest wins
+
+The plan, in the Planning column under the griller, MUST lay out multiple candidate flows and commit to the easiest and quickest for VISUAL verification. Candidates named so far, none pre-ruled:
+a. A browser window the owner can SEE (agent-browser CLI, launched headed), Google Translate pre-filled per category - the 2026-11-02 failure to avoid: tabs opened in the CLI''s own instance were invisible to the owner''s Zen browser.
+b. A generated side-by-side text file the owner opens once and scrolls: our English, our string, the machine''s round-trip English, one block per string, with the exact URL per line for independent spot-checks - the fastest to read, at the cost of mediating the third-party content.
+c. A CLI translation tool rendering the same comparison straight into the terminal or a file.
+d. Full automation: the agent machine-verifies every string (round-trip meaning check via one or two independent engines, with divergence scoring), produces a report of passes and flags, and the owner''s eyes touch only the flags and a random sample - the flow that removes the owner from the loop, which the owner explicitly wants considered first-class.
+
+The pilot wave runs on whichever flow the plan picks; the long tail may run on the automated variant (d) even if the pilot used (a) or (b), with the pilot''s own verified languages standing as the calibration that the automation''s judgements match the owner''s.
 
 ## The arbitration rule
 
-The owner''s question, answered: when our string and the engine''s English differ, which is correct? The judge is MEANING against our English string, never wording.
-- Same meaning, different words: YES. Synonyms, reordering, a transliteration, a literal rendering of a word - a call to prayer for athan, shortened for trimmed - are all correct.
-- A different meaning, or meaning lost: NO.
-- Uncertain: a second independent engine (a different provider than the first) translates the same string; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
-
-The worked example from the 2026-11-02 spot-check: the Malay settings row renders as Show the moment in Google because the word saat carries both senses; in the row''s timer context it means seconds, our English is right, and the arbitration rule calls it a YES on meaning. The Arabic subtitle and the 30-seconds sentence verified exact or meaning-equal the same day.
+When our string and the engine''s English differ, the judge is MEANING against our English string, never wording. Same meaning, different words: YES. Different meaning, or meaning lost: NO. Uncertain: a second independent engine translates the same string; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
 
 ## The lock
 
-catalog-lock.json carries a hash per catalog, and the lockstep test fails on any catalog change that does not regenerate the lock - the mechanism already exists. This ticket adds the policy on top: a verified language''s hash regenerates only for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string. No other change, ever. Read the lock test''s own rules before the first regeneration; they are the enforcement, this is the policy.
+catalog-lock.json carries a hash per catalog, and the lockstep test fails on any catalog change that does not regenerate the lock - the mechanism already exists. This ticket adds the policy: a verified language''s hash regenerates only for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string. No other change, ever. Read the lock test''s own rules before the first regeneration.
 
 ## Scale and pace
 
-74 languages x 198 strings is about 14,650 verifications. This spans many sessions; nothing here is one sitting. The ticket''s comments are the ledger. Keep each round to one category of one language unless the owner asks for more.
+74 languages x 198 strings is about 14,650 verifications. The prayer names and extras descriptions - the priority classes - are a few dozen strings per language: the pilot can finish the high-priority classes across all ten languages quickly, with the long tail following under automation. The ticket''s comments are the ledger between sessions.
 
 ## Facts a fresh session needs
 
-- English is catalog 1 and the source of truth; verify the other 74.
+- English is catalog 1 and the source of truth; the pilot''s other nine are ar, so, id, ms, min, mad, bug, ceb, ilo.
 - Catalogs live at shared/i18n/<locale>.ts; the order is LOCALE_IDS in shared/i18n/locale.ts.
-- The owner''s browser is Zen; the agent-browser CLI drives its own instance, so its window must be launched visible (headed) - the 2026-11-02 tabs worked but were invisible to the owner.
+- The owner''s browser is Zen; the agent-browser CLI drives its own instance, so its window must be launched visible (headed).
 - Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
-- The first three languages were spot-checked 2026-11-02 (three strings each) - that was a demo of the medium, not a verification of the catalogs; every string still goes through the loop.
-- The owner does not read the languages; only the English renderings. Never present a language string alone.', NULL, NULL, '{}', false, false, false, NULL, NULL, 74752, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.596055+00', '2026-11-02 03:59:06.596055+00');
+- The owner does not read the languages; only the English renderings. Never present a language string alone.
+- The 2026-11-02 spot-check (three strings each in ar and ms) was a demo of a medium, not a verification; every string still goes through the flow.', NULL, NULL, '{}', false, false, false, NULL, NULL, 74752, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.596055+00', '2026-11-02 04:13:04.622644+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (70, 1, NULL, 'T-561', '# T-561
 
 ## Goal
@@ -48587,6 +48603,61 @@ catalog-lock.json carries a hash per catalog, and the lockstep test fails on any
 - Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
 - The first three languages were spot-checked 2026-11-02 (three strings each) - that was a demo of the medium, not a verification of the catalogs; every string still goes through the loop.
 - The owner does not read the languages; only the English renderings. Never present a language string alone.', NULL, NULL, '{}', false, false, false, NULL, 74752, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.596055+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (219, 74, 2, NULL, 'T-575', '# T-575 - the owner''s translation verification, the full protocol
+
+## What this is
+
+The owner''s plan, in their words: language by language, string by string, with the machine''s English rendering of our string beside our own English - and, once the approach earns confidence on a pilot wave, as automated as it can be made. The owner''s part is eyes and a yes or a no; the agent owns everything else, and the long-term goal is for the owner to be OUT of the loop entirely.
+
+## Priority order (owner order 2026-11-02, later the same day)
+
+1. The prayer names, above all the extras schedule''s - Midnight, Last Third, Duha, Istijaba, Sunrise - and the five standard names. These are what users read all the time; everything else is minor beside them.
+2. The extras info-box descriptions - Midnight says halfway between Maghrib and Fajr, and each extra''s own sentence - because the info box is the app''s own explanation of the times users are counting down to.
+3. Everything else, category by category: settings, sheets, help, calendar, qibla, widget, and the rest.
+
+## The pilot wave
+
+Ten languages the owner validates personally before anything rolls out: en (the source of truth, reference side only), ar, so, id, ms, min, mad, bug, ceb, ilo - Arabic, Somali, the Indonesian family, and the Philippine languages. The pilot exists to build confidence in the approach and in our translation capabilities as such; the current translations may well be perfect, and this is how we come to know it. Only after the pilot passes does the chosen flow apply to the remaining 64.
+
+## The comparison shape
+
+Per string, already visible together, with no app involved:
+- our English string (the source of truth),
+- our string in the language,
+- the machine''s rendering of our language string back into English - and, where the flow chooses, the machine''s English-to-language rendering beside it, so the owner sees the round trip both ways.
+
+The confidence signal is the round trip: does the meaning survive out of English and back into it? Languages do not map word for word - synonyms, reordering and transliterations are correct - but the meaning returning intact is what a yes judges. The worked example stands: the Malay settings word saat renders as moment out of context and seconds in the timer context; meaning in context is the test.
+
+## The planning mandate: many flows, the easiest and quickest wins
+
+The plan, in the Planning column under the griller, MUST lay out multiple candidate flows and commit to the easiest and quickest for VISUAL verification. Candidates named so far, none pre-ruled:
+a. A browser window the owner can SEE (agent-browser CLI, launched headed), Google Translate pre-filled per category - the 2026-11-02 failure to avoid: tabs opened in the CLI''s own instance were invisible to the owner''s Zen browser.
+b. A generated side-by-side text file the owner opens once and scrolls: our English, our string, the machine''s round-trip English, one block per string, with the exact URL per line for independent spot-checks - the fastest to read, at the cost of mediating the third-party content.
+c. A CLI translation tool rendering the same comparison straight into the terminal or a file.
+d. Full automation: the agent machine-verifies every string (round-trip meaning check via one or two independent engines, with divergence scoring), produces a report of passes and flags, and the owner''s eyes touch only the flags and a random sample - the flow that removes the owner from the loop, which the owner explicitly wants considered first-class.
+
+The pilot wave runs on whichever flow the plan picks; the long tail may run on the automated variant (d) even if the pilot used (a) or (b), with the pilot''s own verified languages standing as the calibration that the automation''s judgements match the owner''s.
+
+## The arbitration rule
+
+When our string and the engine''s English differ, the judge is MEANING against our English string, never wording. Same meaning, different words: YES. Different meaning, or meaning lost: NO. Uncertain: a second independent engine translates the same string; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+
+## The lock
+
+catalog-lock.json carries a hash per catalog, and the lockstep test fails on any catalog change that does not regenerate the lock - the mechanism already exists. This ticket adds the policy: a verified language''s hash regenerates only for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string. No other change, ever. Read the lock test''s own rules before the first regeneration.
+
+## Scale and pace
+
+74 languages x 198 strings is about 14,650 verifications. The prayer names and extras descriptions - the priority classes - are a few dozen strings per language: the pilot can finish the high-priority classes across all ten languages quickly, with the long tail following under automation. The ticket''s comments are the ledger between sessions.
+
+## Facts a fresh session needs
+
+- English is catalog 1 and the source of truth; the pilot''s other nine are ar, so, id, ms, min, mad, bug, ceb, ilo.
+- Catalogs live at shared/i18n/<locale>.ts; the order is LOCALE_IDS in shared/i18n/locale.ts.
+- The owner''s browser is Zen; the agent-browser CLI drives its own instance, so its window must be launched visible (headed).
+- Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
+- The owner does not read the languages; only the English renderings. Never present a language string alone.
+- The 2026-11-02 spot-check (three strings each in ar and ms) was a demo of a medium, not a verification; every string still goes through the flow.', NULL, NULL, '{}', false, false, false, NULL, 74752, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 04:13:04.622644+00');
 
 
 --
@@ -49067,8 +49138,8 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:555', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:553', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:563', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:559', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 336);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:560', 1, 14);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 337);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:574', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:564', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:520', 1, 41);
@@ -49079,10 +49150,10 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:570', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:556', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:524', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:545', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5537);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:548', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:575', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:551', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5538);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:575', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:522', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:542', 1, 68);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:523', 1, 5);
@@ -49375,7 +49446,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 5770, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 5771, true);
 
 
 --
@@ -49550,7 +49621,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 74, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 218, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 219, true);
 
 
 --
@@ -53935,5 +54006,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict LcX64euvlRnd5aPISklDYguT1xAOmNOox9hIk1VKcUVNbfiAhpXRZEPuFNIu74D
+\unrestrict oQaxhZO6vG4s4zm2BvXNApjStg1D5LGsgePGxzVNaScub3hIfgzIhuvykWfomrb
 
