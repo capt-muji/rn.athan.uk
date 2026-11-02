@@ -73,7 +73,7 @@ export const ceb = {
   'help.a.volume.android':
     'Nagtugtog ang adhan sa bolyum sa alarma, dili sa tawag. Padako ang Alarma sa mga setting sa tingog.',
   'help.a.volume.ios': 'Nagtugtog ang adhan sa bolyum sa tawag, ug ang Ring/Silent switch ug Focus mopahilom niini.',
-  'help.q.cutoff': 'Ngano nga mohunong daghang ang adhan?',
+  'help.q.cutoff': 'Ngano nga mohunong sayo ang adhan?',
   'help.a.cutoff':
     'Ang mga tingog sa notipikasyon gilimitahan sa 30 ka segundo. Ang matag adhan gipamub-an aron moabot.',
   'help.q.widgets': 'Gisuportahan ba ang mga widget?',

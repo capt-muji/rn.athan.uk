@@ -368,8 +368,9 @@ const SYNONYM_GROUPS = [
   ['show', 'display', 'view', 'visible', 'appearance', 'layout'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
-  // Minangkabau shares the word, and die is that literal sense's own verb
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die'],
+  // Minangkabau shares the word, and die is that literal sense's own verb.
+  // Cebuano gipatay (killed) is the same device-off class
+  ['off', 'disable', 'disabled', 'deactivate', 'deactivated', 'dead', 'die', 'killed'],
   ['turn', 'switch'],
   ['open', 'launch'],
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut'],
@@ -391,7 +392,7 @@ const SYNONYM_GROUPS = [
   ['minute', 'minutes', 'min', 'mins'],
   ['hour', 'hours', 'hrs'],
   // can't loses its apostrophe in normalisation, so the member is the bare form
-  ['na', 'unavailable', 'none', 'cant'],
+  ['na', 'unavailable', 'none', 'cant', 'nothing'],
   ['extra', 'overtime', 'additional'],
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],

@@ -498,6 +498,12 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Display', both('Layout', 'x'))).toBe('green');
   });
 
+  it('the Cebuano loop lessons: gipatay as its own off word, and wala as nothing', () => {
+    expect(verify.verdictOf('Off', both('Killed', 'x'))).toBe('green');
+    expect(verify.verdictOf('off', both('killed', 'x'))).toBe('green');
+    expect(verify.verdictOf('unavailable', both('nothing', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
