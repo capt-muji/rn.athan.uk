@@ -1005,7 +1005,7 @@ const summaryOfArtifact = (data, names) => ({
 const writeIndexFromDisk = (outDir, names) => {
   const summaries = [];
   for (const file of readdirSync(outDir)) {
-    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json')) continue;
+    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json') || file.endsWith('.judge-rulings.json')) continue;
     const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
     summaries.push(summaryOfArtifact(data, names));
   }

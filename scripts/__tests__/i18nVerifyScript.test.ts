@@ -922,6 +922,19 @@ describe('the command line flow', () => {
     expect(index).toContain('ar.html');
   });
 
+  it('skips the judge-rulings side file when rebuilding the index', async () => {
+    const outDir = join(SCRATCH, 'cli-index-rulings');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    writeFileSync(
+      join(outDir, 'ar.judge-rulings.json'),
+      JSON.stringify([{ key: 'settings.title', note: 'a side file, not an artifact' }])
+    );
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const index = readFileSync(join(outDir, 'index.html'), 'utf8');
+    expect(index).toContain('ar.html');
+  });
+
   it('runs all 75 catalogs under --all, resolving codes from the language-name table', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--all', '--out', join(SCRATCH, 'cli-all')], deps);
