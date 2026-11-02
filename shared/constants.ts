@@ -698,12 +698,12 @@ export const COLORS = {
     primary: DESIGN.bright,
     /** The header labels at home: the prayer name above the countdown and the location share this ink */
     labelHome: DESIGN.label,
-    /** The header labels while the overlay is open: the grey they first shipped with plus a hint
-     *  of each tint - the hue at the midpoint of the blue the owner named (#58628c) and the
-     *  purple of 2026-11-01 (#645d94, read as too purple), the saturation one visible step above
-     *  the grey's muted class, the luminance held at that grey's own; audited cold in the
+    /** The header labels while the overlay is open: the grey they first shipped with, its hue on
+     *  the bluish side (the second read moved it off the blue-purple midpoint, which sat one
+     *  percent too purple), one visible saturation step of hint above the grey's muted class,
+     *  the luminance held at that grey's own; audited cold in the
      *  Countdown suite (owner order 2026-11-02) */
-    labelOverlay: '#585a99',
+    labelOverlay: '#565b95',
     /** Muted text over the screen gradient: every dimmed name, time and bell */
     muted: DESIGN.dim,
     /** The prayer row's time at rest: the same single dim ink (the quarter-step shade is gone) */

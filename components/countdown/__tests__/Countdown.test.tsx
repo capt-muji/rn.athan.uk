@@ -215,13 +215,12 @@ describe('the lettered countdown on the Standard schedule', () => {
         )
         .map((call) => call[0]);
 
-    // The owner's order (2026-11-02): the 2026-11-01 tint read as too purple, so the two dim
-    // labels pull back to the grey they first shipped with plus a hint of each tint - the hue
-    // at the midpoint of the blue the owner named (#58628c) and the purple the order delivered
-    // (#645d94), the saturation one visible step above the grey's muted class, the luminance
-    // held at that grey's own. No textShadow rides either label; the timer's three shadow
+    // The owner's second read (2026-11-02): the midpoint ink sat one percent too purple, so
+    // the hue moves to the grey's own bluish side while the saturation step carries the whole
+    // hint - the grey plus its one visible chroma step, leaning blue, the luminance held at
+    // that grey's own. No textShadow rides either label; the timer's three shadow
     // styles are the only ones and stay.
-    expect(COLORS.text.labelOverlay).toBe('#585a99');
+    expect(COLORS.text.labelOverlay).toBe('#565b95');
     expect(COLORS.text.labelHome).not.toBe(COLORS.text.labelOverlay);
 
     expect(labelTween().at(-1)).toBe(0);
@@ -321,10 +320,9 @@ describe('the countdown before any list is on screen', () => {
   });
 });
 
-// Owner order 2026-11-02: the 2026-11-01 tint read as too purple; the pull-back returns the
-// labels to the grey they first shipped with plus a hint of each tint - the hue at the midpoint
-// of the blue the owner named and the purple the order delivered, the saturation one visible
-// step above the grey's muted class, the luminance held at that grey's own so the contrast
+// Owner order 2026-11-02, second read: the midpoint ink still read one percent too purple;
+// the pull-back rests the hue at the grey's own bluish side - the grey plus one visible
+// saturation step of hint leaning blue, the luminance held at that grey's own so the contrast
 // stays where the ink began. Audited cold from the tokens, the same WCAG luminance the info
 // card suite uses
 describe("the overlay label's tint, audited cold from the tokens", () => {
@@ -356,8 +354,8 @@ describe("the overlay label's tint, audited cold from the tokens", () => {
 
   /** The grey the labels first shipped with: the pull-back's anchor */
   const SHIPPED_LABEL_OVERLAY = '#585c8c';
-  /** Halfway between the blue the owner named (#58628c) and the purple of 2026-11-01 (#645d94) */
-  const HINT_HUE = (hslOf('#58628c').h + hslOf('#645d94').h) / 2;
+  /** The grey's own hue, its bluish side - the second read moved the ink here off the blue-purple midpoint */
+  const HINT_HUE = hslOf(SHIPPED_LABEL_OVERLAY).h;
   /** The grey's muted saturation lifted one visible step, still far under the home label's 0.46 */
   const HINT_SATURATION = 0.27;
 
@@ -365,7 +363,7 @@ describe("the overlay label's tint, audited cold from the tokens", () => {
     expect(COLORS.gradient.overlay.glow).toBe('#2514a0');
   });
 
-  it("sits at the midpoint hue with a step more chroma, holding the shipped grey's luminance", () => {
+  it("rests at the grey's own bluish hue with a step more chroma, holding the grey's luminance", () => {
     const ink = hslOf(COLORS.text.labelOverlay);
 
     expect(Math.abs(ink.h - HINT_HUE)).toBeLessThanOrEqual(0.5);
