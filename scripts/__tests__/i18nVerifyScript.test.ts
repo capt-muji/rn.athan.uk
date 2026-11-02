@@ -504,6 +504,12 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('unavailable', both('nothing', 'x'))).toBe('green');
   });
 
+  it('the Ilocano loop lessons: dasal is the prayer word the engine leaves untranslated, and renewal is refresh', () => {
+    expect(verify.carriesMeaning('This prayer', 'This dasal')).toBe(true);
+    expect(verify.verdictOf(' Refresh ', both('Renewal', 'x'))).toBe('green');
+    expect(verify.verdictOf('to refresh', both('to renew', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

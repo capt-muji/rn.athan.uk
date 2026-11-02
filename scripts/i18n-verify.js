@@ -359,7 +359,7 @@ const SYNONYM_GROUPS = [
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
-  ['prayer', 'salah', 'salat', 'supplication', 'worship'],
+  ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal'],
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning'],
   ['sound', 'audio', 'tone', 'voice'],
@@ -403,7 +403,8 @@ const SYNONYM_GROUPS = [
   // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
   ['muharram', 'sacred', 'forbidden'],
   ['wrong', 'error', 'mistake', 'problem'],
-  ['refresh', 'reload', 'load'],
+  // agpabaro, the Philippine family's refresh word, renders as renew and renewal
+  ['refresh', 'reload', 'load', 'renew', 'renewal'],
   ['setting', 'settings', 'arrangement', 'arrangements'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
