@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 24zlZnvP67xg2FM4GSNK9bvS4JwgDxWbEpeSTLPrIwamBNDncfQ1yUZgHY0O2if
+\restrict LcX64euvlRnd5aPISklDYguT1xAOmNOox9hIk1VKcUVNbfiAhpXRZEPuFNIu74D
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6808,16 +6808,16 @@ INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, t
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (529, 1, 529, NULL, 4, 'Step 19: the wall-second ticker''s writes leave the animation path', 'Goal: see the ticket''s owner order of 2026-10-30.', NULL, NULL, NULL, 28500, '2026-10-30 18:17:11.786154+00', '2026-10-30 20:53:00.210066+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 2, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (532, 1, 532, NULL, 4, 'Step 22: the Android splash re-investigation - measured, named, ranked, fixed where ours', 'Goal: see the ticket''s owner order of 2026-10-30.', NULL, NULL, NULL, 31500, '2026-10-30 18:17:12.112753+00', '2026-10-31 02:54:08.770869+00', NULL, NULL, NULL, NULL, NULL, 327, false, NULL, 3, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (572, 1, 572, NULL, 4, 'Step 1: the swipe-rest close - both red-first guards, then the Navigation fix', '', NULL, NULL, NULL, 21500, '2026-11-02 02:18:13.792256+00', '2026-11-02 02:32:28.513622+00', NULL, NULL, NULL, NULL, NULL, 571, false, NULL, 2, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (571, 1, 571, 2, 9, 'The overlay closes at every swipe''s rest, and its dim ink pulls back to a hint of both tints', 'Goal: a tap-then-quick-swipe never leaves the veil and glow open over a page showing every prayer row, and the overlay''s two dim texts read as the grey they shipped with plus a hint of the blue and a hint of the purple, not the heavy purple of 2.43.27.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (571, 1, 571, 2, 4, 'The overlay closes at every swipe''s rest, and its dim ink pulls back to a hint of both tints', 'Goal: a tap-then-quick-swipe never leaves the veil and glow open over a page showing every prayer row, and the overlay''s two dim texts read as the grey they shipped with plus a hint of the blue and a hint of the purple, not the heavy purple of 2.43.27.
 
 Where: app/Navigation.tsx''s pager rest and trailing-page-selected paths, and the labelOverlay ink in shared/constants.ts with its banded audits; both platforms; delivered as a development build installed on both phones for the owner''s on-glass read.
 
 Acceptance:
-- [ ] the swipe''s rest always closes an open overlay, and a pageSelected trailing that rest closes it too, both red-first in the Navigation suite before the fix
-- [ ] a plain tap still opens the overlay and it stays open with no swipe; normal paging stays free
-- [ ] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first
-- [ ] yarn validate green at full coverage; the version ritual on the commit
-- [ ] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass', NULL, NULL, NULL, 1000, '2026-11-02 02:17:38.861007+00', '2026-11-02 03:00:38.097862+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+- [x] the swipe''s rest always closes an open overlay, and a pageSelected trailing that rest closes it too, both red-first in the Navigation suite before the fix
+- [x] a plain tap still opens the overlay and it stays open with no swipe; normal paging stays free
+- [x] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first (nudged to the grey''s own bluish hue at 2.43.38 by the owner''s second read)
+- [x] yarn validate green at full coverage; the version ritual on the commit
+- [x] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass', NULL, NULL, NULL, 1000, '2026-11-02 02:17:38.861007+00', '2026-11-02 03:58:45.237738+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (491, 1, 491, 11, 4, 'Shrink the production bundle: one copy of the sounds, a Release widget extension, and a measured strip pass', 'Goal: shrink the shipped app from the measured 105 MB on disk / 45.7 MB compressed — the widget extension built Release like the app, the main binary stripped by measurement, each athan sound riding the bundle once or not at all, and every other measured dead byte removed — with identical behaviour on both platforms (owner orders 2026-10-29: the athan set is final; the widened strip research is plan v3''s findings table).
 
 Where: plugins/iosReleaseSettings.js (steps 1-3, done), plugins/androidPackagingExcludes.js (new, step 6) with its test, app.json (plugin registrations), assets/audio/index.ts and components/sheets/screens/Sound.tsx (step 5, spike-gated), modules/soundpath (new, step 5, only if the spike demands it), and the iOS Release build path. No source under components/prayer, widgets/ or shared/i18n; ios/ and android/ are never edited by hand.
@@ -6921,6 +6921,16 @@ Acceptance:
 - [x] the fix costs no frame rate: the frame audit against the 30fps floor shows no regression on the overlaid screens
 - [x] normal taps still open the overlay instantly and normal swipes still page freely
 - [x] yarn validate green at full coverage; the version ritual on the commit', NULL, NULL, NULL, 41500, '2026-11-01 14:24:23.197902+00', '2026-11-02 02:17:28.892242+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 7, NULL);
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (575, 1, 575, 10, 1, 'Every string in all 74 translated catalogs verified line by line through the owner''s eyes, then locked', 'Goal: the owner visually verifies, string by string and language by language, that every translation we ship carries our English string''s meaning, through an independent machine translation they can see with their eyes only - and every verified string becomes permanently locked against change.
+
+Where: the 74 non-English catalogs in shared/i18n/ (English is the source of truth and needs no verification), category by category (help, calendar, prayer, settings, qibla, alert, extras, widget, update, error, stepper, reminder and the rest), with catalog-lock.json as the mechanical lock. The workflow, the arbitration rule and every fact a fresh session needs live on this ticket''s plan doc.
+
+Acceptance:
+- [ ] a verification loop the owner can run with eyes only: each round presents, already opened and visible, our string in the language, an independent engine''s English rendering of it, and our English string, with nothing for the owner to type, click or navigate
+- [ ] the arbitration rule is fixed: meaning, not wording, is what a yes judges - wording that preserves our English meaning (synonyms, transliterations, a literal rendering of a word like athan) is correct; a genuine meaning divergence is a no; an uncertain case goes to a second independent engine, and two engines agreeing on the meaning settles it, with the owner''s yes or no final either way
+- [ ] every language''s every string passes the owner''s yes or is re-translated and re-verified until it does
+- [ ] each fully verified catalog stands locked in catalog-lock.json, and no verified string changes again without an explicit owner order naming it
+- [ ] the round-by-round progress is recorded on this ticket as comments, language by language, so any session resumes where the last stopped', NULL, NULL, NULL, 21500, '2026-11-02 03:58:53.098948+00', '2026-11-02 03:58:53.118624+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, NULL, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (550, 1, 550, 2, 4, 'Step 3: The splash icon evaluation is recorded with its numbers', '', NULL, NULL, NULL, 28500, '2026-11-01 00:41:18.030151+00', '2026-11-01 03:05:12.34308+00', NULL, NULL, NULL, NULL, NULL, 541, false, NULL, 1, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (419, 1, 419, 3, 4, 'The next ten languages after #410''s sixteen, proven on the XS with a fresh development build', 'Goal: grow the app from sixteen locale catalogs to twenty-six with ten more languages, and prove them on the owner''s iPhone XS with a development build installed as the original app.
 
@@ -11661,10 +11671,13 @@ Clauses of the owner''s order, both schedules: the words'' presence ramps over 4
 The floor witness prints FAIL, recorded as printed: both dual audits exit 1 on SF present-gaps of 1280ms (open) and 202ms (close) inside the entrance window, SEPARATION COMPOSITOR TRUTH, anchors coherent. The cross-read localises every >100ms gap to the tap-response segment - a stable ~0.35s tap-to-first-change across all 120 driven transitions, matching the baseline''s documented decomposition (input to JS ~130ms device floor, JS commit+effect 61-89ms, plus vsync) - while the animation spans themselves hold a 17.3/17.5ms median cadence, max 68/53ms, zero gaps over 100ms, matching the baseline''s recorded overlay-open PASS at 16-17ms cadence and its warning that single-run SF verdicts are fragile at exactly the idle-to-animation boundary. Whether the tap-response span predates this revision is outside this step''s range: the revision touched only the card''s words, not the input path. Verdict: every clause of the owner''s acceptance passes on Android, both schedules; the floor''s printed failure is the tap-response span, transcribed here for the audit.', NULL, '2026-10-30 02:02:34.096903+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5328, 537, 'activity', 'owner', NULL, 'status', '2026-10-31 20:29:54.072986+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5339, 541, 'comment', 'owner', 'Filed by the lead from the owner''s 2.43.1 read (2026-10-31), one ticket per the owner''s order. The owner suspects a recent launch-path change for the mosque icon''s first-frame gap - bisect the chrome-defer and the sprites'' precedent rather than assuming; no ticket number was confirmed for the suspicion. The XS error screen is the first item: capture before fixing.', NULL, '2026-10-31 20:30:15.078121+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5758, 571, 'comment', 'owner', 'The launch red strip on the Android dev build was React''s dev runtime rejecting a settings row''s one-parameter forwardRef render at import - fixed with its second parameter, guarded red-first in its own suite, merged as 2.43.36. The dev apps pick it up on reload; no reinstall.', NULL, '2026-11-02 03:15:10.131209+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3275, 337, 'comment', 'owner', 'All fourteen findings fixed; the answers sit in the plan doc''s Findings answered section. Plan doc T-337 is linked on the ticket: six steps, 15 points, timed against the 01:00 UTC crossing (prep done by 01:30, window 01:45-02:20, Fajr fire after). Ticket Ready.', NULL, '2026-10-24 21:04:40.700376+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, 3262, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4935, 496, 'activity', 'owner', NULL, 'status', '2026-10-30 02:02:37.611343+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4937, 510, 'activity', 'owner', NULL, 'status', '2026-10-30 02:14:16.753914+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5330, 526, 'activity', 'owner', NULL, 'status', '2026-10-31 20:29:54.130995+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5759, 571, 'comment', 'owner', 'The owner''s read on both phones: the swipe-rest close confirmed, the cold-launch on the iPhone fixed (the dev client now opens straight into the app), and the dim ink ruled one percent too purple - nudged to the grey''s own bluish hue at 2.43.38 (#565b95), red-first on the midpoint ink. Waiting on the fresh read of the nudged tint.', NULL, '2026-11-02 03:44:59.158778+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5760, 571, 'activity', 'owner', NULL, 'field', '2026-11-02 03:44:59.257943+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "the owner reads the nudged dim ink on either dev build (reload first, the change is JS-only): the two overlay dim texts read as the grey leaning bluish-grey, no purple left"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3276, 337, 'activity', 'owner', NULL, 'status', '2026-10-24 21:06:02.47888+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3277, 337, 'activity', 'owner', NULL, 'description', '2026-10-24 21:20:08.178082+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: prove on real devices through the real 2026-10-25 02:00 Europe/London fall-back (02:00 becomes 01:00, BST to GMT) that nothing time-related breaks: displayed prayer times and dates on both schedules, the overlay and the home screen, the countdown, the day rollover, the notification arming, and the stored database rows all read correct before, through and after the crossing, with no missed prayer, no duplicated hour, no mismatched schedule.\n\nWhere: the whole time pipeline - the API''s UTC instants rendered through PRAYER_TIMEZONE, the calendar-day rules (a prayer''s moment is its row''s datetime; the Extras night times computed from Maghrib and Fajr), the countdown''s rounding against the next UTC instant, notification candidates arming in time order against the 64-request budget, the MMKV store''s day rows across the duplicated hour, and both schedules'' swap through the window. The repo''s own suites are the static proof (yarn test:tz and the date suites); tonight''s real crossing is the live proof the owner ordered.\n\nAcceptance:\n- [x] the static suites pass on the tip, and any gap they leave against this scenario is named and covered before the crossing\n- [ ] before the crossing: a device carries a build with real London times, with its display, countdown, day label and bell state recorded for both schedules (iOS has no scheduled-alarm dump: arming evidence is the bell state plus the notifications that fire; an alarm dump is the 3T extension''s evidence when it runs)\n- [ ] through the crossing (01:55-02:15 device time): the countdown never stalls or jumps wrong, the duplicated hour renders one coherent day, the schedules swap correctly, and every reading is transcribed\n- [ ] after the crossing: the day''s remaining prayers still display and fire on time (Fajr observed live), the stored rows for 2026-10-25 serve the day whole on an airplane-mode relaunch with no network, and the reopened app shows the API''s own 25 October values on both schedules\n- [ ] a production build''s alarm dump after the crossing shows every remaining prayer armed at its true local time (Android), and the iOS build''s notifications hold to the same instants\n- [ ] all findings recorded on this ticket as they happen; yarn validate green on any code change"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3278, 338, 'activity', 'owner', NULL, 'status', '2026-10-24 21:20:08.184489+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
@@ -11779,6 +11792,9 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4936, 511, 'activity', 'owner', NULL, 'status', '2026-10-30 02:14:16.718109+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5331, 526, 'comment', 'owner', 'Owner read 2026-10-31: every sheet opens, scrolls and closes exactly as before through the trimmed part - closed by the owner''s ruling.', NULL, '2026-10-31 20:29:54.174951+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5333, 541, 'activity', 'owner', NULL, 'created', '2026-10-31 20:30:14.967794+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5761, 571, 'comment', 'owner', 'Closed by the owner''s read (2026-11-02): the sliding is fine, the dim text is fine after the four-percent nudge, the language default is fine, and both phones'' dev builds open straight into the app. Everything asked for is done.', NULL, '2026-11-02 03:58:45.22569+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5763, 571, 'activity', 'owner', NULL, 'description', '2026-11-02 03:58:45.246403+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a tap-then-quick-swipe never leaves the veil and glow open over a page showing every prayer row, and the overlay''s two dim texts read as the grey they shipped with plus a hint of the blue and a hint of the purple, not the heavy purple of 2.43.27.\n\nWhere: app/Navigation.tsx''s pager rest and trailing-page-selected paths, and the labelOverlay ink in shared/constants.ts with its banded audits; both platforms; delivered as a development build installed on both phones for the owner''s on-glass read.\n\nAcceptance:\n- [x] the swipe''s rest always closes an open overlay, and a pageSelected trailing that rest closes it too, both red-first in the Navigation suite before the fix\n- [x] a plain tap still opens the overlay and it stays open with no swipe; normal paging stays free\n- [x] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first (nudged to the grey''s own bluish hue at 2.43.38 by the owner''s second read)\n- [x] yarn validate green at full coverage; the version ritual on the commit\n- [x] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5770, 575, 'activity', 'owner', NULL, 'field', '2026-11-02 03:58:53.164088+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "575"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3316, 333, 'activity', 'owner', NULL, 'status', '2026-10-25 04:44:08.480085+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3318, 327, 'comment', 'owner', 'Closed into Deferred on the owner''s verdict (2026-10-25): performance tested personally on the production builds - absolutely perfect on the Samsung Galaxy S23, not acceptable on the 1+3T. The owner defers the 3T deep-dive until after the release; the remaining measurement steps close owner-ruled. The investigation''s standing record: JS marks never regressed, the frame signature is version- and env-invariant, and the harness findings (maestro''s APP_ID breakage, the capture-layer degradation candidate) are on this row for the deep-dive to pick up.', NULL, '2026-10-25 04:44:08.552872+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3319, 337, 'comment', 'owner', 'Step 4 closes partial, lead-adjudicated: the offline stored-rows proof - the step''s core - landed clean against the oracle, the Suhoor and Duha displays read exact, and the anomalous Standard reads are explained by the lead''s mock-serving install landing mid-proof (a build mistake, named, not an app defect); the missing Standard re-read is covered by R1-R4''s continuity verdict on the correct build. Step 6 closes owner-ruled: every finding stands recorded in this row''s comments, the bell restore is dropped per the owner''s order, and the fires were the owner''s own test. The DST proof is complete.', NULL, '2026-10-25 04:44:15.811845+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11897,6 +11913,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3425, 352, 'activity', 'owner', NULL, 'status', '2026-10-25 08:02:59.45112+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4938, 490, 'activity', 'owner', NULL, 'status', '2026-10-30 02:17:05.521063+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5332, 538, 'comment', 'owner', 'Owner read 2026-10-31: row 74 (Chinese) still reads tall on glass - the pinned lineHeight did not hold on the device. Reopened for the real cause: 5247''s own lead is Android''s fallback line spacing (TextLayoutManager setUseLineSpacingFromFallbacks adds the fallback run''s metrics on top of a pinned lineHeight), so the pin alone cannot equalize a fallback-rendered row. The owner licensed device work on this ticket.', NULL, '2026-10-31 20:29:54.203387+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5762, 571, 'activity', 'owner', NULL, 'field', '2026-11-02 03:58:45.236595+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3378, 352, 'activity', 'owner', NULL, 'parent', '2026-10-25 07:48:25.058337+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 347, "value": "T-347"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3379, 347, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 07:48:25.058337+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 352, "value": "T-352"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3388, 354, 'activity', 'owner', NULL, 'created', '2026-10-25 07:53:19.539836+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -11908,6 +11925,11 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4939, 490, 'comment', 'owner', 'Both proofs passed: the words'' opacity ramp is monotonic and smooth with their colour constant and no dark frame, judged frame by frame from fresh recordings on the XS and the 3T, both schedules, and corroborated by an image-capable read of the crops; evidence and verdicts under ~/athan-gitree/out/t490-s10/. Lane merged to uat at 2.42.2 (merge 062fcd18) - the proofs judged the cd464520 build, whose runtime equals the merged tip (the nit commit changed comments only). One recorded anomaly: the 3T''s cold-launch frame-audit runs printed present-gap failures exactly at the mock seed''s data commit (where the card unmounts); the warm-state floor held and the attribution sits with the evidence. In Audit for the reviewer.', NULL, '2026-10-30 02:17:05.555492+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5337, 541, 'activity', 'owner', NULL, 'field', '2026-10-31 20:30:15.02226+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5340, 538, 'activity', 'owner', NULL, 'status', '2026-10-31 20:30:19.410855+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5764, 571, 'activity', 'owner', NULL, 'description', '2026-11-02 03:58:45.257503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: a tap-then-quick-swipe never leaves the veil and glow open over a page showing every prayer row, and the overlay''s two dim texts read as the grey they shipped with plus a hint of the blue and a hint of the purple, not the heavy purple of 2.43.27.\n\nWhere: app/Navigation.tsx''s pager rest and trailing-page-selected paths, and the labelOverlay ink in shared/constants.ts with its banded audits; both platforms; delivered as a development build installed on both phones for the owner''s on-glass read.\n\nAcceptance:\n- [x] the swipe''s rest always closes an open overlay, and a pageSelected trailing that rest closes it too, both red-first in the Navigation suite before the fix\n- [x] a plain tap still opens the overlay and it stays open with no swipe; normal paging stays free\n- [x] the labelOverlay ink re-derives at the midpoint hue of the blue the owner named and the purple it became, holding the shipped grey''s luminance, its banded guards red-first (nudged to the grey''s own bluish hue at 2.43.38 by the owner''s second read)\n- [x] yarn validate green at full coverage; the version ritual on the commit\n- [x] a development build compiled on both platforms in parallel and installed on both phones beside the production fleettest app, the owner reading both fixes on glass"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5765, 571, 'activity', 'owner', NULL, 'status', '2026-11-02 03:58:45.257503+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5767, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 244, "value": "#575"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5768, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 149, "value": "Testing"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5769, 575, 'activity', 'owner', NULL, 'label_add', '2026-11-02 03:58:53.122017+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "Both"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3417, 363, 'activity', 'owner', NULL, 'parent', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 345, "value": "T-345"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3418, 345, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 07:53:41.329287+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 363, "value": "T-363"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3424, 347, 'comment', 'owner', 'Survey source list: each README section and the commits or ranges it was written from (app.json is the version spine; subjects walked unique per era).
@@ -11947,6 +11969,7 @@ Every clause passes on both schedules: the words'' ink reads as exactly alpha-in
 
 To record plainly: a second, independently dispatched executor proved the same step on the same phone in the same window (its verdict at out/t490-s10/xs/VERDICT.md, its takes likewise frame-proven single-owner) and concurs on every clause - two independent instruments, one answer. The two sessions contended on the runner daemon (DEVICE_IN_USE faults, one lost take each side); the dispatch of one device to two executors is flagged for the lead. The vision legibility leg, which neither executor could host at its nesting depth, ran as a countersign from the lane over both executors'' crops: 22 images, zero dark or grey states, per-channel alpha in lockstep to within 0.03 on both sets, recovered alphas matching the labelled phases, no words after the card on any close or settle frame. Verdict: the owner''s ordered ramp is proven on glass, both schedules.', NULL, '2026-10-30 02:17:19.841295+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5338, 541, 'activity', 'owner', NULL, 'status', '2026-10-31 20:30:15.053433+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5766, 575, 'activity', 'owner', NULL, 'created', '2026-11-02 03:58:53.109133+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3430, 327, 'activity', 'owner', NULL, 'status', '2026-10-25 08:03:00.139522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Ready", "stateType": "unstarted"}, "from": {"id": 6, "value": "Planning", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4941, 491, 'activity', 'owner', NULL, 'field', '2026-10-30 03:06:54.396608+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5343, 541, 'activity', 'owner', NULL, 'description', '2026-10-31 21:44:27.77397+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: fix everything the owner''s 2.43.1 on-glass read named, in one batch: the mosque icon''s first-frame gap, the iPhone XS error screen, the redundant What''s New entry, over-long or wrong extras labels under the short-noun rule, the still-too-bright disabled alert ink, and a settings toggle that shows the Ramadan decorations outside Ramadan.\n\nWhere: the mosque icon''s render path above the prayer list (the owner''s PNG precedent is the Ramadan sprites), the iOS launch error on the XS (capture the cause from the device first), shared/whatsNew.ts plus all 75 catalogs'' whatsNew keys, every catalog''s extras labels (midnight, last third, sunrise, the 20-minute rows) and the sound-sheet hint and qibla subtitle, the alert sheet''s disabled ink tokens, and the Ramadan decorations'' seasonal gate with a new settings row.\n\nAcceptance:\n- [ ] The mosque icon paints with the first content frame on both platforms, no 300ms gap and no snap; the PNG conversion (the Ramadan sprites'' precedent) is evaluated against preloading and whichever lands is named in the closing comment\n- [ ] The XS launches the production build with no error screen; the captured cause and the fix are recorded in a comment\n- [ ] The What''s New 2.43 language-wave entry is gone - its title/body keys leave all 75 catalogs and the earlier unreleased more-languages entry stands alone - and the What''s New gate stays green\n- [ ] Every locale''s extras rows carry the short-noun rule (owner order, restated 2026-10-31): the locale''s own single word for midnight - never \"the middle of the night\" or \"halfway between Maghrib and Fajr\" - the short \"last third\", never \"the last third of the night\", and the short sunrise noun, never \"the rising of the sun\"; a red-first golden test pins the rule for every catalog\n- [ ] The Bikol sunrise row (\"Pagsirang kan saldog\" class), the sound-sheet hint and the qibla subtitle are re-sourced against their chains: each becomes the correct short native form, or is recorded as naturally long with the sourcing chain named - the owner''s question, correct or gibberish-long, answered per string in a comment\n- [ ] The alert sheet''s disabled title and circular icon read as dark as the \"notification before prayer time\" subtitle - ink moved toward the card background by opacity or token - cold-audited from the code, the owner reads the glass\n- [ ] A settings toggle enables the Ramadan decorations outside Ramadan: default off, the seasonal gate intact when off, the decorations show immediately when on, and the README gains the feature line\n- [ ] yarn validate green at full coverage; the version ritual on every commit; no phone navigation beyond what the ticket''s own verification names (the XS capture and one decorations check), everything else code-only until the owner''s next read\n\nThe owner''s chat rulings that shape this: the countdown-bar-color label STAYS unchanged (five alternatives were tabled in chat, no change without the owner''s pick); T-538 stays open separately for the row height.\n- [ ] The overlay''s prayer name (above the countdown timer) and location (above the date) lose their text shadows - the countdown timer KEEPS its shadow - so the overlay matches the non-overlay version, which has none\n- [ ] The same two dimmed texts move from their purple hint to a slight hint of blue, consistent with the glow''s new ink (owner order 2026-10-31 evening, added mid-lane)"}}', NULL);
@@ -15126,7 +15149,8 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (759, 557, 1, NULL, 557, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (766, 565, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (768, 571, 1, NULL, 571, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (769, 571, 3, 'the owner reads the development build on both phones: a tap-then-quick-swipe closes the overlay when the slide ends (both directions and the short same-page settle alike), and the overlay''s two dim texts read as the grey with a hint of each tint, not the heavy purple - production stays untouched beside it', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (769, 571, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (772, 575, 1, NULL, 575, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -15712,6 +15736,9 @@ INSERT INTO public.issue_label (issue_id, label_id) VALUES (571, 243);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (571, 141);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (571, 3);
 INSERT INTO public.issue_label (issue_id, label_id) VALUES (571, 6);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 244);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 149);
+INSERT INTO public.issue_label (issue_id, label_id) VALUES (575, 3);
 
 
 --
@@ -16791,7 +16818,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1426, 565, 2, 'Ready', 'unstarted', '2026-11-01 14:33:48.911096+00', '2026-11-01 14:57:10.929166+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1437, 570, 4, 'Done', 'completed', '2026-11-01 16:49:12.753525+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1444, 573, 1, 'Backlog', 'backlog', '2026-11-02 02:18:13.793+00', '2026-11-02 03:00:38.03943+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1451, 571, 9, 'Awaiting Owner', 'started', '2026-11-02 03:00:38.104257+00', NULL);
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1451, 571, 9, 'Awaiting Owner', 'started', '2026-11-02 03:00:38.104257+00', '2026-11-02 03:58:45.247121+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1034, 433, 4, 'Done', 'completed', '2026-10-28 23:42:18.22997+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1047, 442, 4, 'Done', 'completed', '2026-10-28 23:52:41.077365+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1167, 490, 1, 'Backlog', 'backlog', '2026-10-29 09:55:42.394+00', '2026-10-29 14:52:45.09107+00');
@@ -16843,6 +16870,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1434, 566, 4, 'Done', 'completed', '2026-11-01 15:14:49.893772+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1438, 565, 8, 'Audit', 'started', '2026-11-01 16:59:34.498801+00', '2026-11-02 01:54:42.991663+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1445, 574, 1, 'Backlog', 'backlog', '2026-11-02 02:18:13.797+00', '2026-11-02 02:32:28.523588+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1452, 571, 4, 'Done', 'completed', '2026-11-02 03:58:45.247121+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1035, 434, 4, 'Done', 'completed', '2026-10-28 23:44:52.78298+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1048, 437, 4, 'Done', 'completed', '2026-10-28 23:54:34.702833+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1021, 449, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.208+00', '2026-10-28 23:55:38.066456+00');
@@ -16897,6 +16925,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1431, 566, 8, 'Audit', 'started', '2026-11-01 14:54:04.482785+00', '2026-11-01 15:14:49.893772+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1439, 565, 9, 'Awaiting Owner', 'started', '2026-11-02 01:54:42.991663+00', '2026-11-02 02:17:28.8992+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1447, 571, 3, 'In progress', 'started', '2026-11-02 02:18:27.126951+00', '2026-11-02 03:00:38.104257+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1453, 575, 1, 'Backlog', 'backlog', '2026-11-02 03:58:53.098+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1037, 441, 4, 'Done', 'completed', '2026-10-28 23:45:46.550249+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1003, 435, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.962+00', '2026-10-28 23:46:35.364735+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1038, 435, 4, 'Done', 'completed', '2026-10-28 23:46:35.364735+00', NULL);
@@ -17464,6 +17493,7 @@ INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VAL
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (241, 1, 3, '#565', '#ffffff', '2026-11-01 14:24:23.279635+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (242, 1, 3, '#566', '#ffffff', '2026-11-01 14:24:23.434239+00');
 INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (243, 1, 3, '#571', '#ffffff', '2026-11-02 02:17:28.878083+00');
+INSERT INTO public.label (id, project_id, group_id, name, color, created_at) VALUES (244, 1, 3, '#575', '#ffffff', '2026-11-02 03:58:45.229734+00');
 
 
 --
@@ -17774,7 +17804,7 @@ INSERT INTO public.label_group (id, project_id, name, color, created_at) VALUES 
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 575, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
+INSERT INTO public.project (id, key, name, description, next_sequence, created_at, mcp_enabled, initiatives_enabled, dashboards_enabled, notes_enabled, cycles_enabled, subtasks_enabled, checklists_enabled, issue_stats_enabled, points_estimate_enabled, time_estimate_enabled, time_logging_enabled, documents_enabled, team_id, archived_at) VALUES (1, 'T', 'Tickets', '', 576, '2026-10-18 23:35:27.31234+00', true, false, false, false, false, true, false, false, true, false, false, false, 1, NULL);
 
 
 --
@@ -25753,6 +25783,47 @@ Fix 2, the ink:
 3. Step 3: the development build - both platforms compiled in parallel, installed on both phones beside the fleettest production app, the owner''s read. 3 points.
 
 Points: 7, over the 6-point lane budget by the owner''s own order (one ticket, one session, the owner in the loop).', NULL, NULL, '{}', false, false, false, NULL, NULL, 73728, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 02:18:13.697438+00', '2026-11-02 02:18:13.697438+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (74, 1, NULL, 'T-575', '# T-575 - the owner''s translation verification, the full protocol
+
+## What this is
+
+The owner''s plan, in their words: language by language, category by category, string by string. For every text in the app the owner sees the independent machine''s English rendering of our string beside our own English, reads both, and says yes or no. Yes ticks the string; a ticked string is never changed again. The agent does everything else - the owner''s part is eyes and a yes or a no.
+
+## The workflow per round
+
+1. The session picks the next unverified language in LOCALE_IDS order (shared/i18n/locale.ts - en first, skipped as the source of truth; ar, ms, so, hi, th and the 72 after them), then the next category within it. Order inside one language: help (33 strings), calendar (31), prayer (22), settings (21), qibla (12), alert (8), extras (5), widget (4), update (4), error (4), stepper (3), reminder (3), then whatever remains - en.ts''s 198 keys are the canonical map, count it at planning.
+2. For each string the round presents three things already visible together: our string in the language, the independent engine''s English rendering of it, our English string.
+3. The medium - the owner''s constraints, their words: eyes only, no keyboard navigation at all, no mouse navigation at all. Two viable shapes; the first round''s medium is the owner''s ruling:
+   a. Tabs in a browser window the owner can SEE, driven by the agent-browser CLI (the owner''s stated preference). The 2026-11-02 failure to avoid: the CLI opened tabs in its own instance and the owner, in the Zen browser, saw nothing - the window must be launched headed and visible on the desktop, one tab per category, Google Translate pre-filled, with the English reference table in the chat beside it. Google may show a one-time consent wall: accept it.
+   b. A generated side-by-side file the owner opens once and scrolls: language string, the engine''s English, our English, one line each, with the exact URL per line so any line can be spot-checked independently. Faster, but third-party content mediated by the agent rather than read off Google''s own page - the browser is the more independent read.
+4. The owner answers per string in the chat, by line number: yes or no. Yes is ticked. No is flagged with what read wrong; the agent re-translates that one string in that catalog, regenerates the lock, re-presents it.
+5. Round done: a comment on this ticket - language, category, strings verified, the nos and what fixed them. The comment list is the resume point for the next session.
+
+## The arbitration rule
+
+The owner''s question, answered: when our string and the engine''s English differ, which is correct? The judge is MEANING against our English string, never wording.
+- Same meaning, different words: YES. Synonyms, reordering, a transliteration, a literal rendering of a word - a call to prayer for athan, shortened for trimmed - are all correct.
+- A different meaning, or meaning lost: NO.
+- Uncertain: a second independent engine (a different provider than the first) translates the same string; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+
+The worked example from the 2026-11-02 spot-check: the Malay settings row renders as Show the moment in Google because the word saat carries both senses; in the row''s timer context it means seconds, our English is right, and the arbitration rule calls it a YES on meaning. The Arabic subtitle and the 30-seconds sentence verified exact or meaning-equal the same day.
+
+## The lock
+
+catalog-lock.json carries a hash per catalog, and the lockstep test fails on any catalog change that does not regenerate the lock - the mechanism already exists. This ticket adds the policy on top: a verified language''s hash regenerates only for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string. No other change, ever. Read the lock test''s own rules before the first regeneration; they are the enforcement, this is the policy.
+
+## Scale and pace
+
+74 languages x 198 strings is about 14,650 verifications. This spans many sessions; nothing here is one sitting. The ticket''s comments are the ledger. Keep each round to one category of one language unless the owner asks for more.
+
+## Facts a fresh session needs
+
+- English is catalog 1 and the source of truth; verify the other 74.
+- Catalogs live at shared/i18n/<locale>.ts; the order is LOCALE_IDS in shared/i18n/locale.ts.
+- The owner''s browser is Zen; the agent-browser CLI drives its own instance, so its window must be launched visible (headed) - the 2026-11-02 tabs worked but were invisible to the owner.
+- Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
+- The first three languages were spot-checked 2026-11-02 (three strings each) - that was a demo of the medium, not a verification of the catalogs; every string still goes through the loop.
+- The owner does not read the languages; only the English renderings. Never present a language string alone.', NULL, NULL, '{}', false, false, false, NULL, NULL, 74752, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.596055+00', '2026-11-02 03:59:06.596055+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (70, 1, NULL, 'T-561', '# T-561
 
 ## Goal
@@ -25981,6 +26052,7 @@ INSERT INTO public.project_document_issue (document_id, issue_id, created_by_use
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (71, 566, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-01 14:33:14.790424+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (72, 565, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-01 14:33:30.597794+00');
 INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (73, 571, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 02:18:13.744005+00');
+INSERT INTO public.project_document_issue (document_id, issue_id, created_by_user_id, created_at) VALUES (74, 575, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.642031+00');
 
 
 --
@@ -48474,6 +48546,47 @@ Fix 2, the ink:
 3. Step 3: the development build - both platforms compiled in parallel, installed on both phones beside the fleettest production app, the owner''s read. 3 points.
 
 Points: 7, over the 6-point lane budget by the owner''s own order (one ticket, one session, the owner in the loop).', NULL, NULL, '{}', false, false, false, NULL, 73728, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 02:18:13.697438+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (218, 74, 1, NULL, 'T-575', '# T-575 - the owner''s translation verification, the full protocol
+
+## What this is
+
+The owner''s plan, in their words: language by language, category by category, string by string. For every text in the app the owner sees the independent machine''s English rendering of our string beside our own English, reads both, and says yes or no. Yes ticks the string; a ticked string is never changed again. The agent does everything else - the owner''s part is eyes and a yes or a no.
+
+## The workflow per round
+
+1. The session picks the next unverified language in LOCALE_IDS order (shared/i18n/locale.ts - en first, skipped as the source of truth; ar, ms, so, hi, th and the 72 after them), then the next category within it. Order inside one language: help (33 strings), calendar (31), prayer (22), settings (21), qibla (12), alert (8), extras (5), widget (4), update (4), error (4), stepper (3), reminder (3), then whatever remains - en.ts''s 198 keys are the canonical map, count it at planning.
+2. For each string the round presents three things already visible together: our string in the language, the independent engine''s English rendering of it, our English string.
+3. The medium - the owner''s constraints, their words: eyes only, no keyboard navigation at all, no mouse navigation at all. Two viable shapes; the first round''s medium is the owner''s ruling:
+   a. Tabs in a browser window the owner can SEE, driven by the agent-browser CLI (the owner''s stated preference). The 2026-11-02 failure to avoid: the CLI opened tabs in its own instance and the owner, in the Zen browser, saw nothing - the window must be launched headed and visible on the desktop, one tab per category, Google Translate pre-filled, with the English reference table in the chat beside it. Google may show a one-time consent wall: accept it.
+   b. A generated side-by-side file the owner opens once and scrolls: language string, the engine''s English, our English, one line each, with the exact URL per line so any line can be spot-checked independently. Faster, but third-party content mediated by the agent rather than read off Google''s own page - the browser is the more independent read.
+4. The owner answers per string in the chat, by line number: yes or no. Yes is ticked. No is flagged with what read wrong; the agent re-translates that one string in that catalog, regenerates the lock, re-presents it.
+5. Round done: a comment on this ticket - language, category, strings verified, the nos and what fixed them. The comment list is the resume point for the next session.
+
+## The arbitration rule
+
+The owner''s question, answered: when our string and the engine''s English differ, which is correct? The judge is MEANING against our English string, never wording.
+- Same meaning, different words: YES. Synonyms, reordering, a transliteration, a literal rendering of a word - a call to prayer for athan, shortened for trimmed - are all correct.
+- A different meaning, or meaning lost: NO.
+- Uncertain: a second independent engine (a different provider than the first) translates the same string; two engines agreeing on one meaning settles YES; still divergent, the agent lays the divergence out plainly and the owner rules. The owner''s word is always final.
+
+The worked example from the 2026-11-02 spot-check: the Malay settings row renders as Show the moment in Google because the word saat carries both senses; in the row''s timer context it means seconds, our English is right, and the arbitration rule calls it a YES on meaning. The Arabic subtitle and the 30-seconds sentence verified exact or meaning-equal the same day.
+
+## The lock
+
+catalog-lock.json carries a hash per catalog, and the lockstep test fails on any catalog change that does not regenerate the lock - the mechanism already exists. This ticket adds the policy on top: a verified language''s hash regenerates only for (a) this verification''s own owner-ruled fixes and (b) an explicit later owner order naming the string. No other change, ever. Read the lock test''s own rules before the first regeneration; they are the enforcement, this is the policy.
+
+## Scale and pace
+
+74 languages x 198 strings is about 14,650 verifications. This spans many sessions; nothing here is one sitting. The ticket''s comments are the ledger. Keep each round to one category of one language unless the owner asks for more.
+
+## Facts a fresh session needs
+
+- English is catalog 1 and the source of truth; verify the other 74.
+- Catalogs live at shared/i18n/<locale>.ts; the order is LOCALE_IDS in shared/i18n/locale.ts.
+- The owner''s browser is Zen; the agent-browser CLI drives its own instance, so its window must be launched visible (headed) - the 2026-11-02 tabs worked but were invisible to the owner.
+- Google Translate pre-filled URL shape: https://translate.google.com/?sl=LANG&tl=en&text=URLENCODED&op=translate - newlines as %0A, a possible one-time consent wall.
+- The first three languages were spot-checked 2026-11-02 (three strings each) - that was a demo of the medium, not a verification of the catalogs; every string still goes through the loop.
+- The owner does not read the languages; only the English renderings. Never present a language string alone.', NULL, NULL, '{}', false, false, false, NULL, 74752, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-02 03:59:06.596055+00');
 
 
 --
@@ -48954,20 +49067,21 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:555', 1, 9);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:553', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:563', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:559', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 334);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 336);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:560', 1, 14);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:574', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:564', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5527);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:571', 1, 31);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:520', 1, 41);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:538', 1, 170);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:571', 1, 43);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:568', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:570', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:556', 1, 13);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:524', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:545', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5537);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:548', 1, 5);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:575', 1, 12);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:551', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:522', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:542', 1, 68);
@@ -49261,7 +49375,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 5757, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 5770, true);
 
 
 --
@@ -49310,14 +49424,14 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 769, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 772, true);
 
 
 --
 -- Name: issue_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_id_seq', 574, true);
+SELECT pg_catalog.setval('public.issue_id_seq', 575, true);
 
 
 --
@@ -49338,7 +49452,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 131, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1451, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1453, true);
 
 
 --
@@ -49373,7 +49487,7 @@ SELECT pg_catalog.setval('public.label_group_id_seq', 5, true);
 -- Name: label_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.label_id_seq', 243, true);
+SELECT pg_catalog.setval('public.label_id_seq', 244, true);
 
 
 --
@@ -49429,14 +49543,14 @@ SELECT pg_catalog.setval('public.project_dashboard_id_seq', 1, false);
 -- Name: project_document_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_id_seq', 73, true);
+SELECT pg_catalog.setval('public.project_document_id_seq', 74, true);
 
 
 --
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 217, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 218, true);
 
 
 --
@@ -53821,5 +53935,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 24zlZnvP67xg2FM4GSNK9bvS4JwgDxWbEpeSTLPrIwamBNDncfQ1yUZgHY0O2if
+\unrestrict LcX64euvlRnd5aPISklDYguT1xAOmNOox9hIk1VKcUVNbfiAhpXRZEPuFNIu74D
 
