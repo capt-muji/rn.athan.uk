@@ -343,8 +343,9 @@ const SYNONYM_GROUPS = [
   ['fajr', 'dawn', 'morning'],
   ['dhuhr', 'noon', 'midday', 'zuhr'],
   ['asr', 'afternoon'],
-  // Morocco is al-Maghrib in Arabic: an engine naming the country reads the name's own cognate
-  ['magrib', 'maghrib', 'sunset', 'morocco'],
+  // Morocco is al-Maghrib in Arabic: an engine naming the country reads the name's own cognate;
+  // the word's plain sense is the evening, which an engine may render for the Somali spelling
+  ['magrib', 'maghrib', 'sunset', 'morocco', 'evening'],
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it
   ['isha', 'nightfall', 'dinner', 'supper'],
   ['suhoor', 'sahur', 'suhur', 'sehri'],
@@ -384,17 +385,21 @@ const SYNONYM_GROUPS = [
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],
   ['reset', 'restore', 'return'],
-  // Safar month and the Arabic word for zero share their spelling: the engine names the word itself
-  ['safar', 'zero'],
+  // Safar month shares its spelling with the Arabic word for zero and for travel:
+  // an engine naming either reads the word itself
+  ['safar', 'zero', 'travel', 'journey'],
+  ['setting', 'settings', 'arrangement', 'arrangements'],
+  ['hold', 'keep', 'retain'],
+  ['turn', 'move', 'rotate'],
   ['done', 'completed', 'complete', 'finished'],
   ['default', 'original'],
 ];
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
-  ['up to date', 'latest version', 'no new updates'],
+  ['up to date', 'latest version', 'no new updates', 'no new update'],
   ['oh no', 'excuse me', 'unfortunately', 'sorry'],
-  ['out of date', 'outdated', 'not updated'],
+  ['out of date', 'outdated', 'not updated', 'no updates'],
   ['rabiʻ ii', 'spring of the other'],
 ];
 
@@ -1127,7 +1132,11 @@ const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
       if (typeof ruling.note !== 'string' || ruling.note.trim() === '') {
         rulingErrors.push(`${locale}/${ruling.key} carries no note`);
       }
-      if (rowByKey.has(ruling.key) && rowByKey.get(ruling.key).verdict !== 'red') {
+      if (
+        rowByKey.has(ruling.key) &&
+        rowByKey.get(ruling.key).verdict !== 'red' &&
+        rowByKey.get(ruling.key).ruling !== ruling.note
+      ) {
         rulingErrors.push(`${locale}/${ruling.key} is not a red row`);
       }
       rulingByKey.set(ruling.key, ruling);

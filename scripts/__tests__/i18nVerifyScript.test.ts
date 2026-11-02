@@ -426,16 +426,26 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
   it('the Arabic loop lessons: engine renderings that carry the meaning read green', () => {
     // المغرب is also the Arabic name of Morocco - the engine names the word's own cognate
     expect(verify.verdictOf('Magrib', both('Morocco', 'x'))).toBe('green');
+    // The engine read the Somali spelling Maqrib as the word's evening sense
+    expect(verify.verdictOf('Magrib', both('In the evening', 'x'))).toBe('green');
     // العشاء is the Arabic word for supper - the name derives from the meal
     expect(verify.verdictOf('Isha', both('dinner', 'x'))).toBe('green');
     expect(verify.verdictOf('Done', both('It was completed', 'x'))).toBe('green');
     expect(verify.verdictOf('Out of date', both('Not updated', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('No updates', 'x'))).toBe('green');
     expect(verify.verdictOf(' Oh no! ', both('Sorry!', 'x'))).toBe('green');
     expect(verify.verdictOf('Rabiʻ II', both('Spring of the other', 'x'))).toBe('green');
     expect(verify.verdictOf('Safar', both('zero', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('Travel', 'x'))).toBe('green');
     expect(verify.verdictOf('Each prayer now has 2 reminders', both('Every prayer now has two warnings', 'x'))).toBe(
       'green'
     );
+  });
+
+  it('the Somali loop lessons: instruction verbs, the settings sense and the plural update phrase', () => {
+    expect(verify.verdictOf('Settings', both('Arrangements', 'x'))).toBe('green');
+    expect(verify.verdictOf('Hold flat and turn slowly', both('Keep it straight and move slowly', 'x'))).toBe('green');
+    expect(verify.verdictOf('You’re up to date', both('There is no new update', 'x'))).toBe('green');
   });
 
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
@@ -887,6 +897,23 @@ describe('the command line flow', () => {
       const finalRow = final.rows.find((r: Row) => r.key === 'settings.title');
       expect(finalRow.ruling).toBeUndefined();
       expect(finalRow.verdict).toBe('green');
+    });
+
+    it('re-applying a standing ruling is a no-op, not a refusal', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-idempotent');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      const again = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(again.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('green');
+      expect(after.judgeRuled).toBe(1);
     });
 
     it('refuses a ruling on a row the engine did not read red, a missing note, and an unknown key', async () => {
