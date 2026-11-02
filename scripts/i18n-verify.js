@@ -465,20 +465,28 @@ const carriesMeaning = (en, roundtrip) => {
 };
 
 /**
- * The row verdict (owner order three: a pass rests on two engines agreeing): green
- * when both engine slots rendered and both carry the meaning, red when both rendered
- * and neither carries it, amber when a slot is missing, the judge filled (no
- * independent machine vouched for the row), or the judge doubted the rendering.
+ * The row verdict (owner order eight): phase ONE is Google alone - green when gtx's
+ * round-trip carries the meaning, red when it does not, amber where gtx did not
+ * render (a judge fill or a doubt is always amber: no independent machine vouched
+ * for the row). Phase TWO is the both-engines semantics - green when both slots
+ * rendered and both carry the meaning, red when both rendered and neither carries
+ * it, amber on a missing slot or divergence. Phase two's second site is not chosen
+ * yet; its slot stays pending.
  */
-const verdictOf = (en, sites, llm = null, doubt = null) => {
+const verdictOf = (en, sites, llm = null, doubt = null, phase = 'one') => {
   if (doubt) return 'amber';
-  const present = sites.filter((site) => site.roundtrip !== null && site.roundtrip !== '');
-  if (present.length < sites.length) return 'amber';
   if (llm) return 'amber';
-  const carried = present.filter((site) => carriesMeaning(en, site.roundtrip));
-  if (carried.length === present.length) return 'green';
-  if (carried.length === 0) return 'red';
-  return 'amber';
+  if (phase === 'two') {
+    const present = sites.filter((site) => site.roundtrip !== null && site.roundtrip !== '');
+    if (present.length < sites.length) return 'amber';
+    const carried = present.filter((site) => carriesMeaning(en, site.roundtrip));
+    if (carried.length === present.length) return 'green';
+    if (carried.length === 0) return 'red';
+    return 'amber';
+  }
+  const google = sites[0];
+  if (google === undefined || google.roundtrip === null || google.roundtrip === '') return 'amber';
+  return carriesMeaning(en, google.roundtrip) ? 'green' : 'red';
 };
 
 // --------------------------------------------------------------------------------------
@@ -632,7 +640,7 @@ const runLocale = async (locale, opts) => {
       const resumedLlm = resumedLlmOf(priorFresh);
       if (resumedLlm) row.llm = resumedLlm;
     }
-    row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null);
+    row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null, opts.phase ?? 'one');
     return row;
   });
 
@@ -655,11 +663,15 @@ const runLocale = async (locale, opts) => {
   }
 
   const label = opts.label ?? locale;
+  const phase = opts.phase ?? 'one';
   mkdirSync(outDir, { recursive: true });
   const htmlPath = join(outDir, `${locale}.html`);
   const jsonPath = join(outDir, `${locale}.json`);
-  writeFileSync(htmlPath, renderLocaleHtml(locale, label, rows));
-  writeFileSync(jsonPath, `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString()), null, 2)}\n`);
+  writeFileSync(htmlPath, renderLocaleHtml(locale, label, rows, phase));
+  writeFileSync(
+    jsonPath,
+    `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+  );
 
   return { locale, count: rows.length, rows, counts, engineMix, misses, files: [htmlPath, jsonPath] };
 };
@@ -796,8 +808,8 @@ const renderSection = (locale, rows, section, title) => {
   ].join('\n');
 };
 
-/** The locale's comparison page: a language string never appears without its English and both round-trips */
-const renderLocaleHtml = (locale, label, rows) => {
+/** The locale's comparison page: a language string never appears without its English and its round-trips */
+const renderLocaleHtml = (locale, label, rows, phase = 'one') => {
   const counts = { green: 0, red: 0, amber: 0 };
   const mix = {};
   let filled = 0;
@@ -805,19 +817,23 @@ const renderLocaleHtml = (locale, label, rows) => {
     counts[row.verdict] += 1;
     if (row.llm) filled += 1;
     for (const site of row.sites) {
-      const bucket = site.roundtrip !== null ? site.engine : 'miss';
+      const bucket = site.roundtrip !== null ? site.engine : site.engine === 'pending' ? 'pending' : 'miss';
       mix[bucket] = (mix[bucket] ?? 0) + 1;
     }
   }
   const mixLine = Object.entries(mix)
     .map(([engine, count]) => `${engine}: ${count}`)
     .join(', ');
+  const phaseLine =
+    phase === 'two'
+      ? "Google's round-trip and the second site's side by side - green only when both carry the meaning."
+      : "Google's round-trip per row in phase one; the second site's column joins in phase two.";
   return [
     PAGE_SHELL_OPEN(`Athan translation verification - ${label}`),
     '  <a class="back" href="index.html">&larr; all languages</a>',
     '  <header class="card">',
     `    <h1>${escapeHtml(label)}</h1>`,
-    `    <p class="muted">${rows.length} rows - Google's round-trip per row in phase one; the second site's column joins in phase two. Green: the meaning survives. Red: it does not - follow the red. Amber: the engine did not render, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
+    `    <p class="muted">${rows.length} rows - ${phaseLine} Green: the meaning survives. Red: it does not - follow the red. Amber: the engine did not render, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
     `    <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span><span class="chip n">${escapeHtml(mixLine)}</span></div>`,
     '  </header>',
     renderSection(locale, rows, 1, 'Section 1 - the eleven prayer.* names'),
@@ -863,9 +879,10 @@ const renderReferenceHtml = (label, rows) =>
     PAGE_SHELL_CLOSE,
   ].join('\n');
 
-const buildLocaleJson = (locale, label, rows, generatedAt) => ({
+const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
   locale,
   languageName: label,
+  phase,
   generatedAt,
   rowCount: rows.length,
   counts: rows.reduce(
@@ -924,7 +941,7 @@ const renderIndexHtml = (summaries) => {
 
 const usageError = (message) =>
   new Error(
-    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] | --waves | --all | --fill ar,so [--out DIR]`
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] | --waves | --all | --fill ar,so [--out DIR]`
   );
 
 const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
@@ -971,6 +988,7 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
     let filled = 0;
     let superseded = 0;
     let doubted = 0;
+    const phase = artifact.phase ?? 'one';
     for (const row of rows) {
       const bothMiss = (row.sites ?? []).every((site) => site.roundtrip === null);
       const fill = fillByKey.get(row.key);
@@ -986,14 +1004,14 @@ const fillLocales = async (locales, { outDir, log, now, names }) => {
       filled += 1;
       if (fill.doubt) doubted += 1;
       row.llm = { roundtrip: fill.roundtrip, ...(fill.doubt ? { doubt: fill.doubt } : {}) };
-      row.verdict = verdictOf(row.en, row.sites ?? [], row.llm, row.llm.doubt ?? null);
+      row.verdict = verdictOf(row.en, row.sites ?? [], row.llm, row.llm.doubt ?? null, phase);
     }
     const label = artifact.languageName ?? languageLabel(locale, names);
     writeFileSync(
       join(outDir, `${locale}.json`),
-      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString()), null, 2)}\n`
+      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
     );
-    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows));
+    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase));
     written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
     log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
   }
@@ -1028,12 +1046,17 @@ const run = async (argv, deps = {}) => {
   const outFlag = flag('--out');
   const localesFlag = flag('--locales');
   const fillFlag = flag('--fill');
+  const phaseFlag = flag('--phase');
   const waves = argv.includes('--waves');
   const all = argv.includes('--all');
   const resume = argv.includes('--resume');
   if (!waves && !all && localesFlag === undefined && fillFlag === undefined) {
     throw usageError('no locales named');
   }
+  if (phaseFlag !== undefined && phaseFlag !== 'one' && phaseFlag !== 'two') {
+    throw usageError(`--phase must be one or two, got ${phaseFlag}`);
+  }
+  const phase = phaseFlag ?? 'one';
   const names = loadLanguageNames(deps);
   const allLocales = ['en', ...names.map((entry) => entry.id).filter((id) => id !== 'en')];
   const locales = fillFlag
@@ -1116,6 +1139,7 @@ const run = async (argv, deps = {}) => {
       now: deps.now ?? (() => new Date()),
       resumeRows,
       label: languageLabel(locale, names),
+      phase,
     });
     written.push(...result.files);
     const mix = Object.entries(result.engineMix)

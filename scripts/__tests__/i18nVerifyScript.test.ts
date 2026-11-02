@@ -43,7 +43,8 @@ const verify = require('../i18n-verify.js') as {
     en: string,
     sites: Site[],
     llm?: { roundtrip: string; doubt?: string } | null,
-    doubt?: string | null
+    doubt?: string | null,
+    phase?: string
   ): string;
   slotAccepts(catalog: string, english: string, roundtrip: string | null): boolean;
   runLocale(locale: string, opts: LocaleOpts): Promise<LocaleResult>;
@@ -111,6 +112,7 @@ interface LocaleOpts {
   resumeRows?: Map<string, Row>;
   liveEngines?: string[];
   label?: string;
+  phase?: string;
 }
 interface LocaleResult {
   locale: string;
@@ -392,19 +394,18 @@ describe('the meaning heuristic behind the verdict colors', () => {
   });
 });
 
-describe('the row verdict (order three: a pass rests on two engines agreeing)', () => {
+describe('the row verdict (owner order eight: phase one is Google alone, phase two needs both agreeing)', () => {
   const both = (a: string | null, b: string | null): Site[] => [
     { engine: 'gtx', roundtrip: a },
     { engine: 'mymemory', roundtrip: b },
   ];
 
-  it('reads green when both engines carry the meaning, red when neither does', () => {
+  it('phase one (the default): green when gtx carries the meaning, red when it does not, amber where gtx did not render', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'))).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'))).toBe('red');
-  });
-
-  it('reads amber when the engines diverge, when a slot is missing, when the judge filled, and when the judge doubted', () => {
-    expect(verify.verdictOf('Dhuhr', both('Back', 'noon'))).toBe('amber');
+    // Where gtx loses the meaning, the second slot cannot rescue a phase-one verdict
+    expect(verify.verdictOf('Dhuhr', both('Back', 'noon'))).toBe('red');
+    // gtx did not render: amber whether or not the judge filled, and a doubt is always amber
     expect(
       verify.verdictOf('Fajr', [
         { engine: 'gtx', roundtrip: null },
@@ -413,6 +414,25 @@ describe('the row verdict (order three: a pass rests on two engines agreeing)', 
     ).toBe('amber');
     expect(verify.verdictOf('Fajr', both(null, null), { roundtrip: 'Fajr' })).toBe('amber');
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, 'judge doubted the rendering')).toBe('amber');
+  });
+
+  it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
+    expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
+    expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
+    expect(verify.verdictOf('Dhuhr', both('Back', 'noon'), null, null, 'two')).toBe('amber');
+    expect(
+      verify.verdictOf(
+        'Fajr',
+        [
+          { engine: 'gtx', roundtrip: null },
+          { engine: 'pending', roundtrip: null },
+        ],
+        null,
+        null,
+        'two'
+      )
+    ).toBe('amber');
+    expect(verify.verdictOf('Fajr', both(null, null), { roundtrip: 'Fajr' }, null, 'two')).toBe('amber');
   });
 });
 
@@ -728,6 +748,30 @@ describe('the command line flow', () => {
     expect(report.locales[0]).toBe('en');
   });
 
+  it('verdicts follow --phase: Google alone by default, both-slots semantics under --phase two', async () => {
+    const oneDir = join(SCRATCH, 'cli-phase-one');
+    const one = await verify.run(['--locales', 'ar', '--out', oneDir], baseDeps(fetchOk));
+    expect(one.ok).toBe(true);
+    const oneJson = JSON.parse(readFileSync(join(oneDir, 'ar.json'), 'utf8'));
+    expect(oneJson.phase).toBe('one');
+    // The fixture renders 'g: ' plus the catalog text's first six characters: the 189
+    // rows whose meaning survives that truncation read green, the 18 longer strings
+    // whose truncation loses it read red - phase one judges Google's slot alone
+    expect(oneJson.counts).toEqual({ green: 189, red: 18, amber: 0 });
+
+    const twoDir = join(SCRATCH, 'cli-phase-two');
+    const two = await verify.run(['--locales', 'ar', '--out', twoDir, '--phase', 'two'], baseDeps(fetchOk));
+    expect(two.ok).toBe(true);
+    const twoJson = JSON.parse(readFileSync(join(twoDir, 'ar.json'), 'utf8'));
+    expect(twoJson.phase).toBe('two');
+    // Slot two is structurally empty in this batch, so phase two ambers every row
+    expect(twoJson.counts).toEqual({ green: 0, red: 0, amber: 207 });
+
+    await expect(
+      verify.run(['--locales', 'ar', '--out', join(SCRATCH, 'cli-phase-x'), '--phase', 'three'], baseDeps(fetchOk))
+    ).rejects.toThrow('--phase');
+  });
+
   it('defaults the out dir under the injected home and rejects an unknown locale', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--locales', 'ar'], deps);
@@ -811,9 +855,9 @@ describe('the command line flow', () => {
     expect(after.rows[1].verdict).toBe('amber');
   });
 
-  it('marks a doubted judge fill amber even where both engines agree', async () => {
+  it('marks a doubted judge fill amber even where the engine agrees, and a phase-two artifact refreshes as phase two', async () => {
     const outDir = join(SCRATCH, 'cli-doubt');
-    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    await verify.run(['--locales', 'ar', '--out', outDir, '--phase', 'two'], baseDeps(fetchOk));
     // Break one row to both-miss so a fill is legal, then doubt it
     const artifact = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
     const key = artifact.rows[0].key;
@@ -832,6 +876,8 @@ describe('the command line flow', () => {
     const row = after.rows[0];
     expect(row.verdict).toBe('amber');
     expect(row.llm?.doubt).toBe('unresolved word');
+    // The refresh rides the artifact's own phase, not the default
+    expect(after.phase).toBe('two');
   });
 
   it('exits non-zero on a row shortfall from 207 and refuses to run with no locales named', async () => {
