@@ -24,6 +24,7 @@ export const ha = {
   'settings.title': 'Saituna',
   'settings.showSeconds': 'Nuna daƙiƙuna',
   'settings.showTimePassed': 'Nuna lokacin da ya wuce',
+  'settings.show24Hour': 'Nuna tsarin sa’o’i 24',
   'settings.showDecorations': 'Nuna ƙawata',
   'settings.countdownBar': 'Layin Ci Gaba',
   'settings.showCountdownBar': 'Nuna ci gaba',

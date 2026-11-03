@@ -29,6 +29,7 @@ export const min = {
   'settings.title': 'Pangaturan',
   'settings.showSeconds': 'Tampilkan detik',
   'settings.showTimePassed': 'Tampilkan wakatu nan lah lia',
+  'settings.show24Hour': 'Tampilkan format 24 jam',
   'settings.showDecorations': 'Tampilkan hiasan',
   'settings.countdownBar': 'Bar kamajuan',
   'settings.showCountdownBar': 'Tampilkan kamajuan',

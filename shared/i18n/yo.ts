@@ -25,6 +25,7 @@ export const yo = {
   'settings.title': 'Ètò',
   'settings.showSeconds': 'Fi àwọn ìṣẹ́jú àáyá hàn',
   'settings.showTimePassed': 'Fi àkókò tí ó kọjá hàn',
+  'settings.show24Hour': 'Fi ọ̀nà 24 wákàtí hàn',
   'settings.showDecorations': 'Fi ọ̀ṣọ́ hàn',
   'settings.countdownBar': 'Ìlà Ìlọsíwájú',
   'settings.showCountdownBar': 'Fi ìlọsíwájú hàn',

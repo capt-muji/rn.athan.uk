@@ -26,6 +26,7 @@ export const skr = {
   'settings.title': 'ترتیباں',
   'settings.showSeconds': 'سیکنڈ ݙکاؤ',
   'settings.showTimePassed': 'لنگھیا ویلہا ݙکاؤ',
+  'settings.show24Hour': '24 پہر دا فارمیٹ ݙکاؤ',
   'settings.showDecorations': 'سجاوٹ ݙکاؤ',
   'settings.countdownBar': 'پروگریس بار',
   'settings.showCountdownBar': 'پروگریس ݙکاؤ',

@@ -23,6 +23,7 @@ export const fr = {
   'settings.title': 'Réglages',
   'settings.showSeconds': 'Afficher les secondes',
   'settings.showTimePassed': 'Afficher le temps écoulé',
+  'settings.show24Hour': 'Afficher le format 24 heures',
   'settings.showDecorations': 'Afficher les décorations',
   'settings.countdownBar': 'Barre de progression',
   'settings.showCountdownBar': 'Afficher la progression',

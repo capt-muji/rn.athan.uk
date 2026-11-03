@@ -25,6 +25,7 @@ export const kn = {
   'settings.title': 'ಸೆಟ್ಟಿಂಗ್‌ಗಳು',
   'settings.showSeconds': 'ಸೆಕೆಂಡುಗಳನ್ನು ತೋರಿಸಿ',
   'settings.showTimePassed': 'ಕಳೆದ ಸಮಯ ತೋರಿಸಿ',
+  'settings.show24Hour': '24 ಗಂಟೆಗಳ ಸ್ವರೂಪ ತೋರಿಸಿ',
   'settings.showDecorations': 'ಅಲಂಕಾರಗಳನ್ನು ತೋರಿಸಿ',
   'settings.countdownBar': 'ಪ್ರಗತಿ ಪಟ್ಟಿ',
   'settings.showCountdownBar': 'ಪ್ರಗತಿ ತೋರಿಸಿ',

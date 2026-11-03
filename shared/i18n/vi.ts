@@ -27,6 +27,7 @@ export const vi = {
   'settings.title': 'Cài đặt',
   'settings.showSeconds': 'Hiện giây',
   'settings.showTimePassed': 'Hiện thời gian đã trôi qua',
+  'settings.show24Hour': 'Hiện định dạng 24 giờ',
   'settings.showDecorations': 'Hiện hiệu ứng trang trí',
   'settings.countdownBar': 'Thanh tiến trình',
   'settings.showCountdownBar': 'Hiện tiến trình',

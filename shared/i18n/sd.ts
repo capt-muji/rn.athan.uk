@@ -24,6 +24,7 @@ export const sd = {
   'settings.title': 'سيٽنگون',
   'settings.showSeconds': 'سيڪنڊ ڏيکاريو',
   'settings.showTimePassed': 'گذريل وقت ڏيکاريو',
+  'settings.show24Hour': '24 ڪلاڪ فارمٽ ڏيکاريو',
   'settings.showDecorations': 'سنگار ڏيکاريو',
   'settings.countdownBar': 'ترقي پٽي',
   'settings.showCountdownBar': 'ترقي ڏيکاريو',

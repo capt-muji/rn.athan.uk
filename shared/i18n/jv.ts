@@ -25,6 +25,7 @@ export const jv = {
   'settings.title': 'Setelan',
   'settings.showSeconds': 'Tampilna detik',
   'settings.showTimePassed': 'Tampilna wektu sing wis liwati',
+  'settings.show24Hour': 'Tampilna format 24 jam',
   'settings.showDecorations': 'Tampilna hiasan',
   'settings.countdownBar': 'Bar kamajuan',
   'settings.showCountdownBar': 'Tampilna kamajuan',

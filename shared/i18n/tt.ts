@@ -30,6 +30,7 @@ export const tt = {
   'settings.title': 'Көйләүләр',
   'settings.showSeconds': 'Секундларны күрсәтергә',
   'settings.showTimePassed': 'Узган вакытны күрсәтергә',
+  'settings.show24Hour': '24 сәгать форматын күрсәтергә',
   'settings.showDecorations': 'Бизәкләрне күрсәтергә',
   'settings.countdownBar': 'Прогресс полосасы',
   'settings.showCountdownBar': 'Прогрессны күрсәтергә',

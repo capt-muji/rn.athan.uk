@@ -25,6 +25,7 @@ export const wo = {
   'settings.title': 'Tëral',
   'settings.showSeconds': 'Wone sekond yi',
   'settings.showTimePassed': 'Wone waxtu bi jaar',
+  'settings.show24Hour': 'Wone format 24 waxtu',
   'settings.showDecorations': 'Wone ay mbir yu rafet',
   'settings.countdownBar': 'Bàndu progres',
   'settings.showCountdownBar': 'Wone progres',

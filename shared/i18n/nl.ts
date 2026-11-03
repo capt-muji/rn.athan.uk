@@ -25,6 +25,7 @@ export const nl = {
   'settings.title': 'Instellingen',
   'settings.showSeconds': 'Seconden tonen',
   'settings.showTimePassed': 'Verstreken tijd tonen',
+  'settings.show24Hour': '24-uursformaat tonen',
   'settings.showDecorations': 'Versieringen tonen',
   'settings.countdownBar': 'Voortgangsbalk',
   'settings.showCountdownBar': 'Voortgang tonen',

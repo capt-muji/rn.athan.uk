@@ -25,6 +25,7 @@ export const su = {
   'settings.title': 'Setelan',
   'settings.showSeconds': 'Témbongkeun detik',
   'settings.showTimePassed': 'Témbongkeun waktu nu geus kaliwat',
+  'settings.show24Hour': 'Témbongkeun format 24 jam',
   'settings.showDecorations': 'Témbongkeun hiasan',
   'settings.countdownBar': 'Bar kamajuan',
   'settings.showCountdownBar': 'Témbongkeun kamajuan',

@@ -25,6 +25,7 @@ export const tk = {
   'settings.title': 'Sazlamalar',
   'settings.showSeconds': 'Sekuntlary görkez',
   'settings.showTimePassed': 'Geçen wagty görkez',
+  'settings.show24Hour': '24 sagat formaty görkez',
   'settings.showDecorations': 'Bezegleri görkez',
   'settings.countdownBar': 'Ösüş zolagy',
   'settings.showCountdownBar': 'Ösüşi görkez',

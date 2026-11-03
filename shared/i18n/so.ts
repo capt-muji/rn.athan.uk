@@ -23,6 +23,7 @@ export const so = {
   'settings.title': 'Habaysha',
   'settings.showSeconds': 'Muuji il-bilyan',
   'settings.showTimePassed': 'Muuji waqtii dhaafay',
+  'settings.show24Hour': 'Muuji qaabka 24 saac',
   'settings.showDecorations': 'Muuji quruxinta',
   'settings.countdownBar': 'Shaxda horumarka',
   'settings.showCountdownBar': 'Muuji horumarka',

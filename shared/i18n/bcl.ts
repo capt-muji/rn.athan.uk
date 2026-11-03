@@ -29,6 +29,7 @@ export const bcl = {
   'settings.title': 'Mga Setting',
   'settings.showSeconds': 'Ipahiling an mga segundo',
   'settings.showTimePassed': 'Ipahiling an nakaaging oras',
+  'settings.show24Hour': 'Ipahiling an format na 24 oras',
   'settings.showDecorations': 'Ipahiling an mga dekorasyon',
   'settings.countdownBar': 'Bar kan pag-uswag',
   'settings.showCountdownBar': 'Ipahiling an pag-uswag',

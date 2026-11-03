@@ -25,6 +25,7 @@ export const ta = {
   'settings.title': 'அமைப்புகள்',
   'settings.showSeconds': 'வினாடிகளைக் காட்டு',
   'settings.showTimePassed': 'கடந்த நேரத்தைக் காட்டு',
+  'settings.show24Hour': '24 மணி நேர வடிவத்தைக் காட்டு',
   'settings.showDecorations': 'அலங்காரங்களைக் காட்டு',
   'settings.countdownBar': 'முன்னேற்றப் பட்டை',
   'settings.showCountdownBar': 'முன்னேற்றத்தைக் காட்டு',

@@ -24,6 +24,7 @@ export const kk = {
   'settings.title': 'Параметрлер',
   'settings.showSeconds': 'Секундтарды көрсету',
   'settings.showTimePassed': 'Өткен уақытты көрсету',
+  'settings.show24Hour': '24 сағат пішімін көрсету',
   'settings.showDecorations': 'Әшекейлерді көрсету',
   'settings.countdownBar': 'Прогресс жолағы',
   'settings.showCountdownBar': 'Прогрессті көрсету',

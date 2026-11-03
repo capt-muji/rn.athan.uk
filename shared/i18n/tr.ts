@@ -24,6 +24,7 @@ export const tr = {
   'settings.title': 'Ayarlar',
   'settings.showSeconds': 'Saniyeyi göster',
   'settings.showTimePassed': 'Geçen süreyi göster',
+  'settings.show24Hour': '24 saat biçimini göster',
   'settings.showDecorations': 'Süslemeleri göster',
   'settings.countdownBar': 'İlerleme Çubuğu',
   'settings.showCountdownBar': 'İlerlemeyi göster',

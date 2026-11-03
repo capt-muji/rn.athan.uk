@@ -29,6 +29,7 @@ export const uk = {
   'settings.title': 'Налаштування',
   'settings.showSeconds': 'Показувати секунди',
   'settings.showTimePassed': 'Показувати минулий час',
+  'settings.show24Hour': 'Показувати 24-годинний формат',
   'settings.showDecorations': 'Показувати прикраси',
   'settings.countdownBar': 'Смуга прогресу',
   'settings.showCountdownBar': 'Показувати прогрес',

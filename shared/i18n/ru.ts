@@ -23,6 +23,7 @@ export const ru = {
   'settings.title': 'Настройки',
   'settings.showSeconds': 'Показывать секунды',
   'settings.showTimePassed': 'Показывать прошедшее время',
+  'settings.show24Hour': 'Показывать 24-часовой формат',
   'settings.showDecorations': 'Показывать украшения',
   'settings.countdownBar': 'Полоса прогресса',
   'settings.showCountdownBar': 'Показывать прогресс',

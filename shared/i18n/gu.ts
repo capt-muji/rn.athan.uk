@@ -25,6 +25,7 @@ export const gu = {
   'settings.title': 'સેટિંગ્સ',
   'settings.showSeconds': 'સેકન્ડ દર્શાવો',
   'settings.showTimePassed': 'વીતેલો સમય દર્શાવો',
+  'settings.show24Hour': '24 કલાક ફોર્મેટ દર્શાવો',
   'settings.showDecorations': 'સજાવટ દર્શાવો',
   'settings.countdownBar': 'પ્રગતિ બાર',
   'settings.showCountdownBar': 'પ્રગતિ દર્શાવો',

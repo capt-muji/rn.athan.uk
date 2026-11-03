@@ -24,6 +24,7 @@ export const bs = {
   'settings.title': 'Postavke',
   'settings.showSeconds': 'Prikaži sekunde',
   'settings.showTimePassed': 'Prikaži proteklo vrijeme',
+  'settings.show24Hour': 'Prikaži 24-satni format',
   'settings.showDecorations': 'Prikaži ukrase',
   'settings.countdownBar': 'Traka napretka',
   'settings.showCountdownBar': 'Prikaži napredak',

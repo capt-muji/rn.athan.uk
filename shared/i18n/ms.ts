@@ -23,6 +23,7 @@ export const ms = {
   'settings.title': 'Tetapan',
   'settings.showSeconds': 'Tunjukkan saat',
   'settings.showTimePassed': 'Tunjukkan masa yang berlalu',
+  'settings.show24Hour': 'Tunjukkan format 24 jam',
   'settings.showDecorations': 'Tunjukkan hiasan',
   'settings.countdownBar': 'Bar kemajuan',
   'settings.showCountdownBar': 'Tunjukkan kemajuan',

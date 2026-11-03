@@ -25,6 +25,7 @@ export const zhHans = {
   'settings.title': '设置',
   'settings.showSeconds': '显示秒数',
   'settings.showTimePassed': '显示已过时间',
+  'settings.show24Hour': '显示24小时制',
   'settings.showDecorations': '显示装饰',
   'settings.countdownBar': '进度条',
   'settings.showCountdownBar': '显示进度',

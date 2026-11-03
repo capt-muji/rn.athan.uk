@@ -25,6 +25,7 @@ export const te = {
   'settings.title': 'సెట్టింగ్‌లు',
   'settings.showSeconds': 'సెకన్లు చూపించు',
   'settings.showTimePassed': 'గడిచిన సమయం చూపించు',
+  'settings.show24Hour': '24 గంటల ఫార్మాట్ చూపించు',
   'settings.showDecorations': 'అలంకరణలు చూపించు',
   'settings.countdownBar': 'పురోగతి పట్టీ',
   'settings.showCountdownBar': 'పురోగతి చూపించు',

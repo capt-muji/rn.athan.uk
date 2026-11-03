@@ -26,6 +26,7 @@ export const ml = {
   'settings.title': 'സെറ്റിംഗ്സ്',
   'settings.showSeconds': 'സെക്കൻഡുകൾ കാണിക്കുക',
   'settings.showTimePassed': 'കഴിഞ്ഞ സമയം കാണിക്കുക',
+  'settings.show24Hour': '24 മണിക്കൂർ ഫോർമാറ്റ് കാണിക്കുക',
   'settings.showDecorations': 'അലങ്കാരങ്ങൾ കാണിക്കുക',
   'settings.countdownBar': 'പുരോഗതി ബാർ',
   'settings.showCountdownBar': 'പുരോഗതി കാണിക്കുക',

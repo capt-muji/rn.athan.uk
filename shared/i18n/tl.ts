@@ -25,6 +25,7 @@ export const tl = {
   'settings.title': 'Mga Setting',
   'settings.showSeconds': 'Ipakita ang mga segundo',
   'settings.showTimePassed': 'Ipakita ang lumipas na oras',
+  'settings.show24Hour': 'Ipakita ang 24-oras na format',
   'settings.showDecorations': 'Ipakita ang mga palamuti',
   'settings.countdownBar': 'Bar ng progress',
   'settings.showCountdownBar': 'Ipakita ang progress',

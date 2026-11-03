@@ -25,6 +25,7 @@ export const om = {
   'settings.title': 'Qindaa’ina',
   'settings.showSeconds': 'Sekondii agarsiisi',
   'settings.showTimePassed': 'Yeroo dabre agarsiisi',
+  'settings.show24Hour': 'Format 24 sa’a agarsiisi',
   'settings.showDecorations': 'Faaya agarsiisi',
   'settings.countdownBar': 'Bar guddina',
   'settings.showCountdownBar': 'Guddina agarsiisi',

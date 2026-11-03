@@ -23,6 +23,7 @@ export const id = {
   'settings.title': 'Pengaturan',
   'settings.showSeconds': 'Tampilkan detik',
   'settings.showTimePassed': 'Tampilkan waktu berlalu',
+  'settings.show24Hour': 'Tampilkan format 24 jam',
   'settings.showDecorations': 'Tampilkan hiasan',
   'settings.countdownBar': 'Bilah Kemajuan',
   'settings.showCountdownBar': 'Tampilkan kemajuan',

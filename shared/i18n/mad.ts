@@ -29,6 +29,7 @@ export const mad = {
   'settings.title': 'Pangatoran',
   'settings.showSeconds': 'Epataragi detik',
   'settings.showTimePassed': 'Epataragi bakto sè la las',
+  'settings.show24Hour': 'Epataragi format 24 jam',
   'settings.showDecorations': 'Epataragi paennèngan',
   'settings.countdownBar': 'Bâḍâna progres',
   'settings.showCountdownBar': 'Epataragi progres',

@@ -24,6 +24,7 @@ export const sw = {
   'settings.title': 'Mipangilio',
   'settings.showSeconds': 'Onyesha sekunde',
   'settings.showTimePassed': 'Onyesha muda uliopita',
+  'settings.show24Hour': 'Onyesha muundo wa saa 24',
   'settings.showDecorations': 'Onyesha mapambo',
   'settings.countdownBar': 'Mstari wa Maendeleo',
   'settings.showCountdownBar': 'Onyesha maendeleo',

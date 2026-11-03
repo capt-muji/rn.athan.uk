@@ -26,6 +26,7 @@ export const sq = {
   'settings.title': 'Cilësimet',
   'settings.showSeconds': 'Shfaq sekondat',
   'settings.showTimePassed': 'Shfaq kohën e kaluar',
+  'settings.show24Hour': 'Shfaq formatin 24-orësh',
   'settings.showDecorations': 'Shfaq zbukurimet',
   'settings.countdownBar': 'Shiriti i përparimit',
   'settings.showCountdownBar': 'Shfaq përparimin',

@@ -25,6 +25,7 @@ export const ku = {
   'settings.title': 'Mîheng',
   'settings.showSeconds': 'Çirkeyan nîşan bide',
   'settings.showTimePassed': 'Dema borî nîşan bide',
+  'settings.show24Hour': 'Formata 24-demê nîşan bide',
   'settings.showDecorations': 'Xemlan nîşan bide',
   'settings.countdownBar': 'Şerîta Pêşketinê',
   'settings.showCountdownBar': 'Pêşketinê nîşan bide',

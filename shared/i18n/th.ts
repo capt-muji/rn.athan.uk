@@ -23,6 +23,7 @@ export const th = {
   'settings.title': 'การตั้งค่า',
   'settings.showSeconds': 'แสดงวินาที',
   'settings.showTimePassed': 'แสดงเวลาที่ผ่านไป',
+  'settings.show24Hour': 'แสดงรูปแบบ 24 ชั่วโมง',
   'settings.showDecorations': 'แสดงของตกแต่ง',
   'settings.countdownBar': 'แถบความคืบหน้า',
   'settings.showCountdownBar': 'แสดงความคืบหน้า',

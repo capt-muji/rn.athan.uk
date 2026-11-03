@@ -30,6 +30,7 @@ export const mrw = {
   'settings.title': 'Mga Seetelan',
   'settings.showSeconds': 'Ipakita ang segundo',
   'settings.showTimePassed': 'Ipakita ang lumipas na oras',
+  'settings.show24Hour': 'Ipakita ang 24-oras na format',
   'settings.showDecorations': 'Ipakita ang dekorasyon',
   'settings.countdownBar': 'Bar ng progress',
   'settings.showCountdownBar': 'Ipakita ang progress',

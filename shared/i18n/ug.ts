@@ -23,6 +23,7 @@ export const ug = {
   'settings.title': 'تەڭشەكلەر',
   'settings.showSeconds': 'سېكۇنتنى كۆرسەت',
   'settings.showTimePassed': 'ئۆتكەن ۋاقىتنى كۆرسەت',
+  'settings.show24Hour': '24 سائەت فورماتىنى كۆرسەت',
   'settings.showDecorations': 'زىننەتلەرنى كۆرسەت',
   'settings.countdownBar': 'ئىلگىرىلەش بالدىقى',
   'settings.showCountdownBar': 'ئىلگىرىلەشنى كۆرسەت',

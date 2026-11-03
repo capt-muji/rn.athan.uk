@@ -25,6 +25,7 @@ export const ilo = {
   'settings.title': 'Dagiti Setting',
   'settings.showSeconds': 'Ipakita dagiti segundo',
   'settings.showTimePassed': 'Ipakita ti panawen a nalabasan',
+  'settings.show24Hour': 'Ipakita ti format a 24 oras',
   'settings.showDecorations': 'Ipakita dagiti dekorasion',
   'settings.countdownBar': 'Barra ti panagrang-ay',
   'settings.showCountdownBar': 'Ipakita ti panagrang-ay',

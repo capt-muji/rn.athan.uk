@@ -23,6 +23,7 @@ export const hi = {
   'settings.title': 'सेटिंग्स',
   'settings.showSeconds': 'सेकंड दिखाएँ',
   'settings.showTimePassed': 'बीता समय दिखाएँ',
+  'settings.show24Hour': '24 घंटे का प्रारूप दिखाएँ',
   'settings.showDecorations': 'सजावट दिखाएँ',
   'settings.countdownBar': 'प्रगति पट्टी',
   'settings.showCountdownBar': 'प्रगति दिखाएँ',

@@ -25,6 +25,7 @@ export const paArab = {
   'settings.title': 'سیٹنگاں',
   'settings.showSeconds': 'سیکنڈ دکھاؤ',
   'settings.showTimePassed': 'لنگھیا وقت دکھاؤ',
+  'settings.show24Hour': '24 گھنٹے دا فارمٹ دکھاؤ',
   'settings.showDecorations': 'سجاوٹ دکھاؤ',
   'settings.countdownBar': 'ترقی پٹی',
   'settings.showCountdownBar': 'ترقی دکھاؤ',

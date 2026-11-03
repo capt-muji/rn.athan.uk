@@ -25,6 +25,7 @@ export const tg = {
   'settings.title': 'Танзимот',
   'settings.showSeconds': 'Нишон додани сонияҳо',
   'settings.showTimePassed': 'Нишон додани вақти гузашта',
+  'settings.show24Hour': 'Нишон додани формати 24-соата',
   'settings.showDecorations': 'Нишон додани ороишҳо',
   'settings.countdownBar': 'Хати пешрафт',
   'settings.showCountdownBar': 'Нишон додани пешрафт',

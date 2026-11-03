@@ -27,6 +27,7 @@ export const my = {
   'settings.title': 'ဆက်တင်များ',
   'settings.showSeconds': 'စက္ကန့်များ ပြရန်',
   'settings.showTimePassed': 'ကျော်လွန်သွားသော အချိန် ပြရန်',
+  'settings.show24Hour': '24 နာရီ ပုံစံ ပြရန်',
   'settings.showDecorations': 'အလှဆင်မှုများ ပြရန်',
   'settings.countdownBar': 'တိုးတက်မှု ဘား',
   'settings.showCountdownBar': 'တိုးတက်မှု ပြရန်',

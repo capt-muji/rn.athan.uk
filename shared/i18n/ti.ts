@@ -29,6 +29,7 @@ export const ti = {
   'settings.title': 'ቅጥዕታት',
   'settings.showSeconds': 'ሰከንዳት ኣርኣዩ',
   'settings.showTimePassed': 'ዝሰጊሩ ግዜ ኣርኣዩ',
+  'settings.show24Hour': 'ቅርጺ 24 ሰዓታት ኣርኣዩ',
   'settings.showDecorations': 'ጌጣጌጥታት ኣርኣዩ',
   'settings.countdownBar': 'ናይ ድገት ኣሞሌ',
   'settings.showCountdownBar': 'ድገት ኣርኣዩ',

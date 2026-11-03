@@ -30,6 +30,7 @@ export const qu = {
   'settings.title': 'Churanakuna',
   'settings.showSeconds': 'Segundokunata qawachiy',
   'settings.showTimePassed': 'Pasaq pachata qawachiy',
+  'settings.show24Hour': '24 pachap formatinta qawachiy',
   'settings.showDecorations': 'Wallqanakunata qawachiy',
   'settings.countdownBar': 'Progreso siq\u2019i',
   'settings.showCountdownBar': 'Progresota qawachiy',

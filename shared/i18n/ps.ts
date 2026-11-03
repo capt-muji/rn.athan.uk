@@ -25,6 +25,7 @@ export const ps = {
   'settings.title': 'امستنې',
   'settings.showSeconds': 'ثانیې وښایه',
   'settings.showTimePassed': 'تېر وخت وښایه',
+  'settings.show24Hour': '24 ساعته بڼه وښایه',
   'settings.showDecorations': 'سینګار وښایه',
   'settings.countdownBar': 'د پرمختګ بار',
   'settings.showCountdownBar': 'پرمختګ وښایه',

@@ -25,6 +25,7 @@ export const ff = {
   'settings.title': 'Teelte',
   'settings.showSeconds': 'Hollu sekonɗe',
   'settings.showTimePassed': 'Hollu waktu ɓennuɗo',
+  'settings.show24Hour': 'Hollu format 24 waktu',
   'settings.showDecorations': 'Hollu cuɗinaali',
   'settings.countdownBar': 'Bar ɓamtaare',
   'settings.showCountdownBar': 'Hollu ɓamtaare',

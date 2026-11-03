@@ -28,6 +28,7 @@ export const bug = {
   'settings.title': 'Pangngatorang',
   'settings.showSeconds': 'Taro detik',
   'settings.showTimePassed': 'Taro wettu liaseng',
+  'settings.show24Hour': 'Taro format 24 jam',
   'settings.showDecorations': 'Taro paennang',
   'settings.countdownBar': 'Baro progres',
   'settings.showCountdownBar': 'Taro progres',

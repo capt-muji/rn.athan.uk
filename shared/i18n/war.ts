@@ -28,6 +28,7 @@ export const war = {
   'settings.title': 'Mga Setting',
   'settings.showSeconds': 'Igpakita an mga segundo',
   'settings.showTimePassed': 'Igpakita an naglabay nga oras',
+  'settings.show24Hour': 'Igpakita an 24-oras nga format',
   'settings.showDecorations': 'Igpakita an mga dekorasyon',
   'settings.countdownBar': 'Bar han pag-uswag',
   'settings.showCountdownBar': 'Igpakita an pag-uswag',

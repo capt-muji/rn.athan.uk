@@ -26,6 +26,7 @@ export const am = {
   'settings.title': 'ቅንብሮች',
   'settings.showSeconds': 'ሰከንዶችን አሳይ',
   'settings.showTimePassed': 'ያለፈውን ጊዜ አሳይ',
+  'settings.show24Hour': 'የ24 ሰዓት ቅርጽ አሳይ',
   'settings.showDecorations': 'ማስዋቢያዎችን አሳይ',
   'settings.countdownBar': 'የእድገት አሞሌ',
   'settings.showCountdownBar': 'እድገት አሳይ',

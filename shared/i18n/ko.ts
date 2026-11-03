@@ -25,6 +25,7 @@ export const ko = {
   'settings.title': '설정',
   'settings.showSeconds': '초 표시',
   'settings.showTimePassed': '경과 시간 표시',
+  'settings.show24Hour': '24시간제 표시',
   'settings.showDecorations': '장식 표시',
   'settings.countdownBar': '진행 바',
   'settings.showCountdownBar': '진행 표시',

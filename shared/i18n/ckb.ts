@@ -24,6 +24,7 @@ export const ckb = {
   'settings.title': 'ڕێکخستنەکان',
   'settings.showSeconds': 'چرکەکان پیشان بدە',
   'settings.showTimePassed': 'کاتی تێپەڕیو پیشان بدە',
+  'settings.show24Hour': 'فۆرماتی 24 کاتژمێر پیشان بدە',
   'settings.showDecorations': 'ڕازاندنەوەکان پیشان بدە',
   'settings.countdownBar': 'شریتی پێشکەوتن',
   'settings.showCountdownBar': 'پێشکەوتن پیشان بدە',

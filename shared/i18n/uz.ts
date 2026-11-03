@@ -24,6 +24,7 @@ export const uz = {
   'settings.title': 'Sozlamalar',
   'settings.showSeconds': "Sekundlarni ko'rsatish",
   'settings.showTimePassed': "O'tgan vaqtni ko'rsatish",
+  'settings.show24Hour': "24 soat formatini ko'rsatish",
   'settings.showDecorations': "Bezaklarni ko'rsatish",
   'settings.countdownBar': 'Taraqqiyot paneli',
   'settings.showCountdownBar': "Taraqqiyotni ko'rsatish",

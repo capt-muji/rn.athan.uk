@@ -25,6 +25,7 @@ export const kas = {
   'settings.title': 'سیٹینگ',
   'settings.showSeconds': 'سیکنَڈ ہٲویو',
   'settings.showTimePassed': 'گیرن وَقت ہٲویو',
+  'settings.show24Hour': '24 ساعتی فارمٹ ہٲویو',
   'settings.showDecorations': 'سَجاوت ہٲویو',
   'settings.countdownBar': 'پروگریس بار',
   'settings.showCountdownBar': 'پروگریس ہٲویو',

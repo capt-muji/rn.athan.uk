@@ -28,6 +28,7 @@ export const kr = {
   'settings.title': 'Seetiya',
   'settings.showSeconds': 'Sekonde bayanna',
   'settings.showTimePassed': 'Loktu kure bayanna',
+  'settings.show24Hour': 'Bayanna 24-loktu format',
   'settings.showDecorations': 'Decoraasiyon bayanna',
   'settings.countdownBar': 'Progres bar',
   'settings.showCountdownBar': 'Progres bayanna',

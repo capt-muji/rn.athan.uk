@@ -24,6 +24,7 @@ export const en = {
   'settings.title': 'Settings',
   'settings.showSeconds': 'Show seconds',
   'settings.showTimePassed': 'Show time passed',
+  'settings.show24Hour': 'Show 24-hour format',
   'settings.showDecorations': 'Show decorations',
   'settings.countdownBar': 'Progress Bar',
   'settings.showCountdownBar': 'Show progress',

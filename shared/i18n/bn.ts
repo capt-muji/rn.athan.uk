@@ -24,6 +24,7 @@ export const bn = {
   'settings.title': 'সেটিংস',
   'settings.showSeconds': 'সেকেন্ড দেখান',
   'settings.showTimePassed': 'অতীবাহিত সময় দেখান',
+  'settings.show24Hour': '24 ঘণ্টা ফরম্যাট দেখান',
   'settings.showDecorations': 'সাজসজ্জা দেখান',
   'settings.countdownBar': 'অগ্রগতি বার',
   'settings.showCountdownBar': 'অগ্রগতি দেখান',

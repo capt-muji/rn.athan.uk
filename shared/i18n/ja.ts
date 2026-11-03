@@ -26,6 +26,7 @@ export const ja = {
   'settings.title': '設定',
   'settings.showSeconds': '秒を表示',
   'settings.showTimePassed': '経過時間を表示',
+  'settings.show24Hour': '24時間形式を表示',
   'settings.showDecorations': '装飾を表示',
   'settings.countdownBar': 'プログレスバー',
   'settings.showCountdownBar': 'プログレスを表示',

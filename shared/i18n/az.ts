@@ -24,6 +24,7 @@ export const az = {
   'settings.title': 'Tənzimləmələr',
   'settings.showSeconds': 'Saniyələri göstər',
   'settings.showTimePassed': 'Keçən vaxtı göstər',
+  'settings.show24Hour': '24 saat formatını göstər',
   'settings.showDecorations': 'Bəzəkləri göstər',
   'settings.countdownBar': 'İrəliləyiş Zolağı',
   'settings.showCountdownBar': 'İrəliləyişi göstər',

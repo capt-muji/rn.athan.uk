@@ -27,6 +27,7 @@ export const it = {
   'settings.title': 'Impostazioni',
   'settings.showSeconds': 'Mostra i secondi',
   'settings.showTimePassed': 'Mostra il tempo trascorso',
+  'settings.show24Hour': 'Mostra il formato 24 ore',
   'settings.showDecorations': 'Mostra le decorazioni',
   'settings.countdownBar': 'Barra di avanzamento',
   'settings.showCountdownBar': 'Mostra avanzamento',

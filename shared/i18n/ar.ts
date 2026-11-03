@@ -23,6 +23,7 @@ export const ar = {
   'settings.title': 'الإعدادات',
   'settings.showSeconds': 'إظهار الثواني',
   'settings.showTimePassed': 'إظهار الوقت المنقضي',
+  'settings.show24Hour': 'إظهار صيغة 24 ساعة',
   'settings.showDecorations': 'إظهار الزخارف',
   'settings.countdownBar': 'شريط التقدم',
   'settings.showCountdownBar': 'إظهار التقدم',

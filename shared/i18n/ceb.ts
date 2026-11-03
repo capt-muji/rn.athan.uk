@@ -25,6 +25,7 @@ export const ceb = {
   'settings.title': 'Mga Setting',
   'settings.showSeconds': 'Ipakita ang mga segundo',
   'settings.showTimePassed': 'Ipakita ang panahon nga milabay',
+  'settings.show24Hour': 'Ipakita ang 24-oras nga pormat',
   'settings.showDecorations': 'Ipakita ang mga dekorasyon',
   'settings.countdownBar': 'Bar sa pag-uswag',
   'settings.showCountdownBar': 'Ipakita ang pag-uswag',

@@ -24,6 +24,7 @@ export const ur = {
   'settings.title': 'ترتیبات',
   'settings.showSeconds': 'سیکنڈ دکھائیں',
   'settings.showTimePassed': 'گزرا وقت دکھائیں',
+  'settings.show24Hour': '24 گھنٹے کا فارمیٹ دکھائیں',
   'settings.showDecorations': 'سجاوٹ دکھائیں',
   'settings.countdownBar': 'پروگریس بار',
   'settings.showCountdownBar': 'پروگریس دکھائیں',

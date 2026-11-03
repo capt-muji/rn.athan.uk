@@ -25,6 +25,7 @@ export const bal = {
   'settings.title': 'ترتیباں',
   'settings.showSeconds': 'سیکنڈ دِست کَن',
   'settings.showTimePassed': 'گوشتنگ وخت دِست کَن',
+  'settings.show24Hour': '24 ساعتی فارمات دِست کَن',
   'settings.showDecorations': 'آرایش دِست کَن',
   'settings.countdownBar': 'پروگریس بار',
   'settings.showCountdownBar': 'پروگریس دِست کَن',

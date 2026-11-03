@@ -24,6 +24,7 @@ export const fa = {
   'settings.title': 'تنظیمات',
   'settings.showSeconds': 'نمایش ثانیه‌ها',
   'settings.showTimePassed': 'نمایش زمان گذشته',
+  'settings.show24Hour': 'نمایش قالب 24 ساعته',
   'settings.showDecorations': 'نمایش تزئینات',
   'settings.countdownBar': 'نوار پیشرفت',
   'settings.showCountdownBar': 'نمایش پیشرفت',

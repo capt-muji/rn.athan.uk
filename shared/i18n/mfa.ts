@@ -31,6 +31,7 @@ export const mfa = {
   'settings.title': 'Tetapan',
   'settings.showSeconds': 'Tunjuk saat',
   'settings.showTimePassed': 'Tunjuk masa yang dah lepas',
+  'settings.show24Hour': 'Tunjuk format 24 jam',
   'settings.showDecorations': 'Tunjuk hiasan',
   'settings.countdownBar': 'Bar kemajuan',
   'settings.showCountdownBar': 'Tunjuk kemajuan',
