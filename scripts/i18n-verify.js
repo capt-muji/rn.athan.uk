@@ -357,8 +357,8 @@ const SYNONYM_GROUPS = [
   ['magrib', 'maghrib', 'sunset', 'evening', 'aksham'],
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
-  // Esha is the same romanization class for Kurdish Eşa
-  ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha'],
+  // tuta, Quechua's night word, names the night prayer the way nightfall does
+  ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha', 'night'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha', 'zuha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
@@ -498,6 +498,8 @@ const PHRASE_SYNONYMS = [
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
   ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
+  // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
+  ['magrib', 'the sun goes down', 'sun goes down'],
   ['midnight', 'middle of the night'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],

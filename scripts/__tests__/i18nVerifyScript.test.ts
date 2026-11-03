@@ -710,6 +710,11 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dil Hajj', 'x'))).toBe('green');
   });
 
+  it('the Quechua loop lessons: Tuta as the night prayer, and the sun going down as maghrib', () => {
+    expect(verify.verdictOf('Isha', both('Night', 'x'))).toBe('green');
+    expect(verify.verdictOf('Magrib', both('The sun goes down', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
