@@ -617,6 +617,15 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf(' Oh no! ', both('Alas!', 'x'))).toBe('green');
   });
 
+  it('the Japanese loop lessons: the katakana names and the element weekdays', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zuhur', 'x'))).toBe('green');
+    expect(verify.verdictOf('Checking for updates...', both('Confirming...', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('completion', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqaida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhijah', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('ah!', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

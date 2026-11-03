@@ -343,7 +343,7 @@ const SYNONYM_GROUPS = [
   // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
   ['fajr', 'dawn', 'morning', 'sabah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
@@ -406,7 +406,7 @@ const SYNONYM_GROUPS = [
   ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete', 'cover'],
   ['allow', 'permit'],
   ['phone', 'device', 'mobile'],
-  ['check', 'verify', 'checking'],
+  ['check', 'verify', 'checking', 'confirming'],
   ['update', 'updates', 'upgrade', 'refresh', 'improve', 'renew'],
   ['select', 'choose', 'pick'],
   ['find', 'locate', 'search', 'finder'],
@@ -440,7 +440,7 @@ const SYNONYM_GROUPS = [
   ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
-  ['done', 'completed', 'complete', 'finished', 'ready', 'full'],
+  ['done', 'completed', 'complete', 'finished', 'ready', 'full', 'completion'],
   ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
@@ -455,19 +455,19 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun'],
   ['midnight', 'middle of the night'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida', 'jill kadah'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida', 'jill kadah', 'zulqaida'],
 ];
 
 const SYNONYM_INDEX = new Map();
