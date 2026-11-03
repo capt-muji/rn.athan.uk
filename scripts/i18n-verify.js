@@ -343,10 +343,13 @@ const SYNONYM_GROUPS = [
   // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
   ['fajr', 'dawn', 'morning', 'sabah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
+  // Bhanu is the sun's own Sanskritic name (Bhanuvara is Sunday); the weekday row
+  // names the sun itself, while sunrise above stays whole-sense only (order eleven)
+  ['sun', 'bhanu'],
   ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
@@ -364,7 +367,7 @@ const SYNONYM_GROUPS = [
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information', 'message', 'messages'],
-  ['sound', 'audio', 'tone', 'voice'],
+  ['sound', 'audio', 'tone', 'voice', 'noise'],
   ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
   // Azerbaijani ekran is the display word and renders as screen, its own sense
@@ -478,6 +481,7 @@ const PHRASE_SYNONYMS = [
     'jill kadah',
     'zulqaida',
     'in zulkag',
+    'zul kida',
   ],
 ];
 

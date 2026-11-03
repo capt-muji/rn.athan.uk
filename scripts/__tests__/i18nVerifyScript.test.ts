@@ -638,6 +638,14 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('In Zulkag', 'x'))).toBe('green');
   });
 
+  it('the Kannada loop lessons: Juhar, the noise sense, Bhanu as the sun, and Zul-Kida', () => {
+    expect(verify.verdictOf('Dhuhr', both('Juhar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sound', both('noise', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sun', both('Bhanu', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Kida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sunrise', both('Bhanu', 'x'))).not.toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
