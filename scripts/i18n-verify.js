@@ -537,6 +537,7 @@ const PHRASE_SYNONYMS = [
     'zul qida',
     'zulqada',
     'dhulqidah',
+    'zulqidah',
   ],
 ];
 
