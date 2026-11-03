@@ -14,6 +14,7 @@ const years = Object.keys(manifest)
   .map(Number)
   .sort((a, b) => a - b);
 if (years.length !== 50) {
+  process.stderr.write(`etag manifest holds ${years.length} years, expected 50\n`);
   process.exit(1);
 }
 
@@ -35,11 +36,9 @@ for (const year of years) {
   }
 }
 
-for (const _line of changed)
-  for (const _line of errored)
-    if (changed.length > 0) {
-      process.exit(1);
-    }
-if (errored.length > 0) {
+for (const line of changed) process.stderr.write(`CHANGED etag ${line}\n`);
+for (const line of errored) process.stderr.write(`ERROR ${line}\n`);
+if (changed.length > 0 || errored.length > 0) {
   process.exit(1);
 }
+process.stdout.write(`verify.mjs: all ${years.length} workbook etags unchanged\n`);

@@ -32,7 +32,8 @@ const HEADER_BYTES = 12;
 const COLUMNS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const NULL_MINUTE = 0xffff;
 
-const fail = (_message) => {
+const fail = (message) => {
+  process.stderr.write(`${message}\n`);
   process.exit(1);
 };
 
@@ -89,12 +90,12 @@ for (let year = 2027; year <= LAST_YEAR; year += 1) {
 {
   const banked = JSON.parse(fs.readFileSync(BANKED_2027, 'utf8'));
   const fresh = workbookYears[2027];
-  let _cells = 0;
+  let cells = 0;
   for (const [date, bankedRow] of Object.entries(banked)) {
     const freshRow = fresh[date];
     if (!freshRow) fail(`2027 cross-check: ${date} missing from the fresh workbook parse`);
     for (const field of ['fajr', 'sunrise', 'dhuhr', 'asr', 'asr_2', 'magrib', 'isha']) {
-      _cells += 1;
+      cells += 1;
       if (freshRow[field] !== bankedRow[field]) {
         fail(`2027 cross-check: ${date} ${field} parsed ${freshRow[field]}, banked ${bankedRow[field]}`);
       }
@@ -103,6 +104,7 @@ for (let year = 2027; year <= LAST_YEAR; year += 1) {
   if (Object.keys(fresh).length !== Object.keys(banked).length) {
     fail(`2027 cross-check: ${Object.keys(fresh).length} parsed days vs ${Object.keys(banked).length} banked`);
   }
+  process.stdout.write(`check-2027-vs-banked ${cells} cells agree\n`);
 }
 
 // --- Check 2: continuity and readability of every day, 2026-01-01 to 2076-12-31 ---
@@ -262,6 +264,7 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
       `drift verifier exact count ${exact} != recorded ${EXPECT_EXACT}; the workbooks changed: ${misses.join(', ')}`
     );
   }
+  process.stdout.write(`check-drift ${exact}/${total} minute-exact (recorded ${EXPECT_EXACT}/${EXPECT_TOTAL})\n`);
 }
 
 // --- Report: Umm al Qura divergence, workbook column L vs the app's own Intl conversion ---
@@ -273,8 +276,8 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
   });
   // The workbook spells months ("Sha'bān") and Intl transliterates them ("Shaʻban"), so the
   // comparison is structural: day, month ordinal walked from the day-wrap, and year - never the name
-  let _compared = 0;
-  let _divergent = 0;
+  let compared = 0;
+  let divergent = 0;
   const examples = [];
   for (let year = 2027; year <= LAST_YEAR; year += 1) {
     const buf = fs.readFileSync(path.join(CACHE, `LUPT-${year}.xlsx`));
@@ -342,9 +345,9 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
       if (ordinal === null) ordinal = own.month;
       else if (dayRows[i].islamicYear > dayRows[i - 1].islamicYear) ordinal = 1;
       else if (dayRows[i].day <= dayRows[i - 1].day) ordinal += 1;
-      _compared += 1;
+      compared += 1;
       if (own.day !== dayRows[i].day || own.month !== ordinal || own.year !== dayRows[i].islamicYear) {
-        _divergent += 1;
+        divergent += 1;
         if (examples.length < 5) {
           examples.push(
             `${dayRows[i].date}: workbook ${dayRows[i].islamicYear}-${ordinal}-${dayRows[i].day} intl ${own.year}-${own.month}-${own.day}`
@@ -353,6 +356,11 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
       }
     }
   }
+  process.stdout.write(
+    `report-umalqura ${divergent} of ${compared} days diverge from Intl umalqura` +
+      (examples.length > 0 ? `; first ${examples.join('; ')}` : '') +
+      '\n'
+  );
 }
 
 // --- Emit ---
@@ -377,17 +385,21 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
   // Round-trip: decode the emitted bytes back and compare with the source minutes
   const readBack = fs.readFileSync(ARTIFACT);
   if (readBack.length !== buffer.length) fail('round-trip length mismatch');
-  let _checked = 0;
+  let checked = 0;
   expectedDays.forEach((date, index) => {
     for (let c = 0; c < COLUMNS.length; c += 1) {
       const minute = readBack.readUInt16LE(HEADER_BYTES + (index * COLUMNS.length + c) * 2);
       if (minute !== rows.get(date)[COLUMNS[c]]) fail(`round-trip mismatch at ${date} ${COLUMNS[c]}`);
-      _checked += 1;
+      checked += 1;
     }
   });
-  const _gzip = zlib.gzipSync(buffer).length;
-  const _brotli = zlib.brotliCompressSync(buffer).length;
-  const _sha256 = createHash('sha256').update(buffer).digest('hex');
+  const gzip = zlib.gzipSync(buffer).length;
+  const brotli = zlib.brotliCompressSync(buffer).length;
+  const sha256 = createHash('sha256').update(buffer).digest('hex');
+  process.stdout.write(
+    `artifact ${buffer.length} bytes, gzip ${gzip}, brotli ${brotli}, sha256 ${sha256}, ${rows.size} days ${expectedDays[0]}..${expectedDays.at(-1)}\n`
+  );
+  process.stdout.write(`check-continuity ${rows.size} days whole, check-round-trip ${checked} cells decode equal\n`);
 }
 
 // --- --print-day: decode from the committed artifact, for device-step evidence ---
@@ -408,4 +420,5 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
     const minute = buffer.readUInt16LE(HEADER_BYTES + (index * cols + c) * 2);
     times[COLUMNS[c]] = minute === NULL_MINUTE ? null : fmtMinute(minute);
   }
+  process.stdout.write(`${JSON.stringify({ date, ...times })}\n`);
 }
