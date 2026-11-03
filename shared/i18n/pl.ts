@@ -192,6 +192,8 @@ export const pl = {
   'whatsNew.body.language': 'Dodano obsługę większej liczby języków',
   'whatsNew.title.moreLanguages': 'Więcej języków',
   'whatsNew.body.moreLanguages': 'Dodano obsługę większej liczby języków',
+  'whatsNew.title.format24': 'format 24-godzinny',
+  'whatsNew.body.format24': 'Dodano opcję Format 24-godzinny',
   'whatsNew.title.checkUpdates': 'Sprawdź aktualizacje',
   'whatsNew.body.checkUpdates': 'Dodano opcję Sprawdź aktualizacje',
   'whatsNew.title.whatsNew': 'Strona Co nowego',

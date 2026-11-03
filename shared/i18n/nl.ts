@@ -189,6 +189,8 @@ export const nl = {
   'whatsNew.body.language': 'Ondersteuning voor meer talen toegevoegd',
   'whatsNew.title.moreLanguages': 'Meer talen',
   'whatsNew.body.moreLanguages': 'Ondersteuning voor meer talen toegevoegd',
+  'whatsNew.title.format24': '24-uursformaat',
+  'whatsNew.body.format24': 'Optie 24-uursformaat toegevoegd',
   'whatsNew.title.checkUpdates': 'Controleren op updates',
   'whatsNew.body.checkUpdates': 'Optie Controleren op updates toegevoegd',
   'whatsNew.title.whatsNew': 'Pagina Wat is er nieuw',

@@ -192,6 +192,8 @@ export const es = {
   'whatsNew.body.language': 'Se añadió compatibilidad con más idiomas',
   'whatsNew.title.moreLanguages': 'Más idiomas',
   'whatsNew.body.moreLanguages': 'Se añadió compatibilidad con más idiomas',
+  'whatsNew.title.format24': 'Formato de 24 horas',
+  'whatsNew.body.format24': 'Se añadió la opción Formato de 24 horas',
   'whatsNew.title.checkUpdates': 'Buscar actualizaciones',
   'whatsNew.body.checkUpdates': 'Se añadió la opción Buscar actualizaciones',
   'whatsNew.title.whatsNew': 'Página de novedades',

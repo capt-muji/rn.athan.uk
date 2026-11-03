@@ -187,6 +187,8 @@ export const bs = {
   'whatsNew.body.language': 'Dodata podrška za više jezika',
   'whatsNew.title.moreLanguages': 'Više jezika',
   'whatsNew.body.moreLanguages': 'Dodata podrška za više jezika',
+  'whatsNew.title.format24': '24-satni format',
+  'whatsNew.body.format24': 'Dodana opcija 24-satni format',
   'whatsNew.title.checkUpdates': 'Provjeri ažuriranja',
   'whatsNew.body.checkUpdates': 'Dodana opcija Provjeri ažuriranja',
   'whatsNew.title.whatsNew': 'Stranica novosti',

@@ -192,6 +192,8 @@ export const mad = {
   'whatsNew.body.language': 'Dhukunganna bhâsa laèn ètambâi',
   'whatsNew.title.moreLanguages': 'Bhâsa laèn',
   'whatsNew.body.moreLanguages': 'Dhukunganna bhâsa laèn ètambâi',
+  'whatsNew.title.format24': 'format 24 jam',
+  'whatsNew.body.format24': 'Format 24 jam ètambâi',
   'whatsNew.title.checkUpdates': 'Parèksâna pabhârhârân',
   'whatsNew.body.checkUpdates': 'Parèksâna pabhârhârân ètambâi',
   'whatsNew.title.whatsNew': 'Kaca Sapa sè anyar',

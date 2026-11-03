@@ -190,6 +190,8 @@ export const om = {
   'whatsNew.body.language': 'Afaanota dabalataaf deeggarsi dabalame',
   'whatsNew.title.moreLanguages': 'Afaanota dabalataa',
   'whatsNew.body.moreLanguages': 'Afaanota dabalataaf deeggarsi dabalame',
+  'whatsNew.title.format24': 'format 24 sa’a',
+  'whatsNew.body.format24': 'Format 24 sa’a dabalame',
   'whatsNew.title.checkUpdates': 'Haaromsa sakatta’i',
   'whatsNew.body.checkUpdates': 'Haaromsa sakatta’i dabalame',
   'whatsNew.title.whatsNew': 'Fuula Haaraa',

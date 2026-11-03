@@ -188,6 +188,8 @@ export const az = {
   'whatsNew.body.language': 'Daha çox dil dəstəyi əlavə edildi',
   'whatsNew.title.moreLanguages': 'Daha çox dil',
   'whatsNew.body.moreLanguages': 'Daha çox dil dəstəyi əlavə edildi',
+  'whatsNew.title.format24': '24 saat formatı',
+  'whatsNew.body.format24': '24 saat formatı seçimi əlavə edildi',
   'whatsNew.title.checkUpdates': 'Yeniləmələri yoxla',
   'whatsNew.body.checkUpdates': 'Yeniləmələri yoxla seçimi əlavə edildi',
   'whatsNew.title.whatsNew': 'Yeniliklər səhifəsi',

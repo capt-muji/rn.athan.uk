@@ -195,6 +195,8 @@ export const it = {
   'whatsNew.body.language': 'Aggiunto il supporto per più lingue',
   'whatsNew.title.moreLanguages': 'Più lingue',
   'whatsNew.body.moreLanguages': 'Aggiunto il supporto per più lingue',
+  'whatsNew.title.format24': 'Formato 24 ore',
+  'whatsNew.body.format24': 'Aggiunta l’opzione Formato 24 ore',
   'whatsNew.title.checkUpdates': 'Cerca aggiornamenti',
   'whatsNew.body.checkUpdates': 'Aggiunta l’opzione Cerca aggiornamenti',
   'whatsNew.title.whatsNew': 'Pagina Novità',

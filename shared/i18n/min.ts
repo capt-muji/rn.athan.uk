@@ -193,6 +193,8 @@ export const min = {
   'whatsNew.body.language': 'Dukuangan bahaso lain ditambahan',
   'whatsNew.title.moreLanguages': 'Bahaso lain',
   'whatsNew.body.moreLanguages': 'Dukuangan bahaso lain ditambahan',
+  'whatsNew.title.format24': 'format 24 jam',
+  'whatsNew.body.format24': 'Format 24 jam ditambahan',
   'whatsNew.title.checkUpdates': 'Pareso pambaruan',
   'whatsNew.body.checkUpdates': 'Pareso pambaruan ditambahan',
   'whatsNew.title.whatsNew': 'Halaman Apo nan baru',

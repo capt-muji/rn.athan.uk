@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.45.0',
+  version: '2.45.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -204,6 +204,13 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       bodyKey: 'whatsNew.body.lockLayouts',
       platform: 'ios',
       version: '2.41.2',
+    },
+    {
+      // The 12-hour default and its opt-back-in toggle (T-594): the title reuses the
+      // toggle's own name so the modal teaches the settings label
+      titleKey: 'whatsNew.title.format24',
+      bodyKey: 'whatsNew.body.format24',
+      version: '2.45.1',
     },
   ],
 };

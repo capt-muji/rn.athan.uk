@@ -192,6 +192,8 @@ export const ceb = {
   'whatsNew.body.language': 'Gidugang ang suporta sa daghang mga pinulongan',
   'whatsNew.title.moreLanguages': 'Daghang pinulongan',
   'whatsNew.body.moreLanguages': 'Gidugang ang suporta sa daghang mga pinulongan',
+  'whatsNew.title.format24': '24-oras nga pormat',
+  'whatsNew.body.format24': 'Gidugang ang 24-oras nga pormat',
   'whatsNew.title.checkUpdates': 'Susihon ang mga update',
   'whatsNew.body.checkUpdates': 'Gidugang ang pagsusihon sa mga update',
   'whatsNew.title.whatsNew': 'Panid sa Unsa may bag-o',

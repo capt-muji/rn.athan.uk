@@ -185,6 +185,8 @@ export const hi = {
   'whatsNew.body.language': 'और भाषाओं का समर्थन जोड़ा गया',
   'whatsNew.title.moreLanguages': 'अधिक भाषाएँ',
   'whatsNew.body.moreLanguages': 'और भाषाओं का समर्थन जोड़ा गया',
+  'whatsNew.title.format24': '24 घंटे का प्रारूप',
+  'whatsNew.body.format24': '24 घंटे का प्रारूप विकल्प जोड़ा गया',
   'whatsNew.title.checkUpdates': 'अपडेट के लिए जाँच करें',
   'whatsNew.body.checkUpdates': 'अपडेट के लिए जाँच करें विकल्प जोड़ा गया',
   'whatsNew.title.whatsNew': 'नया क्या है पृष्ठ',

@@ -195,6 +195,8 @@ export const mfa = {
   'whatsNew.body.language': 'Ditambah sokongan untuk lebih bahasa',
   'whatsNew.title.moreLanguages': 'Lebih banyak bahasa',
   'whatsNew.body.moreLanguages': 'Ditambah sokongan untuk lebih bahasa',
+  'whatsNew.title.format24': 'format 24 jam',
+  'whatsNew.body.format24': 'Pilihan Format 24 jam ditambah',
   'whatsNew.title.checkUpdates': 'Semak kemas kini',
   'whatsNew.body.checkUpdates': 'Pilihan Semak kemas kini ditambah',
   'whatsNew.title.whatsNew': 'Halaman apa yang baru',

@@ -196,6 +196,8 @@ export const tt = {
   'whatsNew.body.language': 'Башка телләргә ярдәм өстәлде',
   'whatsNew.title.moreLanguages': 'Башка телләр',
   'whatsNew.body.moreLanguages': 'Башка телләргә ярдәм өстәлде',
+  'whatsNew.title.format24': '24 сәгать форматы',
+  'whatsNew.body.format24': '«24 сәгать форматы» опцие өстәлде',
   'whatsNew.title.checkUpdates': 'Яңартуларны тикшерергә',
   'whatsNew.body.checkUpdates': '«Яңартуларны тикшерергә» опцие өстәлде',
   'whatsNew.title.whatsNew': '«Нәрсә яңа» бите',

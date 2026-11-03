@@ -190,6 +190,8 @@ export const ru = {
   'whatsNew.body.language': 'Добавлена поддержка других языков',
   'whatsNew.title.moreLanguages': 'Больше языков',
   'whatsNew.body.moreLanguages': 'Добавлена поддержка других языков',
+  'whatsNew.title.format24': '24-часовой формат',
+  'whatsNew.body.format24': 'Добавлена опция «24-часовой формат»',
   'whatsNew.title.checkUpdates': 'Проверить обновления',
   'whatsNew.body.checkUpdates': 'Добавлена опция «Проверить обновления»',
   'whatsNew.title.whatsNew': 'Страница «Что нового»',

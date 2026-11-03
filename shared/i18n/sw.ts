@@ -189,6 +189,8 @@ export const sw = {
   'whatsNew.body.language': 'Imeongezwa usaidizi wa lugha zaidi',
   'whatsNew.title.moreLanguages': 'Lugha zaidi',
   'whatsNew.body.moreLanguages': 'Imeongezwa usaidizi wa lugha zaidi',
+  'whatsNew.title.format24': 'muundo wa saa 24',
+  'whatsNew.body.format24': 'Imeongezwa chaguo muundo wa saa 24',
   'whatsNew.title.checkUpdates': 'Angalia visasisho',
   'whatsNew.body.checkUpdates': 'Imeongezwa chaguo Angalia visasisho',
   'whatsNew.title.whatsNew': 'Ukurasa wa Nini Kipya',

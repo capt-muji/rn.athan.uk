@@ -195,6 +195,8 @@ export const war = {
   'whatsNew.body.language': 'Gindugangan an suporta ha damo nga yinaknan',
   'whatsNew.title.moreLanguages': 'Damo pa nga yinaknan',
   'whatsNew.body.moreLanguages': 'Gindugangan an suporta ha damo nga yinaknan',
+  'whatsNew.title.format24': '24-oras nga format',
+  'whatsNew.body.format24': 'Gindugangan an 24-oras nga format',
   'whatsNew.title.checkUpdates': 'Kitaa an mga update',
   'whatsNew.body.checkUpdates': 'Gindugangan an pagkita han mga update',
   'whatsNew.title.whatsNew': 'Pahina han Ano an Bag-o',

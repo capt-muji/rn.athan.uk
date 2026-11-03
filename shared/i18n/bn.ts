@@ -185,6 +185,8 @@ export const bn = {
   'whatsNew.body.language': 'আরও ভাষার সমর্থন যোগ হয়েছে',
   'whatsNew.title.moreLanguages': 'আরও ভাষা',
   'whatsNew.body.moreLanguages': 'আরও ভাষার সমর্থন যোগ হয়েছে',
+  'whatsNew.title.format24': '24 ঘণ্টা ফরম্যাট',
+  'whatsNew.body.format24': '24 ঘণ্টা ফরম্যাট অপশন যোগ হয়েছে',
   'whatsNew.title.checkUpdates': 'আপডেট দেখুন',
   'whatsNew.body.checkUpdates': 'আপডেট দেখুন অপশন যোগ হয়েছে',
   'whatsNew.title.whatsNew': 'নতুন কী পাতা',

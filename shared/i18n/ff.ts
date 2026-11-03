@@ -187,6 +187,8 @@ export const ff = {
   'whatsNew.body.language': 'Ɓeydii ballal ɗemɗe goɗɗe',
   'whatsNew.title.moreLanguages': 'Ɗemɗe goɗɗe',
   'whatsNew.body.moreLanguages': 'Ɓeydii ballal ɗemɗe goɗɗe',
+  'whatsNew.title.format24': 'format 24 waktu',
+  'whatsNew.body.format24': 'Ɓeydii format 24 waktu',
   'whatsNew.title.checkUpdates': 'Ƴeew kesɗitine',
   'whatsNew.body.checkUpdates': 'Ɓeydii ƴeew kesɗitine',
   'whatsNew.title.whatsNew': 'Hello Ko Hesɗi',

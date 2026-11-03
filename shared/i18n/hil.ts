@@ -197,6 +197,8 @@ export const hil = {
   'whatsNew.body.language': 'Gindugangan ang suporta sa damo nga mga lengwahe',
   'whatsNew.title.moreLanguages': 'Damo pa nga lengwahe',
   'whatsNew.body.moreLanguages': 'Gindugangan ang suporta sa damo nga mga lengwahe',
+  'whatsNew.title.format24': '24-oras nga format',
+  'whatsNew.body.format24': 'Gindugangan ang 24-oras nga format',
   'whatsNew.title.checkUpdates': 'Tan-awa ang mga update',
   'whatsNew.body.checkUpdates': 'Gindugangan ang pagsusi sa mga update',
   'whatsNew.title.whatsNew': 'Panid sang Ano may Bag-o',

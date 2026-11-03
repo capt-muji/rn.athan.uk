@@ -186,6 +186,8 @@ export const mr = {
   'whatsNew.body.language': 'अधिक भाषांसाठी आधार जोडला',
   'whatsNew.title.moreLanguages': 'अधिक भाषा',
   'whatsNew.body.moreLanguages': 'अधिक भाषांसाठी आधार जोडला',
+  'whatsNew.title.format24': '24 तासांचा स्वरूप',
+  'whatsNew.body.format24': '24 तासांचा स्वरूप पर्याय जोडला',
   'whatsNew.title.checkUpdates': 'अपडेट तपासा',
   'whatsNew.body.checkUpdates': 'अपडेट तपासा पर्याय जोडला',
   'whatsNew.title.whatsNew': 'नवीन काय आहे पृष्ठ',

@@ -196,6 +196,8 @@ export const mrw = {
   'whatsNew.body.language': 'Nagdagdag ng suporta sa mas maraming wika',
   'whatsNew.title.moreLanguages': 'Mas maraming wika',
   'whatsNew.body.moreLanguages': 'Nagdagdag ng suporta sa mas maraming wika',
+  'whatsNew.title.format24': '24-oras na format',
+  'whatsNew.body.format24': 'Nagdagdag ng 24-oras na format',
   'whatsNew.title.checkUpdates': 'Tignan ang mga kaaayos',
   'whatsNew.body.checkUpdates': 'Nagdagdag ng Tignan ang mga kaaayos',
   'whatsNew.title.whatsNew': 'Pahina ng Anong Bago',

@@ -186,6 +186,8 @@ export const jv = {
   'whatsNew.body.language': 'Dhukungan kanggo basa liyané ditambahaké',
   'whatsNew.title.moreLanguages': 'Basa liyané',
   'whatsNew.body.moreLanguages': 'Dhukungan kanggo basa liyané ditambahaké',
+  'whatsNew.title.format24': 'Format 24 jam',
+  'whatsNew.body.format24': 'Opsi Format 24 jam ditambahaké',
   'whatsNew.title.checkUpdates': 'Priksa anyaran',
   'whatsNew.body.checkUpdates': 'Opsi Priksa anyaran ditambahaké',
   'whatsNew.title.whatsNew': 'Kaca apa sing anyar',

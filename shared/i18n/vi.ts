@@ -193,6 +193,8 @@ export const vi = {
   'whatsNew.body.language': 'Đã thêm hỗ trợ nhiều ngôn ngữ hơn',
   'whatsNew.title.moreLanguages': 'Nhiều ngôn ngữ hơn',
   'whatsNew.body.moreLanguages': 'Đã thêm hỗ trợ nhiều ngôn ngữ hơn',
+  'whatsNew.title.format24': 'Định dạng 24 giờ',
+  'whatsNew.body.format24': 'Đã thêm tùy chọn Định dạng 24 giờ',
   'whatsNew.title.checkUpdates': 'Kiểm tra bản cập nhật',
   'whatsNew.body.checkUpdates': 'Đã thêm tùy chọn Kiểm tra bản cập nhật',
   'whatsNew.title.whatsNew': 'Trang Có gì mới',

@@ -184,6 +184,8 @@ export const ar = {
   'whatsNew.body.language': 'أضيف دعم المزيد من اللغات',
   'whatsNew.title.moreLanguages': 'لغات أكثر',
   'whatsNew.body.moreLanguages': 'أضيف دعم المزيد من اللغات',
+  'whatsNew.title.format24': 'صيغة 24 ساعة',
+  'whatsNew.body.format24': 'أُضيف خيار صيغة 24 ساعة',
   'whatsNew.title.checkUpdates': 'التحقق من التحديثات',
   'whatsNew.body.checkUpdates': 'أُضيف خيار التحقق من التحديثات',
   'whatsNew.title.whatsNew': 'صفحة ما الجديد',

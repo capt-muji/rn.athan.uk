@@ -188,6 +188,8 @@ export const tk = {
   'whatsNew.body.language': 'Has köp dile goldaw goşuldy',
   'whatsNew.title.moreLanguages': 'Has köp dil',
   'whatsNew.body.moreLanguages': 'Has köp dile goldaw goşuldy',
+  'whatsNew.title.format24': '24 sagat formaty',
+  'whatsNew.body.format24': '24 sagat formaty goşuldy',
   'whatsNew.title.checkUpdates': 'Täzelenmeleri barla',
   'whatsNew.body.checkUpdates': 'Täzelenmeleri barla goşuldy',
   'whatsNew.title.whatsNew': 'Täzelikler sahypasy',

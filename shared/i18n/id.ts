@@ -186,6 +186,8 @@ export const id = {
   'whatsNew.body.language': 'Ditambahkan dukungan untuk lebih banyak bahasa',
   'whatsNew.title.moreLanguages': 'Bahasa lainnya',
   'whatsNew.body.moreLanguages': 'Ditambahkan dukungan untuk lebih banyak bahasa',
+  'whatsNew.title.format24': 'Format 24 jam',
+  'whatsNew.body.format24': 'Ditambahkan opsi Format 24 jam',
   'whatsNew.title.checkUpdates': 'Periksa pembaruan',
   'whatsNew.body.checkUpdates': 'Ditambahkan opsi Periksa pembaruan',
   'whatsNew.title.whatsNew': 'Halaman Apa yang Baru',

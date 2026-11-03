@@ -190,6 +190,8 @@ export const sq = {
   'whatsNew.body.language': 'U shtua mbështetje për më shumë gjuhë',
   'whatsNew.title.moreLanguages': 'Më shumë gjuhë',
   'whatsNew.body.moreLanguages': 'U shtua mbështetje për më shumë gjuhë',
+  'whatsNew.title.format24': 'Formati 24-orësh',
+  'whatsNew.body.format24': 'U shtua mundësia Format 24-orësh',
   'whatsNew.title.checkUpdates': 'Kontrollo përditësimet',
   'whatsNew.body.checkUpdates': 'U shtua mundësia Kontrollo përditësimet',
   'whatsNew.title.whatsNew': 'Faqja e të rejave',

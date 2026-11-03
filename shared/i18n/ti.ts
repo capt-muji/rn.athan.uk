@@ -188,6 +188,8 @@ export const ti = {
   'whatsNew.body.language': 'ድገፍ ንተወሳኺ ቋንቋታት ተወሰኸ',
   'whatsNew.title.moreLanguages': 'ተወሳኺ ቋንቋታት',
   'whatsNew.body.moreLanguages': 'ድገፍ ንተወሳኺ ቋንቋታት ተወሰኸ',
+  'whatsNew.title.format24': 'ቅርጺ 24 ሰዓታት',
+  'whatsNew.body.format24': 'ኣማራጺ ቅርጺ 24 ሰዓታት ተወሰኸ',
   'whatsNew.title.checkUpdates': 'ምሕያሻት ፈትሹ',
   'whatsNew.body.checkUpdates': 'ኣማራጺ ምሕያሻት ፈትሽ ተወሰኸ',
   'whatsNew.title.whatsNew': 'ገጽ ዝሓዱሽ',

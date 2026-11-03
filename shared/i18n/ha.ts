@@ -189,6 +189,8 @@ export const ha = {
   'whatsNew.body.language': 'An ƙara goyon bayan harsuna da yawa',
   'whatsNew.title.moreLanguages': 'Ƙarin harsuna',
   'whatsNew.body.moreLanguages': 'An ƙara goyon bayan harsuna da yawa',
+  'whatsNew.title.format24': 'tsarin sa’o’i 24',
+  'whatsNew.body.format24': 'An ƙara zaɓin tsarin sa’o’i 24',
   'whatsNew.title.checkUpdates': 'Duba sabuntawa',
   'whatsNew.body.checkUpdates': 'An ƙara zaɓin Duba sabuntawa',
   'whatsNew.title.whatsNew': 'Shafin Sababbi',

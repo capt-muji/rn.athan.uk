@@ -188,6 +188,8 @@ export const wo = {
   'whatsNew.body.language': 'Ñu yokk ndimbal làkk yu bari',
   'whatsNew.title.moreLanguages': 'Làkk yu bari',
   'whatsNew.body.moreLanguages': 'Ñu yokk ndimbal làkk yu bari',
+  'whatsNew.title.format24': 'format 24 waxtu',
+  'whatsNew.body.format24': 'Ñu yokk format 24 waxtu',
   'whatsNew.title.checkUpdates': 'Xool yees',
   'whatsNew.body.checkUpdates': 'Ñu yokk Xool yees',
   'whatsNew.title.whatsNew': 'Xëtu li bees',

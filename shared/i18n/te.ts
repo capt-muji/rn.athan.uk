@@ -186,6 +186,8 @@ export const te = {
   'whatsNew.body.language': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
   'whatsNew.title.moreLanguages': 'మరిన్ని భాషలు',
   'whatsNew.body.moreLanguages': 'మరిన్ని భాషలకు మద్దతు జోడించబడింది',
+  'whatsNew.title.format24': '24 గంటల ఫార్మాట్',
+  'whatsNew.body.format24': '24 గంటల ఫార్మాట్ ఎంపిక జోడించబడింది',
   'whatsNew.title.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి',
   'whatsNew.body.checkUpdates': 'అప్‌డేట్‌లు తనిఖీ చేయి ఎంపిక జోడించబడింది',
   'whatsNew.title.whatsNew': 'కొత్తవి పేజీ',

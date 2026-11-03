@@ -188,6 +188,8 @@ export const my = {
   'whatsNew.body.language': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
   'whatsNew.title.moreLanguages': 'ဘာသာစကား ပိုမို',
   'whatsNew.body.moreLanguages': 'ဘာသာစကားများ ထပ်ထည့်ပေးခဲ့သည်',
+  'whatsNew.title.format24': '24 နာရီ ပုံစံ',
+  'whatsNew.body.format24': '24 နာရီ ပုံစံ ရွေးချယ်ချက် ထည့်ပေးခဲ့သည်',
   'whatsNew.title.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန်',
   'whatsNew.body.checkUpdates': 'အသစ်ရှိမရှိ စစ်ဆေးရန် ရွေးချယ်ချက် ထည့်ပေးခဲ့သည်',
   'whatsNew.title.whatsNew': 'ဘာအသစ်ရှိလဲ စာမျက်နှာ',

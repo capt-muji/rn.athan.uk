@@ -187,6 +187,8 @@ export const ta = {
   'whatsNew.body.language': 'மேலும் மொழிகளுக்கான ஆதரவு சேர்க்கப்பட்டது',
   'whatsNew.title.moreLanguages': 'மேலும் மொழிகள்',
   'whatsNew.body.moreLanguages': 'மேலும் மொழிகளுக்கான ஆதரவு சேர்க்கப்பட்டது',
+  'whatsNew.title.format24': '24 மணி நேர வடிவம்',
+  'whatsNew.body.format24': '24 மணி நேர வடிவம் விருப்பம் சேர்க்கப்பட்டது',
   'whatsNew.title.checkUpdates': 'புதுப்பிப்புகளைச் சரிபார்',
   'whatsNew.body.checkUpdates': 'புதுப்பிப்புகளைச் சரிபார் விருப்பம் சேர்க்கப்பட்டது',
   'whatsNew.title.whatsNew': 'புதியவை பக்கம்',

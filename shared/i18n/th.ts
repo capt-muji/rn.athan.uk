@@ -183,6 +183,8 @@ export const th = {
   'whatsNew.body.language': 'เพิ่มการรองรับภาษาเพิ่มเติม',
   'whatsNew.title.moreLanguages': 'ภาษาเพิ่มเติม',
   'whatsNew.body.moreLanguages': 'เพิ่มการรองรับภาษาเพิ่มเติม',
+  'whatsNew.title.format24': 'รูปแบบ 24 ชั่วโมง',
+  'whatsNew.body.format24': 'เพิ่มตัวเลือกรูปแบบ 24 ชั่วโมง',
   'whatsNew.title.checkUpdates': 'ตรวจสอบการอัปเดต',
   'whatsNew.body.checkUpdates': 'เพิ่มตัวเลือกตรวจสอบการอัปเดต',
   'whatsNew.title.whatsNew': 'หน้ามีอะไรใหม่',
