@@ -703,6 +703,13 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Out of date', both('Not fresh', 'x'))).toBe('green');
   });
 
+  it('the Pashto loop lessons: breakfast as the dawn meal, Al-Zuha, and the month renderings', () => {
+    expect(verify.verdictOf('Suhoor', both('breakfast', 'x'))).toBe('green');
+    expect(verify.verdictOf('Duha', both('Al-Zuha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qudda', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dil Hajj', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

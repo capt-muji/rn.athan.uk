@@ -167,7 +167,7 @@ export const ps = {
   'channel.athan': 'اذان {n}',
   'channel.extras': 'اضافي وختونه',
   'app.loadingLabel': 'د لمانځه وختونه لوډیږي',
-  'qibla.locationTitle': 'موقعیت روښانه کړئ',
+  'qibla.locationTitle': 'موقعیت فعال کړئ',
   'qibla.locationMessage':
     'قبله ستاسو له موقعیت څخه محاسبه کیږي، نو موقعیت ته اړتیا لري. ایا غواړئ يې په امستنو کې روښانه کړئ؟',
   'dialog.cancel': 'لغوه کړئ',

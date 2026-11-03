@@ -360,7 +360,7 @@ const SYNONYM_GROUPS = [
   // Esha is the same romanization class for Kurdish Eşa
   ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha', 'zuha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
@@ -477,7 +477,8 @@ const PHRASE_SYNONYMS = [
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
   ['rabiʻ ii', 'spring of the other'],
   // xwarina seherê, the Kurdish dawn meal, renders as its plain description
-  ['suhoor', 'morning meal'],
+  // sahaari, Pashto's dawn meal, renders as breakfast - the same meal sense
+  ['suhoor', 'morning meal', 'breakfast'],
   // worked out and calculated name the same derivation on the qibla row
   ['worked out', 'calculated', 'computed'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
@@ -492,6 +493,7 @@ const PHRASE_SYNONYMS = [
     'zilhice',
     'dhul hajj',
     'zul hajj',
+    'dil hajj',
   ],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
@@ -519,6 +521,7 @@ const PHRASE_SYNONYMS = [
     'zhul kada',
     'zulqaid',
     'zul qaida',
+    'zul qudda',
   ],
 ];
 
