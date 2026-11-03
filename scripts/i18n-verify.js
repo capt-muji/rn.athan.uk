@@ -494,6 +494,7 @@ const PHRASE_SYNONYMS = [
     'dhul hajj',
     'zul hajj',
     'dil hajj',
+    'dul hijxhe',
   ],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
