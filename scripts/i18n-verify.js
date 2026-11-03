@@ -521,7 +521,6 @@ const PHRASE_SYNONYMS = [
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
   ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
   // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
-  // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
   ['magrib', 'the sun goes down', 'sun goes down'],
   // bez zvuka, Russian's silent, states the absence plainly
   ['silent', 'no sound', 'without sound'],
@@ -602,7 +601,7 @@ const singularOf = (word) =>
 const synonymMatch = (a, b) => {
   const left = singularOf(a);
   const right = singularOf(b);
-  return SYNONYM_INDEX.get(left)?.has(right) === true || SYNONYM_INDEX.get(a)?.has(right) === true;
+  return SYNONYM_INDEX.get(left)?.has(right) === true;
 };
 
 /** Two tokens of at least 5 characters whose prefixes or spellings are near enough */
@@ -860,11 +859,12 @@ const runLocale = async (locale, opts) => {
       if (resumedLlm) row.llm = resumedLlm;
     }
     row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null, opts.phase ?? 'one');
-    // A standing judge ruling survives the resume while the engine still reads the row red;
-    // an engine rendering that now carries the meaning stands on its own and drops the ruling
-    if (priorFresh?.ruling && row.verdict === 'red') {
+    // A standing judge ruling survives the resume while the engine does not carry the row
+    // itself: red keeps the ruling's green, an engine miss keeps the note on its amber for
+    // the fill path; an engine rendering that now carries the meaning stands on its own
+    if (priorFresh?.ruling && row.verdict !== 'green') {
       row.ruling = priorFresh.ruling;
-      row.verdict = 'green';
+      if (row.verdict === 'red') row.verdict = 'green';
     }
     return row;
   });
@@ -1367,7 +1367,10 @@ const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
 const run = async (argv, deps = {}) => {
   const flag = (name) => {
     const i = argv.indexOf(name);
-    return i >= 0 ? argv[i + 1] : undefined;
+    // a value that is itself a flag means the flag was written without one: never swallow
+    // the next flag as a directory name or a locale list
+    if (i >= 0 && argv[i + 1] !== undefined && !String(argv[i + 1]).startsWith('--')) return argv[i + 1];
+    return undefined;
   };
   const outFlag = flag('--out');
   const localesFlag = flag('--locales');

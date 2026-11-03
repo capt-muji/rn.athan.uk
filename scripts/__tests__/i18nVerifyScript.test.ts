@@ -1346,6 +1346,45 @@ describe('the command line flow', () => {
       expect(finalRow.verdict).toBe('green');
     });
 
+    it('a flag written without its value never swallows the next flag as a directory name', async () => {
+      const outDir = join(SCRATCH, 'cli-flag-without-value');
+      await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+      // '--out --resume' must not create or write into a directory named '--resume'
+      const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      expect(report.ok).toBe(true);
+      expect(existsSync(join(outDir, '--resume'))).toBe(false);
+    });
+
+    it('a judge ruling survives an engine miss on resume - the amber row keeps the note for the fill path', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-miss-survives');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      // The stored slot empties (an engine outage between runs); the resume refetches and misses
+      const ruled = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const ruledRow = ruled.rows.find((r: Row) => r.key === 'prayer.fajr');
+      ruledRow.sites = [
+        { engine: 'gtx', roundtrip: null },
+        { engine: 'pending', roundtrip: null },
+      ];
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(ruled));
+      const missFetch: FetchFn = async (url) => {
+        const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
+        if (q === ruledRow.catalog) return res('[]');
+        return fetchOk(url);
+      };
+      const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(missFetch));
+      expect(report.ok).toBe(false);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('amber');
+      expect(row.ruling).toBe('the engine misreads a correct catalog string');
+    });
+
     it('re-applying a standing ruling is a no-op, not a refusal', async () => {
       const outDir = join(SCRATCH, 'cli-rule-idempotent');
       const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
