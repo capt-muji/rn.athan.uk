@@ -541,6 +541,7 @@ const PHRASE_SYNONYMS = [
     'zylkada',
     'dhulqidah',
     'zulqidah',
+    'zulqadi',
   ],
 ];
 
