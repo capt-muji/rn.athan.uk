@@ -499,7 +499,10 @@ const PHRASE_SYNONYMS = [
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
   ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
   // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
+  // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
   ['magrib', 'the sun goes down', 'sun goes down'],
+  // bez zvuka, Russian's silent, states the absence plainly
+  ['silent', 'no sound', 'without sound'],
   ['midnight', 'middle of the night'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
@@ -524,6 +527,7 @@ const PHRASE_SYNONYMS = [
     'zulqaid',
     'zul qaida',
     'zul qudda',
+    'dhul qada',
   ],
 ];
 
