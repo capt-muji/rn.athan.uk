@@ -457,7 +457,7 @@ const SYNONYM_GROUPS = [
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
-  ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
+  ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update', 'no update'],
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
@@ -489,6 +489,7 @@ const PHRASE_SYNONYMS = [
     'zul kida',
     'dulcada',
     'zilqada',
+    'zulkaada',
   ],
 ];
 
