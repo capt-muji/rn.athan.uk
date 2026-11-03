@@ -359,7 +359,7 @@ const SYNONYM_GROUPS = [
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
@@ -463,7 +463,7 @@ const PHRASE_SYNONYMS = [
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah', 'dulhija'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun', 'sun is rising'],
   ['midnight', 'middle of the night'],
@@ -482,6 +482,7 @@ const PHRASE_SYNONYMS = [
     'zulqaida',
     'in zulkag',
     'zul kida',
+    'dulcada',
   ],
 ];
 
