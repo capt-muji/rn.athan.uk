@@ -652,6 +652,19 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dulhija', 'x'))).toBe('green');
   });
 
+  it('the Kurdish loop lessons: Esha, the dawn meal, worked-out as calculated, and the two month spellings', () => {
+    expect(verify.verdictOf('Isha', both('Esha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Suhoor', both('Morning meal', 'x'))).toBe('green');
+    expect(
+      verify.verdictOf(
+        'The qibla is worked out from your location',
+        both('Qibla is calculated from your location', 'x')
+      )
+    ).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zilqada', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhice', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

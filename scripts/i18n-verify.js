@@ -357,7 +357,8 @@ const SYNONYM_GROUPS = [
   ['magrib', 'maghrib', 'sunset', 'evening', 'aksham'],
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
-  ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
+  // Esha is the same romanization class for Kurdish Eşa
+  ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
   ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
@@ -462,8 +463,12 @@ const PHRASE_SYNONYMS = [
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
+  // xwarina seherê, the Kurdish dawn meal, renders as its plain description
+  ['suhoor', 'morning meal'],
+  // worked out and calculated name the same derivation on the qibla row
+  ['worked out', 'calculated', 'computed'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah', 'dulhija'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah', 'dulhija', 'zilhice'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun', 'sun is rising'],
   ['midnight', 'middle of the night'],
@@ -483,6 +488,7 @@ const PHRASE_SYNONYMS = [
     'in zulkag',
     'zul kida',
     'dulcada',
+    'zilqada',
   ],
 ];
 
