@@ -360,11 +360,11 @@ const SYNONYM_GROUPS = [
   // tuta, Quechua's night word, names the night prayer the way nightfall does
   ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha', 'night'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha', 'zuha'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha', 'zuha', 'zuho'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
-  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan'],
+  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
   [
@@ -472,7 +472,7 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update', 'no update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
   ['rabiʻ ii', 'spring of the other'],
@@ -533,6 +533,7 @@ const PHRASE_SYNONYMS = [
     'dhul qad',
     'julgita',
     'zul qida',
+    'zulqada',
   ],
 ];
 
