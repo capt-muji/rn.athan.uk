@@ -346,7 +346,7 @@ const SYNONYM_GROUPS = [
   ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
-  ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq'],
+  ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
   ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
