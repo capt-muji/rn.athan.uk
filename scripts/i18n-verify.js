@@ -364,7 +364,7 @@ const SYNONYM_GROUPS = [
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
-  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon'],
+  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon', 'azone'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
   // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok
@@ -476,7 +476,15 @@ const SYNONYM_GROUPS = [
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
-  ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update', 'no update'],
+  [
+    'up to date',
+    'latest version',
+    'most recent version',
+    'no new updates',
+    'no new update',
+    'no update',
+    'the version is the latest',
+  ],
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
@@ -516,6 +524,9 @@ const PHRASE_SYNONYMS = [
   ['midnight', 'middle of the night'],
   // Віджети обох екранів - the two screens are the home and the lock
   ['home & lock widgets', 'widgets for both screens'],
+  // Jumodul-avval and Jumodul-oxir, Uzbek's Jumada pair (avval first, oxir last)
+  ['jumada i', 'jumodul avval', 'jumodul first'],
+  ['jumada ii', 'jumodul oxir', 'jumodul end'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)

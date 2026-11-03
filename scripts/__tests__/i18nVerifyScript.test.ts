@@ -786,6 +786,13 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Duha', both('Chast', 'x'))).toBe('green');
   });
 
+  it('the Uzbek loop lessons: Azone, the latest version, and the two Jumodul months', () => {
+    expect(verify.verdictOf('Change athan', both('Azone replacement', 'x'))).toBe('green');
+    expect(verify.verdictOf('You’re up to date', both('The version is the latest', 'x'))).toBe('green');
+    expect(verify.verdictOf('Jumada I', both('Jumodul-first', 'x'))).toBe('green');
+    expect(verify.verdictOf('Jumada II', both('Jumodul-end', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
