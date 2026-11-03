@@ -367,12 +367,15 @@ const SYNONYM_GROUPS = [
   ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon', 'azone'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
-  // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok
-  ['done', 'finish', 'finished', 'ok'],
-  // Довідка, Ukrainian's help, renders as its reference-desk sense
-  ['help', 'reference'],
+  // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok; Jeex na as over
+  ['done', 'finish', 'finished', 'ok', 'over'],
+  // Довідка, Ukrainian's help, renders as its reference-desk sense; Ndimbal, Wolof's
+  // help, renders as the favour it asks for
+  ['help', 'reference', 'favour'],
   // обривається завчасно cuts off early; the engine's premature is the same earliness
   ['early', 'prematurely'],
+  // amul, Wolof's not-have, renders plainly as without
+  ['unavailable', 'without'],
   [
     'notification',
     'alert',
