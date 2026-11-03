@@ -343,7 +343,7 @@ const SYNONYM_GROUPS = [
   // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
   ['fajr', 'dawn', 'morning', 'sabah', 'subah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar', 'luhr', 'zahor'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar', 'luhr', 'zahor', 'zuhri'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
@@ -494,7 +494,8 @@ const PHRASE_SYNONYMS = [
     'zul hajj',
   ],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
-  ['sunrise', 'rising of the sun', 'sun is rising'],
+  // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
+  ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
   ['midnight', 'middle of the night'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
