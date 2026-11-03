@@ -487,6 +487,7 @@ const PHRASE_SYNONYMS = [
     'no new update',
     'no update',
     'the version is the latest',
+    'you are already on the latest version',
   ],
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh', 'ha'],
@@ -495,7 +496,7 @@ const PHRASE_SYNONYMS = [
   ['rabiʻ ii', 'spring of the other'],
   // xwarina seherê, the Kurdish dawn meal, renders as its plain description
   // sahaari, Pashto's dawn meal, renders as breakfast - the same meal sense
-  ['suhoor', 'morning meal', 'breakfast'],
+  ['suhoor', 'morning meal', 'breakfast', 'fasting meal'],
   // worked out and calculated name the same derivation on the qibla row
   ['worked out', 'calculated', 'computed'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
@@ -527,6 +528,8 @@ const PHRASE_SYNONYMS = [
   ['midnight', 'middle of the night'],
   // Віджети обох екранів - the two screens are the home and the lock
   ['home & lock widgets', 'widgets for both screens'],
+  // 提前, Chinese's before, renders as its own adverb
+  ['before', 'in advance'],
   // Jumodul-avval and Jumodul-oxir, Uzbek's Jumada pair (avval first, oxir last)
   ['jumada i', 'jumodul avval', 'jumodul first'],
   ['jumada ii', 'jumodul oxir', 'jumodul end'],
