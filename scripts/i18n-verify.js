@@ -368,7 +368,19 @@ const SYNONYM_GROUPS = [
   ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
   // Azerbaijani ekran is the display word and renders as screen, its own sense
-  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen', 'reveal', 'indicate', 'showing'],
+  [
+    'show',
+    'display',
+    'view',
+    'visible',
+    'appearance',
+    'layout',
+    'screen',
+    'reveal',
+    'indicate',
+    'showing',
+    'indication',
+  ],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
@@ -391,11 +403,11 @@ const SYNONYM_GROUPS = [
   ],
   ['turn', 'switch'],
   ['open', 'launch'],
-  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete'],
+  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete', 'cover'],
   ['allow', 'permit'],
   ['phone', 'device', 'mobile'],
   ['check', 'verify', 'checking'],
-  ['update', 'updates', 'upgrade', 'refresh', 'improve'],
+  ['update', 'updates', 'upgrade', 'refresh', 'improve', 'renew'],
   ['select', 'choose', 'pick'],
   ['find', 'locate', 'search', 'finder'],
   ['direction', 'heading', 'bearing'],
@@ -404,6 +416,8 @@ const SYNONYM_GROUPS = [
   ['disturb', 'bother', 'interrupt'],
   ['focus', 'concentrate'],
   ['name', 'title'],
+  // harshe, the tongue word, is Hausa's language word
+  ['language', 'tongue'],
   ['help', 'assist', 'assistance', 'guide', 'guidance', 'aid'],
   ['last', 'final', 'end', 'ending'],
   ['add', 'added'],
@@ -450,6 +464,8 @@ const PHRASE_SYNONYMS = [
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun'],
   ['midnight', 'middle of the night'],
+  // the failure phrase: a problem occurred is something went wrong in its own words
+  ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
   ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida'],
 ];

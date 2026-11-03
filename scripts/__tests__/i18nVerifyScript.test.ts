@@ -597,6 +597,14 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dhul-Kida', 'x'))).toBe('green');
   });
 
+  it('the Hausa loop lessons: indication, tongue, cover, renew, and the problem phrase', () => {
+    expect(verify.verdictOf('Display', both('Indication', 'x'))).toBe('green');
+    expect(verify.verdictOf('Language', both('Tongue', 'x'))).toBe('green');
+    expect(verify.verdictOf('Close', both('Cover', 'x'))).toBe('green');
+    expect(verify.verdictOf('Update', both('Renew', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Something went wrong. ', both('Another problem occurred.', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
