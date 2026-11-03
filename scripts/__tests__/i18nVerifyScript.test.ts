@@ -734,6 +734,11 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhaj', 'x'))).toBe('green');
   });
 
+  it('the Telugu loop lessons: Asser and Zul-Qida', () => {
+    expect(verify.verdictOf('Asr', both('Asser', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qida', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

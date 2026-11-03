@@ -350,7 +350,7 @@ const SYNONYM_GROUPS = [
   // Bhanu is the sun's own Sanskritic name (Bhanuvara is Sunday); the weekday row
   // names the sun itself, while sunrise above stays whole-sense only (order eleven)
   ['sun', 'bhanu'],
-  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar', 'azar', 'asur'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar', 'azar', 'asur', 'asser'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
@@ -532,6 +532,7 @@ const PHRASE_SYNONYMS = [
     'dhul qada',
     'dhul qad',
     'julgita',
+    'zul qida',
   ],
 ];
 
