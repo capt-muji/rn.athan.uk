@@ -367,6 +367,8 @@ const SYNONYM_GROUPS = [
   ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
+  // เสร็จ, Thai's done, renders as its plain verb
+  ['done', 'finish', 'finished'],
   [
     'notification',
     'alert',
@@ -534,6 +536,7 @@ const PHRASE_SYNONYMS = [
     'julgita',
     'zul qida',
     'zulqada',
+    'dhulqidah',
   ],
 ];
 
