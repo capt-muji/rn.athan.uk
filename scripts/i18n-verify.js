@@ -455,7 +455,7 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
