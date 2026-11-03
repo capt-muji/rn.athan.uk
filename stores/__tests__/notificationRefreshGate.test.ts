@@ -23,6 +23,7 @@ import {
   shouldRescheduleNotifications,
   standardPrayerAlertAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -58,6 +59,9 @@ const getAllMock = jest.mocked(Notifications.getAllScheduledNotificationsAsync);
 /** What the OS holds, keyed by identifier, with the platforms' replace and cancel semantics */
 const osState = new Set<string>();
 
+/** The days the reader serves, accumulated by the seeding helper and reset with the store */
+const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
 const storeDay = (date: string) => {
   const day: ISingleApiResponseTransformed = {
     date,
@@ -71,7 +75,8 @@ const storeDay = (date: string) => {
     duha: '12:00',
     istijaba: '12:00',
   };
-  Database.database.set(`prayer_${date}`, JSON.stringify(day));
+  seededWindow.set(date, day);
+  __installTimetableDays([...seededWindow.values()]);
 };
 
 beforeEach(() => {
@@ -80,6 +85,9 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   storeDay(TODAY);
   storeDay(TOMORROW);

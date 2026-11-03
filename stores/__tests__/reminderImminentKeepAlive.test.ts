@@ -21,6 +21,7 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -69,6 +70,9 @@ const schedulesOf = (identifier: string) =>
 const reminderRecords = () =>
   Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0).map((each) => each.id);
 
+/** The days the reader serves, accumulated by the seeding helper and reset with the store */
+const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
 const seedDays = () => {
   for (const date of WINDOW) {
     const day: ISingleApiResponseTransformed = {
@@ -83,7 +87,8 @@ const seedDays = () => {
       duha: '12:00',
       istijaba: '12:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 };
 
@@ -93,6 +98,9 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  seededWindow.clear();
+  __installTimetableDays([]);
   seedDays();
 
   store.set(standardPrayerAlertAtoms[0], AlertType.Silent);
@@ -209,6 +217,9 @@ describe('a language convergence pass inside the final 30 seconds before a remin
     store.set(lastArmedLanguageAtom, 'ar');
 
     await reconcileLanguageSurfaces();
+
+    /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+    const _seededWindow = new Map<string, ISingleApiResponseTransformed>();
 
     expect(cancelsOf(imminentId)).toBe(0);
     expect(schedulesOf(imminentId)).toBe(0);

@@ -8,7 +8,7 @@
  * paint, and a failed push is logged rather than left unhandled. A push a caller does not
  * defer (the foreground return, the background task) is awaited, and its rejection is
  * logged the same way: the sync completes on the days it already holds. A development
- * build downloads on every launch.
+ * build's sync run reseeds the launch-relative mock window through the same wait.
  *
  * Runs the real sync, database and notifications store over a fresh module graph per test, since the loadable holds
  * its one sync for the life of the store. The network, the sequences, the countdowns, the widgets and the upgrade
@@ -35,16 +35,20 @@ jest.mock('@/shared/config', () => {
   return {
     ...actual,
     get APP_CONFIG() {
-      return { ...actual.APP_CONFIG, isDev: mockIsDev, apiKey: 'test-key' };
+      return { ...actual.APP_CONFIG, isDev: mockIsDev };
     },
   };
 });
 
-const mockFetchYear = jest.fn();
-jest.mock('@/api/client', () => ({
-  fetchYear: (year: number) => mockFetchYear(year),
-  fetchDay: () => new Promise(() => {}),
-}));
+// The timetable's readiness is the chain's one wait; rejecting it is how a suite fails the launch
+const mockEnsureTimetableReady = jest.fn(() => Promise.resolve());
+jest.mock('@/stores/timetable', () => {
+  const actual = jest.requireActual<typeof import('@/stores/timetable')>('@/stores/timetable');
+  return {
+    ...actual,
+    ensureTimetableReady: () => mockEnsureTimetableReady(),
+  };
+});
 
 const mockSetSequence = jest.fn();
 jest.mock('@/stores/schedule', () => ({
@@ -85,9 +89,9 @@ const day = (date: string): ISingleApiResponseTransformed => ({
 /** A fresh sync module, database and default store, as a cold launch has them */
 const launch = ({ stored }: { stored: string[] }) => {
   const sync = require('@/stores/sync') as typeof import('@/stores/sync');
-  const Database = require('@/stores/database') as typeof import('@/stores/database');
+  const Timetable = require('@/stores/timetable') as typeof import('@/stores/timetable');
   const { getDefaultStore } = require('jotai/vanilla') as typeof import('jotai/vanilla');
-  Database.saveAllPrayers(stored.map(day));
+  Timetable.__installTimetableDays(stored.map(day));
   return { ...sync, store: getDefaultStore() };
 };
 
@@ -104,7 +108,8 @@ beforeEach(() => {
   jest.useFakeTimers({ now: NOW });
   mockIsDev = false;
   mockRefreshPrayerWidgets.mockResolvedValue(undefined);
-  mockFetchYear.mockImplementation(async () => [day(TODAY), day(TOMORROW)]);
+  mockEnsureTimetableReady.mockReset();
+  mockEnsureTimetableReady.mockResolvedValue(undefined);
 });
 
 afterEach(() => {
@@ -146,15 +151,15 @@ describe('triggerSyncLoadable and syncLoadable', () => {
     expect(mockSetSequence).toHaveBeenCalledTimes(2);
   });
 
-  it('reaches the error state the error screen reads when the sync fails with nothing stored', async () => {
-    const offline = new TypeError('Network request failed');
-    mockFetchYear.mockRejectedValue(offline);
+  it('reaches the error state the error screen reads when the timetable will not stage and nothing is readable', async () => {
+    const stageFailure = new Error('The artifact will not stage');
+    mockEnsureTimetableReady.mockRejectedValue(stageFailure);
     const { store, syncLoadable, triggerSyncLoadable } = launch({ stored: [] });
 
     triggerSyncLoadable();
     await settle();
 
-    expect(store.get(syncLoadable)).toEqual({ state: 'hasError', error: offline });
+    expect(store.get(syncLoadable)).toEqual({ state: 'hasError', error: stageFailure });
     expect(mockSetSequence).not.toHaveBeenCalled();
   });
 });
@@ -245,16 +250,18 @@ describe('the widget push on the launch path', () => {
 // A DEVELOPMENT BUILD
 // =============================================================================
 
-describe('whether a launch with today stored downloads the year', () => {
-  it.each([
-    { build: 'a development build', isDev: true, downloads: [[2026]] },
-    { build: 'a prod or preview build', isDev: false, downloads: [] },
-  ])('$build: downloads $downloads', async ({ isDev, downloads }) => {
-    mockIsDev = isDev;
+describe('the launch wait', () => {
+  it('asks the timetable to be ready once per sync run, a rejection reaching the error state', async () => {
     const { sync } = launch({ stored: [TODAY, TOMORROW] });
 
     await sync();
 
-    expect(mockFetchYear.mock.calls).toEqual(downloads);
+    expect(mockEnsureTimetableReady).toHaveBeenCalledTimes(1);
+
+    const stageFailure = new Error('The artifact will not stage');
+    mockEnsureTimetableReady.mockRejectedValueOnce(stageFailure);
+    await sync();
+
+    expect(mockEnsureTimetableReady).toHaveBeenCalledTimes(2);
   });
 });

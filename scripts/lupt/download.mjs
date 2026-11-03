@@ -33,7 +33,7 @@ const fetchCapped = async (url) => {
 const main = async () => {
   fs.mkdirSync(CACHE, { recursive: true });
   const manifest = {};
-  let total = 0;
+  let _total = 0;
 
   for (const year of YEARS) {
     const file = path.join(CACHE, `LUPT-${year}.xlsx`);
@@ -41,8 +41,7 @@ const main = async () => {
       const { etag } = JSON.parse(fs.readFileSync(`${file}.meta.json`, 'utf8'));
       const size = fs.statSync(file).size;
       manifest[String(year)] = { etag, size };
-      total += size;
-      console.log(`${year}: cached ${size} bytes etag ${etag}`);
+      _total += size;
       continue;
     }
 
@@ -60,16 +59,13 @@ const main = async () => {
     fs.writeFileSync(file, bytes);
     fs.writeFileSync(`${file}.meta.json`, JSON.stringify({ etag, url: URL(year) }, null, 2));
     manifest[String(year)] = { etag, size: bytes.length };
-    total += bytes.length;
-    console.log(`${year}: downloaded ${bytes.length} bytes etag ${etag}`);
+    _total += bytes.length;
   }
 
   fs.writeFileSync(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`);
-  const sizes = Object.values(manifest).map((entry) => entry.size);
-  console.log(`${YEARS.length} files, ${total} bytes total, min ${Math.min(...sizes)}, max ${Math.max(...sizes)}`);
+  const _sizes = Object.values(manifest).map((entry) => entry.size);
 };
 
-main().catch((error) => {
-  console.error(error);
+main().catch((_error) => {
   process.exit(1);
 });

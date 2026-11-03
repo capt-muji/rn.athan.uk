@@ -10,7 +10,6 @@ import * as SplashScreen from 'expo-splash-screen';
 import { getDefaultStore } from 'jotai';
 
 import { london, onPlatform, saveLondonDays, showLondonDay } from '@/__tests__/harness';
-import { fetchYear } from '@/api/client';
 import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { hideSwitchCover } from '@/device/switchCover';
@@ -21,13 +20,14 @@ import { BACKGROUND_TASK_NAME } from '@/shared/constants';
 import { FEATURE_FLAGS } from '@/shared/flags';
 import logger from '@/shared/logger';
 import { initializeNotifications } from '@/shared/notifications';
-import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
 import type * as WhatsNew from '@/shared/whatsNew';
 import * as Database from '@/stores/database';
 import { languageCommitBusyAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import { refreshNotifications, setPrayerAlertType } from '@/stores/notifications';
 import { openOverlay } from '@/stores/overlay';
 import { setSequence } from '@/stores/schedule';
+import { ensureTimetableReady, getTimetableDay } from '@/stores/timetable';
 import {
   decorationsEnabledAtom,
   markDecorationsLoaded,
@@ -45,12 +45,17 @@ import {
 
 import Index, { __resetLaunchInitForTests } from '../../app/index';
 
-// Sync downloads the year over the network, so each test decides what the download answers. Unless told, it is still
-// on its way
-jest.mock('@/api/client', () => ({
-  fetchDay: jest.fn(() => new Promise(() => {})),
-  fetchYear: jest.fn(() => new Promise(() => {})),
-}));
+// The launch's one wait is the timetable becoming ready, so each test decides what the reader answers. Unless
+// told otherwise, the timetable is ready and serves whatever days are installed into it
+const actualTimetable = () => jest.requireActual<typeof import('@/stores/timetable')>('@/stores/timetable');
+jest.mock('@/stores/timetable', () => {
+  const actual = jest.requireActual<typeof import('@/stores/timetable')>('@/stores/timetable');
+  return {
+    ...actual,
+    getTimetableDay: jest.fn((date: string) => actual.getTimetableDay(date)),
+    ensureTimetableReady: jest.fn(() => Promise.resolve()),
+  };
+});
 
 // The update check asks the store over the network and Update opens the store, so both are observed instead of run
 jest.mock('@/device/updates', () => ({
@@ -141,23 +146,31 @@ const drawFirstContentFrame = () =>
 const SETTLING_WINDOW_MS = 1500;
 
 /** 11 September 2026 at 14:00 with no day stored, as after an upgrade wipe or across a year gap */
-const showEmptyLaunch = () => jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
-
-/** The London days as a download brings them, taken out of storage again so the launch starts without them */
-const takeDownloadOfStoredDays = (): ISingleApiResponseTransformed[] => {
-  saveLondonDays();
-  const days = Database.getAllWithPrefix('prayer_');
-  Database.clearPrefix('prayer_');
-  return days;
+const showEmptyLaunch = () => {
+  jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+  jest.mocked(getTimetableDay).mockImplementation(() => null);
 };
 
-/** Holds the next download on its way until the returned function fails it, so a test decides when sync finishes */
-const holdDownload = (): (() => void) => {
+/** Puts the reader's passthrough back, so a case that emptied or held the launch leaves nothing behind */
+const serveInstalledDays = () => {
+  const actual = actualTimetable();
+  jest
+    .mocked(getTimetableDay)
+    .mockReset()
+    .mockImplementation((date: string) => actual.getTimetableDay(date));
+  jest
+    .mocked(ensureTimetableReady)
+    .mockReset()
+    .mockImplementation(() => Promise.resolve());
+};
+
+/** Holds the launch's wait for the timetable until the returned function fails it, so a test decides when sync ends */
+const holdStage = (): (() => void) => {
   let fail = () => {};
-  jest.mocked(fetchYear).mockImplementationOnce(
+  jest.mocked(ensureTimetableReady).mockImplementationOnce(
     () =>
       new Promise((_, reject) => {
-        fail = () => reject(new Error('Offline'));
+        fail = () => reject(new Error('The artifact will not stage'));
       })
   );
   return () => fail();
@@ -197,6 +210,8 @@ beforeEach(() => {
   Database.setItem('cache_schema_version', CACHE_SCHEMA_VERSION);
   __resetLaunchInitForTests();
   getDefaultStore().set(masjidLoadedAtom, false);
+  // A test that emptied the launch left the reader answering null; every test starts at the passthrough
+  serveInstalledDays();
 });
 
 /** The icon's decode mark, as the real Image's onLoadEnd fires it (T-541) */
@@ -361,27 +376,32 @@ describe('the launch splash, Friday 11 September 2026 at 14:00', () => {
     expect(SplashScreen.hideAsync).toHaveBeenCalled();
   });
 
-  it('shows neither lists nor the error screen while a launch with no stored days waits for its download', async () => {
+  it('shows neither lists nor the error screen while a launch with no readable days waits for the timetable', async () => {
+    const failStage = holdStage();
     showEmptyLaunch();
 
     await render(<Index />);
 
     expect(screen.queryByText('London, UK')).not.toBeOnTheScreen();
     expect(screen.queryByText('Something went wrong.')).not.toBeOnTheScreen();
+
+    // Consume the held stage inside the test, so no later test inherits it
+    await act(() => failStage());
   });
 
-  it('shows the lists once the download on a launch with no stored days has landed', async () => {
+  it('shows the lists once the timetable on a launch with no readable days is serving them', async () => {
     showEmptyLaunch();
-    jest.mocked(fetchYear).mockResolvedValueOnce(takeDownloadOfStoredDays());
+    serveInstalledDays();
+    saveLondonDays();
 
     await render(<Index />);
 
     expect(await screen.findByRole('button', { name: 'Isha notification: off' })).toBeOnTheScreen();
   });
 
-  it('shows the error screen when a launch with no stored days cannot download them', async () => {
+  it('shows the error screen when a launch with no readable days cannot stage the artifact', async () => {
     showEmptyLaunch();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+    jest.mocked(ensureTimetableReady).mockRejectedValueOnce(new Error('The artifact will not stage'));
 
     await render(<Index />);
 
@@ -472,7 +492,7 @@ describe('the launch splash in Ramadan, Monday 15 February 2027 at 14:00', () =>
   // No day of 2027 is stored, so the failed download leaves nothing usable and sync fails
   it('lifts the splash onto the error screen on its first drawn frame, without waiting for decorations that screen never draws', async () => {
     showRamadanLists();
-    jest.mocked(fetchYear).mockRejectedValueOnce(new Error('Offline'));
+    jest.mocked(ensureTimetableReady).mockRejectedValueOnce(new Error('The artifact will not stage'));
 
     await render(<Index />);
 
@@ -505,22 +525,26 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     expect(Notifications.getPermissionsAsync).toHaveBeenCalledTimes(1);
   });
 
-  it('does not arm saved alerts while the download is still on its way', async () => {
+  it('does not arm saved alerts while the timetable is still becoming ready', async () => {
+    const failStage = holdStage();
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, ASR, AlertType.Sound);
 
     await render(<Index />);
 
     expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+
+    // Consume the held stage inside the test, so no later test inherits it
+    await act(() => failStage());
   });
 
   it('arms saved alerts once sync has finished', async () => {
     showLondonDay('2026-09-11', '14:00');
     setPrayerAlertType(ScheduleType.Standard, ASR, AlertType.Sound);
-    const failDownload = holdDownload();
+    const failStage = holdStage();
     await render(<Index />);
 
-    await act(() => failDownload());
+    await act(() => failStage());
 
     await waitFor(() =>
       expect(Notifications.scheduleNotificationAsync).toHaveBeenCalledWith(
@@ -533,10 +557,10 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     showLondonDay('2026-09-11', '14:00');
     const error = new Error('Notification service unavailable');
     jest.mocked(Notifications.getAllScheduledNotificationsAsync).mockRejectedValueOnce(error);
-    const failDownload = holdDownload();
+    const failStage = holdStage();
     await render(<Index />);
 
-    await act(() => failDownload());
+    await act(() => failStage());
 
     await waitFor(() =>
       expect(logger.error).toHaveBeenCalledWith('Failed to refresh notifications after sync:', error)

@@ -15,7 +15,6 @@ import {
   formatPrayerTime,
   formatTime,
   formatTimeAgo,
-  getCurrentYear,
   getDayAnchor,
   getNightTimes,
   getPreviousDateString,
@@ -23,10 +22,8 @@ import {
   getTodayDateString,
   getWallSecondDelay,
   isDateYesterdayOrFuture,
-  isDecember,
   isDecorationSeason,
   isFriday,
-  isJanuaryFirst,
   isRamadan,
   splitSingleColon,
 } from '../time';
@@ -370,59 +367,6 @@ describe('isFriday', () => {
     const saturday = new Date('2026-01-24T12:00:00Z');
     expect(isFriday(friday)).toBe(true);
     expect(isFriday(saturday)).toBe(false);
-  });
-});
-
-describe('isJanuaryFirst', () => {
-  it('correctly identifies January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-01'))).toBe(true);
-    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59Z'))).toBe(true);
-  });
-
-  it('correctly identifies non-January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-02'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2025-12-31'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2026-02-01'))).toBe(false);
-  });
-});
-
-describe('isDecember', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it('returns true in December', () => {
-    jest.setSystemTime(new Date('2026-12-15T12:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 1st', () => {
-    jest.setSystemTime(new Date('2026-12-01T00:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 31st', () => {
-    jest.setSystemTime(new Date('2026-12-31T23:59:59Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns false in January', () => {
-    jest.setSystemTime(new Date('2026-01-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in November', () => {
-    jest.setSystemTime(new Date('2026-11-30T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in June', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
   });
 });
 
@@ -856,15 +800,6 @@ describe('isDateYesterdayOrFuture', () => {
   it('returns false for two days ago', () => {
     const dateStr = prayerZoneDate(-2 * 86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
-  });
-});
-
-describe('getCurrentYear', () => {
-  it('returns current year as number', () => {
-    const year = getCurrentYear();
-    expect(typeof year).toBe('number');
-    expect(year).toBeGreaterThanOrEqual(2024);
-    expect(year).toBeLessThanOrEqual(2100);
   });
 });
 

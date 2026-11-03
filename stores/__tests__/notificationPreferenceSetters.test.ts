@@ -34,6 +34,7 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -75,6 +76,7 @@ const everyPreference = () =>
 
 beforeEach(() => {
   Database.database.clearAll();
+  __installTimetableDays([]);
   for (const atom of [
     ...standardPrayerAlertAtoms,
     ...extraPrayerAlertAtoms,
@@ -90,6 +92,7 @@ beforeEach(() => {
   }
   store.set(soundPreferenceAtom, 0);
   Database.database.clearAll();
+  __installTimetableDays([]);
 });
 
 // =============================================================================

@@ -14,9 +14,9 @@
 # Generate it from the timetable the app is using (see e2e/README.md). No API key
 # is read, passed or stored by this script.
 #
-# Alarm TIMES are only meaningful on a PRODUCTION build: local/dev builds run the
-# mock API, whose prayers sit a few minutes either side of launch and have
-# usually already fired. Everything else here is build-agnostic.
+# Alarm TIMES are only meaningful on a PRODUCTION build: local/dev builds serve
+# the launch-relative mock window, whose prayers sit a few minutes either side
+# of launch and have usually already fired. Everything else here is build-agnostic.
 #
 # Exit status: 0 all checks passed, 1 at least one FAIL.
 

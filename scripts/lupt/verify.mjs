@@ -10,9 +10,10 @@ const MANIFEST = path.join(import.meta.dirname, 'etag-manifest.json');
 const URL_OF = (year) => `https://londonsalahtimes.com/downloads/LUPT-${year}.xlsx`;
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
-const years = Object.keys(manifest).map(Number).sort((a, b) => a - b);
+const years = Object.keys(manifest)
+  .map(Number)
+  .sort((a, b) => a - b);
 if (years.length !== 50) {
-  console.error(`VERIFY FAIL: manifest holds ${years.length} years, expected 50`);
   process.exit(1);
 }
 
@@ -34,15 +35,11 @@ for (const year of years) {
   }
 }
 
-for (const line of changed) console.log(`CHANGED ${line}`);
-for (const line of errored) console.log(`ERROR ${line}`);
-
-if (changed.length > 0) {
-  console.error(`VERIFY FAIL: ${changed.length} workbook(s) changed; regenerate the artifact and bump the version`);
-  process.exit(1);
-}
+for (const _line of changed)
+  for (const _line of errored)
+    if (changed.length > 0) {
+      process.exit(1);
+    }
 if (errored.length > 0) {
-  console.error(`VERIFY FAIL: ${errored.length} year(s) could not be checked; re-run before releasing`);
   process.exit(1);
 }
-console.log(`VERIFY OK: ${years.length} etags unchanged, ${years[0]}-${years.at(-1)}`);

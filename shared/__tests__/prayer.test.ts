@@ -1,6 +1,6 @@
 import { formatInTimeZone } from 'date-fns-tz';
 
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 import { PRAYER_TIMEZONE, type PrayerId } from '../constants';
 import { setActiveLocale } from '../i18n/locale';
@@ -29,10 +29,11 @@ import {
 } from '../types';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 /**
  * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
@@ -694,7 +695,7 @@ const FIELDS: Field[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const STANDARD_NAMES: PrayerId[] = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const DAY_MS = 86_400_000;
 
-/** Real London times from londonprayertimes.com for 2026, in FIELDS order */
+/** Real London times from the captured 2026 payload for 2026, in FIELDS order */
 const LONDON_2026: Record<string, string[]> = {
   '2026-03-27': ['04:11', '05:45', '12:11', '15:33', '18:28', '19:46'],
   '2026-03-28': ['04:09', '05:42', '12:11', '15:34', '18:30', '19:48'],
@@ -798,7 +799,7 @@ const outOfTimeOrder = (prayers: Prayer[]): string[] => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 describe('transformApiData with times api/client.ts could not read', () => {

@@ -22,7 +22,8 @@ import { getDefaultStore } from 'jotai';
 import { createInstant, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
+import { __installTimetableDays } from '@/stores/timetable';
 import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
 import {
@@ -91,7 +92,7 @@ const seedPrayerCache = () => {
   const yesterday = addDays(now, -1);
   const tomorrow = addDays(now, 1);
 
-  Database.saveAllPrayers([
+  Timetable.__installTimetableDays([
     makeDayData(formatDateShort(yesterday)),
     makeDayData(formatDateShort(now)),
     makeDayData(formatDateShort(tomorrow)),
@@ -397,8 +398,8 @@ describe('refreshPrayerWidgets integration', () => {
     expect(darkEntries).not.toEqual(homeEntries);
   });
 
-  it('skips the push entirely when the prayer cache is empty', async () => {
-    Database.clearPrefix('prayer_');
+  it('skips the push entirely when the timetable serves no days', async () => {
+    __installTimetableDays([]);
 
     await refreshPrayerWidgets();
 

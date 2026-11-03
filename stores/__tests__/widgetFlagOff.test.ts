@@ -18,6 +18,7 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 
 interface WidgetStack {
   Database: typeof import('@/stores/database');
+  Timetable: typeof import('@/stores/timetable');
   time: typeof import('@/shared/time');
   homeMocks: typeof import('@/widgets/PrayerWidget');
   lockMocks: typeof import('@/widgets/LockPrayerWidget');
@@ -31,6 +32,7 @@ const loadFreshStack = (): WidgetStack => {
   const RN = require('react-native');
   RN.Platform.OS = 'ios';
   stack.Database = require('@/stores/database');
+  stack.Timetable = require('@/stores/timetable');
   stack.time = require('@/shared/time');
   stack.homeMocks = require('@/widgets/PrayerWidget');
   stack.lockMocks = require('@/widgets/LockPrayerWidget');
@@ -58,7 +60,7 @@ const seedPrayerCache = (stack: WidgetStack, days: number) => {
     const day = addDays(stack.time.createInstant(), offset);
     data.push(makeDayData(stack.time.formatDateShort(day)));
   }
-  stack.Database.saveAllPrayers(data);
+  stack.Timetable.__installTimetableDays(data);
 };
 
 const allKinds = (stack: WidgetStack) => [...Object.values(stack.homeMocks), ...Object.values(stack.lockMocks)];

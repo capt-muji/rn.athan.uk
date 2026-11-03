@@ -32,8 +32,7 @@ const HEADER_BYTES = 12;
 const COLUMNS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'];
 const NULL_MINUTE = 0xffff;
 
-const fail = (message) => {
-  console.error(`GENERATOR FAIL: ${message}`);
+const fail = (_message) => {
   process.exit(1);
 };
 
@@ -64,7 +63,8 @@ const minutes2026 = (() => {
     const row = {};
     for (const field of COLUMNS) {
       const value = times[field];
-      if (typeof value !== 'string' || !TIME_PATTERN.test(value)) fail(`lpt-2026 ${date} ${field} unreadable: ${value}`);
+      if (typeof value !== 'string' || !TIME_PATTERN.test(value))
+        fail(`lpt-2026 ${date} ${field} unreadable: ${value}`);
       row[field] = toMinute(value);
     }
     out.set(date, row);
@@ -89,12 +89,12 @@ for (let year = 2027; year <= LAST_YEAR; year += 1) {
 {
   const banked = JSON.parse(fs.readFileSync(BANKED_2027, 'utf8'));
   const fresh = workbookYears[2027];
-  let cells = 0;
+  let _cells = 0;
   for (const [date, bankedRow] of Object.entries(banked)) {
     const freshRow = fresh[date];
     if (!freshRow) fail(`2027 cross-check: ${date} missing from the fresh workbook parse`);
     for (const field of ['fajr', 'sunrise', 'dhuhr', 'asr', 'asr_2', 'magrib', 'isha']) {
-      cells += 1;
+      _cells += 1;
       if (freshRow[field] !== bankedRow[field]) {
         fail(`2027 cross-check: ${date} ${field} parsed ${freshRow[field]}, banked ${bankedRow[field]}`);
       }
@@ -103,7 +103,6 @@ for (let year = 2027; year <= LAST_YEAR; year += 1) {
   if (Object.keys(fresh).length !== Object.keys(banked).length) {
     fail(`2027 cross-check: ${Object.keys(fresh).length} parsed days vs ${Object.keys(banked).length} banked`);
   }
-  console.log(`check 2027-vs-banked: ${cells} cells identical`);
 }
 
 // --- Check 2: continuity and readability of every day, 2026-01-01 to 2076-12-31 ---
@@ -129,7 +128,6 @@ for (const date of expectedDays) {
   rows.set(date, row);
 }
 if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDayOf(expectedDays[0])} != ${EPOCH_DAY}`);
-console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expectedDays.at(-1)}`);
 
 // --- Check 3: the R13 interval-table drift verifier, seven fields, fifty workbook years ---
 {
@@ -137,7 +135,8 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
   const solar = (jd) => {
     const T = (jd - 2451545) / 36525;
     const r = T / 10;
-    const L0 = 280.4664567 + 360007.6982779 * r + 0.03032028 * r * r + r ** 3 / 49931 - r ** 4 / 15300 - r ** 5 / 2000000;
+    const L0 =
+      280.4664567 + 360007.6982779 * r + 0.03032028 * r * r + r ** 3 / 49931 - r ** 4 / 15300 - r ** 5 / 2000000;
     const M = 357.5291092 + 35999.0502909 * T - 0.0001536 * T * T - T ** 3 / 24490000;
     const e = 0.016708634 - 0.000042037 * T - 0.0000001267 * T * T;
     const C =
@@ -163,14 +162,25 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
     const a = Math.floor((14 - M) / 12);
     const y2 = Y + 4800 - a;
     const m2 = M + 12 * a - 3;
-    return D + Math.floor((153 * m2 + 2) / 5) + 365 * y2 + Math.floor(y2 / 4) - Math.floor(y2 / 100) + Math.floor(y2 / 400) - 32045 - 0.5;
+    return (
+      D +
+      Math.floor((153 * m2 + 2) / 5) +
+      365 * y2 +
+      Math.floor(y2 / 4) -
+      Math.floor(y2 / 100) +
+      Math.floor(y2 / 400) -
+      32045 -
+      0.5
+    );
   };
   const offsetCache = new Map();
   const londonOffsetMin = (iso) => {
     if (offsetCache.has(iso)) return offsetCache.get(iso);
-    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', hour: '2-digit', hourCycle: 'h23' }).formatToParts(
-      new Date(`${iso}T12:00:00Z`)
-    );
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      hour: '2-digit',
+      hourCycle: 'h23',
+    }).formatToParts(new Date(`${iso}T12:00:00Z`));
     const v = (Number(parts.find((p) => p.type === 'hour').value) - 12) * 60;
     offsetCache.set(iso, v);
     return v;
@@ -179,7 +189,9 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
     const { dec, E } = solar(jdOf(iso) + 0.5);
     const noon = 720 - 4 * lon - E + londonOffsetMin(iso);
     const hourAngle = (altDeg) => {
-      const c = (Math.sin(altDeg * RAD) - Math.sin(lat * RAD) * Math.sin(dec * RAD)) / (Math.cos(lat * RAD) * Math.cos(dec * RAD));
+      const c =
+        (Math.sin(altDeg * RAD) - Math.sin(lat * RAD) * Math.sin(dec * RAD)) /
+        (Math.cos(lat * RAD) * Math.cos(dec * RAD));
       if (c < -1 || c > 1) return null;
       return (Math.acos(c) / RAD) * 4;
     };
@@ -188,13 +200,22 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
       const h = hourAngle(Math.atan(1 / (factor + Math.tan(Math.abs(lat - dec) * RAD))) / RAD);
       return h === null ? null : noon + h;
     };
-    return { noon, sunrise: H === null ? null : noon - H, sunset: H === null ? null : noon + H, asr1: asrAt(1), asr2: asrAt(2) };
+    return {
+      noon,
+      sunrise: H === null ? null : noon - H,
+      sunset: H === null ? null : noon + H,
+      asr1: asrAt(1),
+      asr2: asrAt(2),
+    };
   };
   // The measured interval table: Fajr/Isha durations from the publisher's own 2027 year (2028 for 02-29)
   const tableOf = (parsed) => {
     const out = {};
     for (const [date, row] of Object.entries(parsed)) {
-      out[date.slice(5)] = { fajr: toMinute(row.sunrise) + 3 - toMinute(row.fajr), isha: toMinute(row.isha) - (toMinute(row.magrib) - 3) };
+      out[date.slice(5)] = {
+        fajr: toMinute(row.sunrise) + 3 - toMinute(row.fajr),
+        isha: toMinute(row.isha) - (toMinute(row.magrib) - 3),
+      };
     }
     return out;
   };
@@ -235,20 +256,25 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
       }
     }
   }
-  console.log(`check drift: ${exact} of ${total} exact (R13 recorded ${EXPECT_EXACT} of ${EXPECT_TOTAL})`);
   if (total !== EXPECT_TOTAL) fail(`drift verifier compared ${total} cells, expected ${EXPECT_TOTAL}`);
   if (exact !== EXPECT_EXACT) {
-    fail(`drift verifier exact count ${exact} != recorded ${EXPECT_EXACT}; the workbooks changed: ${misses.join(', ')}`);
+    fail(
+      `drift verifier exact count ${exact} != recorded ${EXPECT_EXACT}; the workbooks changed: ${misses.join(', ')}`
+    );
   }
 }
 
 // --- Report: Umm al Qura divergence, workbook column L vs the app's own Intl conversion ---
 {
-  const fmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', { day: 'numeric', month: 'numeric', year: 'numeric' });
+  const fmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
   // The workbook spells months ("Sha'bān") and Intl transliterates them ("Shaʻban"), so the
   // comparison is structural: day, month ordinal walked from the day-wrap, and year - never the name
-  let compared = 0;
-  let divergent = 0;
+  let _compared = 0;
+  let _divergent = 0;
   const examples = [];
   for (let year = 2027; year <= LAST_YEAR; year += 1) {
     const buf = fs.readFileSync(path.join(CACHE, `LUPT-${year}.xlsx`));
@@ -316,9 +342,9 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
       if (ordinal === null) ordinal = own.month;
       else if (dayRows[i].islamicYear > dayRows[i - 1].islamicYear) ordinal = 1;
       else if (dayRows[i].day <= dayRows[i - 1].day) ordinal += 1;
-      compared += 1;
+      _compared += 1;
       if (own.day !== dayRows[i].day || own.month !== ordinal || own.year !== dayRows[i].islamicYear) {
-        divergent += 1;
+        _divergent += 1;
         if (examples.length < 5) {
           examples.push(
             `${dayRows[i].date}: workbook ${dayRows[i].islamicYear}-${ordinal}-${dayRows[i].day} intl ${own.year}-${own.month}-${own.day}`
@@ -327,7 +353,6 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
       }
     }
   }
-  console.log(`report umalqura: ${compared} days compared, ${divergent} divergent${examples.length ? ` -> ${examples.join('; ')}` : ''}`);
 }
 
 // --- Emit ---
@@ -352,21 +377,17 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
   // Round-trip: decode the emitted bytes back and compare with the source minutes
   const readBack = fs.readFileSync(ARTIFACT);
   if (readBack.length !== buffer.length) fail('round-trip length mismatch');
-  let checked = 0;
+  let _checked = 0;
   expectedDays.forEach((date, index) => {
     for (let c = 0; c < COLUMNS.length; c += 1) {
       const minute = readBack.readUInt16LE(HEADER_BYTES + (index * COLUMNS.length + c) * 2);
       if (minute !== rows.get(date)[COLUMNS[c]]) fail(`round-trip mismatch at ${date} ${COLUMNS[c]}`);
-      checked += 1;
+      _checked += 1;
     }
   });
-  const gzip = zlib.gzipSync(buffer).length;
-  const brotli = zlib.brotliCompressSync(buffer).length;
-  const sha256 = createHash('sha256').update(buffer).digest('hex');
-  console.log(
-    `artifact: ${buffer.length} bytes raw (header ${HEADER_BYTES} + ${rows.size} days x ${COLUMNS.length} x 2), ${gzip} gzip, ${brotli} brotli, round-trip ${checked} cells`
-  );
-  console.log(`sha256 ${sha256}`);
+  const _gzip = zlib.gzipSync(buffer).length;
+  const _brotli = zlib.brotliCompressSync(buffer).length;
+  const _sha256 = createHash('sha256').update(buffer).digest('hex');
 }
 
 // --- --print-day: decode from the committed artifact, for device-step evidence ---
@@ -387,5 +408,4 @@ console.log(`check continuity: ${rows.size} days, ${expectedDays[0]}..${expected
     const minute = buffer.readUInt16LE(HEADER_BYTES + (index * cols + c) * 2);
     times[COLUMNS[c]] = minute === NULL_MINUTE ? null : fmtMinute(minute);
   }
-  console.log(JSON.stringify({ date, ...times }));
 }

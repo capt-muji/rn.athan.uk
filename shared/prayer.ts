@@ -22,7 +22,7 @@ import {
   ScheduleType,
   type UnreadablePrayer,
 } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // DATA TRANSFORMATION FUNCTIONS
@@ -393,7 +393,7 @@ function createPrayersForSingleDay(
 
 /**
  * Creates a PrayerSequence containing prayers for multiple days
- * Uses Database.getPrayerByDateString() for raw data and createPrayer() for each prayer
+ * Uses Timetable.getTimetableDay() for raw data and createPrayer() for each prayer
  *
  * Built in list order (compareListOrder in shared/sequence.ts): day by day, each day
  * in its list's order. That is also time order for every readable row, and it gives a
@@ -419,14 +419,14 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
 
   // Extras night rows need the day before each listed day (getNightTimesForDay)
   const dayBeforeFirst = TimeUtils.getPreviousDateString(firstDate);
-  let previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDateString(dayBeforeFirst) : null;
+  let previousDayData = type === ScheduleType.Extra ? Timetable.getTimetableDay(dayBeforeFirst) : null;
 
   for (let i = 0; i < dayCount; i++) {
     const date = TimeUtils.addDaysToDateString(firstDate, i);
 
     // A day that is not stored is listed with every row unreadable, not skipped: skipping
     // it presented the following day as today (finding 70)
-    const rawData = Database.getPrayerByDateString(date);
+    const rawData = Timetable.getTimetableDay(date);
     prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));
     previousDayData = rawData;
   }
@@ -445,9 +445,9 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
  * @returns The day's rows in list order; every row unreadable when the day is not stored
  */
 export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[] => {
-  const rawData = Database.getPrayerByDateString(date);
+  const rawData = Timetable.getTimetableDay(date);
   const previousDate = TimeUtils.getPreviousDateString(date);
-  const previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDateString(previousDate) : null;
+  const previousDayData = type === ScheduleType.Extra ? Timetable.getTimetableDay(previousDate) : null;
 
   return createPrayersForSingleDay(type, date, rawData, previousDayData);
 };
