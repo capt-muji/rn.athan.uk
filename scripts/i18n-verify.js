@@ -343,7 +343,7 @@ const SYNONYM_GROUPS = [
   // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
   ['fajr', 'dawn', 'morning', 'sabah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
@@ -355,8 +355,8 @@ const SYNONYM_GROUPS = [
   // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
-  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht'],
+  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
@@ -440,7 +440,7 @@ const SYNONYM_GROUPS = [
   ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
-  ['done', 'completed', 'complete', 'finished', 'ready'],
+  ['done', 'completed', 'complete', 'finished', 'ready', 'full'],
   ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
   ['later', 'then', 'afterwards'],
@@ -467,7 +467,7 @@ const PHRASE_SYNONYMS = [
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida', 'jill kadah'],
 ];
 
 const SYNONYM_INDEX = new Map();
