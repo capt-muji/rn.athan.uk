@@ -195,6 +195,25 @@ describe('buildPrayerWidgetTimeline', () => {
     expect(first.dateLabel).toBe(formatDateLocalized('2026-06-15'));
   });
 
+  it('renders 24-hour times through the whole widget path when the preference is on', () => {
+    // The default direction is pinned by the 05:45/10:45/01:10 literals above;
+    // this pins the other side, so a builder that ignores use24Hour fails here
+    const settings24 = { ...SETTINGS, use24Hour: true };
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), settings24, 'light');
+
+    expect(entries[0].props.nextTime).toBe('17:45');
+    const stale = entries[entries.length - 1];
+    expect(stale.props.nextTime).toBe('22:45');
+    expect(entries[0].props.prayers?.map((row) => row.time)).toContain('13:10');
+
+    const snapshot = buildPrayerWidgetSnapshot(makeSequence(), settings24);
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
+    expect(snapshotTimes).toContain('13:10');
+    expect(snapshotTimes).not.toContain('01:10');
+  });
+
   it('bakes Latin digits into every carried time under ar', () => {
     // The push layer bakes at push time: under ar every carried time renders
     // Latin digits, while the epochs and the schema stay numeric

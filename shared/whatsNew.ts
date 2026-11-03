@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.45.1',
+  version: '2.45.2',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -210,7 +210,7 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       // toggle's own name so the modal teaches the settings label
       titleKey: 'whatsNew.title.format24',
       bodyKey: 'whatsNew.body.format24',
-      version: '2.45.1',
+      version: '2.45.2',
     },
   ],
 };
