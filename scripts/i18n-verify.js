@@ -356,7 +356,7 @@ const SYNONYM_GROUPS = [
   // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
   ['isha', 'nightfall', 'dinner', 'supper', 'isak'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
@@ -451,7 +451,7 @@ const PHRASE_SYNONYMS = [
   ['sunrise', 'rising of the sun'],
   ['midnight', 'middle of the night'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida'],
 ];
 
 const SYNONYM_INDEX = new Map();
