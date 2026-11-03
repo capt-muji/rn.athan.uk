@@ -474,7 +474,7 @@ const PHRASE_SYNONYMS = [
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
-  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
   ['rabiʻ ii', 'spring of the other'],
   // xwarina seherê, the Kurdish dawn meal, renders as its plain description
   ['suhoor', 'morning meal'],
@@ -518,6 +518,7 @@ const PHRASE_SYNONYMS = [
     'dulkhaad',
     'zhul kada',
     'zulqaid',
+    'zul qaida',
   ],
 ];
 

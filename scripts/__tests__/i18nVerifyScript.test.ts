@@ -698,6 +698,11 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuhr', both('Zuhri', 'x'))).toBe('green');
   });
 
+  it('the Punjabi loop lessons: Zul-Qaida s other vowel, and stale as not-fresh', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qaida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Not fresh', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
