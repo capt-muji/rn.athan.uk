@@ -365,10 +365,10 @@ const SYNONYM_GROUPS = [
   ['moment', 'second', 'seconds', 'instant'],
   ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information'],
   ['sound', 'audio', 'tone', 'voice'],
-  ['silent', 'silence', 'mute', 'muted', 'dumb'],
+  ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
   // Azerbaijani ekran is the display word and renders as screen, its own sense
-  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen', 'reveal'],
+  ['show', 'display', 'view', 'visible', 'appearance', 'layout', 'screen', 'reveal', 'indicate', 'showing'],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
   // mati is Indonesian's standard device-off word; the engine renders its literal sense.
   // Minangkabau shares the word, and die is that literal sense's own verb.
@@ -443,7 +443,7 @@ const PHRASE_SYNONYMS = [
   // every member is the dismay exclamation in its own register, Alamak's class
   ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
-  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete'],
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
   ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj'],
