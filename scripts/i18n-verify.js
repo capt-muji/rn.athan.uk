@@ -451,7 +451,7 @@ const PHRASE_SYNONYMS = [
   ['sunrise', 'rising of the sun'],
   ['midnight', 'middle of the night'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida'],
+  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida'],
 ];
 
 const SYNONYM_INDEX = new Map();
