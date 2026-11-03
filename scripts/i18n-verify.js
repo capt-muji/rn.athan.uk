@@ -363,7 +363,7 @@ const SYNONYM_GROUPS = [
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information'],
+  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information', 'message', 'messages'],
   ['sound', 'audio', 'tone', 'voice'],
   ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
@@ -437,7 +437,7 @@ const SYNONYM_GROUPS = [
   ['wrong', 'error', 'mistake', 'problem'],
   // agpabaro, the Philippine family's refresh word, renders as renew and renewal
   ['refresh', 'reload', 'load', 'renew', 'renewal'],
-  ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments'],
+  ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments', 'parameters'],
   ['hold', 'keep', 'retain'],
   ['turn', 'move', 'rotate'],
   ['done', 'completed', 'complete', 'finished', 'ready', 'full', 'completion'],
@@ -467,7 +467,18 @@ const PHRASE_SYNONYMS = [
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
-  ['dhuʻl qiʻdah', 'zulkida', 'zulqida', 'zul qaeda', 'zilkad', 'dhil al qaida', 'dhul kida', 'jill kadah', 'zulqaida'],
+  [
+    'dhuʻl qiʻdah',
+    'zulkida',
+    'zulqida',
+    'zul qaeda',
+    'zilkad',
+    'dhil al qaida',
+    'dhul kida',
+    'jill kadah',
+    'zulqaida',
+    'in zulkag',
+  ],
 ];
 
 const SYNONYM_INDEX = new Map();

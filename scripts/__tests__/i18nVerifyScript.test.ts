@@ -631,6 +631,13 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Later', both('Future', 'x'))).toBe('green');
   });
 
+  it('the Kazakh loop lessons: parameters, messages, and the Qiʻdah rendering', () => {
+    expect(verify.verdictOf('Settings', both('Parameters', 'x'))).toBe('green');
+    expect(verify.verdictOf("Why don't I get any notifications?", both('Why is there no message?', 'x'))).toBe('green');
+    expect(verify.verdictOf('Enable Notifications', both('Add messages', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('In Zulkag', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
