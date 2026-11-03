@@ -364,7 +364,7 @@ const SYNONYM_GROUPS = [
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
-  ['athan', 'adhan', 'azan', 'azaan', 'call'],
+  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
   [
@@ -495,6 +495,7 @@ const PHRASE_SYNONYMS = [
     'zul hajj',
     'dil hajj',
     'dul hijxhe',
+    'zulhaj',
   ],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
@@ -530,6 +531,7 @@ const PHRASE_SYNONYMS = [
     'zul qudda',
     'dhul qada',
     'dhul qad',
+    'julgita',
   ],
 ];
 
