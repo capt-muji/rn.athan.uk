@@ -360,7 +360,7 @@ const SYNONYM_GROUPS = [
   // tuta, Quechua's night word, names the night prayer the way nightfall does
   ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha', 'night'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha', 'zuha', 'zuho'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'chast', 'juha', 'dooha', 'luha', 'zuha', 'zuho'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)

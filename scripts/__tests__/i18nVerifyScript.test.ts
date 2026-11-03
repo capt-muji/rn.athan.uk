@@ -782,6 +782,10 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Home & Lock widgets', both('Widgets for both screens', 'x'))).toBe('green');
   });
 
+  it('the Urdu loop lessons: Chast carries Duha', () => {
+    expect(verify.verdictOf('Duha', both('Chast', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
