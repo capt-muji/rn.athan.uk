@@ -20,7 +20,13 @@ import { addDays } from 'date-fns';
 import { type PrayerId, UNAVAILABLE_TIME } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
-import { createPrayerDatetime, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
+import {
+  createPrayerDatetime,
+  formatDateLocalized,
+  formatDateShort,
+  formatDisplayTime,
+  formatHijriDateLocalized,
+} from '@/shared/time';
 import { type Prayer, type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
 import type { PrayerWidgetSettings } from '@/shared/widgetTypes';
@@ -80,7 +86,7 @@ const makeSequence = (): Prayer[] => {
   return prayers;
 };
 
-const SETTINGS: PrayerWidgetSettings = { hijriDate: false };
+const SETTINGS: PrayerWidgetSettings = { hijriDate: false, use24Hour: false };
 
 const asSequence = (prayers: Prayer[]): PrayerSequence => ({
   type: ScheduleType.Standard,
@@ -99,7 +105,11 @@ describe('buildPrayerWidgetSnapshot', () => {
     const rows = snapshot.days.flatMap((day) => day.rows);
     expect(rows).toHaveLength(sequence.prayers.length);
 
-    const expected = readable.map((prayer) => `${prayerLabel(prayer.id)}|${prayer.time}|${prayer.datetime.getTime()}`);
+    // The carried time is the display format the settings pick, so the model converts too
+    const expected = readable.map(
+      (prayer) =>
+        `${prayerLabel(prayer.id)}|${formatDisplayTime(prayer.time, SETTINGS.use24Hour)}|${prayer.datetime.getTime()}`
+    );
     const carried = rows.map((row) => `${row.name}|${row.time}|${row.epochMs}`);
     expect(carried.sort()).toEqual(expected.sort());
   });
@@ -142,7 +152,7 @@ describe('buildPrayerWidgetSnapshot', () => {
   it('dateLabel honors the hijri preference per day', () => {
     const sequence = asSequence(makeSequence());
     const gregorian = buildPrayerWidgetSnapshot(sequence, SETTINGS);
-    const hijri = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
+    const hijri = buildPrayerWidgetSnapshot(sequence, { hijriDate: true, use24Hour: false });
     if (!gregorian || !hijri) throw new Error('snapshots missing');
 
     expect(gregorian.days[0]?.dateLabel).toBe(formatDateLocalized('2026-10-17'));

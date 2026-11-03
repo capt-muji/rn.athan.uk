@@ -11,6 +11,7 @@ import {
   footerFor,
   formatDateLocalized,
   formatDateShort,
+  formatDisplayTime,
   formatHijriDateLocalized,
   formatPrayerTime,
   formatTime,
@@ -645,6 +646,30 @@ describe('createPrayerDatetime', () => {
     const today = createPrayerDatetime('2026-01-18', '23:59');
     const tomorrow = createPrayerDatetime('2026-01-19', '00:01');
     expect(tomorrow.getTime()).toBeGreaterThan(today.getTime());
+  });
+});
+
+describe('formatDisplayTime', () => {
+  it('returns the 24-hour string unchanged while the preference is on', () => {
+    expect(formatDisplayTime('23:58', true)).toBe('23:58');
+    expect(formatDisplayTime('00:15', true)).toBe('00:15');
+  });
+
+  // The owner's ruling (2026-11-03): no marker, midnight and noon both render 12, hours stay
+  // two digits so a format switch never shifts the screen's widths (Row 72)
+  it('converts to 12-hour with two-digit hours: midnight and noon both 12, no marker', () => {
+    expect(formatDisplayTime('00:30', false)).toBe('12:30');
+    expect(formatDisplayTime('12:00', false)).toBe('12:00');
+    expect(formatDisplayTime('01:05', false)).toBe('01:05');
+    expect(formatDisplayTime('09:59', false)).toBe('09:59');
+    expect(formatDisplayTime('13:05', false)).toBe('01:05');
+    expect(formatDisplayTime('23:11', false)).toBe('11:11');
+  });
+
+  it('passes a string that is not HH:MM through untouched (the unread sentinel, the empty loading string)', () => {
+    expect(formatDisplayTime('--:--', false)).toBe('--:--');
+    expect(formatDisplayTime('', false)).toBe('');
+    expect(formatDisplayTime('6:5', false)).toBe('6:5');
   });
 });
 

@@ -10,10 +10,11 @@ import { isCascadeRow, useSchedule } from '@/hooks/useSchedule';
 import { ANIMATION, COLORS, SPACING, TEXT, UNAVAILABLE_TIME } from '@/shared/constants';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
-import { splitSingleColon } from '@/shared/time';
+import { formatDisplayTime, splitSingleColon } from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
+import { show24HourFormatAtom } from '@/stores/ui';
 
 import { colonInkPair } from './colonInk';
 
@@ -37,8 +38,13 @@ export default function PrayerTime({ type, index }: Props) {
   const NextOccurrencePrayer = usePrayer(type, index, true);
   const isSelectedForOverlay = useAtomValue(useMemo(() => getOverlaySelectedAtom(type, index), [type, index]));
   const isHiddenByOverlay = useAtomValue(useMemo(() => getOverlayHiddenAtom(type, index), [type, index]));
+  // The format preference read at render, the directionGlyph pattern: a switch re-renders the row
+  const use24Hour = useAtomValue(show24HourFormatAtom);
 
-  const displayTime = getShownTime(isSelectedForOverlay, Prayer, NextOccurrencePrayer) ?? UNAVAILABLE_TIME;
+  const displayTime = formatDisplayTime(
+    getShownTime(isSelectedForOverlay, Prayer, NextOccurrencePrayer) ?? UNAVAILABLE_TIME,
+    use24Hour
+  );
 
   const previousDisplayDate = usePrevious(Schedule.displayDate);
   const isCascadeRoll =

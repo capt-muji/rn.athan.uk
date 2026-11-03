@@ -469,7 +469,7 @@ describe('widget props v8 footers', () => {
   it('stamps v8 and a footer on every iOS entry, byte-identical to the v6 parse under en', () => {
     expect(WIDGET_PROPS_VERSION).toBe(8);
 
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false }, 'light');
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: false, use24Hour: false }, 'light');
     for (const entry of entries) {
       expect(typeof entry.props.footer).toBe('string');
       expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
@@ -484,7 +484,7 @@ describe('widget props v8 footers', () => {
   it('stamps v4 and a footer on every Android snapshot day, same composition', () => {
     expect(ANDROID_SNAPSHOT_VERSION).toBe(4);
 
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     expect(snapshot.days.map((day) => day.footer)).toEqual([
@@ -497,7 +497,7 @@ describe('widget props v8 footers', () => {
   });
 
   it('bakes no `now` into the Android strings contract', () => {
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: false, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     // The word never renders on any widget (owner, on glass), so the rider
@@ -507,12 +507,12 @@ describe('widget props v8 footers', () => {
   });
 
   it('composes the Hijri footer from the month prefix and day under the preference', () => {
-    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true }, 'light');
+    const entries = buildPrayerWidgetTimeline(PUSH_AT, sequence, { hijriDate: true, use24Hour: false }, 'light');
     for (const entry of entries) {
       expect(entry.props.footer).toBe(legacyFooterParse(entry.props.dateLabel));
     }
 
-    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true });
+    const snapshot = buildPrayerWidgetSnapshot(sequence, { hijriDate: true, use24Hour: false });
     expect(snapshot).not.toBeNull();
     if (!snapshot) return;
     for (const day of snapshot.days) {

@@ -23,7 +23,7 @@ import { createInstant, formatDateLocalized, formatDateShort, formatHijriDateLoc
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Database from '@/stores/database';
-import { hijriDateEnabledAtom, popupUpdateEnabledAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, popupUpdateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
 import {
   ExtrasLockWidget,
@@ -180,6 +180,20 @@ describe('initWidgetSettingsSync', () => {
     // parity itself is covered by the widgetTimeline suites)
     const first = widgetPush()[0][0][0];
     expect(first.props.dateLabel).toBe(formatHijriDateLocalized(NIGHT_BELONGS_TO));
+  });
+
+  it('re-pushes the timeline when the 24-hour setting changes, carrying the format', async () => {
+    const store = getDefaultStore();
+    store.set(show24HourFormatAtom, true);
+
+    await jest.advanceTimersByTimeAsync(1000);
+
+    expect(widgetPush()).toHaveLength(1);
+    expect(lockPush()).toHaveLength(1);
+    // The pushed time renders 24-hour for the countdown target, Isha at 01:05 on the 22nd
+    const first = widgetPush()[0][0][0];
+    expect(first.props.nextTime).toBe('01:05');
+    store.set(show24HourFormatAtom, false);
   });
 
   it('collapses a burst of setting changes into a single push', async () => {
