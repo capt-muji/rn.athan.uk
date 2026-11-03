@@ -670,6 +670,17 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulkaada', 'x'))).toBe('green');
   });
 
+  it('the Malayalam loop lessons: the prayer romanizations, announcement, and the dismay word', () => {
+    expect(verify.verdictOf('Fajr', both('Subah', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuhr', both('Luhr', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Azar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Duha', both('Luha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Notification at prayer time', both('Announcement during Namaz', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dulkhaad', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dhul Hajj', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Oops!', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');

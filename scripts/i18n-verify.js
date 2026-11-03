@@ -341,16 +341,16 @@ const STOPWORDS = new Set([
 /** Synonym groups for this app's UI vocabulary; members match each other pairwise */
 const SYNONYM_GROUPS = [
   // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
-  ['fajr', 'dawn', 'morning', 'sabah'],
+  ['fajr', 'dawn', 'morning', 'sabah', 'subah'],
   // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
-  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar'],
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar', 'luhr'],
   // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
   // never verifies it; the Shuruk family carries for the languages that transliterate
   ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
   // Bhanu is the sun's own Sanskritic name (Bhanuvara is Sunday); the weekday row
   // names the sun itself, while sunrise above stays whole-sense only (order eleven)
   ['sun', 'bhanu'],
-  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar', 'azar'],
   // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
   // never verifies the prayer: the word's plain evening sense is the only engine reading
   // beyond the name itself that carries
@@ -360,14 +360,26 @@ const SYNONYM_GROUPS = [
   // Esha is the same romanization class for Kurdish Eşa
   ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha'],
   ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'juha', 'dooha', 'luha'],
   ['istijaba', 'istijabah', 'response', 'answer'],
   // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
   // spelling of the same word (as Isak is of Isyak)
   ['athan', 'adhan', 'azan', 'azaan', 'call'],
   ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory', 'warning', 'note', 'information', 'message', 'messages'],
+  [
+    'notification',
+    'alert',
+    'notice',
+    'reminder',
+    'memory',
+    'warning',
+    'note',
+    'information',
+    'message',
+    'messages',
+    'announcement',
+  ],
   ['sound', 'audio', 'tone', 'voice', 'noise'],
   ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
   // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
@@ -459,7 +471,7 @@ const SYNONYM_GROUPS = [
 const PHRASE_SYNONYMS = [
   ['up to date', 'latest version', 'most recent version', 'no new updates', 'no new update', 'no update'],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past'],
   ['rabiʻ ii', 'spring of the other'],
@@ -468,7 +480,7 @@ const PHRASE_SYNONYMS = [
   // worked out and calculated name the same derivation on the qibla row
   ['worked out', 'calculated', 'computed'],
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
-  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah', 'dulhija', 'zilhice'],
+  ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah', 'dulhija', 'zilhice', 'dhul hajj'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
   ['sunrise', 'rising of the sun', 'sun is rising'],
   ['midnight', 'middle of the night'],
@@ -490,6 +502,7 @@ const PHRASE_SYNONYMS = [
     'dulcada',
     'zilqada',
     'zulkaada',
+    'dulkhaad',
   ],
 ];
 
