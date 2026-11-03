@@ -369,6 +369,10 @@ const SYNONYM_GROUPS = [
   ['moment', 'second', 'seconds', 'instant'],
   // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok
   ['done', 'finish', 'finished', 'ok'],
+  // Довідка, Ukrainian's help, renders as its reference-desk sense
+  ['help', 'reference'],
+  // обривається завчасно cuts off early; the engine's premature is the same earliness
+  ['early', 'prematurely'],
   [
     'notification',
     'alert',
@@ -510,6 +514,8 @@ const PHRASE_SYNONYMS = [
   // bez zvuka, Russian's silent, states the absence plainly
   ['silent', 'no sound', 'without sound'],
   ['midnight', 'middle of the night'],
+  // Віджети обох екранів - the two screens are the home and the lock
+  ['home & lock widgets', 'widgets for both screens'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
   // and Qiʻdah's own local spellings (the engine renders Zulkida)
@@ -530,6 +536,7 @@ const PHRASE_SYNONYMS = [
     'zulkaada',
     'dulkhaad',
     'zhul kada',
+    'zul-kada',
     'zulqaid',
     'zul qaida',
     'zul qudda',

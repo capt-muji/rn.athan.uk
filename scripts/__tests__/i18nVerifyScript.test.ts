@@ -773,6 +773,15 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqadi', 'x'))).toBe('green');
   });
 
+  it('the Ukrainian loop lessons: Dovidka as Reference, Zul-kada, the premature end, both screens', () => {
+    expect(verify.verdictOf('Help', both('Reference', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-kada', 'x'))).toBe('green');
+    expect(
+      verify.verdictOf('Why does the athan cut off early?', both('Why does the call to prayer end prematurely?', 'x'))
+    ).toBe('green');
+    expect(verify.verdictOf('Home & Lock widgets', both('Widgets for both screens', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
