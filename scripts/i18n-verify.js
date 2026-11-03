@@ -489,7 +489,7 @@ const PHRASE_SYNONYMS = [
     'the version is the latest',
   ],
   // every member is the dismay exclamation in its own register, Alamak's class
-  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh'],
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh', 'ha'],
   // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
   ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
   ['rabiʻ ii', 'spring of the other'],
@@ -551,6 +551,7 @@ const PHRASE_SYNONYMS = [
     'dulkhaad',
     'zhul kada',
     'zul-kada',
+    'zúl-kádá',
     'zulqaid',
     'zul qaida',
     'zul qudda',
