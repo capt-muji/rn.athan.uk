@@ -443,7 +443,7 @@ const SYNONYM_GROUPS = [
   ['done', 'completed', 'complete', 'finished', 'ready', 'full', 'completion'],
   ['default', 'original', 'initial'],
   // later~then~afterwards: the postponing adverb's own senses, the update button's word
-  ['later', 'then', 'afterwards'],
+  ['later', 'then', 'afterwards', 'future'],
   // Bambara ɲɛfɛ renders as ahead - before's own directional sense
   ['before', 'ahead'],
   // Owner order twelve: Qibla is transliterated in every language; the local spellings
@@ -462,7 +462,7 @@ const PHRASE_SYNONYMS = [
   // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
   ['dhuʻl hijjah', 'zulhijjah', 'zilhijja', 'zulhajjah', 'zilhaj', 'zulhijah'],
   // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
-  ['sunrise', 'rising of the sun'],
+  ['sunrise', 'rising of the sun', 'sun is rising'],
   ['midnight', 'middle of the night'],
   // the failure phrase: a problem occurred is something went wrong in its own words
   ['something went wrong', 'a problem occurred', 'another problem occurred'],
