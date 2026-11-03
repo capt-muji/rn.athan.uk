@@ -148,7 +148,7 @@ export const su = {
   'error.heading': ' Aduh! ',
   'error.body': ' Aya nu salah. ',
   'error.hint': ' Coba anyaran! ',
-  'error.refresh': ' Anyaran ',
+  'error.refresh': ' Segerkeun ',
   'prayerAlert.notification': 'Iber {name}: {state}',
   'prayerAlert.state.off': 'pareuman',
   'prayerAlert.state.silent': 'cicing',
