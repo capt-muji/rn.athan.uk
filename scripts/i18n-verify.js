@@ -528,6 +528,7 @@ const PHRASE_SYNONYMS = [
     'zul qaida',
     'zul qudda',
     'dhul qada',
+    'dhul qad',
   ],
 ];
 
