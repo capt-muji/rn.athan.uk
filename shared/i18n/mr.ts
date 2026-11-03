@@ -82,7 +82,7 @@ export const mr = {
   'whatsNew.body.athanSounds': 'नवीन अजान आवाज जोडले',
   'whatsNew.title.reminderSounds': 'आठवण आवाज',
   'whatsNew.body.reminderSounds': 'प्रत्येक आठवणीला आवाज जोडला',
-  'whatsNew.title.widgets': 'मुख्य स्क्रीन विजेट्स',
+  'whatsNew.title.widgets': 'होम आणि लॉक स्क्रीन विजेट्स',
   'whatsNew.body.widgets': 'नमाजच्या वेळा मुख्य आणि लॉक स्क्रीनवर जोडल्या',
   'whatsNew.title.lockLayouts': 'लॉक स्क्रीन रचना',
   'whatsNew.body.lockLayouts': 'पुढील नमाज आणि अतिरिक्त वेळांसाठी चार नवीन रचना',

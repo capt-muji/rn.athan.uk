@@ -503,6 +503,7 @@ const PHRASE_SYNONYMS = [
     'zilqada',
     'zulkaada',
     'dulkhaad',
+    'zhul kada',
   ],
 ];
 
