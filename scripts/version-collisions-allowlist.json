@@ -358,5 +358,13 @@
   {
     "version": "2.43.59",
     "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.4",
+    "reason": "the T-623 harness commit and the T-615 lane commit each took 2.48.4 from the same 2.48.3 base on parallel lanes; both lanes have moved past it and the uat merge resolves the duplicate"
+  },
+  {
+    "version": "2.48.5",
+    "reason": "2026-11-04 lane2/T-623's variants-11-25 step takes the single patch step above its own 2.48.4 while the concurrent lane1/T-615-wave commit d1b5c57b already holds 2.48.5 and the discipline gate forbids a two-step bump; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

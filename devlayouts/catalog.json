@@ -68,5 +68,110 @@
     "name": "Segmented Icon Track",
     "archetype": "Segmented Track",
     "hidesExplanations": true
+  },
+  {
+    "index": 11,
+    "id": "segmented-track-caption",
+    "name": "Segmented Track Caption",
+    "archetype": "Segmented Track",
+    "hidesExplanations": false
+  },
+  {
+    "index": 12,
+    "id": "slider-ticks",
+    "name": "Slider with Ticks",
+    "archetype": "Slider",
+    "hidesExplanations": true
+  },
+  {
+    "index": 13,
+    "id": "slider-hint-drawer",
+    "name": "Slider Hint Drawer",
+    "archetype": "Slider",
+    "hidesExplanations": false
+  },
+  {
+    "index": 14,
+    "id": "carousel-snap-cards",
+    "name": "Card Carousel",
+    "archetype": "Card Carousel",
+    "hidesExplanations": false
+  },
+  {
+    "index": 15,
+    "id": "wheel-vertical-drum",
+    "name": "Vertical Drum Wheel",
+    "archetype": "Wheel",
+    "hidesExplanations": true
+  },
+  {
+    "index": 16,
+    "id": "wheel-side-detail",
+    "name": "Wheel + Side Detail",
+    "archetype": "Sectioned Wheel",
+    "hidesExplanations": false
+  },
+  {
+    "index": 17,
+    "id": "wheel-two-section",
+    "name": "Two-Section Wheel",
+    "archetype": "Sectioned Wheel",
+    "hidesExplanations": false
+  },
+  {
+    "index": 18,
+    "id": "wheel-horizontal",
+    "name": "Horizontal Wheel",
+    "archetype": "Wheel",
+    "hidesExplanations": true
+  },
+  {
+    "index": 19,
+    "id": "pill-tab-bar",
+    "name": "Pill Tab Bar",
+    "archetype": "Pill Tab Bar",
+    "hidesExplanations": true
+  },
+  {
+    "index": 20,
+    "id": "pill-tabs-panel",
+    "name": "Pill Tabs + Panel",
+    "archetype": "Pill Tab Bar",
+    "hidesExplanations": false
+  },
+  {
+    "index": 21,
+    "id": "underline-tabs",
+    "name": "Underline Tabs",
+    "archetype": "Underline Tabs",
+    "hidesExplanations": true
+  },
+  {
+    "index": 22,
+    "id": "icon-tab-strip",
+    "name": "Icon Tab Strip",
+    "archetype": "Icon Tabs",
+    "hidesExplanations": true
+  },
+  {
+    "index": 23,
+    "id": "dropdown-collapsed-row",
+    "name": "Collapsed Dropdown Row",
+    "archetype": "Dropdown",
+    "hidesExplanations": true
+  },
+  {
+    "index": 24,
+    "id": "dropdown-inset-list",
+    "name": "Dropdown Inset List",
+    "archetype": "Dropdown Panel",
+    "hidesExplanations": true
+  },
+  {
+    "index": 25,
+    "id": "dropdown-summary-badges",
+    "name": "Dropdown Summary Badges",
+    "archetype": "Dropdown",
+    "hidesExplanations": true
   }
 ]

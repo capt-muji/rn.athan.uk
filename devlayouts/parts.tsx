@@ -10,8 +10,9 @@
 
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Pressable } from 'react-native-gesture-handler';
 
-import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, HIT_SLOP, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { type TranslationKey, t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import type { FastingMode, FastingSelection } from '@/shared/types';
@@ -44,6 +45,9 @@ export const modeHint = (mode: FastingMode): string => t(MODE_HINT_KEYS[mode]);
 
 /** The picker's accessibility role, a code value for the string scanner */
 export const RADIO_ROLE = 'radio';
+
+/** The disclosure and stepper controls' accessibility role, a code value for the string scanner */
+export const BUTTON_ROLE = 'button';
 
 /** The house radio: the shipped picker's own circle, reused for alignment comparisons */
 export const RadioDot = ({ on }: { on: boolean }) => <View style={[styles.radio, on ? styles.radioOn : null]} />;
@@ -94,6 +98,46 @@ export const HintChip = ({ mode }: { mode: FastingMode }) => (
   <View style={styles.hintChip}>
     <Text style={styles.hintChipText}>{modeHint(mode)}</Text>
   </View>
+);
+
+/** The tooltip bubble: one mode's explanation in a box beside its row, border-left first */
+export const HintBubble = ({ mode }: { mode: FastingMode }) => (
+  <View style={styles.hintBubble}>
+    <Text style={styles.hintBubbleText}>{modeHint(mode)}</Text>
+  </View>
+);
+
+/** A rotated-bar chevron for the disclosure families, no glyph dependency */
+const CHEVRON_ROTATION: Record<'up' | 'down' | 'left' | 'right', string> = {
+  up: '-135deg',
+  down: '45deg',
+  left: '-45deg',
+  right: '135deg',
+};
+
+export const Chevron = ({ direction, ink }: { direction: 'up' | 'down' | 'left' | 'right'; ink?: string }) => (
+  <View
+    style={[
+      styles.chevron,
+      ink ? { borderLeftColor: ink, borderBottomColor: ink } : null,
+      { transform: [{ rotate: CHEVRON_ROTATION[direction] }] },
+    ]}
+  />
+);
+
+/** The house chip: one rounded outline that fills when its option is selected */
+export const Chip = ({ label, on, onPress }: { label: string; on: boolean; onPress: () => void }) => (
+  <Pressable
+    style={[styles.chip, on ? styles.chipOn : null]}
+    onPress={onPress}
+    hitSlop={HIT_SLOP.md}
+    accessibilityRole={RADIO_ROLE}
+    accessibilityState={{ selected: on }}
+    accessibilityLabel={label}>
+    <Text style={[styles.chipText, on ? styles.chipTextOn : null]} numberOfLines={1}>
+      {label}
+    </Text>
+  </Pressable>
 );
 
 const ty = typographyFor(currentLocaleId());
@@ -192,5 +236,49 @@ const styles = StyleSheet.create({
     fontFamily: ty.familyRegular,
     lineHeight: ty.lineHeight(TEXT.lineHeight.default),
     color: COLORS.text.sheetSubtitle,
+  },
+  hintBubble: {
+    marginTop: SPACING.quart,
+    marginLeft: SPACING.lg,
+    borderRadius: RADIUS.sm,
+    borderLeftWidth: 2,
+    borderColor: 'rgba(99, 102, 241, 0.35)',
+    backgroundColor: 'rgba(99, 102, 241, 0.06)',
+    paddingLeft: SPACING.md,
+    paddingRight: SPACING.md,
+    paddingVertical: SPACING.py,
+  },
+  hintBubbleText: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    lineHeight: ty.lineHeight(TEXT.lineHeight.default),
+    color: COLORS.text.sheetSubtitle,
+  },
+  chevron: {
+    width: 10,
+    height: 10,
+    borderLeftWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: COLORS.text.sheetSubtitle,
+  },
+  chip: {
+    borderRadius: 100,
+    borderWidth: 1,
+    borderColor: 'rgba(99, 102, 241, 0.25)',
+    paddingHorizontal: SPACING.md,
+    paddingVertical: SPACING.py,
+  },
+  chipOn: {
+    borderColor: COLORS.text.primary,
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+  },
+  chipText: {
+    fontSize: ty.size(TEXT.sizeDetail),
+    fontFamily: ty.familyRegular,
+    color: COLORS.text.sheetSubtitle,
+  },
+  chipTextOn: {
+    fontFamily: ty.familyMedium,
+    color: COLORS.text.primary,
   },
 });
