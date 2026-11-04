@@ -24,7 +24,7 @@ import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 import { __installTimetableDays } from '@/stores/timetable';
-import { hijriDateEnabledAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
@@ -231,9 +231,12 @@ describe('readWidgetSettings', () => {
   it('snapshots the widget-visible preferences', () => {
     const store = getDefaultStore();
     store.set(hijriDateEnabledAtom, true);
+    store.set(show24HourFormatAtom, true);
 
     expect(readWidgetSettings()).toEqual({
       hijriDate: true,
+      use24Hour: true,
     });
+    store.set(show24HourFormatAtom, false);
   });
 });

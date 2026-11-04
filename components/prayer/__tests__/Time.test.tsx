@@ -3,6 +3,7 @@
  */
 
 import { act, render, screen } from '@testing-library/react-native';
+import { getDefaultStore } from 'jotai';
 import * as Reanimated from 'react-native-reanimated';
 
 import { london, showLondonDay } from '@/__tests__/harness';
@@ -10,6 +11,7 @@ import { COLORS } from '@/shared/constants';
 import { setActiveLocale } from '@/shared/i18n/locale';
 import { ScheduleType } from '@/shared/types';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
+import { show24HourFormatAtom } from '@/stores/ui';
 
 import { colonInkPair } from '../colonInk';
 import PrayerTime from '../Time';
@@ -187,8 +189,9 @@ describe('the readable row time on Friday 11 September 2026 at 14:00', () => {
     });
     expect(styleEntries(screen.getAllByText(':')[0])[2]).toBeDefined();
     expect(styleEntries(screen.getAllByText(':')[1])[2]).toBeDefined();
-    expect(screen.getByLabelText('16:29')).toBeOnTheScreen();
-    expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+    // 12-hour rendering is the default (owner order 2026-11-03): 16:29 reads 04:29, 19:28 reads 07:28
+    expect(screen.getByLabelText('04:29')).toBeOnTheScreen();
+    expect(screen.getByLabelText('07:28')).toBeOnTheScreen();
   });
 
   it('carries the passed pair on a passed row', async () => {
@@ -252,7 +255,26 @@ describe('the colon under the overlay selection', () => {
 
     expect(colonInkPair({ isNext: true, isPassed: false, isStandard: true }).to).toBe(NEXT_COLON_COLOUR);
     expect(styleEntries(screen.getByText(':'))[2]).toBeDefined();
-    expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+    expect(screen.getByLabelText('07:28')).toBeOnTheScreen();
+  });
+
+  // The format preference read at render: a fresh mount draws whichever format the
+  // preference holds, and the 24-hour choice restores the stored string untouched
+  it('renders its time in 24-hour once the preference is enabled, and 12-hour once it is off', async () => {
+    const store = getDefaultStore();
+    store.set(show24HourFormatAtom, true);
+    try {
+      showLondonDay('2026-09-11', '14:00');
+      const as24 = await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
+      expect(screen.getByLabelText('19:28')).toBeOnTheScreen();
+      as24.unmount();
+
+      store.set(show24HourFormatAtom, false);
+      await render(<PrayerTime type={ScheduleType.Standard} index={MAGRIB} />);
+      expect(screen.getByLabelText('07:28')).toBeOnTheScreen();
+    } finally {
+      store.set(show24HourFormatAtom, false);
+    }
   });
 
   it('keeps the passed and next pairs while selected', async () => {

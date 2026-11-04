@@ -45,7 +45,7 @@ import * as TimeUtils from '@/shared/time';
 import { type PrayerSequence, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot, buildPrayerWidgetTimeline, TIMELINE_DAYS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetAndroidProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
-import { hijriDateEnabledAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 
 // Widget layout modules are required LAZILY inside the iOS-only push paths:
 // their evaluation registers the layouts (a side effect) and pulls in
@@ -86,6 +86,7 @@ export const readWidgetSettings = (): PrayerWidgetSettings => {
 
   return {
     hijriDate: store.get(hijriDateEnabledAtom),
+    use24Hour: store.get(show24HourFormatAtom),
   };
 };
 
@@ -137,6 +138,7 @@ export const initWidgetSettingsSync = (): void => {
   };
 
   store.sub(hijriDateEnabledAtom, schedulePush);
+  store.sub(show24HourFormatAtom, schedulePush);
 };
 
 /**

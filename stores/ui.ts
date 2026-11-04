@@ -159,6 +159,13 @@ export const showSecondsAtom = atomWithStorageBoolean('preference_show_seconds',
 /** Whether to show "time passed" info below countdown */
 export const showTimePassedAtom = atomWithStorageBoolean('preference_show_time_passed', false);
 
+/**
+ * Whether times render in 24-hour format. Off (the default) renders every displayed
+ * time in 12-hour while every stored, computed and scheduled value stays 24-hour
+ * (owner order 2026-11-03).
+ */
+export const show24HourFormatAtom = atomWithStorageBoolean('preference_show_24h_format', false);
+
 /** Whether seasonal decorations (Ramadan, Eid, etc.) are shown */
 export const decorationsEnabledAtom = atomWithStorageBoolean('preference_decorations_enabled', true);
 

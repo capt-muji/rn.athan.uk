@@ -180,6 +180,34 @@ export const formatPrayerTime = (date: Date): string => {
   return composed;
 };
 
+const WALL_TIME = /^(\d{2}):(\d{2})$/;
+
+/**
+ * The string a wall-clock time renders as: unchanged in 24-hour, hour-12 in 12-hour.
+ * The display-side twin of formatPrayerTime - every stored, computed and scheduled value
+ * stays 24-hour HH:MM, and only the strings drawn on screen pass through here (owner
+ * order 2026-11-03).
+ *
+ * 12-hour keeps two-digit hours and carries no AM/PM marker, so midnight and noon both
+ * render 12 and a format switch never shifts the screen's widths (Row 72). A string that
+ * is not HH:MM - the unread sentinel, the empty loading string - passes through as it is.
+ *
+ * @param time Wall-clock string in 24-hour HH:mm form
+ * @param use24Hour Whether the 24-hour format is chosen in settings
+ * @returns The string to draw
+ *
+ * @example
+ * formatDisplayTime('23:11', false) // "11:11"
+ * formatDisplayTime('00:30', false) // "12:30"
+ */
+export const formatDisplayTime = (time: string, use24Hour: boolean): string => {
+  if (use24Hour) return time;
+  const match = WALL_TIME.exec(time);
+  if (!match) return time;
+  const hour = Number(match[1]);
+  return `${pad2(hour % 12 === 0 ? 12 : hour % 12)}:${match[2]}`;
+};
+
 /**
  * Adds whole days to a YYYY-MM-DD date
  * Pure calendar arithmetic — independent of every timezone and of clock changes

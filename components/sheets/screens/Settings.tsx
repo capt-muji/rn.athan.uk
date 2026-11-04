@@ -35,6 +35,7 @@ import {
   setPopupWhatsNewEnabled,
   setSettingsSheetModal,
   setSoundListReady,
+  show24HourFormatAtom,
   showLanguageSheet,
   showQiblaSheet,
   showSecondsAtom,
@@ -78,6 +79,7 @@ export const SettingsBody = forwardRef<SettingsBodyHandle, Record<never, never>>
   const [hijriEnabled, setHijriEnabled] = useAtom(hijriDateEnabledAtom);
   const [showSeconds, setShowSeconds] = useAtom(showSecondsAtom);
   const [showTimePassed, setShowTimePassed] = useAtom(showTimePassedAtom);
+  const [show24HourFormat, setShow24HourFormat] = useAtom(show24HourFormatAtom);
   const [decorationsEnabled, setDecorationsEnabled] = useAtom(decorationsEnabledAtom);
   const showDecorationToggle = useMemo(() => isDecorationSeason(), []);
   const [updateRowState, setUpdateRowState] = useState<UpdateRowState>('idle');
@@ -253,6 +255,11 @@ export const SettingsBody = forwardRef<SettingsBodyHandle, Record<never, never>>
             label={t('settings.showTimePassed')}
             value={showTimePassed}
             onToggle={(next) => setShowTimePassed(next)}
+          />
+          <SettingsToggle
+            label={t('settings.show24Hour')}
+            value={show24HourFormat}
+            onToggle={(next) => setShow24HourFormat(next)}
           />
           {showDecorationToggle && (
             <SettingsToggle

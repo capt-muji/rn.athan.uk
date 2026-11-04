@@ -149,12 +149,16 @@ const formatDateLabel = (belongsToDate: string, hijriDate: boolean): string => {
  * @returns The day's rows and the active row index (-1 when the prayer counted
  *   down to is not on the day's list, as on a day with no readable row)
  */
-const buildDayList = (prayers: Prayer[], segment: Segment): { rows: WidgetPrayerRow[]; activeIndex: number } => {
+const buildDayList = (
+  prayers: Prayer[],
+  segment: Segment,
+  settings: PrayerWidgetSettings
+): { rows: WidgetPrayerRow[]; activeIndex: number } => {
   const dayPrayers = prayers.filter((prayer) => prayer.belongsToDate === segment.displayDate).sort(compareListOrder);
   const rows = dayPrayers.map((prayer) => ({
     id: prayer.id,
     name: prayerLabel(prayer.id),
-    time: prayer.time ?? UNAVAILABLE_TIME,
+    time: TimeUtils.formatDisplayTime(prayer.time ?? UNAVAILABLE_TIME, settings.use24Hour),
   }));
 
   return { rows, activeIndex: dayPrayers.indexOf(segment.next) };
@@ -200,7 +204,7 @@ export const buildPrayerWidgetTimeline = (
     // layouts cannot draw it and show that prayer's name and time instead, and a real time must not sit
     // under a day that has none
     const dateLabel = formatDateLabel(next.belongsToDate, settings.hijriDate);
-    const dayList = buildDayList(prayers, current);
+    const dayList = buildDayList(prayers, current, settings);
 
     return {
       date,
@@ -210,7 +214,8 @@ export const buildPrayerWidgetTimeline = (
         rtl: localeDirection(currentLocaleId()) === 'rtl',
         theme,
         nextName: prayerLabel(next.id),
-        nextTime: next.time,
+        // segment.next is always a readable row, so its time is a string
+        nextTime: TimeUtils.formatDisplayTime(next.time, settings.use24Hour),
         nextEpochMs: next.datetime.getTime(),
         prevEpochMs: prev ? prev.datetime.getTime() : date.getTime(),
         dateLabel,
@@ -271,7 +276,7 @@ export const buildPrayerWidgetTimeline = (
       rtl: localeDirection(currentLocaleId()) === 'rtl',
       theme,
       nextName: prayerLabel(finalPrayer.id),
-      nextTime: finalPrayer.time,
+      nextTime: TimeUtils.formatDisplayTime(finalPrayer.time, settings.use24Hour),
       nextEpochMs: finalEpochMs,
       prevEpochMs: finalEpochMs,
       dateLabel: formatDateLabel(finalPrayer.belongsToDate, settings.hijriDate),
@@ -331,11 +336,12 @@ export const buildPrayerWidgetSnapshot = (
       day.rows.push({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: TimeUtils.formatDisplayTime(prayer.time, settings.use24Hour),
         epochMs: prayer.datetime.getTime(),
       });
       horizonEpochMs = Math.max(horizonEpochMs ?? Number.NEGATIVE_INFINITY, prayer.datetime.getTime());
     } else {
+      // The unread sentinel is not HH:MM, so it passes through formatDisplayTime unchanged
       day.rows.push({ id: prayer.id, name: prayerLabel(prayer.id), time: UNAVAILABLE_TIME, epochMs: 0 });
     }
   }

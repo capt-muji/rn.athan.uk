@@ -53,6 +53,8 @@ export type WidgetTheme = 'light' | 'dark';
 export interface PrayerWidgetSettings {
   /** Whether dates render in Hijri (preference_hijri_date) */
   hijriDate: boolean;
+  /** Whether times render in 24-hour format (preference_show_24h_format); off renders 12-hour */
+  use24Hour: boolean;
 }
 
 /**
