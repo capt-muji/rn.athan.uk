@@ -19,6 +19,7 @@ describe('the fasting layout registry', () => {
       expect(VARIANTS[position].name).toBe(catalog[position].name);
       expect(VARIANTS[position].archetype).toBe(catalog[position].archetype);
       expect(VARIANTS[position].hidesExplanations).toBe(catalog[position].hidesExplanations);
+      expect(VARIANTS[position].open).toBe(catalog[position].open);
     }
   });
 

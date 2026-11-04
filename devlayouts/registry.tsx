@@ -13,6 +13,10 @@ import { VARIANTS_01_10 } from './variants/variants-01-10';
 import { VARIANTS_11_25 } from './variants/variants-11-25';
 import { VARIANTS_26_40 } from './variants/variants-26-40';
 import { VARIANTS_41_50 } from './variants/variants-41-50';
+import { VARIANTS_51_75 } from './variants/variants-51-75';
+import { VARIANTS_76_100 } from './variants/variants-76-100';
+import { VARIANTS_101_125 } from './variants/variants-101-125';
+import { VARIANTS_126_150 } from './variants/variants-126-150';
 
 export type FastingVariantComponent = () => ReactElement;
 
@@ -22,6 +26,8 @@ export interface FastingVariant {
   readonly name: string;
   readonly archetype: string;
   readonly hidesExplanations: boolean;
+  /** The round-2 rows' opening set; the round-1 rows carry none */
+  readonly open?: string;
   readonly Component: FastingVariantComponent;
 }
 
@@ -31,6 +37,10 @@ const COMPONENT_MAPS: readonly Record<string, FastingVariantComponent>[] = [
   VARIANTS_11_25,
   VARIANTS_26_40,
   VARIANTS_41_50,
+  VARIANTS_51_75,
+  VARIANTS_76_100,
+  VARIANTS_101_125,
+  VARIANTS_126_150,
 ];
 
 const componentFor = (id: string): FastingVariantComponent => {

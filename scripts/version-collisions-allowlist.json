@@ -386,5 +386,9 @@
   {
     "version": "2.48.10",
     "reason": "2026-11-04 lane2/T-623's audit-fix commit takes the single patch step above its own 2.48.9 while lane1/T-615-wave's kas fix 20df42c7 already holds 2.48.10 (that lane's tip has since stepped to 2.48.11); the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.11",
+    "reason": "2026-11-04 lane2/T-623 takes its round-2 foundation as the single patch step above its own 2.48.10 while the paused lane1/T-615-wave tip f436dccc already holds 2.48.11; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

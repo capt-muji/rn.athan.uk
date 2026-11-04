@@ -1,15 +1,26 @@
 /**
  * The fasting layout catalog's own invariants (T-623): the plain rows the
- * registry binds components to and the gallery generator reads - fifty rows,
+ * registry binds components to and the gallery generator reads - 150 rows,
  * contiguous, uniquely named, every one carrying its archetype and its
- * explanation-hiding flag.
+ * explanation-hiding flag. The round-2 block (rows 51-150) names its opening
+ * set, never hides the descriptions, and spans at least 20 archetypes.
  */
 
 import catalog from '@/devlayouts/catalog.json';
 
-type Row = { index: number; id: string; name: string; archetype: string; hidesExplanations: boolean };
+type Row = {
+  index: number;
+  id: string;
+  name: string;
+  archetype: string;
+  open?: string;
+  hidesExplanations: boolean;
+};
 
 const rows: Row[] = catalog;
+const r2 = rows.filter((row) => row.index > 50);
+
+const OPEN_SETS = new Set(['every', 'muhammad', 'dawood', 'white', 'muhammad+white', 'dawood+white']);
 
 describe('the fasting layout catalog', () => {
   it('numbers its rows contiguously from 1', () => {
@@ -36,7 +47,23 @@ describe('the fasting layout catalog', () => {
     for (const row of rows) expect(typeof row.hidesExplanations).toBe('boolean');
   });
 
-  it('holds all fifty rows', () => {
-    expect(rows.length).toBe(50);
+  it('holds all 150 rows', () => {
+    expect(rows.length).toBe(150);
+  });
+
+  it('holds the round-2 block of 100 rows', () => {
+    expect(r2.length).toBe(100);
+  });
+
+  it('names a valid opening set on every round-2 row', () => {
+    for (const row of r2) expect(OPEN_SETS.has(row.open ?? '')).toBe(true);
+  });
+
+  it('hides no round-2 explanations: the spec wants the full description everywhere', () => {
+    for (const row of r2) expect(row.hidesExplanations).toBe(false);
+  });
+
+  it('spans at least twenty round-2 archetypes', () => {
+    expect(new Set(r2.map((row) => row.archetype)).size).toBeGreaterThanOrEqual(20);
   });
 });

@@ -348,5 +348,805 @@
     "name": "Hint Hero Cards",
     "archetype": "Text-Hero Cards",
     "hidesExplanations": false
+  },
+  {
+    "index": 51,
+    "id": "switch-rows-plain",
+    "name": "Plain Switch Rows",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 52,
+    "id": "switch-rows-monogram",
+    "name": "Monogram Switch Rows",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 53,
+    "id": "switch-rows-compact",
+    "name": "Compact Switch Rows",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 54,
+    "id": "switch-rows-grouped",
+    "name": "Grouped Switch Rows",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 55,
+    "id": "switch-rows-captioned",
+    "name": "Captioned Switch Rows",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 56,
+    "id": "hero-everyday-top",
+    "name": "Hero Every-Day Top",
+    "archetype": "Hero Toggle",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 57,
+    "id": "hero-everyday-bottom",
+    "name": "Hero Every-Day Bottom",
+    "archetype": "Hero Toggle",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 58,
+    "id": "hero-ring",
+    "name": "Hero Ring",
+    "archetype": "Hero Toggle",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 59,
+    "id": "hero-bar",
+    "name": "Hero Banner Switch",
+    "archetype": "Hero Toggle",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 60,
+    "id": "hero-badge",
+    "name": "Hero Corner Badge",
+    "archetype": "Hero Toggle",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 61,
+    "id": "monogram-circle-rows",
+    "name": "Circle Monogram Rows",
+    "archetype": "Monogram Medallions",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 62,
+    "id": "monogram-outline-rows",
+    "name": "Outline Monogram Rows",
+    "archetype": "Monogram Medallions",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 63,
+    "id": "monogram-compact",
+    "name": "Compact Monogram Rows",
+    "archetype": "Monogram Medallions",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 64,
+    "id": "monogram-two-line",
+    "name": "Two-Line Monogram Rows",
+    "archetype": "Monogram Medallions",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 65,
+    "id": "monogram-rail",
+    "name": "Monogram Rail",
+    "archetype": "Monogram Medallions",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 66,
+    "id": "rail-left-dots",
+    "name": "Left Rail Dots",
+    "archetype": "Rail Timeline",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 67,
+    "id": "rail-center-ring",
+    "name": "Center Ring Rail",
+    "archetype": "Rail Timeline",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 68,
+    "id": "rail-thick-segments",
+    "name": "Thick Rail Segments",
+    "archetype": "Rail Timeline",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 69,
+    "id": "rail-numbered",
+    "name": "Numbered Rail",
+    "archetype": "Rail Timeline",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 70,
+    "id": "rail-card-nodes",
+    "name": "Card Rail Nodes",
+    "archetype": "Rail Timeline",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 71,
+    "id": "ghost-numerals",
+    "name": "Ghost Numeral Cards",
+    "archetype": "Ghost Numeral Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 72,
+    "id": "ghost-fill-numerals",
+    "name": "Ghost Numeral Fill",
+    "archetype": "Ghost Numeral Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 73,
+    "id": "ghost-stack-numerals",
+    "name": "Ghost Numeral Stack",
+    "archetype": "Ghost Numeral Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 74,
+    "id": "ghost-side-numerals",
+    "name": "Side Numeral Cards",
+    "archetype": "Ghost Numeral Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 75,
+    "id": "ghost-footer-numerals",
+    "name": "Ghost Numeral Footer",
+    "archetype": "Ghost Numeral Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 76,
+    "id": "ledger-dotted-leaders",
+    "name": "Dotted Leader Ledger",
+    "archetype": "Ledger Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 77,
+    "id": "ledger-double-entry",
+    "name": "Double-Entry Ledger",
+    "archetype": "Ledger Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 78,
+    "id": "ledger-dense",
+    "name": "Dense Ledger",
+    "archetype": "Ledger Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 79,
+    "id": "ledger-boxed",
+    "name": "Boxed Ledger",
+    "archetype": "Ledger Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 80,
+    "id": "ledger-summary-foot",
+    "name": "Ledger Summary Foot",
+    "archetype": "Ledger Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 81,
+    "id": "outline-fill-small",
+    "name": "Small Outline-Fill Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 82,
+    "id": "outline-fill-badge",
+    "name": "Outline-Fill Badge Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 83,
+    "id": "outline-fill-inline-desc",
+    "name": "Outline-Fill Inline Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 84,
+    "id": "outline-fill-split",
+    "name": "Outline-Fill Split Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 85,
+    "id": "outline-fill-strip",
+    "name": "Outline-Fill Strip Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 86,
+    "id": "pill-stack-classic",
+    "name": "Classic Pill Stack",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 87,
+    "id": "pill-stack-full",
+    "name": "Full-Width Pill Stack",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 88,
+    "id": "pill-stack-duo",
+    "name": "Duo Pill Stack",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 89,
+    "id": "pill-stack-tall",
+    "name": "Tall Pill Stack",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 90,
+    "id": "pill-stack-footer",
+    "name": "Pill Stack Footer Card",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 91,
+    "id": "ring-dial-cardinal",
+    "name": "Cardinal Ring Dial",
+    "archetype": "Ring Dials",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 92,
+    "id": "ring-dial-dot-labels",
+    "name": "Dot Ring Dial",
+    "archetype": "Ring Dials",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 93,
+    "id": "ring-dial-double",
+    "name": "Double Ring Dial",
+    "archetype": "Ring Dials",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 94,
+    "id": "ring-dial-quadrant",
+    "name": "Quadrant Ring Dial",
+    "archetype": "Ring Dials",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 95,
+    "id": "ring-dial-ticks",
+    "name": "Tick Ring Dial",
+    "archetype": "Ring Dials",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 96,
+    "id": "sector-dial-quarters",
+    "name": "Quarter Sector Dial",
+    "archetype": "Sector Dials",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 97,
+    "id": "sector-dial-cross",
+    "name": "Cross Hair Sector Dial",
+    "archetype": "Sector Dials",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 98,
+    "id": "sector-dial-gap",
+    "name": "Gapped Sector Dial",
+    "archetype": "Sector Dials",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 99,
+    "id": "sector-dial-hub",
+    "name": "Hub Sector Dial",
+    "archetype": "Sector Dials",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 100,
+    "id": "sector-dial-outline",
+    "name": "Outline Sector Dial",
+    "archetype": "Sector Dials",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 101,
+    "id": "ticket-dashed-left",
+    "name": "Dashed-Edge Tickets",
+    "archetype": "Ticket Stubs",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 102,
+    "id": "ticket-dashed-right",
+    "name": "Right-Notch Tickets",
+    "archetype": "Ticket Stubs",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 103,
+    "id": "ticket-stub-numbers",
+    "name": "Numbered Tickets",
+    "archetype": "Ticket Stubs",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 104,
+    "id": "ticket-wide-stubs",
+    "name": "Wide Ticket Stubs",
+    "archetype": "Ticket Stubs",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 105,
+    "id": "ticket-stub-perf-row",
+    "name": "Perforated Row Tickets",
+    "archetype": "Ticket Stubs",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 106,
+    "id": "bracket-left-cards",
+    "name": "Left Bracket Cards",
+    "archetype": "Bracket Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 107,
+    "id": "bracket-full-frame",
+    "name": "Full-Frame Bracket Cards",
+    "archetype": "Bracket Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 108,
+    "id": "bracket-thin-rows",
+    "name": "Thin Bracket Rows",
+    "archetype": "Bracket Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 109,
+    "id": "bracket-corner-marks",
+    "name": "Corner Mark Cards",
+    "archetype": "Bracket Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 110,
+    "id": "bracket-title-inline",
+    "name": "Inline Bracket Rows",
+    "archetype": "Bracket Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 111,
+    "id": "duo-tiles-detail",
+    "name": "Tiles + Detail Pane",
+    "archetype": "Duo-Column Compare",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 112,
+    "id": "duo-list-detail",
+    "name": "List + Detail Pane",
+    "archetype": "Duo-Column Compare",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 113,
+    "id": "duo-top-side",
+    "name": "Top Options + Side Notes",
+    "archetype": "Duo-Column Compare",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 114,
+    "id": "duo-rail-detail",
+    "name": "Rail + Detail Split",
+    "archetype": "Duo-Column Compare",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 115,
+    "id": "duo-hero-detail",
+    "name": "Hero + Detail Split",
+    "archetype": "Duo-Column Compare",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 116,
+    "id": "keypad-big-keys",
+    "name": "Big Key Grid",
+    "archetype": "Keypad Keys",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 117,
+    "id": "keypad-small-keys",
+    "name": "Small Key Grid",
+    "archetype": "Keypad Keys",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 118,
+    "id": "keypad-wide-keys",
+    "name": "Wide Key Pairs",
+    "archetype": "Keypad Keys",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 119,
+    "id": "keypad-round-keys",
+    "name": "Round Key Grid",
+    "archetype": "Keypad Keys",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 120,
+    "id": "keypad-key-desc",
+    "name": "Keys + Description Bar",
+    "archetype": "Keypad Keys",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 121,
+    "id": "drum-vertical-shaded",
+    "name": "Shaded Vertical Drum",
+    "archetype": "Vertical Drums",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 122,
+    "id": "drum-vertical-rails",
+    "name": "Rail-Band Vertical Drum",
+    "archetype": "Vertical Drums",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 123,
+    "id": "drum-vertical-pill",
+    "name": "Center-Pill Vertical Drum",
+    "archetype": "Vertical Drums",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 124,
+    "id": "drum-vertical-ruler",
+    "name": "Ruler Vertical Drum",
+    "archetype": "Vertical Drums",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 125,
+    "id": "drum-vertical-card",
+    "name": "Card Drum Vertical",
+    "archetype": "Vertical Drums",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 126,
+    "id": "sidebar-left-hero",
+    "name": "Sidebar Hero",
+    "archetype": "Sidebar Nav",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 127,
+    "id": "sidebar-mark-slots",
+    "name": "Sidebar Mark Slots",
+    "archetype": "Sidebar Nav",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 128,
+    "id": "sidebar-right",
+    "name": "Right Sidebar",
+    "archetype": "Sidebar Nav",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 129,
+    "id": "sidebar-wide-slots",
+    "name": "Wide Sidebar Slots",
+    "archetype": "Sidebar Nav",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 130,
+    "id": "sidebar-dot-column",
+    "name": "Sidebar Dot Column",
+    "archetype": "Sidebar Nav",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 131,
+    "id": "drum-horizontal-columns",
+    "name": "Column Drum",
+    "archetype": "Horizontal Drums",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 132,
+    "id": "drum-horizontal-scale",
+    "name": "Scaled Column Drum",
+    "archetype": "Horizontal Drums",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 133,
+    "id": "drum-horizontal-marker",
+    "name": "Marker Column Drum",
+    "archetype": "Horizontal Drums",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 134,
+    "id": "drum-horizontal-pills",
+    "name": "Pill Column Drum",
+    "archetype": "Horizontal Drums",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 135,
+    "id": "drum-horizontal-ruler",
+    "name": "Ruler Column Drum",
+    "archetype": "Horizontal Drums",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 136,
+    "id": "notify-compact-cards",
+    "name": "Compact Notification Cards",
+    "archetype": "Notification Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 137,
+    "id": "notify-bold-title",
+    "name": "Bold-Title Notification Cards",
+    "archetype": "Notification Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 138,
+    "id": "notify-leading-mark",
+    "name": "Marked Notification Cards",
+    "archetype": "Notification Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 139,
+    "id": "notify-stack-tight",
+    "name": "Tight Notification Stack",
+    "archetype": "Notification Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 140,
+    "id": "notify-card-desc",
+    "name": "Notification Cards + Footer",
+    "archetype": "Notification Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 141,
+    "id": "folder-tab-left",
+    "name": "Left Folder Tab Cards",
+    "archetype": "Folder Tab Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 142,
+    "id": "folder-tab-center",
+    "name": "Center Tab Cards",
+    "archetype": "Folder Tab Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 143,
+    "id": "folder-tab-row-tabs",
+    "name": "Row of Tabs",
+    "archetype": "Folder Tab Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 144,
+    "id": "folder-tab-deep",
+    "name": "Deep Tab Cards",
+    "archetype": "Folder Tab Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 145,
+    "id": "folder-tab-thin",
+    "name": "Thin Tab Cards",
+    "archetype": "Folder Tab Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 146,
+    "id": "two-track-mode-extras",
+    "name": "Mode Track + Extras Track",
+    "archetype": "Two-Track Groups",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 147,
+    "id": "two-track-stacked-panels",
+    "name": "Stacked Group Panels",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 148,
+    "id": "two-track-inline-groups",
+    "name": "Inline Group Rows",
+    "archetype": "Two-Track Groups",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 149,
+    "id": "two-track-wide-extras",
+    "name": "Wide Extras Panel",
+    "archetype": "Two-Track Groups",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 150,
+    "id": "two-track-compact",
+    "name": "Compact Two-Track",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad+white",
+    "hidesExplanations": false
   }
 ]
