@@ -358,5 +358,9 @@
   {
     "version": "2.43.59",
     "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.4",
+    "reason": "2026-11-04 lane1/T-615's bm catalog-fix commit steps from uat's 2.48.3 while lane2/T-623's harness commit f50b5e3c already holds 2.48.4 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
