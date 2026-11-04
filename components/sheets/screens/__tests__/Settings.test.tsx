@@ -78,7 +78,7 @@ const DISPLAY_TOGGLES = [
   ['Show hijri date', hijriDateEnabledAtom],
   ['Show seconds', showSecondsAtom],
   ['Show time passed', showTimePassedAtom],
-  ['Show 24-hour format', show24HourFormatAtom],
+  ['Show 24 hour format', show24HourFormatAtom],
   ['Show progress', countdownBarShownAtom],
 ] as const;
 
@@ -310,7 +310,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
 
   // The owner's placement ruling (2026-11-03): the row follows Show time passed, before the
   // seasonal decorations row, so it is the Display card's fourth row
-  it('reads the Display card Show hijri date, Show seconds, Show time passed, Show 24-hour format, in that order', async () => {
+  it('reads the Display card Show hijri date, Show seconds, Show time passed, Show 24 hour format, in that order', async () => {
     jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
     await render(<SettingsSheet />);
 
@@ -328,7 +328,7 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     const order = (label: string) => list?.children.indexOf(rowOf(label));
     expect(order('Show hijri date')).toBeLessThan(order('Show seconds') as number);
     expect(order('Show seconds')).toBeLessThan(order('Show time passed') as number);
-    expect(order('Show time passed')).toBeLessThan(order('Show 24-hour format') as number);
+    expect(order('Show time passed')).toBeLessThan(order('Show 24 hour format') as number);
   });
 
   // row label, the preference it shows and writes
@@ -748,7 +748,7 @@ describe('every settings row label beside its trailing control', () => {
       'Show hijri date',
       'Show seconds',
       'Show time passed',
-      'Show 24-hour format',
+      'Show 24 hour format',
       'Show progress',
       'Progress color',
       'Language',
