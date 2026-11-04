@@ -248,6 +248,16 @@ export interface CandidateRow {
  */
 export type RequestCostReader = (scheduleType: ScheduleType, id: PrayerId) => number;
 
+/**
+ * Whether one prayer's row on one list day may arm at all.
+ *
+ * Injected like the cost reader (the store owns the preferences): the fasting
+ * gate passes every row except the Extra schedule's suhoor on days the chosen
+ * regimen does not arm. A gated-out day never becomes a candidate row, so it
+ * arms nothing at all and spends none of the budget.
+ */
+export type DayArmedReader = (scheduleType: ScheduleType, id: PrayerId, date: string) => boolean;
+
 /** How a prayer is keyed in a schedule plan, so the two lists cannot merge on a shared id */
 export const schedulePlanKey = (scheduleType: ScheduleType, id: PrayerId): string => `${scheduleType}_${id}`;
 
@@ -289,8 +299,9 @@ export const buildSchedulePlan = (rows: CandidateRow[], budget: number): Map<str
  * in the time order that a row the user does want would otherwise hold.
  *
  * @param requestCostFor What each prayer's alerts cost, 0 when it is switched off
+ * @param dayArmed Whether a row may arm at all; every row passes when omitted
  */
-export const collectCandidateRows = (requestCostFor: RequestCostReader): CandidateRow[] => {
+export const collectCandidateRows = (requestCostFor: RequestCostReader, dayArmed?: DayArmedReader): CandidateRow[] => {
   const now = TimeUtils.createInstant();
   const rows: CandidateRow[] = [];
 
@@ -302,6 +313,7 @@ export const collectCandidateRows = (requestCostFor: RequestCostReader): Candida
       const firstDay = PrayerUtils.firstStillDueListDayForPrayer(scheduleType, id, now);
 
       for (const date of genNextXDays(SCHEDULE_CANDIDATE_DAYS, firstDay)) {
+        if (dayArmed !== undefined && !dayArmed(scheduleType, id, date)) continue;
         const prayer = PrayerUtils.getPrayerForDate(scheduleType, id, date);
         if (!prayer) continue;
 
@@ -348,13 +360,15 @@ export const candidateListDays = (): string[] => {
  * other ten have already spent, which a per-prayer answer cannot know.
  *
  * @param requestCostFor What each prayer's alerts cost, 0 when it is switched off
+ * @param dayArmed Whether a row may arm at all; every row passes when omitted
  */
 export const genScheduleDatesForPrayer = (
   scheduleType: ScheduleType,
   id: PrayerId,
-  requestCostFor: RequestCostReader
+  requestCostFor: RequestCostReader,
+  dayArmed?: DayArmedReader
 ): string[] => {
-  const plan = buildSchedulePlan(collectCandidateRows(requestCostFor), NOTIFICATION_REQUEST_BUDGET);
+  const plan = buildSchedulePlan(collectCandidateRows(requestCostFor, dayArmed), NOTIFICATION_REQUEST_BUDGET);
 
   return plan.get(schedulePlanKey(scheduleType, id)) ?? [];
 };

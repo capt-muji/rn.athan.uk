@@ -19,6 +19,7 @@ import {
   STANDARD_PRAYER_IDS,
   STANDARD_PRAYER_TITLES,
 } from '@/shared/constants';
+import { DEFAULT_FASTING_MODE, type FastingSettings, fastingEvaluator, validFastingMode } from '@/shared/fasting';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -36,7 +37,12 @@ import {
 } from '@/shared/types';
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
-import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
+import {
+  atomWithStorageBoolean,
+  atomWithStorageNumber,
+  atomWithStorageString,
+  resetStoredAtom,
+} from '@/stores/storage';
 import { deferPrayerWidgetRefresh, sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
@@ -341,6 +347,48 @@ const standardPrayerRepairMarks = STANDARD_PRAYER_IDS.map((id) => createPrayerRe
 
 /** The Extras' marks; see standardPrayerRepairMarks */
 const extraPrayerRepairMarks = EXTRA_PRAYER_IDS.map((id) => createPrayerRepairMark(ScheduleType.Extra, id));
+
+// =============================================================================
+// FASTING PREFERENCES
+// =============================================================================
+
+/** STORAGE CONTRACT: the four mode strings since 2.46.0; anything else reads as everyDay */
+export const fastingModeAtom = atomWithStorageString('preference_fasting_mode', DEFAULT_FASTING_MODE);
+
+/** The white-days add-on, offered with the muhammad and dawood modes */
+export const fastingWhiteDaysAtom = atomWithStorageBoolean('preference_fasting_white_days', false);
+
+/** STORAGE CONTRACT: 0 means no cycle; only the commit path's two transitions write it */
+export const fastingDawoodAnchorAtom = atomWithStorageNumber('preference_fasting_dawood_anchor', 0);
+
+/** The fasting settings the scheduling paths read, sanitized in one place */
+export const getFastingSettings = (): FastingSettings => ({
+  mode: validFastingMode(store.get(fastingModeAtom)),
+  whiteDaysAddOn: store.get(fastingWhiteDaysAtom),
+  dawoodAnchorMs: store.get(fastingDawoodAnchorAtom),
+});
+
+const suhoorInstantFor = (date: string): Date | null => {
+  const prayer = PrayerUtils.getPrayerForDate(ScheduleType.Extra, 'suhoor', date);
+  return prayer !== null && isReadable(prayer) ? prayer.datetime : null;
+};
+
+/** The settings a built gate last ran under */
+let cachedFastingGate: { key: string; reader: NotificationUtils.DayArmedReader } | null = null;
+
+/** The plan's fasting gate, memoised so a pass resolves the Dawood cycle once */
+export const fastingDayGate = (): NotificationUtils.DayArmedReader => {
+  const settings = getFastingSettings();
+  const key = `${settings.mode}|${settings.whiteDaysAddOn}|${settings.dawoodAnchorMs}`;
+  if (cachedFastingGate !== null && cachedFastingGate.key === key) return cachedFastingGate.reader;
+
+  const verdictFor = fastingEvaluator(settings, suhoorInstantFor);
+  const reader: NotificationUtils.DayArmedReader = (scheduleType, id, date) =>
+    scheduleType !== ScheduleType.Extra || id !== 'suhoor' || verdictFor(date).arms;
+
+  cachedFastingGate = { key, reader };
+  return reader;
+};
 
 /**
  * The mark for one prayer
@@ -904,7 +952,8 @@ const _addMultipleScheduleNotificationsForPrayer = async (
   const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
     scheduleType,
     id,
-    requestCostReader(requestCost === undefined ? undefined : { scheduleType, id, cost: requestCost })
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, id, cost: requestCost }),
+    fastingDayGate()
   );
   const sound = getSoundPreference();
 
@@ -1104,7 +1153,8 @@ const _addMultipleScheduleRemindersForPrayer = async (
   const nextXDays = NotificationUtils.genScheduleDatesForPrayer(
     scheduleType,
     id,
-    requestCostReader(requestCost === undefined ? undefined : { scheduleType, id, cost: requestCost })
+    requestCostReader(requestCost === undefined ? undefined : { scheduleType, id, cost: requestCost }),
+    fastingDayGate()
   );
 
   // Both slots are armed in ONE pass, because the stale sweep below is computed across the

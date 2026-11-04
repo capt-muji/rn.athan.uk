@@ -1,24 +1,11 @@
 /**
- * Unit tests for shared/fasting.ts
+ * Unit tests for shared/fasting.ts, the fasting-day predicate.
  *
- * The fasting-day predicate: which calendar days carry a Sahur alert, and why.
- * - hijriPartsFor() - the ICU islamic-umalqura read, adjusted and memoized
- * - isWhiteDay() / isRamadanDay() - the Hijri designations
- * - isMuhammadDay() - the weekday designation
- * - dawoodCycleFor() / isDawoodDay() - the alternate-day cycle from an anchor
- * - fastingEvaluator() - one day's verdict under a settings snapshot
- * - dawoodActivates() - the two transitions that (re)start a Dawood cycle
- * - upcomingFastingDays() - the sheet preview's data
- *
- * Everything is injected: no test reads the real clock or the store. The Hijri
- * pins below are ICU's own islamic-umalqura data (the engine the app ships for
- * its Hijri date display), cross-checked against published tables: sources
- * place 1 Ramadan 1447 on 18 or 19 February 2026 (the calculated-to-sighted
- * spread the adjustment setting exists for; Islamic Relief's table names the
- * evening of the 18th) and 1 Ramadan 1451 on 5 January 2030 (the widely
- * published double-Ramadan year). On divergence the pin records ICU's value
- * with a note, because ICU is the shipped source and the adjustment setting is
- * the user's remedy.
+ * Everything is injected: no test reads the real clock or the store. The
+ * Hijri pins are ICU's own umalqura data (the engine the app ships for its
+ * Hijri display); published tables place 1 Ramadan 1447 on 18 or 19 February
+ * 2026, the calculated-to-sighted spread, and the pin holds ICU's value
+ * because ICU is the shipped source.
  */
 
 import type { FastingSettings, SuhoorInstantFor } from '@/shared/fasting';
@@ -34,7 +21,6 @@ import {
   isWhiteDay,
   upcomingFastingDays,
   validFastingMode,
-  validHijriAdjustment,
 } from '@/shared/fasting';
 
 /** A fixed suhoor wall time (05:30Z) so every cycle test owns its instants */
@@ -43,34 +29,28 @@ const suhoorAtHalfFive: SuhoorInstantFor = (date) => new Date(Date.parse(`${date
 const settings = (over: Partial<FastingSettings> = {}): FastingSettings => ({
   mode: DEFAULT_FASTING_MODE,
   whiteDaysAddOn: false,
-  hijriAdjustment: 0,
   dawoodAnchorMs: 0,
   ...over,
 });
 
 describe('hijriPartsFor', () => {
   it('pins ICU umalqura against the published calendar: 1 Ramadan 1447 is 18 February 2026', () => {
-    expect(hijriPartsFor('2026-02-18', 0)).toEqual({ month: 9, day: 1 });
+    expect(hijriPartsFor('2026-02-18')).toEqual({ month: 9, day: 1 });
   });
 
   it('pins the white days of Ramadan 1447: 13th to 15th fall on 2 to 4 March 2026', () => {
-    expect(hijriPartsFor('2026-03-02', 0)).toEqual({ month: 9, day: 13 });
-    expect(hijriPartsFor('2026-03-03', 0)).toEqual({ month: 9, day: 14 });
-    expect(hijriPartsFor('2026-03-04', 0)).toEqual({ month: 9, day: 15 });
+    expect(hijriPartsFor('2026-03-02')).toEqual({ month: 9, day: 13 });
+    expect(hijriPartsFor('2026-03-03')).toEqual({ month: 9, day: 14 });
+    expect(hijriPartsFor('2026-03-04')).toEqual({ month: 9, day: 15 });
   });
 
   it('pins a date near the far end of the timetable span', () => {
-    expect(hijriPartsFor('2076-10-06', 0)).toEqual({ month: 11, day: 8 });
-  });
-
-  it('shifts the conversion by the adjustment: +1 reads the next Gregorian day', () => {
-    expect(hijriPartsFor('2026-03-02', 1)).toEqual(hijriPartsFor('2026-03-03', 0));
-    expect(hijriPartsFor('2026-03-02', -1)).toEqual(hijriPartsFor('2026-03-01', 0));
+    expect(hijriPartsFor('2076-10-06')).toEqual({ month: 11, day: 8 });
   });
 
   it('returns the same value on a repeated call (the memo holds)', () => {
-    expect(hijriPartsFor('2026-02-18', 0)).toEqual({ month: 9, day: 1 });
-    expect(hijriPartsFor('2026-02-18', 0)).toEqual({ month: 9, day: 1 });
+    expect(hijriPartsFor('2026-02-18')).toEqual({ month: 9, day: 1 });
+    expect(hijriPartsFor('2026-02-18')).toEqual({ month: 9, day: 1 });
   });
 
   it('returns null when the formatter throws', () => {
@@ -78,9 +58,9 @@ describe('hijriPartsFor', () => {
     spy.mockImplementation(() => {
       throw new Error('no calendar support');
     });
-    expect(hijriPartsFor('2044-06-01', 0)).toBeNull();
+    expect(hijriPartsFor('2044-06-01')).toBeNull();
     spy.mockRestore();
-    expect(hijriPartsFor('2044-06-02', 0)).not.toBeNull();
+    expect(hijriPartsFor('2044-06-02')).not.toBeNull();
   });
 
   it('returns null when the parts carry no readable month', () => {
@@ -91,49 +71,44 @@ describe('hijriPartsFor', () => {
           formatToParts: () => [{ type: 'day', value: '13' }],
         }) as unknown as Intl.DateTimeFormat
     );
-    expect(hijriPartsFor('2044-06-03', 0)).toBeNull();
+    expect(hijriPartsFor('2044-06-03')).toBeNull();
     spy.mockRestore();
   });
 });
 
 describe('isWhiteDay', () => {
   it('arms the 13th, 14th and 15th of a Hijri month', () => {
-    expect(isWhiteDay('2026-03-02', 0)).toBe(true);
-    expect(isWhiteDay('2026-03-03', 0)).toBe(true);
-    expect(isWhiteDay('2026-03-04', 0)).toBe(true);
+    expect(isWhiteDay('2026-03-02')).toBe(true);
+    expect(isWhiteDay('2026-03-03')).toBe(true);
+    expect(isWhiteDay('2026-03-04')).toBe(true);
   });
 
   it('does not arm the days around them', () => {
-    expect(isWhiteDay('2026-03-01', 0)).toBe(false);
-    expect(isWhiteDay('2026-03-05', 0)).toBe(false);
+    expect(isWhiteDay('2026-03-01')).toBe(false);
+    expect(isWhiteDay('2026-03-05')).toBe(false);
   });
 
   it('arms the white days of a far month in the span', () => {
-    expect(isWhiteDay('2076-10-11', 0)).toBe(true);
-    expect(isWhiteDay('2076-10-12', 0)).toBe(true);
-    expect(isWhiteDay('2076-10-13', 0)).toBe(true);
-    expect(isWhiteDay('2076-10-14', 0)).toBe(false);
-  });
-
-  it('follows the adjustment: +1 arms the Gregorian day before a white day', () => {
-    expect(isWhiteDay('2026-03-01', 1)).toBe(true);
-    expect(isWhiteDay('2026-03-04', 1)).toBe(false);
+    expect(isWhiteDay('2076-10-11')).toBe(true);
+    expect(isWhiteDay('2076-10-12')).toBe(true);
+    expect(isWhiteDay('2076-10-13')).toBe(true);
+    expect(isWhiteDay('2076-10-14')).toBe(false);
   });
 });
 
 describe('isRamadanDay', () => {
   it('covers the whole published Ramadan 1447 span', () => {
-    expect(isRamadanDay('2026-02-18', 0)).toBe(true);
-    expect(isRamadanDay('2026-03-19', 0)).toBe(true);
+    expect(isRamadanDay('2026-02-18')).toBe(true);
+    expect(isRamadanDay('2026-03-19')).toBe(true);
   });
 
   it('excludes the day before and the day after', () => {
-    expect(isRamadanDay('2026-02-17', 0)).toBe(false);
-    expect(isRamadanDay('2026-03-20', 0)).toBe(false);
+    expect(isRamadanDay('2026-02-17')).toBe(false);
+    expect(isRamadanDay('2026-03-20')).toBe(false);
   });
 
   it('pins the far span: 1 Ramadan 1451 is 5 January 2030', () => {
-    expect(isRamadanDay('2030-01-05', 0)).toBe(true);
+    expect(isRamadanDay('2030-01-05')).toBe(true);
   });
 });
 
@@ -238,9 +213,7 @@ describe('fastingEvaluator', () => {
   });
 
   it('stacks designations on a coinciding day', () => {
-    // 2026-04-02 is a Thursday and a white day (10/14): the muhammad regimen
-    // arms it as both, and the dawood cycle arms it as both from an anchor
-    // whose first on day is the 2nd
+    // 2026-04-02 is a Thursday and a white day (10/14): each regimen arms it as both
     const muhammad = fastingEvaluator(settings({ mode: 'muhammad', whiteDaysAddOn: true }), suhoorAtHalfFive);
     expect(muhammad('2026-04-02')).toEqual({ arms: true, designations: ['muhammad', 'whiteDay'] });
 
@@ -257,15 +230,6 @@ describe('fastingEvaluator', () => {
     expect(white('2026-02-19')).toEqual({ arms: true, designations: ['ramadan'] });
     const muhammad = fastingEvaluator(settings({ mode: 'muhammad' }), suhoorAtHalfFive);
     expect(muhammad('2026-03-02')).toEqual({ arms: true, designations: ['ramadan'] });
-  });
-
-  it('follows the adjustment inside the Ramadan override', () => {
-    const later = fastingEvaluator(settings({ mode: 'whiteDays', hijriAdjustment: 1 }), suhoorAtHalfFive);
-    // 2026-02-17 reads as Ramadan only when the conversion shifts a day later
-    expect(later('2026-02-17')).toEqual({ arms: true, designations: ['ramadan'] });
-    const earlier = fastingEvaluator(settings({ mode: 'whiteDays', hijriAdjustment: -1 }), suhoorAtHalfFive);
-    // 2026-03-20 reads as Ramadan only when the conversion shifts a day earlier
-    expect(earlier('2026-03-20')).toEqual({ arms: true, designations: ['ramadan'] });
   });
 
   it('still arms weekday and cycle days when the Hijri read fails', () => {
@@ -308,14 +272,6 @@ describe('the storage validators', () => {
     expect(validFastingMode('everyDay')).toBe('everyDay');
     expect(validFastingMode('nonsense')).toBe(DEFAULT_FASTING_MODE);
     expect(validFastingMode('')).toBe(DEFAULT_FASTING_MODE);
-  });
-
-  it('keeps an adjustment in range and falls back to zero', () => {
-    expect(validHijriAdjustment(2)).toBe(2);
-    expect(validHijriAdjustment(-2)).toBe(-2);
-    expect(validHijriAdjustment(0)).toBe(0);
-    expect(validHijriAdjustment(3)).toBe(0);
-    expect(validHijriAdjustment(-3)).toBe(0);
   });
 });
 
