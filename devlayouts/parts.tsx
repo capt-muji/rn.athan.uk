@@ -49,6 +49,10 @@ export const RADIO_ROLE = 'radio';
 /** The disclosure and stepper controls' accessibility role, a code value for the string scanner */
 export const BUTTON_ROLE = 'button';
 
+/** The stepper chevrons' directions, code values for the string scanner */
+export const CHEVRON_LEFT = 'left' as const;
+export const CHEVRON_RIGHT = 'right' as const;
+
 /** The house radio: the shipped picker's own circle, reused for alignment comparisons */
 export const RadioDot = ({ on }: { on: boolean }) => <View style={[styles.radio, on ? styles.radioOn : null]} />;
 

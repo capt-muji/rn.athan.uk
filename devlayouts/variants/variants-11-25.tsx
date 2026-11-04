@@ -16,6 +16,7 @@ import { COLORS, HIT_SLOP, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { FASTING_MODES } from '@/shared/fasting';
 import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
+import type { FastingMode } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
 import { BUTTON_ROLE, Chevron, ModeGlyph, modeHint, modeLabel, RADIO_ROLE, useFastingDraft } from '../parts';
@@ -25,6 +26,10 @@ const ty = typographyFor(currentLocaleId());
 // Harness chrome: the wheel's exclude option has no catalog key, the label
 // lives here as a code value for the string scanner
 const EXCLUDE_WHITE_DAYS = 'Exclude the white days';
+
+// The badge names the add-on by the white days' own mode label, through a
+// code value so the census reads the call as code
+const WHITE_DAYS_MODE: FastingMode = 'whiteDays';
 
 // =============================================================================
 // 11. SEGMENTED TRACK CAPTION - the four-stop track of 10 with the selected
@@ -616,7 +621,7 @@ const VariantDropdownSummaryBadges = () => {
           {addOnOffered && selection.whiteDaysAddOn && (
             <View style={v25.badge}>
               <Text style={v25.badgeText} numberOfLines={1}>
-                {modeLabel('whiteDays')}
+                {modeLabel(WHITE_DAYS_MODE)}
               </Text>
             </View>
           )}

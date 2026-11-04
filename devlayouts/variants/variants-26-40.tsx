@@ -29,6 +29,8 @@ import { typographyFor } from '@/shared/typography';
 
 import {
   BUTTON_ROLE,
+  CHEVRON_LEFT,
+  CHEVRON_RIGHT,
   CheckGlyph,
   Chevron,
   Chip,
@@ -309,7 +311,7 @@ const VariantStepperCycle = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected - 1 + FASTING_MODES.length) % FASTING_MODES.length])}
           onPress={() => cycle(-1)}>
-          <Chevron direction='left' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_LEFT} ink={COLORS.text.primary} />
         </Pressable>
         <Text style={v32.label}>{modeLabel(selection.mode)}</Text>
         <Pressable
@@ -318,7 +320,7 @@ const VariantStepperCycle = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected + 1) % FASTING_MODES.length])}
           onPress={() => cycle(1)}>
-          <Chevron direction='right' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_RIGHT} ink={COLORS.text.primary} />
         </Pressable>
       </View>
       <View style={v32.dots}>
@@ -351,7 +353,7 @@ const VariantStepperHintSlot = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected - 1 + FASTING_MODES.length) % FASTING_MODES.length])}
           onPress={() => cycle(-1)}>
-          <Chevron direction='left' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_LEFT} ink={COLORS.text.primary} />
         </Pressable>
         <Text style={v33.label}>{modeLabel(selection.mode)}</Text>
         <Pressable
@@ -360,7 +362,7 @@ const VariantStepperHintSlot = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected + 1) % FASTING_MODES.length])}
           onPress={() => cycle(1)}>
-          <Chevron direction='right' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_RIGHT} ink={COLORS.text.primary} />
         </Pressable>
       </View>
       <View style={v33.slot}>
@@ -392,7 +394,7 @@ const VariantTallyStepper = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected - 1 + FASTING_MODES.length) % FASTING_MODES.length])}
           onPress={() => cycle(-1)}>
-          <Chevron direction='left' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_LEFT} ink={COLORS.text.primary} />
         </Pressable>
         <Text style={v34.heroLabel} numberOfLines={1} adjustsFontSizeToFit>
           {modeLabel(selection.mode)}
@@ -403,7 +405,7 @@ const VariantTallyStepper = () => {
           accessibilityRole={BUTTON_ROLE}
           accessibilityLabel={modeLabel(FASTING_MODES[(selected + 1) % FASTING_MODES.length])}
           onPress={() => cycle(1)}>
-          <Chevron direction='right' ink={COLORS.text.primary} />
+          <Chevron direction={CHEVRON_RIGHT} ink={COLORS.text.primary} />
         </Pressable>
       </View>
       <View style={v34.bar}>
