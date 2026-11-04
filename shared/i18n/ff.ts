@@ -107,7 +107,7 @@ export const ff = {
   'fasting.mode.dawood': 'Ñalɗi teeltaango',
   'fasting.mode.dawoodHint': 'Ñalnde dewngu, ñalnde alaa, dewngu Dawuuda',
   'fasting.mode.whiteDays': 'Ñalɣi daneeji',
-  'fasting.mode.whiteDaysHint': '13, 14 e 15 lewru Hijri kala',
+  'fasting.mode.whiteDaysHint': '13, 14 e 15 lewru Hijri kala, tuma lewru selli',
   'fasting.addOn.whiteDays': 'Seydan ñalɗi daneeji',
   'fasting.preview.next': 'Suhuur aranteejo',
   'fasting.preview.today': 'Hannde',

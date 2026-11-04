@@ -106,7 +106,7 @@ export const fa = {
   'fasting.mode.dawood': 'یک‌روز در میان',
   'fasting.mode.dawoodHint': 'یک روز روزه، یک روز نه، روزه داود',
   'fasting.mode.whiteDays': 'روزهای سفید',
-  'fasting.mode.whiteDaysHint': 'سیزدهم، چهاردهم و پانزدهم هر ماه هجری',
+  'fasting.mode.whiteDaysHint': 'سیزدهم، چهاردهم و پانزدهم هر ماه هجری، هنگامی که ماه کامل است',
   'fasting.addOn.whiteDays': 'روزهای سفید را شامل کن',
   'fasting.preview.next': 'سحری بعدی',
   'fasting.preview.today': 'امروز',

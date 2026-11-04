@@ -110,7 +110,7 @@ export const my = {
   'fasting.mode.dawood': 'တစ်ရက်ခြား',
   'fasting.mode.dawoodHint': 'တစ်ရက်ငတ်၊ တစ်ရက်နား၊ ဒါဝူဒ်၏ငတ်ပါးမှု',
   'fasting.mode.whiteDays': 'အဖြူရောင်နေ့များ',
-  'fasting.mode.whiteDaysHint': 'ဟီဂရီလတစ်လလျှင် ၁၃၊ ၁၄ နှင့် ၁၅ ရက်',
+  'fasting.mode.whiteDaysHint': 'ဟီဂရီ လတစ်လလျှင် ၁၃၊ ၁၄ နှင့် ၁၅ ရက်များ၊ လပြည့်ချိန်တွင်',
   'fasting.addOn.whiteDays': 'အဖြူရောင်နေ့များ ထည့်သွင်းပါ',
   'fasting.preview.next': 'နောက်ထပ် ဆူဟူရ်',
   'fasting.preview.today': 'ဒီနေ့',

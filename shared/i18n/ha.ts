@@ -109,7 +109,7 @@ export const ha = {
   'fasting.mode.dawood': 'Rana biyu biyu',
   'fasting.mode.dawoodHint': 'Rana ɗaya azumi, rana ɗaya huta, azumin Dawuda',
   'fasting.mode.whiteDays': 'Kwanakin fari',
-  'fasting.mode.whiteDaysHint': '13, 14 da 15 na kowace watan Hijira',
+  'fasting.mode.whiteDaysHint': '13, 14 da 15 na kowace watan Hijira, sa’adar wata ya cika',
   'fasting.addOn.whiteDays': 'Haɗa kwanakin fari',
   'fasting.preview.next': 'Sahur na gaba',
   'fasting.preview.today': 'Yau',

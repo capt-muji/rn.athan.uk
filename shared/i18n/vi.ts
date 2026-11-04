@@ -113,7 +113,7 @@ export const vi = {
   'fasting.mode.dawood': 'Xen kẽ mỗi ngày',
   'fasting.mode.dawoodHint': 'Một ngày chay, một ngày nghỉ, sự chay tịnh của Dawud',
   'fasting.mode.whiteDays': 'Những ngày trắng',
-  'fasting.mode.whiteDaysHint': 'Ngày 13, 14 và 15 của mỗi tháng Hijri',
+  'fasting.mode.whiteDaysHint': 'Ngày 13, 14 và 15 của mỗi tháng Hijri, khi trăng tròn',
   'fasting.addOn.whiteDays': 'Bao gồm những ngày trắng',
   'fasting.preview.next': 'Suhoor tiếp theo',
   'fasting.preview.today': 'Hôm nay',

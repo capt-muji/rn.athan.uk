@@ -107,7 +107,7 @@ export const yo = {
   'fasting.mode.dawood': 'Ọjọ́ búgbú búgbú',
   'fasting.mode.dawoodHint': 'Ọjọ́ kan ìwọ̀sùn, ọjọ́ kan ìsinmi, ìwọ̀sùn Dawudi',
   'fasting.mode.whiteDays': 'Àwọn ọjọ́ funfun',
-  'fasting.mode.whiteDaysHint': 'Ọjọ́ kẹtàlá, kẹrìnlá àti kẹrìndínlógún oṣooṣú Hijira',
+  'fasting.mode.whiteDaysHint': 'Ọjọ́ kẹtàlá, kẹrìnlá àti kẹrìndínlógún oṣooṣú Hijira, nígbà tí òsùúpọ̀ yóò kún',
   'fasting.addOn.whiteDays': 'Fi àwọn ọjọ́ funfun pamọ́',
   'fasting.preview.next': 'Sahur tó kàn',
   'fasting.preview.today': 'Òní',

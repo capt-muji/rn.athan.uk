@@ -108,7 +108,7 @@ export const pt = {
   'fasting.mode.dawood': 'Em dias alternados',
   'fasting.mode.dawoodHint': 'Um dia de jejum, um dia não, o jejum de Dawud',
   'fasting.mode.whiteDays': 'Os dias brancos',
-  'fasting.mode.whiteDaysHint': 'Os dias 13, 14 e 15 de cada mês hijri',
+  'fasting.mode.whiteDaysHint': 'Os dias 13, 14 e 15 de cada mês hijri, quando a lua está cheia',
   'fasting.addOn.whiteDays': 'Incluir os dias brancos',
   'fasting.preview.next': 'Próximo Sahur',
   'fasting.preview.today': 'Hoje',

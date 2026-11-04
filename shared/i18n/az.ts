@@ -108,7 +108,7 @@ export const az = {
   'fasting.mode.dawood': 'Növbəli günlər',
   'fasting.mode.dawoodHint': 'Bir gün oruc, bir gün iftar, Davudun orucu',
   'fasting.mode.whiteDays': 'Ağ günlər',
-  'fasting.mode.whiteDaysHint': 'Hər hicri ayın 13, 14 və 15-i',
+  'fasting.mode.whiteDaysHint': 'Hər hicri ayın 13, 14 və 15-i, Ay dolğun olduqda',
   'fasting.addOn.whiteDays': 'Ağ günləri daxil et',
   'fasting.preview.next': 'Növbəti suhur',
   'fasting.preview.today': 'Bu gün',

@@ -107,7 +107,7 @@ export const te = {
   'fasting.mode.dawood': 'ఒక రోజు విడిచి',
   'fasting.mode.dawoodHint': 'ఒక రోజు ఉపవాసం, ఒక రోజు లేదు, దావూద్ ఉపవాసం',
   'fasting.mode.whiteDays': 'తెలుపు రోజులు',
-  'fasting.mode.whiteDaysHint': 'ప్రతి హిజ్రీ నెలలో 13, 14, 15 తేదీలు',
+  'fasting.mode.whiteDaysHint': 'ప్రతి హిజ్రీ నెలలో 13, 14, 15 తేదీలు, పూర్ణచంద్రుడు ఉన్నప్పుడు',
   'fasting.addOn.whiteDays': 'తెలుపు రోజులను చేర్చండి',
   'fasting.preview.next': 'తర్వాతి సహర్',
   'fasting.preview.today': 'ఈరోజు',

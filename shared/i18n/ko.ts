@@ -108,7 +108,7 @@ export const ko = {
   'fasting.mode.dawood': '격일제',
   'fasting.mode.dawoodHint': '하루는 금식, 하루는 쉬는 다우드의 금식',
   'fasting.mode.whiteDays': '흰 날들',
-  'fasting.mode.whiteDaysHint': '매 히즈라력 달의 13일, 14일, 15일',
+  'fasting.mode.whiteDaysHint': '매 히즈라력 달의 13일, 14일, 15일, 보름달이 뜰 때',
   'fasting.addOn.whiteDays': '흰 날들 포함',
   'fasting.preview.next': '다음 수후르',
   'fasting.preview.today': '오늘',

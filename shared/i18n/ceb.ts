@@ -111,7 +111,7 @@ export const ceb = {
   'fasting.mode.dawood': 'Laing adlaw',
   'fasting.mode.dawoodHint': 'Usa ka adlaw puasa, usa ka adlaw dili, ang puasa ni David',
   'fasting.mode.whiteDays': 'Mga puting adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ug ika-15 kada bulan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ug ika-15 kada bulan sa Hijri, sa panahon nga full moon',
   'fasting.addOn.whiteDays': 'Apil ang mga puting adlaw',
   'fasting.preview.next': 'Sunod nga Suhur',
   'fasting.preview.today': 'Karon',

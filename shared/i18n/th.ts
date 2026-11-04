@@ -105,7 +105,7 @@ export const th = {
   'fasting.mode.dawood': 'วันเว้นวัน',
   'fasting.mode.dawoodHint': 'วันหนึ่งถือ วันหนึ่งพัก การถือศีลอดของท่านดาวูด',
   'fasting.mode.whiteDays': 'วันขาว',
-  'fasting.mode.whiteDaysHint': 'วันที่ 13, 14 และ 15 ของทุกเดือนฮิจเราะห์',
+  'fasting.mode.whiteDaysHint': 'วันที่ 13, 14 และ 15 ของทุกเดือนฮิจเราะห์ ช่วงที่ดวงจันทร์เต็มดวง',
   'fasting.addOn.whiteDays': 'รวมวันขาวด้วย',
   'fasting.preview.next': 'ซูฮูร์ครั้งถัดไป',
   'fasting.preview.today': 'วันนี้',

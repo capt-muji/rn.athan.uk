@@ -108,7 +108,7 @@ export const am = {
   'fasting.mode.dawood': 'በተለዋዋጭ ቀናት',
   'fasting.mode.dawoodHint': 'አንድ ቀን ጾም፣ አንድ ቀን እረፍት፣ የዳዊት ጾም',
   'fasting.mode.whiteDays': 'ነጭ ቀናት',
-  'fasting.mode.whiteDaysHint': 'በየሂጅሪ ወሩ 13፣ 14 እና 15',
+  'fasting.mode.whiteDaysHint': 'በየሂጅሪ ወሩ 13፣ 14 እና 15፣ ጨረቃ ሙሉ በሆነበት ጊዜ',
   'fasting.addOn.whiteDays': 'ነጭ ቀናትን አካትት',
   'fasting.preview.next': 'ቀጣይ ሱሑር',
   'fasting.preview.today': 'ዛሬ',

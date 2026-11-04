@@ -108,7 +108,7 @@ export const wo = {
   'fasting.mode.dawood': 'Bés yu wuutu',
   'fasting.mode.dawoodHint': 'Bés mu yoor, bés mu noppi, yooru Dawuda',
   'fasting.mode.whiteDays': 'Ñaan yu weex',
-  'fasting.mode.whiteDaysHint': '13, 14 ak 15 ci every weeru Hijri',
+  'fasting.mode.whiteDaysHint': '13, 14 ak 15 ci every weeru Hijri, ba ler bu nopp',
   'fasting.addOn.whiteDays': 'Boole ñaan yu weex',
   'fasting.preview.next': 'Suhur li ëpp',
   'fasting.preview.today': 'Tey',

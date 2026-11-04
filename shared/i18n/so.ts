@@ -108,7 +108,7 @@ export const so = {
   'fasting.mode.dawood': 'Maalmaha isbeddelka',
   'fasting.mode.dawoodHint': 'Maalin soon, maalin ma soo, soonka Dawuud',
   'fasting.mode.whiteDays': 'Maalmaha cadceeda',
-  'fasting.mode.whiteDaysHint': '13, 14 iyo 15 bisha Hijriga ah',
+  'fasting.mode.whiteDaysHint': '13, 14 iyo 15 bisha Hijriga ah, markay tahay dayax dhan',
   'fasting.addOn.whiteDays': 'Ku dar maalmaha cadceeda',
   'fasting.preview.next': 'Sahri xigta',
   'fasting.preview.today': 'Maanta',

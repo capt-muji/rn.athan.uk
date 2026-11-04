@@ -359,7 +359,7 @@ const extraPrayerRepairMarks = EXTRA_PRAYER_IDS.map((id) => createPrayerRepairMa
 // FASTING PREFERENCES
 // =============================================================================
 
-/** STORAGE CONTRACT: the four mode strings since 2.46.0; anything else reads as everyDay */
+/** STORAGE CONTRACT: the four mode strings since 2.47.0; anything else reads as everyDay */
 export const fastingModeAtom = atomWithStorageString('preference_fasting_mode', DEFAULT_FASTING_MODE);
 
 /** The white-days add-on, offered with the muhammad and dawood modes */

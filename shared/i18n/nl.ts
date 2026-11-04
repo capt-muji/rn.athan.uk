@@ -109,7 +109,7 @@ export const nl = {
   'fasting.mode.dawood': 'Om de dag',
   'fasting.mode.dawoodHint': 'Eén dag vasten, één dag niet, het vasten van Dawoed',
   'fasting.mode.whiteDays': 'De witte dagen',
-  'fasting.mode.whiteDaysHint': 'De 13e, 14e en 15e van elke hidjri-maand',
+  'fasting.mode.whiteDaysHint': 'De 13e, 14e en 15e van elke hidjri-maand, als de maan vol is',
   'fasting.addOn.whiteDays': 'De witte dagen meenemen',
   'fasting.preview.next': 'Volgende soehoer',
   'fasting.preview.today': 'Vandaag',

@@ -107,7 +107,7 @@ export const id = {
   'fasting.mode.dawood': 'Bergantian',
   'fasting.mode.dawoodHint': 'Sehari puasa, sehari tidak, puasa Dawud',
   'fasting.mode.whiteDays': 'Hari-hari putih',
-  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14, dan 15 tiap bulan Hijriah',
+  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14, dan 15 tiap bulan Hijriah, saat bulan purnama',
   'fasting.addOn.whiteDays': 'Sertakan hari-hari putih',
   'fasting.preview.next': 'Sahur berikutnya',
   'fasting.preview.today': 'Hari ini',

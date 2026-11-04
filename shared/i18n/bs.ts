@@ -107,7 +107,7 @@ export const bs = {
   'fasting.mode.dawood': 'Naizmjence',
   'fasting.mode.dawoodHint': 'Jedan dan post, jedan dan ne, Dawudov post',
   'fasting.mode.whiteDays': 'Bijeli dani',
-  'fasting.mode.whiteDaysHint': '13., 14. i 15. svakog hidžretskog mjeseca',
+  'fasting.mode.whiteDaysHint': '13., 14. i 15. svakog hidžretskog mjeseca, kada je mjesec pun',
   'fasting.addOn.whiteDays': 'Uključi bijele dane',
   'fasting.preview.next': 'Sljedeći sehur',
   'fasting.preview.today': 'Danas',

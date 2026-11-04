@@ -107,7 +107,7 @@ export const ku = {
   'fasting.mode.dawood': 'Rojên dorber',
   'fasting.mode.dawoodHint': 'Rojekê rojî, rojekê na, rojiya Dawud',
   'fasting.mode.whiteDays': 'Rojên spî',
-  'fasting.mode.whiteDaysHint': '13, 14 û 15ê her mehê koçî',
+  'fasting.mode.whiteDaysHint': '13, 14 û 15ê her mehê koçî, demê heyv tije bibe',
   'fasting.addOn.whiteDays': 'Rojên spî tevli bike',
   'fasting.preview.next': 'Seheriya pêş',
   'fasting.preview.today': 'Îro',

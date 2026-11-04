@@ -108,7 +108,7 @@ export const ta = {
   'fasting.mode.dawood': 'ஒரு நாள் விட்டு ஒரு நாள்',
   'fasting.mode.dawoodHint': 'ஒரு நாள் நோன்பு, ஒரு நாள் இல்லை, தாவூத் நபியின் நோன்பு',
   'fasting.mode.whiteDays': 'வெள்ளை நாட்கள்',
-  'fasting.mode.whiteDaysHint': 'ஒவ்வொரு ஹிஜ்ரி மாதத்தின் 13, 14 மற்றும் 15ஆம் நாட்கள்',
+  'fasting.mode.whiteDaysHint': 'ஒவ்வொரு ஹிஜ்ரி மாதத்தின் 13, 14 மற்றும் 15ஆம் நாட்கள், நிலவு முழுமையாக இருக்கும்போது',
   'fasting.addOn.whiteDays': 'வெள்ளை நாட்களை சேர்க்கவும்',
   'fasting.preview.next': 'அடுத்த சஹர்',
   'fasting.preview.today': 'இன்று',

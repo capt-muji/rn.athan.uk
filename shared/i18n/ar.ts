@@ -105,7 +105,7 @@ export const ar = {
   'fasting.mode.dawood': 'أيام متبادلة',
   'fasting.mode.dawoodHint': 'يوم صيام ويوم إفطار، صيام داود',
   'fasting.mode.whiteDays': 'الأيام البيض',
-  'fasting.mode.whiteDaysHint': 'الثالث عشر والرابع عشر والخامس عشر من كل شهر هجري',
+  'fasting.mode.whiteDaysHint': 'الثالث عشر والرابع عشر والخامس عشر من كل شهر هجري، حين يكتمل القمر',
   'fasting.addOn.whiteDays': 'تضمين الأيام البيض',
   'fasting.preview.next': 'السحور القادم',
   'fasting.preview.today': 'اليوم',

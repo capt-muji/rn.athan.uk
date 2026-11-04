@@ -109,7 +109,7 @@ export const ja = {
   'fasting.mode.dawood': '隔日',
   'fasting.mode.dawoodHint': '一日断食し一日休む、ダーウードの断食',
   'fasting.mode.whiteDays': '白い日々',
-  'fasting.mode.whiteDaysHint': '各ヒジュラ月の13日、14日、15日',
+  'fasting.mode.whiteDaysHint': '各ヒジュラ月の13日、14日、15日、満月のとき',
   'fasting.addOn.whiteDays': '白い日々を含める',
   'fasting.preview.next': '次のスフール',
   'fasting.preview.today': '今日',

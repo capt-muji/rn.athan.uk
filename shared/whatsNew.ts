@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.48.1',
+  version: '2.48.2',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -216,7 +216,7 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       // T-615: the title names the setting the Sahur sheet gains
       titleKey: 'whatsNew.title.fasting',
       bodyKey: 'whatsNew.body.fasting',
-      version: '2.48.1',
+      version: '2.48.2',
     },
   ],
 };

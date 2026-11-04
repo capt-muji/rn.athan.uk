@@ -106,7 +106,7 @@ export const ug = {
   'fasting.mode.dawood': 'نۆۋەتلىشىپ',
   'fasting.mode.dawoodHint': 'بىر كۈن روزا، بىر كۈن ئەمەس، داۋۇتنىڭ روزىسى',
   'fasting.mode.whiteDays': 'ئاق كۈنلەر',
-  'fasting.mode.whiteDaysHint': 'ھەر ھىجرىيە ئېيىنىڭ 13، 14 ۋە 15 كۈنلىرى',
+  'fasting.mode.whiteDaysHint': 'ھەر ھىجرىيە ئېيىنىڭ 13، 14 ۋە 15 كۈنلىرى، تولۇن ئاي ۋاقتى',
   'fasting.addOn.whiteDays': 'ئاق كۈنلەرنى ئۆز ئىچىگە ئال',
   'fasting.preview.next': 'كېيىنكى سەھەرلىك',
   'fasting.preview.today': 'بۈگۈن',

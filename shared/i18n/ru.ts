@@ -110,7 +110,7 @@ export const ru = {
   'fasting.mode.dawood': 'Через день',
   'fasting.mode.dawoodHint': 'День поста, день перерыва, пост Давуда',
   'fasting.mode.whiteDays': 'Белые дни',
-  'fasting.mode.whiteDaysHint': '13, 14 и 15 числа каждого месяца хиджры',
+  'fasting.mode.whiteDaysHint': '13, 14 и 15 числа каждого месяца хиджры, когда луна полная',
   'fasting.addOn.whiteDays': 'Включить белые дни',
   'fasting.preview.next': 'Следующий сухур',
   'fasting.preview.today': 'Сегодня',

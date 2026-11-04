@@ -109,7 +109,7 @@ export const sw = {
   'fasting.mode.dawood': 'Siku mfululizo',
   'fasting.mode.dawoodHint': 'Siku moja kufunga, siku moja kupumzika, mfumo wa kufunga wa Dawudi',
   'fasting.mode.whiteDays': 'Siku nyeupe',
-  'fasting.mode.whiteDaysHint': 'Tarehe 13, 14 na 15 ya kila mwezi wa Hijri',
+  'fasting.mode.whiteDaysHint': 'Tarehe 13, 14 na 15 ya kila mwezi wa Hijri, mwezi ukiwa mrefu',
   'fasting.addOn.whiteDays': 'Jumuisha siku nyeupe',
   'fasting.preview.next': 'Suhur ijayo',
   'fasting.preview.today': 'Leo',

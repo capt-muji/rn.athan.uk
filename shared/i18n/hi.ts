@@ -105,7 +105,7 @@ export const hi = {
   'fasting.mode.dawood': 'एक दिन छोड़कर',
   'fasting.mode.dawoodHint': 'एक दिन रोज़ा, एक दिन नहीं, दाऊद अलैहिस्सलाम का रोज़ा',
   'fasting.mode.whiteDays': 'सफ़ेद दिन',
-  'fasting.mode.whiteDaysHint': 'हर हिजरी महीने की 13, 14 और 15 तारीख़',
+  'fasting.mode.whiteDaysHint': 'हर हिजरी महीने की 13, 14 और 15 तारीख़, जब चाँद पूरा होता है',
   'fasting.addOn.whiteDays': 'सफ़ेद दिन शामिल करें',
   'fasting.preview.next': 'अगली सहरी',
   'fasting.preview.today': 'आज',

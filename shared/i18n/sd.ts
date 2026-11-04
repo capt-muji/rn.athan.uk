@@ -106,7 +106,7 @@ export const sd = {
   'fasting.mode.dawood': 'هڪ ڏينهن ڇڏي',
   'fasting.mode.dawoodHint': 'هڪ ڏينهن روزو، هڪ ڏينهن نه، دائود عليه سلام جو روزو',
   'fasting.mode.whiteDays': 'اڇا ڏينهن',
-  'fasting.mode.whiteDaysHint': 'هر هجري مهيني جي 13، 14 ۽ 15 تاريخ',
+  'fasting.mode.whiteDaysHint': 'هر هجري مهيني جي 13، 14 ۽ 15 تاريخ، جڏهن چنڊ پورو هجي',
   'fasting.addOn.whiteDays': 'اڇا ڏينهن شامل ڪريو',
   'fasting.preview.next': 'اڳيون سحري',
   'fasting.preview.today': 'اڄ',

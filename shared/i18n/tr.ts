@@ -107,7 +107,7 @@ export const tr = {
   'fasting.mode.dawood': 'İkiye bir gün',
   'fasting.mode.dawoodHint': 'Bir gün oruç, bir gün değil, Davud orucu',
   'fasting.mode.whiteDays': ' Beyaz günler',
-  'fasting.mode.whiteDaysHint': 'Her hicri ayın 13, 14 ve 15’i',
+  'fasting.mode.whiteDaysHint': 'Her hicri ayın 13, 14 ve 15’i, dolunay zamanı',
   'fasting.addOn.whiteDays': 'Beyaz günleri dahil et',
   'fasting.preview.next': 'Sıradaki sahur',
   'fasting.preview.today': 'Bugün',

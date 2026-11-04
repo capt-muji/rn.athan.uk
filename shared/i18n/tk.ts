@@ -108,7 +108,7 @@ export const tk = {
   'fasting.mode.dawood': 'Günmaýa',
   'fasting.mode.dawoodHint': 'Bir gün oruç, bir gün dynç, Dawudyň orucy',
   'fasting.mode.whiteDays': 'Ak günler',
-  'fasting.mode.whiteDaysHint': 'Her hijri aýyň 13, 14 we 15-i',
+  'fasting.mode.whiteDaysHint': 'Her hijri aýyň 13, 14 we 15-i, aý dolýan wagty',
   'fasting.addOn.whiteDays': 'Ak günleri goş',
   'fasting.preview.next': 'Indiki sahar',
   'fasting.preview.today': 'Şu gün',

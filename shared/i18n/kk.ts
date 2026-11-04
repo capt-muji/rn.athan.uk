@@ -108,7 +108,7 @@ export const kk = {
   'fasting.mode.dawood': 'Кезек-кезек',
   'fasting.mode.dawoodHint': 'Бір күн ораза, бір күн демалыс, Дәуіттің оразасы',
   'fasting.mode.whiteDays': 'Ақ күндер',
-  'fasting.mode.whiteDaysHint': 'Әр хижри айдың 13, 14 және 15-і',
+  'fasting.mode.whiteDaysHint': 'Әр хижри айдың 13, 14 және 15-і, ай толған кезде',
   'fasting.addOn.whiteDays': 'Ақ күндерді қосу',
   'fasting.preview.next': 'Келесі сәресі',
   'fasting.preview.today': 'Бүгін',

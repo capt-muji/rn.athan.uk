@@ -115,7 +115,7 @@ export const war = {
   'fasting.mode.dawood': 'Balik-balik nga adlaw',
   'fasting.mode.dawoodHint': 'Usa nga adlaw puasa, usa nga diri, an puasa ni David',
   'fasting.mode.whiteDays': 'Mga puti nga adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ngan ika-15 kada bulan ha Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ngan ika-15 kada bulan ha Hijri, ha panahon nga puno an bulan',
   'fasting.addOn.whiteDays': 'Lakip an mga puti nga adlaw',
   'fasting.preview.next': 'Sunod nga Suhur',
   'fasting.preview.today': 'Yana',

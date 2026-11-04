@@ -113,7 +113,7 @@ export const mad = {
   'fasting.mode.dawood': 'Bagantian',
   'fasting.mode.dawoodHint': 'Sattya pasa, sattya enna, pasana Dawud',
   'fasting.mode.whiteDays': 'Dina-dina potè',
-  'fasting.mode.whiteDaysHint': 'Tangghâl 13, 14 bân 15 sabbhân bulân Hijriah',
+  'fasting.mode.whiteDaysHint': "Tangghâl 13, 14 bân 15 sabbhân bulân Hijriah, e saatta bulân tana'",
   'fasting.addOn.whiteDays': "Maso'aghi dina-dina potè",
   'fasting.preview.next': 'Suhur saterrossa',
   'fasting.preview.today': 'Dinna',

@@ -106,7 +106,7 @@ export const ur = {
   'fasting.mode.dawood': 'ایک دن چھوڑ کر',
   'fasting.mode.dawoodHint': 'ایک دن روزہ، ایک دن نہیں، حضرت داؤد کا روزہ',
   'fasting.mode.whiteDays': 'سفید دن',
-  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے کی 13، 14 اور 15 تاریخ',
+  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے کی 13، 14 اور 15 تاریخ، جب چاند مکمل ہو',
   'fasting.addOn.whiteDays': 'سفید دن شامل کریں',
   'fasting.preview.next': 'اگلی سحری',
   'fasting.preview.today': 'آج',

@@ -116,7 +116,7 @@ export const mdh = {
   'fasting.mode.dawood': 'Magbantad nga adlaw',
   'fasting.mode.dawoodHint': 'Sawalay ka adlaw puasa, sawalay dili, so puasa ko Dawud',
   'fasting.mode.whiteDays': 'Mga maputi ka adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ambi ika-15 ka tagda bowan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ambi ika-15 ka kada bowan sa Hijri, sa pagbuno ko bulan',
   'fasting.addOn.whiteDays': 'Kaambit so mga maputi ka adlaw',
   'fasting.preview.next': 'Pemburas mapia Suhur',
   'fasting.preview.today': 'Pupita',

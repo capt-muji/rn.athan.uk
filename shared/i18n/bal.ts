@@ -107,7 +107,7 @@ export const bal = {
   'fasting.mode.dawood': 'چو چو روز',
   'fasting.mode.dawoodHint': 'یک روز روژے یک روز نہ، داؤدءَ روژ',
   'fasting.mode.whiteDays': 'سفید روز',
-  'fasting.mode.whiteDaysHint': 'هر ماہ ہجریءَ 13، 14 و 15',
+  'fasting.mode.whiteDaysHint': 'هر ماہ ہجریءَ 13، 14 و 15، ماہ تاں چانءَ وختئ',
   'fasting.addOn.whiteDays': 'سفید روزءَ شامل کن',
   'fasting.preview.next': 'کارزمانک اسور',
   'fasting.preview.today': 'امروز',

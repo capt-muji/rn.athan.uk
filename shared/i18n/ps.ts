@@ -107,7 +107,7 @@ export const ps = {
   'fasting.mode.dawood': 'نوبت په نوبت',
   'fasting.mode.dawoodHint': 'یوه ورځ روژه، یوه ورځ نه، د داود روژه',
   'fasting.mode.whiteDays': 'سپینې ورځې',
-  'fasting.mode.whiteDaysHint': 'د هر هجري میاشتې ۱۳، ۱۴ او ۱۵ نیټه',
+  'fasting.mode.whiteDaysHint': 'د هر هجري میاشتې ۱۳، ۱۴ او ۱۵ نیټه، کله چې سپوږمۍ بشپړه وي',
   'fasting.addOn.whiteDays': 'سپینې ورځې شاملې کړئ',
   'fasting.preview.next': 'راتلونکې سهاري',
   'fasting.preview.today': 'نن',

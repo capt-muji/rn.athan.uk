@@ -113,7 +113,7 @@ export const en = {
   'fasting.mode.dawood': 'Alternate days',
   'fasting.mode.dawoodHint': 'One day on, one day off, the fast of Dawood',
   'fasting.mode.whiteDays': 'The white days',
-  'fasting.mode.whiteDaysHint': 'The 13th, 14th and 15th of each Hijri month',
+  'fasting.mode.whiteDaysHint': 'The 13th, 14th and 15th of each Hijri month, when the moon is full',
   'fasting.addOn.whiteDays': 'Include the white days',
   'fasting.preview.next': 'Next Sahur',
   'fasting.preview.today': 'Today',

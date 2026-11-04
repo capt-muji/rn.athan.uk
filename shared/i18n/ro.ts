@@ -111,7 +111,7 @@ export const ro = {
   'fasting.mode.dawood': 'Din două în două zile',
   'fasting.mode.dawoodHint': 'O zi de post, o zi de pauză, postul lui Dawud',
   'fasting.mode.whiteDays': 'Zilele albe',
-  'fasting.mode.whiteDaysHint': 'Zilele 13, 14 și 15 ale fiecărei luni hegiriene',
+  'fasting.mode.whiteDaysHint': 'Zilele 13, 14 și 15 ale fiecărei luni hegiriene, când luna e plină',
   'fasting.addOn.whiteDays': 'Include zilele albe',
   'fasting.preview.next': 'Următorul Suhur',
   'fasting.preview.today': 'Azi',

@@ -111,7 +111,7 @@ export const fr = {
   'fasting.mode.dawood': 'Un jour sur deux',
   'fasting.mode.dawoodHint': 'Un jour de jeûne, un jour de repos, le jeûne de Dawoud',
   'fasting.mode.whiteDays': 'Les jours blancs',
-  'fasting.mode.whiteDaysHint': 'Les 13, 14 et 15 de chaque mois hégirien',
+  'fasting.mode.whiteDaysHint': 'Les 13, 14 et 15 de chaque mois hégirien, quand la lune est pleine',
   'fasting.addOn.whiteDays': 'Inclure les jours blancs',
   'fasting.preview.next': 'Prochain Sahour',
   'fasting.preview.today': 'Aujourd’hui',

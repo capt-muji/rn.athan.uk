@@ -110,7 +110,7 @@ export const kr = {
   'fasting.mode.dawood': 'Loba teete',
   'fasting.mode.dawoodHint': 'Loba boda, loba yi, Dawuda lobaa',
   'fasting.mode.whiteDays': 'Loba fai fai',
-  'fasting.mode.whiteDaysHint': '13, 14 ni 15 yeru Hijri kome',
+  'fasting.mode.whiteDaysHint': '13, 14 ni 15 yeru Hijri kome, sanda loktu konyan',
   'fasting.addOn.whiteDays': 'Fai fai loba kuna',
   'fasting.preview.next': 'Suhur koro',
   'fasting.preview.today': 'Yau',

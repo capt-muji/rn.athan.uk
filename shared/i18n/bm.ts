@@ -107,7 +107,7 @@ export const bm = {
   'fasting.mode.dawood': 'Dɔɔnin dɔɔnin donw',
   'fasting.mode.dawoodHint': 'Dɔ kɔji, dɔ kɔji tɛ, Dawuda kɔji',
   'fasting.mode.whiteDays': 'Jɛman donw',
-  'fasting.mode.whiteDaysHint': 'Tile 13, 14 ni 15 kalo kɔnɔ',
+  'fasting.mode.whiteDaysHint': 'Tile 13, 14 ni 15 kalo kɔnɔ, sa finba dakun',
   'fasting.addOn.whiteDays': 'Jɛman donw fara a kan',
   'fasting.preview.next': 'Suhuri tɔɔrɔ',
   'fasting.preview.today': 'Bi',

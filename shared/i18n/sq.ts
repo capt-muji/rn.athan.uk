@@ -109,7 +109,7 @@ export const sq = {
   'fasting.mode.dawood': 'Ditë me radhë',
   'fasting.mode.dawoodHint': 'Një ditë agjërim, një ditë jo, agjërimi i Davudit',
   'fasting.mode.whiteDays': 'Ditët e bardha',
-  'fasting.mode.whiteDaysHint': 'Dita 13, 14 dhe 15 e çdo muaji hixhri',
+  'fasting.mode.whiteDaysHint': 'Dita 13, 14 dhe 15 e çdo muaji hixhri, kur hëna është e plotë',
   'fasting.addOn.whiteDays': 'Përfshi ditët e bardha',
   'fasting.preview.next': 'Sehuri i radhës',
   'fasting.preview.today': 'Sot',

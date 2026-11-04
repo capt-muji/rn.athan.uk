@@ -107,7 +107,7 @@ export const paArab = {
   'fasting.mode.dawood': 'اک دن چھڈ کے',
   'fasting.mode.dawoodHint': 'اک دن روزہ، اک دن نہیں، داؤد علیہ السلام دا روزہ',
   'fasting.mode.whiteDays': 'چٹے دن',
-  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے دی 13، 14 تے 15 تاریخ',
+  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے دی 13، 14 تے 15 تاریخ، جدوں چن پورا ہندا اے',
   'fasting.addOn.whiteDays': 'چٹے دن شامل کرو',
   'fasting.preview.next': 'اگلی سحری',
   'fasting.preview.today': 'اج',

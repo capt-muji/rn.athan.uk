@@ -111,7 +111,7 @@ export const ti = {
   'fasting.mode.dawood': 'ዕለታት ምስ በዓል',
   'fasting.mode.dawoodHint': 'ዕለት ስዒብ፡ ዕለት ኣይትስዓብን፡ ስዒብ ዳውድ',
   'fasting.mode.whiteDays': 'ነጭ ዕለታት',
-  'fasting.mode.whiteDaysHint': '13፡ 14 ን 15 ናይ ኩሉ ወርሕ ሂጅራ',
+  'fasting.mode.whiteDaysHint': '13፡ 14 ን 15 ናይ ኩሉ ወርሕ ሂጅራ፡ እቲ ዓበይ ተባቢዑ እንተይኮነ',
   'fasting.addOn.whiteDays': 'ነጭ ዕለታት ኣእቱዎም',
   'fasting.preview.next': 'ዝቕጽል ሱሕር',
   'fasting.preview.today': 'ትሕቲ',

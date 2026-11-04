@@ -106,7 +106,7 @@ export const bn = {
   'fasting.mode.dawood': 'একদিন অন্তর',
   'fasting.mode.dawoodHint': 'একদিন রোজা, একদিন ছুটি, দাউদ আলাইহিস সালামের রোজা',
   'fasting.mode.whiteDays': 'সাদা দিনগুলো',
-  'fasting.mode.whiteDaysHint': 'প্রতি হিজরি মাসের ১৩, ১৪ ও ১৫ তারিখ',
+  'fasting.mode.whiteDaysHint': 'প্রতি হিজরি মাসের ১৩, ১৪ ও ১৫ তারিখ, যখন চাঁদ পূর্ণ হয়',
   'fasting.addOn.whiteDays': 'সাদা দিনগুলো অন্তর্ভুক্ত করুন',
   'fasting.preview.next': 'পরবর্তী সাহরি',
   'fasting.preview.today': 'আজ',

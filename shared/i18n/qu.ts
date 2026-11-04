@@ -116,7 +116,7 @@ export const qu = {
   'fasting.mode.dawood': 'Wakinyan pachakuna',
   'fasting.mode.dawoodHint': 'Huk pacha pawalla huk mana, Dawudpa pawan',
   'fasting.mode.whiteDays': 'Yuraq pachakuna',
-  'fasting.mode.whiteDaysHint': '13, 14, 15 sapa Hijri killa',
+  'fasting.mode.whiteDaysHint': '13, 14, 15 sapa Hijri killa, killa hunt’aq pachapi',
   'fasting.addOn.whiteDays': 'Yuraq pachakunawan yapay',
   'fasting.preview.next': 'Qatiq Suhur',
   'fasting.preview.today': 'Kunan',

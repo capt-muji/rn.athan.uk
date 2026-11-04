@@ -115,7 +115,7 @@ export const bcl = {
   'fasting.mode.dawood': 'Saralihing adlaw',
   'fasting.mode.dawoodHint': 'Sarong adlaw puasa, sarong adlaw dai, an puasa ni David',
   'fasting.mode.whiteDays': 'Mga puting adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 asin ika-15 kada bulan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 asin ika-15 kada bulan sa Hijri, kan daw bulan puno',
   'fasting.addOn.whiteDays': 'Iapil an mga puting adlaw',
   'fasting.preview.next': 'Masunod na Suhur',
   'fasting.preview.today': 'Yana',

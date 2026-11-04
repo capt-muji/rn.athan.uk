@@ -108,7 +108,7 @@ export const ckb = {
   'fasting.mode.dawood': 'ڕۆژانی جیاواز',
   'fasting.mode.dawoodHint': 'ڕۆژێک ڕۆژوو و ڕۆژێک نەخیر، ڕۆژووی داوود',
   'fasting.mode.whiteDays': 'ڕۆژە سپییەکان',
-  'fasting.mode.whiteDaysHint': '١٣ و ١٤ و ١٥ی هەر مانگێکی کۆچی',
+  'fasting.mode.whiteDaysHint': '١٣ و ١٤ و ١٥ی هەر مانگێکی کۆچی، کە مانگ تەواو دەبێت',
   'fasting.addOn.whiteDays': 'ڕۆژە سپییەکان بگەرێوە',
   'fasting.preview.next': 'سەحەری داهاتوو',
   'fasting.preview.today': 'ئەمڕۆ',

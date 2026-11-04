@@ -109,7 +109,7 @@ export const tg = {
   'fasting.mode.dawood': 'Рӯз дар миён',
   'fasting.mode.dawoodHint': 'Як рӯз рӯза, як рӯз на, рӯзаи Довуд',
   'fasting.mode.whiteDays': 'Рӯзҳои сафед',
-  'fasting.mode.whiteDaysHint': '13, 14 ва 15-и ҳар моҳи ҳиҷрӣ',
+  'fasting.mode.whiteDaysHint': '13, 14 ва 15-и ҳар моҳи ҳиҷрӣ, вақте ки моҳ пурра аст',
   'fasting.addOn.whiteDays': 'Рӯзҳои сафедро дохил кунед',
   'fasting.preview.next': 'Саҳари оянда',
   'fasting.preview.today': 'Имрӯз',

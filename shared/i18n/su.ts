@@ -107,7 +107,7 @@ export const su = {
   'fasting.mode.dawood': 'Poé silih ganti',
   'fasting.mode.dawoodHint': 'Poé shaum, poé henteu, shaumna Dawud',
   'fasting.mode.whiteDays': 'Poé-poé bodas',
-  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14 jeung 15 unggal bulan Hijriah',
+  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14 jeung 15 unggal bulan Hijriah, sabot bulan purnama',
   'fasting.addOn.whiteDays': 'Asupkeun poé-poé bodas',
   'fasting.preview.next': 'Sahur salajengna',
   'fasting.preview.today': 'Ieu poé',

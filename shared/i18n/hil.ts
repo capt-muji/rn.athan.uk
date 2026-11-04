@@ -116,7 +116,7 @@ export const hil = {
   'fasting.mode.dawood': 'Balik-balik nga adlaw',
   'fasting.mode.dawoodHint': 'Isa ka adlaw puasa, isa ka adlaw hindi, ang puasa ni David',
   'fasting.mode.whiteDays': 'Mga puti nga adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 kag ika-15 kada bulan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 kag ika-15 kada bulan sa Hijri, sang umaabot ang puno nga bulan',
   'fasting.addOn.whiteDays': 'Iapil ang mga puti nga adlaw',
   'fasting.preview.next': 'Masunod nga Suhur',
   'fasting.preview.today': 'Yanda',

@@ -107,7 +107,7 @@ export const jv = {
   'fasting.mode.dawood': 'Silih genti',
   'fasting.mode.dawoodHint': 'Sedina pasa, sedina ora, pase Dawud',
   'fasting.mode.whiteDays': 'Dina-dina putih',
-  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14 lan 15 saben wulan Hijriyah',
+  'fasting.mode.whiteDaysHint': 'Tanggal 13, 14 lan 15 saben wulan Hijriyah, nalika rembulan purnama',
   'fasting.addOn.whiteDays': 'Sertakna dina-dina putih',
   'fasting.preview.next': 'Sahur sabanjure',
   'fasting.preview.today': 'Dina iki',

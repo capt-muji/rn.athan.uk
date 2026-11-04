@@ -107,7 +107,7 @@ export const zhHans = {
   'fasting.mode.dawood': '隔天',
   'fasting.mode.dawoodHint': '一天封斋，一天开斋，达乌德的斋戒',
   'fasting.mode.whiteDays': '白的日子',
-  'fasting.mode.whiteDaysHint': '每个伊斯兰历月的第十三、十四和十五日',
+  'fasting.mode.whiteDaysHint': '每个伊斯兰历月的第十三、十四和十五日，月圆之时',
   'fasting.addOn.whiteDays': '包括白的日子',
   'fasting.preview.next': '下次封斋饭',
   'fasting.preview.today': '今天',

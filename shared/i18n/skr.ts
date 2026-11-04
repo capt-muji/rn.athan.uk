@@ -108,7 +108,7 @@ export const skr = {
   'fasting.mode.dawood': 'ہک ݙینھ چھوڑ تے',
   'fasting.mode.dawoodHint': 'ہک ݙینھ روزہ، ہک ݙینھ کائنا، داؤد علیہ السلام دا روزہ',
   'fasting.mode.whiteDays': 'اِچے ݙینھ',
-  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے دی 13، 14 تے 15 تریخ',
+  'fasting.mode.whiteDaysHint': 'ہر ہجری مہینے دی 13، 14 تے 15 تریخ، جݙاں چن پورا ہووے',
   'fasting.addOn.whiteDays': 'اِچے ݙینھ شامل کرو',
   'fasting.preview.next': 'اڳلی سحری',
   'fasting.preview.today': 'اَڄ',

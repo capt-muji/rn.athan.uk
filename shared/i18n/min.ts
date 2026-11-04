@@ -113,7 +113,7 @@ export const min = {
   'fasting.mode.dawood': 'Baliak-balik',
   'fasting.mode.dawoodHint': 'Sahari puasa, sahari indak, puasa Dawud',
   'fasting.mode.whiteDays': 'Hari-hari putiah',
-  'fasting.mode.whiteDaysHint': 'Angko 13, 14, jo 15 satiang bulan Hijriah',
+  'fasting.mode.whiteDaysHint': 'Angko 13, 14, jo 15 satiang bulan Hijriah, wakatu bulan purnama',
   'fasting.addOn.whiteDays': 'Sertokan hari-hari putiah',
   'fasting.preview.next': 'Sahua salanjuiknyo',
   'fasting.preview.today': 'Ari ko',

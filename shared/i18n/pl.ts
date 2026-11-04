@@ -112,7 +112,7 @@ export const pl = {
   'fasting.mode.dawood': 'Dzień w dzień',
   'fasting.mode.dawoodHint': 'Dzień postu, dzień przerwy, post Dawuda',
   'fasting.mode.whiteDays': 'Białe dni',
-  'fasting.mode.whiteDaysHint': 'Trzynasty, czternasty i piętnasty dzień każdego miesiąca hidżry',
+  'fasting.mode.whiteDaysHint': 'Trzynasty, czternasty i piętnasty dzień każdego miesiąca hidżry, przy pełni księżyca',
   'fasting.addOn.whiteDays': 'Uwzględnij białe dni',
   'fasting.preview.next': 'Następny Suhur',
   'fasting.preview.today': 'Dziś',

@@ -115,7 +115,7 @@ export const ilo = {
   'fasting.mode.dawood': 'Agsinnabtan nga aldaw',
   'fasting.mode.dawoodHint': 'Maysa nga aldaw bantay, maysa saan, ti bantay ni David',
   'fasting.mode.whiteDays': 'Dagiti puraw nga aldaw',
-  'fasting.mode.whiteDaysHint': 'Ti 13, 14 ken 15 ti kada bulan ti Hijri',
+  'fasting.mode.whiteDaysHint': 'Ti 13, 14 ken 15 ti kada bulan ti Hijri, no napno ti bulan',
   'fasting.addOn.whiteDays': 'Iraman dagiti puraw nga aldaw',
   'fasting.preview.next': 'Sukatan a Suhur',
   'fasting.preview.today': 'Itatta',

@@ -109,7 +109,7 @@ export const tl = {
   'fasting.mode.dawood': 'Kalahok na araw',
   'fasting.mode.dawoodHint': 'Isang araw ng ayuno, isang araw hindi, ang ayuno ni David',
   'fasting.mode.whiteDays': 'Mga puting araw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 at ika-15 ng bawat buwan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 at ika-15 ng bawat buwan sa Hijri, kapag kabilugan ng buwan',
   'fasting.addOn.whiteDays': 'Isama ang mga puting araw',
   'fasting.preview.next': 'Susunod na Suhur',
   'fasting.preview.today': 'Ngayon',

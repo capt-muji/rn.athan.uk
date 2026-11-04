@@ -115,7 +115,7 @@ export const uk = {
   'fasting.mode.dawood': 'Через день',
   'fasting.mode.dawoodHint': 'День посту, день перерви, піст Давуда',
   'fasting.mode.whiteDays': 'Білі дні',
-  'fasting.mode.whiteDaysHint': '13, 14 і 15 число кожного місяця хіджри',
+  'fasting.mode.whiteDaysHint': '13, 14 і 15 число кожного місяця хіджри, коли місяць повний',
   'fasting.addOn.whiteDays': 'Включити білі дні',
   'fasting.preview.next': 'Наступний сухур',
   'fasting.preview.today': 'Сьогодні',

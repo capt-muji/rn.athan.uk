@@ -109,7 +109,7 @@ export const om = {
   'fasting.mode.dawood': 'Guyyaa tartiibaan',
   'fasting.mode.dawoodHint': 'Guyyaa tokko caasaa, guyyaa tokko miti, caasaa Daawit',
   'fasting.mode.whiteDays': 'Guyyoota adii',
-  'fasting.mode.whiteDaysHint': '13, 14 fi 15 jiʼoota Hijriii hunda',
+  'fasting.mode.whiteDaysHint': '13, 14 fi 15 jiʼoota Hijriii hunda, yeroo addeesu guutuu',
   'fasting.addOn.whiteDays': 'Guyyoota adii dabalachiisi',
   'fasting.preview.next': 'Suhuur itti aanu',
   'fasting.preview.today': 'Harʼa',

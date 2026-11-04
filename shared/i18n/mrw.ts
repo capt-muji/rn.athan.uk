@@ -115,7 +115,7 @@ export const mrw = {
   'fasting.mode.dawood': 'Pangalawiglawig nga adlaw',
   'fasting.mode.dawoodHint': 'Sa gagawiy ka adlaw puasa, sa gagawiy dili, so puasa ko Dawud',
   'fasting.mode.whiteDays': 'Mga maputi ko adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 goadi ika-15 ka kada bowan sa Hijri',
+  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 goadi ika-15 ka kada bowan sa Hijri, sa pagbuno ko bulan',
   'fasting.addOn.whiteDays': 'Kaambit so mga maputi ko adlaw',
   'fasting.preview.next': 'Pemburas Suhur',
   'fasting.preview.today': 'Pupita',

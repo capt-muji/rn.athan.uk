@@ -111,7 +111,7 @@ export const uz = {
   'fasting.mode.dawood': 'Kunma-kun',
   'fasting.mode.dawoodHint': 'Bir kun roza, bir kun yoʻq, Dovud rozasi',
   'fasting.mode.whiteDays': 'Oq kunlar',
-  'fasting.mode.whiteDaysHint': 'Har hijriy oyning 13, 14 va 15-kunlari',
+  'fasting.mode.whiteDaysHint': 'Har hijriy oyning 13, 14 va 15-kunlari, oy toʻlganda',
   'fasting.addOn.whiteDays': 'Oq kunlarni qoʻshish',
   'fasting.preview.next': 'Keyingi saharlik',
   'fasting.preview.today': 'Bugun',

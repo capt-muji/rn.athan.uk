@@ -108,7 +108,7 @@ export const ml = {
   'fasting.mode.dawood': 'ഒരു ദിവസം ഇടവിട്ട്',
   'fasting.mode.dawoodHint': 'ഒരു ദിവസം വ്രതം, ഒരു ദിവസം ഇല്ല, ദാവൂദ് നബിയുടെ വ്രതം',
   'fasting.mode.whiteDays': 'വെളുത്ത ദിവസങ്ങൾ',
-  'fasting.mode.whiteDaysHint': 'ഓരോ ഹിജ്റ മാസത്തിലെയും 13, 14, 15 തീയതികൾ',
+  'fasting.mode.whiteDaysHint': 'ഓരോ ഹിജ്റ മാസത്തിലെയും 13, 14, 15 തീയതികൾ, പൗർണ്ണമി രാവുകൾ',
   'fasting.addOn.whiteDays': 'വെളുത്ത ദിവസങ്ങൾ ഉൾപ്പെടുത്തുക',
   'fasting.preview.next': 'അടുത്ത സഹർ',
   'fasting.preview.today': 'ഇന്ന്',

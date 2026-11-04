@@ -107,7 +107,7 @@ export const kas = {
   'fasting.mode.dawood': 'درمِیانئ دِن',
   'fasting.mode.dawoodHint': 'اکھ دِہاں روچھھ، اکھ نہٕ، داؤد ہُند روچھھ',
   'fasting.mode.whiteDays': 'سفید دِن',
-  'fasting.mode.whiteDaysHint': 'ہر ہجری ریتھئ ہُند 13، 14 تہٕ 15',
+  'fasting.mode.whiteDaysHint': 'ہر ہجری ریتھئ ہُند 13، 14 تہٕ 15، یَیلہِ چاند چھُ پور',
   'fasting.addOn.whiteDays': 'سفید دِن شأمل کئریو',
   'fasting.preview.next': 'بئیذ سحری',
   'fasting.preview.today': 'اَمہِس',

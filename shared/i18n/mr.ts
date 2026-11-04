@@ -107,7 +107,7 @@ export const mr = {
   'fasting.mode.dawood': 'एक दिवस टाळून',
   'fasting.mode.dawoodHint': 'एक दिवस उपवास, एक दिवस नाही, दाऊद अलैहिस्सलाम यांचा उपवास',
   'fasting.mode.whiteDays': 'पांढरे दिवस',
-  'fasting.mode.whiteDaysHint': 'प्रत्येक हिजरी महिन्याची 13, 14 आणि 15 तारीख',
+  'fasting.mode.whiteDaysHint': 'प्रत्येक हिजरी महिन्याची 13, 14 आणि 15 तारीख, जेव्हा चंद्र पूर्ण असतो',
   'fasting.addOn.whiteDays': 'पांढरे दिवस समाविष्ट करा',
   'fasting.preview.next': 'पुढील सहरी',
   'fasting.preview.today': 'आज',

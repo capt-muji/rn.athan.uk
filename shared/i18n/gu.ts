@@ -107,7 +107,7 @@ export const gu = {
   'fasting.mode.dawood': 'એક દિવસ છૂટ',
   'fasting.mode.dawoodHint': 'એક દિવસ ઉપવાસ, એક દિવસ નહીં, દાઉદનો ઉપવાસ',
   'fasting.mode.whiteDays': 'સફેદ દિવસો',
-  'fasting.mode.whiteDaysHint': 'દરેક હિજરી મહિનાની 13, 14 અને 15 તારીખ',
+  'fasting.mode.whiteDaysHint': 'દરેક હિજરી મહિનાની 13, 14 અને 15 તારીખે, જ્યારે ચંદ્ર પૂર્ણ હોય છે',
   'fasting.addOn.whiteDays': 'સફેદ દિવસો ઉમેરો',
   'fasting.preview.next': 'આગામી સહર',
   'fasting.preview.today': 'આજે',

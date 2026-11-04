@@ -117,7 +117,7 @@ export const tt = {
   'fasting.mode.dawood': 'Чиратлашып',
   'fasting.mode.dawoodHint': 'Бер көн ураза, бер көн түгел, Дәүүт уразасы',
   'fasting.mode.whiteDays': 'Ак көннәр',
-  'fasting.mode.whiteDaysHint': 'Һәр һиҗри айның 13, 14 һәм 15 е',
+  'fasting.mode.whiteDaysHint': 'Һәр һиҗри айның 13, 14 һәм 15 е, ай тулган вакытта',
   'fasting.addOn.whiteDays': 'Ак көннәрне керт',
   'fasting.preview.next': 'Киләсе сәхәр',
   'fasting.preview.today': 'Бүген',

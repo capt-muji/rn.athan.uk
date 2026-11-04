@@ -115,7 +115,7 @@ export const mfa = {
   'fasting.mode.dawood': 'Siling ari',
   'fasting.mode.dawoodHint': 'Sari poso, sari tida, poso Dawud',
   'fasting.mode.whiteDays': 'Ari-ari puto',
-  'fasting.mode.whiteDaysHint': '12,13 aba 14 ttap bulan Hijrah',
+  'fasting.mode.whiteDaysHint': '12, 13 aba 14 ttap bulan Hijrah, samaso bulan penuh',
   'fasting.addOn.whiteDays': 'Ambil ari-ari puto',
   'fasting.preview.next': 'Sahur sobrik',
   'fasting.preview.today': 'Riyen',

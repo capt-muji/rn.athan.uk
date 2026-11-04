@@ -111,7 +111,7 @@ export const bug = {
   'fasting.mode.dawood': 'Sibawa ura',
   'fasting.mode.dawoodHint': 'Sesso puasa,esso deka,puasa Dawuk',
   'fasting.mode.whiteDays': 'Ura puti',
-  'fasting.mode.whiteDaysHint': 'Essolo 13, 14 na 15 ri bulang sadiak Hijriah',
+  'fasting.mode.whiteDaysHint': 'Essolo 13, 14 na 15 ri bulang sadiak Hijriah, rilakenna nalebbiri',
   'fasting.addOn.whiteDays': 'Palettei ura puti',
   'fasting.preview.next': 'Suhur makkedai',
   'fasting.preview.today': 'Ero',

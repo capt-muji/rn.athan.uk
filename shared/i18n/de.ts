@@ -111,7 +111,7 @@ export const de = {
   'fasting.mode.dawood': 'Im Wechsel',
   'fasting.mode.dawoodHint': 'Ein Tag fasten, ein Tag nicht, das Fasten von Dawud',
   'fasting.mode.whiteDays': 'Die weißen Tage',
-  'fasting.mode.whiteDaysHint': 'Der 13., 14. und 15. jedes Hidschri-Monats',
+  'fasting.mode.whiteDaysHint': 'Der 13., 14. und 15. jedes Hidschri-Monats, wenn der Mond voll ist',
   'fasting.addOn.whiteDays': 'Die weißen Tage einschließen',
   'fasting.preview.next': 'Nächstes Suhur',
   'fasting.preview.today': 'Heute',

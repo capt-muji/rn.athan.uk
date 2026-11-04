@@ -109,7 +109,7 @@ export const ky = {
   'fasting.mode.dawood': 'Кезек менен',
   'fasting.mode.dawoodHint': 'Бир күн орозо, бир күн тыныгуу, Дөөттүн орозосу',
   'fasting.mode.whiteDays': 'Ак күндөр',
-  'fasting.mode.whiteDaysHint': 'Ар бир хижри айдын 13, 14 жана 15и',
+  'fasting.mode.whiteDaysHint': 'Ар бир хижри айдын 13, 14 жана 15и, ай толгон кезде',
   'fasting.addOn.whiteDays': 'Ак күндөрдү кошуу',
   'fasting.preview.next': 'Кийинки сухур',
   'fasting.preview.today': 'Бүгүн',

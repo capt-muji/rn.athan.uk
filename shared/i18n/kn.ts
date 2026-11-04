@@ -107,7 +107,7 @@ export const kn = {
   'fasting.mode.dawood': 'ಒಂದು ದಿನ ಬಿಟ್ಟು',
   'fasting.mode.dawoodHint': 'ಒಂದು ದಿನ ಉಪವಾಸ, ಒಂದು ದಿನ ಇಲ್ಲ, ದಾವೂದ್ ಅವರ ಉಪವಾಸ',
   'fasting.mode.whiteDays': 'ಬಿಳಿ ದಿನಗಳು',
-  'fasting.mode.whiteDaysHint': 'ಪ್ರತಿ ಹಿಜ್ರಿ ತಿಂಗಳ 13, 14 ಮತ್ತು 15ನೇ ದಿನ',
+  'fasting.mode.whiteDaysHint': 'ಪ್ರತಿ ಹಿಜ್ರಿ ತಿಂಗಳ 13, 14 ಮತ್ತು 15ನೇ ದಿನ, ಚಂದ್ರ ಪೂರ್ಣನಾಗಿರುವಾಗ',
   'fasting.addOn.whiteDays': 'ಬಿಳಿ ದಿನಗಳನ್ನು ಸೇರಿಸಿ',
   'fasting.preview.next': 'ಮುಂದಿನ ಸಹರ್',
   'fasting.preview.today': 'ಇಂದು',
