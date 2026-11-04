@@ -46,6 +46,11 @@ const UNMEASURED = [
   },
   { path: 'scripts/', reason: 'repository tooling, including this gate' },
   {
+    path: 'devlayouts/',
+    reason:
+      'dev-only fasting layout exploration harness (T-623); its variants are driven and screenshotted on the simulator by the ticket\u2019s device step, and the visual layouts stay untested per owner order 2026-11-04',
+  },
+  {
     path: 'ai/plans/',
     reason:
       'session plan scaffolding: census and anchor scripts run by planning sessions against the tree, never by the app; deleted at the plan folder\u2019s merge',

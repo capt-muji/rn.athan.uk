@@ -1,0 +1,72 @@
+[
+  {
+    "index": 1,
+    "id": "aligned-radio-rows",
+    "name": "Aligned Radio Rows",
+    "archetype": "Radio Rows",
+    "hidesExplanations": false
+  },
+  {
+    "index": 2,
+    "id": "radio-selected-hint-chip",
+    "name": "Radio + Hint Chip",
+    "archetype": "Radio Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 3,
+    "id": "radio-card-rows",
+    "name": "Radio Card Rows",
+    "archetype": "Radio Cards",
+    "hidesExplanations": true
+  },
+  {
+    "index": 4,
+    "id": "radio-two-column-grid",
+    "name": "Radio Two-Column Grid",
+    "archetype": "Radio Grid",
+    "hidesExplanations": true
+  },
+  {
+    "index": 5,
+    "id": "radio-leading-icon-rows",
+    "name": "Radio Leading-Icon Rows",
+    "archetype": "Radio Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 6,
+    "id": "checkmark-rows",
+    "name": "Checkmark Rows",
+    "archetype": "Checkmark Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 7,
+    "id": "checkmark-hint-footer",
+    "name": "Checkmark + Hint Footer",
+    "archetype": "Checkmark Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 8,
+    "id": "checkmark-selected-expands",
+    "name": "Checkmark Selected Expands",
+    "archetype": "Checkmark Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 9,
+    "id": "checkmark-pill-flow",
+    "name": "Checkmark Pill Flow",
+    "archetype": "Choice Chips",
+    "hidesExplanations": true
+  },
+  {
+    "index": 10,
+    "id": "segmented-icon-track",
+    "name": "Segmented Icon Track",
+    "archetype": "Segmented Track",
+    "hidesExplanations": true
+  }
+]

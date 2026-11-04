@@ -1,0 +1,45 @@
+/**
+ * The fasting layout registry (T-623): the catalog's plain rows bound to
+ * their components, in catalog order. devlayouts/ is dev-only - the route
+ * gates on __DEV__ - and sits outside the coverage measure (see
+ * scripts/check-changed-coverage.js); this binding is the one logic the
+ * suites prove.
+ */
+
+import type { ReactElement } from 'react';
+
+import catalog from './catalog.json';
+import { VARIANTS_01_10 } from './variants/variants-01-10';
+
+export type FastingVariantComponent = () => ReactElement;
+
+export interface FastingVariant {
+  readonly index: number;
+  readonly id: string;
+  readonly name: string;
+  readonly archetype: string;
+  readonly hidesExplanations: boolean;
+  readonly Component: FastingVariantComponent;
+}
+
+/** One map per variant file, appended as the steps land their batches */
+const COMPONENT_MAPS: readonly Record<string, FastingVariantComponent>[] = [VARIANTS_01_10];
+
+const componentFor = (id: string): FastingVariantComponent => {
+  for (const map of COMPONENT_MAPS) {
+    const found = map[id];
+    if (found) return found;
+  }
+  throw new Error(`devlayouts: catalog row ${id} has no component`);
+};
+
+export const VARIANTS: readonly FastingVariant[] = catalog.map((row) => ({
+  ...row,
+  Component: componentFor(row.id),
+}));
+
+/** How many distinct structures the set spans; the acceptance floor is 8 */
+export const archetypeCount = (): number => new Set(VARIANTS.map((variant) => variant.archetype)).size;
+
+/** How many rows hide the mode explanations by default; the acceptance floor is half of 50 */
+export const hiddenCount = (): number => VARIANTS.filter((variant) => variant.hidesExplanations).length;
