@@ -126,9 +126,41 @@ describe('the fasting-layouts gallery generator', () => {
 
     const html = readFileSync(join(outDir, 'index.html'), 'utf8');
     expect((html.match(/class="card"/g) ?? []).length).toBe(2);
-    expect((html.match(/<img /g) ?? []).length).toBe(2);
+    expect((html.match(/class="shot"/g) ?? []).length).toBe(2);
     expect(html).toContain('#7 Two A');
     expect(html).toContain('#8 Two B');
     for (const row of rows) expect(existsSync(join(outDir, 'images', shotName(row)))).toBe(true);
+  });
+
+  it('wires the lightbox: every card image clickable, enlarged view with prev and next controls, keyboard navigation, escape close', () => {
+    const rows: CatalogRow[] = [
+      { index: 1, id: 'lb-a', name: 'LB A', archetype: 'Wheel', hidesExplanations: false },
+      { index: 2, id: 'lb-b', name: 'LB B', archetype: 'Dial', hidesExplanations: false },
+      { index: 3, id: 'lb-c', name: 'LB C', archetype: 'Slider', hidesExplanations: true },
+    ];
+    const catalogPath = writeCatalog(rows);
+    for (const row of rows) writeShot(row, [0x02]);
+
+    runScript(catalogPath);
+
+    const html = readFileSync(join(outDir, 'index.html'), 'utf8');
+    // the enlarged view holds the same images, navigable
+    expect(html).toContain('id="lightbox"');
+    expect(html).toContain('id="lightbox-img"');
+    expect(html).toContain('images/variant-01-lb-a.png');
+    expect(html).toContain('images/variant-02-lb-b.png');
+    expect(html).toContain('images/variant-03-lb-c.png');
+    // visible clickable left and right controls
+    expect((html.match(/class="lb-arrow lb-(prev|next)"/g) ?? []).length).toBe(2);
+    expect(html).toContain('lb-prev');
+    expect(html).toContain('lb-next');
+    // keyboard arrows navigate, escape closes, backdrop click closes
+    expect(html).toContain('ArrowLeft');
+    expect(html).toContain('ArrowRight');
+    expect(html).toContain('Escape');
+    expect(html).toContain('lb-backdrop');
+    // the shot list the overlay walks is the catalog's, in order, escaped
+    expect(html).toContain('const LB_SHOTS');
+    expect((html.match(/images\/variant-\d+-lb-[abc]\.png/g) ?? []).length).toBe(6);
   });
 });

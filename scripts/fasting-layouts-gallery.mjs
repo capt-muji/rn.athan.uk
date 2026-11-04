@@ -54,12 +54,12 @@ for (const row of catalog) {
 }
 
 const cards = catalog
-  .map((row) => {
+  .map((row, position) => {
     const label = `#${row.index} ${escapeHtml(row.name ?? row.id)}`;
     const chip = row.hidesExplanations === true ? '<span class="chip">hints hidden</span>' : '';
     return [
       '    <figure class="card">',
-      `      <img loading="lazy" src="images/${escapeHtml(shotName(row))}" alt="${label}">`,
+      `      <img loading="lazy" class="shot" src="images/${escapeHtml(shotName(row))}" alt="${label}" onclick="openLb(${position})">`,
       '      <figcaption>',
       `        <h2>${label}</h2>`,
       `        <p class="archetype">${escapeHtml(row.archetype ?? '')}</p>`,
@@ -71,6 +71,8 @@ const cards = catalog
       .join('\n');
   })
   .join('\n');
+
+const lbShots = `[${catalog.map((row) => `'images/${escapeHtml(shotName(row))}'`).join(', ')}]`;
 
 const html = [
   '<!doctype html>',
@@ -84,11 +86,19 @@ const html = [
   'h1 { font-size: 20px; }',
   '.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }',
   '.card { margin: 0; background: #1a1a22; border: 1px solid #2a2a34; border-radius: 12px; overflow: hidden; }',
-  '.card img { display: block; width: 100%; height: auto; }',
+  '.card img { display: block; width: 100%; height: auto; cursor: zoom-in; }',
   'figcaption { padding: 12px 14px; }',
   'h2 { margin: 0 0 4px; font-size: 15px; }',
   '.archetype { margin: 0 0 8px; color: #9a9aa8; font-size: 13px; }',
   '.chip { display: inline-block; padding: 2px 8px; border-radius: 999px; background: #262636; color: #b8b8ff; font-size: 12px; }',
+  '#lightbox { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(8, 8, 12, 0.92); z-index: 10; }',
+  '#lightbox.open { display: flex; }',
+  '#lightbox-img { max-width: 92vw; max-height: 92vh; display: block; }',
+  '.lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); width: 52px; height: 64px; font-size: 34px; line-height: 1; color: #e8e8ee; background: #1a1a22; border: 1px solid #2a2a34; border-radius: 10px; cursor: pointer; }',
+  '.lb-arrow:hover { background: #262636; }',
+  '.lb-prev { left: 14px; }',
+  '.lb-next { right: 14px; }',
+  '.lb-close { position: fixed; top: 14px; right: 18px; font-size: 30px; color: #e8e8ee; background: none; border: none; cursor: pointer; }',
   '</style>',
   '</head>',
   '<body>',
@@ -96,6 +106,28 @@ const html = [
   '<main class="grid">',
   cards,
   '</main>',
+  '<div id="lightbox" class="lb-backdrop">',
+  '  <button class="lb-close" onclick="closeLb()" aria-label="close">&#215;</button>',
+  '  <button class="lb-arrow lb-prev" id="lb-prev" onclick="stepLb(-1)" aria-label="previous">&#8249;</button>',
+  '  <img id="lightbox-img" alt="enlarged variant">',
+  '  <button class="lb-arrow lb-next" id="lb-next" onclick="stepLb(1)" aria-label="next">&#8250;</button>',
+  '</div>',
+  '<script>',
+  `const LB_SHOTS = ${lbShots};`,
+  'let lbIndex = -1;',
+  'const lb = document.getElementById("lightbox");',
+  'const lbImg = document.getElementById("lightbox-img");',
+  'const openLb = (position) => { lbIndex = position; lbImg.src = LB_SHOTS[lbIndex]; lb.classList.add("open"); };',
+  'const closeLb = () => lb.classList.remove("open");',
+  'const stepLb = (delta) => { lbIndex = (lbIndex + delta + LB_SHOTS.length) % LB_SHOTS.length; lbImg.src = LB_SHOTS[lbIndex]; };',
+  'document.addEventListener("keydown", (event) => {',
+  '  if (!lb.classList.contains("open")) return;',
+  '  if (event.key === "ArrowLeft") stepLb(-1);',
+  '  if (event.key === "ArrowRight") stepLb(1);',
+  '  if (event.key === "Escape") closeLb();',
+  '});',
+  'lb.addEventListener("click", (event) => { if (event.target === lb) closeLb(); });',
+  '</script>',
   '</body>',
   '</html>',
 ].join('\n');
