@@ -374,5 +374,13 @@
   {
     "version": "2.43.30",
     "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.44.0",
+    "reason": "2026-11-03 lane3/T-594's 24-hour-toggle commit 6405f777 and lane1/T-575's istijaba-description commit a0c4a505 both step to 2.44.0 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.59",
+    "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
   }
 ]
