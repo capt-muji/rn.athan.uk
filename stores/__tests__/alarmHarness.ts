@@ -10,10 +10,10 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import { DEFAULT_REMINDER_SLOT_INTERVALS, type PrayerId } from '@/shared/constants';
-import { transformApiData } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import {
   AlertType,
-  type ISingleApiResponseTransformed,
+  type DayRecord,
   REMINDER_SLOTS,
   type ReminderInterval,
   type ReminderSlot,
@@ -70,8 +70,8 @@ export const londonDays = (...dates: string[]): Record<string, Times> =>
 export const sameTimesOn = (dates: string[], times: Times): Record<string, Times> =>
   Object.fromEntries(dates.map((date) => [date, times]));
 
-/** Installs days as the reader serves them, so Suhoor, Duha and Istijaba are derived by the app's own transform */
-const storedWindow = new Map<string, ISingleApiResponseTransformed>();
+/** Installs days as the reader serves them, so Suhoor, Duha and Istijaba are derived by the record's own producer */
+const storedWindow = new Map<string, DayRecord>();
 
 export const resetStoredDays = (): void => {
   storedWindow.clear();
@@ -80,9 +80,7 @@ export const resetStoredDays = (): void => {
 
 export const storeDays = (days: Record<string, Times>): void => {
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
-    const [stored] = transformApiData({
-      times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
-    });
+    const stored = minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
     storedWindow.set(date, stored);
   }
   __installTimetableDays([...storedWindow.values()]);

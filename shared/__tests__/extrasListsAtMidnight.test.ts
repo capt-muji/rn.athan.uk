@@ -14,8 +14,9 @@
 
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
-import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
+import { createPrayerSequence, getPrayerForDate } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import { type DayRecord, type Prayer, ScheduleType } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
@@ -25,9 +26,9 @@ jest.mock('@/stores/database', () => ({
 
 jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
-const stored = new Map<string, ISingleApiResponseTransformed>();
+const stored = new Map<string, DayRecord>();
 
-const useRecords = (records: ISingleApiResponseTransformed[]) => {
+const useRecords = (records: DayRecord[]) => {
   stored.clear();
   for (const record of records) stored.set(record.date, record);
 };
@@ -36,9 +37,9 @@ beforeEach(() => {
   (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
-/** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */
+/** A day as the reader serves it, with Suhoor, Duha and Istijaba derived exactly as the app does */
 const day = (date: string, fajr: string, sunrise: string, dhuhr: string, asr: string, magrib: string, isha: string) =>
-  transformApiData({ times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+  minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
 
 /** Several days' lists as one sequence, exactly as the app builds it */
 const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): Prayer[] =>

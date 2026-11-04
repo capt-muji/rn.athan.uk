@@ -8,9 +8,10 @@
 
 import type { PrayerId } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
-import { createPrayerSequence, transformApiData } from '@/shared/prayer';
+import { createPrayerSequence } from '@/shared/prayer';
 import { createPrayerDatetime } from '@/shared/time';
-import type { ISingleApiResponseTransformed, Prayer, RequiredTimeName, ScheduleType } from '@/shared/types';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import type { DayRecord, Prayer, RequiredTimeName, ScheduleType } from '@/shared/types';
 import { getTimetableDay, __installTimetableDays as installTimetableDays } from '@/stores/timetable';
 
 const LONDON_2026: Record<string, Record<RequiredTimeName, string>> = {
@@ -25,10 +26,10 @@ export type Breakage = Record<string, RequiredTimeName[] | 'not stored'>;
 /**
  * The days as the app stores them, with the given breakage
  *
- * Unreadable times go through transformApiData as null, so Suhoor, Duha and Istijaba follow them exactly as
+ * Unreadable times go through toDayMinutes as null, so Suhoor, Duha and Istijaba follow them exactly as
  * they do in the app.
  */
-const buildLondonDays = (breakage: Breakage): ISingleApiResponseTransformed[] =>
+const buildLondonDays = (breakage: Breakage): DayRecord[] =>
   Object.entries(LONDON_2026).flatMap(([date, times]) => {
     const broken = breakage[date] ?? [];
     if (broken === 'not stored') return [];
@@ -36,7 +37,7 @@ const buildLondonDays = (breakage: Breakage): ISingleApiResponseTransformed[] =>
     const validated: Record<RequiredTimeName, string | null> = { ...times };
     for (const name of broken) validated[name] = null;
 
-    return transformApiData({ times: { [date]: validated } });
+    return [minutesToRecord(date, toDayMinutes(validated))];
   });
 
 /** Points the mocked `getTimetableDay` at the days, for suites that mock '@/stores/timetable' */

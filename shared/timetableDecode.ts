@@ -7,10 +7,12 @@
  * in canonical order. This module holds no clock and no IO, so every behaviour
  * is testable by construction.
  *
- * A record built here is byte-for-byte what the dev pipeline stores: derived
- * Suhoor, Duha and Istijaba are worked out the same way transformApiData
- * works them out, from the day's own six times.
+ * A record built here is byte-for-byte what the dev window serves: both build
+ * classes decode six minutes through minutesToRecord, the one producer of the
+ * day-record shape.
  */
+
+import { TIME_ADJUSTMENTS } from '@/shared/constants';
 
 const MAGIC = 'LUPT';
 const FORMAT_VERSION = 1;
@@ -93,7 +95,7 @@ export const readDayMinutes = (bytes: Uint8Array, header: TimetableHeader, index
 const minuteToTimeString = (minute: number): string =>
   `${String(Math.floor(minute / 60)).padStart(2, '0')}:${String(minute % 60).padStart(2, '0')}`;
 
-/** Modular clock arithmetic on minutes, the same wrap adjustTime applies to strings */
+/** Modular clock arithmetic on minutes, the wrap a derived time takes past midnight */
 const derivedMinute = (minute: number, adjustment: number): string =>
   minuteToTimeString((((minute + adjustment) % 1440) + 1440) % 1440);
 
@@ -101,8 +103,8 @@ const derivedMinute = (minute: number, adjustment: number): string =>
  * The day as the app reads it: six published times plus the three derived
  * extras, each null when the time it comes from is (shared/types.ts contract).
  *
- * Istijaba is derived for every day, as transformApiData did: which days show
- * it is a list-building question, never a storage one.
+ * Istijaba is derived for every day: which days show it is a list-building
+ * question, never a storage one.
  */
 export const minutesToRecord = (date: string, minutes: DayMinutes) => ({
   date,
@@ -112,7 +114,23 @@ export const minutesToRecord = (date: string, minutes: DayMinutes) => ({
   asr: minutes.asr === null ? null : minuteToTimeString(minutes.asr),
   magrib: minutes.magrib === null ? null : minuteToTimeString(minutes.magrib),
   isha: minutes.isha === null ? null : minuteToTimeString(minutes.isha),
-  suhoor: minutes.fajr === null ? null : derivedMinute(minutes.fajr, -20),
-  duha: minutes.sunrise === null ? null : derivedMinute(minutes.sunrise, 20),
-  istijaba: minutes.magrib === null ? null : derivedMinute(minutes.magrib, -60),
+  suhoor: minutes.fajr === null ? null : derivedMinute(minutes.fajr, TIME_ADJUSTMENTS.suhoor),
+  duha: minutes.sunrise === null ? null : derivedMinute(minutes.sunrise, TIME_ADJUSTMENTS.duha),
+  istijaba: minutes.magrib === null ? null : derivedMinute(minutes.magrib, TIME_ADJUSTMENTS.istijaba),
+});
+
+/** HH:mm as minutes past midnight, the inverse of minuteToTimeString */
+const toMinute = (time: string): number => Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
+
+/**
+ * A day's six times from HH:mm strings, null where the publisher published
+ * nothing: the form tests and the dev window write, on their way into a record.
+ */
+export const toDayMinutes = (times: { [Column in (typeof COLUMNS)[number]]: string | null }): DayMinutes => ({
+  fajr: times.fajr === null ? null : toMinute(times.fajr),
+  sunrise: times.sunrise === null ? null : toMinute(times.sunrise),
+  dhuhr: times.dhuhr === null ? null : toMinute(times.dhuhr),
+  asr: times.asr === null ? null : toMinute(times.asr),
+  magrib: times.magrib === null ? null : toMinute(times.magrib),
+  isha: times.isha === null ? null : toMinute(times.isha),
 });

@@ -540,7 +540,7 @@ describe('MMKV instance id', () => {
     expect(idForEnv('preview')).toBe('athan-storage');
   });
 
-  it('uses a separate store for local builds, which serve MOCK_DATA_SIMPLE', () => {
+  it('uses a separate store for local builds, which serve the mock window', () => {
     expect(idForEnv('local')).not.toBe('athan-storage');
   });
 

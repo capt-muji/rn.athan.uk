@@ -6,7 +6,7 @@ import { createMMKV } from 'react-native-mmkv';
 import { __setAssetHash, __setAssetLocalUri } from '@/shared/__mocks__/expo-asset';
 import { __deferFileBytes, __setFileBytes } from '@/shared/__mocks__/expo-file-system';
 import * as TimeUtils from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Database from '@/stores/database';
 import * as Timetable from '@/stores/timetable';
 
@@ -51,7 +51,7 @@ const asDevBuild = () => {
   mockBuildEnv = 'local';
 };
 
-const DAY: ISingleApiResponseTransformed = {
+const DAY: DayRecord = {
   date: '2026-09-10',
   fajr: '04:52',
   sunrise: '06:24',
@@ -272,7 +272,7 @@ describe('the test seam', () => {
     expect(Timetable.getTimetableDay('2026-09-10')).toEqual(DAY);
     expect(Timetable.getTimetableDay('2026-09-11')).toBeNull();
 
-    const replacement: ISingleApiResponseTransformed = { ...DAY, date: '2027-03-01', fajr: '05:00' };
+    const replacement: DayRecord = { ...DAY, date: '2027-03-01', fajr: '05:00' };
     Timetable.__installTimetableDays([replacement]);
     expect(Timetable.getTimetableDay('2026-09-10')).toBeNull();
     expect(Timetable.getTimetableDay('2027-03-01')?.fajr).toBe('05:00');

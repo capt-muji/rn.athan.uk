@@ -10,7 +10,7 @@
 import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
-import { AlertType, type ISingleApiResponseTransformed } from '@/shared/types';
+import { AlertType, type DayRecord } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { __installTimetableDays } from '@/stores/timetable';
 
@@ -74,13 +74,13 @@ beforeEach(() => {
   Database.database.clearAll();
   __installTimetableDays([]);
   /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+  const seededWindow = new Map<string, DayRecord>();
 
   seededWindow.clear();
   __installTimetableDays([]);
 
   for (const date of WINDOW) {
-    const day: ISingleApiResponseTransformed = {
+    const day: DayRecord = {
       date,
       fajr: '12:00',
       sunrise: '12:00',

@@ -11,7 +11,7 @@
 import { london } from '@/hooks/__tests__/londonDays';
 import { NOTIFICATION_REQUEST_BUDGET, type PrayerId, SCHEDULE_CANDIDATE_DAYS } from '@/shared/constants';
 import { buildSchedulePlan, collectCandidateRows, schedulePlanKey } from '@/shared/notifications';
-import { transformApiData } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import type { RequiredTimeName } from '@/shared/types';
 import { ScheduleType } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
@@ -26,7 +26,7 @@ const saveWrappedDays = (count: number) => {
     payload[new Date(start + i * 86400000).toISOString().slice(0, 10)] = WRAPPED;
   }
   Timetable.__installTimetableDays(
-    Object.entries(payload).flatMap(([date, t]) => transformApiData({ times: { [date]: t } }))
+    Object.entries(payload).flatMap(([date, t]) => [minutesToRecord(date, toDayMinutes(t))])
   );
 };
 

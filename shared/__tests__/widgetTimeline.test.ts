@@ -98,7 +98,7 @@ const makeSequence = (): PrayerSequence => ({
 // =============================================================================
 
 /**
- * Winter extras times for raw day X (from transformApiData): Midnight
+ * Winter extras times for raw day X (from minutesToRecord): Midnight
  * 23:52 (hours >= 12 — the creation rules place it the PREVIOUS calendar
  * evening with belongsToDate X), Last Third 02:15, Suhoor 05:55, Duha
  * 08:10, Istijaba 16:00 (Fridays only). Chronological extras order per raw

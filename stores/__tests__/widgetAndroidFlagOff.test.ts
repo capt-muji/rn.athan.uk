@@ -22,7 +22,7 @@ jest.mock('@/modules/widgetrefresh', () => ({ armWidgetRefreshChain: jest.fn() }
 import { addDays } from 'date-fns';
 
 import { createInstant, formatDateShort } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 import { refreshPrayerWidgets } from '@/stores/widget';
 import {
@@ -39,7 +39,7 @@ import {
 describe('refreshPrayerWidgets android flag gate', () => {
   it('is a no-op with androidWidgets off: seeded cache, no pushes, no reloads', async () => {
     const now = createInstant();
-    const data: ISingleApiResponseTransformed[] = [];
+    const data: DayRecord[] = [];
     for (let offset = -1; offset < 3; offset++) {
       const day = addDays(now, offset);
       data.push({

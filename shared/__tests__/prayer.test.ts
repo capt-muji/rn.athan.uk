@@ -1,8 +1,6 @@
-import { formatInTimeZone } from 'date-fns-tz';
-
 import * as Timetable from '@/stores/timetable';
 
-import { PRAYER_TIMEZONE, type PrayerId } from '../constants';
+import type { PrayerId } from '../constants';
 import { setActiveLocale } from '../i18n/locale';
 import {
   calculateBelongsToDate,
@@ -10,23 +8,14 @@ import {
   createPrayer,
   createPrayerSequence,
   createPrayersForDate,
-  filterApiData,
   firstStillDueListDay,
   firstStillDueListDayForPrayer,
   getCascadeDelay,
   getPrayerForDate,
-  transformApiData,
 } from '../prayer';
 import { createPrayerDatetime } from '../time';
-import {
-  type IApiResponse,
-  type ISingleApiResponseTransformed,
-  type IValidatedApiResponse,
-  type Prayer,
-  type ReadablePrayer,
-  type RequiredTimeName,
-  ScheduleType,
-} from '../types';
+import { minutesToRecord, toDayMinutes } from '../timetableDecode';
+import { type DayRecord, type Prayer, type ReadablePrayer, type RequiredTimeName, ScheduleType } from '../types';
 
 jest.mock('@/stores/database', () => ({
   getItem: () => null,
@@ -34,13 +23,6 @@ jest.mock('@/stores/database', () => ({
 }));
 
 jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
-
-/**
- * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
- * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
- * London fails the app's code rather than this fixture.
- */
-const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // calculateBelongsToDate TESTS
@@ -302,258 +284,6 @@ describe('createPrayer edge cases', () => {
 });
 
 // =============================================================================
-// filterApiData TESTS
-// =============================================================================
-
-describe('filterApiData', () => {
-  // The date labels ride the system clock, so the real one would straddle the
-  // London midnight inside one test's offset pairs
-  beforeEach(() => {
-    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T12:00:00Z'));
-  });
-  afterEach(() => jest.useRealTimers());
-
-  const createMockApiResponse = (dates: string[]): IApiResponse => {
-    const times: IApiResponse['times'] = {};
-    dates.forEach((date) => {
-      times[date] = {
-        date,
-        fajr: '06:00',
-        sunrise: '07:30',
-        dhuhr: '12:30',
-        asr: '15:00',
-        magrib: '17:30',
-        isha: '19:00',
-      };
-    });
-    return { times };
-  };
-
-  it('keeps today and future dates', () => {
-    const today = prayerZoneDate();
-    const tomorrow = prayerZoneDate(86400000);
-    const nextWeek = prayerZoneDate(7 * 86400000);
-
-    const input = createMockApiResponse([today, tomorrow, nextWeek]);
-    const result = filterApiData(input);
-
-    expect(Object.keys(result.times)).toContain(today);
-    expect(Object.keys(result.times)).toContain(tomorrow);
-    expect(Object.keys(result.times)).toContain(nextWeek);
-  });
-
-  it('keeps yesterday (needed for progress bar)', () => {
-    const yesterday = prayerZoneDate(-86400000);
-    const today = prayerZoneDate();
-
-    const input = createMockApiResponse([yesterday, today]);
-    const result = filterApiData(input);
-
-    expect(Object.keys(result.times)).toContain(yesterday);
-    expect(Object.keys(result.times)).toContain(today);
-  });
-
-  it('filters out dates older than yesterday', () => {
-    const twoDaysAgo = prayerZoneDate(-2 * 86400000);
-    const weekAgo = prayerZoneDate(-7 * 86400000);
-    const today = prayerZoneDate();
-
-    const input = createMockApiResponse([weekAgo, twoDaysAgo, today]);
-    const result = filterApiData(input);
-
-    expect(Object.keys(result.times)).not.toContain(weekAgo);
-    expect(Object.keys(result.times)).not.toContain(twoDaysAgo);
-    expect(Object.keys(result.times)).toContain(today);
-  });
-
-  it('handles empty times object', () => {
-    const input: IApiResponse = {
-      times: {},
-    };
-    const result = filterApiData(input);
-    expect(Object.keys(result.times)).toHaveLength(0);
-  });
-});
-
-// =============================================================================
-// transformApiData TESTS
-// =============================================================================
-
-describe('transformApiData', () => {
-  it('transforms single day correctly', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:15',
-          sunrise: '07:45',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:45',
-          isha: '18:30',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-
-    expect(result).toHaveLength(1);
-    expect(result[0].date).toBe('2026-01-18');
-    expect(result[0].fajr).toBe('06:15');
-    expect(result[0].sunrise).toBe('07:45');
-    expect(result[0].dhuhr).toBe('12:15');
-    expect(result[0].asr).toBe('14:30');
-    expect(result[0].magrib).toBe('16:45');
-    expect(result[0].isha).toBe('18:30');
-  });
-
-  it('calculates derived prayer times', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:15',
-          sunrise: '07:45',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:45',
-          isha: '18:30',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-
-    // Check derived times exist and are in HH:mm format
-    expect(result[0].suhoor).toMatch(/^\d{2}:\d{2}$/);
-    expect(result[0].duha).toMatch(/^\d{2}:\d{2}$/);
-    expect(result[0].istijaba).toMatch(/^\d{2}:\d{2}$/);
-  });
-
-  it('transforms multiple days', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:15',
-          sunrise: '07:45',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:45',
-          isha: '18:30',
-        },
-        '2026-01-19': {
-          date: '2026-01-19',
-          fajr: '06:14',
-          sunrise: '07:44',
-          dhuhr: '12:15',
-          asr: '14:31',
-          magrib: '16:46',
-          isha: '18:31',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-
-    expect(result).toHaveLength(2);
-    expect(result.map((r) => r.date)).toContain('2026-01-18');
-    expect(result.map((r) => r.date)).toContain('2026-01-19');
-  });
-
-  it('handles empty input', () => {
-    const input: IApiResponse = {
-      times: {},
-    };
-
-    const result = transformApiData(input);
-    expect(result).toHaveLength(0);
-  });
-
-  it('calculates suhoor correctly (before fajr)', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:00',
-          sunrise: '07:30',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:45',
-          isha: '18:30',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-    // Suhoor is fajr - 20 minutes = 05:40
-    expect(result[0].suhoor).toBe('05:40');
-  });
-
-  it('calculates duha correctly (after sunrise)', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:00',
-          sunrise: '07:30',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:45',
-          isha: '18:30',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-    // Duha is sunrise + 20 minutes = 07:50
-    expect(result[0].duha).toBe('07:50');
-  });
-
-  it('calculates istijaba correctly (before magrib)', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-01-18': {
-          date: '2026-01-18',
-          fajr: '06:00',
-          sunrise: '07:30',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '17:00',
-          isha: '18:30',
-        },
-      },
-    };
-
-    const result = transformApiData(input);
-    // Istijaba is magrib - 60 minutes (TIME_ADJUSTMENTS.istijaba = -60) = 16:00
-    expect(result[0].istijaba).toBe('16:00');
-  });
-
-  it('never stores Midnight or Last Third: they belong to the night before a day (ISSUES #29)', () => {
-    const input: IApiResponse = {
-      times: {
-        '2026-12-31': {
-          date: '2026-12-31',
-          fajr: '06:00',
-          sunrise: '07:30',
-          dhuhr: '12:15',
-          asr: '14:30',
-          magrib: '16:00',
-          isha: '17:45',
-        },
-      },
-    };
-
-    const [result] = transformApiData(input);
-
-    // Worked out from two days' records when the lists are built (getNightTimesForDay)
-    expect(result).not.toHaveProperty('midnight');
-    expect(result).not.toHaveProperty('last third');
-  });
-});
-
-// =============================================================================
 // canonicalDisplayOrder TESTS (F.4 - Friday Extra display order)
 // =============================================================================
 
@@ -644,24 +374,21 @@ const OCTOBER = ['2026-10-16', '2026-10-17', '2026-10-18', '2026-10-19', '2026-1
 const SEPTEMBER = ['2026-09-10', '2026-09-11', '2026-09-12', '2026-09-13'];
 const MARCH = ['2026-03-27', '2026-03-28', '2026-03-29', '2026-03-30'];
 
-const stored = new Map<string, ISingleApiResponseTransformed>();
+const stored = new Map<string, DayRecord>();
 
 /**
- * Stores these days the way a download is stored (transformApiData), each `date field` listed in
- * `unreadable` null, as api/client.ts leaves a value it cannot read
+ * Stores these days the way the reader serves them, each `date field` listed in
+ * `unreadable` null, as a publisher that published nothing leaves it
  */
 const storeDays = (dates: string[], unreadable: string[] = []) => {
-  const times: IValidatedApiResponse['times'] = {};
+  stored.clear();
   for (const date of dates) {
     const entry = {} as Record<Field, string | null>;
     FIELDS.forEach((field, index) => {
       entry[field] = unreadable.includes(`${date} ${field}`) ? null : LONDON_2026[date][index];
     });
-    times[date] = entry;
+    stored.set(date, minutesToRecord(date, toDayMinutes(entry)));
   }
-
-  stored.clear();
-  for (const record of transformApiData({ times })) stored.set(record.date, record);
 };
 
 const plusDays = (date: string, days: number): string =>
@@ -729,7 +456,7 @@ beforeEach(() => {
   (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
-describe('transformApiData with times api/client.ts could not read', () => {
+describe('minutesToRecord with times the publisher did not publish', () => {
   const OCT_16 = { fajr: '05:51', sunrise: '07:23', dhuhr: '12:51', asr: '15:31', magrib: '18:08', isha: '19:31' };
   const OCT_17 = { fajr: '05:52', sunrise: '07:25', dhuhr: '12:51', asr: '15:30', magrib: '18:06', isha: '19:29' };
 
@@ -750,8 +477,11 @@ describe('transformApiData with times api/client.ts could not read', () => {
       const october16: Record<Field, string | null> = { ...OCT_16 };
       for (const field of unreadable) october16[field] = null;
 
-      // The next day in the same payload keeps its own derived times: nothing leaks across days
-      expect(transformApiData({ times: { '2026-10-16': october16, '2026-10-17': OCT_17 } })).toEqual([
+      // The next day keeps its own derived times: nothing leaks across days
+      expect([
+        minutesToRecord('2026-10-16', toDayMinutes(october16)),
+        minutesToRecord('2026-10-17', toDayMinutes(OCT_17)),
+      ]).toEqual([
         { date: '2026-10-16', ...october16, suhoor, duha, istijaba },
         { date: '2026-10-17', ...OCT_17, suhoor: '05:32', duha: '07:45', istijaba: '17:06' },
       ]);
@@ -860,9 +590,9 @@ describe('which rows lose their time when one field on a day cannot be read', ()
       storeDays(SEPTEMBER);
       const readable = buildBoth('2026-09-10', 4);
 
-      const record = stored.get('2026-09-11') as ISingleApiResponseTransformed;
+      const record = stored.get('2026-09-11') as DayRecord;
       const withoutKey = Object.fromEntries(Object.entries(record).filter(([key]) => key !== field));
-      stored.set('2026-09-11', withoutKey as unknown as ISingleApiResponseTransformed);
+      stored.set('2026-09-11', withoutKey as unknown as DayRecord);
 
       expect(buildBoth('2026-09-10', 4)).toEqual(withoutTimes(readable, expected));
     }
@@ -1264,19 +994,16 @@ describe('never copies, averages or synthesises a prayer time', () => {
 // current until its last readable row has passed)
 // =============================================================================
 
-/** Stores the given days (FIELDS order) as a download is stored, replacing whatever was stored */
+/** Stores the given days (FIELDS order) as the reader serves them, replacing whatever was stored */
 const storeTimes = (days: Record<string, string[] | (string | null)[]>) => {
-  const times: IValidatedApiResponse['times'] = {};
+  stored.clear();
   for (const [date, values] of Object.entries(days)) {
     const entry = {} as Record<Field, string | null>;
     FIELDS.forEach((field, index) => {
       entry[field] = values[index] ?? null;
     });
-    times[date] = entry;
+    stored.set(date, minutesToRecord(date, toDayMinutes(entry)));
   }
-
-  stored.clear();
-  for (const record of transformApiData({ times })) stored.set(record.date, record);
 };
 
 describe('firstStillDueListDay', () => {

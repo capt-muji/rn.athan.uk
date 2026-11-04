@@ -12,10 +12,7 @@ import { findNextReadable, isReadable } from '@/shared/sequence';
 import * as TimeUtils from '@/shared/time';
 import { createPrayerDatetime } from '@/shared/time';
 import {
-  type IApiResponse,
-  type IApiTimes,
-  type ISingleApiResponseTransformed,
-  type IValidatedApiResponse,
+  type DayRecord,
   type Prayer,
   type PrayerSequence,
   type ReadablePrayer,
@@ -23,73 +20,6 @@ import {
   type UnreadablePrayer,
 } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
-
-// =============================================================================
-// DATA TRANSFORMATION FUNCTIONS
-// The mock pipeline runs the dev payload through them, matching the API era
-// they were built for, so dev records stay byte-identical to what shipped then
-// =============================================================================
-
-/**
- * Filters mock payload data to only include yesterday, today and future dates
- * Yesterday is included to support progress bar calculation for first prayer (Fajr)
- * @param apiData Raw payload data
- * @returns Filtered payload containing yesterday and future dates
- */
-export const filterApiData = (apiData: IApiResponse): IApiResponse => {
-  const timesFiltered: IApiTimes = {};
-
-  const entries = Object.entries(apiData.times);
-
-  entries.forEach(([date, times]) => {
-    // Include yesterday, today, and future dates
-    if (!TimeUtils.isDateYesterdayOrFuture(date)) return;
-    timesFiltered[date] = times;
-  });
-
-  return { times: timesFiltered };
-};
-
-/**
- * Transforms API response data into normalized prayer schedule format
- * Adds the calculated Suhoor, Duha and Istijaba times (each from the day's own times)
- *
- * Midnight and Last Third are not stored: they belong to the night before a day,
- * which spans two days' records, so they are worked out when the lists are built
- * (getNightTimesForDay)
- *
- * A derived time is null when the time it comes from is: nothing can be worked out from a value the
- * provider did not give
- *
- * @param apiData Filtered payload data, its six times readable HH:mm or null
- * @returns Array of transformed prayer schedules
- */
-export const transformApiData = (apiData: IValidatedApiResponse): ISingleApiResponseTransformed[] => {
-  const transformations: ISingleApiResponseTransformed[] = [];
-
-  const entries = Object.entries(apiData.times);
-  const derive = (time: string | null, minutesDiff: number) =>
-    time === null ? null : TimeUtils.adjustTime(time, minutesDiff);
-
-  entries.forEach(([date, times]) => {
-    const schedule: ISingleApiResponseTransformed = {
-      date,
-      fajr: times.fajr,
-      sunrise: times.sunrise,
-      dhuhr: times.dhuhr,
-      asr: times.asr,
-      magrib: times.magrib,
-      isha: times.isha,
-      suhoor: derive(times.fajr, TIME_ADJUSTMENTS.suhoor),
-      duha: derive(times.sunrise, TIME_ADJUSTMENTS.duha),
-      istijaba: derive(times.magrib, TIME_ADJUSTMENTS.istijaba),
-    };
-
-    transformations.push(schedule);
-  });
-
-  return transformations;
-};
 
 // =============================================================================
 // NIGHT TIMES
@@ -117,14 +47,14 @@ const magribCrossesIntoNextDay = (magribTime: string): boolean => {
 /**
  * The instant Istijaba falls on: an hour before Magrib, measured from Magrib's INSTANT.
  *
- * Deriving it from the clock string cannot work once Magrib crosses midnight. `adjustTime`
- * is modular clock arithmetic, so it turns Magrib 01:47 into Istijaba 00:47 and leaves it
- * filed under the old date while Magrib moves to the next — putting Istijaba 25 hours early
+ * Deriving it from the clock string cannot work once Magrib crosses midnight. Modular
+ * clock arithmetic turns Magrib 01:47 into Istijaba 00:47 and leaves it filed under the
+ * old date while Magrib moves to the next — putting Istijaba 25 hours early
  * (Nome, Alaska: sunset 01:47). It only appeared to work below 01:00, where the wrap past
  * midnight happened to cancel the shift. Midnight and Last Third already take instants
  * rather than strings for exactly this reason.
  */
-const getIstijabaTime = (rawData: ISingleApiResponseTransformed, date: string): Date | null => {
+const getIstijabaTime = (rawData: DayRecord, date: string): Date | null => {
   // Not `=== null`: a stored record can lack the key altogether (an edited backup), which must read as unreadable
   if (typeof rawData.magrib !== 'string') return null;
 
@@ -153,10 +83,7 @@ const getIstijabaTime = (rawData: ISingleApiResponseTransformed, date: string): 
  * getNightTimesForDay(saturday24Oct, friday23Oct)
  * // { midnight: Fri 23 Oct 23:58, lastThird: Sat 24 Oct 01:59 } (London)
  */
-export const getNightTimesForDay = (
-  day: ISingleApiResponseTransformed,
-  previousDay: ISingleApiResponseTransformed | null
-): TimeUtils.NightTimes | null => {
+export const getNightTimesForDay = (day: DayRecord, previousDay: DayRecord | null): TimeUtils.NightTimes | null => {
   const previousDate = TimeUtils.getPreviousDateString(day.date);
   if (previousDay?.date !== previousDate) return null;
 
@@ -344,8 +271,8 @@ function adjustPrayerDateForMidnightCrossing(type: ScheduleType, id: PrayerId, d
 function createPrayersForSingleDay(
   type: ScheduleType,
   date: string,
-  rawData: ISingleApiResponseTransformed | null,
-  previousDayData: ISingleApiResponseTransformed | null
+  rawData: DayRecord | null,
+  previousDayData: DayRecord | null
 ): Prayer[] {
   const names = getPrayerNamesForDate(type, date);
   const nightTimes = type === ScheduleType.Extra && rawData ? getNightTimesForDay(rawData, previousDayData) : null;

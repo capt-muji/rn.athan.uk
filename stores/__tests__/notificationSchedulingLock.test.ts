@@ -14,7 +14,7 @@ import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/
 import type { PrayerId } from '@/shared/constants';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
-import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
+import { AlertType, type DayRecord, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   commitPrayerAlertChange,
@@ -130,13 +130,13 @@ beforeEach(() => {
   Database.database.clearAll();
   __installTimetableDays([]);
   /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+  const seededWindow = new Map<string, DayRecord>();
 
   seededWindow.clear();
   __installTimetableDays([]);
 
   for (const date of WINDOW) {
-    const day: ISingleApiResponseTransformed = {
+    const day: DayRecord = {
       date,
       fajr: '12:00',
       sunrise: '12:00',

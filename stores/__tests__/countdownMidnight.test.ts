@@ -30,7 +30,7 @@ import type { Atom } from 'jotai';
 import { getDefaultStore } from 'jotai/vanilla';
 
 import type { PrayerId } from '@/shared/constants';
-import { transformApiData } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import { type CountdownStore, type Prayer, ScheduleType } from '@/shared/types';
 import { overlayAtom } from '@/stores/atoms/overlay';
 
@@ -75,12 +75,11 @@ const OCTOBER: Record<string, string[]> = {
   '2026-10-20': ['05:57', '07:30', '12:50', '15:25', '18:00', '19:23'],
 };
 
-/** Stores the days as a download leaves them, with Suhoor, Duha and Istijaba worked out */
+/** Stores the days as the reader serves them, with Suhoor, Duha and Istijaba worked out */
 const storeOctober = () => {
   mockStoredDays.clear();
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(OCTOBER)) {
-    const times = { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } };
-    mockStoredDays.set(date, transformApiData({ times })[0]);
+    mockStoredDays.set(date, minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha })));
   }
 };
 

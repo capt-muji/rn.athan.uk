@@ -4,7 +4,7 @@
  * The sheet saves the at-time alert, the reminder alert and the interval, then calls this. A reminder is armed only
  * while both the at-time alert and the reminder are on, counting back the saved interval from the prayer's own
  * instant on every day still to come. With either off, every reminder that prayer had is cancelled, since a reminder
- * with no athan behind it is one the user did not ask for. Times go through the app's own transform, and every
+ * with no athan behind it is one the user did not ask for. Times go through the record's own producer, and every
  * expected instant is worked out by hand from London's clock: BST is UTC+1 in late August.
  */
 
@@ -13,8 +13,8 @@ import * as Notifications from 'expo-notifications';
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
-import { transformApiData } from '@/shared/prayer';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import type { DayRecord } from '@/shared/types';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { commitPrayerAlertChange, setReminderInterval } from '@/stores/notifications';
@@ -127,15 +127,13 @@ beforeEach(() => {
   Database.database.clearAll();
   __installTimetableDays([]);
   /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+  const seededWindow = new Map<string, DayRecord>();
 
   seededWindow.clear();
   __installTimetableDays([]);
 
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(DAYS)) {
-    const [stored] = transformApiData({
-      times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
-    });
+    const stored = minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
     seededWindow.set(date, stored);
     __installTimetableDays([...seededWindow.values()]);
   }

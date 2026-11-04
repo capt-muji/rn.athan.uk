@@ -16,7 +16,7 @@ import * as PrayerUtils from '@/shared/prayer';
 import {
   type AlertMenuState,
   AlertType,
-  type ISingleApiResponseTransformed,
+  type DayRecord,
   REMINDER_SLOTS,
   type ReminderInterval,
   type ReminderSetting,
@@ -174,7 +174,7 @@ beforeEach(() => {
   Database.database.clearAll();
   __installTimetableDays([]);
   /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+  const seededWindow = new Map<string, DayRecord>();
 
   seededWindow.clear();
   __installTimetableDays([]);
@@ -182,7 +182,7 @@ beforeEach(() => {
   for (const date of [YESTERDAY, ...WINDOW]) {
     // A real night between Magrib and the next day's Fajr, so the night rows have something to
     // divide, and their instants land at 09:16 BST, just after NOW, so they are armable
-    const day: ISingleApiResponseTransformed = {
+    const day: DayRecord = {
       date,
       fajr: '14:00',
       sunrise: '15:00',
