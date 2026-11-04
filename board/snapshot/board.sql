@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 9K4w2pqHJWCHUJzKlIWejCvdwwTjgD5PBny3c2HSnaFnV3fFiLcBIbe4fZnxZRV
+\restrict DsDnubZnCF20zYJgQh3ABctyV6wl9zcOi7aextjfv714nJlf0ScCc81jLbQOT4V
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -6153,7 +6153,7 @@ Acceptance:
 - [ ] Unaffected devices'' compass behaviour is unchanged
 
 How it was filed (owner, 2026-10-27): the compass is not actually working on some, not all, iPhone devices. The qibla lock rules are the constraint on any fix.', NULL, NULL, NULL, 19500, '2026-10-27 22:43:33.252201+00', '2026-10-27 22:43:33.311963+00', NULL, NULL, NULL, '2026-10-27 23:09:24.313489+00', NULL, NULL, false, NULL, NULL, NULL);
-INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (623, 1, 623, 9, 8, 'Fifty alternative layouts for the fasting-days mode selection, screenshotted and presented', 'Goal: Give the owner 50 structurally different layout proposals for the fasting-days (Sahur scheduling mode) selection inside the Alert bottom sheet, each rendered in the app''s real theme, screenshotted after settling, and presented as one browsable gallery page, so the owner can pick one layout to iterate on. The current layout reads as chaotic: misaligned, text-heavy, poor use of space (owner order 2026-11-04). Layouts mean structure: picker mechanism, hierarchy, text placement, density - not color or font-weight tweaks of one another. Any two variants must be recognizably different at a glance.
+INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (623, 1, 623, 9, 9, 'Fifty alternative layouts for the fasting-days mode selection, screenshotted and presented', 'Goal: Give the owner 50 structurally different layout proposals for the fasting-days (Sahur scheduling mode) selection inside the Alert bottom sheet, each rendered in the app''s real theme, screenshotted after settling, and presented as one browsable gallery page, so the owner can pick one layout to iterate on. The current layout reads as chaotic: misaligned, text-heavy, poor use of space (owner order 2026-11-04). Layouts mean structure: picker mechanism, hierarchy, text placement, density - not color or font-weight tweaks of one another. Any two variants must be recognizably different at a glance.
 
 Where: a dev-only exploration harness that renders the sheet''s fasting section under variant layouts (the fasting section lives in components/sheets/screens/Alert.tsx and its fasting components), 50 variant components, a screenshot pass, and an HTML gallery OUTSIDE the repository (never commit screenshots). The shipped UI does not change in this ticket.
 
@@ -6165,7 +6165,7 @@ Acceptance:
 - [ ] One gallery HTML page outside the repo shows all 50 screenshots with a name and one-line archetype label each, and opens in a browser.
 - [ ] yarn validate passes and the release app is behaviorally unchanged (harness reachable only in dev).
 
-Notes for planning: screenshots go on the iOS simulator for repeatability (agent-ruled 2026-11-04; the owner''s dev builds on the iPhone XS and OnePlus 3T stay for the owner''s own iteration). Reuse the landed fasting catalog keys for all visible strings; dev-only harness chrome may use English constants behind a dev guard if the string-scan rules allow. The gallery and screenshots live outside the repository per the no-screenshots-in-git rule. Device step (screenshots) runs alone in a fresh session.', NULL, NULL, NULL, 21500, '2026-11-04 14:40:31.621647+00', '2026-11-04 17:22:54.126775+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 11, NULL);
+Notes for planning: screenshots go on the iOS simulator for repeatability (agent-ruled 2026-11-04; the owner''s dev builds on the iPhone XS and OnePlus 3T stay for the owner''s own iteration). Reuse the landed fasting catalog keys for all visible strings; dev-only harness chrome may use English constants behind a dev guard if the string-scan rules allow. The gallery and screenshots live outside the repository per the no-screenshots-in-git rule. Device step (screenshots) runs alone in a fresh session.', NULL, NULL, NULL, 21500, '2026-11-04 14:40:31.621647+00', '2026-11-04 19:28:35.340872+00', NULL, NULL, NULL, NULL, NULL, NULL, false, NULL, 11, NULL);
 INSERT INTO public.issue (id, project_id, sequence_number, type_id, column_id, title, description, priority, start_date, due_date, "position", created_at, updated_at, assignee_user_id, delegate_user_id, initiative_id, archived_at, share_token, parent_id, share_extended, cycle_id, estimate_points, estimate_minutes) VALUES (348, 1, 348, 3, 4, 'The What''s New archive gains its own debut: the What''s New screen joins the list it presents', 'Goal: the What''s New modal lists every feature the app ships except itself - the archive holds no item for the What''s New screen, so the changelog never tells a reader it exists.
 
 Where: shared/whatsNew.ts (the WHATS_NEW items) with its catalog keys in the i18n catalog; the item stamps the release that first showed the modal, named from git history per the T-297 restamp ruling.
@@ -10238,6 +10238,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5990, 575, 'comment', 'owner', 'Polish closes at 199 green, 0 red, 8 llm-amber, 3 rulings - the cleanest round yet (the północ north/midnight homograph, sierpnia''s sie against się, the current-version up-to-date). The counter: 34 of 74 carried (32 zero-red, 14 flagged), 30 not started. Pashto''s pass is rendering.', NULL, '2026-11-03 11:06:44.875378+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6345, 623, 'activity', 'owner', NULL, 'status', '2026-11-04 17:22:54.145522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 8, "value": "Audit", "stateType": "started"}, "from": {"id": 3, "value": "In progress", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6346, 623, 'comment', 'owner', 'Execution done: the harness and all fifty variants landed (6 commits, validate green throughout), and the device pass captured all 50 variants settled on the iOS simulator with the gallery open at ~/athan-fasting-layouts/index.html. Version note for the audit: this lane shared the 2.48.4-2.48.5 line with lane1/T-615-wave''s fix commits - the collisions are grandfathered in scripts/version-collisions-allowlist.json per the standing merge-renumbers ruling, and this branch''s history carries 2.48.4 through 2.48.9. Entering audit next.', NULL, '2026-11-04 17:22:54.181508+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6351, 623, 'comment', 'owner', 'Owner''s round-1 review (2026-11-04, dictated) and the round-2 order: another 100 completely different layouts, structure not styling, built on this spec. (1) Naming, titles first: Every day - Sahur every day; Muhammad - Mondays and Thursdays; Dawood - one day on, one day off; Three white days - 13th, 14th and 15th of each Hijri month. (2) Selection model: four options, at least one always selected, Every day the default and exclusive with all others; Muhammad and Dawood mutually exclusive with each other and with Every day; Three white days combines with Muhammad and/or Dawood but never with Every day; a conflicting tap silently unselects the options it conflicts with, which is how the user learns the rules. (3) A full compact description below the selection describing the entire current selection (example: Sahur will be scheduled for Mondays and Thursdays and the three white days); tense follows state - will be scheduled while the pending selection differs from the saved one, is scheduled when it matches after save. (4) Selected state rides the purple theme of the Off/Silent/Sound track. (5) The section sits in a titled Fasting card/container inside the Sahur sheet. (6) Bans: no long-press anywhere, nothing off-screen or clipped, no calendar or date displays, no oversized cards, no duplicated white-days (it is one of the four options, not a separate add-on toggle). (7) Elements the owner named to build from: the round-1 pills with a description below, the outline-fill card shape made smaller, the state-dot rows'' readability, the hint-hero cards made compact. Keep: consistency across variants; toggle switches welcome.', NULL, '2026-11-04 17:46:38.132298+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2447, 270, 'activity', 'owner', NULL, 'parent', '2026-10-20 00:44:43.489634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "T-54"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2448, 4, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 00:44:43.489634+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 270, "value": "T-270"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4726, 492, 'activity', 'owner', NULL, 'parent', '2026-10-29 15:06:30.986262+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 490, "value": "T-490"}}', NULL);
@@ -10317,6 +10318,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5170, 327, 'comment', 'owner', 'Parked for the owner (lead, 2026-10-31). The mandate''s execution is complete: steps 18-25 landed on lane1/T-327 (tip d68f827c, 2.42.36, validate green 250 suites / 100%), dual-reviewed (comments 5161, 5162), four adjudicated fixes landed (d68f827c), the second-run audit''s verdicts in the baselines'' _2026_10_31 block, and the dual-phone leak probe clean (comment 5166: no leak on either phone; the 3T fully cycled, the XS idle and launch-cycled with interactions untested per the tooling note). The branch never merged, never pushed, per order 5025. Cold start 2208ms vs the 3557ms baseline (-38%); the honest residue is named above and in the Waiting on field. Both phones carry the owner-read 2.42.13 again.', NULL, '2026-10-31 09:52:25.991796+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5636, 561, 'comment', 'owner', 'Closed Done (lead, 2026-11-01): the settings row reads Show progress in all 75 catalogs - merged to uat as e07578c0 over e43e72c9 and pushed, validate green at 257 suites and full coverage. Both audits stand at zero blockers; the three conformance nitpicks fold here as records: the e07578c0 message''s it-row count is 18 characters not 17 (the longest-row claim itself measured true across all 75), the plan doc''s progressWord summary line was stale (the shipped set is de, nl, bs, sq), and the ticket''s Lane field is now set to Lane 2.', NULL, '2026-11-01 12:50:40.065671+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5993, 575, 'comment', 'owner', 'Quechua closes at 183 green, 2 flagged red (layouts-as-purchases, the count-dry battery coinage - both to disputes with suggestions), 22 llm-amber, 59 rulings, 2 map lessons, and nine catalog fixes - the biggest fix haul of the loop: the close/off verb was misspelled wisñuchiy through seven rows (now wisq''ay), Paniy (sister?) in the permission sentence became permiso, Nawpa (former) became Tukusqa (done), an English fragment fromfromlla was glued into the flat-hold sentence (now alwinta, slowly), and the silent-phone sentence was inverted. The sourcing record''s day-words rule: Chisi, Inti chinkay, Tuta. The counter: 37 of 74 carried (33 zero-red, 16 flagged), 27 not started. Romanian''s pass is rendering.', NULL, '2026-11-03 11:55:10.263553+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6350, 623, 'comment', 'owner', 'Audit record: two reviewers (one blind, one plan-conformance) posted their findings; nine raised, all adjudicated from the code. Five confirmed and fixed in 563c2ec4 (allowlist truthfulness x2, the coverage-gate reason widened to name the suite-tested logic modules, the gallery''s escape imported from the canonical i18n-verify table, the catalog suite header trimmed). Four recorded, no change: the deep-link v param answers the conformance question - agent-device''s accessibility snapshot read only six nodes on the presented sheet with every RN Text invisible, so the planned tap-and-wait strip was undrivable this session and the param (itself red-first committed with the ritual) is the discovered need, corroborated by both drivers'' notes; the two English labels inside variants 17 and 36 fall under the plan''s harness-chrome carve-out and the catalog lacks keys for them, so no 75-catalog wave is spawned for a throwaway exploration label; the census-trail process lesson (widen the scanner roots in the same commit as the first guarded file) is recorded here; the plan''s stale risk line was corrected on the board doc itself. Validate green at 265 suites, 7910 tests, 100 percent coverage. The gallery stands at ~/athan-fasting-layouts/index.html with all 50 screenshots verified against their filenames.', NULL, '2026-11-04 17:40:16.292812+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2477, 4, 'comment', 'owner', 'One fix the snapshot gate forced: the plan doc''s first draft had spelt a home-path pattern literally, and the doc''s own revision history row carried it into the committed snapshot, where the identifier gate refused it. The revision row now reads the placeholder form; nothing else on the board carried it.', NULL, '2026-10-20 02:14:14.607434+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2490, 271, 'activity', 'owner', NULL, 'field', '2026-10-20 02:23:35.950291+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "Lane 2"}, "subject": {"id": 2, "value": "Lane"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4735, 495, 'activity', 'owner', NULL, 'parent', '2026-10-29 15:06:31.074495+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 490, "value": "T-490"}}', NULL);
@@ -10336,6 +10338,8 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5637, 561, 'activity', 'owner', NULL, 'description', '2026-11-01 12:50:40.105592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: the settings row that reads Show progress bar shortens to Show progress - the owner''s read of 2.43.23 ruled the shorter form - in every language, with Progress color and the card''s progress bar wording untouched.\n\nWhere: the one settings-row catalog value across all 75 shared/i18n catalogs; nothing else changes.\n\nAcceptance:\n- [x] the en catalog reads Show progress, red-first under the progressWording guard\n- [x] all 75 catalogs drop the bar word per their own chains, the rest of the progress wording untouched\n- [x] no other string, file or identifier changes\n- [x] yarn validate green at full coverage; the version ritual on the commit"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5638, 561, 'activity', 'owner', NULL, 'status', '2026-11-01 12:50:40.105592+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5994, 575, 'comment', 'owner', 'Romanian closes at 200 green, 0 red, 7 llm-amber, 8 rulings - the homograph set (mar/apple, noi/us, mie/thousand, vin/wine) and two garbles. Chunk 5 has only mrw left (a judge round). The counter: 38 of 74 carried (34 zero-red, 16 flagged), 26 not started. Russian''s pass is rendering.', NULL, '2026-11-03 11:58:21.890775+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6352, 623, 'activity', 'owner', NULL, 'status', '2026-11-04 19:27:01.808517+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 8, "value": "Audit", "stateType": "started"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6355, 623, 'activity', 'owner', NULL, 'field', '2026-11-04 19:28:35.405708+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "The owner''s pick from the round-2 gallery; then the picked design gets cleanup, audit and merge - the 150-frame exploration stays on branch lane2/T-623"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2479, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:16:43.642474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 177, "value": "#272"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2480, 272, 'activity', 'owner', NULL, 'label_add', '2026-10-20 02:16:43.642474+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 144, "value": "Chore"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2481, 272, 'activity', 'owner', NULL, 'field', '2026-10-20 02:16:43.670411+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "272"}, "subject": {"id": 1, "value": "Ticket number"}}', NULL);
@@ -10349,6 +10353,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5172, 519, 'activity', 'owner', NULL, 'status', '2026-10-31 10:37:39.20264+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5639, 563, 'activity', 'owner', NULL, 'status', '2026-11-01 13:45:10.455822+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 4, "value": "Done", "stateType": "completed"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5995, 575, 'comment', 'owner', 'Russian closes at 207 of 207 green - the thirteenth fully-green language (2 map lessons, 6 rulings). The counter: 39 of 74 carried (35 zero-red, 16 flagged), 25 not started. Sindhi''s pass is rendering.', NULL, '2026-11-03 12:10:54.920358+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6353, 623, 'comment', 'owner', 'Round 2 done per the owner''s order: a hundred further layouts over twenty archetypes including ten real dials and ten real wheels, the owner''s spec enforced in a shared selection model with the tense-following descriptions and the purple selected state, the harness Save control in the strip, and the round-2 gallery of guarded frames open at ~/athan-fasting-layouts/r2/index.html (arrow keys navigate the enlarged view). No audit phase per the prototyping order; cleanup follows when the owner picks the final design. Validate green at 266 suites; versions 2.48.11 through 2.48.17 on lane2/T-623.', NULL, '2026-11-04 19:27:01.862476+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2482, 272, 'comment', 'owner', 'The rewrite and the local purge run only on the owner''s explicit go; every other step runs autonomously. The owner''s words are the specification: no personal data at all, without breaking the app.', NULL, '2026-10-20 02:16:43.689859+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2495, 275, 'activity', 'owner', NULL, 'created', '2026-10-20 02:39:47.798856+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (4799, 490, 'comment', 'owner', 'Step 2 landed: the explanation card''s placer now cuts display on its own reveal inside the worklet, so the words leave with the face on the overlay''s close and the fade-settled gate no longer holds the card. Guards red-first in overlayPlacement.test.ts, mutation pass on the cut, yarn validate 0 at full coverage.', NULL, '2026-10-29 15:47:37.840075+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
@@ -10379,6 +10384,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5996, 575, 'comment', 'owner', 'Albanian closes at 201 green, 0 red, 6 llm-amber, 16 rulings, 1 map lesson - the KMSH-sourced rows (Imsaku, Lindja, Yleja) ruled on the record. Also researched and tabled to the owner: Baso Jawi and Pattani Malay are one language (mfa) - the speakers'' endonym vs the international name, five sources including the JSTOR Jawi-identity paper; Jawi-the-script is a different thing entirely. The counter: 38 of 74 carried (38 zero-red, 16 flagged... correcting: 37 carried at the last count, Albanian makes 38 of 74 carried (38 zero-red, 16 flagged), 36 not started. Sundanese''s reds are next; Swahili''s pass is rendering.', NULL, '2026-11-03 12:49:03.904083+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5997, 575, 'comment', 'owner', 'Counter correction, measured from the artifacts on disk (my last two comments drifted): 52 of 74 carried - 36 at zero red, 16 carrying 48 flagged rows - with Sundanese mid-judgment and 21 never-judged (their pending artifacts are the refused pre-flights of the 429-wall day; tr and ur carry partial fills from then). The stats table the owner sees now reads from this measurement.', NULL, '2026-11-03 12:50:44.07229+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5998, 575, 'comment', 'owner', 'Albanian closed at 201 green, 0 red, 6 llm-amber (the KMSH rows ruled on the record); Sundanese closes at 201 green, 0 red, 6 llm-amber, 33 rulings, one catalog fix (the error-refresh button carried Anyaran/news where the catalog''s own widget row uses the freshen verb - now Segerkeun). Measured counter: 54 of 74 carried (38 zero-red, 16 flagged with 48 rows), Sundanese in, 20 not started. Swahili''s pass is rendering.', NULL, '2026-11-03 12:53:37.978304+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6354, 623, 'activity', 'owner', NULL, 'status', '2026-11-04 19:28:35.361494+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}, "from": {"id": 4, "value": "Done", "stateType": "completed"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2489, 271, 'activity', 'owner', NULL, 'status', '2026-10-20 02:23:35.895736+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 6, "value": "Planning", "stateType": "unstarted"}, "from": {"id": 1, "value": "Backlog", "stateType": "backlog"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2492, 273, 'activity', 'owner', NULL, 'parent', '2026-10-20 02:39:47.778402+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 271, "value": "T-271"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2493, 271, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 02:39:47.778402+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 273, "value": "T-273"}}', NULL);
@@ -10399,6 +10405,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5670, 569, 'activity', 'owner', NULL, 'parent', '2026-11-01 14:33:41.853026+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 565, "value": "T-565"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5671, 565, 'activity', 'owner', NULL, 'subtask_add', '2026-11-01 14:33:41.853026+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 569, "value": "T-569"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (5999, 575, 'comment', 'owner', 'Swahili closes at 198 green, 0 red, 9 llm-amber, 16 rulings - all rulings, no maps or fixes: the homographs rule (swala the prayer against the gazelle, adhani the athan against -dhani to guess), magharibi against west, kwanza as the home screen''s UI name. Measured counter: 55 of 74 carried (39 zero-red, 16 flagged), 19 not started. Tamil''s pass is rendering.', NULL, '2026-11-03 13:01:09.56787+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6356, 623, 'comment', 'owner', 'Integrity fix on sight, lead 2026-11-04: Done requires the change merged to uat, and the owner''s order defers audit and cleanup until they pick the winning design - so the ticket parks in Awaiting Owner with the round-2 deliverable live in the owner''s browser and all 150 frames plus the harness on branch lane2/T-623 (tip 6da5ff9d, validate green, unmerged by design).', NULL, '2026-11-04 19:28:35.428832+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2496, 275, 'activity', 'owner', NULL, 'parent', '2026-10-20 02:39:47.801196+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 271, "value": "T-271"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2499, 271, 'activity', 'owner', NULL, 'subtask_add', '2026-10-20 02:39:47.801196+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 275, "value": "T-275"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (2500, 271, 'activity', 'owner', NULL, 'estimate', '2026-10-20 02:39:53.803606+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "6"}, "subject": {"value": "points"}}', NULL);
@@ -16404,6 +16411,7 @@ INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (534, 232, 3, 'expo/expo#51292 CLOSED 2026-11-03, not merged: the maintainers chose #51840''s url prop (ACTION_VIEW deep link that can open the app''s own scheme root) over openApp. Acknowledged on the PR 2026-11-04 with the commitment to migrate. The row now tracks #51840: when it merges and releases, the widgets migrate from the patched openApp to url, the patch''s openApp half drops, and this row closes. The local patch patches/expo-widgets+58.0.20.patch carries openApp until then.', NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (789, 615, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (790, 623, 1, NULL, 623, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.issue_field_value (id, issue_id, field_id, value_text, value_number, value_bool, value_date, value_datetime, value_datetime_end, value_user_id) VALUES (791, 623, 3, 'The owner''s pick from the round-2 gallery; then the picked design gets cleanup, audit and merge - the 150-frame exploration stays on branch lane2/T-623', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
@@ -18043,6 +18051,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1577, 623, 6, 'Planning', 'unstarted', '2026-11-04 14:40:43.899703+00', '2026-11-04 14:56:35.271757+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1585, 624, 4, 'Done', 'completed', '2026-11-04 15:12:27.849876+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1581, 627, 1, 'Backlog', 'backlog', '2026-11-04 14:56:35.206+00', '2026-11-04 15:57:08.434375+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1592, 623, 9, 'Awaiting Owner', 'started', '2026-11-04 19:28:35.355318+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1000, 432, 1, 'Backlog', 'backlog', '2026-10-28 23:25:19.873+00', '2026-10-28 23:39:46.335242+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1032, 432, 4, 'Done', 'completed', '2026-10-28 23:39:46.335242+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1165, 488, 4, 'Done', 'completed', '2026-10-29 09:53:47.580386+00', NULL);
@@ -18256,8 +18265,8 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1572, 622, 4, 'Done', 'completed', '2026-11-04 11:15:43.903039+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1566, 615, 3, 'In progress', 'started', '2026-11-04 09:23:34.992697+00', '2026-11-04 11:15:43.962922+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1579, 625, 1, 'Backlog', 'backlog', '2026-11-04 14:56:35.137+00', '2026-11-04 15:45:38.345064+00');
-INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1589, 623, 8, 'Audit', 'started', '2026-11-04 17:22:54.138149+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1582, 628, 1, 'Backlog', 'backlog', '2026-11-04 14:56:35.236+00', '2026-11-04 17:22:54.139368+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1589, 623, 8, 'Audit', 'started', '2026-11-04 17:22:54.138149+00', '2026-11-04 19:27:01.802659+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1035, 434, 4, 'Done', 'completed', '2026-10-28 23:44:52.78298+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1048, 437, 4, 'Done', 'completed', '2026-10-28 23:54:34.702833+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1021, 449, 1, 'Backlog', 'backlog', '2026-10-28 23:29:44.208+00', '2026-10-28 23:55:38.066456+00');
@@ -18426,6 +18435,7 @@ INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_typ
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1564, 621, 6, 'Planning', 'unstarted', '2026-11-04 07:19:45.328+00', '2026-11-04 11:08:59.846042+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1574, 615, 9, 'Awaiting Owner', 'started', '2026-11-04 11:53:24.470649+00', '2026-11-04 14:40:06.602124+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1584, 623, 3, 'In progress', 'started', '2026-11-04 14:56:48.178455+00', '2026-11-04 17:22:54.138149+00');
+INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1591, 623, 4, 'Done', 'completed', '2026-11-04 19:27:01.802659+00', '2026-11-04 19:28:35.355318+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1158, 484, 3, 'In progress', 'started', '2026-10-29 09:37:25.738056+00', '2026-10-29 09:46:27.680282+00');
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1050, 438, 4, 'Done', 'completed', '2026-10-28 23:56:44.744183+00', NULL);
 INSERT INTO public.issue_status (id, issue_id, column_id, column_name, state_type, entered_at, left_at) VALUES (1159, 485, 3, 'In progress', 'started', '2026-10-29 09:37:58.72635+00', '2026-10-29 09:53:47.474111+00');
@@ -31738,130 +31748,6 @@ A WHATS_NEW archive item with new catalog keys, stamped with the shipping versio
 - The 74-locale wave is the long pole; the English keys land first so the owner can test on dev builds before the wave completes.
 - Dev builds serve the mock window, so Sahur TIMES on the dev phones are mock-driven; the fasting CALENDAR (weekdays, Hijri) is real on every build.
 ', NULL, NULL, '{}', false, false, false, NULL, NULL, 81920, 5, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-04 07:19:45.133434+00', '2026-11-04 11:36:10.79267+00');
-INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (82, 1, NULL, 'T-623 Fifty fasting layout variants: dev harness, screenshot pass, gallery', '# T-623: Fifty fasting layout variants
-
-Ticket: T-623. The T-615 fasting mode selection reads chaotic (owner order 2026-11-04): misaligned, text-heavy, poor use of space. This ticket builds fifty structurally different layouts of that selection, screenshots all fifty on the iOS simulator, and hands the owner one gallery page to pick a winner from. No shipped UI changes.
-
-## The harness
-
-A dev-only screen is the house pattern here: the app already gates dev surfaces with __DEV__ and lazy require() (app/index.tsx background-task debug, whatsNewPreview), and Expo Router gives the deep link for free (scheme: athan in app.json). There is no existing dev-route directory, so this ticket starts one, following the app''s own gating idiom.
-
-- app/dev/fasting-layouts.tsx - the route. Renders null unless __DEV__; the harness screen loads through require() inside the dev check, mirroring app/index.tsx. In release the route registers but renders nothing; no production surface changes.
-- devlayouts/ (new top-level directory) - FastingLayoutsScreen.tsx (screen), registry.tsx (variant registry), catalog.json (plain data: index, id, name, archetype, hidesExplanations), parts.tsx (shared drawing primitives), and the variant component files.
-- The screen presents the real Sheet (components/sheets/parts/Sheet.tsx) with the alert sheet''s own chrome: prayerLabel(''suhoor'') title, t(''sheet.closeToSave'') subtitle, the bell icon, enableDynamicSizing, contentCap 0.85. Screenshots therefore capture the app exactly as it looks.
-- One variant renders at a time inside the sheet. A dev-only strip at the bottom of the sheet body carries Prev/Next and N/50 Name; it must live inside the sheet because the backdrop covers the rest of the screen. The strip is harness chrome (English constants behind the dev guard; the string scanner passes braced/expression literals - verified against scripts/scan-strings.mjs), while every user-visible string inside a variant comes from the landed fasting catalog keys (fasting.mode.*, hints, add-on, card title).
-- Variant selection state is body-local (useState), never written to the stores. Every variant starts at mode ''muhammad'', whiteDaysAddOn true, so the white-days add-on surfaces wherever a structure offers it.
-- Navigation between variants is taps on the dev strip, not fifty deep links: one presentation, in-place swaps, fewer states to test. The deep link athan://dev/fasting-layouts opens the screen at variant 1.
-
-### Why devlayouts/ sits outside components/
-
-The coverage gate (scripts/check-changed-coverage.js) demands 100 percent coverage of every changed file under the collected directories, and yarn validate''s global threshold enforces it for everything collectCoverageFrom lists. The owner''s order for this ticket forbids tests for visual layouts themselves. The resolution follows the gate''s own philosophy: a deliberately unmeasured path with an honest reason. devlayouts/ joins the gate''s UNMEASURED list (dev-only layout exploration harness; variants are driven and screenshotted on the simulator by the device step, visual layouts untested per owner order 2026-11-04). The registry logic and the catalog sync are unit-tested anyway (red-first), and the route file - which sits under app/ and is measured - gets a two-branch render test (__DEV__ true renders the screen, false renders null).
-
-### Variants
-
-50 components across four files: variants-01-10.tsx, variants-11-25.tsx, variants-26-40.tsx, variants-41-50.tsx. 33 distinct archetype labels; 36 of 50 hide the mode explanations by default (tooltip, dropdown, progressive disclosure, or selected-only display), 14 keep them but restructure their placement. Shared drawing primitives (check glyph, chevrons, drum bands, chips, bubbles) live in parts.tsx. All variants are first-frame settled - mount renders the settled frame; only value changes move anything (house rule). No variant recolors or re-fonts another: each differs in structure (picker mechanism, hierarchy, text placement, density).
-
-| # | id | Name | Archetype | Hints hidden |
-| --- | --- | --- | --- | --- |
-| 1 | aligned-radio-rows | Aligned Radio Rows | Radio Rows | no |
-| 2 | radio-selected-hint-chip | Radio + Hint Chip | Radio Rows | yes |
-| 3 | radio-card-rows | Radio Card Rows | Radio Cards | yes |
-| 4 | radio-two-column-grid | Radio Two-Column Grid | Radio Grid | yes |
-| 5 | radio-leading-icon-rows | Radio Leading-Icon Rows | Radio Rows | yes |
-| 6 | checkmark-rows | Checkmark Rows | Checkmark Rows | yes |
-| 7 | checkmark-hint-footer | Checkmark + Hint Footer | Checkmark Rows | yes |
-| 8 | checkmark-selected-expands | Checkmark Selected Expands | Checkmark Rows | yes |
-| 9 | checkmark-pill-flow | Checkmark Pill Flow | Choice Chips | yes |
-| 10 | segmented-icon-track | Segmented Icon Track | Segmented Track | yes |
-| 11 | segmented-track-caption | Segmented Track Caption | Segmented Track | no |
-| 12 | slider-ticks | Slider with Ticks | Slider | yes |
-| 13 | slider-hint-drawer | Slider Hint Drawer | Slider | no |
-| 14 | carousel-snap-cards | Card Carousel | Card Carousel | no |
-| 15 | wheel-vertical-drum | Vertical Drum Wheel | Wheel | yes |
-| 16 | wheel-side-detail | Wheel + Side Detail | Sectioned Wheel | no |
-| 17 | wheel-two-section | Two-Section Wheel | Sectioned Wheel | no |
-| 18 | wheel-horizontal | Horizontal Wheel | Wheel | yes |
-| 19 | pill-tab-bar | Pill Tab Bar | Pill Tab Bar | yes |
-| 20 | pill-tabs-panel | Pill Tabs + Panel | Pill Tab Bar | no |
-| 21 | underline-tabs | Underline Tabs | Underline Tabs | yes |
-| 22 | icon-tab-strip | Icon Tab Strip | Icon Tabs | yes |
-| 23 | dropdown-collapsed-row | Collapsed Dropdown Row | Dropdown | yes |
-| 24 | dropdown-inset-list | Dropdown Inset List | Dropdown Panel | yes |
-| 25 | dropdown-summary-badges | Dropdown Summary Badges | Dropdown | yes |
-| 26 | info-bubble-rows | Info Bubble Rows | Tooltip Rows | yes |
-| 27 | header-tooltip-toggle | Header Tooltip Toggle | Tooltip Toggle | yes |
-| 28 | longpress-peek-rows | Long-Press Peek Rows | Peek Rows | yes |
-| 29 | white-days-calendar-strip | White-Days Calendar Strip | Calendar Strip | no |
-| 30 | week-strip-mode-chips | Week Strip + Mode Chips | Calendar Strip | yes |
-| 31 | month-dots-grid | Month Dots Grid | Month Grid | yes |
-| 32 | stepper-cycle | Stepper Cycle | Stepper | yes |
-| 33 | stepper-hint-slot | Stepper Hint Slot | Stepper | no |
-| 34 | tally-stepper | Tally Stepper | Stepper | yes |
-| 35 | rhythm-then-extras | Rhythm Then Extras | Progressive Disclosure | yes |
-| 36 | accordion-sections | Accordion Sections | Progressive Disclosure | no |
-| 37 | contextual-chip-rows | Contextual Chip Rows | Progressive Disclosure | yes |
-| 38 | change-button-collapse | Change Button Collapse | Progressive Disclosure | yes |
-| 39 | tile-grid-corner-checks | Tile Grid Corner Checks | Tile Grid | yes |
-| 40 | tile-grid-detail-drawer | Tile Grid Detail Drawer | Tile Grid | no |
-| 41 | mosaic-selected-large | Mosaic Selected Large | Tile Mosaic | yes |
-| 42 | state-dot-rows | State Dot Rows | State Dot Rows | yes |
-| 43 | outline-fill-cards | Outline Fill Cards | Fill Cards | yes |
-| 44 | edge-bar-rows | Edge Bar Rows | Edge Bar Rows | yes |
-| 45 | table-footer-summary | Table Footer Summary | Table Rows | no |
-| 46 | inset-grouped-list | Inset Grouped List | Inset Grouped List | no |
-| 47 | split-list-states | Split List States | Split List | yes |
-| 48 | dial-four-points | Dial Four Points | Dial | yes |
-| 49 | badge-scroller | Badge Scroller | Badge Scroller | yes |
-| 50 | hint-hero-cards | Hint Hero Cards | Text-Hero Cards | no |
-
-The white-days add-on appears only where a structure offers it (17, 20, 25, 29, 35, 36, 37): these layouts must show how the add-on integrates. The next-fast preview is out of scope: the shipped preview survives any picked layout; these variants replace the picker section only.
-
-## The screenshot pass (device step, runs alone in a fresh session)
-
-iOS simulator, agent-device driving (the house routing for simulator work):
-
-1. Build and install the dev build on a booted iPhone simulator (expo run:ios, the package''s own yarn ios), Metro serving.
-2. Open the deep link athan://dev/fasting-layouts (simctl openurl or the driver''s URL tool), wait for the sheet.
-3. For each of the 50 variants: tap Next on the dev strip, wait for the variant''s name text to appear (unique marker), then a settle delay (the owner''s order: never screenshot one millisecond after the action), then save variant-NN-<id>.png to ~/athan-fasting-layouts/shots/ - outside the repository (no screenshots in git).
-4. Run the gallery generator against the shots directory.
-5. Verify the written index.html references all 50 PNGs that exist on disk, then open ~/athan-fasting-layouts/index.html so the owner sees it.
-
-The generator (scripts/fasting-layouts-gallery.mjs) reads devlayouts/catalog.json (the single source both the registry and the gallery read), refuses to build while any of the 50 PNGs is missing, copies the images, and writes one dark-themed index.html with a card per variant: screenshot, #N Name, archetype label, and a hints-hidden marker where true. Unit-tested red-first via the stringGuard.test.ts pattern (spawn the CLI with fixture catalog and temp directories). scripts/ is already an UNMEASURED path in the gate.
-
-## Acceptance mapping
-
-- 50 variants, at least 8 archetypes, none a recolor of another: registry + catalog tests (archetype set >= 8, unique ids/names, count 50) plus the audit pass over the gallery.
-- At least half the variants hide explanations: catalog test (hidesExplanations count >= 25; the list carries 36).
-- Sheet theme, first-frame settled: variants use only the sheet''s tokens (COLORS, RADIUS, SPACING, TEXT, typographyFor); house first-frame rule; screenshots taken after settle.
-- Settled screenshots only: wait-for-text marker before every capture.
-- Gallery outside the repo: ~/athan-fasting-layouts/.
-- yarn validate green, release unchanged: dev-gated route, no store writes, no shipped-UI edits.
-
-## Risks
-
-- Version collision with the parallel lane: the uniqueness gate reads every local branch; on a collision the commit takes the next free patch number. Fetch origin before every bump.
-- Dynamic sheet height churn during variant swaps: the wait-for-text marker plus settle delay covers the re-measure.
-- Release bundle growth: Metro bundles the harness module even though only __DEV__ executes it. Accepted and documented; the route renders null in release.
-- String guard: JSX text nodes and unbraced attribute literals are offenses. Harness strings are hoisted constants or braced; variant strings are catalog keys only.
-- Hijri reads on calendar variants: display-only reads of the landed fasting helpers; no clock mocking needed since no test renders variants.
-
-## Alternatives rejected
-
-- Maestro flow YAML: fifty flows in-repo, Android-first house flows, screenshots harder to place outside the tree; agent-device drives iOS directly with refs that survive layout.
-- Fifty deep-link routes: fifty files under app/ and release-bundle pollution; one route with in-place swaps is the smaller surface.
-- Variants outside the real Sheet: screenshots must show the app''s real chrome.
-- Variants under components/dev/: would trip the 100 percent changed-coverage gate with owner-forbidden visual tests; devlayouts/ with a gate entry is the honest path.
-- Duplicated catalog inside the generator: drift; one catalog.json feeds registry and gallery.
-
-## Steps
-
-1. Step 1: Harness scaffold, registry, and variants 1-10 (code 2) - route, screen, parts, registry, catalog rows 1-10, registry/catalog tests, route render test, gate UNMEASURED entry, first variant file. Validate green, version bump, commit.
-2. Step 2: Variants 11-25 (code 2) - second variant file, catalog rows 11-25, validate, bump, commit.
-3. Step 3: Variants 26-50 (code 2) - third and fourth variant files, catalog rows 26-50, the count-50 and hidden-25 invariants go green, validate, bump, commit.
-4. Step 4: Gallery generator with tests (code 2) - CLI script, red-first CLI test, validate, bump, commit.
-5. Step 5: Screenshot pass and gallery build (device 3, alone in a fresh session) - build, drive 50 variants, settle-gated screenshots outside the repo, gallery written and verified, opened for the owner.
-
-Story points: 11.', NULL, 'moon', '{}', false, false, false, NULL, NULL, 82944, 1, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-04 14:56:25.815571+00', '2026-11-04 14:56:25.815571+00');
 INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (78, 1, NULL, 'T-594', '# T-594
 
 ## Goal
@@ -32048,6 +31934,130 @@ Offline: full offline from install; no network for prayer times ever again.
 - The downloader leaves the repository entirely (owner order): the fifty workbooks are committed at `ai/features/global-prayer-times/data/london-migration/workbooks/`, the external one-shot lives at `$HOME/athan-gitree/bin/lupt-download.mjs`, and `generate.mjs` reads the committed corpus, regenerating the artifact byte-identical (commit f48295d3).
 - The blind audit''s hygiene findings closed in commit 18da1565 (the e2e/README confound tail, the duplicate docblock, the dead map, the dead isDev plumbing).
 - The step-4 emulator breach is owned in comment 6118: the traffic proof is re-run on the physical OnePlus 3T per-UID counters.', NULL, NULL, '{}', false, false, false, NULL, NULL, 79872, 3, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-03 17:48:30.451244+00', '2026-11-04 00:33:41.363465+00');
+INSERT INTO public.project_document (id, project_id, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, archived_by_ancestor_id, "position", version, owner_user_id, created_by_user_id, updated_by_user_id, created_at, updated_at) VALUES (82, 1, NULL, 'T-623 Fifty fasting layout variants: dev harness, screenshot pass, gallery', '# T-623: Fifty fasting layout variants
+
+Ticket: T-623. The T-615 fasting mode selection reads chaotic (owner order 2026-11-04): misaligned, text-heavy, poor use of space. This ticket builds fifty structurally different layouts of that selection, screenshots all fifty on the iOS simulator, and hands the owner one gallery page to pick a winner from. No shipped UI changes.
+
+## The harness
+
+A dev-only screen is the house pattern here: the app already gates dev surfaces with __DEV__ and lazy require() (app/index.tsx background-task debug, whatsNewPreview), and Expo Router gives the deep link for free (scheme: athan in app.json). There is no existing dev-route directory, so this ticket starts one, following the app''s own gating idiom.
+
+- app/dev/fasting-layouts.tsx - the route. Renders null unless __DEV__; the harness screen loads through require() inside the dev check, mirroring app/index.tsx. In release the route registers but renders nothing; no production surface changes.
+- devlayouts/ (new top-level directory) - FastingLayoutsScreen.tsx (screen), registry.tsx (variant registry), catalog.json (plain data: index, id, name, archetype, hidesExplanations), parts.tsx (shared drawing primitives), and the variant component files.
+- The screen presents the real Sheet (components/sheets/parts/Sheet.tsx) with the alert sheet''s own chrome: prayerLabel(''suhoor'') title, t(''sheet.closeToSave'') subtitle, the bell icon, enableDynamicSizing, contentCap 0.85. Screenshots therefore capture the app exactly as it looks.
+- One variant renders at a time inside the sheet. A dev-only strip at the bottom of the sheet body carries Prev/Next and N/50 Name; it must live inside the sheet because the backdrop covers the rest of the screen. The strip is harness chrome (English constants behind the dev guard; the string scanner passes braced/expression literals - verified against scripts/scan-strings.mjs), while every user-visible string inside a variant comes from the landed fasting catalog keys (fasting.mode.*, hints, add-on, card title).
+- Variant selection state is body-local (useState), never written to the stores. Every variant starts at mode ''muhammad'', whiteDaysAddOn true, so the white-days add-on surfaces wherever a structure offers it.
+- Navigation between variants is taps on the dev strip, not fifty deep links: one presentation, in-place swaps, fewer states to test. The deep link athan://dev/fasting-layouts opens the screen at variant 1.
+
+### Why devlayouts/ sits outside components/
+
+The coverage gate (scripts/check-changed-coverage.js) demands 100 percent coverage of every changed file under the collected directories, and yarn validate''s global threshold enforces it for everything collectCoverageFrom lists. The owner''s order for this ticket forbids tests for visual layouts themselves. The resolution follows the gate''s own philosophy: a deliberately unmeasured path with an honest reason. devlayouts/ joins the gate''s UNMEASURED list (dev-only layout exploration harness; variants are driven and screenshotted on the simulator by the device step, visual layouts untested per owner order 2026-11-04). The registry logic and the catalog sync are unit-tested anyway (red-first), and the route file - which sits under app/ and is measured - gets a two-branch render test (__DEV__ true renders the screen, false renders null).
+
+### Variants
+
+50 components across four files: variants-01-10.tsx, variants-11-25.tsx, variants-26-40.tsx, variants-41-50.tsx. 33 distinct archetype labels; 36 of 50 hide the mode explanations by default (tooltip, dropdown, progressive disclosure, or selected-only display), 14 keep them but restructure their placement. Shared drawing primitives (check glyph, chevrons, drum bands, chips, bubbles) live in parts.tsx. All variants are first-frame settled - mount renders the settled frame; only value changes move anything (house rule). No variant recolors or re-fonts another: each differs in structure (picker mechanism, hierarchy, text placement, density).
+
+| # | id | Name | Archetype | Hints hidden |
+| --- | --- | --- | --- | --- |
+| 1 | aligned-radio-rows | Aligned Radio Rows | Radio Rows | no |
+| 2 | radio-selected-hint-chip | Radio + Hint Chip | Radio Rows | yes |
+| 3 | radio-card-rows | Radio Card Rows | Radio Cards | yes |
+| 4 | radio-two-column-grid | Radio Two-Column Grid | Radio Grid | yes |
+| 5 | radio-leading-icon-rows | Radio Leading-Icon Rows | Radio Rows | yes |
+| 6 | checkmark-rows | Checkmark Rows | Checkmark Rows | yes |
+| 7 | checkmark-hint-footer | Checkmark + Hint Footer | Checkmark Rows | yes |
+| 8 | checkmark-selected-expands | Checkmark Selected Expands | Checkmark Rows | yes |
+| 9 | checkmark-pill-flow | Checkmark Pill Flow | Choice Chips | yes |
+| 10 | segmented-icon-track | Segmented Icon Track | Segmented Track | yes |
+| 11 | segmented-track-caption | Segmented Track Caption | Segmented Track | no |
+| 12 | slider-ticks | Slider with Ticks | Slider | yes |
+| 13 | slider-hint-drawer | Slider Hint Drawer | Slider | no |
+| 14 | carousel-snap-cards | Card Carousel | Card Carousel | no |
+| 15 | wheel-vertical-drum | Vertical Drum Wheel | Wheel | yes |
+| 16 | wheel-side-detail | Wheel + Side Detail | Sectioned Wheel | no |
+| 17 | wheel-two-section | Two-Section Wheel | Sectioned Wheel | no |
+| 18 | wheel-horizontal | Horizontal Wheel | Wheel | yes |
+| 19 | pill-tab-bar | Pill Tab Bar | Pill Tab Bar | yes |
+| 20 | pill-tabs-panel | Pill Tabs + Panel | Pill Tab Bar | no |
+| 21 | underline-tabs | Underline Tabs | Underline Tabs | yes |
+| 22 | icon-tab-strip | Icon Tab Strip | Icon Tabs | yes |
+| 23 | dropdown-collapsed-row | Collapsed Dropdown Row | Dropdown | yes |
+| 24 | dropdown-inset-list | Dropdown Inset List | Dropdown Panel | yes |
+| 25 | dropdown-summary-badges | Dropdown Summary Badges | Dropdown | yes |
+| 26 | info-bubble-rows | Info Bubble Rows | Tooltip Rows | yes |
+| 27 | header-tooltip-toggle | Header Tooltip Toggle | Tooltip Toggle | yes |
+| 28 | longpress-peek-rows | Long-Press Peek Rows | Peek Rows | yes |
+| 29 | white-days-calendar-strip | White-Days Calendar Strip | Calendar Strip | no |
+| 30 | week-strip-mode-chips | Week Strip + Mode Chips | Calendar Strip | yes |
+| 31 | month-dots-grid | Month Dots Grid | Month Grid | yes |
+| 32 | stepper-cycle | Stepper Cycle | Stepper | yes |
+| 33 | stepper-hint-slot | Stepper Hint Slot | Stepper | no |
+| 34 | tally-stepper | Tally Stepper | Stepper | yes |
+| 35 | rhythm-then-extras | Rhythm Then Extras | Progressive Disclosure | yes |
+| 36 | accordion-sections | Accordion Sections | Progressive Disclosure | no |
+| 37 | contextual-chip-rows | Contextual Chip Rows | Progressive Disclosure | yes |
+| 38 | change-button-collapse | Change Button Collapse | Progressive Disclosure | yes |
+| 39 | tile-grid-corner-checks | Tile Grid Corner Checks | Tile Grid | yes |
+| 40 | tile-grid-detail-drawer | Tile Grid Detail Drawer | Tile Grid | no |
+| 41 | mosaic-selected-large | Mosaic Selected Large | Tile Mosaic | yes |
+| 42 | state-dot-rows | State Dot Rows | State Dot Rows | yes |
+| 43 | outline-fill-cards | Outline Fill Cards | Fill Cards | yes |
+| 44 | edge-bar-rows | Edge Bar Rows | Edge Bar Rows | yes |
+| 45 | table-footer-summary | Table Footer Summary | Table Rows | no |
+| 46 | inset-grouped-list | Inset Grouped List | Inset Grouped List | no |
+| 47 | split-list-states | Split List States | Split List | yes |
+| 48 | dial-four-points | Dial Four Points | Dial | yes |
+| 49 | badge-scroller | Badge Scroller | Badge Scroller | yes |
+| 50 | hint-hero-cards | Hint Hero Cards | Text-Hero Cards | no |
+
+The white-days add-on appears only where a structure offers it (17, 20, 25, 29, 35, 36, 37): these layouts must show how the add-on integrates. The next-fast preview is out of scope: the shipped preview survives any picked layout; these variants replace the picker section only.
+
+## The screenshot pass (device step, runs alone in a fresh session)
+
+iOS simulator, agent-device driving (the house routing for simulator work):
+
+1. Build and install the dev build on a booted iPhone simulator (expo run:ios, the package''s own yarn ios), Metro serving.
+2. Open the deep link athan://dev/fasting-layouts (simctl openurl or the driver''s URL tool), wait for the sheet.
+3. For each of the 50 variants: tap Next on the dev strip, wait for the variant''s name text to appear (unique marker), then a settle delay (the owner''s order: never screenshot one millisecond after the action), then save variant-NN-<id>.png to ~/athan-fasting-layouts/shots/ - outside the repository (no screenshots in git).
+4. Run the gallery generator against the shots directory.
+5. Verify the written index.html references all 50 PNGs that exist on disk, then open ~/athan-fasting-layouts/index.html so the owner sees it.
+
+The generator (scripts/fasting-layouts-gallery.mjs) reads devlayouts/catalog.json (the single source both the registry and the gallery read), refuses to build while any of the 50 PNGs is missing, copies the images, and writes one dark-themed index.html with a card per variant: screenshot, #N Name, archetype label, and a hints-hidden marker where true. Unit-tested red-first via the stringGuard.test.ts pattern (spawn the CLI with fixture catalog and temp directories). scripts/ is already an UNMEASURED path in the gate.
+
+## Acceptance mapping
+
+- 50 variants, at least 8 archetypes, none a recolor of another: registry + catalog tests (archetype set >= 8, unique ids/names, count 50) plus the audit pass over the gallery.
+- At least half the variants hide explanations: catalog test (hidesExplanations count >= 25; the list carries 36).
+- Sheet theme, first-frame settled: variants use only the sheet''s tokens (COLORS, RADIUS, SPACING, TEXT, typographyFor); house first-frame rule; screenshots taken after settle.
+- Settled screenshots only: wait-for-text marker before every capture.
+- Gallery outside the repo: ~/athan-fasting-layouts/.
+- yarn validate green, release unchanged: dev-gated route, no store writes, no shipped-UI edits.
+
+## Risks
+
+- Version collision with the parallel lane: the discipline gate holds every commit to the single patch step above its own tip, so a colliding number is not skippable; the collision is recorded in scripts/version-collisions-allowlist.json under the standing merge-renumbers ruling and the merge that lands second renumbers above whatever uat then carries. Fetch origin before every bump.
+- Dynamic sheet height churn during variant swaps: the wait-for-text marker plus settle delay covers the re-measure.
+- Release bundle growth: Metro bundles the harness module even though only __DEV__ executes it. Accepted and documented; the route renders null in release.
+- String guard: JSX text nodes and unbraced attribute literals are offenses. Harness strings are hoisted constants or braced; variant strings are catalog keys only.
+- Hijri reads on calendar variants: display-only reads of the landed fasting helpers; no clock mocking needed since no test renders variants.
+
+## Alternatives rejected
+
+- Maestro flow YAML: fifty flows in-repo, Android-first house flows, screenshots harder to place outside the tree; agent-device drives iOS directly with refs that survive layout.
+- Fifty deep-link routes: fifty files under app/ and release-bundle pollution; one route with in-place swaps is the smaller surface.
+- Variants outside the real Sheet: screenshots must show the app''s real chrome.
+- Variants under components/dev/: would trip the 100 percent changed-coverage gate with owner-forbidden visual tests; devlayouts/ with a gate entry is the honest path.
+- Duplicated catalog inside the generator: drift; one catalog.json feeds registry and gallery.
+
+## Steps
+
+1. Step 1: Harness scaffold, registry, and variants 1-10 (code 2) - route, screen, parts, registry, catalog rows 1-10, registry/catalog tests, route render test, gate UNMEASURED entry, first variant file. Validate green, version bump, commit.
+2. Step 2: Variants 11-25 (code 2) - second variant file, catalog rows 11-25, validate, bump, commit.
+3. Step 3: Variants 26-50 (code 2) - third and fourth variant files, catalog rows 26-50, the count-50 and hidden-25 invariants go green, validate, bump, commit.
+4. Step 4: Gallery generator with tests (code 2) - CLI script, red-first CLI test, validate, bump, commit.
+5. Step 5: Screenshot pass and gallery build (device 3, alone in a fresh session) - build, drive 50 variants, settle-gated screenshots outside the repo, gallery written and verified, opened for the owner.
+
+Story points: 11.', NULL, 'moon', '{}', false, false, false, NULL, NULL, 82944, 2, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-04 14:56:25.815571+00', '2026-11-04 17:39:35.449062+00');
 
 
 --
@@ -64507,6 +64517,130 @@ The generator (scripts/fasting-layouts-gallery.mjs) reads devlayouts/catalog.jso
 5. Step 5: Screenshot pass and gallery build (device 3, alone in a fresh session) - build, drive 50 variants, settle-gated screenshots outside the repo, gallery written and verified, opened for the owner.
 
 Story points: 11.', NULL, 'moon', '{}', false, false, false, NULL, 82944, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-04 14:56:25.815571+00');
+INSERT INTO public.project_document_revision (id, document_id, version, parent_id, title, content, content_json, icon, metadata, full_width, is_private, is_locked, archived_at, "position", owner_user_id, created_by_user_id, created_at) VALUES (242, 82, 2, NULL, 'T-623 Fifty fasting layout variants: dev harness, screenshot pass, gallery', '# T-623: Fifty fasting layout variants
+
+Ticket: T-623. The T-615 fasting mode selection reads chaotic (owner order 2026-11-04): misaligned, text-heavy, poor use of space. This ticket builds fifty structurally different layouts of that selection, screenshots all fifty on the iOS simulator, and hands the owner one gallery page to pick a winner from. No shipped UI changes.
+
+## The harness
+
+A dev-only screen is the house pattern here: the app already gates dev surfaces with __DEV__ and lazy require() (app/index.tsx background-task debug, whatsNewPreview), and Expo Router gives the deep link for free (scheme: athan in app.json). There is no existing dev-route directory, so this ticket starts one, following the app''s own gating idiom.
+
+- app/dev/fasting-layouts.tsx - the route. Renders null unless __DEV__; the harness screen loads through require() inside the dev check, mirroring app/index.tsx. In release the route registers but renders nothing; no production surface changes.
+- devlayouts/ (new top-level directory) - FastingLayoutsScreen.tsx (screen), registry.tsx (variant registry), catalog.json (plain data: index, id, name, archetype, hidesExplanations), parts.tsx (shared drawing primitives), and the variant component files.
+- The screen presents the real Sheet (components/sheets/parts/Sheet.tsx) with the alert sheet''s own chrome: prayerLabel(''suhoor'') title, t(''sheet.closeToSave'') subtitle, the bell icon, enableDynamicSizing, contentCap 0.85. Screenshots therefore capture the app exactly as it looks.
+- One variant renders at a time inside the sheet. A dev-only strip at the bottom of the sheet body carries Prev/Next and N/50 Name; it must live inside the sheet because the backdrop covers the rest of the screen. The strip is harness chrome (English constants behind the dev guard; the string scanner passes braced/expression literals - verified against scripts/scan-strings.mjs), while every user-visible string inside a variant comes from the landed fasting catalog keys (fasting.mode.*, hints, add-on, card title).
+- Variant selection state is body-local (useState), never written to the stores. Every variant starts at mode ''muhammad'', whiteDaysAddOn true, so the white-days add-on surfaces wherever a structure offers it.
+- Navigation between variants is taps on the dev strip, not fifty deep links: one presentation, in-place swaps, fewer states to test. The deep link athan://dev/fasting-layouts opens the screen at variant 1.
+
+### Why devlayouts/ sits outside components/
+
+The coverage gate (scripts/check-changed-coverage.js) demands 100 percent coverage of every changed file under the collected directories, and yarn validate''s global threshold enforces it for everything collectCoverageFrom lists. The owner''s order for this ticket forbids tests for visual layouts themselves. The resolution follows the gate''s own philosophy: a deliberately unmeasured path with an honest reason. devlayouts/ joins the gate''s UNMEASURED list (dev-only layout exploration harness; variants are driven and screenshotted on the simulator by the device step, visual layouts untested per owner order 2026-11-04). The registry logic and the catalog sync are unit-tested anyway (red-first), and the route file - which sits under app/ and is measured - gets a two-branch render test (__DEV__ true renders the screen, false renders null).
+
+### Variants
+
+50 components across four files: variants-01-10.tsx, variants-11-25.tsx, variants-26-40.tsx, variants-41-50.tsx. 33 distinct archetype labels; 36 of 50 hide the mode explanations by default (tooltip, dropdown, progressive disclosure, or selected-only display), 14 keep them but restructure their placement. Shared drawing primitives (check glyph, chevrons, drum bands, chips, bubbles) live in parts.tsx. All variants are first-frame settled - mount renders the settled frame; only value changes move anything (house rule). No variant recolors or re-fonts another: each differs in structure (picker mechanism, hierarchy, text placement, density).
+
+| # | id | Name | Archetype | Hints hidden |
+| --- | --- | --- | --- | --- |
+| 1 | aligned-radio-rows | Aligned Radio Rows | Radio Rows | no |
+| 2 | radio-selected-hint-chip | Radio + Hint Chip | Radio Rows | yes |
+| 3 | radio-card-rows | Radio Card Rows | Radio Cards | yes |
+| 4 | radio-two-column-grid | Radio Two-Column Grid | Radio Grid | yes |
+| 5 | radio-leading-icon-rows | Radio Leading-Icon Rows | Radio Rows | yes |
+| 6 | checkmark-rows | Checkmark Rows | Checkmark Rows | yes |
+| 7 | checkmark-hint-footer | Checkmark + Hint Footer | Checkmark Rows | yes |
+| 8 | checkmark-selected-expands | Checkmark Selected Expands | Checkmark Rows | yes |
+| 9 | checkmark-pill-flow | Checkmark Pill Flow | Choice Chips | yes |
+| 10 | segmented-icon-track | Segmented Icon Track | Segmented Track | yes |
+| 11 | segmented-track-caption | Segmented Track Caption | Segmented Track | no |
+| 12 | slider-ticks | Slider with Ticks | Slider | yes |
+| 13 | slider-hint-drawer | Slider Hint Drawer | Slider | no |
+| 14 | carousel-snap-cards | Card Carousel | Card Carousel | no |
+| 15 | wheel-vertical-drum | Vertical Drum Wheel | Wheel | yes |
+| 16 | wheel-side-detail | Wheel + Side Detail | Sectioned Wheel | no |
+| 17 | wheel-two-section | Two-Section Wheel | Sectioned Wheel | no |
+| 18 | wheel-horizontal | Horizontal Wheel | Wheel | yes |
+| 19 | pill-tab-bar | Pill Tab Bar | Pill Tab Bar | yes |
+| 20 | pill-tabs-panel | Pill Tabs + Panel | Pill Tab Bar | no |
+| 21 | underline-tabs | Underline Tabs | Underline Tabs | yes |
+| 22 | icon-tab-strip | Icon Tab Strip | Icon Tabs | yes |
+| 23 | dropdown-collapsed-row | Collapsed Dropdown Row | Dropdown | yes |
+| 24 | dropdown-inset-list | Dropdown Inset List | Dropdown Panel | yes |
+| 25 | dropdown-summary-badges | Dropdown Summary Badges | Dropdown | yes |
+| 26 | info-bubble-rows | Info Bubble Rows | Tooltip Rows | yes |
+| 27 | header-tooltip-toggle | Header Tooltip Toggle | Tooltip Toggle | yes |
+| 28 | longpress-peek-rows | Long-Press Peek Rows | Peek Rows | yes |
+| 29 | white-days-calendar-strip | White-Days Calendar Strip | Calendar Strip | no |
+| 30 | week-strip-mode-chips | Week Strip + Mode Chips | Calendar Strip | yes |
+| 31 | month-dots-grid | Month Dots Grid | Month Grid | yes |
+| 32 | stepper-cycle | Stepper Cycle | Stepper | yes |
+| 33 | stepper-hint-slot | Stepper Hint Slot | Stepper | no |
+| 34 | tally-stepper | Tally Stepper | Stepper | yes |
+| 35 | rhythm-then-extras | Rhythm Then Extras | Progressive Disclosure | yes |
+| 36 | accordion-sections | Accordion Sections | Progressive Disclosure | no |
+| 37 | contextual-chip-rows | Contextual Chip Rows | Progressive Disclosure | yes |
+| 38 | change-button-collapse | Change Button Collapse | Progressive Disclosure | yes |
+| 39 | tile-grid-corner-checks | Tile Grid Corner Checks | Tile Grid | yes |
+| 40 | tile-grid-detail-drawer | Tile Grid Detail Drawer | Tile Grid | no |
+| 41 | mosaic-selected-large | Mosaic Selected Large | Tile Mosaic | yes |
+| 42 | state-dot-rows | State Dot Rows | State Dot Rows | yes |
+| 43 | outline-fill-cards | Outline Fill Cards | Fill Cards | yes |
+| 44 | edge-bar-rows | Edge Bar Rows | Edge Bar Rows | yes |
+| 45 | table-footer-summary | Table Footer Summary | Table Rows | no |
+| 46 | inset-grouped-list | Inset Grouped List | Inset Grouped List | no |
+| 47 | split-list-states | Split List States | Split List | yes |
+| 48 | dial-four-points | Dial Four Points | Dial | yes |
+| 49 | badge-scroller | Badge Scroller | Badge Scroller | yes |
+| 50 | hint-hero-cards | Hint Hero Cards | Text-Hero Cards | no |
+
+The white-days add-on appears only where a structure offers it (17, 20, 25, 29, 35, 36, 37): these layouts must show how the add-on integrates. The next-fast preview is out of scope: the shipped preview survives any picked layout; these variants replace the picker section only.
+
+## The screenshot pass (device step, runs alone in a fresh session)
+
+iOS simulator, agent-device driving (the house routing for simulator work):
+
+1. Build and install the dev build on a booted iPhone simulator (expo run:ios, the package''s own yarn ios), Metro serving.
+2. Open the deep link athan://dev/fasting-layouts (simctl openurl or the driver''s URL tool), wait for the sheet.
+3. For each of the 50 variants: tap Next on the dev strip, wait for the variant''s name text to appear (unique marker), then a settle delay (the owner''s order: never screenshot one millisecond after the action), then save variant-NN-<id>.png to ~/athan-fasting-layouts/shots/ - outside the repository (no screenshots in git).
+4. Run the gallery generator against the shots directory.
+5. Verify the written index.html references all 50 PNGs that exist on disk, then open ~/athan-fasting-layouts/index.html so the owner sees it.
+
+The generator (scripts/fasting-layouts-gallery.mjs) reads devlayouts/catalog.json (the single source both the registry and the gallery read), refuses to build while any of the 50 PNGs is missing, copies the images, and writes one dark-themed index.html with a card per variant: screenshot, #N Name, archetype label, and a hints-hidden marker where true. Unit-tested red-first via the stringGuard.test.ts pattern (spawn the CLI with fixture catalog and temp directories). scripts/ is already an UNMEASURED path in the gate.
+
+## Acceptance mapping
+
+- 50 variants, at least 8 archetypes, none a recolor of another: registry + catalog tests (archetype set >= 8, unique ids/names, count 50) plus the audit pass over the gallery.
+- At least half the variants hide explanations: catalog test (hidesExplanations count >= 25; the list carries 36).
+- Sheet theme, first-frame settled: variants use only the sheet''s tokens (COLORS, RADIUS, SPACING, TEXT, typographyFor); house first-frame rule; screenshots taken after settle.
+- Settled screenshots only: wait-for-text marker before every capture.
+- Gallery outside the repo: ~/athan-fasting-layouts/.
+- yarn validate green, release unchanged: dev-gated route, no store writes, no shipped-UI edits.
+
+## Risks
+
+- Version collision with the parallel lane: the discipline gate holds every commit to the single patch step above its own tip, so a colliding number is not skippable; the collision is recorded in scripts/version-collisions-allowlist.json under the standing merge-renumbers ruling and the merge that lands second renumbers above whatever uat then carries. Fetch origin before every bump.
+- Dynamic sheet height churn during variant swaps: the wait-for-text marker plus settle delay covers the re-measure.
+- Release bundle growth: Metro bundles the harness module even though only __DEV__ executes it. Accepted and documented; the route renders null in release.
+- String guard: JSX text nodes and unbraced attribute literals are offenses. Harness strings are hoisted constants or braced; variant strings are catalog keys only.
+- Hijri reads on calendar variants: display-only reads of the landed fasting helpers; no clock mocking needed since no test renders variants.
+
+## Alternatives rejected
+
+- Maestro flow YAML: fifty flows in-repo, Android-first house flows, screenshots harder to place outside the tree; agent-device drives iOS directly with refs that survive layout.
+- Fifty deep-link routes: fifty files under app/ and release-bundle pollution; one route with in-place swaps is the smaller surface.
+- Variants outside the real Sheet: screenshots must show the app''s real chrome.
+- Variants under components/dev/: would trip the 100 percent changed-coverage gate with owner-forbidden visual tests; devlayouts/ with a gate entry is the honest path.
+- Duplicated catalog inside the generator: drift; one catalog.json feeds registry and gallery.
+
+## Steps
+
+1. Step 1: Harness scaffold, registry, and variants 1-10 (code 2) - route, screen, parts, registry, catalog rows 1-10, registry/catalog tests, route render test, gate UNMEASURED entry, first variant file. Validate green, version bump, commit.
+2. Step 2: Variants 11-25 (code 2) - second variant file, catalog rows 11-25, validate, bump, commit.
+3. Step 3: Variants 26-50 (code 2) - third and fourth variant files, catalog rows 26-50, the count-50 and hidden-25 invariants go green, validate, bump, commit.
+4. Step 4: Gallery generator with tests (code 2) - CLI script, red-first CLI test, validate, bump, commit.
+5. Step 5: Screenshot pass and gallery build (device 3, alone in a fresh session) - build, drive 50 variants, settle-gated screenshots outside the repo, gallery written and verified, opened for the owner.
+
+Story points: 11.', NULL, 'moon', '{}', false, false, false, NULL, 82944, 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', '2026-11-04 17:39:35.449062+00');
 
 
 --
@@ -65019,7 +65153,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:624', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:613', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:578', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:615', 1, 61);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5868);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 5871);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:523', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:539', 1, 37);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:572', 1, 5);
@@ -65051,7 +65185,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:593', 1, 12)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:625', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:627', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:628', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:623', 1, 40);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:623', 1, 50);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:529', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:525', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:526', 1, 36);
@@ -65074,7 +65208,6 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:532', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:534', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:535', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:533', 1, 5);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 369);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:603', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:611', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:612', 1, 9);
@@ -65082,6 +65215,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:584', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:581', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:626', 1, 5);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:587', 1, 12);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('documents:1', 1, 370);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:588', 1, 14);
 
 
@@ -65344,7 +65478,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 6349, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 6356, true);
 
 
 --
@@ -65393,7 +65527,7 @@ SELECT pg_catalog.setval('public.issue_development_link_id_seq', 1, false);
 -- Name: issue_field_value_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_field_value_id_seq', 790, true);
+SELECT pg_catalog.setval('public.issue_field_value_id_seq', 791, true);
 
 
 --
@@ -65421,7 +65555,7 @@ SELECT pg_catalog.setval('public.issue_link_id_seq', 132, true);
 -- Name: issue_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_status_id_seq', 1590, true);
+SELECT pg_catalog.setval('public.issue_status_id_seq', 1592, true);
 
 
 --
@@ -65519,7 +65653,7 @@ SELECT pg_catalog.setval('public.project_document_id_seq', 82, true);
 -- Name: project_document_revision_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.project_document_revision_id_seq', 241, true);
+SELECT pg_catalog.setval('public.project_document_revision_id_seq', 242, true);
 
 
 --
@@ -69904,5 +70038,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 9K4w2pqHJWCHUJzKlIWejCvdwwTjgD5PBny3c2HSnaFnV3fFiLcBIbe4fZnxZRV
+\unrestrict DsDnubZnCF20zYJgQh3ABctyV6wl9zcOi7aextjfv714nJlf0ScCc81jLbQOT4V
 
