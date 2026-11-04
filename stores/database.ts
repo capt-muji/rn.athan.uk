@@ -2,10 +2,13 @@
  * Database layer - MMKV storage wrapper
  *
  * Provides typed access to local storage for:
- * - Prayer time data (prayer_YYYY-MM-DD)
  * - User preferences (preference_*)
  * - Notification tracking (scheduled_notifications_*)
- * - App state (fetched_years, app_installed_version)
+ * - App state (app_installed_version)
+ *
+ * Prayer days are NOT stored here any more: every day is read from the baked
+ * timetable (stores/timetable.ts, the one choke point). What remains here is
+ * the one-time removal of the API era's stored days (cleanLegacyDayCacheOnce).
  */
 
 import { createMMKV } from 'react-native-mmkv';
@@ -13,21 +16,13 @@ import { createMMKV } from 'react-native-mmkv';
 import { isPreview, isProd } from '@/shared/config';
 import logger from '@/shared/logger';
 import type * as NotificationUtils from '@/shared/notifications';
-import * as TimeUtils from '@/shared/time';
-import type { ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import type { ScheduleType } from '@/shared/types';
 
 /**
- * MMKV instance id, namespaced by the SAME predicate api/client.ts uses to
- * decide whether to serve MOCK_DATA_SIMPLE.
- *
- * A build that fabricates prayer times used to write them into the store a
- * production build reads, and neither gate clears them: installing a real
- * build at the same version leaves wasAppUpgraded() false, and post-#34 even a
- * version bump keeps the cache unless the schema marker moved. So fabricated
- * rows were served as real times, and survived the build that wrote them.
- *
- * Prod and preview keep the original id, byte for byte, so every shipped
- * install goes on reading the store it already has.
+/**
+ * MMKV instance id, namespaced by build class: a build that fabricates prayer
+ * times (dev) must never share stored preferences and records with a shipped
+ * one, and shipped installs keep this id byte for byte.
  */
 const DATABASE_ID = isProd() || isPreview() ? 'athan-storage' : 'athan-storage-dev';
 
@@ -144,88 +139,35 @@ export const clearAllExcept = (keepPrefixes: string[]) => {
 };
 
 /**
- * Saves all prayer times to storage
- * Each prayer is stored with key format: prayer_YYYY-MM-DD
- * @param prayers Array of transformed prayer data from API
+ * The one-time removal of the API era's stored day cache: the baked timetable
+ * replaced it, and dead keys must not sit in every install forever.
+ *
+ * Day keys and the fetched-year markers go; prayer_max_name_width_ stays (a
+ * different family that only shares the prayer_ prefix), and so does every
+ * preference and record. The flag makes it cost one key read per sync run and
+ * one enumeration ever. A failure leaves the flag unset, so the next sync
+ * retries.
  */
-export const saveAllPrayers = (prayers: ISingleApiResponseTransformed[]) => {
-  prayers.forEach((prayer) => {
-    const key = `prayer_${prayer.date}`;
+const LEGACY_DAY_CACHE_CLEANED_KEY = 'legacy_day_cache_cleaned';
 
-    database.set(key, JSON.stringify(prayer));
-    logger.info(`MMKV WRITE: ${key}`);
-  });
+export const cleanLegacyDayCacheOnce = (): void => {
+  if (database.getString(LEGACY_DAY_CACHE_CLEANED_KEY) === 'done') return;
 
-  logger.info(`MMKV INFO: ${prayers.length} prayers saved`);
-};
-
-/**
- * The year marker may only vouch for days that are actually stored (the
- * replacePrayerCache law): a day whose bytes will not read takes its year's
- * claim away, so the next sync re-asks the API instead of showing a hole the
- * gap rule would keep.
- */
-const voidYearMarker = (year: string): void => {
   try {
-    const years = getItem('fetched_years');
-    if (years && years[year] !== undefined) {
-      delete years[year];
-      setItem('fetched_years', years);
+    let removed = 0;
+    for (const key of database.getAllKeys()) {
+      if (/^prayer_\d{4}-\d{2}-\d{2}$/.test(key) || key === 'fetched_years') {
+        database.remove(key);
+        removed += 1;
+      }
     }
-  } catch {
-    // The marker is a cache; nothing here may throw into the caller's read
-  }
-};
-
-/**
- * Gets prayer data for a calendar day of the prayer timetable
- * @param date Date string in YYYY-MM-DD format
- * @returns Prayer data or null if not found
- */
-export const getPrayerByDateString = (date: string): ISingleApiResponseTransformed | null => {
-  const key = `prayer_${date}`;
-
-  const data = database.getString(key);
-
-  logger.info(`MMKV READ: ${key}`);
-
-  if (!data) return null;
-
-  try {
-    return JSON.parse(data) as ISingleApiResponseTransformed;
+    if (removed > 0) logger.info('DATABASE: Removed legacy cached day keys', { removed });
   } catch (error) {
-    // Torn bytes read as an absent day and are dropped (T-541's XS capture: a
-    // record a kill tore mid-write bricked every launch through the sync
-    // pipeline's bare parse). Never substituted, never invented: the marker
-    // goes, so the next sync downloads the year again from the source of truth
-    logger.warn('MMKV: a stored day failed to parse, dropping it and its year marker', {
-      key,
-      error,
-    });
-    database.remove(key);
-    voidYearMarker(date.slice(0, 4));
-    return null;
+    logger.warn('DATABASE: Legacy day-cache cleanup failed, will retry', { error });
+    return;
   }
-};
 
-/**
- * Gets prayer data for the day an instant falls on
- * @param date Any instant; its day is read in the prayer timezone, whatever the phone's own
- * @returns Prayer data or null if not found
- */
-export const getPrayerByDate = (date: Date): ISingleApiResponseTransformed | null => {
-  const keyDate = TimeUtils.formatDateShort(date);
-  return getPrayerByDateString(keyDate);
-};
-
-/**
- * Marks a year as having been fetched from the API
- * @param year Year to mark as fetched
- */
-export const markYearAsFetched = (year: number) => {
-  const key = `fetched_years`;
-  const fetchedYears = getItem(key) || {};
-  setItem(key, { ...fetchedYears, [year]: true });
+  database.set(LEGACY_DAY_CACHE_CLEANED_KEY, 'done');
 };
 
 /**

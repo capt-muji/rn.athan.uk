@@ -23,7 +23,7 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 - Settings: large overlay font, Hijri date, Arabic prayer names, seconds, seasonal decorations, countdown bar, color picker, check for updates.
 - Folding iPhone (Duo) support: held tall on the open inner display the app renders top-down across both panels with no letterbox, and there is no wide mode - the wide hold keeps the system's centered portrait frame.
 
-Prayer times come from [London Prayer Times](https://www.londonprayertimes.com/). Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
+Prayer times come from the London Unified Prayer Timetable (londonsalahtimes.com), baked into the app at build time. Reminder audio is recorded in-house. The Audacity projects for every athan and reminder sound are on the [releases page](https://github.com/capt-muji/rn.athan.uk/releases).
 
 ## Known limitations
 

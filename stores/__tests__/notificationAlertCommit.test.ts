@@ -35,6 +35,7 @@ import {
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -170,6 +171,12 @@ beforeEach(() => {
   held.clear();
   holdsCancel = () => false;
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const date of [YESTERDAY, ...WINDOW]) {
     // A real night between Magrib and the next day's Fajr, so the night rows have something to
@@ -186,7 +193,8 @@ beforeEach(() => {
       duha: '15:20',
       istijaba: '22:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   for (const atom of [

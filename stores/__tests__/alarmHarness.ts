@@ -11,7 +11,14 @@ import { getDefaultStore } from 'jotai/vanilla';
 
 import { DEFAULT_REMINDER_SLOT_INTERVALS, type PrayerId } from '@/shared/constants';
 import { transformApiData } from '@/shared/prayer';
-import { AlertType, REMINDER_SLOTS, type ReminderInterval, type ReminderSlot, ScheduleType } from '@/shared/types';
+import {
+  AlertType,
+  type ISingleApiResponseTransformed,
+  REMINDER_SLOTS,
+  type ReminderInterval,
+  type ReminderSlot,
+  ScheduleType,
+} from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   extraPrayerAlertAtoms,
@@ -24,6 +31,7 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 /** A day's times as the provider sends them: Fajr, Sunrise, Dhuhr, Asr, Magrib, Isha */
 export type Times = [string, string, string, string, string, string];
@@ -62,15 +70,23 @@ export const londonDays = (...dates: string[]): Record<string, Times> =>
 export const sameTimesOn = (dates: string[], times: Times): Record<string, Times> =>
   Object.fromEntries(dates.map((date) => [date, times]));
 
-/** Stores days as sync writes them, so Suhoor, Duha and Istijaba are derived by the app's own transform */
+/** Installs days as the reader serves them, so Suhoor, Duha and Istijaba are derived by the app's own transform */
+const storedWindow = new Map<string, ISingleApiResponseTransformed>();
+
+export const resetStoredDays = (): void => {
+  storedWindow.clear();
+  __installTimetableDays([]);
+};
+
 export const storeDays = (days: Record<string, Times>): void => {
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
     const [stored] = transformApiData({
       city: 'london',
       times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
     });
-    Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+    storedWindow.set(date, stored);
   }
+  __installTimetableDays([...storedWindow.values()]);
 };
 
 const store = getDefaultStore();
@@ -83,6 +99,7 @@ const getAllMock = Notifications.getAllScheduledNotificationsAsync as jest.Mock;
 export const resetAlarms = (): void => {
   osState.clear();
   Database.database.clearAll();
+  resetStoredDays();
   jest.clearAllMocks();
 
   for (const atom of [...standardPrayerAlertAtoms, ...extraPrayerAlertAtoms]) store.set(atom, AlertType.Off);

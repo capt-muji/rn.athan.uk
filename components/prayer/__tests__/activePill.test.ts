@@ -17,10 +17,11 @@ import { type Prayer, ScheduleType } from '@/shared/types';
 import { getActivePillOpacity, getActivePillRow } from '../activePill';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 jest.mock('@/stores/schedule', () => ({
   standardSequenceAtom: 'standardSequenceAtom',

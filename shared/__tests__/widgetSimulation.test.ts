@@ -31,10 +31,11 @@
  */
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 import { createHash } from 'node:crypto';
 import { addDays } from 'date-fns';
@@ -63,7 +64,7 @@ import {
 } from '@/shared/types';
 import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // FIXTURE: 16 days across the DST fall-back (clocks change 2026-10-25)
@@ -664,7 +665,7 @@ const buildStoredSequence = (
   dayCount: number
 ): PrayerSequence => {
   const stored = new Map(records.map((record) => [record.date, record]));
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 
   return createPrayerSequence(type, createPrayerDatetime(firstDate, '12:00'), dayCount);
 };

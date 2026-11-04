@@ -7,16 +7,18 @@ import { join } from 'node:path';
  * Tests MMKV storage wrapper functions:
  * - getItem, setItem, removeItem
  * - getAllWithPrefix, clearPrefix
- * - saveAllPrayers, getPrayerByDate
  * - Notification record management
+ * - cleanLegacyDayCacheOnce
  */
 
 import type { ScheduledNotification } from '@/shared/notifications';
-import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import { AlertType, ScheduleType } from '@/shared/types';
+import { __installTimetableDays } from '@/stores/timetable';
 
 import {
   addOneScheduledNotificationForPrayer,
   addOneScheduledReminderForPrayer,
+  clearAllExcept,
   clearPrefix,
   database,
   getAllScheduledNotificationsForPrayer,
@@ -25,10 +27,7 @@ import {
   getAllScheduledRemindersForSchedule,
   getAllWithPrefix,
   getItem,
-  getPrayerByDate,
-  markYearAsFetched,
   removeItem,
-  saveAllPrayers,
   setItem,
 } from '../database';
 
@@ -39,6 +38,7 @@ import {
 beforeEach(() => {
   // Clear all stored data before each test
   database.clearAll();
+  __installTimetableDays([]);
 });
 
 // =============================================================================
@@ -88,6 +88,29 @@ describe('getItem', () => {
     setItem('zero_marker', 0);
 
     expect(getItem('zero_marker')).toBe(0);
+  });
+});
+
+describe('clearAllExcept', () => {
+  it('removes what no keep-prefix covers and keeps the covered families whole', () => {
+    database.set('app_installed_version', '"2.0.0"');
+    database.set('preference_alert_standard_fajr', 'true');
+    database.set('prayer_max_name_width_standard', '120');
+    database.set('scheduled_notifications_standard_0_x', '{}');
+    database.set('an_orphan_key', '"gone"');
+
+    clearAllExcept(['app_installed_version', 'preference_', 'prayer_max_name_width_', 'scheduled_notifications_']);
+
+    expect(database.contains('app_installed_version')).toBe(true);
+    expect(database.contains('preference_alert_standard_fajr')).toBe(true);
+    expect(database.contains('prayer_max_name_width_standard')).toBe(true);
+    expect(database.contains('scheduled_notifications_standard_0_x')).toBe(true);
+    expect(database.contains('an_orphan_key')).toBe(false);
+  });
+  it('reads torn bytes as absent rather than throwing, the T-541 law', () => {
+    database.set('torn_key', '{not json');
+
+    expect(getItem('torn_key')).toBeNull();
   });
 });
 
@@ -213,99 +236,9 @@ describe('clearPrefix', () => {
 // PRAYER DATA OPERATIONS
 // =============================================================================
 
-describe('saveAllPrayers', () => {
-  const createMockPrayer = (date: string, fajr: string): ISingleApiResponseTransformed => ({
-    date,
-    fajr,
-    sunrise: '07:30',
-    dhuhr: '12:15',
-    asr: '14:30',
-    magrib: '16:45',
-    isha: '18:15',
-    suhoor: '05:40',
-    duha: '07:50',
-    istijaba: '12:45',
-  });
-
-  it('saves multiple prayers with correct keys', () => {
-    const prayers = [createMockPrayer('2026-01-01', '06:00'), createMockPrayer('2026-01-02', '06:01')];
-
-    saveAllPrayers(prayers);
-
-    expect(database.getString('prayer_2026-01-01')).toBeDefined();
-    expect(database.getString('prayer_2026-01-02')).toBeDefined();
-  });
-
-  it('stores correct prayer data structure', () => {
-    const prayer = createMockPrayer('2026-01-15', '06:12');
-
-    saveAllPrayers([prayer]);
-
-    const stored = JSON.parse(database.getString('prayer_2026-01-15')!);
-    expect(stored.fajr).toBe('06:12');
-    expect(stored.magrib).toBe('16:45');
-  });
-});
-
-describe('getPrayerByDate', () => {
-  beforeEach(() => {
-    const prayer = {
-      date: '2026-01-20',
-      fajr: '06:15',
-      sunrise: '07:50',
-      dhuhr: '12:25',
-      asr: '14:40',
-      magrib: '17:00',
-      isha: '18:45',
-    };
-    database.set('prayer_2026-01-20', JSON.stringify(prayer));
-  });
-
-  it('returns prayer data for valid date', () => {
-    const date = new Date('2026-01-20T12:00:00Z');
-    const result = getPrayerByDate(date);
-
-    expect(result).not.toBeNull();
-    expect(result?.fajr).toBe('06:15');
-  });
-
-  it('returns null for date without data', () => {
-    const date = new Date('2026-12-25T12:00:00Z');
-    const result = getPrayerByDate(date);
-
-    expect(result).toBeNull();
-  });
-});
-
 // =============================================================================
 // YEAR TRACKING
 // =============================================================================
-
-describe('markYearAsFetched', () => {
-  it('marks a year as fetched', () => {
-    markYearAsFetched(2026);
-
-    const fetchedYears = getItem('fetched_years');
-    expect(fetchedYears).toEqual({ 2026: true });
-  });
-
-  it('can mark multiple years', () => {
-    markYearAsFetched(2026);
-    markYearAsFetched(2027);
-
-    const fetchedYears = getItem('fetched_years');
-    expect(fetchedYears).toEqual({ 2026: true, 2027: true });
-  });
-
-  it('preserves existing years when adding new', () => {
-    markYearAsFetched(2025);
-    markYearAsFetched(2026);
-
-    const fetchedYears = getItem('fetched_years');
-    expect(fetchedYears[2025]).toBe(true);
-    expect(fetchedYears[2026]).toBe(true);
-  });
-});
 
 // =============================================================================
 // NOTIFICATION RECORD MANAGEMENT
@@ -365,6 +298,7 @@ describe('notification scheduling records', () => {
 
     it('returns empty array when no notifications', () => {
       database.clearAll();
+      __installTimetableDays([]);
       const result = getAllScheduledNotificationsForSchedule(ScheduleType.Standard);
       expect(result).toEqual([]);
     });
@@ -449,6 +383,7 @@ describe('reminder scheduling records', () => {
 
     it('returns empty array when no reminders exist', () => {
       database.clearAll();
+      __installTimetableDays([]);
       const result = getAllScheduledRemindersForPrayer(ScheduleType.Standard, 5);
       expect(result).toEqual([]);
     });
@@ -474,6 +409,7 @@ describe('reminder scheduling records', () => {
 
     it('returns empty array when no reminders exist', () => {
       database.clearAll();
+      __installTimetableDays([]);
       const result = getAllScheduledRemindersForSchedule(ScheduleType.Standard);
       expect(result).toEqual([]);
     });
@@ -496,7 +432,7 @@ describe('reminder scheduling records', () => {
  * one, which is what the second test below pins.
  */
 describe('clearAllExcept call sites', () => {
-  const SANCTIONED = ['stores/sync.ts', 'stores/version.ts'];
+  const SANCTIONED = ['stores/version.ts'];
 
   const sourceFiles = (dir: string): string[] => {
     const entries = readdirSync(join(__dirname, '../..', dir), { withFileTypes: true });
@@ -544,35 +480,6 @@ describe('clearAllExcept call sites', () => {
     // losing that reflows the prayer list on the next launch (ISSUES #22, #16)
     const errorScreen = readFileSync(join(__dirname, '../../components/ui/Error.tsx'), 'utf8');
     expect(errorScreen).toContain('clearUpgradeCache()');
-  });
-
-  /**
-   * Two independent wipes keep two independently written lists: `clearUpgradeCache`'s
-   * and the full-refresh one inside `updatePrayerData`. They drifted apart once —
-   * sync's dropped `cache_schema_version`, so a full refresh left the cache looking
-   * "unknown shape" and bought an unnecessary wipe on the very next upgrade. Nothing
-   * compared them, so nothing noticed.
-   */
-  it('keeps the two wipe lists in agreement', () => {
-    // Only whole-line quoted entries count; the lists carry trailing comments, and
-    // an apostrophe inside one would otherwise read as a key
-    const extractKeepList = (source: string, anchor: string, close: string): string[] => {
-      const start = source.indexOf(anchor);
-      expect(start).toBeGreaterThan(-1);
-      const body = source.slice(start, source.indexOf(close, start));
-      return [...body.matchAll(/^\s*'([^']+)',/gm)].map((match) => match[1] as string).sort();
-    };
-
-    const version = readFileSync(join(__dirname, '../version.ts'), 'utf8');
-    const sync = readFileSync(join(__dirname, '../sync.ts'), 'utf8');
-
-    const upgradeKeeps = extractKeepList(version, 'const UPGRADE_KEEP_PREFIXES', '];');
-    const refreshKeeps = extractKeepList(sync, 'Database.clearAllExcept([', ']);');
-
-    expect(upgradeKeeps).toHaveLength(5);
-    // A refresh also keeps the alarm records. An upgrade can change the identifier scheme, so records
-    // written under the old one go with it; a refresh cannot, and they describe what the OS holds
-    expect(refreshKeeps).toEqual([...upgradeKeeps, 'scheduled_notifications_', 'scheduled_reminders_'].sort());
   });
 });
 
@@ -643,11 +550,11 @@ describe('MMKV instance id', () => {
     expect(idForEnv(undefined)).not.toBe('athan-storage');
   });
 
-  it('agrees with the predicate api/client.ts uses to serve mock data', () => {
+  it('agrees with the predicate stores/timetable.ts uses to serve the mock window', () => {
     // The two must move together: the namespace is a guarantee only while the
-    // build that writes fabricated rows is exactly the build denied the real id
-    const client = readFileSync(join(__dirname, '../../api/client.ts'), 'utf8');
-    expect(client).toContain('if (!isProd() && !isPreview()) return MOCK_DATA_SIMPLE;');
+    // build that serves fabricated days is exactly the build denied the real id
+    const timetable = readFileSync(join(__dirname, '../timetable.ts'), 'utf8');
+    expect(timetable).toContain('const servesBakedTimetable = (): boolean => isProd() || isPreview();');
 
     const db = readFileSync(join(__dirname, '../database.ts'), 'utf8');
     expect(db).toContain("isProd() || isPreview() ? 'athan-storage'");

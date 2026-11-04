@@ -28,6 +28,7 @@ import {
   minutesBefore,
   osIdentifiers,
   resetAlarms,
+  resetStoredDays,
   sameTimesOn,
   storeDays,
   type Times,
@@ -37,6 +38,9 @@ import {
 beforeEach(() => {
   jest.useFakeTimers();
   resetAlarms();
+  // The reader's window is global to the file's module graph, and a test's
+  // horizon reaches days an earlier test seeded, so each test starts empty
+  resetStoredDays();
 });
 
 afterEach(() => {

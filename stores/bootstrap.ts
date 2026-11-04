@@ -32,8 +32,8 @@ import { perfMark } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
-import * as Database from '@/stores/database';
 import { setSequence } from '@/stores/schedule';
+import * as Timetable from '@/stores/timetable';
 import { cacheSchemaChanged, wasAppUpgraded } from '@/stores/version';
 
 /** Today and the two days after it, the span `setSequence` builds */
@@ -44,7 +44,7 @@ const hydrateFromCache = (): boolean => {
   const today = TimeUtils.formatDateShort(now);
   // Waiting for today alone kept the spinner over stored days, and offline it never went
   const anyDayStored = SEQUENCE_DAYS.some((offset) =>
-    Database.getPrayerByDateString(TimeUtils.addDaysToDateString(today, offset))
+    Timetable.getTimetableDay(TimeUtils.addDaysToDateString(today, offset))
   );
   if (!anyDayStored) return false;
 

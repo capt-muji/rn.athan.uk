@@ -11,13 +11,14 @@
 
 import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 const stored = new Map<string, ISingleApiResponseTransformed>();
 
@@ -27,7 +28,7 @@ const useRecords = (records: ISingleApiResponseTransformed[]) => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 /** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */

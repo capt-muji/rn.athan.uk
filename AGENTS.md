@@ -46,12 +46,12 @@ closes with `board/snapshot.sh` in the run's last commit.
 
 Athan.uk: Muslim prayer times for London with a real-time countdown, offline support,
 customisable athan notifications, home-screen and lock-screen widgets, and a qibla finder.
-London-only, no accounts, no cloud sync. Invariants: the API is the source of truth for
-prayer times, the app works fully offline after first sync, and notifications fire on time
-while backgrounded.
+London-only, no accounts, no cloud sync. Invariants: the baked London Unified Prayer Timetable artifact
+(2026-2076, stores/timetable.ts) is the source of truth for prayer times, the app works fully
+offline from install, and notifications fire on time while backgrounded.
 
 **Alarm times read what the build carries.** A production build (local or store) serves the
-real API's times. A mock build serves the mock data, whose prayers sit either side of launch.
+baked artifact's times. A mock build serves the mock data, whose prayers sit either side of launch.
 The owner installs both kinds on the phones, so read an alarm reading against the build that
 produced it. Everything else in `check:device` is build-agnostic.
 

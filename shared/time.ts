@@ -391,12 +391,6 @@ export const isFriday = (date?: string | Date): boolean => {
 };
 
 /**
- * Checks if the current month is December in the prayer timezone
- * @returns boolean indicating if current month is December
- */
-export const isDecember = (): boolean => getTodayDateString().slice(5, 7) === '12';
-
-/**
  * Checks if the current date falls within Ramadan or the last days of Sha'ban
  * Uses ISLAMIC_DAY.RAMADAN_DECORATION_DAYS_BEFORE to determine the pre-Ramadan window
  * Uses the islamic-umalqura calendar via Intl.DateTimeFormat (prayer timezone)
@@ -450,20 +444,6 @@ export const isDecorationSeason = (): boolean => {
  * exactly the gate that always stood before it.
  */
 export const decorationsVisible = (season: boolean, enabled: boolean): boolean => season && enabled;
-
-/**
- * Checks if an instant falls on January 1st in the prayer timezone
- * (needed for CountdownBar yesterday's data)
- * @param date Date object
- * @returns boolean indicating if the date is January 1st
- */
-export const isJanuaryFirst = (date: Date): boolean => formatDateShort(date).endsWith('-01-01');
-
-/**
- * Returns the current year in the prayer timezone
- * @returns Current year number
- */
-export const getCurrentYear = (): number => Number(getTodayDateString().slice(0, 4));
 
 // =============================================================================
 // NIGHT TIME CALCULATIONS (Islamic)

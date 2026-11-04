@@ -23,13 +23,14 @@ import {
   transformApiData,
 } from '@/shared/prayer';
 import { type ISingleApiResponseTransformed, type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 // =============================================================================
 // INDEPENDENT REFERENCE: UTC arithmetic and London's clock-change rule
@@ -94,7 +95,7 @@ const useRecords = (records: ISingleApiResponseTransformed[]) => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 /** One day's list exactly as the app builds it */
@@ -150,7 +151,7 @@ const day = (
   isha: string | null
 ) => transformApiData({ city: 'london', times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
 
-// Real London times from londonprayertimes.com for 2026
+// Real London times from the captured 2026 payload
 const LONDON_2026 = [
   day('2026-03-27', '04:11', '05:45', '12:11', '15:33', '18:28', '19:46'),
   day('2026-03-28', '04:09', '05:42', '12:11', '15:34', '18:30', '19:48'),

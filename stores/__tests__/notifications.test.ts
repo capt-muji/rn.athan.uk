@@ -59,10 +59,15 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 // Explicit logger mock: the moduleNameMapper's generic '^@/(.*)$' key resolves
 // '@/shared/logger' before the dedicated mock entry can, so logger assertions
 // in this file need a module factory (same pattern as api/__tests__/client.test.ts).
+/** The days the reader serves, filled by this file's seeders and reinstalled on every write */
+const seededDays = new Map<string, ISingleApiResponseTransformed>();
+
+const installSeededDays = () => __installTimetableDays([...seededDays.values()]);
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
   default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
@@ -926,7 +931,8 @@ describe('rescheduleAllNotificationsFromBackground', () => {
       duha: '12:07',
       istijaba: '12:08',
     };
-    Database.database.set(`prayer_${SEEDED_DAY}`, JSON.stringify(seed));
+    seededDays.set(SEEDED_DAY, seed);
+    installSeededDays();
   });
 
   afterEach(() => {
@@ -1108,7 +1114,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       duha: time,
       istijaba: time,
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+    seededDays.set(date, prayer);
+    installSeededDays();
   };
 
   const seedPrayerWindow = () => {
@@ -1165,6 +1172,9 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     osState.clear();
     Database.database.clearAll();
+    seededDays.clear();
+    installSeededDays();
+    __installTimetableDays([]);
     jest.clearAllMocks();
 
     // The reminder arrays are indexed by slot THEN prayer, so they flatten one level further
@@ -1674,7 +1684,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         duha: '06:30',
         istijaba: '18:55',
       };
-      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+      seededDays.set(date, prayer);
+      installSeededDays();
     };
     seedDay(YESTERDAY, '04:22', '19:58');
     seedDay(TODAY, '04:23', '19:55');
@@ -1718,7 +1729,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         duha: '06:30',
         istijaba: '18:05',
       };
-      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+      seededDays.set(date, prayer);
+      installSeededDays();
     };
     // A winter-shaped night on the frozen date: Magrib Sat 19:05, Fajr Sun 04:25 BST, 9h 20m
     seedDay(TODAY, '04:23', '19:05');
@@ -1753,7 +1765,8 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         duha: '06:30',
         istijaba: '18:55',
       };
-      Database.database.set(`prayer_${date}`, JSON.stringify(prayer));
+      seededDays.set(date, prayer);
+      installSeededDays();
     };
     const DAY_AFTER_TOMORROW = '2026-08-31';
     seedDay(YESTERDAY, '04:22', '19:58');
@@ -1911,8 +1924,9 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
           city: 'london',
           times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
         });
-        Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+        seededDays.set(date, stored);
       }
+      installSeededDays();
     };
 
     /** Switches the named prayers to Silent, each with a Silent reminder */
@@ -2194,7 +2208,13 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       ];
       const breakages: { breakage: string; apply: (date: string) => void }[] = [
         { breakage: 'every time unreadable', apply: (date) => storeDays({ [date]: EVERY_TIME_UNREADABLE }) },
-        { breakage: 'missing from the store', apply: (date) => Database.database.remove(`prayer_${date}`) },
+        {
+          breakage: 'missing from the store',
+          apply: (date) => {
+            seededDays.delete(date);
+            installSeededDays();
+          },
+        },
       ];
 
       it.each(positions.flatMap((position) => breakages.map((breakage) => ({ ...position, ...breakage }))))(

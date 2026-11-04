@@ -40,6 +40,7 @@ const mockFirstStillDueListDay = jest.fn((_type: ScheduleType, now: Date) =>
 );
 
 jest.mock('@/shared/prayer', () => ({
+  ...jest.requireActual('@/shared/prayer'),
   createPrayerSequence: (...args: unknown[]) => mockCreatePrayerSequence(...args),
   createPrayersForDate: (type: ScheduleType, date: string) => mockCreatePrayersForDate(type, date),
   firstStillDueListDay: (type: ScheduleType, now: Date) => mockFirstStillDueListDay(type, now),
@@ -50,8 +51,12 @@ const mockGetPrayerByDateString = jest.fn();
 
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
-  getPrayerByDateString: (date: string) => mockGetPrayerByDateString(date),
   getItem: () => null,
+}));
+
+jest.mock('@/stores/timetable', () => ({
+  ...jest.requireActual('@/stores/timetable'),
+  getTimetableDay: (date: string) => mockGetPrayerByDateString(date),
 }));
 
 import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';
@@ -895,7 +900,7 @@ describe('edge cases', () => {
 const STANDARD = ScheduleType.Standard;
 const EXTRA = ScheduleType.Extra;
 
-/** Real London times from londonprayertimes.com for 2026: Fajr, sunrise, dhuhr, asr, magrib, isha */
+/** Real London times from the captured 2026 payload: Fajr, sunrise, dhuhr, asr, magrib, isha */
 const LONDON_2026: Record<string, string[]> = {
   '2026-01-01': ['06:26', '08:03', '12:09', '13:46', '16:05', '17:42'],
   '2026-01-02': ['06:26', '08:03', '12:10', '13:47', '16:06', '17:43'],

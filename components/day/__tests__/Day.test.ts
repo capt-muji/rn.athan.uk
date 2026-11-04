@@ -39,10 +39,11 @@ jest.mock('react-native-reanimated', () => ({ __esModule: true, default: { View:
 jest.mock('@/components/ui', () => ({ Masjid: () => null }));
 jest.mock('@/hooks/useAnimation', () => ({ useDerivedOpacity: () => ({}), useDerivedColor: () => ({}) }));
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({
   ...jest.requireActual<typeof import('@/shared/time')>('@/shared/time'),

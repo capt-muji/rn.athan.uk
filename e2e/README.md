@@ -144,17 +144,14 @@ verification, never infer visuals from pixels alone.
   nothing about the bundle). The gradle `UP-TO-DATE` skip on env-only changes is NOT
   re-measured at this pin set: `find android/app/build -name index.android.bundle -delete`
   before `assembleRelease` remains the safe route when the env changed.
-- **Dev-env confound**: local builds run the mock API (`api/client.ts` returns
-  `MOCK_DATA_SIMPLE` whenever the env is neither `prod` nor `preview`, so every
-  launch does a full mock refresh (~175ms Android). Baseline and iterations
-  share it. Never compare absolute startup numbers to production. It also
-  **writes mock times into the device's MMKV cache**, so any device check about
-  prayer times, notifications or armed alarm times is void until that build
-  refetches. Since the store is namespaced by the same predicate that serves
-  the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
-  `athan-storage-dev` and a prod or preview build installed over the top never
-  reads them, but they persist for the next local build, so a stale mock day
-  is still a live confound within dev. The mock seeds by the download's London clock (row 113,
+- **Dev-env confound**: local builds serve the launch-relative mock window
+  (`stores/timetable.ts` reads `MOCK_DATA_SIMPLE` whenever the env is neither
+  `prod` nor `preview`, reseeded at every launch and resume, so every launch
+  recomputes it in memory). Baseline and iterations share it. Never compare
+  absolute startup numbers to production. The old mock-refetch's dev-MMKV day
+  rows are gone (the reader never writes days), and the one-time legacy
+  cleanup removes any that earlier builds left, so a stale mock day is no
+  longer a live confound within dev. The mock seeds by the download's London clock (row 113,
   any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
   passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
   tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)

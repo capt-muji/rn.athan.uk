@@ -18,8 +18,12 @@ const mockStoredDays = new Map<string, unknown>();
 
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
-  getPrayerByDateString: (date: string) => mockStoredDays.get(date) ?? null,
   getItem: () => null,
+}));
+
+jest.mock('@/stores/timetable', () => ({
+  ...jest.requireActual('@/stores/timetable'),
+  getTimetableDay: (date: string) => mockStoredDays.get(date) ?? null,
 }));
 
 import type { Atom } from 'jotai';

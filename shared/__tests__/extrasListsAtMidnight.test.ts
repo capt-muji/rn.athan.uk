@@ -16,13 +16,14 @@ import { formatInTimeZone } from 'date-fns-tz';
 
 import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 const stored = new Map<string, ISingleApiResponseTransformed>();
 
@@ -32,7 +33,7 @@ const useRecords = (records: ISingleApiResponseTransformed[]) => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 /** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */
@@ -46,7 +47,7 @@ const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): P
 /** A row as the screen and the alarms see it: its list day, name, instant and clock reading */
 const shown = (row: Prayer) => [row.belongsToDate, row.id, row.datetime?.toISOString() ?? null, row.time];
 
-// Real London times from londonprayertimes.com for 2026
+// Real London times from the captured 2026 payload
 const OCTOBER = [
   day('2026-10-16', '05:51', '07:23', '12:51', '15:31', '18:08', '19:31'),
   day('2026-10-17', '05:52', '07:25', '12:51', '15:30', '18:06', '19:29'),

@@ -26,6 +26,10 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
   __resetWarmupForTests:
     'The idle ladder runs once per process; the warmup suite resets the latch between cases, so only its tests import the reset',
+  __resetTimetableForTest:
+    'The staging suite replays launches from one module instance, so only its tests import the reset',
+  __installTimetableDays:
+    'The test harness installs days through the reader seam in place of stored rows, so only tests import it',
 };
 
 const ROOT = join(__dirname, '..', '..');

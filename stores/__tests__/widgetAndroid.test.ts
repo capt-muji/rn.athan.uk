@@ -27,7 +27,8 @@ import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateShort, formatPrayerTime } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
+import { __installTimetableDays } from '@/stores/timetable';
 import { hijriDateEnabledAtom } from '@/stores/ui';
 import { initWidgetSettingsSync, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
@@ -77,7 +78,7 @@ const seedPrayerCache = (days: number, todayRelative = false) => {
     }
     data.push(dayDatum);
   }
-  Database.saveAllPrayers(data);
+  Timetable.__installTimetableDays(data);
 };
 
 const homeKinds = [
@@ -247,8 +248,8 @@ describe('Android snapshot pushes', () => {
     expect((PrayerWidget.updateSnapshot as jest.Mock).mock.calls.length).toBe(1);
   });
 
-  it('warns and skips the push when the cache holds no readable prayer', async () => {
-    Database.clearAllExcept([]);
+  it('warns and skips the push when the timetable serves no readable prayer', async () => {
+    __installTimetableDays([]);
 
     await refreshPrayerWidgets();
 
@@ -261,7 +262,7 @@ describe('Android snapshot pushes', () => {
     // Yesterday only: readable rows exist (snapshot non-null) but nothing is
     // in the future, so the push carries no countdown target
     const now = createInstant();
-    Database.saveAllPrayers([makeDayData(formatDateShort(addDays(now, -1)))]);
+    Timetable.__installTimetableDays([makeDayData(formatDateShort(addDays(now, -1)))]);
 
     await refreshPrayerWidgets();
 

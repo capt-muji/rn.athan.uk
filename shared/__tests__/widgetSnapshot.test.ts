@@ -10,9 +10,12 @@
  */
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
+}));
+
+jest.mock('@/stores/timetable', () => ({
+  getTimetableDay: jest.fn(),
 }));
 
 import { addDays } from 'date-fns';
