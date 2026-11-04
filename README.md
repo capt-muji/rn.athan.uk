@@ -94,7 +94,7 @@ hooks/       useQibla, useCountdown, useSchedule
 stores/      Jotai atoms (schedule, notifications, countdown, sync, widgets)
 shared/      utilities: constants, prayer, time, notifications, qibla, whatsNew
 widgets/     iOS widget layouts and the Android Glance layout
-modules/     native Expo modules: qiblaheading, tls13, widgetrefresh
+modules/     native Expo modules: qiblaheading, switchcover, widgetrefresh
 device/      platform code: notifications, listeners, updates, tasks
 api/         prayer times client; mocks/ holds dev and test data
 e2e/         Maestro flows, device atlas, frame audit, baseline compare
