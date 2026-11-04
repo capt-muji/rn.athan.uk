@@ -26,7 +26,7 @@ import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateShort, formatPrayerTime } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 import { __installTimetableDays } from '@/stores/timetable';
 import { hijriDateEnabledAtom } from '@/stores/ui';
@@ -46,7 +46,7 @@ import {
 /** 09:00 London on a fixed day: every seeded row below is hours ahead of it */
 const SEEDED_NOW = new Date('2026-09-27T08:00:00Z');
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -61,7 +61,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 
 const seedPrayerCache = (days: number, todayRelative = false) => {
   const now = createInstant();
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
     const dayDatum = makeDayData(formatDateShort(day));

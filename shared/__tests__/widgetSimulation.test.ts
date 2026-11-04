@@ -41,11 +41,11 @@ import { createHash } from 'node:crypto';
 import { addDays } from 'date-fns';
 import type { WidgetTimelineEntry } from 'expo-widgets';
 
-import { MOCK_DATA_FULL } from '@/mocks/full';
+import { FULL_MINUTES } from '@/mocks/full';
 import { EXTRA_PRAYER_IDS, type PrayerId, STANDARD_PRAYER_IDS } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { setActiveLocale } from '@/shared/i18n/locale';
-import { createPrayerSequence, transformApiData } from '@/shared/prayer';
+import { createPrayerSequence } from '@/shared/prayer';
 import {
   addDaysToDateString,
   createPrayerDatetime,
@@ -54,9 +54,9 @@ import {
   formatDisplayTime,
   getPreviousDateString,
 } from '@/shared/time';
+import { type DayMinutes, minutesToRecord } from '@/shared/timetableDecode';
 import {
-  type ISingleApiResponseTransformed,
-  type IValidatedApiResponse,
+  type DayRecord,
   type Prayer,
   type PrayerSequence,
   type ReadablePrayer,
@@ -395,7 +395,7 @@ describe('virtual week model test', () => {
 // =============================================================================
 
 /**
- * Winter extras clock times (see transformApiData): Midnight 23:52 sits the
+ * Winter extras clock times (see minutesToRecord): Midnight 23:52 sits the
  * PREVIOUS calendar evening while belonging to the raw day (the creation
  * rule for night prayers with hours >= 12); Last Third 02:15, Suhoor 05:55,
  * Duha 08:10 land on the raw day; Istijaba 16:00 exists only on Fridays
@@ -637,35 +637,23 @@ describe('extras virtual week model test', () => {
 
 const isReadableRow = (prayer: Prayer): prayer is ReadablePrayer => prayer.datetime !== null;
 
-/** Real 2024 times as a download stores them, with the named times unreadable and the named days not stored */
-const storedDays = (
-  unreadable: Record<string, RequiredTimeName[]>,
-  notStored: string[]
-): ISingleApiResponseTransformed[] => {
-  const times: IValidatedApiResponse['times'] = {};
+/** Real 2024 times as the reader serves them, with the named times unreadable and the named days not stored */
+const storedDays = (unreadable: Record<string, RequiredTimeName[]>, notStored: string[]): DayRecord[] => {
+  const minutes: Record<string, DayMinutes> = {};
 
-  for (const [date, day] of Object.entries(MOCK_DATA_FULL.times)) {
+  for (const [date, day] of Object.entries(FULL_MINUTES)) {
     if (notStored.includes(date)) continue;
-
-    const record: Record<RequiredTimeName, string | null> = {
-      fajr: day.fajr,
-      sunrise: day.sunrise,
-      dhuhr: day.dhuhr,
-      asr: day.asr,
-      magrib: day.magrib,
-      isha: day.isha,
-    };
-    for (const name of unreadable[date] ?? []) record[name] = null;
-    times[date] = record;
+    minutes[date] = { ...day };
+    for (const name of unreadable[date] ?? []) minutes[date][name] = null;
   }
 
-  return transformApiData({ times });
+  return Object.entries(minutes).map(([date, day]) => minutesToRecord(date, day));
 };
 
 /** A sequence built as stores/widget.ts builds one, with `records` as the only stored days */
 const buildStoredSequence = (
   type: ScheduleType,
-  records: ISingleApiResponseTransformed[],
+  records: DayRecord[],
   firstDate: string,
   dayCount: number
 ): PrayerSequence => {

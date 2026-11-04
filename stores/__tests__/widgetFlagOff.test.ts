@@ -14,7 +14,7 @@
 
 import { addDays } from 'date-fns';
 
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 
 interface WidgetStack {
   Database: typeof import('@/stores/database');
@@ -41,7 +41,7 @@ const loadFreshStack = (): WidgetStack => {
   return stack;
 };
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -55,7 +55,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 });
 
 const seedPrayerCache = (stack: WidgetStack, days: number) => {
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(stack.time.createInstant(), offset);
     data.push(makeDayData(stack.time.formatDateShort(day)));

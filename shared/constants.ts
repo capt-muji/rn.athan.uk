@@ -230,9 +230,11 @@ export const BACKGROUND_TASK_INTERVAL_MINUTES = isEnvIntervalValid
 // =============================================================================
 
 /**
- * Minute offsets for calculating special prayer times
+ * Minute offsets for the derived times
  * Positive values = add minutes, negative = subtract from base prayer time
- * Used in shared/time.ts adjustTime() calculations
+ * Read by the night arithmetic (lastThird), the Istijaba instant (istijaba) and
+ * the record's derived columns (suhoor, duha, istijaba): the only place these
+ * numbers live
  */
 export const TIME_ADJUSTMENTS = {
   lastThird: 0, // start of the last third of the night

@@ -15,7 +15,7 @@ jest.mock('react-native', () => ({
 import { addDays } from 'date-fns';
 
 import { createInstant, formatDateShort } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 import { refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, PrayerLockWidget } from '@/widgets/LockPrayerWidget';
@@ -34,7 +34,7 @@ describe('refreshPrayerWidgets platform gate', () => {
   it('is a no-op on Android: no cache reads, no native pushes', async () => {
     const now = createInstant();
     const tomorrow = addDays(now, 1);
-    const dayData: ISingleApiResponseTransformed = {
+    const dayData: DayRecord = {
       date: formatDateShort(tomorrow),
       fajr: '03:30',
       sunrise: '05:20',

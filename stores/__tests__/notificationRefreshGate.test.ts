@@ -14,7 +14,7 @@ import { getDefaultStore } from 'jotai';
 import { prayerNotificationIdentifier } from '@/device/notifications';
 import { NOTIFICATION_REFRESH_HOURS } from '@/shared/constants';
 import logger from '@/shared/logger';
-import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
+import { AlertType, type DayRecord, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   lastNotificationScheduleAtom,
@@ -63,10 +63,10 @@ const getAllMock = jest.mocked(Notifications.getAllScheduledNotificationsAsync);
 const osState = new Set<string>();
 
 /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+const seededWindow = new Map<string, DayRecord>();
 
 const storeDay = (date: string) => {
-  const day: ISingleApiResponseTransformed = {
+  const day: DayRecord = {
     date,
     fajr: '12:00',
     sunrise: '12:00',

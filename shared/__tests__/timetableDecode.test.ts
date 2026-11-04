@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { transformApiData } from '@/shared/prayer';
 import {
   COLUMNS,
   DAY_COUNT,
@@ -12,8 +11,9 @@ import {
   minutesToRecord,
   NULL_MINUTE,
   readDayMinutes,
+  toDayMinutes,
 } from '@/shared/timetableDecode';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 
 /** A minimal well-formed artifact: header plus dayCount days of six minutes each */
 const buildArtifact = (overrides: { bytes?: Buffer; header?: Partial<Buffer> } = {}): Uint8Array => {
@@ -135,17 +135,24 @@ describe('timetableDecode row reading', () => {
 });
 
 describe('timetableDecode record building', () => {
-  it('builds the same record the download pipeline built, derived times included', () => {
-    const minutes = { fajr: 386, sunrise: 483, dhuhr: 729, asr: 827, magrib: 965, isha: 1062 };
-    const record = minutesToRecord('2027-01-01', minutes);
+  it('round-trips an HH:mm day through toDayMinutes into its record, derived times included', () => {
+    const record = minutesToRecord(
+      '2027-01-01',
+      toDayMinutes({ fajr: '06:26', sunrise: '08:03', dhuhr: '12:09', asr: '13:47', magrib: '16:05', isha: '17:42' })
+    );
 
-    const [fromPipeline] = transformApiData({
-      times: {
-        '2027-01-01': { fajr: '06:26', sunrise: '08:03', dhuhr: '12:09', asr: '13:47', magrib: '16:05', isha: '17:42' },
-      },
+    expect(record).toEqual({
+      date: '2027-01-01',
+      fajr: '06:26',
+      sunrise: '08:03',
+      dhuhr: '12:09',
+      asr: '13:47',
+      magrib: '16:05',
+      isha: '17:42',
+      suhoor: '06:06',
+      duha: '08:23',
+      istijaba: '15:05',
     });
-
-    expect(record).toEqual(fromPipeline);
   });
 
   it('carries a null time into its derived time', () => {
@@ -198,7 +205,7 @@ describe('timetableDecode record building', () => {
     expect(magribNull.isha).toBe('17:42');
   });
 
-  it('wraps a derived time past midnight like adjustTime does', () => {
+  it('wraps a derived time past midnight', () => {
     const record = minutesToRecord('2027-04-01', {
       fajr: 10,
       sunrise: 300,
@@ -247,7 +254,7 @@ describe('the committed artifact', () => {
       suhoor: '06:06',
       duha: '08:23',
       istijaba: '15:05',
-    } satisfies ISingleApiResponseTransformed);
+    } satisfies DayRecord);
   });
 
   it('holds the captured API payload value for 2026-11-03', () => {

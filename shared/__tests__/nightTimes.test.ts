@@ -13,16 +13,11 @@
 
 import { formatInTimeZone } from 'date-fns-tz';
 
-import { MOCK_DATA_FULL } from '@/mocks/full';
+import { FULL_MINUTES } from '@/mocks/full';
 import { type PrayerId, TIME_ADJUSTMENTS } from '@/shared/constants';
-import {
-  canonicalDisplayOrder,
-  createPrayerSequence,
-  getNightTimesForDay,
-  getPrayerForDate,
-  transformApiData,
-} from '@/shared/prayer';
-import { type ISingleApiResponseTransformed, type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
+import { canonicalDisplayOrder, createPrayerSequence, getNightTimesForDay, getPrayerForDate } from '@/shared/prayer';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import { type DayRecord, type Prayer, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
@@ -70,7 +65,7 @@ const londonTime = (instant: number): string =>
   new Date(instant + (isSummerTime(instant) ? 60 * MINUTE : 0)).toISOString().slice(11, 16);
 
 /** The night leading into a day: the previous day's Magrib to this day's Fajr, in real time */
-const referenceNight = (previousDay: ISingleApiResponseTransformed, day: ISingleApiResponseTransformed) => {
+const referenceNight = (previousDay: DayRecord, day: DayRecord) => {
   const start = londonInstant(previousDay.date, clock(previousDay.magrib));
   const end = londonInstant(day.date, clock(day.fajr));
   const floorToMinute = (ms: number) => Math.floor(ms / MINUTE) * MINUTE;
@@ -87,9 +82,9 @@ const referenceNight = (previousDay: ISingleApiResponseTransformed, day: ISingle
 // STORAGE (mocked) AND HELPERS
 // =============================================================================
 
-const stored = new Map<string, ISingleApiResponseTransformed>();
+const stored = new Map<string, DayRecord>();
 
-const useRecords = (records: ISingleApiResponseTransformed[]) => {
+const useRecords = (records: DayRecord[]) => {
   stored.clear();
   for (const record of records) stored.set(record.date, record);
 };
@@ -138,7 +133,7 @@ const outOfTimeOrder = (prayers: Prayer[]): string[] => {
 };
 
 /**
- * A stored day from real API times — Suhoor, Duha and Istijaba derived exactly as the app does.
+ * A day as the reader serves it — Suhoor, Duha and Istijaba derived exactly as the app does.
  * null is a time api/client.ts could not read
  */
 const day = (
@@ -149,7 +144,7 @@ const day = (
   asr: string | null,
   magrib: string | null,
   isha: string | null
-) => transformApiData({ times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+) => minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
 
 // Real London times from the captured 2026 payload
 const LONDON_2026 = [
@@ -167,7 +162,7 @@ const LONDON_2026 = [
   day('2026-12-31', '06:26', '08:03', '12:09', '13:45', '16:04', '17:41'),
 ];
 
-const on = (date: string): ISingleApiResponseTransformed => {
+const on = (date: string): DayRecord => {
   const record = LONDON_2026.find((candidate) => candidate.date === date);
   if (!record) throw new Error(`${date} is not in the fixture`);
   return record;
@@ -334,13 +329,10 @@ describe('getNightTimesForDay', () => {
       "the day's own Fajr could not be read",
       () => [day('2026-09-11', null, '06:26', '13:02', '16:29', '19:28', '20:42'), on('2026-09-10')],
     ],
-  ] as [string, () => [ISingleApiResponseTransformed, ISingleApiResponseTransformed | null]][])(
-    'has no night when %s',
-    (_, records) => {
-      const [dayRecord, previousDay] = records();
-      expect(getNightTimesForDay(dayRecord, previousDay)).toBeNull();
-    }
-  );
+  ] as [string, () => [DayRecord, DayRecord | null]][])('has no night when %s', (_, records) => {
+    const [dayRecord, previousDay] = records();
+    expect(getNightTimesForDay(dayRecord, previousDay)).toBeNull();
+  });
 });
 
 // =============================================================================
@@ -474,10 +466,10 @@ describe('an Isha after 00:00 (high latitudes in summer; the app goes global in 
 // =============================================================================
 
 describe('every day of a real London year (2024)', () => {
-  const records = transformApiData(MOCK_DATA_FULL);
+  const records = Object.entries(FULL_MINUTES).map(([date, minutes]) => minutesToRecord(date, minutes));
   const dates = records.map((record) => record.date).sort();
   const byDate = new Map(records.map((record) => [record.date, record]));
-  const recordOn = (date: string): ISingleApiResponseTransformed => {
+  const recordOn = (date: string): DayRecord => {
     const record = byDate.get(date);
     if (!record) throw new Error(`${date} missing from mocks/full.ts`);
     return record;
@@ -524,7 +516,7 @@ describe('every day of a real London year (2024)', () => {
       for (const type of [ScheduleType.Standard, ScheduleType.Extra]) {
         for (const row of listFor(type, date)) {
           if (row.id === 'midnight' || row.id === 'last third') continue;
-          const time = clock(record[row.id as keyof ISingleApiResponseTransformed]);
+          const time = clock(record[row.id as keyof DayRecord]);
           const exact = row.time === time && row.datetime?.getTime() === londonInstant(date, time);
           if (!exact || row.belongsToDate !== date) mismatches.push(`${type} ${date} ${row.id}`);
         }
@@ -673,7 +665,7 @@ describe('a Magrib that falls after midnight', () => {
   });
 
   // Istijaba hangs off Magrib, so it has to follow Magrib across the shift. Deriving it from
-  // the clock string only worked below 01:00, where adjustTime's wrap past midnight happened
+  // the clock string only worked below 01:00, where the modular wrap past midnight happened
   // to cancel the date shift; at 01:47 (Nome, Alaska) it left Istijaba 25 hours early. The
   // table is the point — a single fixture at 00:08 passes while the defect is present.
   it.each(['00:04', '00:47', '01:47', '02:50', '19:25'])(
@@ -745,7 +737,7 @@ describe('a Magrib that falls after midnight', () => {
 // =============================================================================
 // SUHOOR PAST MIDNIGHT
 //
-// Suhoor is a clock string — Fajr minus twenty minutes through adjustTime, which is
+// Suhoor is a clock string — Fajr minus twenty minutes on the modular clock, which is
 // modular — so any Fajr under 00:20 produces a Suhoor in the 23:xx of the evening
 // before while still filed under Fajr's own date. Two functions correct that as a
 // pair: adjustPrayerDateForMidnightCrossing walks the instant back a day, and

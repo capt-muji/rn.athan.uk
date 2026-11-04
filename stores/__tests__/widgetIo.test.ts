@@ -21,7 +21,7 @@ import { addDays, format } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateShort } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Timetable from '@/stores/timetable';
 import { __installTimetableDays } from '@/stores/timetable';
 import { hijriDateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
@@ -38,7 +38,7 @@ import {
   PrayerWidgetMedium,
 } from '@/widgets/PrayerWidget';
 
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',
@@ -53,7 +53,7 @@ const makeDayData = (date: string): ISingleApiResponseTransformed => ({
 
 const seedPrayerCache = (days: number) => {
   const now = createInstant();
-  const data: ISingleApiResponseTransformed[] = [];
+  const data: DayRecord[] = [];
   for (let offset = -1; offset < days; offset++) {
     const day = addDays(now, offset);
     data.push(makeDayData(formatDateShort(day)));

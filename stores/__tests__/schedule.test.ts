@@ -61,9 +61,10 @@ jest.mock('@/stores/timetable', () => ({
 
 import { calculatePrayerAgo } from '@/hooks/usePrayerAgo';
 import { isRowPassed } from '@/shared/sequence';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import {
   type CountdownStore,
-  type ISingleApiResponseTransformed,
+  type DayRecord,
   type Prayer,
   type ReadablePrayer,
   type RequiredTimeName,
@@ -933,7 +934,7 @@ const STANDARD_DASHED = '[fajr], [sunrise], [dhuhr], [asr], [magrib], [isha]';
 const EXTRAS_ROWS = 'midnight, last third, suhoor, duha';
 const EXTRAS_DASHED = '[midnight], [last third], [suhoor], [duha]';
 
-const storedDays = new Map<string, ISingleApiResponseTransformed>();
+const storedDays = new Map<string, DayRecord>();
 
 const actualPrayer = () => jest.requireActual<typeof import('@/shared/prayer')>('@/shared/prayer');
 
@@ -953,7 +954,7 @@ const storeDays = (dates: string[], unreadable: Record<string, RequiredTimeName[
       ])
     ) as Record<RequiredTimeName, string | null>;
 
-    storedDays.set(date, actualPrayer().transformApiData({ times: { [date]: times } })[0]);
+    storedDays.set(date, minutesToRecord(date, toDayMinutes(times)));
   }
 };
 

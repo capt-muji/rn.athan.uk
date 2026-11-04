@@ -28,8 +28,8 @@ import {
 } from '@/shared/constants';
 import logger from '@/shared/logger';
 import type { ScheduledNotification } from '@/shared/notifications';
-import { transformApiData } from '@/shared/prayer';
-import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
+import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
+import { AlertType, type DayRecord, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
   __rescheduleAllForTests,
@@ -65,7 +65,7 @@ import { __installTimetableDays } from '@/stores/timetable';
 // '@/shared/logger' before the dedicated mock entry can, so logger assertions
 // in this file need a module factory (same pattern as api/__tests__/client.test.ts).
 /** The days the reader serves, filled by this file's seeders and reinstalled on every write */
-const seededDays = new Map<string, ISingleApiResponseTransformed>();
+const seededDays = new Map<string, DayRecord>();
 
 const installSeededDays = () => __installTimetableDays([...seededDays.values()]);
 jest.mock('@/shared/logger', () => ({
@@ -919,7 +919,7 @@ describe('rescheduleAllNotificationsFromBackground', () => {
     // schedule nothing and then sweep away the alarms the OS restored after an
     // app update. These tests have always meant "a normal device with data", so
     // seed today; without it they would assert the bail path instead.
-    const seed: ISingleApiResponseTransformed = {
+    const seed: DayRecord = {
       date: SEEDED_DAY,
       fajr: '12:00',
       sunrise: '12:01',
@@ -1062,7 +1062,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     reminderNotificationIdentifier(ScheduleType.Standard, 'fajr', date, interval as ReminderInterval);
 
   const seedPrayerDay = (date: string, time = SEED_TIME) => {
-    const prayer: ISingleApiResponseTransformed = {
+    const prayer: DayRecord = {
       date,
       fajr: time,
       sunrise: time,
@@ -1593,7 +1593,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   it('schedules the Extras night rows at the exact moment their list row shows', async () => {
     const seedDay = (date: string, fajr: string, magrib: string) => {
-      const prayer: ISingleApiResponseTransformed = {
+      const prayer: DayRecord = {
         date,
         fajr,
         sunrise: '06:10',
@@ -1638,7 +1638,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
   it('schedules a Midnight that falls before 00:00 on the evening before its list day', async () => {
     const seedDay = (date: string, fajr: string, magrib: string) => {
-      const prayer: ISingleApiResponseTransformed = {
+      const prayer: DayRecord = {
         date,
         fajr,
         sunrise: '06:10',
@@ -1674,7 +1674,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     // had to grant an extra day for. The budget needs no such rule: a row is taken on its own
     // instant, so both kinds reach as far as the stored days and the budget allow.
     const seedDay = (date: string, fajr: string, magrib: string) => {
-      const prayer: ISingleApiResponseTransformed = {
+      const prayer: DayRecord = {
         date,
         fajr,
         sunrise: '06:10',
@@ -1838,12 +1838,10 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const withUnreadable = (times: Times, ...names: (typeof TIME_NAMES)[number][]): Times =>
       times.map((time, index) => (names.includes(TIME_NAMES[index]) ? null : time)) as Times;
 
-    /** Stores days as sync writes them: Suhoor, Duha and Istijaba derived by the app's own transform */
+    /** Stores days as the reader serves them: Suhoor, Duha and Istijaba derived by the record's producer */
     const storeDays = (days: Record<string, Times>) => {
       for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
-        const [stored] = transformApiData({
-          times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
-        });
+        const stored = minutesToRecord(date, toDayMinutes({ fajr, sunrise, dhuhr, asr, magrib, isha }));
         seededDays.set(date, stored);
       }
       installSeededDays();

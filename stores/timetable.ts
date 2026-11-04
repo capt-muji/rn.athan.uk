@@ -4,10 +4,10 @@
  *
  * Source of truth by build class: prod and preview read the baked London
  * Unified Prayer Timetable artifact (shared/timetableDecode.ts decodes it);
- * dev and test serve the launch-relative mock window, computed through the
- * same transform the API pipeline used. Both answer the same synchronous
- * question - a day record for a date string - so a v3 provider joins by
- * answering it too.
+ * dev and test serve the launch-relative mock window, decoded through the same
+ * minutesToRecord the artifact decodes through. Both answer the same
+ * synchronous question - a day record for a date string - so a v3 provider
+ * joins by answering it too.
  *
  * The artifact bytes are staged once into a dedicated MMKV instance, because a
  * bundled binary asset is not synchronously readable on Android release builds
@@ -20,9 +20,8 @@
 import { createMMKV } from 'react-native-mmkv';
 
 import { isPreview, isProd } from '@/shared/config';
-import { filterApiData, transformApiData } from '@/shared/prayer';
 import * as TimetableDecode from '@/shared/timetableDecode';
-import type { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { artifactHash, loadArtifactBytes } from '@/stores/timetableAsset';
 
@@ -38,17 +37,17 @@ const store = (): ReturnType<typeof createMMKV> => {
 };
 
 /**
- * The mock window's source data, dev and test only. The env constants are
- * read directly - metro inlines them at build time, so the require (and with
- * it all of mocks/simple.ts) leaves prod and preview bundles, the same fold
+ * The dev window's minutes, dev and test only. The env constants are read
+ * directly - metro inlines them at build time, so the require (and with it all
+ * of mocks/minutes.ts) leaves prod and preview bundles, the same fold
  * stores/widget.ts makes for the widget modules.
  */
-const loadMockData = (): IApiResponse => {
+const loadMockMinutes = (): Map<string, TimetableDecode.DayMinutes> => {
   if (process.env.EXPO_PUBLIC_ENV === 'prod' || process.env.EXPO_PUBLIC_ENV === 'preview') {
     throw new Error('The mock window was read on a build that serves the baked timetable');
   }
-  const mock = require('@/mocks/simple') as typeof import('@/mocks/simple');
-  return mock.MOCK_DATA_SIMPLE;
+  const mock = require('@/mocks/minutes') as typeof import('@/mocks/minutes');
+  return mock.mockMinutesSnapshot(new Date());
 };
 
 const ARTIFACT_KEY = 'artifact';
@@ -60,10 +59,10 @@ const servesBakedTimetable = (): boolean => isProd() || isPreview();
 let stagedArtifact: { bytes: Uint8Array; header: TimetableDecode.TimetableHeader } | null = null;
 
 /** The dev window, built lazily on first read and dropped at each ensureTimetableReady */
-let mockWindow: Map<string, ISingleApiResponseTransformed> | null = null;
+let mockWindow: Map<string, DayRecord> | null = null;
 
 /** Days installed by a test harness, served in any env until replaced */
-let installedDays: Map<string, ISingleApiResponseTransformed> | null = null;
+let installedDays: Map<string, DayRecord> | null = null;
 
 /**
  * Reads the staged buffer, validating it whole: a torn or foreign buffer is
@@ -118,18 +117,18 @@ export const ensureTimetableReady = (): Promise<void> => {
     return readyPromise;
   }
 
-  // Dev and test reseed per sync run, matching the mock's old per-download reseed
+  // Dev and test reseed per sync run, so the window follows the day the phone is on
   mockWindow = null;
   return Promise.resolve();
 };
 
-/** The mock window through the pipeline the API path used, so dev records are byte-identical */
-const buildMockWindow = (): Map<string, ISingleApiResponseTransformed> => {
-  const transformed = transformApiData(filterApiData(loadMockData()));
-  return new Map(transformed.map((day) => [day.date, day]));
+/** The dev window, decoded through the same producer the baked artifact decodes through */
+const buildMockWindow = (): Map<string, DayRecord> => {
+  const minutes = loadMockMinutes();
+  return new Map([...minutes].map(([date, day]) => [date, TimetableDecode.minutesToRecord(date, day)]));
 };
 
-const readBakedDay = (date: string): ISingleApiResponseTransformed | null => {
+const readBakedDay = (date: string): DayRecord | null => {
   const staged = stagedArtifact;
   if (staged === null) return null;
 
@@ -147,19 +146,19 @@ const readBakedDay = (date: string): ISingleApiResponseTransformed | null => {
   });
 };
 
-const readMockDay = (date: string): ISingleApiResponseTransformed | null => {
+const readMockDay = (date: string): DayRecord | null => {
   if (mockWindow === null) mockWindow = buildMockWindow();
   return mockWindow.get(date) ?? null;
 };
 
 /** A day's record, or null: before the artifact is staged, outside its span, or absent from the window */
-export const getTimetableDay = (date: string): ISingleApiResponseTransformed | null => {
+export const getTimetableDay = (date: string): DayRecord | null => {
   if (installedDays !== null) return installedDays.get(date) ?? null;
   return servesBakedTimetable() ? readBakedDay(date) : readMockDay(date);
 };
 
 /** Test seam: serves exactly these days (a day absent from the list reads as null) until replaced */
-export const __installTimetableDays = (days: ISingleApiResponseTransformed[]): void => {
+export const __installTimetableDays = (days: DayRecord[]): void => {
   installedDays = new Map(days.map((day) => [day.date, day]));
 };
 

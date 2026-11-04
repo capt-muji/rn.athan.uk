@@ -1,10 +1,7 @@
-import { formatInTimeZone } from 'date-fns-tz';
-
 import { PRAYER_TIMEZONE, TIME_ADJUSTMENTS } from '../constants';
 import { setActiveLocale } from '../i18n/locale';
 import {
   addDaysToDateString,
-  adjustTime,
   createInstant,
   createPrayerDatetime,
   decorationsVisible,
@@ -22,19 +19,11 @@ import {
   getSecondsRemaining,
   getTodayDateString,
   getWallSecondDelay,
-  isDateYesterdayOrFuture,
   isDecorationSeason,
   isFriday,
   isRamadan,
   splitSingleColon,
 } from '../time';
-
-/**
- * Today's date in the prayer timezone, from date-fns-tz rather than the app's own helper,
- * so this stays an independent oracle. Keyed off PRAYER_TIMEZONE so that moving the app off
- * London fails the app's code rather than this fixture.
- */
-const prayerZoneDate = (offsetMs = 0) => formatInTimeZone(Date.now() + offsetMs, PRAYER_TIMEZONE, 'yyyy-MM-dd');
 
 // =============================================================================
 // FORMATTING TESTS
@@ -752,12 +741,6 @@ describe('calendar helpers (prayer timezone, ISSUES #30)', () => {
     expect(isFriday(new Date('2026-06-11T23:30:00Z'))).toBe(true);
     expect(isFriday('2026-06-12')).toBe(true);
   });
-
-  it('wraps clock arithmetic past midnight in both directions', () => {
-    expect(adjustTime('00:10', -20)).toBe('23:50');
-    expect(adjustTime('23:50', 20)).toBe('00:10');
-    expect(adjustTime('12:00', -24 * 60)).toBe('12:00');
-  });
 });
 
 // =============================================================================
@@ -797,53 +780,6 @@ describe('footerFor', () => {
     // The Hijri branch fails and the Gregorian fallback rejects the date too,
     // matching how the label formatters behave on unparseable input
     expect(() => footerFor('', true)).toThrow();
-  });
-});
-
-describe('isDateYesterdayOrFuture', () => {
-  // The date arithmetic rides the system clock, so the real one would straddle
-  // the London midnight inside one test's offset pairs
-  beforeEach(() => {
-    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T12:00:00Z'));
-  });
-  afterEach(() => jest.useRealTimers());
-
-  it('returns true for yesterday', () => {
-    const dateStr = prayerZoneDate(-86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
-  });
-
-  it('returns true for today', () => {
-    expect(isDateYesterdayOrFuture(prayerZoneDate())).toBe(true);
-  });
-
-  it('returns true for tomorrow', () => {
-    const dateStr = prayerZoneDate(86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(true);
-  });
-
-  it('returns false for two days ago', () => {
-    const dateStr = prayerZoneDate(-2 * 86400000);
-    expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
-  });
-});
-
-describe('adjustTime', () => {
-  it('adds minutes correctly', () => {
-    expect(adjustTime('06:00', 20)).toBe('06:20');
-  });
-
-  it('subtracts minutes correctly', () => {
-    expect(adjustTime('06:40', -40)).toBe('06:00');
-  });
-
-  it('handles zero adjustment', () => {
-    expect(adjustTime('12:30', 0)).toBe('12:30');
-  });
-
-  it('handles large adjustments', () => {
-    expect(adjustTime('12:00', 120)).toBe('14:00'); // +2 hours
-    expect(adjustTime('12:00', -180)).toBe('09:00'); // -3 hours
   });
 });
 

@@ -145,19 +145,18 @@ verification, never infer visuals from pixels alone.
   re-measured at this pin set: `find android/app/build -name index.android.bundle -delete`
   before `assembleRelease` remains the safe route when the env changed.
 - **Dev-env confound**: local builds serve the launch-relative mock window
-  (`stores/timetable.ts` reads `MOCK_DATA_SIMPLE` whenever the env is neither
+  (`stores/timetable.ts` reads `mocks/minutes.ts` whenever the env is neither
   `prod` nor `preview`, reseeded at every launch and resume, so every launch
   recomputes it in memory). Baseline and iterations share it. Never compare
   absolute startup numbers to production. The old mock-refetch's dev-MMKV day
   rows are gone (the reader never writes days), and the one-time legacy
   cleanup removes any that earlier builds left, so a stale mock day is no
   longer a live confound within dev. The mock seeds by the reading's London clock (row 113,
-  any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
-  passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
-  tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)
-  composes a realistic day with Fajr one minute out and Sunrise eleven; the spent late evening
-  (23:53-23:59) serves the day's real static shape with all six passed. A prayer a minute or
-  two off the wall clock is the mock, not a bug. Logging is disabled
+  any hour, any day, `mocks/minutes.ts`): every window outside the spent late evening puts
+  Asr one hour out and Dhuhr one hour spent, with Maghrib one minute after Asr and Isha one minute after Maghrib,
+  so the day rolls to tomorrow's real schedule within a couple of minutes; the spent late
+  evening (22:58-23:59) serves the day's real static shape with all six passed. A prayer a
+  minute or two off the wall clock is the mock, not a bug. Logging is disabled
   in prod and preview (`shared/logger.ts`), so the only build that gives both
   real data and logs is none of them. On a real-data device run, the alarm
   dump is the evidence and an empty logcat proves nothing either way.

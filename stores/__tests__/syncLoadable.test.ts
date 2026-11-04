@@ -15,7 +15,7 @@
  * check are stubbed.
  */
 
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 
 // =============================================================================
 // MOCK SETUP
@@ -68,7 +68,7 @@ const NOW = new Date('2026-09-14T08:00:00.000Z');
 const TODAY = '2026-09-14';
 const TOMORROW = '2026-09-15';
 
-const day = (date: string): ISingleApiResponseTransformed => ({
+const day = (date: string): DayRecord => ({
   date,
   fajr: '05:00',
   sunrise: '06:30',

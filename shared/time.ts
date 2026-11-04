@@ -18,7 +18,6 @@ import { sentenceComma } from '@/shared/i18n/locale';
 
 const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
-const MINUTES_IN_DAY = 24 * 60;
 
 /** Two digits, the data clock's own format: data paths never localise digits */
 export const pad2 = (value: number): string => String(value).padStart(2, '0');
@@ -96,7 +95,7 @@ const prayerTimezoneOffset = (instant: number): number => {
 
 /**
  * Reads the prayer timezone's calendar and clock at an instant. Exported for
- * data paths (the mock API and the day-grouping rules) that need the clock's
+ * data paths (the dev window and the day-grouping rules) that need the clock's
  * own numbers, never the localised display formatters
  * @param instant An exact instant
  * @returns Year, month (1-12), day, hour (0-23), minute and second there
@@ -396,17 +395,6 @@ export const formatDateShort = (date: Date): string => {
 // =============================================================================
 
 /**
- * Checks if a date is yesterday or in the future (prayer timezone)
- * Used for filtering the payload's window
- * @param date Date string in YYYY-MM-DD format
- * @returns boolean indicating if date is yesterday or future
- */
-export const isDateYesterdayOrFuture = (date: string): boolean => {
-  const today = getTodayDateString();
-  return date >= getPreviousDateString(today);
-};
-
-/**
  * Checks if a day is a Friday
  * @param date Optional date string (YYYY-MM-DD) or instant; defaults to today (prayer timezone)
  * @returns boolean indicating if the date is Friday
@@ -522,28 +510,6 @@ export const getNightTimes = (previousDate: string, magribTime: string, date: st
     midnight: floorToMinute(start + length / 2),
     lastThird: floorToMinute(start + (length * 2) / 3 + TIME_ADJUSTMENTS.lastThird * MINUTE_MS),
   };
-};
-
-/**
- * Adjusts a time string by adding or subtracting minutes
- *
- * Used for calculating derived prayer times (e.g., Suhoor = Fajr - 20min).
- * Pure clock arithmetic that wraps past midnight (e.g., 00:10 - 20min = 23:50) —
- * independent of the date, the device's timezone and when it runs.
- *
- * @param time Time string in HH:mm format (e.g., "06:15")
- * @param minutesDiff Minutes to add (positive) or subtract (negative)
- * @returns Adjusted time string in HH:mm format
- *
- * @example
- * adjustTime("06:15", -20) // "05:55" (Suhoor = 20min before Fajr)
- * adjustTime("07:00", 20)  // "07:20" (Duha = 20min after Sunrise)
- * adjustTime("00:10", -20) // "23:50" (crosses midnight boundary)
- */
-export const adjustTime = (time: string, minutesDiff: number): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const total = (((hours * 60 + minutes + minutesDiff) % MINUTES_IN_DAY) + MINUTES_IN_DAY) % MINUTES_IN_DAY;
-  return `${pad2(Math.floor(total / 60))}:${pad2(total % 60)}`;
 };
 
 // =============================================================================

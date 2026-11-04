@@ -20,7 +20,7 @@ import { addDays } from 'date-fns';
 import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateLocalized, formatDateShort, formatHijriDateLocalized } from '@/shared/time';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { DayRecord } from '@/shared/types';
 import { WIDGET_PROPS_VERSION } from '@/shared/widgetTypes';
 import * as Timetable from '@/stores/timetable';
 import { __installTimetableDays } from '@/stores/timetable';
@@ -60,7 +60,7 @@ import {
  * contract (belongsToDate) from the most likely way it regresses (the
  * calendar date of nextEpochMs).
  */
-const makeDayData = (date: string): ISingleApiResponseTransformed => ({
+const makeDayData = (date: string): DayRecord => ({
   date,
   fajr: '03:30',
   sunrise: '05:20',

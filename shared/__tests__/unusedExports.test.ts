@@ -20,6 +20,10 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   MAX_WHATS_NEW_BODY_LENGTH: 'A limit on the copy in shared/whatsNew.ts, enforced only at test time',
   PRAYER_LABELS:
     'Reached at runtime through the loader namespace require whose marks measure the catalog (step 15); a static import would evaluate the catalog before the marks',
+  RequiredTimeName:
+    'The six published column names, the vocabulary the suites build HH:mm day rows with; production reads them as DayRecord fields',
+  toDayMinutes:
+    'The HH:mm seam the dev window (mocks/minutes.ts) and the suites build day minutes through; production decodes its minutes straight from the artifact bytes',
   __resetLaunchInitForTests:
     'The index suite renders a fresh launch per test from one module instance, so only its tests import the reset',
   __resetWarmupForTests:
