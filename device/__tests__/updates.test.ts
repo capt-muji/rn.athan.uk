@@ -24,7 +24,6 @@ const mockStartUpdate = jest.fn();
 jest.mock('@/shared/config', () => ({
   APP_CONFIG: {
     iosAppId: '123456789',
-    androidPackage: 'com.example.athan',
     iosBundleId: 'com.example.athan',
   },
   isProd: () => mockIsProd(),
@@ -465,7 +464,6 @@ describe('checkForUpdates (Android)', () => {
     jest.mock('@/shared/config', () => ({
       APP_CONFIG: {
         iosAppId: '123456789',
-        androidPackage: 'com.example.athan',
         iosBundleId: 'com.example.athan',
       },
       isProd: () => mockIsProd(),

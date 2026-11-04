@@ -16,7 +16,7 @@ import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, S
 import * as Database from '@/stores/database';
 import { lastArmedLanguageAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import {
-  rescheduleAllNotifications,
+  __rescheduleAllForTests,
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
@@ -60,7 +60,6 @@ const record = (id: string, date: string) => ({
   id,
   date,
   time: '12:00',
-  englishName: 'Fajr',
   alertType: AlertType.Silent,
 });
 
@@ -141,7 +140,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(imminentId)).toBe(0);
     expect(schedulesOf(imminentId)).toBe(0);
@@ -160,7 +159,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(schedulesOf(tomorrowId)).toBe(1);
     expect(osState.has(tomorrowId)).toBe(true);
@@ -170,8 +169,8 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await rescheduleAllNotifications();
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
+    await __rescheduleAllForTests();
 
     expect(cancelsOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(true);
@@ -179,7 +178,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
   });
 
   it('does not arm an imminent reminder that was never armed', async () => {
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(schedulesOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(false);
@@ -199,7 +198,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(imminentId)).toBe(1);
     expect(osState.has(imminentId)).toBe(false);

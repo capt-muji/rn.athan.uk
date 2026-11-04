@@ -26,7 +26,7 @@ const saveWrappedDays = (count: number) => {
     payload[new Date(start + i * 86400000).toISOString().slice(0, 10)] = WRAPPED;
   }
   Timetable.__installTimetableDays(
-    Object.entries(payload).flatMap(([date, t]) => transformApiData({ city: 'london', times: { [date]: t } }))
+    Object.entries(payload).flatMap(([date, t]) => transformApiData({ times: { [date]: t } }))
   );
 };
 

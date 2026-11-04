@@ -32,6 +32,7 @@ import { transformApiData } from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
+  __rescheduleAllForTests,
   canonicalPrayerIndex,
   commitPrayerAlertChange,
   createPrayerAlertAtom,
@@ -50,7 +51,6 @@ import {
   migrateIndexKeyedAlertPreferences,
   refreshNotifications,
   registerBackgroundTask,
-  rescheduleAllNotifications,
   rescheduleAllNotificationsFromBackground,
   setPrayerAlertType,
   shouldRescheduleNotifications,
@@ -1082,11 +1082,10 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedPrayerDay(TOMORROW);
   };
 
-  const notificationRecord = (id: string, englishName = 'Fajr'): ScheduledNotification => ({
+  const notificationRecord = (id: string): ScheduledNotification => ({
     id,
     date: TODAY,
     time: SEED_TIME,
-    englishName,
     alertType: AlertType.Sound,
   });
 
@@ -1181,7 +1180,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(cancelAllMock).not.toHaveBeenCalled();
     expect(bulkWipe).not.toHaveBeenCalled();
@@ -1208,7 +1207,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(todayId);
     osState.add(tomorrowId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(cancelMock).not.toHaveBeenCalled();
     expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
@@ -1230,7 +1229,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(yesterdayId);
     osState.add(todayId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osIdentifiers()).toEqual([todayId, tomorrowId].sort());
 
@@ -1257,7 +1256,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       return Promise.resolve(identifier);
     });
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // The failed identifier was never cancelled — its previous alarm survives
     expect(osState.has(tomorrowId)).toBe(true);
@@ -1285,7 +1284,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       return Promise.resolve(identifier);
     });
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(oldTodayId)).toBe(true);
 
@@ -1307,7 +1306,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(oldTodayId);
     osState.add(oldTomorrowId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(newTodayId)).toBe(true);
     expect(osState.has(oldTodayId)).toBe(false);
@@ -1327,7 +1326,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedReminderRecords([oldTodayId]);
     osState.add(oldTodayId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(oldTodayId)).toBe(false);
     expect(osState.has(tomorrowId)).toBe(true);
@@ -1343,7 +1342,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedReminderRecords([reminderId]);
     osState.add(reminderId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(reminderId)).toBe(false);
     expect(Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0)).toHaveLength(0);
@@ -1359,7 +1358,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const strayDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TODAY);
     osState.add(strayDhuhrId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(strayDhuhrId)).toBe(false);
     expect(logger.warn).toHaveBeenCalledWith('NOTIFICATION: Sweep found stale OS notifications:', expect.anything());
@@ -1375,7 +1374,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const staleDhuhrId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TOMORROW);
     osState.add(staleDhuhrId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     const todayId = fajrId(TODAY);
     const tomorrowId = fajrId(TOMORROW);
@@ -1393,7 +1392,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(logger.info).toHaveBeenCalledWith('NOTIFICATION: Post-reschedule verification:', {
       dbRecords: 2,
@@ -1408,7 +1407,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
 
     getAllMock.mockRejectedValue(new Error('OS query failed'));
 
-    await expect(rescheduleAllNotifications()).rejects.toThrow('OS query failed');
+    await expect(__rescheduleAllForTests()).rejects.toThrow('OS query failed');
     expect(logger.error).toHaveBeenCalled();
   });
 
@@ -1419,7 +1418,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
     expect(refreshPrayerWidgets).not.toHaveBeenCalled();
 
     await jest.advanceTimersByTimeAsync(10);
@@ -1432,7 +1431,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     enableFajrAlerts(AlertType.Sound);
     seedPrayerWindow();
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
     await jest.advanceTimersByTimeAsync(10);
 
     expect(logger.warn).toHaveBeenCalledWith('WIDGET: Deferred push failed', { error: expect.any(Error) });
@@ -1486,7 +1485,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedPrayerWindow();
     osState.add('legacy-uuid-1');
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has('legacy-uuid-1')).toBe(true);
     expect(cancelCalls()).not.toContain('legacy-uuid-1');
@@ -1503,10 +1502,10 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     // Alert was turned off but the process died before its notifications were
     // cancelled — records and OS notifications both still present
     const dhuhrTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'dhuhr', TODAY);
-    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 2, notificationRecord(dhuhrTodayId, 'Dhuhr'));
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 2, notificationRecord(dhuhrTodayId));
     osState.add(dhuhrTodayId);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(dhuhrTodayId)).toBe(false);
     expect(Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 2)).toHaveLength(0);
@@ -1522,7 +1521,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     osState.add(reminderId);
     store.set(standardReminderAlertAtoms[0][0], AlertType.Off);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(osState.has(reminderId)).toBe(false);
     expect(Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0)).toHaveLength(0);
@@ -1558,7 +1557,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const todayId = fajrId(TODAY);
     const ishaTodayId = prayerNotificationIdentifier(ScheduleType.Standard, 'isha', TODAY);
     seedRecords([todayId]);
-    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 5, notificationRecord(ishaTodayId, 'Isha'));
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Standard, 5, notificationRecord(ishaTodayId));
     osState.add(todayId);
     osState.add(ishaTodayId);
 
@@ -1580,7 +1579,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     store.set(extraPrayerAlertAtoms[3], AlertType.Silent); // Duha
     seedPrayerWindow();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     const duhaTodayId = prayerNotificationIdentifier(ScheduleType.Extra, 'duha', TODAY);
     const duhaTomorrowId = prayerNotificationIdentifier(ScheduleType.Extra, 'duha', TOMORROW);
@@ -1615,7 +1614,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
     store.set(extraPrayerAlertAtoms[1], AlertType.Silent); // Last Third
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     const triggerOf = (identifier: string): string | undefined =>
       scheduleMock.mock.calls
@@ -1658,7 +1657,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     seedDay(TOMORROW, '04:25', '19:03');
     store.set(extraPrayerAlertAtoms[0], AlertType.Silent); // Midnight
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     const midnightId = prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', TOMORROW);
     const request = scheduleMock.mock.calls
@@ -1701,7 +1700,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     store.set(extraPrayerAlertAtoms[2], AlertType.Silent); // Suhoor
     store.set(extraReminderAlertAtoms[0][0], AlertType.Silent); // Midnight reminder
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     const midnightId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'midnight', date);
     const lastThirdId = (date: string) => prayerNotificationIdentifier(ScheduleType.Extra, 'last third', date);
@@ -1760,7 +1759,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enableFajrAlerts(AlertType.Sound);
       seedPrayerWindow();
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       const stored = Database.getAllScheduledNotificationsForPrayer(ScheduleType.Standard, 0);
       expect(stored.map((record) => record.id)).toContain(failing);
@@ -1774,7 +1773,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enableFajrAlerts(AlertType.Sound);
       seedPrayerWindow();
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(cancelCalls()).not.toContain(failing);
       expect(osIdentifiers()).toContain(failing);
@@ -1785,7 +1784,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enableFajrAlerts(AlertType.Sound);
       seedPrayerWindow();
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(osIdentifiers()).toContain(fajrId(TOMORROW));
     });
@@ -1798,7 +1797,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enableFajrAlerts(AlertType.Silent, AlertType.Sound);
       seedPrayerWindow();
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       const stored = Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0);
       expect(stored.map((record) => record.id)).toContain(failing);
@@ -1842,7 +1841,6 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
     const storeDays = (days: Record<string, Times>) => {
       for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
         const [stored] = transformApiData({
-          city: 'london',
           times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
         });
         seededDays.set(date, stored);
@@ -1941,7 +1939,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         storeDays(days);
         enable(E, ['midnight', 'last third']);
 
-        await rescheduleAllNotifications();
+        await __rescheduleAllForTests();
 
         expect(triggers()).toEqual(
           Object.fromEntries([
@@ -1964,7 +1962,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enable(S, ['dhuhr', 'asr', 'magrib']);
       const preferences = savedPreferences();
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       const expected = Object.fromEntries([
         ...armedAt(S, 'dhuhr', '2026-08-29', '2026-08-29T12:05:00.000Z'),
@@ -2000,7 +1998,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         [S, 'asr', '2026-08-30'],
       ]);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
       expect(osIdentifiers()).toEqual(everyOccurrence);
 
       // Newly stored data can no longer read tomorrow's Asr
@@ -2008,7 +2006,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       cancelMock.mockClear();
       storeDays({ '2026-08-30': withUnreadable(AUG_30, 'asr') });
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(cancelCalls().sort()).toEqual(ids([[S, 'asr', '2026-08-30']]));
       expect(osIdentifiers()).toEqual(
@@ -2025,7 +2023,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       cancelMock.mockClear();
       storeDays({ '2026-08-30': AUG_30 });
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(cancelCalls()).toEqual([]);
       expect(osIdentifiers()).toEqual(everyOccurrence);
@@ -2050,7 +2048,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       });
 
       it('arms every readable stored day when every day reads (control for the table below)', async () => {
-        await rescheduleAllNotifications();
+        await __rescheduleAllForTests();
 
         expect(osIdentifiers()).toEqual(
           ids([
@@ -2144,7 +2142,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
           apply(day);
           const preferences = savedPreferences();
 
-          await rescheduleAllNotifications();
+          await __rescheduleAllForTests();
 
           expect(osIdentifiers()).toEqual(ids(armed));
           expect(savedPreferences()).toEqual(preferences);
@@ -2162,7 +2160,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
       enable(S, STANDARD_PRAYER_IDS);
       enable(E, EXTRA_PRAYER_IDS);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       // Friday's other five, and Saturday's Suhoor and Duha, at their own instants
       expect(triggers()).toMatchObject(
@@ -2261,7 +2259,7 @@ describe('reschedule strategy (issue #15: zero-notification window)', () => {
         enable(S, ['fajr', 'isha']);
         // Armed before today went missing
         const ishaToday = athan(S, 'isha', '2026-09-12');
-        Database.addOneScheduledNotificationForPrayer(S, 5, notificationRecord(ishaToday, 'Isha'));
+        Database.addOneScheduledNotificationForPrayer(S, 5, notificationRecord(ishaToday));
         osState.add(ishaToday);
 
         await refreshNotifications();

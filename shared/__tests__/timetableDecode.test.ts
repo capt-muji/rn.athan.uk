@@ -140,7 +140,6 @@ describe('timetableDecode record building', () => {
     const record = minutesToRecord('2027-01-01', minutes);
 
     const [fromPipeline] = transformApiData({
-      city: 'london',
       times: {
         '2027-01-01': { fajr: '06:26', sunrise: '08:03', dhuhr: '12:09', asr: '13:47', magrib: '16:05', isha: '17:42' },
       },

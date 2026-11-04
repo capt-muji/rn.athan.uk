@@ -23,7 +23,6 @@ const storeDays = (magrib: string, isha: string) => {
   const stored = new Map<string, ISingleApiResponseTransformed>();
   for (const date of DAYS) {
     const [record] = transformApiData({
-      city: 'london',
       times: { [date]: { fajr: '01:32', sunrise: '02:58', dhuhr: '13:31', asr: '17:31', magrib, isha } },
     });
     stored.set(date, record);

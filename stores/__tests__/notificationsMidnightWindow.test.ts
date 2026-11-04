@@ -15,7 +15,7 @@ jest.mock('@/stores/sync', () => ({
 
 import { ScheduleType } from '@/shared/types';
 import { startCountdowns } from '@/stores/countdown';
-import { rescheduleAllNotifications } from '@/stores/notifications';
+import { __rescheduleAllForTests } from '@/stores/notifications';
 import { getNextPrayer, setSequence } from '@/stores/schedule';
 
 import {
@@ -46,7 +46,7 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
   it('moves every window by exactly one list day between a reschedule at 23:59:30 and one at 00:00:30', async () => {
     jest.setSystemTime(new Date('2026-10-17T22:59:30.000Z'));
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual({
       'athan_extra_midnight_2026-10-18': '2026-10-17T23:00:00.000Z',
@@ -60,7 +60,7 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
     forgetCalls();
     jest.setSystemTime(new Date('2026-10-17T23:00:30.000Z'));
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual({
       'athan_extra_midnight_2026-10-19': '2026-10-18T22:59:00.000Z',
@@ -77,7 +77,7 @@ describe('the alarm window either side of 00:00 on 18 October 2026', () => {
 
   it('arms and cancels nothing by itself when the clock crosses 00:00:00 with the app running', async () => {
     jest.setSystemTime(new Date('2026-10-17T22:59:58.000Z'));
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
     const armed = osIdentifiers();
 
     setSequence(ScheduleType.Standard, new Date());

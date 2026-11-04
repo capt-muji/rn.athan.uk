@@ -99,7 +99,6 @@ beforeEach(() => {
       id: FAJR[position],
       date,
       time: '12:00',
-      englishName: 'Fajr',
       alertType: AlertType.Sound,
     });
     osState.add(FAJR[position]);
@@ -159,7 +158,7 @@ describe.each([
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
     for (const record of fajrRecordBodies()) {
       expect('arabicName' in record).toBe(false);
-      expect(record.englishName).toBe('Fajr');
+      expect('englishName' in record).toBe(false);
     }
 
     // One minute on, the refresh gate is shut, so only a prayer marked to be put right makes this do anything

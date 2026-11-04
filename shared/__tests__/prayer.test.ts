@@ -319,20 +319,14 @@ describe('filterApiData', () => {
       times[date] = {
         date,
         fajr: '06:00',
-        fajr_jamat: '06:30',
         sunrise: '07:30',
         dhuhr: '12:30',
-        dhuhr_jamat: '13:00',
         asr: '15:00',
-        asr_2: '15:30',
-        asr_jamat: '15:45',
         magrib: '17:30',
-        magrib_jamat: '17:35',
         isha: '19:00',
-        isha_jamat: '19:15',
       };
     });
-    return { city: 'London', times };
+    return { times };
   };
 
   it('keeps today and future dates', () => {
@@ -343,7 +337,6 @@ describe('filterApiData', () => {
     const input = createMockApiResponse([today, tomorrow, nextWeek]);
     const result = filterApiData(input);
 
-    expect(result.city).toBe('London');
     expect(Object.keys(result.times)).toContain(today);
     expect(Object.keys(result.times)).toContain(tomorrow);
     expect(Object.keys(result.times)).toContain(nextWeek);
@@ -373,18 +366,8 @@ describe('filterApiData', () => {
     expect(Object.keys(result.times)).toContain(today);
   });
 
-  it('preserves city name', () => {
-    const input: IApiResponse = {
-      city: 'London',
-      times: {},
-    };
-    const result = filterApiData(input);
-    expect(result.city).toBe('London');
-  });
-
   it('handles empty times object', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {},
     };
     const result = filterApiData(input);
@@ -399,22 +382,15 @@ describe('filterApiData', () => {
 describe('transformApiData', () => {
   it('transforms single day correctly', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:15',
-          fajr_jamat: '06:45',
           sunrise: '07:45',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:45',
-          magrib_jamat: '16:50',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
       },
     };
@@ -433,22 +409,15 @@ describe('transformApiData', () => {
 
   it('calculates derived prayer times', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:15',
-          fajr_jamat: '06:45',
           sunrise: '07:45',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:45',
-          magrib_jamat: '16:50',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
       },
     };
@@ -463,37 +432,24 @@ describe('transformApiData', () => {
 
   it('transforms multiple days', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:15',
-          fajr_jamat: '06:45',
           sunrise: '07:45',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:45',
-          magrib_jamat: '16:50',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
         '2026-01-19': {
           date: '2026-01-19',
           fajr: '06:14',
-          fajr_jamat: '06:44',
           sunrise: '07:44',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:31',
-          asr_2: '15:01',
-          asr_jamat: '15:16',
           magrib: '16:46',
-          magrib_jamat: '16:51',
           isha: '18:31',
-          isha_jamat: '18:46',
         },
       },
     };
@@ -507,7 +463,6 @@ describe('transformApiData', () => {
 
   it('handles empty input', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {},
     };
 
@@ -517,22 +472,15 @@ describe('transformApiData', () => {
 
   it('calculates suhoor correctly (before fajr)', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:00',
-          fajr_jamat: '06:30',
           sunrise: '07:30',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:45',
-          magrib_jamat: '16:50',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
       },
     };
@@ -544,22 +492,15 @@ describe('transformApiData', () => {
 
   it('calculates duha correctly (after sunrise)', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:00',
-          fajr_jamat: '06:30',
           sunrise: '07:30',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:45',
-          magrib_jamat: '16:50',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
       },
     };
@@ -571,22 +512,15 @@ describe('transformApiData', () => {
 
   it('calculates istijaba correctly (before magrib)', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-01-18': {
           date: '2026-01-18',
           fajr: '06:00',
-          fajr_jamat: '06:30',
           sunrise: '07:30',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '17:00',
-          magrib_jamat: '17:05',
           isha: '18:30',
-          isha_jamat: '18:45',
         },
       },
     };
@@ -598,22 +532,15 @@ describe('transformApiData', () => {
 
   it('never stores Midnight or Last Third: they belong to the night before a day (ISSUES #29)', () => {
     const input: IApiResponse = {
-      city: 'London',
       times: {
         '2026-12-31': {
           date: '2026-12-31',
           fajr: '06:00',
-          fajr_jamat: '06:30',
           sunrise: '07:30',
           dhuhr: '12:15',
-          dhuhr_jamat: '12:45',
           asr: '14:30',
-          asr_2: '15:00',
-          asr_jamat: '15:15',
           magrib: '16:00',
-          magrib_jamat: '16:05',
           isha: '17:45',
-          isha_jamat: '18:00',
         },
       },
     };
@@ -734,7 +661,7 @@ const storeDays = (dates: string[], unreadable: string[] = []) => {
   }
 
   stored.clear();
-  for (const record of transformApiData({ city: 'London', times })) stored.set(record.date, record);
+  for (const record of transformApiData({ times })) stored.set(record.date, record);
 };
 
 const plusDays = (date: string, days: number): string =>
@@ -824,7 +751,7 @@ describe('transformApiData with times api/client.ts could not read', () => {
       for (const field of unreadable) october16[field] = null;
 
       // The next day in the same payload keeps its own derived times: nothing leaks across days
-      expect(transformApiData({ city: 'London', times: { '2026-10-16': october16, '2026-10-17': OCT_17 } })).toEqual([
+      expect(transformApiData({ times: { '2026-10-16': october16, '2026-10-17': OCT_17 } })).toEqual([
         { date: '2026-10-16', ...october16, suhoor, duha, istijaba },
         { date: '2026-10-17', ...OCT_17, suhoor: '05:32', duha: '07:45', istijaba: '17:06' },
       ]);
@@ -1349,7 +1276,7 @@ const storeTimes = (days: Record<string, string[] | (string | null)[]>) => {
   }
 
   stored.clear();
-  for (const record of transformApiData({ city: 'London', times })) stored.set(record.date, record);
+  for (const record of transformApiData({ times })) stored.set(record.date, record);
 };
 
 describe('firstStillDueListDay', () => {

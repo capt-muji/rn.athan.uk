@@ -953,7 +953,7 @@ const storeDays = (dates: string[], unreadable: Record<string, RequiredTimeName[
       ])
     ) as Record<RequiredTimeName, string | null>;
 
-    storedDays.set(date, actualPrayer().transformApiData({ city: 'london', times: { [date]: times } })[0]);
+    storedDays.set(date, actualPrayer().transformApiData({ times: { [date]: times } })[0]);
   }
 };
 

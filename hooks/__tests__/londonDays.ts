@@ -36,7 +36,7 @@ const buildLondonDays = (breakage: Breakage): ISingleApiResponseTransformed[] =>
     const validated: Record<RequiredTimeName, string | null> = { ...times };
     for (const name of broken) validated[name] = null;
 
-    return transformApiData({ city: 'london', times: { [date]: validated } });
+    return transformApiData({ times: { [date]: validated } });
   });
 
 /** Points the mocked `getTimetableDay` at the days, for suites that mock '@/stores/timetable' */
@@ -66,7 +66,7 @@ interface RowWithStatus {
 }
 
 /** A row's status in words; a row both passed and next reads as such rather than hiding behind one */
-export const statusOf = (row: RowWithStatus): string =>
+const statusOf = (row: RowWithStatus): string =>
   [row.isPassed && 'passed', row.isNext && 'next'].filter(Boolean).join('+') || 'upcoming';
 
 /** One list day's rows, in sequence order, as "Name: status" */

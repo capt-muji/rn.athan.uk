@@ -15,7 +15,7 @@ import { useCallback, useRef, useState } from 'react';
 
 import { type AnimationEpochSlot, closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 
-export interface SettledWrite<T> {
+interface SettledWrite<T> {
   /** The optimistic target while a press's write is deferred, else null */
   pending: T | null;
   /** The press: flips the optimistic target and stamps a new generation */

@@ -149,7 +149,7 @@ const day = (
   asr: string | null,
   magrib: string | null,
   isha: string | null
-) => transformApiData({ city: 'london', times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+) => transformApiData({ times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
 
 // Real London times from the captured 2026 payload
 const LONDON_2026 = [

@@ -282,15 +282,7 @@ describe('the stale-settle guard', () => {
 // =============================================================================
 
 describe('toggleOverlay', () => {
-  it('opens the current selection when closed', () => {
-    setNextPrayerIn(60_000);
-
-    toggleOverlay();
-
-    expect(mockStoreSet).toHaveBeenCalledWith(mockOverlayAtomSymbol, expect.objectContaining({ isOn: true }));
-  });
-
-  it('closes when open', () => {
+  it('closes when called bare', () => {
     mockOverlayState.isOn = true;
 
     toggleOverlay();

@@ -65,6 +65,3 @@ const logger = {
 };
 
 export default logger;
-
-// Re-exported from config for convenience
-export { isPreview, isProd, isTest };

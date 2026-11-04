@@ -41,9 +41,6 @@ export const EXTRA_PRAYER_IDS = ['midnight', 'last third', 'suhoor', 'duha', 'is
 /** The closed prayer-id union: display resolves it through the catalog, identifiers consume it raw */
 export type PrayerId = (typeof STANDARD_PRAYER_IDS)[number] | (typeof EXTRA_PRAYER_IDS)[number];
 
-/** The nine ids with a stored time field on the API day record (Midnight and Last Third are computed) */
-export type StoredPrayerId = Exclude<PrayerId, 'midnight' | 'last third'>;
-
 /** The whole vocabulary in canonical display order */
 export const PRAYER_IDS = [...STANDARD_PRAYER_IDS, ...EXTRA_PRAYER_IDS] as const;
 
@@ -493,7 +490,6 @@ export const COUNTDOWN_TIP = {
   WIDTH: 1.5,
   OFFSET: 0.9,
   TINT_AMOUNT: 0.15,
-  PULSE_DURATION: 2500,
 } as const;
 
 // =============================================================================
@@ -567,15 +563,6 @@ export const SIZE = {
   dot: {
     /** Large dot (18px) */
     lg: 18,
-  },
-  /** Bar dimensions */
-  bar: {
-    /** Extra small bar height (3px) */
-    xs: 3,
-    /** Small bar height (6px) */
-    sm: 6,
-    /** Default bar width (100px) */
-    width: 100,
   },
   /** Button dimensions */
   button: {
@@ -665,8 +652,6 @@ export const HIT_SLOP = {
  * Higher values create more prominent shadows
  */
 export const ELEVATION = {
-  /** No elevation - element sits flat */
-  none: 0,
   /** Subtle elevation (5) */
   subtle: 5,
   /** Standard elevation (15) - popups, sheets */
@@ -790,14 +775,6 @@ export const COLORS = {
   },
 
   // ───────────────────────────────────────────────────────────────────────────
-  // BORDERS & DIVIDERS
-  // ───────────────────────────────────────────────────────────────────────────
-  border: {
-    /** Subtle separator lines (6% opacity) */
-    subtle: 'rgba(255, 255, 255, 0.06)',
-  },
-
-  // ───────────────────────────────────────────────────────────────────────────
   // SHADOWS
   // ───────────────────────────────────────────────────────────────────────────
   shadow: {
@@ -891,11 +868,6 @@ export const COLORS = {
     },
   },
 
-  /** Color picker */
-  colorPicker: {
-    buttonBackground: 'rgba(79, 126, 180, 0.24)',
-  },
-
   /** Modal/dialog specific colors */
   modal: {
     /** Modal shadow color */
@@ -954,8 +926,6 @@ export const COLORS = {
  * Durations for different animation speeds, delays for cascade effects, debounce intervals
  */
 export const ANIMATION = {
-  /** Very fast animation (50ms) - quick color transitions */
-  durationVeryFast: 50,
   /** Fast animation (75ms) - alert popup fade */
   durationFast: 75,
   /** Fade animation (150ms) - overlay opacity */

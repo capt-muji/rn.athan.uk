@@ -160,7 +160,6 @@ describe('refreshNotifications behind the refresh gate', () => {
       id: FAJR_TODAY,
       date: TODAY,
       time: '12:00',
-      englishName: 'Fajr',
       alertType: AlertType.Sound,
     });
     osState.add(FAJR_TODAY);

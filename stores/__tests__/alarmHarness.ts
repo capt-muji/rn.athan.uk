@@ -81,7 +81,6 @@ export const resetStoredDays = (): void => {
 export const storeDays = (days: Record<string, Times>): void => {
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(days)) {
     const [stored] = transformApiData({
-      city: 'london',
       times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
     });
     storedWindow.set(date, stored);

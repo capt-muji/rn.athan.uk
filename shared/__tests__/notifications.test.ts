@@ -275,7 +275,7 @@ describe('collectCandidateRows inside the duplicated hour (2026 fall-back, the r
 
   beforeEach(() => {
     jest.useFakeTimers({ now: NOW });
-    Timetable.__installTimetableDays(transformApiData({ city: 'london', times: FALL_BACK_DAYS }));
+    Timetable.__installTimetableDays(transformApiData({ times: FALL_BACK_DAYS }));
   });
 
   afterEach(() => {
@@ -950,7 +950,6 @@ describe('findStaleScheduledNotificationIds', () => {
     id,
     date: '2026-08-29',
     time: '06:00',
-    englishName: 'Fajr',
     alertType: AlertType.Silent,
   });
 

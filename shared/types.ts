@@ -15,28 +15,16 @@ export interface IApiSingleTime {
   date: string;
   /** Fajr prayer time in HH:mm format */
   fajr: string;
-  /** Fajr congregation time (not used in app) */
-  fajr_jamat: string;
   /** Sunrise time in HH:mm format */
   sunrise: string;
   /** Dhuhr prayer time in HH:mm format */
   dhuhr: string;
-  /** Dhuhr congregation time (not used in app) */
-  dhuhr_jamat: string;
   /** Asr prayer time in HH:mm format (Hanafi calculation) */
   asr: string;
-  /** Alternative Asr time (Shafi calculation, not used in app) */
-  asr_2: string;
-  /** Asr congregation time (not used in app) */
-  asr_jamat: string;
   /** Magrib prayer time in HH:mm format */
   magrib: string;
-  /** Magrib congregation time (not used in app) */
-  magrib_jamat: string;
   /** Isha prayer time in HH:mm format */
   isha: string;
-  /** Isha congregation time (not used in app) */
-  isha_jamat: string;
 }
 
 /**
@@ -65,8 +53,6 @@ export interface IApiTimes {
  * }
  */
 export interface IApiResponse {
-  /** City name (e.g., "London") */
-  city: string;
   /** Dictionary of dates to prayer times */
   times: Record<string, IApiSingleTime>;
 }
@@ -79,7 +65,6 @@ export type RequiredTimeName = 'fajr' | 'sunrise' | 'dhuhr' | 'asr' | 'magrib' |
  * where the provider's value was not
  */
 export interface IValidatedApiResponse {
-  city: string;
   times: Record<string, Record<RequiredTimeName, string | null>>;
 }
 
@@ -250,8 +235,6 @@ export enum Icon {
   QUESTION = 'QUESTION',
   MUSIC_NOTE = 'MUSIC_NOTE',
   COMPASS = 'COMPASS',
-  CLOSE = 'CLOSE',
-  WIDGET = 'WIDGET',
   APPLE = 'APPLE',
   ANDROID = 'ANDROID',
   GLOBE = 'GLOBE',

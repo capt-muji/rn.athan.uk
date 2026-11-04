@@ -46,10 +46,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
     timesFiltered[date] = times;
   });
 
-  return {
-    city: apiData.city,
-    times: timesFiltered,
-  };
+  return { times: timesFiltered };
 };
 
 /**
@@ -365,7 +362,7 @@ function createPrayersForSingleDay(
     // Istijaba joins the night rows on the exact-instant path: it hangs off Magrib, which
     // can be date-shifted, so a clock string cannot express it (see getIstijabaTime).
     // Unguarded by type on purpose: the closed standard vocabulary can never match here,
-    // and the bare id guards are what narrow the record lookup below to StoredPrayerId
+    // and the bare id guards are what narrow the record lookup below to the stored ids
     const isIstijaba = name === 'istijaba';
     const isNightRow = name === 'midnight' || name === 'last third';
     if (isIstijaba || isNightRow) {

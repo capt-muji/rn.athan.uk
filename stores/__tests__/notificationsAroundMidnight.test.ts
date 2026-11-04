@@ -18,7 +18,7 @@ import * as Notifications from 'expo-notifications';
 import type { PrayerId } from '@/shared/constants';
 import { AlertType, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
-import { rescheduleAllNotifications, setPrayerAlertType } from '@/stores/notifications';
+import { __rescheduleAllForTests, setPrayerAlertType } from '@/stores/notifications';
 
 import {
   cancelCalls,
@@ -79,7 +79,7 @@ describe('a Standard row read either side of 00:00 and of 06:00', () => {
       storeDays(sameTimesOn(['2026-06-19', '2026-06-20', '2026-06-21'], SHAPES[name](reading)));
       enable(ScheduleType.Standard, name, 5);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(triggers()).toEqual({
         ...armedWithReminder(ScheduleType.Standard, name, '2026-06-20', list20),
@@ -107,7 +107,7 @@ describe('a Last Third before and at 00:00', () => {
     storeShape(magrib, fajr);
     enable(ScheduleType.Extra, 'last third', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'last third', '2026-06-21', lastThird));
   });
@@ -121,7 +121,7 @@ describe('a Last Third before and at 00:00', () => {
       storeShape(magrib, fajr);
       enable(ScheduleType.Extra, 'last third', 5);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(triggers()).toEqual(armedWithReminder(ScheduleType.Extra, 'last third', '2026-06-21', lastThird));
     }
@@ -143,7 +143,7 @@ describe('a Fajr just after 00:00', () => {
     });
     enable(ScheduleType.Standard, 'fajr', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()).toEqual(armedWithReminder(ScheduleType.Standard, 'fajr', '2026-06-21', instant));
   });
@@ -165,14 +165,14 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(days(ISHA_AT_0001));
     enable(ScheduleType.Standard, 'isha', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
     expect(osIdentifiers()).toEqual(armedAcross('isha', ['2026-06-20', '2026-06-21', '2026-06-22']));
 
     // 00:00:30 BST on the 21st: the 20th's Isha is 30 seconds away, its reminder already past
     jest.setSystemTime(new Date('2026-06-20T23:00:30.000Z'));
     forgetCalls();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()['athan_standard_isha_2026-06-20']).toBe('2026-06-20T23:01:00.000Z');
     // Only the reminder whose moment has passed is stale; the at-time is never passed to cancel
@@ -187,12 +187,12 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(days(['01:30', '02:55', '13:30', '17:30', '00:01', '00:25']));
     enable(ScheduleType.Standard, 'magrib', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     jest.setSystemTime(new Date('2026-06-20T23:00:30.000Z'));
     forgetCalls();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()['athan_standard_magrib_2026-06-20']).toBe('2026-06-20T23:01:00.000Z');
     expect(cancelCalls()).toEqual(['reminder_standard_magrib_2026-06-20_5']);
@@ -208,13 +208,13 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(sameTimesOn(['2026-06-25', '2026-06-26', '2026-06-27', '2026-06-28'], shape));
     enable(ScheduleType.Extra, 'istijaba', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // 00:05 BST on the Saturday: Friday's Istijaba is 15 minutes away
     jest.setSystemTime(new Date('2026-06-26T23:05:00.000Z'));
     forgetCalls();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(triggers()['athan_extra_istijaba_2026-06-26']).toBe('2026-06-26T23:20:00.000Z');
     expect(cancelCalls()).toEqual([]);
@@ -226,12 +226,12 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(days(ISHA_AT_0001));
     enable(ScheduleType.Standard, 'isha', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     jest.setSystemTime(new Date('2026-06-20T23:01:00.000Z'));
     forgetCalls();
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     expect(cancelCalls().sort()).toEqual(['athan_standard_isha_2026-06-20', 'reminder_standard_isha_2026-06-20_5']);
     expect(osIdentifiers()).toEqual(
@@ -249,7 +249,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(days(ISHA_AT_0001));
     enable(ScheduleType.Standard, 'isha', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // The user turns Isha off at 00:00:30 and the phone refuses to cancel yesterday's at-time alarm
     jest.setSystemTime(new Date('2026-06-20T23:00:30.000Z'));
@@ -260,7 +260,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     });
     setPrayerAlertType(ScheduleType.Standard, 5, AlertType.Off);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // The alarm is still to come, so its record survives the refused cancel: only that record can
     // reach the alarm the phone still holds on the next repair pass
@@ -274,7 +274,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     storeDays(days(ISHA_AT_0001));
     enable(ScheduleType.Standard, 'isha', 5);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // Two evenings later the 20th's alarm is long past; the phone refuses to cancel it anyway
     jest.setSystemTime(new Date('2026-06-22T19:00:00.000Z'));
@@ -285,7 +285,7 @@ describe("a reschedule between 00:00 and yesterday's still-due rows (finding 74,
     });
     setPrayerAlertType(ScheduleType.Standard, 5, AlertType.Off);
 
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
 
     // The OS still holds the refused alarm, but its moment is past and its record is spent: keeping
     // it would make every later clear ask for it again for ever

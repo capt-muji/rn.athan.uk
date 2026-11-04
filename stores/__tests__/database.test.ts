@@ -245,11 +245,10 @@ describe('clearPrefix', () => {
 // =============================================================================
 
 describe('notification scheduling records', () => {
-  const createMockNotification = (id: string, englishName = 'Fajr'): ScheduledNotification => ({
+  const createMockNotification = (id: string): ScheduledNotification => ({
     id,
     date: '2026-01-24',
     time: '06:15',
-    englishName,
     alertType: AlertType.Sound,
   });
 
@@ -265,8 +264,8 @@ describe('notification scheduling records', () => {
     });
 
     it('stores notifications for different prayers separately', () => {
-      const fajrNotification = createMockNotification('fajr-id', 'Fajr');
-      const dhuhrNotification = createMockNotification('dhuhr-id', 'Dhuhr');
+      const fajrNotification = createMockNotification('fajr-id');
+      const dhuhrNotification = createMockNotification('dhuhr-id');
 
       addOneScheduledNotificationForPrayer(ScheduleType.Standard, 0, fajrNotification);
       addOneScheduledNotificationForPrayer(ScheduleType.Standard, 2, dhuhrNotification);
@@ -329,11 +328,10 @@ describe('notification scheduling records', () => {
 // =============================================================================
 
 describe('reminder scheduling records', () => {
-  const createMockReminder = (id: string, englishName = 'Fajr'): ScheduledNotification => ({
+  const createMockReminder = (id: string): ScheduledNotification => ({
     id,
     date: '2026-01-24',
     time: '05:55',
-    englishName,
     alertType: AlertType.Sound,
   });
 
@@ -349,8 +347,8 @@ describe('reminder scheduling records', () => {
     });
 
     it('stores reminders for different prayers separately', () => {
-      const fajrReminder = createMockReminder('fajr-reminder', 'Fajr');
-      const dhuhrReminder = createMockReminder('dhuhr-reminder', 'Dhuhr');
+      const fajrReminder = createMockReminder('fajr-reminder');
+      const dhuhrReminder = createMockReminder('dhuhr-reminder');
 
       addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, fajrReminder);
       addOneScheduledReminderForPrayer(ScheduleType.Standard, 2, dhuhrReminder);

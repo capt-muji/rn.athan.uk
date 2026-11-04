@@ -80,7 +80,7 @@ const storeOctober = () => {
   mockStoredDays.clear();
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(OCTOBER)) {
     const times = { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } };
-    mockStoredDays.set(date, transformApiData({ city: 'london', times })[0]);
+    mockStoredDays.set(date, transformApiData({ times })[0]);
   }
 };
 

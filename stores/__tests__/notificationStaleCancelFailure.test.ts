@@ -15,7 +15,7 @@ import logger from '@/shared/logger';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import {
-  rescheduleAllNotifications,
+  __rescheduleAllForTests,
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
@@ -56,7 +56,6 @@ const record = (id: string, date: string) => ({
   id,
   date,
   time: '12:00',
-  englishName: 'Fajr',
   alertType: AlertType.Silent,
 });
 
@@ -175,7 +174,7 @@ describe.each(PATHS)('on the $path path', ({ stale, save }) => {
     const refused = stale[1].id;
     refuseToCancel(refused, 1);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(logger.warn).toHaveBeenCalledWith('NOTIFICATION: Failed to cancel stale notification:', {
       id: refused,
@@ -194,12 +193,12 @@ describe.each(PATHS)('on the $path path', ({ stale, save }) => {
     const refused = stale[1].id;
     refuseToCancel(refused, 2);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(refused)).toBe(2);
     expect([...osState].sort()).toEqual([...armedWindow(), refused].sort());
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(refused)).toBe(3);
     expect([...osState].sort()).toEqual(armedWindow());

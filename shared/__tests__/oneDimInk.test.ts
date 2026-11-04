@@ -97,7 +97,6 @@ describe('the one dim ink', () => {
     expect(DESIGN).toEqual({
       bgStart: '#05134a',
       bgEnd: '#36208a',
-      bgTail: '#7117c9',
       dim: '#5254ac',
       label: '#4060ae',
       bright: '#f2f5f9',

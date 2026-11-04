@@ -20,8 +20,6 @@ export const HEADER_BYTES = 12;
 export const EPOCH_DAY = 20_454;
 /** 2026-01-01 to 2076-12-31 inclusive: 365 + 50 years with 13 leap days */
 export const DAY_COUNT = 18_628;
-const _FIRST_DAY = '2026-01-01';
-const _LAST_DAY = '2076-12-31';
 
 /** The six provider times in artifact column order */
 export const COLUMNS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'magrib', 'isha'] as const;

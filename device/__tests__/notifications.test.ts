@@ -349,7 +349,7 @@ describe('trigger instants', () => {
     const request = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
     expect(request.trigger.date.toISOString()).toBe('2026-10-23T22:58:00.000Z');
     expect(request.identifier).toBe('athan_extra_midnight_2026-10-24');
-    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
+    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58' });
   });
 
   it('fires in the repeated hour of the clock-change night at the exact instant (01:00 GMT, not 01:00 BST)', async () => {
@@ -379,7 +379,7 @@ describe('trigger instants', () => {
     const request = (scheduleNotificationAsync as jest.Mock).mock.calls[0][0];
     expect(request.trigger.date.toISOString()).toBe('2026-10-23T22:43:00.000Z');
     expect(request.identifier).toBe('reminder_extra_midnight_2026-10-24_15');
-    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58', englishName: 'Midnight' });
+    expect(record).toMatchObject({ date: '2026-10-24', time: '23:58' });
   });
 });
 

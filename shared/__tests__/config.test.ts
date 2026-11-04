@@ -27,42 +27,6 @@ describe('config', () => {
   });
 
   // ---------------------------------------------------------------------------
-  // APP_CONFIG.isDev
-  // ---------------------------------------------------------------------------
-
-  describe('APP_CONFIG.isDev', () => {
-    it('is false when EXPO_PUBLIC_ENV is "prod"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'prod';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(false);
-    });
-
-    it('is false when EXPO_PUBLIC_ENV is "preview"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'preview';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(false);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is "local"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'local';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is "dev"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'dev';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is undefined', () => {
-      delete process.env.EXPO_PUBLIC_ENV;
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-  });
-
-  // ---------------------------------------------------------------------------
   // APP_CONFIG.env
   // ---------------------------------------------------------------------------
 
@@ -143,12 +107,6 @@ describe('config', () => {
       process.env.EXPO_PUBLIC_IOS_APP_ID = 'com.test.ios';
       const { APP_CONFIG } = require('../config');
       expect(APP_CONFIG.iosAppId).toBe('com.test.ios');
-    });
-
-    it('reads androidPackage from EXPO_PUBLIC_ANDROID_PACKAGE', () => {
-      process.env.EXPO_PUBLIC_ANDROID_PACKAGE = 'com.test.android';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.androidPackage).toBe('com.test.android');
     });
   });
 });

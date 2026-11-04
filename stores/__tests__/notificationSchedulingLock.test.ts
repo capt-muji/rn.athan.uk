@@ -12,7 +12,6 @@ import { getDefaultStore } from 'jotai';
 
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as PrayerUtils from '@/shared/prayer';
 import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, ScheduleType } from '@/shared/types';
@@ -104,18 +103,12 @@ const flush = async () => {
 const armedFor = (id: PrayerId) => [...osState].filter((entry) => entry.includes(`_${id}_`)).sort();
 
 /** An earlier reschedule's alarms for a prayer, recorded and held by the OS */
-const armedEarlier = (
-  index: number,
-  id: PrayerId,
-  ids: string[],
-  record: typeof Database.addOneScheduledNotificationForPrayer
-) => {
+const armedEarlier = (index: number, ids: string[], record: typeof Database.addOneScheduledNotificationForPrayer) => {
   ids.forEach((identifier, position) => {
     record(ScheduleType.Standard, index, {
       id: identifier,
       date: WINDOW[position],
       time: '12:00',
-      englishName: prayerLabel(id),
       alertType: AlertType.Silent,
     });
     osState.add(identifier);
@@ -212,7 +205,7 @@ afterAll(() => {
 
 describe('an operation queued behind one that fails part way', () => {
   it('runs only once every prayer the failing refresh is arming has landed', async () => {
-    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    armedEarlier(FAJR, athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
     refusedCancels.add(athanIds('fajr')[0]);
     store.set(standardPrayerAlertAtoms[DHUHR], AlertType.Silent);
     holdsSchedule = (id) => athanIds('dhuhr').includes(id);
@@ -234,7 +227,7 @@ describe('an operation queued behind one that fails part way', () => {
   });
 
   it('runs only once the reminders the failing refresh is arming, in another part of it, have landed', async () => {
-    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    armedEarlier(FAJR, athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
     refusedCancels.add(athanIds('fajr')[0]);
     store.set(standardPrayerAlertAtoms[DHUHR], AlertType.Silent);
     store.set(standardReminderAlertAtoms[0][DHUHR], AlertType.Silent);
@@ -255,7 +248,7 @@ describe('an operation queued behind one that fails part way', () => {
   });
 
   it('runs only once every cancel the failing refresh sent for the same prayer has landed', async () => {
-    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    armedEarlier(FAJR, athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
     refusedCancels.add(athanIds('fajr')[0]);
     holdsCancel = (id) => id === athanIds('fajr')[1];
     const refresh = refreshNotifications();
@@ -274,8 +267,8 @@ describe('an operation queued behind one that fails part way', () => {
   });
 
   it("runs only once the failing commit's reminder cancels have landed", async () => {
-    armedEarlier(FAJR, 'fajr', athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
-    armedEarlier(FAJR, 'fajr', reminderIds('fajr'), Database.addOneScheduledReminderForPrayer);
+    armedEarlier(FAJR, athanIds('fajr'), Database.addOneScheduledNotificationForPrayer);
+    armedEarlier(FAJR, reminderIds('fajr'), Database.addOneScheduledReminderForPrayer);
     refusedCancels.add(athanIds('fajr')[0]);
     holdsCancel = (id) => id === reminderIds('fajr')[1];
     const turnOff = commitPrayerAlertChange(ScheduleType.Standard, FAJR, 'fajr', OFF, alerts(AlertType.Silent));

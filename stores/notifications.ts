@@ -19,7 +19,6 @@ import {
   STANDARD_PRAYER_IDS,
   STANDARD_PRAYER_TITLES,
 } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -862,7 +861,6 @@ async function scheduleNotificationForDate(
       id: identifier,
       date,
       time: prayer.time,
-      englishName: prayerLabel(id),
       alertType,
     };
     Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
@@ -1068,7 +1066,6 @@ async function scheduleReminderNotificationForDate(
       id: identifier,
       date,
       time: prayer.time,
-      englishName: prayerLabel(id),
       alertType,
     };
     Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
@@ -1628,23 +1625,9 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   return true;
 };
 
-/**
- * Reschedules all notifications for both Standard and Extra schedules
- *
- * Used when changing sound preferences or when a full refresh is needed.
- * Replaces every scheduled notification in place (same-identifier replace),
- * cancels stale identifiers, and sweeps anything the OS holds beyond the
- * intended set — no bulk cancel, no zero-notification window (issue #15).
- * Guards against concurrent scheduling using withSchedulingLock.
- *
- * @returns Promise that resolves when rescheduling is complete
- * @throws Error if scheduling fails
- *
- * @example
- * // After changing sound preference
- * await rescheduleAllNotifications();
- */
-export const rescheduleAllNotifications = async () => {
+/** Test seam for the reschedule pass the suites drive directly: production reaches the same
+ *  code through refreshNotifications (foreground) and the background task's variant. */
+export const __rescheduleAllForTests = async () => {
   return withSchedulingLock(async () => {
     try {
       // Foreground UI commit path (sheet dismiss) — defer the widget push

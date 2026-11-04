@@ -33,7 +33,7 @@ beforeEach(() => {
 
 /** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */
 const day = (date: string, fajr: string, sunrise: string, dhuhr: string, asr: string, magrib: string, isha: string) =>
-  transformApiData({ city: 'london', times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+  transformApiData({ times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
 
 /** Several days' lists as one sequence, exactly as the app builds it */
 const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): Prayer[] =>

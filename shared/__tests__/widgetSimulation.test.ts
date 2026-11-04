@@ -659,7 +659,7 @@ const storedDays = (
     times[date] = record;
   }
 
-  return transformApiData({ city: MOCK_DATA_FULL.city, times });
+  return transformApiData({ times });
 };
 
 /** A sequence built as stores/widget.ts builds one, with `records` as the only stored days */

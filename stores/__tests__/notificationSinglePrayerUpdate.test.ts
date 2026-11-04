@@ -13,7 +13,6 @@ import * as Notifications from 'expo-notifications';
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import { transformApiData } from '@/shared/prayer';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
@@ -111,7 +110,6 @@ const seedReminder = (type: ScheduleType, id: PrayerId, index: number, date: str
     id: identifier,
     date,
     time: '12:00',
-    englishName: prayerLabel(id),
     alertType: AlertType.Silent,
   });
   osState.add(identifier);
@@ -133,7 +131,6 @@ beforeEach(() => {
 
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(DAYS)) {
     const [stored] = transformApiData({
-      city: 'london',
       times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
     });
     seededWindow.set(date, stored);

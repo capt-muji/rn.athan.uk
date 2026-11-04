@@ -21,7 +21,6 @@ export interface ScheduledNotification {
   id: string;
   date: string;
   time: string;
-  englishName: string;
   alertType: AlertType;
 }
 
