@@ -21,8 +21,6 @@ import type { ISingleApiResponseTransformed } from '@/shared/types';
 // MOCK SETUP
 // =============================================================================
 
-let mockIsDev = false;
-
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
   default: { info: jest.fn(), warn: jest.fn(), error: jest.fn(), debug: jest.fn() },
@@ -34,9 +32,6 @@ jest.mock('@/shared/config', () => {
   const actual = jest.requireActual('@/shared/config');
   return {
     ...actual,
-    get APP_CONFIG() {
-      return { ...actual.APP_CONFIG, isDev: mockIsDev };
-    },
   };
 });
 
@@ -118,7 +113,6 @@ beforeEach(() => {
   jest.resetModules();
   jest.clearAllMocks();
   jest.useFakeTimers({ now: SEPTEMBER_NOW });
-  mockIsDev = false;
   mockReadyError = null;
   mockReadError = null;
   mockHandleAppUpgrade.mockImplementation(() => {});

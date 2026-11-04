@@ -24,7 +24,7 @@ const REAL_ARTIFACT = new Uint8Array(
 );
 
 // The env split is a build property; the suite mocks the config so each case
-// can be a prod, preview or dev build the way the sync suites flip isDev. var,
+// can be a prod, preview or dev build through its env. var,
 // because the module under test reads the env at import, before the suite body
 // runs: the hoisted undefined is the dev default that import then sees
 var mockBuildEnv = 'local';

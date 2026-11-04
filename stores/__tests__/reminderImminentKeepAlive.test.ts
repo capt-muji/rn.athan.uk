@@ -218,9 +218,6 @@ describe('a language convergence pass inside the final 30 seconds before a remin
 
     await reconcileLanguageSurfaces();
 
-    /** The days the reader serves, accumulated by the seeding helper and reset with the store */
-    const _seededWindow = new Map<string, ISingleApiResponseTransformed>();
-
     expect(cancelsOf(imminentId)).toBe(0);
     expect(schedulesOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(true);

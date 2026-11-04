@@ -11,16 +11,6 @@ import { join } from 'node:path';
  * - cleanLegacyDayCacheOnce
  */
 
-/**
- * Unit tests for stores/database.ts
- *
- * Tests MMKV storage wrapper functions:
- * - getItem, setItem, removeItem
- * - getAllWithPrefix, clearPrefix
- * - Notification record management
- * - cleanLegacyDayCacheOnce
- */
-
 import type { ScheduledNotification } from '@/shared/notifications';
 import { AlertType, ScheduleType } from '@/shared/types';
 import { __installTimetableDays } from '@/stores/timetable';

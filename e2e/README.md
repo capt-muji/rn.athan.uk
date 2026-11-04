@@ -151,11 +151,7 @@ verification, never infer visuals from pixels alone.
   absolute startup numbers to production. The old mock-refetch's dev-MMKV day
   rows are gone (the reader never writes days), and the one-time legacy
   cleanup removes any that earlier builds left, so a stale mock day is no
-  longer a live confound within dev. Since the store is namespaced by the same predicate that serves
-  the mock (`stores/database.ts`, AUDIT #25), the fabricated rows stay in
-  `athan-storage-dev` and a prod or preview build installed over the top never
-  reads them, but they persist for the next local build, so a stale mock day
-  is still a live confound within dev. The mock seeds by the download's London clock (row 113,
+  longer a live confound within dev. The mock seeds by the download's London clock (row 113,
   any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
   passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
   tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)
