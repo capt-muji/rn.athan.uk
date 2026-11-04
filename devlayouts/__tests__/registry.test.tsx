@@ -31,6 +31,14 @@ describe('the fasting layout registry', () => {
     expect(hiddenCount()).toBe(VARIANTS.filter((variant) => variant.hidesExplanations).length);
   });
 
+  it('spans at least eight distinct archetypes', () => {
+    expect(archetypeCount()).toBeGreaterThanOrEqual(8);
+  });
+
+  it('hides explanations in at least half the set', () => {
+    expect(hiddenCount()).toBeGreaterThanOrEqual(25);
+  });
+
   it('renders the first variant settled with its mode labels', async () => {
     const First = VARIANTS[0].Component;
     await render(<First />);

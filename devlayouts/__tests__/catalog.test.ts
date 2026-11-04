@@ -36,4 +36,8 @@ describe('the fasting layout catalog', () => {
   it('carries a boolean hides flag on every row', () => {
     for (const row of rows) expect(typeof row.hidesExplanations).toBe('boolean');
   });
+
+  it('holds all fifty rows', () => {
+    expect(rows.length).toBe(50);
+  });
 });

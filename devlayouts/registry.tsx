@@ -11,6 +11,8 @@ import type { ReactElement } from 'react';
 import catalog from './catalog.json';
 import { VARIANTS_01_10 } from './variants/variants-01-10';
 import { VARIANTS_11_25 } from './variants/variants-11-25';
+import { VARIANTS_26_40 } from './variants/variants-26-40';
+import { VARIANTS_41_50 } from './variants/variants-41-50';
 
 export type FastingVariantComponent = () => ReactElement;
 
@@ -24,7 +26,12 @@ export interface FastingVariant {
 }
 
 /** One map per variant file, appended as the steps land their batches */
-const COMPONENT_MAPS: readonly Record<string, FastingVariantComponent>[] = [VARIANTS_01_10, VARIANTS_11_25];
+const COMPONENT_MAPS: readonly Record<string, FastingVariantComponent>[] = [
+  VARIANTS_01_10,
+  VARIANTS_11_25,
+  VARIANTS_26_40,
+  VARIANTS_41_50,
+];
 
 const componentFor = (id: string): FastingVariantComponent => {
   for (const map of COMPONENT_MAPS) {

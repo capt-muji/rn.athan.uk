@@ -173,5 +173,180 @@
     "name": "Dropdown Summary Badges",
     "archetype": "Dropdown",
     "hidesExplanations": true
+  },
+  {
+    "index": 26,
+    "id": "info-bubble-rows",
+    "name": "Info Bubble Rows",
+    "archetype": "Tooltip Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 27,
+    "id": "header-tooltip-toggle",
+    "name": "Header Tooltip Toggle",
+    "archetype": "Tooltip Toggle",
+    "hidesExplanations": true
+  },
+  {
+    "index": 28,
+    "id": "longpress-peek-rows",
+    "name": "Long-Press Peek Rows",
+    "archetype": "Peek Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 29,
+    "id": "white-days-calendar-strip",
+    "name": "White-Days Calendar Strip",
+    "archetype": "Calendar Strip",
+    "hidesExplanations": false
+  },
+  {
+    "index": 30,
+    "id": "week-strip-mode-chips",
+    "name": "Week Strip + Mode Chips",
+    "archetype": "Calendar Strip",
+    "hidesExplanations": true
+  },
+  {
+    "index": 31,
+    "id": "month-dots-grid",
+    "name": "Month Dots Grid",
+    "archetype": "Month Grid",
+    "hidesExplanations": true
+  },
+  {
+    "index": 32,
+    "id": "stepper-cycle",
+    "name": "Stepper Cycle",
+    "archetype": "Stepper",
+    "hidesExplanations": true
+  },
+  {
+    "index": 33,
+    "id": "stepper-hint-slot",
+    "name": "Stepper Hint Slot",
+    "archetype": "Stepper",
+    "hidesExplanations": false
+  },
+  {
+    "index": 34,
+    "id": "tally-stepper",
+    "name": "Tally Stepper",
+    "archetype": "Stepper",
+    "hidesExplanations": true
+  },
+  {
+    "index": 35,
+    "id": "rhythm-then-extras",
+    "name": "Rhythm Then Extras",
+    "archetype": "Progressive Disclosure",
+    "hidesExplanations": true
+  },
+  {
+    "index": 36,
+    "id": "accordion-sections",
+    "name": "Accordion Sections",
+    "archetype": "Progressive Disclosure",
+    "hidesExplanations": false
+  },
+  {
+    "index": 37,
+    "id": "contextual-chip-rows",
+    "name": "Contextual Chip Rows",
+    "archetype": "Progressive Disclosure",
+    "hidesExplanations": true
+  },
+  {
+    "index": 38,
+    "id": "change-button-collapse",
+    "name": "Change Button Collapse",
+    "archetype": "Progressive Disclosure",
+    "hidesExplanations": true
+  },
+  {
+    "index": 39,
+    "id": "tile-grid-corner-checks",
+    "name": "Tile Grid Corner Checks",
+    "archetype": "Tile Grid",
+    "hidesExplanations": true
+  },
+  {
+    "index": 40,
+    "id": "tile-grid-detail-drawer",
+    "name": "Tile Grid Detail Drawer",
+    "archetype": "Tile Grid",
+    "hidesExplanations": false
+  },
+  {
+    "index": 41,
+    "id": "mosaic-selected-large",
+    "name": "Mosaic Selected Large",
+    "archetype": "Tile Mosaic",
+    "hidesExplanations": true
+  },
+  {
+    "index": 42,
+    "id": "state-dot-rows",
+    "name": "State Dot Rows",
+    "archetype": "State Dot Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 43,
+    "id": "outline-fill-cards",
+    "name": "Outline Fill Cards",
+    "archetype": "Fill Cards",
+    "hidesExplanations": true
+  },
+  {
+    "index": 44,
+    "id": "edge-bar-rows",
+    "name": "Edge Bar Rows",
+    "archetype": "Edge Bar Rows",
+    "hidesExplanations": true
+  },
+  {
+    "index": 45,
+    "id": "table-footer-summary",
+    "name": "Table Footer Summary",
+    "archetype": "Table Rows",
+    "hidesExplanations": false
+  },
+  {
+    "index": 46,
+    "id": "inset-grouped-list",
+    "name": "Inset Grouped List",
+    "archetype": "Inset Grouped List",
+    "hidesExplanations": false
+  },
+  {
+    "index": 47,
+    "id": "split-list-states",
+    "name": "Split List States",
+    "archetype": "Split List",
+    "hidesExplanations": true
+  },
+  {
+    "index": 48,
+    "id": "dial-four-points",
+    "name": "Dial Four Points",
+    "archetype": "Dial",
+    "hidesExplanations": true
+  },
+  {
+    "index": 49,
+    "id": "badge-scroller",
+    "name": "Badge Scroller",
+    "archetype": "Badge Scroller",
+    "hidesExplanations": true
+  },
+  {
+    "index": 50,
+    "id": "hint-hero-cards",
+    "name": "Hint Hero Cards",
+    "archetype": "Text-Hero Cards",
+    "hidesExplanations": false
   }
 ]
