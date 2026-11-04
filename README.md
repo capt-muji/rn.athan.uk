@@ -18,6 +18,7 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 - Seventy-five languages, the language wave's refresh: Hiligaynon, Central Bikol, Waray, Maranao, Pattani Malay and Tigrinya added; Traditional Chinese, Dhivehi, Chechen, Afar, Mandinka and Zarma retired - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Saraiki, Balochi and Kashmiri.
 - Fully offline from first launch: the whole 2026-2076 timetable is baked into the app at build time, and an unreadable time shows `--:--`, never a guess.
 - Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
+- Fasting days: the Sahur alert can follow a regimen instead of firing every day - Mondays and Thursdays, alternate days (the fast of Dawood), or the white days (13th-15th of each Hijri month), with every day of Ramadan armed regardless and a preview of the next Sahur.
 - Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
 - Qibla compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for.
 - Settings: large overlay font, Hijri date, Arabic prayer names, seconds, 12/24-hour display, seasonal decorations, countdown bar, color picker, check for updates.

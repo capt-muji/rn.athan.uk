@@ -72,6 +72,8 @@ export interface AlertDraft {
   sounds: Record<ReminderSlot, AlertType.Silent | AlertType.Sound>;
   /** The reminder choices held while the athan is Off: the stored values at open, re-snapshotted at every in-session move into Off */
   preservedAlerts: PerReminderSlot<AlertType>;
+  /** Present only on the Sahur row, carried through unchanged: the fasting selection is a whole-value pick, never a per-part draft */
+  fasting?: AlertMenuState['fasting'];
 }
 
 /**
@@ -104,5 +106,6 @@ export const initialDraft = (baseline: AlertMenuState): AlertDraft => {
       1: initialReminderType(reminders[1].alert),
     },
     preservedAlerts: [baseline.reminders[0].alert, baseline.reminders[1].alert],
+    fasting: baseline.fasting,
   };
 };

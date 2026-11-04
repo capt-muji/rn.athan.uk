@@ -10,9 +10,7 @@
 
 import { PRAYER_TIMEZONE } from '@/shared/constants';
 import * as TimeUtils from '@/shared/time';
-
-/** The Sahur row's scheduling modes, in picker order */
-export type FastingMode = 'everyDay' | 'muhammad' | 'dawood' | 'whiteDays';
+import type { FastingMode } from '@/shared/types';
 
 export const FASTING_MODES = ['everyDay', 'muhammad', 'dawood', 'whiteDays'] as const satisfies readonly FastingMode[];
 

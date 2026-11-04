@@ -11,14 +11,21 @@ import { deferPastNextPaint } from '@/shared/nextPaint';
 import {
   type AlertMenuState,
   AlertType,
+  type FastingSelection,
   Icon,
   type PerReminderSlot,
   REMINDER_SLOTS,
   type ReminderSetting,
   type ReminderSlot,
+  ScheduleType,
 } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
-import { getPrayerAlertType, getReminderAlertType, getReminderInterval } from '@/stores/notifications';
+import {
+  getFastingSelection,
+  getPrayerAlertType,
+  getReminderAlertType,
+  getReminderInterval,
+} from '@/stores/notifications';
 import { type AlertSheetState, alertSheetStateAtom, setAlertSheetModal } from '@/stores/ui';
 
 import { SegmentedControl, type SegmentOption, Sheet, VolumeNote } from '../parts';
@@ -30,6 +37,7 @@ import {
   selectionNeedsPermission,
   takenInterval,
 } from './alertDraft';
+import FastingCard from './FastingCard';
 import ReminderCard from './ReminderCard';
 
 // Resolved at call time so a locale switch reaches the labels on the next render
@@ -156,7 +164,13 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
         interval: initialReminderInterval(getReminderInterval(sheetState.type, sheetState.index, slot)),
       });
 
-      return { atTimeAlert: getPrayerAlertType(sheetState.type, sheetState.index), reminders: [saved(0), saved(1)] };
+      const isSuhoorRow = sheetState.type === ScheduleType.Extra && sheetState.prayerId === 'suhoor';
+
+      return {
+        atTimeAlert: getPrayerAlertType(sheetState.type, sheetState.index),
+        reminders: [saved(0), saved(1)],
+        ...(isSuhoorRow ? { fasting: getFastingSelection() } : {}),
+      };
     };
 
     const [mountedState, setMountedState] = useState<AlertMenuState>(readBaseline);
@@ -174,7 +188,7 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
       setDraft(initialDraft(baseline));
     }
 
-    const { atTimeAlert, reminders, sounds, preservedAlerts } = draft;
+    const { atTimeAlert, reminders, sounds, preservedAlerts, fasting } = draft;
 
     const updateReminder = useCallback((slot: ReminderSlot, change: Partial<ReminderSetting>) => {
       setDraft((current) => ({
@@ -183,6 +197,10 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
           index === slot ? { ...reminder, ...change } : reminder
         ),
       }));
+    }, []);
+
+    const handleFastingSelect = useCallback((next: FastingSelection) => {
+      setDraft((current) => ({ ...current, fasting: next }));
     }, []);
 
     const handleAlertSelect = useCallback(
@@ -274,6 +292,7 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
           atTimeAlert === AlertType.Off
             ? mapSlots(reminders, (reminder, slot) => ({ ...reminder, alert: preservedAlerts[slot] }))
             : reminders,
+        fasting,
       }),
     }));
 
@@ -294,6 +313,8 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
             />
           </View>
         </View>
+
+        {fasting !== undefined && <FastingCard selection={fasting} onSelectionChange={handleFastingSelect} />}
 
         <ReminderCard
           title={t('alert.reminder', { n: 1 })}

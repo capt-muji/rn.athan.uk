@@ -19,7 +19,13 @@ import {
   STANDARD_PRAYER_IDS,
   STANDARD_PRAYER_TITLES,
 } from '@/shared/constants';
-import { DEFAULT_FASTING_MODE, type FastingSettings, fastingEvaluator, validFastingMode } from '@/shared/fasting';
+import {
+  DEFAULT_FASTING_MODE,
+  dawoodActivates,
+  type FastingSettings,
+  fastingEvaluator,
+  validFastingMode,
+} from '@/shared/fasting';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -29,6 +35,7 @@ import * as TimeUtils from '@/shared/time';
 import {
   type AlertMenuState,
   AlertType,
+  type FastingSelection,
   REMINDER_SLOTS,
   type ReminderInterval,
   type ReminderSetting,
@@ -367,6 +374,12 @@ export const getFastingSettings = (): FastingSettings => ({
   whiteDaysAddOn: store.get(fastingWhiteDaysAtom),
   dawoodAnchorMs: store.get(fastingDawoodAnchorAtom),
 });
+
+/** The sheet's fasting selection as the stores hold it */
+export const getFastingSelection = (): FastingSelection => {
+  const settings = getFastingSettings();
+  return { mode: settings.mode, whiteDaysAddOn: settings.whiteDaysAddOn };
+};
 
 const suhoorInstantFor = (date: string): Date | null => {
   const prayer = PrayerUtils.getPrayerForDate(ScheduleType.Extra, 'suhoor', date);
@@ -1290,6 +1303,11 @@ const applyPrayerPreferences = (scheduleType: ScheduleType, prayerIndex: number,
     setReminderAlertType(scheduleType, prayerIndex, slot, state.reminders[slot].alert);
     setReminderInterval(scheduleType, prayerIndex, slot, state.reminders[slot].interval);
   }
+
+  if (state.fasting !== undefined) {
+    store.set(fastingModeAtom, state.fasting.mode);
+    store.set(fastingWhiteDaysAtom, state.fasting.whiteDaysAddOn);
+  }
 };
 
 /**
@@ -1306,7 +1324,8 @@ const undoPrayerAlertChange = async (
   prayerIndex: number,
   id: PrayerId,
   previous: AlertMenuState,
-  generation: number
+  generation: number,
+  anchorBefore: number
 ): Promise<void> => {
   // A change that finds the generation moved touches nothing: a newer change owns this prayer now, and its own work
   // decides what the bell and the alarms say
@@ -1316,6 +1335,7 @@ const undoPrayerAlertChange = async (
   }
 
   applyPrayerPreferences(scheduleType, prayerIndex, previous);
+  store.set(fastingDawoodAnchorAtom, anchorBefore);
 
   try {
     const refusals = await applyPrayerAlerts(scheduleType, prayerIndex, id, previous.atTimeAlert, previous.reminders);
@@ -1359,6 +1379,20 @@ export const commitPrayerAlertChange = async (
   previous: AlertMenuState
 ): Promise<boolean> => {
   const generation = markPrayerForRepair(scheduleType, prayerIndex);
+
+  // The anchor moves only on this commit's own Dawood activation; the undo puts it back
+  const anchorBefore = store.get(fastingDawoodAnchorAtom);
+  if (
+    next.fasting !== undefined &&
+    previous.fasting !== undefined &&
+    dawoodActivates(
+      { bellOn: previous.atTimeAlert !== AlertType.Off, mode: previous.fasting.mode },
+      { bellOn: next.atTimeAlert !== AlertType.Off, mode: next.fasting.mode }
+    )
+  ) {
+    store.set(fastingDawoodAnchorAtom, Date.now());
+  }
+
   applyPrayerPreferences(scheduleType, prayerIndex, next);
 
   return withSchedulingLock(async () => {
@@ -1368,7 +1402,7 @@ export const commitPrayerAlertChange = async (
       refusals = await applyPrayerAlerts(scheduleType, prayerIndex, id, next.atTimeAlert, next.reminders);
     } catch (error) {
       logger.error('NOTIFICATION: The alert change failed, putting the prayer back:', error);
-      await undoPrayerAlertChange(scheduleType, prayerIndex, id, previous, generation);
+      await undoPrayerAlertChange(scheduleType, prayerIndex, id, previous, generation, anchorBefore);
       return false;
     }
 
@@ -1381,7 +1415,7 @@ export const commitPrayerAlertChange = async (
       id,
       refusals,
     });
-    await undoPrayerAlertChange(scheduleType, prayerIndex, id, previous, generation);
+    await undoPrayerAlertChange(scheduleType, prayerIndex, id, previous, generation, anchorBefore);
 
     return false;
   }, 'commitPrayerAlertChange');

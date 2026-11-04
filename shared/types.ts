@@ -75,6 +75,15 @@ export enum ScheduleType {
   Extra = 'extra',
 }
 
+/** The Sahur row's scheduling modes, in picker order */
+export type FastingMode = 'everyDay' | 'muhammad' | 'dawood' | 'whiteDays';
+
+/** The fasting selection the Sahur row's sheet commits beside its alerts */
+export interface FastingSelection {
+  mode: FastingMode;
+  whiteDaysAddOn: boolean;
+}
+
 export interface PageCoordinates {
   pageX: number;
   pageY: number;
@@ -161,6 +170,8 @@ export interface AlertMenuState {
   atTimeAlert: AlertType;
   /** Both reminders, indexed by slot */
   reminders: PerReminderSlot<ReminderSetting>;
+  /** Present only on the Sahur row: the fasting selection riding the same commit */
+  fasting?: FastingSelection;
 }
 
 export enum Icon {

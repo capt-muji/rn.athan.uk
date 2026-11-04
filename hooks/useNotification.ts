@@ -225,9 +225,15 @@ export const useNotification = () => {
         reminder.alert !== originalState.reminders[slot].alert ||
         reminder.interval !== originalState.reminders[slot].interval
     );
+    // A mode or add-on change alone is a real change: the Sahur row's whole day set moves with it
+    const fastingChanged =
+      currentState.fasting !== undefined &&
+      originalState.fasting !== undefined &&
+      (currentState.fasting.mode !== originalState.fasting.mode ||
+        currentState.fasting.whiteDaysAddOn !== originalState.fasting.whiteDaysAddOn);
 
     // No changes, skip scheduling
-    if (!atTimeChanged && !reminderChanged) {
+    if (!atTimeChanged && !reminderChanged && !fastingChanged) {
       logger.info('NOTIFICATION: No changes detected, skipping commit');
       return true;
     }

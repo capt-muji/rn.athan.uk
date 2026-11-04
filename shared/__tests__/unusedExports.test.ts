@@ -34,8 +34,6 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The scheduling suites drive the reschedule pass directly; production reaches the same code through refreshNotifications',
   __installTimetableDays:
     'The test harness installs days through the reader seam in place of stored rows, so only tests import it',
-  dawoodActivates: 'The Sahur commit path reads it to write the anchor; T-615 step 3 imports it',
-  upcomingFastingDays: 'The sheet preview walks it for its upcoming fasts; T-615 step 3 imports it',
 };
 
 const ROOT = join(__dirname, '..', '..');
