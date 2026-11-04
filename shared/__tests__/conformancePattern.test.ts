@@ -49,7 +49,7 @@ const EXPLANATION_PAIRS: Array<[key: string, slot: string]> = [
   ['extras.explanation.last third', 'Start of the last third of the night'],
   ['extras.explanation.suhoor', '20 mins before Fajr'],
   ['extras.explanation.duha', '20 mins after Sunrise'],
-  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 ];
 
 const en = catalogFor('en');
@@ -126,7 +126,7 @@ describe('the conformance pattern, T-542', () => {
     expect(en['extras.explanation.last third']).toBe('Start of the last third of the night');
     expect(en['extras.explanation.suhoor']).toBe('20 minutes before Fajr');
     expect(en['extras.explanation.duha']).toBe('20 minutes after Sunrise');
-    expect(en['extras.explanation.istijaba']).toBe('1 hour before Magrib (Fridays only)');
+    expect(en['extras.explanation.istijaba']).toBe('1 hour before Magrib (Fridays only) (the hour of acceptance)');
   });
 
   it('holds the count at seventy-five on every registry, read live', () => {

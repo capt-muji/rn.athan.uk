@@ -163,7 +163,7 @@ export const sq = {
   'extras.explanation.last third': 'Fillimi i të tretës së fundit të natës',
   'extras.explanation.suhoor': '20 minuta para Imsakut',
   'extras.explanation.duha': '20 minuta pas Lindjes',
-  'extras.explanation.istijaba': '1 orë para Akshamit (vetëm të premten)',
+  'extras.explanation.istijaba': '1 orë para Akshamit (vetëm të premten) (ora e pranimit të lutjes)',
   'duration.now': 'tani',
   'time.now': '{name} tani',
   'time.ago': '{name} {duration} më parë',

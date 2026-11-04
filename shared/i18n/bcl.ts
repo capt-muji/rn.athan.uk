@@ -169,7 +169,7 @@ export const bcl = {
   'extras.explanation.last third': 'Poon kan huring ikatolo kan banggi',
   'extras.explanation.suhoor': '20 minuto bago an Fajr',
   'extras.explanation.duha': '20 minuto pakatapos kan pagsirang',
-  'extras.explanation.istijaba': '1 oras bago an Maghrib (Biyernes sana)',
+  'extras.explanation.istijaba': '1 oras bago an Maghrib (Biyernes sana) (oras kan pagtubang sa pangadyi)',
   'duration.now': 'ngonyan',
   'time.now': '{name} ngonyan',
   'time.ago': '{name} {duration} an nakaagi',

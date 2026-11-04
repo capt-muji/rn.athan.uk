@@ -162,7 +162,7 @@ export const skr = {
   'extras.explanation.last third': 'رات دی آخری تہائی دا آغاز',
   'extras.explanation.suhoor': 'دَھمِّی توں 20 منٹ پہلے',
   'extras.explanation.duha': 'طلوع آفتاب توں 20 منٹ بعد',
-  'extras.explanation.istijaba': 'نِماشَاں توں 1 گھنٹہ پہلے (صرف جمعہ)',
+  'extras.explanation.istijaba': 'نِماشَاں توں 1 گھنٹہ پہلے (صرف جمعہ) (دعا قبول دا وقت)',
   'duration.now': 'ہُݨ',
   'time.now': '{name} ہُݨ',
   'time.ago': '{name} {duration} پہلے',

@@ -161,7 +161,7 @@ export const bm = {
   'extras.explanation.last third': 'Su laban sɔrɔ fɔlɔ',
   'extras.explanation.suhoor': 'Fajiri 20 miniti ɲɛfɛ',
   'extras.explanation.duha': 'Tile bɔli 20 miniti kɔfɛ',
-  'extras.explanation.istijaba': 'Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)',
+  'extras.explanation.istijaba': 'Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn) (waati kanu bonya doa)',
   'duration.now': 'sisan',
   'time.now': '{name} sisan',
   'time.ago': '{name} {duration} tɛmɛnen',

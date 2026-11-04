@@ -161,7 +161,7 @@ export const ms = {
   'extras.explanation.last third': 'Permulaan sepertiga akhir malam',
   'extras.explanation.suhoor': '20 minit sebelum Subuh',
   'extras.explanation.duha': '20 minit selepas Syuruk',
-  'extras.explanation.istijaba': '1 jam sebelum Maghrib (hari Jumaat sahaja)',
+  'extras.explanation.istijaba': '1 jam sebelum Maghrib (hari Jumaat sahaja) (saat pengabulan doa)',
   'duration.now': 'sekarang',
   'time.now': '{name} sekarang',
   'time.ago': '{name} {duration} lalu',

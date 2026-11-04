@@ -163,7 +163,7 @@ export const sw = {
   'extras.explanation.last third': 'Mwanzo wa theluthi ya mwisho ya usiku',
   'extras.explanation.suhoor': 'Dakika 20 kabla ya Alfajiri',
   'extras.explanation.duha': 'Dakika 20 baada ya Macheo',
-  'extras.explanation.istijaba': 'Saa 1 kabla ya Magharibi (Ijumaa tu)',
+  'extras.explanation.istijaba': 'Saa 1 kabla ya Magharibi (Ijumaa tu) (saa ya kukubaliwa kwa maombi)',
   'duration.now': 'sasa',
   'time.now': '{name} sasa',
   'time.ago': '{name} {duration} zilizopita',

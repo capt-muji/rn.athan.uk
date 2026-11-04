@@ -159,7 +159,7 @@ export const hi = {
   'extras.explanation.last third': 'रात के अंतिम तिहाई की शुरुआत',
   'extras.explanation.suhoor': 'फज्र से 20 मिनट पहले',
   'extras.explanation.duha': 'सूर्योदय के 20 मिनट बाद',
-  'extras.explanation.istijaba': 'मग़रिब से 1 घंटा पहले (केवल शुक्रवार)',
+  'extras.explanation.istijaba': 'मग़रिब से 1 घंटा पहले (केवल शुक्रवार) (दुआ क़बूल होने का समय)',
   'duration.now': 'अब',
   'time.now': '{name} अब',
   'time.ago': '{name} {duration} पहले',

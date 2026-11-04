@@ -139,7 +139,7 @@ describe('the Extras card on a list whose selected index is not its drawn row (r
       4,
       'bottom',
       { top: rowTop(4) + TIP_OVERLAP, transform: [{ translateY: '-100%' }] },
-      '1 hour before Magrib (Fridays only)',
+      '1 hour before Magrib (Fridays only) (the hour of acceptance)',
     ],
     [
       4,

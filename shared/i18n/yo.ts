@@ -161,7 +161,7 @@ export const yo = {
   'extras.explanation.last third': 'Ìbẹ̀rẹ̀ apá ìkẹyìn òru',
   'extras.explanation.suhoor': 'Ìṣẹ́jú 20 ṣáájú Àárọ̀',
   'extras.explanation.duha': 'Ìṣẹ́jú 20 lẹ́yìn ìlà oòrùn',
-  'extras.explanation.istijaba': 'Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)',
+  'extras.explanation.istijaba': 'Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan) (ìgbà ìdáhùn ìwàdùúró)',
   'duration.now': 'báyìí',
   'time.now': '{name} báyìí',
   'time.ago': '{name} {duration} sẹ́yìn',

@@ -9,7 +9,7 @@
  * slot two sits empty - engine "pending" - until phase two adds the second site.
  *
  *   node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume]
- *                               --waves | --all | --fill ar,so
+ *                               [--pace ms] --waves | --all | --fill ar,so
  *
  * The verdict color reads at a glance; rows the engine refuses carry the judge
  * LLM's rendering in one cell marked engine:llm, never a site's rendering. Pages
@@ -46,7 +46,7 @@ const SITE_ENGINES = ['gtx'];
 const ROW_SLOTS = ['gtx', 'pending'];
 
 /** Engine language codes where they differ from the repo's locale ids */
-const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN' };
+const LOCALE_ALIASES = { 'zh-Hans': 'zh-CN', jv: 'jw' };
 
 /** The eleven prayer.* keys, the owner's first priority */
 const PRAYER_KEYS = [
@@ -340,29 +340,99 @@ const STOPWORDS = new Set([
 
 /** Synonym groups for this app's UI vocabulary; members match each other pairwise */
 const SYNONYM_GROUPS = [
-  ['fajr', 'dawn', 'morning'],
-  ['dhuhr', 'noon', 'midday', 'zuhr'],
-  ['asr', 'afternoon'],
-  ['magrib', 'maghrib', 'sunset'],
-  ['suhoor', 'sahur', 'suhur', 'sehri'],
-  ['duha', 'forenoon', 'midmorning', 'morn', 'morning'],
-  ['istijaba', 'istijabah', 'response'],
-  ['athan', 'adhan', 'azan', 'call'],
-  ['prayer', 'salah', 'salat', 'supplication', 'worship'],
+  // sabah and aksham are the Bosnian traditional names, each its own morning/evening sense
+  ['fajr', 'dawn', 'morning', 'sabah', 'subah'],
+  // zahr is the Arabic midday word; lunch is its own meal sense (the isha/dinner precedent)
+  ['dhuhr', 'noon', 'midday', 'zuhr', 'zohr', 'lunch', 'zohar', 'zuhar', 'zuhur', 'juhar', 'luhr', 'zahor', 'zuhri'],
+  // Sunrise is whole-sense only (owner order eleven): a fragment like 'rise' or 'sun'
+  // never verifies it; the Shuruk family carries for the languages that transliterate
+  ['sunrise', 'sunup', 'shuruq', 'shuruk', 'syuruq', 'shurouq'],
+  // Bhanu is the sun's own Sanskritic name (Bhanuvara is Sunday); the weekday row
+  // names the sun itself, while sunrise above stays whole-sense only (order eleven)
+  ['sun', 'bhanu'],
+  ['asr', 'afternoon', 'ashar', 'asher', 'era', 'asar', 'azar', 'asur', 'asser'],
+  // Morocco is al-Maghrib in Arabic, but the owner's order ten rules the country's name
+  // never verifies the prayer: the word's plain evening sense is the only engine reading
+  // beyond the name itself that carries
+  ['magrib', 'maghrib', 'sunset', 'evening', 'aksham'],
+  // al-isha is the Arabic word for the evening meal; the prayer name derives from it.
+  // Isak is the engine's romanization of Malay Isyak - it names the prayer itself (the Ashar/Asher class)
+  // tuta, Quechua's night word, names the night prayer the way nightfall does
+  ['isha', 'nightfall', 'dinner', 'supper', 'isak', 'esha', 'night'],
+  ['suhoor', 'sahur', 'suhur', 'sehri', 'sahri', 'sahar', 'sahari'],
+  ['duha', 'forenoon', 'midmorning', 'morn', 'morning', 'chasht', 'chast', 'juha', 'dooha', 'luha', 'zuha', 'zuho'],
+  ['istijaba', 'istijabah', 'response', 'answer'],
+  // Owner order twelve: athan is transliterated in every language; Azaan is the Somali
+  // spelling of the same word (as Isak is of Isyak)
+  ['athan', 'adhan', 'azan', 'azaan', 'call', 'asan', 'azon', 'azone'],
+  ['prayer', 'salah', 'salat', 'supplication', 'worship', 'dasal', 'namaz'],
   ['moment', 'second', 'seconds', 'instant'],
-  ['notification', 'alert', 'notice', 'reminder', 'memory'],
-  ['sound', 'audio', 'tone', 'voice'],
-  ['silent', 'silence', 'mute', 'muted'],
-  ['show', 'display', 'view', 'visible', 'appearance'],
+  // เสร็จ, Thai's done, renders as its plain verb; Tamam renders as Ok; Jeex na as over
+  ['done', 'finish', 'finished', 'ok', 'over'],
+  // Довідка, Ukrainian's help, renders as its reference-desk sense; Ndimbal, Wolof's
+  // help, renders as the favour it asks for
+  ['help', 'reference', 'favour'],
+  // обривається завчасно cuts off early; the engine's premature is the same earliness
+  ['early', 'prematurely'],
+  // amul, Wolof's not-have, renders plainly as without
+  ['unavailable', 'without'],
+  [
+    'notification',
+    'alert',
+    'notice',
+    'reminder',
+    'memory',
+    'warning',
+    'note',
+    'information',
+    'message',
+    'messages',
+    'announcement',
+  ],
+  ['sound', 'audio', 'tone', 'voice', 'noise'],
+  ['silent', 'silence', 'mute', 'muted', 'dumb', 'quiet'],
+  // tampilan, the Malay family's display word, renders as layout - its own appearance sense.
+  // Azerbaijani ekran is the display word and renders as screen, its own sense
+  [
+    'show',
+    'display',
+    'view',
+    'visible',
+    'appearance',
+    'layout',
+    'screen',
+    'reveal',
+    'indicate',
+    'showing',
+    'indication',
+  ],
   ['on', 'enable', 'enabled', 'activate', 'activated'],
-  ['off', 'disable', 'disabled', 'deactivate', 'deactivated'],
+  // mati is Indonesian's standard device-off word; the engine renders its literal sense.
+  // Minangkabau shares the word, and die is that literal sense's own verb.
+  // Cebuano gipatay (killed) is the same device-off class
+  [
+    'off',
+    'disable',
+    'disabled',
+    'deactivate',
+    'deactivated',
+    'dead',
+    'die',
+    'killed',
+    'gone',
+    'closed',
+    'close',
+    'passive',
+    // German aus renders as out of - its own off sense
+    'out',
+  ],
   ['turn', 'switch'],
   ['open', 'launch'],
-  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut'],
+  ['stop', 'halt', 'cease', 'cancel', 'close', 'shut', 'delete', 'cover'],
   ['allow', 'permit'],
   ['phone', 'device', 'mobile'],
-  ['check', 'verify', 'checking'],
-  ['update', 'updates', 'upgrade', 'refresh'],
+  ['check', 'verify', 'checking', 'confirming'],
+  ['update', 'updates', 'upgrade', 'refresh', 'improve', 'renew'],
   ['select', 'choose', 'pick'],
   ['find', 'locate', 'search', 'finder'],
   ['direction', 'heading', 'bearing'],
@@ -371,23 +441,132 @@ const SYNONYM_GROUPS = [
   ['disturb', 'bother', 'interrupt'],
   ['focus', 'concentrate'],
   ['name', 'title'],
-  ['help', 'assist', 'assistance', 'guide', 'guidance'],
+  // harshe, the tongue word, is Hausa's language word
+  ['language', 'tongue'],
+  ['help', 'assist', 'assistance', 'guide', 'guidance', 'aid'],
   ['last', 'final', 'end', 'ending'],
   ['add', 'added'],
   ['minute', 'minutes', 'min', 'mins'],
   ['hour', 'hours', 'hrs'],
-  ['na', 'unavailable', 'none'],
+  // can't loses its apostrophe in normalisation, so the member is the bare form
+  ['na', 'unavailable', 'none', 'cant', 'nothing'],
   ['extra', 'overtime', 'additional'],
   ['preferences', 'selections', 'choices', 'options'],
   ['save', 'store'],
-  ['reset', 'restore', 'return'],
-  ['default', 'original'],
+  ['reset', 'restore', 'return', 'reverts', 'returned'],
+  // Safar month shares its spelling with the Arabic word for zero and for travel:
+  // an engine naming either reads the word itself
+  ['safar', 'zero', 'travel', 'journey', 'trip', 'tour'],
+  // Muharram is the Arabic word for the sacred month - the engine names the word's own sense
+  ['muharram', 'sacred', 'forbidden'],
+  ['wrong', 'error', 'mistake', 'problem'],
+  // agpabaro, the Philippine family's refresh word, renders as renew and renewal
+  ['refresh', 'reload', 'load', 'renew', 'renewal'],
+  ['setting', 'settings', 'arrangement', 'arrangements', 'adjustments', 'parameters'],
+  ['hold', 'keep', 'retain'],
+  ['turn', 'move', 'rotate'],
+  ['done', 'completed', 'complete', 'finished', 'ready', 'full', 'completion'],
+  ['default', 'original', 'initial'],
+  // later~then~afterwards: the postponing adverb's own senses, the update button's word
+  ['later', 'then', 'afterwards', 'future'],
+  // Bambara ɲɛfɛ renders as ahead - before's own directional sense
+  ['before', 'ahead'],
+  // Owner order twelve: Qibla is transliterated in every language; the local spellings
+  // name the same Arabic word the way even English does
+  // Kevlar is the engine's romanization of Burmese ကိဗ်လာ (qibla) - it names the thing (the Isak class)
+  ['qibla', 'kibla', 'kiblat', 'kible', 'qible', 'qiblah', 'kıble', 'kevlar'],
 ];
 
 /** Phrase-level pairs the token matcher cannot see, compared on stopword-filtered text */
 const PHRASE_SYNONYMS = [
-  ['up to date', 'latest version', 'no new updates'],
-  ['oh no', 'excuse me', 'unfortunately'],
+  [
+    'up to date',
+    'latest version',
+    'most recent version',
+    'no new updates',
+    'no new update',
+    'no update',
+    'the version is the latest',
+    'you are already on the latest version',
+  ],
+  // every member is the dismay exclamation in its own register, Alamak's class
+  ['oh no', 'excuse me', 'unfortunately', 'sorry', 'ouch', 'damn', 'wow', 'hey', 'alas', 'ah', 'oops', 'eh', 'ha'],
+  // old alone carries the stale sense on an out-of-date row; the up-to-date group never crosses
+  ['out of date', 'outdated', 'not updated', 'no updates', 'expired', 'old', 'obsolete', 'past', 'not fresh'],
+  ['rabiʻ ii', 'spring of the other'],
+  // xwarina seherê, the Kurdish dawn meal, renders as its plain description
+  // sahaari, Pashto's dawn meal, renders as breakfast - the same meal sense
+  ['suhoor', 'morning meal', 'breakfast', 'fasting meal'],
+  // worked out and calculated name the same derivation on the qibla row
+  ['worked out', 'calculated', 'computed'],
+  // the hijri month's established local spellings name the month itself (the engine renders Zulhijjah)
+  [
+    'dhuʻl hijjah',
+    'zulhijjah',
+    'zilhijja',
+    'zulhajjah',
+    'zilhaj',
+    'zulhijah',
+    'dulhija',
+    'zilhice',
+    'dhul hajj',
+    'zul hajj',
+    'dil hajj',
+    'dul hijxhe',
+    'zulhaj',
+    'zilhijje',
+    'zulkhiza',
+  ],
+  // whole-sense event phrases: the rising of the sun IS sunrise, the night's middle IS midnight
+  // baha aduu, Oromo's sunrise, names the sun's emergence as its east - the whole event
+  ['sunrise', 'rising of the sun', 'sun is rising', 'east of the sun'],
+  // inti chinkay, Quechua's maghrib, names the sun's going - the whole event
+  ['magrib', 'the sun goes down', 'sun goes down'],
+  // bez zvuka, Russian's silent, states the absence plainly
+  ['silent', 'no sound', 'without sound'],
+  ['midnight', 'middle of the night'],
+  // Віджети обох екранів - the two screens are the home and the lock
+  ['home & lock widgets', 'widgets for both screens'],
+  // 提前, Chinese's before, renders as its own adverb
+  ['before', 'in advance'],
+  // Jumodul-avval and Jumodul-oxir, Uzbek's Jumada pair (avval first, oxir last)
+  ['jumada i', 'jumodul avval', 'jumodul first'],
+  ['jumada ii', 'jumodul oxir', 'jumodul end'],
+  // the failure phrase: a problem occurred is something went wrong in its own words
+  ['something went wrong', 'a problem occurred', 'another problem occurred'],
+  // and Qiʻdah's own local spellings (the engine renders Zulkida)
+  [
+    'dhuʻl qiʻdah',
+    'zulkida',
+    'zulqida',
+    'zul qaeda',
+    'zilkad',
+    'dhil al qaida',
+    'dhul kida',
+    'jill kadah',
+    'zulqaida',
+    'in zulkag',
+    'zul kida',
+    'dulcada',
+    'zilqada',
+    'zulkaada',
+    'dulkhaad',
+    'zhul kada',
+    'zul-kada',
+    'zúl-kádá',
+    'zulqaid',
+    'zul qaida',
+    'zul qudda',
+    'dhul qada',
+    'dhul qad',
+    'julgita',
+    'zul qida',
+    'zulqada',
+    'zylkada',
+    'dhulqidah',
+    'zulqidah',
+    'zulqadi',
+  ],
 ];
 
 const SYNONYM_INDEX = new Map();
@@ -422,7 +601,7 @@ const singularOf = (word) =>
 const synonymMatch = (a, b) => {
   const left = singularOf(a);
   const right = singularOf(b);
-  return SYNONYM_INDEX.get(left)?.has(right) === true || SYNONYM_INDEX.get(a)?.has(right) === true;
+  return SYNONYM_INDEX.get(left)?.has(right) === true;
 };
 
 /** Two tokens of at least 5 characters whose prefixes or spellings are near enough */
@@ -431,10 +610,14 @@ const cognateMatch = (a, b) => {
   return a.slice(0, 4) === b.slice(0, 4) || levenshtein(a, b) <= 2;
 };
 
-/** A non-stopword token that prefixes a longer one: app/application, or a short pair like Mon/M and Jun/June */
+/** A non-stopword token that prefixes a longer one: app/application, or a short pair like Mon/M and Jun/June.
+ * Owner order eleven: sun never abbreviates sunrise - it names the star and the day,
+ * so that one prefix pair is a fragment and fails */
+const NO_PREFIX_PAIRS = new Set(['sun>sunrise']);
 const prefixMatch = (shorter, longer) => {
   if (shorter.length >= longer.length || STOPWORDS.has(shorter)) return false;
   if (!longer.startsWith(shorter)) return false;
+  if (NO_PREFIX_PAIRS.has(`${shorter}>${longer}`)) return false;
   return shorter.length >= 3 || longer.length <= 4;
 };
 
@@ -549,10 +732,13 @@ const ENGINES = {
 const spotCheckUrl = (locale, text) =>
   `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
 
-/** One engine call with retry and backoff: the extracted text, or null when the budget is spent */
+/** One engine call with retry and backoff: the extracted text, or null when the budget is spent.
+ * Under a pace, every attempt - retries included - waits its gap first (owner order: a
+ * closed quota must never be hammered with quick retries; one request per gap). */
 const fetchWithRetry = async (engineName, locale, text, deps, attempts = 3) => {
   const engine = ENGINES[engineName];
   for (let attempt = 0; attempt < attempts; attempt++) {
+    if (deps.pace) await deps.sleep(deps.pace);
     try {
       const response = await deps.fetch(engine.url(locale, text));
       if (!response.ok) throw new Error(`http ${response.status}`);
@@ -640,14 +826,16 @@ const resumedLlmOf = (prior) => {
 /** One locale's artifacts: both engines' round-trips, the verdicts, and the gaps */
 const runLocale = async (locale, opts) => {
   const { en, catalog, outDir, fetch, sleep, now, resumeRows } = opts;
-  const deps = { fetch, sleep };
+  const deps = { fetch, sleep, pace: opts.pace };
   // Rows come from the English key set; a locale missing a key yields fewer rows,
   // and the shortfall fails the run against the English count
   const keys = orderedKeys(en).filter((key) => catalog[key] !== undefined);
   const probeText = catalog[PRAYER_KEYS[0]] ?? en[PRAYER_KEYS[0]];
   const live = opts.liveEngines ?? (await preFlight(SITE_ENGINES, locale, probeText, deps));
 
-  const rows = await mapPool(keys, opts.concurrency ?? 4, async (key) => {
+  // A paced run is serial by definition: the pool narrows to one worker so the
+  // per-attempt gap in fetchWithRetry is the only request rhythm
+  const rows = await mapPool(keys, opts.pace ? 1 : (opts.concurrency ?? 4), async (key) => {
     const prior = resumeRows?.get(key);
     // A resumed row is reusable only while its catalog string still matches
     const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
@@ -671,6 +859,13 @@ const runLocale = async (locale, opts) => {
       if (resumedLlm) row.llm = resumedLlm;
     }
     row.verdict = verdictOf(row.en, row.sites, row.llm ?? null, row.llm?.doubt ?? null, opts.phase ?? 'one');
+    // A standing judge ruling survives the resume while the engine does not carry the row
+    // itself: red keeps the ruling's green, an engine miss keeps the note on its amber for
+    // the fill path; an engine rendering that now carries the meaning stands on its own
+    if (priorFresh?.ruling && row.verdict !== 'green') {
+      row.ruling = priorFresh.ruling;
+      if (row.verdict === 'red') row.verdict = 'green';
+    }
     return row;
   });
 
@@ -812,7 +1007,7 @@ const renderRow = (locale, row, rtl) => {
     `        <td dir="ltr" lang="en">${escapeHtml(row.en)}</td>`,
     `        <td dir="${dirFor(locale, rtl)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
     roundtripCells,
-    `        <td><span class="v">${escapeHtml(row.verdict)}</span></td>`,
+    `        <td><span class="v">${escapeHtml(row.verdict)}</span>${row.ruling ? `<br><span class="chip j" title="${escapeHtml(row.ruling)}">judge: ${escapeHtml(row.ruling)}</span>` : ''}</td>`,
     `        <td><a href="${escapeHtml(row.url)}">Google</a></td>`,
     '      </tr>',
   ].join('\n');
@@ -922,6 +1117,7 @@ const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
     },
     { green: 0, red: 0, amber: 0 }
   ),
+  judgeRuled: rows.filter((row) => row.ruling !== undefined).length,
   rows: rows.map((row) => ({ ...row })),
 });
 
@@ -971,7 +1167,7 @@ const renderIndexHtml = (summaries) => {
 
 const usageError = (message) =>
   new Error(
-    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] | --waves | --all | --fill ar,so [--out DIR]`
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
   );
 
 const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
@@ -986,12 +1182,15 @@ const summaryOfArtifact = (data, names) => ({
   reference: data.reference === true,
 });
 
-/** The index always reads every artifact on disk, so a one-locale run erases nobody's card */
+/** The index always reads every artifact on disk, so a one-locale run erases nobody's card.
+ * A json file that is not a locale artifact (research side data, anything stray) is
+ * skipped by shape, not by name - the out dir is the owner's to read from. */
 const writeIndexFromDisk = (outDir, names) => {
   const summaries = [];
   for (const file of readdirSync(outDir)) {
-    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json')) continue;
+    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json') || file.endsWith('.judge-rulings.json')) continue;
     const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
+    if (!Array.isArray(data.rows) || typeof data.locale !== 'string') continue;
     summaries.push(summaryOfArtifact(data, names));
   }
   const indexPath = join(outDir, 'index.html');
@@ -1089,42 +1288,127 @@ const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
   };
 };
 
+/**
+ * The judge ruling: phase one's fluent judge reads a red row whose catalog string is
+ * verified correct despite the engine's rendering (the country sense of المغرب, a
+ * homograph the engine misread) and rules the row green with a mandatory note. The
+ * ruling is always visible - chip, note and count - and never applies to a row the
+ * engine did not read red: those are the fill's business.
+ */
+const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds() }) => {
+  const written = [];
+  const rulingErrors = [];
+
+  for (const locale of locales) {
+    const artifact = JSON.parse(readFileSync(join(outDir, `${locale}.json`), 'utf8'));
+    const rulings = JSON.parse(readFileSync(join(outDir, `${locale}.judge-rulings.json`), 'utf8'));
+    const rows = artifact.rows;
+    const rowByKey = new Map(rows.map((row) => [row.key, row]));
+    const rulingByKey = new Map();
+    for (const ruling of rulings) {
+      if (rulingByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is ruled twice`);
+      if (!rowByKey.has(ruling.key)) rulingErrors.push(`${locale}/${ruling.key} is not a row in the artifact`);
+      if (typeof ruling.note !== 'string' || ruling.note.trim() === '') {
+        rulingErrors.push(`${locale}/${ruling.key} carries no note`);
+      }
+      if (
+        rowByKey.has(ruling.key) &&
+        rowByKey.get(ruling.key).verdict !== 'red' &&
+        rowByKey.get(ruling.key).ruling !== ruling.note
+      ) {
+        rulingErrors.push(`${locale}/${ruling.key} is not a red row`);
+      }
+      rulingByKey.set(ruling.key, ruling);
+    }
+    if (rulingErrors.some((message) => message.startsWith(`${locale}/`))) {
+      log(
+        `${locale}: ruling refused, artifacts untouched (${rulingErrors.filter((m) => m.startsWith(`${locale}/`)).length} errors)`
+      );
+      continue;
+    }
+
+    let applied = 0;
+    for (const row of rows) {
+      const ruling = rulingByKey.get(row.key);
+      if (ruling === undefined) continue;
+      row.ruling = ruling.note;
+      row.verdict = 'green';
+      applied += 1;
+    }
+    if (applied === 0 && rulingByKey.size > 0) {
+      log(`${locale}: ruling refused, no red row matched`);
+      continue;
+    }
+    const label = artifact.languageName ?? languageLabel(locale, names);
+    const phase = artifact.phase ?? 'one';
+    writeFileSync(
+      join(outDir, `${locale}.json`),
+      `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
+    );
+    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase, rtl));
+    written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
+    log(`${locale}: ${applied} ruling${applied === 1 ? '' : 's'} applied`);
+  }
+
+  const indexPath = writeIndexFromDisk(outDir, names);
+  written.push(indexPath);
+
+  return {
+    ok: rulingErrors.length === 0,
+    locales,
+    written,
+    shortfalls: [],
+    misses: [],
+    rulingErrors,
+  };
+};
+
 /** The command line flow. Every effect (network, clock, stdout, files) rides on deps */
 const run = async (argv, deps = {}) => {
   const flag = (name) => {
     const i = argv.indexOf(name);
-    return i >= 0 ? argv[i + 1] : undefined;
+    // a value that is itself a flag means the flag was written without one: never swallow
+    // the next flag as a directory name or a locale list
+    if (i >= 0 && argv[i + 1] !== undefined && !String(argv[i + 1]).startsWith('--')) return argv[i + 1];
+    return undefined;
   };
   const outFlag = flag('--out');
   const localesFlag = flag('--locales');
   const fillFlag = flag('--fill');
+  const ruleFlag = flag('--rule');
   const phaseFlag = flag('--phase');
+  const paceFlag = flag('--pace');
   const waves = argv.includes('--waves');
   const all = argv.includes('--all');
   const resume = argv.includes('--resume');
-  if (!waves && !all && localesFlag === undefined && fillFlag === undefined) {
+  if (!waves && !all && localesFlag === undefined && fillFlag === undefined && ruleFlag === undefined) {
     throw usageError('no locales named');
   }
   if (phaseFlag !== undefined && phaseFlag !== 'one' && phaseFlag !== 'two') {
     throw usageError(`--phase must be one or two, got ${phaseFlag}`);
   }
+  const pace = paceFlag === undefined ? 0 : Number(paceFlag);
+  if (!Number.isInteger(pace) || pace < 0) {
+    throw usageError(`--pace must be a whole number of milliseconds, got ${paceFlag}`);
+  }
   const phase = phaseFlag ?? 'one';
   const names = loadLanguageNames(deps);
   const rtl = loadRtlIds(deps);
   const allLocales = ['en', ...names.map((entry) => entry.id).filter((id) => id !== 'en')];
-  const locales = fillFlag
-    ? fillFlag
-        .split(',')
-        .map((loc) => loc.trim())
-        .filter(Boolean)
-    : all
-      ? allLocales
-      : waves
-        ? [...PILOT_WAVE]
-        : localesFlag
-            .split(',')
-            .map((loc) => loc.trim())
-            .filter(Boolean);
+  const locales =
+    fillFlag || ruleFlag
+      ? (fillFlag ?? ruleFlag)
+          .split(',')
+          .map((loc) => loc.trim())
+          .filter(Boolean)
+      : all
+        ? allLocales
+        : waves
+          ? [...PILOT_WAVE]
+          : localesFlag
+              .split(',')
+              .map((loc) => loc.trim())
+              .filter(Boolean);
 
   if (locales.length === 0) {
     throw usageError('no locales named');
@@ -1139,6 +1423,9 @@ const run = async (argv, deps = {}) => {
 
   if (fillFlag !== undefined) {
     return fillLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
+  }
+  if (ruleFlag !== undefined) {
+    return ruleLocales(locales, { outDir, log, now: deps.now ?? (() => new Date()), names, rtl });
   }
 
   const readCatalogFile =
@@ -1194,6 +1481,7 @@ const run = async (argv, deps = {}) => {
       label: languageLabel(locale, names),
       phase,
       rtl,
+      ...(pace > 0 ? { pace } : {}),
     });
     written.push(...result.files);
     const mix = Object.entries(result.engineMix)
@@ -1281,6 +1569,7 @@ module.exports = {
   buildLocaleJson,
   renderIndexHtml,
   fillLocales,
+  ruleLocales,
   defaultOutDir,
   run,
 };

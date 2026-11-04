@@ -161,7 +161,7 @@ export const jv = {
   'extras.explanation.last third': 'Wiwitan telung bagéyan pungkasan wengi',
   'extras.explanation.suhoor': '20 menit sadurungé Subuh',
   'extras.explanation.duha': '20 menit sawisé mletèking srengéngé',
-  'extras.explanation.istijaba': '1 jam sadurungé Maghrib (mung dina Jumuwah)',
+  'extras.explanation.istijaba': '1 jam sadurungé Maghrib (mung dina Jumuwah) (wektu diterimane donga)',
   'duration.now': 'saiki',
   'time.now': '{name} saiki',
   'time.ago': '{name} {duration} kepungkur',

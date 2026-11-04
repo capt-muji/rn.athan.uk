@@ -162,7 +162,7 @@ export const az = {
   'extras.explanation.last third': 'Gecənin son üçdə birinin başlanğıcı',
   'extras.explanation.suhoor': "Sübh'dən 20 dəqiqə əvvəl",
   'extras.explanation.duha': 'Gün çıxandan 20 dəqiqə sonra',
-  'extras.explanation.istijaba': "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri)",
+  'extras.explanation.istijaba': "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri) (duaların qəbul saatı)",
   'duration.now': 'indi',
   'time.now': '{name} indi',
   'time.ago': '{name} {duration} əvvəl',

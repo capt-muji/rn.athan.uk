@@ -163,7 +163,7 @@ export const tl = {
   'extras.explanation.last third': 'Simula ng huling ikatlo ng gabi',
   'extras.explanation.suhoor': '20 minuto bago ang Fajr',
   'extras.explanation.duha': '20 minuto pagkatapos ng pagsikat ng araw',
-  'extras.explanation.istijaba': '1 oras bago ang Maghrib (Biyernes lamang)',
+  'extras.explanation.istijaba': '1 oras bago ang Maghrib (Biyernes lamang) (oras ng pagtugon)',
   'duration.now': 'ngayon',
   'time.now': '{name} ngayon',
   'time.ago': '{name} {duration} ang nakalipas',

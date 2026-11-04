@@ -162,7 +162,7 @@ export const ckb = {
   'extras.explanation.last third': 'دەستپێکی سێیەکی کۆتایی شەو',
   'extras.explanation.suhoor': '20 خولەک پێش بەیانی',
   'extras.explanation.duha': '20 خولەک دوای خۆرهەڵاتن',
-  'extras.explanation.istijaba': '1 کاتژمێر پێش مەغریب (تەنها ڕۆژی هەینی)',
+  'extras.explanation.istijaba': '1 کاتژمێر پێش مەغریب (تەنها ڕۆژی هەینی) (کاتی وەڵامدانەوەی دوعا)',
   'duration.now': 'ئێستا',
   'time.now': '{name} ئێستا',
   'time.ago': '{name} {duration} لەمەوبەر',

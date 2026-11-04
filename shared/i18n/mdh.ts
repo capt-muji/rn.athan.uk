@@ -170,7 +170,7 @@ export const mdh = {
   'extras.explanation.last third': 'Mula sa sepertiga malam',
   'extras.explanation.suhoor': '20 minit sebelum Subuh',
   'extras.explanation.duha': '20 minit selepas Syuruk',
-  'extras.explanation.istijaba': '1 jam sebelum Magrib (Jumaat sahaja)',
+  'extras.explanation.istijaba': '1 jam sebelum Magrib (Jumaat sahaja) (oras sa pagtubag)',
   'duration.now': 'ngayon',
   'time.now': '{name} ngayon',
   'time.ago': '{name} {duration} ang nakalipas',

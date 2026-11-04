@@ -199,7 +199,7 @@ const GLOSSARY_EXPLANATIONS = [
   'Start of the last third of the night',
   '20 mins before Fajr',
   '20 mins after Sunrise',
-  '1 hour before Magrib (Fridays only)',
+  '1 hour before Magrib (Fridays only) (the hour of acceptance)',
 ];
 
 /** Every explanation whose catalog text is the glossary's own sentence, never a paraphrase */
@@ -208,7 +208,7 @@ const GLOSSARY_EXPLANATION_PAIRS: Array<[catalogKey: string, slot: string]> = [
   ['extras.explanation.last third', 'Start of the last third of the night'],
   ['extras.explanation.suhoor', '20 mins before Fajr'],
   ['extras.explanation.duha', '20 mins after Sunrise'],
-  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only)'],
+  ['extras.explanation.istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 ];
 
 // Brand bytes: only app-open copy names the application; "athan" elsewhere is the

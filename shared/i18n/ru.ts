@@ -164,7 +164,7 @@ export const ru = {
   'extras.explanation.last third': 'Начало последней трети ночи',
   'extras.explanation.suhoor': 'За 20 минут до Фаджра',
   'extras.explanation.duha': 'Через 20 минут после восхода солнца',
-  'extras.explanation.istijaba': 'За 1 час до Магриба (только по пятницам)',
+  'extras.explanation.istijaba': 'За 1 час до Магриба (только по пятницам) (час принятия молитвы)',
   'duration.now': 'сейчас',
   'time.now': '{name} сейчас',
   'time.ago': '{name} {duration} назад',

@@ -50,7 +50,7 @@ const EXPLAINED: [PrayerId, string, string][] = [
   ['last third', 'Last Third', 'Start of the last third of the night'],
   ['suhoor', 'Suhoor', '20 minutes before Fajr'],
   ['duha', 'Duha', '20 minutes after Sunrise'],
-  ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only)'],
+  ['istijaba', 'Istijaba', '1 hour before Magrib (Fridays only) (the hour of acceptance)'],
 ];
 
 // [scenario, first sequence day, breakage, now (London date, time), list day on screen]

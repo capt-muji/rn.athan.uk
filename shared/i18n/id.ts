@@ -161,7 +161,7 @@ export const id = {
   'extras.explanation.last third': 'Awal sepertiga malam terakhir',
   'extras.explanation.suhoor': '20 menit sebelum Subuh',
   'extras.explanation.duha': '20 menit setelah Terbit',
-  'extras.explanation.istijaba': '1 jam sebelum Maghrib (hari Jumat saja)',
+  'extras.explanation.istijaba': '1 jam sebelum Maghrib (hari Jumat saja) (saat pengabulan doa)',
   'duration.now': 'sekarang',
   'time.now': '{name} sekarang',
   'time.ago': '{name} {duration} lalu',

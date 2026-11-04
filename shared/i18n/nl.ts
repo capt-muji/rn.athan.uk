@@ -163,7 +163,7 @@ export const nl = {
   'extras.explanation.last third': 'Begin van het laatste derde deel van de nacht',
   'extras.explanation.suhoor': '20 min voor de Fajr',
   'extras.explanation.duha': '20 min na zonsopkomst',
-  'extras.explanation.istijaba': '1 uur vóór Maghrib (alleen vrijdag)',
+  'extras.explanation.istijaba': '1 uur vóór Maghrib (alleen vrijdag) (het uur van verhoring)',
   'duration.now': 'nu',
   'time.now': '{name} nu',
   'time.ago': '{name} {duration} geleden',

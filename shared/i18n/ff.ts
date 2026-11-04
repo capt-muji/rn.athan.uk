@@ -161,7 +161,7 @@ export const ff = {
   'extras.explanation.last third': 'Fuɗɗoode tataɓal jemma',
   'extras.explanation.suhoor': 'Minutooji 20 ado Fajiri',
   'extras.explanation.duha': 'Minutooji 20 caggal naange yaltugol',
-  'extras.explanation.istijaba': 'Waktu gootal ado Magrib (Aljumaa tan)',
+  'extras.explanation.istijaba': "Waktu gootal ado Magrib (Aljumaa tan) (waawi jaabinde du'aaje)",
   'duration.now': 'jooni',
   'time.now': '{name} jooni',
   'time.ago': '{name} {duration} ɓennuɗo',

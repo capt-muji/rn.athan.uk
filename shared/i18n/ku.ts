@@ -161,7 +161,7 @@ export const ku = {
   'extras.explanation.last third': 'Destpêka sêyema dawî ya şevê',
   'extras.explanation.suhoor': '20 deqîqe berî Sibe',
   'extras.explanation.duha': '20 deqîqe piştî derketina rojê',
-  'extras.explanation.istijaba': '1 saet berî Mexreb (tenê roja Înê)',
+  'extras.explanation.istijaba': '1 saet berî Mexreb (tenê roja Înê) (dema bersivê)',
   'duration.now': 'niha',
   'time.now': '{name} niha',
   'time.ago': '{name} {duration} berê',

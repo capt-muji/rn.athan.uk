@@ -169,7 +169,7 @@ export const ilo = {
   'extras.explanation.last third': 'Rugian ti maudi a maikatlo ti rabii',
   'extras.explanation.suhoor': '20 a minuto sakbay ti Fajr',
   'extras.explanation.duha': '20 a minuto kalpasan ti rummuar ti init',
-  'extras.explanation.istijaba': '1 nga oras sakbay ti Maghrib (iti Fiernes la)',
+  'extras.explanation.istijaba': '1 nga oras sakbay ti Maghrib (iti Fiernes la) (oras ti panangyawat ti dawat)',
   'duration.now': 'itan',
   'time.now': '{name} itan',
   'time.ago': '{name} {duration} ti napalabas',

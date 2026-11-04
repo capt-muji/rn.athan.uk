@@ -159,7 +159,7 @@ export const zhHans = {
   'extras.explanation.last third': '夜间最后三分之一的开始',
   'extras.explanation.suhoor': '晨礼前20分钟',
   'extras.explanation.duha': '日出后20分钟',
-  'extras.explanation.istijaba': '昏礼前1小时（仅限周五）',
+  'extras.explanation.istijaba': '昏礼前1小时（仅限周五） (应答的时刻)',
   'duration.now': '现在',
   'time.now': '{name} 时间到',
   'time.ago': '{name} {duration} 前',

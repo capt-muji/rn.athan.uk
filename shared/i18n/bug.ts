@@ -165,7 +165,7 @@ export const bug = {
   'extras.explanation.last third': 'Onronna bessi tellu bageang',
   'extras.explanation.suhoor': "20 menit sabbela Subu'",
   'extras.explanation.duha': '20 menit appattettong mata allo',
-  'extras.explanation.istijaba': '1 jamma sabbela Magrib (cuma enrengngi Juma)',
+  'extras.explanation.istijaba': '1 jamma sabbela Magrib (cuma enrengngi Juma) (jamma pangabbuloang doa)',
   'duration.now': 'riwettu ini',
   'time.now': '{name} riwettu ini',
   'time.ago': '{name} {duration} liaseng',

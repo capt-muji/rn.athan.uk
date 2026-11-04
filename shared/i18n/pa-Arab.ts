@@ -161,7 +161,7 @@ export const paArab = {
   'extras.explanation.last third': 'رات دے آخری تہائی دا شروع',
   'extras.explanation.suhoor': 'سرگی توں 20 منٹ پہلاں',
   'extras.explanation.duha': 'طلوع آفتاب توں 20 منٹ بعد',
-  'extras.explanation.istijaba': 'نماشاں توں 1 گھنٹہ پہلاں (صرف جمعہ)',
+  'extras.explanation.istijaba': 'نماشاں توں 1 گھنٹہ پہلاں (صرف جمعہ) (ویلٰی قبولیت)',
   'duration.now': 'ہن',
   'time.now': '{name} ہن',
   'time.ago': '{name} {duration} پہلاں',

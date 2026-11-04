@@ -160,7 +160,7 @@ export const ur = {
   'extras.explanation.last third': 'رات کے آخری تہائی کا آغاز',
   'extras.explanation.suhoor': 'فجر سے 20 منٹ پہلے',
   'extras.explanation.duha': 'طلوع آفتاب سے 20 منٹ بعد',
-  'extras.explanation.istijaba': 'مغرب سے ایک گھنٹہ پہلے (صرف جمعہ)',
+  'extras.explanation.istijaba': 'مغرب سے ایک گھنٹہ پہلے (صرف جمعہ) (دعا کی قبولیت کا وقت)',
   'duration.now': 'ابھی',
   'time.now': '{name} ابھی',
   'time.ago': '{name} {duration} پہلے',

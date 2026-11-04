@@ -162,7 +162,7 @@ export const tk = {
   'extras.explanation.last third': 'Gijäniň soňky üçden biriniň başy',
   'extras.explanation.suhoor': 'Ertirden 20 minut öň',
   'extras.explanation.duha': 'Gün dogandan 20 minut soň',
-  'extras.explanation.istijaba': 'Agşamdan 1 sagat öň (diňe anna güni)',
+  'extras.explanation.istijaba': 'Agşamdan 1 sagat öň (diňe anna güni) (duanyň kabul wagty)',
   'duration.now': 'häzir',
   'time.now': '{name} häzir',
   'time.ago': '{name} {duration} öň',

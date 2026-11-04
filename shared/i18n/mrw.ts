@@ -169,7 +169,7 @@ export const mrw = {
   'extras.explanation.last third': 'Simula ng katatlong bahagi ng gabi',
   'extras.explanation.suhoor': '20 minuto bago ang Subuh',
   'extras.explanation.duha': '20 minuto pagkatapos ng Syuruk',
-  'extras.explanation.istijaba': '1 oras bago ang Magrib (Biyernes lamang)',
+  'extras.explanation.istijaba': '1 oras bago ang Magrib (Biyernes lamang) (oras sa pagtubag)',
   'duration.now': 'ngayon',
   'time.now': '{name} ngayon',
   'time.ago': '{name} {duration} ang nakalipas',

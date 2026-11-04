@@ -162,7 +162,7 @@ export const ml = {
   'extras.explanation.last third': 'രാത്രിയുടെ അവസാന മൂന്നിലൊരു ഭാഗത്തിന്റെ തുടക്കം',
   'extras.explanation.suhoor': 'സുബഹിന് 20 മിനിറ്റ് മുമ്പ്',
   'extras.explanation.duha': 'സൂര്യോദയത്തിന് 20 മിനിറ്റ് ശേഷം',
-  'extras.explanation.istijaba': 'മഗ്രിബിന് 1 മണിക്കൂർ മുമ്പ് (വെള്ളിയാഴ്ച മാത്രം)',
+  'extras.explanation.istijaba': 'മഗ്രിബിന് 1 മണിക്കൂർ മുമ്പ് (വെള്ളിയാഴ്ച മാത്രം) (പ്രാർഥന നിറവേറുന്ന സമയം)',
   'duration.now': 'ഇപ്പോൾ',
   'time.now': '{name} ഇപ്പോൾ',
   'time.ago': '{name} {duration} മുമ്പ്',

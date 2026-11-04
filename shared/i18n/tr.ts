@@ -161,7 +161,7 @@ export const tr = {
   'extras.explanation.last third': 'Gecenin son üçte birinin başlangıcı',
   'extras.explanation.suhoor': "İmsak'tan 20 dakika önce",
   'extras.explanation.duha': 'Güneş doğduktan 20 dakika sonra',
-  'extras.explanation.istijaba': "Akşam'dan 1 saat önce (yalnızca cuma günleri)",
+  'extras.explanation.istijaba': "Akşam'dan 1 saat önce (yalnızca cuma günleri) (duaların kabul saati)",
   'duration.now': 'şimdi',
   'time.now': '{name} şimdi',
   'time.ago': '{name} {duration} önce',

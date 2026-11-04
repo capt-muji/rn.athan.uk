@@ -163,7 +163,7 @@ export const my = {
   'extras.explanation.last third': 'ညဉ့်နောက်ဆုံးသုံးပုံ အစပိုင်း',
   'extras.explanation.suhoor': 'ဖဂျရ်မတိုင်မီ 20 မိနစ်',
   'extras.explanation.duha': 'နေထွက်ပြီး 20 မိနစ်',
-  'extras.explanation.istijaba': 'မဂ်ရိဗ်မတိုင်မီ 1 နာရီ (သောကြာနေ့သာ)',
+  'extras.explanation.istijaba': 'မဂ်ရိဗ်မတိုင်မီ 1 နာရီ (သောကြာနေ့သာ) (ဆုတောင်းပြည့်သောအချိန်)',
   'duration.now': 'အခု',
   'time.now': '{name} အခု',
   'time.ago': '{duration} က {name}',

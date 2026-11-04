@@ -161,7 +161,7 @@ export const bs = {
   'extras.explanation.last third': 'Početak zadnje trećine noći',
   'extras.explanation.suhoor': '20 minuta prije Sabaha',
   'extras.explanation.duha': '20 minuta poslije izlaska sunca',
-  'extras.explanation.istijaba': '1 sat prije Akšama (samo petkom)',
+  'extras.explanation.istijaba': '1 sat prije Akšama (samo petkom) (doba prihvaćanja dove)',
   'duration.now': 'sada',
   'time.now': '{name} sada',
   'time.ago': '{name} prije {duration}',

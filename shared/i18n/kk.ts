@@ -162,7 +162,7 @@ export const kk = {
   'extras.explanation.last third': 'Түннің соңғы үштігінің басталуы',
   'extras.explanation.suhoor': 'Таңға 20 минут бұрын',
   'extras.explanation.duha': 'Күн шыққаннан 20 минут кейін',
-  'extras.explanation.istijaba': 'Ақшамға 1 сағат бұрын (тек жұма)',
+  'extras.explanation.istijaba': 'Ақшамға 1 сағат бұрын (тек жұма) (дұға қабыл болатын уақыт)',
   'duration.now': 'қазір',
   'time.now': '{name} қазір',
   'time.ago': '{name} {duration} бұрын',

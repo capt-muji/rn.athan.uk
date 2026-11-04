@@ -163,7 +163,7 @@ export const ja = {
   'extras.explanation.last third': '夜の最後の三分の一の始まり',
   'extras.explanation.suhoor': 'ファジュルの20分前',
   'extras.explanation.duha': '日の出の20分後',
-  'extras.explanation.istijaba': 'マグリブの1時間前（金曜のみ）',
+  'extras.explanation.istijaba': 'マグリブの1時間前（金曜のみ） (祈りが聞き入れられる時間)',
   'duration.now': '今',
   'time.now': '{name} の時間です',
   'time.ago': '{name} {duration} 前',

@@ -116,6 +116,7 @@ interface LocaleOpts {
   label?: string;
   rtl?: Set<string>;
   phase?: string;
+  pace?: number;
 }
 interface LocaleResult {
   locale: string;
@@ -133,6 +134,7 @@ interface RunReport {
   shortfalls: Array<{ locale: string; count: number }>;
   misses: Array<{ locale: string; key: string; missing: string[] }>;
   fillErrors: string[];
+  rulingErrors?: string[];
 }
 interface Deps {
   fetch: FetchFn;
@@ -277,13 +279,15 @@ describe('the loanword slot rule', () => {
 });
 
 describe('the engine behind an injected fetch (Google alone, owner order six)', () => {
-  it('builds the engine request URL with the locale and the encoded text, aliasing zh-Hans', () => {
+  it('builds the engine request URL with the locale and the encoded text, aliasing zh-Hans and Javanese', () => {
     expect(verify.gtxUrl('ar', 'hello world')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=ar&tl=en&dt=t&q=hello%20world'
     );
     expect(verify.gtxUrl('zh-Hans', '你好')).toBe(
       'https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=en&dt=t&q=%E4%BD%A0%E5%A5%BD'
     );
+    // Google serves Javanese under its old code jw
+    expect(verify.gtxUrl('jv', 'subuh')).toContain('sl=jw&');
   });
 
   it('extracts the engine body shape', () => {
@@ -330,10 +334,13 @@ describe('the engine behind an injected fetch (Google alone, owner order six)', 
 });
 
 describe('the meaning heuristic behind the verdict colors', () => {
-  it('keeps the three true catches red: the round-trip loses the prayer meaning', () => {
+  it('keeps the true catches red while the owner-named ambiguities carry', () => {
     expect(verify.carriesMeaning('Dhuhr', 'Back')).toBe(false);
+    // The owner's order ten: Morocco is a country, never the prayer - the round-trip
+    // that names it does not verify Magrib, in any language
     expect(verify.carriesMeaning('Magrib', 'MOROCCO')).toBe(false);
-    expect(verify.carriesMeaning('Isha', 'Dinner')).toBe(false);
+    // al-isha is the Arabic word for supper - the name derives from the meal
+    expect(verify.carriesMeaning('Isha', 'Dinner')).toBe(true);
   });
 
   it('carries the meaning through stopwords, synonyms and cognates', () => {
@@ -420,6 +427,389 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, 'judge doubted the rendering')).toBe('amber');
   });
 
+  it('the Arabic loop lessons: engine renderings that carry the meaning read green', () => {
+    // المغرب is also the Arabic name of Morocco - the engine names the word's own cognate
+    expect(verify.verdictOf('Magrib', both('Morocco', 'x'))).toBe('red');
+    // The engine read the Somali spelling Maqrib as the word's evening sense
+    expect(verify.verdictOf('Magrib', both('In the evening', 'x'))).toBe('green');
+    // العشاء is the Arabic word for supper - the name derives from the meal
+    expect(verify.verdictOf('Isha', both('dinner', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('It was completed', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Not updated', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('No updates', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Sorry!', 'x'))).toBe('green');
+    expect(verify.verdictOf('Rabiʻ II', both('Spring of the other', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('zero', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('Travel', 'x'))).toBe('green');
+    expect(verify.verdictOf('Each prayer now has 2 reminders', both('Every prayer now has two warnings', 'x'))).toBe(
+      'green'
+    );
+  });
+
+  it('the Somali loop lessons: instruction verbs, the settings sense and the plural update phrase', () => {
+    expect(verify.verdictOf('Settings', both('Arrangements', 'x'))).toBe('green');
+    expect(verify.verdictOf('Hold flat and turn slowly', both('Keep it straight and move slowly', 'x'))).toBe('green');
+    expect(verify.verdictOf('You’re up to date', both('There is no new update', 'x'))).toBe('green');
+  });
+
+  it('the Indonesian loop lessons: the device-off sense, the sacred month and the error verbs', () => {
+    expect(verify.verdictOf('off', both('dead', 'x'))).toBe('green');
+    expect(verify.verdictOf('Muharram', both('Sacred', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Expired', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Ouch!', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Something went wrong. ', both('There is an error.', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Refresh ', both('Reload', 'x'))).toBe('green');
+    // Owner order eleven: the round-trip must land on sunrise itself - 'Rise' is a fragment
+    expect(verify.verdictOf('Sunrise', both('Rise', 'x'))).toBe('red');
+    expect(verify.verdictOf('Sunrise', both('Sunup', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sunrise', both('Shuruk', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Asher', 'x'))).toBe('green');
+    // 'Sun' names the day and the star, never the event - a fragment of sunrise (bug's fill audit)
+    expect(verify.verdictOf('Sunrise', both('Sun', 'x'))).toBe('red');
+  });
+
+  it('the Malay loop lessons: the name variant, the postponing adverb, the dismay exclamation and the month spelling', () => {
+    // Isak is the engine's romanization of Malay Isyak: it names the prayer itself, the Ashar/Asher class
+    expect(verify.verdictOf('Isha', both('Isak', 'x'))).toBe('green');
+    expect(verify.verdictOf('Later', both('Then', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Damn!', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhijjah', 'x'))).toBe('green');
+  });
+
+  it('the Minangkabau loop lessons: aid beside help, and mati rendered as its own verb', () => {
+    expect(verify.verdictOf('Help', both('Aid', 'x'))).toBe('green');
+    expect(verify.verdictOf('off', both('die', 'x'))).toBe('green');
+  });
+
+  it('the Somali ruling lessons: the athan word and the qibla word are transliterations', () => {
+    // Owner order twelve: athan is transliterated in every language - Azaan names the word itself,
+    // and Qibla's local spellings (Kiblat, Kıble...) name the same word
+    expect(verify.verdictOf('Athan', both('Azaan', 'x'))).toBe('green');
+    expect(verify.verdictOf('Qibla', both('Kiblat', 'x'))).toBe('green');
+    expect(verify.verdictOf('Qibla', both('Kıble', 'x'))).toBe('green');
+  });
+
+  it('the Madurese loop lessons: the person-shifted update phrase, bisu as its own mute word, and the reset family', () => {
+    expect(verify.verdictOf("You're up to date", both('They have the most recent version', 'x'))).toBe('green');
+    expect(verify.verdictOf('silent', both('dumb', 'x'))).toBe('green');
+    expect(verify.verdictOf('unavailable', both("can't", 'x'))).toBe('green');
+    expect(verify.verdictOf('Reset to the default colour', both('Reverts to initial color', 'x'))).toBe('green');
+    expect(verify.verdictOf('Reset', both('Returned', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Layout', 'x'))).toBe('green');
+  });
+
+  it('the Cebuano loop lessons: gipatay as its own off word, and wala as nothing', () => {
+    expect(verify.verdictOf('Off', both('Killed', 'x'))).toBe('green');
+    expect(verify.verdictOf('off', both('killed', 'x'))).toBe('green');
+    expect(verify.verdictOf('unavailable', both('nothing', 'x'))).toBe('green');
+  });
+
+  it('the Ilocano loop lessons: dasal is the prayer word the engine leaves untranslated, and renewal is refresh', () => {
+    expect(verify.carriesMeaning('This prayer', 'This dasal')).toBe(true);
+    expect(verify.verdictOf(' Refresh ', both('Renewal', 'x'))).toBe('green');
+    expect(verify.verdictOf('to refresh', both('to renew', 'x'))).toBe('green');
+  });
+
+  it('the Amharic loop lessons: the cancel and reminder senses, gone and improve, the stale old, and the Qiʻdah spelling', () => {
+    expect(verify.verdictOf('Cancel', both('Delete', 'x'))).toBe('green');
+    expect(verify.verdictOf('Reminder {n}', both('note {n}', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both("It's gone", 'x'))).toBe('green');
+    expect(verify.verdictOf('Update', both('Improve', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('old', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulkida', 'x'))).toBe('green');
+    // the opposite phrase never crosses: up-to-date reading old stays red
+    expect(verify.verdictOf("You're up to date", both('old', 'x'))).toBe('red');
+  });
+
+  it('the Azerbaijani loop lessons: the name spellings, the UI senses and the exclamation', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zohr', 'x'))).toBe('green');
+    expect(verify.verdictOf('Settings', both('Adjustments', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Screen', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both('Closed', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('Ready', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('Trip', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhijja', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Wow!', 'x'))).toBe('green');
+  });
+
+  it('the Baluchi loop lessons: the Arabic-root senses, the script echo pairs and the month spellings', () => {
+    expect(verify.verdictOf('Dhuhr', both('Lunch.', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('era;', 'x'))).toBe('green');
+    expect(verify.verdictOf('Istijaba', both('Answer', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both('close', 'x'))).toBe('green');
+    expect(verify.verdictOf('notification', both('information', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul Qaeda', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhajjah', 'x'))).toBe('green');
+  });
+
+  it('the Bambara loop lessons: whole-sense phrases, reveal, and ahead', () => {
+    expect(verify.verdictOf('Sunrise', both('the rising of the sun', 'x'))).toBe('green');
+    expect(verify.verdictOf('Midnight', both('the middle of the night', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Reveal', 'x'))).toBe('green');
+    expect(verify.verdictOf('Before', both('Ahead', 'x'))).toBe('green');
+  });
+
+  it('the Bengali loop lessons: the name renderings, namaz, and the month spellings', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zohar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Asar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Suhoor', both('sahri', 'x'))).toBe('green');
+    expect(verify.verdictOf('Notification at prayer time', both('Notification during Namaz', 'x'))).toBe('green');
+    expect(verify.verdictOf('Safar', both('tour', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zilkad', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhaj', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Hey!', 'x'))).toBe('green');
+  });
+
+  it('the Bosnian loop lessons: the traditional names and the obsolete stale', () => {
+    expect(verify.verdictOf('Halfway between Magrib and Fajr', both('Midway between Aksham and Sabah', 'x'))).toBe(
+      'green'
+    );
+    expect(verify.verdictOf('Out of date', both('Obsolete', 'x'))).toBe('green');
+  });
+
+  it('the Kurdish Sorani loop lessons: sahar and passive', () => {
+    expect(verify.verdictOf('Suhoor', both('Sahar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Off', both('passive', 'x'))).toBe('green');
+  });
+
+  it('the German loop lessons: aus as its own off word', () => {
+    expect(verify.verdictOf('Off', both('Out of', 'x'))).toBe('green');
+    expect(verify.verdictOf('off', both('out of', 'x'))).toBe('green');
+  });
+
+  it('the Persian loop lessons: chasht names Duha, and the Qiʻdah spelling', () => {
+    expect(verify.verdictOf('Duha', both('chasht prayer', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dhil al-Qaida', 'x'))).toBe('green');
+  });
+
+  it('the Fulah loop lessons: indicate and showing, quiet, and past', () => {
+    expect(verify.verdictOf('Show time passed', both('Indicate elapsed time', 'x'))).toBe('green');
+    expect(verify.verdictOf('Display', both('Showing', 'x'))).toBe('green');
+    expect(verify.verdictOf('Silent', both('Quiet', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Past', 'x'))).toBe('green');
+  });
+
+  it('the French loop lessons: Chourouq spells the sunrise name', () => {
+    expect(verify.verdictOf('Sunrise', both('Shurouq', 'x'))).toBe('green');
+  });
+
+  it('the Gujarati loop lessons: the Qiʻdah spelling', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dhul-Kida', 'x'))).toBe('green');
+  });
+
+  it('the Hausa loop lessons: indication, tongue, cover, renew, and the problem phrase', () => {
+    expect(verify.verdictOf('Display', both('Indication', 'x'))).toBe('green');
+    expect(verify.verdictOf('Language', both('Tongue', 'x'))).toBe('green');
+    expect(verify.verdictOf('Close', both('Cover', 'x'))).toBe('green');
+    expect(verify.verdictOf('Update', both('Renew', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Something went wrong. ', both('Another problem occurred.', 'x'))).toBe('green');
+  });
+
+  it('the Hindi loop lessons: the Devanagari name renderings', () => {
+    expect(verify.verdictOf('Dhuhr', both('zuhar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Suhoor', both('sahari', 'x'))).toBe('green');
+    expect(verify.verdictOf('Duha', both('Juha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('full', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('jill-kadah', 'x'))).toBe('green');
+  });
+
+  it('the Italian loop lessons: Ohimè joins the dismay exclamations', () => {
+    expect(verify.verdictOf(' Oh no! ', both('Alas!', 'x'))).toBe('green');
+  });
+
+  it('the Japanese loop lessons: the katakana names and the element weekdays', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zuhur', 'x'))).toBe('green');
+    expect(verify.verdictOf('Checking for updates...', both('Confirming...', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both('completion', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqaida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhijah', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('ah!', 'x'))).toBe('green');
+  });
+
+  it('the Javanese loop lessons: the sunrise phrase in its other word order, and mengko as future', () => {
+    expect(verify.verdictOf('Sunrise', both('The sun is rising', 'x'))).toBe('green');
+    expect(verify.verdictOf('Later', both('Future', 'x'))).toBe('green');
+  });
+
+  it('the Kazakh loop lessons: parameters, messages, and the Qiʻdah rendering', () => {
+    expect(verify.verdictOf('Settings', both('Parameters', 'x'))).toBe('green');
+    expect(verify.verdictOf("Why don't I get any notifications?", both('Why is there no message?', 'x'))).toBe('green');
+    expect(verify.verdictOf('Enable Notifications', both('Add messages', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('In Zulkag', 'x'))).toBe('green');
+  });
+
+  it('the Kannada loop lessons: Juhar, the noise sense, Bhanu as the sun, and Zul-Kida', () => {
+    expect(verify.verdictOf('Dhuhr', both('Juhar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sound', both('noise', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sun', both('Bhanu', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Kida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Sunrise', both('Bhanu', 'x'))).not.toBe('green');
+  });
+
+  it('the Korean loop lessons: Dooha, and the month names romanized their own way', () => {
+    expect(verify.verdictOf('Duha', both('Dooha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dulcada', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dulhija', 'x'))).toBe('green');
+  });
+
+  it('the Kurdish loop lessons: Esha, the dawn meal, worked-out as calculated, and the two month spellings', () => {
+    expect(verify.verdictOf('Isha', both('Esha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Suhoor', both('Morning meal', 'x'))).toBe('green');
+    expect(
+      verify.verdictOf(
+        'The qibla is worked out from your location',
+        both('Qibla is calculated from your location', 'x')
+      )
+    ).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zilqada', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhice', 'x'))).toBe('green');
+  });
+
+  it('the Kyrgyz loop lessons: no update as the up-to-date state, and Zulkaada', () => {
+    expect(verify.verdictOf('You’re up to date', both('No update', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulkaada', 'x'))).toBe('green');
+  });
+
+  it('the Malayalam loop lessons: the prayer romanizations, announcement, and the dismay word', () => {
+    expect(verify.verdictOf('Fajr', both('Subah', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuhr', both('Luhr', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Azar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Duha', both('Luha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Notification at prayer time', both('Announcement during Namaz', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dulkhaad', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dhul Hajj', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Oops!', 'x'))).toBe('green');
+  });
+
+  it('the Marathi loop lesson: Zhul-Kada joins the Qiʻdah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zhul-Kada', 'x'))).toBe('green');
+  });
+
+  it('the Burmese loop lessons: Zahor, Asur, Kevlar as qibla, and the month pair', () => {
+    expect(verify.verdictOf('Dhuhr', both('Zahor', 'x'))).toBe('green');
+    expect(verify.verdictOf('Asr', both('Asur', 'x'))).toBe('green');
+    expect(verify.verdictOf('Qibla', both('Kevlar', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqaid', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zul Hajj', 'x'))).toBe('green');
+  });
+
+  it('the Oromo loop lessons: the sun s east as the whole-sense sunrise, and Zuhri', () => {
+    expect(verify.verdictOf('Sunrise', both('East of the Sun', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuhr', both('Zuhri', 'x'))).toBe('green');
+  });
+
+  it('the Punjabi loop lessons: Zul-Qaida s other vowel, and stale as not-fresh', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qaida', 'x'))).toBe('green');
+    expect(verify.verdictOf('Out of date', both('Not fresh', 'x'))).toBe('green');
+  });
+
+  it('the Pashto loop lessons: breakfast as the dawn meal, Al-Zuha, and the month renderings', () => {
+    expect(verify.verdictOf('Suhoor', both('breakfast', 'x'))).toBe('green');
+    expect(verify.verdictOf('Duha', both('Al-Zuha', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qudda', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dil Hajj', 'x'))).toBe('green');
+  });
+
+  it('the Quechua loop lessons: Tuta as the night prayer, and the sun going down as maghrib', () => {
+    expect(verify.verdictOf('Isha', both('Night', 'x'))).toBe('green');
+    expect(verify.verdictOf('Magrib', both('The sun goes down', 'x'))).toBe('green');
+  });
+
+  it('the Russian loop lessons: no-sound as silent, and Dhul-Qada', () => {
+    expect(verify.verdictOf('Silent', both('No sound', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Dhul-Qada', 'x'))).toBe('green');
+  });
+
+  it('the Sindhi loop lesson: Dhul Qa d joins the Qi dah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both("Dhul Qa'd", 'x'))).toBe('green');
+  });
+
+  it('the Albanian loop lesson: Dul-hijxhe joins the Hijjah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Dul-hijxhe', 'x'))).toBe('green');
+  });
+
+  it('the Tamil loop lessons: Asan, and the two month spellings', () => {
+    expect(verify.verdictOf('Athan', both('Asan', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Julgita', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulhaj', 'x'))).toBe('green');
+  });
+
+  it('the Telugu loop lessons: Asser and Zul-Qida', () => {
+    expect(verify.verdictOf('Asr', both('Asser', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-Qida', 'x'))).toBe('green');
+  });
+
+  it('the Tajik loop lessons: Zuho, Azon, Zulqada, and the dismay Eh', () => {
+    expect(verify.verdictOf('Duha', both('Zuho', 'x'))).toBe('green');
+    expect(verify.verdictOf('Athan', both('Azon', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqada', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both('Eh!', 'x'))).toBe('green');
+  });
+
+  it('the Thai loop lessons: finish as done, and Dhulqidah', () => {
+    expect(verify.verdictOf('Done', both('finish', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both("Dhulqi'dah", 'x'))).toBe('green');
+  });
+
+  it('the Tigrinya loop lesson: Zulqi dah joins the Qi dah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both("Zulqi'dah", 'x'))).toBe('green');
+  });
+
+  it('the Turkmen loop lessons: no-update as the up-to-date state, and the two month spellings', () => {
+    expect(verify.verdictOf('You’re up to date', both('No update', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zylkada', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zilhijje', 'x'))).toBe('green');
+  });
+
+  it('the Turkish loop lesson: Tamam as Ok, Ok as Done', () => {
+    expect(verify.verdictOf('Done', both('Ok', 'x'))).toBe('green');
+  });
+
+  it('the Tatar loop lesson: Zulkhiza joins the Hijjah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Hijjah', both('Zulkhiza', 'x'))).toBe('green');
+  });
+
+  it('the Uyghur loop lesson: Zulqadi joins the Qi dah family', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zulqadi', 'x'))).toBe('green');
+  });
+
+  it('the Ukrainian loop lessons: Dovidka as Reference, Zul-kada, the premature end, both screens', () => {
+    expect(verify.verdictOf('Help', both('Reference', 'x'))).toBe('green');
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zul-kada', 'x'))).toBe('green');
+    expect(
+      verify.verdictOf('Why does the athan cut off early?', both('Why does the call to prayer end prematurely?', 'x'))
+    ).toBe('green');
+    expect(verify.verdictOf('Home & Lock widgets', both('Widgets for both screens', 'x'))).toBe('green');
+  });
+
+  it('the Urdu loop lessons: Chast carries Duha', () => {
+    expect(verify.verdictOf('Duha', both('Chast', 'x'))).toBe('green');
+  });
+
+  it('the Uzbek loop lessons: Azone, the latest version, and the two Jumodul months', () => {
+    expect(verify.verdictOf('Change athan', both('Azone replacement', 'x'))).toBe('green');
+    expect(verify.verdictOf('You’re up to date', both('The version is the latest', 'x'))).toBe('green');
+    expect(verify.verdictOf('Jumada I', both('Jumodul-first', 'x'))).toBe('green');
+    expect(verify.verdictOf('Jumada II', both('Jumodul-end', 'x'))).toBe('green');
+  });
+
+  it('the Wolof loop lessons: Ndimbal as Favour, amul as without, Jeex na as over', () => {
+    expect(verify.verdictOf('Help', both('Favour', 'x'))).toBe('green');
+    expect(verify.verdictOf('unavailable', both('without', 'x'))).toBe('green');
+    expect(verify.verdictOf('Done', both("It's over", 'x'))).toBe('green');
+  });
+
+  it('the Yoruba loop lessons: the accented Zul-kada and the dismay Ha', () => {
+    expect(verify.verdictOf('Dhuʻl-Qiʻdah', both('Zúl-kádá', 'x'))).toBe('green');
+    expect(verify.verdictOf(' Oh no! ', both(' Ha ha! ', 'x'))).toBe('green');
+  });
+
+  it('the Simplified Chinese loop lessons: the fasting meal, the latest version, in advance', () => {
+    expect(verify.verdictOf('Suhoor', both('fasting meal', 'x'))).toBe('green');
+    expect(verify.verdictOf('You’re up to date', both('You are already on the latest version', 'x'))).toBe('green');
+    expect(verify.verdictOf('Before', both('in advance', 'x'))).toBe('green');
+  });
+
   it('phase two: green when both slots carry the meaning, red when neither does, amber on divergence or a missing slot', () => {
     expect(verify.verdictOf('Fajr', both('Fajr', 'The dawn'), null, null, 'two')).toBe('green');
     expect(verify.verdictOf('Dhuhr', both('Back', 'the back'), null, null, 'two')).toBe('red');
@@ -479,6 +869,61 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     expect(json.rows[0].sites).toHaveLength(2);
     expect(json.rows[0].url2).toBeUndefined();
     expect(JSON.stringify(json)).not.toContain('mymemory');
+  });
+
+  it('pacing holds one engine request per gap, never two in flight', async () => {
+    const events: string[] = [];
+    let inFlight = 0;
+    let maxInFlight = 0;
+    const out = await verify.runLocale('ar', {
+      en: realEn,
+      catalog,
+      outDir: join(SCRATCH, 'paced'),
+      fetch: async (url) => {
+        events.push('fetch');
+        inFlight += 1;
+        maxInFlight = Math.max(maxInFlight, inFlight);
+        const answer = await gtxFetch(url);
+        inFlight -= 1;
+        return answer;
+      },
+      sleep: async (ms) => {
+        events.push(`sleep:${ms}`);
+      },
+      now: fixedNow,
+      pace: 12000,
+    });
+    expect(out.engineMix.gtx).toBe(210);
+    expect(maxInFlight).toBe(1);
+    expect(events[0]).toBe('sleep:12000');
+    for (let i = 1; i < events.length; i += 1) {
+      if (events[i] === 'fetch') expect(events[i - 1]).toBe('sleep:12000');
+    }
+  });
+
+  it('a refused request waits its pace gap before the retry', async () => {
+    const events: string[] = [];
+    let call = 0;
+    const out = await verify.runLocale('ar', {
+      en: realEn,
+      catalog,
+      outDir: join(SCRATCH, 'paced-retry'),
+      fetch: async (url) => {
+        call += 1;
+        events.push(`fetch:${call}`);
+        if (call === 2) return res('blocked', false, 429);
+        return gtxFetch(url);
+      },
+      sleep: async (ms) => {
+        events.push(`sleep:${ms}`);
+      },
+      now: fixedNow,
+      pace: 5000,
+    });
+    expect(out.engineMix.gtx).toBe(210);
+    const secondRefusal = events.indexOf('fetch:2');
+    const retry = events.indexOf('fetch:3');
+    expect(events.slice(secondRefusal + 1, retry)).toEqual(['sleep:400', 'sleep:5000']);
   });
 
   it('marks a slot miss when the engine refuses, and lists the row as a gap, gtx dead whole-locale', async () => {
@@ -743,7 +1188,7 @@ export const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', '
 describe('the command line flow', () => {
   const readCatalogFile = async (locale: string) =>
     locale === 'en' ? realEn : { ...realEn, 'prayer.fajr': `t:${locale}` };
-  const baseDeps = (fetchFn: FetchFn) => ({
+  const baseDeps = (fetchFn: FetchFn): Partial<Deps> => ({
     fetch: fetchFn,
     sleep: noSleep,
     now: fixedNow,
@@ -755,6 +1200,36 @@ describe('the command line flow', () => {
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
     return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
+
+  it('the index rebuild survives a stray non-artifact json in the out dir', async () => {
+    const outDir = join(SCRATCH, 'cli-stray');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    writeFileSync(join(outDir, 'zzz-stray.json'), JSON.stringify({ not: 'an artifact' }));
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const html = readFileSync(join(outDir, 'index.html'), 'utf8');
+    expect(html).toContain('ar - Arabic');
+    expect(html).not.toContain('undefined');
+  });
+
+  it('rejects a junk --pace value and threads a whole-number pace into the locale run', async () => {
+    const outDir = join(SCRATCH, 'cli-pace');
+    await expect(verify.run(['--locales', 'ar', '--out', outDir, '--pace', 'abc'], baseDeps(fetchOk))).rejects.toThrow(
+      /pace/
+    );
+    await expect(verify.run(['--locales', 'ar', '--out', outDir, '--pace', '-5'], baseDeps(fetchOk))).rejects.toThrow(
+      /pace/
+    );
+    const sleeps: number[] = [];
+    const deps = baseDeps(fetchOk);
+    deps.sleep = async (ms: number) => {
+      sleeps.push(ms);
+    };
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--pace', '9000'], deps);
+    expect(report.ok).toBe(true);
+    // the probe plus every row, one pace gap before each
+    expect(sleeps.filter((ms) => ms === 9000).length).toBe(211);
+  });
 
   it('runs the named locales, generates the English reference without a single fetch, and reports ok', async () => {
     const outDir = join(SCRATCH, 'cli-a');
@@ -779,6 +1254,177 @@ describe('the command line flow', () => {
     expect(enHtml).toContain('reference');
   });
 
+  describe('the judge rulings (the loop phase one: a fluent judge greens a correct catalog the engine misread)', () => {
+    const buildArtifact = async (outDir: string) => {
+      await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+      return JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+    };
+    const makeRed = (before: { rows: Row[]; counts: Record<string, number> }, key: string) => {
+      const row = before.rows.find((r: Row) => r.key === key);
+      if (!row) throw new Error(`fixture artifact holds no ${key} row`);
+      row.sites = [
+        { engine: 'gtx', roundtrip: 'an engine rendering that loses the meaning' },
+        { engine: 'pending', roundtrip: null },
+      ];
+      row.verdict = 'red';
+      return before;
+    };
+
+    it('rules a red row green with a mandatory note, visibly marked, and recounts', async () => {
+      const outDir = join(SCRATCH, 'cli-rule');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([
+          {
+            key: 'prayer.fajr',
+            note: 'the engine picked the country sense; the catalog name is the established prayer name',
+          },
+        ])
+      );
+      const lines: string[] = [];
+      const deps = baseDeps(fetchOk);
+      deps.log = (line: string) => {
+        lines.push(line);
+      };
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], deps);
+      expect(report.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('green');
+      expect(row.ruling).toBe('the engine picked the country sense; the catalog name is the established prayer name');
+      expect(after.counts.red).toBe(before.counts.red - 1);
+      expect(after.judgeRuled).toBe(1);
+      const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
+      expect(html).toContain('judge');
+      expect(lines.some((line) => line.includes('ar: 1 ruling applied'))).toBe(true);
+    });
+
+    it('refuses a ruling without a note', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-no-note');
+      const before = await buildArtifact(outDir);
+      const red = before.rows.find((r: Row) => r.verdict === 'red');
+      if (!red) throw new Error('fixture artifact holds no red row');
+      writeFileSync(join(outDir, 'ar.judge-rulings.json'), JSON.stringify([{ key: red.key, note: '' }]));
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.rulingErrors).toEqual([`ar/${red.key} carries no note`]);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      expect(after.judgeRuled ?? 0).toBe(0);
+    });
+
+    it('a standing ruling survives a resume while the engine still reads red, and drops once the engine carries', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-resume');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+
+      // The resume rebuilds every row from the resumed slots; the row still reads red
+      // (makeRed's engine text loses the meaning), so the ruling must restore its green
+      const resumed = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      expect(resumed.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.ruling).toBe('the engine misreads a correct catalog string');
+      expect(row.verdict).toBe('green');
+
+      // A ruling that no longer applies (the engine's own rendering carries) rides nothing
+      const greenArtifact = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const greenRow = greenArtifact.rows.find((r: Row) => r.key === 'settings.title');
+      greenRow.ruling = 'a ruling that no longer applies';
+      greenRow.verdict = 'green';
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(greenArtifact));
+      await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      const final = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const finalRow = final.rows.find((r: Row) => r.key === 'settings.title');
+      expect(finalRow.ruling).toBeUndefined();
+      expect(finalRow.verdict).toBe('green');
+    });
+
+    it('a flag written without its value never swallows the next flag as a directory name', async () => {
+      const outDir = join(SCRATCH, 'cli-flag-without-value');
+      await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+      // '--out --resume' must not create or write into a directory named '--resume'
+      const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+      expect(report.ok).toBe(true);
+      expect(existsSync(join(outDir, '--resume'))).toBe(false);
+    });
+
+    it('a judge ruling survives an engine miss on resume - the amber row keeps the note for the fill path', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-miss-survives');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      // The stored slot empties (an engine outage between runs); the resume refetches and misses
+      const ruled = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const ruledRow = ruled.rows.find((r: Row) => r.key === 'prayer.fajr');
+      ruledRow.sites = [
+        { engine: 'gtx', roundtrip: null },
+        { engine: 'pending', roundtrip: null },
+      ];
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(ruled));
+      const missFetch: FetchFn = async (url) => {
+        const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
+        if (q === ruledRow.catalog) return res('[]');
+        return fetchOk(url);
+      };
+      const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(missFetch));
+      expect(report.ok).toBe(false);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('amber');
+      expect(row.ruling).toBe('the engine misreads a correct catalog string');
+    });
+
+    it('re-applying a standing ruling is a no-op, not a refusal', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-idempotent');
+      const before = makeRed(await buildArtifact(outDir), 'prayer.fajr');
+      writeFileSync(join(outDir, 'ar.json'), JSON.stringify(before));
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([{ key: 'prayer.fajr', note: 'the engine misreads a correct catalog string' }])
+      );
+      await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      const again = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(again.ok).toBe(true);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      const row = after.rows.find((r: Row) => r.key === 'prayer.fajr');
+      expect(row.verdict).toBe('green');
+      expect(after.judgeRuled).toBe(1);
+    });
+
+    it('refuses a ruling on a row the engine did not read red, a missing note, and an unknown key', async () => {
+      const outDir = join(SCRATCH, 'cli-rule-refused');
+      await buildArtifact(outDir);
+      writeFileSync(
+        join(outDir, 'ar.judge-rulings.json'),
+        JSON.stringify([
+          { key: 'settings.title', note: 'not a red row' },
+          { key: 'settings.help', note: 'also not a red row' },
+          { key: 'unknown.key', note: 'typo guard' },
+        ])
+      );
+      const report = await verify.run(['--rule', 'ar', '--out', outDir], baseDeps(fetchOk));
+      expect(report.ok).toBe(false);
+      expect(report.rulingErrors).toEqual([
+        'ar/settings.title is not a red row',
+        'ar/settings.help is not a red row',
+        'ar/unknown.key is not a row in the artifact',
+      ]);
+      const after = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
+      expect(after.judgeRuled ?? 0).toBe(0);
+    });
+  });
+
   it("rebuilds the index from every artifact on disk, not only this run's locales", async () => {
     const outDir = join(SCRATCH, 'cli-index');
     await verify.run(['--locales', 'so', '--out', outDir], baseDeps(fetchOk));
@@ -786,6 +1432,19 @@ describe('the command line flow', () => {
     await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
     const index = readFileSync(join(outDir, 'index.html'), 'utf8');
     expect(index).toContain('so.html');
+    expect(index).toContain('ar.html');
+  });
+
+  it('skips the judge-rulings side file when rebuilding the index', async () => {
+    const outDir = join(SCRATCH, 'cli-index-rulings');
+    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
+    writeFileSync(
+      join(outDir, 'ar.judge-rulings.json'),
+      JSON.stringify([{ key: 'settings.title', note: 'a side file, not an artifact' }])
+    );
+    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
+    expect(report.ok).toBe(true);
+    const index = readFileSync(join(outDir, 'index.html'), 'utf8');
     expect(index).toContain('ar.html');
   });
 
@@ -829,7 +1488,7 @@ describe('the command line flow', () => {
   it('defaults the out dir under the injected home and rejects an unknown locale', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--locales', 'ar'], deps);
-    expect(report.written).toContain(join(deps.home, 'athan-i18n-verify', 'index.html'));
+    expect(report.written).toContain(join(deps.home!, 'athan-i18n-verify', 'index.html'));
     await expect(verify.run(['--locales', 'xx'], deps)).rejects.toThrow('xx');
   });
 

@@ -162,7 +162,7 @@ export const ta = {
   'extras.explanation.last third': 'இரவின் கடைசி மூன்றில் ஒரு பங்கின் தொடக்கம்',
   'extras.explanation.suhoor': 'ஃபஜ்ருக்கு 20 நிமிடம் முன்பு',
   'extras.explanation.duha': 'சூரிய உதயத்திற்கு 20 நிமிடம் பின்பு',
-  'extras.explanation.istijaba': 'மஃகிரிபுக்கு 1 மணி நேரத்திற்கு முன்பு (வெள்ளிக்கிழமை மட்டும்)',
+  'extras.explanation.istijaba': 'மஃகிரிபுக்கு 1 மணி நேரத்திற்கு முன்பு (வெள்ளிக்கிழமை மட்டும்) (பிரார்த்தனை ஏற்கப்படும் நேரம்)',
   'duration.now': 'இப்போது',
   'time.now': '{name} இப்போது',
   'time.ago': '{name} {duration} முன்',

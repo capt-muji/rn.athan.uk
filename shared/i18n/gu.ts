@@ -161,7 +161,7 @@ export const gu = {
   'extras.explanation.last third': 'રાતના છેલ્લા ત્રીજા ભાગની શરૂઆત',
   'extras.explanation.suhoor': 'ફજરના 20 મિનિટ પહેલાં',
   'extras.explanation.duha': 'સૂર્યોદયના 20 મિનિટ પછી',
-  'extras.explanation.istijaba': 'મગરિબના 1 કલાક પહેલાં (ફક્ત શુક્રવારે)',
+  'extras.explanation.istijaba': 'મગરિબના 1 કલાક પહેલાં (ફક્ત શુક્રવારે) (પ્રાર્થના સ્વીકારનો સમય)',
   'duration.now': 'હવે',
   'time.now': '{name} હવે',
   'time.ago': '{name} {duration} પહેલાં',

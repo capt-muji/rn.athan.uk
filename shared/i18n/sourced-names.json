@@ -244,8 +244,8 @@
         "confidence": "high",
         "note": ""
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 hour before Magrib (Fridays only)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 hour before Magrib (Fridays only) (the hour of acceptance)",
         "source": "existing-app-catalog",
         "confidence": "high",
         "note": ""
@@ -346,8 +346,8 @@
         "confidence": "high",
         "note": ""
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "ساعة قبل المغرب (الجمعة فقط)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "ساعة قبل المغرب (الجمعة فقط) (ساعة الإجابة)",
         "source": "existing-app-catalog",
         "confidence": "high",
         "note": ""
@@ -448,8 +448,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced Terbit plus standard syntax; setelah is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sebelum Maghrib (hari Jumat saja)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sebelum Maghrib (hari Jumat saja) (saat pengabulan doa)",
         "source": "derived",
         "confidence": "medium",
         "note": "hari Jumat, standard Indonesian capitalization of day names."
@@ -550,8 +550,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "مغرب سے ایک گھنٹہ پہلے (صرف جمعہ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "مغرب سے ایک گھنٹہ پہلے (صرف جمعہ) (دعا کی قبولیت کا وقت)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -652,8 +652,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "মাগরিবের ১ ঘণ্টা আগে (শুধুমাত্র শুক্রবার)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "মাগরিবের ১ ঘণ্টা আগে (শুধুমাত্র শুক্রবার) (দোয়া কবুলের সময়)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -754,8 +754,8 @@
         "confidence": "high",
         "note": "diyanethaber.com.tr describes the Duha time exactly this way (güneşin doğuşundan yaklaşık 20 dakika sonra)."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Akşam'dan 1 saat önce (yalnızca cuma günleri)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Akşam'dan 1 saat önce (yalnızca cuma günleri) (duaların kabul saati)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -856,8 +856,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced Lever du soleil plus standard syntax; après is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 heure avant le Maghrib (vendredis uniquement)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 heure avant le Maghrib (vendredis uniquement) (l’heure de l’exaucement)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced Maghrib plus standard syntax; vendredi is Friday."
@@ -958,8 +958,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced Sonnenaufgang plus standard syntax; nach is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 Stunde vor Maghrib (nur freitags)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 Stunde vor Maghrib (nur freitags) (die Stunde der Erhörung)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; freitags is on Fridays, nur is only."
@@ -1060,8 +1060,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced طلوع آفتاب plus standard syntax; بعد از is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "یک ساعت قبل از اذان مغرب (فقط جمعه‌ها)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "یک ساعت قبل از اذان مغرب (فقط جمعه‌ها) (ساعت قبول شدن دعاها)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced اذان مغرب plus standard syntax; جمعه is Friday."
@@ -1162,8 +1162,8 @@
         "confidence": "medium",
         "note": ""
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sebelum Maghrib (hari Jumaat sahaja)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sebelum Maghrib (hari Jumaat sahaja) (saat pengabulan doa)",
         "source": "derived",
         "confidence": "medium",
         "note": ""
@@ -1264,8 +1264,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced Macheo plus standard syntax; baada ya is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Saa 1 kabla ya Magharibi (Ijumaa tu)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Saa 1 kabla ya Magharibi (Ijumaa tu) (saa ya kukubaliwa kwa maombi)",
         "source": "derived",
         "confidence": "medium",
         "note": "Ijumaa is Friday; tu is only."
@@ -1366,8 +1366,8 @@
         "confidence": "low",
         "note": "Derived; bayan is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Sa'a 1 kafin Magriba (Juma'a kawai)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Sa'a 1 kafin Magriba (Juma'a kawai) (lokacin karbar addu'a)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; sa'a is hour, Juma'a is Friday, kawai is only."
@@ -1468,8 +1468,8 @@
         "confidence": "medium",
         "note": "The duha sentence in standard Somali syntax: ka dib after, over the sourced Sunrise name Waaberi."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 saac ka hor Maqrib (Jimcaha oo kaliya)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 saac ka hor Maqrib (Jimcaha oo kaliya) (saacadda ducooyinka la aqbalo)",
         "source": "derived",
         "confidence": "medium",
         "note": "The istijaba sentence in standard Somali syntax: saac hour, Jimcaha oo kaliya Fridays only, over the sourced Magrib name Maqrib."
@@ -1570,8 +1570,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced لمرختنه plus standard syntax; وروسته is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "له مغرب ۱ ساعت دمخه (يوازې د جمعې ورځ) (د لمانځه د قبول وخت)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ساعت is hour, جمعه is Friday."
@@ -1672,8 +1672,8 @@
         "confidence": "medium",
         "note": "Derived; piştî is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 saet berî Mexreb (tenê roja Înê)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 saet berî Mexreb (tenê roja Înê) (dema bersivê)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; tenê roja Înê is Fridays only."
@@ -1774,8 +1774,8 @@
         "confidence": "high",
         "note": "islom.uz's Ishroq definition says Кун чиққандан сўнг 20 дақиқа ўтгач (after the sun rises, 20 minutes later). Latin-script equivalent."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Shomdan 1 soat oldin (faqat juma kunlari)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Shomdan 1 soat oldin (faqat juma kunlari) (duolarning qabul boʻlish vaqti)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; soat is hour, juma is Friday."
@@ -1876,8 +1876,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Məğrib'dən 1 saat əvvəl (yalnız cümə günləri) (duaların qəbul saatı)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -1978,8 +1978,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "மஃகிரிபுக்கு 1 மணி நேரத்திற்கு முன்பு (வெள்ளிக்கிழமை மட்டும்)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "மஃகிரிபுக்கு 1 மணி நேரத்திற்கு முன்பு (வெள்ளிக்கிழமை மட்டும்) (பிரார்த்தனை ஏற்கப்படும் நேரம்)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; வெள்ளிக்கிழமை is Friday."
@@ -2080,8 +2080,8 @@
         "confidence": "medium",
         "note": "Derived; ശേഷം is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "മഗ്രിബിന് 1 മണിക്കൂർ മുമ്പ് (വെള്ളിയാഴ്ച മാത്രം)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "മഗ്രിബിന് 1 മണിക്കൂർ മുമ്പ് (വെള്ളിയാഴ്ച മാത്രം) (പ്രാർഥന നിറവേറുന്ന സമയം)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; വെള്ളിയാഴ്ച is Friday."
@@ -2182,8 +2182,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "मग़रिब से 1 घंटा पहले (केवल शुक्रवार)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "मग़रिब से 1 घंटा पहले (केवल शुक्रवार) (दुआ क़बूल होने का समय)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; शुक्रवार is Friday."
@@ -2284,8 +2284,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "За 1 час до Магриба (только по пятницам)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "За 1 час до Магриба (только по пятницам) (час принятия молитвы)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -2386,8 +2386,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 hora antes del Magreb (solo los viernes)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 hora antes del Magreb (solo los viernes) (la hora de la aceptación)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; solo viernes is Fridays only."
@@ -2488,8 +2488,8 @@
         "confidence": "medium",
         "note": "Derived; X后N分钟."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "昏礼前1小时（仅限周五）",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "昏礼前1小时（仅限周五） (应答的时刻)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; 周五 is Friday, 仅限 is only."
@@ -2590,8 +2590,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 sat prije Akšama (samo petkom)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 sat prije Akšama (samo petkom) (doba prihvaćanja dove)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; petkom is on Fridays."
@@ -2692,8 +2692,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 orë para Akshamit (vetëm të premten)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 orë para Akshamit (vetëm të premten) (ora e pranimit të lutjes)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; të premten is on Friday."
@@ -2794,8 +2794,8 @@
         "confidence": "medium",
         "note": "Derived; หลัง is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "ก่อนมัฆริบ 1 ชั่วโมง (เฉพาะวันศุกร์) (ชั่วโมงแห่งการตอบรับคำอธิษฐาน)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; วันศุกร์ is Friday, เฉพาะ is only."
@@ -2896,8 +2896,8 @@
         "confidence": "medium",
         "note": "Derived; Dutch abbreviates minuten as min and na is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 uur vóór Maghrib (alleen vrijdag)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 uur vóór Maghrib (alleen vrijdag) (het uur van verhoring)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived."
@@ -2998,8 +2998,8 @@
         "confidence": "medium",
         "note": "Derived."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 hora antes do Maghrib (apenas sextas-feiras)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 hora antes do Maghrib (apenas sextas-feiras) (a hora da aceitação)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; sextas-feiras is Fridays."
@@ -3100,8 +3100,8 @@
         "confidence": "medium",
         "note": "Derived; кейін is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Ақшамға 1 сағат бұрын (тек жұма)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Ақшамға 1 сағат бұрын (тек жұма) (дұға қабыл болатын уақыт)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; тек жұма is Fridays only."
@@ -3202,8 +3202,8 @@
         "confidence": "medium",
         "note": "Derived; кийин is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Шамга 1 саат мурун (жемешембиде гана)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Шамга 1 саат мурун (жемешембиде гана) (дуба кабыл болуучу убак)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; жемешембиде гана is Fridays only."
@@ -3304,8 +3304,8 @@
         "confidence": "medium",
         "note": "Derived; пас аз is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 соат пеш аз Шом (танҳо ҷумъа)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 соат пеш аз Шом (танҳо ҷумъа) (вақти қабул шудани дуоҳо)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; танҳо ҷумъа is Fridays only."
@@ -3406,8 +3406,8 @@
         "confidence": "medium",
         "note": "Derived; soň is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Agşamdan 1 sagat öň (diňe anna güni)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Agşamdan 1 sagat öň (diňe anna güni) (duanyň kabul wagty)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; diňe anna güni is Fridays only."
@@ -3508,8 +3508,8 @@
         "confidence": "low",
         "note": "Derived; ginaaw is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 waxtu laata Timis (juma rekk)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 waxtu laata Timis (juma rekk) (waxtu jaadu)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; juma rekk is Friday only."
@@ -3610,8 +3610,8 @@
         "confidence": "medium",
         "note": "Derived; नंतर is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "मगरीबच्या 1 तास आधी (फक्त शुक्रवारी)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "मगरीबच्या 1 तास आधी (फक्त शुक्रवारी) (दुआ कबूल होण्याची वेळ)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; फक्त शुक्रवारी is Fridays only."
@@ -3712,8 +3712,8 @@
         "confidence": "medium",
         "note": "Derived; తర్వాత is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "మగ్రిబ్కు 1 గంట ముందు (శుక్రవారం మాత్రమే)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "మగ్రిబ్కు 1 గంట ముందు (శుక్రవారం మాత్రమే) (ప్రార్థన ఆమోదించే సమయం)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; గంట is hour, శుక్రవారం is Friday, మాత్రమే is only."
@@ -3814,8 +3814,8 @@
         "confidence": "medium",
         "note": "Derived; પછી is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "મગરિબના 1 કલાક પહેલાં (ફક્ત શુક્રવારે)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "મગરિબના 1 કલાક પહેલાં (ફક્ત શુક્રવારે) (પ્રાર્થના સ્વીકારનો સમય)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; કલાક is hour, શુક્રવાર is Friday, ફક્ત is only."
@@ -3916,8 +3916,8 @@
         "confidence": "medium",
         "note": "Derived; ನಂತರ is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "ಮಗ್ರಿಬ್‌ಗೆ 1 ಗಂಟೆ ಮೊದಲು (ಶುಕ್ರವಾರ ಮಾತ್ರ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "ಮಗ್ರಿಬ್‌ಗೆ 1 ಗಂಟೆ ಮೊದಲು (ಶುಕ್ರವಾರ ಮಾತ್ರ) (ಪ್ರಾರ್ಥನೆ ನೆರವೇರುವ ಸಮಯ)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ಗಂಟೆ is hour, ಶುಕ್ರವಾರ is Friday, ಮಾತ್ರ is only."
@@ -4018,8 +4018,8 @@
         "confidence": "medium",
         "note": "Derived; መውጣት is rising, በኋላ is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "ከመግሪብ 1 ሰዓት በፊት (ዓርብ ብቻ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "ከመግሪብ 1 ሰዓት በፊት (ዓርብ ብቻ) (የመልስ ሰዓት)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ሰዓት is hour, ዓርብ is Friday, ብቻ is only."
@@ -4120,8 +4120,8 @@
         "confidence": "medium",
         "note": "Derived; booda is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Sa'aatii 1 dura Magribii (Jimaata qofa)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Sa'aatii 1 dura Magribii (Jimaata qofa) (yeroo deebii kadhaa)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; sa'aatii is hour, Jimaata is Friday, qofa is only."
@@ -4222,8 +4222,8 @@
         "confidence": "medium",
         "note": "Derived; kɔfɛ is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Magribi 1 lɛrɛ ɲɛfɛ (juma dɔrɔn) (waati kanu bonya doa)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; lɛrɛ is hour, juma is Friday, dɔrɔn is only."
@@ -4324,8 +4324,8 @@
         "confidence": "medium",
         "note": "Derived; pagkatapos is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 oras bago ang Maghrib (Biyernes lamang)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 oras bago ang Maghrib (Biyernes lamang) (oras ng pagtugon)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; oras is hour, Biyernes is Friday, lamang is only."
@@ -4426,8 +4426,8 @@
         "confidence": "medium",
         "note": "Derived; caggal is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Waktu gootal ado Magrib (Aljumaa tan)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Waktu gootal ado Magrib (Aljumaa tan) (waawi jaabinde du'aaje)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; waktu gootal is one hour, Aljumaa is Friday, tan is only."
@@ -4528,8 +4528,8 @@
         "confidence": "medium",
         "note": "Derived; بعد is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "نماشاں توں 1 گھنٹہ پہلاں (صرف جمعہ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "نماشاں توں 1 گھنٹہ پہلاں (صرف جمعہ) (ویلٰی قبولیت)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; صرف جمعہ is Fridays only."
@@ -4630,8 +4630,8 @@
         "confidence": "medium",
         "note": "Derived; پوءِ is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "مغرب کان 1 ڪلاڪ اڳ (رڳو جمعي جي ڏينهن)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "مغرب کان 1 ڪلاڪ اڳ (رڳو جمعي جي ڏينهن) (دعائن قبول جو وقت)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; رڳو جمعي جي ڏينهن is Fridays only."
@@ -4732,8 +4732,8 @@
         "confidence": "medium",
         "note": "Derived; كېيىن is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "شامدىن 1 سائەت بۇرۇن (پەقەت جۈمە كۈنى)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "شامدىن 1 سائەت بۇرۇن (پەقەت جۈمە كۈنى) (دۇئا قوبۇل بولىدىغان ۋاقىت)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; پەقەت جۈمە كۈنى is Fridays only."
@@ -4834,8 +4834,8 @@
         "confidence": "medium",
         "note": "Derived; دوای is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 کاتژمێر پێش مەغریب (تەنها ڕۆژی هەینی)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 کاتژمێر پێش مەغریب (تەنها ڕۆژی هەینی) (کاتی وەڵامدانەوەی دوعا)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; تەنها ڕۆژی هەینی is Fridays only."
@@ -4936,8 +4936,8 @@
         "confidence": "medium",
         "note": "Derived; lẹ́yìn is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Wákàtí 1 ṣáájú Magrib (ọjọ́ Jímọ̀ nìkan) (ìgbà ìdáhùn ìwàdùúró)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ọjọ́ Jímọ̀ nìkan is Fridays only."
@@ -5038,8 +5038,8 @@
         "confidence": "medium",
         "note": "Derived; sawisé is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sadurungé Maghrib (mung dina Jumuwah)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sadurungé Maghrib (mung dina Jumuwah) (wektu diterimane donga)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; mung dina Jumuwah is Fridays only."
@@ -5140,8 +5140,8 @@
         "confidence": "medium",
         "note": "Derived; sanggeus is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam saméméh Magrib (ukur poé Jumaah)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam saméméh Magrib (ukur poé Jumaah) (waktos ditampina doa)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; ukur poé Jumaah is Fridays only."
@@ -5242,8 +5242,8 @@
         "confidence": "medium",
         "note": "Derived; ပြီး is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "မဂ်ရိဗ်မတိုင်မီ 1 နာရီ (သောကြာနေ့သာ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "မဂ်ရိဗ်မတိုင်မီ 1 နာရီ (သောကြာနေ့သာ) (ဆုတောင်းပြည့်သောအချိန်)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; နာရီ is hour, သောကြာနေ့သာ is Fridays only."
@@ -5344,8 +5344,8 @@
         "confidence": "medium",
         "note": "Derived; соң is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Ахшам намазга 1 сәгать кала (җомга көнне генә)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Ахшам намазга 1 сәгать кала (җомга көнне генә) (дога кабул ителү сәгате)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; сәгать is hour, җомга көнне генә is Fridays only."
@@ -5446,8 +5446,8 @@
         "confidence": "medium",
         "note": "Derived; через is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "За 1 годину до Магрібу (лише в п'ятницю)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "За 1 годину до Магрібу (лише в п'ятницю) (година прийняття молитви)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; година is hour, лише в п'ятницю is Fridays only."
@@ -5548,8 +5548,8 @@
         "confidence": "medium",
         "note": "Derived; sasudah is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sabalun Magrib (hanyo hari Jumaik)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sabalun Magrib (hanyo hari Jumaik) (saat pangabulan doa)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived; hanyo hari Jumaik is Fridays only."
@@ -5650,8 +5650,8 @@
         "confidence": "medium",
         "note": "Derived; saamargerra is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sabellunna Magreb (binte Jumaah bhai)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sabellunna Magreb (binte Jumaah bhai) (jam pangabulan doa)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; binte Jumaah bhai is Fridays only."
@@ -5752,8 +5752,8 @@
         "confidence": "low",
         "note": "Derived; appattettong is after, recorded derivation."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jamma sabbela Magrib (cuma enrengngi Juma)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jamma sabbela Magrib (cuma enrengngi Juma) (jamma pangabbuloang doa)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; jamma is hour, enrengngi Juma is Friday, cuma only."
@@ -5854,8 +5854,8 @@
         "confidence": "low",
         "note": "Derived; -manta from, qhipa after, recorded derivation."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Inti chinkayman 1 ura ñawpaq (viernesllallapunim)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Inti chinkayman 1 ura ñawpaq (viernesllallapunim) (qatikunapa pachan)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; ura is hour, viernesllallapunim is Fridays only, the Spanish day-word the leaflets carry."
@@ -5956,8 +5956,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; Xの20分後 is 20 minutes after X."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "マグリブの1時間前（金曜のみ）",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "マグリブの1時間前（金曜のみ） (祈りが聞き入れられる時間)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; 金曜のみ is Fridays only."
@@ -6058,8 +6058,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; 20분 후 is 20 minutes after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "마그립 1시간 전 (금요일만)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "마그립 1시간 전 (금요일만) (기도가 응답되는 시간)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; 금요일만 is Fridays only."
@@ -6160,8 +6160,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; dopo is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 ora prima di Maghrib (solo il venerdì)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 ora prima di Maghrib (solo il venerdì) (l’ora dell’esaudimento)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; solo il venerdì is Fridays only."
@@ -6262,8 +6262,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; po is after, the sourced sunrise name in its inflected form."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 godzina przed Maghrib (tylko w piątki)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 godzina przed Maghrib (tylko w piątki) (godzina wysłuchania)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; tylko w piątki is Fridays only."
@@ -6364,8 +6364,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; după is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Cu o oră înainte de Maghrib (doar vinerea)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Cu o oră înainte de Maghrib (doar vinerea) (ceasul împlinirii rugăciunilor)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; doar vinerea is on Fridays only."
@@ -6466,8 +6466,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; human sa is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 ka oras sa wala pa ang Maghrib (biyernes ra)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 ka oras sa wala pa ang Maghrib (biyernes ra) (oras sa pagtubag sa pangadyi)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; biyernes ra is Fridays only."
@@ -6568,8 +6568,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; kalpasan ti is after."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 nga oras sakbay ti Maghrib (iti Fiernes la)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 nga oras sakbay ti Maghrib (iti Fiernes la) (oras ti panangyawat ti dawat)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; iti Fiernes la is on Fridays only."
@@ -6670,8 +6670,8 @@
         "confidence": "medium",
         "note": "Derived from the sourced names; sau X 20 phút is 20 minutes after X."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Trước Maghrib 1 giờ (chỉ thứ Sáu)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Trước Maghrib 1 giờ (chỉ thứ Sáu) (giờ được nhậm lời)",
         "source": "derived",
         "confidence": "medium",
         "note": "Derived from the sourced names; chỉ thứ Sáu is Fridays only."
@@ -6772,8 +6772,8 @@
         "confidence": "low",
         "note": "Derived; بعد is after, digits Latin per R12."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "نِماشَاں توں 1 گھنٹہ پہلے (صرف جمعہ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "نِماشَاں توں 1 گھنٹہ پہلے (صرف جمعہ) (دعا قبول دا وقت)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; گھنٹہ is hour, صرف only, جمعہ Friday, digits Latin per R12."
@@ -6874,8 +6874,8 @@
         "confidence": "low",
         "note": "Derived; بعد is after, digits Latin per R12."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "نماشاں 1 گھنٹہ پہلے (صرف جمعہ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "نماشاں 1 گھنٹہ پہلے (صرف جمعہ) (دُعائن قبول ئے وخت)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; گھنٹہ is hour, صرف only, جمعہ Friday, digits Latin per R12."
@@ -6976,8 +6976,8 @@
         "confidence": "low",
         "note": "Derived; بعد is after, digits Latin per R12."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "شام 1 گھنٹہ پہلے (صرف جمعہ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "شام 1 گھنٹہ پہلے (صرف جمعہ) (دُعائن قبول وَتھ)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; گھنٹہ is hour, صرف only, جمعہ Friday, digits Latin per R12."
@@ -7078,8 +7078,8 @@
         "confidence": "low",
         "note": "Derived; ngawo is Kanuri's after, digits Latin per R12."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "Magaribi gaba 1 goggo (Juma ro)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "Magaribi gaba 1 goggo (Juma ro) (waqti jaabugui’a)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; goggo is Kanuri's time, Juma Friday, ro the on-marker, digits Latin per R12."
@@ -7180,8 +7180,8 @@
         "confidence": "low",
         "note": "Derived; selepas is after, digits Latin per R12."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sebelum Magrib (Jumaat sahaja)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sebelum Magrib (Jumaat sahaja) (oras sa pagtubag)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived; jam is hour, Jumaat Friday, sahaja only, digits Latin per R12."
@@ -7283,8 +7283,8 @@
         "confidence": "low",
         "note": "Derived: the ordinary Hiligaynon phrase for the sun rising (adlaw the sun, pagsikat its rising), the ceb/ilo precedent; no table prints the row."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 ka oras antes sang Maghrib (Biyernes lang)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 ka oras antes sang Maghrib (Biyernes lang) (oras sang pagtubag sang pangadyi)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
@@ -7385,8 +7385,8 @@
         "confidence": "low",
         "note": "Re-sourced with the sunrise row (T-541): the explanation rides the row's new short noun pagsirang, dropping the misspelled saldog phrase"
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 oras bago an Maghrib (Biyernes sana)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 oras bago an Maghrib (Biyernes sana) (oras kan pagtubang sa pangadyi)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
@@ -7488,8 +7488,8 @@
         "confidence": "low",
         "note": "Derived: the ordinary Waray phrase (adlaw the sun, pagsikat its rising), the ceb/ilo precedent."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 ka oras ugsa han Maghrib (Biyernes la)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 ka oras ugsa han Maghrib (Biyernes la) (oras hit pagbat-i)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
@@ -7590,8 +7590,8 @@
         "confidence": "low",
         "note": "Derived: the row counts twenty minutes past the loaned Syuruk; no Maranao table prints the row."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 oras bago ang Magrib (Biyernes lamang)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 oras bago ang Magrib (Biyernes lamang) (oras sa pagtubag)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
@@ -7693,8 +7693,8 @@
         "confidence": "low",
         "note": "Derived over the same register the names ride; no table prints the row."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 jam sebelum Maghrib (hari Jumaat saja)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 jam sebelum Maghrib (hari Jumaat saja) (เวลาการตอบรับดุอา)",
         "source": "derived",
         "confidence": "low",
         "note": "The ms catalog's own row over the nearest written standard (the 5187 ruling); no mfa table prints the row."
@@ -7795,8 +7795,8 @@
         "confidence": "low",
         "note": "Derived: the Tigrinya sun word itself, the am ፀሐይ pattern respelled."
       },
-      "1 hour before Magrib (Fridays only)": {
-        "text": "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ)",
+      "1 hour before Magrib (Fridays only) (the hour of acceptance)": {
+        "text": "1 ሰዓት ቅድሚ ምግሪብ (ዓርቢ ጥራይ) (ሰዓቲ መልሲ)",
         "source": "derived",
         "confidence": "low",
         "note": "Derived: the row counts one hour before Maghrib and names Friday; no table prints the row."
