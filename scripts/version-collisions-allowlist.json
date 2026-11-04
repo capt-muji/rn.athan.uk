@@ -378,5 +378,9 @@
   {
     "version": "2.48.8",
     "reason": "2026-11-04 lane1/T-615's mrw Sahur-alignment commit steps from its own chain while lane2/T-623's c2fc6aea already holds 2.48.8 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.9",
+    "reason": "2026-11-04 lane1/T-615's skr 24-hour-row commit 4ff6e59d took the single patch step above its own chain while lane2/T-623's dbb8db81 took the same number in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]
