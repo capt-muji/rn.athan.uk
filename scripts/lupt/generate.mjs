@@ -18,7 +18,7 @@ import zlib from 'node:zlib';
 import { readLupt } from '../../ai/features/global-prayer-times/data/london-migration/xlsx.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
-const CACHE = path.join(ROOT, '.cache/lupt');
+const CACHE = path.join(ROOT, 'ai/features/global-prayer-times/data/london-migration/workbooks');
 const ARTIFACT = path.join(ROOT, 'assets/data/london-2026-2076.bin');
 const BANKED_2027 = path.join(ROOT, 'ai/features/global-prayer-times/data/london-migration/lupt-2027.json');
 const LPT_2026 = path.join(ROOT, 'ai/features/moonsighting/data/london/lpt-2026.json');
@@ -77,7 +77,7 @@ const minutes2026 = (() => {
 const workbookYears = {};
 for (let year = 2027; year <= LAST_YEAR; year += 1) {
   const file = path.join(CACHE, `LUPT-${year}.xlsx`);
-  if (!fs.existsSync(file)) fail(`missing workbook ${file}; run scripts/lupt/download.mjs first`);
+  if (!fs.existsSync(file)) fail(`missing committed workbook ${file}; the corpus is frozen, no downloader ships`);
   const parsed = readLupt(file);
   const days = Object.keys(parsed);
   if (days[0] !== `${year}-01-01` || days.at(-1) !== `${year}-12-31`) {
