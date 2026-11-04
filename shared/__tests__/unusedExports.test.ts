@@ -34,6 +34,7 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
     'The scheduling suites drive the reschedule pass directly; production reaches the same code through refreshNotifications',
   __installTimetableDays:
     'The test harness installs days through the reader seam in place of stored rows, so only tests import it',
+  __resetHijriMemoForTests: 'The suites replay the same dates with a mocked engine, which the memo would outlive',
 };
 
 const ROOT = join(__dirname, '..', '..');

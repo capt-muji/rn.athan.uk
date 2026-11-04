@@ -72,6 +72,11 @@ export const hijriPartsFor = (date: string): { month: number; day: number } | nu
   return parts;
 };
 
+/** Test seam: the suites replay the same dates with a mocked engine, which the memo would outlive */
+export const __resetHijriMemoForTests = (): void => {
+  hijriMemo.clear();
+};
+
 /** Whether the date is one of the month's white days */
 export const isWhiteDay = (date: string): boolean => {
   const parts = hijriPartsFor(date);

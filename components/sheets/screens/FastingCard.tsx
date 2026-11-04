@@ -75,8 +75,14 @@ export default function FastingCard({ selection, onSelectionChange }: FastingCar
   const today = TimeUtils.getTodayDateString();
   const verdictFor = fastingEvaluator(settings, suhoorFor);
   const upcoming = upcomingFastingDays(today, PREVIEW_COUNT, settings, suhoorFor);
-  const nextSahur = upcoming[0];
-  const nextSahurRow = PrayerUtils.getPrayerForDate(ScheduleType.Extra, SUHOOR, nextSahur.date);
+  // The rows the plan itself would arm: a day whose trigger has fired never names the next Sahur
+  const nextSahur = upcoming.find(({ date }) => {
+    const trigger = suhoorFor(date);
+    return trigger !== null && trigger.getTime() > Date.now();
+  });
+  const following = nextSahur === undefined ? [] : upcoming.filter((day) => day.date > nextSahur.date);
+  const nextSahurRow =
+    nextSahur === undefined ? null : PrayerUtils.getPrayerForDate(ScheduleType.Extra, SUHOOR, nextSahur.date);
   const tomorrow = TimeUtils.addDaysToDateString(today, 1);
 
   const stateWord = (arms: boolean) => (arms ? t('fasting.state.on') : t('fasting.state.off'));
@@ -123,7 +129,7 @@ export default function FastingCard({ selection, onSelectionChange }: FastingCar
           {t('fasting.preview.tomorrow')}: {stateWord(verdictFor(tomorrow).arms)}
         </Text>
       </View>
-      {nextSahurRow !== null && isReadable(nextSahurRow) && (
+      {nextSahur !== undefined && nextSahurRow !== null && isReadable(nextSahurRow) && (
         <View style={styles.preview}>
           <Text style={styles.previewTitle}>
             {t('fasting.preview.next')} {prayerLabel(SUHOOR)}
@@ -131,7 +137,7 @@ export default function FastingCard({ selection, onSelectionChange }: FastingCar
           <Text style={styles.previewMain}>
             {formatShownDate(nextSahur.date, hijriDate)}, {TimeUtils.formatDisplayTime(nextSahurRow.time, use24Hour)}
           </Text>
-          {upcoming.slice(1).map(({ date, verdict }) => (
+          {following.map(({ date, verdict }) => (
             <View key={date} style={styles.previewRow}>
               <Text style={styles.previewDate} numberOfLines={1}>
                 {formatShownDate(date, hijriDate)}

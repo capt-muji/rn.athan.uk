@@ -7,7 +7,9 @@
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
+import { formatShownDate } from '@/components/day/shownDate';
 import { london } from '@/hooks/__tests__/londonDays';
+import { __resetHijriMemoForTests } from '@/shared/fasting';
 import { t } from '@/shared/i18n';
 import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
 import { type FastingSelection, ScheduleType } from '@/shared/types';
@@ -98,12 +100,41 @@ describe('the white-days add-on', () => {
 });
 
 describe('the preview', () => {
-  it('names the next Sahur and today fasting on a white day', async () => {
+  it("names tomorrow's Sahur after today's has already fired", async () => {
+    // Noon on the white-day Wednesday: its 05:30 suhoor is spent, so the next one is the 2nd's
     showAprilWindow();
     await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
 
     expect(screen.getByText(new RegExp(t('fasting.preview.next')))).toBeOnTheScreen();
+    expect(screen.getByText(new RegExp(formatShownDate('2026-04-02', false)))).toBeOnTheScreen();
+    expect(screen.queryByText(new RegExp(formatShownDate('2026-04-01', false)))).toBeNull();
+  });
+
+  it("names today's Sahur while it is still ahead", async () => {
+    jest.useFakeTimers({ now: london('2026-04-01', '04:00') });
+    installAprilDays();
+    await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
+
+    expect(screen.getByText(new RegExp(t('fasting.preview.next')))).toBeOnTheScreen();
+    expect(screen.getByText(new RegExp(formatShownDate('2026-04-01', false)))).toBeOnTheScreen();
     expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.on')}`)).toBeOnTheScreen();
+  });
+
+  it('keeps the sheet alive when no day arms at all', async () => {
+    showAprilWindow();
+    __resetHijriMemoForTests();
+    const spy = jest.spyOn(Intl, 'DateTimeFormat');
+    spy.mockImplementation(() => {
+      throw new Error('no calendar support');
+    });
+
+    await expect(
+      render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />)
+    ).resolves.toBeDefined();
+
+    expect(screen.queryByText(new RegExp(t('fasting.preview.next')))).toBeNull();
+    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
+    spy.mockRestore();
   });
 
   it('reads a Wednesday off and a Thursday on under muhammad', async () => {
