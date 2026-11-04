@@ -131,11 +131,33 @@ const withAndroidLocaleConfig = (expoConfig: ExpoConfig): ExpoConfig => {
 
 const resolveConfig = ({ platform }: { platform?: string }): ExpoConfig => {
   if (platform === 'android' || (platform === undefined && androidOnlyResolution)) {
-    if (androidWidgetsEnabled) return enableAndroidWidgets(config);
-    return withAndroidLocaleConfig(stripWidgetsPlugin(config));
+    if (androidWidgetsEnabled) return stripIosLocaleValues(enableAndroidWidgets(config));
+    return stripIosLocaleValues(withAndroidLocaleConfig(stripWidgetsPlugin(config)));
   }
   if (!iosWidgetsEnabled) return stripWidgetsPlugin(config);
   return config;
+};
+
+/**
+ * Android reads only each locale's key (the locales_config.xml enumeration)
+ * and its android strings; the NS* permission strings and Localizable.strings
+ * exist for the iOS Info.plist localizations. Dropping them on the android
+ * resolution takes ~33KB compressed out of the app.config asset and its
+ * 311KB parse off the Android launch path; nothing on Android reads them
+ * (expo-constants' ConstantsService parses the whole asset and the app touches
+ * only expoConfig.version, stores/version.ts).
+ */
+const stripIosLocaleValues = (expoConfig: ExpoConfig): ExpoConfig => {
+  if (!expoConfig.locales) return expoConfig;
+  const stripped: ExpoConfig['locales'] = {};
+  for (const [locale, strings] of Object.entries(expoConfig.locales)) {
+    stripped[locale] =
+      strings && typeof strings === 'object' && 'android' in strings
+        ? { android: (strings as { android: unknown }).android }
+        : {};
+  }
+  expoConfig.locales = stripped;
+  return expoConfig;
 };
 
 export default resolveConfig;

@@ -222,6 +222,20 @@ describe('the baked-artifact path (prod and preview builds)', () => {
 });
 
 describe('the mock path (dev and test builds)', () => {
+  it('refuses to read the mock window when the build env says prod, whatever the config seam claims', () => {
+    const previousEnv = process.env.EXPO_PUBLIC_ENV;
+    process.env.EXPO_PUBLIC_ENV = 'prod';
+    try {
+      // The config mock stays dev, so the read takes the mock path and meets the metro gate
+      expect(() => Timetable.getTimetableDay('2026-09-11')).toThrow(
+        'The mock window was read on a build that serves the baked timetable'
+      );
+    } finally {
+      if (previousEnv === undefined) delete process.env.EXPO_PUBLIC_ENV;
+      else process.env.EXPO_PUBLIC_ENV = previousEnv;
+    }
+  });
+
   it('serves the launch-relative window, memoised until the next reseed', async () => {
     jest.setSystemTime(new Date('2026-09-11T12:00:00Z'));
 

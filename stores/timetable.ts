@@ -19,16 +19,37 @@
 
 import { createMMKV } from 'react-native-mmkv';
 
-import { MOCK_DATA_SIMPLE } from '@/mocks/simple';
 import { isPreview, isProd } from '@/shared/config';
 import { filterApiData, transformApiData } from '@/shared/prayer';
 import * as TimetableDecode from '@/shared/timetableDecode';
-import type { ISingleApiResponseTransformed } from '@/shared/types';
+import type { IApiResponse, ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { artifactHash, loadArtifactBytes } from '@/stores/timetableAsset';
 
-/** Own instance, so a torn stage or a wipe touches no other store */
-const timetableStore = createMMKV({ id: 'athan-timetable' });
+/**
+ * Own instance, so a torn stage or a wipe touches no other store. Opened on
+ * first staged read or write: dev and test builds serve the mock window and
+ * never stage, so they pay nothing for the native instance.
+ */
+let timetableStore: ReturnType<typeof createMMKV> | null = null;
+const store = (): ReturnType<typeof createMMKV> => {
+  if (timetableStore === null) timetableStore = createMMKV({ id: 'athan-timetable' });
+  return timetableStore;
+};
+
+/**
+ * The mock window's source data, dev and test only. The env constants are
+ * read directly - metro inlines them at build time, so the require (and with
+ * it all of mocks/simple.ts) leaves prod and preview bundles, the same fold
+ * stores/widget.ts makes for the widget modules.
+ */
+const loadMockData = (): IApiResponse => {
+  if (process.env.EXPO_PUBLIC_ENV === 'prod' || process.env.EXPO_PUBLIC_ENV === 'preview') {
+    throw new Error('The mock window was read on a build that serves the baked timetable');
+  }
+  const mock = require('@/mocks/simple') as typeof import('@/mocks/simple');
+  return mock.MOCK_DATA_SIMPLE;
+};
 
 const ARTIFACT_KEY = 'artifact';
 const ASSET_HASH_KEY = 'assetHash';
@@ -50,9 +71,9 @@ let installedDays: Map<string, ISingleApiResponseTransformed> | null = null;
  * update's asset differs from what the previous version staged).
  */
 const readStagedArtifact = (): { bytes: Uint8Array; header: TimetableDecode.TimetableHeader } | null => {
-  const staged = timetableStore.getBuffer(ARTIFACT_KEY);
+  const staged = store().getBuffer(ARTIFACT_KEY);
   if (!(staged instanceof ArrayBuffer) || staged.byteLength === 0) return null;
-  if (timetableStore.getString(ASSET_HASH_KEY) !== artifactHash()) return null;
+  if (store().getString(ASSET_HASH_KEY) !== artifactHash()) return null;
 
   const bytes = new Uint8Array(staged);
   const header = TimetableDecode.decodeTimetableHeader(bytes);
@@ -72,8 +93,8 @@ const stageArtifact = async (): Promise<void> => {
 
   const copy = new ArrayBuffer(bytes.byteLength);
   new Uint8Array(copy).set(bytes);
-  timetableStore.set(ARTIFACT_KEY, copy);
-  timetableStore.set(ASSET_HASH_KEY, artifactHash());
+  store().set(ARTIFACT_KEY, copy);
+  store().set(ASSET_HASH_KEY, artifactHash());
   stagedArtifact = { bytes, header };
 };
 
@@ -105,7 +126,7 @@ export const ensureTimetableReady = (): Promise<void> => {
 
 /** The mock window through the pipeline the API path used, so dev records are byte-identical */
 const buildMockWindow = (): Map<string, ISingleApiResponseTransformed> => {
-  const transformed = transformApiData(filterApiData(MOCK_DATA_SIMPLE));
+  const transformed = transformApiData(filterApiData(loadMockData()));
   return new Map(transformed.map((day) => [day.date, day]));
 };
 

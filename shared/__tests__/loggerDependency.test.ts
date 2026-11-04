@@ -7,13 +7,11 @@
  * dependencies leaves the Metro bundle unresolvable. It worked only because
  * EAS Build happens to install them.
  *
- * `pino-pretty` is the deliberate exception and stays a dev dependency: it is
- * named only as a transport target string, never imported. Metro's
- * `resolverMainFields` prefers `react-native` then `browser`, pino ships
- * `browser: "./browser.js"` with no `exports` field, and `pino/browser.js`
- * has no transport handling at all — so the transport block is inert on a
- * phone and pino-pretty is never bundled. Promoting it would ship a package
- * no build can reach.
+ * `pino-pretty` stays a dev dependency: the transport target that once named
+ * it was inert on a phone (Metro's `resolverMainFields` prefers
+ * `react-native` then `browser`, pino ships `browser: "./browser.js"` with no
+ * `exports` field, and `pino/browser.js` has no transport handling at all),
+ * so the block was deleted and the logger now names the package nowhere.
  *
  * These tests derive the requirement from the source rather than restating it,
  * so a future runtime import added to the logger has to be declared too.
@@ -84,10 +82,10 @@ describe('shared/logger.ts runtime imports', () => {
 // =============================================================================
 
 describe('pino-pretty', () => {
-  it('is named only as a transport target, never imported', () => {
+  it('is named nowhere in the logger: the transport block was inert on a phone and is gone', () => {
     const source = readFileSync(join(ROOT, 'shared', 'logger.ts'), 'utf8');
 
-    expect(source).toContain("target: 'pino-pretty'");
+    expect(source).not.toContain('pino-pretty');
     expect(loggerRuntimePackages()).not.toContain('pino-pretty');
   });
 

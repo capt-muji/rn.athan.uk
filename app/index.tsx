@@ -8,7 +8,6 @@ import { ModalHelp, ModalUpdate, ModalWhatsNew } from '@/components/modals';
 import { Overlay } from '@/components/overlay';
 import { ErrorScreen } from '@/components/ui';
 import IdleLadder from '@/components/warmup/IdleLadder';
-import { runBackgroundTaskDebugSequence } from '@/device/backgroundTaskDebug';
 import { initializeListeners } from '@/device/listeners';
 import { hideSwitchCover } from '@/device/switchCover';
 import { checkForUpdates, openStore } from '@/device/updates';
@@ -159,8 +158,14 @@ export default function Index() {
         .then(() => reconcileLanguageSurfaces())
         .catch((error) => logger.error('Failed to initialize notifications:', error));
 
-      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history))
-      runBackgroundTaskDebugSequence();
+      // Debug instrumentation for the notification-refresh background task (ledger #8 (git history)).
+      // The gate mirrors the module's own enable predicate; the env constants metro inlines
+      // keep the module out of store bundles entirely.
+      if (__DEV__ || process.env.EXPO_PUBLIC_BG_DEBUG === '1') {
+        const { runBackgroundTaskDebugSequence } =
+          require('@/device/backgroundTaskDebug') as typeof import('@/device/backgroundTaskDebug');
+        runBackgroundTaskDebugSequence();
+      }
 
       // Check for updates in background
       checkForUpdates().then((result) => setPopupUpdateEnabled(result.modal));

@@ -586,6 +586,36 @@ describe('alerts and the settling window, Friday 11 September 2026 at 14:00', ()
     expect(runBackgroundTaskDebugSequence).toHaveBeenCalledTimes(1);
   });
 
+  it('runs the diagnostics on a release build only through the EXPO_PUBLIC_BG_DEBUG gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    jest.replaceProperty(globalThis as typeof globalThis & { __DEV__: boolean }, '__DEV__', false);
+    const previousDebug = process.env.EXPO_PUBLIC_BG_DEBUG;
+    process.env.EXPO_PUBLIC_BG_DEBUG = '1';
+    try {
+      await render(<Index />);
+
+      await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+      expect(runBackgroundTaskDebugSequence).toHaveBeenCalledTimes(1);
+    } finally {
+      if (previousDebug === undefined) delete process.env.EXPO_PUBLIC_BG_DEBUG;
+      else process.env.EXPO_PUBLIC_BG_DEBUG = previousDebug;
+    }
+  });
+
+  it('skips the diagnostics on a release build without the EXPO_PUBLIC_BG_DEBUG gate', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    relaunchRelease();
+    jest.replaceProperty(globalThis as typeof globalThis & { __DEV__: boolean }, '__DEV__', false);
+    delete process.env.EXPO_PUBLIC_BG_DEBUG;
+    await render(<Index />);
+
+    await act(() => jest.advanceTimersByTime(SETTLING_WINDOW_MS));
+
+    expect(runBackgroundTaskDebugSequence).not.toHaveBeenCalled();
+  });
+
   it('registers the background refresh once 1.5 seconds have passed', async () => {
     showLondonDay('2026-09-11', '14:00');
     await render(<Index />);

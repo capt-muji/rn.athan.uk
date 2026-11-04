@@ -170,4 +170,29 @@ describe('app.config android resolution', () => {
     const resolved = resolveAndroidRoute(undefined, ['android'], 'ios');
     expect(resolved.plugins).not.toContain('./plugins/androidLocaleConfig');
   });
+
+  it('carries no iOS-only locale values on the android resolution', () => {
+    const resolved = resolveAndroidRoute('1', [], 'android') as unknown as {
+      locales?: Record<string, Record<string, unknown>>;
+    };
+    const locales = resolved.locales ?? {};
+    expect(Object.keys(locales)).toHaveLength(74);
+    for (const [locale, strings] of Object.entries(locales)) {
+      expect(Object.keys(strings)).toEqual(['android']);
+      expect(strings.android).toBeDefined();
+      void locale;
+    }
+  });
+
+  it('keeps every locale value on the iOS resolution', () => {
+    const resolved = resolveAndroidRoute('1', [], 'ios') as unknown as {
+      locales?: Record<string, Record<string, unknown>>;
+    };
+    const locales = resolved.locales ?? {};
+    expect(Object.keys(locales)).toHaveLength(74);
+    const one = locales.ar ?? {};
+    expect(one.NSLocationWhenInUseUsageDescription).toBeDefined();
+    expect(one.ios).toBeDefined();
+    expect(one.android).toBeDefined();
+  });
 });
