@@ -20,7 +20,8 @@ const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
 const MINUTES_IN_DAY = 24 * 60;
 
-const pad2 = (value: number): string => String(value).padStart(2, '0');
+/** Two digits, the data clock's own format: data paths never localise digits */
+export const pad2 = (value: number): string => String(value).padStart(2, '0');
 
 const prayerClockFormatter = new Intl.DateTimeFormat('en-US', {
   timeZone: PRAYER_TIMEZONE,
@@ -134,7 +135,7 @@ export const createInstant = (date?: Date | number | string): Date => (date ? ne
 
 /**
  * Creates a full Date object from date and time strings
- * Used to combine API data (separate date/time) into Prayer.datetime
+ * Used to combine payload data (separate date/time) into Prayer.datetime
  *
  * IMPORTANT: Prayer times are clock readings in the prayer timezone (London).
  * The reading is shifted by whichever offset really applies at that instant —
@@ -178,6 +179,34 @@ export const formatPrayerTime = (date: Date): string => {
   const clock = readPrayerClock(date);
   const composed = `${pad2(clock.hour)}:${pad2(clock.minute)}`;
   return composed;
+};
+
+const WALL_TIME = /^(\d{2}):(\d{2})$/;
+
+/**
+ * The string a wall-clock time renders as: unchanged in 24-hour, hour-12 in 12-hour.
+ * The display-side twin of formatPrayerTime - every stored, computed and scheduled value
+ * stays 24-hour HH:MM, and only the strings drawn on screen pass through here (owner
+ * order 2026-11-03).
+ *
+ * 12-hour keeps two-digit hours and carries no AM/PM marker, so midnight and noon both
+ * render 12 and a format switch never shifts the screen's widths (Row 72). A string that
+ * is not HH:MM - the unread sentinel, the empty loading string - passes through as it is.
+ *
+ * @param time Wall-clock string in 24-hour HH:mm form
+ * @param use24Hour Whether the 24-hour format is chosen in settings
+ * @returns The string to draw
+ *
+ * @example
+ * formatDisplayTime('23:11', false) // "11:11"
+ * formatDisplayTime('00:30', false) // "12:30"
+ */
+export const formatDisplayTime = (time: string, use24Hour: boolean): string => {
+  if (use24Hour) return time;
+  const match = WALL_TIME.exec(time);
+  if (!match) return time;
+  const hour = Number(match[1]);
+  return `${pad2(hour % 12 === 0 ? 12 : hour % 12)}:${match[2]}`;
 };
 
 /**
@@ -368,7 +397,7 @@ export const formatDateShort = (date: Date): string => {
 
 /**
  * Checks if a date is yesterday or in the future (prayer timezone)
- * Used for filtering API response data
+ * Used for filtering the payload's window
  * @param date Date string in YYYY-MM-DD format
  * @returns boolean indicating if date is yesterday or future
  */
@@ -389,12 +418,6 @@ export const isFriday = (date?: string | Date): boolean => {
 
   return new Date(`${day}T12:00:00Z`).getUTCDay() === 5;
 };
-
-/**
- * Checks if the current month is December in the prayer timezone
- * @returns boolean indicating if current month is December
- */
-export const isDecember = (): boolean => getTodayDateString().slice(5, 7) === '12';
 
 /**
  * Checks if the current date falls within Ramadan or the last days of Sha'ban
@@ -450,20 +473,6 @@ export const isDecorationSeason = (): boolean => {
  * exactly the gate that always stood before it.
  */
 export const decorationsVisible = (season: boolean, enabled: boolean): boolean => season && enabled;
-
-/**
- * Checks if an instant falls on January 1st in the prayer timezone
- * (needed for CountdownBar yesterday's data)
- * @param date Date object
- * @returns boolean indicating if the date is January 1st
- */
-export const isJanuaryFirst = (date: Date): boolean => formatDateShort(date).endsWith('-01-01');
-
-/**
- * Returns the current year in the prayer timezone
- * @returns Current year number
- */
-export const getCurrentYear = (): number => Number(getTodayDateString().slice(0, 4));
 
 // =============================================================================
 // NIGHT TIME CALCULATIONS (Islamic)

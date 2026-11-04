@@ -11,12 +11,12 @@ jest.mock('@/stores/widget', () => ({
 }));
 
 jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
   sync: jest.fn(async () => undefined),
-  getArmedDayChanges: jest.fn(() => 0),
 }));
 
 import { ScheduleType } from '@/shared/types';
-import { rescheduleAllNotifications } from '@/stores/notifications';
+import { __rescheduleAllForTests } from '@/stores/notifications';
 
 import { enable, minutesBefore, resetAlarms, sameTimesOn, storeDays, triggers } from './alarmHarness';
 
@@ -60,7 +60,7 @@ describe('Friday Istijaba when Magrib falls after 00:00', () => {
       );
       enable(ScheduleType.Extra, 'istijaba', 5);
 
-      await rescheduleAllNotifications();
+      await __rescheduleAllForTests();
 
       expect(triggers()).toEqual({
         'athan_extra_istijaba_2026-06-26': at,

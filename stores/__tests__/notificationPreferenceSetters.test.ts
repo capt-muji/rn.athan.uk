@@ -34,6 +34,7 @@ import {
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -45,7 +46,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // =============================================================================
 // FIXTURES
@@ -75,6 +79,7 @@ const everyPreference = () =>
 
 beforeEach(() => {
   Database.database.clearAll();
+  __installTimetableDays([]);
   for (const atom of [
     ...standardPrayerAlertAtoms,
     ...extraPrayerAlertAtoms,
@@ -90,6 +95,7 @@ beforeEach(() => {
   }
   store.set(soundPreferenceAtom, 0);
   Database.database.clearAll();
+  __installTimetableDays([]);
 });
 
 // =============================================================================

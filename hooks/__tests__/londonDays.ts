@@ -1,9 +1,9 @@
 /**
  * Real London days for the row hooks' tests, built into rows by the app's own builder
  *
- * Times from londonprayertimes.com for 2026, as in shared/__tests__/nightTimes.test.ts. 11 September 2026
- * is a Friday, so its Extras list has Istijaba. A suite using storeLondonDays must mock '@/stores/database' with
- * `getPrayerByDateString: jest.fn()`; a rendering suite uses saveLondonDays against the real database instead.
+ * Times from the captured 2026 London payload, as in shared/__tests__/nightTimes.test.ts. 11 September 2026
+ * is a Friday, so its Extras list has Istijaba. A suite using storeLondonDays must mock '@/stores/timetable' with
+ * `getTimetableDay: jest.fn()`; a rendering suite uses saveLondonDays against the real reader instead.
  */
 
 import type { PrayerId } from '@/shared/constants';
@@ -11,7 +11,7 @@ import { prayerLabel } from '@/shared/i18n';
 import { createPrayerSequence, transformApiData } from '@/shared/prayer';
 import { createPrayerDatetime } from '@/shared/time';
 import type { ISingleApiResponseTransformed, Prayer, RequiredTimeName, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import { getTimetableDay, __installTimetableDays as installTimetableDays } from '@/stores/timetable';
 
 const LONDON_2026: Record<string, Record<RequiredTimeName, string>> = {
   '2026-09-10': { fajr: '04:52', sunrise: '06:24', dhuhr: '13:03', asr: '16:31', magrib: '19:30', isha: '20:43' },
@@ -36,23 +36,19 @@ const buildLondonDays = (breakage: Breakage): ISingleApiResponseTransformed[] =>
     const validated: Record<RequiredTimeName, string | null> = { ...times };
     for (const name of broken) validated[name] = null;
 
-    return transformApiData({ city: 'london', times: { [date]: validated } });
+    return transformApiData({ times: { [date]: validated } });
   });
 
-/** Points the mocked `getPrayerByDateString` at the days, for suites that mock '@/stores/database' */
+/** Points the mocked `getTimetableDay` at the days, for suites that mock '@/stores/timetable' */
 export const storeLondonDays = (breakage: Breakage = {}): void => {
   const stored = new Map(buildLondonDays(breakage).map((day) => [day.date, day]));
 
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 };
 
-/** Saves the days through the real database, for suites that render against real storage */
+/** Points the reader at the days, for suites that render against real stores */
 export const saveLondonDays = (breakage: Breakage = {}): void => {
-  // Saving only adds, so a day an earlier call saved would otherwise still be there
-  for (const [date, broken] of Object.entries(breakage)) {
-    if (broken === 'not stored') Database.removeItem(`prayer_${date}`);
-  }
-  Database.saveAllPrayers(buildLondonDays(breakage));
+  installTimetableDays(buildLondonDays(breakage));
 };
 
 /** A London clock reading as an instant, whatever timezone the tests run in */
@@ -70,7 +66,7 @@ interface RowWithStatus {
 }
 
 /** A row's status in words; a row both passed and next reads as such rather than hiding behind one */
-export const statusOf = (row: RowWithStatus): string =>
+const statusOf = (row: RowWithStatus): string =>
   [row.isPassed && 'passed', row.isNext && 'next'].filter(Boolean).join('+') || 'upcoming';
 
 /** One list day's rows, in sequence order, as "Name: status" */

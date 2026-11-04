@@ -22,18 +22,19 @@ import {
   ScheduleType,
   type UnreadablePrayer,
 } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // DATA TRANSFORMATION FUNCTIONS
-// Used by API client for processing prayer data
+// The mock pipeline runs the dev payload through them, matching the API era
+// they were built for, so dev records stay byte-identical to what shipped then
 // =============================================================================
 
 /**
- * Filters API response data to only include yesterday, today and future dates
+ * Filters mock payload data to only include yesterday, today and future dates
  * Yesterday is included to support progress bar calculation for first prayer (Fajr)
- * @param apiData Raw API response data
- * @returns Filtered API response containing yesterday and future dates
+ * @param apiData Raw payload data
+ * @returns Filtered payload containing yesterday and future dates
  */
 export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const timesFiltered: IApiTimes = {};
@@ -46,10 +47,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
     timesFiltered[date] = times;
   });
 
-  return {
-    city: apiData.city,
-    times: timesFiltered,
-  };
+  return { times: timesFiltered };
 };
 
 /**
@@ -63,7 +61,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
  * A derived time is null when the time it comes from is: nothing can be worked out from a value the
  * provider did not give
  *
- * @param apiData Filtered API response data, as validated by api/client.ts
+ * @param apiData Filtered payload data, its six times readable HH:mm or null
  * @returns Array of transformed prayer schedules
  */
 export const transformApiData = (apiData: IValidatedApiResponse): ISingleApiResponseTransformed[] => {
@@ -365,7 +363,7 @@ function createPrayersForSingleDay(
     // Istijaba joins the night rows on the exact-instant path: it hangs off Magrib, which
     // can be date-shifted, so a clock string cannot express it (see getIstijabaTime).
     // Unguarded by type on purpose: the closed standard vocabulary can never match here,
-    // and the bare id guards are what narrow the record lookup below to StoredPrayerId
+    // and the bare id guards are what narrow the record lookup below to the stored ids
     const isIstijaba = name === 'istijaba';
     const isNightRow = name === 'midnight' || name === 'last third';
     if (isIstijaba || isNightRow) {
@@ -393,7 +391,7 @@ function createPrayersForSingleDay(
 
 /**
  * Creates a PrayerSequence containing prayers for multiple days
- * Uses Database.getPrayerByDateString() for raw data and createPrayer() for each prayer
+ * Uses Timetable.getTimetableDay() for raw data and createPrayer() for each prayer
  *
  * Built in list order (compareListOrder in shared/sequence.ts): day by day, each day
  * in its list's order. That is also time order for every readable row, and it gives a
@@ -419,14 +417,14 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
 
   // Extras night rows need the day before each listed day (getNightTimesForDay)
   const dayBeforeFirst = TimeUtils.getPreviousDateString(firstDate);
-  let previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDateString(dayBeforeFirst) : null;
+  let previousDayData = type === ScheduleType.Extra ? Timetable.getTimetableDay(dayBeforeFirst) : null;
 
   for (let i = 0; i < dayCount; i++) {
     const date = TimeUtils.addDaysToDateString(firstDate, i);
 
     // A day that is not stored is listed with every row unreadable, not skipped: skipping
     // it presented the following day as today (finding 70)
-    const rawData = Database.getPrayerByDateString(date);
+    const rawData = Timetable.getTimetableDay(date);
     prayers.push(...createPrayersForSingleDay(type, date, rawData, previousDayData));
     previousDayData = rawData;
   }
@@ -445,9 +443,9 @@ export const createPrayerSequence = (type: ScheduleType, startDate: Date, dayCou
  * @returns The day's rows in list order; every row unreadable when the day is not stored
  */
 export const createPrayersForDate = (type: ScheduleType, date: string): Prayer[] => {
-  const rawData = Database.getPrayerByDateString(date);
+  const rawData = Timetable.getTimetableDay(date);
   const previousDate = TimeUtils.getPreviousDateString(date);
-  const previousDayData = type === ScheduleType.Extra ? Database.getPrayerByDateString(previousDate) : null;
+  const previousDayData = type === ScheduleType.Extra ? Timetable.getTimetableDay(previousDate) : null;
 
   return createPrayersForSingleDay(type, date, rawData, previousDayData);
 };

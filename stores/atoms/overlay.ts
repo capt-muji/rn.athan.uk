@@ -62,7 +62,7 @@ export const overlayFadeSettledAtom = atom(true);
 let fadeGeneration = 0;
 
 /** Stamped by every isOn writer, in the same store batch as its fade-hold drop */
-export const nextFadeGeneration = (): number => {
+const nextFadeGeneration = (): number => {
   fadeGeneration += 1;
   return fadeGeneration;
 };

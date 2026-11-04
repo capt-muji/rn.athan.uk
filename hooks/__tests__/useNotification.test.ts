@@ -58,14 +58,12 @@ jest.mock('expo-notifications', () => ({
 const mockCommitPrayerAlertChange = jest.fn();
 const mockGetSoundPreference = jest.fn();
 const mockSetSoundPreference = jest.fn();
-const mockRescheduleAllNotifications = jest.fn();
 const mockStoreCommitSoundSelection = jest.fn();
 
 jest.mock('@/stores/notifications', () => ({
   commitPrayerAlertChange: (...args: unknown[]) => mockCommitPrayerAlertChange(...args),
   getSoundPreference: (...args: unknown[]) => mockGetSoundPreference(...args),
   setSoundPreference: (...args: unknown[]) => mockSetSoundPreference(...args),
-  rescheduleAllNotifications: (...args: unknown[]) => mockRescheduleAllNotifications(...args),
   commitSoundSelection: (...args: unknown[]) => mockStoreCommitSoundSelection(...args),
 }));
 

@@ -27,6 +27,10 @@ const appModuleMocks = {
   '^@/widgets/PrayerWidget$': '<rootDir>/shared/__mocks__/widgets/PrayerWidget.ts',
   '^@/widgets/LockPrayerWidget$': '<rootDir>/shared/__mocks__/widgets/LockPrayerWidget.ts',
   '^@/shared/logger$': '<rootDir>/shared/__mocks__/logger.ts',
+  // The baked timetable asset is a metro asset jest cannot parse; the stub is its registry id
+  '^@/assets/data/london-2026-2076\\.bin$': '<rootDir>/shared/__mocks__/timetableAssetModule.js',
+  '^expo-asset$': '<rootDir>/shared/__mocks__/expo-asset.ts',
+  '^expo-file-system$': '<rootDir>/shared/__mocks__/expo-file-system.ts',
   '^@/(.*)$': '<rootDir>/$1',
   '^expo-constants$': '<rootDir>/shared/__mocks__/expo-constants.ts',
   '^expo-localization$': '<rootDir>/shared/__mocks__/expo-localization.ts',
@@ -110,7 +114,6 @@ module.exports = {
   // widgetLockRenderer.test.ts, so every branch is measured on both platforms; the AST contract
   // suite still guards what the runtimes pin down structurally
   collectCoverageFrom: [
-    'api/**/*.{ts,tsx}',
     'app/**/*.{ts,tsx}',
     'components/**/*.{ts,tsx}',
     'device/**/*.{ts,tsx}',

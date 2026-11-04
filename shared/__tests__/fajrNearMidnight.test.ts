@@ -11,13 +11,14 @@
 
 import { createPrayerSequence, getPrayerForDate, transformApiData } from '@/shared/prayer';
 import { type ISingleApiResponseTransformed, type Prayer, ScheduleType } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 const stored = new Map<string, ISingleApiResponseTransformed>();
 
@@ -27,12 +28,12 @@ const useRecords = (records: ISingleApiResponseTransformed[]) => {
 };
 
 beforeEach(() => {
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 });
 
 /** A stored day from API times, with Suhoor, Duha and Istijaba derived exactly as the app does */
 const day = (date: string, fajr: string, sunrise: string, dhuhr: string, asr: string, magrib: string, isha: string) =>
-  transformApiData({ city: 'london', times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
+  transformApiData({ times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } } })[0];
 
 /** Several days' lists as one sequence, exactly as the app builds it */
 const sequenceFor = (type: ScheduleType, firstDate: string, dayCount: number): Prayer[] =>

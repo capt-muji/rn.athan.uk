@@ -41,25 +41,13 @@ type Props = {
   /** Rules the title off from content that scrolls beneath it */
   divider?: boolean;
   icon?: React.ReactNode;
-  /** Centres the title over full-width content, rather than hugging the leading edge */
-  centreTitle?: boolean;
   /** Pushes the icon to the trailing edge, with the title against the leading one */
   trailingIcon?: boolean;
   /** Android's back gesture closes the modal, matching the Sheet's own handler */
   onRequestClose?: () => void;
 };
 
-export default function Modal({
-  visible,
-  children,
-  title,
-  wide,
-  divider,
-  icon,
-  centreTitle,
-  trailingIcon,
-  onRequestClose,
-}: Props) {
+export default function Modal({ visible, children, title, wide, divider, icon, trailingIcon, onRequestClose }: Props) {
   // Read through a ref so a caller passing a fresh closure each render does not re-subscribe;
   // callers define these inline (app/index.tsx), so the identity changes on every render
   const closeRef = useRef(onRequestClose);
@@ -95,7 +83,7 @@ export default function Modal({
           <View
             style={[
               styles.titleRow,
-              (centreTitle || trailingIcon) && styles.titleRowCentre,
+              trailingIcon && styles.titleRowCentre,
               trailingIcon && styles.titleRowApart,
               trailingIcon && wide && styles.titleRowInset,
             ]}>

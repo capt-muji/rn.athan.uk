@@ -202,7 +202,7 @@ const tickingIntervalOf = (tree: unknown): { lower: Date; upper: Date } | undefi
 
 import type { PrayerId } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
-import { createPrayerDatetime } from '@/shared/time';
+import { createPrayerDatetime, formatDisplayTime } from '@/shared/time';
 import { type PrayerSequence, type ReadablePrayer, ScheduleType } from '@/shared/types';
 import { buildPrayerWidgetSnapshot } from '@/shared/widgetTimeline';
 import type { PrayerWidgetAndroidProps, PrayerWidgetSettings, WidgetStrings } from '@/shared/widgetTypes';
@@ -232,7 +232,7 @@ const fixtureSequence = (): PrayerSequence => ({
   prayers: TIMES.flatMap(([id, time]) => [makePrayer(DAY_ONE, time, id), makePrayer(DAY_TWO, time, id)]),
 });
 
-const SETTINGS: PrayerWidgetSettings = { hijriDate: false };
+const SETTINGS: PrayerWidgetSettings = { hijriDate: false, use24Hour: false };
 
 const androidProps = (over: Partial<PrayerWidgetAndroidProps>): PrayerWidgetAndroidProps => {
   const base = buildPrayerWidgetSnapshot(fixtureSequence(), SETTINGS);
@@ -571,7 +571,7 @@ describe('home widget renderer', () => {
 
       expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
-      expect(textsOf(tree)).toContain('15:20');
+      expect(textsOf(tree)).toContain('03:20');
       // v1 days carry no footer: the builder's "Sat, 17 Oct 2026" label parses
       expect(textsOf(tree)).toContain('Sat');
     });
@@ -704,7 +704,7 @@ describe('home widget renderer', () => {
       // 15:20 minus 14:08:30 is 71.5 minutes: ceil makes it "1h 12m"
       expect(textsOf(tree)).toEqual(expect.arrayContaining(['1', 'h', '12', 'm']));
       expect(textsOf(tree)).toContain('ASR');
-      expect(textsOf(tree)).toContain('15:20');
+      expect(textsOf(tree)).toContain('03:20');
     });
 
     it('advances across a boundary without a new push', () => {
@@ -784,7 +784,8 @@ describe('home widget renderer', () => {
       const mediumTexts = textsOf(mediumTree);
       for (const [id, time] of TIMES) {
         expect(mediumTexts).toContain(prayerLabel(id));
-        expect(mediumTexts).toContain(time);
+        // The snapshot carries the display format its settings picked
+        expect(mediumTexts).toContain(formatDisplayTime(time, SETTINGS.use24Hour));
       }
       const pill = medium.find(
         (node) =>

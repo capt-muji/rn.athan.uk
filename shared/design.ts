@@ -22,7 +22,6 @@ export const dimFor = (os: string) => (os === 'android' ? ANDROID_DIM : IOS_DIM)
 export const DESIGN = {
   bgStart: '#05134a',
   bgEnd: '#36208a',
-  bgTail: tailFor(Platform?.OS ?? 'ios'),
   dim: dimFor(Platform?.OS ?? 'ios'),
   label: '#4060ae',
   bright: '#f2f5f9',

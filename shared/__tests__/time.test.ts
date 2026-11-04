@@ -11,11 +11,11 @@ import {
   footerFor,
   formatDateLocalized,
   formatDateShort,
+  formatDisplayTime,
   formatHijriDateLocalized,
   formatPrayerTime,
   formatTime,
   formatTimeAgo,
-  getCurrentYear,
   getDayAnchor,
   getNightTimes,
   getPreviousDateString,
@@ -23,10 +23,8 @@ import {
   getTodayDateString,
   getWallSecondDelay,
   isDateYesterdayOrFuture,
-  isDecember,
   isDecorationSeason,
   isFriday,
-  isJanuaryFirst,
   isRamadan,
   splitSingleColon,
 } from '../time';
@@ -373,59 +371,6 @@ describe('isFriday', () => {
   });
 });
 
-describe('isJanuaryFirst', () => {
-  it('correctly identifies January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-01'))).toBe(true);
-    expect(isJanuaryFirst(new Date('2026-01-01T23:59:59Z'))).toBe(true);
-  });
-
-  it('correctly identifies non-January 1st', () => {
-    expect(isJanuaryFirst(new Date('2026-01-02'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2025-12-31'))).toBe(false);
-    expect(isJanuaryFirst(new Date('2026-02-01'))).toBe(false);
-  });
-});
-
-describe('isDecember', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
-
-  it('returns true in December', () => {
-    jest.setSystemTime(new Date('2026-12-15T12:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 1st', () => {
-    jest.setSystemTime(new Date('2026-12-01T00:00:00Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns true on December 31st', () => {
-    jest.setSystemTime(new Date('2026-12-31T23:59:59Z'));
-    expect(isDecember()).toBe(true);
-  });
-
-  it('returns false in January', () => {
-    jest.setSystemTime(new Date('2026-01-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in November', () => {
-    jest.setSystemTime(new Date('2026-11-30T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-
-  it('returns false in June', () => {
-    jest.setSystemTime(new Date('2026-06-15T12:00:00Z'));
-    expect(isDecember()).toBe(false);
-  });
-});
-
 describe('isRamadan', () => {
   beforeEach(() => {
     jest.useFakeTimers();
@@ -648,6 +593,30 @@ describe('createPrayerDatetime', () => {
   });
 });
 
+describe('formatDisplayTime', () => {
+  it('returns the 24-hour string unchanged while the preference is on', () => {
+    expect(formatDisplayTime('23:58', true)).toBe('23:58');
+    expect(formatDisplayTime('00:15', true)).toBe('00:15');
+  });
+
+  // The owner's ruling (2026-11-03): no marker, midnight and noon both render 12, hours stay
+  // two digits so a format switch never shifts the screen's widths (Row 72)
+  it('converts to 12-hour with two-digit hours: midnight and noon both 12, no marker', () => {
+    expect(formatDisplayTime('00:30', false)).toBe('12:30');
+    expect(formatDisplayTime('12:00', false)).toBe('12:00');
+    expect(formatDisplayTime('01:05', false)).toBe('01:05');
+    expect(formatDisplayTime('09:59', false)).toBe('09:59');
+    expect(formatDisplayTime('13:05', false)).toBe('01:05');
+    expect(formatDisplayTime('23:11', false)).toBe('11:11');
+  });
+
+  it('passes a string that is not HH:MM through untouched (the unread sentinel, the empty loading string)', () => {
+    expect(formatDisplayTime('--:--', false)).toBe('--:--');
+    expect(formatDisplayTime('', false)).toBe('');
+    expect(formatDisplayTime('6:5', false)).toBe('6:5');
+  });
+});
+
 describe('formatPrayerTime', () => {
   it('reads an instant on the London wall clock (GMT in winter, BST in summer)', () => {
     expect(formatPrayerTime(new Date('2026-01-18T06:12:00Z'))).toBe('06:12');
@@ -856,15 +825,6 @@ describe('isDateYesterdayOrFuture', () => {
   it('returns false for two days ago', () => {
     const dateStr = prayerZoneDate(-2 * 86400000);
     expect(isDateYesterdayOrFuture(dateStr)).toBe(false);
-  });
-});
-
-describe('getCurrentYear', () => {
-  it('returns current year as number', () => {
-    const year = getCurrentYear();
-    expect(typeof year).toBe('number');
-    expect(year).toBeGreaterThanOrEqual(2024);
-    expect(year).toBeLessThanOrEqual(2100);
   });
 });
 

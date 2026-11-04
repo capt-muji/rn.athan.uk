@@ -27,42 +27,6 @@ describe('config', () => {
   });
 
   // ---------------------------------------------------------------------------
-  // APP_CONFIG.isDev
-  // ---------------------------------------------------------------------------
-
-  describe('APP_CONFIG.isDev', () => {
-    it('is false when EXPO_PUBLIC_ENV is "prod"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'prod';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(false);
-    });
-
-    it('is false when EXPO_PUBLIC_ENV is "preview"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'preview';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(false);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is "local"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'local';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is "dev"', () => {
-      process.env.EXPO_PUBLIC_ENV = 'dev';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-
-    it('is true when EXPO_PUBLIC_ENV is undefined', () => {
-      delete process.env.EXPO_PUBLIC_ENV;
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.isDev).toBe(true);
-    });
-  });
-
-  // ---------------------------------------------------------------------------
   // APP_CONFIG.env
   // ---------------------------------------------------------------------------
 
@@ -139,22 +103,10 @@ describe('config', () => {
   // ---------------------------------------------------------------------------
 
   describe('APP_CONFIG additional properties', () => {
-    it('reads apiKey from EXPO_PUBLIC_API_KEY', () => {
-      process.env.EXPO_PUBLIC_API_KEY = 'test-api-key';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.apiKey).toBe('test-api-key');
-    });
-
     it('reads iosAppId from EXPO_PUBLIC_IOS_APP_ID', () => {
       process.env.EXPO_PUBLIC_IOS_APP_ID = 'com.test.ios';
       const { APP_CONFIG } = require('../config');
       expect(APP_CONFIG.iosAppId).toBe('com.test.ios');
-    });
-
-    it('reads androidPackage from EXPO_PUBLIC_ANDROID_PACKAGE', () => {
-      process.env.EXPO_PUBLIC_ANDROID_PACKAGE = 'com.test.android';
-      const { APP_CONFIG } = require('../config');
-      expect(APP_CONFIG.androidPackage).toBe('com.test.android');
     });
   });
 });
@@ -217,5 +169,30 @@ describe('app.config android resolution', () => {
   it('stays out of the android branch when a platform is passed', () => {
     const resolved = resolveAndroidRoute(undefined, ['android'], 'ios');
     expect(resolved.plugins).not.toContain('./plugins/androidLocaleConfig');
+  });
+
+  it('carries no iOS-only locale values on the android resolution', () => {
+    const resolved = resolveAndroidRoute('1', [], 'android') as unknown as {
+      locales?: Record<string, Record<string, unknown>>;
+    };
+    const locales = resolved.locales ?? {};
+    expect(Object.keys(locales)).toHaveLength(74);
+    for (const [locale, strings] of Object.entries(locales)) {
+      expect(Object.keys(strings)).toEqual(['android']);
+      expect(strings.android).toBeDefined();
+      void locale;
+    }
+  });
+
+  it('keeps every locale value on the iOS resolution', () => {
+    const resolved = resolveAndroidRoute('1', [], 'ios') as unknown as {
+      locales?: Record<string, Record<string, unknown>>;
+    };
+    const locales = resolved.locales ?? {};
+    expect(Object.keys(locales)).toHaveLength(74);
+    const one = locales.ar ?? {};
+    expect(one.NSLocationWhenInUseUsageDescription).toBeDefined();
+    expect(one.ios).toBeDefined();
+    expect(one.android).toBeDefined();
   });
 });

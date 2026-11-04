@@ -336,36 +336,12 @@
     "reason": "2026-11-01 lane2/T-561's audit fix takes the single patch step above its own 2.43.25 while parked t538-line-box-3's replayed stamp 1b4c8b6c already holds 2.43.26 (the discipline gate holds every fix to the one patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
-    "version": "2.43.20",
-    "reason": "2026-11-01 the T-538 step-3 atlas commit takes the single patch step from uat's 2.43.19 while the parallel t542-conformance branch already holds 2.43.20 through 2.43.22 unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.43.25",
-    "reason": "2026-11-01 the T-538 diag branches (t538-diag-c1/c2/c3, step 4) sit on the lane's rebased stamp 4f742f1d 2.43.25 while the parallel t561-show-progress branch holds e43e72c9 at the same number unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.43.26",
-    "reason": "2026-11-01 the T-538 diag branches (t538-diag-c1/c2/c3, step 4) sit on the lane's rebased stamp 1b4c8b6c 2.43.26 while the parallel t561-show-progress branch holds e07578c0 at the same number unmerged; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
     "version": "2.43.28",
     "reason": "2026-11-01 the T-538 diag branches t538-diag-c1/c2/c3 each stand as one internally-consistent commit off the lane tip 5010cae3 (2.43.27), and the discipline gate allows exactly one patch step per commit, so all three take 2.43.28; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.43.27",
     "reason": "2026-11-01 the parallel T-566 tint lane's 7dc97352 on t566-dim-tint took 2.43.27 under the one-patch-step rule while parked t538-line-box-3's replayed 5010cae3 already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.43.27",
-    "reason": "2026-11-01 lane2/T-566 dim-label tint takes the single patch step above uat 2.43.26 while parked t538-line-box-3 replayed stamp 5010cae already holds 2.43.27 (the discipline gate holds every fix to the one patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.43.27",
-    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.43.28",
-    "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.43.29",

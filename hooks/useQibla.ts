@@ -11,7 +11,7 @@ import { type Coordinates, qiblaBearing } from '@/shared/qiblaGeometry';
 import { isCertain, isWarmStream, WARM_CONFIRM_READINGS } from '@/shared/qiblaSettle';
 import { advanceWave, hasWaved, type Wave } from '@/shared/qiblaWaveGate';
 
-export interface QiblaState {
+interface QiblaState {
   bearing: number | null;
   /** Whether the phone can currently say which way it points */
   hasHeading: boolean;
@@ -57,7 +57,7 @@ const metresBetween = (a: Coordinates, b: Coordinates): number => {
   return Math.hypot(east, north) * 6_371_000;
 };
 
-export interface QiblaReadings {
+interface QiblaReadings {
   /** The heading as a continuous angle, so the face never spins the long way round past north */
   heading: SharedValue<number>;
   aligned: SharedValue<boolean>;

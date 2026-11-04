@@ -13,6 +13,7 @@ import logger from '@/shared/logger';
 import { AlertType, type ISingleApiResponseTransformed } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { lastNotificationScheduleAtom, refreshNotifications, standardPrayerAlertAtoms } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -24,7 +25,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // The atom factories stay real: two atoms over one key hold different values (stores/storage.ts, THE RULE)
 const mockResetStoredAtom = jest.fn();
@@ -47,6 +51,12 @@ beforeEach(() => {
   jest.setSystemTime(NOW);
   jest.clearAllMocks();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const date of WINDOW) {
     const day: ISingleApiResponseTransformed = {
@@ -61,7 +71,8 @@ beforeEach(() => {
       duha: '12:00',
       istijaba: '12:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   for (const atom of standardPrayerAlertAtoms) store.set(atom, AlertType.Off);

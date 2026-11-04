@@ -49,6 +49,7 @@ const NOW = createPrayerDatetime('2026-06-15', '14:00');
 /** Default settings snapshot (mirrors app defaults: Gregorian) */
 const SETTINGS: PrayerWidgetSettings = {
   hijriDate: false,
+  use24Hour: false,
 };
 
 /** Settings snapshot with Hijri dates (preference_hijri_date) */
@@ -186,12 +187,31 @@ describe('buildPrayerWidgetTimeline', () => {
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Asr');
-    expect(first.nextTime).toBe('17:45');
+    expect(first.nextTime).toBe('05:45');
     expect(first.nextEpochMs).toBe(createPrayerDatetime('2026-06-15', '17:45').getTime());
     // Segment starts at the previous prayer (Dhuhr at 13:10), not at now.
     // With nextEpochMs this is the interval the layouts tick against.
     expect(first.prevEpochMs).toBe(createPrayerDatetime('2026-06-15', '13:10').getTime());
     expect(first.dateLabel).toBe(formatDateLocalized('2026-06-15'));
+  });
+
+  it('renders 24-hour times through the whole widget path when the preference is on', () => {
+    // The default direction is pinned by the 05:45/10:45/01:10 literals above;
+    // this pins the other side, so a builder that ignores use24Hour fails here
+    const settings24 = { ...SETTINGS, use24Hour: true };
+    const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), settings24, 'light');
+
+    expect(entries[0].props.nextTime).toBe('17:45');
+    const stale = entries[entries.length - 1];
+    expect(stale.props.nextTime).toBe('22:45');
+    expect(entries[0].props.prayers?.map((row) => row.time)).toContain('13:10');
+
+    const snapshot = buildPrayerWidgetSnapshot(makeSequence(), settings24);
+    expect(snapshot).not.toBeNull();
+    if (!snapshot) return;
+    const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
+    expect(snapshotTimes).toContain('13:10');
+    expect(snapshotTimes).not.toContain('01:10');
   });
 
   it('bakes Latin digits into every carried time under ar', () => {
@@ -200,14 +220,14 @@ describe('buildPrayerWidgetTimeline', () => {
     setActiveLocale('ar');
     try {
       const entries = buildPrayerWidgetTimeline(NOW, makeSequence(), SETTINGS, 'light');
-      expect(entries[0].props.nextTime).toBe('17:45');
+      expect(entries[0].props.nextTime).toBe('05:45');
       expect(entries[0].props.prayers?.map((row) => row.time)).toContain('03:30');
       // The true path of the rtl stamp: a hardcoded false must fail here
       expect(entries.every((entry) => entry.props.rtl === true)).toBe(true);
 
       const stale = entries[entries.length - 1];
       expect(stale.props.stale).toBe(true);
-      expect(stale.props.nextTime).toBe('22:45');
+      expect(stale.props.nextTime).toBe('10:45');
       expect(stale.props.rtl).toBe(true);
 
       const snapshot = buildPrayerWidgetSnapshot(makeSequence(), SETTINGS);
@@ -215,7 +235,7 @@ describe('buildPrayerWidgetTimeline', () => {
       if (!snapshot) return;
       expect(snapshot.rtl).toBe(true);
       const snapshotTimes = snapshot.days.flatMap((day) => day.rows.map((row) => row.time));
-      expect(snapshotTimes).toContain('13:10');
+      expect(snapshotTimes).toContain('01:10');
     } finally {
       setActiveLocale('en');
     }
@@ -277,7 +297,8 @@ describe('buildPrayerWidgetTimeline', () => {
     const entries = buildPrayerWidgetTimeline(createPrayerDatetime('2026-06-16', '12:00'), sequence, SETTINGS, 'light');
 
     expect(entries[0].props.nextName).toBe('Dhuhr');
-    const ishaLabel = entries.find((entry) => entry.props.nextTime === '01:10');
+    // 12-hour rendering collides Dhuhr 13:10 with Isha 01:10, so the entry is found by name too
+    const ishaLabel = entries.find((entry) => entry.props.nextName === 'Isha' && entry.props.nextTime === '01:10');
     expect(ishaLabel).toBeDefined();
     if (!ishaLabel) return;
     expect(ishaLabel.props.nextName).toBe('Isha');
@@ -872,10 +893,10 @@ describe('unreadable rows', () => {
     expect(entries[0].props.prayers).toEqual([
       { id: 'fajr', name: 'Fajr', time: '03:30' },
       { id: 'sunrise', name: 'Sunrise', time: '05:20' },
-      { id: 'dhuhr', name: 'Dhuhr', time: '13:10' },
+      { id: 'dhuhr', name: 'Dhuhr', time: '01:10' },
       { id: 'asr', name: 'Asr', time: DASH },
-      { id: 'magrib', name: 'Magrib', time: '21:15' },
-      { id: 'isha', name: 'Isha', time: '22:45' },
+      { id: 'magrib', name: 'Magrib', time: '09:15' },
+      { id: 'isha', name: 'Isha', time: '10:45' },
     ]);
 
     const afternoon = entries.filter((entry) => entry.date.getTime() >= dhuhrMs && entry.date.getTime() < magribMs);
@@ -934,10 +955,10 @@ describe('unreadable rows', () => {
       expect(entry.props.prayers?.map((row) => row.time)).toEqual([
         '03:30',
         '05:20',
-        '13:10',
-        '17:45',
-        '21:15',
-        '22:45',
+        '01:10',
+        '05:45',
+        '09:15',
+        '10:45',
       ]);
     }
 
@@ -970,10 +991,10 @@ describe('unreadable rows', () => {
     expect(rollover?.props.prayers?.map((row) => row.time)).toEqual([
       '03:30',
       '05:20',
-      '13:10',
-      '17:45',
-      '21:15',
-      '22:45',
+      '01:10',
+      '05:45',
+      '09:15',
+      '10:45',
     ]);
   });
 
@@ -1160,7 +1181,7 @@ describe('unreadable rows', () => {
         schedule: 'standard',
         theme: 'light',
         nextName: 'Magrib',
-        nextTime: '21:15',
+        nextTime: '09:15',
         nextEpochMs: magribMs,
         prevEpochMs: magribMs,
         dateLabel: formatDateLocalized('2026-06-16'),

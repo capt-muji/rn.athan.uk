@@ -13,11 +13,12 @@ import * as Notifications from 'expo-notifications';
 import { prayerNotificationIdentifier, reminderNotificationIdentifier } from '@/device/notifications';
 import type { PrayerId } from '@/shared/constants';
 import { EXTRA_PRAYER_IDS, STANDARD_PRAYER_IDS } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import { transformApiData } from '@/shared/prayer';
+import type { ISingleApiResponseTransformed } from '@/shared/types';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { commitPrayerAlertChange, setReminderInterval } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -29,7 +30,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // =============================================================================
 // FIXTURES
@@ -109,7 +113,6 @@ const seedReminder = (type: ScheduleType, id: PrayerId, index: number, date: str
     id: identifier,
     date,
     time: '12:00',
-    englishName: prayerLabel(id),
     alertType: AlertType.Silent,
   });
   osState.add(identifier);
@@ -122,13 +125,19 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(DAYS)) {
     const [stored] = transformApiData({
-      city: 'london',
       times: { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } },
     });
-    Database.database.set(`prayer_${date}`, JSON.stringify(stored));
+    seededWindow.set(date, stored);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   scheduleMock.mockImplementation(async (request) => {

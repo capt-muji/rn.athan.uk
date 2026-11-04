@@ -62,10 +62,11 @@ jest.mock('@/hooks/useAnimation', () => ({
   useAnimatedStyle: (updater: () => unknown) => updater(),
 }));
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 jest.mock('@/stores/overlay', () => ({ closeOverlay: jest.fn(), openOverlay: jest.fn() }));
 
 jest.mock('@/shared/time', () => ({

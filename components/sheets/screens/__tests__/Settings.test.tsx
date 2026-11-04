@@ -26,6 +26,7 @@ import {
   popupWhatsNewEnabledAtom,
   qiblaSheetModalAtom,
   settingsSheetModalAtom,
+  show24HourFormatAtom,
   showSecondsAtom,
   showTimePassedAtom,
 } from '@/stores/ui';
@@ -77,6 +78,7 @@ const DISPLAY_TOGGLES = [
   ['Show hijri date', hijriDateEnabledAtom],
   ['Show seconds', showSecondsAtom],
   ['Show time passed', showTimePassedAtom],
+  ['Show 24 hour format', show24HourFormatAtom],
   ['Show progress', countdownBarShownAtom],
 ] as const;
 
@@ -304,6 +306,29 @@ describe('the settings sheet outside the Ramadan season, Friday 11 September 202
     await render(<SettingsSheet />);
 
     expect(screen.queryByText('Show arabic names')).not.toBeOnTheScreen();
+  });
+
+  // The owner's placement ruling (2026-11-03): the row follows Show time passed, before the
+  // seasonal decorations row, so it is the Display card's fourth row
+  it('reads the Display card Show hijri date, Show seconds, Show time passed, Show 24 hour format, in that order', async () => {
+    jest.useFakeTimers({ now: london('2026-09-11', '14:00') });
+    await render(<SettingsSheet />);
+
+    // A toggle row carries no role of its own, so the label is walked up to the list's own child
+    const displayCard = screen.getByText('Display').parent;
+    let list: TestInstance | null = screen.getByText('Show seconds');
+    while (list && list.parent !== displayCard) list = list.parent;
+    if (!list) throw new Error('the Display card holds no toggle list');
+    const rowOf = (label: string) => {
+      let node: TestInstance | null = screen.getByText(label);
+      while (node && node.parent !== list) node = node.parent;
+      if (!node) throw new Error(`${label} sits outside the Display card`);
+      return node;
+    };
+    const order = (label: string) => list?.children.indexOf(rowOf(label));
+    expect(order('Show hijri date')).toBeLessThan(order('Show seconds') as number);
+    expect(order('Show seconds')).toBeLessThan(order('Show time passed') as number);
+    expect(order('Show time passed')).toBeLessThan(order('Show 24 hour format') as number);
   });
 
   // row label, the preference it shows and writes
@@ -723,6 +748,7 @@ describe('every settings row label beside its trailing control', () => {
       'Show hijri date',
       'Show seconds',
       'Show time passed',
+      'Show 24 hour format',
       'Show progress',
       'Progress color',
       'Language',

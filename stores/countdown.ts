@@ -103,7 +103,7 @@ export const standardCountdownDisplayAtom = makeCountdownDisplayAtom(standardCou
 /** Next-prayer name as displayed by the Extra hero countdown */
 export const extraCountdownNameAtom = makeCountdownNameAtom(extraCountdownAtom);
 /** Extra hero countdown display string (render-granular) */
-export const extraCountdownDisplayAtom = makeCountdownDisplayAtom(extraCountdownAtom);
+const extraCountdownDisplayAtom = makeCountdownDisplayAtom(extraCountdownAtom);
 
 /**
  * Gets the name selector for a schedule type

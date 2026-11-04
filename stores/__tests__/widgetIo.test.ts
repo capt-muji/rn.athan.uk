@@ -22,8 +22,9 @@ import { getDefaultStore } from 'jotai';
 
 import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
-import * as Database from '@/stores/database';
-import { hijriDateEnabledAtom } from '@/stores/ui';
+import * as Timetable from '@/stores/timetable';
+import { __installTimetableDays } from '@/stores/timetable';
+import { hijriDateEnabledAtom, show24HourFormatAtom } from '@/stores/ui';
 import { readWidgetSettings, refreshPrayerWidgets } from '@/stores/widget';
 import { ExtrasLockWidget, ExtrasLockWidget2, PrayerLockWidget, PrayerLockWidget2 } from '@/widgets/LockPrayerWidget';
 import {
@@ -57,7 +58,7 @@ const seedPrayerCache = (days: number) => {
     const day = addDays(now, offset);
     data.push(makeDayData(formatDateShort(day)));
   }
-  Database.saveAllPrayers(data);
+  Timetable.__installTimetableDays(data);
 };
 
 const widgetPush = () => (PrayerWidget.updateTimeline as jest.Mock).mock.calls;
@@ -144,7 +145,7 @@ describe('label-flip re-push scheduler', () => {
   const seedUpcomingMagrib = (minutes: number) => {
     const now = createInstant();
     const dates = [-1, 0, 1].map((offset) => formatDateShort(addDays(now, offset)));
-    Database.saveAllPrayers(
+    Timetable.__installTimetableDays(
       dates.map((date) => ({
         ...makeDayData(date),
         fajr: minutesAhead(-10),
@@ -207,8 +208,8 @@ describe('label-flip re-push scheduler', () => {
     expect(widgetPush()).toHaveLength(2);
   });
 
-  it('builds nothing on an empty cache and pushes once the next refresh finds data', async () => {
-    Database.clearPrefix('prayer_');
+  it('builds nothing on an empty timetable and pushes once the next refresh finds data', async () => {
+    __installTimetableDays([]);
 
     await refreshPrayerWidgets();
     expect(widgetPush()).toHaveLength(0);
@@ -230,9 +231,12 @@ describe('readWidgetSettings', () => {
   it('snapshots the widget-visible preferences', () => {
     const store = getDefaultStore();
     store.set(hijriDateEnabledAtom, true);
+    store.set(show24HourFormatAtom, true);
 
     expect(readWidgetSettings()).toEqual({
       hijriDate: true,
+      use24Hour: true,
     });
+    store.set(show24HourFormatAtom, false);
   });
 });

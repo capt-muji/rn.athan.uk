@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort, readPrayerClock } from '@/shared/time';
+import { formatDateShort, pad2, readPrayerClock } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
@@ -19,17 +19,15 @@ import type { IApiResponse } from '@/shared/types';
 // Any hour outside the spent late evening seeds the same steady state the owner device-tests
 // against: Asr one hour out, Dhuhr one hour spent (2026-10-27 ruling). The spent late evening
 // (22:58-23:59) still serves the day's real static shape. Two costs accepted with the ruling:
-// a download in the day's first 62 minutes anchors the -62-minute Fajr against the previous
-// midnight (the steady hour returns from 01:02), and a small-hours download writes today's
+// a window seeded in the day's first 62 minutes anchors the -62-minute Fajr against the previous
+// midnight (the steady hour returns from 01:02), and a small-hours seeding writes today's
 // Isha inside the midnight-crossing window (shared/prayer.ts), so that row moves and the
 // Maghrib handoff skips straight to tomorrow's Fajr - one skipped row, an hour of steady
 // countdown in exchange.
 
 const MINUTE = 60_000;
 
-/** Two digits, the API's own clock format: data paths never localise digits */
-const pad2 = (value: number): string => String(value).padStart(2, '0');
-
+/** Two digits, the data clock's own format: data paths never localise digits */
 /** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
 export const addMinutes = (from: Date, minutesToAdd: number) => {
   const clock = readPrayerClock(new Date(from.getTime() + minutesToAdd * MINUTE));
@@ -83,12 +81,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:56',
       magrib: '20:14',
       isha: '21:27',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [yesterday]: {
       date: yesterday,
@@ -98,22 +90,10 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:56',
       magrib: '20:16',
       isha: '21:29',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [today]: {
       date: today,
       ...todayRow,
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day1]: {
       date: day1,
@@ -123,12 +103,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:58',
       magrib: '20:19',
       isha: '21:31',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day2]: {
       date: day2,
@@ -138,12 +112,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:58',
       magrib: '20:21',
       isha: '21:33',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day3]: {
       date: day3,
@@ -153,12 +121,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:42',
       magrib: '19:47',
       isha: '20:58',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day4]: {
       date: day4,
@@ -168,12 +130,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:40',
       magrib: '19:45',
       isha: '20:56',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day5]: {
       date: day5,
@@ -183,12 +139,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:39',
       magrib: '19:42',
       isha: '20:54',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day6]: {
       date: day6,
@@ -198,12 +148,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:37',
       magrib: '19:40',
       isha: '20:52',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day7]: {
       date: day7,
@@ -213,12 +157,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:36',
       magrib: '19:38',
       isha: '20:50',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day8]: {
       date: day8,
@@ -228,12 +166,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:34',
       magrib: '19:36',
       isha: '20:49',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day9]: {
       date: day9,
@@ -243,12 +175,6 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:33',
       magrib: '19:33',
       isha: '20:46',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
     [day10]: {
       date: day10,
@@ -258,18 +184,11 @@ const buildTimes = (downloadedAt: Date): IApiResponse['times'] => {
       asr: '16:31',
       magrib: '19:31',
       isha: '20:44',
-      fajr_jamat: '00:00',
-      dhuhr_jamat: '00:00',
-      asr_2: '00:00',
-      asr_jamat: '00:00',
-      magrib_jamat: '00:00',
-      isha_jamat: '00:00',
     },
   };
 };
 
 export const MOCK_DATA_SIMPLE: IApiResponse = {
-  city: 'london',
   // A getter, so every download (launch, return from the background, the background task) seeds today afresh, while
   // nothing re-seeds it as the app stays open and Asr can pass
   get times() {

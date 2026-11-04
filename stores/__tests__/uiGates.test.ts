@@ -11,6 +11,7 @@
 import { getDefaultStore } from 'jotai';
 
 import * as Database from '@/stores/database';
+import { __installTimetableDays } from '@/stores/timetable';
 import {
   bumpResync,
   decorationsLoadedAtom,
@@ -37,6 +38,7 @@ const gateStates = () => GATES.map(({ atom }) => store.get(atom));
 
 beforeEach(() => {
   Database.database.clearAll();
+  __installTimetableDays([]);
   for (const { atom } of GATES) store.set(atom, false);
   store.set(resyncAtom, 0);
   store.set(popupWhatsNewEnabledAtom, false);

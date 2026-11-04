@@ -23,7 +23,7 @@ import { addDays } from 'date-fns';
 
 import { createInstant, formatDateShort } from '@/shared/time';
 import type { ISingleApiResponseTransformed } from '@/shared/types';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 import { refreshPrayerWidgets } from '@/stores/widget';
 import {
   ExtrasWidget,
@@ -55,7 +55,7 @@ describe('refreshPrayerWidgets android flag gate', () => {
         istijaba: '16:00',
       });
     }
-    Database.saveAllPrayers(data);
+    Timetable.__installTimetableDays(data);
 
     await refreshPrayerWidgets();
 

@@ -16,11 +16,12 @@ import { AlertType, type ISingleApiResponseTransformed, type ReminderInterval, S
 import * as Database from '@/stores/database';
 import { lastArmedLanguageAtom, reconcileLanguageSurfaces } from '@/stores/language';
 import {
-  rescheduleAllNotifications,
+  __rescheduleAllForTests,
   standardPrayerAlertAtoms,
   standardReminderAlertAtoms,
   standardReminderIntervalAtoms,
 } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -32,7 +33,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // =============================================================================
 // FIXTURES
@@ -59,7 +63,6 @@ const record = (id: string, date: string) => ({
   id,
   date,
   time: '12:00',
-  englishName: 'Fajr',
   alertType: AlertType.Silent,
 });
 
@@ -68,6 +71,9 @@ const schedulesOf = (identifier: string) =>
   scheduleMock.mock.calls.filter(([request]) => (request as { identifier?: string })?.identifier === identifier).length;
 const reminderRecords = () =>
   Database.getAllScheduledRemindersForPrayer(ScheduleType.Standard, 0).map((each) => each.id);
+
+/** The days the reader serves, accumulated by the seeding helper and reset with the store */
+const seededWindow = new Map<string, ISingleApiResponseTransformed>();
 
 const seedDays = () => {
   for (const date of WINDOW) {
@@ -83,7 +89,8 @@ const seedDays = () => {
       duha: '12:00',
       istijaba: '12:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 };
 
@@ -93,6 +100,9 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  seededWindow.clear();
+  __installTimetableDays([]);
   seedDays();
 
   store.set(standardPrayerAlertAtoms[0], AlertType.Silent);
@@ -133,7 +143,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(imminentId)).toBe(0);
     expect(schedulesOf(imminentId)).toBe(0);
@@ -152,7 +162,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(schedulesOf(tomorrowId)).toBe(1);
     expect(osState.has(tomorrowId)).toBe(true);
@@ -162,8 +172,8 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await rescheduleAllNotifications();
-    await rescheduleAllNotifications();
+    await __rescheduleAllForTests();
+    await __rescheduleAllForTests();
 
     expect(cancelsOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(true);
@@ -171,7 +181,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
   });
 
   it('does not arm an imminent reminder that was never armed', async () => {
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(schedulesOf(imminentId)).toBe(0);
     expect(osState.has(imminentId)).toBe(false);
@@ -191,7 +201,7 @@ describe('a reschedule inside the final 30 seconds before a reminder fires', () 
     Database.addOneScheduledReminderForPrayer(ScheduleType.Standard, 0, record(imminentId, WINDOW[0]));
     osState.add(imminentId);
 
-    await expect(rescheduleAllNotifications()).resolves.toBeUndefined();
+    await expect(__rescheduleAllForTests()).resolves.toBeUndefined();
 
     expect(cancelsOf(imminentId)).toBe(1);
     expect(osState.has(imminentId)).toBe(false);

@@ -16,6 +16,7 @@ import { prayerNotificationIdentifier } from '@/device/notifications';
 import { AlertType, type ISingleApiResponseTransformed, ScheduleType } from '@/shared/types';
 import * as Database from '@/stores/database';
 import { lastNotificationScheduleAtom, refreshNotifications, standardPrayerAlertAtoms } from '@/stores/notifications';
+import { __installTimetableDays } from '@/stores/timetable';
 
 jest.mock('@/shared/logger', () => ({
   __esModule: true,
@@ -27,7 +28,10 @@ jest.mock('@/shared/logger', () => ({
 
 jest.mock('@/stores/widget', () => ({ refreshPrayerWidgets: jest.fn(async () => undefined) }));
 
-jest.mock('@/stores/sync', () => ({ sync: jest.fn(async () => undefined), getArmedDayChanges: jest.fn(() => 0) }));
+jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
+  sync: jest.fn(async () => undefined),
+}));
 
 // =============================================================================
 // FIXTURES
@@ -65,6 +69,12 @@ beforeEach(() => {
   jest.clearAllMocks();
   osState.clear();
   Database.database.clearAll();
+  __installTimetableDays([]);
+  /** The days the reader serves, accumulated by the seeding helper and reset with the store */
+  const seededWindow = new Map<string, ISingleApiResponseTransformed>();
+
+  seededWindow.clear();
+  __installTimetableDays([]);
 
   for (const date of WINDOW) {
     const day: ISingleApiResponseTransformed = {
@@ -79,7 +89,8 @@ beforeEach(() => {
       duha: '12:00',
       istijaba: '12:00',
     };
-    Database.database.set(`prayer_${date}`, JSON.stringify(day));
+    seededWindow.set(date, day);
+    __installTimetableDays([...seededWindow.values()]);
   }
 
   for (const atom of standardPrayerAlertAtoms) store.set(atom, AlertType.Off);
@@ -91,7 +102,6 @@ beforeEach(() => {
       id: FAJR[position],
       date,
       time: '12:00',
-      englishName: 'Fajr',
       alertType: AlertType.Sound,
     });
     osState.add(FAJR[position]);
@@ -151,7 +161,7 @@ describe.each([
     expect(store.get(lastNotificationScheduleAtom)).toBe(NOW);
     for (const record of fajrRecordBodies()) {
       expect('arabicName' in record).toBe(false);
-      expect(record.englishName).toBe('Fajr');
+      expect('englishName' in record).toBe(false);
     }
 
     // One minute on, the refresh gate is shut, so only a prayer marked to be put right makes this do anything

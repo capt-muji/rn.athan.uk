@@ -1,9 +1,6 @@
 // IMPORTANT: Import background task definition FIRST to ensure it's registered in global scope
 // before any other code runs. This allows the OS to find the task even when waking a killed app.
 import '@/device/tasks';
-// TLS 1.3 provider observability (Android <=9; the install itself runs
-// natively before any HTTP client exists - see modules/tls13)
-import '@/device/tls13';
 // Synchronous cache hydration: populates prayer sequences (and starts the
 // countdown tickers) from MMKV before first render on warm-cache launches —
 // no-op returning false on fresh installs and upgrade launches
@@ -47,7 +44,8 @@ export function ErrorBoundary({ error }: ErrorBoundaryProps) {
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
 
-// Call API During App Start in background
+// Kick the first sync off the launch tick: it stages the baked timetable
+// (or seeds the dev mock window) without holding the first frame
 setTimeout(triggerSyncLoadable, 0);
 
 // Nothing audio initialises here (owner order 5110): the audio session and the

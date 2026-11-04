@@ -86,7 +86,6 @@ describe('the background gradient behind the pager', () => {
   it('carries the owner-picked palette stops', () => {
     expect(DESIGN.bgStart).toBe('#05134a');
     expect(DESIGN.bgEnd).toBe('#36208a');
-    expect(DESIGN.bgTail).toBe('#7117c9');
     expect(COLORS.gradient.screen.start).toBe(DESIGN.bgStart);
     expect(COLORS.gradient.screen.end).toBe(DESIGN.bgEnd);
   });

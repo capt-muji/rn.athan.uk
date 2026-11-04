@@ -61,7 +61,6 @@ const record = (id: string) => ({
   id,
   date: '2026-09-17',
   time: '20:31',
-  englishName: 'Isha',
   alertType: AlertType.Silent,
 });
 

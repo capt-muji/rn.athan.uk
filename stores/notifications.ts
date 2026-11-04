@@ -19,7 +19,6 @@ import {
   STANDARD_PRAYER_IDS,
   STANDARD_PRAYER_TITLES,
 } from '@/shared/constants';
-import { prayerLabel } from '@/shared/i18n';
 import logger from '@/shared/logger';
 import * as NotificationUtils from '@/shared/notifications';
 import { perfMark, perfMeasure } from '@/shared/perf';
@@ -38,7 +37,7 @@ import {
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
-import { getArmedDayChanges, sync } from '@/stores/sync';
+import { deferPrayerWidgetRefresh, sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
@@ -316,9 +315,11 @@ const NOT_MARKED = 0;
  * Builds a prayer's repair mark: the number saying whether its bell and its alarms may disagree, and which change
  * left them that way.
  *
- * `preference_` is the only prefix BOTH wipes keep (`UPGRADE_KEEP_PREFIXES` in `stores/version.ts` and
- * `replacePrayerCache`'s keep list in `stores/sync.ts`), so a mark can never be lost while the alarms it describes
- * survive. The key does not match `INDEX_KEY_PATTERN`, so the preference migration leaves it alone.
+ * `preference_` survives every wipe that can take a repair mark's alarms with it
+ * (`UPGRADE_KEEP_PREFIXES` in `stores/version.ts` on a shape change, and the one-time
+ * legacy day-cache removal in `stores/database.ts`), so a mark can never be lost while
+ * the alarms it describes survive. The key does not match `INDEX_KEY_PATTERN`, so the
+ * preference migration leaves it alone.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param id Prayer id
@@ -587,14 +588,14 @@ export const migrateIndexKeyedAlertPreferences = (storedVersion: string | null):
 };
 
 /**
- * Atom storing the user's preferred Athan sound index (0-15)
+ * Atom storing the user's preferred Athan sound index (0-31)
  * Persisted to MMKV storage
  */
 export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 
 /**
  * Atom storing timestamp of last notification schedule refresh
- * Used to determine if notifications need rescheduling (4-hour cycle)
+ * Used to determine if notifications need rescheduling (2-hour cycle)
  */
 export const lastNotificationScheduleAtom = atomWithStorageNumber('preference_last_notification_schedule_check', 0);
 
@@ -616,13 +617,13 @@ export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 
 /**
  * Gets the user's preferred Athan sound index
- * @returns Sound index (0-15)
+ * @returns Sound index (0-31)
  */
 export const getSoundPreference = () => store.get(soundPreferenceAtom);
 
 /**
  * Sets the user's preferred Athan sound index
- * @param selection Sound index (0-15)
+ * @param selection Sound index (0-31)
  */
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
@@ -862,7 +863,6 @@ async function scheduleNotificationForDate(
       id: identifier,
       date,
       time: prayer.time,
-      englishName: prayerLabel(id),
       alertType,
     };
     Database.addOneScheduledNotificationForPrayer(scheduleType, prayerIndex, survivedNotification);
@@ -1068,7 +1068,6 @@ async function scheduleReminderNotificationForDate(
       id: identifier,
       date,
       time: prayer.time,
-      englishName: prayerLabel(id),
       alertType,
     };
     Database.addOneScheduledReminderForPrayer(scheduleType, prayerIndex, survivedReminder);
@@ -1552,8 +1551,9 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   }));
   logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
 
-  // Refuse to reschedule against an empty cache. An upgrade wipes the prayer
-  // data and the refetch is still in flight when the post-paint refresh fires
+  // Refuse to reschedule against an empty cache. A cache-less launch (fresh
+  // install, or an upgrade whose shape bump wiped the store) is still staging
+  // the artifact when the post-paint refresh fires
   // ~1.5s after first content: scheduling then produces nothing, and the sweep
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
@@ -1561,7 +1561,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // The question is whether any day the windows reach is stored, which the candidate walk
   // already answers exactly: a day count restates it and gets the night rows and the
   // still-due yesterday wrong. Bailing is the safe direction anyway, since it arms nothing,
-  // cancels nothing, and the download that lands reopens the gate.
+  // cancels nothing, and the landing stage reopens the gate.
   const armedListDays = NotificationUtils.candidateListDays();
   if (armedListDays.length === 0) {
     logger.warn('NOTIFICATION: No prayer data for the days the windows reach, skipping reschedule', {
@@ -1605,18 +1605,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // alive until widgets are refreshed. The deferred branch needs the explicit
   // catch: nothing awaits it anymore.
   if (options.deferWidgetRefresh) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        perfMark('widget_push_start');
-        PrayerWidgets.refreshPrayerWidgets()
-          .catch((error) => {
-            logger.warn('WIDGET: Deferred push failed', { error });
-          })
-          .finally(() => {
-            perfMeasure('widget_push', 'widget_push_start');
-          });
-      }, 0);
-    });
+    deferPrayerWidgetRefresh();
   } else {
     perfMark('widget_push_start');
     await PrayerWidgets.refreshPrayerWidgets();
@@ -1628,23 +1617,9 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   return true;
 };
 
-/**
- * Reschedules all notifications for both Standard and Extra schedules
- *
- * Used when changing sound preferences or when a full refresh is needed.
- * Replaces every scheduled notification in place (same-identifier replace),
- * cancels stale identifiers, and sweeps anything the OS holds beyond the
- * intended set — no bulk cancel, no zero-notification window (issue #15).
- * Guards against concurrent scheduling using withSchedulingLock.
- *
- * @returns Promise that resolves when rescheduling is complete
- * @throws Error if scheduling fails
- *
- * @example
- * // After changing sound preference
- * await rescheduleAllNotifications();
- */
-export const rescheduleAllNotifications = async () => {
+/** Test seam for the reschedule pass the suites drive directly: production reaches the same
+ *  code through refreshNotifications (foreground) and the background task's variant. */
+export const __rescheduleAllForTests = async () => {
   return withSchedulingLock(async () => {
     try {
       // Foreground UI commit path (sheet dismiss) — defer the widget push
@@ -1715,8 +1690,8 @@ export const commitSoundSelection = async (
  * Refreshes notifications if enough time has elapsed since last refresh
  *
  * Checks if NOTIFICATION_REFRESH_HOURS have passed since the last schedule.
- * If so, reschedules all notifications and updates the last schedule timestamp.
- * This maintains the 2-day rolling notification buffer.
+ * If so, reschedules the candidates whole, in time order, against the OS's
+ * 64-request budget, and updates the last schedule timestamp.
  *
  * Called on app foreground via useNotification hook.
  *
@@ -1784,9 +1759,6 @@ export const refreshNotifications = async () => {
 
   return withSchedulingLock(async () => {
     try {
-      // Read before the reschedule reads the days, so days a download changes while it runs keep the gate open
-      const armedDayChangesBefore = getArmedDayChanges();
-
       // Foreground refresh gate — defer the widget push past the paint
       const rescheduled = await _rescheduleAllNotifications({ deferWidgetRefresh: true });
 
@@ -1795,12 +1767,6 @@ export const refreshNotifications = async () => {
       // was up to date while nothing was armed.
       if (!rescheduled) {
         logger.warn('NOTIFICATION: Refresh skipped, timestamp not stamped — the next foreground will retry');
-        return;
-      }
-
-      // The download reopened the gate, and this reschedule read the days before they landed
-      if (getArmedDayChanges() !== armedDayChangesBefore) {
-        logger.info('NOTIFICATION: Days changed during the refresh, leaving the gate open for the next one');
         return;
       }
 
@@ -1843,21 +1809,12 @@ export const rescheduleAllNotificationsFromBackground = async () => {
 
   return withSchedulingLock(async () => {
     try {
-      // Read before the reschedule reads the days, as the foreground path does
-      const armedDayChangesBefore = getArmedDayChanges();
-
       const rescheduled = await _rescheduleAllNotifications();
 
       // Same rule as the foreground path: a bail must not be recorded as a
       // successful schedule, or the next foreground refresh would skip too
       if (!rescheduled) {
         logger.warn('BACKGROUND_TASK: Reschedule skipped (no prayer data), timestamp not stamped');
-        return;
-      }
-
-      // A download landing while it ran reopened the gate for days this reschedule read too early
-      if (getArmedDayChanges() !== armedDayChangesBefore) {
-        logger.info('BACKGROUND_TASK: Days changed during the reschedule, leaving the gate open for the next refresh');
         return;
       }
 

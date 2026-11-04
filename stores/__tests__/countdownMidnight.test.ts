@@ -18,8 +18,12 @@ const mockStoredDays = new Map<string, unknown>();
 
 jest.mock('@/stores/database', () => ({
   ...jest.requireActual('@/stores/database'),
-  getPrayerByDateString: (date: string) => mockStoredDays.get(date) ?? null,
   getItem: () => null,
+}));
+
+jest.mock('@/stores/timetable', () => ({
+  ...jest.requireActual('@/stores/timetable'),
+  getTimetableDay: (date: string) => mockStoredDays.get(date) ?? null,
 }));
 
 import type { Atom } from 'jotai';
@@ -76,7 +80,7 @@ const storeOctober = () => {
   mockStoredDays.clear();
   for (const [date, [fajr, sunrise, dhuhr, asr, magrib, isha]] of Object.entries(OCTOBER)) {
     const times = { [date]: { fajr, sunrise, dhuhr, asr, magrib, isha } };
-    mockStoredDays.set(date, transformApiData({ city: 'london', times })[0]);
+    mockStoredDays.set(date, transformApiData({ times })[0]);
   }
 };
 

@@ -6,13 +6,18 @@ const { withAppBuildGradle } = require('expo/config-plugins');
  * org.apache.commons.codec.language.bm classes read, and R8 strips those classes from both dex
  * files (expo-file-system, whose build.gradle declares the api dependency, uses
  * android.util.Base64 and its own hex in source): measured 131,145 bytes off the stored APK.
+ * The BouncyCastle entry is bcprov-jdk15to18's dead weight: R8 strips every BC class (the
+ * mergeJavaRes input is org.bouncycastle:bcprov-jdk15to18:1.81, pulled transitively), so its
+ * picnic tables (org/bouncycastle/pqc/crypto/picnic/lowmcL*.bin.properties, 1,220 KB) and
+ * CertPathReviewer messages (org/bouncycastle/x509/*, 92 KB) ship unread - 1,199 KB zipped.
  * The root-level leftovers are dependency metadata nothing reads at runtime: 4,783 compressed
  * bytes together. The patterns stay this narrow on purpose — a future dependency reading
- * org/apache/** java resources fails at classload with a missing-resource exception, never
- * silently.
+ * org/apache/** or org/bouncycastle/** java resources fails at classload with a
+ * missing-resource exception, never silently.
  */
 const JAVA_RESOURCE_EXCLUDES = [
   'org/apache/commons/codec/**',
+  'org/bouncycastle/**',
   '/*.properties',
   '/*.proto',
   '/DebugProbesKt.bin',

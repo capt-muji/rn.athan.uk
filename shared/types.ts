@@ -1,12 +1,11 @@
 import type { COUNTDOWN_WAITING_NAME, PrayerId } from '@/shared/constants';
 
 /**
- * Raw API response structure for a single day's prayer times
+ * A day's prayer times as the dev-mock payload carries them
  *
- * This represents the unprocessed data received from the prayer times API.
- * Contains both individual prayer times and congregation (jamat) times.
- * Note: Only the 6 main prayer times (fajr, sunrise, dhuhr, asr, magrib, isha)
- * are used by the app. Jamat times and asr_2 are fetched but not displayed.
+ * The API client is gone; these types now shape the dev mock's output and the
+ * seam between it and the baked-artifact decode. Only the 6 main prayer times
+ * (fajr, sunrise, dhuhr, asr, magrib, isha) exist on a day.
  *
  * All times are in HH:mm format (24-hour, e.g., "06:12", "18:45")
  */
@@ -15,28 +14,16 @@ export interface IApiSingleTime {
   date: string;
   /** Fajr prayer time in HH:mm format */
   fajr: string;
-  /** Fajr congregation time (not used in app) */
-  fajr_jamat: string;
   /** Sunrise time in HH:mm format */
   sunrise: string;
   /** Dhuhr prayer time in HH:mm format */
   dhuhr: string;
-  /** Dhuhr congregation time (not used in app) */
-  dhuhr_jamat: string;
   /** Asr prayer time in HH:mm format (Hanafi calculation) */
   asr: string;
-  /** Alternative Asr time (Shafi calculation, not used in app) */
-  asr_2: string;
-  /** Asr congregation time (not used in app) */
-  asr_jamat: string;
   /** Magrib prayer time in HH:mm format */
   magrib: string;
-  /** Magrib congregation time (not used in app) */
-  magrib_jamat: string;
   /** Isha prayer time in HH:mm format */
   isha: string;
-  /** Isha congregation time (not used in app) */
-  isha_jamat: string;
 }
 
 /**
@@ -49,14 +36,13 @@ export interface IApiTimes {
 }
 
 /**
- * Top-level API response structure
+ * Top-level mock payload structure
  *
- * The API returns prayer times for an entire year, grouped by city.
- * Each city contains a dictionary of dates mapped to prayer times.
+ * The dev mock carries its launch-relative window as a dictionary of dates
+ * mapped to prayer times.
  *
  * Example structure:
  * {
- *   "city": "London",
  *   "times": {
  *     "2026-01-20": { fajr: "06:12", sunrise: "08:05", ... },
  *     "2026-01-21": { fajr: "06:11", sunrise: "08:04", ... },
@@ -65,8 +51,6 @@ export interface IApiTimes {
  * }
  */
 export interface IApiResponse {
-  /** City name (e.g., "London") */
-  city: string;
   /** Dictionary of dates to prayer times */
   times: Record<string, IApiSingleTime>;
 }
@@ -79,7 +63,6 @@ export type RequiredTimeName = 'fajr' | 'sunrise' | 'dhuhr' | 'asr' | 'magrib' |
  * where the provider's value was not
  */
 export interface IValidatedApiResponse {
-  city: string;
   times: Record<string, Record<RequiredTimeName, string | null>>;
 }
 
@@ -89,7 +72,7 @@ export interface IValidatedApiResponse {
  * This is the processed version of IApiSingleTime with derived extra prayers added.
  * Transformation happens in shared/prayer.ts:transformApiData()
  *
- * Derived prayers calculated from the day's own API times:
+ * Derived prayers calculated from the day's own times:
  * - suhoor: 20 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
  * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)
@@ -250,8 +233,6 @@ export enum Icon {
   QUESTION = 'QUESTION',
   MUSIC_NOTE = 'MUSIC_NOTE',
   COMPASS = 'COMPASS',
-  CLOSE = 'CLOSE',
-  WIDGET = 'WIDGET',
   APPLE = 'APPLE',
   ANDROID = 'ANDROID',
   GLOBE = 'GLOBE',

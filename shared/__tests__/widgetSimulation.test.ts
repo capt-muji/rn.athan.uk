@@ -31,10 +31,11 @@
  */
 
 jest.mock('@/stores/database', () => ({
-  getPrayerByDateString: jest.fn(),
   getItem: () => null,
   getRawItem: () => undefined,
 }));
+
+jest.mock('@/stores/timetable', () => ({ getTimetableDay: jest.fn() }));
 
 import { createHash } from 'node:crypto';
 import { addDays } from 'date-fns';
@@ -50,6 +51,7 @@ import {
   createPrayerDatetime,
   formatDateLocalized,
   formatDateShort,
+  formatDisplayTime,
   getPreviousDateString,
 } from '@/shared/time';
 import {
@@ -63,7 +65,7 @@ import {
 } from '@/shared/types';
 import { buildPrayerWidgetTimeline, MIN_ENTRY_SPACING_MS } from '@/shared/widgetTimeline';
 import type { PrayerWidgetProps, PrayerWidgetSettings } from '@/shared/widgetTypes';
-import * as Database from '@/stores/database';
+import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // FIXTURE: 16 days across the DST fall-back (clocks change 2026-10-25)
@@ -75,6 +77,7 @@ const SPAN_DAYS = 16;
 
 const SETTINGS: PrayerWidgetSettings = {
   hijriDate: false,
+  use24Hour: false,
 };
 
 /** Realistic October London times */
@@ -260,7 +263,7 @@ describe('virtual week model test', () => {
       const expectedRows = dayPrayers.map((prayer) => ({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: formatDisplayTime(prayer.time, SETTINGS.use24Hour),
       }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
@@ -309,7 +312,10 @@ describe('virtual week model test', () => {
 
     const rolled = activeEntryAt(entries, afterIsha)?.props;
     const rolledDay = prayers.filter((prayer) => prayer.belongsToDate === '2026-10-19');
-    expect(rolled?.prayers?.map((row) => row.time)).toEqual(rolledDay.map((prayer) => prayer.time));
+    // The row times render in the settings' format, so the model converts too
+    expect(rolled?.prayers?.map((row) => row.time)).toEqual(
+      rolledDay.map((prayer) => formatDisplayTime(prayer.time, SETTINGS.use24Hour))
+    );
   });
 
   it('shows the next day before midnight once Isha has passed', () => {
@@ -548,7 +554,7 @@ describe('extras virtual week model test', () => {
       const expectedRows = dayPrayers.map((prayer) => ({
         id: prayer.id,
         name: prayerLabel(prayer.id),
-        time: prayer.time,
+        time: formatDisplayTime(prayer.time, SETTINGS.use24Hour),
       }));
       const expectedActiveIndex = dayPrayers.findIndex((prayer) => prayer.datetime.getTime() === nextMs);
 
@@ -653,7 +659,7 @@ const storedDays = (
     times[date] = record;
   }
 
-  return transformApiData({ city: MOCK_DATA_FULL.city, times });
+  return transformApiData({ times });
 };
 
 /** A sequence built as stores/widget.ts builds one, with `records` as the only stored days */
@@ -664,7 +670,7 @@ const buildStoredSequence = (
   dayCount: number
 ): PrayerSequence => {
   const stored = new Map(records.map((record) => [record.date, record]));
-  (Database.getPrayerByDateString as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
+  (Timetable.getTimetableDay as jest.Mock).mockImplementation((date: string) => stored.get(date) ?? null);
 
   return createPrayerSequence(type, createPrayerDatetime(firstDate, '12:00'), dayCount);
 };
@@ -680,23 +686,25 @@ describe('fully readable real sequences', () => {
    * Last re-golded when the countdown moved to a SwiftUI timer interval and the five-minute stepped
    * entries were deleted (session 16a) — the fix for the archive-budget blackout. Re-golded again
    * when props v7 added the precomposed localized footer to every entry (job 39 step 7). Re-golded
-   * again when props v8 stamped rtl on every entry (job 68).
+   * again when props v8 stamped rtl on every entry (job 68). Re-golded when the 12-hour display
+   * default landed (T-594): the fixtures read use24Hour: false, and the use24Hour: true stream was
+   * proven byte-identical to the previous pins before re-golding.
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '16f1f114c14e096ebb67034d0310abbbd16c20e9554f60415c48298df87ec366'],
-    ['2024-02-20', '3e9d3a76f561f4d1d43afb7050d83947a36dea12b747f3cc25c60f36e4ae3249'],
+    ['2024-01-10', '9f12f3ad4d46aadd34ef2fe773b84d0c35ec4937b1987de81f1553032fe9e82d'],
+    ['2024-02-20', '730352309d8e5323b42fed365cd2ddb964e18cb61418e6a12c5e280ca8c7e2bb'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', 'faf2f0b64fe3da023b203c79fe9bd26c0a2ba5aaa7391a9b14913502fc3d23ac'],
-    ['2024-04-15', 'b37855e3893fffcbd3af3c2398e8ea8c975d0973d23628ec7d972ebfdb38fbb8'],
-    ['2024-05-06', '28d0ef5e392a1b54c30d238ec30f22752e5af8e239f77ebe331764bc9eb9e247'],
-    ['2024-06-14', '736b4cfc9f211cbf81f12eedc6595260e5614dd887f13ef1e6121267de285152'],
-    ['2024-07-01', '50f7d8f8b28fc03febf296d95fe1c3beec7f14c3894a76e995fdc5b8f50e7b3c'],
-    ['2024-08-12', '05d088b2c8046f9ea4d34025ecd3fe31dbb19d1c672226c4066f00cf26bd5815'],
-    ['2024-09-02', '4708cc5c8f380a6f9ea3e0a7b2db3be19e6d3e4724bebd4fffdfb535c386d37e'],
+    ['2024-03-24', 'c4f8f05fc3616fc77550ede168e025929f32cd925afac769ab8dd04993187183'],
+    ['2024-04-15', 'bee192cb83c824d6196aab1b48528e0123ccb6f2c0cc380f9d08cef90d4077f6'],
+    ['2024-05-06', '20ccfe30bb4b2ded82ad2e4bcc48999d83b9684f39146c0248a77ad402d06a74'],
+    ['2024-06-14', '625f4976c789e09e334c02f9f75ee9283e07b0522b32e1475b13f3b238d0d713'],
+    ['2024-07-01', 'b0a1780f6fb82d76dc467afc8ea4413a78aff40cea40be906a42910c3fd83448'],
+    ['2024-08-12', '3e68094b865141ef9120083675bc4cb13382095da73c9d39df228359416715ee'],
+    ['2024-09-02', '21560ba59f8b81c9ac5eadfa7fd65076ad90dbd4fd36183eb82ec046eeb05cdd'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', '459957764c2fdcf7bf2c5734b8533d9e417b8ff2392a7aff94ec0ce6acb89491'],
-    ['2024-11-11', '60a099cdd8d81531db560f18a330f3915bdffc6da14f4f900c13c7352c3008f8'],
-    ['2024-12-15', '89d587c064ebb3feb84ba9cd9aa401bd876aa1ba67b675cf1bd4ba5aef8855f9'],
+    ['2024-10-20', '3242e9b56c9f01e93f0cdc4516554ffe62da0937a218fafe0db6c3c229ee7dc0'],
+    ['2024-11-11', 'dfdb4c9dbb1c7d6dde884afd92e699bf5b4042b2b61a6f4dffd2a170894184b3'],
+    ['2024-12-15', '2e801f3330962ce891647d6741b1deb38db5fa200b494b8ce25960ac4a03d510'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
@@ -878,7 +886,11 @@ const rulesFor = (type: ScheduleType, prayers: Prayer[]) => {
       displayDate,
       boundaryMs: held ? Math.min(next.datetime.getTime(), endOfListDay(displayDate)) : next.datetime.getTime(),
       previousMs,
-      rows: dayRows.map((prayer) => ({ id: prayer.id, name: prayerLabel(prayer.id), time: prayer.time ?? '--:--' })),
+      rows: dayRows.map((prayer) => ({
+        id: prayer.id,
+        name: prayerLabel(prayer.id),
+        time: formatDisplayTime(prayer.time ?? '--:--', SETTINGS.use24Hour),
+      })),
       activeIndex: dayRows.indexOf(next),
     };
   };
@@ -897,10 +909,10 @@ const mismatchAt = (
 
   if (
     props.nextName !== prayerLabel(expected.next.id) ||
-    props.nextTime !== expected.next.time ||
+    props.nextTime !== formatDisplayTime(expected.next.time, SETTINGS.use24Hour) ||
     props.nextEpochMs !== expected.next.datetime.getTime()
   ) {
-    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${prayerLabel(expected.next.id)} ${expected.next.time}`;
+    return `Next mismatch at ${at}: entry says ${props.nextName} ${props.nextTime}, expected ${prayerLabel(expected.next.id)} ${formatDisplayTime(expected.next.time, SETTINGS.use24Hour)}`;
   }
   if (props.prevEpochMs !== (expected.previousMs ?? entry.date.getTime())) {
     return `Previous mismatch at ${at}: entry says ${props.prevEpochMs}, expected ${expected.previousMs}`;
@@ -1075,7 +1087,7 @@ describe.each([
     expect(last.props).toMatchObject({
       stale: true,
       nextName: prayerLabel(lastReadable.id),
-      nextTime: lastReadable.time,
+      nextTime: formatDisplayTime(lastReadable.time, SETTINGS.use24Hour),
       nextEpochMs: lastReadable.datetime.getTime(),
       dateLabel: formatDateLocalized('2024-11-03'),
     });

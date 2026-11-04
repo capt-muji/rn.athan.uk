@@ -2,7 +2,7 @@
   "expo": {
     "name": "Athan",
     "slug": "athan",
-    "version": "2.43.59",
+    "version": "2.45.13",
     "orientation": "portrait",
     "scheme": "athan",
     "userInterfaceStyle": "dark",
@@ -4971,5 +4971,6 @@
     "experiments": {
       "typedRoutes": true
     }
-  }
+  },
+  "version": "2.45.13"
 }
