@@ -17,6 +17,10 @@ import { VARIANTS_51_75 } from './variants/variants-51-75';
 import { VARIANTS_76_100 } from './variants/variants-76-100';
 import { VARIANTS_101_125 } from './variants/variants-101-125';
 import { VARIANTS_126_150 } from './variants/variants-126-150';
+import { VARIANTS_151_190 } from './variants/variants-151-190';
+import { VARIANTS_191_230 } from './variants/variants-191-230';
+import { VARIANTS_231_270 } from './variants/variants-231-270';
+import { VARIANTS_271_320 } from './variants/variants-271-320';
 
 export type FastingVariantComponent = () => ReactElement;
 
@@ -41,6 +45,10 @@ const COMPONENT_MAPS: readonly Record<string, FastingVariantComponent>[] = [
   VARIANTS_76_100,
   VARIANTS_101_125,
   VARIANTS_126_150,
+  VARIANTS_151_190,
+  VARIANTS_191_230,
+  VARIANTS_231_270,
+  VARIANTS_271_320,
 ];
 
 const componentFor = (id: string): FastingVariantComponent => {

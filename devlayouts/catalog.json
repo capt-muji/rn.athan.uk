@@ -1148,5 +1148,1365 @@
     "archetype": "Two-Track Groups",
     "open": "muhammad+white",
     "hidesExplanations": false
+  },
+  {
+    "index": 151,
+    "id": "tracked-mode-boxes",
+    "name": "Tracked Mode Boxes",
+    "archetype": "Two-Track Groups",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 152,
+    "id": "tracked-bare-compacts",
+    "name": "Tracked Bare Compacts",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 153,
+    "id": "tracked-tall-panels",
+    "name": "Tracked Tall Panels",
+    "archetype": "Two-Track Groups",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 154,
+    "id": "tracked-side-dots",
+    "name": "Tracked Side Dots",
+    "archetype": "Two-Track Groups",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 155,
+    "id": "tracked-fill-bands",
+    "name": "Tracked Fill Bands",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 156,
+    "id": "tracked-open-extras",
+    "name": "Tracked Open Extras",
+    "archetype": "Two-Track Groups",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 157,
+    "id": "tracked-monogram-tracks",
+    "name": "Tracked Monogram Tracks",
+    "archetype": "Two-Track Groups",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 158,
+    "id": "tracked-switched-extras",
+    "name": "Tracked Switched Extras",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 159,
+    "id": "tracked-hairlines",
+    "name": "Tracked Hairlines",
+    "archetype": "Two-Track Groups",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 160,
+    "id": "tracked-header-note",
+    "name": "Tracked Header Note",
+    "archetype": "Two-Track Groups",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 161,
+    "id": "dual-track-wide-extras",
+    "name": "Dual Track Wide Extras",
+    "archetype": "Two-Track Groups",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 162,
+    "id": "dual-track-bare-modes",
+    "name": "Dual Track Bare Modes",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 163,
+    "id": "dual-track-selected-subs",
+    "name": "Dual Track Selected Subs",
+    "archetype": "Two-Track Groups",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 164,
+    "id": "dual-track-monogram-modes",
+    "name": "Dual Track Monogram Modes",
+    "archetype": "Two-Track Groups",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 165,
+    "id": "dual-track-fill-modes",
+    "name": "Dual Track Fill Modes",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 166,
+    "id": "dual-track-header-line",
+    "name": "Dual Track Header Line",
+    "archetype": "Two-Track Groups",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 167,
+    "id": "dual-track-boxed-marks",
+    "name": "Dual Track Boxed Marks",
+    "archetype": "Two-Track Groups",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 168,
+    "id": "dual-track-compact-boxes",
+    "name": "Dual Track Compact Boxes",
+    "archetype": "Two-Track Groups",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 169,
+    "id": "dual-track-tall-switches",
+    "name": "Dual Track Tall Switches",
+    "archetype": "Two-Track Groups",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 170,
+    "id": "dual-track-hairline-tracks",
+    "name": "Dual Track Hairline Tracks",
+    "archetype": "Two-Track Groups",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 171,
+    "id": "notify-hero-cards",
+    "name": "Notify Hero Cards",
+    "archetype": "Notification Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 172,
+    "id": "notify-hero-single-card",
+    "name": "Notify Hero Single Card",
+    "archetype": "Notification Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 173,
+    "id": "notify-hero-compact-cards",
+    "name": "Notify Hero Compact Cards",
+    "archetype": "Notification Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 174,
+    "id": "notify-hero-bare-stack",
+    "name": "Notify Hero Bare Stack",
+    "archetype": "Notification Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 175,
+    "id": "notify-hero-fill-cards",
+    "name": "Notify Hero Fill Cards",
+    "archetype": "Notification Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 176,
+    "id": "notify-hero-titled-sheet",
+    "name": "Notify Hero Titled Sheet",
+    "archetype": "Notification Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 177,
+    "id": "notify-hero-right-marks",
+    "name": "Notify Hero Right Marks",
+    "archetype": "Notification Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 178,
+    "id": "notify-hero-split-panes",
+    "name": "Notify Hero Split Panes",
+    "archetype": "Notification Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 179,
+    "id": "notify-hero-tall-bells",
+    "name": "Notify Hero Tall Bells",
+    "archetype": "Notification Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 180,
+    "id": "notify-hero-dense-chips",
+    "name": "Notify Hero Dense Chips",
+    "archetype": "Notification Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 181,
+    "id": "notify-mini-cards",
+    "name": "Notify Mini Cards",
+    "archetype": "Notification Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 182,
+    "id": "notify-mini-ledges",
+    "name": "Notify Mini Ledges",
+    "archetype": "Notification Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 183,
+    "id": "notify-mini-selected-subs",
+    "name": "Notify Mini Selected Subs",
+    "archetype": "Notification Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 184,
+    "id": "notify-mini-bare",
+    "name": "Notify Mini Bare",
+    "archetype": "Notification Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 185,
+    "id": "notify-mini-fill",
+    "name": "Notify Mini Fill",
+    "archetype": "Notification Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 186,
+    "id": "notify-mini-header",
+    "name": "Notify Mini Header",
+    "archetype": "Notification Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 187,
+    "id": "notify-mini-right-marks",
+    "name": "Notify Mini Right Marks",
+    "archetype": "Notification Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 188,
+    "id": "notify-mini-switches",
+    "name": "Notify Mini Switches",
+    "archetype": "Notification Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 189,
+    "id": "notify-mini-pills",
+    "name": "Notify Mini Pills",
+    "archetype": "Notification Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 190,
+    "id": "notify-mini-grid",
+    "name": "Notify Mini Grid",
+    "archetype": "Notification Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 191,
+    "id": "side-nav-letter-rail",
+    "name": "Side Nav Letter Rail",
+    "archetype": "Sidebar Nav",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 192,
+    "id": "side-nav-mirrored-rail",
+    "name": "Side Nav Mirrored Rail",
+    "archetype": "Sidebar Nav",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 193,
+    "id": "side-nav-mark-rail",
+    "name": "Side Nav Mark Rail",
+    "archetype": "Sidebar Nav",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 194,
+    "id": "side-nav-mirrored-marks",
+    "name": "Side Nav Mirrored Marks",
+    "archetype": "Sidebar Nav",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 195,
+    "id": "side-nav-dot-rail",
+    "name": "Side Nav Dot Rail",
+    "archetype": "Sidebar Nav",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 196,
+    "id": "side-nav-mirrored-dots",
+    "name": "Side Nav Mirrored Dots",
+    "archetype": "Sidebar Nav",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 197,
+    "id": "side-nav-wide-rail",
+    "name": "Side Nav Wide Rail",
+    "archetype": "Sidebar Nav",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 198,
+    "id": "side-nav-mirrored-wide",
+    "name": "Side Nav Mirrored Wide",
+    "archetype": "Sidebar Nav",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 199,
+    "id": "side-nav-check-rail",
+    "name": "Side Nav Check Rail",
+    "archetype": "Sidebar Nav",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 200,
+    "id": "side-nav-mirrored-checks",
+    "name": "Side Nav Mirrored Checks",
+    "archetype": "Sidebar Nav",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 201,
+    "id": "pill-duo-grid",
+    "name": "Pill Duo Grid",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 202,
+    "id": "pill-duo-bare-cells",
+    "name": "Pill Duo Bare Cells",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 203,
+    "id": "pill-duo-tall-cells",
+    "name": "Pill Duo Tall Cells",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 204,
+    "id": "pill-duo-selected-subs",
+    "name": "Pill Duo Selected Subs",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 205,
+    "id": "pill-duo-card-wrap",
+    "name": "Pill Duo Card Wrap",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 206,
+    "id": "pill-duo-titled-wrap",
+    "name": "Pill Duo Titled Wrap",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 207,
+    "id": "pill-duo-switched-cells",
+    "name": "Pill Duo Switched Cells",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 208,
+    "id": "pill-duo-mirrored-badges",
+    "name": "Pill Duo Mirrored Badges",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 209,
+    "id": "pill-duo-header-note",
+    "name": "Pill Duo Header Note",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 210,
+    "id": "pill-duo-ring-cells",
+    "name": "Pill Duo Ring Cells",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 211,
+    "id": "pill-tall-stack",
+    "name": "Pill Tall Stack",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 212,
+    "id": "pill-tall-switch-stack",
+    "name": "Pill Tall Switch Stack",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 213,
+    "id": "pill-tall-each-card",
+    "name": "Pill Tall Each Card",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 214,
+    "id": "pill-tall-fill-pills",
+    "name": "Pill Tall Fill Pills",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 215,
+    "id": "pill-tall-single-card",
+    "name": "Pill Tall Single Card",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 216,
+    "id": "pill-tall-medallions",
+    "name": "Pill Tall Medallions",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 217,
+    "id": "pill-tall-header",
+    "name": "Pill Tall Header",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 218,
+    "id": "pill-tall-glyphs",
+    "name": "Pill Tall Glyphs",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 219,
+    "id": "pill-tall-compact-pills",
+    "name": "Pill Tall Compact Pills",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 220,
+    "id": "pill-tall-mirrored",
+    "name": "Pill Tall Mirrored",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 221,
+    "id": "pill-footer-stack",
+    "name": "Pill Footer Stack",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 222,
+    "id": "pill-footer-card",
+    "name": "Pill Footer Card",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 223,
+    "id": "pill-footer-compact",
+    "name": "Pill Footer Compact",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 224,
+    "id": "pill-footer-fill",
+    "name": "Pill Footer Fill",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 225,
+    "id": "pill-footer-each",
+    "name": "Pill Footer Each",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 226,
+    "id": "pill-footer-titled",
+    "name": "Pill Footer Titled",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 227,
+    "id": "pill-footer-medallions",
+    "name": "Pill Footer Medallions",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 228,
+    "id": "pill-footer-tall",
+    "name": "Pill Footer Tall",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 229,
+    "id": "pill-footer-glyphs",
+    "name": "Pill Footer Glyphs",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 230,
+    "id": "pill-footer-mirrored-dots",
+    "name": "Pill Footer Mirrored Dots",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 231,
+    "id": "pill-full-stack",
+    "name": "Pill Full Stack",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 232,
+    "id": "pill-full-switches",
+    "name": "Pill Full Switches",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 233,
+    "id": "pill-full-dots-left",
+    "name": "Pill Full Dots Left",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 234,
+    "id": "pill-full-cards",
+    "name": "Pill Full Cards",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 235,
+    "id": "pill-full-compact",
+    "name": "Pill Full Compact",
+    "archetype": "Pill Stack",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 236,
+    "id": "pill-full-tall",
+    "name": "Pill Full Tall",
+    "archetype": "Pill Stack",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 237,
+    "id": "pill-full-fill",
+    "name": "Pill Full Fill",
+    "archetype": "Pill Stack",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 238,
+    "id": "pill-full-card-wrap",
+    "name": "Pill Full Card Wrap",
+    "archetype": "Pill Stack",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 239,
+    "id": "pill-full-header-note",
+    "name": "Pill Full Header Note",
+    "archetype": "Pill Stack",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 240,
+    "id": "pill-full-medallion-stack",
+    "name": "Pill Full Medallion Stack",
+    "archetype": "Pill Stack",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 241,
+    "id": "fill-inline-rows",
+    "name": "Fill Inline Rows",
+    "archetype": "Outline-Fill Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 242,
+    "id": "fill-inline-cards",
+    "name": "Fill Inline Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 243,
+    "id": "fill-inline-single-card",
+    "name": "Fill Inline Single Card",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 244,
+    "id": "fill-inline-compact",
+    "name": "Fill Inline Compact",
+    "archetype": "Outline-Fill Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 245,
+    "id": "fill-inline-tall",
+    "name": "Fill Inline Tall",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 246,
+    "id": "fill-inline-titled",
+    "name": "Fill Inline Titled",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 247,
+    "id": "fill-inline-selected-subs",
+    "name": "Fill Inline Selected Subs",
+    "archetype": "Outline-Fill Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 248,
+    "id": "fill-inline-header",
+    "name": "Fill Inline Header",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 249,
+    "id": "fill-inline-two-up",
+    "name": "Fill Inline Two-Up",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 250,
+    "id": "fill-inline-pills",
+    "name": "Fill Inline Pills",
+    "archetype": "Outline-Fill Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 251,
+    "id": "fill-mini-rows",
+    "name": "Fill Mini Rows",
+    "archetype": "Outline-Fill Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 252,
+    "id": "fill-mini-grid",
+    "name": "Fill Mini Grid",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 253,
+    "id": "fill-mini-cards",
+    "name": "Fill Mini Cards",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 254,
+    "id": "fill-mini-pills",
+    "name": "Fill Mini Pills",
+    "archetype": "Outline-Fill Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 255,
+    "id": "fill-mini-card-wrap",
+    "name": "Fill Mini Card Wrap",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 256,
+    "id": "fill-mini-titled-wrap",
+    "name": "Fill Mini Titled Wrap",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 257,
+    "id": "fill-mini-selected-subs",
+    "name": "Fill Mini Selected Subs",
+    "archetype": "Outline-Fill Cards",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 258,
+    "id": "fill-mini-tall-cells",
+    "name": "Fill Mini Tall Cells",
+    "archetype": "Outline-Fill Cards",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 259,
+    "id": "fill-mini-header",
+    "name": "Fill Mini Header",
+    "archetype": "Outline-Fill Cards",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 260,
+    "id": "fill-mini-separated",
+    "name": "Fill Mini Separated",
+    "archetype": "Outline-Fill Cards",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 261,
+    "id": "monogram-duo-rows",
+    "name": "Monogram Duo Rows",
+    "archetype": "Monogram Medallions",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 262,
+    "id": "monogram-duo-cards",
+    "name": "Monogram Duo Cards",
+    "archetype": "Monogram Medallions",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 263,
+    "id": "monogram-duo-single-card",
+    "name": "Monogram Duo Single Card",
+    "archetype": "Monogram Medallions",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 264,
+    "id": "monogram-duo-right-rail",
+    "name": "Monogram Duo Right Rail",
+    "archetype": "Monogram Medallions",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 265,
+    "id": "monogram-duo-compact",
+    "name": "Monogram Duo Compact",
+    "archetype": "Monogram Medallions",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 266,
+    "id": "monogram-duo-tall",
+    "name": "Monogram Duo Tall",
+    "archetype": "Monogram Medallions",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 267,
+    "id": "monogram-duo-titled",
+    "name": "Monogram Duo Titled",
+    "archetype": "Monogram Medallions",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 268,
+    "id": "monogram-duo-pills",
+    "name": "Monogram Duo Pills",
+    "archetype": "Monogram Medallions",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 269,
+    "id": "monogram-duo-fill-rows",
+    "name": "Monogram Duo Fill Rows",
+    "archetype": "Monogram Medallions",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 270,
+    "id": "monogram-duo-header",
+    "name": "Monogram Duo Header",
+    "archetype": "Monogram Medallions",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 271,
+    "id": "switch-group-modes-box",
+    "name": "Switch Group Modes Box",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 272,
+    "id": "switch-group-single-card",
+    "name": "Switch Group Single Card",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 273,
+    "id": "switch-group-open-tracks",
+    "name": "Switch Group Open Tracks",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 274,
+    "id": "switch-group-each-row",
+    "name": "Switch Group Each Row",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 275,
+    "id": "switch-group-bare",
+    "name": "Switch Group Bare",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 276,
+    "id": "switch-group-tall-card",
+    "name": "Switch Group Tall Card",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 277,
+    "id": "switch-group-left-switches",
+    "name": "Switch Group Left Switches",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 278,
+    "id": "switch-group-header",
+    "name": "Switch Group Header",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 279,
+    "id": "switch-group-dense-card",
+    "name": "Switch Group Dense Card",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 280,
+    "id": "switch-group-mirrored-card",
+    "name": "Switch Group Mirrored Card",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 281,
+    "id": "switch-mini-bare",
+    "name": "Switch Mini Bare",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 282,
+    "id": "switch-mini-separated",
+    "name": "Switch Mini Separated",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 283,
+    "id": "switch-mini-card",
+    "name": "Switch Mini Card",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 284,
+    "id": "switch-mini-each",
+    "name": "Switch Mini Each",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 285,
+    "id": "switch-mini-left",
+    "name": "Switch Mini Left",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 286,
+    "id": "switch-mini-dots-too",
+    "name": "Switch Mini Dots Too",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 287,
+    "id": "switch-mini-header",
+    "name": "Switch Mini Header",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 288,
+    "id": "switch-mini-pills",
+    "name": "Switch Mini Pills",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 289,
+    "id": "switch-mini-tall-sparse",
+    "name": "Switch Mini Tall Sparse",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 290,
+    "id": "switch-mini-grid",
+    "name": "Switch Mini Grid",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 291,
+    "id": "switch-monogram-rows",
+    "name": "Switch Monogram Rows",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 292,
+    "id": "switch-monogram-cards",
+    "name": "Switch Monogram Cards",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 293,
+    "id": "switch-monogram-card",
+    "name": "Switch Monogram Card",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 294,
+    "id": "switch-monogram-compact",
+    "name": "Switch Monogram Compact",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 295,
+    "id": "switch-monogram-tracks",
+    "name": "Switch Monogram Tracks",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 296,
+    "id": "switch-monogram-tall",
+    "name": "Switch Monogram Tall",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 297,
+    "id": "switch-monogram-titled",
+    "name": "Switch Monogram Titled",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 298,
+    "id": "switch-monogram-pills",
+    "name": "Switch Monogram Pills",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 299,
+    "id": "switch-monogram-mirrored",
+    "name": "Switch Monogram Mirrored",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 300,
+    "id": "switch-monogram-header",
+    "name": "Switch Monogram Header",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 301,
+    "id": "switch-plain-rows",
+    "name": "Switch Plain Rows",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 302,
+    "id": "switch-plain-always-subs",
+    "name": "Switch Plain Always Subs",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 303,
+    "id": "switch-plain-card",
+    "name": "Switch Plain Card",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 304,
+    "id": "switch-plain-separated",
+    "name": "Switch Plain Separated",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 305,
+    "id": "switch-plain-tall-tracks",
+    "name": "Switch Plain Tall Tracks",
+    "archetype": "Switch Rows",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 306,
+    "id": "switch-plain-each",
+    "name": "Switch Plain Each",
+    "archetype": "Switch Rows",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 307,
+    "id": "switch-plain-left",
+    "name": "Switch Plain Left",
+    "archetype": "Switch Rows",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 308,
+    "id": "switch-plain-compact-card",
+    "name": "Switch Plain Compact Card",
+    "archetype": "Switch Rows",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 309,
+    "id": "switch-plain-tall",
+    "name": "Switch Plain Tall",
+    "archetype": "Switch Rows",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 310,
+    "id": "switch-plain-titled",
+    "name": "Switch Plain Titled",
+    "archetype": "Switch Rows",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 311,
+    "id": "check-bare-rows",
+    "name": "Check Bare Rows",
+    "archetype": "Checkmarks",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 312,
+    "id": "check-card-rows",
+    "name": "Check Card Rows",
+    "archetype": "Checkmarks",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 313,
+    "id": "check-left-rows",
+    "name": "Check Left Rows",
+    "archetype": "Checkmarks",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 314,
+    "id": "check-each-card",
+    "name": "Check Each Card",
+    "archetype": "Checkmarks",
+    "open": "white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 315,
+    "id": "check-grid",
+    "name": "Check Grid",
+    "archetype": "Checkmarks",
+    "open": "muhammad+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 316,
+    "id": "check-pills",
+    "name": "Check Pills",
+    "archetype": "Checkmarks",
+    "open": "dawood+white",
+    "hidesExplanations": false
+  },
+  {
+    "index": 317,
+    "id": "check-titled-card",
+    "name": "Check Titled Card",
+    "archetype": "Checkmarks",
+    "open": "every",
+    "hidesExplanations": false
+  },
+  {
+    "index": 318,
+    "id": "check-tracks",
+    "name": "Check Tracks",
+    "archetype": "Checkmarks",
+    "open": "muhammad",
+    "hidesExplanations": false
+  },
+  {
+    "index": 319,
+    "id": "check-rail",
+    "name": "Check Rail",
+    "archetype": "Checkmarks",
+    "open": "dawood",
+    "hidesExplanations": false
+  },
+  {
+    "index": 320,
+    "id": "check-mirrored-rail",
+    "name": "Check Mirrored Rail",
+    "archetype": "Checkmarks",
+    "open": "white",
+    "hidesExplanations": false
   }
 ]

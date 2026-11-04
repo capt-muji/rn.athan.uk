@@ -15,6 +15,6 @@ import DevFastingLayoutsRoute from '../../app/dev/fasting-layouts';
 describe('the fasting-layouts deep link', () => {
   it('opens the variant the v param names', async () => {
     await render(<DevFastingLayoutsRoute />);
-    expect(screen.getByText(/7 \/ 150/)).toBeOnTheScreen();
+    expect(screen.getByText(/7 \/ 320/)).toBeOnTheScreen();
   });
 });

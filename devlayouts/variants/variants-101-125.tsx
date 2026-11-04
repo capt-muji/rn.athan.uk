@@ -2016,7 +2016,7 @@ const v119 = StyleSheet.create({
     gap: 10,
   },
   cell: {
-    width: '50%',
+    width: '48%',
     alignItems: 'center',
     gap: 4,
   },
