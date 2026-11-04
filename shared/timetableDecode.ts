@@ -7,9 +7,9 @@
  * in canonical order. This module holds no clock and no IO, so every behaviour
  * is testable by construction.
  *
- * A record built here is byte-for-byte what the download pipeline used to
- * store: derived Suhoor, Duha and Istijaba are worked out the same way
- * transformApiData worked them out, from the day's own six times.
+ * A record built here is byte-for-byte what the dev pipeline stores: derived
+ * Suhoor, Duha and Istijaba are worked out the same way transformApiData
+ * works them out, from the day's own six times.
  */
 
 const MAGIC = 'LUPT';

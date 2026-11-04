@@ -24,7 +24,7 @@ sleep 12
 a shell am force-stop $PKG
 sleep 2
 
-# Launch early in a minute so the prayers the mock seeds from this launch's download land on known minutes
+# Launch early in a minute so the prayers the mock seeds from this launch land on known minutes
 while :; do s=$(date +%S); s=${s#0}; (( s >= 5 && s <= 30 )) && break; sleep 1; done
 a shell am start -n $PKG/.MainActivity >/dev/null
 M=$(( $(date +%s) / 60 * 60 ))

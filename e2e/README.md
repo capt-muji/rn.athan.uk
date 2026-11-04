@@ -36,7 +36,7 @@ everywhere.
   is not a prayer time. Pass a JSON list of `"YYYY-MM-DD HH:MM"` trigger times
   as the third argument to check the times themselves. Alarm TIMES only mean
   anything on a production build. Local
-  builds run the mock API, whose prayers sit either side of launch.
+  builds serve the launch-relative mock window, whose prayers sit either side of launch.
 - `baselines/`: measured medians + animation-floor verdicts per device.
 - `device-atlas-<model>.md`: the tap-point atlas for one device
   (`device-atlas-oneplus3t.md` is the 3T's). **Read it before screenshotting a
@@ -151,7 +151,7 @@ verification, never infer visuals from pixels alone.
   absolute startup numbers to production. The old mock-refetch's dev-MMKV day
   rows are gone (the reader never writes days), and the one-time legacy
   cleanup removes any that earlier builds left, so a stale mock day is no
-  longer a live confound within dev. The mock seeds by the download's London clock (row 113,
+  longer a live confound within dev. The mock seeds by the reading's London clock (row 113,
   any hour, any day, `mocks/simple.ts`): the evening window (06:00-23:52:59) puts Asr just
   passed, Maghrib on the next minute boundary and Isha the minute after, so the day rolls to
   tomorrow's real schedule within a couple of minutes; the pre-dawn window (00:00-05:59)
@@ -179,7 +179,7 @@ verification, never infer visuals from pixels alone.
   five identical snapshots on the 3T**: measure idle with
   `scripts/idle-cpu.sh` (per-thread `/proc` deltas over 60s).
 - **Idle must be measured past the mock's compressed window**: the evening seed puts the next
-  prayers one and two minutes out, and every return to the app downloads again, so sample
+  prayers one and two minutes out, and every return to the app reseeds the window, so sample
   ≥5.5 min after a cold launch without leaving the app (idle-cpu.sh does). The night windows
   are safe since row 113: the pre-dawn branch never writes a small-hours Standard row (the
   midnight-crossing rules are what dashed the old night mock), and the evening branch's

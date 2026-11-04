@@ -19,7 +19,6 @@ import type * as NotificationUtils from '@/shared/notifications';
 import type { ScheduleType } from '@/shared/types';
 
 /**
-/**
  * MMKV instance id, namespaced by build class: a build that fabricates prayer
  * times (dev) must never share stored preferences and records with a shipped
  * one, and shipped installs keep this id byte for byte.
@@ -78,7 +77,7 @@ export const removeItem = (key: string) => {
 
 /**
  * Gets all items with a given key prefix
- * @param prefix Key prefix to match (e.g., "prayer_", "scheduled_notifications_")
+ * @param prefix Key prefix to match (e.g., "scheduled_notifications_")
  * @returns Array of parsed values
  */
 export const getAllWithPrefix = (prefix: string) => {

@@ -1,6 +1,6 @@
 import { addDays, subDays } from 'date-fns';
 
-import { formatDateShort, readPrayerClock } from '@/shared/time';
+import { formatDateShort, pad2, readPrayerClock } from '@/shared/time';
 import type { IApiResponse } from '@/shared/types';
 
 /**
@@ -19,17 +19,15 @@ import type { IApiResponse } from '@/shared/types';
 // Any hour outside the spent late evening seeds the same steady state the owner device-tests
 // against: Asr one hour out, Dhuhr one hour spent (2026-10-27 ruling). The spent late evening
 // (22:58-23:59) still serves the day's real static shape. Two costs accepted with the ruling:
-// a download in the day's first 62 minutes anchors the -62-minute Fajr against the previous
-// midnight (the steady hour returns from 01:02), and a small-hours download writes today's
+// a window seeded in the day's first 62 minutes anchors the -62-minute Fajr against the previous
+// midnight (the steady hour returns from 01:02), and a small-hours seeding writes today's
 // Isha inside the midnight-crossing window (shared/prayer.ts), so that row moves and the
 // Maghrib handoff skips straight to tomorrow's Fajr - one skipped row, an hour of steady
 // countdown in exchange.
 
 const MINUTE = 60_000;
 
-/** Two digits, the API's own clock format: data paths never localise digits */
-const pad2 = (value: number): string => String(value).padStart(2, '0');
-
+/** Two digits, the data clock's own format: data paths never localise digits */
 /** HH:mm in London, as the API sends it and the app reads it, a whole number of minutes from an instant */
 export const addMinutes = (from: Date, minutesToAdd: number) => {
   const clock = readPrayerClock(new Date(from.getTime() + minutesToAdd * MINUTE));

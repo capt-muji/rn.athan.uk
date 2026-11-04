@@ -1,12 +1,11 @@
 import type { COUNTDOWN_WAITING_NAME, PrayerId } from '@/shared/constants';
 
 /**
- * Raw API response structure for a single day's prayer times
+ * A day's prayer times as the dev-mock payload carries them
  *
- * This represents the unprocessed data received from the prayer times API.
- * Contains both individual prayer times and congregation (jamat) times.
- * Note: Only the 6 main prayer times (fajr, sunrise, dhuhr, asr, magrib, isha)
- * are used by the app. Jamat times and asr_2 are fetched but not displayed.
+ * The API client is gone; these types now shape the dev mock's output and the
+ * seam between it and the baked-artifact decode. Only the 6 main prayer times
+ * (fajr, sunrise, dhuhr, asr, magrib, isha) exist on a day.
  *
  * All times are in HH:mm format (24-hour, e.g., "06:12", "18:45")
  */
@@ -37,14 +36,13 @@ export interface IApiTimes {
 }
 
 /**
- * Top-level API response structure
+ * Top-level mock payload structure
  *
- * The API returns prayer times for an entire year, grouped by city.
- * Each city contains a dictionary of dates mapped to prayer times.
+ * The dev mock carries its launch-relative window as a dictionary of dates
+ * mapped to prayer times.
  *
  * Example structure:
  * {
- *   "city": "London",
  *   "times": {
  *     "2026-01-20": { fajr: "06:12", sunrise: "08:05", ... },
  *     "2026-01-21": { fajr: "06:11", sunrise: "08:04", ... },
@@ -74,7 +72,7 @@ export interface IValidatedApiResponse {
  * This is the processed version of IApiSingleTime with derived extra prayers added.
  * Transformation happens in shared/prayer.ts:transformApiData()
  *
- * Derived prayers calculated from the day's own API times:
+ * Derived prayers calculated from the day's own times:
  * - suhoor: 20 minutes before Fajr (pre-dawn meal)
  * - duha: 20 minutes after Sunrise (forenoon prayer)
  * - istijaba: 60 minutes before Magrib on Fridays only (supplication time)

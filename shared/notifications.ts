@@ -119,7 +119,7 @@ export const getNotificationSound = (alertType: AlertType, id: PrayerId, soundIn
 
 /**
  * Creates notification content based on alert type
- * English-only, title only (no body)
+ * Localized title only (no body): the title composes t() with prayerLabel
  */
 export const genNotificationContent = (
   id: PrayerId,
@@ -165,7 +165,7 @@ export const getReminderNotificationSound = (
 
 /**
  * Creates notification content for pre-prayer reminder
- * English-only, title only (no body)
+ * Localized title only (no body)
  * @param id Prayer id
  * @param intervalMinutes Minutes before prayer time
  * @param alertType Alert type (Off/Silent/Sound)

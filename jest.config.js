@@ -114,7 +114,6 @@ module.exports = {
   // widgetLockRenderer.test.ts, so every branch is measured on both platforms; the AST contract
   // suite still guards what the runtimes pin down structurally
   collectCoverageFrom: [
-    'api/**/*.{ts,tsx}',
     'app/**/*.{ts,tsx}',
     'components/**/*.{ts,tsx}',
     'device/**/*.{ts,tsx}',

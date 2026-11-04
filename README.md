@@ -16,7 +16,7 @@ Web: [athan.uk](https://athan.uk) | iOS: [ios.athan.uk](https://ios.athan.uk) | 
 - Fifty-eight languages - English, Arabic, Bahasa Melayu, Somali, Hindi, Thai, Bahasa Indonesia, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese, Traditional Chinese, Spanish, Dutch, Kazakh, Kyrgyz, Tajik, Turkmen, Wolof, Marathi, Oromo, Bambara, Tagalog, Fulfulde, Telugu, Gujarati, Kannada, Amharic, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Kurmanji Kurdish, Yoruba, Javanese, Sundanese, Japanese, Korean, Italian, Polish, Romanian, Cebuano, Ilocano and Vietnamese - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur and Sorani Kurdish.
 - Fifty-nine languages - English, Arabic, Bahasa Melayu, Somali, Hindi, Thai, Bahasa Indonesia, Turkish, French, Uzbek, Swahili, Hausa, Portuguese, Urdu, Persian, Bengali, Russian, Azerbaijani, German, Albanian, Bosnian, Pashto, Tamil, Malayalam, Simplified Chinese, Traditional Chinese, Spanish, Dutch, Kazakh, Kyrgyz, Tajik, Turkmen, Wolof, Marathi, Oromo, Bambara, Tagalog, Fulfulde, Telugu, Gujarati, Kannada, Amharic, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Kurmanji Kurdish, Yoruba, Javanese, Sundanese, Saraiki, Balochi, Kashmiri, Dhivehi, Afar, Maguindanao, Kanuri, Mandinka and Zarma - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Saraiki, Balochi, Kashmiri and Dhivehi.
 - Seventy-five languages, the language wave's refresh: Hiligaynon, Central Bikol, Waray, Maranao, Pattani Malay and Tigrinya added; Traditional Chinese, Dhivehi, Chechen, Afar, Mandinka and Zarma retired - with right-to-left layout for Arabic, Urdu, Persian, Pashto, Shahmukhi Punjabi, Sindhi, Uyghur, Sorani Kurdish, Saraiki, Balochi and Kashmiri.
-- Fully offline after the first sync. The whole year is cached in MMKV, and an unreadable time shows `--:--`, never a guess.
+- Fully offline from first launch: the whole 2026-2076 timetable is baked into the app at build time, and an unreadable time shows `--:--`, never a guess.
 - Notifications: selectable athan audio (32 public recordings, each credited in the picker), two reminder slots per prayer, a 64-request scheduling budget and deterministic IDs so alarms never double-fire.
 - Home screen and Lock Screen widgets on iOS and Android: Light and Dark variants, self-refreshing, minute-ceil countdown labels. Widgets need a development or production build (iOS 16.4+), not Expo Go.
 - Qibla compass on a flat world map: a north-locked dial that taps when you line up with Makkah, drawing only headings the phone has vouched for.
@@ -83,7 +83,7 @@ Every selectable athan sound comes from a public recording:
 - Expo Router, Jotai, MMKV, Reanimated 4
 - date-fns and date-fns-tz, with every date in the London timezone
 - Biome for lint and format, Jest at 100% coverage, Pino for logging
-- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), TLS 1.3 for Android 9 and below, Android widget self-refresh
+- Native modules in `modules/`: qibla heading (Google Fused Orientation on Android, Core Location on iOS), the Android switch-cover overlay, Android widget self-refresh
 
 ## Repository layout
 
@@ -95,8 +95,8 @@ stores/      Jotai atoms (schedule, notifications, countdown, sync, widgets)
 shared/      utilities: constants, prayer, time, notifications, qibla, whatsNew
 widgets/     iOS widget layouts and the Android Glance layout
 modules/     native Expo modules: qiblaheading, switchcover, widgetrefresh
-device/      platform code: notifications, listeners, updates, tasks
-api/         prayer times client; mocks/ holds dev and test data
+device/      platform code: notifications, listeners, qibla, switch cover, updates, tasks
+mocks/       dev and test data: the launch-relative mock window dev builds serve
 e2e/         Maestro flows, device atlas, frame audit, baseline compare
 board/       the local ticket board: the stack, its data and its snapshot
 ```

@@ -15,10 +15,10 @@
  *
  * Not hydrated (spinner path preserved):
  * - none of the three days the sequences are built from is cached (fresh
- *   install, wiped cache, year gap). One of them is enough: a day missing
+ *   install, wiped cache, first stage not yet complete). One of them is enough: a day missing
  *   among them shows as dashes (R7)
  * - a pending upgrade that will WIPE the cache — a version bump AND a moved
- *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+refetch,
+ *   cache shape marker. handleAppUpgrade inside sync() owns that wipe+restage,
  *   and rows read under the old shape are exactly the wrong prayer times, so
  *   the spinner covers it. An ordinary version bump keeps the cache (#34) and
  *   therefore hydrates: refusing to would hand every store update a cold

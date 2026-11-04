@@ -40,7 +40,7 @@ interface UseCountdownResult {
  */
 export const useCountdown = (type: ScheduleType): UseCountdownResult => {
   // Ready once a list is on screen, not only while a readable prayer is ahead. After the last readable prayer in
-  // storage (31 December before next year is published) the countdown shows --:-- under `...`, and
+  // storage (31 December 2076, the artifact's last day) the countdown shows --:-- under `...`, and
   // Countdown.tsx rendering nothing instead pulled the date and the whole list up the page
   const displayDateAtom = type === ScheduleType.Standard ? standardDisplayDateAtom : extraDisplayDateAtom;
   const displayDate = useAtomValue(displayDateAtom);

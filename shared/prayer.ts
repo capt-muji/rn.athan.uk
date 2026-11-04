@@ -26,14 +26,15 @@ import * as Timetable from '@/stores/timetable';
 
 // =============================================================================
 // DATA TRANSFORMATION FUNCTIONS
-// Used by API client for processing prayer data
+// The mock pipeline runs the dev payload through them, matching the API era
+// they were built for, so dev records stay byte-identical to what shipped then
 // =============================================================================
 
 /**
- * Filters API response data to only include yesterday, today and future dates
+ * Filters mock payload data to only include yesterday, today and future dates
  * Yesterday is included to support progress bar calculation for first prayer (Fajr)
- * @param apiData Raw API response data
- * @returns Filtered API response containing yesterday and future dates
+ * @param apiData Raw payload data
+ * @returns Filtered payload containing yesterday and future dates
  */
 export const filterApiData = (apiData: IApiResponse): IApiResponse => {
   const timesFiltered: IApiTimes = {};
@@ -60,7 +61,7 @@ export const filterApiData = (apiData: IApiResponse): IApiResponse => {
  * A derived time is null when the time it comes from is: nothing can be worked out from a value the
  * provider did not give
  *
- * @param apiData Filtered API response data, as validated by api/client.ts
+ * @param apiData Filtered payload data, its six times readable HH:mm or null
  * @returns Array of transformed prayer schedules
  */
 export const transformApiData = (apiData: IValidatedApiResponse): ISingleApiResponseTransformed[] => {

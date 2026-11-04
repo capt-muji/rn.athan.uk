@@ -20,7 +20,8 @@ const MINUTE_MS = 60 * 1000;
 const HOUR_MS = 60 * MINUTE_MS;
 const MINUTES_IN_DAY = 24 * 60;
 
-const pad2 = (value: number): string => String(value).padStart(2, '0');
+/** Two digits, the data clock's own format: data paths never localise digits */
+export const pad2 = (value: number): string => String(value).padStart(2, '0');
 
 const prayerClockFormatter = new Intl.DateTimeFormat('en-US', {
   timeZone: PRAYER_TIMEZONE,
@@ -134,7 +135,7 @@ export const createInstant = (date?: Date | number | string): Date => (date ? ne
 
 /**
  * Creates a full Date object from date and time strings
- * Used to combine API data (separate date/time) into Prayer.datetime
+ * Used to combine payload data (separate date/time) into Prayer.datetime
  *
  * IMPORTANT: Prayer times are clock readings in the prayer timezone (London).
  * The reading is shifted by whichever offset really applies at that instant —
@@ -396,7 +397,7 @@ export const formatDateShort = (date: Date): string => {
 
 /**
  * Checks if a date is yesterday or in the future (prayer timezone)
- * Used for filtering API response data
+ * Used for filtering the payload's window
  * @param date Date string in YYYY-MM-DD format
  * @returns boolean indicating if date is yesterday or future
  */

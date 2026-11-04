@@ -118,7 +118,7 @@ const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
 
 /**
  * Shape version for everything held in the MMKV cache: the prayer days, the
- * scheduled-notification bookkeeping, the fetched-year markers.
+ * scheduled-notification bookkeeping.
  *
  * BUMP THIS ONLY when a release changes the SHAPE of cached data, so that data
  * written by the previous version can no longer be read correctly — as #29 did
@@ -126,12 +126,11 @@ const WHATS_NEW_SHOWN_VERSION_KEY = 'whats_new_shown_version';
  * releases.
  *
  * Why it exists: clearing the cache on every version bump is pure cost when the
- * shape did not change. It forces a refetch, leaves the app with no timetable
- * at all until that completes (update overnight, open on a train, see nothing),
- * and until #34 it took the armed notifications with it. The wipe is the right
- * answer to schema drift — a stale-shaped record read by new code produces a
- * wrong prayer time, the worst bug this app can have — and the wrong answer to
- * everything else.
+ * shape did not change. It forces a full restage and rearm from an empty
+ * store, and until #34 it took the armed notifications with it. The wipe is the
+ * right answer to schema drift — a stale-shaped record read by new code
+ * produces a wrong prayer time, the worst bug this app can have — and the
+ * wrong answer to everything else.
  */
 export const CACHE_SCHEMA_VERSION = 1;
 

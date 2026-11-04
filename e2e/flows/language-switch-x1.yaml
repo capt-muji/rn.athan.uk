@@ -1,8 +1,12 @@
-appId: ${APP_ID}
+appId: com.example.athan
 name: language-switch-x1
 tags:
   - baseline
 ---
+# appId is the literal dev package id: maestro 2.10.0 does not substitute
+# ${APP_ID} from the environment (probed 2026-11-04: an exported var, even
+# MAESTRO_-prefixed, reaches no appId field), so a committed flow carrying it
+# launches no app and can drive the wrong package through the dock.
 # Language-switch round trip (OnePlus 3T pixels).
 # Settings button (540,1830) per e2e/device-atlas-oneplus3t.md; every row and
 # label is reached by its text. The applying line already reads the picked

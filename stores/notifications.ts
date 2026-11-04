@@ -315,9 +315,11 @@ const NOT_MARKED = 0;
  * Builds a prayer's repair mark: the number saying whether its bell and its alarms may disagree, and which change
  * left them that way.
  *
- * `preference_` is the only prefix BOTH wipes keep (`UPGRADE_KEEP_PREFIXES` in `stores/version.ts` and
- * `replacePrayerCache`'s keep list in `stores/sync.ts`), so a mark can never be lost while the alarms it describes
- * survive. The key does not match `INDEX_KEY_PATTERN`, so the preference migration leaves it alone.
+ * `preference_` survives every wipe that can take a repair mark's alarms with it
+ * (`UPGRADE_KEEP_PREFIXES` in `stores/version.ts` on a shape change, and the one-time
+ * legacy day-cache removal in `stores/database.ts`), so a mark can never be lost while
+ * the alarms it describes survive. The key does not match `INDEX_KEY_PATTERN`, so the
+ * preference migration leaves it alone.
  *
  * @param scheduleType Schedule type (Standard or Extra)
  * @param id Prayer id
@@ -586,14 +588,14 @@ export const migrateIndexKeyedAlertPreferences = (storedVersion: string | null):
 };
 
 /**
- * Atom storing the user's preferred Athan sound index (0-15)
+ * Atom storing the user's preferred Athan sound index (0-31)
  * Persisted to MMKV storage
  */
 export const soundPreferenceAtom = atomWithStorageNumber('preference_sound', 0);
 
 /**
  * Atom storing timestamp of last notification schedule refresh
- * Used to determine if notifications need rescheduling (4-hour cycle)
+ * Used to determine if notifications need rescheduling (2-hour cycle)
  */
 export const lastNotificationScheduleAtom = atomWithStorageNumber('preference_last_notification_schedule_check', 0);
 
@@ -615,13 +617,13 @@ export const getPrayerAlertType = (scheduleType: ScheduleType, prayerIndex: numb
 
 /**
  * Gets the user's preferred Athan sound index
- * @returns Sound index (0-15)
+ * @returns Sound index (0-31)
  */
 export const getSoundPreference = () => store.get(soundPreferenceAtom);
 
 /**
  * Sets the user's preferred Athan sound index
- * @param selection Sound index (0-15)
+ * @param selection Sound index (0-31)
  */
 export const setSoundPreference = (selection: number) => store.set(soundPreferenceAtom, selection);
 
@@ -1549,8 +1551,9 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   }));
   logger.info('NOTIFICATION: Preference snapshot before reschedule:', preferenceSnapshot);
 
-  // Refuse to reschedule against an empty cache. An upgrade wipes the prayer
-  // data and the refetch is still in flight when the post-paint refresh fires
+  // Refuse to reschedule against an empty cache. A cache-less launch (fresh
+  // install, or an upgrade whose shape bump wiped the store) is still staging
+  // the artifact when the post-paint refresh fires
   // ~1.5s after first content: scheduling then produces nothing, and the sweep
   // below would treat every notification the OS still holds as stale. Bailing
   // leaves the existing alarms alone; the next refresh runs once data exists.
@@ -1558,7 +1561,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // The question is whether any day the windows reach is stored, which the candidate walk
   // already answers exactly: a day count restates it and gets the night rows and the
   // still-due yesterday wrong. Bailing is the safe direction anyway, since it arms nothing,
-  // cancels nothing, and the download that lands reopens the gate.
+  // cancels nothing, and the landing stage reopens the gate.
   const armedListDays = NotificationUtils.candidateListDays();
   if (armedListDays.length === 0) {
     logger.warn('NOTIFICATION: No prayer data for the days the windows reach, skipping reschedule', {
@@ -1698,8 +1701,8 @@ export const commitSoundSelection = async (
  * Refreshes notifications if enough time has elapsed since last refresh
  *
  * Checks if NOTIFICATION_REFRESH_HOURS have passed since the last schedule.
- * If so, reschedules all notifications and updates the last schedule timestamp.
- * This maintains the 2-day rolling notification buffer.
+ * If so, reschedules the candidates whole, in time order, against the OS's
+ * 64-request budget, and updates the last schedule timestamp.
  *
  * Called on app foreground via useNotification hook.
  *

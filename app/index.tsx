@@ -186,11 +186,11 @@ export default function Index() {
     return () => clearTimeout(initHandle);
   }, []);
 
-  // A reschedule that runs before the first fetch lands bails on an empty cache and
+  // A reschedule that runs before the artifact stages bails on an empty cache and
   // deliberately leaves the gate unstamped so it can run again — but nothing re-ran it
   // inside the session, and the next attempt was a background-and-foreground away. The
-  // upgrade launch is where that bites: bootstrap refuses to hydrate, sync() has real
-  // fetch work to do, and the post-paint refresh fires ~1.5s in, so the app could sit
+  // first launch is where that bites: bootstrap refuses to hydrate until the stage
+  // completes, and the post-paint refresh fires ~1.5s in, so the app could sit
   // foregrounded showing armed alerts with no alarms armed at all. Retrying once when
   // data lands closes it, and the gate makes it a no-op whenever the first attempt
   // already succeeded.
@@ -207,8 +207,8 @@ export default function Index() {
   // waits, and only in Ramadan mode, for the decoration sprites.
   //
   // Two paths (ledger #24 (git history)): cold launches (no cache at mount — fresh
-  // install, upgrade wipe, year gap) hide the splash as soon as the spinner
-  // frame commits instead of holding through the entire network fetch;
+  // install or upgrade) hide the splash as soon as the spinner
+  // frame commits instead of holding through the artifact's first stage;
   // warm launches lift on the content's first DRAWN frame, not the commit —
   // the app straight from cache (owner order 2026-10-30), Fabric's mount
   // burst landing behind the splash instead of the window background showing
@@ -221,7 +221,7 @@ export default function Index() {
   useEffect(() => {
     if (coldLaunchRef.current) {
       // Cold launch: the spinner branch owns the first committed frame —
-      // reveal it immediately; content swaps in when the fetch completes
+      // reveal it immediately; content swaps in when the stage completes
       SplashScreen.hideAsync();
     }
 
@@ -268,8 +268,8 @@ export default function Index() {
     setPopupHelpEnabled(false);
   };
 
-  // Loading state only covers genuinely cache-less launches (fresh install,
-  // upgrade wipe, year gap) — warm-cache launches render content immediately
+  // Loading state only covers genuinely cache-less launches (fresh install
+  // or upgrade) — warm-cache launches render content immediately
   if (waitingForData) {
     return (
       <View

@@ -44,7 +44,8 @@ export function ErrorBoundary({ error }: ErrorBoundaryProps) {
 // Prevent splash screen from automatically hiding
 SplashScreen.preventAutoHideAsync();
 
-// Call API During App Start in background
+// Kick the first sync off the launch tick: it stages the baked timetable
+// (or seeds the dev mock window) without holding the first frame
 setTimeout(triggerSyncLoadable, 0);
 
 // Nothing audio initialises here (owner order 5110): the audio session and the

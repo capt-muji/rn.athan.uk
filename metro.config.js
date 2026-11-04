@@ -30,8 +30,6 @@ module.exports = (() => {
   };
   config.resolver = {
     ...resolver,
-    // Metro carries no binary map tile by default, and base64 in a module would cost 33% more bytes plus an
-    // unmeasured Hermes string-literal parse (facebook/hermes#1046)
     // 'bin' carries the baked London timetable asset (stores/timetableAsset.ts); Metro carries no
     // binary map tile by default, and base64 in a module would cost 33% more bytes plus an
     // unmeasured Hermes string-literal parse (facebook/hermes#1046)

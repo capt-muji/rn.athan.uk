@@ -99,9 +99,9 @@ export interface PrayerWidgetProps {
    * falls back to the system color scheme.
    */
   theme?: WidgetTheme;
-  /** English name of the upcoming prayer, e.g. "Asr" */
+  /** Localized name of the upcoming prayer, e.g. "Asr" */
   nextName: string;
-  /** Upcoming prayer time in HH:mm, e.g. "15:32" */
+  /** Upcoming prayer time in the user's clock format: 24-hour HH:mm, or 12-hour when the toggle is off */
   nextTime: string;
   /** Upcoming prayer datetime as epoch ms */
   nextEpochMs: number;

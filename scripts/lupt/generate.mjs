@@ -1,4 +1,4 @@
-// Builds assets/data/london-2026-2076.bin from the cached LUPT workbooks (2027-2076) and the
+// Builds assets/data/london-2026-2076.bin from the committed LUPT workbooks (2027-2076) and the
 // captured API year 2026 (ai/features/moonsighting/data/london/lpt-2026.json), so one artifact
 // covers 2026-01-01 to 2076-12-31 and a fresh install never needs the retired API.
 //
@@ -9,7 +9,7 @@
 //
 //   node scripts/lupt/generate.mjs [--print-day YYYY-MM-DD]
 //
-// --print-day reads the COMMITTED artifact (not the cache), for the device step's expected times.
+// --print-day reads the COMMITTED artifact (not the corpus), for the device step's expected times.
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -18,7 +18,7 @@ import zlib from 'node:zlib';
 import { readLupt } from '../../ai/features/global-prayer-times/data/london-migration/xlsx.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '../..');
-const CACHE = path.join(ROOT, 'ai/features/global-prayer-times/data/london-migration/workbooks');
+const CORPUS = path.join(ROOT, 'ai/features/global-prayer-times/data/london-migration/workbooks');
 const ARTIFACT = path.join(ROOT, 'assets/data/london-2026-2076.bin');
 const BANKED_2027 = path.join(ROOT, 'ai/features/global-prayer-times/data/london-migration/lupt-2027.json');
 const LPT_2026 = path.join(ROOT, 'ai/features/moonsighting/data/london/lpt-2026.json');
@@ -76,7 +76,7 @@ const minutes2026 = (() => {
 // --- Source 2: the fifty workbooks, 24-hour sheet only (the 12-hour sheet is never opened) ---
 const workbookYears = {};
 for (let year = 2027; year <= LAST_YEAR; year += 1) {
-  const file = path.join(CACHE, `LUPT-${year}.xlsx`);
+  const file = path.join(CORPUS, `LUPT-${year}.xlsx`);
   if (!fs.existsSync(file)) fail(`missing committed workbook ${file}; the corpus is frozen, no downloader ships`);
   const parsed = readLupt(file);
   const days = Object.keys(parsed);
@@ -280,7 +280,7 @@ if (epochDayOf(expectedDays[0]) !== EPOCH_DAY) fail(`epoch-day drift: ${epochDay
   let divergent = 0;
   const examples = [];
   for (let year = 2027; year <= LAST_YEAR; year += 1) {
-    const buf = fs.readFileSync(path.join(CACHE, `LUPT-${year}.xlsx`));
+    const buf = fs.readFileSync(path.join(CORPUS, `LUPT-${year}.xlsx`));
     // Column L holds shared-string indices; sharedStrings.xml holds the texts. The self-closing
     // K cell before it must be consumed whole or the L cell pairs with K's closing tag
     let eocd = -1;

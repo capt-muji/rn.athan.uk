@@ -80,11 +80,6 @@ const readStagedArtifact = (): { bytes: Uint8Array; header: TimetableDecode.Time
   return header === null ? null : { bytes, header };
 };
 
-/**
- * The one-time removal of the API era's day cache lives with the keys it
- * guards (stores/database.ts) and runs from every sync until its flag is set
- */
-
 /** Stages the artifact: buffer first, hash second, so a kill between the two leaves no half-committed stage */
 const stageArtifact = async (): Promise<void> => {
   const bytes = await loadArtifactBytes();
@@ -101,6 +96,10 @@ const stageArtifact = async (): Promise<void> => {
 /** Resolves when the serving source is ready; rejects when a first-ever stage fails */
 let readyPromise: Promise<void> | null = null;
 
+/**
+ * The one-time removal of the API era's day cache lives with the keys it
+ * guards (stores/database.ts) and runs from every sync until its flag is set
+ */
 export const ensureTimetableReady = (): Promise<void> => {
   Database.cleanLegacyDayCacheOnce();
 
