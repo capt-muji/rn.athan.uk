@@ -13,8 +13,3 @@ declare module '*.svg' {
   const content: React.FC<CustomSvgProps>;
   export default content;
 }
-
-declare module '@env' {
-  export const EXPO_PUBLIC_ENV: string;
-  export const EXPO_PUBLIC_API_KEY: string;
-}

@@ -34,8 +34,8 @@ everywhere.
   every alarm the app has armed (`scripts/device_checks.py` parses
   `dumpsys alarm`). FAILS on nothing armed, a missing channel, or a trigger that
   is not a prayer time. Pass a JSON list of `"YYYY-MM-DD HH:MM"` trigger times
-  as the third argument to check the times themselves. No API key is read,
-  passed or stored. Alarm TIMES only mean anything on a production build. Local
+  as the third argument to check the times themselves. Alarm TIMES only mean
+  anything on a production build. Local
   builds run the mock API, whose prayers sit either side of launch.
 - `baselines/`: measured medians + animation-floor verdicts per device.
 - `device-atlas-<model>.md`: the tap-point atlas for one device

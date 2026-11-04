@@ -139,12 +139,6 @@ describe('config', () => {
   // ---------------------------------------------------------------------------
 
   describe('APP_CONFIG additional properties', () => {
-    it('carries no API key: the client is gone and the timetable is baked', () => {
-      process.env.EXPO_PUBLIC_API_KEY = 'test-api-key';
-      const { APP_CONFIG } = require('../config');
-      expect('apiKey' in APP_CONFIG).toBe(false);
-    });
-
     it('reads iosAppId from EXPO_PUBLIC_IOS_APP_ID', () => {
       process.env.EXPO_PUBLIC_IOS_APP_ID = 'com.test.ios';
       const { APP_CONFIG } = require('../config');
