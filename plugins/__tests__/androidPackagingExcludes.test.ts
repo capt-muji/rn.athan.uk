@@ -3,6 +3,9 @@
  * commons-codec's Beider-Morse phonetic tables under org/apache/commons/codec/** (measured
  * 131,145 bytes off the stored APK, read only by language.bm classes R8 strips from both dex
  * files) plus the
+ * BouncyCastle resources under org/bouncycastle/** (bcprov-jdk15to18's picnic tables
+ * lowmcL1/L3/L5 and CertPathReviewer messages, 1,199 KB zipped, while R8 stripped every BC
+ * class) plus the
  * root-level dependency leftovers (/*.properties, /*.proto, DebugProbesKt.bin,
  * kotlin-tooling-metadata.json, 4,783 compressed bytes together). The fixtures mirror the
  * app build.gradle Expo's template generates, whose android block carries a packagingOptions
@@ -47,9 +50,10 @@ android {
 `;
 
 describe('the java-resource excludes on the app build.gradle', () => {
-  it('excludes exactly the two measured-dead groups, commons-codec data and root leftovers', () => {
+  it('excludes exactly the measured-dead groups: commons-codec data, BouncyCastle resources, root leftovers', () => {
     expect(JAVA_RESOURCE_EXCLUDES).toEqual([
       'org/apache/commons/codec/**',
+      'org/bouncycastle/**',
       '/*.properties',
       '/*.proto',
       '/DebugProbesKt.bin',
@@ -63,7 +67,7 @@ describe('the java-resource excludes on the app build.gradle', () => {
     expect(out).toContain(
       `packagingOptions {
         resources {
-            excludes += ['org/apache/commons/codec/**', '/*.properties', '/*.proto', '/DebugProbesKt.bin', '/kotlin-tooling-metadata.json']
+            excludes += ['org/apache/commons/codec/**', 'org/bouncycastle/**', '/*.properties', '/*.proto', '/DebugProbesKt.bin', '/kotlin-tooling-metadata.json']
         }`
     );
     // The template's own jniLibs section survives inside the same block
