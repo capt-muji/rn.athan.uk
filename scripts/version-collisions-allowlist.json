@@ -366,5 +366,21 @@
   {
     "version": "2.48.5",
     "reason": "2026-11-04 lane2/T-623's variants-11-25 step takes the single patch step above its own 2.48.4 while the concurrent lane1/T-615-wave commit d1b5c57b already holds 2.48.5 and the discipline gate forbids a two-step bump; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.6",
+    "reason": "2026-11-04 lane2/T-623's variants-26-50 commit 9be21ce8 takes the single patch step above its own 2.48.5 while lane1/T-615-wave's Sahur-spelling fix 75a6ea6e already holds 2.48.6; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.7",
+    "reason": "2026-11-04 lane2/T-623's string-census commit b267deb5 takes the single patch step above its own 2.48.6 while lane1/T-615-wave's mdh fix e22d633a already holds 2.48.7; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.8",
+    "reason": "2026-11-04 lane2/T-623's gallery-generator commit c2fc6aea takes the single patch step above its own 2.48.7 while lane1/T-615-wave's mrw fix 9c668d60 already holds 2.48.8; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.9",
+    "reason": "2026-11-04 lane2/T-623's deep-link harness commit takes the single patch step above its own 2.48.8 while lane1/T-615-wave's skr fix 4ff6e59d already holds 2.48.9 (the discipline gate holds every fix to the single patch step, so no renumber above it exists); the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

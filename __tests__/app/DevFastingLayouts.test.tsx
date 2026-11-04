@@ -6,6 +6,10 @@
 
 import { render, screen } from '@testing-library/react-native';
 
+jest.mock('expo-router', () => ({
+  useLocalSearchParams: () => ({}),
+}));
+
 import DevFastingLayoutsRoute from '../../app/dev/fasting-layouts';
 
 const setDev = (value: boolean) => {

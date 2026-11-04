@@ -9,6 +9,7 @@
 
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
@@ -22,6 +23,7 @@ import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
 import { VARIANTS } from './registry';
+import { harnessIndexFromParam } from './variantParam';
 
 const SUHOOR: PrayerId = 'suhoor';
 const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
@@ -29,8 +31,16 @@ const PREV_LABEL = 'Prev';
 const NEXT_LABEL = 'Next';
 
 export function FastingLayoutsScreen() {
-  const [index, setIndex] = useState(0);
+  const params = useLocalSearchParams<{ v?: string | string[] }>();
+  const vKey = Array.isArray(params.v) ? (params.v[0] ?? '') : (params.v ?? '');
+  const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
+
+  // The screenshot pass deep-links each variant; the strip stays live for
+  // manual browsing between links
+  useEffect(() => {
+    setIndex(harnessIndexFromParam(vKey, VARIANTS.length));
+  }, [vKey]);
 
   const handleRef = useCallback((ref: BottomSheetModal | null) => {
     sheetRef.current = ref;
