@@ -47,6 +47,7 @@ jest.mock('@/stores/notifications', () => ({
 
 const mockSync = jest.fn(() => Promise.resolve());
 jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
   sync: () => mockSync(),
 }));
 

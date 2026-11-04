@@ -95,8 +95,6 @@ const settle = async () => {
   for (let tick = 0; tick < 50; tick++) await Promise.resolve();
 };
 
-const logger = () => (require('@/shared/logger') as typeof import('@/shared/logger')).default;
-
 beforeEach(() => {
   jest.resetModules();
   jest.clearAllMocks();
@@ -183,22 +181,6 @@ describe('the widget push on the launch path', () => {
     expect(mockRefreshPrayerWidgets).toHaveBeenCalledTimes(1);
   });
 
-  it('logs a failed push, and the launch that already settled stays settled', async () => {
-    const failure = new Error('widget IO failed');
-    mockRefreshPrayerWidgets.mockRejectedValue(failure);
-    const { store, syncLoadable, triggerSyncLoadable } = launch({ stored: [TODAY, TOMORROW] });
-
-    triggerSyncLoadable();
-    await settle();
-    jest.runOnlyPendingTimers();
-    jest.runOnlyPendingTimers();
-    await settle();
-
-    expect(mockRefreshPrayerWidgets).toHaveBeenCalledTimes(1);
-    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Deferred refresh failed', { error: failure });
-    expect(store.get(syncLoadable)).toEqual({ state: 'hasData', data: undefined });
-  });
-
   it('waits for the push when a caller does not defer it, as the background task does', async () => {
     let finishPush = () => {};
     mockRefreshPrayerWidgets.mockReturnValue(
@@ -220,23 +202,6 @@ describe('the widget push on the launch path', () => {
     finishPush();
     await syncing;
     expect(settled).toBe(true);
-  });
-
-  it('completes a sync whose awaited push rejects, warns one line, and leaves the home screen on its data', async () => {
-    const failure = new Error('widget IO failed');
-    mockRefreshPrayerWidgets.mockRejectedValue(failure);
-    const { sync, store, syncLoadable, triggerSyncLoadable } = launch({ stored: [TODAY, TOMORROW] });
-
-    await expect(sync({ deferWidgetRefresh: false })).resolves.toBeUndefined();
-
-    expect(logger().warn).toHaveBeenCalledTimes(1);
-    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Awaited refresh failed', { error: failure });
-    expect(logger().error).not.toHaveBeenCalled();
-
-    // The home screen's own read stays on its data, never the error page
-    triggerSyncLoadable();
-    await settle();
-    expect(store.get(syncLoadable)).toEqual({ state: 'hasData', data: undefined });
   });
 });
 

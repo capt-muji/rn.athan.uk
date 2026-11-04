@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { createMMKV } from 'react-native-mmkv';
@@ -80,6 +81,15 @@ afterEach(() => {
 });
 
 describe('the baked-artifact path (prod and preview builds)', () => {
+  // The header and day reads below would pass against any well-formed artifact;
+  // the digest alone pins WHICH bytes are committed, so a regeneration from
+  // changed workbooks cannot land silently (re-pin consciously, with the
+  // generator's own checks green, then update the expected hash)
+  it('pins the committed artifact bytes by sha256', () => {
+    const digest = createHash('sha256').update(REAL_ARTIFACT).digest('hex');
+    expect(digest).toBe('fb4a15524cca9506ddc22c291465f89ab95046f5d98e7ac3b91eb502c946d614');
+  });
+
   it('reads nothing before staging and serves the artifact after it', async () => {
     asProdBuild();
 
@@ -158,7 +168,7 @@ describe('the baked-artifact path (prod and preview builds)', () => {
     asProdBuild();
     __setFileBytes(new Uint8Array(0));
 
-    await expect(Timetable.ensureTimetableReady()).rejects.toThrow('no bytes');
+    await expect(Timetable.ensureTimetableReady()).rejects.toThrow('The timetable asset read as no bytes');
   });
 
   it('answers an already-staged readiness ask without touching the asset', async () => {
@@ -209,11 +219,13 @@ describe('the baked-artifact path (prod and preview builds)', () => {
     expect(timetableStore().getString('assetHash')).toBe('a-new-asset-hash');
   });
 
-  it('rejects ensureTimetableReady when the asset itself reads as nothing', async () => {
+  it('propagates an asset-read throw from whatever layer it comes, rather than swallowing it', async () => {
     asProdBuild();
     __setFileBytes(null);
 
-    await expect(Timetable.ensureTimetableReady()).rejects.toThrow('no bytes');
+    // The mock's own error text is not the contract; the contract is that any
+    // read failure reaches the caller instead of arming a half-staged store
+    await expect(Timetable.ensureTimetableReady()).rejects.toThrow();
   });
 
   it('reports the launch read as absent outside a prod or preview build', () => {

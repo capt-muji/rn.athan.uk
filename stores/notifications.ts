@@ -37,7 +37,7 @@ import {
 import { compareVersions } from '@/shared/versionUtils';
 import * as Database from '@/stores/database';
 import { atomWithStorageNumber, resetStoredAtom } from '@/stores/storage';
-import { sync } from '@/stores/sync';
+import { deferPrayerWidgetRefresh, sync } from '@/stores/sync';
 import * as PrayerWidgets from '@/stores/widget';
 
 const store = getDefaultStore();
@@ -1605,18 +1605,7 @@ const _rescheduleAllNotifications = async (options: { deferWidgetRefresh?: boole
   // alive until widgets are refreshed. The deferred branch needs the explicit
   // catch: nothing awaits it anymore.
   if (options.deferWidgetRefresh) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        perfMark('widget_push_start');
-        PrayerWidgets.refreshPrayerWidgets()
-          .catch((error) => {
-            logger.warn('WIDGET: Deferred push failed', { error });
-          })
-          .finally(() => {
-            perfMeasure('widget_push', 'widget_push_start');
-          });
-      }, 0);
-    });
+    deferPrayerWidgetRefresh();
   } else {
     perfMark('widget_push_start');
     await PrayerWidgets.refreshPrayerWidgets();

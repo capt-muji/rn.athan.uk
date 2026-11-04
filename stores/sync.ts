@@ -14,6 +14,7 @@ import { type Atom, atom } from 'jotai';
 import { unwrap } from 'jotai/utils';
 
 import logger from '@/shared/logger';
+import { perfMark, perfMeasure } from '@/shared/perf';
 import * as TimeUtils from '@/shared/time';
 import { ScheduleType } from '@/shared/types';
 import * as Countdown from '@/stores/countdown';
@@ -86,6 +87,26 @@ export const triggerSyncLoadable = () => {
  *   first content. Only the startup path may defer; the background-task body
  *   still awaits so iOS keeps the process alive until widgets are refreshed.
  */
+/**
+ * The deferred widget push both reschedule paths share: the timeline build
+ * saturates the JS thread, so the push lands past the next paint (rAF plus a
+ * macrotask hop), and a failed push costs a stale widget, never a crash
+ */
+export const deferPrayerWidgetRefresh = (): void => {
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      perfMark('widget_push_start');
+      PrayerWidgets.refreshPrayerWidgets()
+        .catch((error) => {
+          logger.warn('WIDGET: Deferred push failed', { error });
+        })
+        .finally(() => {
+          perfMeasure('widget_push', 'widget_push_start');
+        });
+    }, 0);
+  });
+};
+
 const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
   // Initialize prayer sequences (prayer-centric model). A rebuild that fails must not cost the launch its readable
   // days: stores/bootstrap.ts has already hydrated the lists, so the screen keeps what it has and the next sync
@@ -107,19 +128,14 @@ const initializeAppState = async (date: Date, deferWidgetRefresh: boolean) => {
   }
 
   // Push fresh data to the iOS widgets (no-op off iOS, failure-tolerant).
+  // Deferred path: see deferPrayerWidgetRefresh above.
   // Deferred path needs the explicit catch: an unhandled rejection here would
   // crash the app after syncLoadable has already resolved (nothing awaits it).
   // A plain fire-and-forget still contends with the first content render —
   // the timeline build saturates the JS thread for ~0.5s per schedule, so the
   // defer must land past the first paint (rAF + setTimeout macrotask hop)
   if (deferWidgetRefresh) {
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        PrayerWidgets.refreshPrayerWidgets().catch((error) => {
-          logger.warn('WIDGET: Deferred refresh failed', { error });
-        });
-      }, 0);
-    });
+    deferPrayerWidgetRefresh();
   } else {
     // A failed push costs a stale widget until the next one, never a failed sync over readable days
     try {

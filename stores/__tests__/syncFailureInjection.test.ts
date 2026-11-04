@@ -218,7 +218,7 @@ describe('the launch chain with one step rejected over readable days', () => {
     await settle();
 
     expect(store.get(syncLoadable)).toEqual(hasData);
-    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Deferred refresh failed', { error: expect.any(Error) });
+    expect(logger().warn).toHaveBeenCalledWith('WIDGET: Deferred push failed', { error: expect.any(Error) });
   });
 
   it('settles without waiting for the notification refresh the home screen schedules once data lands', async () => {
@@ -300,12 +300,17 @@ describe('the foreground chain with one step rejected over readable days', () =>
   it('completes when the awaited widget push rejects, warns one line, and leaves the home screen on its data', async () => {
     const error = failure();
     mockRefreshPrayerWidgets.mockRejectedValue(error);
-    const { sync } = launch({ stored: [TODAY, TOMORROW] });
+    const { sync, store, syncLoadable, triggerSyncLoadable } = launch({ stored: [TODAY, TOMORROW] });
 
     await expect(sync({ deferWidgetRefresh: false })).resolves.toBeUndefined();
 
     expect(logger().warn).toHaveBeenCalledTimes(1);
     expect(logger().warn).toHaveBeenCalledWith('WIDGET: Awaited refresh failed', { error });
     expect(logger().error).not.toHaveBeenCalled();
+
+    // The home screen's own read stays on its data, never the error page
+    triggerSyncLoadable();
+    await settle();
+    expect(store.get(syncLoadable)).toEqual(hasData);
   });
 });

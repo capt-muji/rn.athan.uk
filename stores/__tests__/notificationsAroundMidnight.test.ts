@@ -10,6 +10,7 @@ jest.mock('@/stores/widget', () => ({
 }));
 
 jest.mock('@/stores/sync', () => ({
+  ...jest.requireActual('@/stores/sync'),
   sync: jest.fn(async () => undefined),
 }));
 

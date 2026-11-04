@@ -159,9 +159,9 @@ export default function Index() {
         .catch((error) => logger.error('Failed to initialize notifications:', error));
 
       // Debug instrumentation for the notification-refresh background task (ledger #8 (git history)).
-      // The gate mirrors the module's own enable predicate; the env constants metro inlines
-      // keep the module out of store bundles entirely.
-      if (__DEV__ || process.env.EXPO_PUBLIC_BG_DEBUG === '1') {
+      // The gate mirrors the module's own enable predicate exactly; the env
+      // constants metro inlines keep the module out of store bundles entirely.
+      if (__DEV__ || (process.env.EXPO_PUBLIC_BG_DEBUG === '1' && process.env.EXPO_PUBLIC_ENV !== 'prod')) {
         const { runBackgroundTaskDebugSequence } =
           require('@/device/backgroundTaskDebug') as typeof import('@/device/backgroundTaskDebug');
         runBackgroundTaskDebugSequence();
