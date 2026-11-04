@@ -50,16 +50,6 @@ export const syncLoadable = loadable(atom(async () => sync({ deferWidgetRefresh:
 
 // --- Helpers ---
 
-/**
- * How many downloads have changed a day from yesterday to today+2.
- *
- * Always 0 now: baked days are immutable bytes, so nothing can change a day
- * the lists or the alarms read while a reschedule runs. The reschedule paths
- * still read this (stores/notifications.ts), and a constant 0 keeps every one
- * of their gates honest: no mid-run change is exactly what they conclude.
- */
-export const getArmedDayChanges = (): number => 0;
-
 /** Whether any of today to today+2, the days the lists are built from, is readable: the check stores/bootstrap.ts hydrates on */
 const hasUsableDays = () => {
   const today = TimeUtils.getTodayDateString();

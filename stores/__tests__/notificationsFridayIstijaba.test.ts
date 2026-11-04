@@ -12,7 +12,6 @@ jest.mock('@/stores/widget', () => ({
 
 jest.mock('@/stores/sync', () => ({
   sync: jest.fn(async () => undefined),
-  getArmedDayChanges: jest.fn(() => 0),
 }));
 
 import { ScheduleType } from '@/shared/types';
