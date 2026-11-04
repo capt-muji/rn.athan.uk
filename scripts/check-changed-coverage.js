@@ -48,7 +48,7 @@ const UNMEASURED = [
   {
     path: 'devlayouts/',
     reason:
-      'dev-only fasting layout exploration harness (T-623); its variants are driven and screenshotted on the simulator by the ticket\u2019s device step, and the visual layouts stay untested per owner order 2026-11-04',
+      'dev-only fasting layout exploration harness (T-623): the visual variants are driven and screenshotted on the simulator by the ticket\u2019s device step and stay untested per owner order 2026-11-04, while its logic modules (catalog, registry binding, variant param) carry their own suites; the directory sits deliberately outside the coverage measure as a whole',
   },
   {
     path: 'ai/plans/',

@@ -1,9 +1,8 @@
 /**
  * The fasting layout catalog's own invariants (T-623): the plain rows the
- * registry binds components to and the gallery generator reads. The full-set
- * gates (50 rows, 8+ archetypes, half the rows hiding explanations) land with
- * Step 3, when the catalog is whole; until then the invariants must hold for
- * whatever rows exist.
+ * registry binds components to and the gallery generator reads - fifty rows,
+ * contiguous, uniquely named, every one carrying its archetype and its
+ * explanation-hiding flag.
  */
 
 import catalog from '@/devlayouts/catalog.json';

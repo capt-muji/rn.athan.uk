@@ -361,7 +361,7 @@
   },
   {
     "version": "2.48.4",
-    "reason": "the T-623 harness commit and the T-615 lane commit each took 2.48.4 from the same 2.48.3 base on parallel lanes; both lanes have moved past it and the uat merge resolves the duplicate"
+    "reason": "2026-11-04 the T-623 harness commit and the T-615 lane commit each took 2.48.4 from the same 2.48.3 base on parallel lanes; both lanes have moved past it and the uat merge resolves the duplicate"
   },
   {
     "version": "2.48.5",
@@ -381,6 +381,10 @@
   },
   {
     "version": "2.48.9",
-    "reason": "2026-11-04 lane2/T-623's deep-link harness commit takes the single patch step above its own 2.48.8 while lane1/T-615-wave's skr fix 4ff6e59d already holds 2.48.9 (the discipline gate holds every fix to the single patch step, so no renumber above it exists); the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+    "reason": "2026-11-04 lane2/T-623's deep-link harness commit takes the single patch step above its own 2.48.8 while lane1/T-615-wave's skr fix 4ff6e59d already holds 2.48.9 and that lane's kas fix 20df42c7 has since stepped to 2.48.10; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.10",
+    "reason": "2026-11-04 lane2/T-623's audit-fix commit takes the single patch step above its own 2.48.9 while lane1/T-615-wave's kas fix 20df42c7 already holds 2.48.10 (that lane's tip has since stepped to 2.48.11); the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

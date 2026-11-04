@@ -13,14 +13,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import { escapeHtml } from './i18n-verify.js';
+
 const [catalogPath, shotsDir, outDir] = process.argv.slice(2);
 if (!catalogPath || !shotsDir || !outDir) {
   process.stderr.write('usage: node scripts/fasting-layouts-gallery.mjs <catalogPath> <shotsDir> <outDir>\n');
   process.exit(2);
 }
-
-const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' };
-const escapeHtml = (value) => value.replace(/[&<>"']/g, (ch) => ESCAPES[ch]);
 
 let catalog;
 try {
