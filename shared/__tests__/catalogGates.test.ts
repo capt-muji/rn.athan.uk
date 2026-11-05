@@ -223,12 +223,23 @@ const echoExempt = (key: string) => key === 'day.location' || key.startsWith('ca
 // the app ships English-only there until that wave translates them, so the
 // echo and RTL gates pass them by name. The wave drops this set.
 const PENDING_T629 = new Set([
+  'fasting.card.title',
+  'fasting.card.hint',
+  'fasting.mode.muhammad',
+  'fasting.mode.dawood',
+  'fasting.mode.whiteDays',
   'fasting.description.everyDay',
   'fasting.description.muhammad',
   'fasting.description.dawood',
   'fasting.description.whiteDays',
   'fasting.description.muhammadWhiteDays',
   'fasting.description.dawoodWhiteDays',
+  'fasting.next.label',
+  'fasting.next.hour',
+  'fasting.next.hours',
+  'fasting.next.day',
+  'fasting.next.days',
+  'fasting.next.withWeekday',
 ]);
 
 const tokensOf = (value: string) =>

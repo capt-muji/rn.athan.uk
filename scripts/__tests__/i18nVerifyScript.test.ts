@@ -230,11 +230,11 @@ describe('the 11-5-213 row order', () => {
   const keys = verify.orderedKeys(realEn);
 
   it('splits the real English catalog into the three sections with the exact counts', () => {
-    expect(Object.keys(realEn)).toHaveLength(235);
-    expect(keys).toHaveLength(235);
+    expect(Object.keys(realEn)).toHaveLength(241);
+    expect(keys).toHaveLength(241);
     expect(keys.slice(0, 11).every((k) => k.startsWith('prayer.'))).toBe(true);
     expect(keys.slice(11, 16).every((k) => k.startsWith('extras.explanation.'))).toBe(true);
-    expect(keys.slice(16)).toHaveLength(219);
+    expect(keys.slice(16)).toHaveLength(225);
   });
 
   it('orders section 3 by the prefix rank table with unranked prefixes after in catalog order', () => {
@@ -852,10 +852,10 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       now: fixedNow,
       label: 'ar - Arabic',
     });
-    expect(out.count).toBe(235);
+    expect(out.count).toBe(241);
     expect(out.misses).toEqual([]);
-    // 235 rows plus the single pre-flight probe; slot two is never requested
-    expect(calls).toBe(236);
+    // 241 rows plus the single pre-flight probe; slot two is never requested
+    expect(calls).toBe(242);
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
     expect(fajr?.sites).toEqual([
       { engine: 'gtx', roundtrip: 'The dawn prayer' },
@@ -864,7 +864,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
 
     const json = JSON.parse(readFileSync(join(SCRATCH, 'ar.json'), 'utf8'));
     expect(json.languageName).toBe('ar - Arabic');
-    expect(json.rowCount).toBe(235);
+    expect(json.rowCount).toBe(241);
     expect(json.counts).toEqual(out.counts);
     expect(json.rows[0].sites).toHaveLength(2);
     expect(json.rows[0].url2).toBeUndefined();
@@ -893,7 +893,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       now: fixedNow,
       pace: 12000,
     });
-    expect(out.engineMix.gtx).toBe(235);
+    expect(out.engineMix.gtx).toBe(241);
     expect(maxInFlight).toBe(1);
     expect(events[0]).toBe('sleep:12000');
     for (let i = 1; i < events.length; i += 1) {
@@ -920,7 +920,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       now: fixedNow,
       pace: 5000,
     });
-    expect(out.engineMix.gtx).toBe(235);
+    expect(out.engineMix.gtx).toBe(241);
     const secondRefusal = events.indexOf('fetch:2');
     const retry = events.indexOf('fetch:3');
     expect(events.slice(secondRefusal + 1, retry)).toEqual(['sleep:400', 'sleep:5000']);
@@ -940,7 +940,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     expect(fajr?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
     expect(fajr?.verdict).toBe('amber');
     expect(out.misses[0]).toEqual({ locale: 'ar', key: 'prayer.fajr', missing: ['gtx'] });
-    expect(out.engineMix).toEqual({ gtx: 0, miss: 235, pending: 235 });
+    expect(out.engineMix).toEqual({ gtx: 0, miss: 241, pending: 241 });
   });
 
   it('reports an unrendered row as a judge-fill gap and never invents a rendering', async () => {
@@ -959,7 +959,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     ]);
     expect(fajr?.llm).toBeUndefined();
     expect(out.misses[0]).toEqual({ locale: 'ar', key: 'prayer.fajr', missing: ['gtx'] });
-    expect(out.counts).toEqual({ green: 0, red: 0, amber: 235 });
+    expect(out.counts).toEqual({ green: 0, red: 0, amber: 241 });
   });
 
   it('reuses a resumed gtx slot only while the catalog string is unchanged, and never adopts MyMemory history', async () => {
@@ -996,7 +996,7 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     // The historical MyMemory slot is not carried into the pending slot two
     expect(fajr?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
     // One probe plus the 209 rows whose gtx slot was not resumed
-    expect(calls).toBe(235);
+    expect(calls).toBe(241);
     const sunrise = out.rows.find((r) => r.key === 'prayer.sunrise');
     expect(sunrise?.sites[0].roundtrip).toBe('g: Sunris');
   });
@@ -1228,7 +1228,7 @@ describe('the command line flow', () => {
     const report = await verify.run(['--locales', 'ar', '--out', outDir, '--pace', '9000'], deps);
     expect(report.ok).toBe(true);
     // the probe plus every row, one pace gap before each
-    expect(sleeps.filter((ms) => ms === 9000).length).toBe(236);
+    expect(sleeps.filter((ms) => ms === 9000).length).toBe(242);
   });
 
   it('runs the named locales, generates the English reference without a single fetch, and reports ok', async () => {
@@ -1248,8 +1248,8 @@ describe('the command line flow', () => {
       'en.json',
       'index.html',
     ]);
-    // 235 rows on the single engine plus one pre-flight probe; en fetches nothing
-    expect(calls).toBe(236);
+    // 241 rows on the single engine plus one pre-flight probe; en fetches nothing
+    expect(calls).toBe(242);
     const enHtml = readFileSync(join(outDir, 'en.html'), 'utf8');
     expect(enHtml).toContain('reference');
   });
@@ -1511,7 +1511,7 @@ describe('the command line flow', () => {
     expect(filled.ok).toBe(true);
     const json = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
     expect(json.rows.every((r: Row) => r.llm !== undefined || r.sites[0].roundtrip !== null)).toBe(true);
-    expect(json.counts.amber).toBe(235);
+    expect(json.counts.amber).toBe(241);
     const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
     expect(html).toContain('judge:');
   });
@@ -1671,14 +1671,14 @@ describe('the command line flow', () => {
     expect(after.phase).toBe('two');
   });
 
-  it('exits non-zero on a row shortfall from 235 and refuses to run with no locales named', async () => {
+  it('exits non-zero on a row shortfall from 241 and refuses to run with no locales named', async () => {
     const shortLocale = { ...realEn };
     delete shortLocale['app.loadingLabel'];
     const deps = baseDeps(fetchOk);
     deps.readCatalogFile = async (locale) => (locale === 'en' ? realEn : shortLocale);
     const report = await verify.run(['--locales', 'ar', '--out', join(SCRATCH, 'cli-short')], deps);
     expect(report.ok).toBe(false);
-    expect(report.shortfalls).toEqual([{ locale: 'ar', count: 234 }]);
+    expect(report.shortfalls).toEqual([{ locale: 'ar', count: 240 }]);
     await expect(verify.run(['--out', join(SCRATCH, 'cli-none')], deps)).rejects.toThrow('--locales');
   });
 

@@ -35,12 +35,8 @@ const REACHED_WITHOUT_AN_IMPORT: Record<string, string> = {
   __installTimetableDays:
     'The test harness installs days through the reader seam in place of stored rows, so only tests import it',
   __resetHijriMemoForTests: 'The suites replay the same dates with a mocked engine, which the memo would outlive',
-  nextFastingSelection:
-    'The FastingCard rebuild (T-623 step 2, the commit after this one) imports it for its rows; it rides here only across the step boundary',
-  fastingDescriptionKey:
-    'The FastingCard rebuild (T-623 step 2, the commit after this one) imports it for the sky note; it rides here only across the step boundary',
-  sanitizeFastingSelection:
-    'The FastingCard rebuild (T-623 step 2, the commit after this one) imports it to read the stored seed; it rides here only across the step boundary',
+  armedFastingIdentities:
+    'The extras row indicator (T-623 step 3, a later commit on this branch) imports it for its bell cluster; it rides here only across the step boundary',
 };
 
 const ROOT = join(__dirname, '..', '..');

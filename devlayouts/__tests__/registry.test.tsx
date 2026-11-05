@@ -9,6 +9,7 @@ import { render, screen } from '@testing-library/react-native';
 
 import catalog from '@/devlayouts/catalog.json';
 import { archetypeCount, hiddenCount, VARIANTS } from '@/devlayouts/registry';
+import { t } from '@/shared/i18n';
 
 describe('the fasting layout registry', () => {
   it('binds exactly one entry per catalog row, in order', () => {
@@ -43,7 +44,8 @@ describe('the fasting layout registry', () => {
   it('renders the first variant settled with its mode labels', async () => {
     const First = VARIANTS[0].Component;
     await render(<First />);
-    expect(screen.getByText('Mondays and Thursdays')).toBeOnTheScreen();
-    expect(screen.getByText('Every day')).toBeOnTheScreen();
+    // The labels ride the production catalog keys, whose values the design-427 build re-cut
+    expect(screen.getByText(t('fasting.mode.muhammad'))).toBeOnTheScreen();
+    expect(screen.getByText(t('fasting.mode.everyDay'))).toBeOnTheScreen();
   });
 });

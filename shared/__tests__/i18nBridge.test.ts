@@ -268,6 +268,11 @@ describe('the catalog as its own transfer format', () => {
       'channel.athan',
       'channel.reminder',
       'countdown.progressA11y',
+      'fasting.next.day',
+      'fasting.next.days',
+      'fasting.next.hour',
+      'fasting.next.hours',
+      'fasting.next.withWeekday',
       'language.changing',
       'notification.now',
       'notification.reminder',
@@ -299,6 +304,11 @@ describe('the catalog as its own transfer format', () => {
     expect(tokensByKey.get('time.now')).toEqual(['name']);
     expect(tokensByKey.get('time.ago')).toEqual(['name', 'duration']);
     expect(tokensByKey.get('whatsNew.platformNote')).toEqual(['platform']);
+    expect(tokensByKey.get('fasting.next.hour')).toEqual(['n']);
+    expect(tokensByKey.get('fasting.next.hours')).toEqual(['n']);
+    expect(tokensByKey.get('fasting.next.day')).toEqual(['n']);
+    expect(tokensByKey.get('fasting.next.days')).toEqual(['n']);
+    expect(tokensByKey.get('fasting.next.withWeekday')).toEqual(['distance', 'weekday']);
 
     // ParamsOf matches the same map (compile-time pins: a wrong shape fails tsc here)
     const nowParams: ParamsOf<'notification.now'> = { name: 'Fajr' };
