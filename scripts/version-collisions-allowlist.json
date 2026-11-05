@@ -358,5 +358,45 @@
   {
     "version": "2.43.59",
     "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.4",
+    "reason": "2026-11-04 lane1/T-615's bm catalog-fix commit steps from uat's 2.48.3 while lane2/T-623's harness commit f50b5e3c already holds 2.48.4 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.5",
+    "reason": "2026-11-04 lane1/T-615's mfa hint commit d1b5c57b holds 2.48.5 while lane2/T-623's step 9f480240 took the same number in the same window (that lane's own allowlist records the twin beside 2.48.4); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.6",
+    "reason": "2026-11-04 lane1/T-615's bug Sahur-alignment commit steps from its own chain while lane2/T-623's 9be21ce8 already holds 2.48.6 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.7",
+    "reason": "2026-11-04 lane1/T-615's mdh fused-day and Sahur-alignment commit steps from its own chain while lane2/T-623's b267deb5 already holds 2.48.7 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.8",
+    "reason": "2026-11-04 lane1/T-615's mrw Sahur-alignment commit steps from its own chain while lane2/T-623's c2fc6aea already holds 2.48.8 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.9",
+    "reason": "2026-11-04 lane1/T-615's skr 24-hour-row commit 4ff6e59d took the single patch step above its own chain while lane2/T-623's dbb8db81 took the same number in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.10",
+    "reason": "2026-11-04 lane1/T-615's kas commit 20df42c7 holds 2.48.10 while lane2/T-623's 563c2ec4 took the same number in the same window (that lane's own allowlist records the twin); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.11",
+    "reason": "2026-11-04 lane1/T-615's bcl commit f436dccc holds 2.48.11 while lane2/T-623's 7b0b53e4 took the same number in the same window (that lane's own allowlist records the twin); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.3",
+    "reason": "2026-11-05 the audit fix on this lane first met the thirteen 2.48.3 board-snapshot commits on uat (6cf73fd6 through ccfb63f6, each a chore snapshot stepped from uat's 2.48.3 base at a halt or close); lane2/T-623's own allowlist copy already grandfathers the same set; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.48.12",
+    "reason": "2026-11-05 lane1/T-615's audit-fix commit takes the single patch step above its own 2.48.11 while lane2/T-623's gallery-lightbox commit d3e8c6f1 already holds 2.48.12 in the exploration history; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   }
 ]

@@ -114,7 +114,7 @@ export const kas = {
   'fasting.preview.tomorrow': 'پئٹھئمئس',
   'fasting.state.on': 'روچھھئس مَنٛز',
   'fasting.state.off': 'روچھھئس مَنٛز چھُنہٕ',
-  'fasting.badge.ramadan': 'رمدان',
+  'fasting.badge.ramadan': 'رمضان',
   'whatsNew.title.fasting': 'روچھن ہُند دِن',
   'whatsNew.body.fasting': 'سحری ہُندئے اطلاع ہیکئو تُہندئن روچھنئ دِنئن پیٹھئ کئریتھ',
   'alert.reminder': 'ریمائنڈر {n}',
