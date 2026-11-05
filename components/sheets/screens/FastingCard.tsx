@@ -37,7 +37,7 @@ import {
   hasFastingIdentities,
   nextFastingTriggers,
 } from '@/shared/fastingSchedule';
-import { fastingDescriptionKey, nextFastingSelection, sanitizeFastingSelection } from '@/shared/fastingSelection';
+import { fastingDescriptionKey, isNoOpFastingTap, sanitizeFastingSelection } from '@/shared/fastingSelection';
 import { type TranslationKey, t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import * as PrayerUtils from '@/shared/prayer';
@@ -103,7 +103,7 @@ const GLYPH_TEXT_LINE = INFO_GLYPH * 0.75;
 
 interface FastingCardProps {
   selection: FastingSelection;
-  onSelectionChange: (next: FastingSelection) => void;
+  onSelectionChange: (mode: FastingMode) => void;
 }
 
 export default function FastingCard({ selection, onSelectionChange }: FastingCardProps) {
@@ -127,7 +127,9 @@ export default function FastingCard({ selection, onSelectionChange }: FastingCar
   const triggers = showSchedule ? nextFastingTriggers(settings, now, FASTING_ENTRY_COUNT, suhoorRowAt) : [];
   const calendar = showSchedule ? fastingCalendarDays(settings, now, FASTING_CALENDAR_DAYS, suhoorRowAt) : [];
 
-  const handleTap = (mode: FastingMode) => onSelectionChange(nextFastingSelection(current, mode));
+  // The sheet applies the tap rule against the live draft at write time, so a
+  // second row's tap inside one animation window composes instead of dropping
+  const handleTap = (mode: FastingMode) => onSelectionChange(mode);
 
   return (
     <View style={[styles.card, { padding: CARD_PADDING }]}>
@@ -175,7 +177,12 @@ function RowGroup({
       {FASTING_ROWS.map((mode, index) => (
         <View key={mode}>
           {index > 0 && <Divider />}
-          <FastingRow mode={mode} selected={rowSelected(current, mode)} onTap={onTap} />
+          <FastingRow
+            mode={mode}
+            selected={rowSelected(current, mode)}
+            frozen={isNoOpFastingTap(current, mode)}
+            onTap={onTap}
+          />
         </View>
       ))}
     </View>
@@ -208,10 +215,12 @@ function InfoGlyph() {
 function FastingRow({
   mode,
   selected,
+  frozen,
   onTap,
 }: {
   readonly mode: FastingMode;
   readonly selected: boolean;
+  readonly frozen: boolean;
   readonly onTap: (mode: FastingMode) => void;
 }) {
   const toggleRef = useRef<ToggleHandle>(null);
@@ -222,7 +231,10 @@ function FastingRow({
     <Pressable
       style={[styles.row, { paddingVertical: ROW_PAD_V }]}
       hitSlop={HIT_SLOP.md}
-      onPress={() => toggleRef.current?.press()}
+      onPress={() => {
+        // The only selected option taps to nothing: the switch never leaves its value
+        if (!frozen) toggleRef.current?.press();
+      }}
       accessibilityLabel={title}>
       <View style={styles.titleWrap}>
         <View style={styles.dotSlot}>{identity !== null && <FastingDot identity={identity} size={ROW_DOT} />}</View>
@@ -231,6 +243,7 @@ function FastingRow({
       <Toggle
         ref={toggleRef}
         value={selected}
+        frozen={frozen}
         onToggle={() => onTap(mode)}
         onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
         accessibilityLabel={title}

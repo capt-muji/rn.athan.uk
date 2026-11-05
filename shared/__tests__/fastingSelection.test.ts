@@ -5,7 +5,13 @@
  * landing set reddens.
  */
 
-import { fastingDescriptionKey, nextFastingSelection, sanitizeFastingSelection } from '@/shared/fastingSelection';
+import {
+  applyFastingTap,
+  fastingDescriptionKey,
+  isNoOpFastingTap,
+  nextFastingSelection,
+  sanitizeFastingSelection,
+} from '@/shared/fastingSelection';
 import type { FastingMode, FastingSelection } from '@/shared/types';
 
 const sel = (mode: FastingMode, whiteDaysAddOn = false): FastingSelection => ({ mode, whiteDaysAddOn });
@@ -95,6 +101,34 @@ describe('the tap rule', () => {
         expect(SETS).toContainEqual(nextFastingSelection(current, option));
       }
     }
+  });
+});
+
+describe('the no-op tap', () => {
+  it('freezes the only selected option in all four shapes', () => {
+    expect(isNoOpFastingTap(EVERY, 'everyDay')).toBe(true);
+    expect(isNoOpFastingTap(MUHAMMAD, 'muhammad')).toBe(true);
+    expect(isNoOpFastingTap(DAWOOD, 'dawood')).toBe(true);
+    expect(isNoOpFastingTap(WHITE, 'whiteDays')).toBe(true);
+  });
+
+  it('lets every changing tap through, the add-on carry included', () => {
+    expect(isNoOpFastingTap(EVERY, 'muhammad')).toBe(false);
+    expect(isNoOpFastingTap(MUHAMMAD, 'everyDay')).toBe(false);
+    expect(isNoOpFastingTap(MUHAMMAD, 'dawood')).toBe(false);
+    expect(isNoOpFastingTap(MUHAMMAD, 'whiteDays')).toBe(false);
+    expect(isNoOpFastingTap(WHITE, 'muhammad')).toBe(false);
+    expect(isNoOpFastingTap(MUHAMMAD_WHITE, 'muhammad')).toBe(false);
+  });
+});
+
+describe('the live-draft tap', () => {
+  it('lands against the draft it is handed', () => {
+    expect(applyFastingTap(WHITE, 'muhammad')).toEqual(MUHAMMAD_WHITE);
+  });
+
+  it('reads an absent draft as the default', () => {
+    expect(applyFastingTap(undefined, 'muhammad')).toEqual(MUHAMMAD);
   });
 });
 

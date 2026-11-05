@@ -99,7 +99,7 @@ describe('the rows', () => {
     await fireEvent.press(rowSwitch('dawood'));
     await settle();
 
-    expect(onSelectionChange).toHaveBeenCalledWith({ mode: 'dawood', whiteDaysAddOn: true });
+    expect(onSelectionChange).toHaveBeenCalledWith('dawood');
   });
 
   it('hands the sheet the same landing from a press on the row itself', async () => {
@@ -110,7 +110,34 @@ describe('the rows', () => {
     await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
     await settle();
 
-    expect(onSelectionChange).toHaveBeenCalledWith({ mode: 'muhammad', whiteDaysAddOn: false });
+    expect(onSelectionChange).toHaveBeenCalledWith('muhammad');
+  });
+
+  it('hands the sheet nothing when the only selected option is tapped, switch or row', async () => {
+    showAprilWindow();
+    const onSelectionChange = jest.fn();
+    await renderCard(selection({ mode: 'muhammad' }), onSelectionChange);
+
+    await fireEvent.press(rowSwitch('muhammad'));
+    await settle();
+    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
+    await settle();
+
+    expect(onSelectionChange).not.toHaveBeenCalled();
+  });
+
+  it('reports each of two rapid taps as its own mode, dropping neither', async () => {
+    showAprilWindow();
+    const onSelectionChange = jest.fn();
+    await renderCard(selection({ mode: 'everyDay' }), onSelectionChange);
+
+    await fireEvent.press(rowSwitch('muhammad'));
+    await fireEvent.press(rowSwitch('whiteDays'));
+    await settle();
+
+    expect(onSelectionChange).toHaveBeenCalledTimes(2);
+    expect(onSelectionChange).toHaveBeenNthCalledWith(1, 'muhammad');
+    expect(onSelectionChange).toHaveBeenNthCalledWith(2, 'whiteDays');
   });
 });
 

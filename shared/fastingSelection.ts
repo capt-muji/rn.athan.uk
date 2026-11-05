@@ -45,6 +45,17 @@ export const nextFastingSelection = (current: FastingSelection, option: FastingO
   return { mode: option, whiteDaysAddOn: armsWhiteDays(current) };
 };
 
+/** Whether tapping this option lands nothing: the only selected option taps to no new draft */
+export const isNoOpFastingTap = (current: FastingSelection, option: FastingOption): boolean =>
+  nextFastingSelection(current, option) === current;
+
+/** The stored shape's default: every day, no add-on - what an absent draft reads as */
+export const DEFAULT_FASTING_SELECTION: FastingSelection = { mode: 'everyDay', whiteDaysAddOn: false };
+
+/** A tap lands against the live draft; an absent draft reads the default (the sheet mounts the card only when one is present) */
+export const applyFastingTap = (draft: FastingSelection | undefined, option: FastingOption): FastingSelection =>
+  nextFastingSelection(draft ?? DEFAULT_FASTING_SELECTION, option);
+
 /** The description's six states: the whole selection in one line, per regimen pair */
 const DESCRIPTION_KEYS: Record<FastingMode, readonly [TranslationKey, TranslationKey]> = {
   everyDay: ['fasting.description.everyDay', 'fasting.description.everyDay'],

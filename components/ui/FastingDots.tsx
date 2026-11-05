@@ -27,7 +27,7 @@ const fastingIdentityColor = (identity: FastingIdentity): string => {
 };
 
 /** The deep background shade sampled from behind the alerts icon: the rings' color */
-export const FASTING_DOT_BORDER = '#1B1967';
+const FASTING_DOT_BORDER = '#1B1967';
 
 /** The calendar cells' ring weight, one step under the bell's for the smaller circles */
 export const FASTING_CELL_RING = 1.5;
