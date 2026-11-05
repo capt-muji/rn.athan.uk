@@ -180,8 +180,8 @@ export const R11_BELL_RING = 2;
 /** The cell rings' width, one step under the bell's for the smaller circles */
 export const R11_CELL_RING = 1.5;
 
-/** The circles' overlap: round 10's twenty percent */
-export const R11_OVERLAP_STEP = 0.8;
+/** The circles' overlap: forty percent into each other, the white circle front */
+export const R11_OVERLAP_STEP = 0.6;
 
 // ---------------------------------------------------------------------------
 // The ten-day calendar over the real evaluator

@@ -39,8 +39,8 @@ export const R11RingDot = ({ identity, size, ring }: { identity: R10Identity; si
 );
 
 /**
- * The bordered cluster: circles overlapped round 10's twenty percent, the
- * front (left) circle's ring cutting across its neighbour - the separation
+ * The bordered cluster: circles forty percent into each other, the right
+ * circle (white days) rendering on top - the separation
  * work the bite did. A lone identity renders one circle; never three.
  */
 export const R11Cluster = ({ identities, size, ring }: { identities: R10Identity[]; size: number; ring: number }) => {
@@ -56,7 +56,7 @@ export const R11Cluster = ({ identities, size, ring }: { identities: R10Identity
         .slice()
         .reverse()
         .map((identity, index) => {
-          const position = identities.length - 1 - index;
+          const position = index;
           return (
             <View key={identity} style={{ position: 'absolute', left: position * step }}>
               <R11RingDot identity={identity} size={size} ring={ring} />

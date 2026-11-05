@@ -12,9 +12,9 @@
  */
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useMemo } from 'react';
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Countdown } from '@/components/countdown';
@@ -37,6 +37,9 @@ import { R11BellCluster } from './dots';
 import { R11_TAKES_LENGTH, r11DesignFromParam, r11SeedParam, STRIP_LABEL_PREFIX } from './seed';
 
 const SUHOOR: PrayerId = 'suhoor';
+
+const rawState = (value: string | string[] | undefined): string =>
+  Array.isArray(value) ? (value[0] ?? 'default') : (value ?? 'default');
 
 export function ExtrasR11Screen() {
   const params = useLocalSearchParams<{
@@ -64,7 +67,7 @@ export function ExtrasR11Screen() {
         ]}>
         <Countdown type={ScheduleType.Extra} />
         <Day type={ScheduleType.Extra} />
-        <ExtrasList selection={selection} />
+        <ExtrasList selection={selection} design={design} stateParam={rawState(params.state)} />
       </View>
       {!bare && <ExtrasStrip design={design} />}
     </LinearGradient>
@@ -72,7 +75,15 @@ export function ExtrasR11Screen() {
 }
 
 /** The extras rows in canonical order, the identity cluster spliced into Suhoor's bell anchor */
-function ExtrasList({ selection }: { readonly selection: R2Selection }) {
+function ExtrasList({
+  selection,
+  design,
+  stateParam,
+}: {
+  readonly selection: R2Selection;
+  readonly design: number;
+  readonly stateParam: string;
+}) {
   const { prayers, displayDate, isReady } = usePrayerSequence(ScheduleType.Extra);
   if (!isReady) return null;
 
@@ -88,6 +99,8 @@ function ExtrasList({ selection }: { readonly selection: R2Selection }) {
           index={prayerIndex}
           isSuhoor={prayers[prayerIndex]?.id === SUHOOR}
           selection={selection}
+          design={design}
+          stateParam={stateParam}
         />
       ))}
     </View>
@@ -99,10 +112,14 @@ function ExtrasRow({
   index,
   isSuhoor,
   selection,
+  design,
+  stateParam,
 }: {
   readonly index: number;
   readonly isSuhoor: boolean;
   readonly selection: R2Selection;
+  readonly design: number;
+  readonly stateParam: string;
 }) {
   const prayer = usePrayer(ScheduleType.Extra, index);
   const shownName = prayer.time === '' ? '' : prayerLabel(prayer.id);
@@ -123,6 +140,12 @@ function ExtrasRow({
         <View style={styles.alertSlot}>
           <Alert index={index} type={ScheduleType.Extra} />
           {isSuhoor && <R11BellCluster selection={selection} />}
+          {isSuhoor && (
+            <Pressable
+              style={StyleSheet.absoluteFill}
+              onPress={() => router.push(`/dev/fasting-layouts?r11=${design}&state=${stateParam}`)}
+            />
+          )}
         </View>
       </View>
     </View>
