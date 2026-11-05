@@ -9,7 +9,7 @@
 
 import type { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
@@ -22,8 +22,11 @@ import { currentLocaleId } from '@/shared/i18n/locale';
 import { Icon } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 
-import { r2Seed } from './r2/model';
+import { type R2Selection, r2Seed } from './r2/model';
 import { R2Provider, useR2 } from './r2/parts';
+import type { R4Design } from './r4/FastingCardR4';
+import { r4Seed } from './r4/model';
+import { R4SheetBody } from './r4/R4SheetBody';
 import { VARIANTS } from './registry';
 import { harnessIndexFromParam } from './variantParam';
 
@@ -32,6 +35,15 @@ const SHEET_ICON_COLOR = 'rgba(165, 180, 252, 0.8)';
 const PREV_LABEL = 'Prev';
 const NEXT_LABEL = 'Next';
 const SAVE_LABEL = 'Save';
+const R4_LABEL = 'R4';
+
+/** The deep link's r4 design number; null outside 1-5 means variant mode */
+const r4DesignFromParam = (value: string | string[] | undefined): R4Design | null => {
+  const first = Array.isArray(value) ? (value[0] ?? '') : (value ?? '');
+  const requested = Number.parseInt(first, 10);
+  if (!Number.isFinite(requested) || requested < 1 || requested > 5) return null;
+  return requested as R4Design;
+};
 
 /** The harness chrome's Save control: commits the draft so the tense flips */
 function SaveButton() {
@@ -44,8 +56,15 @@ function SaveButton() {
 }
 
 export function FastingLayoutsScreen() {
-  const params = useLocalSearchParams<{ v?: string | string[] }>();
-  const vKey = Array.isArray(params.v) ? (params.v[0] ?? '') : (params.v ?? '');
+  const params = useLocalSearchParams<{
+    v?: string | string[];
+    r4?: string | string[];
+    state?: string | string[];
+    bare?: string | string[];
+  }>();
+  const vKey = firstParam(params.v);
+  const r4Design = r4DesignFromParam(params.r4);
+  const bare = firstParam(params.bare) === '1';
   const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
 
@@ -68,48 +87,99 @@ export function FastingLayoutsScreen() {
 
   const variant = VARIANTS[index];
   const Variant = variant.Component;
-  // The round-2 rows name their opening set; the round-1 rows keep their own state
-  const seed = useMemo(() => r2Seed(variant.open ?? 'every'), [variant.open]);
+  // The round-2 rows name their opening set; the round-1 rows keep their own state;
+  // the round-4 sheet body seeds from its own state param
+  const seed: R2Selection = useMemo(
+    () => (r4Design ? r4Seed(params.state) : r2Seed(variant.open ?? 'every')),
+    [r4Design, params.state, variant.open]
+  );
 
   const goPrev = () => setIndex((current) => Math.max(0, current - 1));
   const goNext = () => setIndex((current) => Math.min(VARIANTS.length - 1, current + 1));
 
-  return (
-    <LinearGradient style={styles.screen} colors={[COLORS.gradient.screen.start, COLORS.gradient.screen.end]}>
-      <Sheet
-        setRef={handleRef}
-        title={prayerLabel(SUHOOR)}
-        subtitle={t('sheet.closeToSave')}
-        icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
-        enableDynamicSizing
-        contentCap={0.85}>
+  const sheet = (
+    <Sheet
+      setRef={handleRef}
+      title={prayerLabel(SUHOOR)}
+      subtitle={t('sheet.closeToSave')}
+      icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
+      enableDynamicSizing
+      contentCap={0.85}>
+      {r4Design ? (
+        <>
+          <R4SheetBody design={r4Design} seed={seed} />
+          {!bare && <R4Strip design={r4Design} />}
+        </>
+      ) : (
         <R2Provider seed={seed}>
           <Variant />
-          <View style={styles.strip}>
-            <Pressable
-              style={styles.stripButton}
-              hitSlop={HIT_SLOP.md}
-              onPress={goPrev}
-              disabled={index === 0}
-              accessibilityLabel={PREV_LABEL}>
-              <Text style={[styles.stripButtonText, index === 0 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
-            </Pressable>
-            <Text style={styles.stripLabel}>{`${index + 1} / ${VARIANTS.length} - ${variant.name}`}</Text>
-            <SaveButton />
-            <Pressable
-              style={styles.stripButton}
-              hitSlop={HIT_SLOP.md}
-              onPress={goNext}
-              disabled={index === VARIANTS.length - 1}
-              accessibilityLabel={NEXT_LABEL}>
-              <Text style={[styles.stripButtonText, index === VARIANTS.length - 1 ? styles.stripButtonOff : null]}>
-                {NEXT_LABEL}
-              </Text>
-            </Pressable>
-          </View>
+          {!bare && (
+            <View style={styles.strip}>
+              <Pressable
+                style={styles.stripButton}
+                hitSlop={HIT_SLOP.md}
+                onPress={goPrev}
+                disabled={index === 0}
+                accessibilityLabel={PREV_LABEL}>
+                <Text style={[styles.stripButtonText, index === 0 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+              </Pressable>
+              <Text style={styles.stripLabel}>{`${index + 1} / ${VARIANTS.length} - ${variant.name}`}</Text>
+              <SaveButton />
+              <Pressable
+                style={styles.stripButton}
+                hitSlop={HIT_SLOP.md}
+                onPress={goNext}
+                disabled={index === VARIANTS.length - 1}
+                accessibilityLabel={NEXT_LABEL}>
+                <Text style={[styles.stripButtonText, index === VARIANTS.length - 1 ? styles.stripButtonOff : null]}>
+                  {NEXT_LABEL}
+                </Text>
+              </Pressable>
+            </View>
+          )}
         </R2Provider>
-      </Sheet>
+      )}
+    </Sheet>
+  );
+
+  return (
+    <LinearGradient style={styles.screen} colors={[COLORS.gradient.screen.start, COLORS.gradient.screen.end]}>
+      {sheet}
     </LinearGradient>
+  );
+}
+
+const firstParam = (value: string | string[] | undefined): string =>
+  Array.isArray(value) ? (value[0] ?? '') : (value ?? '');
+
+/** The round-4 strip: design navigation only, hidden from bare frames */
+function R4Strip({ design }: { readonly design: R4Design }) {
+  const router = useRouter();
+
+  const move = (next: number) => {
+    router.setParams({ r4: String(next) });
+  };
+
+  return (
+    <View style={styles.strip}>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design - 1)}
+        disabled={design === 1}
+        accessibilityLabel={PREV_LABEL}>
+        <Text style={[styles.stripButtonText, design === 1 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+      </Pressable>
+      <Text style={styles.stripLabel}>{`${R4_LABEL} ${design} / 5`}</Text>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design + 1)}
+        disabled={design === 5}
+        accessibilityLabel={NEXT_LABEL}>
+        <Text style={[styles.stripButtonText, design === 5 ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
+      </Pressable>
+    </View>
   );
 }
 
