@@ -27,6 +27,9 @@ import { R2Provider, useR2 } from './r2/parts';
 import type { R4Design } from './r4/FastingCardR4';
 import { r4Seed } from './r4/model';
 import { R4SheetBody } from './r4/R4SheetBody';
+import type { R5Design } from './r5/FastingCardR5';
+import { r5Seed } from './r5/model';
+import { R5SheetBody } from './r5/R5SheetBody';
 import { VARIANTS } from './registry';
 import { harnessIndexFromParam } from './variantParam';
 
@@ -36,6 +39,7 @@ const PREV_LABEL = 'Prev';
 const NEXT_LABEL = 'Next';
 const SAVE_LABEL = 'Save';
 const R4_LABEL = 'R4';
+const R5_LABEL = 'R5';
 
 /** The deep link's r4 design number; null outside 1-5 means variant mode */
 const r4DesignFromParam = (value: string | string[] | undefined): R4Design | null => {
@@ -43,6 +47,14 @@ const r4DesignFromParam = (value: string | string[] | undefined): R4Design | nul
   const requested = Number.parseInt(first, 10);
   if (!Number.isFinite(requested) || requested < 1 || requested > 5) return null;
   return requested as R4Design;
+};
+
+/** The deep link's r5 design number; null outside 1-10 means the other modes */
+const r5DesignFromParam = (value: string | string[] | undefined): R5Design | null => {
+  const first = Array.isArray(value) ? (value[0] ?? '') : (value ?? '');
+  const requested = Number.parseInt(first, 10);
+  if (!Number.isFinite(requested) || requested < 1 || requested > 10) return null;
+  return requested as R5Design;
 };
 
 /** The harness chrome's Save control: commits the draft so the tense flips */
@@ -59,11 +71,13 @@ export function FastingLayoutsScreen() {
   const params = useLocalSearchParams<{
     v?: string | string[];
     r4?: string | string[];
+    r5?: string | string[];
     state?: string | string[];
     bare?: string | string[];
   }>();
   const vKey = firstParam(params.v);
   const r4Design = r4DesignFromParam(params.r4);
+  const r5Design = r5DesignFromParam(params.r5);
   const bare = firstParam(params.bare) === '1';
   const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
@@ -88,10 +102,10 @@ export function FastingLayoutsScreen() {
   const variant = VARIANTS[index];
   const Variant = variant.Component;
   // The round-2 rows name their opening set; the round-1 rows keep their own state;
-  // the round-4 sheet body seeds from its own state param
+  // the round-4 and round-5 sheet bodies seed from the state param
   const seed: R2Selection = useMemo(
-    () => (r4Design ? r4Seed(params.state) : r2Seed(variant.open ?? 'every')),
-    [r4Design, params.state, variant.open]
+    () => (r5Design ? r5Seed(params.state) : r4Design ? r4Seed(params.state) : r2Seed(variant.open ?? 'every')),
+    [r5Design, r4Design, params.state, variant.open]
   );
 
   const goPrev = () => setIndex((current) => Math.max(0, current - 1));
@@ -105,7 +119,12 @@ export function FastingLayoutsScreen() {
       icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
       enableDynamicSizing
       contentCap={0.85}>
-      {r4Design ? (
+      {r5Design ? (
+        <>
+          <R5SheetBody design={r5Design} seed={seed} />
+          {!bare && <R5Strip design={r5Design} />}
+        </>
+      ) : r4Design ? (
         <>
           <R4SheetBody design={r4Design} seed={seed} />
           {!bare && <R4Strip design={r4Design} />}
@@ -178,6 +197,37 @@ function R4Strip({ design }: { readonly design: R4Design }) {
         disabled={design === 5}
         accessibilityLabel={NEXT_LABEL}>
         <Text style={[styles.stripButtonText, design === 5 ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+/** The round-5 strip: design navigation only, hidden from bare frames */
+function R5Strip({ design }: { readonly design: R5Design }) {
+  const router = useRouter();
+
+  const move = (next: number) => {
+    router.setParams({ r5: String(next) });
+  };
+
+  return (
+    <View style={styles.strip}>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design - 1)}
+        disabled={design === 1}
+        accessibilityLabel={PREV_LABEL}>
+        <Text style={[styles.stripButtonText, design === 1 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+      </Pressable>
+      <Text style={styles.stripLabel}>{`${R5_LABEL} ${design} / 10`}</Text>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design + 1)}
+        disabled={design === 10}
+        accessibilityLabel={NEXT_LABEL}>
+        <Text style={[styles.stripButtonText, design === 10 ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
       </Pressable>
     </View>
   );
