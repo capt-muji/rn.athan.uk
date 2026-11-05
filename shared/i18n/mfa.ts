@@ -11,11 +11,9 @@
  * shared/__tests__/catalogGates.test.ts. Low confidence pending a speaker pass.
  * Prose digits are Latin.
  */
-
 import type { PrayerId } from '@/shared/constants';
 
 import type { Catalog } from './en';
-
 export const mfa = {
   'prayer.fajr': 'Subuh',
   'prayer.sunrise': 'Syuruk',
@@ -109,20 +107,21 @@ export const mfa = {
   'fasting.card.title': 'Ari-ari poso',
   'fasting.card.hint': 'Notofikasi Sahur mmaguno babaq di ari ini',
   'fasting.mode.everyDay': 'Satiap ari',
-  'fasting.mode.everyDayHint': 'Sahur satiap ari',
   'fasting.mode.muhammad': 'Isnin aba Khames',
-  'fasting.mode.muhammadHint': 'Ari-ari Nabi ghumukung poso',
   'fasting.mode.dawood': 'Siling ari',
-  'fasting.mode.dawoodHint': 'Sari poso, sari tida, poso Dawud',
   'fasting.mode.whiteDays': 'Ari-ari puto',
-  'fasting.mode.whiteDaysHint': '13, 14 aba 15 ttap bulan Hijrah, samaso bulan penuh',
-  'fasting.addOn.whiteDays': 'Ambil ari-ari puto',
-  'fasting.preview.next': 'Sahur sobrik',
-  'fasting.preview.today': 'Riyen',
-  'fasting.preview.tomorrow': 'Isok',
-  'fasting.state.on': 'poso',
-  'fasting.state.off': 'tado poso',
-  'fasting.badge.ramadan': 'Ramadhan',
+  'fasting.description.everyDay': 'Suhoor scheduled for every day',
+  'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+  'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+  'fasting.description.whiteDays': 'Suhoor scheduled for 13th, 14th and 15th of each Hijri month only',
+  'fasting.description.muhammadWhiteDays': 'Suhoor scheduled for Mondays and Thursdays and the three white days',
+  'fasting.description.dawoodWhiteDays': 'Suhoor scheduled for one day on, one day off and the three white days',
+  'fasting.next.label': 'NEXT SUHOOR',
+  'fasting.next.hour': 'in {n} hour',
+  'fasting.next.hours': 'in {n} hours',
+  'fasting.next.day': 'in {n} day',
+  'fasting.next.days': 'in {n} days',
+  'fasting.next.withWeekday': '{distance} {weekday}',
   'whatsNew.title.fasting': 'Ari-ari poso',
   'whatsNew.body.fasting': 'Notofikasi Sahur bo maghikok denga ari-ari poso awak',
   'alert.reminder': 'Peringatan {n}',
@@ -252,7 +251,6 @@ export const mfa = {
   'calendar.hijri.11': 'Zulkaedah',
   'calendar.hijri.12': 'Zulhijah',
 } as const satisfies Catalog;
-
 /**
  * Prayer labels resolved from the catalog's own members, so display never re-authors a name
  * and a label cannot drift from its catalog entry

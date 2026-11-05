@@ -15,6 +15,7 @@ import { setActiveLocale } from '@/shared/i18n/locale';
 import { AlertType, type ReminderInterval, ScheduleType } from '@/shared/types';
 import {
   fastingModeAtom,
+  fastingWhiteDaysAtom,
   getPrayerAlertType,
   getReminderAlertType,
   getReminderInterval,
@@ -850,7 +851,7 @@ describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00'
     await render(<AlertSheet />);
 
     expect(screen.getByText(t('fasting.card.title'))).toBeOnTheScreen();
-    expect(screen.getByRole('radio', { name: t('fasting.mode.muhammad') })).toBeOnTheScreen();
+    expect(screen.getByRole('switch', { name: t('fasting.mode.muhammad') })).toBeOnTheScreen();
   });
 
   it('lands a fasting mode change on its own at close', async () => {
@@ -859,13 +860,29 @@ describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00'
     openSuhoorSheet();
 
     await render(<AlertSheet />);
-    await fireEvent.press(screen.getByRole('radio', { name: t('fasting.mode.muhammad') }));
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.muhammad') }));
     await settle();
 
     await closeSheet();
     await settle();
 
     expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+  });
+
+  it('composes two rapid fasting taps onto the live draft, dropping neither', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    getDefaultStore().set(fastingModeAtom, 'everyDay');
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.muhammad') }));
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.whiteDays') }));
+
+    await closeSheet();
+    await settle();
+
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+    expect(getDefaultStore().get(fastingWhiteDaysAtom)).toBe(true);
   });
 
   it('carries the fasting selection unchanged through an athan change', async () => {

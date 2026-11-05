@@ -5,11 +5,9 @@
  * (tile bɔli) and the decision-5 loans (Suhuri, Duha, Istijaba), gated by
  * shared/__tests__/catalogGates.test.ts. Prose digits are Latin per R12.
  */
-
 import type { PrayerId } from '@/shared/constants';
 
 import type { Catalog } from './en';
-
 export const bm = {
   'prayer.fajr': 'fajiri',
   'prayer.sunrise': 'tile bɔli',
@@ -101,20 +99,21 @@ export const bm = {
   'fasting.card.title': 'Kɔji lanw',
   'fasting.card.hint': 'Suhuri kunnafoniw bɛ kɛ tuma ninw la dɔrɔn',
   'fasting.mode.everyDay': 'Don o don',
-  'fasting.mode.everyDayHint': 'Suhuri don o don',
   'fasting.mode.muhammad': 'Ntɛnɛ ni Alamisa',
-  'fasting.mode.muhammadHint': 'Donw minnu na Nabi tun b’a fɛ ka u kɔji',
   'fasting.mode.dawood': 'Dɔɔnin dɔɔnin donw',
-  'fasting.mode.dawoodHint': 'Dɔ kɔji, dɔ kɔji tɛ, Dawuda kɔji',
   'fasting.mode.whiteDays': 'Jɛman donw',
-  'fasting.mode.whiteDaysHint': 'Tile 13, 14 ni 15 kalo kɔnɔ, sa finba dakun',
-  'fasting.addOn.whiteDays': 'Jɛman donw fara a kan',
-  'fasting.preview.next': 'Suhuri tɔɔrɔ',
-  'fasting.preview.today': 'Bi',
-  'fasting.preview.tomorrow': 'Sini',
-  'fasting.state.on': 'kɔji don',
-  'fasting.state.off': 'kɔji tɛ',
-  'fasting.badge.ramadan': 'Ramadhan',
+  'fasting.description.everyDay': 'Suhoor scheduled for every day',
+  'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+  'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+  'fasting.description.whiteDays': 'Suhoor scheduled for 13th, 14th and 15th of each Hijri month only',
+  'fasting.description.muhammadWhiteDays': 'Suhoor scheduled for Mondays and Thursdays and the three white days',
+  'fasting.description.dawoodWhiteDays': 'Suhoor scheduled for one day on, one day off and the three white days',
+  'fasting.next.label': 'NEXT SUHOOR',
+  'fasting.next.hour': 'in {n} hour',
+  'fasting.next.hours': 'in {n} hours',
+  'fasting.next.day': 'in {n} day',
+  'fasting.next.days': 'in {n} days',
+  'fasting.next.withWeekday': '{distance} {weekday}',
   'whatsNew.title.fasting': 'Kɔji lanw',
   'whatsNew.body.fasting': 'Suhuri kunnafoniw bɛ se ka ɔ nin i ka kɔji lanw la',
   'alert.reminder': 'Miiri {n}',
@@ -243,7 +242,6 @@ export const bm = {
   'calendar.hijri.11': 'Zulqida',
   'calendar.hijri.12': 'Zulhijja',
 } as const satisfies Catalog;
-
 /**
  * Prayer labels resolved from the catalog's own members, so display never re-authors a name
  * and a label cannot drift from its catalog entry

@@ -240,16 +240,16 @@
     "reason": "2026-10-30 the lead's glow-falloff fix steps from uat's 2.42.8 while lane1/T-491's strip-plugin step already holds 2.42.9; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
+    "version": "2.42.10",
+    "reason": "2026-10-30 uat's T-520 merge carries lane3/T-520's outline commit while lane1/T-491's sounds step already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
     "version": "2.42.11",
     "reason": "2026-10-30 lane2/T-519's step 2 steps from 2.42.10 while lane1/T-327 already holds 2.42.11; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.42.13",
     "reason": "2026-10-30 uat's T-520 merge steps from uat's 2.42.12 while lane1/T-327's step-14 harness fix already holds 2.42.13; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.42.10",
-    "reason": "2026-10-30 uat's T-520 merge carries lane3/T-520's outline commit while lane1/T-491's sounds step already holds 2.42.10; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.42.14",
@@ -336,12 +336,12 @@
     "reason": "2026-11-01 lane2/T-561's audit fix takes the single patch step above its own 2.43.25 while parked t538-line-box-3's replayed stamp 1b4c8b6c already holds 2.43.26 (the discipline gate holds every fix to the one patch step, so no renumber above it exists); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
-    "version": "2.43.28",
-    "reason": "2026-11-01 the T-538 diag branches t538-diag-c1/c2/c3 each stand as one internally-consistent commit off the lane tip 5010cae3 (2.43.27), and the discipline gate allows exactly one patch step per commit, so all three take 2.43.28; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
     "version": "2.43.27",
     "reason": "2026-11-01 the parallel T-566 tint lane's 7dc97352 on t566-dim-tint took 2.43.27 under the one-patch-step rule while parked t538-line-box-3's replayed 5010cae3 already held it; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
+  },
+  {
+    "version": "2.43.28",
+    "reason": "2026-11-01 the T-538 diag branches t538-diag-c1/c2/c3 each stand as one internally-consistent commit off the lane tip 5010cae3 (2.43.27), and the discipline gate allows exactly one patch step per commit, so all three take 2.43.28; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.43.29",
@@ -352,12 +352,16 @@
     "reason": "2026-11-01 lane3/T-565's swipe-gate branch steps through 2.43.27-2.43.30 while uat's parallel T-566/T-538 line took the same numbers (7dc97352, 9ae7eba9, c7d61604, ec5f4b37/de53f64e); the standing ruling: every collision is grandfathered and the merge renumbers above whatever uat then carries"
   },
   {
+    "version": "2.43.59",
+    "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
+  },
+  {
     "version": "2.44.0",
     "reason": "2026-11-03 lane3/T-594's 24-hour-toggle commit 6405f777 and lane1/T-575's istijaba-description commit a0c4a505 both step to 2.44.0 in the same window; the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
-    "version": "2.43.59",
-    "reason": "2026-11-04 the run-closing board snapshot on uat meets the concurrent session's same-number commit 04ea7621 on its own branch; grandfathered per the standing ruling, the merge renumbers above whatever uat then carries"
+    "version": "2.48.3",
+    "reason": "2026-11-05 the audit fix on this lane first met the thirteen 2.48.3 board-snapshot commits on uat (6cf73fd6 through ccfb63f6, each a chore snapshot stepped from uat's 2.48.3 base at a halt or close); lane2/T-623's own allowlist copy already grandfathers the same set; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.48.4",
@@ -390,10 +394,6 @@
   {
     "version": "2.48.11",
     "reason": "2026-11-04 lane1/T-615's bcl commit f436dccc holds 2.48.11 while lane2/T-623's 7b0b53e4 took the same number in the same window (that lane's own allowlist records the twin); the standing ruling: every collision is grandfathered and each merge renumbers above whatever uat then carries"
-  },
-  {
-    "version": "2.48.3",
-    "reason": "2026-11-05 the audit fix on this lane first met the thirteen 2.48.3 board-snapshot commits on uat (6cf73fd6 through ccfb63f6, each a chore snapshot stepped from uat's 2.48.3 base at a halt or close); lane2/T-623's own allowlist copy already grandfathers the same set; the standing ruling applies: every collision is grandfathered and each merge renumbers above whatever uat then carries"
   },
   {
     "version": "2.48.12",

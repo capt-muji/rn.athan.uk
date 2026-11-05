@@ -1,13 +1,14 @@
 /**
- * The fasting card: the mode picker, the add-on row, and the preview of what
- * the current selection arms. The sheet flows live in Alert.test.tsx, beside
- * the rest of the sheet's own commits.
+ * The fasting card as design 427: the four toggle rows with their always-on
+ * identity dots, the sky note's six description states, the next-two Suhoor
+ * entries with their identity dots, and the ten-day strip calendar below the
+ * note - the whole schedule section hidden on Every day. The sheet's own flows
+ * (the draft-and-commit at close) live in Alert.test.tsx.
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
 import { getDefaultStore } from 'jotai';
 
-import { formatShownDate } from '@/components/day/shownDate';
 import { london } from '@/hooks/__tests__/londonDays';
 import { __resetHijriMemoForTests } from '@/shared/fasting';
 import { t } from '@/shared/i18n';
@@ -23,16 +24,17 @@ const store = getDefaultStore();
 
 const TIMES = { fajr: '05:50', sunrise: '07:30', dhuhr: '13:00', asr: '16:00', magrib: '19:00', isha: '20:30' };
 
+/** 1-10 April 2026: the 1st-3rd are the white days of Shawwal 1447, the 2nd a Thursday */
 const installAprilDays = (breakFajrOn = '') =>
   __installTimetableDays(
-    Array.from({ length: 4 }, (_, i) => {
+    Array.from({ length: 10 }, (_, i) => {
       const date = new Date(Date.parse('2026-04-01T12:00:00Z') + i * 86_400_000).toISOString().slice(0, 10);
       const times = date === breakFajrOn ? { ...TIMES, fajr: null } : TIMES;
       return minutesToRecord(date, toDayMinutes(times));
     })
   );
 
-/** Wednesday 1 April 2026 at noon: a white day of Shawwal 1447, the 2nd a Thursday */
+/** Wednesday 1 April 2026 at noon: today's 05:30 suhoor is already spent */
 const showAprilWindow = (breakFajrOn = '') => {
   const now = london('2026-04-01', '12:00');
   jest.useFakeTimers({ now });
@@ -49,78 +51,133 @@ const selection = (over: Partial<FastingSelection> = {}): FastingSelection => ({
   ...over,
 });
 
+const rowSwitch = (mode: string) => screen.getByRole('switch', { name: t(`fasting.mode.${mode}` as never) });
+
+const renderCard = async (sel: FastingSelection, onSelectionChange = jest.fn()) => {
+  const view = await render(<FastingCard selection={sel} onSelectionChange={onSelectionChange} />);
+  await settle();
+  return view;
+};
+
 afterEach(() => {
   jest.useRealTimers();
   __resetTimetableForTest();
 });
 
-describe('the mode picker', () => {
-  it('draws the four modes with the selection marked', async () => {
+describe('the rows', () => {
+  it('draws the four options with their toggles, the selection marked', async () => {
     showAprilWindow();
-    await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
+    await renderCard(selection({ mode: 'whiteDays' }));
 
-    expect(screen.getByRole('radio', { name: t('fasting.mode.everyDay') })).toBeOnTheScreen();
-    expect(screen.getByRole('radio', { name: t('fasting.mode.whiteDays') })).toBeSelected();
-    expect(screen.getByRole('radio', { name: t('fasting.mode.muhammad') })).not.toBeSelected();
+    expect(rowSwitch('everyDay')).not.toBeChecked();
+    expect(rowSwitch('whiteDays')).toBeChecked();
+    expect(rowSwitch('muhammad')).not.toBeChecked();
+    expect(rowSwitch('dawood')).not.toBeChecked();
   });
 
-  it('hands the sheet the whole selection, keeping the add-on', async () => {
+  it('marks the add-on on its regimen row beside the white-days row', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
+
+    expect(rowSwitch('muhammad')).toBeChecked();
+    expect(rowSwitch('whiteDays')).toBeChecked();
+  });
+
+  it('reads a stored pair off the six sets before drafting', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'whiteDays', whiteDaysAddOn: true }));
+
+    expect(rowSwitch('whiteDays')).toBeChecked();
+    expect(screen.getByText(t('fasting.description.whiteDays'))).toBeOnTheScreen();
+  });
+
+  it('hands the sheet the tap rule landing from a toggle press', async () => {
     showAprilWindow();
     const onSelectionChange = jest.fn();
-    await render(
-      <FastingCard
-        selection={selection({ mode: 'muhammad', whiteDaysAddOn: true })}
-        onSelectionChange={onSelectionChange}
-      />
-    );
+    await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }), onSelectionChange);
 
-    fireEvent.press(screen.getByRole('radio', { name: t('fasting.mode.dawood') }));
-    expect(onSelectionChange).toHaveBeenCalledWith({ mode: 'dawood', whiteDaysAddOn: true });
-  });
-});
-
-describe('the white-days add-on', () => {
-  it('appears beside the two regimens alone', async () => {
-    showAprilWindow();
-    await render(
-      <FastingCard selection={selection({ mode: 'everyDay', whiteDaysAddOn: true })} onSelectionChange={jest.fn()} />
-    );
-    expect(screen.queryByRole('switch')).toBeNull();
-  });
-
-  it('hands its press to the sheet', async () => {
-    showAprilWindow();
-    const onSelectionChange = jest.fn();
-    await render(<FastingCard selection={selection({ mode: 'muhammad' })} onSelectionChange={onSelectionChange} />);
-
-    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.addOn.whiteDays') }));
+    await fireEvent.press(rowSwitch('dawood'));
     await settle();
-    expect(onSelectionChange).toHaveBeenCalledWith({ mode: 'muhammad', whiteDaysAddOn: true });
+
+    expect(onSelectionChange).toHaveBeenCalledWith('dawood');
+  });
+
+  it('hands the sheet the same landing from a press on the row itself', async () => {
+    showAprilWindow();
+    const onSelectionChange = jest.fn();
+    await renderCard(selection({ mode: 'everyDay' }), onSelectionChange);
+
+    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
+    await settle();
+
+    expect(onSelectionChange).toHaveBeenCalledWith('muhammad');
+  });
+
+  it('hands the sheet nothing when the only selected option is tapped, switch or row', async () => {
+    showAprilWindow();
+    const onSelectionChange = jest.fn();
+    await renderCard(selection({ mode: 'muhammad' }), onSelectionChange);
+
+    await fireEvent.press(rowSwitch('muhammad'));
+    await settle();
+    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
+    await settle();
+
+    expect(onSelectionChange).not.toHaveBeenCalled();
+  });
+
+  it('reports each of two rapid taps as its own mode, dropping neither', async () => {
+    showAprilWindow();
+    const onSelectionChange = jest.fn();
+    await renderCard(selection({ mode: 'everyDay' }), onSelectionChange);
+
+    await fireEvent.press(rowSwitch('muhammad'));
+    await fireEvent.press(rowSwitch('whiteDays'));
+    await settle();
+
+    expect(onSelectionChange).toHaveBeenCalledTimes(2);
+    expect(onSelectionChange).toHaveBeenNthCalledWith(1, 'muhammad');
+    expect(onSelectionChange).toHaveBeenNthCalledWith(2, 'whiteDays');
   });
 });
 
-describe('the preview', () => {
-  it("names tomorrow's Sahur after today's has already fired", async () => {
-    // Noon on the white-day Wednesday: its 05:30 suhoor is spent, so the next one is the 2nd's
+describe('the sky note', () => {
+  it('speaks the whole selection, following the draft', async () => {
     showAprilWindow();
-    await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
+    await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-    expect(screen.getByText(new RegExp(t('fasting.preview.next')))).toBeOnTheScreen();
-    expect(screen.getByText(new RegExp(formatShownDate('2026-04-02', false)))).toBeOnTheScreen();
-    expect(screen.queryByText(new RegExp(formatShownDate('2026-04-01', false)))).toBeNull();
+    expect(screen.getByText(t('fasting.description.muhammadWhiteDays'))).toBeOnTheScreen();
+  });
+});
+
+describe('the schedule section', () => {
+  it('hides entirely on every day', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'everyDay' }));
+
+    expect(screen.queryByText(t('fasting.next.label'))).toBeNull();
+    expect(screen.getByText(t('fasting.description.everyDay'))).toBeOnTheScreen();
   });
 
-  it("names today's Sahur while it is still ahead", async () => {
-    jest.useFakeTimers({ now: london('2026-04-01', '04:00') });
-    installAprilDays();
-    await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
+  it('names the next two triggers with their spoken distance and wall time', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-    expect(screen.getByText(new RegExp(t('fasting.preview.next')))).toBeOnTheScreen();
-    expect(screen.getByText(new RegExp(formatShownDate('2026-04-01', false)))).toBeOnTheScreen();
-    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.on')}`)).toBeOnTheScreen();
+    expect(screen.getByText(t('fasting.next.label'))).toBeOnTheScreen();
+    // Thursday the 2nd is the first armed day ahead at noon on the 1st; the 3rd follows
+    expect(screen.getByText(t('fasting.next.hours', { n: 18 }))).toBeOnTheScreen();
+    expect(
+      screen.getByText(
+        t('fasting.next.withWeekday', {
+          distance: t('fasting.next.days', { n: 2 }),
+          weekday: t('calendar.weekdayShort.5'),
+        })
+      )
+    ).toBeOnTheScreen();
+    expect(screen.getAllByText('05:30')).toHaveLength(2);
   });
 
-  it('keeps the sheet alive when no day arms at all', async () => {
+  it('survives a dead Hijri engine with no armed days at all', async () => {
     showAprilWindow();
     __resetHijriMemoForTests();
     const spy = jest.spyOn(Intl, 'DateTimeFormat');
@@ -128,59 +185,102 @@ describe('the preview', () => {
       throw new Error('no calendar support');
     });
 
-    await expect(
-      render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />)
-    ).resolves.toBeDefined();
+    await expect(renderCard(selection({ mode: 'whiteDays' }))).resolves.toBeDefined();
 
-    expect(screen.queryByText(new RegExp(t('fasting.preview.next')))).toBeNull();
-    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
+    expect(screen.getByText(t('fasting.next.label'))).toBeOnTheScreen();
+    expect(screen.queryByText(/05:30/)).toBeNull();
     spy.mockRestore();
+    // The walk memoised null Hijri parts for these dates under the dead engine;
+    // clear them or the next suite member reads the poison as gospel
+    __resetHijriMemoForTests();
   });
 
-  it('reads a Wednesday off and a Thursday on under muhammad', async () => {
+  it('speaks the singular hour and the singular day at their own distances', async () => {
+    // 04:30 on the white-day 1st: today's own suhoor is one hour ahead
+    const early = london('2026-04-01', '04:30');
+    jest.useFakeTimers({ now: early });
+    installAprilDays();
+    setSequence(ScheduleType.Standard, early);
+    setSequence(ScheduleType.Extra, early);
+    await renderCard(selection({ mode: 'whiteDays' }));
+
+    expect(screen.getByText(t('fasting.next.hour', { n: 1 }))).toBeOnTheScreen();
+
+    // 00:30 under muhammad: the Thursday trigger is the one-day distance
+    const midnight = london('2026-04-01', '00:30');
+    jest.useFakeTimers({ now: midnight });
+    await renderCard(selection({ mode: 'muhammad' }));
+
+    expect(
+      screen.getByText(
+        t('fasting.next.withWeekday', {
+          distance: t('fasting.next.day', { n: 1 }),
+          weekday: t('calendar.weekdayShort.4'),
+        })
+      )
+    ).toBeOnTheScreen();
+  });
+
+  it('renders a Ramadan entry with no cluster beside it', async () => {
+    // 10 February 2027 falls in Ramadan 1448, which subsumes every regimen:
+    // the entries speak, but carry no identity dots of their own
+    const now = london('2027-02-10', '12:00');
+    jest.useFakeTimers({ now });
+    __installTimetableDays(
+      Array.from({ length: 4 }, (_, i) => {
+        const date = new Date(Date.parse('2027-02-10T12:00:00Z') + i * 86_400_000).toISOString().slice(0, 10);
+        return minutesToRecord(date, toDayMinutes(TIMES));
+      })
+    );
+    setSequence(ScheduleType.Standard, now);
+    setSequence(ScheduleType.Extra, now);
+
+    await renderCard(selection({ mode: 'muhammad' }));
+
+    // Tomorrow's suhoor is the first armed day ahead; Ramadan names it, no dots beside it
+    expect(screen.getByText(t('fasting.next.hours', { n: 18 }))).toBeOnTheScreen();
+  });
+});
+
+describe('the calendar strip', () => {
+  it('carries ten squares from today, today first', async () => {
     showAprilWindow();
-    await render(<FastingCard selection={selection({ mode: 'muhammad' })} onSelectionChange={jest.fn()} />);
+    await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
-    expect(screen.getByText(`${t('fasting.preview.tomorrow')}: ${t('fasting.state.on')}`)).toBeOnTheScreen();
+    for (const day of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+      expect(screen.getAllByText(String(day)).length).toBeGreaterThan(0);
+    }
   });
 
-  it('badges upcoming fasts with the regimen under everyDay, whose days carry none', async () => {
+  it('alternates from now under dawood with no stored cycle', async () => {
     showAprilWindow();
-    await render(<FastingCard selection={selection({ mode: 'everyDay' })} onSelectionChange={jest.fn()} />);
+    store.set(fastingDawoodAnchorAtom, 0);
+    await renderCard(selection({ mode: 'dawood' }));
 
-    expect(screen.getAllByText(t('fasting.mode.everyDay')).length).toBeGreaterThan(1);
+    // No anchor: the cycle starts on the first day whose suhoor is ahead - the 2nd,
+    // seventeen and a half hours away at noon on the 1st; the next on day is the 4th
+    expect(screen.getByText(t('fasting.next.hours', { n: 18 }))).toBeOnTheScreen();
+    expect(
+      screen.getByText(
+        t('fasting.next.withWeekday', {
+          distance: t('fasting.next.days', { n: 3 }),
+          weekday: t('calendar.weekdayShort.6'),
+        })
+      )
+    ).toBeOnTheScreen();
   });
 
-  it('hides the preview when the next fast falls on a day with no row', async () => {
-    // Noon on the 4th: the next white day is the 30th, which the installed window does not carry
-    const now = london('2026-04-04', '12:00');
+  it('keeps the section to the window the timetable carries', async () => {
+    // Noon on the 10th: the installed window ends there, so no trigger is ahead
+    const now = london('2026-04-10', '12:00');
     jest.useFakeTimers({ now });
     installAprilDays();
     setSequence(ScheduleType.Standard, now);
     setSequence(ScheduleType.Extra, now);
-    await render(<FastingCard selection={selection({ mode: 'whiteDays' })} onSelectionChange={jest.fn()} />);
 
-    expect(screen.queryByText(new RegExp(t('fasting.preview.next')))).toBeNull();
-    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
-  });
+    await renderCard(selection({ mode: 'muhammad' }));
 
-  it('previews from today when dawood is selected with no stored cycle', async () => {
-    showAprilWindow();
-    store.set(fastingDawoodAnchorAtom, 0);
-    await render(<FastingCard selection={selection({ mode: 'dawood' })} onSelectionChange={jest.fn()} />);
-
-    expect(screen.getByText(`${t('fasting.preview.today')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
-    expect(screen.getByText(`${t('fasting.preview.tomorrow')}: ${t('fasting.state.on')}`)).toBeOnTheScreen();
-  });
-
-  it('passes over a day with no row when the dawood preview resolves its cycle', async () => {
-    // The anchor sits after the 2nd's suhoor and the 3rd carries no Fajr, so the cycle starts on the 4th
-    showAprilWindow('2026-04-03');
-    store.set(fastingDawoodAnchorAtom, london('2026-04-02', '15:00').getTime());
-    await render(<FastingCard selection={selection({ mode: 'dawood' })} onSelectionChange={jest.fn()} />);
-
-    expect(screen.getByText(`${t('fasting.preview.tomorrow')}: ${t('fasting.state.off')}`)).toBeOnTheScreen();
-    expect(screen.getAllByText(t('fasting.mode.dawood')).length).toBeGreaterThan(1);
+    expect(screen.getByText(t('fasting.next.label'))).toBeOnTheScreen();
+    expect(screen.queryByText(/05:30/)).toBeNull();
   });
 });

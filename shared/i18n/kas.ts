@@ -5,11 +5,9 @@
  * notes and the unattested slots closed by the loan rule (plan T-453 decision 5),
  * gated by shared/__tests__/catalogGates.test.ts. Prose digits are Latin per R12.
  */
-
 import type { PrayerId } from '@/shared/constants';
 
 import type { Catalog } from './en';
-
 export const kas = {
   'prayer.fajr': 'صُبُح',
   'prayer.sunrise': 'طلوع آفتاب',
@@ -101,20 +99,21 @@ export const kas = {
   'fasting.card.title': 'روزن روچھن ہُند دِن',
   'fasting.card.hint': 'سحری ہُندئے اطلاع چھو صرف تمئن دِنن کئ کئرئوان',
   'fasting.mode.everyDay': 'ہر دِہاں',
-  'fasting.mode.everyDayHint': 'ہر دِہاں سحری',
   'fasting.mode.muhammad': 'ژٔنٛدِروار تہٕ بروٕسوار',
-  'fasting.mode.muhammadHint': 'تِم دِن یِمہ نبی صأبئس اکھ شرمئ خواہش چھ',
   'fasting.mode.dawood': 'درمِیانئ دِن',
-  'fasting.mode.dawoodHint': 'اکھ دِہاں روچھھ، اکھ نہٕ، داؤد ہُند روچھھ',
   'fasting.mode.whiteDays': 'سفید دِن',
-  'fasting.mode.whiteDaysHint': 'ہر ہجری ریتھئ ہُند 13، 14 تہٕ 15، یَیلہِ چاند چھُ پور',
-  'fasting.addOn.whiteDays': 'سفید دِن شأمل کئریو',
-  'fasting.preview.next': 'بئیذ سحری',
-  'fasting.preview.today': 'اَمہِس',
-  'fasting.preview.tomorrow': 'پئٹھئمئس',
-  'fasting.state.on': 'روچھھئس مَنٛز',
-  'fasting.state.off': 'روچھھئس مَنٛز چھُنہٕ',
-  'fasting.badge.ramadan': 'رمضان',
+  'fasting.description.everyDay': 'Suhoor scheduled for every day',
+  'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+  'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+  'fasting.description.whiteDays': 'Suhoor scheduled for 13th, 14th and 15th of each Hijri month only',
+  'fasting.description.muhammadWhiteDays': 'Suhoor scheduled for Mondays and Thursdays and the three white days',
+  'fasting.description.dawoodWhiteDays': 'Suhoor scheduled for one day on, one day off and the three white days',
+  'fasting.next.label': 'NEXT SUHOOR',
+  'fasting.next.hour': 'in {n} hour',
+  'fasting.next.hours': 'in {n} hours',
+  'fasting.next.day': 'in {n} day',
+  'fasting.next.days': 'in {n} days',
+  'fasting.next.withWeekday': '{distance} {weekday}',
   'whatsNew.title.fasting': 'روچھن ہُند دِن',
   'whatsNew.body.fasting': 'سحری ہُندئے اطلاع ہیکئو تُہندئن روچھنئ دِنئن پیٹھئ کئریتھ',
   'alert.reminder': 'ریمائنڈر {n}',
@@ -244,7 +243,6 @@ export const kas = {
   'calendar.hijri.11': 'ذولقعدہ',
   'calendar.hijri.12': 'ذولحِجّہ',
 } as const satisfies Catalog;
-
 /**
  * Prayer labels resolved from the catalog's own members, so display never re-authors a name
  * and a label cannot drift from its catalog entry

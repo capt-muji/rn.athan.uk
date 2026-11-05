@@ -8,11 +8,9 @@
  * (measured by explicit codepoint in both weights, plan T-454 decision 4), so bug
  * rides the LATIN record. Prose digits are Latin.
  */
-
 import type { PrayerId } from '@/shared/constants';
 
 import type { Catalog } from './en';
-
 export const bug = {
   'prayer.fajr': "Subu'",
   'prayer.sunrise': 'Mata allo',
@@ -105,20 +103,21 @@ export const bug = {
   'fasting.card.title': 'Ura puasa',
   'fasting.card.hint': 'Kabaraka Sahur pura ri wettutero ri ura iya',
   'fasting.mode.everyDay': 'Uro-uro esso',
-  'fasting.mode.everyDayHint': 'Sahur uro-uro esso',
   'fasting.mode.muhammad': 'Senin na Kamis',
-  'fasting.mode.muhammadHint': 'Ura iya tau Nabi gaga pappuasai',
   'fasting.mode.dawood': 'Sibawa ura',
-  'fasting.mode.dawoodHint': 'Sesso puasa,esso deka,puasa Dawuk',
   'fasting.mode.whiteDays': 'Ura puti',
-  'fasting.mode.whiteDaysHint': 'Essolo 13, 14 na 15 ri bulang sadiak Hijriah, rilakenna nalebbiri',
-  'fasting.addOn.whiteDays': 'Palettei ura puti',
-  'fasting.preview.next': 'Sahur makkedai',
-  'fasting.preview.today': 'Ero',
-  'fasting.preview.tomorrow': 'Esok',
-  'fasting.state.on': 'appuasa',
-  'fasting.state.off': 'tena appuasa',
-  'fasting.badge.ramadan': 'Ramadhan',
+  'fasting.description.everyDay': 'Suhoor scheduled for every day',
+  'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+  'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+  'fasting.description.whiteDays': 'Suhoor scheduled for 13th, 14th and 15th of each Hijri month only',
+  'fasting.description.muhammadWhiteDays': 'Suhoor scheduled for Mondays and Thursdays and the three white days',
+  'fasting.description.dawoodWhiteDays': 'Suhoor scheduled for one day on, one day off and the three white days',
+  'fasting.next.label': 'NEXT SUHOOR',
+  'fasting.next.hour': 'in {n} hour',
+  'fasting.next.hours': 'in {n} hours',
+  'fasting.next.day': 'in {n} day',
+  'fasting.next.days': 'in {n} days',
+  'fasting.next.withWeekday': '{distance} {weekday}',
   'whatsNew.title.fasting': 'Ura puasa',
   'whatsNew.body.fasting': 'Kabaraka Sahur narekko ri ura puasamu',
   'alert.reminder': 'Pengingat {n}',
@@ -247,7 +246,6 @@ export const bug = {
   'calendar.hijri.11': 'Zulkaidah',
   'calendar.hijri.12': 'Zulhijah',
 } as const satisfies Catalog;
-
 /**
  * Prayer labels resolved from the catalog's own members, so display never re-authors a name
  * and a label cannot drift from its catalog entry

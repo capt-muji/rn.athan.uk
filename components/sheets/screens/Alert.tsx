@@ -5,13 +5,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import { IconView } from '@/components/ui';
 import { useNotification } from '@/hooks/useNotification';
 import { COLORS, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { applyFastingTap } from '@/shared/fastingSelection';
 import { prayerLabel, t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { deferPastNextPaint } from '@/shared/nextPaint';
 import {
   type AlertMenuState,
   AlertType,
-  type FastingSelection,
+  type FastingMode,
   Icon,
   type PerReminderSlot,
   REMINDER_SLOTS,
@@ -199,8 +200,13 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
       }));
     }, []);
 
-    const handleFastingSelect = useCallback((next: FastingSelection) => {
-      setDraft((current) => ({ ...current, fasting: next }));
+    const handleFastingSelect = useCallback((mode: FastingMode) => {
+      // The rule runs against the live draft inside the update, so a settled
+      // write from an older render composes with every tap before it
+      setDraft((current) => ({
+        ...current,
+        fasting: applyFastingTap(current.fasting, mode),
+      }));
     }, []);
 
     const handleAlertSelect = useCallback(

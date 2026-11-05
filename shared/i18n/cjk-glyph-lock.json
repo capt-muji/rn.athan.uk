@@ -1,8 +1,8 @@
 {
   "_comment": "The character set the ko subset pair carries (plan T-419 decision 8, the Traditional pair retired with its catalog by plan T-537, the zh-Hans and ja pairs dropped for the OS system-font fallback by plan T-538's owner-ruled C3): the subset is cut with fontTools over the closed string set - every character of the ko catalog, its native-strings.json row, its widget-statics.json row, its endonym, and the What's New keys that resolve through the catalog - and this lock is generated from the subset's own cmap, so shared/__tests__/cjkSubset.test.ts names any byte the subset misses or the strings drop. files binds the committed binaries by sha256 so a re-cut shipping stale TTFs cannot pass the gate. Regenerate from the repo root with the full statics fetched OUTSIDE the repository (decision 8): node scripts/cjk-subset.mjs <dir>.",
-  "ko": " !%(),-./0123456789:?AHNOSTacdefghilmnoprstuv{}가각간갈감개게겠겨격경계고과국권그근금기까깨꺼께끊끔끕나날남내네높는늘니님다단닫달답대더던데도돌동되될됨됩두둘둡뒤드든듣들따때떤뜨뜰라람래러런렇레력로료루륨르른를름릅리림립릿링마막만많말맞매멈메며면명모목무묶문므미민및바밖반받발밤방배백버번벗벨변보본볼부북분불브블비사산상새색생샤서선설세션소송수쉬스습시식신실아안않알앱약어언업없엇었에여열엽영예오옵와완왈요용우운울움웁웃원월위유으은을음응의이인일입있자작잔잠장재저적전절접정제젯져조종주줄중즈즐지직진집짧째쪽찍찾천쳐초최추출춥취치칠침카켜켠켭크키타태택탭터테토트특티파패페평포표플필하한할함합해했행향허현홈화확환후흐흰히",
+  "ko": " !%(),-./0123456789:?ACDEFHMNORSTUXabcdefghijklmnoprstuvwy{}가각간갈감개게겠경계고과국권그근금기까깨꺼끊끔끕나남내네높는늘니다단닫답대더던데도돌되될됨됩두둘둡뒤드든듣들따때떤뜨라람래러런렇레력로료륨르른를릅리림립릿링마막만많말맞매멈메며면명모목무묶문므미민및바밖반받발밤방배백버번벗벨변보본볼부북분불브블비사산상새색생샤서선설세션소송수스습시식신실아안않알앱약어언업없엇었에여열엽영예오옵와완왈요용우운울움웁웃원월위유으은을음응의이인일입있자작잔잠장재저적전절접정제젯져조종주줄중즈지직진집짧째쪽찍찾천쳐초최추출춥취치칠침카켜켠켭크키타태택탭터테토트특티파패페평표플필하한할합해했행향허현홈화확환후흐히",
   "files": {
-    "NotoSansKR-Subset-Regular.ttf": "6c0490d7ae1be9fd2e46c53a5e6b0fd9b3cc6de9df4835ad814c99b6f49d0e58",
-    "NotoSansKR-Subset-Medium.ttf": "ef6d5528082664b4fa0a1c8baf382c32b778510a16d878fa3614e2c897b64431"
+    "NotoSansKR-Subset-Regular.ttf": "fe821af5167eaefd1dc13f4f0dc6d61438dbd7205096f866e0894911a1146ae6",
+    "NotoSansKR-Subset-Medium.ttf": "f7be4844481d3fe1f95f2e6291be76bfa8a14bd69f51e611345cc53fd7d8fdcb"
   }
 }

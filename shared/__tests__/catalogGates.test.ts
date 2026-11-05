@@ -218,6 +218,30 @@ const BRAND_REQUIRED = new Set(['widget.refresh', 'widget.refreshLead']);
 // across languages
 const echoExempt = (key: string) => key === 'day.location' || key.startsWith('calendar.');
 
+// The fasting card's keys awaiting the localization ticket T-629 (owner order
+// 2026-11-05): the design build lands their English copy in every catalog and
+// the app ships English-only there until that wave translates them, so the
+// echo and RTL gates pass them by name. The wave drops this set.
+const PENDING_T629 = new Set([
+  'fasting.card.title',
+  'fasting.card.hint',
+  'fasting.mode.muhammad',
+  'fasting.mode.dawood',
+  'fasting.mode.whiteDays',
+  'fasting.description.everyDay',
+  'fasting.description.muhammad',
+  'fasting.description.dawood',
+  'fasting.description.whiteDays',
+  'fasting.description.muhammadWhiteDays',
+  'fasting.description.dawoodWhiteDays',
+  'fasting.next.label',
+  'fasting.next.hour',
+  'fasting.next.hours',
+  'fasting.next.day',
+  'fasting.next.days',
+  'fasting.next.withWeekday',
+]);
+
 const tokensOf = (value: string) =>
   [...value.matchAll(TOKEN)]
     .map((match) => match[1])
@@ -601,7 +625,6 @@ describe('the landed catalogs against the R2 gates', () => {
   });
 
   it('carries the wave-ruled day word and close verb in their own voice (T-615 audit, 2026-11-05)', () => {
-    expect(CATALOGS.bm['fasting.mode.everyDayHint']).toBe('Suhuri don o don');
     expect(CATALOGS.bcl['sheet.closeToSave']).toBe('Isara tanganing mapreserbar');
     expect(CATALOGS.bcl['overlay.closeDetails']).toBe('Isara an mga detalye kan pagpangadyi');
   });
@@ -624,6 +647,7 @@ describe('the landed catalogs against the R2 gates', () => {
       const english = en[key as keyof typeof en];
       if (
         !echoExempt(key) &&
+        !PENDING_T629.has(key) &&
         plain(value).includes(plain(english)) &&
         plain(english).length >= 6 &&
         !PRAYER_NAME_KEYS.includes(key)
@@ -639,7 +663,9 @@ describe('the landed catalogs against the R2 gates', () => {
     for (const [key, value] of Object.entries(CATALOGS[loc])) {
       if (
         // The widget answer's platform labels stay Latin in every locale
-        key === 'help.a.widgets'
+        key === 'help.a.widgets' ||
+        // T-629's pending keys carry their English copy in every locale
+        PENDING_T629.has(key)
       ) {
         continue;
       }

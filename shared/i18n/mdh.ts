@@ -12,11 +12,9 @@
  * the script the language is written in today. Prose digits are Latin per
  * R12, and the calendar loanwords echo en legitimately.
  */
-
 import type { PrayerId } from '@/shared/constants';
 
 import type { Catalog } from './en';
-
 export const mdh = {
   'prayer.fajr': 'Subuh',
   'prayer.sunrise': 'Syuruk',
@@ -110,20 +108,21 @@ export const mdh = {
   'fasting.card.title': 'Mga adlaw sa pagpuasa',
   'fasting.card.hint': 'Mga abiso sa Sahur magagana lamen sa mga adlaw ini',
   'fasting.mode.everyDay': 'Tagda adlaw',
-  'fasting.mode.everyDayHint': 'Sahur tagda adlaw',
   'fasting.mode.muhammad': 'Lunes ambi Huwebes',
-  'fasting.mode.muhammadHint': 'Mga adlaw a ringganaka ko Propeta so puasa',
   'fasting.mode.dawood': 'Magbantad nga adlaw',
-  'fasting.mode.dawoodHint': 'Sawalay ka adlaw puasa, sawalay dili, so puasa ko Dawud',
   'fasting.mode.whiteDays': 'Mga maputi ka adlaw',
-  'fasting.mode.whiteDaysHint': 'Ika-13, ika-14 ambi ika-15 ka kada bowan sa Hijri, sa pagbuno ko bulan',
-  'fasting.addOn.whiteDays': 'Kaambit so mga maputi ka adlaw',
-  'fasting.preview.next': 'Pemburas mapia Sahur',
-  'fasting.preview.today': 'Pupita',
-  'fasting.preview.tomorrow': 'Isabuko',
-  'fasting.state.on': 'pumapuasa',
-  'fasting.state.off': 'di pumapuasa',
-  'fasting.badge.ramadan': 'Ramadhan',
+  'fasting.description.everyDay': 'Suhoor scheduled for every day',
+  'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+  'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+  'fasting.description.whiteDays': 'Suhoor scheduled for 13th, 14th and 15th of each Hijri month only',
+  'fasting.description.muhammadWhiteDays': 'Suhoor scheduled for Mondays and Thursdays and the three white days',
+  'fasting.description.dawoodWhiteDays': 'Suhoor scheduled for one day on, one day off and the three white days',
+  'fasting.next.label': 'NEXT SUHOOR',
+  'fasting.next.hour': 'in {n} hour',
+  'fasting.next.hours': 'in {n} hours',
+  'fasting.next.day': 'in {n} day',
+  'fasting.next.days': 'in {n} days',
+  'fasting.next.withWeekday': '{distance} {weekday}',
   'whatsNew.title.fasting': 'Mga adlaw sa pagpuasa',
   'whatsNew.body.fasting': 'Mga abiso sa Sahur makapagtolnos ko mga adlaw mu sa pagpuasa',
   'alert.reminder': 'Paalala {n}',
@@ -254,7 +253,6 @@ export const mdh = {
   'calendar.hijri.11': 'Zulkaedah',
   'calendar.hijri.12': 'Zulhijjah',
 } as const satisfies Catalog;
-
 /**
  * Prayer labels resolved from the catalog's own members, so display never re-authors a name
  * and a label cannot drift from its catalog entry
