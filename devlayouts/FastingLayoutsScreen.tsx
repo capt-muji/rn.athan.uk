@@ -45,6 +45,9 @@ import { R9_CATALOG_LENGTH, r9DesignFromParam, r9Seed } from './r9/seed';
 import { r10TakeFor } from './r10/model';
 import { R10SheetBody } from './r10/R10SheetBody';
 import { R10_TAKES_LENGTH, r10DesignFromParam, r10SeedParam } from './r10/seed';
+import { r11TakeFor } from './r11/model';
+import { R11SheetBody } from './r11/R11SheetBody';
+import { R11_TAKES_LENGTH, r11DesignFromParam, r11SeedParam } from './r11/seed';
 import { VARIANTS } from './registry';
 import { harnessIndexFromParam } from './variantParam';
 
@@ -60,6 +63,7 @@ const R7_LABEL = 'R7';
 const R8_LABEL = 'R8';
 const R9_LABEL = 'R9';
 const R10_LABEL = 'R10';
+const R11_LABEL = 'R11';
 
 /** The deep link's r4 design number; null outside 1-5 means variant mode */
 const r4DesignFromParam = (value: string | string[] | undefined): R4Design | null => {
@@ -121,6 +125,7 @@ export function FastingLayoutsScreen() {
     r8?: string | string[];
     r9?: string | string[];
     r10?: string | string[];
+    r11?: string | string[];
     state?: string | string[];
     bare?: string | string[];
   }>();
@@ -132,6 +137,7 @@ export function FastingLayoutsScreen() {
   const r8Design = r8DesignFromParam(params.r8);
   const r9Design = r9DesignFromParam(params.r9);
   const r10Design = r10DesignFromParam(params.r10);
+  const r11Design = r11DesignFromParam(params.r11);
   const bare = firstParam(params.bare) === '1';
   const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
@@ -159,22 +165,24 @@ export function FastingLayoutsScreen() {
   // the round-4 through round-7 sheet bodies seed from the state param
   const seed: R2Selection = useMemo(
     () =>
-      r10Design
-        ? r10SeedParam(params.state)
-        : r9Design
-          ? r9Seed(params.state)
-          : r8Design
-            ? r8Seed(params.state)
-            : r7Design
-              ? r7Seed(params.state)
-              : r6Design
-                ? r6Seed(params.state)
-                : r5Design
-                  ? r5Seed(params.state)
-                  : r4Design
-                    ? r4Seed(params.state)
-                    : r2Seed(variant.open ?? 'every'),
-    [r10Design, r9Design, r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
+      r11Design
+        ? r11SeedParam(params.state)
+        : r10Design
+          ? r10SeedParam(params.state)
+          : r9Design
+            ? r9Seed(params.state)
+            : r8Design
+              ? r8Seed(params.state)
+              : r7Design
+                ? r7Seed(params.state)
+                : r6Design
+                  ? r6Seed(params.state)
+                  : r5Design
+                    ? r5Seed(params.state)
+                    : r4Design
+                      ? r4Seed(params.state)
+                      : r2Seed(variant.open ?? 'every'),
+    [r11Design, r10Design, r9Design, r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
   );
 
   const goPrev = () => setIndex((current) => Math.max(0, current - 1));
@@ -188,7 +196,12 @@ export function FastingLayoutsScreen() {
       icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
       enableDynamicSizing
       contentCap={0.85}>
-      {r10Design ? (
+      {r11Design ? (
+        <>
+          <R11SheetBody take={r11TakeFor(r11Design)} seed={seed} bare={bare} />
+          {!bare && <R11Strip design={r11Design} />}
+        </>
+      ) : r10Design ? (
         <>
           <R10SheetBody take={r10TakeFor(r10Design)} seed={seed} bare={bare} />
           {!bare && <R10Strip design={r10Design} />}
@@ -485,6 +498,39 @@ function R10Strip({ design }: { readonly design: number }) {
 }
 
 const R10_TOTAL = R10_TAKES_LENGTH;
+
+/** The round-11 strip: design navigation only, hidden from bare frames */
+function R11Strip({ design }: { readonly design: number }) {
+  const router = useRouter();
+
+  const move = (next: number) => {
+    router.setParams({ r11: String(next) });
+  };
+
+  return (
+    <View style={styles.strip}>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design - 1)}
+        disabled={design === 1}
+        accessibilityLabel={PREV_LABEL}>
+        <Text style={[styles.stripButtonText, design === 1 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+      </Pressable>
+      <Text style={styles.stripLabel}>{`${R11_LABEL} ${design} / ${R11_TOTAL}`}</Text>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design + 1)}
+        disabled={design === R11_TOTAL}
+        accessibilityLabel={NEXT_LABEL}>
+        <Text style={[styles.stripButtonText, design === R11_TOTAL ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const R11_TOTAL = R11_TAKES_LENGTH;
 
 const ty = typographyFor(currentLocaleId());
 
