@@ -600,6 +600,12 @@ describe('the landed catalogs against the R2 gates', () => {
     expect(CATALOGS.so['prayer.midnight']).toBe('Saqda dhexe');
   });
 
+  it('carries the wave-ruled day word and close verb in their own voice (T-615 audit, 2026-11-05)', () => {
+    expect(CATALOGS.bm['fasting.mode.everyDayHint']).toBe('Suhuri don o don');
+    expect(CATALOGS.bcl['sheet.closeToSave']).toBe('Isara tanganing mapreserbar');
+    expect(CATALOGS.bcl['overlay.closeDetails']).toBe('Isara an mga detalye kan pagpangadyi');
+  });
+
   it.each(LOCALES)('%s stays inside the length budget', (loc) => {
     const failures: string[] = [];
     for (const [key, value] of Object.entries(CATALOGS[loc])) {

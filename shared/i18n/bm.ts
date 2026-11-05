@@ -101,7 +101,7 @@ export const bm = {
   'fasting.card.title': 'Kɔji lanw',
   'fasting.card.hint': 'Suhuri kunnafoniw bɛ kɛ tuma ninw la dɔrɔn',
   'fasting.mode.everyDay': 'Don o don',
-  'fasting.mode.everyDayHint': 'Suhuri lon o lon',
+  'fasting.mode.everyDayHint': 'Suhuri don o don',
   'fasting.mode.muhammad': 'Ntɛnɛ ni Alamisa',
   'fasting.mode.muhammadHint': 'Donw minnu na Nabi tun b’a fɛ ka u kɔji',
   'fasting.mode.dawood': 'Dɔɔnin dɔɔnin donw',
