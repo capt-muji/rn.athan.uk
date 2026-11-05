@@ -14,7 +14,6 @@ import { Pressable } from 'react-native-gesture-handler';
 import { LabeledToggle } from '@/components/sheets/parts';
 import { COLORS, HIT_SLOP, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { FASTING_MODES } from '@/shared/fasting';
-import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import type { FastingMode } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
@@ -317,10 +316,10 @@ const VariantWheelTwoSection = () => {
               disabled={!addOnOffered}
               accessibilityRole={RADIO_ROLE}
               accessibilityState={{ selected: on }}
-              accessibilityLabel={option.value ? t('fasting.addOn.whiteDays') : EXCLUDE_WHITE_DAYS}
+              accessibilityLabel={option.value ? 'Include the white days' : EXCLUDE_WHITE_DAYS}
               onPress={() => setSelection({ mode: selection.mode, whiteDaysAddOn: option.value })}>
               <Text style={[v17.rowLabel, on ? v17.rowLabelOn : null]}>
-                {option.value ? t('fasting.addOn.whiteDays') : EXCLUDE_WHITE_DAYS}
+                {option.value ? 'Include the white days' : EXCLUDE_WHITE_DAYS}
               </Text>
             </Pressable>
           );
@@ -436,7 +435,7 @@ const VariantPillTabsPanel = () => {
           <Text style={v20.hint}>{modeHint(selection.mode)}</Text>
           {addOnOffered && (
             <LabeledToggle
-              label={t('fasting.addOn.whiteDays')}
+              label={'Include the white days'}
               value={selection.whiteDaysAddOn}
               onToggle={(next) => setSelection({ mode: selection.mode, whiteDaysAddOn: next })}
             />

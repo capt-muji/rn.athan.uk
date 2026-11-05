@@ -25,11 +25,13 @@ const MODE_LABEL_KEYS: Record<FastingMode, TranslationKey> = {
   whiteDays: 'fasting.mode.whiteDays',
 };
 
-const MODE_HINT_KEYS: Record<FastingMode, TranslationKey> = {
-  everyDay: 'fasting.mode.everyDayHint',
-  muhammad: 'fasting.mode.muhammadHint',
-  dawood: 'fasting.mode.dawoodHint',
-  whiteDays: 'fasting.mode.whiteDaysHint',
+// The hints left the catalog with the old card (T-623 step 4); the harness
+// renders the English it explored with until its deep clean retires it
+const MODE_HINTS: Record<FastingMode, string> = {
+  everyDay: 'Sahur every day',
+  muhammad: 'The days the Prophet was keen to fast',
+  dawood: 'One day on, one day off, the fast of Dawood',
+  whiteDays: 'The 13th, 14th and 15th of each Hijri month, when the moon is full',
 };
 
 /** The selection every variant opens with: the add-on surfaces where a structure offers it */
@@ -41,7 +43,7 @@ export const useFastingDraft = (): [FastingSelection, (next: FastingSelection) =
 
 export const modeLabel = (mode: FastingMode): string => t(MODE_LABEL_KEYS[mode]);
 
-export const modeHint = (mode: FastingMode): string => t(MODE_HINT_KEYS[mode]);
+export const modeHint = (mode: FastingMode): string => MODE_HINTS[mode];
 
 /** The picker's accessibility role, a code value for the string scanner */
 export const RADIO_ROLE = 'radio';

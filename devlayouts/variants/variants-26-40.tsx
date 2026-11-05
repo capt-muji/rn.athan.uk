@@ -211,7 +211,7 @@ const VariantWhiteDaysCalendarStrip = () => {
       </View>
       {addOnOffered(selection.mode) && (
         <Chip
-          label={t('fasting.addOn.whiteDays')}
+          label={'Include the white days'}
           on={selection.whiteDaysAddOn}
           onPress={() => setSelection({ mode: selection.mode, whiteDaysAddOn: !selection.whiteDaysAddOn })}
         />
@@ -440,7 +440,7 @@ const VariantRhythmThenExtras = () => {
       {addOnOffered(selection.mode) && (
         <View style={v35.extrasRow}>
           <Chip
-            label={t('fasting.addOn.whiteDays')}
+            label={'Include the white days'}
             on={selection.whiteDaysAddOn}
             onPress={() => setSelection({ mode: selection.mode, whiteDaysAddOn: !selection.whiteDaysAddOn })}
           />
@@ -498,7 +498,7 @@ const VariantAccordionSections = () => {
       {addOnOffered(selection.mode) && (
         <View style={v36.section}>
           <LabeledToggle
-            label={t('fasting.addOn.whiteDays')}
+            label={'Include the white days'}
             value={selection.whiteDaysAddOn}
             onToggle={(next) => setSelection({ mode: selection.mode, whiteDaysAddOn: next })}
           />
@@ -531,7 +531,7 @@ const VariantContextualChipRows = () => {
       {addOnOffered(selection.mode) && (
         <View style={v37.contextRow}>
           <Chip
-            label={t('fasting.addOn.whiteDays')}
+            label={'Include the white days'}
             on={selection.whiteDaysAddOn}
             onPress={() => setSelection({ mode: selection.mode, whiteDaysAddOn: !selection.whiteDaysAddOn })}
           />

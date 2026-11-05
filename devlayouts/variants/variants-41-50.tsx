@@ -12,7 +12,6 @@ import { Pressable } from 'react-native-gesture-handler';
 
 import { COLORS, HIT_SLOP, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import { FASTING_MODES } from '@/shared/fasting';
-import { t } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { typographyFor } from '@/shared/typography';
 
@@ -222,9 +221,7 @@ const VariantSplitListStates = () => {
             accessibilityLabel={modeLabel(mode)}
             onPress={() => setSelection({ mode, whiteDaysAddOn: selection.whiteDaysAddOn })}>
             <Text style={v47.label}>{modeLabel(mode)}</Text>
-            <Text style={[v47.state, on ? v47.stateOn : null]}>
-              {on ? t('fasting.state.on') : t('fasting.state.off')}
-            </Text>
+            <Text style={[v47.state, on ? v47.stateOn : null]}>{on ? 'fasting' : 'not fasting'}</Text>
           </Pressable>
         );
       })}
