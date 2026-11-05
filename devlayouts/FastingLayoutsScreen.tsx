@@ -41,7 +41,10 @@ import { r8Seed } from './r8/model';
 import { R8SheetBody } from './r8/R8SheetBody';
 import { r9RowFor } from './r9/catalog';
 import { R9SheetBody } from './r9/R9SheetBody';
-import { R9_CATALOG_LENGTH, r9DesignFromParam, r9Seed as r9StateSeed } from './r9/seed';
+import { R9_CATALOG_LENGTH, r9DesignFromParam, r9Seed } from './r9/seed';
+import { r10TakeFor } from './r10/model';
+import { R10SheetBody } from './r10/R10SheetBody';
+import { R10_TAKES_LENGTH, r10DesignFromParam, r10SeedParam } from './r10/seed';
 import { VARIANTS } from './registry';
 import { harnessIndexFromParam } from './variantParam';
 
@@ -56,6 +59,7 @@ const R6_LABEL = 'R6';
 const R7_LABEL = 'R7';
 const R8_LABEL = 'R8';
 const R9_LABEL = 'R9';
+const R10_LABEL = 'R10';
 
 /** The deep link's r4 design number; null outside 1-5 means variant mode */
 const r4DesignFromParam = (value: string | string[] | undefined): R4Design | null => {
@@ -116,6 +120,7 @@ export function FastingLayoutsScreen() {
     r7?: string | string[];
     r8?: string | string[];
     r9?: string | string[];
+    r10?: string | string[];
     state?: string | string[];
     bare?: string | string[];
   }>();
@@ -126,6 +131,7 @@ export function FastingLayoutsScreen() {
   const r7Design = r7DesignFromParam(params.r7);
   const r8Design = r8DesignFromParam(params.r8);
   const r9Design = r9DesignFromParam(params.r9);
+  const r10Design = r10DesignFromParam(params.r10);
   const bare = firstParam(params.bare) === '1';
   const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
@@ -153,20 +159,22 @@ export function FastingLayoutsScreen() {
   // the round-4 through round-7 sheet bodies seed from the state param
   const seed: R2Selection = useMemo(
     () =>
-      r9Design
-        ? r9StateSeed(params.state)
-        : r8Design
-          ? r8Seed(params.state)
-          : r7Design
-            ? r7Seed(params.state)
-            : r6Design
-              ? r6Seed(params.state)
-              : r5Design
-                ? r5Seed(params.state)
-                : r4Design
-                  ? r4Seed(params.state)
-                  : r2Seed(variant.open ?? 'every'),
-    [r9Design, r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
+      r10Design
+        ? r10SeedParam(params.state)
+        : r9Design
+          ? r9Seed(params.state)
+          : r8Design
+            ? r8Seed(params.state)
+            : r7Design
+              ? r7Seed(params.state)
+              : r6Design
+                ? r6Seed(params.state)
+                : r5Design
+                  ? r5Seed(params.state)
+                  : r4Design
+                    ? r4Seed(params.state)
+                    : r2Seed(variant.open ?? 'every'),
+    [r10Design, r9Design, r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
   );
 
   const goPrev = () => setIndex((current) => Math.max(0, current - 1));
@@ -180,7 +188,12 @@ export function FastingLayoutsScreen() {
       icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
       enableDynamicSizing
       contentCap={0.85}>
-      {r9Design ? (
+      {r10Design ? (
+        <>
+          <R10SheetBody take={r10TakeFor(r10Design)} seed={seed} bare={bare} />
+          {!bare && <R10Strip design={r10Design} />}
+        </>
+      ) : r9Design ? (
         <>
           <R9SheetBody row={r9RowFor(r9Design)} seed={seed} />
           {!bare && <R9Strip design={r9Design} />}
@@ -439,6 +452,39 @@ function R9Strip({ design }: { readonly design: number }) {
 }
 
 const R9_TOTAL = R9_CATALOG_LENGTH;
+
+/** The round-10 strip: design navigation only, hidden from bare frames */
+function R10Strip({ design }: { readonly design: number }) {
+  const router = useRouter();
+
+  const move = (next: number) => {
+    router.setParams({ r10: String(next) });
+  };
+
+  return (
+    <View style={styles.strip}>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design - 1)}
+        disabled={design === 1}
+        accessibilityLabel={PREV_LABEL}>
+        <Text style={[styles.stripButtonText, design === 1 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+      </Pressable>
+      <Text style={styles.stripLabel}>{`${R10_LABEL} ${design} / ${R10_TOTAL}`}</Text>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design + 1)}
+        disabled={design === R10_TOTAL}
+        accessibilityLabel={NEXT_LABEL}>
+        <Text style={[styles.stripButtonText, design === R10_TOTAL ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const R10_TOTAL = R10_TAKES_LENGTH;
 
 const ty = typographyFor(currentLocaleId());
 
