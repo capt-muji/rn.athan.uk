@@ -32,6 +32,12 @@ export const FASTING_DOT_BORDER = '#1B1967';
 /** The calendar cells' ring weight, one step under the bell's for the smaller circles */
 export const FASTING_CELL_RING = 1.5;
 
+/** The extras row's bell cluster: its circle size, riding the Suhoor bell's corner */
+export const FASTING_BELL_DOT = 8.5;
+
+/** The bell cluster's ring weight, the heaviest of the cluster surfaces */
+export const FASTING_BELL_RING = 2;
+
 /** How far the bordered circles overlap: forty percent into each other */
 const FASTING_RING_OVERLAP_STEP = 0.6;
 

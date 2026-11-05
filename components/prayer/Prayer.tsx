@@ -1,7 +1,7 @@
 import * as Haptics from 'expo-haptics';
 import { useAtomValue } from 'jotai';
 import { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
@@ -14,12 +14,13 @@ import { ANIMATION, COLORS, STYLES, TEXT } from '@/shared/constants';
 import { prayerLabel } from '@/shared/i18n';
 import { currentLocaleId } from '@/shared/i18n/locale';
 import { getCascadeDelay } from '@/shared/prayer';
-import type { ScheduleType } from '@/shared/types';
+import { ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { getOverlayHiddenAtom, getOverlaySelectedAtom } from '@/stores/atoms/overlay';
 import { closeOverlay, openOverlay } from '@/stores/overlay';
 
 import Alert from './Alert';
+import FastingBellCluster from './FastingBellCluster';
 import Time from './Time';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
@@ -82,6 +83,10 @@ export default function Prayer({ type, index }: Props) {
   // empty pre-union name did, so no frame ever borrows another prayer's label
   const shownName = Prayer.time === '' ? '' : prayerLabel(Prayer.id);
 
+  // The Suhoor row alone carries the fasting indicator: its bell tells the whole
+  // selection at a glance, every other row's bell its own alerts only
+  const isSuhoorExtrasRow = type === ScheduleType.Extra && Prayer.id === 'suhoor';
+
   const computedNameStyle = {
     width: Prayer.ui.maxEnglishWidth + STYLES.prayer.padding.start,
   };
@@ -108,7 +113,10 @@ export default function Prayer({ type, index }: Props) {
       <Animated.View style={[styles.content, contentCutStyle]}>
         <Animated.Text style={[styles.text, styles.name, computedNameStyle, colorStyle]}>{shownName}</Animated.Text>
         <Time index={index} type={type} />
-        <Alert index={index} type={type} />
+        <View style={styles.alertSlot}>
+          <Alert index={index} type={type} />
+          {isSuhoorExtrasRow && <FastingBellCluster hidden={isHiddenByOverlay} />}
+        </View>
       </Animated.View>
     </AnimatedPressable>
   );
@@ -134,5 +142,8 @@ const styles = StyleSheet.create({
   },
   name: {
     paddingStart: STYLES.prayer.padding.start,
+  },
+  alertSlot: {
+    position: 'relative',
   },
 });

@@ -56,6 +56,10 @@ jest.mock('react-native-reanimated', () => ({
 jest.mock('expo-haptics', () => ({ impactAsync: jest.fn(), ImpactFeedbackStyle: { Medium: 'medium' } }));
 jest.mock('@/components/prayer/Alert', () => ({ __esModule: true, default: 'Alert' }));
 jest.mock('@/components/prayer/Time', () => ({ __esModule: true, default: 'Time' }));
+jest.mock('@/components/prayer/FastingBellCluster', () => ({
+  __esModule: true,
+  default: 'FastingBellCluster',
+}));
 jest.mock('@/hooks/useAnimation', () => ({
   useDerivedVeiledColor: () => ({}),
   useDerivedProgress: () => ({ value: 0 }),

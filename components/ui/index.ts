@@ -1,6 +1,8 @@
 export { default as BackgroundGradients } from './BackgroundGradients';
 export { default as ErrorScreen } from './Error';
 export {
+  FASTING_BELL_DOT,
+  FASTING_BELL_RING,
   FASTING_CELL_RING,
   FastingBiteCluster,
   FastingDot,
