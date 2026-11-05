@@ -39,6 +39,9 @@ import { R7SheetBody } from './r7/R7SheetBody';
 import type { R8Design } from './r8/FastingCardR8';
 import { r8Seed } from './r8/model';
 import { R8SheetBody } from './r8/R8SheetBody';
+import { r9RowFor } from './r9/catalog';
+import { R9SheetBody } from './r9/R9SheetBody';
+import { R9_CATALOG_LENGTH, r9DesignFromParam, r9Seed as r9StateSeed } from './r9/seed';
 import { VARIANTS } from './registry';
 import { harnessIndexFromParam } from './variantParam';
 
@@ -52,6 +55,7 @@ const R5_LABEL = 'R5';
 const R6_LABEL = 'R6';
 const R7_LABEL = 'R7';
 const R8_LABEL = 'R8';
+const R9_LABEL = 'R9';
 
 /** The deep link's r4 design number; null outside 1-5 means variant mode */
 const r4DesignFromParam = (value: string | string[] | undefined): R4Design | null => {
@@ -111,6 +115,7 @@ export function FastingLayoutsScreen() {
     r6?: string | string[];
     r7?: string | string[];
     r8?: string | string[];
+    r9?: string | string[];
     state?: string | string[];
     bare?: string | string[];
   }>();
@@ -120,6 +125,7 @@ export function FastingLayoutsScreen() {
   const r6Design = r6DesignFromParam(params.r6);
   const r7Design = r7DesignFromParam(params.r7);
   const r8Design = r8DesignFromParam(params.r8);
+  const r9Design = r9DesignFromParam(params.r9);
   const bare = firstParam(params.bare) === '1';
   const [index, setIndex] = useState(() => harnessIndexFromParam(vKey, VARIANTS.length));
   const sheetRef = useRef<BottomSheetModal | null>(null);
@@ -147,18 +153,20 @@ export function FastingLayoutsScreen() {
   // the round-4 through round-7 sheet bodies seed from the state param
   const seed: R2Selection = useMemo(
     () =>
-      r8Design
-        ? r8Seed(params.state)
-        : r7Design
-          ? r7Seed(params.state)
-          : r6Design
-            ? r6Seed(params.state)
-            : r5Design
-              ? r5Seed(params.state)
-              : r4Design
-                ? r4Seed(params.state)
-                : r2Seed(variant.open ?? 'every'),
-    [r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
+      r9Design
+        ? r9StateSeed(params.state)
+        : r8Design
+          ? r8Seed(params.state)
+          : r7Design
+            ? r7Seed(params.state)
+            : r6Design
+              ? r6Seed(params.state)
+              : r5Design
+                ? r5Seed(params.state)
+                : r4Design
+                  ? r4Seed(params.state)
+                  : r2Seed(variant.open ?? 'every'),
+    [r9Design, r8Design, r7Design, r6Design, r5Design, r4Design, params.state, variant.open]
   );
 
   const goPrev = () => setIndex((current) => Math.max(0, current - 1));
@@ -172,7 +180,12 @@ export function FastingLayoutsScreen() {
       icon={<IconView type={Icon.BELL_RING} size={16} color={SHEET_ICON_COLOR} />}
       enableDynamicSizing
       contentCap={0.85}>
-      {r8Design ? (
+      {r9Design ? (
+        <>
+          <R9SheetBody row={r9RowFor(r9Design)} seed={seed} />
+          {!bare && <R9Strip design={r9Design} />}
+        </>
+      ) : r8Design ? (
         <>
           <R8SheetBody design={r8Design} seed={seed} />
           {!bare && <R8Strip design={r8Design} />}
@@ -393,6 +406,39 @@ function R8Strip({ design }: { readonly design: R8Design }) {
     </View>
   );
 }
+
+/** The round-9 strip: design navigation only, hidden from bare frames */
+function R9Strip({ design }: { readonly design: number }) {
+  const router = useRouter();
+
+  const move = (next: number) => {
+    router.setParams({ r9: String(next) });
+  };
+
+  return (
+    <View style={styles.strip}>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design - 1)}
+        disabled={design === 1}
+        accessibilityLabel={PREV_LABEL}>
+        <Text style={[styles.stripButtonText, design === 1 ? styles.stripButtonOff : null]}>{PREV_LABEL}</Text>
+      </Pressable>
+      <Text style={styles.stripLabel}>{`${R9_LABEL} ${design} / ${R9_TOTAL}`}</Text>
+      <Pressable
+        style={styles.stripButton}
+        hitSlop={HIT_SLOP.md}
+        onPress={() => move(design + 1)}
+        disabled={design === R9_TOTAL}
+        accessibilityLabel={NEXT_LABEL}>
+        <Text style={[styles.stripButtonText, design === R9_TOTAL ? styles.stripButtonOff : null]}>{NEXT_LABEL}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const R9_TOTAL = R9_CATALOG_LENGTH;
 
 const ty = typographyFor(currentLocaleId());
 
