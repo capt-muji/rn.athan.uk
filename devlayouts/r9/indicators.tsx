@@ -18,7 +18,7 @@ import type { R9CatalogRow } from './catalog';
 import { type R9Ink, r9Ink } from './hues';
 import { MARK_DAWOOD, MARK_MUHAMMAD, MARK_WHITE, POINTER_NONE, type R9Armed, r9ArmedFor, r9JoinedMark } from './model';
 
-const BELL_X = 21; // the bell's centre inside the anchor (11 pad + 10)
+const BELL_X = 23; // the bell's centre inside the anchor (13 pad + 10)
 const BELL_RIGHT = 20; // the anchor's right padding
 const ROW_H = 57;
 
@@ -266,9 +266,9 @@ const s = StyleSheet.create({
   layer: {
     position: 'absolute',
     top: 0,
+    left: 0,
     right: 0,
-    width: 51,
-    height: ROW_H,
+    bottom: 0,
   },
   tagPill: {
     borderRadius: 999,
@@ -358,8 +358,8 @@ const dyn = {
     bottom: 6,
   } as ViewStyle,
   perModeSlot: (index: number, total: number): ViewStyle => {
-    const step = total > 2 ? 13 : 15;
-    return { position: 'absolute', top: 0, right: index * step, width: 30, height: ROW_H };
+    const step = total > 2 ? 12 : 14;
+    return { position: 'absolute', top: index * step, left: 0, right: 0, height: ROW_H };
   },
   modeDot: (ink: R9Ink, variant: MarkSpec['variant'], size: number, offset: number): ViewStyle => ({
     position: 'absolute',
@@ -386,12 +386,12 @@ const dyn = {
   }),
   cornerTri: (ink: R9Ink): ViewStyle => ({
     position: 'absolute',
-    top: ROW_H / 2 - 16,
-    right: BELL_RIGHT - 4,
-    width: 8,
-    height: 8,
+    top: ROW_H / 2 - 17,
+    right: BELL_RIGHT - 5,
+    width: 10,
+    height: 10,
     backgroundColor: ink.solid,
-    borderBottomLeftRadius: 8,
+    borderBottomLeftRadius: 10,
   }),
   counterChip: (ink: R9Ink): ViewStyle => ({
     position: 'absolute',
