@@ -281,7 +281,7 @@ describe('the calendar strip', () => {
     showAprilWindow();
     await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-    expect(screen.queryByText(t('fasting.next.label'))).toBeNull();
+    expect(screen.queryByText('NEXT SUHOOR')).toBeNull();
     expect(screen.queryByText('CALENDAR')).toBeNull();
     expect(screen.queryByText('HIJRI CALENDAR')).toBeNull();
   });
@@ -447,7 +447,7 @@ describe('the locked card', () => {
     await renderCard(passed, onSelectionChange, true);
 
     expect(screen.queryByText(t('fasting.description.muhammadWhiteDays'))).toBeNull();
-    expect(screen.queryByText(t('fasting.next.label'))).toBeNull();
+    expect(screen.queryByText('NEXT SUHOOR')).toBeNull();
     expect(screen.queryByText('31')).toBeNull();
 
     for (const mode of ['everyDay', 'muhammad', 'dawood', 'whiteDays']) {

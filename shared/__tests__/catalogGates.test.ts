@@ -234,12 +234,6 @@ const PENDING_T629 = new Set([
   'fasting.description.whiteDays',
   'fasting.description.muhammadWhiteDays',
   'fasting.description.dawoodWhiteDays',
-  'fasting.next.label',
-  'fasting.next.hour',
-  'fasting.next.hours',
-  'fasting.next.day',
-  'fasting.next.days',
-  'fasting.next.withWeekday',
 ]);
 
 const tokensOf = (value: string) =>
@@ -683,5 +677,97 @@ describe('the landed catalogs against the R2 gates', () => {
       }
     }
     expect(failures).toEqual([]);
+  });
+});
+
+/**
+ * The settled fasting card wording (T-635 ruling 2, 2026-11-06): every catalog
+ * carries the owner-ruled English on the six descriptions and the five labels,
+ * save the seven locales the language wave already translated natively - their
+ * landed values stand until T-629's wave reaches the rest - and the round's
+ * orphaned fasting.next.* suite and the never-landed fasting.calendar.* pair
+ * exist nowhere.
+ */
+describe('the settled fasting card wording (T-635 ruling 2)', () => {
+  const FASTING_KEYS = [
+    'fasting.card.title',
+    'fasting.card.hint',
+    'fasting.mode.everyDay',
+    'fasting.mode.muhammad',
+    'fasting.mode.dawood',
+    'fasting.mode.whiteDays',
+    'fasting.description.everyDay',
+    'fasting.description.muhammad',
+    'fasting.description.dawood',
+    'fasting.description.whiteDays',
+    'fasting.description.muhammadWhiteDays',
+    'fasting.description.dawoodWhiteDays',
+  ];
+
+  const SETTLED_DESCRIPTIONS: Record<string, string> = {
+    'fasting.description.everyDay': 'Suhoor scheduled for every day',
+    'fasting.description.muhammad': 'Suhoor scheduled for Mondays and Thursdays only',
+    'fasting.description.dawood': 'Suhoor scheduled for one day on, one day off',
+    'fasting.description.whiteDays': 'Suhoor scheduled for the 13, 14, 15 of each Hijri month only',
+    'fasting.description.muhammadWhiteDays':
+      'Suhoor scheduled for Mondays and Thursdays and the 13, 14, 15 of each Hijri month',
+    'fasting.description.dawoodWhiteDays':
+      'Suhoor scheduled for one day on, one day off and the 13, 14, 15 of each Hijri month',
+  };
+
+  const SETTLED_LABELS: Record<string, string> = {
+    'fasting.card.title': 'Fasting',
+    'fasting.card.hint': 'Choose the days you want to enable Suhoor for',
+    'fasting.mode.muhammad': 'Muhammad',
+    'fasting.mode.dawood': 'Dawood',
+    'fasting.mode.whiteDays': 'White days',
+  };
+
+  // The wave-translated locales (T-537, T-428, T-453): these five keys speak
+  // natively there, and the round's English wording never overwrites them
+  const NATIVE_LABEL_LOCALES = new Set(['bcl', 'bm', 'bug', 'kas', 'mdh', 'mfa', 'mrw']);
+
+  it.each(Object.keys(SHIPPED))('%s carries exactly the twelve fasting keys', (loc) => {
+    const keys = Object.keys(SHIPPED[loc]).filter((key) => key.startsWith('fasting.'));
+    expect(keys.sort()).toEqual([...FASTING_KEYS].sort());
+  });
+
+  it.each(Object.keys(SHIPPED))('%s carries the settled English on every fasting description', (loc) => {
+    const failures: string[] = [];
+    for (const [key, value] of Object.entries(SETTLED_DESCRIPTIONS)) {
+      if (SHIPPED[loc][key as keyof Catalog] !== value) {
+        failures.push(`${loc}: ${key} reads "${SHIPPED[loc][key as keyof Catalog]}"`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it.each(Object.keys(SHIPPED))('%s carries the settled English labels outside the wave-translated seven', (loc) => {
+    const failures: string[] = [];
+    for (const [key, value] of Object.entries(SETTLED_LABELS)) {
+      const read = SHIPPED[loc][key as keyof Catalog];
+      if (NATIVE_LABEL_LOCALES.has(loc)) {
+        if (typeof read !== 'string' || read.length === 0 || read === value) {
+          failures.push(`${loc}: ${key} lost its landed native label`);
+        }
+      } else if (read !== value) {
+        failures.push(`${loc}: ${key} reads "${read}"`);
+      }
+    }
+    expect(failures).toEqual([]);
+  });
+
+  it('names the every-day option natively in English', () => {
+    expect(en['fasting.mode.everyDay']).toBe('Every day');
+  });
+
+  it.each(LOCALES)('%s translates the every-day option natively', (loc) => {
+    expect(typeof CATALOGS[loc]['fasting.mode.everyDay']).toBe('string');
+    expect(CATALOGS[loc]['fasting.mode.everyDay'].length).toBeGreaterThan(0);
+  });
+
+  it.each(Object.keys(SHIPPED))('%s carries no fasting.next.* or fasting.calendar.* key', (loc) => {
+    const banned = Object.keys(SHIPPED[loc]).filter((key) => /^fasting\.(next|calendar)\./.test(key));
+    expect(banned).toEqual([]);
   });
 });
