@@ -222,6 +222,7 @@ const echoExempt = (key: string) => key === 'day.location' || key.startsWith('ca
 // 2026-11-05): the design build lands their English copy in every catalog and
 // the app ships English-only there until that wave translates them, so the
 // echo and RTL gates pass them by name. The wave drops this set.
+// T-639's two merged What's New keys ride the same order and the same set.
 const PENDING_T629 = new Set([
   'fasting.card.title',
   'fasting.card.hint',
@@ -240,6 +241,8 @@ const PENDING_T629 = new Set([
   'fasting.next.day',
   'fasting.next.days',
   'fasting.next.withWeekday',
+  'whatsNew.title.since20',
+  'whatsNew.body.since20',
 ]);
 
 const tokensOf = (value: string) =>

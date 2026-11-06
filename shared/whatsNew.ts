@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.48.38',
+  version: '2.49.0',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -185,38 +185,14 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       version: '1.29.258',
     },
     {
-      // More languages, the seventy-five-locale waves behind this build
-      titleKey: 'whatsNew.title.moreLanguages',
-      bodyKey: 'whatsNew.body.moreLanguages',
-      version: '2.41.2',
-    },
-    {
-      // The missed announcement: the feature debuted 2.11.0 (T-376) and settled into today's
-      // row at 2.11.9 (T-381), both silent. The owner ordered it announced now, so the stamp
-      // names this release - the modal gate reads stamps, not the build's own version
-      titleKey: 'whatsNew.title.checkUpdates',
-      bodyKey: 'whatsNew.body.checkUpdates',
-      version: '2.42.3',
-    },
-    {
-      // iOS only: the layouts live in the widget extension, which Android never builds
-      titleKey: 'whatsNew.title.lockLayouts',
-      bodyKey: 'whatsNew.body.lockLayouts',
-      platform: 'ios',
-      version: '2.41.2',
-    },
-    {
-      // The 12-hour default and its opt-back-in toggle (T-594): the title reuses the
-      // toggle's own name so the modal teaches the settings label
-      titleKey: 'whatsNew.title.format24',
-      bodyKey: 'whatsNew.body.format24',
-      version: '2.45.2',
-    },
-    {
-      // T-615: the title names the setting the Sahur sheet gains
-      titleKey: 'whatsNew.title.fasting',
-      bodyKey: 'whatsNew.body.fasting',
-      version: '2.48.3',
+      // T-639: every feature shipped since production 2.0 (lock screen layouts,
+      // more languages, check for updates, 24 hour format, fasting days) arrives
+      // at once for a production reader, so one merged note speaks for the whole
+      // 2.5 series - the "(iOS)" carries the lock-layouts platform fact inline
+      // because the entry itself is cross-platform and unbadged
+      titleKey: 'whatsNew.title.since20',
+      bodyKey: 'whatsNew.body.since20',
+      version: '2.5.0',
     },
   ],
 };

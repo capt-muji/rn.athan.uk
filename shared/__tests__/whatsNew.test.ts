@@ -14,7 +14,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { FEATURE_FLAGS } from '@/shared/flags';
-import { t, tIn } from '@/shared/i18n';
+import { type TranslationKey, t, tIn } from '@/shared/i18n';
 import * as loader from '@/shared/i18n/loader';
 import { LOCALE_IDS, setActiveLocale } from '@/shared/i18n/locale';
 import { ms } from '@/shared/i18n/ms';
@@ -87,6 +87,89 @@ describe("the retired 2.43 language-wave row (T-541, the owner's read)", () => {
     }
     const sources = readFileSync(join(__dirname, '..', 'i18n', 'en.ts'), 'utf8');
     expect(sources).not.toContain('languageWave');
+  });
+});
+
+/** The ten per-version keys the 2.5 roll-up retired from every catalog */
+const ROLLED_UP_KEYS = [
+  'whatsNew.title.moreLanguages',
+  'whatsNew.body.moreLanguages',
+  'whatsNew.title.checkUpdates',
+  'whatsNew.body.checkUpdates',
+  'whatsNew.title.lockLayouts',
+  'whatsNew.body.lockLayouts',
+  'whatsNew.title.format24',
+  'whatsNew.body.format24',
+  'whatsNew.title.fasting',
+  'whatsNew.body.fasting',
+] as const;
+
+/**
+ * The merged entry's two keys, whose translations ride T-629 (owner order
+ * 2026-11-05): every catalog carries the English copy until that wave lands,
+ * the translation-equality lock below skips exactly these two, and the
+ * self-check beside it demands they still read their en source - so the day
+ * T-629's translations arrive, the self-check reddens and takes the deferral
+ * out with the set. The set can neither grow silently nor outlive T-629.
+ */
+const DEFERRED_TRANSLATION = new Set<TranslationKey>(['whatsNew.title.since20', 'whatsNew.body.since20']);
+
+describe('the 2.5 roll-up (T-639: every post-2.0 entry merges under one 2.5 note)', () => {
+  const items = WHATS_NEW?.items ?? [];
+  const post20 = items.filter((entry) => compareVersions(entry.version ?? '0', '2.0.37') > 0);
+
+  it('archives exactly one post-2.0 item, the merged note stamped 2.5.0', () => {
+    expect(post20).toHaveLength(1);
+    expect(post20[0]?.titleKey).toBe('whatsNew.title.since20');
+    expect(post20[0]?.bodyKey).toBe('whatsNew.body.since20');
+    expect(post20[0]?.version).toBe('2.5.0');
+    expect(post20[0]?.platform).toBeUndefined();
+    expect(post20[0]?.flags).toBeUndefined();
+  });
+
+  it('resolves the merged body with every feature the roll-up carries', () => {
+    const body = t('whatsNew.body.since20');
+    for (const name of [
+      'Lock screen layouts',
+      'more languages',
+      'check for updates',
+      '24 hour format',
+      'fasting days',
+    ]) {
+      expect(body).toContain(name);
+    }
+  });
+
+  it('keeps the 2.0.37 language entry first, its keys and stamp unchanged', () => {
+    expect(items[0]).toEqual({
+      titleKey: 'whatsNew.title.language',
+      bodyKey: 'whatsNew.body.language',
+      version: '2.0.37',
+    });
+  });
+
+  it('archives no item under the five rolled-up key pairs', () => {
+    for (const entry of items) {
+      expect(ROLLED_UP_KEYS).not.toContain(entry.titleKey);
+      expect(ROLLED_UP_KEYS).not.toContain(entry.bodyKey);
+    }
+  });
+
+  it('ships the ten rolled-up keys in no catalog', () => {
+    for (const locale of LOCALE_IDS) {
+      const catalog = readFileSync(join(__dirname, '..', 'i18n', `${locale}.ts`), 'utf8');
+      for (const key of ROLLED_UP_KEYS) {
+        expect(catalog).not.toContain(key);
+      }
+    }
+  });
+
+  it('pops for the production reader upgrading from 2.0.37 to the 2.5 release', () => {
+    expect(shouldShowWhatsNew('2.5.0', '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  });
+
+  it('pins the deferred-translation set to exactly the two merged keys (T-629 drops it whole)', () => {
+    expect([...DEFERRED_TRANSLATION].sort()).toEqual(['whatsNew.body.since20', 'whatsNew.title.since20']);
   });
 });
 
@@ -262,14 +345,23 @@ describe('WHATS_NEW under every translated locale', () => {
   it.each(TRANSLATED_LOCALES)('%s carries no archive copy equal to its en source', (loc) => {
     const failures: string[] = [];
     for (const entry of content.items) {
-      if (tIn(loc, entry.titleKey) === tIn('en', entry.titleKey)) {
+      if (!DEFERRED_TRANSLATION.has(entry.titleKey) && tIn(loc, entry.titleKey) === tIn('en', entry.titleKey)) {
         failures.push(`${loc}: ${entry.titleKey} still reads its en title`);
       }
-      if (tIn(loc, entry.bodyKey) === tIn('en', entry.bodyKey)) {
+      if (!DEFERRED_TRANSLATION.has(entry.bodyKey) && tIn(loc, entry.bodyKey) === tIn('en', entry.bodyKey)) {
         failures.push(`${loc}: ${entry.bodyKey} still reads its en body`);
       }
     }
     expect(failures).toEqual([]);
+  });
+
+  // The deferral's premise, read from the other side: the two merged keys ride
+  // their en copy in every locale until T-629 translates them, so a translation
+  // landing ahead of the set's removal reddens here and forces the deferral out
+  it.each(TRANSLATED_LOCALES)('%s reads the en source on the T-629-deferred keys until that wave lands', (loc) => {
+    for (const key of DEFERRED_TRANSLATION) {
+      expect(tIn(loc, key)).toBe(tIn('en', key));
+    }
   });
 
   it.each(TRANSLATED_LOCALES)('%s keeps every archived title and body inside the limits', (loc) => {
