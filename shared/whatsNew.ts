@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.49.0',
+  version: '2.49.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -188,8 +188,10 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       // T-639: every feature shipped since production 2.0 (lock screen layouts,
       // more languages, check for updates, 24 hour format, fasting days) arrives
       // at once for a production reader, so one merged note speaks for the whole
-      // 2.5 series - the "(iOS)" carries the lock-layouts platform fact inline
-      // because the entry itself is cross-platform and unbadged
+      // 2.5 series (owner order 2026-11-06, the one sanctioned exception to the
+      // true-version restamp: the stamp names the release the set ships in) -
+      // the "(iOS)" carries the lock-layouts platform fact inline because the
+      // entry itself is cross-platform and unbadged
       titleKey: 'whatsNew.title.since20',
       bodyKey: 'whatsNew.body.since20',
       version: '2.5.0',

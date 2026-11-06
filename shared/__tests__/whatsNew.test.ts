@@ -168,6 +168,10 @@ describe('the 2.5 roll-up (T-639: every post-2.0 entry merges under one 2.5 note
     expect(shouldShowWhatsNew('2.5.0', '2.0.37', currentVisibleWhatsNew())).toBe(true);
   });
 
+  it('pops for the same reader on the build this tree serves, not only the 2.5 store build', () => {
+    expect(shouldShowWhatsNew(INSTALLED_VERSION, '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  });
+
   it('pins the deferred-translation set to exactly the two merged keys (T-629 drops it whole)', () => {
     expect([...DEFERRED_TRANSLATION].sort()).toEqual(['whatsNew.body.since20', 'whatsNew.title.since20']);
   });
