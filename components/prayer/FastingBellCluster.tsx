@@ -1,13 +1,14 @@
 /**
  * The extras row's fasting indicator (design 427): the bordered identity
- * cluster riding the Suhoor row's alerts bell - the armed identities in
- * regimen order, the white circle right of its partner and on top, every
- * circle ringed in the deep background shade hugging the fill - drawn only
- * while the selection is not Every day. The cluster reads the committed
- * selection atoms, so a change made on the sheet's card lands here the
- * moment the sheet commits. The layer's anchor is logical (start 25): in a
- * mirrored locale the cluster rides the bell's mirrored corner, the same
- * corner of the row it decorates.
+ * cluster riding the Suhoor row's alerts bell - the armed identities drawn
+ * white-first, so the regimen circle sits on top at the right and the white
+ * circle beneath it at the left, a lone identity in the right slot (owner
+ * ruling 2026-11-06) - every circle ringed in the deep background shade
+ * hugging the fill - drawn only while the selection is not Every day. The
+ * cluster reads the committed selection atoms, so a change made on the
+ * sheet's card lands here the moment the sheet commits. The layer's anchor
+ * is logical (start 25): in a mirrored locale the cluster rides the bell's
+ * mirrored corner, the same corner of the row it decorates.
  */
 
 import { useAtomValue } from 'jotai';
@@ -33,15 +34,19 @@ export default function FastingBellCluster({ hidden }: { readonly hidden: boolea
   const mode = useAtomValue(fastingModeAtom);
   const whiteDaysAddOn = useAtomValue(fastingWhiteDaysAtom);
 
-  const identities = armedFastingIdentities(sanitizeFastingSelection({ mode: validFastingMode(mode), whiteDaysAddOn }));
+  // Drawn white-first (draw order left to right), so the regimen lands on top
+  // at the right and the white days beneath at the left (owner ruling 2026-11-06)
+  const stacked = armedFastingIdentities(
+    sanitizeFastingSelection({ mode: validFastingMode(mode), whiteDaysAddOn })
+  ).reverse();
 
   const veilStyle = useDerivedOpacity(hidden ? 0 : 1, { duration: ANIMATION.duration });
 
-  if (!hasFastingIdentities(identities)) return null;
+  if (!hasFastingIdentities(stacked)) return null;
 
   return (
     <Animated.View testID={'fasting-bell-cluster'} style={[styles.layer, veilStyle]} pointerEvents={'none'}>
-      <FastingRingCluster identities={identities} size={FASTING_BELL_DOT} ring={FASTING_BELL_RING} />
+      <FastingRingCluster identities={stacked} size={FASTING_BELL_DOT} ring={FASTING_BELL_RING} />
     </Animated.View>
   );
 }

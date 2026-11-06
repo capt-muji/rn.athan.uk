@@ -167,32 +167,3 @@ export const dawoodActivates = (previous: FastingActivation, next: FastingActiva
 /** A stored mode string, or the default when it names no mode */
 export const validFastingMode = (value: string): FastingMode =>
   (FASTING_MODES as readonly string[]).includes(value) ? (value as FastingMode) : DEFAULT_FASTING_MODE;
-
-/** How far the preview may walk before giving up on finding armed days */
-export const UPCOMING_SEARCH_LIMIT_DAYS = 400;
-
-/** One armed day of the preview */
-export interface UpcomingFastingDay {
-  date: string;
-  verdict: FastingDay;
-}
-
-/** The next armed days from a date (inclusive), in calendar order */
-export const upcomingFastingDays = (
-  fromDate: string,
-  count: number,
-  snapshot: FastingSettings,
-  suhoorFor: SuhoorInstantFor
-): UpcomingFastingDay[] => {
-  const verdictFor = fastingEvaluator(snapshot, suhoorFor);
-  const days: UpcomingFastingDay[] = [];
-
-  let date = fromDate;
-  for (let step = 0; step < UPCOMING_SEARCH_LIMIT_DAYS && days.length < count; step += 1) {
-    const verdict = verdictFor(date);
-    if (verdict.arms) days.push({ date, verdict });
-    date = TimeUtils.addDaysToDateString(date, 1);
-  }
-
-  return days;
-};

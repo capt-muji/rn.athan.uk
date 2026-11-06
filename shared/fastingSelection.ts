@@ -12,7 +12,7 @@
 import type { TranslationKey } from '@/shared/i18n';
 import type { FastingMode, FastingSelection } from '@/shared/types';
 
-/** The four options in sheet order: Every day, Muhammad, Dawood, Three white days */
+/** The four options in sheet order: Every day, Muhammad, Dawood, White days */
 export type FastingOption = FastingMode;
 
 /** Any stored pair read onto the six sets: the add-on only rides the two regimens */

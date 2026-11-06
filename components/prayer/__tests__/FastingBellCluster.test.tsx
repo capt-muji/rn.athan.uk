@@ -2,7 +2,9 @@
  * The Suhoor row's fasting indicator: the bordered identity cluster rides the
  * extras Suhoor row's bell only while the selection is not Every day, follows
  * the committed selection atoms live, reads a stored pair off the six sets
- * first, and sinks with the row it rides through the overlay veil.
+ * first, and sinks with the row it rides through the overlay veil. The circles
+ * are SVG, drawn white-first: the white circle beneath at the left, the
+ * regimen on top at the right, a lone identity in the pair's right slot.
  */
 
 import { act, render, screen } from '@testing-library/react-native';
@@ -23,18 +25,39 @@ const DUHA = 3;
 const store = getDefaultStore();
 
 const GREEN = 'rgba(74, 222, 128, 1)';
-const CYAN = 'rgba(34, 211, 238, 1)';
+const DAWOOD = 'rgba(255, 222, 5, 1)';
 const WHITE = 'rgba(255, 255, 255, 1)';
+// #1B1967, the rings' deep background shade, as RNSVG resolves it at render
+const RING = 'rgba(27, 25, 103, 1)';
 
 type FlatStyle = Record<string, unknown>;
 
 const flat = (node: TestInstance): FlatStyle => (StyleSheet.flatten(node.props.style) ?? {}) as FlatStyle;
 
-/** The bordered circles in render order: fill, ring weight, ring color, size */
-const ringDots = (root: TestInstance) =>
-  root.queryAll((node) => flat(node).borderWidth !== undefined).map((node) => flat(node));
+interface RingDotProps {
+  fill: string | { payload: number };
+  r: number;
+  stroke: string | { payload: number };
+  strokeWidth: number;
+}
 
-/** The overlap wrappers' left offsets, in render order (the later circle is on top) */
+/** A color prop as the app's own string: RNSVG resolves it into an ARGB payload at render */
+const colorOf = (value: string | { payload: number }): string => {
+  if (typeof value === 'string') return value;
+  const argb = value.payload >>> 0;
+  return `rgba(${(argb >>> 16) & 255}, ${(argb >>> 8) & 255}, ${argb & 255}, ${((argb >>> 24) & 255) / 255})`;
+};
+
+/** The bordered circles in draw order: fill, radius, ring color, ring weight */
+const circles = (root: TestInstance) =>
+  root
+    .queryAll((node) => node.type === 'RNSVGCircle')
+    .map((node) => {
+      const props = node.props as RingDotProps;
+      return { ...props, fill: colorOf(props.fill), stroke: colorOf(props.stroke) };
+    });
+
+/** The overlap wrappers' left offsets, in draw order (the later circle is on top) */
 const ringLefts = (root: TestInstance) =>
   root
     .queryAll((node) => flat(node).position === 'absolute' && flat(node).top === undefined)
@@ -66,30 +89,41 @@ afterEach(() => {
 });
 
 describe('the extras Suhoor row under a regimen selection', () => {
-  it('draws the armed identities bordered, the white circle right and drawn last', async () => {
+  it('draws the identities white-first: white beneath at the left, the regimen on top at the right', async () => {
     await arm('muhammad', true);
     await renderSuhoorRow();
 
-    const dots = ringDots(cluster());
     // The harness-approved anchor: 25 from the row's start, 10 down, in the bell's own box
     expect(cluster()).toHaveStyle({ position: 'absolute', top: 10, start: 25 });
-    expect(dots.map((style) => style.backgroundColor)).toEqual([GREEN, WHITE]);
-    for (const style of dots) {
-      expect(style.borderWidth).toBe(2);
-      expect(style.borderColor).toBe('#1B1967');
-      expect(style.width).toBe(8.5);
-      expect(style.height).toBe(8.5);
+    const dots = circles(cluster());
+    expect(dots.map((dot) => dot.fill)).toEqual([WHITE, GREEN]);
+    for (const dot of dots) {
+      // The ring straddles the path, so the outer edge lands on 8.5
+      expect(dot.r).toBe(3.5);
+      expect(dot.stroke).toBe(RING);
+      expect(dot.strokeWidth).toBe(1.5);
     }
+    expect(
+      cluster()
+        .queryAll((node) => node.type === 'RNSVGSvgView')
+        .map((node) => node.props.width)
+    ).toEqual([8.5, 8.5]);
     // Forty percent into each other: the second circle sits 8.5 * 0.6 to the right
     expect(ringLefts(cluster())).toEqual([0, 5.1]);
   });
 
-  it('draws one circle for a lone regimen, no partner to overlap', async () => {
+  it("draws one circle for a lone regimen, in the pair's own right slot", async () => {
     await arm('dawood', false);
     await renderSuhoorRow();
 
-    expect(ringDots(cluster()).map((style) => style.backgroundColor)).toEqual([CYAN]);
-    expect(ringLefts(cluster())).toEqual([]);
+    const dots = circles(cluster());
+    expect(dots.map((dot) => dot.fill)).toEqual([DAWOOD]);
+    expect(dots[0]).toMatchObject({ r: 3.5, stroke: RING, strokeWidth: 1.5 });
+    expect(ringLefts(cluster())).toEqual([5.1]);
+    // The lone circle keeps the pair's footprint, so the bell's corner never moves
+    const wrappers = cluster().queryAll((node) => flat(node).width === 13.6);
+    expect(wrappers).toHaveLength(1);
+    expect(flat(wrappers[0]).height).toBe(8.5);
   });
 });
 
@@ -122,10 +156,10 @@ describe('the committed selection flowing onto the row', () => {
     expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();
 
     await arm('muhammad', true);
-    expect(ringDots(cluster()).map((style) => style.backgroundColor)).toEqual([GREEN, WHITE]);
+    expect(circles(cluster()).map((dot) => dot.fill)).toEqual([WHITE, GREEN]);
 
     await arm('dawood', false);
-    expect(ringDots(cluster()).map((style) => style.backgroundColor)).toEqual([CYAN]);
+    expect(circles(cluster()).map((dot) => dot.fill)).toEqual([DAWOOD]);
 
     await arm('everyDay', false);
     expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();

@@ -856,6 +856,8 @@ describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00'
 
   it('lands a fasting mode change on its own at close', async () => {
     showLondonDay('2026-09-11', '14:00');
+    // The card locks beside an Off athan, so the draft flow runs beside an armed one
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Silent);
     getDefaultStore().set(fastingModeAtom, 'everyDay');
     openSuhoorSheet();
 
@@ -871,6 +873,7 @@ describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00'
 
   it('composes two rapid fasting taps onto the live draft, dropping neither', async () => {
     showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Silent);
     getDefaultStore().set(fastingModeAtom, 'everyDay');
     openSuhoorSheet();
 
@@ -900,5 +903,32 @@ describe('the alert sheet for the Suhoor row, Friday 11 September 2026 at 14:00'
 
     expect(getPrayerAlertType(ScheduleType.Extra, SUHOOR)).toBe(AlertType.Silent);
     expect(getDefaultStore().get(fastingModeAtom)).toBe('whiteDays');
+  });
+
+  it('locks the fasting card beside an Off athan, and close keeps the stored selection', async () => {
+    showLondonDay('2026-09-11', '14:00');
+    setPrayerAlertType(ScheduleType.Extra, SUHOOR, AlertType.Off);
+    getDefaultStore().set(fastingModeAtom, 'muhammad');
+    getDefaultStore().set(fastingWhiteDaysAtom, false);
+    openSuhoorSheet();
+
+    await render(<AlertSheet />);
+    await settle();
+
+    // The locked card keeps its rows but hides its note and its strip
+    expect(screen.getByText(t('fasting.card.title'))).toBeOnTheScreen();
+    expect(screen.queryByText(t('fasting.description.muhammad'))).toBeNull();
+    expect(screen.queryByText('10')).toBeNull();
+
+    // Neither the switch nor the row it names lands anything
+    await fireEvent.press(screen.getByRole('switch', { name: t('fasting.mode.everyDay') }));
+    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.dawood'))[0]);
+    await settle();
+
+    await closeSheet();
+    await settle();
+
+    expect(getDefaultStore().get(fastingModeAtom)).toBe('muhammad');
+    expect(getDefaultStore().get(fastingWhiteDaysAtom)).toBe(false);
   });
 });
