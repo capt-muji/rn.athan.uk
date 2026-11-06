@@ -63,7 +63,7 @@ export interface FastingCalendarDay {
 /** How many days the card's strip carries */
 export const FASTING_CALENDAR_DAYS = 10;
 
-/** The next `count` days from `now`'s day, today first, each with its verdict */
+/** The next `count` days from the given instant's day, that day first, each with its verdict */
 export const fastingCalendarDays = (
   settings: FastingSettings,
   now: Date,
