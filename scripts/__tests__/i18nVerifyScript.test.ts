@@ -1687,4 +1687,36 @@ describe('the command line flow', () => {
     const report = await verify.run(['--locales', 'ar'], { ...withoutHome, homedir: () => SCRATCH });
     expect(report.written).toContain(join(SCRATCH, 'athan-i18n-verify', 'index.html'));
   });
+
+  it('scopes the rows to --keys (owner order 2026-11-07: a wave verifies only the keys it touched)', async () => {
+    let calls = 0;
+    const counting: FetchFn = async (url) => {
+      calls += 1;
+      return fetchOk(url);
+    };
+    const deps = baseDeps(counting);
+    const report = await verify.run(
+      ['--locales', 'ar,en', '--keys', 'fasting.card.title,whatsNew.body.fasting', '--out', join(SCRATCH, 'cli-keys')],
+      deps
+    );
+    expect(report.ok).toBe(true);
+    const artifact = JSON.parse(readFileSync(join(SCRATCH, 'cli-keys', 'ar.json'), 'utf8'));
+    expect(artifact.rowCount).toBe(2);
+    expect(artifact.rows.map((row: { key: string }) => row.key)).toEqual([
+      'fasting.card.title',
+      'whatsNew.body.fasting',
+    ]);
+    expect(calls).toBe(3);
+    const reference = JSON.parse(readFileSync(join(SCRATCH, 'cli-keys', 'en.json'), 'utf8'));
+    expect(reference.rowCount).toBe(2);
+  });
+
+  it('refuses a --keys entry that names no catalog key', async () => {
+    await expect(
+      verify.run(
+        ['--locales', 'ar', '--keys', 'fasting.card.title,nope.key', '--out', join(SCRATCH, 'cli-keys-bad')],
+        baseDeps(fetchOk)
+      )
+    ).rejects.toThrow('--keys');
+  });
 });

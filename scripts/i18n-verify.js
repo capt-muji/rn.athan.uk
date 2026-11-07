@@ -9,7 +9,11 @@
  * slot two sits empty - engine "pending" - until phase two adds the second site.
  *
  *   node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume]
- *                               [--pace ms] --waves | --all | --fill ar,so
+ *                               [--keys k1,k2] [--pace ms] --waves | --all | --fill ar,so
+ *
+ * --keys scopes every locale's rows (and the English reference page) to the named
+ * keys only - the targeted wave mode (owner order 2026-11-07): a wave verifies the
+ * keys it touched, never the whole catalog.
  *
  * The verdict color reads at a glance; rows the engine refuses carry the judge
  * LLM's rendering in one cell marked engine:llm, never a site's rendering. Pages
@@ -828,8 +832,12 @@ const runLocale = async (locale, opts) => {
   const { en, catalog, outDir, fetch, sleep, now, resumeRows } = opts;
   const deps = { fetch, sleep, pace: opts.pace };
   // Rows come from the English key set; a locale missing a key yields fewer rows,
-  // and the shortfall fails the run against the English count
-  const keys = orderedKeys(en).filter((key) => catalog[key] !== undefined);
+  // and the shortfall fails the run against the English count. A targeted run
+  // (--keys, owner order 2026-11-07) scopes the rows to the named keys only: a
+  // wave verifies what it touched, never the whole catalog.
+  const keys = orderedKeys(en)
+    .filter((key) => catalog[key] !== undefined)
+    .filter((key) => opts.onlyKeys === undefined || opts.onlyKeys.includes(key));
   const probeText = catalog[PRAYER_KEYS[0]] ?? en[PRAYER_KEYS[0]];
   const live = opts.liveEngines ?? (await preFlight(SITE_ENGINES, locale, probeText, deps));
 
@@ -902,7 +910,10 @@ const runLocale = async (locale, opts) => {
 };
 
 /** The English reference page's rows: the key and the English string, nothing else */
-const referenceRowsOf = (en) => orderedKeys(en).map((key) => ({ key, en: en[key] }));
+const referenceRowsOf = (en, onlyKeys) =>
+  orderedKeys(en)
+    .filter((key) => onlyKeys === undefined || onlyKeys.includes(key))
+    .map((key) => ({ key, en: en[key] }));
 
 // --------------------------------------------------------------------------------------
 // The pages (owner order two: modern, simple, human-friendly, colored)
@@ -1167,7 +1178,7 @@ const renderIndexHtml = (summaries) => {
 
 const usageError = (message) =>
   new Error(
-    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
+    `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--keys k1,k2] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
   );
 
 const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
@@ -1378,6 +1389,7 @@ const run = async (argv, deps = {}) => {
   const ruleFlag = flag('--rule');
   const phaseFlag = flag('--phase');
   const paceFlag = flag('--pace');
+  const keysFlag = flag('--keys');
   const waves = argv.includes('--waves');
   const all = argv.includes('--all');
   const resume = argv.includes('--resume');
@@ -1417,6 +1429,16 @@ const run = async (argv, deps = {}) => {
   if (unknown.length > 0) {
     throw usageError(`unknown locale ${unknown.join(', ')} (not in shared/languageNames.ts)`);
   }
+  const onlyKeys =
+    keysFlag === undefined
+      ? undefined
+      : keysFlag
+          .split(',')
+          .map((key) => key.trim())
+          .filter(Boolean);
+  if (onlyKeys !== undefined && onlyKeys.length === 0) {
+    throw usageError(`--keys must name at least one key, got ${keysFlag}`);
+  }
 
   const log = deps.log ?? ((line) => process.stdout.write(`${line}\n`));
   const outDir = outFlag ?? defaultOutDir(deps);
@@ -1436,7 +1458,13 @@ const run = async (argv, deps = {}) => {
     });
 
   const en = await readCatalogFile('en');
-  const expectedCount = Object.keys(en).length;
+  if (onlyKeys !== undefined) {
+    const unknownKeys = onlyKeys.filter((key) => en[key] === undefined);
+    if (unknownKeys.length > 0) {
+      throw usageError(`unknown --keys entry ${unknownKeys.join(', ')} (not in shared/i18n/en.ts)`);
+    }
+  }
+  const expectedCount = onlyKeys !== undefined ? onlyKeys.length : Object.keys(en).length;
   const written = [];
   const summaries = [];
   const shortfalls = [];
@@ -1444,7 +1472,7 @@ const run = async (argv, deps = {}) => {
 
   if (locales.includes('en')) {
     const label = languageLabel('en', names);
-    const rows = referenceRowsOf(en);
+    const rows = referenceRowsOf(en, onlyKeys);
     mkdirSync(outDir, { recursive: true });
     const htmlPath = join(outDir, 'en.html');
     const jsonPath = join(outDir, 'en.json');
@@ -1481,6 +1509,7 @@ const run = async (argv, deps = {}) => {
       label: languageLabel(locale, names),
       phase,
       rtl,
+      ...(onlyKeys !== undefined ? { onlyKeys } : {}),
       ...(pace > 0 ? { pace } : {}),
     });
     written.push(...result.files);
