@@ -206,7 +206,7 @@ export const qu = {
   'channel.reminder': '{n} min qhipa {name} yuyachiy',
   'whatsNew.title.language': 'Simi',
   'whatsNew.body.language': 'Wak simikunapa yanapayta churayku',
-  'whatsNew.title.lockLayouts': 'Wichqana qawasqa rantiykuna',
+  'whatsNew.title.lockLayouts': 'Musuq churanakuna wichqana',
   'whatsNew.body.lockLayouts': "Musuq churanakuna pantalla wichq'ana widgetkunapaq",
   'whatsNew.title.moreLanguages': 'Wak simikuna',
   'whatsNew.body.moreLanguages': 'Wak simikunapa yanapayta churayku',

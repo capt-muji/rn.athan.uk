@@ -101,7 +101,7 @@ export const zhHans = {
   'fasting.mode.everyDay': '每天',
   'fasting.mode.muhammad': '穆罕默德',
   'fasting.mode.dawood': '达乌德',
-  'fasting.mode.whiteDays': '白日子',
+  'fasting.mode.whiteDays': '白色的日子',
   'fasting.description.everyDay': '已为每天安排封斋饭',
   'fasting.description.muhammad': '封斋饭仅安排在周一和周四',
   'fasting.description.dawood': '封斋饭按隔天封斋安排',
