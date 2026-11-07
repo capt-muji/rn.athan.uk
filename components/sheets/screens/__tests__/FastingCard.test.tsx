@@ -500,7 +500,7 @@ describe('the locked card', () => {
       return style.width === 14 && style.height === 7;
     });
     expect(dotSlots).toHaveLength(4);
-    for (const slot of dotSlots) expect(flat(slot).opacity).toBe(0.12);
+    for (const slot of dotSlots) expect(flat(slot).opacity).toBe(0.05);
 
     for (const host of screen.getAllByRole('switch')) {
       expect(flat(host.parent!)).toMatchObject({ opacity: 0.4 });

@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
     color: '#122246',
   },
   dimDots: {
-    opacity: 0.12,
+    opacity: 0.05,
   },
   switchVeil: {
     opacity: 0.4,
