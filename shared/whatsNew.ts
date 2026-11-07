@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.50.1',
+  version: '2.50.3',
   items: [
     {
       titleKey: 'whatsNew.title.language',
@@ -185,16 +185,41 @@ export const WHATS_NEW: WhatsNewArchiveRelease | null = {
       version: '1.29.258',
     },
     {
-      // T-639: every feature shipped since production 2.0 (lock screen layouts,
-      // more languages, check for updates, 24 hour format, fasting days) arrives
-      // at once for a production reader, so one merged note speaks for the whole
-      // 2.50 series (owner orders 2026-11-06 and 2026-11-07, the restamp
-      // naming the tag, the one sanctioned exception to the true-version
-      // restamp: the stamp names the release the set ships in) - the "(iOS)"
-      // carries the lock-layouts platform fact inline because the entry itself
-      // is cross-platform and unbadged
-      titleKey: 'whatsNew.title.since20',
-      bodyKey: 'whatsNew.body.since20',
+      // T-639, the corrected shape (owner order 2026-11-07): every feature
+      // shipped since production 2.0 arrives at once for a production reader,
+      // so all five ride ONE 2.50 group - but each keeps its own title and its
+      // own description as separate rows, in the owner's order (lock screen
+      // layouts, more languages, check for updates, 24 hour format, fasting
+      // days). The shared 2.50.0 stamp is the owner's, the one sanctioned
+      // exception to the T-297 true-version restamp: the stamp names the
+      // release the whole set ships in, not each feature's true history
+      // (2.41.2, 2.42.3, 2.45.2, 2.48.3) - the group names real releases
+      // everywhere else
+      titleKey: 'whatsNew.title.lockLayouts',
+      bodyKey: 'whatsNew.body.lockLayouts',
+      // iOS only: the layouts live in the widget extension, which Android never builds
+      platform: 'ios',
+      version: '2.50.0',
+    },
+    {
+      titleKey: 'whatsNew.title.moreLanguages',
+      bodyKey: 'whatsNew.body.moreLanguages',
+      version: '2.50.0',
+    },
+    {
+      titleKey: 'whatsNew.title.checkUpdates',
+      bodyKey: 'whatsNew.body.checkUpdates',
+      version: '2.50.0',
+    },
+    {
+      // The title reuses the toggle's own name so the modal teaches the settings label
+      titleKey: 'whatsNew.title.format24',
+      bodyKey: 'whatsNew.body.format24',
+      version: '2.50.0',
+    },
+    {
+      titleKey: 'whatsNew.title.fasting',
+      bodyKey: 'whatsNew.body.fasting',
       version: '2.50.0',
     },
   ],
