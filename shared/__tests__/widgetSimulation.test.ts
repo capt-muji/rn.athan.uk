@@ -397,7 +397,7 @@ describe('virtual week model test', () => {
 /**
  * Winter extras clock times (see minutesToRecord): Midnight 23:52 sits the
  * PREVIOUS calendar evening while belonging to the raw day (the creation
- * rule for night prayers with hours >= 12); Last Third 02:15, Suhoor 05:55,
+ * rule for night prayers with hours >= 12); Last Third 02:15, Sahur 05:55,
  * Duha 08:10 land on the raw day; Istijaba 16:00 exists only on Fridays
  * (2026-10-23 and 2026-10-30 inside the span).
  */
@@ -679,20 +679,20 @@ describe('fully readable real sequences', () => {
    * proven byte-identical to the previous pins before re-golding.
    */
   const REAL_YEAR_TIMELINES: [string, string][] = [
-    ['2024-01-10', '9f12f3ad4d46aadd34ef2fe773b84d0c35ec4937b1987de81f1553032fe9e82d'],
-    ['2024-02-20', '730352309d8e5323b42fed365cd2ddb964e18cb61418e6a12c5e280ca8c7e2bb'],
+    ['2024-01-10', 'f4ea4e4fbee2726770e0d93ebed4a82c487841046802e1da61f2cc319d123e54'],
+    ['2024-02-20', '29e4959858f87c433877bfc613f8cddf5c76b1bfc2cafcfc342f78ca694161c5'],
     // Across the spring clock change (31 March)
-    ['2024-03-24', 'c4f8f05fc3616fc77550ede168e025929f32cd925afac769ab8dd04993187183'],
-    ['2024-04-15', 'bee192cb83c824d6196aab1b48528e0123ccb6f2c0cc380f9d08cef90d4077f6'],
-    ['2024-05-06', '20ccfe30bb4b2ded82ad2e4bcc48999d83b9684f39146c0248a77ad402d06a74'],
-    ['2024-06-14', '625f4976c789e09e334c02f9f75ee9283e07b0522b32e1475b13f3b238d0d713'],
-    ['2024-07-01', 'b0a1780f6fb82d76dc467afc8ea4413a78aff40cea40be906a42910c3fd83448'],
-    ['2024-08-12', '3e68094b865141ef9120083675bc4cb13382095da73c9d39df228359416715ee'],
-    ['2024-09-02', '21560ba59f8b81c9ac5eadfa7fd65076ad90dbd4fd36183eb82ec046eeb05cdd'],
+    ['2024-03-24', 'a4dec9f5dba14d4a6418ecee196bd5066b77693d9acbb97f75e16444ff0d6905'],
+    ['2024-04-15', '86423f72e259d1b4be4d4b5a373c1f19c682e23aa5e86ef6172c416ace0a4221'],
+    ['2024-05-06', '66ccdb34589a573c58c601c01b77bde7e1243898fe1256698376c8c126302941'],
+    ['2024-06-14', '726eafb9043ebea9ecd2b3d8e83e0fc98f435181f37c849d9a7a8af43ae58ce8'],
+    ['2024-07-01', 'd814a37915db898b0241f4a6f4ba086d8bcb66e91353d4a10e2ee2cd5fe19078'],
+    ['2024-08-12', 'c9748e0003f7da6d7e05930607a63ed86cb7e6ca8854768b739693a7666b7298'],
+    ['2024-09-02', 'dccac2ba68b28e218d45bcedb1ef9236c7dc1410a4a4e1ee04b03e557ea6d182'],
     // Across the autumn clock change (27 October)
-    ['2024-10-20', '3242e9b56c9f01e93f0cdc4516554ffe62da0937a218fafe0db6c3c229ee7dc0'],
-    ['2024-11-11', 'dfdb4c9dbb1c7d6dde884afd92e699bf5b4042b2b61a6f4dffd2a170894184b3'],
-    ['2024-12-15', '2e801f3330962ce891647d6741b1deb38db5fa200b494b8ce25960ac4a03d510'],
+    ['2024-10-20', '09a5035c2a7c9386e260fcef8d556a1c18fdcb280c4d9a5c46670eba3a2e641e'],
+    ['2024-11-11', '512543963a8ed62c08c5eee8ca72e44ae856fbb190a590de9a447da45828673a'],
+    ['2024-12-15', 'b1117da18d8f2a77e93d471ef2a2646bc82e8221a05fe425174423b80d6fb67c'],
   ];
 
   /** Midnight, noon, and two minutes before and exactly on every row of the push day's list */
@@ -746,7 +746,7 @@ const REAL_FAULTS: Record<string, RequiredTimeName[]> = {
   '2024-10-23': ['isha'],
   // A Friday's Magrib, which takes its Istijaba and the next night's Midnight and Last Third with it
   '2024-10-25': ['magrib'],
-  // A Fajr, which takes its Suhoor and the night leading into its day with it
+  // A Fajr, which takes its Sahur and the night leading into its day with it
   '2024-10-31': ['fajr'],
   // The span ends on unreadable rows on both lists: Isha, and Duha by way of Sunrise
   '2024-11-03': ['sunrise', 'isha'],
@@ -793,7 +793,7 @@ const SPOT_CHECKS: Record<
     // Friday's Istijaba is unreadable, so after Duha the list is Saturday's, whose night rows went with Magrib
     {
       at: ['2024-10-25', '12:00'],
-      nextName: 'Suhoor',
+      nextName: 'Sahur',
       listDay: '2024-10-26',
       activeIndex: 2,
       dashed: ['Midnight', 'Last Third'],
@@ -803,7 +803,7 @@ const SPOT_CHECKS: Record<
       nextName: 'Duha',
       listDay: '2024-10-31',
       activeIndex: 3,
-      dashed: ['Midnight', 'Last Third', 'Suhoor'],
+      dashed: ['Midnight', 'Last Third', 'Sahur'],
     },
   ],
 };

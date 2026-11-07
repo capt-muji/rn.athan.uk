@@ -100,9 +100,9 @@ const makeSequence = (): PrayerSequence => ({
 /**
  * Winter extras times for raw day X (from minutesToRecord): Midnight
  * 23:52 (hours >= 12 — the creation rules place it the PREVIOUS calendar
- * evening with belongsToDate X), Last Third 02:15, Suhoor 05:55, Duha
+ * evening with belongsToDate X), Last Third 02:15, Sahur 05:55, Duha
  * 08:10, Istijaba 16:00 (Fridays only). Chronological extras order per raw
- * day X: [Midnight X-1 23:52, Last Third X 02:15, Suhoor X 05:55, Duha X
+ * day X: [Midnight X-1 23:52, Last Third X 02:15, Sahur X 05:55, Duha X
  * 08:10, Istijaba X 16:00].
  */
 const EXTRA_TIMES = {
@@ -580,7 +580,7 @@ describe('extras schedule timeline', () => {
 
     expect(first.nextName).toBe('Midnight');
     expect(first.schedule).toBe('extra');
-    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha']);
     expect(first.activeIndex).toBe(0);
   });
 
@@ -592,7 +592,7 @@ describe('extras schedule timeline', () => {
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Istijaba');
-    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha', 'Istijaba']);
     expect(first.activeIndex).toBe(4);
   });
 
@@ -606,7 +606,7 @@ describe('extras schedule timeline', () => {
     const first = entries[0].props;
 
     expect(first.nextName).toBe('Midnight');
-    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba']);
+    expect(first.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha', 'Istijaba']);
     expect(first.activeIndex).toBe(0);
   });
 
@@ -620,7 +620,7 @@ describe('extras schedule timeline', () => {
     expect(rollEntry).toBeDefined();
     if (!rollEntry) return;
     expect(rollEntry.props.nextName).toBe('Midnight');
-    expect(rollEntry.props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(rollEntry.props.prayers?.map((row) => row.name)).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha']);
     expect(rollEntry.props.activeIndex).toBe(0);
   });
 
@@ -1134,18 +1134,18 @@ describe('unreadable rows', () => {
     expect(night[0].date.getTime()).toBe(duhaMs);
     for (const entry of night) {
       expect(entry.props).toMatchObject({
-        nextName: 'Suhoor',
+        nextName: 'Sahur',
         nextEpochMs: suhoorMs,
         dateLabel: formatDateLocalized('2026-06-17'),
         activeIndex: 2,
         prayers: [
           { name: 'Midnight', time: DASH },
           { name: 'Last Third', time: DASH },
-          { name: 'Suhoor', time: '05:55' },
+          { name: 'Sahur', time: '05:55' },
           { name: 'Duha', time: '08:10' },
         ],
       });
-      // The row above Suhoor is the unreadable Last Third, so the bar starts at the entry, not at Duha
+      // The row above Sahur is the unreadable Last Third, so the bar starts at the entry, not at Duha
       expect(entry.props.prevEpochMs).toBe(entry.date.getTime());
     }
 

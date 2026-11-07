@@ -201,7 +201,7 @@
         "note": ""
       },
       "Suhoor": {
-        "text": "Suhoor",
+        "text": "Sahur",
         "source": "existing-app-catalog",
         "confidence": "high",
         "note": "The meal, not its deadline."

@@ -192,7 +192,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
   it.each<[number, string, boolean]>([
     [0, 'Midnight', false],
     [1, 'Last Third', false],
-    [2, 'Suhoor', false],
+    [2, 'Sahur', false],
     [3, 'Duha', true],
   ])('index %i (%s) hangs above the row: %s', (index, english, above) => {
     openOnSaturday(index);
@@ -225,7 +225,7 @@ describe('the Extras card on a four-row list, where only the last row may flip a
 describe('the Extras card on a five-row Friday list, where the flip follows the extra row', () => {
   // [drawn row, the prayer, whether its card hangs above the row]
   it.each<[number, string, boolean]>([
-    [2, 'Suhoor', false],
+    [2, 'Sahur', false],
     [3, 'Duha', false],
     [4, 'Istijaba', true],
   ])('row %i (%s) hangs above: %s', (row, english, above) => {

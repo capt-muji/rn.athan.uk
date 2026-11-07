@@ -151,13 +151,13 @@ describe('computePrayerStatuses: each row on the list on screen (real London 202
       ['Fajr: passed', 'Sunrise: passed', 'Dhuhr: passed', 'Asr: passed', 'Magrib: passed', 'Isha: passed'],
     ],
     [
-      "Extras night rows unreadable from the day before's Magrib: passed, and Suhoor next",
+      "Extras night rows unreadable from the day before's Magrib: passed, and Sahur next",
       ScheduleType.Extra,
       '2026-09-11',
       { '2026-09-10': ['magrib'] },
       ['2026-09-10', '21:00'],
       '2026-09-11',
-      ['Midnight: passed', 'Last Third: passed', 'Suhoor: next', 'Duha: upcoming', 'Istijaba: upcoming'],
+      ['Midnight: passed', 'Last Third: passed', 'Sahur: next', 'Duha: upcoming', 'Istijaba: upcoming'],
     ],
     [
       'Extras unreadable Magrib while Duha is next: Istijaba dim',
@@ -166,7 +166,7 @@ describe('computePrayerStatuses: each row on the list on screen (real London 202
       { '2026-09-11': ['magrib'] },
       ['2026-09-11', '05:00'],
       '2026-09-11',
-      ['Midnight: passed', 'Last Third: passed', 'Suhoor: passed', 'Duha: next', 'Istijaba: upcoming'],
+      ['Midnight: passed', 'Last Third: passed', 'Sahur: passed', 'Duha: next', 'Istijaba: upcoming'],
     ],
     [
       "Extras after that Duha: the list moves on, and the next night's rows follow the unreadable Magrib",
@@ -175,7 +175,7 @@ describe('computePrayerStatuses: each row on the list on screen (real London 202
       { '2026-09-11': ['magrib'] },
       ['2026-09-11', '12:00'],
       '2026-09-12',
-      ['Midnight: passed', 'Last Third: passed', 'Suhoor: next', 'Duha: upcoming'],
+      ['Midnight: passed', 'Last Third: passed', 'Sahur: next', 'Duha: upcoming'],
     ],
   ])('%s', (_scenario, type, firstDay, breakage, [date, time], listDay, expected) => {
     storeLondonDays(breakage);
@@ -308,7 +308,7 @@ describe('usePrayerSequence', () => {
     expect(listStatuses(result.prayers, '2026-09-11')).toEqual([
       'Midnight: passed',
       'Last Third: passed',
-      'Suhoor: next',
+      'Sahur: next',
       'Duha: upcoming',
       'Istijaba: upcoming',
     ]);

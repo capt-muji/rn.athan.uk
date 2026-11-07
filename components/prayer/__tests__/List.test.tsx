@@ -7,7 +7,7 @@ import { getDefaultStore } from 'jotai';
 import { View } from 'react-native';
 
 import { seedCountdownBarOn, showLondonDay } from '@/__tests__/harness';
-import { EXTRA_PRAYER_TITLES, STANDARD_PRAYER_TITLES } from '@/shared/constants';
+import { PRAYER_LABELS } from '@/shared/i18n';
 import { ScheduleType } from '@/shared/types';
 import { closeAnimationEpoch, openAnimationEpoch } from '@/stores/animationEpoch';
 import { countdownBarShownAtom, getMeasurementsList } from '@/stores/ui';
@@ -38,7 +38,7 @@ const layOutList = async () => {
   await fireEvent(list, 'layout', { nativeEvent: { layout: { x: 0, y: 0, width: 366, height: 342 } } });
 };
 
-const PRAYER_NAME = new RegExp(`^(${[...STANDARD_PRAYER_TITLES, ...EXTRA_PRAYER_TITLES].join('|')})$`);
+const PRAYER_NAME = new RegExp(`^(${Object.values(PRAYER_LABELS).join('|')})$`);
 
 /** The English prayer names on screen, top to bottom */
 const namesOnScreen = () => screen.getAllByText(PRAYER_NAME).map((name) => name.children.join(''));
@@ -58,7 +58,7 @@ describe('the lists on Friday 11 September 2026 at 14:00', () => {
     [
       "Extras list, with Friday's Istijaba",
       ScheduleType.Extra,
-      ['Midnight', 'Last Third', 'Suhoor', 'Duha', 'Istijaba'],
+      ['Midnight', 'Last Third', 'Sahur', 'Duha', 'Istijaba'],
     ],
   ])("draws the day's %s", async (_list, type, names) => {
     showLondonDay('2026-09-11', '14:00');
@@ -75,7 +75,7 @@ describe('the Extras list on Saturday 12 September 2026 at 03:00', () => {
 
     await render(<List type={ScheduleType.Extra} />);
 
-    expect(namesOnScreen()).toEqual(['Midnight', 'Last Third', 'Suhoor', 'Duha']);
+    expect(namesOnScreen()).toEqual(['Midnight', 'Last Third', 'Sahur', 'Duha']);
   });
 });
 
