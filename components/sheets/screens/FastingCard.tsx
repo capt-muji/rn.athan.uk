@@ -1,16 +1,16 @@
 /**
  * The fasting card (design 427, round-11 take 2): the locked round-8 take-3
  * card values - 16 uniform padding, the indigo list fill, the separators
- * faded to alpha 0.036 halfway between rows, the sky note in three shades of
+ * faded to alpha 0.02 halfway between rows, the sky note in three shades of
  * rgb 56,189,248 with the 12.0 flush-left info glyph and centred period-free
- * copy - carrying round 11's settled parts: every mode row's identity dot
- * always on, the next-two Suhoor entries with their identity dots, and the
- * ten-day calendar as one strip of small squares below the note, today first
- * and bordered, each armed cell carrying the bordered cluster at cell scale.
- * The whole next-Suhoor section hides on Every day. The card rides the
- * sheet's own draft-and-commit: it takes the selection and hands back the tap
- * rule's landing, committing nothing itself. The trigger schedule computes
- * from the baked timetable at render, so a fresh sheet open reads fresh.
+ * copy - with every mode row's identity dot always on. The note speaks the
+ * regimen's own names in white. Below it the calendar strip, ten day-digit
+ * squares with no heading at all, yesterday first and today second, today's
+ * digit in pure white; the digits follow the Hijri calendar under the
+ * preference. The strip hides on Every day, and the note and strip both hide
+ * while the card is locked under an Off athan. The card rides the sheet's
+ * own draft-and-commit: it takes the selection and hands back the tap rule's
+ * landing, committing nothing itself.
  */
 
 import * as Haptics from 'expo-haptics';
@@ -20,22 +20,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
 
 import Toggle, { type ToggleHandle } from '@/components/sheets/parts/Toggle';
-import { FASTING_CELL_RING, FastingBiteCluster, FastingDot, FastingRingCluster } from '@/components/ui';
+import { FastingDot, FastingRingCluster } from '@/components/ui';
 import type { PrayerId } from '@/shared/constants';
-import { COLORS, HIT_SLOP, RADIUS, SPACING, TEXT } from '@/shared/constants';
+import { COLORS, HIT_SLOP, PRAYER_TIMEZONE, RADIUS, SPACING, TEXT } from '@/shared/constants';
 import {
   FASTING_CALENDAR_DAYS,
-  FASTING_ENTRY_COUNT,
   type FastingCalendarDay,
   type FastingIdentity,
-  type FastingTrigger,
   fastingCalendarDays,
   fastingIdentitiesFor,
-  fastingRelative,
   fastingSettingsFor,
-  fastingWeekdayKey,
   hasFastingIdentities,
-  nextFastingTriggers,
 } from '@/shared/fastingSchedule';
 import { fastingDescriptionKey, isNoOpFastingTap, sanitizeFastingSelection } from '@/shared/fastingSelection';
 import { type TranslationKey, t } from '@/shared/i18n';
@@ -46,9 +41,9 @@ import * as TimeUtils from '@/shared/time';
 import { type FastingMode, type FastingSelection, ScheduleType } from '@/shared/types';
 import { typographyFor } from '@/shared/typography';
 import { fastingDawoodAnchorAtom } from '@/stores/notifications';
-import { show24HourFormatAtom } from '@/stores/ui';
+import { hijriDateEnabledAtom } from '@/stores/ui';
 
-/** The four options in sheet order: Every day, Muhammad, Dawood, Three white days */
+/** The four options in sheet order: Every day, Muhammad, Dawood, White days */
 const FASTING_ROWS: readonly FastingMode[] = ['everyDay', 'muhammad', 'dawood', 'whiteDays'];
 
 const ROW_TITLE: Record<FastingMode, TranslationKey> = {
@@ -68,30 +63,33 @@ const ROW_IDENTITY: Record<FastingMode, FastingIdentity | null> = {
 
 // The locked card values (round 8 take 3) and design 427's own numbers
 const CARD_PADDING = 16;
-const DIVIDER_ALPHA = 0.036;
+const DIVIDER_ALPHA = 0.02;
 const INFO_GLYPH = 12.0;
 const ROW_PAD_V = 7;
 const DIVIDER_MARGIN = (SPACING.py - StyleSheet.hairlineWidth) / 2;
 const ROW_DOT = 7;
-const ENTRY_DOT = 8;
 const CELL_SIZE = 20;
 const CELL_GAP = 3;
-const CELL_DOT = 6.5;
-const CELL_CLUSTER_PAD = 1.5;
-const CELL_BORDER = 'rgba(148, 163, 184, 0.25)';
-const TODAY_BORDER = 'rgba(216, 234, 248, 0.4)';
+const CELL_DOT = 4.5;
+const CELL_CLUSTER_TOP = -2;
+const CELL_CLUSTER_END = 0;
+const CELL_FILL = 'rgba(99, 102, 241, 0.07)';
+const CELL_INK_FADED = '#6d89ab';
 const SUBCARD_FILL = 'rgba(99, 102, 241, 0.03)';
 const SKY_BG = 'rgba(56, 189, 248, 0.10)';
 const SKY_BORDER = 'rgba(56, 189, 248, 0.30)';
 
 // Text ink is solid (the owner's standing order): each constant is the design's
 // alpha ink flattened over its own fixed background stack - the note over the
-// card, the entries over the card, the numbers over the cell fill - so the
-// pixels the locked design pins are the pixels these paint
+// card, the numbers over the cell fill - so the pixels the locked design pins
+// are the pixels these paint
 const SKY_INK = '#33a7e0';
-const ENTRY_INK = '#c8daea';
-const ENTRY_TIME_INK = '#7e8ea7';
-const CELL_INK = '#7f8faa';
+
+// The cell's Hijri digit, the app's own umalqura conversion at the same timezone
+const HIJRI_DAY_FORMAT = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', {
+  day: 'numeric',
+  timeZone: PRAYER_TIMEZONE,
+});
 
 // The string guard reads attribute-held literals as copy; these are code values
 const SUHOOR: PrayerId = 'suhoor';
@@ -104,10 +102,12 @@ const GLYPH_TEXT_LINE = INFO_GLYPH * 0.75;
 interface FastingCardProps {
   selection: FastingSelection;
   onSelectionChange: (mode: FastingMode) => void;
+  /** The Suhoor alert's own off: the card dims like the reminder cards, every option reads off, and the stored selection stands for the return */
+  locked?: boolean;
 }
 
-export default function FastingCard({ selection, onSelectionChange }: FastingCardProps) {
-  const use24Hour = useAtomValue(show24HourFormatAtom);
+export default function FastingCard({ selection, onSelectionChange, locked = false }: FastingCardProps) {
+  const hijri = useAtomValue(hijriDateEnabledAtom);
   const anchorMs = useAtomValue(fastingDawoodAnchorAtom);
 
   const current = sanitizeFastingSelection(selection);
@@ -124,34 +124,34 @@ export default function FastingCard({ selection, onSelectionChange }: FastingCar
   const now = new Date();
   const settings = fastingSettingsFor(current, now.getTime(), anchorMs);
   const showSchedule = current.mode !== 'everyDay';
-  const triggers = showSchedule ? nextFastingTriggers(settings, now, FASTING_ENTRY_COUNT, suhoorRowAt) : [];
-  const calendar = showSchedule ? fastingCalendarDays(settings, now, FASTING_CALENDAR_DAYS, suhoorRowAt) : [];
+  // The strip walks yesterday first, today second; noon UTC is the same London
+  // calendar day year-round, so the anchor round-trips through formatDateShort
+  const startAt = new Date(`${TimeUtils.getPreviousDateString(TimeUtils.formatDateShort(now))}T12:00:00Z`);
+  const calendar = showSchedule ? fastingCalendarDays(settings, startAt, FASTING_CALENDAR_DAYS, suhoorRowAt) : [];
 
   // The sheet applies the tap rule against the live draft at write time, so a
   // second row's tap inside one animation window composes instead of dropping
   const handleTap = (mode: FastingMode) => onSelectionChange(mode);
 
   return (
-    <View style={[styles.card, { padding: CARD_PADDING }]}>
-      <Text style={styles.cardTitle}>{t('fasting.card.title')}</Text>
-      <Text style={styles.cardHint}>{t('fasting.card.hint')}</Text>
-      <RowGroup current={current} onTap={handleTap} />
-      <View style={styles.note}>
-        <View style={styles.noteRow}>
-          <InfoGlyph />
-          <Text style={styles.description}>{t(fastingDescriptionKey(current))}</Text>
+    <View style={[styles.card, { padding: CARD_PADDING }, locked && styles.cardLocked]}>
+      <Text style={[styles.cardTitle, locked && styles.textLocked]}>{t('fasting.card.title')}</Text>
+      <Text style={[styles.cardHint, locked && styles.textLocked]}>{t('fasting.card.hint')}</Text>
+      <RowGroup current={current} onTap={handleTap} locked={locked} />
+      {!locked && (
+        <View style={styles.note}>
+          <View style={styles.noteRow}>
+            <InfoGlyph />
+            <Text style={styles.description}>{t(fastingDescriptionKey(current))}</Text>
+          </View>
         </View>
-      </View>
-      {showSchedule && (
+      )}
+      {showSchedule && !locked && (
         <View style={styles.section}>
-          <Text style={styles.headText}>{t('fasting.next.label')}</Text>
-          {triggers.map((trigger) => (
-            <EntryLine key={trigger.date} trigger={trigger} now={now} use24Hour={use24Hour} />
-          ))}
           <View style={styles.calendarStrip}>
             <View style={[styles.calendar, { gap: CELL_GAP }]}>
               {calendar.map((day, index) => (
-                <Cell key={day.date} day={day} today={index === 0} />
+                <Cell key={day.date} day={day} today={index === 1} hijri={hijri} />
               ))}
             </View>
           </View>
@@ -168,19 +168,22 @@ const rowSelected = (current: FastingSelection, mode: FastingMode): boolean =>
 function RowGroup({
   current,
   onTap,
+  locked,
 }: {
   readonly current: FastingSelection;
   readonly onTap: (mode: FastingMode) => void;
+  readonly locked: boolean;
 }) {
   return (
-    <View style={styles.group}>
+    <View style={[styles.group, locked && styles.groupLocked]}>
       {FASTING_ROWS.map((mode, index) => (
         <View key={mode}>
           {index > 0 && <Divider />}
           <FastingRow
             mode={mode}
-            selected={rowSelected(current, mode)}
+            selected={rowSelected(current, mode) && !locked}
             frozen={isNoOpFastingTap(current, mode)}
+            locked={locked}
             onTap={onTap}
           />
         </View>
@@ -216,11 +219,13 @@ function FastingRow({
   mode,
   selected,
   frozen,
+  locked,
   onTap,
 }: {
   readonly mode: FastingMode;
   readonly selected: boolean;
   readonly frozen: boolean;
+  readonly locked: boolean;
   readonly onTap: (mode: FastingMode) => void;
 }) {
   const toggleRef = useRef<ToggleHandle>(null);
@@ -233,68 +238,57 @@ function FastingRow({
       hitSlop={HIT_SLOP.md}
       onPress={() => {
         // The only selected option taps to nothing: the switch never leaves its value
-        if (!frozen) toggleRef.current?.press();
+        if (!frozen && !locked) toggleRef.current?.press();
       }}
       accessibilityLabel={title}>
       <View style={styles.titleWrap}>
-        <View style={styles.dotSlot}>{identity !== null && <FastingDot identity={identity} size={ROW_DOT} />}</View>
-        <Text style={styles.rowTitle}>{title}</Text>
+        <View style={[styles.dotSlot, locked && styles.dimDots]}>
+          {identity !== null && <FastingDot identity={identity} size={ROW_DOT} />}
+        </View>
+        <Text style={[styles.rowTitle, locked && styles.rowTitleLocked]}>{title}</Text>
       </View>
-      <Toggle
-        ref={toggleRef}
-        value={selected}
-        frozen={frozen}
-        onToggle={() => onTap(mode)}
-        onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
-        accessibilityLabel={title}
-      />
+      <View style={locked ? styles.switchVeil : undefined}>
+        <Toggle
+          ref={toggleRef}
+          value={selected}
+          frozen={frozen}
+          disabled={locked}
+          onToggle={() => onTap(mode)}
+          onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
+          accessibilityLabel={title}
+        />
+      </View>
     </Pressable>
   );
 }
 
-/** One next-Suhoor entry: its identity dots, the spoken distance, the wall time */
-function EntryLine({
-  trigger,
-  now,
-  use24Hour,
+/** One calendar square: the day's digit, the bell's own dots in a hairline ring riding its top
+ * right; today speaks its digit in pure white, armed days in the note's sky blue */
+function Cell({
+  day,
+  today,
+  hijri,
 }: {
-  readonly trigger: FastingTrigger;
-  readonly now: Date;
-  readonly use24Hour: boolean;
+  readonly day: FastingCalendarDay;
+  readonly today: boolean;
+  readonly hijri: boolean;
 }) {
-  const identities = fastingIdentitiesFor(trigger.designations);
-  const distance = fastingRelative(trigger.at, now);
-
-  const spoken =
-    'hours' in distance
-      ? t(distance.hours === 1 ? 'fasting.next.hour' : 'fasting.next.hours', { n: distance.hours })
-      : t('fasting.next.withWeekday', {
-          distance: t(distance.days === 1 ? 'fasting.next.day' : 'fasting.next.days', { n: distance.days }),
-          weekday: t(fastingWeekdayKey(trigger.date)),
-        });
+  const digit = hijri
+    ? HIJRI_DAY_FORMAT.format(TimeUtils.getDayAnchor(day.date))
+    : String(Number(day.date.slice(8, 10)));
+  const stacked = fastingIdentitiesFor(day.designations).reverse();
+  const armed = hasFastingIdentities(stacked);
 
   return (
-    <View style={styles.entryRow}>
-      <FastingBiteCluster identities={identities} size={ENTRY_DOT} />
-      <Text style={styles.entryText}>{spoken}</Text>
-      <Text style={styles.entryTime}>{TimeUtils.formatDisplayTime(trigger.time, use24Hour)}</Text>
-    </View>
-  );
-}
-
-/** One calendar square: the subcard fill, its number, the armed cluster riding its top, today by its border */
-function Cell({ day, today }: { readonly day: FastingCalendarDay; readonly today: boolean }) {
-  const identities = fastingIdentitiesFor(day.designations);
-
-  return (
-    <View
-      style={[styles.cell, { width: CELL_SIZE, height: CELL_SIZE, borderColor: today ? TODAY_BORDER : CELL_BORDER }]}>
-      {hasFastingIdentities(identities) && (
-        <View style={styles.cellCluster}>
-          <FastingRingCluster identities={identities} size={CELL_DOT} ring={FASTING_CELL_RING} />
+    <View style={[styles.cell, { width: CELL_SIZE, height: CELL_SIZE }, armed && styles.cellArmed]}>
+      {armed && (
+        <View style={styles.cellCluster} pointerEvents={'none'}>
+          <FastingRingCluster identities={stacked} size={CELL_DOT} ring={0.5} />
         </View>
       )}
-      <Text style={styles.cellText}>{String(Number(day.date.slice(8, 10)))}</Text>
+      <Text style={[styles.cellText, !today && armed && styles.cellTextArmed, today && styles.cellTextToday]}>
+        {digit}
+      </Text>
     </View>
   );
 }
@@ -328,6 +322,9 @@ const styles = StyleSheet.create({
     borderRadius: RADIUS.lg,
     backgroundColor: SUBCARD_FILL,
   },
+  groupLocked: {
+    backgroundColor: '#0c193c',
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -343,11 +340,30 @@ const styles = StyleSheet.create({
     height: ROW_DOT,
     alignItems: 'flex-start',
     justifyContent: 'center',
+    opacity: 0.8,
   },
   rowTitle: {
     fontSize: ty.size(TEXT.sizeDetail),
     fontFamily: ty.familyMedium,
     color: COLORS.text.primary,
+  },
+  // The locked card rides the reminder cards' own dim solids (dim.ts)
+  cardLocked: {
+    backgroundColor: '#0c193b',
+    borderColor: '#0d193d',
+  },
+  textLocked: {
+    color: '#122246',
+  },
+  // The reminder title's own locked visibility, so the row names stay readable
+  rowTitleLocked: {
+    color: '#122246',
+  },
+  dimDots: {
+    opacity: 0.05,
+  },
+  switchVeil: {
+    opacity: 0.4,
   },
   note: {
     marginTop: SPACING.smd,
@@ -370,6 +386,9 @@ const styles = StyleSheet.create({
     lineHeight: ty.lineHeight(20),
     color: SKY_INK,
     textAlign: 'center',
+    // Half the note box's own side padding again, so the copy breaks earlier
+    // and never rides the box's edges; the glyph keeps its place (owner order 2026-11-06)
+    paddingHorizontal: SPACING.mid / 2,
   },
   infoGlyph: {
     borderWidth: 1,
@@ -387,30 +406,6 @@ const styles = StyleSheet.create({
     marginTop: 12,
     paddingHorizontal: 2,
   },
-  headText: {
-    fontSize: 9,
-    fontWeight: '600',
-    letterSpacing: 1.2,
-    color: COLORS.text.sheetSubtitle,
-    marginBottom: 7,
-  },
-  entryRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 7,
-    paddingVertical: 3,
-  },
-  entryText: {
-    fontSize: 11.5,
-    fontWeight: '600',
-    color: ENTRY_INK,
-    flexShrink: 1,
-  },
-  entryTime: {
-    fontSize: 11,
-    color: ENTRY_TIME_INK,
-    marginStart: 'auto',
-  },
   calendarStrip: {
     marginTop: 8,
   },
@@ -420,23 +415,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cell: {
-    borderRadius: 5,
+    borderRadius: 4,
     borderWidth: 1,
-    backgroundColor: SUBCARD_FILL,
+    borderColor: 'transparent',
+    backgroundColor: CELL_FILL,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
+  cellArmed: {
+    backgroundColor: SKY_BG,
+    borderColor: SKY_BORDER,
+  },
+  cellTextArmed: {
+    color: SKY_INK,
+  },
+  cellTextToday: {
+    color: '#fff',
+  },
+  // The bell's own cluster riding the square's top edge, flush to its right side
   cellCluster: {
     position: 'absolute',
-    top: CELL_CLUSTER_PAD,
-    start: 0,
-    end: 0,
-    alignItems: 'center',
+    top: CELL_CLUSTER_TOP,
+    end: CELL_CLUSTER_END,
   },
   cellText: {
-    fontSize: 9,
+    fontSize: 8.5,
     fontFamily: ty.familyDigits,
-    color: CELL_INK,
-    paddingBottom: 1.5,
+    color: CELL_INK_FADED,
   },
 });

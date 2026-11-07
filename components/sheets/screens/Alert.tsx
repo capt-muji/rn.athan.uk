@@ -320,7 +320,9 @@ export const AlertSheetBody = forwardRef<AlertSheetBodyRef, AlertSheetBodyProps>
           </View>
         </View>
 
-        {fasting !== undefined && <FastingCard selection={fasting} onSelectionChange={handleFastingSelect} />}
+        {fasting !== undefined && (
+          <FastingCard selection={fasting} onSelectionChange={handleFastingSelect} locked={!canEnableReminder} />
+        )}
 
         <ReminderCard
           title={t('alert.reminder', { n: 1 })}

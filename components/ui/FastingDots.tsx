@@ -1,23 +1,23 @@
 /**
  * The fasting identity marks (design 427): the plain filled dot every mode row
- * carries beside its name - Muhammad green, Dawood cyan, the white days white,
- * Every day reserving the slot invisibly - the entries' plain overlap with the
- * punched seam, and the bordered cluster the calendar cells (and the extras
- * row) carry: every circle ringed in the deep background shade, the circles
- * forty percent into each other, the white circle right of its partner and on
- * top (owner ruling 2026-11-05). Never three circles: the two regimens exclude
- * each other, so a cluster is one mark or a mark beside the white days.
+ * carries beside its name - Muhammad green, Dawood yellow, the white days
+ * white, Every day reserving the slot invisibly - and the bordered cluster the
+ * calendar cells (and the extras row) carry: every circle ringed in the deep
+ * background shade, the circles forty percent into each other, the white
+ * circle beneath at the left and the regimen on top at the right (owner
+ * ruling 2026-11-06). Never three circles: the two regimens exclude each
+ * other, so a cluster is one mark or a mark beside the white days.
  */
 
-import { useId } from 'react';
 import { View } from 'react-native';
-import Svg, { Circle, G, Mask, Rect } from 'react-native-svg';
+import Svg, { Circle } from 'react-native-svg';
 
 import type { FastingIdentity } from '@/shared/fastingSchedule';
 
 const IDENTITY_RGB: Record<FastingIdentity, readonly [number, number, number]> = {
   green: [74, 222, 128],
-  cyan: [34, 211, 238],
+  // Dawood's yellow at the owner's named hex (order 2026-11-06): #ffde05
+  cyan: [255, 222, 5],
   white: [255, 255, 255],
 };
 
@@ -29,21 +29,15 @@ const fastingIdentityColor = (identity: FastingIdentity): string => {
 /** The deep background shade sampled from behind the alerts icon: the rings' color */
 const FASTING_DOT_BORDER = '#1B1967';
 
-/** The calendar cells' ring weight, one step under the bell's for the smaller circles */
-export const FASTING_CELL_RING = 1.5;
-
 /** The extras row's bell cluster: its circle size, riding the Suhoor bell's corner */
 export const FASTING_BELL_DOT = 8.5;
 
-/** The bell cluster's ring weight, the heaviest of the cluster surfaces */
-export const FASTING_BELL_RING = 2;
+/** The bell cluster's ring weight: thick enough to separate the overlapping pair, solid ink,
+ * no alpha, and not black - the deep background shade (owner order 2026-11-06) */
+export const FASTING_BELL_RING = 1.5;
 
 /** How far the bordered circles overlap: forty percent into each other */
 const FASTING_RING_OVERLAP_STEP = 0.6;
-
-/** How far the plain entry dots overlap, and the punched seam's extra radius */
-const BITE_STEP = 0.8;
-const BITE_SEAM = 1.4;
 
 /** One plain filled identity dot: the rows' mark, borderless */
 export const FastingDot = ({ identity, size }: { identity: FastingIdentity; size: number }) => (
@@ -52,67 +46,29 @@ export const FastingDot = ({ identity, size }: { identity: FastingIdentity; size
   />
 );
 
-/** One bordered identity circle: the ring hugs the fill, no inner gap */
+/** One bordered identity circle, drawn as an SVG circle so the ring stays perfectly round at
+ * every fractional size (a bordered View's corners anti-alias squarish below ~10pt); the ring
+ * is solid ink with no alpha, and straddles the path so the outer edge lands on `size` */
 const FastingRingDot = ({ identity, size, ring }: { identity: FastingIdentity; size: number; ring: number }) => (
-  <View
-    style={{
-      width: size,
-      height: size,
-      borderRadius: size / 2,
-      backgroundColor: fastingIdentityColor(identity),
-      borderWidth: ring,
-      borderColor: FASTING_DOT_BORDER,
-    }}
-  />
+  <Svg width={size} height={size}>
+    <Circle
+      cx={size / 2}
+      cy={size / 2}
+      r={(size - ring) / 2}
+      fill={fastingIdentityColor(identity)}
+      stroke={FASTING_DOT_BORDER}
+      strokeWidth={ring}
+    />
+  </Svg>
 );
 
 /**
- * The entries' cluster: plain circles overlapped, the front (left) circle
- * cutting a bite out of the back one - the seam a real punched hole, so the
- * background shows between the circles. A day Ramadan subsumes carries no
- * regimen identity, so its entry renders no cluster at all.
- */
-export const FastingBiteCluster = ({ identities, size }: { identities: readonly FastingIdentity[]; size: number }) => {
-  const maskId = `fasting-bite-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
-  if (identities.length === 0) return null;
-  if (identities.length === 1) return <FastingDot identity={identities[0]} size={size} />;
-
-  const step = size * BITE_STEP;
-  const width = size + (identities.length - 1) * step;
-  const centre = size / 2;
-  const front = identities[0];
-  const back = identities.slice(1);
-
-  return (
-    <Svg width={width} height={size}>
-      <Mask id={maskId} maskUnits={'userSpaceOnUse'} x={0} y={0} width={width} height={size}>
-        <Rect x={0} y={0} width={width} height={size} fill={'white'} />
-        {back.map((identity, index) => (
-          <Circle key={identity} cx={centre + index * step} cy={centre} r={centre + BITE_SEAM} fill={'black'} />
-        ))}
-      </Mask>
-      <G mask={maskId}>
-        {back.map((identity, index) => (
-          <Circle
-            key={identity}
-            cx={centre + (index + 1) * step}
-            cy={centre}
-            r={centre}
-            fill={fastingIdentityColor(identity)}
-          />
-        ))}
-      </G>
-      <Circle cx={centre} cy={centre} r={centre} fill={fastingIdentityColor(front)} />
-    </Svg>
-  );
-};
-
-/**
- * The bordered cluster: circles forty percent into each other, rendered in
- * regimen order so the white days sit right of their partner and, drawn last,
- * on top of it. A lone identity renders one circle; the caller renders no
- * cluster for a day with no regimen to name (an unarmed day, or Ramadan's
- * own subsumed fast).
+ * The bordered cluster: circles forty percent into each other, rendered so the
+ * regimen rides on top at the right and the white days sit beneath at the left
+ * (owner ruling 2026-11-06, replacing 2026-11-05). A lone identity renders one
+ * circle in the cluster's right slot, where a partner's front circle would sit;
+ * the caller renders no cluster for a day with no regimen to name (an unarmed
+ * day, or Ramadan's own subsumed fast).
  */
 export const FastingRingCluster = ({
   identities,
@@ -123,9 +79,18 @@ export const FastingRingCluster = ({
   size: number;
   ring: number;
 }) => {
-  if (identities.length === 1) return <FastingRingDot identity={identities[0]} size={size} ring={ring} />;
-
   const step = size * FASTING_RING_OVERLAP_STEP;
+
+  if (identities.length === 1) {
+    return (
+      <View style={{ width: size + step, height: size }}>
+        <View style={{ position: 'absolute', left: step }}>
+          <FastingRingDot identity={identities[0]} size={size} ring={ring} />
+        </View>
+      </View>
+    );
+  }
+
   const width = size + (identities.length - 1) * step;
 
   return (

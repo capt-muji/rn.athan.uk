@@ -1,10 +1,10 @@
 /**
- * The fasting schedule walks (design 427): the next Suhoor triggers and the
- * ten-day calendar over the real evaluator, every instant injected. The
- * timetable rows arrive as a seam, so the walk logic runs here on synthetic
- * rows; the card's own suite runs the same walks over installed real days.
- * The 21-day walk pins the white-day combined cell the ten-day window can
- * miss (real white days can fall beyond it any given week).
+ * The fasting schedule walks (design 427): the ten-day calendar walk over the
+ * real evaluator, every instant injected. The timetable rows arrive as a
+ * seam, so the walk logic runs here on synthetic rows; the card's own suite
+ * runs the same walk over installed real days. The 21-day walk pins the
+ * white-day combined cell the ten-day window can miss (real white days can
+ * fall beyond it any given week).
  */
 
 import {
@@ -12,10 +12,7 @@ import {
   FASTING_CALENDAR_DAYS,
   fastingCalendarDays,
   fastingIdentitiesFor,
-  fastingRelative,
   fastingSettingsFor,
-  fastingWeekdayKey,
-  nextFastingTriggers,
 } from '@/shared/fastingSchedule';
 import type { FastingSelection } from '@/shared/types';
 
@@ -44,47 +41,6 @@ describe('the settings mapping', () => {
       whiteDaysAddOn: true,
       dawoodAnchorMs: 0,
     });
-  });
-});
-
-describe('the trigger walk', () => {
-  it('names the next two strictly-ahead triggers, soonest first', () => {
-    // 1 April 2026 is a Wednesday: muhammad arms Thursday the 2nd and Monday the 6th
-    const triggers = nextFastingTriggers(fastingSettingsFor(sel('muhammad'), NOW.getTime(), 0), NOW, 2, suhoorAt());
-
-    expect(triggers.map((trigger) => trigger.date)).toEqual(['2026-04-02', '2026-04-06']);
-    expect(triggers[0]).toMatchObject({ time: '05:30', designations: ['muhammad'] });
-  });
-
-  it('still counts a trigger on today list while its instant is ahead', () => {
-    const morning = new Date('2026-04-02T04:00:00Z');
-    const triggers = nextFastingTriggers(
-      fastingSettingsFor(sel('muhammad'), morning.getTime(), 0),
-      morning,
-      2,
-      suhoorAt()
-    );
-
-    expect(triggers.map((trigger) => trigger.date)).toEqual(['2026-04-02', '2026-04-06']);
-  });
-
-  it('passes over days whose row is unreadable', () => {
-    const triggers = nextFastingTriggers(
-      fastingSettingsFor(sel('muhammad'), NOW.getTime(), 0),
-      NOW,
-      2,
-      suhoorAt(['2026-04-02', '2026-04-06'])
-    );
-
-    expect(triggers.map((trigger) => trigger.date)).toEqual(['2026-04-09', '2026-04-13']);
-  });
-
-  it('walks every day under everyDay', () => {
-    // Today's own trigger is already spent at noon, so tomorrow leads
-    const triggers = nextFastingTriggers(fastingSettingsFor(sel('everyDay'), NOW.getTime(), 0), NOW, 2, suhoorAt());
-
-    expect(triggers.map((trigger) => trigger.date)).toEqual(['2026-04-02', '2026-04-03']);
-    expect(triggers[0].designations).toEqual([]);
   });
 });
 
@@ -128,10 +84,6 @@ describe('the calendar walk', () => {
     // The 2nd carries no readable row, so the cycle's search passes over it
     const withBrokenRow = suhoorAt(['2026-04-02']);
 
-    expect(nextFastingTriggers(settings, NOW, 2, withBrokenRow).map((trigger) => trigger.date)).toEqual([
-      '2026-04-03',
-      '2026-04-05',
-    ]);
     expect(
       fastingCalendarDays(settings, NOW, 6, withBrokenRow)
         .filter((day) => day.arms)
@@ -153,27 +105,5 @@ describe('the armed identities', () => {
   it('dedupes a day designations list into its identities', () => {
     expect(fastingIdentitiesFor(['muhammad', 'whiteDay'])).toEqual(['green', 'white']);
     expect(fastingIdentitiesFor(['ramadan'])).toEqual([]);
-  });
-});
-
-describe('the entry distance', () => {
-  const at = (iso: string): Date => new Date(iso);
-
-  it('speaks hours under a day, never a zero', () => {
-    expect(fastingRelative(at('2026-04-01T11:20:00Z'), NOW)).toEqual({ hours: 1 });
-    expect(fastingRelative(at('2026-04-01T22:40:00Z'), NOW)).toEqual({ hours: 12 });
-  });
-
-  it('speaks days at a day and beyond', () => {
-    expect(fastingRelative(at('2026-04-02T11:00:00Z'), NOW)).toEqual({ days: 1 });
-    expect(fastingRelative(at('2026-04-05T11:00:00Z'), NOW)).toEqual({ days: 4 });
-  });
-});
-
-describe('the weekday key', () => {
-  it('names the list day weekday, Monday 1 to Sunday 7', () => {
-    expect(fastingWeekdayKey('2026-04-01')).toBe('calendar.weekdayShort.3');
-    expect(fastingWeekdayKey('2026-04-02')).toBe('calendar.weekdayShort.4');
-    expect(fastingWeekdayKey('2026-04-05')).toBe('calendar.weekdayShort.7');
   });
 });

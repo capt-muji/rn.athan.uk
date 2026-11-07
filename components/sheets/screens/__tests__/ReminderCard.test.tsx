@@ -51,7 +51,7 @@ const LOCALE_CASES = [
   ['th', [30, 26], 51, 171],
 ] as const;
 
-const renderCard = () =>
+const renderCard = (locked = false) =>
   render(
     <ReminderCard
       title='Reminder 1'
@@ -59,7 +59,7 @@ const renderCard = () =>
       reminder={{ alert: AlertType.Silent, interval: 15 }}
       sound={AlertType.Silent}
       taken={null}
-      locked={false}
+      locked={locked}
       onToggle={() => {}}
       onSelectSound={() => {}}
       onSelectInterval={() => {}}
@@ -158,6 +158,20 @@ describe("the reminder rows' minimum under the locales the ticket names", () => 
     await measure('reminder-active-silent', []);
 
     expect(soundHostMinWidth()).toBe(207);
+  });
+});
+
+describe('the locked switch', () => {
+  it("sinks through the fasting card's own veil depth while the athan is Off", async () => {
+    await renderCard(true);
+
+    expect(StyleSheet.flatten(screen.getByRole('switch').parent!.props.style)).toEqual({ opacity: 0.4 });
+  });
+
+  it('carries no veil once the athan is back on', async () => {
+    await renderCard(false);
+
+    expect(StyleSheet.flatten(screen.getByRole('switch').parent!.props.style) ?? {}).not.toHaveProperty('opacity');
   });
 });
 

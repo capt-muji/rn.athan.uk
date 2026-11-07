@@ -32,7 +32,7 @@ const PINNED_LITERALS: ReadonlyArray<[keyof typeof en, string]> = [
   ['prayer.isha', 'Isha'],
   ['prayer.midnight', 'Midnight'],
   ['prayer.last third', 'Last Third'],
-  ['prayer.suhoor', 'Suhoor'],
+  ['prayer.suhoor', 'Sahur'],
   ['prayer.duha', 'Duha'],
   ['prayer.istijaba', 'Istijaba'],
 
@@ -216,13 +216,15 @@ describe('PRAYER_LABELS', () => {
     expect(new Set(Object.values(PRAYER_LABELS)).size).toBe(PRAYER_IDS.length);
   });
 
-  it('joins every catalog prayer label to the frozen vocabulary', () => {
+  it('joins every catalog prayer label to the frozen vocabulary, Suhoor alone diverging', () => {
+    // Owner order 2026-11-07: English copy speaks Sahur, while the storage
+    // vocabulary keeps the spelling every stored index key was written against
     PRAYER_IDS.forEach((id, index) => {
       const title =
         index < STANDARD_PRAYER_TITLES.length
           ? STANDARD_PRAYER_TITLES[index]
           : EXTRA_PRAYER_TITLES[index - STANDARD_PRAYER_TITLES.length];
-      expect(prayerLabel(id)).toBe(title);
+      expect(prayerLabel(id)).toBe(id === 'suhoor' ? 'Sahur' : title);
     });
   });
 });

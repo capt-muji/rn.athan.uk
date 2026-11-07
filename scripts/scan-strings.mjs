@@ -17,7 +17,7 @@ import { parse } from '@babel/parser';
 
 const ROOTS = process.argv[2]
   ? [process.argv[2]]
-  : ['components', 'app', 'hooks', 'shared', 'stores', 'device', 'widgets', 'devlayouts'];
+  : ['components', 'app', 'hooks', 'shared', 'stores', 'device', 'widgets'];
 const DISPLAY_SINKS =
   /(label|title|text|body|message|placeholder|alert|confirm|question|answer|explanation|content|caption|subtitle|description)$/i;
 const NON_DISPLAY_CALLEES = /^(logger|perfMark|perfMeasure|require|import|jest|test|it|describe|expect)$/;

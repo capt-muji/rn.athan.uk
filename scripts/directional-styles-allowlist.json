@@ -47,7 +47,12 @@
   {
     "file": "components/ui/FastingDots.tsx",
     "snippet": "left: index * step",
-    "reason": "the identity cluster's overlap order is the locked visual law (the partner left, the white days right and on top, in every locale), so the circles sit at physical offsets whatever the reading direction"
+    "reason": "the identity cluster's overlap order is the locked visual law (the white days left and beneath, the regimen right and on top, in every locale), so the circles sit at physical offsets whatever the reading direction"
+  },
+  {
+    "file": "components/ui/FastingDots.tsx",
+    "snippet": "left: step",
+    "reason": "a lone identity renders in the pair's own right slot so the cluster's footprint never moves, whatever the reading direction"
   },
   {
     "file": "stores/countdown.ts",

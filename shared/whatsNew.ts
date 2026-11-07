@@ -134,7 +134,7 @@ const resolveItem = (item: StampedWhatsNewArchiveItem): WhatsNewItem => ({
 // =============================================================================
 
 export const WHATS_NEW: WhatsNewArchiveRelease | null = {
-  version: '2.50.0',
+  version: '2.50.1',
   items: [
     {
       titleKey: 'whatsNew.title.language',

@@ -19,7 +19,6 @@ import {
   isMuhammadDay,
   isRamadanDay,
   isWhiteDay,
-  upcomingFastingDays,
   validFastingMode,
 } from '@/shared/fasting';
 
@@ -272,28 +271,5 @@ describe('the storage validators', () => {
     expect(validFastingMode('everyDay')).toBe('everyDay');
     expect(validFastingMode('nonsense')).toBe(DEFAULT_FASTING_MODE);
     expect(validFastingMode('')).toBe(DEFAULT_FASTING_MODE);
-  });
-});
-
-describe('upcomingFastingDays', () => {
-  it('walks Mondays and Thursdays under muhammad', () => {
-    const days = upcomingFastingDays('2026-01-05', 3, settings({ mode: 'muhammad' }), suhoorAtHalfFive);
-    expect(days.map((day) => day.date)).toEqual(['2026-01-05', '2026-01-08', '2026-01-12']);
-  });
-
-  it('walks consecutive days under everyDay', () => {
-    const days = upcomingFastingDays('2026-01-05', 2, settings({ mode: 'everyDay' }), suhoorAtHalfFive);
-    expect(days.map((day) => day.date)).toEqual(['2026-01-05', '2026-01-06']);
-  });
-
-  it('walks every day of Ramadan regardless of mode', () => {
-    const days = upcomingFastingDays('2026-02-18', 3, settings({ mode: 'whiteDays' }), suhoorAtHalfFive);
-    expect(days.map((day) => day.date)).toEqual(['2026-02-18', '2026-02-19', '2026-02-20']);
-    expect(days[0].verdict.designations).toEqual(['ramadan']);
-  });
-
-  it("stops at the month's white days under whiteDays", () => {
-    const days = upcomingFastingDays('2076-10-10', 3, settings({ mode: 'whiteDays' }), suhoorAtHalfFive);
-    expect(days.map((day) => day.date)).toEqual(['2076-10-11', '2076-10-12', '2076-10-13']);
   });
 });

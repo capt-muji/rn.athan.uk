@@ -124,13 +124,15 @@ export default function ReminderCard({
             {hint}
           </Text>
         </View>
-        <Toggle
-          ref={toggleRef}
-          value={isOn}
-          onToggle={onToggle}
-          onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
-          disabled={locked}
-        />
+        <View style={locked ? styles.switchVeil : undefined}>
+          <Toggle
+            ref={toggleRef}
+            value={isOn}
+            onToggle={onToggle}
+            onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
+            disabled={locked}
+          />
+        </View>
       </Pressable>
 
       <View style={[styles.reminderOptions, { borderTopColor: REMINDER_CARD.rule[dim] }]}>
@@ -217,6 +219,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  // The locked switch sinks through the fasting card's own veil depth (owner order 2026-11-06)
+  switchVeil: {
+    opacity: 0.4,
   },
   cardHint: {
     fontSize: ty.size(TEXT.sizeDetail),
