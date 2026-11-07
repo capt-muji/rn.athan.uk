@@ -1,10 +1,11 @@
 /**
- * The fasting card through the owner-locked design round: the four toggle
- * rows with their always-on identity dots, the sky note, and the ten-day
- * calendar strip below it - yesterday first, today second, no heading, the
- * digits Hijri under the preference - locked to a dim shadow of itself while
- * the Suhoor athan is off. The sheet's own flows (the draft-and-commit at
- * close) live in Alert.test.tsx.
+ * The fasting card through the owner-locked design round: the four toggle rows
+ * with their always-on identity dots (the Muhammad row carrying the honorific
+ * ligature in the hint's own ink), the sky note, and the strip below it - the
+ * calendar glyph first, today's digit second, one seamless bar the row itself
+ * paints over nine days, the digits Hijri under the preference - locked to a
+ * dim shadow of itself while the Suhoor athan is off. The sheet's own flows
+ * (the draft-and-commit at close) live in Alert.test.tsx.
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
@@ -13,7 +14,7 @@ import { StyleSheet } from 'react-native';
 import type { TestInstance, TestNode } from 'test-renderer';
 
 import { london } from '@/hooks/__tests__/londonDays';
-import { COLORS } from '@/shared/constants';
+import { COLORS, SPACING } from '@/shared/constants';
 import { __resetHijriMemoForTests } from '@/shared/fasting';
 import { t } from '@/shared/i18n';
 import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
@@ -59,11 +60,10 @@ const TIMES = { fajr: '05:50', sunrise: '07:30', dhuhr: '13:00', asr: '16:00', m
 
 const GREEN = 'rgba(74, 222, 128, 1)';
 const WHITE = 'rgba(255, 255, 255, 1)';
-const SKY_BG = 'rgba(56, 189, 248, 0.10)';
-const SKY_BORDER = 'rgba(56, 189, 248, 0.30)';
-const CELL_FILL = 'rgba(99, 102, 241, 0.07)';
+const BAR_FILL = 'rgba(56, 189, 248, 0.05)';
+const ARMED_FILL = 'rgba(56, 189, 248, 0.16)';
 const SKY_INK = '#33a7e0';
-const CELL_INK_FADED = '#6d89ab';
+const CELL_INK_FADED = '#487ca5';
 const DIVIDER_INK = 'rgba(56, 189, 248, 0.02)';
 // #1B1967, the rings' deep background shade, as RNSVG resolves it at render
 const RING = 'rgba(27, 25, 103, 1)';
@@ -103,21 +103,31 @@ const selection = (over: Partial<FastingSelection> = {}): FastingSelection => ({
 
 const rowSwitch = (mode: string) => screen.getByRole('switch', { name: t(`fasting.mode.${mode}` as never) });
 
+/** A row's own title Text: the Muhammad row nests the honorific span, so the title is matched by prefix */
+const rowTitle = (mode: string) =>
+  screen.getAllByText(new RegExp(`^${t(`fasting.mode.${mode}` as never)}`))[0] as TestInstance;
+
+/** A row's own accessible name: the Muhammad row speaks the honorific with its title */
+const rowLabel = (mode: string) => {
+  const title = t(`fasting.mode.${mode}` as never);
+  return mode === 'muhammad' ? `${title} \uFDFA` : title;
+};
+
 const renderCard = async (sel: FastingSelection, onSelectionChange = jest.fn(), locked = false) => {
   const view = await render(<FastingCard selection={sel} onSelectionChange={onSelectionChange} locked={locked} />);
   await settle();
   return view;
 };
 
-/** The strip's own row: the one flex row laid out at the cells' 3pt gap */
+/** The strip's own bar: the one row that paints the whole strip's fill */
 const stripRow = () =>
   screen.container.queryAll((node) => {
     const style = flat(node);
-    return style.flexDirection === 'row' && style.gap === 3;
+    return style.flexDirection === 'row' && style.backgroundColor === BAR_FILL;
   })[0];
 
-/** The strip's ten cells in draw order: yesterday first, today second */
-const stripCells = () => stripRow().children.filter(isInstance);
+/** The strip's content cells in draw order: the calendar glyph's block, then today first */
+const stripCells = () => stripRow().children.filter(isInstance).slice(1);
 
 const digitOf = (cell: TestInstance) =>
   cell.children
@@ -207,7 +217,7 @@ describe('the rows', () => {
     const onSelectionChange = jest.fn();
     await renderCard(selection({ mode: 'everyDay' }), onSelectionChange);
 
-    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
+    await fireEvent.press(screen.getAllByLabelText(rowLabel('muhammad'))[0]);
     await settle();
 
     expect(onSelectionChange).toHaveBeenCalledWith('muhammad');
@@ -220,7 +230,7 @@ describe('the rows', () => {
 
     await fireEvent.press(rowSwitch('muhammad'));
     await settle();
-    await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.muhammad'))[0]);
+    await fireEvent.press(screen.getAllByLabelText(rowLabel('muhammad'))[0]);
     await settle();
 
     expect(onSelectionChange).not.toHaveBeenCalled();
@@ -247,6 +257,30 @@ describe('the rows', () => {
     const separators = screen.container.queryAll((node) => flat(node).backgroundColor === DIVIDER_INK);
     expect(separators).toHaveLength(3);
   });
+
+  it('rides the honorific ligature after Muhammad alone, in the hint ink, locked and not', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'everyDay' }));
+
+    // The owner-ordered code value: byte-identical in every language, never translated
+    const spans = screen.getAllByText(' \uFDFA');
+    expect(spans).toHaveLength(1);
+    const span = spans[0];
+    expect(span.parent).toBe(rowTitle('muhammad'));
+    expect(flat(span)).toMatchObject({ color: COLORS.text.sheetSubtitle });
+
+    for (const plain of ['everyDay', 'dawood', 'whiteDays'] as const) {
+      const text = rowTitle(plain);
+      expect(text.children.filter(isInstance)).toHaveLength(0);
+    }
+  });
+
+  it('dims the honorific with the hint under the locked card', async () => {
+    showAprilWindow();
+    await renderCard(selection({ mode: 'everyDay' }), jest.fn(), true);
+
+    expect(flat(screen.getByText(' \uFDFA'))).toMatchObject({ color: '#122246' });
+  });
 });
 
 describe('the sky note', () => {
@@ -270,11 +304,11 @@ describe('the calendar strip', () => {
     store.set(hijriDateEnabledAtom, false);
   });
 
-  it('carries ten blocks, yesterday first and today second, with the Gregorian digits', async () => {
+  it('carries the glyph block and nine days, today first, with the Gregorian digits', async () => {
     showAprilWindow();
     await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-    expect(digits()).toEqual(['31', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+    expect(digits()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
   });
 
   it('carries no heading anywhere', async () => {
@@ -300,8 +334,8 @@ describe('the calendar strip', () => {
       store.set(hijriDateEnabledAtom, true);
       await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-      // 31 March is Shawwal 12; 1-3 April the white days 13-15
-      expect(digits()).toEqual(['12', '13', '14', '15', '16', '17', '18', '19', '20', '21']);
+      // 1-3 April are the white days 13-15 of Shawwal; today leads the window
+      expect(digits()).toEqual(['13', '14', '15', '16', '17', '18', '19', '20', '21']);
     });
 
     it('keeps the Gregorian digits once the preference is off', async () => {
@@ -310,7 +344,7 @@ describe('the calendar strip', () => {
       store.set(hijriDateEnabledAtom, false);
       await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
-      expect(digits()).toEqual(['31', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+      expect(digits()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
     });
   });
 
@@ -322,24 +356,45 @@ describe('the calendar strip', () => {
     for (const armed of ['2', '3', '6', '9']) {
       expect(flat(textOf(cellByDigit(armed))).color).toBe(SKY_INK);
     }
-    for (const plain of ['31', '4', '5', '7', '8']) {
+    for (const plain of ['4', '5', '7', '8']) {
       expect(flat(textOf(cellByDigit(plain))).color).toBe(CELL_INK_FADED);
     }
   });
 
-  it('fills the armed blocks with the sky pair and only their digits differ for today', async () => {
+  it('paints one seamless bar: the row carries the fill, only the armed days overlay theirs', async () => {
     showAprilWindow();
     await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }));
 
+    const bar = stripRow();
+    expect(flat(bar)).toMatchObject({ height: 30, borderRadius: 7, backgroundColor: BAR_FILL });
+    expect(flat(bar.parent!)).toMatchObject({ marginTop: SPACING.smd * 1.25 });
+    expect(bar.children).toHaveLength(10);
+
+    // The first block is the calendar glyph itself: the Bootstrap geometry at
+    // 12pt, tinted the information glyph's own ink
+    const glyphHost = bar.children.filter(isInstance)[0];
+    const glyphPath = glyphHost.queryAll((node) => node.type === 'RNSVGPath')[0];
+    expect(glyphPath.props.d).toContain('M3.5 0a.5.5');
+    expect(flat(glyphHost)).toMatchObject({ flex: 1 });
+
+    // The note breathes its grown gap on BOTH sides: below it the strip, above it the rows
+    const noteRow = screen.getByText(t('fasting.description.muhammadWhiteDays')).parent!;
+    expect(flat(noteRow.parent!)).toMatchObject({ marginTop: SPACING.smd * 1.25 });
+
     for (const armed of ['1', '2', '3', '6', '9']) {
-      expect(flat(cellByDigit(armed))).toMatchObject({ backgroundColor: SKY_BG, borderColor: SKY_BORDER });
+      expect(flat(cellByDigit(armed))).toMatchObject({ backgroundColor: ARMED_FILL });
     }
-    for (const plain of ['31', '4', '5', '7', '8']) {
-      expect(flat(cellByDigit(plain))).toMatchObject({ backgroundColor: CELL_FILL, borderColor: 'transparent' });
+    for (const plain of ['4', '5', '7', '8']) {
+      expect(flat(cellByDigit(plain)).backgroundColor).toBeUndefined();
     }
     for (const cell of stripCells()) {
-      expect(flat(cell)).toMatchObject({ width: 20, height: 20, borderRadius: 4, borderWidth: 1 });
+      expect(flat(cell).borderRightWidth).toBeUndefined();
+      expect(flat(cell).borderLeftWidth).toBeUndefined();
+      expect(flat(cell).flex).toBe(1);
     }
+
+    // The armed overlay respects the bar's rounded end: the last cell rounds right
+    expect(flat(cellByDigit('9'))).toMatchObject({ borderTopRightRadius: 7, borderBottomRightRadius: 7 });
   });
 
   it("rides the bell's own cluster on an armed block, hairline-ringed, flush right at its top", async () => {
@@ -348,7 +403,7 @@ describe('the calendar strip', () => {
 
     // The 2nd is both a Muhammad day and a white day: white beneath at the left, green on top at the right
     const rider = clusterOf(cellByDigit('2'));
-    expect(flat(rider)).toMatchObject({ position: 'absolute', top: -2, end: 0 });
+    expect(flat(rider)).toMatchObject({ position: 'absolute', top: -2.25, end: 1.5 });
     expect(circlesOf(rider).map((circle) => circle.fill)).toEqual([WHITE, GREEN]);
     for (const circle of circlesOf(rider)) {
       expect(circle).toMatchObject({ r: 2, stroke: RING, strokeWidth: 0.5 });
@@ -374,7 +429,7 @@ describe('the calendar strip', () => {
 
     // No anchor: the cycle starts on the first day whose suhoor is ahead - the
     // 2nd - and every second day from there; yesterday and today stay off
-    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === SKY_BG);
+    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === ARMED_FILL);
     expect(armed.map((cell) => digitOf(cell))).toEqual(['2', '4', '6', '8']);
   });
 
@@ -388,9 +443,9 @@ describe('the calendar strip', () => {
 
     await expect(renderCard(selection({ mode: 'whiteDays' }))).resolves.toBeDefined();
 
-    expect(digits()).toEqual(['31', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+    expect(digits()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
     for (const cell of stripCells()) {
-      expect(flat(cell).backgroundColor).toBe(CELL_FILL);
+      expect(flat(cell).backgroundColor).toBeUndefined();
     }
     spy.mockRestore();
     // The walk memoised null Hijri parts for these dates under the dead engine;
@@ -404,7 +459,7 @@ describe('the calendar strip', () => {
     await renderCard(selection({ mode: 'dawood' }));
 
     // The broken 2nd cannot start the cycle, so the alternation runs from the 3rd
-    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === SKY_BG);
+    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === ARMED_FILL);
     expect(armed.map((cell) => digitOf(cell))).toEqual(['3', '5', '7', '9']);
   });
 
@@ -418,9 +473,9 @@ describe('the calendar strip', () => {
     store.set(fastingDawoodAnchorAtom, 0);
     await renderCard(selection({ mode: 'dawood' }));
 
-    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === SKY_BG);
+    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === ARMED_FILL);
     expect(armed).toEqual([]);
-    expect(digits()).toEqual(['9', '10', '11', '12', '13', '14', '15', '16', '17', '18']);
+    expect(digits()).toEqual(['10', '11', '12', '13', '14', '15', '16', '17', '18']);
   });
 
   it('walks ten blocks past the end of the installed window without starving', async () => {
@@ -433,9 +488,9 @@ describe('the calendar strip', () => {
 
     await renderCard(selection({ mode: 'muhammad' }));
 
-    expect(digits()).toEqual(['9', '10', '11', '12', '13', '14', '15', '16', '17', '18']);
-    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === SKY_BG);
-    expect(armed.map((cell) => digitOf(cell))).toEqual(['9', '13', '16']);
+    expect(digits()).toEqual(['10', '11', '12', '13', '14', '15', '16', '17', '18']);
+    const armed = stripCells().filter((cell) => flat(cell).backgroundColor === ARMED_FILL);
+    expect(armed.map((cell) => digitOf(cell))).toEqual(['13', '16']);
   });
 });
 
@@ -448,13 +503,13 @@ describe('the locked card', () => {
 
     expect(screen.queryByText(t('fasting.description.muhammadWhiteDays'))).toBeNull();
     expect(screen.queryByText('NEXT SAHUR')).toBeNull();
-    expect(screen.queryByText('31')).toBeNull();
+    expect(stripRow()).toBeUndefined();
 
     for (const mode of ['everyDay', 'muhammad', 'dawood', 'whiteDays']) {
       expect(rowSwitch(mode)).not.toBeChecked();
       expect(rowSwitch(mode)).toBeDisabled();
       await fireEvent.press(rowSwitch(mode));
-      await fireEvent.press(screen.getAllByLabelText(t(`fasting.mode.${mode}` as never))[0]);
+      await fireEvent.press(screen.getAllByLabelText(rowLabel(mode))[0]);
     }
     await settle();
 
@@ -468,7 +523,7 @@ describe('the locked card', () => {
     mockLockedPressesGetThrough = true;
     try {
       await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }), onSelectionChange, true);
-      await fireEvent.press(screen.getAllByLabelText(t('fasting.mode.dawood'))[0]);
+      await fireEvent.press(screen.getAllByLabelText(rowLabel('dawood'))[0]);
       await settle();
     } finally {
       mockLockedPressesGetThrough = false;
@@ -488,7 +543,7 @@ describe('the locked card', () => {
     expect(flat(screen.getByText(t('fasting.card.title'))).color).toBe('#122246');
     expect(flat(screen.getByText(t('fasting.card.hint'))).color).toBe('#122246');
     for (const mode of ['everyDay', 'muhammad', 'dawood', 'whiteDays']) {
-      expect(flat(screen.getByText(t(`fasting.mode.${mode}` as never))).color).toBe('#122246');
+      expect(flat(rowTitle(mode)).color).toBe('#122246');
     }
 
     // The group under its rows: switch, veil, row, mode wrapper, group - the same
@@ -516,7 +571,7 @@ describe('the locked card', () => {
     await settle();
 
     expect(screen.getByText(t('fasting.description.muhammadWhiteDays'))).toBeOnTheScreen();
-    expect(digits()).toEqual(['31', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+    expect(digits()).toEqual(['1', '2', '3', '4', '5', '6', '7', '8', '9']);
     expect(rowSwitch('muhammad')).toBeChecked();
     expect(rowSwitch('whiteDays')).toBeChecked();
     expect(rowSwitch('muhammad')).toBeEnabled();
@@ -526,7 +581,7 @@ describe('the locked card', () => {
     });
     expect(flat(screen.getByText(t('fasting.card.title'))).color).toBe('#d8eaf8');
     expect(flat(screen.getByText(t('fasting.card.hint'))).color).toBe(COLORS.text.sheetSubtitle);
-    expect(flat(screen.getByText(t('fasting.mode.muhammad'))).color).toBe(COLORS.text.primary);
+    expect(flat(rowTitle('muhammad')).color).toBe(COLORS.text.primary);
     expect(screen.container.queryAll((node) => flat(node).backgroundColor === 'rgba(99, 102, 241, 0.03)')).toHaveLength(
       1
     );

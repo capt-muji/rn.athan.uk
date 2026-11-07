@@ -18,6 +18,7 @@ import { useAtomValue } from 'jotai';
 import { useRef } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Pressable } from 'react-native-gesture-handler';
+import Svg, { Path } from 'react-native-svg';
 
 import Toggle, { type ToggleHandle } from '@/components/sheets/parts/Toggle';
 import { FastingDot, FastingRingCluster } from '@/components/ui';
@@ -68,13 +69,13 @@ const INFO_GLYPH = 12.0;
 const ROW_PAD_V = 7;
 const DIVIDER_MARGIN = (SPACING.py - StyleSheet.hairlineWidth) / 2;
 const ROW_DOT = 7;
-const CELL_SIZE = 20;
-const CELL_GAP = 3;
+const CELL_SIZE = 30;
 const CELL_DOT = 4.5;
-const CELL_CLUSTER_TOP = -2;
-const CELL_CLUSTER_END = 0;
-const CELL_FILL = 'rgba(99, 102, 241, 0.07)';
-const CELL_INK_FADED = '#6d89ab';
+const CELL_CLUSTER_TOP = -2.25;
+const CELL_CLUSTER_END = 1.5;
+const BAR_RADIUS = 7;
+const CELL_FILL = 'rgba(56, 189, 248, 0.05)';
+const NOTE_GAP = SPACING.smd * 1.25;
 const SUBCARD_FILL = 'rgba(99, 102, 241, 0.03)';
 const SKY_BG = 'rgba(56, 189, 248, 0.10)';
 const SKY_BORDER = 'rgba(56, 189, 248, 0.30)';
@@ -93,7 +94,12 @@ const HIJRI_DAY_FORMAT = new Intl.DateTimeFormat('en-US-u-ca-islamic-umalqura', 
 
 // The string guard reads attribute-held literals as copy; these are code values
 const SUHOOR: PrayerId = 'suhoor';
+const ICON_VIEWBOX = '0 0 16 16';
 const INFO_GLYPH_CHAR = 'i';
+
+// The honorific ligature (peace and blessings of Allah be upon him): identical in
+// every language, so it rides the row as a code value, never the catalogs
+const HONORIFIC = ' \uFDFA';
 
 // The glyph's own text rides at 62.5 percent of the circle, on a 75 percent line
 const GLYPH_TEXT_SIZE = INFO_GLYPH * 0.625;
@@ -124,8 +130,8 @@ export default function FastingCard({ selection, onSelectionChange, locked = fal
   const now = new Date();
   const settings = fastingSettingsFor(current, now.getTime(), anchorMs);
   const showSchedule = current.mode !== 'everyDay';
-  // The strip walks yesterday first, today second; noon UTC is the same London
-  // calendar day year-round, so the anchor round-trips through formatDateShort
+  // The walk keeps yesterday's anchor for the Dawood cycle's own search; the
+  // render drops yesterday for the glyph's block, today leading the nine days
   const startAt = new Date(`${TimeUtils.getPreviousDateString(TimeUtils.formatDateShort(now))}T12:00:00Z`);
   const calendar = showSchedule ? fastingCalendarDays(settings, startAt, FASTING_CALENDAR_DAYS, suhoorRowAt) : [];
 
@@ -147,13 +153,29 @@ export default function FastingCard({ selection, onSelectionChange, locked = fal
         </View>
       )}
       {showSchedule && !locked && (
-        <View style={styles.section}>
-          <View style={styles.calendarStrip}>
-            <View style={[styles.calendar, { gap: CELL_GAP }]}>
-              {calendar.map((day, index) => (
-                <Cell key={day.date} day={day} today={index === 1} hijri={hijri} />
-              ))}
+        <View style={styles.calendarStrip}>
+          <View
+            style={[
+              styles.calendar,
+              {
+                height: CELL_SIZE,
+                backgroundColor: CELL_FILL,
+                borderRadius: BAR_RADIUS,
+              },
+            ]}>
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Svg width={12} height={12} viewBox={ICON_VIEWBOX}>
+                <Path
+                  d={
+                    'M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1 -2 2H2a2 2 0 0 1 -2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z'
+                  }
+                  fill={SKY_INK}
+                />
+              </Svg>
             </View>
+            {calendar.slice(1).map((day, index) => (
+              <Cell key={day.date} day={day} today={index === 0} hijri={hijri} last={index === calendar.length - 2} />
+            ))}
           </View>
         </View>
       )}
@@ -240,12 +262,15 @@ function FastingRow({
         // The only selected option taps to nothing: the switch never leaves its value
         if (!frozen && !locked) toggleRef.current?.press();
       }}
-      accessibilityLabel={title}>
+      accessibilityLabel={mode === 'muhammad' ? `${title}${HONORIFIC}` : title}>
       <View style={styles.titleWrap}>
         <View style={[styles.dotSlot, locked && styles.dimDots]}>
           {identity !== null && <FastingDot identity={identity} size={ROW_DOT} />}
         </View>
-        <Text style={[styles.rowTitle, locked && styles.rowTitleLocked]}>{title}</Text>
+        <Text style={[styles.rowTitle, locked && styles.rowTitleLocked]}>
+          {title}
+          {mode === 'muhammad' && <Text style={[styles.rowHonorific, locked && styles.textLocked]}>{HONORIFIC}</Text>}
+        </Text>
       </View>
       <View style={locked ? styles.switchVeil : undefined}>
         <Toggle
@@ -262,16 +287,17 @@ function FastingRow({
   );
 }
 
-/** One calendar square: the day's digit, the bell's own dots in a hairline ring riding its top
- * right; today speaks its digit in pure white, armed days in the note's sky blue */
+/** One calendar cell: the day's digit, the bell's cluster riding its armed days, today set apart */
 function Cell({
   day,
   today,
   hijri,
+  last,
 }: {
   readonly day: FastingCalendarDay;
   readonly today: boolean;
   readonly hijri: boolean;
+  readonly last: boolean;
 }) {
   const digit = hijri
     ? HIJRI_DAY_FORMAT.format(TimeUtils.getDayAnchor(day.date))
@@ -280,7 +306,13 @@ function Cell({
   const armed = hasFastingIdentities(stacked);
 
   return (
-    <View style={[styles.cell, { width: CELL_SIZE, height: CELL_SIZE }, armed && styles.cellArmed]}>
+    <View
+      style={[
+        styles.cell,
+        { flex: 1 },
+        armed && styles.cellArmed,
+        last && { borderTopRightRadius: BAR_RADIUS, borderBottomRightRadius: BAR_RADIUS },
+      ]}>
       {armed && (
         <View style={styles.cellCluster} pointerEvents={'none'}>
           <FastingRingCluster identities={stacked} size={CELL_DOT} ring={0.5} />
@@ -359,6 +391,9 @@ const styles = StyleSheet.create({
   rowTitleLocked: {
     color: '#122246',
   },
+  rowHonorific: {
+    color: COLORS.text.sheetSubtitle,
+  },
   dimDots: {
     opacity: 0.05,
   },
@@ -366,7 +401,7 @@ const styles = StyleSheet.create({
     opacity: 0.4,
   },
   note: {
-    marginTop: SPACING.smd,
+    marginTop: NOTE_GAP,
     borderWidth: 1,
     borderRadius: RADIUS.lg,
     backgroundColor: SKY_BG,
@@ -402,29 +437,19 @@ const styles = StyleSheet.create({
     fontFamily: ty.familyMedium,
     color: SKY_INK,
   },
-  section: {
-    marginTop: 12,
-    paddingHorizontal: 2,
-  },
   calendarStrip: {
-    marginTop: 8,
+    marginTop: NOTE_GAP,
   },
   calendar: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
   },
   cell: {
-    borderRadius: 4,
-    borderWidth: 1,
-    borderColor: 'transparent',
-    backgroundColor: CELL_FILL,
     alignItems: 'center',
     justifyContent: 'center',
   },
   cellArmed: {
-    backgroundColor: SKY_BG,
-    borderColor: SKY_BORDER,
+    backgroundColor: 'rgba(56, 189, 248, 0.16)',
   },
   cellTextArmed: {
     color: SKY_INK,
@@ -432,15 +457,15 @@ const styles = StyleSheet.create({
   cellTextToday: {
     color: '#fff',
   },
-  // The bell's own cluster riding the square's top edge, flush to its right side
   cellCluster: {
     position: 'absolute',
     top: CELL_CLUSTER_TOP,
     end: CELL_CLUSTER_END,
   },
   cellText: {
-    fontSize: 8.5,
-    fontFamily: ty.familyDigits,
-    color: CELL_INK_FADED,
+    fontSize: 12,
+    fontFamily: ty.familyMedium,
+    // The dim digit rgba(125, 211, 252, 0.5) flattened over the bar fill on the card
+    color: '#487ca5',
   },
 });
