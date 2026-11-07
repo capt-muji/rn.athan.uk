@@ -176,6 +176,11 @@ const PRAYER_NAME_KEYS = [
   'prayer.suhoor',
   'prayer.duha',
   'prayer.istijaba',
+  // The fasting card's two regimen rows are established-practice name rows in the
+  // T-585 sense (T-629 ruling, 2026-11-07): a locale whose Islamic usage spells the
+  // name identically to English echoes legitimately, and both sit inside the label budget
+  'fasting.mode.muhammad',
+  'fasting.mode.dawood',
 ];
 
 /** The eleven name slots every locale's glossary section carries, against the catalog keys */
@@ -217,24 +222,6 @@ const BRAND_REQUIRED = new Set(['widget.refresh', 'widget.refreshLead']);
 // Place names stay as printed; calendar loanwords are legitimately identical
 // across languages
 const echoExempt = (key: string) => key === 'day.location' || key.startsWith('calendar.');
-
-// The fasting card's keys awaiting the localization ticket T-629 (owner order
-// 2026-11-05): the design build lands their English copy in every catalog and
-// the app ships English-only there until that wave translates them, so the
-// echo and RTL gates pass them by name. The wave drops this set.
-const PENDING_T629 = new Set([
-  'fasting.card.title',
-  'fasting.card.hint',
-  'fasting.mode.muhammad',
-  'fasting.mode.dawood',
-  'fasting.mode.whiteDays',
-  'fasting.description.everyDay',
-  'fasting.description.muhammad',
-  'fasting.description.dawood',
-  'fasting.description.whiteDays',
-  'fasting.description.muhammadWhiteDays',
-  'fasting.description.dawoodWhiteDays',
-]);
 
 const tokensOf = (value: string) =>
   [...value.matchAll(TOKEN)]
@@ -641,7 +628,6 @@ describe('the landed catalogs against the R2 gates', () => {
       const english = en[key as keyof typeof en];
       if (
         !echoExempt(key) &&
-        !PENDING_T629.has(key) &&
         plain(value).includes(plain(english)) &&
         plain(english).length >= 6 &&
         !PRAYER_NAME_KEYS.includes(key)
@@ -655,12 +641,8 @@ describe('the landed catalogs against the R2 gates', () => {
   it.each([...RTL])('%s mixes no Latin into RTL copy outside tokens and the brand', (loc) => {
     const failures: string[] = [];
     for (const [key, value] of Object.entries(CATALOGS[loc])) {
-      if (
-        // The widget answer's platform labels stay Latin in every locale
-        key === 'help.a.widgets' ||
-        // T-629's pending keys carry their English copy in every locale
-        PENDING_T629.has(key)
-      ) {
+      // The widget answer's platform labels stay Latin in every locale
+      if (key === 'help.a.widgets') {
         continue;
       }
       const stripped = plain(value).split(BRAND).join('');
@@ -681,14 +663,12 @@ describe('the landed catalogs against the R2 gates', () => {
 });
 
 /**
- * The settled fasting card wording (T-635 ruling 2, 2026-11-06): every catalog
- * carries the owner-ruled English on the six descriptions and the five labels,
- * save the seven locales the language wave already translated natively - their
- * landed values stand until T-629's wave reaches the rest - and the round's
- * orphaned fasting.next.* suite and the never-landed fasting.calendar.* pair
- * exist nowhere.
+ * The translated fasting card (T-629 wave, 2026-11-07): every catalog once carried the
+ * owner-ruled English until this wave judged it into each locale's own voice. The twelve-key
+ * contract stands, every key reads a landed translation, and the round's orphaned
+ * fasting.next.* suite and the never-landed fasting.calendar.* pair exist nowhere.
  */
-describe('the settled fasting card wording (T-635 ruling 2)', () => {
+describe('the translated fasting card (T-629)', () => {
   const FASTING_KEYS = [
     'fasting.card.title',
     'fasting.card.hint',
@@ -704,54 +684,24 @@ describe('the settled fasting card wording (T-635 ruling 2)', () => {
     'fasting.description.dawoodWhiteDays',
   ];
 
-  const SETTLED_DESCRIPTIONS: Record<string, string> = {
-    'fasting.description.everyDay': 'Sahur scheduled for every day',
-    'fasting.description.muhammad': 'Sahur scheduled for Mondays and Thursdays only',
-    'fasting.description.dawood': 'Sahur scheduled for one day on, one day off',
-    'fasting.description.whiteDays': 'Sahur scheduled for the 13, 14, 15 of each Hijri month only',
-    'fasting.description.muhammadWhiteDays':
-      'Sahur scheduled for Mondays and Thursdays and the 13, 14, 15 of each Hijri month',
-    'fasting.description.dawoodWhiteDays':
-      'Sahur scheduled for one day on, one day off and the 13, 14, 15 of each Hijri month',
-  };
-
-  const SETTLED_LABELS: Record<string, string> = {
-    'fasting.card.title': 'Fasting',
-    'fasting.card.hint': 'Choose the days you want to enable Sahur for',
-    'fasting.mode.muhammad': 'Muhammad',
-    'fasting.mode.dawood': 'Dawood',
-    'fasting.mode.whiteDays': 'White days',
-  };
-
-  // The wave-translated locales (T-537, T-428, T-453): these five keys speak
-  // natively there, and the round's English wording never overwrites them
-  const NATIVE_LABEL_LOCALES = new Set(['bcl', 'bm', 'bug', 'kas', 'mdh', 'mfa', 'mrw']);
-
   it.each(Object.keys(SHIPPED))('%s carries exactly the twelve fasting keys', (loc) => {
     const keys = Object.keys(SHIPPED[loc]).filter((key) => key.startsWith('fasting.'));
     expect(keys.sort()).toEqual([...FASTING_KEYS].sort());
   });
 
-  it.each(Object.keys(SHIPPED))('%s carries the settled English on every fasting description', (loc) => {
+  // The translated lock: every key speaks its locale, never the English it shipped as.
+  // The two regimen name rows may echo their English where the locale's established
+  // practice spells the name identically (the PRAYER_NAME_KEYS ruling above).
+  it.each(LOCALES)('%s translates every fasting key off its English source', (loc) => {
     const failures: string[] = [];
-    for (const [key, value] of Object.entries(SETTLED_DESCRIPTIONS)) {
-      if (SHIPPED[loc][key as keyof Catalog] !== value) {
-        failures.push(`${loc}: ${key} reads "${SHIPPED[loc][key as keyof Catalog]}"`);
+    for (const key of FASTING_KEYS) {
+      const read = CATALOGS[loc][key as keyof Catalog];
+      if (typeof read !== 'string' || read.length === 0) {
+        failures.push(`${loc}: ${key} is not a landed string`);
+        continue;
       }
-    }
-    expect(failures).toEqual([]);
-  });
-
-  it.each(Object.keys(SHIPPED))('%s carries the settled English labels outside the wave-translated seven', (loc) => {
-    const failures: string[] = [];
-    for (const [key, value] of Object.entries(SETTLED_LABELS)) {
-      const read = SHIPPED[loc][key as keyof Catalog];
-      if (NATIVE_LABEL_LOCALES.has(loc)) {
-        if (typeof read !== 'string' || read.length === 0 || read === value) {
-          failures.push(`${loc}: ${key} lost its landed native label`);
-        }
-      } else if (read !== value) {
-        failures.push(`${loc}: ${key} reads "${read}"`);
+      if (read === en[key as keyof typeof en] && !PRAYER_NAME_KEYS.includes(key)) {
+        failures.push(`${loc}: ${key} still reads its English source`);
       }
     }
     expect(failures).toEqual([]);
