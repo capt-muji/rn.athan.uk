@@ -90,7 +90,7 @@ describe("the retired 2.43 language-wave row (T-541, the owner's read)", () => {
   });
 });
 
-/** The ten per-version keys the 2.5 roll-up retired from every catalog */
+/** The ten per-version keys the 2.50 roll-up retired from every catalog */
 const ROLLED_UP_KEYS = [
   'whatsNew.title.moreLanguages',
   'whatsNew.body.moreLanguages',
@@ -114,15 +114,15 @@ const ROLLED_UP_KEYS = [
  */
 const DEFERRED_TRANSLATION = new Set<TranslationKey>(['whatsNew.title.since20', 'whatsNew.body.since20']);
 
-describe('the 2.5 roll-up (T-639: every post-2.0 entry merges under one 2.5 note)', () => {
+describe('the 2.50 roll-up (T-639: every post-2.0 entry merges under one 2.50 note)', () => {
   const items = WHATS_NEW?.items ?? [];
   const post20 = items.filter((entry) => compareVersions(entry.version ?? '0', '2.0.37') > 0);
 
-  it('archives exactly one post-2.0 item, the merged note stamped 2.5.0', () => {
+  it('archives exactly one post-2.0 item, the merged note stamped 2.50.0', () => {
     expect(post20).toHaveLength(1);
     expect(post20[0]?.titleKey).toBe('whatsNew.title.since20');
     expect(post20[0]?.bodyKey).toBe('whatsNew.body.since20');
-    expect(post20[0]?.version).toBe('2.5.0');
+    expect(post20[0]?.version).toBe('2.50.0');
     expect(post20[0]?.platform).toBeUndefined();
     expect(post20[0]?.flags).toBeUndefined();
   });
@@ -164,11 +164,11 @@ describe('the 2.5 roll-up (T-639: every post-2.0 entry merges under one 2.5 note
     }
   });
 
-  it('pops for the production reader upgrading from 2.0.37 to the 2.5 release', () => {
-    expect(shouldShowWhatsNew('2.5.0', '2.0.37', currentVisibleWhatsNew())).toBe(true);
+  it('pops for the production reader upgrading from 2.0.37 to the 2.50 release', () => {
+    expect(shouldShowWhatsNew('2.50.0', '2.0.37', currentVisibleWhatsNew())).toBe(true);
   });
 
-  it('pops for the same reader on the build this tree serves, not only the 2.5 store build', () => {
+  it('pops for the same reader on the build this tree serves, not only the 2.50 store build', () => {
     expect(shouldShowWhatsNew(INSTALLED_VERSION, '2.0.37', currentVisibleWhatsNew())).toBe(true);
   });
 
