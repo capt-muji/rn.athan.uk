@@ -1719,4 +1719,25 @@ describe('the command line flow', () => {
       )
     ).rejects.toThrow('--keys');
   });
+
+  it('refuses an empty --keys list', async () => {
+    await expect(
+      verify.run(['--locales', 'ar', '--keys', ' , ', '--out', join(SCRATCH, 'cli-keys-empty')], baseDeps(fetchOk))
+    ).rejects.toThrow('--keys must name at least one key');
+  });
+
+  it('refuses --keys combined with --fill and --rule instead of silently ignoring it', async () => {
+    await expect(
+      verify.run(
+        ['--fill', 'ar', '--keys', 'fasting.card.title', '--out', join(SCRATCH, 'cli-keys-fill')],
+        baseDeps(fetchOk)
+      )
+    ).rejects.toThrow('--keys combines only with a verify run');
+    await expect(
+      verify.run(
+        ['--rule', 'ar', '--keys', 'fasting.card.title', '--out', join(SCRATCH, 'cli-keys-rule')],
+        baseDeps(fetchOk)
+      )
+    ).rejects.toThrow('--keys combines only with a verify run');
+  });
 });

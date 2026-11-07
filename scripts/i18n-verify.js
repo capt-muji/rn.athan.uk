@@ -1440,6 +1440,12 @@ const run = async (argv, deps = {}) => {
     throw usageError(`--keys must name at least one key, got ${keysFlag}`);
   }
 
+  if (fillFlag !== undefined && keysFlag !== undefined) {
+    throw usageError('--keys combines only with a verify run, not --fill');
+  }
+  if (ruleFlag !== undefined && keysFlag !== undefined) {
+    throw usageError('--keys combines only with a verify run, not --rule');
+  }
   const log = deps.log ?? ((line) => process.stdout.write(`${line}\n`));
   const outDir = outFlag ?? defaultOutDir(deps);
 
