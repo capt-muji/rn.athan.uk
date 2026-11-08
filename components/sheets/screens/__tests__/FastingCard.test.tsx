@@ -9,6 +9,7 @@
  */
 
 import { act, fireEvent, render, screen } from '@testing-library/react-native';
+import * as Haptics from 'expo-haptics';
 import { getDefaultStore } from 'jotai';
 import { StyleSheet } from 'react-native';
 import type { TestInstance, TestNode } from 'test-renderer';
@@ -234,6 +235,51 @@ describe('the rows', () => {
     await settle();
 
     expect(onSelectionChange).not.toHaveBeenCalled();
+  });
+
+  describe('the answer to a tap that changes nothing', () => {
+    it('gives the only selected option the same impact, switch or row', async () => {
+      showAprilWindow();
+      const onSelectionChange = jest.fn();
+      await renderCard(selection({ mode: 'muhammad' }), onSelectionChange);
+
+      await fireEvent.press(rowSwitch('muhammad'));
+      await fireEvent.press(screen.getAllByLabelText(rowLabel('muhammad'))[0]);
+      await settle();
+
+      expect(onSelectionChange).not.toHaveBeenCalled();
+      expect(Haptics.impactAsync).toHaveBeenCalledTimes(2);
+      expect(Haptics.impactAsync).toHaveBeenNthCalledWith(1, Haptics.ImpactFeedbackStyle.Medium);
+      expect(Haptics.impactAsync).toHaveBeenNthCalledWith(2, Haptics.ImpactFeedbackStyle.Medium);
+    });
+
+    it("gives a locked card's row and switch the same impact, landing nothing", async () => {
+      showAprilWindow();
+      const onSelectionChange = jest.fn();
+      await renderCard(selection({ mode: 'muhammad', whiteDaysAddOn: true }), onSelectionChange, true);
+
+      await fireEvent.press(screen.getAllByLabelText(rowLabel('dawood'))[0]);
+      await fireEvent.press(rowSwitch('dawood'));
+      await settle();
+
+      expect(onSelectionChange).not.toHaveBeenCalled();
+      expect(Haptics.impactAsync).toHaveBeenCalledTimes(2);
+      expect(Haptics.impactAsync).toHaveBeenNthCalledWith(1, Haptics.ImpactFeedbackStyle.Medium);
+      expect(Haptics.impactAsync).toHaveBeenNthCalledWith(2, Haptics.ImpactFeedbackStyle.Medium);
+    });
+
+    it('fires the impact exactly once for a changing tap', async () => {
+      showAprilWindow();
+      const onSelectionChange = jest.fn();
+      await renderCard(selection({ mode: 'everyDay' }), onSelectionChange);
+
+      await fireEvent.press(screen.getAllByLabelText(rowLabel('muhammad'))[0]);
+      await settle();
+
+      expect(onSelectionChange).toHaveBeenCalledWith('muhammad');
+      expect(Haptics.impactAsync).toHaveBeenCalledTimes(1);
+      expect(Haptics.impactAsync).toHaveBeenCalledWith(Haptics.ImpactFeedbackStyle.Medium);
+    });
   });
 
   it('reports each of two rapid taps as its own mode, dropping neither', async () => {

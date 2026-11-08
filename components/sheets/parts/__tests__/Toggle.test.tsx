@@ -112,6 +112,55 @@ describe('the reminder switch', () => {
     expect(onPress).toHaveBeenCalledTimes(1);
   });
 
+  describe('a switch that answers refused presses', () => {
+    it('fires the feedback for a frozen press and still writes nothing', async () => {
+      const onPress = jest.fn();
+      const onToggle = jest.fn();
+      await render(<Toggle value={false} onToggle={onToggle} onPress={onPress} frozen feedbackWhenRefused />);
+
+      await fireEvent.press(screen.getByRole('switch'));
+
+      expect(onPress).toHaveBeenCalledTimes(1);
+      expect(onToggle).not.toHaveBeenCalled();
+      expect(thumb()).toHaveStyle({ transform: [{ translateX: 0 }] });
+    });
+
+    it('fires the feedback for a disabled press and still writes nothing', async () => {
+      const onPress = jest.fn();
+      const onToggle = jest.fn();
+      await render(<Toggle value={false} onToggle={onToggle} onPress={onPress} disabled feedbackWhenRefused />);
+
+      await fireEvent.press(screen.getByRole('switch'));
+
+      expect(onPress).toHaveBeenCalledTimes(1);
+      expect(onToggle).not.toHaveBeenCalled();
+    });
+
+    it('keeps a refused press silent without the ask, the contract every other caller holds', async () => {
+      const onPress = jest.fn();
+      const onToggle = jest.fn();
+      await render(<Toggle value={false} onToggle={onToggle} onPress={onPress} frozen />);
+
+      await fireEvent.press(screen.getByRole('switch'));
+
+      expect(onPress).not.toHaveBeenCalled();
+      expect(onToggle).not.toHaveBeenCalled();
+    });
+
+    it('answers an accepted press once, feedback and write together', async () => {
+      const onPress = jest.fn();
+      const onToggle = jest.fn();
+      await render(<Toggle value={false} onToggle={onToggle} onPress={onPress} feedbackWhenRefused />);
+
+      await fireEvent.press(screen.getByRole('switch'));
+      await act(() => jest.runAllTimersAsync());
+
+      expect(onPress).toHaveBeenCalledTimes(1);
+      expect(onToggle).toHaveBeenCalledTimes(1);
+      expect(onToggle).toHaveBeenCalledWith(true);
+    });
+  });
+
   it('lets a label drive the switch through its press handle, writing as the switch itself does', async () => {
     const onToggle = jest.fn();
     let handle: ToggleHandle | null = null;
