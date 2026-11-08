@@ -13,8 +13,13 @@ import { StyleSheet } from 'react-native';
 import type { TestInstance } from 'test-renderer';
 
 import { seedPagerPage, showLondonDay } from '@/__tests__/harness';
-import { ScheduleType } from '@/shared/types';
-import { fastingModeAtom, fastingWhiteDaysAtom } from '@/stores/notifications';
+import { AlertType, ScheduleType } from '@/shared/types';
+import {
+  extraPrayerAlertAtoms,
+  fastingModeAtom,
+  fastingWhiteDaysAtom,
+  getPrayerAlertAtom,
+} from '@/stores/notifications';
 
 import FastingBellCluster from '../FastingBellCluster';
 import Prayer from '../Prayer';
@@ -71,6 +76,12 @@ const arm = (mode: string, whiteDaysAddOn: boolean) =>
     store.set(fastingWhiteDaysAtom, whiteDaysAddOn);
   });
 
+/** The Suhoor row's own at-time alert: the bell the cluster rides */
+const suhoorBell = (alert: AlertType) =>
+  act(() => {
+    store.set(getPrayerAlertAtom(ScheduleType.Extra, SUHOOR), alert);
+  });
+
 const renderSuhoorRow = async () => {
   const view = await render(<Prayer type={ScheduleType.Extra} index={SUHOOR} />);
   await act(() => jest.runAllTimersAsync());
@@ -82,6 +93,7 @@ beforeEach(() => {
   showLondonDay('2026-09-11', '12:00');
   store.set(fastingModeAtom, 'everyDay');
   store.set(fastingWhiteDaysAtom, false);
+  store.set(getPrayerAlertAtom(ScheduleType.Extra, SUHOOR), AlertType.Sound);
 });
 
 afterEach(() => {
@@ -162,6 +174,45 @@ describe('the committed selection flowing onto the row', () => {
     expect(circles(cluster()).map((dot) => dot.fill)).toEqual([DAWOOD]);
 
     await arm('everyDay', false);
+    expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();
+  });
+});
+
+describe("the Suhoor row's bell under an off at-time alert", () => {
+  // Nothing is scheduled under an off alert, so nothing draws: the bell tells
+  // one truth (owner report 2026-11-08)
+  it.each([
+    ['Muhammad', 'muhammad', false],
+    ['Dawood', 'dawood', false],
+    ['White days', 'whiteDays', false],
+    ['Muhammad with the white-days add-on', 'muhammad', true],
+  ])('draws no cluster under %s', async (_label, mode, whiteDaysAddOn) => {
+    await arm(mode, whiteDaysAddOn);
+    await suhoorBell(AlertType.Off);
+    await renderSuhoorRow();
+
+    expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();
+  });
+
+  it('clears the cluster the moment the alert goes off, and mounts it settled when it returns', async () => {
+    await arm('muhammad', true);
+    await renderSuhoorRow();
+    expect(circles(cluster()).map((dot) => dot.fill)).toEqual([WHITE, GREEN]);
+
+    await suhoorBell(AlertType.Off);
+    expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();
+
+    await suhoorBell(AlertType.Silent);
+    expect(circles(cluster()).map((dot) => dot.fill)).toEqual([WHITE, GREEN]);
+  });
+
+  it("reads the Suhoor row's own alert, not another extras row's", async () => {
+    for (const atom of extraPrayerAlertAtoms) store.set(atom, AlertType.Sound);
+    await arm('dawood', false);
+
+    await suhoorBell(AlertType.Off);
+    await renderSuhoorRow();
+
     expect(screen.queryByTestId('fasting-bell-cluster')).toBeNull();
   });
 });
