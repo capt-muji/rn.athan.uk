@@ -732,6 +732,111 @@ const ENGINES = {
   gtx: { url: gtxUrl, extract: extractGtx },
 };
 
+// --------------------------------------------------------------------------------------
+// The batch engines (owner order 2026-11-08, ticket #659): one POST per locale chunk
+// carries newline-joined values, and the response's segments fold back onto the input
+// lines by their source echo. One target language per request stays the endpoint's
+// floor; the request count collapses along the key axis instead.
+// --------------------------------------------------------------------------------------
+
+const GTX_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
+
+/** Chunk caps: lines per POST and bytes of joined source text, both far under anything
+ * the endpoint has been observed refusing; 223 keys land in two chunks */
+const MAX_BATCH_LINES = 200;
+const MAX_BATCH_BYTES = 32768;
+
+const gtxBatchRequest = (locale, text) => ({
+  url: GTX_ENDPOINT,
+  body: `client=gtx&sl=${engineLocale(locale)}&tl=en&dt=t&q=${encodeURIComponent(text)}`,
+});
+
+/** Folds a batch response onto the input lines: each segment echoes its source, so a
+ * cursor walks the segments accumulating source until it spells the current input line,
+ * and the line's translation is that run's translations joined. A line the response
+ * never spells reads null. */
+const extractGtxBatch = (body, inputLines) => {
+  let data;
+  try {
+    data = JSON.parse(body);
+  } catch {
+    return inputLines.map(() => null);
+  }
+  if (!Array.isArray(data) || !Array.isArray(data[0])) return inputLines.map(() => null);
+  const segments = data[0].filter((segment) => Array.isArray(segment) && typeof segment[1] === 'string');
+
+  const out = [];
+  let cursor = 0;
+  let sourceRun = '';
+  let translationRun = '';
+  for (const line of inputLines) {
+    let matched = false;
+    while (cursor < segments.length) {
+      sourceRun += segments[cursor][1];
+      translationRun += typeof segments[cursor][0] === 'string' ? segments[cursor][0] : '';
+      cursor += 1;
+      if (sourceRun === line) {
+        out.push(translationRun.length > 0 ? translationRun : null);
+        matched = true;
+        sourceRun = '';
+        translationRun = '';
+        break;
+      }
+      if (!line.startsWith(sourceRun)) {
+        sourceRun = '';
+        translationRun = '';
+        break;
+      }
+    }
+    if (!matched && out.length < inputLines.length && (cursor >= segments.length || sourceRun === '')) {
+      out.push(null);
+    }
+  }
+  while (out.length < inputLines.length) out.push(null);
+  return out.slice(0, inputLines.length);
+};
+
+/** One batched engine call with the same retry and pace rhythm as the single call: the
+ * aligned translations, or nulls when the budget is spent. Values carrying embedded
+ * newlines ship with those newlines flattened to spaces: the join separator must remain
+ * the only line break, or the fold's alignment shifts (volume.note and friends) */
+const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3) => {
+  if (engineName !== 'gtx' || texts.length === 0) return texts.map(() => null);
+  const sentLines = texts.map((text) => text.replace(/\n+/g, ' '));
+  const request = gtxBatchRequest(locale, sentLines.join('\n'));
+  for (let attempt = 0; attempt < attempts; attempt++) {
+    if (deps.pace) await deps.sleep(deps.pace);
+    try {
+      const response = await deps.fetch(request.url, { method: 'POST', body: request.body });
+      if (!response.ok) throw new Error(`http ${response.status}`);
+      return extractGtxBatch(await response.text(), sentLines);
+    } catch {
+      if (attempt === attempts - 1) return texts.map(() => null);
+      await deps.sleep(400 * 2 ** attempt);
+    }
+  }
+  return texts.map(() => null);
+};
+
+/** Splits the keys into chunks under both caps, in row order */
+const chunkKeys = (keys, catalog) => {
+  const chunks = [];
+  let current = [];
+  let bytes = 0;
+  for (const key of keys) {
+    const size = catalog[key].length + 1;
+    if (current.length > 0 && (current.length >= MAX_BATCH_LINES || bytes + size > MAX_BATCH_BYTES)) {
+      chunks.push(current);
+      current = [];
+      bytes = 0;
+    }
+    current.push(key);
+    bytes += size;
+  }
+  if (current.length > 0) chunks.push(current);
+  return chunks;
+};
+
 /** The Google human page - the owner's spot-check link */
 const spotCheckUrl = (locale, text) =>
   `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
@@ -845,22 +950,43 @@ const runLocale = async (locale, opts) => {
   // per-attempt gap in fetchWithRetry is the only request rhythm
   const rows = await mapPool(keys, opts.pace ? 1 : (opts.concurrency ?? 4), async (key) => {
     const prior = resumeRows?.get(key);
-    // A resumed row is reusable only while its catalog string still matches
     const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
     const row = buildRow(locale, key, en, catalog);
     for (let slotIndex = 0; slotIndex < ROW_SLOTS.length; slotIndex++) {
       const resumedText = slotTextOf(priorFresh, slotIndex);
       if (resumedText !== null && resumedText !== '') {
         row.sites[slotIndex].roundtrip = resumedText;
-        continue;
-      }
-      const engineName = ROW_SLOTS[slotIndex];
-      if (!live.includes(engineName)) continue;
-      const roundtrip = await fetchWithRetry(engineName, locale, catalog[key], deps);
-      if (slotAccepts(catalog[key], en[key], roundtrip)) {
-        row.sites[slotIndex].roundtrip = roundtrip;
       }
     }
+    return row;
+  });
+
+  // The batch pass (ticket #659): every row whose engine slot still needs a render rides
+  // one newline POST per chunk of at most MAX_BATCH_LINES keys; the per-row request is
+  // gone, and a full catalog costs two chunk requests beside the probe
+  const rowByKey = new Map(rows.map((row) => [row.key, row]));
+  const needy = rows.filter((row) => row.sites[0].roundtrip === null && live.includes(ROW_SLOTS[0]));
+  for (const chunk of chunkKeys(
+    needy.map((row) => row.key),
+    catalog
+  )) {
+    const roundtrips = await fetchBatchWithRetry(
+      'gtx',
+      locale,
+      chunk.map((key) => catalog[key]),
+      deps
+    );
+    chunk.forEach((key, index) => {
+      const row = rowByKey.get(key);
+      if (row && slotAccepts(catalog[key], en[key], roundtrips[index])) {
+        row.sites[0].roundtrip = roundtrips[index];
+      }
+    });
+  }
+
+  for (const row of rows) {
+    const prior = resumeRows?.get(row.key);
+    const priorFresh = prior && prior.catalog === catalog[row.key] ? prior : null;
     const bothMiss = row.sites.every((site) => site.roundtrip === null);
     if (bothMiss) {
       const resumedLlm = resumedLlmOf(priorFresh);
@@ -874,8 +1000,7 @@ const runLocale = async (locale, opts) => {
       row.ruling = priorFresh.ruling;
       if (row.verdict === 'red') row.verdict = 'green';
     }
-    return row;
-  });
+  }
 
   const counts = { green: 0, red: 0, amber: 0 };
   const engineMix = { gtx: 0, miss: 0, pending: 0 };
@@ -1592,6 +1717,9 @@ module.exports = {
   spotCheckUrl,
   gtxUrl,
   extractGtx,
+  extractGtxBatch,
+  fetchBatchWithRetry,
+  chunkKeys,
   fetchWithRetry,
   preFlight,
   levenshtein,

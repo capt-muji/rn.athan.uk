@@ -26,6 +26,15 @@ const verify = require('../i18n-verify.js') as {
   spotCheckUrl(locale: string, text: string): string;
   gtxUrl(locale: string, text: string): string;
   extractGtx(body: string): string | null;
+  extractGtxBatch(body: string, inputLines: string[]): Array<string | null>;
+  fetchBatchWithRetry(
+    engine: string,
+    locale: string,
+    texts: string[],
+    deps: { fetch: FetchFn; sleep: (ms: number) => Promise<void>; pace?: number },
+    attempts?: number
+  ): Promise<Array<string | null>>;
+  chunkKeys(keys: string[], catalog: Catalog): string[][];
   fetchWithRetry(
     engine: string,
     locale: string,
@@ -83,7 +92,7 @@ interface FetchResponse {
   status: number;
   text: () => Promise<string>;
 }
-type FetchFn = (url: string) => Promise<FetchResponse>;
+type FetchFn = (url: string, init?: { method?: string; body?: string }) => Promise<FetchResponse>;
 interface Site {
   engine: string;
   roundtrip: string | null;
@@ -830,23 +839,80 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
   });
 });
 
+describe('the engine batch alignment (owner order 2026-11-08: one POST per locale chunk)', () => {
+  it('folds response segments onto input lines by their source echo, sentence splits included', () => {
+    const body = JSON.stringify([
+      [
+        ['Translated one', 'Line one', null, null],
+        ['Translated two first half', 'Line two ', null, null],
+        ['second half', 'and its second sentence', null, null],
+        ['Translated three', 'Line three', null, null],
+        ['Translated three again', 'Line three', null, null],
+      ],
+    ]);
+    const out = verify.extractGtxBatch(body, [
+      'Line one',
+      'Line two and its second sentence',
+      'Line three',
+      'Line three',
+    ]);
+    expect(out).toEqual([
+      'Translated one',
+      'Translated two first halfsecond half',
+      'Translated three',
+      'Translated three again',
+    ]);
+  });
+
+  it('reads null for a line the response never echoes', () => {
+    const body = JSON.stringify([[['Only one', 'Line one', null, null]]]);
+    expect(verify.extractGtxBatch(body, ['Line one', 'Line two'])).toEqual(['Only one', null]);
+  });
+
+  it('flattens embedded newlines before the join, so a multi-line value keeps its slot', async () => {
+    const bodies: string[] = [];
+    const out = await verify.fetchBatchWithRetry('gtx', 'ar', ['One line', 'Two lines\nwith a break', 'Three'], {
+      fetch: async (_url, init) => {
+        bodies.push(init?.body ?? '');
+        const lines = decodeURIComponent((init?.body ?? '').split('q=')[1]).split('\n');
+        return res(JSON.stringify([lines.map((line) => [`rt: ${line}`, line, null, null])]));
+      },
+      sleep: noSleep,
+    });
+    expect(out).toEqual(['rt: One line', 'rt: Two lines with a break', 'rt: Three']);
+    // The join carried exactly three lines: the embedded break shipped flattened
+    expect(bodies[0].match(/%0A/g)?.length).toBe(2);
+  });
+});
+
 describe('the per-locale artifacts (Google alone; slot two sits empty for phase two)', () => {
   const catalog: Catalog = { ...realEn, 'prayer.fajr': 'الفجر' };
   const gtxBody = (text: string) => res(JSON.stringify([[[text, 'x', null, null]]]));
-  const gtxFetch: FetchFn = async (url) => {
+  const gtxFetch: FetchFn = async (url, init) => {
+    if (init?.body) {
+      const lines = decodeURIComponent(init.body.split('q=')[1]).split('\n');
+      return res(JSON.stringify([lines.map((line) => [`g: ${line.slice(0, 6)}`, line, null, null])]));
+    }
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
     return gtxBody(q === 'الفجر' ? 'The dawn prayer' : `g: ${q.slice(0, 6)}`);
   };
 
-  it('fetches exactly one request per row, renders slot one and leaves slot two empty', async () => {
+  it('batches the locale into newline POSTs beside the probe, one request per chunk', async () => {
     let calls = 0;
+    let batchCalls = 0;
     const out = await verify.runLocale('ar', {
       en: realEn,
       catalog,
       outDir: SCRATCH,
-      fetch: async (url) => {
+      fetch: async (url, init) => {
         calls += 1;
-        return gtxFetch(url);
+        if (init?.body) {
+          batchCalls += 1;
+          const q = decodeURIComponent(init.body.split('q=')[1]);
+          const lines = q.split('\n');
+          return res(JSON.stringify([lines.map((line) => [`bt: ${line.slice(0, 6)}`, line, null, null])]));
+        }
+        return gtxFetch(url, init);
       },
       sleep: noSleep,
       now: fixedNow,
@@ -854,13 +920,11 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     });
     expect(out.count).toBe(223);
     expect(out.misses).toEqual([]);
-    // 223 rows plus the single pre-flight probe; slot two is never requested
-    expect(calls).toBe(224);
+    // 223 rows in 200-line chunks: two batch POSTs plus the single pre-flight probe
+    expect(calls).toBe(3);
+    expect(batchCalls).toBe(2);
     const fajr = out.rows.find((r) => r.key === 'prayer.fajr');
-    expect(fajr?.sites).toEqual([
-      { engine: 'gtx', roundtrip: 'The dawn prayer' },
-      { engine: 'pending', roundtrip: null },
-    ]);
+    expect(fajr?.sites[0]).toEqual({ engine: 'gtx', roundtrip: 'bt: الفجر' });
 
     const json = JSON.parse(readFileSync(join(SCRATCH, 'ar.json'), 'utf8'));
     expect(json.languageName).toBe('ar - Arabic');
@@ -879,11 +943,11 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'paced'),
-      fetch: async (url) => {
+      fetch: async (url, init) => {
         events.push('fetch');
         inFlight += 1;
         maxInFlight = Math.max(maxInFlight, inFlight);
-        const answer = await gtxFetch(url);
+        const answer = await gtxFetch(url, init);
         inFlight -= 1;
         return answer;
       },
@@ -908,11 +972,11 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'paced-retry'),
-      fetch: async (url) => {
+      fetch: async (url, init) => {
         call += 1;
         events.push(`fetch:${call}`);
         if (call === 2) return res('blocked', false, 429);
-        return gtxFetch(url);
+        return gtxFetch(url, init);
       },
       sleep: async (ms) => {
         events.push(`sleep:${ms}`);
@@ -983,9 +1047,9 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'resume'),
-      fetch: async (url) => {
+      fetch: async (url, init) => {
         calls += 1;
-        return gtxFetch(url);
+        return gtxFetch(url, init);
       },
       sleep: noSleep,
       now: fixedNow,
@@ -995,8 +1059,8 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     expect(fajr?.sites[0].roundtrip).toBe('old gtx: الفج');
     // The historical MyMemory slot is not carried into the pending slot two
     expect(fajr?.sites[1]).toEqual({ engine: 'pending', roundtrip: null });
-    // One probe plus the 223 rows whose gtx slot was not resumed
-    expect(calls).toBe(223);
+    // The probe plus two chunk POSTs; the resumed row rides free inside its chunk
+    expect(calls).toBe(3);
     const sunrise = out.rows.find((r) => r.key === 'prayer.sunrise');
     expect(sunrise?.sites[0].roundtrip).toBe('g: Sunris');
   });
@@ -1014,7 +1078,11 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
       en: realEn,
       catalog,
       outDir: join(SCRATCH, 'legacy'),
-      fetch: async (url) => {
+      fetch: async (url, init) => {
+        if (init?.body) {
+          const lines = decodeURIComponent(init.body.split('q=')[1]).split('\n');
+          return res(JSON.stringify([lines.map((line) => [`fresh: ${line.slice(0, 4)}`, line, null, null])]));
+        }
         const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
         return gtxBody(`fresh: ${q.slice(0, 4)}`);
       },
@@ -1196,7 +1264,11 @@ describe('the command line flow', () => {
     home: SCRATCH,
     readCatalogFile,
   });
-  const fetchOk: FetchFn = async (url) => {
+  const fetchOk: FetchFn = async (url, init) => {
+    if (init?.body) {
+      const lines = decodeURIComponent(init.body.split('q=')[1]).split('\n');
+      return res(JSON.stringify([lines.map((line) => [`g: ${line.slice(0, 6)}`, line, null, null])]));
+    }
     const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
     return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
@@ -1227,17 +1299,17 @@ describe('the command line flow', () => {
     };
     const report = await verify.run(['--locales', 'ar', '--out', outDir, '--pace', '9000'], deps);
     expect(report.ok).toBe(true);
-    // the probe plus every row, one pace gap before each
-    expect(sleeps.filter((ms) => ms === 9000).length).toBe(224);
+    // the probe plus each chunk, one pace gap before each request
+    expect(sleeps.filter((ms) => ms === 9000).length).toBe(3);
   });
 
   it('runs the named locales, generates the English reference without a single fetch, and reports ok', async () => {
     const outDir = join(SCRATCH, 'cli-a');
     const deps = baseDeps(fetchOk);
     let calls = 0;
-    deps.fetch = async (url) => {
+    deps.fetch = async (url, init) => {
       calls += 1;
-      return fetchOk(url);
+      return fetchOk(url, init);
     };
     const report = await verify.run(['--locales', 'en,ar', '--out', outDir], deps);
     expect(report.ok).toBe(true);
@@ -1248,8 +1320,8 @@ describe('the command line flow', () => {
       'en.json',
       'index.html',
     ]);
-    // 224 rows on the single engine plus one pre-flight probe; en fetches nothing
-    expect(calls).toBe(224);
+    // ar's 223 rows ride two chunk POSTs plus the probe; en fetches nothing
+    expect(calls).toBe(3);
     const enHtml = readFileSync(join(outDir, 'en.html'), 'utf8');
     expect(enHtml).toContain('reference');
   });
@@ -1372,10 +1444,10 @@ describe('the command line flow', () => {
         { engine: 'pending', roundtrip: null },
       ];
       writeFileSync(join(outDir, 'ar.json'), JSON.stringify(ruled));
-      const missFetch: FetchFn = async (url) => {
+      const missFetch: FetchFn = async (url, init) => {
         const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
         if (q === ruledRow.catalog) return res('[]');
-        return fetchOk(url);
+        return fetchOk(url, init);
       };
       const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(missFetch));
       expect(report.ok).toBe(false);
@@ -1690,9 +1762,9 @@ describe('the command line flow', () => {
 
   it('scopes the rows to --keys (owner order 2026-11-07: a wave verifies only the keys it touched)', async () => {
     let calls = 0;
-    const counting: FetchFn = async (url) => {
+    const counting: FetchFn = async (url, init) => {
       calls += 1;
-      return fetchOk(url);
+      return fetchOk(url, init);
     };
     const deps = baseDeps(counting);
     const report = await verify.run(
@@ -1706,7 +1778,8 @@ describe('the command line flow', () => {
       'fasting.card.title',
       'whatsNew.body.fasting',
     ]);
-    expect(calls).toBe(3);
+    // The probe plus one chunk: a two-key scope never splits
+    expect(calls).toBe(2);
     const reference = JSON.parse(readFileSync(join(SCRATCH, 'cli-keys', 'en.json'), 'utf8'));
     expect(reference.rowCount).toBe(2);
   });
