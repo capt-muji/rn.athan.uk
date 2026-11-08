@@ -1293,6 +1293,23 @@ describe('the command line flow', () => {
     return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, q, null, null]]]));
   };
 
+  it('breaks the circuit on the sorry page: one 3xx stops the run, later locales skip, nothing hammers', async () => {
+    const events: string[] = [];
+    const sorryFetch: FetchFn = async (_url, init) => {
+      events.push(init?.body ? 'post' : 'get');
+      return res('moved', false, 302);
+    };
+    const report = await verify.run(
+      ['--locales', 'ar,so', '--out', join(SCRATCH, 'cli-sorry'), '--pace', '10'],
+      baseDeps(sorryFetch)
+    );
+    expect(report.ok).toBe(false);
+    expect(report.misses).toEqual([{ locale: 'ar', key: '(engine)', missing: ['sorry-page'] }]);
+    // The probe alone trips the breaker: one GET, not one batch POST, not one retry
+    expect(events).toEqual(['get']);
+    expect(report.written.filter((file) => file.endsWith('so.json'))).toEqual([]);
+  });
+
   it('the index rebuild survives a stray non-artifact json in the out dir', async () => {
     const outDir = join(SCRATCH, 'cli-stray');
     await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));

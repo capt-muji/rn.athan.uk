@@ -778,7 +778,10 @@ const extractGtxBatch = (body, inputLines) => {
 /** One batched engine call with the same retry and pace rhythm as the single call: the
  * aligned translations, or nulls when the budget is spent. Values carrying embedded
  * newlines ship with those newlines flattened to spaces: the join separator must remain
- * the only line break, or the fold's alignment shifts (volume.note and friends) */
+ * the only line break, or the fold's alignment shifts (volume.note and friends).
+ * Redirects never ride: a 3xx here is the sorry page (2026-11-08, T-664's parity run),
+ * and following it dressed a block up as a failing 200 while three retries per chunk
+ * hammered a flagged IP - so a redirect aborts the whole run for the caller to report. */
 const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3) => {
   if (engineName !== 'gtx' || texts.length === 0) return texts.map(() => null);
   const sentLines = texts.map((text) => text.replace(/\n+/g, ' '));
@@ -792,14 +795,17 @@ const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3
         method: 'POST',
         body: request.body,
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        redirect: 'manual',
       });
+      if (response.status >= 300 && response.status < 400) throw SORRY_REDIRECT;
       if (!response.ok) throw new Error(`http ${response.status}`);
       const extracted = extractGtxBatch(await response.text(), sentLines);
       // A shapeless 200 is a spent attempt, not a verdict: the single path retried
       // empty extracts, and a mangled body must not burn a whole chunk
       if (extracted.every((value) => value === null)) throw new Error('no aligned segments');
       return extracted;
-    } catch {
+    } catch (error) {
+      if (error === SORRY_REDIRECT) throw SORRY_REDIRECT;
       if (attempt === attempts - 1) return texts.map(() => null);
       await deps.sleep(400 * 2 ** attempt);
     }
@@ -831,20 +837,27 @@ const chunkKeys = (keys, catalog) => {
 const spotCheckUrl = (locale, text) =>
   `https://translate.google.com/?sl=${engineLocale(locale)}&tl=en&text=${encodeURIComponent(text)}&op=translate`;
 
+/** The sorry page's signature (T-664's parity run): thrown, never swallowed, so the run
+ * stops instead of hammering a flagged IP through retry cycles */
+const SORRY_REDIRECT = Symbol('sorry-redirect');
+
 /** One engine call with retry and backoff: the extracted text, or null when the budget is spent.
  * Under a pace, every attempt - retries included - waits its gap first (owner order: a
- * closed quota must never be hammered with quick retries; one request per gap). */
+ * closed quota must never be hammered with quick retries; one request per gap). A 3xx
+ * with redirects off is the sorry page: it aborts the caller's whole run. */
 const fetchWithRetry = async (engineName, locale, text, deps, attempts = 3) => {
   const engine = ENGINES[engineName];
   for (let attempt = 0; attempt < attempts; attempt++) {
     if (deps.pace) await deps.sleep(deps.pace);
     try {
-      const response = await deps.fetch(engine.url(locale, text));
+      const response = await deps.fetch(engine.url(locale, text), { redirect: 'manual' });
+      if (response.status >= 300 && response.status < 400) throw SORRY_REDIRECT;
       if (!response.ok) throw new Error(`http ${response.status}`);
       const extracted = engine.extract(await response.text());
       if (extracted === null) throw new Error('empty body');
       return extracted;
-    } catch {
+    } catch (error) {
+      if (error === SORRY_REDIRECT) throw SORRY_REDIRECT;
       if (attempt === attempts - 1) return null;
       await deps.sleep(400 * 2 ** attempt);
     }
@@ -1297,6 +1310,8 @@ const summaryOfArtifact = (data, names) => ({
  * A json file that is not a locale artifact (research side data, anything stray) is
  * skipped by shape, not by name - the out dir is the owner's to read from. */
 const writeIndexFromDisk = (outDir, names) => {
+  // A circuit-broken first locale leaves no artifacts behind: the index of nothing still builds
+  mkdirSync(outDir, { recursive: true });
   const summaries = [];
   for (const file of readdirSync(outDir)) {
     if (!file.endsWith('.json') || file.endsWith('.llm-fill.json') || file.endsWith('.judge-rulings.json')) continue;
@@ -1592,7 +1607,12 @@ const run = async (argv, deps = {}) => {
     log(`en: ${rows.length} rows (the reference page)`);
   }
 
+  let sorryBlocked = false;
   for (const locale of locales.filter((candidate) => candidate !== 'en')) {
+    if (sorryBlocked) {
+      log(`${locale}: skipped, the endpoint's sorry page is up (circuit broken)`);
+      continue;
+    }
     const catalog = await readCatalogFile(locale);
     let resumeRows;
     if (resume) {
@@ -1604,20 +1624,35 @@ const run = async (argv, deps = {}) => {
         resumeRows = undefined;
       }
     }
-    const result = await runLocale(locale, {
-      en,
-      catalog,
-      outDir,
-      fetch: deps.fetch ?? globalThis.fetch,
-      sleep: deps.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms))),
-      now: deps.now ?? (() => new Date()),
-      resumeRows,
-      label: languageLabel(locale, names),
-      phase,
-      rtl,
-      ...(onlyKeys !== undefined ? { onlyKeys } : {}),
-      ...(pace > 0 ? { pace } : {}),
-    });
+    let result;
+    try {
+      result = await runLocale(locale, {
+        en,
+        catalog,
+        outDir,
+        fetch: deps.fetch ?? globalThis.fetch,
+        sleep: deps.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms))),
+        now: deps.now ?? (() => new Date()),
+        resumeRows,
+        label: languageLabel(locale, names),
+        phase,
+        rtl,
+        ...(onlyKeys !== undefined ? { onlyKeys } : {}),
+        ...(pace > 0 ? { pace } : {}),
+      });
+    } catch (error) {
+      if (error === SORRY_REDIRECT) {
+        // The block is IP-level: every later locale would hammer it. Stop the whole run
+        // here, name it, and leave the completed locales' artifacts for a --resume pass
+        sorryBlocked = true;
+        log(
+          `${locale}: the endpoint answered its sorry-page redirect; the run stops here - clear the IP (browser captcha on the same network) and resume`
+        );
+        misses.push({ locale, key: '(engine)', missing: ['sorry-page'] });
+        continue;
+      }
+      throw error;
+    }
     written.push(...result.files);
     const mix = Object.entries(result.engineMix)
       .map(([engine, count]) => `${engine}: ${count}`)

@@ -123,6 +123,12 @@ Each cost real work once; none deserves a second pass.
 - The per-pass probe: a locale's engine service drifts inside one day (mrw served the
   morning fetch, refused the evening verify; kr refused in T-594, served in T-629). The
   probe names the engineless set per pass; never assume the earlier reading.
+- The sorry-page block (2026-11-08, T-659's broken batch): a burst of failing requests
+  earns an IP-level 302 to google.com/sorry that outlasts the errors by hours. Opening
+  the API link in a browser on the SAME IP and solving its captcha clears the whole IP,
+  cookieless clients included, after a propagation delay of tens of minutes - no cookie
+  juggling needed. A HEAD request slips past with a 204 and proves nothing; judge by a
+  real GET answering 200 JSON.
 - The fill orphans: a locale's `.llm-fill.json` accretes keys later waves orphan; the fill
   refuses the whole file for one dead key. Strip fills to the live key set before filling.
 - The wrapper: a nohup-detached process inside an instantly-completing shell can never
