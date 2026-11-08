@@ -52,8 +52,9 @@ one line. Count the wave's keys from the en diff, not from per-locale diff sizes
 6. The ko glyph subset recuts (`shared/i18n/cjk-glyph-lock.json`) when the translated
    Korean closed set moves.
 7. Move the verify tooling's pins to the post-wave row count.
-8. `yarn validate` green, 100 percent coverage on touched lines, staged pages colored and
-   counted for the owner's read.
+8. `yarn validate` green, 100 percent coverage on touched lines, verdict counts reported
+   in the run log (the staged HTML pages were retired 2026-11-08, owner order: JSON
+   artifacts alone).
 
 ## The engine's batching facts (research 2026-11-08, live-tested; the rework is ticket #659)
 
@@ -85,11 +86,11 @@ already ships beats a technically better translation.
 ## The tooling map
 
 - `scripts/i18n-verify.js` - the round-trip engines, verdict coloring (green/red/amber),
-  staged pages, resume. `--keys` scopes rows, `--locales` scopes locales, `--resume` adopts
+  resume. `--keys` scopes rows, `--locales` scopes locales, `--resume` adopts
   unchanged rows, `--pace 5000` is the standing owner pace. Wrap long runs so completion
   notifies you (an exit line appended to the log); never wait blind on a bare process.
-- Artifacts under `$HOME/athan-i18n-verify`: per-locale `.json` results, `.html` staged
-  pages, `.judge-rulings.json`, `approval-sheet.md`, `disputes.md`, `judge-flags.md`.
+- Artifacts under `$HOME/athan-i18n-verify`: per-locale `.json` results,
+  `.judge-rulings.json`, `approval-sheet.md`, `disputes.md`, `judge-flags.md`.
   These live outside the public repo; nothing here is ever committed.
 - `shared/i18n/catalog-lock.json` - per-locale digests, re-taken via
   `scripts/catalog-lock.mjs` whenever a catalog moves.

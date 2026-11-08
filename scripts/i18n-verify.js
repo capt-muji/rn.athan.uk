@@ -35,7 +35,7 @@
  * Catalogs parse with @babel/parser: the exported object literal whose declarator
  * is not PRAYER_LABELS, the name-independent rule the loader itself uses.
  */
-const { mkdirSync, readFileSync, readdirSync, writeFileSync } = require('node:fs');
+const { mkdirSync, readFileSync, writeFileSync } = require('node:fs');
 const { join } = require('node:path');
 const { homedir } = require('node:os');
 const { parse } = require('@babel/parser');
@@ -1011,15 +1011,13 @@ const runLocale = async (locale, opts) => {
   const label = opts.label ?? locale;
   const phase = opts.phase ?? 'one';
   mkdirSync(outDir, { recursive: true });
-  const htmlPath = join(outDir, `${locale}.html`);
   const jsonPath = join(outDir, `${locale}.json`);
-  writeFileSync(htmlPath, renderLocaleHtml(locale, label, rows, phase, opts.rtl ?? loadRtlIds()));
   writeFileSync(
     jsonPath,
     `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
   );
 
-  return { locale, count: rows.length, rows, counts, engineMix, misses, files: [htmlPath, jsonPath] };
+  return { locale, count: rows.length, rows, counts, engineMix, misses, files: [jsonPath] };
 };
 
 /** The English reference page's rows: the key and the English string, nothing else */
@@ -1032,201 +1030,8 @@ const referenceRowsOf = (en, onlyKeys) =>
 // The pages (owner order two: modern, simple, human-friendly, colored)
 // --------------------------------------------------------------------------------------
 
-const PAGE_STYLE = `
-    :root { --bg:#f4f5f7; --card:#ffffff; --ink:#1b1f24; --muted:#667085; --line:#e4e7ec; --accent:#175cd3;
-      --green:#067647; --green-bg:#e9f6ef; --red:#b42318; --red-bg:#fdebe9; --amber:#b54708; --amber-bg:#fef3e2; }
-    * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg); color: var(--ink); margin: 0; padding: 1.75rem 1rem 3rem; line-height: 1.5; }
-    .wrap { max-width: 1220px; margin: 0 auto; }
-    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-      padding: 1.1rem 1.4rem; margin-bottom: 1.25rem; box-shadow: 0 1px 2px rgba(16,24,40,0.05); }
-    h1 { font-size: 1.45rem; margin: 0 0 0.2rem; letter-spacing: -0.01em; }
-    h2 { font-size: 1.08rem; margin: 0 0 0.7rem; }
-    .muted { color: var(--muted); font-size: 0.9rem; margin: 0; }
-    .chips { display: flex; gap: 0.45rem; flex-wrap: wrap; margin-top: 0.6rem; align-items: center; }
-    .chip { border-radius: 999px; padding: 0.12rem 0.68rem; font-size: 0.82rem; font-weight: 600; }
-    .chip.g { background: var(--green-bg); color: var(--green); }
-    .chip.r { background: var(--red-bg); color: var(--red); }
-    .chip.a { background: var(--amber-bg); color: var(--amber); }
-    .chip.n { background: #eef1f5; color: var(--muted); }
-    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
-    th { position: sticky; top: 0; background: #f8fafb; text-align: start; font-size: 0.72rem;
-      text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-    td, th { padding: 0.42rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-    tbody tr:last-child td { border-bottom: none; }
-    tr.g td { background: var(--green-bg); }
-    tr.r td { background: var(--red-bg); }
-    tr.a td { background: var(--amber-bg); }
-    tr.g td:first-child, tr.r td:first-child, tr.a td:first-child { box-shadow: inset 3px 0 0 currentColor; }
-    tr.g td:first-child { color: var(--green); }
-    tr.r td:first-child { color: var(--red); }
-    tr.a td:first-child { color: var(--amber); }
-    .key { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.78rem; color: var(--muted); }
-    td[dir="rtl"] { text-align: right; }
-    .pill { display: inline-block; border-radius: 6px; padding: 0 0.45rem; font-size: 0.7rem;
-      font-weight: 600; vertical-align: 1px; }
-    .pill.llm { background: #eef0ff; color: #42389d; }
-    .pill.miss { background: #eef1f5; color: #98a2b3; }
-    .v { font-weight: 600; font-size: 0.8rem; }
-    tr.g .v { color: var(--green); }
-    tr.r .v { color: var(--red); }
-    tr.a .v { color: var(--amber); }
-    .doubt { color: var(--muted); font-size: 0.8rem; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .back { display: inline-block; margin-bottom: 0.75rem; font-size: 0.9rem; }
-`;
-
-const INDEX_STYLE = `
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
-    a.card { display: block; color: inherit; transition: border-color 0.15s ease; }
-    a.card:hover { border-color: var(--accent); text-decoration: none; }
-    .lang { font-weight: 650; margin-bottom: 0.35rem; }
-    .legend { display: flex; gap: 1.2rem; flex-wrap: wrap; margin: 0.6rem 0 1.2rem; font-size: 0.88rem; }
-    .dot { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 999px; margin-right: 0.3rem; }
-`;
-
-const PAGE_SHELL_OPEN = (title, extra = '') =>
-  [
-    '<!doctype html>',
-    '<html lang="en">',
-    '<head>',
-    '  <meta charset="utf-8">',
-    `  <title>${escapeHtml(title)}</title>`,
-    '  <style>',
-    PAGE_STYLE,
-    extra,
-    '  </style>',
-    '</head>',
-    '<body>',
-    '  <div class="wrap">',
-  ].join('\n');
-
-const PAGE_SHELL_CLOSE = ['  </div>', '</body>', '</html>', ''].join('\n');
-
-const verdictClass = { green: 'g', red: 'r', amber: 'a' };
-
-const renderRow = (locale, row, rtl) => {
-  const bothMiss = row.sites.every((site) => site.roundtrip === null);
-  const roundtripCells =
-    row.llm && bothMiss
-      ? [
-          `        <td class="llm" colspan="2"><span class="pill llm">llm</span> ${escapeHtml(row.llm.roundtrip)}${
-            row.llm.doubt ? `<br><span class="doubt">doubted: ${escapeHtml(row.llm.doubt)}</span>` : ''
-          }</td>`,
-        ]
-      : row.sites
-          .map((site) =>
-            site.roundtrip === null
-              ? site.engine === 'pending'
-                ? '        <td class="pending"></td>'
-                : '        <td><span class="pill miss">miss</span></td>'
-              : `        <td dir="ltr" lang="en">${escapeHtml(site.roundtrip)}</td>`
-          )
-          .join('\n');
-  return [
-    `      <tr class="${verdictClass[row.verdict]}">`,
-    `        <td class="key">${escapeHtml(row.key)}</td>`,
-    `        <td dir="ltr" lang="en">${escapeHtml(row.en)}</td>`,
-    `        <td dir="${dirFor(locale, rtl)}" lang="${escapeHtml(locale)}">${escapeHtml(row.catalog)}</td>`,
-    roundtripCells,
-    `        <td><span class="v">${escapeHtml(row.verdict)}</span>${row.ruling ? `<br><span class="chip j" title="${escapeHtml(row.ruling)}">judge: ${escapeHtml(row.ruling)}</span>` : ''}</td>`,
-    `        <td><a href="${escapeHtml(row.url)}">Google</a></td>`,
-    '      </tr>',
-  ].join('\n');
-};
-
-const renderSection = (locale, rows, section, title, rtl) => {
-  const sectionRows = rows.filter((row) => sectionOf(row.key) === section);
-  const counts = { green: 0, red: 0, amber: 0 };
-  for (const row of sectionRows) counts[row.verdict] += 1;
-  return [
-    `    <section class="card" id="section-${section}">`,
-    `      <h2>${escapeHtml(title)} - ${sectionRows.length} rows</h2>`,
-    `      <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span></div>`,
-    '      <table>',
-    '        <thead>',
-    '          <tr><th>key</th><th>our English</th><th>our language string</th><th>Google round-trip</th><th>round-trip 2 (phase two)</th><th>verdict</th><th>check</th></tr>',
-    '        </thead>',
-    '        <tbody>',
-    ...sectionRows.map((row) => renderRow(locale, row, rtl)),
-    '        </tbody>',
-    '      </table>',
-    '    </section>',
-  ].join('\n');
-};
-
-/** The locale's comparison page: a language string never appears without its English and its round-trips */
-const renderLocaleHtml = (locale, label, rows, phase = 'one', rtl = loadRtlIds()) => {
-  const counts = { green: 0, red: 0, amber: 0 };
-  const mix = {};
-  let filled = 0;
-  for (const row of rows) {
-    counts[row.verdict] += 1;
-    if (row.llm) filled += 1;
-    for (const site of row.sites) {
-      const bucket = site.roundtrip !== null ? site.engine : site.engine === 'pending' ? 'pending' : 'miss';
-      mix[bucket] = (mix[bucket] ?? 0) + 1;
-    }
-  }
-  const mixLine = Object.entries(mix)
-    .map(([engine, count]) => `${engine}: ${count}`)
-    .join(', ');
-  const phaseLine =
-    phase === 'two'
-      ? "Google's round-trip and the second site's side by side - green only when both carry the meaning."
-      : "Google's round-trip per row in phase one; the second site's column joins in phase two.";
-  return [
-    PAGE_SHELL_OPEN(`Athan translation verification - ${label}`),
-    '  <a class="back" href="index.html">&larr; all languages</a>',
-    '  <header class="card">',
-    `    <h1>${escapeHtml(label)}</h1>`,
-    `    <p class="muted">${rows.length} rows - ${phaseLine} Green: the meaning survives. Red: it does not - follow the red. Amber: the engine did not render, or the judge doubted the row${filled > 0 ? ` (${filled} rows carry the judge's llm rendering)` : ''}.</p>`,
-    `    <div class="chips"><span class="chip g">${counts.green} green</span><span class="chip r">${counts.red} red</span><span class="chip a">${counts.amber} amber</span><span class="chip n">${escapeHtml(mixLine)}</span></div>`,
-    '  </header>',
-    renderSection(locale, rows, 1, 'Section 1 - the eleven prayer.* names', rtl),
-    renderSection(locale, rows, 2, 'Section 2 - the five extras.explanation.* strings', rtl),
-    renderSection(locale, rows, 3, 'Section 3 - the remaining keys in the owner category order', rtl),
-    PAGE_SHELL_CLOSE,
-  ].join('\n');
-};
-
-/** The English reference page: what every language is judged against */
-const renderReferenceHtml = (label, rows) =>
-  [
-    PAGE_SHELL_OPEN(`Athan translation verification - ${label} (reference)`),
-    '  <a class="back" href="index.html">&larr; all languages</a>',
-    '  <header class="card">',
-    `    <h1>${escapeHtml(label)}</h1>`,
-    `    <p class="muted">The reference page: the ${rows.length} English source strings every language is judged against, in the owner's priority order. The engine columns and the colors live on each language's own page.</p>`,
-    '  </header>',
-    ...[1, 2, 3].map((section) => {
-      const sectionRows = rows.filter((row) => sectionOf(row.key) === section);
-      const titles = {
-        1: 'Section 1 - the eleven prayer.* names',
-        2: 'Section 2 - the five extras.explanation.* strings',
-        3: 'Section 3 - the remaining keys in the owner category order',
-      };
-      return [
-        `    <section class="card" id="section-${section}">`,
-        `      <h2>${escapeHtml(titles[section])} - ${sectionRows.length} rows</h2>`,
-        '      <table>',
-        '        <thead>',
-        '          <tr><th>key</th><th>our English</th></tr>',
-        '        </thead>',
-        '        <tbody>',
-        ...sectionRows.map(
-          (row) =>
-            `        <tr><td class="key">${escapeHtml(row.key)}</td><td dir="ltr" lang="en">${escapeHtml(row.en)}</td></tr>`
-        ),
-        '        </tbody>',
-        '      </table>',
-        '    </section>',
-      ].join('\n');
-    }),
-    PAGE_SHELL_CLOSE,
-  ].join('\n');
+// The judge fill and the command line flow
+// --------------------------------------------------------------------------------------
 
 const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
   locale,
@@ -1245,50 +1050,6 @@ const buildLocaleJson = (locale, label, rows, generatedAt, phase = 'one') => ({
   rows: rows.map((row) => ({ ...row })),
 });
 
-/** The index: one card per language with its counts, reds first, the reference pinned on top */
-const renderIndexHtml = (summaries) => {
-  const reference = summaries.filter((summary) => summary.reference);
-  const rest = [...summaries.filter((summary) => !summary.reference)].sort((a, b) => {
-    const red = (b.counts?.red ?? 0) - (a.counts?.red ?? 0);
-    if (red !== 0) return red;
-    const amber = (b.counts?.amber ?? 0) - (a.counts?.amber ?? 0);
-    if (amber !== 0) return amber;
-    return a.label.localeCompare(b.label);
-  });
-  const card = (summary) => {
-    const counts = summary.counts
-      ? `<div class="chips"><span class="chip g">${summary.counts.green} green</span><span class="chip r">${summary.counts.red} red</span><span class="chip a">${summary.counts.amber} amber</span></div>`
-      : '';
-    const mix = summary.engineMix
-      ? `<p class="muted">${Object.entries(summary.engineMix)
-          .map(([engine, count]) => `${engine}: ${count}`)
-          .join(', ')}</p>`
-      : '';
-    const tag = summary.reference ? ' <span class="chip n">reference</span>' : '';
-    return `      <a class="card" href="${escapeHtml(summary.file)}"><div class="lang">${escapeHtml(summary.label)}${tag}</div>${counts}<p class="muted">${summary.count} rows</p>${mix}</a>`;
-  };
-  return [
-    PAGE_SHELL_OPEN('Athan translation verification', INDEX_STYLE),
-    '  <header class="card">',
-    '    <h1>Athan translation verification</h1>',
-    '    <p class="muted">Every catalog against the English source, one independent round-trip per row in phase one: Google alone. Open a language and follow the red; amber rows wait on a re-run or the judge. The second site joins in phase two.</p>',
-    '    <div class="legend">',
-    '      <span><span class="dot" style="background:var(--green)"></span>green - the round-trip carries the meaning</span>',
-    '      <span><span class="dot" style="background:var(--red)"></span>red - the round-trip loses it, check the string</span>',
-    '      <span><span class="dot" style="background:var(--amber)"></span>amber - not rendered, or a doubted row</span>',
-    '    </div>',
-    '  </header>',
-    '  <div class="grid">',
-    ...[...reference, ...rest].map(card),
-    '  </div>',
-    PAGE_SHELL_CLOSE,
-  ].join('\n');
-};
-
-// --------------------------------------------------------------------------------------
-// The judge fill and the command line flow
-// --------------------------------------------------------------------------------------
-
 const usageError = (message) =>
   new Error(
     `i18n verify: ${message}; usage: node scripts/i18n-verify.js --locales ar,so [--out DIR] [--resume] [--keys k1,k2] [--phase one|two] [--pace ms] | --waves | --all | --fill ar,so [--out DIR]`
@@ -1296,41 +1057,13 @@ const usageError = (message) =>
 
 const defaultOutDir = (deps) => join(deps.home ?? (deps.homedir ?? homedir)(), 'athan-i18n-verify');
 
-const summaryOfArtifact = (data, names) => ({
-  locale: data.locale,
-  label: data.languageName ?? languageLabel(data.locale, names),
-  count: data.rowCount,
-  counts: data.counts,
-  engineMix: data.engineMix ?? data.counts,
-  file: `${data.locale}.html`,
-  reference: data.reference === true,
-});
-
-/** The index always reads every artifact on disk, so a one-locale run erases nobody's card.
- * A json file that is not a locale artifact (research side data, anything stray) is
- * skipped by shape, not by name - the out dir is the owner's to read from. */
-const writeIndexFromDisk = (outDir, names) => {
-  // A circuit-broken first locale leaves no artifacts behind: the index of nothing still builds
-  mkdirSync(outDir, { recursive: true });
-  const summaries = [];
-  for (const file of readdirSync(outDir)) {
-    if (!file.endsWith('.json') || file.endsWith('.llm-fill.json') || file.endsWith('.judge-rulings.json')) continue;
-    const data = JSON.parse(readFileSync(join(outDir, file), 'utf8'));
-    if (!Array.isArray(data.rows) || typeof data.locale !== 'string') continue;
-    summaries.push(summaryOfArtifact(data, names));
-  }
-  const indexPath = join(outDir, 'index.html');
-  writeFileSync(indexPath, renderIndexHtml(summaries));
-  return indexPath;
-};
-
 /**
  * The judge fill: the LLM pass renders round-trips for rows both engines refused and
  * writes <locale>.llm-fill.json; this merge carries them into llm-marked rows (never a
  * site's rendering), keeps an optional doubt note as amber, and refreshes the
  * artifacts. The generator itself never invents a round-trip.
  */
-const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds() }) => {
+const fillLocales = async (locales, { outDir, log, now, names }) => {
   const written = [];
   const fillErrors = [];
   const remainingGaps = [];
@@ -1385,13 +1118,9 @@ const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
       join(outDir, `${locale}.json`),
       `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
     );
-    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase, rtl));
-    written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
+    written.push(join(outDir, `${locale}.json`));
     log(`${locale}: filled ${filled} rows as engine:llm (${doubted} doubted, ${superseded} superseded by an engine)`);
   }
-
-  const indexPath = writeIndexFromDisk(outDir, names);
-  written.push(indexPath);
 
   if (remainingGaps.length > 0) {
     const head = remainingGaps
@@ -1421,7 +1150,7 @@ const fillLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
  * ruling is always visible - chip, note and count - and never applies to a row the
  * engine did not read red: those are the fill's business.
  */
-const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds() }) => {
+const ruleLocales = async (locales, { outDir, log, now, names }) => {
   const written = [];
   const rulingErrors = [];
 
@@ -1471,13 +1200,9 @@ const ruleLocales = async (locales, { outDir, log, now, names, rtl = loadRtlIds(
       join(outDir, `${locale}.json`),
       `${JSON.stringify(buildLocaleJson(locale, label, rows, now().toISOString(), phase), null, 2)}\n`
     );
-    writeFileSync(join(outDir, `${locale}.html`), renderLocaleHtml(locale, label, rows, phase, rtl));
-    written.push(join(outDir, `${locale}.json`), join(outDir, `${locale}.html`));
+    written.push(join(outDir, `${locale}.json`));
     log(`${locale}: ${applied} ruling${applied === 1 ? '' : 's'} applied`);
   }
-
-  const indexPath = writeIndexFromDisk(outDir, names);
-  written.push(indexPath);
 
   return {
     ok: rulingErrors.length === 0,
@@ -1587,7 +1312,6 @@ const run = async (argv, deps = {}) => {
   }
   const expectedCount = onlyKeys !== undefined ? onlyKeys.length : Object.keys(en).length;
   const written = [];
-  const summaries = [];
   const shortfalls = [];
   const misses = [];
 
@@ -1595,15 +1319,12 @@ const run = async (argv, deps = {}) => {
     const label = languageLabel('en', names);
     const rows = referenceRowsOf(en, onlyKeys);
     mkdirSync(outDir, { recursive: true });
-    const htmlPath = join(outDir, 'en.html');
     const jsonPath = join(outDir, 'en.json');
-    writeFileSync(htmlPath, renderReferenceHtml(label, rows));
     writeFileSync(
       jsonPath,
       `${JSON.stringify({ locale: 'en', languageName: label, reference: true, generatedAt: (deps.now ?? (() => new Date()))().toISOString(), rowCount: rows.length, rows }, null, 2)}\n`
     );
-    written.push(htmlPath, jsonPath);
-    summaries.push({ locale: 'en', label, count: rows.length, file: 'en.html', reference: true });
+    written.push(jsonPath);
     log(`en: ${rows.length} rows (the reference page)`);
   }
 
@@ -1662,18 +1383,7 @@ const run = async (argv, deps = {}) => {
     );
     if (result.count < expectedCount) shortfalls.push({ locale, count: result.count });
     misses.push(...result.misses);
-    summaries.push({
-      locale,
-      label: languageLabel(locale, names),
-      count: result.count,
-      counts: result.counts,
-      engineMix: result.engineMix,
-      file: `${locale}.html`,
-    });
   }
-
-  const indexPath = writeIndexFromDisk(outDir, names);
-  written.push(indexPath);
 
   if (shortfalls.length > 0) {
     log(`row shortfalls: ${shortfalls.map((s) => `${s.locale} at ${s.count} of ${expectedCount}`).join('; ')}`);
@@ -1737,10 +1447,7 @@ module.exports = {
   verdictOf,
   slotAccepts,
   runLocale,
-  renderLocaleHtml,
-  renderReferenceHtml,
   buildLocaleJson,
-  renderIndexHtml,
   fillLocales,
   ruleLocales,
   defaultOutDir,

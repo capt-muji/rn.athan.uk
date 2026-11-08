@@ -5,7 +5,7 @@
 // with slot two pending phase two, resume and the judge fill. Every network call
 // goes through an injected fetch returning fixtures: no test touches a real
 // engine, and no test reads the real clock.
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -59,20 +59,7 @@ const verify = require('../i18n-verify.js') as {
   ): string;
   slotAccepts(catalog: string, english: string, roundtrip: string | null): boolean;
   runLocale(locale: string, opts: LocaleOpts): Promise<LocaleResult>;
-  renderLocaleHtml(locale: string, label: string, rows: Row[]): string;
-  renderReferenceHtml(label: string, rows: Array<{ key: string; en: string }>): string;
   buildLocaleJson(locale: string, label: string, rows: Row[], generatedAt: string): object;
-  renderIndexHtml(
-    summaries: Array<{
-      locale: string;
-      label: string;
-      count: number;
-      counts?: CountBag;
-      engineMix?: Record<string, number>;
-      file: string;
-      reference?: boolean;
-    }>
-  ): string;
   fillLocales(
     locales: string[],
     opts: { outDir: string; log: (line: string) => void; now: () => Date; names: LanguageName[] }
@@ -955,6 +942,26 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
     expect(JSON.stringify(json)).not.toContain('mymemory');
   });
 
+  it('writes no html anywhere: the artifacts are json alone', async () => {
+    const out = await verify.runLocale('ar', {
+      en: realEn,
+      catalog,
+      outDir: join(SCRATCH, 'json-only'),
+      fetch: async (url, init) => {
+        if (init?.body) {
+          const lines = decodeURIComponent(init.body.split('q=')[1]).split('\n');
+          return res(JSON.stringify([lines.map((line) => [`bt: ${line.slice(0, 6)}`, line, null, null])]));
+        }
+        return gtxFetch(url);
+      },
+      sleep: noSleep,
+      now: fixedNow,
+      label: 'ar - Arabic',
+    });
+    expect(out.files.every((file) => file.endsWith('.json'))).toBe(true);
+    expect(readdirSync(join(SCRATCH, 'json-only')).filter((file) => file.endsWith('.html'))).toEqual([]);
+  });
+
   it('pacing holds one engine request per gap, never two in flight', async () => {
     const events: string[] = [];
     let inFlight = 0;
@@ -1122,129 +1129,9 @@ describe('the per-locale artifacts (Google alone; slot two sits empty for phase 
   });
 });
 
-describe('the rendered pages (order two: modern, human-friendly, colored)', () => {
-  const rows: Row[] = [
-    {
-      key: 'prayer.fajr',
-      en: 'Fajr',
-      catalog: 'الفجر',
-      sites: [
-        { engine: 'gtx', roundtrip: 'Fajr' },
-        { engine: 'pending', roundtrip: null },
-      ],
-      llm: null,
-      url: 'https://translate.google.com/x',
-      verdict: 'green',
-    },
-    {
-      key: 'prayer.dhuhr',
-      en: 'Dhuhr',
-      catalog: 'الظهر',
-      sites: [
-        { engine: 'gtx', roundtrip: 'Back' },
-        { engine: 'pending', roundtrip: null },
-      ],
-      llm: null,
-      url: 'u',
-      verdict: 'red',
-    },
-    {
-      key: 'prayer.isha',
-      en: 'Isha',
-      catalog: 'العشاء',
-      sites: [
-        { engine: 'gtx', roundtrip: null },
-        { engine: 'pending', roundtrip: null },
-      ],
-      llm: { roundtrip: 'The night prayer', doubt: 'judge flagged the rendering' },
-      url: 'u',
-      verdict: 'amber',
-    },
-  ];
-
-  it('renders the locale page with the label, the Google round-trip, an empty second slot, verdict classes and the one link', () => {
-    const html = verify.renderLocaleHtml('ar', 'ar - Arabic', rows);
-    expect(html).toContain('<h1>ar - Arabic</h1>');
-    expect(html).toContain('Athan translation verification - ar - Arabic');
-    expect(html).toContain('class="g"');
-    expect(html).toContain('class="r"');
-    expect(html).toContain('class="a"');
-    expect(html).toContain('dir="rtl" lang="ar"');
-    expect(html).toContain('Google round-trip');
-    expect(html).toContain('phase two');
-    expect(html).toContain('href="https://translate.google.com/x"');
-    expect(html).not.toContain('MyMemory');
-    expect(html).not.toContain('mymemory');
-    // The llm fill shows once, marked, never as a site rendering, with its doubt
-    expect((html.match(/The night prayer/g) ?? []).length).toBe(1);
-    expect(html).toContain('llm');
-    expect(html).toContain('judge flagged the rendering');
-    expect(html).not.toContain('<script>');
-  });
-
-  it('renders the English reference page with no engines and no verdicts', () => {
-    const html = verify.renderReferenceHtml('en - English', [
-      { key: 'prayer.fajr', en: 'Fajr' },
-      { key: 'settings.title', en: 'Settings' },
-    ]);
-    expect(html).toContain('<h1>en - English</h1>');
-    expect(html).toContain('reference');
-    expect(html).not.toContain('round-trip');
-    expect(html).not.toContain('verdict');
-    expect(html).toContain('Fajr');
-  });
-
-  it('renders the index as cards with per-language counts, the legend, the reference pinned first, red before amber', () => {
-    const html = verify.renderIndexHtml([
-      {
-        locale: 'so',
-        label: 'so - Somali',
-        count: 207,
-        counts: { green: 200, red: 5, amber: 2 },
-        engineMix: {},
-        file: 'so.html',
-      },
-      {
-        locale: 'ar',
-        label: 'ar - Arabic',
-        count: 207,
-        counts: { green: 150, red: 20, amber: 37 },
-        engineMix: {},
-        file: 'ar.html',
-      },
-      {
-        locale: 'ms',
-        label: 'ms - Malay',
-        count: 207,
-        counts: { green: 207, red: 0, amber: 0 },
-        engineMix: {},
-        file: 'ms.html',
-      },
-      { locale: 'en', label: 'en - English', count: 207, file: 'en.html', reference: true },
-    ]);
-    const arAt = html.indexOf('ar.html');
-    const soAt = html.indexOf('so.html');
-    const msAt = html.indexOf('ms.html');
-    const enAt = html.indexOf('en.html');
-    expect(enAt).toBeLessThan(arAt);
-    expect(arAt).toBeLessThan(soAt);
-    expect(soAt).toBeLessThan(msAt);
-    expect(html).toContain('so - Somali');
-    expect(html).toContain('20 red');
-    expect(html).toContain('37 amber');
-    expect(html).toContain('follow the red');
-    expect(html).toContain('reference');
-    expect(html).not.toContain('MyMemory');
-  });
-});
-
 describe('direction: the RTL set reads from locale.ts, the one source of truth (review 5906)', () => {
   const localeSource = `type LocaleId = string;
 export const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', 'pa-Arab', 'sd', 'ug', 'ckb', 'skr', 'bal', 'kas']);`;
-  const rtlFixtureFetch: FetchFn = async (url) => {
-    const q = decodeURIComponent(url.split('q=')[1].split('&')[0]);
-    return res(JSON.stringify([[[`g: ${q.slice(0, 6)}`, 'x', null, null]]]));
-  };
 
   it('parses the exported set and marks the canonical ids rtl', () => {
     const rtl = verify.parseRtlIds(localeSource, 'locale.ts');
@@ -1254,22 +1141,6 @@ export const RTL_IDS: ReadonlySet<LocaleId> = new Set(['ar', 'fa', 'ur', 'ps', '
     expect(rtl.has('ckb')).toBe(true);
     expect(verify.dirFor('sd', rtl)).toBe('rtl');
     expect(verify.dirFor('en', rtl)).toBe('ltr');
-  });
-
-  it('renders the catalog column rtl for a locale the old copy missed', async () => {
-    const rtl = verify.loadRtlIds({ readLocaleSource: () => localeSource });
-    await verify.runLocale('sd', {
-      en: realEn,
-      catalog: { ...realEn },
-      outDir: SCRATCH,
-      fetch: rtlFixtureFetch,
-      sleep: noSleep,
-      now: fixedNow,
-      label: 'sd',
-      rtl,
-    });
-    const html = readFileSync(join(SCRATCH, 'sd.html'), 'utf8');
-    expect(html).toContain('dir="rtl"');
   });
 });
 
@@ -1310,17 +1181,6 @@ describe('the command line flow', () => {
     expect(report.written.filter((file) => file.endsWith('so.json'))).toEqual([]);
   });
 
-  it('the index rebuild survives a stray non-artifact json in the out dir', async () => {
-    const outDir = join(SCRATCH, 'cli-stray');
-    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
-    writeFileSync(join(outDir, 'zzz-stray.json'), JSON.stringify({ not: 'an artifact' }));
-    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
-    expect(report.ok).toBe(true);
-    const html = readFileSync(join(outDir, 'index.html'), 'utf8');
-    expect(html).toContain('ar - Arabic');
-    expect(html).not.toContain('undefined');
-  });
-
   it('rejects a junk --pace value and threads a whole-number pace into the locale run', async () => {
     const outDir = join(SCRATCH, 'cli-pace');
     await expect(verify.run(['--locales', 'ar', '--out', outDir, '--pace', 'abc'], baseDeps(fetchOk))).rejects.toThrow(
@@ -1350,17 +1210,11 @@ describe('the command line flow', () => {
     };
     const report = await verify.run(['--locales', 'en,ar', '--out', outDir], deps);
     expect(report.ok).toBe(true);
-    expect(report.written.map((file) => file.split('/').at(-1)).sort()).toEqual([
-      'ar.html',
-      'ar.json',
-      'en.html',
-      'en.json',
-      'index.html',
-    ]);
+    expect(report.written.map((file) => file.split('/').at(-1)).sort()).toEqual(['ar.json', 'en.json']);
     // ar's 223 rows ride two chunk POSTs plus the probe; en fetches nothing
     expect(calls).toBe(3);
-    const enHtml = readFileSync(join(outDir, 'en.html'), 'utf8');
-    expect(enHtml).toContain('reference');
+    const enJson = JSON.parse(readFileSync(join(outDir, 'en.json'), 'utf8'));
+    expect(enJson.reference).toBe(true);
   });
 
   describe('the judge rulings (the loop phase one: a fluent judge greens a correct catalog the engine misread)', () => {
@@ -1405,8 +1259,6 @@ describe('the command line flow', () => {
       expect(row.ruling).toBe('the engine picked the country sense; the catalog name is the established prayer name');
       expect(after.counts.red).toBe(before.counts.red - 1);
       expect(after.judgeRuled).toBe(1);
-      const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
-      expect(html).toContain('judge');
       expect(lines.some((line) => line.includes('ar: 1 ruling applied'))).toBe(true);
     });
 
@@ -1534,29 +1386,6 @@ describe('the command line flow', () => {
     });
   });
 
-  it("rebuilds the index from every artifact on disk, not only this run's locales", async () => {
-    const outDir = join(SCRATCH, 'cli-index');
-    await verify.run(['--locales', 'so', '--out', outDir], baseDeps(fetchOk));
-    // A later run touching only ar must not erase so's card from the index
-    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
-    const index = readFileSync(join(outDir, 'index.html'), 'utf8');
-    expect(index).toContain('so.html');
-    expect(index).toContain('ar.html');
-  });
-
-  it('skips the judge-rulings side file when rebuilding the index', async () => {
-    const outDir = join(SCRATCH, 'cli-index-rulings');
-    await verify.run(['--locales', 'ar', '--out', outDir], baseDeps(fetchOk));
-    writeFileSync(
-      join(outDir, 'ar.judge-rulings.json'),
-      JSON.stringify([{ key: 'settings.title', note: 'a side file, not an artifact' }])
-    );
-    const report = await verify.run(['--locales', 'ar', '--out', outDir, '--resume'], baseDeps(fetchOk));
-    expect(report.ok).toBe(true);
-    const index = readFileSync(join(outDir, 'index.html'), 'utf8');
-    expect(index).toContain('ar.html');
-  });
-
   it('runs all 75 catalogs under --all, resolving codes from the language-name table', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--all', '--out', join(SCRATCH, 'cli-all')], deps);
@@ -1597,7 +1426,7 @@ describe('the command line flow', () => {
   it('defaults the out dir under the injected home and rejects an unknown locale', async () => {
     const deps = baseDeps(fetchOk);
     const report = await verify.run(['--locales', 'ar'], deps);
-    expect(report.written).toContain(join(deps.home!, 'athan-i18n-verify', 'index.html'));
+    expect(report.written).toContain(join(deps.home!, 'athan-i18n-verify', 'ar.json'));
     await expect(verify.run(['--locales', 'xx'], deps)).rejects.toThrow('xx');
   });
 
@@ -1621,8 +1450,6 @@ describe('the command line flow', () => {
     const json = JSON.parse(readFileSync(join(outDir, 'ar.json'), 'utf8'));
     expect(json.rows.every((r: Row) => r.llm !== undefined || r.sites[0].roundtrip !== null)).toBe(true);
     expect(json.counts.amber).toBe(223);
-    const html = readFileSync(join(outDir, 'ar.html'), 'utf8');
-    expect(html).toContain('judge:');
   });
 
   it('skips a fill whose row the engine has since rendered, refuses unknown keys, and lists unfilled rows as gaps', async () => {
@@ -1794,7 +1621,7 @@ describe('the command line flow', () => {
   it('resolves the default out dir through the OS home when no home is injected', async () => {
     const { home, ...withoutHome } = baseDeps(fetchOk);
     const report = await verify.run(['--locales', 'ar'], { ...withoutHome, homedir: () => SCRATCH });
-    expect(report.written).toContain(join(SCRATCH, 'athan-i18n-verify', 'index.html'));
+    expect(report.written).toContain(join(SCRATCH, 'athan-i18n-verify', 'ar.json'));
   });
 
   it('scopes the rows to --keys (owner order 2026-11-07: a wave verifies only the keys it touched)', async () => {
