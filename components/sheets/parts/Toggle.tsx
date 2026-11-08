@@ -34,6 +34,8 @@ interface ToggleProps {
   onToggle: (next: boolean) => void;
   /** Fired the moment the switch is pressed, for feedback that belongs to the press itself */
   onPress?: () => void;
+  /** Whether a refused press (frozen or disabled) still fires onPress: a row that refuses the write still answers the press */
+  feedbackWhenRefused?: boolean;
   disabled?: boolean;
   /** Presses land nothing and render no flip, with none of the disabled dim */
   frozen?: boolean;
@@ -53,7 +55,7 @@ interface ToggleProps {
  * <Toggle value={isOn} onToggle={(next) => setIsOn(next)} />
  */
 const Toggle = forwardRef<ToggleHandle, ToggleProps>(
-  ({ value, onToggle, onPress, disabled, frozen, accessibilityLabel }, ref) => {
+  ({ value, onToggle, onPress, feedbackWhenRefused, disabled, frozen, accessibilityLabel }, ref) => {
     // RTL travels the thumb the other way: the layout swap owns the inset keys, not the
     // travel. The locale's own direction, not the bridge snapshot: a starved crossing (row 78)
     // renders Arabic while I18nManager still reports the launch direction, and the English
@@ -84,10 +86,15 @@ const Toggle = forwardRef<ToggleHandle, ToggleProps>(
     });
 
     const handlePress = useCallback(() => {
-      if (disabled || frozen) return;
+      if (disabled || frozen) {
+        // The refusal owns the write, not the feedback: a switch that asks
+        // still answers the press
+        if (feedbackWhenRefused) onPress?.();
+        return;
+      }
       onPress?.();
       press(!effective);
-    }, [disabled, frozen, onPress, press, effective]);
+    }, [disabled, frozen, feedbackWhenRefused, onPress, press, effective]);
 
     useImperativeHandle(ref, () => ({ press: handlePress }), [handlePress]);
 

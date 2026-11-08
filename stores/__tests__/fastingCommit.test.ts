@@ -9,7 +9,8 @@ import * as Notifications from 'expo-notifications';
 import { getDefaultStore } from 'jotai';
 
 import { minutesToRecord, toDayMinutes } from '@/shared/timetableDecode';
-import { type AlertMenuState, AlertType, ScheduleType } from '@/shared/types';
+import { type AlertMenuState, AlertType, type FastingSelection, ScheduleType } from '@/shared/types';
+import * as Database from '@/stores/database';
 import {
   commitPrayerAlertChange,
   fastingDawoodAnchorAtom,
@@ -63,6 +64,9 @@ beforeEach(() => {
   jest.spyOn(Notifications, 'getAllScheduledNotificationsAsync').mockResolvedValue([]);
   jest.spyOn(Notifications, 'scheduleNotificationAsync').mockResolvedValue('scheduled');
   jest.spyOn(Notifications, 'cancelScheduledNotificationAsync').mockResolvedValue();
+  // A spy restored to the manual mock keeps the calls earlier tests recorded
+  // through it, so every count starts at zero here
+  jest.clearAllMocks();
 
   store.set(fastingModeAtom, 'everyDay');
   store.set(fastingWhiteDaysAtom, false);
@@ -150,5 +154,50 @@ describe('the anchor transitions', () => {
     expect(refused).toHaveBeenCalled();
     expect(store.get(fastingModeAtom)).toBe('muhammad');
     expect(store.get(fastingDawoodAnchorAtom)).toBe(123);
+  });
+});
+
+describe('an off at-time alert with a committed pattern', () => {
+  // The owner's question (2026-11-08): with the Sahur alert off, does the
+  // pattern still schedule? The answer these tests pin: no. The commit routes
+  // an off at-time alert to the two clearers and never to a scheduler, so the
+  // bell's identity dots were visual only
+  const patterns: readonly (readonly [string, FastingSelection])[] = [
+    ['every day', { mode: 'everyDay', whiteDaysAddOn: false }],
+    ['muhammad', { mode: 'muhammad', whiteDaysAddOn: false }],
+    ['dawood with the white-days add-on', { mode: 'dawood', whiteDaysAddOn: true }],
+    ['white days', { mode: 'whiteDays', whiteDaysAddOn: false }],
+  ];
+
+  it.each(patterns)('arms nothing and cancels what stood armed, under %s', async (_name, fasting) => {
+    Database.addOneScheduledNotificationForPrayer(ScheduleType.Extra, SUHOOR, {
+      id: 'armed-athan',
+      date: '2026-04-01',
+      time: '05:50',
+      alertType: AlertType.Sound,
+    });
+    Database.addOneScheduledReminderForPrayer(ScheduleType.Extra, SUHOOR, {
+      id: 'armed-reminder',
+      date: '2026-04-01',
+      time: '05:40',
+      alertType: AlertType.Silent,
+    });
+
+    const committed = await commitPrayerAlertChange(
+      ScheduleType.Extra,
+      SUHOOR,
+      'suhoor',
+      state(AlertType.Off, fasting),
+      state(AlertType.Sound, { mode: 'everyDay', whiteDaysAddOn: false })
+    );
+
+    expect(committed).toBe(true);
+    expect(Notifications.scheduleNotificationAsync).not.toHaveBeenCalled();
+    expect(Notifications.cancelScheduledNotificationAsync).toHaveBeenCalledWith('armed-athan');
+    expect(Notifications.cancelScheduledNotificationAsync).toHaveBeenCalledWith('armed-reminder');
+    expect(Database.getAllScheduledNotificationsForPrayer(ScheduleType.Extra, SUHOOR)).toEqual([]);
+    expect(Database.getAllScheduledRemindersForPrayer(ScheduleType.Extra, SUHOOR)).toEqual([]);
+    expect(store.get(fastingModeAtom)).toBe(fasting.mode);
+    expect(store.get(fastingWhiteDaysAtom)).toBe(fasting.whiteDaysAddOn);
   });
 });

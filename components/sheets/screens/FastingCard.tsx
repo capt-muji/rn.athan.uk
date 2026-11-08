@@ -259,8 +259,15 @@ function FastingRow({
       style={[styles.row, { paddingVertical: ROW_PAD_V }]}
       hitSlop={HIT_SLOP.md}
       onPress={() => {
-        // The only selected option taps to nothing: the switch never leaves its value
-        if (!frozen && !locked) toggleRef.current?.press();
+        // The locked card refuses the write at the row itself, so the switch's
+        // own answer never runs behind it: the row answers the press here
+        if (locked) {
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+          return;
+        }
+        // The only selected option taps to nothing: the switch never leaves
+        // its value, and answers the press through its own refusal
+        toggleRef.current?.press();
       }}
       accessibilityLabel={mode === 'muhammad' ? `${title}${HONORIFIC}` : title}>
       <View style={styles.titleWrap}>
@@ -280,6 +287,7 @@ function FastingRow({
           disabled={locked}
           onToggle={() => onTap(mode)}
           onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
+          feedbackWhenRefused
           accessibilityLabel={title}
         />
       </View>

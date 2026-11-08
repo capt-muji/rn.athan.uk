@@ -4,11 +4,13 @@
  * white-first, so the regimen circle sits on top at the right and the white
  * circle beneath it at the left, a lone identity in the right slot (owner
  * ruling 2026-11-06) - every circle ringed in the deep background shade
- * hugging the fill - drawn only while the selection is not Every day. The
- * cluster reads the committed selection atoms, so a change made on the
- * sheet's card lands here the moment the sheet commits. The layer's anchor
- * is logical (start 25): in a mirrored locale the cluster rides the bell's
- * mirrored corner, the same corner of the row it decorates.
+ * hugging the fill - drawn only while the selection is not Every day and the
+ * row's own alert is not Off: nothing is scheduled under an off alert, so
+ * nothing draws. The cluster reads the committed selection atoms and the
+ * Suhoor row's own alert atom, so a change made on the sheet's card lands
+ * here the moment the sheet commits. The layer's anchor is logical
+ * (start 25): in a mirrored locale the cluster rides the bell's mirrored
+ * corner, the same corner of the row it decorates.
  */
 
 import { useAtomValue } from 'jotai';
@@ -21,7 +23,13 @@ import { ANIMATION } from '@/shared/constants';
 import { validFastingMode } from '@/shared/fasting';
 import { armedFastingIdentities, hasFastingIdentities } from '@/shared/fastingSchedule';
 import { sanitizeFastingSelection } from '@/shared/fastingSelection';
-import { fastingModeAtom, fastingWhiteDaysAtom } from '@/stores/notifications';
+import { AlertType, ScheduleType } from '@/shared/types';
+import {
+  canonicalPrayerIndex,
+  fastingModeAtom,
+  fastingWhiteDaysAtom,
+  getPrayerAlertAtom,
+} from '@/stores/notifications';
 
 /**
  * The Suhoor row's bell-corner cluster
@@ -33,6 +41,9 @@ import { fastingModeAtom, fastingWhiteDaysAtom } from '@/stores/notifications';
 export default function FastingBellCluster({ hidden }: { readonly hidden: boolean }) {
   const mode = useAtomValue(fastingModeAtom);
   const whiteDaysAddOn = useAtomValue(fastingWhiteDaysAtom);
+  const suhoorAlert = useAtomValue(
+    getPrayerAlertAtom(ScheduleType.Extra, canonicalPrayerIndex(ScheduleType.Extra, 'suhoor', 0))
+  );
 
   // Drawn white-first (draw order left to right), so the regimen lands on top
   // at the right and the white days beneath at the left (owner ruling 2026-11-06)
@@ -42,7 +53,7 @@ export default function FastingBellCluster({ hidden }: { readonly hidden: boolea
 
   const veilStyle = useDerivedOpacity(hidden ? 0 : 1, { duration: ANIMATION.duration });
 
-  if (!hasFastingIdentities(stacked)) return null;
+  if (suhoorAlert === AlertType.Off || !hasFastingIdentities(stacked)) return null;
 
   return (
     <Animated.View testID={'fasting-bell-cluster'} style={[styles.layer, veilStyle]} pointerEvents={'none'}>
