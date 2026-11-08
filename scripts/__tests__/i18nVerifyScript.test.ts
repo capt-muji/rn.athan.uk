@@ -92,7 +92,10 @@ interface FetchResponse {
   status: number;
   text: () => Promise<string>;
 }
-type FetchFn = (url: string, init?: { method?: string; body?: string }) => Promise<FetchResponse>;
+type FetchFn = (
+  url: string,
+  init?: { method?: string; body?: string; headers?: Record<string, string> }
+) => Promise<FetchResponse>;
 interface Site {
   engine: string;
   roundtrip: string | null;
@@ -840,33 +843,50 @@ describe('the row verdict (owner order eight: phase one is Google alone, phase t
 });
 
 describe('the engine batch alignment (owner order 2026-11-08: one POST per locale chunk)', () => {
-  it('folds response segments onto input lines by their source echo, sentence splits included', () => {
+  // The live contract (auditor-verified against the endpoint, 2026-11-08): segments
+  // align by POSITION, one per input line; each non-final echo carries the newline
+  // separator and edge spaces may move, so the echo is a whitespace-normalized guard,
+  // never an exact-match fold
+  it('aligns by position with a whitespace-normalized echo guard, separator and moved spaces included', () => {
     const body = JSON.stringify([
       [
-        ['Translated one', 'Line one', null, null],
-        ['Translated two first half', 'Line two ', null, null],
-        ['second half', 'and its second sentence', null, null],
-        ['Translated three', 'Line three', null, null],
-        ['Translated three again', 'Line three', null, null],
+        ['Traduit un', 'Ligne un\n', null, null],
+        ['Traduit deux', ' Ligne deux', null, null],
+        ['Traduit trois', 'Ligne trois', null, null],
       ],
     ]);
-    const out = verify.extractGtxBatch(body, [
-      'Line one',
-      'Line two and its second sentence',
-      'Line three',
-      'Line three',
+    const out = verify.extractGtxBatch(body, ['Ligne un', 'Ligne deux', 'Ligne trois']);
+    expect(out).toEqual(['Traduit un', 'Traduit deux', 'Traduit trois']);
+  });
+
+  it('reads null where the positional echo fails its guard, never folding neighbour segments', () => {
+    const body = JSON.stringify([
+      [
+        ['Traduit un', 'Ligne un\n', null, null],
+        ['Mistranscribed', 'Ligne TROIS', null, null],
+        ['Traduit trois', 'Ligne trois', null, null],
+      ],
     ]);
-    expect(out).toEqual([
-      'Translated one',
-      'Translated two first halfsecond half',
-      'Translated three',
-      'Translated three again',
-    ]);
+    const out = verify.extractGtxBatch(body, ['Ligne un', 'Ligne deux', 'Ligne trois']);
+    expect(out).toEqual(['Traduit un', null, 'Traduit trois']);
   });
 
   it('reads null for a line the response never echoes', () => {
     const body = JSON.stringify([[['Only one', 'Line one', null, null]]]);
     expect(verify.extractGtxBatch(body, ['Line one', 'Line two'])).toEqual(['Only one', null]);
+  });
+
+  it('sends the form Content-Type the endpoint requires, or every chunk 400s live', async () => {
+    const seen: Array<string | undefined> = [];
+    await verify.fetchBatchWithRetry('gtx', 'ar', ['One', 'Two'], {
+      fetch: async (_url, init) => {
+        seen.push(init?.headers ? JSON.stringify(init.headers) : undefined);
+        const lines = decodeURIComponent((init?.body ?? '').split('q=')[1]).split('\n');
+        return res(JSON.stringify([lines.map((line) => [`rt: ${line}`, line, null, null])]));
+      },
+      sleep: noSleep,
+    });
+    expect(seen[0]).toContain('application/x-www-form-urlencoded');
   });
 
   it('flattens embedded newlines before the join, so a multi-line value keeps its slot', async () => {

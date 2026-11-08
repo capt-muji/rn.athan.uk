@@ -751,10 +751,12 @@ const gtxBatchRequest = (locale, text) => ({
   body: `client=gtx&sl=${engineLocale(locale)}&tl=en&dt=t&q=${encodeURIComponent(text)}`,
 });
 
-/** Folds a batch response onto the input lines: each segment echoes its source, so a
- * cursor walks the segments accumulating source until it spells the current input line,
- * and the line's translation is that run's translations joined. A line the response
- * never spells reads null. */
+/** Aligns a batch response onto the input lines by POSITION with the source echo as a
+ * whitespace-normalized guard: the live endpoint serves one segment per input line, each
+ * non-final echo carrying the newline separator and edge spaces moved or trimmed, so an
+ * exact fold can never match (auditor-verified 2026-11-08). A line whose positional
+ * segment fails the guard, or has no segment, reads null - a safe miss the resume and
+ * judge paths already know how to carry. */
 const extractGtxBatch = (body, inputLines) => {
   let data;
   try {
@@ -765,35 +767,12 @@ const extractGtxBatch = (body, inputLines) => {
   if (!Array.isArray(data) || !Array.isArray(data[0])) return inputLines.map(() => null);
   const segments = data[0].filter((segment) => Array.isArray(segment) && typeof segment[1] === 'string');
 
-  const out = [];
-  let cursor = 0;
-  let sourceRun = '';
-  let translationRun = '';
-  for (const line of inputLines) {
-    let matched = false;
-    while (cursor < segments.length) {
-      sourceRun += segments[cursor][1];
-      translationRun += typeof segments[cursor][0] === 'string' ? segments[cursor][0] : '';
-      cursor += 1;
-      if (sourceRun === line) {
-        out.push(translationRun.length > 0 ? translationRun : null);
-        matched = true;
-        sourceRun = '';
-        translationRun = '';
-        break;
-      }
-      if (!line.startsWith(sourceRun)) {
-        sourceRun = '';
-        translationRun = '';
-        break;
-      }
-    }
-    if (!matched && out.length < inputLines.length && (cursor >= segments.length || sourceRun === '')) {
-      out.push(null);
-    }
-  }
-  while (out.length < inputLines.length) out.push(null);
-  return out.slice(0, inputLines.length);
+  const norm = (value) => value.replace(/\s+/g, ' ').trim();
+  return inputLines.map((line, index) => {
+    const segment = segments[index];
+    if (segment === undefined || norm(segment[1]) !== norm(line)) return null;
+    return typeof segment[0] === 'string' && segment[0].length > 0 ? segment[0] : null;
+  });
 };
 
 /** One batched engine call with the same retry and pace rhythm as the single call: the
@@ -807,9 +786,19 @@ const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3
   for (let attempt = 0; attempt < attempts; attempt++) {
     if (deps.pace) await deps.sleep(deps.pace);
     try {
-      const response = await deps.fetch(request.url, { method: 'POST', body: request.body });
+      // The endpoint 400s the chunk without the form Content-Type (auditor-verified
+      // 2026-11-08): undici's text/plain default never reaches the translator
+      const response = await deps.fetch(request.url, {
+        method: 'POST',
+        body: request.body,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      });
       if (!response.ok) throw new Error(`http ${response.status}`);
-      return extractGtxBatch(await response.text(), sentLines);
+      const extracted = extractGtxBatch(await response.text(), sentLines);
+      // A shapeless 200 is a spent attempt, not a verdict: the single path retried
+      // empty extracts, and a mangled body must not burn a whole chunk
+      if (extracted.every((value) => value === null)) throw new Error('no aligned segments');
+      return extracted;
     } catch {
       if (attempt === attempts - 1) return texts.map(() => null);
       await deps.sleep(400 * 2 ** attempt);
@@ -818,13 +807,14 @@ const fetchBatchWithRetry = async (engineName, locale, texts, deps, attempts = 3
   return texts.map(() => null);
 };
 
-/** Splits the keys into chunks under both caps, in row order */
+/** Splits the keys into chunks under both caps, in row order. The byte cap measures the
+ * percent-encoded wire form: non-Latin scripts inflate up to ninefold under escaping */
 const chunkKeys = (keys, catalog) => {
   const chunks = [];
   let current = [];
   let bytes = 0;
   for (const key of keys) {
-    const size = catalog[key].length + 1;
+    const size = encodeURIComponent(catalog[key]).length + 1;
     if (current.length > 0 && (current.length >= MAX_BATCH_LINES || bytes + size > MAX_BATCH_BYTES)) {
       chunks.push(current);
       current = [];
@@ -886,21 +876,6 @@ const slotAccepts = (catalogValue, englishValue, roundtrip) => {
   return roundtrip !== catalogValue;
 };
 
-/** Runs worker over items with a fixed pool, keeping each result at its item's index */
-const mapPool = async (items, workerCount, worker) => {
-  const results = new Array(items.length);
-  let next = 0;
-  const runner = async () => {
-    while (next < items.length) {
-      const index = next;
-      next += 1;
-      results[index] = await worker(items[index], index);
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(workerCount, items.length) }, runner));
-  return results;
-};
-
 const buildRow = (locale, key, en, catalog) => ({
   key,
   en: en[key],
@@ -946,9 +921,9 @@ const runLocale = async (locale, opts) => {
   const probeText = catalog[PRAYER_KEYS[0]] ?? en[PRAYER_KEYS[0]];
   const live = opts.liveEngines ?? (await preFlight(SITE_ENGINES, locale, probeText, deps));
 
-  // A paced run is serial by definition: the pool narrows to one worker so the
-  // per-attempt gap in fetchWithRetry is the only request rhythm
-  const rows = await mapPool(keys, opts.pace ? 1 : (opts.concurrency ?? 4), async (key) => {
+  // Rows build from the English key set with their resumed slots adopted; the engine
+  // requests live in the chunk loop below, so a plain map carries no pacing concern
+  const rows = keys.map((key) => {
     const prior = resumeRows?.get(key);
     const priorFresh = prior && prior.catalog === catalog[key] ? prior : null;
     const row = buildRow(locale, key, en, catalog);
