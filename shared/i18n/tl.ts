@@ -150,7 +150,6 @@ export const tl = {
   'modal.close': 'Isara',
   'help.title': 'Tulong',
   'whatsNew.heading': 'Ano ang Bago',
-  'whatsNew.platformNote': ' ({platform} lang)',
   'update.title': 'May Update na!',
   'update.message': 'May bagong bersyon.\nGusto mo bang mag-update ngayon?',
   'update.later': 'Mamaya',

@@ -157,7 +157,6 @@ export const hil = {
   'modal.close': 'Isara',
   'help.title': 'Tabang',
   'whatsNew.heading': 'Ano may Bag-o',
-  'whatsNew.platformNote': ' ({platform} lang)',
   'update.title': 'May Update!',
   'update.message': 'May bag-o nga bersyon.\nGusto mo bala mag-update yanda?',
   'update.later': 'Sa pagkahuman',

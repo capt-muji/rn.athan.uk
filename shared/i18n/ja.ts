@@ -150,7 +150,6 @@ export const ja = {
   'modal.close': '閉じる',
   'help.title': 'ヘルプ',
   'whatsNew.heading': '新着情報',
-  'whatsNew.platformNote': ' （{platform} のみ）',
   'update.title': '更新が利用できます！',
   'update.message': '新しいバージョンがあります。\n今すぐ更新しますか？',
   'update.later': '後で',

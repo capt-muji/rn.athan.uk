@@ -150,7 +150,6 @@ export const sq = {
   'modal.close': 'Mbyll',
   'help.title': 'Ndihmë',
   'whatsNew.heading': 'Të rejat',
-  'whatsNew.platformNote': ' (vetëm {platform})',
   'update.title': 'Ka Përditësim!',
   'update.message': 'Ka një version të ri.\nDëshiron të përditësosh tani?',
   'update.later': 'Më vonë',

@@ -158,7 +158,6 @@ export const tt = {
   'modal.close': 'Ябарга',
   'help.title': 'Ярдәм',
   'whatsNew.heading': 'Нәрсә яңа',
-  'whatsNew.platformNote': ' (бары тик {platform})',
   'update.title': 'Яңарту бар!',
   'update.message': 'Яңа юрама бар.\nХәзер яңартыргамы?',
   'update.later': 'Соңрак',

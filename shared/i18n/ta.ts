@@ -149,7 +149,6 @@ export const ta = {
   'modal.close': 'மூடவும்',
   'help.title': 'உதவி',
   'whatsNew.heading': 'புதியவை',
-  'whatsNew.platformNote': ' ({platform} மட்டும்)',
   'update.title': 'புதுப்பிப்பு உள்ளது!',
   'update.message': 'புதிய பதிப்பு உள்ளது.\nஇப்போதே புதுப்பிக்கவா?',
   'update.later': 'பிறகு',

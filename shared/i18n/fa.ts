@@ -145,7 +145,6 @@ export const fa = {
   'modal.close': 'بستن',
   'help.title': 'راهنما',
   'whatsNew.heading': 'تازه‌ها',
-  'whatsNew.platformNote': ' (فقط {platform})',
   'update.title': 'به‌روزرسانی در دسترس است!',
   'update.message': 'نسخه جدیدی در دسترس است.\nمی‌خواهید هم‌اکنون به‌روزرسانی کنید؟',
   'update.later': 'بعداً',

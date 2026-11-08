@@ -147,7 +147,6 @@ export const te = {
   'modal.close': 'మూసివేయి',
   'help.title': 'సహాయం',
   'whatsNew.heading': 'కొత్తవి',
-  'whatsNew.platformNote': ' ({platform} మాత్రమే)',
   'update.title': 'అప్‌డేట్ అందుబాటులో ఉంది!',
   'update.message': 'కొత్త వెర్షన్ అందుబాటులో ఉంది.\nఇప్పుడే అప్‌డేట్ చేయాలా?',
   'update.later': 'తర్వాత',

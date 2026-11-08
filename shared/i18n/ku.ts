@@ -148,7 +148,6 @@ export const ku = {
   'modal.close': 'Bigire',
   'help.title': 'Alîkarî',
   'whatsNew.heading': 'Çi nû ye',
-  'whatsNew.platformNote': ' (tenê {platform})',
   'update.title': 'Nûvekirin heye!',
   'update.message': 'Guhertoyeke nû heye.\nTu dixwazî niha nûve bikî?',
   'update.later': 'Paşê',

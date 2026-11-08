@@ -150,7 +150,6 @@ export const tg = {
   'modal.close': 'Пӯшидан',
   'help.title': 'Кӯмак',
   'whatsNew.heading': 'Навигариҳо',
-  'whatsNew.platformNote': ' (танҳо {platform})',
   'update.title': 'Навсозӣ дастрас аст!',
   'update.message': 'Нусхаи нав дастрас аст.\nҲозир навсозӣ мекунед?',
   'update.later': 'Баъдтар',

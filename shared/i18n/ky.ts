@@ -150,7 +150,6 @@ export const ky = {
   'modal.close': 'Жабуу',
   'help.title': 'Жардам',
   'whatsNew.heading': 'Жаңылыктар',
-  'whatsNew.platformNote': ' (тек {platform})',
   'update.title': 'Жаңыртуу жеткиликтүү!',
   'update.message': 'Жаңы версия жеткиликтүү.\nАзыр жаңыртасызбы?',
   'update.later': 'Кийинирээк',

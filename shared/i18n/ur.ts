@@ -146,7 +146,6 @@ export const ur = {
   'modal.close': 'بند کریں',
   'help.title': 'مدد',
   'whatsNew.heading': 'نیا کیا ہے',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'اپ ڈیٹ دستیاب ہے!',
   'update.message': 'نیا ورژن دستیاب ہے۔\nکیا آپ ابھی اپ ڈیٹ کرنا چاہتے ہیں؟',
   'update.later': 'بعد میں',

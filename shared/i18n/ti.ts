@@ -148,7 +148,6 @@ export const ti = {
   'modal.close': 'ዕጾ',
   'help.title': 'ሓገዝ',
   'whatsNew.heading': 'ዝሓዱሽ',
-  'whatsNew.platformNote': ' ({platform} ጥራይ)',
   'update.title': 'ምሕያሽ ኣሎ!',
   'update.message': 'ሓድሽ ቅጥዕ ኣሎ።\nሕጂ ክሕዙዎ ትደሊ?',
   'update.later': 'ድሕሪኡ',

@@ -148,7 +148,6 @@ export const my = {
   'modal.close': 'ပိတ်',
   'help.title': 'အကူအညီ',
   'whatsNew.heading': 'ဘာအသစ်ရှိလဲ',
-  'whatsNew.platformNote': ' ({platform} တွင်သာ)',
   'update.title': 'အသစ်တင်ထားသည်များ ရှိသည်',
   'update.message': 'ဗားရှင်းအသစ် ရှိသည်။\nယခုပဲ အသစ်တင်မလား။',
   'update.later': 'နောက်မှ',

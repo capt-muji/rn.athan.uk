@@ -154,7 +154,6 @@ export const mad = {
   'modal.close': 'Totop',
   'help.title': 'Bântoan',
   'whatsNew.heading': 'Sapa sè anyar',
-  'whatsNew.platformNote': ' ({platform} bâi)',
   'update.title': 'Pabhârhârân bâḍâ!',
   'update.message': 'Vèrsi anyar bâḍâ.\nPabhârhâri satèya?',
   'update.later': 'Saterrossa',

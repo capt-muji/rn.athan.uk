@@ -148,7 +148,6 @@ export const su = {
   'modal.close': 'Tutup',
   'help.title': 'Pitulung',
   'whatsNew.heading': 'Naon nu anyar',
-  'whatsNew.platformNote': ' (ukur {platform})',
   'update.title': 'Aya anyaran!',
   'update.message': 'Aya vérsi anyar.\nAnjeun badé ngamutahirkeun ayeuna?',
   'update.later': 'Engké',

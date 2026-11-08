@@ -144,7 +144,6 @@ export const zhHans = {
   'modal.close': '关闭',
   'help.title': '帮助',
   'whatsNew.heading': '新功能',
-  'whatsNew.platformNote': ' （仅限 {platform}）',
   'update.title': '有更新可用！',
   'update.message': '有新版本可用。\n是否立即更新？',
   'update.later': '稍后',

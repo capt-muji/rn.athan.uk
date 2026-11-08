@@ -148,7 +148,6 @@ export const mr = {
   'modal.close': 'बंद करा',
   'help.title': 'मदत',
   'whatsNew.heading': 'नवीन काय आहे',
-  'whatsNew.platformNote': ' (फक्त {platform})',
   'update.title': 'अपडेट उपलब्ध!',
   'update.message': 'नवीन आवृत्ती उपलब्ध आहे.\nआता अपडेट करायचे?',
   'update.later': 'नंतर',

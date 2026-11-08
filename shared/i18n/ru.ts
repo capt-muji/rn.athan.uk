@@ -151,7 +151,6 @@ export const ru = {
   'modal.close': 'Закрыть',
   'help.title': 'Справка',
   'whatsNew.heading': 'Что нового',
-  'whatsNew.platformNote': ' (только {platform})',
   'update.title': 'Доступно обновление!',
   'update.message': 'Доступна новая версия.\nОбновить сейчас?',
   'update.later': 'Позже',

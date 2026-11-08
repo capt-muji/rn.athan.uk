@@ -154,7 +154,6 @@ export const bcl = {
   'modal.close': 'Isara',
   'help.title': 'Tabang',
   'whatsNew.heading': 'Ano an Bago',
-  'whatsNew.platformNote': ' ({platform} sana)',
   'update.title': 'May Kaaayos!',
   'update.message': 'May bagong bersyon.\nGusto mo bang i-update ngonyan?',
   'update.later': 'Sa huri',

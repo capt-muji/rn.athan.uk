@@ -150,7 +150,6 @@ export const sw = {
   'modal.close': 'Funga',
   'help.title': 'Msaada',
   'whatsNew.heading': 'Nini Kipya',
-  'whatsNew.platformNote': ' ({platform} pekee)',
   'update.title': 'Kunasasisho!',
   'update.message': 'Toleo jipya lipo.\nJe, unataka kusasisha sasa?',
   'update.later': 'Baadaye',

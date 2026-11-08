@@ -147,7 +147,6 @@ export const yo = {
   'modal.close': 'Ti',
   'help.title': 'Ìrànwọ́',
   'whatsNew.heading': 'Ohun tuntun',
-  'whatsNew.platformNote': ' ({platform} nìkan)',
   'update.title': 'Ìmúdójúìwọ̀n wà!',
   'update.message': 'Ẹ̀yà tuntun wà.\nṢé o fẹ́ múdójúìwọ̀n báyìí?',
   'update.later': 'Lẹ́yìn',

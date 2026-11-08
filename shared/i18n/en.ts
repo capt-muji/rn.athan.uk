@@ -158,7 +158,6 @@ export const en = {
   'modal.close': 'Close',
   'help.title': 'Help',
   'whatsNew.heading': "What's New",
-  'whatsNew.platformNote': ' ({platform} only)',
   'update.title': 'Update Available!',
   'update.message': 'A new version is available.\nWould you like to update now?',
   'update.later': 'Later',

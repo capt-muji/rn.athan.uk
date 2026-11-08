@@ -152,7 +152,6 @@ export const ceb = {
   'modal.close': 'Isira',
   'help.title': 'Tabang',
   'whatsNew.heading': 'Unsa may bag-o',
-  'whatsNew.platformNote': ' ({platform} ra)',
   'update.title': 'Adunay update!',
   'update.message': 'Adunay bag-ong bersyon.\nGusto ba nimo i-update karon?',
   'update.later': 'Sa pagkahuman',

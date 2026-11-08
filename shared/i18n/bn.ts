@@ -146,7 +146,6 @@ export const bn = {
   'modal.close': 'বন্ধ করুন',
   'help.title': 'সহায়তা',
   'whatsNew.heading': 'নতুন কী',
-  'whatsNew.platformNote': ' (শুধু {platform})',
   'update.title': 'আপডেট পাওয়া যাচ্ছে!',
   'update.message': 'নতুন সংস্করণ পাওয়া যাচ্ছে।\nএখনই আপডেট করতে চান?',
   'update.later': 'পরে',

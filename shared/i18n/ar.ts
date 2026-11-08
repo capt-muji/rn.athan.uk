@@ -144,7 +144,6 @@ export const ar = {
   'modal.close': 'إغلاق',
   'help.title': 'المساعدة',
   'whatsNew.heading': 'ما الجديد',
-  'whatsNew.platformNote': ' ({platform} فقط)',
   'update.title': 'تحديث متوفر!',
   'update.message': 'يتوفر إصدار جديد.\nأتريد التحديث الآن؟',
   'update.later': 'لاحقًا',

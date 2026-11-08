@@ -145,7 +145,6 @@ export const bm = {
   'modal.close': 'Da tugu',
   'help.title': 'Dɛmɛ',
   'whatsNew.heading': 'Kura',
-  'whatsNew.platformNote': ' ({platform} dɔrɔn)',
   'update.title': 'Sabati kura!',
   'update.message': 'Sabati kura bɛ yen.\nI bɛ a fara sisan?',
   'update.later': 'Kɔfɛ',

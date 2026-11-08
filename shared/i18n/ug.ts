@@ -147,7 +147,6 @@ export const ug = {
   'modal.close': 'تاقاڭ',
   'help.title': 'ياردەم',
   'whatsNew.heading': 'يېڭىلىقلار',
-  'whatsNew.platformNote': ' (پەقەت {platform})',
   'update.title': 'يېڭىلانما بار!',
   'update.message': 'يېڭى نەشرى بار.\nھازىر يېڭىلامسىز؟',
   'update.later': 'كېيىن',

@@ -149,7 +149,6 @@ export const ko = {
   'modal.close': '닫기',
   'help.title': '도움말',
   'whatsNew.heading': '새로운 소식',
-  'whatsNew.platformNote': ' ({platform} 전용)',
   'update.title': '업데이트가 있습니다!',
   'update.message': '새 버전이 있습니다.\n지금 업데이트하시겠습니까?',
   'update.later': '나중에',

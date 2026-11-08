@@ -148,7 +148,6 @@ export const id = {
   'modal.close': 'Tutup',
   'help.title': 'Bantuan',
   'whatsNew.heading': 'Apa yang Baru',
-  'whatsNew.platformNote': ' (hanya {platform})',
   'update.title': 'Pembaruan Tersedia!',
   'update.message': 'Versi baru tersedia.\nPerbarui sekarang?',
   'update.later': 'Nanti',

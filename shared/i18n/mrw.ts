@@ -154,7 +154,6 @@ export const mrw = {
   'modal.close': 'Isara',
   'help.title': 'Tulong',
   'whatsNew.heading': 'Anong Bago',
-  'whatsNew.platformNote': ' ({platform} lamang)',
   'update.title': 'May Kaaayos!',
   'update.message': 'May bagong bersyon.\nGusto mo bang i-update ngayon?',
   'update.later': 'Mamaya',

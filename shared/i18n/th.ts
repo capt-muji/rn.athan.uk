@@ -143,7 +143,6 @@ export const th = {
   'modal.close': 'ปิด',
   'help.title': 'ช่วยเหลือ',
   'whatsNew.heading': 'มีอะไรใหม่',
-  'whatsNew.platformNote': ' (เฉพาะ {platform})',
   'update.title': 'มีอัปเดต!',
   'update.message': 'มีเวอร์ชันใหม่\nต้องการอัปเดตตอนนี้หรือไม่?',
   'update.later': 'ภายหลัง',

@@ -149,7 +149,6 @@ export const pt = {
   'modal.close': 'Fechar',
   'help.title': 'Ajuda',
   'whatsNew.heading': 'Novidades',
-  'whatsNew.platformNote': ' (apenas {platform})',
   'update.title': 'Atualização disponível!',
   'update.message': 'Uma nova versão está disponível.\nDeseja atualizar agora?',
   'update.later': 'Depois',

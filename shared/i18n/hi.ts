@@ -146,7 +146,6 @@ export const hi = {
   'modal.close': 'बंद करें',
   'help.title': 'सहायता',
   'whatsNew.heading': 'नया क्या है',
-  'whatsNew.platformNote': ' (केवल {platform})',
   'update.title': 'अपडेट उपलब्ध!',
   'update.message': 'नया संस्करण उपलब्ध है।\nक्या आप अभी अपडेट करना चाहते हैं?',
   'update.later': 'बाद में',

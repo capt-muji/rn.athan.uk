@@ -149,7 +149,6 @@ export const ml = {
   'modal.close': 'അടയ്ക്കുക',
   'help.title': 'സഹായം',
   'whatsNew.heading': 'പുതിയത്',
-  'whatsNew.platformNote': ' ({platform} മാത്രം)',
   'update.title': 'അപ്ഡേറ്റ് ലഭ്യമാണ്!',
   'update.message': 'പുതിയ പതിപ്പ് ലഭ്യമാണ്.\nഇപ്പോൾ അപ്ഡേറ്റ് ചെയ്യണോ?',
   'update.later': 'പിന്നീട്',

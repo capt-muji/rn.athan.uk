@@ -280,7 +280,6 @@ describe('the catalog as its own transfer format', () => {
       'stepper.value',
       'time.ago',
       'time.now',
-      'whatsNew.platformNote',
     ]);
     expect(tokensByKey.get('notification.now')).toEqual(['name']);
     expect(tokensByKey.get('notification.reminder')).toEqual(['name', 'n']);
@@ -298,20 +297,17 @@ describe('the catalog as its own transfer format', () => {
     expect(tokensByKey.get('stepper.increase')).toEqual(['value', 'unit']);
     expect(tokensByKey.get('time.now')).toEqual(['name']);
     expect(tokensByKey.get('time.ago')).toEqual(['name', 'duration']);
-    expect(tokensByKey.get('whatsNew.platformNote')).toEqual(['platform']);
 
     // ParamsOf matches the same map (compile-time pins: a wrong shape fails tsc here)
     const nowParams: ParamsOf<'notification.now'> = { name: 'Fajr' };
     const reminderParams: ParamsOf<'notification.reminder'> = { name: 'Fajr', n: 15 };
     const channelReminderParams: ParamsOf<'channel.reminder'> = { name: 'Fajr', n: 15 };
     const stepperParams: ParamsOf<'stepper.decrease'> = { value: 10, unit: 'min' };
-    const platformParams: ParamsOf<'whatsNew.platformNote'> = { platform: 'iOS' };
     const agoParams: ParamsOf<'time.ago'> = { name: 'Fajr', duration: '2h 30m' };
     expect(nowParams.name).toBe('Fajr');
     expect(reminderParams.n).toBe(15);
     expect(channelReminderParams.n).toBe(15);
     expect(stepperParams.value).toBe(10);
-    expect(platformParams.platform).toBe('iOS');
     expect(agoParams.duration).toBe('2h 30m');
     // @ts-expect-error a key with no tokens takes no params
     const none: ParamsOf<'settings.title'> = { name: 'x' };

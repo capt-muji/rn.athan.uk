@@ -149,7 +149,6 @@ export const bug = {
   'modal.close': 'Tutup',
   'help.title': 'Pitunangan',
   'whatsNew.heading': 'Umba baru',
-  'whatsNew.platformNote': ' ({platform} iko)',
   'update.title': 'Pabbaru dapa',
   'update.message': 'Rilisi baru dapa.\nPabbarui riwettu ini?',
   'update.later': 'Nanti',

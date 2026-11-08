@@ -147,7 +147,6 @@ export const ff = {
   'modal.close': 'Uddu',
   'help.title': 'Ballal',
   'whatsNew.heading': 'Ko Hesɗi',
-  'whatsNew.platformNote': ' ({platform} tan)',
   'update.title': 'Kesɗitinal ena woodi!',
   'update.message': 'Kesɗitinal kesal ena woodi.\nA yiɗi kesɗitinde jooni?',
   'update.later': 'Caggal',

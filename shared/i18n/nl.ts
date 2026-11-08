@@ -149,7 +149,6 @@ export const nl = {
   'modal.close': 'Sluiten',
   'help.title': 'Help',
   'whatsNew.heading': 'Wat is er nieuw',
-  'whatsNew.platformNote': ' (alleen {platform})',
   'update.title': 'Update beschikbaar!',
   'update.message': 'Er is een nieuwe versie beschikbaar.\nWil je nu bijwerken?',
   'update.later': 'Later',

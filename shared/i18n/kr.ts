@@ -151,7 +151,6 @@ export const kr = {
   'modal.close': 'Kataa',
   'help.title': 'Madde',
   'whatsNew.heading': 'Sabuwa',
-  'whatsNew.platformNote': ' (({platform} koma)',
   'update.title': 'Apteji cina!',
   'update.message': 'Versin sabuwa cina.\nKoyan apteji bokta?',
   'update.later': 'Ngawo',

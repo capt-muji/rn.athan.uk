@@ -156,7 +156,6 @@ export const ilo = {
   'modal.close': 'Iserra',
   'help.title': 'Tulong',
   'whatsNew.heading': 'Ania ti baro',
-  'whatsNew.platformNote': ' ({platform} laeng)',
   'update.title': 'Adda mabalin a pabaro!',
   'update.message': 'Adda baro a bersion.\nKayatmo a koma a pabaroen ita?',
   'update.later': 'Intuno',

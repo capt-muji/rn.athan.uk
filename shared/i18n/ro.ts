@@ -152,7 +152,6 @@ export const ro = {
   'modal.close': 'Închide',
   'help.title': 'Ajutor',
   'whatsNew.heading': 'Ce este nou',
-  'whatsNew.platformNote': ' (doar {platform})',
   'update.title': 'Actualizare disponibilă!',
   'update.message': 'Este disponibilă o versiune nouă.\nVrei să actualizezi acum?',
   'update.later': 'Mai târziu',

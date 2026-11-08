@@ -149,7 +149,6 @@ export const so = {
   'modal.close': 'Xidh',
   'help.title': 'Caawimo',
   'whatsNew.heading': 'Maxay Tahay Cusub',
-  'whatsNew.platformNote': ' ({platform} oo keliya)',
   'update.title': 'Cusboonaysi Waa Diyaar!',
   'update.message': 'Nooc cusub waa diyaar.\nMa rabtaa inaad hadda cusboonaysiiso?',
   'update.later': 'Hadhow',

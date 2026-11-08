@@ -144,7 +144,6 @@ export const kas = {
   'modal.close': 'بند کٔرِو',
   'help.title': 'مَدَت',
   'whatsNew.heading': 'کیاہ نُو چُھہ',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'اپڈیٹ دَستئیب چُھہ!',
   'update.message': 'نُو ورجن دَستئیب چُھہ.\nکیاہ توہِی چھوہ وُنئے اپڈیٹ کَرُن یِوان؟',
   'update.later': 'پَتئی',

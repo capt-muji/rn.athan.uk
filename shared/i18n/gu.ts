@@ -147,7 +147,6 @@ export const gu = {
   'modal.close': 'બંધ કરો',
   'help.title': 'મદદ',
   'whatsNew.heading': 'નવું શું છે',
-  'whatsNew.platformNote': ' ({platform} ફક્ત)',
   'update.title': 'અપડેટ ઉપલબ્ધ છે!',
   'update.message': 'નવું સંસ્કરણ ઉપલબ્ધ છે.\nહમણાં અપડેટ કરવું છે?',
   'update.later': 'પછી',

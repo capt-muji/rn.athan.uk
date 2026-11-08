@@ -154,7 +154,6 @@ export const min = {
   'modal.close': 'Tutuik',
   'help.title': 'Bantuan',
   'whatsNew.heading': 'Apo nan baru',
-  'whatsNew.platformNote': ' ({platform} sajo)',
   'update.title': 'Pambaruan tasadio!',
   'update.message': 'Versi baru tasadio.\nBaruikan kini?',
   'update.later': 'Kudian',

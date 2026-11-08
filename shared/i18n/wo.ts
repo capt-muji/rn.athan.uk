@@ -147,7 +147,6 @@ export const wo = {
   'modal.close': 'Tëj',
   'help.title': 'Ndimbal',
   'whatsNew.heading': 'Li bees',
-  'whatsNew.platformNote': ' ({platform} rekk)',
   'update.title': 'Yees am na!',
   'update.message': 'Am na wersion bu bees.\nBëgg nga yees léegi?',
   'update.later': 'Ginaaw',

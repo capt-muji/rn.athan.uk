@@ -146,7 +146,6 @@ export const bal = {
   'modal.close': 'بند کَن',
   'help.title': 'مدد',
   'whatsNew.heading': 'نوک چی بیت',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'اپ ڈیٹ دسترسءِت ئے!',
   'update.message': 'نوک نسخہ دسترسءِت ئے.\nکیا آپݙے ہنءَ اپ ڈیٹءَ سر کَن گواریٹ؟',
   'update.later': 'بَعدءَت',

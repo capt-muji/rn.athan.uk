@@ -154,7 +154,6 @@ export const vi = {
   'modal.close': 'Đóng',
   'help.title': 'Trợ giúp',
   'whatsNew.heading': 'Có gì mới',
-  'whatsNew.platformNote': ' (chỉ {platform})',
   'update.title': 'Có bản cập nhật!',
   'update.message': 'Có phiên bản mới.\nBạn có muốn cập nhật ngay không?',
   'update.later': 'Để sau',

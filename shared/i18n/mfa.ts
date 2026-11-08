@@ -153,7 +153,6 @@ export const mfa = {
   'modal.close': 'Tutup',
   'help.title': 'Bantuan',
   'whatsNew.heading': 'Apa Yang Baru',
-  'whatsNew.platformNote': ' ({platform} sahaja)',
   'update.title': 'Kemas Kini Ada!',
   'update.message': 'Versi baru ada.\nMahu kemas kini sekarang?',
   'update.later': 'Kemudian',

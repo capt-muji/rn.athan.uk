@@ -150,7 +150,6 @@ export const ha = {
   'modal.close': 'Rufe',
   'help.title': 'Taimako',
   'whatsNew.heading': 'Sababbi',
-  'whatsNew.platformNote': ' ({platform} kawai)',
   'update.title': 'Ana da Sabuntawa!',
   'update.message': 'An sami sabuwar siga.\nShin kana son sabuntawa yanzu?',
   'update.later': 'Daga baya',

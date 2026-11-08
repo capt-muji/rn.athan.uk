@@ -145,7 +145,6 @@ export const am = {
   'modal.close': 'ዝጋ',
   'help.title': 'እገዛ',
   'whatsNew.heading': 'አዲስ',
-  'whatsNew.platformNote': ' ({platform} ብቻ)',
   'update.title': 'ማሻሻያ አለ!',
   'update.message': 'አዲስ ስሪት አለ።\nአሁን ማሻሻል ይፈልጋሉ?',
   'update.later': 'በኋላ',

@@ -147,7 +147,6 @@ export const skr = {
   'modal.close': 'بند کرو',
   'help.title': 'مدد',
   'whatsNew.heading': 'نیا کیا ہے',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'اپ ڈیٹ دستیاب ہے!',
   'update.message': 'نواں ورژن دستیاب ہے۔\nکیا تساں ہُݨ اپ ڈیٹ کرݨ چاہندو؟',
   'update.later': 'بعد وچ',

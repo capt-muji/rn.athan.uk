@@ -156,7 +156,6 @@ export const uk = {
   'modal.close': 'Закрити',
   'help.title': 'Довідка',
   'whatsNew.heading': 'Що нового',
-  'whatsNew.platformNote': ' (лише {platform})',
   'update.title': 'Доступне оновлення!',
   'update.message': 'Доступна нова версія.\nОновити зараз?',
   'update.later': 'Пізніше',

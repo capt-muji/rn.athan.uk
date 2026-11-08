@@ -149,7 +149,6 @@ export const ckb = {
   'modal.close': 'دایبخە',
   'help.title': 'یارمەتی',
   'whatsNew.heading': 'چی نوێیە',
-  'whatsNew.platformNote': ' (تەنها {platform})',
   'update.title': 'نوێکردنەوە بەردەستە!',
   'update.message': 'وەشانێکی نوێ بەردەستە.\nدەتەوێت ئێستا نوێی بکەیتەوە؟',
   'update.later': 'دواتر',

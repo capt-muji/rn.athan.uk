@@ -156,7 +156,6 @@ export const war = {
   'modal.close': 'Isara',
   'help.title': 'Bulig',
   'whatsNew.heading': 'Ano an Bag-o',
-  'whatsNew.platformNote': ' ({platform} la)',
   'update.title': 'May Update!',
   'update.message': 'May bag-o nga bersyon.\nKaruyag mo ba mag-update yana?',
   'update.later': 'Ha urhi',

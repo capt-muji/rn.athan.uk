@@ -148,7 +148,6 @@ export const paArab = {
   'modal.close': 'بند کرو',
   'help.title': 'مدد',
   'whatsNew.heading': 'نواں کیہ اے',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'نواں نسخہ آ گیا!',
   'update.message': 'نواں نسخہ دستیاب اے۔\nکیا ہن اپ ڈیٹ کرنا چاہو گے؟',
   'update.later': 'بعد وچ',

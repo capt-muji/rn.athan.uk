@@ -149,7 +149,6 @@ export const az = {
   'modal.close': 'Bağla',
   'help.title': 'Kömək',
   'whatsNew.heading': 'Yeniliklər',
-  'whatsNew.platformNote': ' (yalnız {platform})',
   'update.title': 'Yeniləmə Var!',
   'update.message': 'Yeni versiya mövcuddur.\nİndi yeniləmək istəyirsiniz?',
   'update.later': 'Sonra',

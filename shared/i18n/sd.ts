@@ -146,7 +146,6 @@ export const sd = {
   'modal.close': 'بند ڪريو',
   'help.title': 'مدد',
   'whatsNew.heading': 'ڇا نئون آهي',
-  'whatsNew.platformNote': ' (صرف {platform})',
   'update.title': 'نئون اپڊيٽ موجود!',
   'update.message': 'نئون نسخو موجود آهي.\nڇا توهان هاڻي اپڊيٽ ڪرڻ چاهيو ٿا؟',
   'update.later': 'پوءِ',

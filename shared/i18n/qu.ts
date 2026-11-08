@@ -157,7 +157,6 @@ export const qu = {
   'modal.close': "Wisq'ay",
   'help.title': 'Yanapay',
   'whatsNew.heading': 'Ima musuq',
-  'whatsNew.platformNote': ' ({platform}lla\u00f1am)',
   'update.title': 'Musuqyachiy kan!',
   'update.message': 'Musuq siq\u2019i kan.\nKunanmusuqyachiyta munankichu?',
   'update.later': 'Qhipaman',

@@ -148,7 +148,6 @@ export const jv = {
   'modal.close': 'Tutupen',
   'help.title': 'Pitulungan',
   'whatsNew.heading': 'Apa sing anyar',
-  'whatsNew.platformNote': ' (mung {platform})',
   'update.title': 'Ana anyaran!',
   'update.message': 'Ana vèrsi anyar.\nKowé arep nganyari saiki?',
   'update.later': 'Mengko',

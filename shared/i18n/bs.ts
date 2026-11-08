@@ -148,7 +148,6 @@ export const bs = {
   'modal.close': 'Zatvori',
   'help.title': 'Pomoć',
   'whatsNew.heading': 'Novosti',
-  'whatsNew.platformNote': ' (samo {platform})',
   'update.title': 'Dostupno ažuriranje!',
   'update.message': 'Nova verzija je dostupna.\nŽelite li ažurirati sada?',
   'update.later': 'Kasnije',

@@ -151,7 +151,6 @@ export const fr = {
   'modal.close': 'Fermer',
   'help.title': 'Aide',
   'whatsNew.heading': 'Nouveautés',
-  'whatsNew.platformNote': ' ({platform} uniquement)',
   'update.title': 'Mise à jour disponible !',
   'update.message': 'Une nouvelle version est disponible.\nVoulez-vous mettre à jour maintenant ?',
   'update.later': 'Plus tard',

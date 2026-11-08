@@ -152,7 +152,6 @@ export const uz = {
   'modal.close': 'Yopish',
   'help.title': 'Yordam',
   'whatsNew.heading': 'Yangi narsalar',
-  'whatsNew.platformNote': ' (faqat {platform})',
   'update.title': 'Yangilanish bor!',
   'update.message': 'Yangi versiya mavjud.\nHozir yangilashni xohlaysizmi?',
   'update.later': 'Keyinroq',

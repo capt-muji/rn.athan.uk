@@ -148,7 +148,6 @@ export const ps = {
   'modal.close': 'بند کړئ',
   'help.title': 'مرسته',
   'whatsNew.heading': 'نوي څه',
-  'whatsNew.platformNote': ' (یوازې {platform})',
   'update.title': 'اپډیټ شته!',
   'update.message': 'نوې نسخه شته.\nایا اوس اپډیټ غواړئ؟',
   'update.later': 'وروسته',

@@ -150,7 +150,6 @@ export const om = {
   'modal.close': 'Cufi',
   'help.title': 'Gargaarsa',
   'whatsNew.heading': 'Haaraa',
-  'whatsNew.platformNote': ' ({platform} qofa)',
   'update.title': 'Haaromsi Jira!',
   'update.message': 'Haaromsi haaraan jira.\nAmma haaromsuu barbaadda?',
   'update.later': 'Booda',

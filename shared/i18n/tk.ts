@@ -149,7 +149,6 @@ export const tk = {
   'modal.close': 'Ýap',
   'help.title': 'Kömek',
   'whatsNew.heading': 'Täzelikler',
-  'whatsNew.platformNote': ' (diňe {platform})',
   'update.title': 'Täzelenme bar!',
   'update.message': 'Täze wersiýa bar.\nHäzir täzeläýiňmi?',
   'update.later': 'Soň',

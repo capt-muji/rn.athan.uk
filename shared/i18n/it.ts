@@ -155,7 +155,6 @@ export const it = {
   'modal.close': 'Chiudi',
   'help.title': 'Aiuto',
   'whatsNew.heading': 'Novità',
-  'whatsNew.platformNote': ' (solo {platform})',
   'update.title': 'Aggiornamento disponibile!',
   'update.message': 'È disponibile una nuova versione.\nVuoi aggiornare adesso?',
   'update.later': 'Più tardi',

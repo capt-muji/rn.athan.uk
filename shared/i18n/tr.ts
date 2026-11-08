@@ -147,7 +147,6 @@ export const tr = {
   'modal.close': 'Kapat',
   'help.title': 'Yardım',
   'whatsNew.heading': 'Yenilikler',
-  'whatsNew.platformNote': ' (yalnızca {platform})',
   'update.title': 'Güncelleme Var!',
   'update.message': 'Yeni bir sürüm mevcut.\nŞimdi güncellemek ister misiniz?',
   'update.later': 'Sonra',

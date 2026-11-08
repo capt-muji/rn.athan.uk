@@ -148,7 +148,6 @@ export const ms = {
   'modal.close': 'Tutup',
   'help.title': 'Bantuan',
   'whatsNew.heading': 'Apa Yang Baharu',
-  'whatsNew.platformNote': ' ({platform} sahaja)',
   'update.title': 'Kemas Kini Tersedia!',
   'update.message': 'Versi baharu tersedia.\nMahu kemas kini sekarang?',
   'update.later': 'Kemudian',

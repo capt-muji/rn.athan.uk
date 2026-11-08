@@ -147,7 +147,6 @@ export const kn = {
   'modal.close': 'ಮುಚ್ಚಿ',
   'help.title': 'ಸಹಾಯ',
   'whatsNew.heading': 'ಹೊಸದು',
-  'whatsNew.platformNote': ' ({platform} ಮಾತ್ರ)',
   'update.title': 'ಅಪ್‌ಡೇಟ್ ಲಭ್ಯವಿದೆ!',
   'update.message': 'ಹೊಸ ಆವೃತ್ತಿ ಲಭ್ಯವಿದೆ.\nಈಗ ಅಪ್‌ಡೇಟ್ ಮಾಡಬೇಕೇ?',
   'update.later': 'ನಂತರ',

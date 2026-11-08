@@ -149,7 +149,6 @@ export const kk = {
   'modal.close': 'Жабу',
   'help.title': 'Көмек',
   'whatsNew.heading': 'Жаңалықтар',
-  'whatsNew.platformNote': ' (тек {platform})',
   'update.title': 'Жаңарту қолжетімді!',
   'update.message': 'Жаңа нұсқа қолжетімді.\nҚазір жаңартасыз ба?',
   'update.later': 'Кейінірек',
