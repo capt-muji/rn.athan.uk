@@ -35,9 +35,9 @@ one line. Count the wave's keys from the en diff, not from per-locale diff sizes
    The wave translates settled copy, never a moving target.
 2. Translate the settled keys into all 74 locales. Two engines per row, round-tripped:
    translate to the locale, back to English, judge the round trip. Engine calls pace at
-   4000 ms (`--pace 4000`, owner order 2026-11-08: one request per four seconds is the
-   lock, superseding the same day's 3000 probe; no lower pace is hunted, the batching
-   bought the speed). Authoring can be chunked across workers; each
+   5000 ms (`--pace 5000`, owner order 2026-11-08: one request per five seconds, widened
+   from the same day's four-second lock for rate-limit leeway; no lower pace is hunted,
+   the batching bought the speed). Authoring can be chunked across workers; each
    worker owns disjoint locales and lands into the catalogs directly.
 3. Verify targeted: scope the verify to the wave's keys (`--keys` - T-629 added it; if the
    flag is missing it was lost, recover it from git history before running anything). The
@@ -86,7 +86,7 @@ already ships beats a technically better translation.
 
 - `scripts/i18n-verify.js` - the round-trip engines, verdict coloring (green/red/amber),
   staged pages, resume. `--keys` scopes rows, `--locales` scopes locales, `--resume` adopts
-  unchanged rows, `--pace 4000` is the standing owner pace. Wrap long runs so completion
+  unchanged rows, `--pace 5000` is the standing owner pace. Wrap long runs so completion
   notifies you (an exit line appended to the log); never wait blind on a bare process.
 - Artifacts under `$HOME/athan-i18n-verify`: per-locale `.json` results, `.html` staged
   pages, `.judge-rulings.json`, `approval-sheet.md`, `disputes.md`, `judge-flags.md`.
