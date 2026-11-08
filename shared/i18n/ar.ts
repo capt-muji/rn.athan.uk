@@ -95,7 +95,7 @@ export const ar = {
   'alert.card.athan': 'الأذان',
   'alert.card.athanHint': 'إشعار وقت الصلاة',
   'fasting.card.title': 'الصيام',
-  'fasting.card.hint': 'اختر الأيام التي تريد تفعيل السحور فيها',
+  'fasting.card.hint': 'أيام تفعيل السحور',
   'fasting.mode.everyDay': 'كل يوم',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داود',

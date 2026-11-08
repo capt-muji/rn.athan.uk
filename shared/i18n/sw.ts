@@ -99,7 +99,7 @@ export const sw = {
   'alert.card.athan': 'Adhani',
   'alert.card.athanHint': 'Arifa wakati wa swala',
   'fasting.card.title': 'Kufunga',
-  'fasting.card.hint': 'Chagua siku unazotaka kuwezesha Suhur',
+  'fasting.card.hint': 'Siku za kuwezesha Suhur',
   'fasting.mode.everyDay': 'Kila siku',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawudi',

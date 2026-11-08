@@ -97,7 +97,7 @@ export const mr = {
   'alert.card.athan': 'अजान',
   'alert.card.athanHint': 'नमाजच्या वेळी सूचना',
   'fasting.card.title': 'उपवास',
-  'fasting.card.hint': 'तुम्ही ज्या दिवसांसाठी सहरी सक्षम करू इच्छिता ते दिवस निवडा',
+  'fasting.card.hint': 'सहरी सक्षम करण्यासाठीचे दिवस',
   'fasting.mode.everyDay': 'प्रत्येक दिवशी',
   'fasting.mode.muhammad': 'मुहम्मद',
   'fasting.mode.dawood': 'दाऊद',

@@ -97,7 +97,7 @@ export const bal = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نمازءِ وختءَ اطلاع',
   'fasting.card.title': 'روزہ',
-  'fasting.card.hint': 'اسور واستہ روچاں گچین کن',
+  'fasting.card.hint': 'اسور واستہ روچاں',
   'fasting.mode.everyDay': 'هر روز',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داؤد',

@@ -99,7 +99,7 @@ export const bug = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Kabaraka ri wettu sumpajang',
   'fasting.card.title': 'Ura puasa',
-  'fasting.card.hint': 'Kabaraka Sahur pura ri wettutero ri ura iya',
+  'fasting.card.hint': 'Ura ri wettu Sahur',
   'fasting.mode.everyDay': 'Uro-uro esso',
   'fasting.mode.muhammad': 'Senin na Kamis',
   'fasting.mode.dawood': 'Sibawa ura',

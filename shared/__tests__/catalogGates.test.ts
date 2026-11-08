@@ -689,6 +689,11 @@ describe('the translated fasting card (T-629)', () => {
     expect(keys.sort()).toEqual([...FASTING_KEYS].sort());
   });
 
+  // Owner order 2026-11-08, corrected the same hour: the hint is the purposive days alone
+  it('the English hint carries no imperative opener', () => {
+    expect(SHIPPED.en['fasting.card.hint']).toBe('Days to enable Sahur for');
+  });
+
   // The translated lock: every key speaks its locale, never the English it shipped as.
   // The two regimen name rows may echo their English where the locale's established
   // practice spells the name identically (the PRAYER_NAME_KEYS ruling above).

@@ -98,7 +98,7 @@ export const kk = {
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Намаз уақытында хабарлама',
   'fasting.card.title': 'Ораза',
-  'fasting.card.hint': 'Сәресіні қосқыңыз келетін күндерді таңдаңыз',
+  'fasting.card.hint': 'Сәресіні қосу күндері',
   'fasting.mode.everyDay': 'Күн сайын',
   'fasting.mode.muhammad': 'Мұхаммед',
   'fasting.mode.dawood': 'Дәуіт',

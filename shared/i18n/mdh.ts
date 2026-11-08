@@ -104,7 +104,7 @@ export const mdh = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso sa oras ng sambayang',
   'fasting.card.title': 'Mga adlaw sa pagpuasa',
-  'fasting.card.hint': 'Mga abiso sa Sahur magagana lamen sa mga adlaw ini',
+  'fasting.card.hint': 'Mga adlaw nga i-on ang Sahur',
   'fasting.mode.everyDay': 'Tagda adlaw',
   'fasting.mode.muhammad': 'Lunes ambi Huwebes',
   'fasting.mode.dawood': 'Magbantad nga adlaw',

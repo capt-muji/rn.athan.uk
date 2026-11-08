@@ -98,7 +98,7 @@ export const skr = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز دے ویلھے اطلاع',
   'fasting.card.title': 'روزہ',
-  'fasting.card.hint': 'سحری فعال کرݨ کیتے ݙینھ چُݨو',
+  'fasting.card.hint': 'سحری فعال کرݨ کیتے ݙینھ',
   'fasting.mode.everyDay': 'ہر ݙینھ',
   'fasting.mode.muhammad': 'مُحمّد',
   'fasting.mode.dawood': 'داؤد',

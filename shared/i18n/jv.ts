@@ -97,7 +97,7 @@ export const jv = {
   'alert.card.athan': 'Adzan',
   'alert.card.athanHint': 'Kabar nalika wektu sholat',
   'fasting.card.title': 'Pasa',
-  'fasting.card.hint': 'Pilih dina sing sampeyan pengin ngaktifake Sahur',
+  'fasting.card.hint': 'Dina kanggo ngaktifake Sahur',
   'fasting.mode.everyDay': 'Saben dina',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Daud',

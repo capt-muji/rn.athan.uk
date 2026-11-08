@@ -98,7 +98,7 @@ export const tk = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Namaz wagtynda bildiriş',
   'fasting.card.title': 'Oraza',
-  'fasting.card.hint': 'Sahury işletmek isleýän günleriňizi saýlaň',
+  'fasting.card.hint': 'Sahury işletmegiň günleri',
   'fasting.mode.everyDay': 'Her gün',
   'fasting.mode.muhammad': 'Muhammet',
   'fasting.mode.dawood': 'Dawud',

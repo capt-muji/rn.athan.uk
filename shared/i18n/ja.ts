@@ -99,7 +99,7 @@ export const ja = {
   'alert.card.athan': 'アザーン',
   'alert.card.athanHint': '礼拝の時刻に通知',
   'fasting.card.title': '断食',
-  'fasting.card.hint': 'スフールを有効にする日を選択してください',
+  'fasting.card.hint': 'スフールを有効にする日',
   'fasting.mode.everyDay': '毎日',
   'fasting.mode.muhammad': 'ムハンマド',
   'fasting.mode.dawood': 'ダーウード',

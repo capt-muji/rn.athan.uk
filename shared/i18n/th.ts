@@ -95,7 +95,7 @@ export const th = {
   'alert.card.athan': 'อะซาน',
   'alert.card.athanHint': 'แจ้งเตือนเมื่อถึงเวลาละหมาด',
   'fasting.card.title': 'การถือศีลอด',
-  'fasting.card.hint': 'เลือกวันที่คุณต้องการเปิดใช้งานซูฮูร์',
+  'fasting.card.hint': 'วันที่เปิดใช้งานซูฮูร์',
   'fasting.mode.everyDay': 'ทุกวัน',
   'fasting.mode.muhammad': 'มุฮัมมัด',
   'fasting.mode.dawood': 'ดาวูด',

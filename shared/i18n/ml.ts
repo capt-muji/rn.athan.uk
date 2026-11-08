@@ -98,7 +98,7 @@ export const ml = {
   'alert.card.athan': 'അസാൻ',
   'alert.card.athanHint': 'നമസ്കാര സമയത്ത് അറിയിപ്പ്',
   'fasting.card.title': 'ഉപവാസം',
-  'fasting.card.hint': 'നിങ്ങൾ സഹർ പ്രവർത്തനക്ഷമമാക്കാൻ ആഗ്രഹിക്കുന്ന ദിവസങ്ങൾ തിരഞ്ഞെടുക്കുക',
+  'fasting.card.hint': 'സഹർ പ്രവർത്തനക്ഷമമാക്കാനുള്ള ദിവസങ്ങൾ',
   'fasting.mode.everyDay': 'എല്ലാ ദിവസവും',
   'fasting.mode.muhammad': 'മുഹമ്മദ്',
   'fasting.mode.dawood': 'ദാവൂദ്',

@@ -97,7 +97,7 @@ export const bs = {
   'alert.card.athan': 'Ezan',
   'alert.card.athanHint': 'Obavještenje u vrijeme namaza',
   'fasting.card.title': 'Post',
-  'fasting.card.hint': 'Odaberite dane za koje želite omogućiti Sehur',
+  'fasting.card.hint': 'Dani za omogućavanje Sehura',
   'fasting.mode.everyDay': 'Svaki dan',
   'fasting.mode.muhammad': 'Muhammed',
   'fasting.mode.dawood': 'Davud',

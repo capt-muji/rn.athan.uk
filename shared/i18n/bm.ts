@@ -95,7 +95,7 @@ export const bm = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Kibaro seli waati la',
   'fasting.card.title': 'Kɔji lanw',
-  'fasting.card.hint': 'Suhuri kunnafoniw bɛ kɛ tuma ninw la dɔrɔn',
+  'fasting.card.hint': 'Donw minu na Suhuri labɛnna',
   'fasting.mode.everyDay': 'Don o don',
   'fasting.mode.muhammad': 'Ntɛnɛ ni Alamisa',
   'fasting.mode.dawood': 'Dɔɔnin dɔɔnin donw',

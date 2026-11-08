@@ -96,7 +96,7 @@ export const ug = {
   'alert.card.athan': 'ئازان',
   'alert.card.athanHint': 'ناماز ۋاقتىدا ئۇقتۇرۇش',
   'fasting.card.title': 'روزا',
-  'fasting.card.hint': 'سەھەرلىكنى قوزغىتىدىغان كۈنلەرنى تاللاڭ',
+  'fasting.card.hint': 'سەھەرلىكنى قوزغىتىدىغان كۈنلەر',
   'fasting.mode.everyDay': 'ھەر كۈنى',
   'fasting.mode.muhammad': 'مۇھەممەد',
   'fasting.mode.dawood': 'داۋۇت',

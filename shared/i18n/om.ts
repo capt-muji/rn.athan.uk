@@ -99,7 +99,7 @@ export const om = {
   'alert.card.athan': 'Azaana',
   'alert.card.athanHint': 'Yeroo salaataa beeksisa',
   'fasting.card.title': 'Soomana',
-  'fasting.card.hint': 'Guyyoota Suhuur dandeessisuuf barbaaddu filadhu',
+  'fasting.card.hint': 'Guyyoota Suhuur dandeessisuuf',
   'fasting.mode.everyDay': 'Guyyaa guyyaan',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Daawud',

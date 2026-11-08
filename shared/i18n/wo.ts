@@ -98,7 +98,7 @@ export const wo = {
   'alert.card.athan': 'Adaan',
   'alert.card.athanHint': 'Xibaar ci waxtu julli',
   'fasting.card.title': 'Woor',
-  'fasting.card.hint': 'Tannal bis yi nga bëgg Suhur ci',
+  'fasting.card.hint': 'Bis yi ñu tëral Suhur ci',
   'fasting.mode.everyDay': 'Bés bu nekk',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Daawuda',

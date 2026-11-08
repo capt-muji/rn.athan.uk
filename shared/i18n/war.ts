@@ -105,7 +105,7 @@ export const war = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso ha oras han pangadi',
   'fasting.card.title': 'Pagpuasa',
-  'fasting.card.hint': 'Pilia an mga adlaw nga karuyag mo nga paandaron an Suhur',
+  'fasting.card.hint': 'Mga adlaw nga paandaron an Suhur',
   'fasting.mode.everyDay': 'Kada adlaw',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

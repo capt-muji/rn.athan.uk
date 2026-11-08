@@ -97,7 +97,7 @@ export const yo = {
   'alert.card.athan': 'Ìpè',
   'alert.card.athanHint': 'Ìfitónilétí ní àkókò ìrun',
   'fasting.card.title': 'Ìwọ̀sùn',
-  'fasting.card.hint': 'Yan àwọn ọjọ́ tí o fẹ́ fi ṣiṣẹ́ Sahuri',
+  'fasting.card.hint': 'Àwọn ọjọ́ tí a fi ṣiṣẹ́ Sahuri',
   'fasting.mode.everyDay': 'Ọjọ́ kọ̀ọ̀kan',
   'fasting.mode.muhammad': 'Mohammed',
   'fasting.mode.dawood': 'Dawodu',

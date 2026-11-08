@@ -103,7 +103,7 @@ export const en = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Notification at prayer time',
   'fasting.card.title': 'Fasting',
-  'fasting.card.hint': 'Choose the days you want to enable Sahur for',
+  'fasting.card.hint': 'Days to enable Sahur for',
   'fasting.mode.everyDay': 'Every day',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawood',

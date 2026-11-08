@@ -105,7 +105,7 @@ export const uk = {
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Сповіщення на час намазу',
   'fasting.card.title': 'Піст',
-  'fasting.card.hint': 'Виберіть дні, на які ви хочете ввімкнути Сухур',
+  'fasting.card.hint': 'Дні для увімкнення Сухуру',
   'fasting.mode.everyDay': 'Щодня',
   'fasting.mode.muhammad': 'Мухаммед',
   'fasting.mode.dawood': 'Давуд',

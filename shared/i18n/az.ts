@@ -98,7 +98,7 @@ export const az = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Namaz vaxtında bildiriş',
   'fasting.card.title': 'Oruc',
-  'fasting.card.hint': 'Sahuru aktivləşdirmək istədiyiniz günləri seçin',
+  'fasting.card.hint': 'Sahurun aktivləşdiriləcəyi günlər',
   'fasting.mode.everyDay': 'Hər gün',
   'fasting.mode.muhammad': 'Məhəmməd',
   'fasting.mode.dawood': 'Davud',

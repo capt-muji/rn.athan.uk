@@ -100,7 +100,7 @@ export const kr = {
   'alert.card.athan': 'Azaan',
   'alert.card.athanHint': 'Salla loktu lan bayenji',
   'fasting.card.title': 'Roza',
-  'fasting.card.hint': 'Yim Suhur faidatəyedowa karne',
+  'fasting.card.hint': 'Yim Suhur faidatəyedowa',
   'fasting.mode.everyDay': 'Kome loba',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawuda',

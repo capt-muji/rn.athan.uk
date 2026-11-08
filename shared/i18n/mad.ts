@@ -103,7 +103,7 @@ export const mad = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Kabheratân e bakto sembahyang',
   'fasting.card.title': 'Apoasa',
-  'fasting.card.hint': 'Pèlè arè sè terro èaktifaghi Sahur',
+  'fasting.card.hint': 'Arè sè èaktifaghi Sahur',
   'fasting.mode.everyDay': 'Sabbhân essa',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -95,7 +95,7 @@ export const hi = {
   'alert.card.athan': 'अज़ान',
   'alert.card.athanHint': 'नमाज़ के समय सूचना',
   'fasting.card.title': 'उपवास',
-  'fasting.card.hint': 'वे दिन चुनें जिनके लिए आप सहरी सक्षम करना चाहते हैं',
+  'fasting.card.hint': 'सहरी सक्षम करने के दिन',
   'fasting.mode.everyDay': 'हर दिन',
   'fasting.mode.muhammad': 'मुहम्मद',
   'fasting.mode.dawood': 'दाऊद',

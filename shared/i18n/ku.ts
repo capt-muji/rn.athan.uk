@@ -97,7 +97,7 @@ export const ku = {
   'alert.card.athan': 'Bang',
   'alert.card.athanHint': 'Agahdarî di dema nimêjê de',
   'fasting.card.title': 'Rojî',
-  'fasting.card.hint': 'Rojên ku hûn dixwazin xwarina seherê çalak bikin hilbijêrin',
+  'fasting.card.hint': 'Rojên ji bo çalakkirina xwarina seherê',
   'fasting.mode.everyDay': 'Her roj',
   'fasting.mode.muhammad': 'Mihemed',
   'fasting.mode.dawood': 'Dawid',

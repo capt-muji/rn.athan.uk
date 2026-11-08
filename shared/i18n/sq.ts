@@ -99,7 +99,7 @@ export const sq = {
   'alert.card.athan': 'Ezani',
   'alert.card.athanHint': 'Njoftim në kohën e namazit',
   'fasting.card.title': 'Agjërimi',
-  'fasting.card.hint': 'Zgjidhni ditët për të cilat dëshironi të aktivizoni Sahurin',
+  'fasting.card.hint': 'Ditët për aktivizimin e Sahurit',
   'fasting.mode.everyDay': 'Çdo ditë',
   'fasting.mode.muhammad': 'Muhammedi',
   'fasting.mode.dawood': 'Davudi',

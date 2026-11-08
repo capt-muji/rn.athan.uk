@@ -100,7 +100,7 @@ export const ru = {
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Уведомление в момент наступления',
   'fasting.card.title': 'Пост',
-  'fasting.card.hint': 'Выберите дни, на которые хотите включить сухур',
+  'fasting.card.hint': 'Дни для включения сухура',
   'fasting.mode.everyDay': 'Каждый день',
   'fasting.mode.muhammad': 'Мухаммад',
   'fasting.mode.dawood': 'Давуд',

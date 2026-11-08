@@ -98,7 +98,7 @@ export const am = {
   'alert.card.athan': 'አዛን',
   'alert.card.athanHint': 'በሶላት ጊዜ ማሳወቂያ',
   'fasting.card.title': 'ጾም',
-  'fasting.card.hint': 'ሱሑርን ለማንቃት የሚፈልጓቸውን ቀናት ይምረጡ',
+  'fasting.card.hint': 'ሱሑርን ለማንቃት ቀናት',
   'fasting.mode.everyDay': 'በየቀኑ',
   'fasting.mode.muhammad': 'መሐመድ',
   'fasting.mode.dawood': 'ዳውድ',

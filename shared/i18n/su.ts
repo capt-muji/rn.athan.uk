@@ -97,7 +97,7 @@ export const su = {
   'alert.card.athan': 'Adzan',
   'alert.card.athanHint': 'Iber dina waktu solat',
   'fasting.card.title': 'Shaum',
-  'fasting.card.hint': 'Pilih poé anu anjeun hoyong ngaktipkeun Sahur',
+  'fasting.card.hint': 'Poé kanggo ngaktipkeun Sahur',
   'fasting.mode.everyDay': 'Poé isuk-isuk',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -101,7 +101,7 @@ export const ti = {
   'alert.card.athan': 'ኣዛን',
   'alert.card.athanHint': 'ፅንሒት ኣብ ግዜ ስላት',
   'fasting.card.title': 'ጾም',
-  'fasting.card.hint': 'ሱሕር ከተኽእሎ እትደሊ መዓልታት ምረጽ',
+  'fasting.card.hint': 'ሱሕር ከተኽእሎ ዝኾኑ መዓልታት',
   'fasting.mode.everyDay': 'ዓወና ዕለት',
   'fasting.mode.muhammad': 'መሓመድ',
   'fasting.mode.dawood': 'ዳውድ',

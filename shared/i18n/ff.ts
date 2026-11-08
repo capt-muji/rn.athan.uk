@@ -97,7 +97,7 @@ export const ff = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Hasboore e waktu julde',
   'fasting.card.title': 'Dewngu',
-  'fasting.card.hint': 'Suɓo ñalɗi ɗi njiɗɗaa softinde suhuur',
+  'fasting.card.hint': 'Ñalɗi ngam softinde suhuur',
   'fasting.mode.everyDay': 'Ñalnde kala',
   'fasting.mode.muhammad': 'Muhammadu',
   'fasting.mode.dawood': 'Daawuuda',

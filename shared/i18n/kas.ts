@@ -95,7 +95,7 @@ export const kas = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نؠمازٕکئے وَقتئس اطلاع',
   'fasting.card.title': 'روزن روچھن ہُند دِن',
-  'fasting.card.hint': 'سحری ہُندئے اطلاع چھو صرف تمئن دِنن کئ کئرئوان',
+  'fasting.card.hint': 'سحری دِنن ہُند دِن',
   'fasting.mode.everyDay': 'ہر دِہاں',
   'fasting.mode.muhammad': 'ژٔنٛدِروار تہٕ بروٕسوار',
   'fasting.mode.dawood': 'درمِیانئ دِن',

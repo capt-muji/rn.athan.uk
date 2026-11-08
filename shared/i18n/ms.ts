@@ -97,7 +97,7 @@ export const ms = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu solat',
   'fasting.card.title': 'Puasa',
-  'fasting.card.hint': 'Pilih hari untuk mengaktifkan Sahur',
+  'fasting.card.hint': 'Hari untuk mengaktifkan Sahur',
   'fasting.mode.everyDay': 'Setiap hari',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

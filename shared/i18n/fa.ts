@@ -96,7 +96,7 @@ export const fa = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'اعلان در وقت نماز',
   'fasting.card.title': 'روزه',
-  'fasting.card.hint': 'روزهایی را که می‌خواهید سحری برایشان فعال شود انتخاب کنید',
+  'fasting.card.hint': 'روزهای فعال‌سازی سحری',
   'fasting.mode.everyDay': 'هر روز',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داوود',

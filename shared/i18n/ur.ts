@@ -96,7 +96,7 @@ export const ur = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز کے وقت اطلاع',
   'fasting.card.title': 'روزہ',
-  'fasting.card.hint': 'ان دنوں کا انتخاب کریں جن کے لیے آپ سحری فعال کرنا چاہتے ہیں',
+  'fasting.card.hint': 'سحری فعال کرنے کے دن',
   'fasting.mode.everyDay': 'ہر دن',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داؤد',

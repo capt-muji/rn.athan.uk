@@ -103,7 +103,7 @@ export const vi = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Thông báo vào giờ lễ nguyện',
   'fasting.card.title': 'Ăn chay',
-  'fasting.card.hint': 'Chọn những ngày bạn muốn bật Suhoor',
+  'fasting.card.hint': 'Những ngày để bật Suhoor',
   'fasting.mode.everyDay': 'Mỗi ngày',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

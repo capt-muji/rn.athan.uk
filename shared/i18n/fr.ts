@@ -101,7 +101,7 @@ export const fr = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': "Notification à l'heure de la prière",
   'fasting.card.title': 'Jeûne',
-  'fasting.card.hint': 'Choisissez les jours pour lesquels vous souhaitez activer le Sahour',
+  'fasting.card.hint': "Jours d'activation du Sahour",
   'fasting.mode.everyDay': 'Chaque jour',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Daoud',

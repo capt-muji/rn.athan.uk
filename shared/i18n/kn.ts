@@ -97,7 +97,7 @@ export const kn = {
   'alert.card.athan': 'ಅಜಾನ್',
   'alert.card.athanHint': 'ನಮಾಜ್ ಸಮಯದಲ್ಲಿ ಅಧಿಸೂಚನೆ',
   'fasting.card.title': 'ಉಪವಾಸ',
-  'fasting.card.hint': 'ಸಹರ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಬಯಸುವ ದಿನಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ',
+  'fasting.card.hint': 'ಸಹರ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ದಿನಗಳು',
   'fasting.mode.everyDay': 'ಪ್ರತಿ ದಿನ',
   'fasting.mode.muhammad': 'ಮುಹಮ್ಮದ್',
   'fasting.mode.dawood': 'ದಾವೂದ್',

@@ -99,7 +99,7 @@ export const ha = {
   'alert.card.athan': 'Kiran salla',
   'alert.card.athanHint': 'Sanarwa a lokacin salla',
   'fasting.card.title': 'Azumi',
-  'fasting.card.hint': 'Zaɓi ranakun da kuke son kunna Sahur',
+  'fasting.card.hint': 'Ranakun kunna Sahur',
   'fasting.mode.everyDay': 'Kowace rana',
   'fasting.mode.muhammad': 'Muhammadu',
   'fasting.mode.dawood': 'Dawuda',

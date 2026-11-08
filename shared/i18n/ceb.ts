@@ -101,7 +101,7 @@ export const ceb = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Notipikasyon sa oras sa pag-ampo',
   'fasting.card.title': 'Pagpuasa',
-  'fasting.card.hint': 'Pilia ang mga adlaw nga gusto nimo nga maaktivar ang Suhur',
+  'fasting.card.hint': 'Mga adlaw nga maaktivar ang Suhur',
   'fasting.mode.everyDay': 'Kada adlaw',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -97,7 +97,7 @@ export const zhHans = {
   'alert.card.athan': '宣礼',
   'alert.card.athanHint': '礼拜时间到时通知',
   'fasting.card.title': '封斋',
-  'fasting.card.hint': '选择你想要启用封斋饭的日期',
+  'fasting.card.hint': '启用封斋饭的日期',
   'fasting.mode.everyDay': '每天',
   'fasting.mode.muhammad': '穆罕默德',
   'fasting.mode.dawood': '达乌德',

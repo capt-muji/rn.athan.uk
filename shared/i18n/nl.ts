@@ -99,7 +99,7 @@ export const nl = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Melding op gebedstijd',
   'fasting.card.title': 'Vasten',
-  'fasting.card.hint': 'Kies de dagen waarvoor je Suhur wilt inschakelen',
+  'fasting.card.hint': 'Dagen om Suhur in te schakelen',
   'fasting.mode.everyDay': 'Elke dag',
   'fasting.mode.muhammad': 'Mohammed',
   'fasting.mode.dawood': 'Dawud',

@@ -105,7 +105,7 @@ export const ilo = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Pakaammo iti oras ti dasal',
   'fasting.card.title': 'Panagayuno',
-  'fasting.card.hint': 'Pilien dagiti aldaw a kayatmo a pagayatan ti Suhur',
+  'fasting.card.hint': 'Dagiti aldaw a pagayatan ti Suhur',
   'fasting.mode.everyDay': 'Amin nga aldaw',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -98,7 +98,7 @@ export const ckb = {
   'alert.card.athan': 'بانگ',
   'alert.card.athanHint': 'ئاگادارکردنەوە لە کاتی نوێژ',
   'fasting.card.title': 'ڕۆژوو',
-  'fasting.card.hint': 'ئەو ڕۆژانە هەڵبژێرە کە دەتەوێت سەحەر بۆیان چالاک بکەیت',
+  'fasting.card.hint': 'ڕۆژانی چالاککردنی سەحەر',
   'fasting.mode.everyDay': 'هەموو ڕۆژێک',
   'fasting.mode.muhammad': 'محەممەد',
   'fasting.mode.dawood': 'داوود',

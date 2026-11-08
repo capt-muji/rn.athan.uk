@@ -101,7 +101,7 @@ export const uz = {
   'alert.card.athan': 'Azon',
   'alert.card.athanHint': 'Namoz vaqtida bildirishnoma',
   'fasting.card.title': 'Ro’za',
-  'fasting.card.hint': 'Saharlikni yoqish uchun kunlarni tanlang',
+  'fasting.card.hint': 'Saharlikni yoqish uchun kunlar',
   'fasting.mode.everyDay': 'Har kuni',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dovud',

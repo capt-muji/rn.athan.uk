@@ -99,7 +99,7 @@ export const tg = {
   'alert.card.athan': 'Азон',
   'alert.card.athanHint': 'Огоҳинома дар вақти намоз',
   'fasting.card.title': 'Рӯза',
-  'fasting.card.hint': 'Рӯзҳоеро интихоб кунед, ки мехоҳед Саҳарро фаъол созед',
+  'fasting.card.hint': 'Рӯзҳои фаъол сохтани Саҳар',
   'fasting.mode.everyDay': 'Ҳар рӯз',
   'fasting.mode.muhammad': 'Мухаммад',
   'fasting.mode.dawood': 'Довуд',

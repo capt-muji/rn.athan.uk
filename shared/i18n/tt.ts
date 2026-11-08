@@ -107,7 +107,7 @@ export const tt = {
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Намаз вакытында белдерү',
   'fasting.card.title': 'Ураза',
-  'fasting.card.hint': 'Сәхәр өчен көннәрне сайлагыз',
+  'fasting.card.hint': 'Сәхәрне кабызу өчен көннәр',
   'fasting.mode.everyDay': 'Һәр көн',
   'fasting.mode.muhammad': 'Мөхәммәд',
   'fasting.mode.dawood': 'Давуд',

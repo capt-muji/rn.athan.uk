@@ -103,7 +103,7 @@ export const mrw = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso sa oras ng sambayang',
   'fasting.card.title': 'Mga adlaw sa pagpuasa',
-  'fasting.card.hint': 'Mga abiso sa Sahur magagana lamen sa mga adlaw ini',
+  'fasting.card.hint': 'Mga adlaw nga i-on ang Sahur',
   'fasting.mode.everyDay': 'Kada adlaw',
   'fasting.mode.muhammad': 'Lunes agod Huwebes',
   'fasting.mode.dawood': 'Pangalawig nga adlaw',

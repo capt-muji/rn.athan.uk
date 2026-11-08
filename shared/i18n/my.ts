@@ -100,7 +100,7 @@ export const my = {
   'alert.card.athan': 'အာဇာန်',
   'alert.card.athanHint': 'နမာဇ်အချိန်တွင် အသိပေးချက်',
   'fasting.card.title': 'ရူဇာ',
-  'fasting.card.hint': 'ဆူဟူရ်အတွက် ဖွင့်လိုသော နေ့ရက်များကို ရွေးပါ',
+  'fasting.card.hint': 'ဆူဟူရ်အတွက် ဖွင့်ရန် နေ့ရက်များ',
   'fasting.mode.everyDay': 'နေ့တိုင်း',
   'fasting.mode.muhammad': 'မုဟာမ္မဒ်',
   'fasting.mode.dawood': 'ဒါဝုဒ်',

@@ -102,7 +102,7 @@ export const pl = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Powiadomienie o czasie modlitwy',
   'fasting.card.title': 'Post',
-  'fasting.card.hint': 'Wybierz dni, w których chcesz włączyć Suhur',
+  'fasting.card.hint': 'Dni włączenia Suhuru',
   'fasting.mode.everyDay': 'Każdego dnia',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -97,7 +97,7 @@ export const ps = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'د لمونځ په وخت خبرتیا',
   'fasting.card.title': 'روژه',
-  'fasting.card.hint': 'هغه ورځې غوره کړئ چې تاسو غواړئ د سهاري لپاره فعال کړئ',
+  'fasting.card.hint': 'ورځې د سهار د فعالولو لپاره',
   'fasting.mode.everyDay': 'هره ورځ',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داود',

@@ -97,7 +97,7 @@ export const tr = {
   'alert.card.athan': 'Ezan',
   'alert.card.athanHint': 'Namaz vaktinde bildirim',
   'fasting.card.title': 'Oruç',
-  'fasting.card.hint': 'Sahuru etkinleştirmek istediğiniz günleri seçin',
+  'fasting.card.hint': 'Sahur etkinleştirilecek günler',
   'fasting.mode.everyDay': 'Her gün',
   'fasting.mode.muhammad': 'Muhammed',
   'fasting.mode.dawood': 'Davud',

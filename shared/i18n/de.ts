@@ -101,7 +101,7 @@ export const de = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Benachrichtigung zur Gebetszeit',
   'fasting.card.title': 'Fasten',
-  'fasting.card.hint': 'Wähle die Tage, an denen du Suhur aktivieren möchtest',
+  'fasting.card.hint': 'Tage zum Aktivieren von Suhur',
   'fasting.mode.everyDay': 'Jeden Tag',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

@@ -99,7 +99,7 @@ export const ky = {
   'alert.card.athan': 'Азан',
   'alert.card.athanHint': 'Намаз убагында билдирүү',
   'fasting.card.title': 'Орозо',
-  'fasting.card.hint': 'Сухурду иштеткиңиз келген күндөрдү тандаңыз',
+  'fasting.card.hint': 'Сухурду иштетүү күндөрү',
   'fasting.mode.everyDay': 'Күнүнө',
   'fasting.mode.muhammad': 'Мухаммад',
   'fasting.mode.dawood': 'Давуд',

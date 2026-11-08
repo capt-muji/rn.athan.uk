@@ -106,7 +106,7 @@ export const hil = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Pahibalo sa oras sang pagpangamuyo',
   'fasting.card.title': 'Pagpuasa',
-  'fasting.card.hint': 'Pilia ang mga adlaw nga gusto mo nga aktibuhon ang Suhur',
+  'fasting.card.hint': 'Mga adlaw nga aktibuhon ang Suhur',
   'fasting.mode.everyDay': 'Kada adlaw',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

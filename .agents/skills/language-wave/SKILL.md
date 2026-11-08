@@ -35,7 +35,8 @@ one line. Count the wave's keys from the en diff, not from per-locale diff sizes
    The wave translates settled copy, never a moving target.
 2. Translate the settled keys into all 74 locales. Two engines per row, round-tripped:
    translate to the locale, back to English, judge the round trip. Engine calls pace at
-   4000 ms (`--pace 4000`, owner order). Authoring can be chunked across workers; each
+   3000 ms (`--pace 3000`, owner order 2026-11-08: the probe's 75 requests ran clean, zero
+   refusals, zero 429s; the next wave probes 2.5 s, then 2 s). Authoring can be chunked across workers; each
    worker owns disjoint locales and lands into the catalogs directly.
 3. Verify targeted: scope the verify to the wave's keys (`--keys` - T-629 added it; if the
    flag is missing it was lost, recover it from git history before running anything). The
@@ -52,6 +53,12 @@ one line. Count the wave's keys from the en diff, not from per-locale diff sizes
 7. Move the verify tooling's pins to the post-wave row count.
 8. `yarn validate` green, 100 percent coverage on touched lines, staged pages colored and
    counted for the owner's read.
+
+## The engine's batching facts (research 2026-11-08, live-tested; the rework is ticket #659)
+
+- The gtx endpoint batches STRINGS, not languages: one POST per target locale with newline-joined lines returns index-aligned segments (a 12-string mixed test returned exactly 12; repeated `q` params are silently ignored, only the first translates). POST also lifts the GET URL-length cap.
+- One target language per request is the floor on the free endpoint; the paid v3 batch API takes an array of target languages but rides Cloud Storage and billing.
+- Consequence: a full 223-key wave is ~150-220 requests with round trip, not the ~16,500 the per-row tool issued in T-629. Until #659 lands, the per-row tool stands.
 
 ## The transliteration register
 
@@ -78,7 +85,7 @@ already ships beats a technically better translation.
 
 - `scripts/i18n-verify.js` - the round-trip engines, verdict coloring (green/red/amber),
   staged pages, resume. `--keys` scopes rows, `--locales` scopes locales, `--resume` adopts
-  unchanged rows, `--pace 4000` is the standing owner pace. Wrap long runs so completion
+  unchanged rows, `--pace 3000` is the standing owner pace. Wrap long runs so completion
   notifies you (an exit line appended to the log); never wait blind on a bare process.
 - Artifacts under `$HOME/athan-i18n-verify`: per-locale `.json` results, `.html` staged
   pages, `.judge-rulings.json`, `approval-sheet.md`, `disputes.md`, `judge-flags.md`.

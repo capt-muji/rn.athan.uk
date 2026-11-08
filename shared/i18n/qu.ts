@@ -106,7 +106,7 @@ export const qu = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Ma\u00f1ay pachapi willakuy',
   'fasting.card.title': 'Ayuno',
-  'fasting.card.hint': "Suhur atichiyta munasqayki p'unchawkunata akllay",
+  'fasting.card.hint': "Suhur atichiy p'unchawkuna",
   'fasting.mode.everyDay': 'Sapa pacha',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

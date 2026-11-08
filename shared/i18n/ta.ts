@@ -98,7 +98,7 @@ export const ta = {
   'alert.card.athan': 'அசான்',
   'alert.card.athanHint': 'தொழுகை நேரத்தில் அறிவிப்பு',
   'fasting.card.title': 'நோன்பு',
-  'fasting.card.hint': 'நீங்கள் சஹரை இயக்க விரும்பும் நாட்களைத் தேர்வு செய்யவும்',
+  'fasting.card.hint': 'சஹரை இயக்குவதற்கான நாட்கள்',
   'fasting.mode.everyDay': 'தினமும்',
   'fasting.mode.muhammad': 'முஹம்மது',
   'fasting.mode.dawood': 'தாவூத்',

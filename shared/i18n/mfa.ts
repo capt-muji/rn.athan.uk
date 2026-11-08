@@ -103,7 +103,7 @@ export const mfa = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Notifikasi pada waktu sembayang',
   'fasting.card.title': 'Ari-ari poso',
-  'fasting.card.hint': 'Notofikasi Sahur mmaguno babaq di ari ini',
+  'fasting.card.hint': 'Ari-ari untuk Sahur mmaguno',
   'fasting.mode.everyDay': 'Satiap ari',
   'fasting.mode.muhammad': 'Isnin aba Khames',
   'fasting.mode.dawood': 'Siling ari',

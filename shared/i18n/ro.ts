@@ -101,7 +101,7 @@ export const ro = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Notificare la ora rugăciunii',
   'fasting.card.title': 'Post',
-  'fasting.card.hint': 'Alegeți zilele pentru care doriți să activați Suhur',
+  'fasting.card.hint': 'Zile pentru activarea Suhurului',
   'fasting.mode.everyDay': 'În fiecare zi',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

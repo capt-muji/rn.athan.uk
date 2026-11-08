@@ -97,7 +97,7 @@ export const gu = {
   'alert.card.athan': 'અઝાન',
   'alert.card.athanHint': 'નમાજના સમયે સૂચના',
   'fasting.card.title': 'ઉપવાસ',
-  'fasting.card.hint': 'તમે સહર સક્ષમ કરવા માંગો છો તે દિવસો પસંદ કરો',
+  'fasting.card.hint': 'સહર સક્ષમ કરવા માટેના દિવસો',
   'fasting.mode.everyDay': 'દરેક દિવસે',
   'fasting.mode.muhammad': 'મુહમ્મદ',
   'fasting.mode.dawood': 'દાવુદ',

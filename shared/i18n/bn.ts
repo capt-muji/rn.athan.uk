@@ -96,7 +96,7 @@ export const bn = {
   'alert.card.athan': 'আজান',
   'alert.card.athanHint': 'নামাজের সময়ে বিজ্ঞপ্তি',
   'fasting.card.title': 'রোজা',
-  'fasting.card.hint': 'যে দিনগুলোর জন্য আপনি সাহরি চালু করতে চান সেগুলো বেছে নিন',
+  'fasting.card.hint': 'সাহরি চালু করার দিনগুলো',
   'fasting.mode.everyDay': 'প্রতিদিন',
   'fasting.mode.muhammad': 'মুহাম্মদ',
   'fasting.mode.dawood': 'দাউদ',

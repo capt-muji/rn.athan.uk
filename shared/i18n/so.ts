@@ -98,7 +98,7 @@ export const so = {
   'alert.card.athan': 'Azaan',
   'alert.card.athanHint': 'Ogeysiis waqtiga salaadda',
   'fasting.card.title': 'Soonka',
-  'fasting.card.hint': 'Dooro maalmaha aad rabto inaad u suurtageliso Sahri',
+  'fasting.card.hint': 'Maalmaha lagu suurtagelinayo Sahri',
   'fasting.mode.everyDay': 'Maalin kasta',
   'fasting.mode.muhammad': 'Maxamed',
   'fasting.mode.dawood': 'Daa’uud',

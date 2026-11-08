@@ -98,7 +98,7 @@ export const pt = {
   'alert.card.athan': 'Adhan',
   'alert.card.athanHint': 'Notificação na hora da oração',
   'fasting.card.title': 'Jejum',
-  'fasting.card.hint': 'Escolha os dias para os quais deseja ativar o Sahur',
+  'fasting.card.hint': 'Dias para ativar o Sahur',
   'fasting.mode.everyDay': 'Todos os dias',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

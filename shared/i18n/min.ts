@@ -103,7 +103,7 @@ export const min = {
   'alert.card.athan': 'Azan',
   'alert.card.athanHint': 'Pemberitahuan pado wakatu sumbayang',
   'fasting.card.title': 'Puaso',
-  'fasting.card.hint': 'Piliah hari untuak maaktifkan Sahua',
+  'fasting.card.hint': 'Hari untuak maaktifkan Sahua',
   'fasting.mode.everyDay': 'Satiang hari',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawud',

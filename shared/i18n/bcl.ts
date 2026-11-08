@@ -103,7 +103,7 @@ export const bcl = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso sa oras nin pagpangadyi',
   'fasting.card.title': 'Mga adlaw sa pagpuasa',
-  'fasting.card.hint': 'An mga abiso sa Suhur magbuhit sana sa mga adlaw ini',
+  'fasting.card.hint': 'An mga adlaw na magbuhit an Suhur',
   'fasting.mode.everyDay': 'Kada adlaw',
   'fasting.mode.muhammad': 'Lunes asin Huwebes',
   'fasting.mode.dawood': 'Saralihing adlaw',

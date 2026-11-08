@@ -98,7 +98,7 @@ export const ko = {
   'alert.card.athan': '아잔',
   'alert.card.athanHint': '예배 시간에 알림',
   'fasting.card.title': '단식',
-  'fasting.card.hint': '수후르를 설정할 요일을 선택하세요',
+  'fasting.card.hint': '수후르를 설정할 요일',
   'fasting.mode.everyDay': '매일',
   'fasting.mode.muhammad': '무함마드',
   'fasting.mode.dawood': '다우드',

@@ -99,7 +99,7 @@ export const tl = {
   'alert.card.athan': 'Athan',
   'alert.card.athanHint': 'Abiso sa oras ng pagdarasal',
   'fasting.card.title': 'Pag-aayuno',
-  'fasting.card.hint': 'Piliin ang mga araw na gusto mong paganahin ang Sahur',
+  'fasting.card.hint': 'Mga araw para paganahin ang Sahur',
   'fasting.mode.everyDay': 'Araw-araw',
   'fasting.mode.muhammad': 'Muhammad',
   'fasting.mode.dawood': 'Dawood',

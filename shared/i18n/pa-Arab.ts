@@ -97,7 +97,7 @@ export const paArab = {
   'alert.card.athan': 'اذان',
   'alert.card.athanHint': 'نماز دے ویلے اطلاع',
   'fasting.card.title': 'روزہ',
-  'fasting.card.hint': 'جہناں دناں لئی سحری آن کرنی اے، اوہ دن چݨو',
+  'fasting.card.hint': 'سحری آن کرن لئی دن',
   'fasting.mode.everyDay': 'ہر دن',
   'fasting.mode.muhammad': 'محمد',
   'fasting.mode.dawood': 'داؤد',

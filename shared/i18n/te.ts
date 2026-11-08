@@ -97,7 +97,7 @@ export const te = {
   'alert.card.athan': 'అజాన్',
   'alert.card.athanHint': 'ప్రార్థన సమయంలో నోటిఫికేషన్',
   'fasting.card.title': 'ఉపవాసం',
-  'fasting.card.hint': 'మీరు సహర్‌ను ప్రారంభించాలనుకుంటున్న రోజులను ఎంచుకోండి',
+  'fasting.card.hint': 'సహర్‌ను ప్రారంభించే రోజులు',
   'fasting.mode.everyDay': 'ప్రతిరోజూ',
   'fasting.mode.muhammad': 'ముహమ్మద్',
   'fasting.mode.dawood': 'దావూద్',
