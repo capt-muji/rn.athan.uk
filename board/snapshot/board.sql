@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict rdkhfGHJYYYb7wzE2v1bkmAUNIu00g4AXscM6y2A2pgTHEemkPPT27eQd2wtSkU
+\restrict KzI6R1UdJaSQ9kSzRBGrJeBbmYDvgwgSrKHqmM08KojU22BHU0kjY3LdLhcMkWR
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -13155,6 +13155,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6170, 606, 'activity', 'owner', NULL, 'estimate', '2026-11-04 01:58:19.599522+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "14"}, "from": {"value": "8"}, "subject": {"value": "points"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6427, 623, 'activity', 'owner', NULL, 'status', '2026-11-05 09:52:23.144513+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 9, "value": "Awaiting Owner", "stateType": "started"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6719, 650, 'activity', 'owner', NULL, 'field', '2026-11-08 04:51:26.450186+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "2026-11-08 to v3.0 by the owner''s priority call (deep-dive research on the Masjidal ecosystem; pairs with rows 42 and 25; the owner will say go)"}, "subject": {"id": 3, "value": "Waiting on"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6915, 667, 'comment', 'owner', 'Post-close adjudication (J1 original vs J1 respawn, Kosovo and Albania). The respawn''s evidence supersedes on two of four targets. KOSOVO: the respawn leaked the widget''s WordPress REST database - every row dated 2020, the widget''s Sabahu column is fajr_jamah (= fajr_begins + 30 min), and the table''s geometry is a Tirana-longitude import with broken DST rows. This mechanism explains the original agent''s ''seasonal curve 13.2-15.9'' as a jamaah-contamination artefact of fitting a begins+30 column against an angle model; the printed fajr_begins fits ~18.75. Verdict overturned: Kosovo is ~18/18.5 pending a clean printed-takvim transcription; the widget is banned as a source; the earlier one-day 13.48 reading was the same contamination. ALBANIA: the respawn located KMSH''s official 2026 PDF and fitted all 365 days of Tirana - clean 18.0/17.0 (imsak MAE 0.13, isha 0.93), cross-checked against the live API to the minute; the earlier ~17/16.5 derivation refuted. MONTENEGRO corroborated by both agents independently (19.25-19.4 / 17.75-17.85, Egypt-family, declared 19.5/17.5 nearly exact). MACEDONIA: still unresolved for IVZ itself; the respawn adds Fazilet''s Skopje fit (imsak ~20.5 effective, isha 18.75) as the community alternative. Standing caveat from the respawn, applying to all Fazilet-family fits tonight: those generators pad sunrise ~6-8 min early and maghrib ~7-8 late, so fitted angles against them are effective pairs under our engine, not the publishers'' nominal degrees.', NULL, '2026-11-10 01:02:51.222629+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3432, 347, 'comment', 'owner', 'Executed: the README rewritten from the history walk, the source list recorded above, yarn validate green at 2.4.41 (25b3adc0 on lane3/T-347). Moving to Audit.', NULL, '2026-10-25 08:03:04.41451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3433, 327, 'activity', 'owner', NULL, 'status', '2026-10-25 08:03:10.391927+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3434, 347, 'comment', 'owner', 'Blind review of 25b3adc0 (README rewrite + 2.4.41 bump). Verified every count, version, module and toggle against the tree; most claims hold (32 mp3s, 6+5 prayers, 6 locales, reminders 5-30, budget 64, expo ~58/RN 0.88/React 19/2.4.41, deploymentTarget 16.4, four modules, sheet screens, settings atoms, sweeps, ritual numbers, Duo lines carried verbatim, no device/person leaks).
@@ -13275,6 +13276,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6720, 650, 'activity', 'owner', NULL, 'link_add', '2026-11-08 04:51:37.653129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 2, "value": "T-42"}, "subject": {"value": "relates"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6721, 2, 'activity', 'owner', NULL, 'link_add', '2026-11-08 04:51:37.653129+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 650, "value": "T-650"}, "subject": {"value": "relates"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6744, 649, 'activity', 'owner', NULL, 'status', '2026-11-08 04:56:18.337223+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 3, "value": "In progress", "stateType": "started"}, "from": {"id": 2, "value": "Ready", "stateType": "unstarted"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (6916, 667, 'comment', 'owner', 'K1 adversarial verification (final comment): all five load-bearing fits independently confirmed - Egypt 19.5/17.5 unique (92/92, neighbours collapse; dhuhr +0 re-proven 71/92 vs 0/92 with +1; Egypt DST schedule verified empirically), Qatar interval exact 23/23 with every angle 13-20 degrees collapsed (refinement: +90 holds relative to the printed pair; against computed sunset it reads +91), Saudi sunrise-floor/prayers-ceil confirmed on every column of a 60-day sample (with the Makkah reference point pinned 21.4225/39.8262 by fit), Kuwait 18/17.5 re-derived through an independently rebuilt OCR resolver, Bahrain angle-over-interval upheld with the effective Isha refined to the 17.75-18.0 band (17.75 fits 255/325 exact, 325/325 within a minute). The marathon''s evidence survives adversarial re-verification. Marathon closed 01:15; final snapshot follows before 04:00.', NULL, '2026-11-10 01:08:17.796484+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3467, 346, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 08:53:39.859036+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 365, "value": "T-365"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3469, 366, 'activity', 'owner', NULL, 'parent', '2026-10-25 08:53:39.893431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 346, "value": "T-346"}}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (3470, 346, 'activity', 'owner', NULL, 'subtask_add', '2026-10-25 08:53:39.893431+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"id": 366, "value": "T-366"}}', NULL);
@@ -67881,7 +67883,7 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:650', 1, 39)
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:2', 1, 57);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:662', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:659', 1, 31);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:667', 1, 34);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:667', 1, 36);
 
 
 --
@@ -68143,7 +68145,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 6914, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 6916, true);
 
 
 --
@@ -72703,5 +72705,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict rdkhfGHJYYYb7wzE2v1bkmAUNIu00g4AXscM6y2A2pgTHEemkPPT27eQd2wtSkU
+\unrestrict KzI6R1UdJaSQ9kSzRBGrJeBbmYDvgwgSrKHqmM08KojU22BHU0kjY3LdLhcMkWR
 
