@@ -1,0 +1,89 @@
+{
+ "object": "Saudi print prayer almanac 1448 (qm.edu.sa PrayerTimes1448AH.pdf)",
+ "site": {
+  "name": "Madinah",
+  "lat": 24.4672,
+  "lon": 39.6111
+ },
+ "tz": "Asia/Riyadh",
+ "engine": "adhan 4.4.6",
+ "recipe": {
+  "fajrAngle": 18.5,
+  "isha": "maghrib+90, +120 on the 29 Ramadan days",
+  "madhab": "Shafi",
+  "highLat": "MiddleOfTheNight",
+  "pads": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  }
+ },
+ "score": {
+  "n": 354,
+  "per": {
+   "fajr": {
+    "n": 354,
+    "exact": 57.3,
+    "within1": 100,
+    "mae": 0.121,
+    "bias": 0.12,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 354,
+    "exact": 88.7,
+    "within1": 100,
+    "mae": 0.045,
+    "bias": 0.05,
+    "worst": 1
+   },
+   "dhuhr": {
+    "n": 354,
+    "exact": 93.2,
+    "within1": 100,
+    "mae": 0.056,
+    "bias": 0.06,
+    "worst": 1
+   },
+   "asr": {
+    "n": 354,
+    "exact": 66.4,
+    "within1": 100,
+    "mae": 0.014,
+    "bias": 0.01,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 354,
+    "exact": 92.4,
+    "within1": 100,
+    "mae": 0.042,
+    "bias": 0.04,
+    "worst": 1
+   },
+   "isha": {
+    "n": 354,
+    "exact": 92.4,
+    "within1": 100,
+    "mae": 0.042,
+    "bias": 0.04,
+    "worst": 1
+   }
+  },
+  "total": {
+   "cells": 2124,
+   "exact": 81.7,
+   "within1": 100,
+   "mae": 0.054,
+   "worst": 1
+  }
+ },
+ "span": {
+  "from": "2026-06-16",
+  "to": "2027-06-05",
+  "days": 354
+ }
+}

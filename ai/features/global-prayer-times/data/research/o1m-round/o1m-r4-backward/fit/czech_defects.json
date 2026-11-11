@@ -1,0 +1,605 @@
+[
+ {
+  "year": 2024,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 35,
+  "n": 366
+ },
+ {
+  "year": 2023,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 36.7,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 121,
+  "name": "Podmokly (Děčín)",
+  "lat": 50.77,
+  "lon": 14.2,
+  "solarW1": 37,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 192,
+  "name": "Lobendava - Severní",
+  "lat": 51.5,
+  "lon": 14.32,
+  "solarW1": 37.2,
+  "n": 366
+ },
+ {
+  "year": 2021,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 37.3,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 37.4,
+  "n": 366
+ },
+ {
+  "year": 2019,
+  "cid": 35,
+  "name": "Hostinné",
+  "lat": 50.55,
+  "lon": 15.72,
+  "solarW1": 37.8,
+  "n": 365
+ },
+ {
+  "year": 2019,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 37.8,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 84,
+  "name": "Louny",
+  "lat": 50.35,
+  "lon": 13.8,
+  "solarW1": 37.8,
+  "n": 365
+ },
+ {
+  "year": 2024,
+  "cid": 40,
+  "name": "Cheb",
+  "lat": 50.08,
+  "lon": 12.37,
+  "solarW1": 38,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 192,
+  "name": "Lobendava - Severní",
+  "lat": 51.5,
+  "lon": 14.32,
+  "solarW1": 38,
+  "n": 366
+ },
+ {
+  "year": 2023,
+  "cid": 30,
+  "name": "Hlučín",
+  "lat": 49.9,
+  "lon": 18.18,
+  "solarW1": 38.1,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 96,
+  "name": "Most",
+  "lat": 50.5,
+  "lon": 13.63,
+  "solarW1": 38.1,
+  "n": 365
+ },
+ {
+  "year": 2024,
+  "cid": 52,
+  "name": "Jilemnice",
+  "lat": 50.62,
+  "lon": 15.5,
+  "solarW1": 38.3,
+  "n": 366
+ },
+ {
+  "year": 2019,
+  "cid": 121,
+  "name": "Podmokly (Děčín)",
+  "lat": 50.77,
+  "lon": 14.2,
+  "solarW1": 38.4,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 5,
+  "name": "Bohosudov",
+  "lat": 50.68,
+  "lon": 13.87,
+  "solarW1": 38.4,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 77,
+  "name": "Liberec",
+  "lat": 50.77,
+  "lon": 15.05,
+  "solarW1": 38.4,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 108,
+  "name": "Nymburk",
+  "lat": 50.18,
+  "lon": 15.05,
+  "solarW1": 38.4,
+  "n": 365
+ },
+ {
+  "year": 2024,
+  "cid": 177,
+  "name": "Varnsdorf",
+  "lat": 50.92,
+  "lon": 14.62,
+  "solarW1": 38.5,
+  "n": 366
+ },
+ {
+  "year": 2021,
+  "cid": 96,
+  "name": "Most",
+  "lat": 50.5,
+  "lon": 13.63,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 118,
+  "name": "Plzeň",
+  "lat": 49.75,
+  "lon": 13.37,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 138,
+  "name": "Rumburk",
+  "lat": 50.95,
+  "lon": 14.55,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 59,
+  "name": "Kladno",
+  "lat": 51.5,
+  "lon": 14.1,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 68,
+  "name": "Kraslice",
+  "lat": 50.33,
+  "lon": 12.52,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 140,
+  "name": "Rychnov nad Kněžnou",
+  "lat": 50.17,
+  "lon": 16.28,
+  "solarW1": 38.6,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 7,
+  "name": "Brandýs nad Labem",
+  "lat": 50.18,
+  "lon": 14.67,
+  "solarW1": 38.8,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 161,
+  "name": "Teplice",
+  "lat": 50.65,
+  "lon": 13.83,
+  "solarW1": 38.8,
+  "n": 366
+ },
+ {
+  "year": 2019,
+  "cid": 140,
+  "name": "Rychnov nad Kněžnou",
+  "lat": 50.17,
+  "lon": 16.28,
+  "solarW1": 38.9,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 84,
+  "name": "Louny",
+  "lat": 50.35,
+  "lon": 13.8,
+  "solarW1": 38.9,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 35,
+  "name": "Hostinné",
+  "lat": 50.55,
+  "lon": 15.72,
+  "solarW1": 38.9,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 84,
+  "name": "Louny",
+  "lat": 50.35,
+  "lon": 13.8,
+  "solarW1": 39.1,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 45,
+  "name": "Jablonec nad Nisou",
+  "lat": 50.72,
+  "lon": 15.17,
+  "solarW1": 39.1,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 57,
+  "name": "Kašperské Hory",
+  "lat": 49.15,
+  "lon": 13.57,
+  "solarW1": 39.1,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 119,
+  "name": "Podbořany",
+  "lat": 50.23,
+  "lon": 13.42,
+  "solarW1": 39.1,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 121,
+  "name": "Podmokly (Děčín)",
+  "lat": 50.77,
+  "lon": 14.2,
+  "solarW1": 39.1,
+  "n": 366
+ },
+ {
+  "year": 2022,
+  "cid": 55,
+  "name": "Karlovy Vary",
+  "lat": 50.23,
+  "lon": 12.88,
+  "solarW1": 39.2,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 83,
+  "name": "Loket",
+  "lat": 50.18,
+  "lon": 12.75,
+  "solarW1": 39.2,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 21,
+  "name": "Děčín",
+  "lat": 50.78,
+  "lon": 14.22,
+  "solarW1": 39.2,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 145,
+  "name": "Soběslav",
+  "lat": 49.25,
+  "lon": 14.72,
+  "solarW1": 39.2,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 21,
+  "name": "Děčín",
+  "lat": 50.78,
+  "lon": 14.22,
+  "solarW1": 39.3,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 4,
+  "name": "Bílina",
+  "lat": 50.55,
+  "lon": 13.78,
+  "solarW1": 39.3,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 18,
+  "name": "Český Brod",
+  "lat": 50.07,
+  "lon": 14.87,
+  "solarW1": 39.3,
+  "n": 366
+ },
+ {
+  "year": 2019,
+  "cid": 67,
+  "name": "Kralupy nad Vltavou",
+  "lat": 50.23,
+  "lon": 14.32,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2019,
+  "cid": 96,
+  "name": "Most",
+  "lat": 50.5,
+  "lon": 13.63,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 174,
+  "name": "Ústí nad Labem",
+  "lat": 50.65,
+  "lon": 14.03,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 3,
+  "name": "Beroun",
+  "lat": 49.97,
+  "lon": 14.07,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 11,
+  "name": "Broumov",
+  "lat": 50.58,
+  "lon": 16.33,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 40,
+  "name": "Cheb",
+  "lat": 50.08,
+  "lon": 12.37,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 36,
+  "name": "Hradec Králové",
+  "lat": 50.22,
+  "lon": 15.83,
+  "solarW1": 39.5,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 40,
+  "name": "Cheb",
+  "lat": 50.08,
+  "lon": 12.37,
+  "solarW1": 39.6,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 1,
+  "name": "Aš",
+  "lat": 50.22,
+  "lon": 12.18,
+  "solarW1": 39.6,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 26,
+  "name": "Dvůr Králové nad Labem",
+  "lat": 50.43,
+  "lon": 15.82,
+  "solarW1": 39.6,
+  "n": 366
+ },
+ {
+  "year": 2019,
+  "cid": 41,
+  "name": "Chomutov",
+  "lat": 50.47,
+  "lon": 13.42,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2019,
+  "cid": 158,
+  "name": "Šumperk",
+  "lat": 49.97,
+  "lon": 16.98,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 41,
+  "name": "Chomutov",
+  "lat": 50.47,
+  "lon": 13.42,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 92,
+  "name": "Mladá Boleslav",
+  "lat": 50.42,
+  "lon": 14.9,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2021,
+  "cid": 108,
+  "name": "Nymburk",
+  "lat": 50.18,
+  "lon": 15.05,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2022,
+  "cid": 18,
+  "name": "Český Brod",
+  "lat": 50.07,
+  "lon": 14.87,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 28,
+  "name": "Havlíčkův Brod",
+  "lat": 49.62,
+  "lon": 15.58,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 50,
+  "name": "Jičín",
+  "lat": 50.43,
+  "lon": 15.35,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 144,
+  "name": "Slaný",
+  "lat": 50.23,
+  "lon": 14.08,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2023,
+  "cid": 181,
+  "name": "Vrchlabí",
+  "lat": 50.62,
+  "lon": 15.6,
+  "solarW1": 39.7,
+  "n": 365
+ },
+ {
+  "year": 2020,
+  "cid": 105,
+  "name": "Nový Bohumín",
+  "lat": 49.92,
+  "lon": 18.33,
+  "solarW1": 39.9,
+  "n": 366
+ },
+ {
+  "year": 2020,
+  "cid": 121,
+  "name": "Podmokly (Děčín)",
+  "lat": 50.77,
+  "lon": 14.2,
+  "solarW1": 39.9,
+  "n": 366
+ },
+ {
+  "year": 2020,
+  "cid": 181,
+  "name": "Vrchlabí",
+  "lat": 50.62,
+  "lon": 15.6,
+  "solarW1": 39.9,
+  "n": 366
+ },
+ {
+  "year": 2020,
+  "cid": 189,
+  "name": "Žatec",
+  "lat": 50.33,
+  "lon": 13.55,
+  "solarW1": 39.9,
+  "n": 366
+ },
+ {
+  "year": 2024,
+  "cid": 181,
+  "name": "Vrchlabí",
+  "lat": 50.62,
+  "lon": 15.6,
+  "solarW1": 39.9,
+  "n": 366
+ }
+]

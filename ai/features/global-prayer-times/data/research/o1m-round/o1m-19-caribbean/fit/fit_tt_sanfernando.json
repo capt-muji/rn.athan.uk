@@ -1,0 +1,72 @@
+{
+ "file": "data/masjidbox_tt_sanfernando.json",
+ "tz": "America/Port_of_Spain",
+ "meta": {
+  "name": "San Fernando Jama Masjid",
+  "lat": 10.2833,
+  "lon": -61.4667,
+  "country": "TT"
+ },
+ "days": 7,
+ "fajr": {
+  "angle": 12.1,
+  "offset": -25,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.25,
+  "worst": 0.42
+ },
+ "isha": {
+  "angle": 10.65,
+  "offset": 31,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.03,
+  "worst": 0.07
+ },
+ "asr_shafi": {
+  "offset": 53,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.18,
+  "worst": 0.43
+ },
+ "asr_hanafi": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.21,
+  "worst": 0.28
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.23,
+  "worst": 0.47
+ },
+ "maghrib": {
+  "offset": 3,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.17,
+  "worst": 0.38
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.24,
+  "worst": 0.43
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   null,
+   null
+  ],
+  "jul": [
+   null,
+   null
+  ]
+ }
+}

@@ -1,0 +1,344 @@
+[
+ {
+  "label": "E1 2022-10-22..2022-12-31",
+  "days": 69,
+  "fajrAngle": 19.9,
+  "ishaAngle": 15,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 69,
+    "mean": 9.05,
+    "mae": 0.26,
+    "w1": 88.4,
+    "exact": 1.4,
+    "worst": 0.65
+   },
+   "sunrise": {
+    "n": 69,
+    "mean": -7.57,
+    "mae": 0.27,
+    "w1": 97.1,
+    "exact": 1.4,
+    "worst": 0.52
+   },
+   "dhuhr": {
+    "n": 69,
+    "mean": 4.57,
+    "mae": 0.27,
+    "w1": 87,
+    "exact": 2.9,
+    "worst": 0.63
+   },
+   "asr": {
+    "n": 69,
+    "mean": 4.17,
+    "mae": 0.46,
+    "w1": 59.4,
+    "exact": 2.9,
+    "worst": 1.17
+   },
+   "maghrib": {
+    "n": 69,
+    "mean": 6.85,
+    "mae": 0.38,
+    "w1": 69.6,
+    "exact": 4.3,
+    "worst": 0.98
+   },
+   "isha": {
+    "n": 69,
+    "mean": 9.93,
+    "mae": 0.26,
+    "w1": 87,
+    "exact": 1.4,
+    "worst": 0.87
+   }
+  }
+ },
+ {
+  "label": "E2 2023-01-01..2023-03-31",
+  "days": 90,
+  "fajrAngle": 15.35,
+  "ishaAngle": 16.35,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 90,
+    "mean": -10.97,
+    "mae": 0.33,
+    "w1": 71.1,
+    "exact": 5.6,
+    "worst": 1.03
+   },
+   "sunrise": {
+    "n": 90,
+    "mean": -4.91,
+    "mae": 0.29,
+    "w1": 84.4,
+    "exact": 3.3,
+    "worst": 0.72
+   },
+   "dhuhr": {
+    "n": 90,
+    "mean": 7.17,
+    "mae": 0.27,
+    "w1": 87.8,
+    "exact": 3.3,
+    "worst": 0.62
+   },
+   "asr": {
+    "n": 90,
+    "mean": 5.41,
+    "mae": 0.27,
+    "w1": 90,
+    "exact": 2.2,
+    "worst": 0.79
+   },
+   "maghrib": {
+    "n": 90,
+    "mean": 8.65,
+    "mae": 0.2,
+    "w1": 93.3,
+    "exact": 2.2,
+    "worst": 0.62
+   },
+   "isha": {
+    "n": 90,
+    "mean": 4.75,
+    "mae": 0.27,
+    "w1": 87.8,
+    "exact": 3.3,
+    "worst": 0.62
+   }
+  }
+ },
+ {
+  "label": "E3 2023-04-01..2023-12-31",
+  "days": 251,
+  "fajrAngle": 18.05,
+  "ishaAngle": 16.4,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 251,
+    "mean": 0.02,
+    "mae": 0.31,
+    "w1": 84.5,
+    "exact": 3.2,
+    "worst": 3.02
+   },
+   "sunrise": {
+    "n": 251,
+    "mean": -7.4,
+    "mae": 0.33,
+    "w1": 85.7,
+    "exact": 3.2,
+    "worst": 3.02
+   },
+   "dhuhr": {
+    "n": 251,
+    "mean": 4.7,
+    "mae": 0.32,
+    "w1": 86.5,
+    "exact": 1.2,
+    "worst": 2.87
+   },
+   "asr": {
+    "n": 251,
+    "mean": 4.12,
+    "mae": 0.6,
+    "w1": 43.4,
+    "exact": 0.4,
+    "worst": 1.73
+   },
+   "maghrib": {
+    "n": 251,
+    "mean": 6.98,
+    "mae": 0.6,
+    "w1": 41.8,
+    "exact": 1.2,
+    "worst": 1.9
+   },
+   "isha": {
+    "n": 251,
+    "mean": 3.2,
+    "mae": 0.68,
+    "w1": 37.5,
+    "exact": 0.8,
+    "worst": 1.62
+   }
+  }
+ },
+ {
+  "label": "E4 2024-01-01..2024-12-31",
+  "days": 366,
+  "fajrAngle": 18.05,
+  "ishaAngle": 17.4,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 366,
+    "mean": 0.02,
+    "mae": 0.26,
+    "w1": 89.1,
+    "exact": 2.2,
+    "worst": 0.7
+   },
+   "sunrise": {
+    "n": 366,
+    "mean": -7.36,
+    "mae": 0.26,
+    "w1": 88.8,
+    "exact": 3.3,
+    "worst": 0.69
+   },
+   "dhuhr": {
+    "n": 366,
+    "mean": 4.67,
+    "mae": 0.26,
+    "w1": 92.6,
+    "exact": 1.4,
+    "worst": 0.63
+   },
+   "asr": {
+    "n": 366,
+    "mean": 3.55,
+    "mae": 0.67,
+    "w1": 38.5,
+    "exact": 1.4,
+    "worst": 1.75
+   },
+   "maghrib": {
+    "n": 366,
+    "mean": 6.55,
+    "mae": 0.59,
+    "w1": 43.4,
+    "exact": 1.6,
+    "worst": 1.57
+   },
+   "isha": {
+    "n": 366,
+    "mean": -2.7,
+    "mae": 0.77,
+    "w1": 34.2,
+    "exact": 1.1,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "label": "E5 2025-01-01..2025-12-31",
+  "days": 365,
+  "fajrAngle": 17.85,
+  "ishaAngle": 17.4,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 365,
+    "mean": -1.18,
+    "mae": 0.26,
+    "w1": 88.5,
+    "exact": 2.5,
+    "worst": 0.68
+   },
+   "sunrise": {
+    "n": 365,
+    "mean": -7.32,
+    "mae": 0.26,
+    "w1": 86.8,
+    "exact": 1.9,
+    "worst": 0.73
+   },
+   "dhuhr": {
+    "n": 365,
+    "mean": 4.67,
+    "mae": 0.27,
+    "w1": 89.6,
+    "exact": 1.6,
+    "worst": 0.7
+   },
+   "asr": {
+    "n": 365,
+    "mean": 3.55,
+    "mae": 0.68,
+    "w1": 36.7,
+    "exact": 1.1,
+    "worst": 1.72
+   },
+   "maghrib": {
+    "n": 365,
+    "mean": 6.53,
+    "mae": 0.54,
+    "w1": 49.3,
+    "exact": 1.1,
+    "worst": 1.53
+   },
+   "isha": {
+    "n": 365,
+    "mean": -2.67,
+    "mae": 0.74,
+    "w1": 36.7,
+    "exact": 0.8,
+    "worst": 1.92
+   }
+  }
+ },
+ {
+  "label": "E6 2026-01-01..2026-12-31",
+  "days": 364,
+  "fajrAngle": 17.75,
+  "ishaAngle": 16.6,
+  "madhab": "shafi",
+  "stats": {
+   "fajr": {
+    "n": 364,
+    "mean": 0.88,
+    "mae": 0.27,
+    "w1": 87.4,
+    "exact": 2.2,
+    "worst": 0.73
+   },
+   "sunrise": {
+    "n": 364,
+    "mean": -4.87,
+    "mae": 0.29,
+    "w1": 81,
+    "exact": 1.6,
+    "worst": 0.85
+   },
+   "dhuhr": {
+    "n": 364,
+    "mean": 7.08,
+    "mae": 0.25,
+    "w1": 90.4,
+    "exact": 2.2,
+    "worst": 0.67
+   },
+   "asr": {
+    "n": 364,
+    "mean": 6.02,
+    "mae": 0.66,
+    "w1": 40.7,
+    "exact": 0.5,
+    "worst": 1.77
+   },
+   "maghrib": {
+    "n": 364,
+    "mean": 8.98,
+    "mae": 0.59,
+    "w1": 42,
+    "exact": 0.8,
+    "worst": 1.57
+   },
+   "isha": {
+    "n": 364,
+    "mean": 4.07,
+    "mae": 0.7,
+    "w1": 35.7,
+    "exact": 1.1,
+    "worst": 1.7
+   }
+  }
+ }
+]

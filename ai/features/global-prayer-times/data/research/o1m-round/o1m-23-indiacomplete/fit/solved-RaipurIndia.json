@@ -1,0 +1,15 @@
+{
+ "rows": "data/tms/tms-RaipurIndia-2026.json",
+ "year": 2026,
+ "samples": 12,
+ "solved": {
+  "lat": 24,
+  "lon": 86
+ },
+ "lon_mae": 11.92,
+ "lat_mae": 11.67,
+ "coarse": {
+  "lon": 86,
+  "lat": 24
+ }
+}

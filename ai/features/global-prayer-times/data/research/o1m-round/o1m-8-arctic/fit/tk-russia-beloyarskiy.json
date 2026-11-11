@@ -1,0 +1,79 @@
+{
+ "city": "beloyarskiy",
+ "nightFraction": {
+  "n": 126,
+  "med": 0.501,
+  "p10": 0.496,
+  "p90": 0.504
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yekaterinburg",
+ "lat": 63.71194,
+ "lon": 66.67222,
+ "rows": 365,
+ "solarGateMedAbs": 0.68,
+ "fajrAngle": {
+  "n": 235,
+  "med": 15.95,
+  "min": 14,
+  "max": 16.15,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 240,
+  "med": 15.05,
+  "min": 10.05,
+  "max": 15.25,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.33,
+   "min": -0.6,
+   "max": 1.6
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.48,
+   "min": 0.1,
+   "max": 0.9
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.48,
+   "min": -2.2,
+   "max": 3.5
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.02,
+   "min": -81.7,
+   "max": -9.7
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.42,
+   "min": -1,
+   "max": 2.2
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-20",
+    "to": "2027-08-23",
+    "days": 126
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 410,
+  "isha": 425
+ }
+}

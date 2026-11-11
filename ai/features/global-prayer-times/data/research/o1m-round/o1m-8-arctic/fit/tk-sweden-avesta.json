@@ -1,0 +1,68 @@
+{
+ "city": "avesta",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "tawkit.net",
+ "tz": "Europe/Stockholm",
+ "lat": 60.14274,
+ "lon": 16.16295,
+ "rows": 364,
+ "solarGateMedAbs": 59.1,
+ "fajrAngle": {
+  "n": 154,
+  "med": 18.05,
+  "min": 17.95,
+  "max": 18.1,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 154,
+  "med": 16.9,
+  "min": 16.75,
+  "max": 17.25,
+  "jun": null,
+  "dec": 16.95
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 154,
+   "med": -0.15,
+   "min": -0.9,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 154,
+   "med": 4.9,
+   "min": 4.5,
+   "max": 5.4
+  },
+  "asrShafi": {
+   "n": 154,
+   "med": -1.88,
+   "min": -3.1,
+   "max": 3
+  },
+  "asrHanafi": {
+   "n": 154,
+   "med": -27.93,
+   "min": -51,
+   "max": -18.1
+  },
+  "maghrib": {
+   "n": 154,
+   "med": 0.05,
+   "min": -1.5,
+   "max": 1.5
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 1630,
+  "isha": 415
+ }
+}

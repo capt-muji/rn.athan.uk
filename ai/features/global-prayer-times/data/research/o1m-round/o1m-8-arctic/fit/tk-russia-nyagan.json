@@ -1,0 +1,79 @@
+{
+ "city": "nyagan",
+ "nightFraction": {
+  "n": 116,
+  "med": 0.501,
+  "p10": 0.497,
+  "p90": 0.504
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yekaterinburg",
+ "lat": 62.14056,
+ "lon": 65.39361,
+ "rows": 365,
+ "solarGateMedAbs": 0.61,
+ "fajrAngle": {
+  "n": 243,
+  "med": 15.95,
+  "min": 10.75,
+  "max": 16.15,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 250,
+  "med": 15,
+  "min": 10.25,
+  "max": 15.3,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.38,
+   "min": -0.6,
+   "max": 1.4
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.47,
+   "min": 0,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.48,
+   "min": -1.8,
+   "max": 2.9
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -48.98,
+   "min": -79.9,
+   "max": -13.6
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.38,
+   "min": -0.8,
+   "max": 2
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-25",
+    "to": "2027-08-18",
+    "days": 116
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 405,
+  "isha": 420
+ }
+}

@@ -1,0 +1,627 @@
+[
+ {
+  "name": "Kairouan/Bou Hajla",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.35,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "ishaOld": {
+   "ang": 18.35,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.35,
+  "dIsha": -0.35,
+  "magOld": 3.86,
+  "magNew": 3.85
+ },
+ {
+  "name": "Kairouan/Chebika",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.35,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.35,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.35,
+  "dIsha": -0.35,
+  "magOld": 3.93,
+  "magNew": 3.88
+ },
+ {
+  "name": "Kairouan/Chrarda",
+  "nOld": 2,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.3,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.25,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.3,
+  "dIsha": -0.25,
+  "magOld": 4,
+  "magNew": 3.77
+ },
+ {
+  "name": "Kairouan/El Alaa",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.7,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.7,
+   "mae": 0.07
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.7,
+  "dIsha": -0.7,
+  "magOld": 5.64,
+  "magNew": 5.81
+ },
+ {
+  "name": "Kairouan/Haffouz",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.55,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.55,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "dFajr": -0.55,
+  "dIsha": -0.55,
+  "magOld": 4.93,
+  "magNew": 4.96
+ },
+ {
+  "name": "Kairouan/Hajeb El Ayoun",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.6,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "ishaOld": {
+   "ang": 18.55,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.6,
+  "dIsha": -0.55,
+  "magOld": 5.14,
+  "magNew": 5.42
+ },
+ {
+  "name": "Kairouan/Kairouan",
+  "nOld": 14,
+  "nNew": 25,
+  "fajrOld": {
+   "ang": 18.25,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "ishaOld": {
+   "ang": 18.25,
+   "mae": 0.07
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.25,
+  "dIsha": -0.25,
+  "magOld": 3.21,
+  "magNew": 3.36
+ },
+ {
+  "name": "Kairouan/Nasrallah",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.4,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.4,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.4,
+  "dIsha": -0.4,
+  "magOld": 4.21,
+  "magNew": 4.27
+ },
+ {
+  "name": "Kairouan/Oueslatia",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.65,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.7,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.65,
+  "dIsha": -0.7,
+  "magOld": 5.86,
+  "magNew": 5.88
+ },
+ {
+  "name": "Kairouan/Sebikha",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.3,
+   "mae": 0.29
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.25,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "dFajr": -0.3,
+  "dIsha": -0.25,
+  "magOld": 3.36,
+  "magNew": 3.62
+ },
+ {
+  "name": "Sidi Bouzid/Bir El Hafey",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.65,
+   "mae": 0.14
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.7,
+   "mae": 0.14
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.65,
+  "dIsha": -0.7,
+  "magOld": 5.71,
+  "magNew": 5.54
+ },
+ {
+  "name": "Sidi Bouzid/Hichria",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.6,
+   "mae": 0.07
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.6,
+   "mae": 0.07
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.6,
+  "dIsha": -0.6,
+  "magOld": 5.43,
+  "magNew": 5.46
+ },
+ {
+  "name": "Sidi Bouzid/Jelma",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.6,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.6,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.6,
+  "dIsha": -0.6,
+  "magOld": 5.36,
+  "magNew": 5.35
+ },
+ {
+  "name": "Sidi Bouzid/Meknassi",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.5,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.55,
+   "mae": 0.14
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0.04
+  },
+  "dFajr": -0.5,
+  "dIsha": -0.55,
+  "magOld": 4.86,
+  "magNew": 4.77
+ },
+ {
+  "name": "Sidi Bouzid/Menzel Bouzayane",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.55,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.55,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.55,
+  "dIsha": -0.55,
+  "magOld": 4.93,
+  "magNew": 5.12
+ },
+ {
+  "name": "Sidi Bouzid/Mezouna",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.4,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.4,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.4,
+  "dIsha": -0.4,
+  "magOld": 4.14,
+  "magNew": 4.19
+ },
+ {
+  "name": "Sidi Bouzid/Ouled Haffouz",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.45,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.5,
+   "mae": 0.14
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.45,
+  "dIsha": -0.5,
+  "magOld": 4.57,
+  "magNew": 4.38
+ },
+ {
+  "name": "Sidi Bouzid/Regueb",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.4,
+   "mae": 0.07
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.45,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.4,
+  "dIsha": -0.45,
+  "magOld": 4.43,
+  "magNew": 4.19
+ },
+ {
+  "name": "Sidi Bouzid/Sabbalet Ouled Asker",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.65,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.65,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0.08
+  },
+  "dFajr": -0.65,
+  "dIsha": -0.65,
+  "magOld": 5.36,
+  "magNew": 5.5
+ },
+ {
+  "name": "Sidi Bouzid/Sidi Ali Ben Aoun",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.7,
+   "mae": 0.07
+  },
+  "fajrNew": {
+   "ang": 18.7,
+   "mae": 0.08
+  },
+  "ishaOld": {
+   "ang": 18.7,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18.7,
+   "mae": 0.12
+  },
+  "dFajr": 0,
+  "dIsha": 0,
+  "magOld": 5.79,
+  "magNew": 5.77
+ },
+ {
+  "name": "Sidi Bouzid/Sidi Bouzid",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.55,
+   "mae": 0.07
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.6,
+   "mae": 0.07
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.55,
+  "dIsha": -0.6,
+  "magOld": 5.21,
+  "magNew": 5.31
+ },
+ {
+  "name": "Sidi Bouzid/Souk Jedid",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.55,
+   "mae": 0.14
+  },
+  "fajrNew": {
+   "ang": 18.55,
+   "mae": 0.15
+  },
+  "ishaOld": {
+   "ang": 18.6,
+   "mae": 0.07
+  },
+  "ishaNew": {
+   "ang": 18.6,
+   "mae": 0
+  },
+  "dFajr": 0,
+  "dIsha": 0,
+  "magOld": 5.21,
+  "magNew": 5.27
+ },
+ {
+  "name": "control-348/621",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.1,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18.15,
+   "mae": 0.12
+  },
+  "ishaOld": {
+   "ang": 18.1,
+   "mae": 0
+  },
+  "ishaNew": {
+   "ang": 18.1,
+   "mae": 0.12
+  },
+  "dFajr": 0.05,
+  "dIsha": 0,
+  "magOld": 2.71,
+  "magNew": 2.81
+ },
+ {
+  "name": "control-362/635",
+  "nOld": 14,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.85,
+   "mae": 0
+  },
+  "fajrNew": {
+   "ang": 18.85,
+   "mae": 0.04
+  },
+  "ishaOld": {
+   "ang": 18.8,
+   "mae": 0.21
+  },
+  "ishaNew": {
+   "ang": 18.85,
+   "mae": 0.08
+  },
+  "dFajr": 0,
+  "dIsha": 0.05,
+  "magOld": 6.64,
+  "magNew": 6.42
+ },
+ {
+  "name": "control-355/628",
+  "nOld": 13,
+  "nNew": 26,
+  "fajrOld": {
+   "ang": 18.6,
+   "mae": 0.08
+  },
+  "fajrNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "ishaOld": {
+   "ang": 18.6,
+   "mae": 0.08
+  },
+  "ishaNew": {
+   "ang": 18,
+   "mae": 0
+  },
+  "dFajr": -0.6,
+  "dIsha": -0.6,
+  "magOld": 5.23,
+  "magNew": 5.31
+ }
+]

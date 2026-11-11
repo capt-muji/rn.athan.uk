@@ -1,0 +1,68 @@
+{
+ "city": "gavle",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 60.6745,
+ "lon": 17.1417,
+ "rows": 699,
+ "solarGateMedAbs": 0.18,
+ "fajrAngle": {
+  "n": 527,
+  "med": 18,
+  "min": 10.05,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 522,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.1,
+   "min": -2.4,
+   "max": 2.3
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.12,
+   "min": -79.1,
+   "max": -19.1
+  },
+  "maghrib": {
+   "n": 699,
+   "med": 0,
+   "min": -0.6,
+   "max": 0.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 260,
+  "isha": 390
+ }
+}

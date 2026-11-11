@@ -1,0 +1,79 @@
+{
+ "city": "petrozavodsk",
+ "nightFraction": {
+  "n": 114,
+  "med": 0.5,
+  "p10": 0.497,
+  "p90": 0.504
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Europe/Moscow",
+ "lat": 61.78491,
+ "lon": 34.34691,
+ "rows": 365,
+ "solarGateMedAbs": 0.5,
+ "fajrAngle": {
+  "n": 245,
+  "med": 15.95,
+  "min": 15.85,
+  "max": 16.1,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 252,
+  "med": 15.05,
+  "min": 10.6,
+  "max": 15.3,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.42,
+   "min": -0.3,
+   "max": 1.2
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.5,
+   "min": 0,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.53,
+   "min": -2.5,
+   "max": 3.5
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.1,
+   "min": -79.7,
+   "max": -14.6
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.28,
+   "min": -1.1,
+   "max": 2.3
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-26",
+    "to": "2027-08-17",
+    "days": 114
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 404,
+  "isha": 419
+ }
+}

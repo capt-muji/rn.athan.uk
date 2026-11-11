@@ -1,0 +1,203 @@
+{
+ "year": 2026,
+ "failed": [
+  {
+   "id": 156,
+   "name": "Щучинск қаласы",
+   "region": "Ақмола облысы",
+   "lat": "52.942096",
+   "lng": "70.210140",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 160,
+   "name": "Есік қаласы",
+   "region": "Алматы облысы",
+   "lat": "43.365179",
+   "lng": "77.450893",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 164,
+   "name": "Абай қаласы",
+   "region": "Қарағанды облысы",
+   "lat": "49.631899",
+   "lng": "72.859245",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 168,
+   "name": "Жітіқара қаласы",
+   "region": "Қостанай облысы",
+   "lat": "52.183928",
+   "lng": "61.189833",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 169,
+   "name": "Тобыл қаласы",
+   "region": "Қостанай облысы",
+   "lat": "53.207372",
+   "lng": "63.705088",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11256,
+   "name": "Шоқпар (ст.)",
+   "region": "Жамбыл облысы",
+   "lat": "43.821389",
+   "lng": "74.373333",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11281,
+   "name": "Пістелі",
+   "region": "Түркістан облысы",
+   "lat": "42.648568",
+   "lng": "70.197473",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11287,
+   "name": "Дихан",
+   "region": "Түркістан облысы",
+   "lat": "40.988480",
+   "lng": "68.279058",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11309,
+   "name": "Үшбұлақ",
+   "region": "Жетісу облысы",
+   "lat": "45.803775",
+   "lng": "81.305986",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11310,
+   "name": "Тоқжайлау",
+   "region": "Жетісу облысы",
+   "lat": "45.819951",
+   "lng": "81.086887",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11311,
+   "name": "Лепсі",
+   "region": "Жетісу облысы",
+   "lat": "45.526147",
+   "lng": "80.614050",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11315,
+   "name": "Ақжар",
+   "region": "Жетісу облысы",
+   "lat": "45.801752",
+   "lng": "80.647234",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11333,
+   "name": "Береговое",
+   "region": "Павлодар облысы",
+   "lat": "53.132622",
+   "lng": "75.877602",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11346,
+   "name": "Тобыл",
+   "region": "Қостанай облысы",
+   "lat": "52.693905",
+   "lng": "62.582554",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11348,
+   "name": "Абай",
+   "region": "Түркістан облысы",
+   "lat": "41.346802",
+   "lng": "68.950432",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11361,
+   "name": "Переметное",
+   "region": "Батыс Қазақстан облысы",
+   "lat": "51.196925",
+   "lng": "50.853781",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11362,
+   "name": "Қарғалы",
+   "region": "Алматы облысы",
+   "lat": "43.167300",
+   "lng": "76.407707",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  },
+  {
+   "id": 11367,
+   "name": "Төңкеріс",
+   "region": "Жетісу облысы",
+   "lat": "45.673372",
+   "lng": "80.653693",
+   "firstStatus": 500,
+   "nowStatus": 500,
+   "bytes": 187,
+   "body": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>HTTP_500_INTERNAL_SERVER_ERROR</title>\n</head>\n<body>\n<h1>HTTP_500_INTERNAL_SERVER_ERROR</h1>\n</body>\n</html>"
+  }
+ ]
+}

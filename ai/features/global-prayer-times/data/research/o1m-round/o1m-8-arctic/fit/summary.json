@@ -1,0 +1,6771 @@
+[
+ {
+  "city": "Torshavn",
+  "nightFraction": null,
+  "country": "Faroe Islands",
+  "source": "athanpro.com",
+  "tz": "Atlantic/Faroe",
+  "lat": 62.0079,
+  "lon": -6.79,
+  "rows": 30,
+  "solarGateMedAbs": 0.17,
+  "fajrAngle": {
+   "n": 30,
+   "med": 17.95,
+   "min": 16.25,
+   "max": 18.05,
+   "jun": null,
+   "dec": null
+  },
+  "ishaAngle": {
+   "n": 30,
+   "med": 17.05,
+   "min": 15.9,
+   "max": 17.1,
+   "jun": null,
+   "dec": null
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 30,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "dhuhr": {
+    "n": 30,
+    "med": -0.13,
+    "min": -0.5,
+    "max": 0.3
+   },
+   "asrShafi": {
+    "n": 30,
+    "med": 1.63,
+    "min": 1.1,
+    "max": 2
+   },
+   "asrHanafi": {
+    "n": 30,
+    "med": -50.58,
+    "min": -56.5,
+    "max": -45
+   },
+   "maghrib": {
+    "n": 30,
+    "med": 0.05,
+    "min": -0.5,
+    "max": 0.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 97,
+   "isha": 117
+  }
+ },
+ {
+  "city": "NUUK",
+  "nightFraction": null,
+  "country": "GRONLAND",
+  "source": "namazvakti.diyanet.gov.tr",
+  "tz": "America/Nuuk",
+  "lat": 64.1836,
+  "lon": -51.7214,
+  "rows": 30,
+  "solarGateMedAbs": 59.58,
+  "fajrAngle": null,
+  "ishaAngle": null,
+  "solarMargin": {
+   "sunrise": null,
+   "dhuhr": null,
+   "asrShafi": null,
+   "asrHanafi": null,
+   "maghrib": null
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 53,
+   "isha": 37
+  }
+ },
+ {
+  "city": "REYKJAVIK",
+  "nightFraction": null,
+  "country": "IZLANDA",
+  "source": "namazvakti.diyanet.gov.tr",
+  "tz": "Atlantic/Reykjavik",
+  "lat": 64.1466,
+  "lon": -21.9426,
+  "rows": 30,
+  "solarGateMedAbs": 0.23,
+  "fajrAngle": null,
+  "ishaAngle": null,
+  "solarMargin": {
+   "sunrise": null,
+   "dhuhr": null,
+   "asrShafi": null,
+   "asrHanafi": null,
+   "maghrib": null
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 53,
+   "isha": 36
+  }
+ },
+ {
+  "city": "LONGYEARBYEN",
+  "nightFraction": null,
+  "country": "SVALBARD",
+  "source": "namazvakti.diyanet.gov.tr",
+  "tz": "Arctic/Longyearbyen",
+  "lat": 78.2232,
+  "lon": 15.6469,
+  "rows": 30,
+  "solarGateMedAbs": null,
+  "fajrAngle": null,
+  "ishaAngle": null,
+  "solarMargin": {
+   "sunrise": null,
+   "dhuhr": null,
+   "asrShafi": null,
+   "asrHanafi": null,
+   "maghrib": null
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": [
+    {
+     "from": "2026-11-12",
+     "to": "2026-12-11",
+     "days": 30
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 115,
+   "isha": 105
+  }
+ },
+ {
+  "city": "Reykjavik",
+  "nightFraction": null,
+  "country": "Iceland",
+  "source": "felagmuslima.is",
+  "tz": "Atlantic/Reykjavik",
+  "lat": 64.1466,
+  "lon": -21.9426,
+  "rows": 30,
+  "solarGateMedAbs": 0.31,
+  "fajrAngle": {
+   "n": 30,
+   "med": 14.2,
+   "min": 14.15,
+   "max": 14.25,
+   "jun": null,
+   "dec": null
+  },
+  "ishaAngle": null,
+  "solarMargin": {
+   "sunrise": {
+    "n": 30,
+    "med": -0.4,
+    "min": -0.7,
+    "max": 0.1
+   },
+   "dhuhr": {
+    "n": 30,
+    "med": -0.1,
+    "min": -0.5,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 30,
+    "med": 12.98,
+    "min": 9.7,
+    "max": 14.8
+   },
+   "asrHanafi": {
+    "n": 30,
+    "med": -8.72,
+    "min": -19.8,
+    "max": -0.7
+   },
+   "maghrib": {
+    "n": 30,
+    "med": -0.17,
+    "min": -0.8,
+    "max": 0.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 66,
+   "isha": 81
+  }
+ },
+ {
+  "city": "Reykjavik",
+  "nightFraction": null,
+  "country": "Iceland",
+  "source": "grandmosque-iceland.is",
+  "tz": "Atlantic/Reykjavik",
+  "lat": 64.1466,
+  "lon": -21.9426,
+  "rows": 60,
+  "solarGateMedAbs": 0.22,
+  "fajrAngle": {
+   "n": 29,
+   "med": 18.05,
+   "min": 16.1,
+   "max": 20.05,
+   "jun": null,
+   "dec": 18.05
+  },
+  "ishaAngle": null,
+  "solarMargin": {
+   "sunrise": {
+    "n": 58,
+    "med": 0.22,
+    "min": -1.4,
+    "max": 2.2
+   },
+   "dhuhr": {
+    "n": 58,
+    "med": 0.5,
+    "min": -0.1,
+    "max": 1.1
+   },
+   "asrShafi": {
+    "n": 58,
+    "med": -0.55,
+    "min": -4.7,
+    "max": 0.5
+   },
+   "asrHanafi": {
+    "n": 58,
+    "med": -25.3,
+    "min": -83,
+    "max": -12.5
+   },
+   "maghrib": {
+    "n": 58,
+    "med": -0.03,
+    "min": -2.3,
+    "max": 1.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": [
+    {
+     "from": "2026-06-15",
+     "to": "2026-06-28",
+     "days": 14
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 359,
+   "isha": 1441
+  }
+ },
+ {
+  "city": "arvidsjaur",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 65.591,
+  "lon": 19.1666,
+  "rows": 699,
+  "solarGateMedAbs": 0.35,
+  "fajrAngle": {
+   "n": 461,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 457,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 698,
+    "med": -0.02,
+    "min": -0.8,
+    "max": 0.8
+   },
+   "dhuhr": {
+    "n": 698,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 698,
+    "med": -0.05,
+    "min": -6.3,
+    "max": 5.2
+   },
+   "asrHanafi": {
+    "n": 698,
+    "med": -51.15,
+    "min": -84.5,
+    "max": -7.3
+   },
+   "maghrib": {
+    "n": 698,
+    "med": 0,
+    "min": -0.9,
+    "max": 0.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": [
+    {
+     "from": "2026-06-12",
+     "to": "2026-06-30",
+     "days": 19
+    },
+    {
+     "from": "2027-06-13",
+     "to": "2027-06-30",
+     "days": 18
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 320,
+   "isha": 1441
+  }
+ },
+ {
+  "city": "boden",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 65.8251,
+  "lon": 21.6886,
+  "rows": 699,
+  "solarGateMedAbs": 0.33,
+  "fajrAngle": {
+   "n": 457,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 455,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 674,
+    "med": 0.02,
+    "min": -0.9,
+    "max": 0.9
+   },
+   "dhuhr": {
+    "n": 674,
+    "med": 0.05,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 674,
+    "med": -0.02,
+    "min": -6.8,
+    "max": 5.7
+   },
+   "asrHanafi": {
+    "n": 674,
+    "med": -49.68,
+    "min": -83.7,
+    "max": -6.5
+   },
+   "maghrib": {
+    "n": 674,
+    "med": 0.02,
+    "min": -0.8,
+    "max": 0.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": [
+    {
+     "from": "2026-06-11",
+     "to": "2026-06-15",
+     "days": 5
+    },
+    {
+     "from": "2026-06-17",
+     "to": "2026-06-30",
+     "days": 14
+    },
+    {
+     "from": "2027-06-12",
+     "to": "2027-07-01",
+     "days": 20
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 328,
+   "isha": 1442
+  }
+ },
+ {
+  "city": "borlange",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 60.4858,
+  "lon": 15.4371,
+  "rows": 699,
+  "solarGateMedAbs": 0.18,
+  "fajrAngle": {
+   "n": 531,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 524,
+   "med": 17,
+   "min": 10,
+   "max": 17.25,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.6,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.03,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.02,
+    "min": -2.3,
+    "max": 2.2
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.23,
+    "min": -79,
+    "max": -19.4
+   },
+   "maghrib": {
+    "n": 699,
+    "med": -0.03,
+    "min": -0.6,
+    "max": 0.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 258,
+   "isha": 389
+  }
+ },
+ {
+  "city": "falun",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 60.6065,
+  "lon": 15.6355,
+  "rows": 699,
+  "solarGateMedAbs": 0.18,
+  "fajrAngle": {
+   "n": 529,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 523,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0.05,
+    "min": -0.5,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.03,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.1,
+    "min": -2.3,
+    "max": 2.3
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.22,
+    "min": -79.2,
+    "max": -18.9
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0.03,
+    "min": -0.5,
+    "max": 0.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 259,
+   "isha": 390
+  }
+ },
+ {
+  "city": "gavle",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 60.6745,
+  "lon": 17.1417,
+  "rows": 699,
+  "solarGateMedAbs": 0.18,
+  "fajrAngle": {
+   "n": 527,
+   "med": 18,
+   "min": 10.05,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 522,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.1,
+    "min": -2.4,
+    "max": 2.3
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.12,
+    "min": -79.1,
+    "max": -19.1
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0,
+    "min": -0.6,
+    "max": 0.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 260,
+   "isha": 390
+  }
+ },
+ {
+  "city": "harnosand",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 62.6323,
+  "lon": 17.9379,
+  "rows": 699,
+  "solarGateMedAbs": 0.22,
+  "fajrAngle": {
+   "n": 499,
+   "med": 18,
+   "min": 10.1,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 494,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.6,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.03,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.18,
+    "min": -3,
+    "max": 2.8
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.35,
+    "min": -81.2,
+    "max": -14.9
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.6,
+    "max": 0.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 275,
+   "isha": 409
+  }
+ },
+ {
+  "city": "hudiksvall",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 61.7274,
+  "lon": 17.1056,
+  "rows": 699,
+  "solarGateMedAbs": 0.21,
+  "fajrAngle": {
+   "n": 511,
+   "med": 18,
+   "min": 10.1,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 508,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0,
+    "min": -0.6,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.17,
+    "min": -2.6,
+    "max": 2.4
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.28,
+    "min": -80.2,
+    "max": -17.1
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0,
+    "min": -0.6,
+    "max": 0.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 268,
+   "isha": 400
+  }
+ },
+ {
+  "city": "lulea",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 65.5848,
+  "lon": 22.1547,
+  "rows": 760,
+  "solarGateMedAbs": 0.36,
+  "fajrAngle": {
+   "n": 521,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 518,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 758,
+    "med": -0.02,
+    "min": -0.8,
+    "max": 0.8
+   },
+   "dhuhr": {
+    "n": 758,
+    "med": 0.03,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 758,
+    "med": 0.17,
+    "min": -6.1,
+    "max": 5.9
+   },
+   "asrHanafi": {
+    "n": 758,
+    "med": -47.2,
+    "min": -84.2,
+    "max": -3.7
+   },
+   "maghrib": {
+    "n": 758,
+    "med": 0,
+    "min": -0.8,
+    "max": 0.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": [
+    {
+     "from": "2026-06-16",
+     "to": "2026-06-25",
+     "days": 10
+    },
+    {
+     "from": "2027-06-17",
+     "to": "2027-06-26",
+     "days": 10
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 320,
+   "isha": 1441
+  }
+ },
+ {
+  "city": "ostersund",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 63.1792,
+  "lon": 14.6357,
+  "rows": 760,
+  "solarGateMedAbs": 0.23,
+  "fajrAngle": {
+   "n": 553,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 548,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 760,
+    "med": 0,
+    "min": -0.6,
+    "max": 0.7
+   },
+   "dhuhr": {
+    "n": 760,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 760,
+    "med": 0.15,
+    "min": -3.3,
+    "max": 3.2
+   },
+   "asrHanafi": {
+    "n": 760,
+    "med": -47.83,
+    "min": -81.5,
+    "max": -11.5
+   },
+   "maghrib": {
+    "n": 760,
+    "med": 0.02,
+    "min": -0.7,
+    "max": 0.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 281,
+   "isha": 414
+  }
+ },
+ {
+  "city": "pitea",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 65.3172,
+  "lon": 21.4794,
+  "rows": 699,
+  "solarGateMedAbs": 0.33,
+  "fajrAngle": {
+   "n": 463,
+   "med": 18,
+   "min": 10,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 462,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.8,
+    "max": 0.8
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.08,
+    "min": -5.5,
+    "max": 4.7
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.32,
+    "min": -84.1,
+    "max": -8
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.8,
+    "max": 0.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 311,
+   "isha": 448
+  }
+ },
+ {
+  "city": "skelleftea",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 64.7507,
+  "lon": 20.9528,
+  "rows": 699,
+  "solarGateMedAbs": 0.28,
+  "fajrAngle": {
+   "n": 469,
+   "med": 18,
+   "min": 10.1,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 466,
+   "med": 17,
+   "min": 10.05,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.7,
+    "max": 0.8
+   },
+   "dhuhr": {
+    "n": 699,
+    "med": 0.03,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 699,
+    "med": -0.15,
+    "min": -4.5,
+    "max": 4
+   },
+   "asrHanafi": {
+    "n": 699,
+    "med": -51.32,
+    "min": -83.5,
+    "max": -9.9
+   },
+   "maghrib": {
+    "n": 699,
+    "med": 0.02,
+    "min": -0.7,
+    "max": 0.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 301,
+   "isha": 436
+  }
+ },
+ {
+  "city": "sundsvall",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 62.3908,
+  "lon": 17.3069,
+  "rows": 760,
+  "solarGateMedAbs": 0.22,
+  "fajrAngle": {
+   "n": 564,
+   "med": 18,
+   "min": 10.05,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 559,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 760,
+    "med": -0.02,
+    "min": -0.6,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 760,
+    "med": -0.03,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 760,
+    "med": 0.08,
+    "min": -2.8,
+    "max": 2.9
+   },
+   "asrHanafi": {
+    "n": 760,
+    "med": -47.8,
+    "min": -80.8,
+    "max": -13.6
+   },
+   "maghrib": {
+    "n": 760,
+    "med": 0.02,
+    "min": -0.6,
+    "max": 0.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 273,
+   "isha": 405
+  }
+ },
+ {
+  "city": "umea",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "islam.nu",
+  "tz": "Europe/Stockholm",
+  "lat": 63.8258,
+  "lon": 20.263,
+  "rows": 760,
+  "solarGateMedAbs": 0.26,
+  "fajrAngle": {
+   "n": 544,
+   "med": 18,
+   "min": 10.1,
+   "max": 18.05,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 540,
+   "med": 17,
+   "min": 10,
+   "max": 17.1,
+   "jun": null,
+   "dec": 17
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 760,
+    "med": 0,
+    "min": -0.7,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 760,
+    "med": 0.02,
+    "min": -0.4,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 760,
+    "med": 0.08,
+    "min": -3.6,
+    "max": 3.6
+   },
+   "asrHanafi": {
+    "n": 760,
+    "med": -47.65,
+    "min": -82.3,
+    "max": -9.6
+   },
+   "maghrib": {
+    "n": 760,
+    "med": 0,
+    "min": -0.7,
+    "max": 0.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 288,
+   "isha": 421
+  }
+ },
+ {
+  "city": "alesund",
+  "nightFraction": {
+   "n": 130,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 62.47225,
+  "lon": 6.15492,
+  "rows": 365,
+  "solarGateMedAbs": 0.24,
+  "fajrAngle": {
+   "n": 229,
+   "med": 18,
+   "min": 17.75,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 239,
+   "med": 17,
+   "min": 10.7,
+   "max": 18.35,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0,
+    "min": -1.9,
+    "max": 1.7
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.03,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": -0.02,
+    "min": -2.1,
+    "max": 2.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.98,
+    "min": -80.7,
+    "max": -13.4
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.02,
+    "min": -1.8,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-17",
+     "to": "2027-08-24",
+     "days": 130
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 327,
+   "isha": 462
+  }
+ },
+ {
+  "city": "bodo",
+  "nightFraction": {
+   "n": 111,
+   "med": 0.499,
+   "p10": 0.497,
+   "p90": 0.504
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 67.28267,
+  "lon": 14.37513,
+  "rows": 322,
+  "solarGateMedAbs": 0.46,
+  "fajrAngle": {
+   "n": 191,
+   "med": 18,
+   "min": 12.5,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 196,
+   "med": 17,
+   "min": 10.85,
+   "max": 17.15,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 270,
+    "med": -0.25,
+    "min": -2.6,
+    "max": 2.4
+   },
+   "dhuhr": {
+    "n": 270,
+    "med": -0.13,
+    "min": -0.6,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 270,
+    "med": 0.03,
+    "min": -9.3,
+    "max": 16.6
+   },
+   "asrHanafi": {
+    "n": 270,
+    "med": -40.22,
+    "min": -73.6,
+    "max": 7.6
+   },
+   "maghrib": {
+    "n": 270,
+    "med": -1.1,
+    "min": -2.3,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-04",
+     "to": "2027-05-30",
+     "days": 57
+    },
+    {
+     "from": "2027-07-13",
+     "to": "2027-09-07",
+     "days": 57
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-05-26",
+     "to": "2027-05-30",
+     "days": 5
+    },
+    {
+     "from": "2027-07-13",
+     "to": "2027-07-17",
+     "days": 5
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 342,
+   "isha": 1447
+  }
+ },
+ {
+  "city": "harstad",
+  "nightFraction": {
+   "n": 103,
+   "med": 0.499,
+   "p10": 0.496,
+   "p90": 0.506
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 68.79833,
+  "lon": 16.54165,
+  "rows": 265,
+  "solarGateMedAbs": 0.47,
+  "fajrAngle": {
+   "n": 130,
+   "med": 17.95,
+   "min": 12.4,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18.1
+  },
+  "ishaAngle": {
+   "n": 135,
+   "med": 16.95,
+   "min": 12.15,
+   "max": 17.15,
+   "jun": null,
+   "dec": 17.15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 190,
+    "med": 0.35,
+    "min": -2.6,
+    "max": 2.5
+   },
+   "dhuhr": {
+    "n": 190,
+    "med": -0.03,
+    "min": -0.6,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 190,
+    "med": 0.23,
+    "min": -4.7,
+    "max": 11.5
+   },
+   "asrHanafi": {
+    "n": 190,
+    "med": -42.28,
+    "min": -68.3,
+    "max": -1.1
+   },
+   "maghrib": {
+    "n": 190,
+    "med": -1.5,
+    "min": -2.6,
+    "max": 2.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-03-31",
+     "to": "2027-05-21",
+     "days": 52
+    },
+    {
+     "from": "2027-07-22",
+     "to": "2027-09-11",
+     "days": 52
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-05-20",
+     "to": "2027-05-21",
+     "days": 2
+    },
+    {
+     "from": "2027-07-23",
+     "to": "2027-07-24",
+     "days": 2
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 340,
+   "isha": 1445
+  }
+ },
+ {
+  "city": "kristiansund",
+  "nightFraction": {
+   "n": 134,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 63.11045,
+  "lon": 7.72795,
+  "rows": 365,
+  "solarGateMedAbs": 0.25,
+  "fajrAngle": {
+   "n": 226,
+   "med": 18,
+   "min": 10.35,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 237,
+   "med": 17,
+   "min": 11.5,
+   "max": 17.2,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": -0.02,
+    "min": -2,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": -0.02,
+    "min": -2.4,
+    "max": 2.9
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.62,
+    "min": -81.3,
+    "max": -11.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.05,
+    "min": -1.9,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-15",
+     "to": "2027-08-26",
+     "days": 134
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 329,
+   "isha": 464
+  }
+ },
+ {
+  "city": "mo-i-rana",
+  "nightFraction": {
+   "n": 122,
+   "med": 0.501,
+   "p10": 0.497,
+   "p90": 0.504
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 66.31278,
+  "lon": 14.14278,
+  "rows": 339,
+  "solarGateMedAbs": 0.39,
+  "fajrAngle": {
+   "n": 207,
+   "med": 18,
+   "min": 17.75,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 218,
+   "med": 17,
+   "min": 11.15,
+   "max": 17.15,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 308,
+    "med": -0.2,
+    "min": -2.4,
+    "max": 2.5
+   },
+   "dhuhr": {
+    "n": 308,
+    "med": 0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 308,
+    "med": -0.02,
+    "min": -10.3,
+    "max": 10
+   },
+   "asrHanafi": {
+    "n": 308,
+    "med": -41.7,
+    "min": -77,
+    "max": 3.2
+   },
+   "maghrib": {
+    "n": 308,
+    "med": 0.28,
+    "min": -2.2,
+    "max": 2.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-06",
+     "to": "2027-06-07",
+     "days": 63
+    },
+    {
+     "from": "2027-07-04",
+     "to": "2027-09-04",
+     "days": 63
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-06-01",
+     "to": "2027-06-07",
+     "days": 7
+    },
+    {
+     "from": "2027-07-04",
+     "to": "2027-07-12",
+     "days": 9
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 338,
+   "isha": 1446
+  }
+ },
+ {
+  "city": "molde",
+  "nightFraction": {
+   "n": 132,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 62.73752,
+  "lon": 7.15912,
+  "rows": 365,
+  "solarGateMedAbs": 0.23,
+  "fajrAngle": {
+   "n": 228,
+   "med": 18,
+   "min": 14.35,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 234,
+   "med": 17,
+   "min": 11,
+   "max": 17.15,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": -0.02,
+    "min": -2,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.03,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.02,
+    "min": -2.4,
+    "max": 2.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.58,
+    "min": -80.9,
+    "max": -12.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.18,
+    "min": -1.8,
+    "max": 1.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-16",
+     "to": "2027-08-25",
+     "days": 132
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 328,
+   "isha": 463
+  }
+ },
+ {
+  "city": "steinkjer",
+  "nightFraction": {
+   "n": 139,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 64.01487,
+  "lon": 11.49537,
+  "rows": 365,
+  "solarGateMedAbs": 0.27,
+  "fajrAngle": {
+   "n": 220,
+   "med": 18,
+   "min": 11.8,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 232,
+   "med": 17,
+   "min": 10.3,
+   "max": 17.2,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.03,
+    "min": -2.1,
+    "max": 2
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": -0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0,
+    "min": -3,
+    "max": 3.4
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.78,
+    "min": -82.3,
+    "max": -9.3
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.1,
+    "min": -1.9,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-13",
+     "to": "2027-08-29",
+     "days": 139
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 331,
+   "isha": 467
+  }
+ },
+ {
+  "city": "tromso",
+  "nightFraction": {
+   "n": 99,
+   "med": 0.499,
+   "p10": 0.495,
+   "p90": 0.504
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 69.6489,
+  "lon": 18.95508,
+  "rows": 247,
+  "solarGateMedAbs": 0.49,
+  "fajrAngle": {
+   "n": 110,
+   "med": 17.95,
+   "min": 11.55,
+   "max": 18.25,
+   "jun": null,
+   "dec": null
+  },
+  "ishaAngle": {
+   "n": 113,
+   "med": 16.95,
+   "min": 11.3,
+   "max": 17.15,
+   "jun": null,
+   "dec": null
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 168,
+    "med": 0.58,
+    "min": -2.6,
+    "max": 2.6
+   },
+   "dhuhr": {
+    "n": 168,
+    "med": -0.12,
+    "min": -0.6,
+    "max": 0.3
+   },
+   "asrShafi": {
+    "n": 168,
+    "med": 0.48,
+    "min": -4,
+    "max": 11.7
+   },
+   "asrHanafi": {
+    "n": 168,
+    "med": -43.92,
+    "min": -67.2,
+    "max": -1.8
+   },
+   "maghrib": {
+    "n": 168,
+    "med": -1.67,
+    "min": -2.7,
+    "max": 2.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-03-29",
+     "to": "2027-05-17",
+     "days": 50
+    },
+    {
+     "from": "2027-07-26",
+     "to": "2027-09-13",
+     "days": 50
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-01-15",
+     "to": "2027-01-15",
+     "days": 1
+    },
+    {
+     "from": "2027-05-17",
+     "to": "2027-05-17",
+     "days": 1
+    },
+    {
+     "from": "2027-07-26",
+     "to": "2027-07-26",
+     "days": 1
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 383,
+   "isha": 1444
+  }
+ },
+ {
+  "city": "trondheim",
+  "nightFraction": {
+   "n": 136,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Norway",
+  "source": "tawkit.net",
+  "tz": "Europe/Oslo",
+  "lat": 63.43049,
+  "lon": 10.39506,
+  "rows": 365,
+  "solarGateMedAbs": 0.25,
+  "fajrAngle": {
+   "n": 223,
+   "med": 18,
+   "min": 17.75,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 228,
+   "med": 17,
+   "min": 12.1,
+   "max": 17.2,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": -0.08,
+    "min": -2,
+    "max": 1.9
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.05,
+    "min": -2.5,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.43,
+    "min": -81.5,
+    "max": -10.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.08,
+    "min": -1.9,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-14",
+     "to": "2027-08-27",
+     "days": 136
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 329,
+   "isha": 465
+  }
+ },
+ {
+  "city": "aldan",
+  "nightFraction": {
+   "n": 94,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 58.61232,
+  "lon": 125.40002,
+  "rows": 365,
+  "solarGateMedAbs": 0.55,
+  "fajrAngle": {
+   "n": 268,
+   "med": 15.95,
+   "min": 11,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 271,
+   "med": 15.05,
+   "min": 12.55,
+   "max": 15.2,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.8,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.5,
+    "max": 1.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.5,
+    "min": -77,
+    "max": -20.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.55,
+    "min": -0.3,
+    "max": 1.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-06",
+     "to": "2027-08-07",
+     "days": 94
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 395,
+   "isha": 409
+  }
+ },
+ {
+  "city": "apatity",
+  "nightFraction": {
+   "n": 99,
+   "med": 0.499,
+   "p10": 0.49,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 67.58267,
+  "lon": 33.41339,
+  "rows": 365,
+  "solarGateMedAbs": 0.96,
+  "fajrAngle": {
+   "n": 176,
+   "med": 15.95,
+   "min": 15.8,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 183,
+   "med": 14.95,
+   "min": 10.9,
+   "max": 15.75,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 247,
+    "med": 0.43,
+    "min": -1.1,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 247,
+    "med": 0.53,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 247,
+    "med": -0.9,
+    "min": -16.6,
+    "max": 8.4
+   },
+   "asrHanafi": {
+    "n": 247,
+    "med": -43.07,
+    "min": -75.6,
+    "max": -7
+   },
+   "maghrib": {
+    "n": 247,
+    "med": -0.28,
+    "min": -2.2,
+    "max": 2.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-16",
+     "to": "2026-12-28",
+     "days": 13
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-09",
+     "to": "2027-09-03",
+     "days": 148
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-15",
+     "to": "2026-12-28",
+     "days": 14
+    },
+    {
+     "from": "2027-05-27",
+     "to": "2027-07-17",
+     "days": 52
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 425,
+   "isha": 1449
+  }
+ },
+ {
+  "city": "arkhangel-sk",
+  "nightFraction": {
+   "n": 131,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.506
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 64.5461,
+  "lon": 40.55183,
+  "rows": 365,
+  "solarGateMedAbs": 0.72,
+  "fajrAngle": {
+   "n": 229,
+   "med": 15.95,
+   "min": 12.85,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 235,
+   "med": 15.05,
+   "min": 11.3,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.5,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.57,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.57,
+    "min": -3.5,
+    "max": 4.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.08,
+    "min": -82.5,
+    "max": -6.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.35,
+    "min": -1.3,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-18",
+     "to": "2027-08-26",
+     "days": 131
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 412,
+   "isha": 429
+  }
+ },
+ {
+  "city": "beloyarskiy",
+  "nightFraction": {
+   "n": 126,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 63.71194,
+  "lon": 66.67222,
+  "rows": 365,
+  "solarGateMedAbs": 0.68,
+  "fajrAngle": {
+   "n": 235,
+   "med": 15.95,
+   "min": 14,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 240,
+   "med": 15.05,
+   "min": 10.05,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.33,
+    "min": -0.6,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.48,
+    "min": -2.2,
+    "max": 3.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.02,
+    "min": -81.7,
+    "max": -9.7
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.42,
+    "min": -1,
+    "max": 2.2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-20",
+     "to": "2027-08-23",
+     "days": 126
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 410,
+   "isha": 425
+  }
+ },
+ {
+  "city": "dudinka",
+  "nightFraction": {
+   "n": 91,
+   "med": 0.499,
+   "p10": 0.492,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Krasnoyarsk",
+  "lat": 69.40583,
+  "lon": 86.17778,
+  "rows": 365,
+  "solarGateMedAbs": 1.08,
+  "fajrAngle": {
+   "n": 154,
+   "med": 16,
+   "min": 11.4,
+   "max": 16.15,
+   "jun": null,
+   "dec": 16
+  },
+  "ishaAngle": {
+   "n": 161,
+   "med": 15,
+   "min": 10.5,
+   "max": 15.25,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 229,
+    "med": 0.08,
+    "min": -1.6,
+    "max": 2.2
+   },
+   "dhuhr": {
+    "n": 229,
+    "med": 0.53,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 229,
+    "med": -0.32,
+    "min": -12.1,
+    "max": 9.3
+   },
+   "asrHanafi": {
+    "n": 229,
+    "med": -43.23,
+    "min": -73.8,
+    "max": -1.2
+   },
+   "maghrib": {
+    "n": 229,
+    "med": 0.12,
+    "min": -1.8,
+    "max": 2.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-11-29",
+     "to": "2027-01-13",
+     "days": 46
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-04",
+     "to": "2027-09-08",
+     "days": 158
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-11-29",
+     "to": "2027-01-13",
+     "days": 46
+    },
+    {
+     "from": "2027-05-15",
+     "to": "2027-07-29",
+     "days": 76
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 1863,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "kandalaksha",
+  "nightFraction": {
+   "n": 103,
+   "med": 0.498,
+   "p10": 0.489,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 67.15123,
+  "lon": 32.41284,
+  "rows": 365,
+  "solarGateMedAbs": 0.88,
+  "fajrAngle": {
+   "n": 213,
+   "med": 15.95,
+   "min": 10.25,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 220,
+   "med": 15,
+   "min": 10.65,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 288,
+    "med": 0.47,
+    "min": -1.1,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 288,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 288,
+    "med": -0.55,
+    "min": -14.2,
+    "max": 16.9
+   },
+   "asrHanafi": {
+    "n": 288,
+    "med": -38.37,
+    "min": -76.6,
+    "max": 9.5
+   },
+   "maghrib": {
+    "n": 288,
+    "med": -0.37,
+    "min": -2.1,
+    "max": 2.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-10",
+     "to": "2027-09-02",
+     "days": 146
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-05-29",
+     "to": "2027-05-31",
+     "days": 3
+    },
+    {
+     "from": "2027-06-02",
+     "to": "2027-07-15",
+     "days": 44
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 423,
+   "isha": 1449
+  }
+ },
+ {
+  "city": "khanty-mansiysk",
+  "nightFraction": {
+   "n": 110,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 61.00187,
+  "lon": 69.02728,
+  "rows": 365,
+  "solarGateMedAbs": 0.6,
+  "fajrAngle": {
+   "n": 250,
+   "med": 15.95,
+   "min": 15.1,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 255,
+   "med": 15.05,
+   "min": 11.65,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.4,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.6,
+    "min": 0.1,
+    "max": 1.1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.45,
+    "min": -1.3,
+    "max": 2.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.32,
+    "min": -79,
+    "max": -16.4
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.62,
+    "min": -0.6,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-28",
+     "to": "2027-08-15",
+     "days": 110
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 401,
+   "isha": 416
+  }
+ },
+ {
+  "city": "kirovsk",
+  "nightFraction": {
+   "n": 99,
+   "med": 0.499,
+   "p10": 0.489,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 67.61475,
+  "lon": 33.67274,
+  "rows": 365,
+  "solarGateMedAbs": 0.95,
+  "fajrAngle": {
+   "n": 189,
+   "med": 15.95,
+   "min": 15.85,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 196,
+   "med": 15,
+   "min": 11.9,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 258,
+    "med": 0.42,
+    "min": -1.4,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 258,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 258,
+    "med": -0.77,
+    "min": -17.7,
+    "max": 18
+   },
+   "asrHanafi": {
+    "n": 258,
+    "med": -40.5,
+    "min": -76.4,
+    "max": 9.6
+   },
+   "maghrib": {
+    "n": 258,
+    "med": -0.45,
+    "min": -2.1,
+    "max": 2.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-15",
+     "to": "2026-12-29",
+     "days": 15
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-09",
+     "to": "2027-09-03",
+     "days": 148
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-15",
+     "to": "2026-12-29",
+     "days": 15
+    },
+    {
+     "from": "2027-05-27",
+     "to": "2027-05-28",
+     "days": 2
+    },
+    {
+     "from": "2027-05-30",
+     "to": "2027-07-17",
+     "days": 49
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 425,
+   "isha": 1449
+  }
+ },
+ {
+  "city": "kogalym",
+  "nightFraction": {
+   "n": 118,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 62.26537,
+  "lon": 74.47906,
+  "rows": 365,
+  "solarGateMedAbs": 0.59,
+  "fajrAngle": {
+   "n": 242,
+   "med": 15.95,
+   "min": 11.45,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 246,
+   "med": 15.05,
+   "min": 13.6,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.6,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -1.6,
+    "max": 2.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.25,
+    "min": -80,
+    "max": -13.7
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.8,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-24",
+     "to": "2027-08-19",
+     "days": 118
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 405,
+   "isha": 421
+  }
+ },
+ {
+  "city": "koryazhma",
+  "nightFraction": {
+   "n": 112,
+   "med": 0.501,
+   "p10": 0.497,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 61.31242,
+  "lon": 47.14829,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 248,
+   "med": 15.95,
+   "min": 10.55,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 254,
+   "med": 15,
+   "min": 10.55,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.32,
+    "min": -0.4,
+    "max": 1.2
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.38,
+    "min": 0,
+    "max": 0.8
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.35,
+    "min": -1.8,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.12,
+    "min": -79.1,
+    "max": -15.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.33,
+    "min": -1,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-27",
+     "to": "2027-08-16",
+     "days": 112
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 402,
+   "isha": 417
+  }
+ },
+ {
+  "city": "kostomuksha",
+  "nightFraction": {
+   "n": 131,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.506
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 64.571,
+  "lon": 30.57667,
+  "rows": 365,
+  "solarGateMedAbs": 0.7,
+  "fajrAngle": {
+   "n": 229,
+   "med": 15.95,
+   "min": 15.2,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 239,
+   "med": 15,
+   "min": 10.05,
+   "max": 15.4,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.38,
+    "min": -0.6,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.52,
+    "min": -4,
+    "max": 5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.03,
+    "min": -82.6,
+    "max": -6.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.33,
+    "min": -1.4,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-18",
+     "to": "2027-08-26",
+     "days": 131
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 412,
+   "isha": 429
+  }
+ },
+ {
+  "city": "kotlas",
+  "nightFraction": {
+   "n": 112,
+   "med": 0.5,
+   "p10": 0.497,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 61.25663,
+  "lon": 46.6537,
+  "rows": 365,
+  "solarGateMedAbs": 0.52,
+  "fajrAngle": {
+   "n": 248,
+   "med": 15.95,
+   "min": 12.75,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 253,
+   "med": 15.05,
+   "min": 12.5,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.4,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -2,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.18,
+    "min": -79,
+    "max": -15.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.9,
+    "max": 2.2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-27",
+     "to": "2027-08-16",
+     "days": 112
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 402,
+   "isha": 417
+  }
+ },
+ {
+  "city": "labytnangi",
+  "nightFraction": {
+   "n": 106,
+   "med": 0.499,
+   "p10": 0.491,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 66.65722,
+  "lon": 66.41833,
+  "rows": 365,
+  "solarGateMedAbs": 0.92,
+  "fajrAngle": {
+   "n": 222,
+   "med": 15.95,
+   "min": 10.4,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 222,
+   "med": 15.05,
+   "min": 11.5,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 311,
+    "med": 0.22,
+    "min": -1.1,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 311,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 311,
+    "med": -0.2,
+    "min": -11.1,
+    "max": 11.8
+   },
+   "asrHanafi": {
+    "n": 311,
+    "med": -42.28,
+    "min": -78.3,
+    "max": 5
+   },
+   "maghrib": {
+    "n": 311,
+    "med": 0.17,
+    "min": -1.7,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-12",
+     "to": "2027-09-01",
+     "days": 143
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-06-03",
+     "to": "2027-06-04",
+     "days": 2
+    },
+    {
+     "from": "2027-06-06",
+     "to": "2027-07-09",
+     "days": 34
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 421,
+   "isha": 1448
+  }
+ },
+ {
+  "city": "langepas",
+  "nightFraction": {
+   "n": 112,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 61.25439,
+  "lon": 75.2124,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 252,
+   "med": 15.95,
+   "min": 10.35,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 255,
+   "med": 15.05,
+   "min": 11.4,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.6,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -1.3,
+    "max": 2.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.28,
+    "min": -79.1,
+    "max": -16
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.7,
+    "max": 1.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-27",
+     "to": "2027-08-16",
+     "days": 112
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 402,
+   "isha": 417
+  }
+ },
+ {
+  "city": "lensk",
+  "nightFraction": {
+   "n": 108,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 60.72383,
+  "lon": 114.93447,
+  "rows": 365,
+  "solarGateMedAbs": 0.55,
+  "fajrAngle": {
+   "n": 250,
+   "med": 15.95,
+   "min": 12.15,
+   "max": 16.55,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 258,
+   "med": 15.05,
+   "min": 10.2,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.53,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.57,
+    "min": -0.7,
+    "max": 1.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.07,
+    "min": -78.7,
+    "max": -17
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.55,
+    "min": -0.4,
+    "max": 1.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-29",
+     "to": "2027-08-14",
+     "days": 108
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 401,
+   "isha": 415
+  }
+ },
+ {
+  "city": "magadan",
+  "nightFraction": {
+   "n": 100,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Magadan",
+  "lat": 59.56274,
+  "lon": 150.80211,
+  "rows": 365,
+  "solarGateMedAbs": 0.57,
+  "fajrAngle": {
+   "n": 260,
+   "med": 15.95,
+   "min": 10.65,
+   "max": 16.4,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 266,
+   "med": 15.05,
+   "min": 11.85,
+   "max": 15.2,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.53,
+    "min": -1,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.3,
+    "max": 1.3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.3,
+    "min": -77.6,
+    "max": -19.3
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.48,
+    "min": -0.1,
+    "max": 1.2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-03",
+     "to": "2027-08-10",
+     "days": 100
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 397,
+   "isha": 412
+  }
+ },
+ {
+  "city": "megion",
+  "nightFraction": {
+   "n": 110,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 61.03429,
+  "lon": 76.10683,
+  "rows": 365,
+  "solarGateMedAbs": 0.52,
+  "fajrAngle": {
+   "n": 252,
+   "med": 15.95,
+   "min": 12.4,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 258,
+   "med": 15.05,
+   "min": 10.35,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.4,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.5,
+    "min": -1.6,
+    "max": 2.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.12,
+    "min": -79,
+    "max": -16.4
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.7,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-28",
+     "to": "2027-08-15",
+     "days": 110
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 402,
+   "isha": 417
+  }
+ },
+ {
+  "city": "mirny",
+  "nightFraction": {
+   "n": 120,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 62.53528,
+  "lon": 113.96111,
+  "rows": 365,
+  "solarGateMedAbs": 0.62,
+  "fajrAngle": {
+   "n": 239,
+   "med": 15.95,
+   "min": 14.5,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 245,
+   "med": 15.05,
+   "min": 10.4,
+   "max": 15.5,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.3,
+    "min": -0.9,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.45,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.5,
+    "min": -1,
+    "max": 2
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.83,
+    "min": -80.1,
+    "max": -13
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.58,
+    "min": -0.5,
+    "max": 1.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-23",
+     "to": "2027-08-20",
+     "days": 120
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 406,
+   "isha": 421
+  }
+ },
+ {
+  "city": "monchegorsk",
+  "nightFraction": {
+   "n": 97,
+   "med": 0.499,
+   "p10": 0.491,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 67.93972,
+  "lon": 32.87389,
+  "rows": 365,
+  "solarGateMedAbs": 0.97,
+  "fajrAngle": {
+   "n": 173,
+   "med": 15.95,
+   "min": 13.25,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 180,
+   "med": 15,
+   "min": 10.2,
+   "max": 15.35,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 240,
+    "med": 0.48,
+    "min": -1.1,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 240,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 240,
+    "med": -0.93,
+    "min": -17.3,
+    "max": 14.1
+   },
+   "asrHanafi": {
+    "n": 240,
+    "med": -42.08,
+    "min": -74.9,
+    "max": 1.7
+   },
+   "maghrib": {
+    "n": 240,
+    "med": -0.67,
+    "min": -2,
+    "max": 2.8
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-11",
+     "to": "2027-01-02",
+     "days": 23
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-08",
+     "to": "2027-09-04",
+     "days": 150
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-10",
+     "to": "2027-01-02",
+     "days": 24
+    },
+    {
+     "from": "2027-05-24",
+     "to": "2027-05-26",
+     "days": 3
+    },
+    {
+     "from": "2027-05-28",
+     "to": "2027-07-19",
+     "days": 53
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 426,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "murmansk",
+  "nightFraction": {
+   "n": 91,
+   "med": 0.498,
+   "p10": 0.491,
+   "p90": 0.512
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 68.96778,
+  "lon": 33.09922,
+  "rows": 365,
+  "solarGateMedAbs": 1.11,
+  "fajrAngle": {
+   "n": 146,
+   "med": 15.95,
+   "min": 15.85,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 153,
+   "med": 14.95,
+   "min": 12.35,
+   "max": 15.3,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 200,
+    "med": 0.53,
+    "min": -1.1,
+    "max": 1.7
+   },
+   "dhuhr": {
+    "n": 200,
+    "med": 0.58,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 200,
+    "med": -1.27,
+    "min": -17.6,
+    "max": 9.1
+   },
+   "asrHanafi": {
+    "n": 200,
+    "med": -41.75,
+    "min": -74.7,
+    "max": -6.1
+   },
+   "maghrib": {
+    "n": 200,
+    "med": -0.98,
+    "min": -2.3,
+    "max": 2.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-02",
+     "to": "2027-01-10",
+     "days": 40
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-06",
+     "to": "2027-09-07",
+     "days": 155
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-02",
+     "to": "2027-01-11",
+     "days": 41
+    },
+    {
+     "from": "2027-05-19",
+     "to": "2027-07-24",
+     "days": 67
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 431,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "nadym",
+  "nightFraction": {
+   "n": 136,
+   "med": 0.502,
+   "p10": 0.494,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 65.53333,
+  "lon": 72.51667,
+  "rows": 365,
+  "solarGateMedAbs": 0.82,
+  "fajrAngle": {
+   "n": 225,
+   "med": 15.95,
+   "min": 11.2,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 228,
+   "med": 15.05,
+   "min": 10.65,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.27,
+    "min": -1,
+    "max": 1.9
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.57,
+    "min": -3.8,
+    "max": 4.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.98,
+    "min": -83.8,
+    "max": -3.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.48,
+    "min": -1.3,
+    "max": 2.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-15",
+     "to": "2027-08-28",
+     "days": 136
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 416,
+   "isha": 433
+  }
+ },
+ {
+  "city": "neryungri",
+  "nightFraction": {
+   "n": 78,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 56.65836,
+  "lon": 124.72499,
+  "rows": 365,
+  "solarGateMedAbs": 0.52,
+  "fajrAngle": {
+   "n": 283,
+   "med": 15.95,
+   "min": 10.8,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 290,
+   "med": 15.05,
+   "min": 10,
+   "max": 15.45,
+   "jun": 10.6,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.48,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.4,
+    "max": 1.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.68,
+    "min": -75.9,
+    "max": -23.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.3,
+    "max": 1.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-14",
+     "to": "2027-07-30",
+     "days": 78
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 390,
+   "isha": 404
+  }
+ },
+ {
+  "city": "nizhnevartovsk",
+  "nightFraction": {
+   "n": 110,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 60.9344,
+  "lon": 76.5531,
+  "rows": 365,
+  "solarGateMedAbs": 0.57,
+  "fajrAngle": {
+   "n": 253,
+   "med": 15.95,
+   "min": 12.5,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 260,
+   "med": 15.05,
+   "min": 10.45,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.6,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.52,
+    "min": -1.3,
+    "max": 2.4
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.4,
+    "min": -78.8,
+    "max": -16.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.7,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-28",
+     "to": "2027-08-15",
+     "days": 110
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 401,
+   "isha": 416
+  }
+ },
+ {
+  "city": "norilsk",
+  "nightFraction": {
+   "n": 90,
+   "med": 0.499,
+   "p10": 0.492,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Krasnoyarsk",
+  "lat": 69.3535,
+  "lon": 88.2027,
+  "rows": 365,
+  "solarGateMedAbs": 1.11,
+  "fajrAngle": {
+   "n": 156,
+   "med": 15.95,
+   "min": 11.45,
+   "max": 16.2,
+   "jun": null,
+   "dec": 16
+  },
+  "ishaAngle": {
+   "n": 160,
+   "med": 15,
+   "min": 10.55,
+   "max": 15.3,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 228,
+    "med": 0.08,
+    "min": -1.5,
+    "max": 2.1
+   },
+   "dhuhr": {
+    "n": 228,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 228,
+    "med": -0.43,
+    "min": -10.8,
+    "max": 8.5
+   },
+   "asrHanafi": {
+    "n": 228,
+    "med": -42.95,
+    "min": -73.5,
+    "max": -2
+   },
+   "maghrib": {
+    "n": 228,
+    "med": 0.15,
+    "min": -1.6,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-11-30",
+     "to": "2027-01-13",
+     "days": 45
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-05",
+     "to": "2027-09-08",
+     "days": 157
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-11-30",
+     "to": "2027-01-13",
+     "days": 45
+    },
+    {
+     "from": "2027-05-16",
+     "to": "2027-07-28",
+     "days": 74
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 433,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "novodvinsk",
+  "nightFraction": {
+   "n": 130,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.506
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 64.41638,
+  "lon": 40.81674,
+  "rows": 365,
+  "solarGateMedAbs": 0.75,
+  "fajrAngle": {
+   "n": 230,
+   "med": 15.95,
+   "min": 15.35,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 235,
+   "med": 15,
+   "min": 11.75,
+   "max": 15.65,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.5,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.33,
+    "min": -3.5,
+    "max": 4.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.7,
+    "min": -82.6,
+    "max": -7.4
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.48,
+    "min": -1.3,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-18",
+     "to": "2027-08-25",
+     "days": 130
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 412,
+   "isha": 429
+  }
+ },
+ {
+  "city": "novyy-urengoy",
+  "nightFraction": {
+   "n": 115,
+   "med": 0.499,
+   "p10": 0.493,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 66.08333,
+  "lon": 76.63333,
+  "rows": 365,
+  "solarGateMedAbs": 0.97,
+  "fajrAngle": {
+   "n": 221,
+   "med": 15.95,
+   "min": 10.65,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 225,
+   "med": 15,
+   "min": 10.1,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 330,
+    "med": 0.22,
+    "min": -1.3,
+    "max": 2
+   },
+   "dhuhr": {
+    "n": 330,
+    "med": 0.48,
+    "min": 0,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 330,
+    "med": 0.3,
+    "min": -5.3,
+    "max": 5.9
+   },
+   "asrHanafi": {
+    "n": 330,
+    "med": -44.32,
+    "min": -80.8,
+    "max": -0.8
+   },
+   "maghrib": {
+    "n": 330,
+    "med": 0.38,
+    "min": -1.5,
+    "max": 2.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-13",
+     "to": "2027-08-30",
+     "days": 140
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-06-12",
+     "to": "2027-07-01",
+     "days": 20
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 1448,
+   "isha": 436
+  }
+ },
+ {
+  "city": "noyabrsk",
+  "nightFraction": {
+   "n": 123,
+   "med": 0.5,
+   "p10": 0.497,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 63.19309,
+  "lon": 75.43728,
+  "rows": 365,
+  "solarGateMedAbs": 0.67,
+  "fajrAngle": {
+   "n": 236,
+   "med": 15.95,
+   "min": 14.85,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 244,
+   "med": 15.05,
+   "min": 11.15,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.6,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.32,
+    "min": -2,
+    "max": 3.2
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.92,
+    "min": -81.2,
+    "max": -11.2
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.55,
+    "min": -1,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-22",
+     "to": "2027-08-22",
+     "days": 123
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 408,
+   "isha": 424
+  }
+ },
+ {
+  "city": "nyagan",
+  "nightFraction": {
+   "n": 116,
+   "med": 0.501,
+   "p10": 0.497,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 62.14056,
+  "lon": 65.39361,
+  "rows": 365,
+  "solarGateMedAbs": 0.61,
+  "fajrAngle": {
+   "n": 243,
+   "med": 15.95,
+   "min": 10.75,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 250,
+   "med": 15,
+   "min": 10.25,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.38,
+    "min": -0.6,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.48,
+    "min": -1.8,
+    "max": 2.9
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.98,
+    "min": -79.9,
+    "max": -13.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.38,
+    "min": -0.8,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-25",
+     "to": "2027-08-18",
+     "days": 116
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 405,
+   "isha": 420
+  }
+ },
+ {
+  "city": "nyandoma",
+  "nightFraction": {
+   "n": 114,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 61.6718,
+  "lon": 40.21221,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 246,
+   "med": 15.95,
+   "min": 10.7,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 252,
+   "med": 15.05,
+   "min": 10.45,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.48,
+    "min": -0.3,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.38,
+    "min": -2.1,
+    "max": 3.3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.88,
+    "min": -79.6,
+    "max": -14.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.4,
+    "min": -1,
+    "max": 2.3
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-26",
+     "to": "2027-08-17",
+     "days": 114
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 403,
+   "isha": 418
+  }
+ },
+ {
+  "city": "okha",
+  "nightFraction": {
+   "n": 49,
+   "med": 0.5,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Sakhalin",
+  "lat": 53.59398,
+  "lon": 142.95279,
+  "rows": 365,
+  "solarGateMedAbs": 0.47,
+  "fajrAngle": {
+   "n": 307,
+   "med": 15.95,
+   "min": 13.1,
+   "max": 16.3,
+   "jun": 13.2,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 314,
+   "med": 15.05,
+   "min": 14.9,
+   "max": 15.2,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.2,
+    "max": 1.3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.67,
+    "min": -74.4,
+    "max": -27.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.1,
+    "max": 1.2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-28",
+     "to": "2027-07-15",
+     "days": 49
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 383,
+   "isha": 397
+  }
+ },
+ {
+  "city": "onega",
+  "nightFraction": {
+   "n": 128,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.505
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 63.9057,
+  "lon": 38.09944,
+  "rows": 365,
+  "solarGateMedAbs": 0.68,
+  "fajrAngle": {
+   "n": 231,
+   "med": 15.95,
+   "min": 15.85,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 238,
+   "med": 15,
+   "min": 11.95,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.47,
+    "min": -0.5,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -3,
+    "max": 4.3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.77,
+    "min": -81.7,
+    "max": -8.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.28,
+    "min": -1.2,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-19",
+     "to": "2027-08-24",
+     "days": 128
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 411,
+   "isha": 427
+  }
+ },
+ {
+  "city": "pechora",
+  "nightFraction": {
+   "n": 134,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.507
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 65.14717,
+  "lon": 57.22439,
+  "rows": 365,
+  "solarGateMedAbs": 0.8,
+  "fajrAngle": {
+   "n": 224,
+   "med": 15.95,
+   "min": 15.85,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 233,
+   "med": 15,
+   "min": 10.4,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.32,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.52,
+    "min": -3.9,
+    "max": 4.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.12,
+    "min": -83.3,
+    "max": -5.2
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.52,
+    "min": -1.3,
+    "max": 2.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-16",
+     "to": "2027-08-27",
+     "days": 134
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 415,
+   "isha": 431
+  }
+ },
+ {
+  "city": "petropavlovsk-kamchatsky",
+  "nightFraction": {
+   "n": 42,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.501
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Kamchatka",
+  "lat": 53.06393,
+  "lon": 158.62751,
+  "rows": 365,
+  "solarGateMedAbs": 0.57,
+  "fajrAngle": {
+   "n": 310,
+   "med": 15.9,
+   "min": 14.75,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 321,
+   "med": 15.05,
+   "min": 13.8,
+   "max": 15.2,
+   "jun": 14.2,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.8,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.1,
+    "max": 1.1
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.67,
+    "min": -74.3,
+    "max": -28.1
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.57,
+    "min": 0,
+    "max": 1.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-06-01",
+     "to": "2027-07-12",
+     "days": 42
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 382,
+   "isha": 395
+  }
+ },
+ {
+  "city": "petrozavodsk",
+  "nightFraction": {
+   "n": 114,
+   "med": 0.5,
+   "p10": 0.497,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 61.78491,
+  "lon": 34.34691,
+  "rows": 365,
+  "solarGateMedAbs": 0.5,
+  "fajrAngle": {
+   "n": 245,
+   "med": 15.95,
+   "min": 15.85,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 252,
+   "med": 15.05,
+   "min": 10.6,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.3,
+    "max": 1.2
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.53,
+    "min": -2.5,
+    "max": 3.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.1,
+    "min": -79.7,
+    "max": -14.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.28,
+    "min": -1.1,
+    "max": 2.3
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-26",
+     "to": "2027-08-17",
+     "days": 114
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 404,
+   "isha": 419
+  }
+ },
+ {
+  "city": "salekhard",
+  "nightFraction": {
+   "n": 109,
+   "med": 0.499,
+   "p10": 0.492,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 66.53373,
+  "lon": 66.60955,
+  "rows": 365,
+  "solarGateMedAbs": 0.94,
+  "fajrAngle": {
+   "n": 220,
+   "med": 15.95,
+   "min": 10.85,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 225,
+   "med": 15,
+   "min": 10.95,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 317,
+    "med": 0.28,
+    "min": -1,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 317,
+    "med": 0.53,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 317,
+    "med": -0.05,
+    "min": -10.1,
+    "max": 10.6
+   },
+   "asrHanafi": {
+    "n": 317,
+    "med": -42.27,
+    "min": -79.6,
+    "max": 3.9
+   },
+   "maghrib": {
+    "n": 317,
+    "med": 0.33,
+    "min": -1.6,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-12",
+     "to": "2027-08-31",
+     "days": 142
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-06-04",
+     "to": "2027-07-06",
+     "days": 33
+    },
+    {
+     "from": "2027-07-08",
+     "to": "2027-07-08",
+     "days": 1
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 1851,
+   "isha": 1449
+  }
+ },
+ {
+  "city": "segezha",
+  "nightFraction": {
+   "n": 126,
+   "med": 0.5,
+   "p10": 0.497,
+   "p90": 0.505
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 63.74549,
+  "lon": 34.31614,
+  "rows": 365,
+  "solarGateMedAbs": 0.68,
+  "fajrAngle": {
+   "n": 232,
+   "med": 15.95,
+   "min": 11.75,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 239,
+   "med": 15,
+   "min": 10,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.4,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.25,
+    "min": -3.2,
+    "max": 4.2
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.93,
+    "min": -81.9,
+    "max": -9.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.43,
+    "min": -1.4,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-20",
+     "to": "2027-08-23",
+     "days": 126
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 409,
+   "isha": 426
+  }
+ },
+ {
+  "city": "severobaykal-sk",
+  "nightFraction": {
+   "n": 70,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Irkutsk",
+  "lat": 55.63826,
+  "lon": 109.32709,
+  "rows": 365,
+  "solarGateMedAbs": 0.52,
+  "fajrAngle": {
+   "n": 287,
+   "med": 15.95,
+   "min": 12.6,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 297,
+   "med": 15.05,
+   "min": 13.25,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.6,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.6,
+    "max": 1.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.53,
+    "min": -75.2,
+    "max": -25.2
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.4,
+    "max": 1.4
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-18",
+     "to": "2027-07-26",
+     "days": 70
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 387,
+   "isha": 402
+  }
+ },
+ {
+  "city": "severodvinsk",
+  "nightFraction": {
+   "n": 131,
+   "med": 0.501,
+   "p10": 0.496,
+   "p90": 0.506
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 64.55825,
+  "lon": 39.82971,
+  "rows": 365,
+  "solarGateMedAbs": 0.71,
+  "fajrAngle": {
+   "n": 228,
+   "med": 15.95,
+   "min": 13.5,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 233,
+   "med": 15.05,
+   "min": 12.25,
+   "max": 15.4,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.6,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -3.7,
+    "max": 4.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.95,
+    "min": -82.5,
+    "max": -7
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.37,
+    "min": -1.2,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-18",
+     "to": "2027-08-26",
+     "days": 131
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 412,
+   "isha": 429
+  }
+ },
+ {
+  "city": "severomorsk",
+  "nightFraction": {
+   "n": 91,
+   "med": 0.498,
+   "p10": 0.49,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 69.06936,
+  "lon": 33.40807,
+  "rows": 365,
+  "solarGateMedAbs": 1.13,
+  "fajrAngle": {
+   "n": 140,
+   "med": 16,
+   "min": 15.85,
+   "max": 16.1,
+   "jun": null,
+   "dec": 16
+  },
+  "ishaAngle": {
+   "n": 150,
+   "med": 14.95,
+   "min": 10.1,
+   "max": 15.3,
+   "jun": null,
+   "dec": 14.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 196,
+    "med": 0.48,
+    "min": -1,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 196,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 196,
+    "med": -1.28,
+    "min": -22.8,
+    "max": 6.6
+   },
+   "asrHanafi": {
+    "n": 196,
+    "med": -42.93,
+    "min": -73.2,
+    "max": -15.1
+   },
+   "maghrib": {
+    "n": 196,
+    "med": -0.82,
+    "min": -2.4,
+    "max": 2.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-01",
+     "to": "2027-01-11",
+     "days": 42
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-05",
+     "to": "2027-09-07",
+     "days": 156
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-01",
+     "to": "2027-01-11",
+     "days": 42
+    },
+    {
+     "from": "2027-05-19",
+     "to": "2027-05-20",
+     "days": 2
+    },
+    {
+     "from": "2027-05-22",
+     "to": "2027-07-24",
+     "days": 64
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 431,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "strezhevoy",
+  "nightFraction": {
+   "n": 108,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Tomsk",
+  "lat": 60.7333,
+  "lon": 77.5889,
+  "rows": 365,
+  "solarGateMedAbs": 0.51,
+  "fajrAngle": {
+   "n": 253,
+   "med": 15.95,
+   "min": 12.7,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 260,
+   "med": 15.05,
+   "min": 10.9,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.5,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.38,
+    "min": -1.3,
+    "max": 2.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.98,
+    "min": -78.8,
+    "max": -16.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.47,
+    "min": -0.7,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-29",
+     "to": "2027-08-14",
+     "days": 108
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 400,
+   "isha": 416
+  }
+ },
+ {
+  "city": "surgut",
+  "nightFraction": {
+   "n": 112,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Anadyr",
+  "lat": 61.2507,
+  "lon": 178.2878,
+  "rows": 365,
+  "solarGateMedAbs": 0.57,
+  "fajrAngle": {
+   "n": 248,
+   "med": 16,
+   "min": 11.6,
+   "max": 16.3,
+   "jun": null,
+   "dec": 16
+  },
+  "ishaAngle": {
+   "n": 254,
+   "med": 15,
+   "min": 12.55,
+   "max": 15.1,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0,
+    "min": -1.9,
+    "max": 1.7
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": -0.05,
+    "min": -0.5,
+    "max": 0.4
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.75,
+    "min": -79.7,
+    "max": -16.4
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0,
+    "min": -0.6,
+    "max": 0.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-27",
+     "to": "2027-08-16",
+     "days": 112
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 402,
+   "isha": 417
+  }
+ },
+ {
+  "city": "syktyvkar",
+  "nightFraction": {
+   "n": 114,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 61.66393,
+  "lon": 50.8163,
+  "rows": 365,
+  "solarGateMedAbs": 0.55,
+  "fajrAngle": {
+   "n": 245,
+   "med": 15.95,
+   "min": 10.45,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 252,
+   "med": 15.05,
+   "min": 11.25,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.4,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -2,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.23,
+    "min": -79.5,
+    "max": -14.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.4,
+    "min": -0.9,
+    "max": 2.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-26",
+     "to": "2027-08-17",
+     "days": 114
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 403,
+   "isha": 419
+  }
+ },
+ {
+  "city": "talnakh",
+  "nightFraction": {
+   "n": 90,
+   "med": 0.503,
+   "p10": 0.493,
+   "p90": 0.509
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Krasnoyarsk",
+  "lat": 69.4865,
+  "lon": 88.3972,
+  "rows": 365,
+  "solarGateMedAbs": 1.13,
+  "fajrAngle": {
+   "n": 148,
+   "med": 16,
+   "min": 15.8,
+   "max": 16.2,
+   "jun": null,
+   "dec": 16
+  },
+  "ishaAngle": {
+   "n": 156,
+   "med": 15,
+   "min": 11.5,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 223,
+    "med": 0,
+    "min": -1.7,
+    "max": 1.9
+   },
+   "dhuhr": {
+    "n": 223,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 223,
+    "med": -0.37,
+    "min": -10.8,
+    "max": 8
+   },
+   "asrHanafi": {
+    "n": 223,
+    "med": -42.82,
+    "min": -74.5,
+    "max": -3.6
+   },
+   "maghrib": {
+    "n": 223,
+    "med": -0.02,
+    "min": -1.5,
+    "max": 2.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-11-29",
+     "to": "2027-01-13",
+     "days": 46
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-04",
+     "to": "2027-09-08",
+     "days": 158
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-11-29",
+     "to": "2027-01-14",
+     "days": 47
+    },
+    {
+     "from": "2027-05-16",
+     "to": "2027-05-18",
+     "days": 3
+    },
+    {
+     "from": "2027-05-20",
+     "to": "2027-07-28",
+     "days": 70
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 434,
+   "isha": 1450
+  }
+ },
+ {
+  "city": "tynda",
+  "nightFraction": {
+   "n": 66,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 55.14941,
+  "lon": 124.73676,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 291,
+   "med": 15.9,
+   "min": 12.8,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.9
+  },
+  "ishaAngle": {
+   "n": 308,
+   "med": 15.1,
+   "min": 11.45,
+   "max": 15.25,
+   "jun": 11.65,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.6,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.57,
+    "min": -0.4,
+    "max": 1.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.62,
+    "min": -75.1,
+    "max": -25.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.58,
+    "min": -0.1,
+    "max": 1.3
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-20",
+     "to": "2027-07-24",
+     "days": 66
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 387,
+   "isha": 400
+  }
+ },
+ {
+  "city": "ukhta",
+  "nightFraction": {
+   "n": 126,
+   "med": 0.501,
+   "p10": 0.497,
+   "p90": 0.505
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 63.56904,
+  "lon": 53.69141,
+  "rows": 365,
+  "solarGateMedAbs": 0.63,
+  "fajrAngle": {
+   "n": 235,
+   "med": 15.95,
+   "min": 10.15,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 240,
+   "med": 15.05,
+   "min": 12.6,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.43,
+    "min": -0.5,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.38,
+    "min": -2.4,
+    "max": 3.6
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -48.92,
+    "min": -81.5,
+    "max": -10.2
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.32,
+    "min": -1.1,
+    "max": 2.3
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-20",
+     "to": "2027-08-23",
+     "days": 126
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 409,
+   "isha": 425
+  }
+ },
+ {
+  "city": "uray",
+  "nightFraction": {
+   "n": 104,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yekaterinburg",
+  "lat": 60.13044,
+  "lon": 64.78896,
+  "rows": 365,
+  "solarGateMedAbs": 0.55,
+  "fajrAngle": {
+   "n": 257,
+   "med": 15.95,
+   "min": 11,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 266,
+   "med": 15,
+   "min": 10.55,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.3,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.55,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.47,
+    "min": -1.4,
+    "max": 2.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.15,
+    "min": -78.3,
+    "max": -18
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.8,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-01",
+     "to": "2027-08-12",
+     "days": 104
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 399,
+   "isha": 414
+  }
+ },
+ {
+  "city": "usinsk",
+  "nightFraction": {
+   "n": 116,
+   "med": 0.499,
+   "p10": 0.494,
+   "p90": 0.511
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 66.00866,
+  "lon": 57.53054,
+  "rows": 365,
+  "solarGateMedAbs": 0.89,
+  "fajrAngle": {
+   "n": 222,
+   "med": 15.95,
+   "min": 13.75,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 225,
+   "med": 15.05,
+   "min": 11.8,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 333,
+    "med": 0.22,
+    "min": -0.8,
+    "max": 2.2
+   },
+   "dhuhr": {
+    "n": 333,
+    "med": 0.55,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 333,
+    "med": 0.63,
+    "min": -5.9,
+    "max": 6.7
+   },
+   "asrHanafi": {
+    "n": 333,
+    "med": -44.37,
+    "min": -80.9,
+    "max": -0.5
+   },
+   "maghrib": {
+    "n": 333,
+    "med": 1,
+    "min": -1.9,
+    "max": 2.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-14",
+     "to": "2027-08-30",
+     "days": 139
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2027-06-07",
+     "to": "2027-07-06",
+     "days": 30
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 1448,
+   "isha": 435
+  }
+ },
+ {
+  "city": "ust-ilimsk",
+  "nightFraction": {
+   "n": 90,
+   "med": 0.5,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Irkutsk",
+  "lat": 58.00056,
+  "lon": 102.66194,
+  "rows": 365,
+  "solarGateMedAbs": 0.47,
+  "fajrAngle": {
+   "n": 269,
+   "med": 15.95,
+   "min": 14.35,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 279,
+   "med": 15.05,
+   "min": 10.1,
+   "max": 15.25,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.37,
+    "min": -0.5,
+    "max": 1.5
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.45,
+    "min": -0.7,
+    "max": 1.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.42,
+    "min": -76.5,
+    "max": -21.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.47,
+    "min": -0.4,
+    "max": 1.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-08",
+     "to": "2027-08-05",
+     "days": 90
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 394,
+   "isha": 407
+  }
+ },
+ {
+  "city": "velikiy-ustyug",
+  "nightFraction": {
+   "n": 108,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.504
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 60.76186,
+  "lon": 46.31352,
+  "rows": 365,
+  "solarGateMedAbs": 0.5,
+  "fajrAngle": {
+   "n": 250,
+   "med": 15.95,
+   "min": 11.1,
+   "max": 16.1,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 257,
+   "med": 15.05,
+   "min": 12.15,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.3,
+    "max": 1.3
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.5,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.45,
+    "min": -1.8,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.03,
+    "min": -78.5,
+    "max": -16.9
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.3,
+    "min": -0.9,
+    "max": 2.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-29",
+     "to": "2027-08-14",
+     "days": 108
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 400,
+   "isha": 416
+  }
+ },
+ {
+  "city": "vilyuchinsk",
+  "nightFraction": {
+   "n": 40,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Kamchatka",
+  "lat": 52.93196,
+  "lon": 158.40585,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 312,
+   "med": 15.95,
+   "min": 15.15,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 324,
+   "med": 15.05,
+   "min": 13.65,
+   "max": 15.2,
+   "jun": 14.15,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.47,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.1,
+    "max": 1.2
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.68,
+    "min": -74,
+    "max": -28.1
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0,
+    "max": 1.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-06-02",
+     "to": "2027-07-11",
+     "days": 40
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 381,
+   "isha": 394
+  }
+ },
+ {
+  "city": "vorkuta",
+  "nightFraction": {
+   "n": 100,
+   "med": 0.503,
+   "p10": 0.494,
+   "p90": 0.512
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Europe/Moscow",
+  "lat": 67.50867,
+  "lon": 64.0667,
+  "rows": 365,
+  "solarGateMedAbs": 0.94,
+  "fajrAngle": {
+   "n": 202,
+   "med": 15.95,
+   "min": 11.9,
+   "max": 16.15,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 202,
+   "med": 15.05,
+   "min": 13.1,
+   "max": 15.35,
+   "jun": null,
+   "dec": 15
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 280,
+    "med": 0.2,
+    "min": -1.1,
+    "max": 1.9
+   },
+   "dhuhr": {
+    "n": 280,
+    "med": 0.55,
+    "min": 0.1,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 280,
+    "med": -0.3,
+    "min": -12.8,
+    "max": 12.2
+   },
+   "asrHanafi": {
+    "n": 280,
+    "med": -41.87,
+    "min": -76.9,
+    "max": 5.5
+   },
+   "maghrib": {
+    "n": 280,
+    "med": 0.22,
+    "min": -1.8,
+    "max": 2.7
+   }
+  },
+  "polar": {
+   "noonCollapse": [
+    {
+     "from": "2026-12-17",
+     "to": "2026-12-27",
+     "days": 11
+    }
+   ],
+   "nightMid": [
+    {
+     "from": "2027-04-09",
+     "to": "2027-09-03",
+     "days": 148
+    }
+   ],
+   "neverRises": [
+    {
+     "from": "2026-12-17",
+     "to": "2026-12-27",
+     "days": 11
+    },
+    {
+     "from": "2027-05-23",
+     "to": "2027-07-20",
+     "days": 59
+    }
+   ]
+  },
+  "amplitude": {
+   "fajr": 1450,
+   "isha": 442
+  }
+ },
+ {
+  "city": "yakutsk",
+  "nightFraction": {
+   "n": 116,
+   "med": 0.501,
+   "p10": 0.498,
+   "p90": 0.503
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Yakutsk",
+  "lat": 62.03114,
+  "lon": 129.72288,
+  "rows": 365,
+  "solarGateMedAbs": 0.59,
+  "fajrAngle": {
+   "n": 243,
+   "med": 15.95,
+   "min": 15,
+   "max": 16.2,
+   "jun": null,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 249,
+   "med": 15.05,
+   "min": 11.75,
+   "max": 15.3,
+   "jun": null,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.37,
+    "min": -1,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.43,
+    "min": 0,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.42,
+    "min": -0.7,
+    "max": 1.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.37,
+    "min": -79.9,
+    "max": -14.2
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.55,
+    "min": -0.4,
+    "max": 1.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-25",
+     "to": "2027-08-18",
+     "days": 116
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 404,
+   "isha": 420
+  }
+ },
+ {
+  "city": "yelizovo",
+  "nightFraction": {
+   "n": 44,
+   "med": 0.501,
+   "p10": 0.499,
+   "p90": 0.502
+  },
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Kamchatka",
+  "lat": 53.18936,
+  "lon": 158.38282,
+  "rows": 365,
+  "solarGateMedAbs": 0.53,
+  "fajrAngle": {
+   "n": 311,
+   "med": 15.95,
+   "min": 13.55,
+   "max": 16.2,
+   "jun": 13.6,
+   "dec": 15.95
+  },
+  "ishaAngle": {
+   "n": 319,
+   "med": 15.1,
+   "min": 14.4,
+   "max": 15.2,
+   "jun": 14.4,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.5,
+    "min": -0.7,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0,
+    "max": 1
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.1,
+    "max": 1.1
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.52,
+    "min": -74.4,
+    "max": -27.8
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.52,
+    "min": 0,
+    "max": 1.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-05-31",
+     "to": "2027-07-13",
+     "days": 44
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 382,
+   "isha": 395
+  }
+ },
+ {
+  "city": "yuzhno-sakhalinsk",
+  "nightFraction": null,
+  "country": "Russia",
+  "source": "tawkit.net",
+  "tz": "Asia/Sakhalin",
+  "lat": 46.9543,
+  "lon": 142.73559,
+  "rows": 365,
+  "solarGateMedAbs": 0.56,
+  "fajrAngle": {
+   "n": 365,
+   "med": 15.9,
+   "min": 15.75,
+   "max": 16.15,
+   "jun": 16,
+   "dec": 15.9
+  },
+  "ishaAngle": {
+   "n": 365,
+   "med": 15.05,
+   "min": 14.95,
+   "max": 15.25,
+   "jun": 15,
+   "dec": 15.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.52,
+    "min": -0.6,
+    "max": 1.4
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.48,
+    "min": 0.1,
+    "max": 0.9
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.53,
+    "min": -0.2,
+    "max": 1.2
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -50.28,
+    "min": -73,
+    "max": -33.1
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.57,
+    "min": 0,
+    "max": 1.1
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 265,
+   "isha": 264
+  }
+ },
+ {
+  "city": "avesta",
+  "nightFraction": null,
+  "country": "Sweden",
+  "source": "tawkit.net",
+  "tz": "Europe/Stockholm",
+  "lat": 60.14274,
+  "lon": 16.16295,
+  "rows": 364,
+  "solarGateMedAbs": 59.1,
+  "fajrAngle": {
+   "n": 154,
+   "med": 18.05,
+   "min": 17.95,
+   "max": 18.1,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 154,
+   "med": 16.9,
+   "min": 16.75,
+   "max": 17.25,
+   "jun": null,
+   "dec": 16.95
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 154,
+    "med": -0.15,
+    "min": -0.9,
+    "max": 0.6
+   },
+   "dhuhr": {
+    "n": 154,
+    "med": 4.9,
+    "min": 4.5,
+    "max": 5.4
+   },
+   "asrShafi": {
+    "n": 154,
+    "med": -1.88,
+    "min": -3.1,
+    "max": 3
+   },
+   "asrHanafi": {
+    "n": 154,
+    "med": -27.93,
+    "min": -51,
+    "max": -18.1
+   },
+   "maghrib": {
+    "n": 154,
+    "med": 0.05,
+    "min": -1.5,
+    "max": 1.5
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 1630,
+   "isha": 415
+  }
+ },
+ {
+  "city": "gaevle",
+  "nightFraction": {
+   "n": 120,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Sweden",
+  "source": "tawkit.net",
+  "tz": "Europe/Stockholm",
+  "lat": 60.67452,
+  "lon": 17.14174,
+  "rows": 365,
+  "solarGateMedAbs": 0.22,
+  "fajrAngle": {
+   "n": 239,
+   "med": 18,
+   "min": 11.2,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 249,
+   "med": 17,
+   "min": 10.45,
+   "max": 17.15,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0,
+    "min": -1.8,
+    "max": 1.6
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0.02,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": -0.07,
+    "min": -1.4,
+    "max": 1.8
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -50.12,
+    "min": -78.9,
+    "max": -17.1
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.18,
+    "min": -1.8,
+    "max": 1.6
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-22",
+     "to": "2027-08-19",
+     "days": 120
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 323,
+   "isha": 457
+  }
+ },
+ {
+  "city": "sundsvall",
+  "nightFraction": {
+   "n": 130,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Sweden",
+  "source": "tawkit.net",
+  "tz": "Europe/Stockholm",
+  "lat": 62.39129,
+  "lon": 17.3063,
+  "rows": 365,
+  "solarGateMedAbs": 0.23,
+  "fajrAngle": {
+   "n": 229,
+   "med": 18,
+   "min": 14.05,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 237,
+   "med": 17.05,
+   "min": 10.25,
+   "max": 17.2,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.02,
+    "min": -1.9,
+    "max": 1.8
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": -0.03,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": 0.02,
+    "min": -1.9,
+    "max": 2.5
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -49.65,
+    "min": -80.6,
+    "max": -13.6
+   },
+   "maghrib": {
+    "n": 365,
+    "med": 0.08,
+    "min": -1.8,
+    "max": 1.9
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-17",
+     "to": "2027-08-24",
+     "days": 130
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 326,
+   "isha": 462
+  }
+ },
+ {
+  "city": "umea",
+  "nightFraction": {
+   "n": 138,
+   "med": 0.5,
+   "p10": 0.498,
+   "p90": 0.502
+  },
+  "country": "Sweden",
+  "source": "tawkit.net",
+  "tz": "Europe/Stockholm",
+  "lat": 63.82842,
+  "lon": 20.25972,
+  "rows": 365,
+  "solarGateMedAbs": 0.28,
+  "fajrAngle": {
+   "n": 221,
+   "med": 18,
+   "min": 17.75,
+   "max": 18.25,
+   "jun": null,
+   "dec": 18
+  },
+  "ishaAngle": {
+   "n": 233,
+   "med": 17,
+   "min": 10.2,
+   "max": 17.2,
+   "jun": null,
+   "dec": 17.05
+  },
+  "solarMargin": {
+   "sunrise": {
+    "n": 365,
+    "med": 0.02,
+    "min": -2.1,
+    "max": 2
+   },
+   "dhuhr": {
+    "n": 365,
+    "med": 0,
+    "min": -0.5,
+    "max": 0.5
+   },
+   "asrShafi": {
+    "n": 365,
+    "med": -0.03,
+    "min": -2.6,
+    "max": 3.1
+   },
+   "asrHanafi": {
+    "n": 365,
+    "med": -50,
+    "min": -82.2,
+    "max": -9.7
+   },
+   "maghrib": {
+    "n": 365,
+    "med": -0.02,
+    "min": -2,
+    "max": 2
+   }
+  },
+  "polar": {
+   "noonCollapse": [],
+   "nightMid": [
+    {
+     "from": "2027-04-13",
+     "to": "2027-08-28",
+     "days": 138
+    }
+   ],
+   "neverRises": []
+  },
+  "amplitude": {
+   "fajr": 330,
+   "isha": 466
+  }
+ }
+]

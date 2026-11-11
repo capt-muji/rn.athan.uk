@@ -1,0 +1,168 @@
+{
+ "year": 2026,
+ "scanned": 5658,
+ "variants": [
+  {
+   "id": 53,
+   "name": "Павлодар қаласы",
+   "lat": "52.315556",
+   "lng": "76.956389",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62146,
+     "ok": true,
+     "margin": 5
+    }
+   ],
+   "marginAfter": 5,
+   "fixed": true
+  },
+  {
+   "id": 6023,
+   "name": "Шолпан",
+   "lat": "47.062351",
+   "lng": "80.734272",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62137,
+     "ok": true,
+     "margin": 3
+    }
+   ],
+   "marginAfter": 3,
+   "fixed": true
+  },
+  {
+   "id": 7307,
+   "name": "Тасқұдық",
+   "lat": "47.788858",
+   "lng": "54.500573",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62139,
+     "ok": true,
+     "margin": 3
+    }
+   ],
+   "marginAfter": 3,
+   "fixed": true
+  },
+  {
+   "id": 7581,
+   "name": "Жігер",
+   "lat": "49.692263",
+   "lng": "47.057689",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62136,
+     "ok": true,
+     "margin": 5
+    }
+   ],
+   "marginAfter": 5,
+   "fixed": true
+  },
+  {
+   "id": 8429,
+   "name": "Тасарал",
+   "lat": "46.302924",
+   "lng": "73.968152",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62138,
+     "ok": true,
+     "margin": 3
+    }
+   ],
+   "marginAfter": 3,
+   "fixed": true
+  },
+  {
+   "id": 9597,
+   "name": "Жаңатілек",
+   "lat": "51.780409",
+   "lng": "77.265292",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62140,
+     "ok": true,
+     "margin": 5
+    }
+   ],
+   "marginAfter": 5,
+   "fixed": true
+  },
+  {
+   "id": 9699,
+   "name": "Алексеевка",
+   "lat": "52.530100",
+   "lng": "78.501769",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62141,
+     "ok": true,
+     "margin": 5
+    }
+   ],
+   "marginAfter": 5,
+   "fixed": true
+  },
+  {
+   "id": 9762,
+   "name": "Междуозерное",
+   "lat": "53.447639",
+   "lng": "67.955826",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62143,
+     "ok": true,
+     "margin": 5
+    }
+   ],
+   "marginAfter": 5,
+   "fixed": true
+  },
+  {
+   "id": 10633,
+   "name": "Сарытоғай",
+   "lat": "42.599038",
+   "lng": "69.416370",
+   "year": 2026,
+   "defect": "margin 3/5",
+   "attempts": [
+    {
+     "attempt": 1,
+     "status": 62140,
+     "ok": true,
+     "margin": 3
+    }
+   ],
+   "marginAfter": 3,
+   "fixed": true
+  }
+ ]
+}

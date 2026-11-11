@@ -1,0 +1,96 @@
+{
+ "city": "dudinka",
+ "nightFraction": {
+  "n": 91,
+  "med": 0.499,
+  "p10": 0.492,
+  "p90": 0.509
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Krasnoyarsk",
+ "lat": 69.40583,
+ "lon": 86.17778,
+ "rows": 365,
+ "solarGateMedAbs": 1.08,
+ "fajrAngle": {
+  "n": 154,
+  "med": 16,
+  "min": 11.4,
+  "max": 16.15,
+  "jun": null,
+  "dec": 16
+ },
+ "ishaAngle": {
+  "n": 161,
+  "med": 15,
+  "min": 10.5,
+  "max": 15.25,
+  "jun": null,
+  "dec": 14.95
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 229,
+   "med": 0.08,
+   "min": -1.6,
+   "max": 2.2
+  },
+  "dhuhr": {
+   "n": 229,
+   "med": 0.53,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 229,
+   "med": -0.32,
+   "min": -12.1,
+   "max": 9.3
+  },
+  "asrHanafi": {
+   "n": 229,
+   "med": -43.23,
+   "min": -73.8,
+   "max": -1.2
+  },
+  "maghrib": {
+   "n": 229,
+   "med": 0.12,
+   "min": -1.8,
+   "max": 2.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [
+   {
+    "from": "2026-11-29",
+    "to": "2027-01-13",
+    "days": 46
+   }
+  ],
+  "nightMid": [
+   {
+    "from": "2027-04-04",
+    "to": "2027-09-08",
+    "days": 158
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2026-11-29",
+    "to": "2027-01-13",
+    "days": 46
+   },
+   {
+    "from": "2027-05-15",
+    "to": "2027-07-29",
+    "days": 76
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 1863,
+  "isha": 1450
+ }
+}

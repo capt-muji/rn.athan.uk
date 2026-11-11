@@ -1,0 +1,204 @@
+{
+ "id": "cl-san-felipe-wayback",
+ "name": "San Felipe",
+ "city": "San Felipe",
+ "tz": "America/Santiago",
+ "lat": -32.751,
+ "lon": -70.726,
+ "address": "city centre",
+ "rows": 62,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 16.9,
+  "ishaKind": "angle",
+  "isha": 18,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 45.2,
+   "w1Pct": 100,
+   "mean": -0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 45.2,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.61,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.35,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.02,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.31,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 30.6,
+   "w1Pct": 88.7,
+   "mean": 0.39,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 88.7,
+     "exactPct": 30.6,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 45.2,
+   "w1Pct": 100,
+   "mean": -0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 45.2,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 58.1,
+   "w1Pct": 100,
+   "mean": -0.39,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 58.1,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 64.5,
+   "w1Pct": 100,
+   "mean": 0.35,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 64.5,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 85.5,
+   "w1Pct": 100,
+   "mean": 0.02,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 85.5,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 69.4,
+   "w1Pct": 100,
+   "mean": 0.31,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 69.4,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 30.6,
+   "w1Pct": 88.7,
+   "mean": 0.39,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 88.7,
+     "exactPct": 30.6,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

@@ -1,0 +1,265 @@
+{
+ "id": "cl-arica-wayback",
+ "name": "Arica",
+ "city": "Arica",
+ "tz": "America/Santiago",
+ "lat": -18.478,
+ "lon": -70.313,
+ "address": "city centre",
+ "rows": 93,
+ "repairRows": 0,
+ "years": [
+  2022,
+  2023
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 16.5,
+  "ishaKind": "angle",
+  "isha": 18.3,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 5,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 93,
+  "fajr": {
+   "exactPct": 47.3,
+   "w1Pct": 96.8,
+   "mean": -0.47,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 95.2,
+     "exactPct": 29,
+     "worst": -2
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 83.9,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.46,
+   "worst": 6,
+   "med": 5,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.39,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.38,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.4,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 34.4,
+   "w1Pct": 100,
+   "mean": 0.4,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 43.5,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 16.1,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 93,
+  "fajr": {
+   "exactPct": 47.3,
+   "w1Pct": 96.8,
+   "mean": -0.47,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 95.2,
+     "exactPct": 29,
+     "worst": -2
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 83.9,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 53.8,
+   "w1Pct": 100,
+   "mean": 0.46,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 50,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 61.3,
+   "w1Pct": 100,
+   "mean": 0.39,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 74.2,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 58.1,
+   "w1Pct": 100,
+   "mean": 0.38,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 85.5,
+     "worst": -1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 3.2,
+     "worst": 1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 60.2,
+   "w1Pct": 100,
+   "mean": 0.4,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 62.9,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 52.7,
+   "w1Pct": 87.1,
+   "mean": -0.6,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 80.6,
+     "exactPct": 37.1,
+     "worst": -2
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 83.9,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

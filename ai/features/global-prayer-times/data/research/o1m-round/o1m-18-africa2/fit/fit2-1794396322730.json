@@ -1,0 +1,196 @@
+[
+ {
+  "file": "mq-masjid-kisota-mji-mwema-dar-es-salaam-17106-tanzania.json",
+  "source": "Masjid Kisota - DAR ES SALAAM",
+  "label": "Masjid Kisota - DAR ES SALAAM",
+  "lat": -6.8526137,
+  "lon": 39.3368282,
+  "tz": "Africa/Dar_es_Salaam",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.9,
+    "exact": 337,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.08,
+    "n": 365
+   },
+   "isha": {
+    "angle": 17.1,
+    "exact": 329,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.1,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 337,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.08,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 202,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.45,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 195,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.47,
+    "n": 365
+   },
+   "asr": {
+    "exact": 131,
+    "within1": 311,
+    "worst": 2,
+    "mae": 0.79,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 195,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.47,
+    "n": 365
+   },
+   "isha": {
+    "exact": 329,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.1,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 2136,
+   "of": 2190,
+   "worst": 2
+  },
+  "amplitude_fajr_jan_jul": -9
+ },
+ {
+  "file": "mq-quba-mosque-dar-es-salaam-14113-tanzania.json",
+  "source": "Masjid Quba - DAR ES SALAAM",
+  "label": "Masjid Quba - DAR ES SALAAM",
+  "lat": -6.7801831404795,
+  "lon": 39.23303604126,
+  "tz": "Africa/Dar_es_Salaam",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.9,
+    "exact": 338,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "isha": {
+    "angle": 17.1,
+    "exact": 340,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 338,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 204,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.44,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 184,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.5,
+    "n": 365
+   },
+   "asr": {
+    "exact": 104,
+    "within1": 284,
+    "worst": 3,
+    "mae": 0.94,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 207,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.43,
+    "n": 365
+   },
+   "isha": {
+    "exact": 340,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 2109,
+   "of": 2190,
+   "worst": 3
+  },
+  "amplitude_fajr_jan_jul": -9
+ }
+]

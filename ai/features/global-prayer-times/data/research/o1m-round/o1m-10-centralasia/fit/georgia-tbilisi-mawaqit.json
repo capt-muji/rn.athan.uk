@@ -1,0 +1,77 @@
+{
+ "city": "Tbilisi",
+ "surface": "mawaqit (Tbilisi Juma Mosque)",
+ "engine": "adhan 4.4.6",
+ "params": {
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "madhab": "Shafi",
+  "highLatitudeRule": "TwilightAngle",
+  "rounding": "None",
+  "tz": "Asia/Tbilisi UTC+4"
+ },
+ "coords": {
+  "lat": 41.74,
+  "lng": 44.81,
+  "note": "mawaqit listed 41.687/44.81; 41.740 minimises day-length spread (0.70 min)"
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -7,
+  "dhuhr": 5,
+  "asr": 4,
+  "maghrib": 7,
+  "isha": 0
+ },
+ "cols": {
+  "fajr": {
+   "n": 366,
+   "w1": 100,
+   "exact": 84.4,
+   "mae": 0.28,
+   "worst": 1.3
+  },
+  "sunrise": {
+   "n": 366,
+   "w1": 99.7,
+   "exact": 85.8,
+   "mae": 0.28,
+   "worst": 2
+  },
+  "dhuhr": {
+   "n": 366,
+   "w1": 100,
+   "exact": 91,
+   "mae": 0.26,
+   "worst": 0.6
+  },
+  "asr": {
+   "n": 366,
+   "w1": 93.4,
+   "exact": 32.2,
+   "mae": 0.77,
+   "worst": 1.8
+  },
+  "maghrib": {
+   "n": 366,
+   "w1": 96.7,
+   "exact": 37.7,
+   "mae": 0.66,
+   "worst": 1.8
+  },
+  "isha": {
+   "n": 366,
+   "w1": 89.6,
+   "exact": 22.7,
+   "mae": 0.9,
+   "worst": 1.9
+  }
+ },
+ "all": {
+  "n": 2196,
+  "w1": 96.6,
+  "exact": 59,
+  "mae": 0.52,
+  "worst": 2
+ }
+}

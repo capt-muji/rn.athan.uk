@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-bardoli-ihsan-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 20.08,
+  "lon": 68.58
+ },
+ "coarse": {
+  "lat": 20.2,
+  "lon": 68.6,
+  "mae": 19.36
+ },
+ "mid": {
+  "lat": 20.08,
+  "lon": 68.58,
+  "mae": 19.33
+ },
+ "meta": {
+  "name": "Masjid-e-ihsan",
+  "address": "Ihsan Park, Gujarat State Highway 187, Bardoli, Gujarat, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 13,
+ "fajr_sweep": [
+  {
+   "a": 13,
+   "med": 13,
+   "mae": 12.3,
+   "mad": 1
+  },
+  {
+   "a": 13.05,
+   "med": 14,
+   "mae": 12.54,
+   "mad": 1
+  },
+  {
+   "a": 13.1,
+   "med": 14,
+   "mae": 12.76,
+   "mad": 1
+  },
+  {
+   "a": 13.15,
+   "med": 14,
+   "mae": 12.92,
+   "mad": 1
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 15,
+   "mae": 14.8,
+   "mad": 1
+  },
+  {
+   "a": 19.95,
+   "med": 15,
+   "mae": 15.04,
+   "mad": 1
+  },
+  {
+   "a": 19.9,
+   "med": 15.5,
+   "mae": 15.22,
+   "mad": 0.5
+  },
+  {
+   "a": 19.85,
+   "med": 16,
+   "mae": 15.52,
+   "mad": 1
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 76,
+   "mad": 11.5
+  },
+  "1": {
+   "med": 19,
+   "mad": 1
+  }
+ },
+ "margins": {
+  "fajr": 14,
+  "sunrise": -18,
+  "dhuhr": 21,
+  "asr": 19,
+  "maghrib": -18,
+  "isha": 15
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 34.3,
+   "within1": 61.3,
+   "mae": 2.03,
+   "worst": -7,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 18.6,
+   "within1": 60.5,
+   "mae": 1.24,
+   "worst": 3,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 68,
+   "within1": 100,
+   "mae": 0.32,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 22.1,
+   "within1": 76.7,
+   "mae": 1.01,
+   "worst": 3,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 17.4,
+   "within1": 64,
+   "mae": 1.23,
+   "worst": 3,
+   "med": 0
+  },
+  "isha": {
+   "exact": 19.2,
+   "within1": 78.8,
+   "mae": 1.03,
+   "worst": -3,
+   "med": 0
+  }
+ },
+ "all_six_within1": 109,
+ "all_six_exact": 5,
+ "amplitude_fajr_min": 89
+}

@@ -1,0 +1,269 @@
+{
+ "point": [
+  22.34,
+  114.161
+ ],
+ "fajrAngle": {
+  "a": 17.9,
+  "mae": 0.154
+ },
+ "ishaAngle": {
+  "a": 18.5,
+  "mae": 0.338
+ },
+ "school": "hanafi",
+ "schoolMAE": {
+  "shafi": 61.82,
+  "hanafi": 1.39
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 5,
+  "asr": 1,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per": {
+  "2024": {
+   "rows": 366,
+   "allSixPc": 69.1,
+   "score": {
+    "fajr": {
+     "exact": 191,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.48,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 224,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 219,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 219,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 160,
+     "w1": 320,
+     "n": 366,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 150,
+     "w1": 255,
+     "n": 366,
+     "mae": 0.92,
+     "worst": 3
+    }
+   }
+  },
+  "2025": {
+   "rows": 365,
+   "allSixPc": 100,
+   "score": {
+    "fajr": {
+     "exact": 339,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 226,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.38,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 217,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.41,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 218,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 229,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 295,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.19,
+     "worst": 1
+    }
+   }
+  },
+  "2026": {
+   "rows": 365,
+   "allSixPc": 100,
+   "score": {
+    "fajr": {
+     "exact": 334,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.08,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 230,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.37,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 218,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 232,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 292,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "worst": 1
+    }
+   }
+  },
+  "2027": {
+   "rows": 365,
+   "allSixPc": 100,
+   "score": {
+    "fajr": {
+     "exact": 340,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.07,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 219,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 218,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 224,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 235,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.36,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 291,
+     "w1": 365,
+     "n": 365,
+     "mae": 0.2,
+     "worst": 1
+    }
+   }
+  },
+  "2028": {
+   "rows": 366,
+   "allSixPc": 100,
+   "score": {
+    "fajr": {
+     "exact": 341,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.07,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 223,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 220,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 223,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 234,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.36,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 301,
+     "w1": 366,
+     "n": 366,
+     "mae": 0.18,
+     "worst": 1
+    }
+   }
+  }
+ }
+}

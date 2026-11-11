@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_tt_princesTown_ahad.json",
+ "tz": "America/Port_of_Spain",
+ "meta": {
+  "name": "Masjid-Ul-Ahad - PRINCES TOWN",
+  "lat": 10.269118537967,
+  "lon": -61.370907649398,
+  "country": "TT"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 15,
+  "offset": 0,
+  "exact": 358,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.52
+ },
+ "isha": {
+  "angle": 15,
+  "offset": 0,
+  "exact": 351,
+  "within1": 365,
+  "mae": 0.24,
+  "worst": 0.53
+ },
+ "asr_shafi": {
+  "offset": 0,
+  "exact": 138,
+  "within1": 365,
+  "mae": 0.63,
+  "worst": 1.48
+ },
+ "asr_hanafi": {
+  "offset": -65,
+  "exact": 30,
+  "within1": 71,
+  "mae": 6.9,
+  "worst": 15.23
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 362,
+  "within1": 365,
+  "mae": 0.24,
+  "worst": 0.5
+ },
+ "maghrib": {
+  "offset": 0,
+  "exact": 359,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.5
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 356,
+  "within1": 365,
+  "mae": 0.24,
+  "worst": 0.5
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   321,
+   328
+  ],
+  "jul": [
+   284,
+   293
+  ]
+ }
+}

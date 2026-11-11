@@ -1,0 +1,3434 @@
+[
+ {
+  "slug": "Aktanysh_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.74,
+   "lon": 54.18
+  },
+  "nearest": {
+   "slug": "Aktanis",
+   "name": "Актаныш",
+   "d": 0.24883579020768126
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 91,
+    "isha": 91
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 59.1,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 69.9,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 51,
+    "w1": 100,
+    "mae": 0.49,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 62.7,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 68.8,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 56.5,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.3,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Alabuga_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.76,
+   "lon": 52.19
+  },
+  "nearest": {
+   "slug": "NabChelny",
+   "name": "Яр Чаллы",
+   "d": 0.0932676173077412
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 91,
+    "isha": 91
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 59.6,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 63.2,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 56.3,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 61.3,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 69.9,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 54.9,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 60.9,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Alexeevsk_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.3,
+   "lon": 50.24
+  },
+  "nearest": {
+   "slug": "Aleksey",
+   "name": "Алексеевск",
+   "d": 0.24796146413367046
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 56.8,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 65.2,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 50.4,
+    "w1": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 62.1,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 68,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 57.4,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 60,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Apas_15__1_",
+  "rows": 366,
+  "pos": {
+   "lat": 55.2,
+   "lon": 48.64
+  },
+  "nearest": {
+   "slug": "Apastovo",
+   "name": "Апас",
+   "d": 0.2591407906063408
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 87,
+    "isha": 87
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 53.8,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 58.8,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 56.8,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 66.6,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 73.3,
+    "w1": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 60.2,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.6,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Archa_15",
+  "rows": 366,
+  "pos": {
+   "lat": 56.1,
+   "lon": 50
+  },
+  "nearest": {
+   "slug": "Arsk",
+   "name": "Арча",
+   "d": 0.24292737602413753
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 94,
+    "isha": 94
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 56.7,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 68.9,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 50.3,
+    "w1": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 61.9,
+    "w1": 99.4,
+    "mae": 0.39,
+    "worst": 2
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 66.4,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 53.6,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 59.6,
+    "w1": 99.9,
+    "mae": 0.4,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "slug": "Axubay_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.86,
+   "lon": 50.94
+  },
+  "nearest": {
+   "slug": "Novosesminsk",
+   "name": "Яңа Чишмә",
+   "d": 0.25849445790118203
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 84,
+    "isha": 84
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 57.3,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 57.3,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 58.9,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 64.8,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 74,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 57,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.5,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Aznakay_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.86,
+   "lon": 53.2
+  },
+  "nearest": {
+   "slug": "Aznakay",
+   "name": "Азнакай",
+   "d": 0.24891260094691398
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 84,
+    "isha": 84
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 64,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 67.6,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 52,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 65.9,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 64.8,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 55.9,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.7,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "B_gelm__15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.54,
+   "lon": 52.91
+  },
+  "nearest": {
+   "slug": "Bugulma",
+   "name": "Бөгелмә",
+   "d": 0.2363720807521066
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 82,
+    "isha": 82
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 56.7,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 73.7,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 54.7,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 67,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 62.3,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 56.1,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.8,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Baltach",
+  "rows": 366,
+  "pos": {
+   "lat": 56.34,
+   "lon": 50.33
+  },
+  "nearest": {
+   "slug": "Baltasi",
+   "name": "Балтач",
+   "d": 0.2444137866369342
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 96,
+    "isha": 96
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 61.9,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 76.7,
+    "w1": 100,
+    "mae": 0.23,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 54.4,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 61.1,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 54.2,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 62.1,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Balyk_Bist_se_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.46,
+   "lon": 50.25
+  },
+  "nearest": {
+   "slug": "RibnayaSlpboda",
+   "name": "Балык Бистәсе",
+   "d": 0.23832563963611864
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 89,
+    "isha": 89
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 62.7,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 71,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 59.6,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 63.8,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 59.1,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 58.5,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 62.4,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Bauly_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.4,
+   "lon": 53.37
+  },
+  "nearest": {
+   "slug": "Urussu",
+   "name": "Урыссу",
+   "d": 0.19502152250798752
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 81,
+    "isha": 81
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 56.5,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 58.8,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 52.1,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 66.6,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 73.8,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 61.8,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.6,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Baylar_Sabasy_15",
+  "rows": 366,
+  "pos": {
+   "lat": 56.02,
+   "lon": 50.56
+  },
+  "nearest": {
+   "slug": "BogatyeSaby",
+   "name": "Байлар Сабасы",
+   "d": 0.22853612354642347
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 93,
+    "isha": 93
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 54.3,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 74.4,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 56.8,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 60.4,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 64.6,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 61,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.9,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Bazarly_Matak_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.9,
+   "lon": 50.06
+  },
+  "nearest": {
+   "slug": "BazarnyeMataki",
+   "name": "Базарлы Матак",
+   "d": 0.25534865535384516
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 85,
+    "isha": 85
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 58.2,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 65.5,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 53.2,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 68.5,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 70.5,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 53.5,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.6,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Biektau",
+  "rows": 366,
+  "pos": {
+   "lat": 55.92,
+   "lon": 49.44
+  },
+  "nearest": {
+   "slug": "Pestrezy",
+   "name": "Питрәч",
+   "d": 0.1950327647632784
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 92,
+    "isha": 92
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 61.8,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 63.5,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 54.9,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 63.8,
+    "w1": 99.2,
+    "mae": 0.37,
+    "worst": 2
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 69.9,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 52.6,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.1,
+    "w1": 99.9,
+    "mae": 0.39,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "slug": "Bolgar_sh___re_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.96,
+   "lon": 49.15
+  },
+  "nearest": {
+   "slug": "KamskoeUstye",
+   "name": "Кама Тамагы",
+   "d": 0.23558287408399534
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 86,
+    "isha": 86
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 64.4,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 73.6,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 52.8,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 65,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 58.6,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 63.1,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Bua_15__1_",
+  "rows": 366,
+  "pos": {
+   "lat": 54.98,
+   "lon": 48.42
+  },
+  "nearest": {
+   "slug": "Apastovo",
+   "name": "Апас",
+   "d": 0.22316623424272905
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 86,
+    "isha": 86
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 50,
+    "w1": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 69.2,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 55.6,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 65.3,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 68.9,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 54.2,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 60.5,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Chally_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.7,
+   "lon": 52.52
+  },
+  "nearest": {
+   "slug": "NabChelny",
+   "name": "Яр Чаллы",
+   "d": 0.24232036839329912
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 90,
+    "isha": 90
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 66.5,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 76,
+    "w1": 100,
+    "mae": 0.24,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 55.6,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 68.4,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 69,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 66.6,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Chirmesh_n_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.68,
+   "lon": 51.65
+  },
+  "nearest": {
+   "slug": "Cheremsan",
+   "name": "Чирмешән",
+   "d": 0.272986570845413
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 83,
+    "isha": 83
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 61,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 63,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 60.4,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 65.7,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 74.9,
+    "w1": 100,
+    "mae": 0.25,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 59.9,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Chistay_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.38,
+   "lon": 50.76
+  },
+  "nearest": {
+   "slug": "Chistop",
+   "name": "Чистай",
+   "d": 0.2513071448783213
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 57.8,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 69.3,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 54.7,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 62.3,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 67.3,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 55,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.1,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Iske_Ch_pr_le_15__1_",
+  "rows": 366,
+  "pos": {
+   "lat": 54.72,
+   "lon": 47.68
+  },
+  "nearest": {
+   "slug": "StaroeChuprale",
+   "name": "Иске Чүпрәле",
+   "d": 0.24310520827042742
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 84,
+    "isha": 84
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 58.6,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 73.3,
+    "w1": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 53.3,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 66.4,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 68.1,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 56.4,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 62.7,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Kama_Tamagy_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.2,
+   "lon": 49.39
+  },
+  "nearest": {
+   "slug": "Laish",
+   "name": "Лаеш",
+   "d": 0.19601380342417563
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 87,
+    "isha": 87
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 59.1,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 64.6,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 49.9,
+    "w1": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 65.5,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 69.9,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 55.4,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 60.7,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Kazan_2015",
+  "rows": 366,
+  "pos": {
+   "lat": 55.78,
+   "lon": 49.25
+  },
+  "nearest": {
+   "slug": "VicokayGora",
+   "name": "Биектау",
+   "d": 0.13564269763429407
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 92,
+    "isha": 92
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 63.9,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 69.7,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 51.7,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 65.6,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 72.8,
+    "w1": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 55.8,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 63.2,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Kukmara_15",
+  "rows": 366,
+  "pos": {
+   "lat": 56.2,
+   "lon": 51.03
+  },
+  "nearest": {
+   "slug": "Kukmor",
+   "name": "Кукмара",
+   "d": 0.26153594671848546
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 94,
+    "isha": 94
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 55.7,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 67.4,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 52.4,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 59.9,
+    "w1": 99.2,
+    "mae": 0.41,
+    "worst": 2
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 72.4,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 56.5,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 60.7,
+    "w1": 99.9,
+    "mae": 0.39,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "slug": "Laesh_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.4,
+   "lon": 49.67
+  },
+  "nearest": {
+   "slug": "Laish",
+   "name": "Лаеш",
+   "d": 0.255995920148766
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 57,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 67.9,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 52.5,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 64.5,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 57.8,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 60.7,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Leninogorsk_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.58,
+   "lon": 52.57
+  },
+  "nearest": {
+   "slug": "Bugulma",
+   "name": "Бөгелмә",
+   "d": 0.11512172062248635
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 82,
+    "isha": 82
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 59.5,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 72.1,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 53.4,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 68.4,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 64,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 53.9,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.9,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "M_slim_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.28,
+   "lon": 53.32
+  },
+  "nearest": {
+   "slug": "Muslimov",
+   "name": "Мөслим",
+   "d": 0.24171499277756767
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 65.6,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 73.6,
+    "w1": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 52.5,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 66.4,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 70,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 69.4,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 66.3,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Mamadysh_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.7,
+   "lon": 51.53
+  },
+  "nearest": {
+   "slug": "Nignekamsk",
+   "name": "Түбән Кама",
+   "d": 0.18105406437409638
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 90,
+    "isha": 90
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 58.1,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 71.5,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 56.1,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 62,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 65.4,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 55.3,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.4,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Mendeleevsk_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.9,
+   "lon": 52.43
+  },
+  "nearest": {
+   "slug": "NabChelny",
+   "name": "Яр Чаллы",
+   "d": 0.21987749785565233
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 92,
+    "isha": 92
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 49.9,
+    "w1": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 69.9,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 52.1,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 67.1,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 64.1,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 54.3,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 59.6,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Minz_l__sh___re_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.7,
+   "lon": 53.24
+  },
+  "nearest": {
+   "slug": "Menzilinsk",
+   "name": "Минзәлә",
+   "d": 0.26866009579078437
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 90,
+    "isha": 90
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 58.9,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 68.4,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 53.6,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 63.4,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 74.6,
+    "w1": 100,
+    "mae": 0.25,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 62.8,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 63.6,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Nurlat_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.44,
+   "lon": 50.93
+  },
+  "nearest": {
+   "slug": "Nurlat",
+   "name": "Нурлат",
+   "d": 0.2580869723334332
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 82,
+    "isha": 82
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 61.4,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 65,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 52.5,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 65.8,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 64.4,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 54.4,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 60.6,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Oly_Kaybych_15__1_",
+  "rows": 366,
+  "pos": {
+   "lat": 55.4,
+   "lon": 48.31
+  },
+  "nearest": {
+   "slug": "Apastovo",
+   "name": "Апас",
+   "d": 0.2124578178276295
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 61.2,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 71.8,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 56.1,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 62.8,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 71.8,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 56.1,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 63.3,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Oly__tn__15",
+  "rows": 366,
+  "pos": {
+   "lat": 56.26,
+   "lon": 49.59
+  },
+  "nearest": {
+   "slug": "Arsk",
+   "name": "Арча",
+   "d": 0.24532113651695564
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 94,
+    "isha": 94
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 61.2,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 62,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 52.8,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 62.3,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 71.5,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 54.7,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 60.8,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Pitr_ch_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.76,
+   "lon": 49.79
+  },
+  "nearest": {
+   "slug": "Pestrezy",
+   "name": "Питрәч",
+   "d": 0.2550495624995401
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 91,
+    "isha": 91
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 59.9,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 66.6,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 52.1,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 61,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 74.7,
+    "w1": 100,
+    "mae": 0.25,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 55.2,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 61.6,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Sarman_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.28,
+   "lon": 52.72
+  },
+  "nearest": {
+   "slug": "Sarmanovo2",
+   "name": "Сарман",
+   "d": 0.2528293659634034
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "ceil",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 59.7,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 62.8,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 53.3,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 62.8,
+    "w1": 99.7,
+    "mae": 0.38,
+    "worst": 2
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 66.1,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 57.5,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 60.4,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "slug": "T_b_n_Kama_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.64,
+   "lon": 51.93
+  },
+  "nearest": {
+   "slug": "Elabuga",
+   "name": "Алабуга",
+   "d": 0.10617759481465419
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 90,
+    "isha": 90
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 61.2,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 76.5,
+    "w1": 100,
+    "mae": 0.23,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 55,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 63.7,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 69.3,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 57.5,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 63.9,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "T_tesh_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.92,
+   "lon": 48.95
+  },
+  "nearest": {
+   "slug": "Bolgary",
+   "name": "Болгар",
+   "d": 0.07594391281616625
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 85,
+    "isha": 85
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 67.4,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 70.8,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 53.2,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 70.2,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 67.1,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 59.6,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 64.7,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Tel_che_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.88,
+   "lon": 50.35
+  },
+  "nearest": {
+   "slug": "BogatyeSaby",
+   "name": "Байлар Сабасы",
+   "d": 0.12520237523954733
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 92,
+    "isha": 92
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 65.5,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 71,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 55.2,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 63,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 71.3,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 61.6,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 64.6,
+    "w1": 100,
+    "mae": 0.35,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Uryssu_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.58,
+   "lon": 53.59
+  },
+  "nearest": {
+   "slug": "Urussu",
+   "name": "Урыссу",
+   "d": 0.23788742188551015
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 82,
+    "isha": 82
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 60.6,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 70.1,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 52.5,
+    "w1": 100,
+    "mae": 0.47,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 70.4,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 62.6,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 60.1,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 62.7,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Ya_a_Chishm__15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.08,
+   "lon": 51.35
+  },
+  "nearest": {
+   "slug": "Novosesminsk",
+   "name": "Яңа Чишмә",
+   "d": 0.24546641270370498
+  },
+  "rounding": {
+   "fajr": "ceil",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 86,
+    "isha": 86
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 64.2,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 69.3,
+    "w1": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 50.8,
+    "w1": 100,
+    "mae": 0.49,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 61.7,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 70.9,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 51.7,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.5,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Yashel__z_n_15__1_",
+  "rows": 366,
+  "pos": {
+   "lat": 55.86,
+   "lon": 48.62
+  },
+  "nearest": {
+   "slug": "Zelenodolsk",
+   "name": "Яшел Үзән",
+   "d": 0.23382970114143664
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 92,
+    "isha": 92
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 58.2,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 71,
+    "w1": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 55.4,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 57.4,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 64.1,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 57.1,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 60.5,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Yugary_Oslan",
+  "rows": 366,
+  "pos": {
+   "lat": 55.76,
+   "lon": 49.1
+  },
+  "nearest": {
+   "slug": "Kazan",
+   "name": "Казан",
+   "d": 0.10568291334850917
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "ceil"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 91,
+    "isha": 91
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 64.1,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 71.9,
+    "w1": 100,
+    "mae": 0.28,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 55.2,
+    "w1": 100,
+    "mae": 0.45,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 67.7,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 61,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 55.7,
+    "w1": 100,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 62.6,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "Z_y_sh___re_15",
+  "rows": 366,
+  "pos": {
+   "lat": 55.28,
+   "lon": 52.12
+  },
+  "nearest": {
+   "slug": "Zainsk",
+   "name": "Зәй",
+   "d": 0.2524095437459657
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 6,
+   "substituted": {
+    "fajr": 88,
+    "isha": 88
+   },
+   "fajr": {
+    "n": 360,
+    "exact": 62.2,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 360,
+    "exact": 73.1,
+    "w1": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 360,
+    "exact": 54.4,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "asr": {
+    "n": 360,
+    "exact": 67.8,
+    "w1": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 360,
+    "exact": 65.6,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "isha": {
+    "n": 360,
+    "exact": 57.8,
+    "w1": 100,
+    "mae": 0.42,
+    "worst": 1
+   },
+   "all": {
+    "n": 2160,
+    "exact": 63.5,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "_ger_e_15",
+  "rows": 366,
+  "pos": {
+   "lat": 56.52,
+   "lon": 53.12
+  },
+  "nearest": {
+   "slug": "Agriz",
+   "name": "Әгерҗе",
+   "d": 0.23718750080414966
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 8,
+   "substituted": {
+    "fajr": 96,
+    "isha": 96
+   },
+   "fajr": {
+    "n": 358,
+    "exact": 59.2,
+    "w1": 100,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 358,
+    "exact": 72.6,
+    "w1": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 358,
+    "exact": 53.6,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "asr": {
+    "n": 358,
+    "exact": 63.4,
+    "w1": 100,
+    "mae": 0.37,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 358,
+    "exact": 64,
+    "w1": 100,
+    "mae": 0.36,
+    "worst": 1
+   },
+   "isha": {
+    "n": 358,
+    "exact": 54.5,
+    "w1": 100,
+    "mae": 0.46,
+    "worst": 1
+   },
+   "all": {
+    "n": 2148,
+    "exact": 61.2,
+    "w1": 100,
+    "mae": 0.39,
+    "worst": 1
+   }
+  }
+ },
+ {
+  "slug": "_lm_t_15",
+  "rows": 366,
+  "pos": {
+   "lat": 54.9,
+   "lon": 52.42
+  },
+  "nearest": {
+   "slug": "Almet",
+   "name": "Әлмәт",
+   "d": 0.24860732103249528
+  },
+  "rounding": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "zawal": "floor",
+   "asr": "ceil",
+   "maghrib": "ceil",
+   "isha": "floor"
+  },
+  "score": {
+   "days": 366,
+   "transitionDays": 7,
+   "substituted": {
+    "fajr": 85,
+    "isha": 85
+   },
+   "fajr": {
+    "n": 359,
+    "exact": 60.2,
+    "w1": 100,
+    "mae": 0.4,
+    "worst": 1
+   },
+   "sunrise": {
+    "n": 359,
+    "exact": 69.6,
+    "w1": 100,
+    "mae": 0.3,
+    "worst": 1
+   },
+   "zawal": {
+    "n": 359,
+    "exact": 52.4,
+    "w1": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "asr": {
+    "n": 359,
+    "exact": 66,
+    "w1": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "n": 359,
+    "exact": 66.9,
+    "w1": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "isha": {
+    "n": 359,
+    "exact": 56.8,
+    "w1": 100,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "all": {
+    "n": 2154,
+    "exact": 62,
+    "w1": 100,
+    "mae": 0.38,
+    "worst": 1
+   }
+  }
+ }
+]

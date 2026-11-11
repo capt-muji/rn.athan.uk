@@ -1,0 +1,204 @@
+{
+ "id": "cl-linares-wayback",
+ "name": "Linares",
+ "city": "Linares",
+ "tz": "America/Santiago",
+ "lat": -35.847,
+ "lon": -71.593,
+ "address": "city centre",
+ "rows": 31,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17,
+  "ishaKind": "angle",
+  "isha": 17.7,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 16.1,
+   "w1Pct": 96.8,
+   "mean": -0.87,
+   "worst": -2,
+   "med": -1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 16.1,
+     "worst": -2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.58,
+   "worst": 6,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.26,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.03,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.39,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 3.2,
+   "w1Pct": 93.5,
+   "mean": 1.03,
+   "worst": 2,
+   "med": 1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 93.5,
+     "exactPct": 3.2,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 80.6,
+   "w1Pct": 100,
+   "mean": 0.13,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 80.6,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 58.1,
+   "w1Pct": 100,
+   "mean": -0.42,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 58.1,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 67.7,
+   "w1Pct": 100,
+   "mean": 0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 67.7,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 96.8,
+   "w1Pct": 100,
+   "mean": 0.03,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 96.8,
+     "worst": 1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 61.3,
+   "w1Pct": 100,
+   "mean": 0.39,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 90.3,
+   "w1Pct": 100,
+   "mean": 0.03,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 90.3,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

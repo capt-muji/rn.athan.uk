@@ -1,0 +1,103 @@
+{
+ "slc-madina-masjidbox": {
+  "kind": "masjidbox",
+  "days": [
+   "2020-12-31",
+   "2024-01-03",
+   "2027-01-05"
+  ],
+  "match": 18,
+  "mismatch": 0
+ },
+ "okc-norman-masjidbox": {
+  "kind": "masjidbox",
+  "days": [
+   "2020-12-31",
+   "2024-01-03",
+   "2027-01-05"
+  ],
+  "match": 18,
+  "mismatch": 0
+ },
+ "norfolk-ash-shura-masjidbox": {
+  "kind": "masjidbox",
+  "days": [
+   "2020-12-31",
+   "2024-01-03",
+   "2027-01-05"
+  ],
+  "match": 18,
+  "mismatch": 0
+ },
+ "norfolk-crescent-cc-masjidal": {
+  "kind": "masjidal",
+  "month": "2024-01",
+  "match": 168,
+  "mismatch": 0
+ },
+ "mezquita-de-magdalena-del-mar-lima-07921-peru": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "islamic-center-guayaquil-090511-ecuador": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "mezquita-al-ahmad-1541-alberti-buenos-aires-argentina": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "centro-islamico-de-la-provincia-265-cordoba-argentina": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "mesquita-khaled-ibn-08021290-sao-paulo-brazil": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "msjd-fytwry-mesquita-vitoria-vitoria-es-29090-750-brazil": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "33767": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "mezquita-as-salam-santiago-7770353-chile-1": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "aruba-mezquita-sabana-basora-savaneta-aruba": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "centro-cultura-islamico-del-norte-mezqui-monterrey-64000-mexico": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "musalla-central-panama-panama-507-panama": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "madina-masjid-panama-panama-000000-panama": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ },
+ "asociacion-comunidad-islamica-bolivia-1335-la-paz-bolivia": {
+  "kind": "mawaqit",
+  "match": 2190,
+  "mismatch": 0
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_pa_musallacentral.json",
+ "tz": "America/Panama",
+ "meta": {
+  "name": "MUSALLA CENTRAL PANAMÁ - PANAMA",
+  "lat": 8.9588691612875,
+  "lon": -79.540935983045,
+  "country": "PA"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 18.5,
+  "offset": 2,
+  "exact": 256,
+  "within1": 361,
+  "mae": 0.44,
+  "worst": 22.13
+ },
+ "isha": {
+  "angle": 16.85,
+  "offset": 6,
+  "exact": 229,
+  "within1": 345,
+  "mae": 0.52,
+  "worst": 2.47
+ },
+ "asr_shafi": {
+  "offset": 64,
+  "exact": 28,
+  "within1": 70,
+  "mae": 6.4,
+  "worst": 13.75
+ },
+ "asr_hanafi": {
+  "offset": 1,
+  "exact": 150,
+  "within1": 357,
+  "mae": 0.64,
+  "worst": 1.77
+ },
+ "dhuhr": {
+  "offset": 10,
+  "exact": 265,
+  "within1": 351,
+  "mae": 0.45,
+  "worst": 9.78
+ },
+ "maghrib": {
+  "offset": 6,
+  "exact": 284,
+  "within1": 365,
+  "mae": 0.31,
+  "worst": 1.08
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 283,
+  "within1": 365,
+  "mae": 0.31,
+  "worst": 1.15
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   318,
+   326
+  ],
+  "jul": [
+   286,
+   295
+  ]
+ }
+}

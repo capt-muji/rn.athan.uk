@@ -1,0 +1,95 @@
+{
+ "city": "bodo",
+ "nightFraction": {
+  "n": 111,
+  "med": 0.499,
+  "p10": 0.497,
+  "p90": 0.504
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 67.28267,
+ "lon": 14.37513,
+ "rows": 322,
+ "solarGateMedAbs": 0.46,
+ "fajrAngle": {
+  "n": 191,
+  "med": 18,
+  "min": 12.5,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 196,
+  "med": 17,
+  "min": 10.85,
+  "max": 17.15,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 270,
+   "med": -0.25,
+   "min": -2.6,
+   "max": 2.4
+  },
+  "dhuhr": {
+   "n": 270,
+   "med": -0.13,
+   "min": -0.6,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 270,
+   "med": 0.03,
+   "min": -9.3,
+   "max": 16.6
+  },
+  "asrHanafi": {
+   "n": 270,
+   "med": -40.22,
+   "min": -73.6,
+   "max": 7.6
+  },
+  "maghrib": {
+   "n": 270,
+   "med": -1.1,
+   "min": -2.3,
+   "max": 2.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-04",
+    "to": "2027-05-30",
+    "days": 57
+   },
+   {
+    "from": "2027-07-13",
+    "to": "2027-09-07",
+    "days": 57
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2027-05-26",
+    "to": "2027-05-30",
+    "days": 5
+   },
+   {
+    "from": "2027-07-13",
+    "to": "2027-07-17",
+    "days": 5
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 342,
+  "isha": 1447
+ }
+}

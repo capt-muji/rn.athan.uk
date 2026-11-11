@@ -1,0 +1,118 @@
+{
+ "year": 2033,
+ "leap": false,
+ "days": 365,
+ "columns": {
+  "fajr": {
+   "rule": -3,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": -3.011,
+   "sd_margin": 0.282,
+   "hist": {
+    "-3": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "sunrise": {
+   "rule": -3,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": -3.011,
+   "sd_margin": 0.282,
+   "hist": {
+    "-3": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "dhuhr": {
+   "rule": 0,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": -0.001,
+   "sd_margin": 0.28,
+   "hist": {
+    "0": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "asr": {
+   "rule": 2,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": 2.011,
+   "sd_margin": 0.286,
+   "hist": {
+    "2": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "asr2": {
+   "rule": 2,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": 2,
+   "sd_margin": 0.289,
+   "hist": {
+    "2": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "magrib": {
+   "rule": 3,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": 3.006,
+   "sd_margin": 0.293,
+   "hist": {
+    "3": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  },
+  "isha": {
+   "rule": 3,
+   "exact": 365,
+   "within1": 365,
+   "worst_dev": 0,
+   "worst_dates": [],
+   "mean_margin": 3.006,
+   "sd_margin": 0.293,
+   "hist": {
+    "3": 365
+   },
+   "dev_hist": {
+    "0": 365
+   }
+  }
+ },
+ "seasonal_fajr": {
+  "jan_mean": 376,
+  "jul_mean": 191,
+  "jan_jul_span_min": 185
+ },
+ "raw_sha256": "01a021fbaaedbddf7b48dd6b2cd804b9fbfa7cd728a5ca47942e7a6b6408aaf7"
+}

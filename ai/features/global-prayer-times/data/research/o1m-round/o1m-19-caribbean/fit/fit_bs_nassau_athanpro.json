@@ -1,0 +1,72 @@
+{
+ "file": "data/athanpro_bs_nassau_sep2026.json",
+ "tz": "America/Nassau",
+ "meta": {
+  "name": "Nassau (athanpro platform)",
+  "lat": 25.06,
+  "lon": -77.345,
+  "country": "BS"
+ },
+ "days": 30,
+ "fajr": {
+  "angle": 18.45,
+  "offset": 2,
+  "exact": 30,
+  "within1": 30,
+  "mae": 0.24,
+  "worst": 0.48
+ },
+ "isha": {
+  "angle": 15.25,
+  "offset": 8,
+  "exact": 28,
+  "within1": 30,
+  "mae": 0.23,
+  "worst": 0.57
+ },
+ "asr_shafi": {
+  "offset": 1,
+  "exact": 26,
+  "within1": 30,
+  "mae": 0.29,
+  "worst": 0.63
+ },
+ "asr_hanafi": {
+  "offset": -57,
+  "exact": 3,
+  "within1": 11,
+  "mae": 2.19,
+  "worst": 5.18
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 29,
+  "within1": 30,
+  "mae": 0.24,
+  "worst": 0.5
+ },
+ "maghrib": {
+  "offset": 0,
+  "exact": 30,
+  "within1": 30,
+  "mae": 0.24,
+  "worst": 0.48
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 29,
+  "within1": 30,
+  "mae": 0.25,
+  "worst": 0.5
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   null,
+   null
+  ],
+  "jul": [
+   null,
+   null
+  ]
+ }
+}

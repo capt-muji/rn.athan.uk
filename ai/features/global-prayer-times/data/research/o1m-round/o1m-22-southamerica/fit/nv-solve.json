@@ -1,0 +1,165 @@
+{
+ "solved": {
+  "417": {
+   "title": "Buenos Aires - Distrito Federal/Arjantin, YILLIK VAKİTLER (2026)",
+   "lat": -34.60632296662079,
+   "lon": -58.37942803667431,
+   "tz": "America/Argentina/Buenos_Aires",
+   "params": {
+    "f": 17.9,
+    "i": 17.1,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.04,
+    0.32,
+    0.32,
+    0.56,
+    0.36,
+    0.12
+   ]
+  },
+  "1616": {
+   "title": "La Paz - La Paz/Bolivya, YILLIK VAKİTLER (2026)",
+   "lat": -16.495761701435253,
+   "lon": -68.13377799987795,
+   "tz": "America/La_Paz",
+   "params": {
+    "f": 18.1,
+    "i": 16.4,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0,
+    0.32,
+    0.36,
+    0.32,
+    0.44,
+    0.04
+   ]
+  },
+  "4648": {
+   "title": "Bogota - Bogota/Kolombiya, YILLIK VAKİTLER (2026)",
+   "lat": 4.710553963815175,
+   "lon": -74.0715745286787,
+   "tz": "America/Bogota",
+   "params": {
+    "f": 18.1,
+    "i": 16.5,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.04,
+    0.4,
+    0.04,
+    0.36,
+    0.44,
+    0.08
+   ]
+  },
+  "4932": {
+   "title": "Guayaquil - Guayas/Ekvator, YILLIK VAKİTLER (2026)",
+   "lat": -2.1789289443934146,
+   "lon": -79.89270439147947,
+   "tz": "America/Guayaquil",
+   "params": {
+    "f": 16.7,
+    "i": 17.2,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.04,
+    0.32,
+    0,
+    0.36,
+    0.4,
+    0
+   ]
+  },
+  "10721": {
+   "title": "Asuncion - Asunción/Paraguay, YILLIK VAKİTLER (2026)",
+   "lat": -25.264317712926566,
+   "lon": -57.57531178758984,
+   "tz": "America/Asuncion",
+   "params": {
+    "f": 17.9,
+    "i": 16.5,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0,
+    0.24,
+    0.16,
+    0.28,
+    0.28,
+    0.08
+   ]
+  },
+  "10861": {
+   "title": "Lima - Lima/Peru, YILLIK VAKİTLER (2026)",
+   "lat": -12.046642399914733,
+   "lon": -77.04304771423347,
+   "tz": "America/Lima",
+   "params": {
+    "f": 17.9,
+    "i": 16.8,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.04,
+    0.44,
+    0.04,
+    0.24,
+    0.44,
+    0.08
+   ]
+  },
+  "20659": {
+   "title": "Montevideo - Montevideo/Uruguay, YILLIK VAKİTLER (2026)",
+   "lat": -34.86868706395043,
+   "lon": -56.17799631687892,
+   "tz": "America/Montevideo",
+   "params": {
+    "f": 17.9,
+    "i": 16.6,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.12,
+    0.4,
+    0.32,
+    0.52,
+    0.44,
+    0.2
+   ]
+  },
+  "20743": {
+   "title": "Karakas (Caracas) - Distrito Federal/Venezuela, YILLIK VAKİTLER (2026)",
+   "lat": 10.480041793819522,
+   "lon": -66.90347614288328,
+   "tz": "America/Caracas",
+   "params": {
+    "f": 17.2,
+    "i": 17,
+    "iv": null,
+    "h": false
+   },
+   "mae": [
+    0.04,
+    0.44,
+    0.08,
+    0.24,
+    0.4,
+    0
+   ]
+  }
+ },
+ "scored": {}
+}

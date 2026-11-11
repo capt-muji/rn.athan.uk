@@ -1,0 +1,29 @@
+{
+ "city": "NUUK",
+ "nightFraction": null,
+ "country": "GRONLAND",
+ "source": "namazvakti.diyanet.gov.tr",
+ "tz": "America/Nuuk",
+ "lat": 64.1836,
+ "lon": -51.7214,
+ "rows": 30,
+ "solarGateMedAbs": 59.58,
+ "fajrAngle": null,
+ "ishaAngle": null,
+ "solarMargin": {
+  "sunrise": null,
+  "dhuhr": null,
+  "asrShafi": null,
+  "asrHanafi": null,
+  "maghrib": null
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 53,
+  "isha": 37
+ }
+}

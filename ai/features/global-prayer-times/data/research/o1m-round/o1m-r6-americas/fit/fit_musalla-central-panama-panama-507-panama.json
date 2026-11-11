@@ -1,0 +1,204 @@
+{
+ "id": "musalla-central-panama-panama-507-panama",
+ "name": "MUSALLA CENTRAL PANAMÁ - PANAMA",
+ "city": "MUSALLA CENTRAL PANAMÁ - PANAMA",
+ "tz": "America/Panama",
+ "lat": 8.9588691612875,
+ "lon": -79.540935983045,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaKind": "angle",
+  "isha": 18.2,
+  "asr": "Hanafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 10,
+   "asr": 1,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 40,
+   "w1Pct": 97.8,
+   "mean": -0.63,
+   "worst": -23,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 97.8,
+     "exactPct": 40,
+     "worst": -23
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 78.1,
+   "w1Pct": 100,
+   "mean": -0.14,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 78.1,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 10.13,
+   "worst": 20,
+   "med": 10,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 20
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 42.2,
+   "w1Pct": 85.5,
+   "mean": 0.69,
+   "worst": 3,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 85.5,
+     "exactPct": 42.2,
+     "worst": 3
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.86,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 58.4,
+   "w1Pct": 91.5,
+   "mean": 0.32,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.5,
+     "exactPct": 58.4,
+     "worst": 3
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 55.3,
+   "w1Pct": 97.3,
+   "mean": 0.37,
+   "worst": -22,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 97.3,
+     "exactPct": 55.3,
+     "worst": -22
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 78.1,
+   "w1Pct": 100,
+   "mean": -0.14,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 78.1,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 74,
+   "w1Pct": 96.2,
+   "mean": 0.13,
+   "worst": 10,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 96.2,
+     "exactPct": 74,
+     "worst": 10
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 41.4,
+   "w1Pct": 97.8,
+   "mean": -0.31,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 97.8,
+     "exactPct": 41.4,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 78.6,
+   "w1Pct": 100,
+   "mean": -0.14,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 78.6,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 58.4,
+   "w1Pct": 91.5,
+   "mean": 0.32,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.5,
+     "exactPct": 58.4,
+     "worst": 3
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -34
+}

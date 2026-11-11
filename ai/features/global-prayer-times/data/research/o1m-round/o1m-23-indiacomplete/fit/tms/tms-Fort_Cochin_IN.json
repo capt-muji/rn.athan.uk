@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Fort_Cochin_IN-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 9.9667,
+  "lon": 76.2167
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.99,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.21,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.21,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.33,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.33,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.21,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.21,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.3,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.32,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 62.01,
+   "med": 64
+  },
+  "1": {
+   "mae": 0.35,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 81.6,
+   "within1": 100,
+   "mae": 0.18,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 75.1,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 52.3,
+   "within1": 100,
+   "mae": 0.48,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.5,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 72.6,
+   "within1": 100,
+   "mae": 0.27,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 78.9,
+   "within1": 100,
+   "mae": 0.21,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "isha_tier": {
+  "17": {
+   "mae": 4.58,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 5
+  },
+  "18": {
+   "mae": 0.32,
+   "med": 0,
+   "within1": 100,
+   "exact": 67.7,
+   "worst": 1
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.27,
+  "min": 4,
+  "max": 5
+ },
+ "amplitude_fajr_min": 49
+}

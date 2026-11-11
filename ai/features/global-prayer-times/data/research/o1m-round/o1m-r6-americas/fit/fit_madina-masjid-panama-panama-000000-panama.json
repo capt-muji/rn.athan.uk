@@ -1,0 +1,204 @@
+{
+ "id": "madina-masjid-panama-panama-000000-panama",
+ "name": "MADINA MASJID PANAMA - Panama",
+ "city": "MADINA MASJID PANAMA - Panama",
+ "tz": "America/Panama",
+ "lat": 9.0030643,
+ "lon": -79.5216043,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 18,
+  "ishaKind": "angle",
+  "isha": 18.5,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 48.8,
+   "w1Pct": 100,
+   "mean": -0.23,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 48.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 25.2,
+   "w1Pct": 91.5,
+   "mean": 0.01,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.5,
+     "exactPct": 25.2,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6,
+   "worst": 6,
+   "med": 6,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 49,
+   "w1Pct": 99.7,
+   "mean": 0.09,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 99.7,
+     "exactPct": 49,
+     "worst": -2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 48.8,
+   "w1Pct": 100,
+   "mean": -0.23,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 48.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 25.2,
+   "w1Pct": 91.5,
+   "mean": 0.01,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.5,
+     "exactPct": 25.2,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 49,
+   "w1Pct": 99.7,
+   "mean": 0.09,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 99.7,
+     "exactPct": 49,
+     "worst": -2
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -33
+}

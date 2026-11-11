@@ -1,0 +1,79 @@
+{
+ "city": "aldan",
+ "nightFraction": {
+  "n": 94,
+  "med": 0.501,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yakutsk",
+ "lat": 58.61232,
+ "lon": 125.40002,
+ "rows": 365,
+ "solarGateMedAbs": 0.55,
+ "fajrAngle": {
+  "n": 268,
+  "med": 15.95,
+  "min": 11,
+  "max": 16.2,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 271,
+  "med": 15.05,
+  "min": 12.55,
+  "max": 15.2,
+  "jun": null,
+  "dec": 15.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.42,
+   "min": -0.8,
+   "max": 1.6
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.47,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.5,
+   "min": -0.5,
+   "max": 1.6
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.5,
+   "min": -77,
+   "max": -20.8
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.55,
+   "min": -0.3,
+   "max": 1.4
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-05-06",
+    "to": "2027-08-07",
+    "days": 94
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 395,
+  "isha": 409
+ }
+}

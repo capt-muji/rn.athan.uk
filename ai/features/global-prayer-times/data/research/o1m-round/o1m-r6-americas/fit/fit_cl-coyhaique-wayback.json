@@ -1,0 +1,265 @@
+{
+ "id": "cl-coyhaique-wayback",
+ "name": "Coyhaique",
+ "city": "Coyhaique",
+ "tz": "America/Santiago",
+ "lat": -45.575,
+ "lon": -72.066,
+ "address": "city centre",
+ "rows": 62,
+ "repairRows": 0,
+ "years": [
+  2022,
+  2024
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.5,
+  "ishaKind": "angle",
+  "isha": 17.4,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 5,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 29,
+   "w1Pct": 100,
+   "mean": -0.68,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 25.8,
+     "worst": -1
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 32.3,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.48,
+   "worst": 6,
+   "med": 5,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    },
+    "2024": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.24,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2024": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2024": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.15,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2024": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 61.3,
+   "w1Pct": 98.4,
+   "mean": 0.31,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 48.4,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 96.8,
+     "exactPct": 74.2,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 69.4,
+   "w1Pct": 98.4,
+   "mean": 0.32,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 71,
+     "worst": 2
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 67.7,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 48.4,
+   "w1Pct": 100,
+   "mean": 0.48,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 41.9,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 72.6,
+   "w1Pct": 100,
+   "mean": 0.24,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 58.1,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 87.1,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 87.1,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 90.3,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 83.9,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 72.6,
+   "w1Pct": 100,
+   "mean": 0.15,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 67.7,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 100,
+     "exactPct": 77.4,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 61.3,
+   "w1Pct": 98.4,
+   "mean": 0.31,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 48.4,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 96.8,
+     "exactPct": 74.2,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

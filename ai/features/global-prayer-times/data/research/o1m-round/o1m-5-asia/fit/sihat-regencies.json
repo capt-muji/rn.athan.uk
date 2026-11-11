@@ -1,0 +1,9386 @@
+{
+ "recipe": {
+  "fajr": 20,
+  "isha": 18,
+  "madhab": "shafi",
+  "margins": "fajr+2, dhuhr+3, asr+2, isha+2, sunrise-2-dip, maghrib+2+dip",
+  "dip": "0.1173*sqrt(m) min"
+ },
+ "n_units": 164,
+ "aggregate": {
+  "fajr": {
+   "exact": 50,
+   "within1": 100
+  },
+  "sunrise": {
+   "exact": 45.1,
+   "within1": 87.5
+  },
+  "dhuhr": {
+   "exact": 50.2,
+   "within1": 100
+  },
+  "asr": {
+   "exact": 50.2,
+   "within1": 100
+  },
+  "maghrib": {
+   "exact": 32.4,
+   "within1": 87.2
+  },
+  "isha": {
+   "exact": 50,
+   "within1": 100
+  }
+ },
+ "units": [
+  {
+   "unit": "KAB. ACEH BARAT DAYA",
+   "province": "ACEH",
+   "lat": 3.8226301670074463,
+   "lng": 96.88029479980469,
+   "elev": 14,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 69,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 22.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.77
+    },
+    "isha": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH BARAT",
+   "province": "ACEH",
+   "lat": 4.4544677734375,
+   "lng": 96.18087768554688,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 88.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.12
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 14,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.86
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH BESAR",
+   "province": "ACEH",
+   "lat": 5.3801045417785645,
+   "lng": 95.51516723632812,
+   "elev": 123,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 88.5,
+     "med": 1,
+     "maex": 1.12
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 89.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.1
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 323,
+   "all_six_pct": 88.5
+  },
+  {
+   "unit": "KAB. ACEH JAYA",
+   "province": "ACEH",
+   "lat": 4.832424640655518,
+   "lng": 95.67809295654297,
+   "elev": 15,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 71,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.29
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 27.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.72
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH SELATAN",
+   "province": "ACEH",
+   "lat": 3.161853790283203,
+   "lng": 97.43651580810547,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 86.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 11.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.89
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH SINGKIL",
+   "province": "ACEH",
+   "lat": 2.3479697704315186,
+   "lng": 97.84505462646484,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 87.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 12.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.88
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH TAMIANG",
+   "province": "ACEH",
+   "lat": 4.224493980407715,
+   "lng": 97.98299407958984,
+   "elev": 15,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 68.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 22.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.78
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH TENGAH",
+   "province": "ACEH",
+   "lat": 4.519887924194336,
+   "lng": 96.88130187988281,
+   "elev": 1262,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 80,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.2
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 81.6,
+     "med": 1,
+     "maex": 1.18
+    },
+    "isha": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 298,
+   "all_six_pct": 81.6
+  },
+  {
+   "unit": "KAB. ACEH TENGGARA",
+   "province": "ACEH",
+   "lat": 3.368931293487549,
+   "lng": 97.69759368896484,
+   "elev": 172,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 63,
+     "med": 1,
+     "maex": 1.37
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 63,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.37
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 230,
+   "all_six_pct": 63
+  },
+  {
+   "unit": "KAB. ACEH TIMUR",
+   "province": "ACEH",
+   "lat": 4.630440711975098,
+   "lng": 97.62608337402344,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 87.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 7.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.92
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ACEH UTARA",
+   "province": "ACEH",
+   "lat": 5.015776634216309,
+   "lng": 97.18180847167969,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 88.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.11
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 11,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.89
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ASAHAN",
+   "province": "SUMATERA UTARA",
+   "lat": 2.8049256801605225,
+   "lng": 99.55935668945312,
+   "elev": 20,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 66.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.33
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 36.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BANDA ACEH",
+   "province": "ACEH",
+   "lat": 5.558704376220703,
+   "lng": 95.32771301269531,
+   "elev": 8,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 86.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 9.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.91
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "province": "LAMPUNG",
+   "lat": -5.414196968078613,
+   "lng": 105.26213073730469,
+   "elev": 98,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 5.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.95
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 94.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.06
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "province": "JAWA BARAT",
+   "lat": -6.890437602996826,
+   "lng": 107.41498565673828,
+   "elev": 773,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 1.1,
+     "within1": 84.1,
+     "med": -1,
+     "maex": 1.15
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0.5,
+     "med": 2,
+     "maex": 2.16
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 2,
+   "all_six_pct": 0.5
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "province": "JAWA BARAT",
+   "lat": -6.919241428375244,
+   "lng": 107.63660430908203,
+   "elev": 720,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 74,
+     "med": -1,
+     "maex": 1.26
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.28
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. BANGKALAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.044336318969727,
+   "lng": 112.92953491210938,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 93.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.07
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 6.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.93
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "province": "JAWA BARAT",
+   "lat": -7.376988887786865,
+   "lng": 108.56720733642578,
+   "elev": 31,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 43.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.57
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BANYUWANGI",
+   "province": "JAWA TIMUR",
+   "lat": -8.364660263061523,
+   "lng": 114.20589447021484,
+   "elev": 13,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 81.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 25.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.75
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BATAM",
+   "province": "KEPULAUAN RIAU",
+   "lat": 0.9630012512207031,
+   "lng": 104.06356048583984,
+   "elev": 36,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BATU BARA",
+   "province": "SUMATERA UTARA",
+   "lat": 3.2352495193481445,
+   "lng": 99.4725570678711,
+   "elev": 29,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 44.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BATU",
+   "province": "JAWA TIMUR",
+   "lat": -7.834673881530762,
+   "lng": 112.53375244140625,
+   "elev": 889,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 9.3,
+     "within1": 97.5,
+     "med": -1,
+     "maex": 0.93
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 12.1,
+     "med": 2,
+     "maex": 1.92
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 44,
+   "all_six_pct": 12.1
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "province": "JAWA BARAT",
+   "lat": -6.219747543334961,
+   "lng": 107.12171173095703,
+   "elev": 60,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 31.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.69
+    },
+    "dhuhr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 72.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.28
+    },
+    "isha": {
+     "exact": 44.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BENER MERIAH",
+   "province": "ACEH",
+   "lat": 4.770053863525391,
+   "lng": 97.00411987304688,
+   "elev": 1392,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 87.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 5.2,
+     "within1": 89.9,
+     "med": 1,
+     "maex": 1.05
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 328,
+   "all_six_pct": 89.9
+  },
+  {
+   "unit": "KOTA BENGKULU",
+   "province": "BENGKULU",
+   "lat": -3.8413968086242676,
+   "lng": 102.30815887451172,
+   "elev": 17,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 68.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.32
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 36.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BIMA",
+   "province": "NUSA TENGGARA BARAT",
+   "lat": -8.474806785583496,
+   "lng": 118.6190185546875,
+   "elev": 21,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 65.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.35
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 28.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.71
+    },
+    "isha": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BINJAI",
+   "province": "SUMATERA UTARA",
+   "lat": 3.600227117538452,
+   "lng": 98.48921966552734,
+   "elev": 32,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 56.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "isha": {
+     "exact": 45.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BIREUEN",
+   "province": "ACEH",
+   "lat": 5.093825340270996,
+   "lng": 96.6070327758789,
+   "elev": 20,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 70.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.3
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 35.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BLITAR",
+   "province": "JAWA TIMUR",
+   "lat": -8.13100814819336,
+   "lng": 112.23722076416016,
+   "elev": 174,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 43,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.57
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 64.1,
+     "med": 1,
+     "maex": 1.36
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 70.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.29
+    },
+    "isha": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 234,
+   "all_six_pct": 64.1
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "province": "JAWA BARAT",
+   "lat": -6.559797286987305,
+   "lng": 106.76704406738281,
+   "elev": 133,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 84.4,
+     "med": 1,
+     "maex": 1.16
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 88.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.12
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 308,
+   "all_six_pct": 84.4
+  },
+  {
+   "unit": "KAB. BOJONEGORO",
+   "province": "JAWA TIMUR",
+   "lat": -7.255576133728027,
+   "lng": 111.80986785888672,
+   "elev": 23,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 63.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.36
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 39.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.61
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BONDOWOSO",
+   "province": "JAWA TIMUR",
+   "lat": -7.943686008453369,
+   "lng": 113.94770050048828,
+   "elev": 261,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 30.7,
+     "med": 2,
+     "maex": 1.69
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 30.7,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.69
+    },
+    "isha": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 112,
+   "all_six_pct": 30.7
+  },
+  {
+   "unit": "KOTA BUKITTINGGI",
+   "province": "SUMATERA BARAT",
+   "lat": -0.29958340525627136,
+   "lng": 100.3725357055664,
+   "elev": 919,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 56.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.43
+    },
+    "sunrise": {
+     "exact": 19.2,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.81
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 16.2,
+     "med": 2,
+     "maex": 1.84
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 59,
+   "all_six_pct": 16.2
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "province": "JAWA BARAT",
+   "lat": -7.290249824523926,
+   "lng": 108.42864227294922,
+   "elev": 210,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 53.2,
+     "med": 1,
+     "maex": 1.47
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "isha": {
+     "exact": 56.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    }
+   },
+   "all_six_within1": 194,
+   "all_six_pct": 53.2
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "province": "JAWA BARAT",
+   "lat": -7.130889415740967,
+   "lng": 107.1592025756836,
+   "elev": 457,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.32
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 75.3,
+     "med": -1,
+     "maex": 1.25
+    },
+    "isha": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "province": "BANTEN",
+   "lat": -5.998895645141602,
+   "lng": 106.01849365234375,
+   "elev": 22,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 66.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.34
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 36.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.63
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "province": "JAWA BARAT",
+   "lat": -6.886319160461426,
+   "lng": 107.54289245605469,
+   "elev": 764,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0.3,
+     "within1": 86,
+     "med": -1,
+     "maex": 1.14
+    },
+    "dhuhr": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0.5,
+     "med": 2,
+     "maex": 2.17
+    },
+    "isha": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 2,
+   "all_six_pct": 0.5
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "province": "JAWA BARAT",
+   "lat": -6.74622106552124,
+   "lng": 108.55215454101562,
+   "elev": 68,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 24.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.75
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 76.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.24
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. DAIRI",
+   "province": "SUMATERA UTARA",
+   "lat": 2.8405070304870605,
+   "lng": 98.27921295166016,
+   "elev": 1073,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.54
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 44.4,
+     "med": 2,
+     "maex": 1.56
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 162,
+   "all_six_pct": 44.4
+  },
+  {
+   "unit": "KAB. DELI SERDANG",
+   "province": "SUMATERA UTARA",
+   "lat": 3.480337381362915,
+   "lng": 98.69483184814453,
+   "elev": 16,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 67.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.33
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 28.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.71
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "province": "JAWA BARAT",
+   "lat": -6.396203994750977,
+   "lng": 106.81683349609375,
+   "elev": 77,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 16.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.83
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 85.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "isha": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA DUMAI",
+   "province": "RIAU",
+   "lat": 1.820755958557129,
+   "lng": 101.28228759765625,
+   "elev": 31,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. GARUT",
+   "province": "JAWA BARAT",
+   "lat": -7.359447479248047,
+   "lng": 107.7879409790039,
+   "elev": 726,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 78.4,
+     "med": -1,
+     "maex": 1.22
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.24
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. GAYO LUES",
+   "province": "ACEH",
+   "lat": 3.982693672180176,
+   "lng": 97.3600845336914,
+   "elev": 931,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 20,
+     "within1": 99.5,
+     "med": -1,
+     "maex": 0.81
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 22.5,
+     "med": 2,
+     "maex": 1.78
+    },
+    "isha": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 82,
+   "all_six_pct": 22.5
+  },
+  {
+   "unit": "KAB. GRESIK",
+   "province": "JAWA TIMUR",
+   "lat": -6.9262566566467285,
+   "lng": 112.55864715576172,
+   "elev": 27,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 62.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.37
+    },
+    "dhuhr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 38.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.61
+    },
+    "isha": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA GUNUNGSITOLI",
+   "province": "SUMATERA UTARA",
+   "lat": 1.2685290575027466,
+   "lng": 97.58668518066406,
+   "elev": 18,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 72.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.28
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 30.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.69
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. HUMBANG HASUNDUTAN",
+   "province": "SUMATERA UTARA",
+   "lat": 2.261164665222168,
+   "lng": 98.57771301269531,
+   "elev": 1402,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 87.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.12
+    },
+    "dhuhr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 7.1,
+     "within1": 91.2,
+     "med": 1,
+     "maex": 1.02
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 333,
+   "all_six_pct": 91.2
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "province": "JAWA BARAT",
+   "lat": -6.4474873542785645,
+   "lng": 108.16902923583984,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 93.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.07
+    },
+    "dhuhr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 4.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.95
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAKARTA BARAT",
+   "province": "DKI JAKARTA",
+   "lat": -6.165332794189453,
+   "lng": 106.74829864501953,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 86,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 13.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.86
+    },
+    "isha": {
+     "exact": 56.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAKARTA PUSAT",
+   "province": "DKI JAKARTA",
+   "lat": -6.18120002746582,
+   "lng": 106.83512115478516,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 91.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.08
+    },
+    "dhuhr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.91
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAKARTA SELATAN",
+   "province": "DKI JAKARTA",
+   "lat": -6.272604942321777,
+   "lng": 106.81004333496094,
+   "elev": 21,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 59.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.41
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "maghrib": {
+     "exact": 36.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAKARTA TIMUR",
+   "province": "DKI JAKARTA",
+   "lat": -6.2549662590026855,
+   "lng": 106.90068817138672,
+   "elev": 34,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAKARTA UTARA",
+   "province": "DKI JAKARTA",
+   "lat": -6.127183437347412,
+   "lng": 106.86661529541016,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 89.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.1
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 4.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.95
+    },
+    "isha": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA JAMBI",
+   "province": "JAMBI",
+   "lat": -1.6181774139404297,
+   "lng": 103.59979248046875,
+   "elev": 22,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 67.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.33
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 34.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.65
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. JEMBER",
+   "province": "JAWA TIMUR",
+   "lat": -8.235136032104492,
+   "lng": 113.65595245361328,
+   "elev": 91,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 5.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.94
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 90.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.09
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. JOMBANG",
+   "province": "JAWA TIMUR",
+   "lat": -7.544634819030762,
+   "lng": 112.26408386230469,
+   "elev": 46,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 40.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.59
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 60.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.4
+    },
+    "isha": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BANDUNG",
+   "province": "JAWA BARAT",
+   "lat": -7.097588062286377,
+   "lng": 107.60872650146484,
+   "elev": 718,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 75.1,
+     "med": -1,
+     "maex": 1.25
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.25
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "province": "JAWA BARAT",
+   "lat": -6.252282619476318,
+   "lng": 107.35429382324219,
+   "elev": 19,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 68.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.32
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 32.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.68
+    },
+    "isha": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. KARO",
+   "province": "SUMATERA UTARA",
+   "lat": 3.1184351444244385,
+   "lng": 98.30135345458984,
+   "elev": 1210,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 69.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 70.4,
+     "med": 1,
+     "maex": 1.3
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 257,
+   "all_six_pct": 70.4
+  },
+  {
+   "unit": "KAB. KEDIRI",
+   "province": "JAWA TIMUR",
+   "lat": -7.828693389892578,
+   "lng": 112.08921813964844,
+   "elev": 84,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 13.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.86
+    },
+    "dhuhr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 86.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "province": "JAWA BARAT",
+   "lat": -6.280833721160889,
+   "lng": 106.9753646850586,
+   "elev": 21,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 66.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.34
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 31.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.68
+    },
+    "isha": {
+     "exact": 56.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BLITAR",
+   "province": "JAWA TIMUR",
+   "lat": -8.094766616821289,
+   "lng": 112.1669692993164,
+   "elev": 177,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 62.2,
+     "med": 1,
+     "maex": 1.38
+    },
+    "dhuhr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 61.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.38
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 227,
+   "all_six_pct": 62.2
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "province": "JAWA BARAT",
+   "lat": -6.593489170074463,
+   "lng": 106.79935455322266,
+   "elev": 287,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 20,
+     "med": 2,
+     "maex": 1.8
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 26,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.74
+    },
+    "isha": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 73,
+   "all_six_pct": 20
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "province": "JAWA BARAT",
+   "lat": -6.741718769073486,
+   "lng": 108.55330657958984,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 93.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.06
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 8.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.92
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA KEDIRI",
+   "province": "JAWA TIMUR",
+   "lat": -7.8263702392578125,
+   "lng": 112.01612091064453,
+   "elev": 70,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 19.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.8
+    },
+    "dhuhr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 78.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.21
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA MADIUN",
+   "province": "JAWA TIMUR",
+   "lat": -7.629454135894775,
+   "lng": 111.52726745605469,
+   "elev": 69,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 22.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.77
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 78.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.21
+    },
+    "isha": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA MALANG",
+   "province": "JAWA TIMUR",
+   "lat": -7.978300094604492,
+   "lng": 112.63591003417969,
+   "elev": 466,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.31
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 55.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 68.5,
+     "med": -1,
+     "maex": 1.32
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KOTA MOJOKERTO",
+   "province": "JAWA TIMUR",
+   "lat": -7.471389293670654,
+   "lng": 112.43750762939453,
+   "elev": 25,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 58.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.41
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 56.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "maghrib": {
+     "exact": 40.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.59
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PASURUAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.649572372436523,
+   "lng": 112.91000366210938,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 83.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.16
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 16.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PROBOLINGGO",
+   "province": "JAWA TIMUR",
+   "lat": -7.773810386657715,
+   "lng": 113.2054672241211,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 85.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 12.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.88
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "province": "JAWA BARAT",
+   "lat": -6.939939022064209,
+   "lng": 106.92435455322266,
+   "elev": 601,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 3,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 51.5,
+     "med": -1,
+     "maex": 1.48
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 3,
+     "maex": 2.53
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KOTA TASIKMALAYA",
+   "province": "JAWA BARAT",
+   "lat": -7.3605265617370605,
+   "lng": 108.21912384033203,
+   "elev": 356,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0.8,
+     "med": 2,
+     "maex": 2.01
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "maghrib": {
+     "exact": 0.5,
+     "within1": 98.4,
+     "med": -1,
+     "maex": 1.01
+    },
+    "isha": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 3,
+   "all_six_pct": 0.8
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "province": "JAWA BARAT",
+   "lat": -7.0033793449401855,
+   "lng": 108.559814453125,
+   "elev": 522,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -2,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 3,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 22.5,
+     "med": -2,
+     "maex": 1.78
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 3,
+     "maex": 2.76
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. KUPANG",
+   "province": "NUSA TENGGARA TIMUR",
+   "lat": -9.916086196899414,
+   "lng": 123.8614501953125,
+   "elev": 25,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 60.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.4
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 39.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.6
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LABUHANBATU SELATAN",
+   "province": "SUMATERA UTARA",
+   "lat": 1.841936707496643,
+   "lng": 100.1400146484375,
+   "elev": 46,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 41.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.59
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 57.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.42
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LABUHANBATU UTARA",
+   "province": "SUMATERA UTARA",
+   "lat": 2.410994291305542,
+   "lng": 99.75779724121094,
+   "elev": 28,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 40.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.59
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LABUHANBATU",
+   "province": "SUMATERA UTARA",
+   "lat": 2.285623788833618,
+   "lng": 100.06159210205078,
+   "elev": 34,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 45.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LAMONGAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.131410598754883,
+   "lng": 112.30074310302734,
+   "elev": 10,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 78.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.22
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 18.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.81
+    },
+    "isha": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LANGKAT",
+   "province": "SUMATERA UTARA",
+   "lat": 3.7087595462799072,
+   "lng": 98.22367095947266,
+   "elev": 13,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 79.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.21
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 21.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.79
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA LANGSA",
+   "province": "ACEH",
+   "lat": 4.4818196296691895,
+   "lng": 97.98059844970703,
+   "elev": 10,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 85.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 18.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.81
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA LHOKSEUMAWE",
+   "province": "ACEH",
+   "lat": 5.165266990661621,
+   "lng": 97.11119842529297,
+   "elev": 1,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 90.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.1
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 89.9,
+     "med": 1,
+     "maex": 1.1
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 328,
+   "all_six_pct": 89.9
+  },
+  {
+   "unit": "KOTA LUBUK LINGGAU",
+   "province": "SUMATERA SELATAN",
+   "lat": -3.2630019187927246,
+   "lng": 102.87510681152344,
+   "elev": 143,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 78.4,
+     "med": 1,
+     "maex": 1.22
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 80.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.19
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 286,
+   "all_six_pct": 78.4
+  },
+  {
+   "unit": "KAB. LUMAJANG",
+   "province": "JAWA TIMUR",
+   "lat": -8.125443458557129,
+   "lng": 113.13849639892578,
+   "elev": 57,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 29.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.7
+    },
+    "dhuhr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 71.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.29
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. MADIUN",
+   "province": "JAWA TIMUR",
+   "lat": -7.623615741729736,
+   "lng": 111.64585876464844,
+   "elev": 83,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 15.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 86.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "isha": {
+     "exact": 44.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. MAGELANG",
+   "province": "JAWA TENGAH",
+   "lat": -7.501737117767334,
+   "lng": 110.2472152709961,
+   "elev": 248,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 36.7,
+     "med": 2,
+     "maex": 1.63
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 35.3,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.65
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 134,
+   "all_six_pct": 36.7
+  },
+  {
+   "unit": "KAB. MAGETAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.663380146026611,
+   "lng": 111.35743713378906,
+   "elev": 370,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.06
+    },
+    "dhuhr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 96.4,
+     "med": -1,
+     "maex": 1.04
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "province": "JAWA BARAT",
+   "lat": -6.815084457397461,
+   "lng": 108.25719451904297,
+   "elev": 126,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 83.8,
+     "med": 1,
+     "maex": 1.16
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 91,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.09
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 306,
+   "all_six_pct": 83.8
+  },
+  {
+   "unit": "KAB. MALANG",
+   "province": "JAWA TIMUR",
+   "lat": -8.125917434692383,
+   "lng": 112.64091491699219,
+   "elev": 333,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 3.8,
+     "med": 2,
+     "maex": 1.96
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 6.3,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.94
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 14,
+   "all_six_pct": 3.8
+  },
+  {
+   "unit": "KAB. MANDAILING NATAL",
+   "province": "SUMATERA UTARA",
+   "lat": 0.7763978838920593,
+   "lng": 99.3686752319336,
+   "elev": 224,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 39.5,
+     "med": 2,
+     "maex": 1.61
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 41.6,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.58
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 144,
+   "all_six_pct": 39.5
+  },
+  {
+   "unit": "KOTA MATARAM",
+   "province": "NUSA TENGGARA BARAT",
+   "lat": -8.590154647827148,
+   "lng": 116.1109619140625,
+   "elev": 16,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 73.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.26
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 24.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.76
+    },
+    "isha": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA MEDAN",
+   "province": "SUMATERA UTARA",
+   "lat": 3.6290409564971924,
+   "lng": 98.66719818115234,
+   "elev": 31,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA METRO",
+   "province": "LAMPUNG",
+   "lat": -5.117295265197754,
+   "lng": 105.3079605102539,
+   "elev": 62,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 33.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.67
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 68.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "isha": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. MOJOKERTO",
+   "province": "JAWA TIMUR",
+   "lat": -7.550691604614258,
+   "lng": 112.48443603515625,
+   "elev": 35,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "isha": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NAGAN RAYA",
+   "province": "ACEH",
+   "lat": 4.164239406585693,
+   "lng": 96.50768280029297,
+   "elev": 20,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 63.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.36
+    },
+    "dhuhr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 28.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.72
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NGANJUK",
+   "province": "JAWA TIMUR",
+   "lat": -7.5974955558776855,
+   "lng": 111.93854522705078,
+   "elev": 61,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 37.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.62
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "maghrib": {
+     "exact": 73.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.27
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NGAWI",
+   "province": "JAWA TIMUR",
+   "lat": -7.43882417678833,
+   "lng": 111.34341430664062,
+   "elev": 57,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 24.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.75
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 66.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.33
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NIAS BARAT",
+   "province": "SUMATERA UTARA",
+   "lat": 1.0306830406188965,
+   "lng": 97.49119567871094,
+   "elev": 120,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 89.3,
+     "med": 1,
+     "maex": 1.11
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 92.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.08
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 326,
+   "all_six_pct": 89.3
+  },
+  {
+   "unit": "KAB. NIAS SELATAN",
+   "province": "SUMATERA UTARA",
+   "lat": 0.32931116223335266,
+   "lng": 98.0988998413086,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 55.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "sunrise": {
+     "exact": 89.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.11
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 10.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NIAS UTARA",
+   "province": "SUMATERA UTARA",
+   "lat": 1.3149605989456177,
+   "lng": 97.35540008544922,
+   "elev": 11,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 80.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.19
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 16.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. NIAS",
+   "province": "SUMATERA UTARA",
+   "lat": 1.0698649883270264,
+   "lng": 97.72459411621094,
+   "elev": 46,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 37,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.63
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 61.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.39
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PACITAN",
+   "province": "JAWA TIMUR",
+   "lat": -8.12495231628418,
+   "lng": 111.17808532714844,
+   "elev": 11,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 78.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.21
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 18.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.81
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PADANG LAWAS UTARA",
+   "province": "SUMATERA UTARA",
+   "lat": 1.5909008979797363,
+   "lng": 99.7629623413086,
+   "elev": 108,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 96.7,
+     "med": 1,
+     "maex": 1.03
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 97.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.02
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 353,
+   "all_six_pct": 96.7
+  },
+  {
+   "unit": "KAB. PADANG LAWAS",
+   "province": "SUMATERA UTARA",
+   "lat": 1.1422544717788696,
+   "lng": 99.85120391845703,
+   "elev": 154,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 73.2,
+     "med": 1,
+     "maex": 1.27
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 77.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.22
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 267,
+   "all_six_pct": 73.2
+  },
+  {
+   "unit": "KOTA PADANG PANJANG",
+   "province": "SUMATERA BARAT",
+   "lat": -0.47245436906814575,
+   "lng": 100.40229797363281,
+   "elev": 783,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 3,
+     "within1": 90.1,
+     "med": -1,
+     "maex": 1.07
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 2.5,
+     "med": 2,
+     "maex": 2.1
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 9,
+   "all_six_pct": 2.5
+  },
+  {
+   "unit": "KOTA PADANG SIDEMPUAN",
+   "province": "SUMATERA UTARA",
+   "lat": 1.390815019607544,
+   "lng": 99.28569030761719,
+   "elev": 306,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 12.3,
+     "med": 2,
+     "maex": 1.88
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 15.1,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.85
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 45,
+   "all_six_pct": 12.3
+  },
+  {
+   "unit": "KOTA PADANG",
+   "province": "SUMATERA BARAT",
+   "lat": -0.8988718390464783,
+   "lng": 100.4376449584961,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 91.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.08
+    },
+    "dhuhr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 8.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.92
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PAGAR ALAM",
+   "province": "SUMATERA SELATAN",
+   "lat": -4.1176018714904785,
+   "lng": 103.26638793945312,
+   "elev": 714,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 76.4,
+     "med": -1,
+     "maex": 1.24
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.23
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. PAKPAK BHARAT",
+   "province": "SUMATERA UTARA",
+   "lat": 2.549412250518799,
+   "lng": 98.24305725097656,
+   "elev": 998,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 35.9,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.64
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 31,
+     "med": 2,
+     "maex": 1.69
+    },
+    "isha": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 113,
+   "all_six_pct": 31
+  },
+  {
+   "unit": "KOTA PALANGKARAYA",
+   "province": "KALIMANTAN TENGAH",
+   "lat": -2.0074641704559326,
+   "lng": 113.76747131347656,
+   "elev": 16,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 72.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.27
+    },
+    "dhuhr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 26.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.74
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PALEMBANG",
+   "province": "SUMATERA SELATAN",
+   "lat": -2.97171950340271,
+   "lng": 104.74131774902344,
+   "elev": 19,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 71.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.28
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 27.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.72
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PAMEKASAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.065223693847656,
+   "lng": 113.50404357910156,
+   "elev": 16,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 69.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.3
+    },
+    "dhuhr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 28.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.72
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "province": "JAWA BARAT",
+   "lat": -7.635641098022461,
+   "lng": 108.51859283447266,
+   "elev": 10,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 84.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.16
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 20.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.79
+    },
+    "isha": {
+     "exact": 56.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.43
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PANGKAL PINANG",
+   "province": "KEPULAUAN BANGKA BELITUNG",
+   "lat": -2.110513210296631,
+   "lng": 106.11321258544922,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 86.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 13.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.87
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PARIAMAN",
+   "province": "SUMATERA BARAT",
+   "lat": -0.6085969805717468,
+   "lng": 100.13809967041016,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 81.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 18.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.82
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PASURUAN",
+   "province": "JAWA TIMUR",
+   "lat": -7.742430686950684,
+   "lng": 112.83184051513672,
+   "elev": 12,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 74.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.25
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 18.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.81
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PAYAKUMBUH",
+   "province": "SUMATERA BARAT",
+   "lat": -0.226985365152359,
+   "lng": 100.63211822509766,
+   "elev": 515,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.46
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 58.9,
+     "med": -1,
+     "maex": 1.41
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. PEKALONGAN",
+   "province": "JAWA TENGAH",
+   "lat": -7.057005405426025,
+   "lng": 109.62049865722656,
+   "elev": 46,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 43,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.57
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 58.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.42
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PEKANBARU",
+   "province": "RIAU",
+   "lat": 0.5512765645980835,
+   "lng": 101.46572875976562,
+   "elev": 22,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 57.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.42
+    },
+    "dhuhr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 34.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.65
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PEMATANGSIANTAR",
+   "province": "SUMATERA UTARA",
+   "lat": 2.9614176750183105,
+   "lng": 99.05903625488281,
+   "elev": 405,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.15
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 86,
+     "med": -1,
+     "maex": 1.14
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. PIDIE JAYA",
+   "province": "ACEH",
+   "lat": 5.124744415283203,
+   "lng": 96.21333312988281,
+   "elev": 15,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 69.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.3
+    },
+    "dhuhr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "asr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 24.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.76
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PIDIE",
+   "province": "ACEH",
+   "lat": 5.053555965423584,
+   "lng": 96.03343200683594,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 89.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.1
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 8.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.92
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PONOROGO",
+   "province": "JAWA TIMUR",
+   "lat": -7.931327819824219,
+   "lng": 111.49952697753906,
+   "elev": 102,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 1.1,
+     "within1": 99.5,
+     "med": 1,
+     "maex": 0.99
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 97,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.03
+    },
+    "isha": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 363,
+   "all_six_pct": 99.5
+  },
+  {
+   "unit": "KOTA PONTIANAK",
+   "province": "KALIMANTAN BARAT",
+   "lat": -0.025780638679862022,
+   "lng": 109.33169555664062,
+   "elev": 3,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 44.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    },
+    "sunrise": {
+     "exact": 96.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.03
+    },
+    "dhuhr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 0.5,
+     "within1": 99.5,
+     "med": 1,
+     "maex": 1
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 363,
+   "all_six_pct": 99.5
+  },
+  {
+   "unit": "KOTA PRABUMULIH",
+   "province": "SUMATERA SELATAN",
+   "lat": -3.447960376739502,
+   "lng": 104.22887420654297,
+   "elev": 48,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 34.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.66
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 63.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.36
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PROBOLINGGO",
+   "province": "JAWA TIMUR",
+   "lat": -7.866411209106445,
+   "lng": 113.32023620605469,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 85.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 14.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.85
+    },
+    "isha": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "province": "JAWA BARAT",
+   "lat": -6.595259666442871,
+   "lng": 107.43077850341797,
+   "elev": 83,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 12.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.88
+    },
+    "dhuhr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 44.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 86.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "isha": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SABANG",
+   "province": "ACEH",
+   "lat": 5.8377604484558105,
+   "lng": 95.30571746826172,
+   "elev": 39,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "isha": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SALATIGA",
+   "province": "JAWA TENGAH",
+   "lat": -7.337677478790283,
+   "lng": 110.49837493896484,
+   "elev": 577,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -2,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 41.9,
+     "med": -2,
+     "maex": 1.58
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 55.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 0,
+     "med": 3,
+     "maex": 2.61
+    },
+    "isha": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. SAMOSIR",
+   "province": "SUMATERA UTARA",
+   "lat": 2.5622823238372803,
+   "lng": 98.72895812988281,
+   "elev": 913,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 20.5,
+     "within1": 99.5,
+     "med": -1,
+     "maex": 0.8
+    },
+    "dhuhr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 15.9,
+     "med": 2,
+     "maex": 1.85
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 58,
+   "all_six_pct": 15.9
+  },
+  {
+   "unit": "KAB. SAMPANG",
+   "province": "JAWA TIMUR",
+   "lat": -7.0520243644714355,
+   "lng": 113.25634002685547,
+   "elev": 7,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 87.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 11,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.89
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SAWAHLUNTO",
+   "province": "SUMATERA BARAT",
+   "lat": -0.6526981592178345,
+   "lng": 100.75440979003906,
+   "elev": 296,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 14.8,
+     "med": 2,
+     "maex": 1.85
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 43.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    },
+    "maghrib": {
+     "exact": 17.8,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.82
+    },
+    "isha": {
+     "exact": 54,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 54,
+   "all_six_pct": 14.8
+  },
+  {
+   "unit": "KAB. SEMARANG",
+   "province": "JAWA TENGAH",
+   "lat": -7.270899295806885,
+   "lng": 110.4735107421875,
+   "elev": 333,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 4.9,
+     "med": 2,
+     "maex": 1.95
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "maghrib": {
+     "exact": 6.6,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.93
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 18,
+   "all_six_pct": 4.9
+  },
+  {
+   "unit": "KAB. SERANG",
+   "province": "BANTEN",
+   "lat": -6.141737937927246,
+   "lng": 106.14607238769531,
+   "elev": 29,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 58.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.42
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 41.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.58
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SERDANG BEDAGAI",
+   "province": "SUMATERA UTARA",
+   "lat": 3.366257667541504,
+   "lng": 99.05770874023438,
+   "elev": 14,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 73.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.26
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 22.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.78
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SIBOLGA",
+   "province": "SUMATERA UTARA",
+   "lat": 1.7425497770309448,
+   "lng": 98.789306640625,
+   "elev": 6,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 90.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.1
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 9.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SIDOARJO",
+   "province": "JAWA TIMUR",
+   "lat": -7.451472759246826,
+   "lng": 112.70030212402344,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 91,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.09
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 56.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "maghrib": {
+     "exact": 4.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.95
+    },
+    "isha": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SIMALUNGUN",
+   "province": "SUMATERA UTARA",
+   "lat": 2.9696967601776123,
+   "lng": 99.02156066894531,
+   "elev": 918,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 18.1,
+     "within1": 99.5,
+     "med": -1,
+     "maex": 0.82
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 19.7,
+     "med": 2,
+     "maex": 1.82
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 72,
+   "all_six_pct": 19.7
+  },
+  {
+   "unit": "KAB. SIMEULUE",
+   "province": "ACEH",
+   "lat": 2.612828016281128,
+   "lng": 96.08625793457031,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 96.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.03
+    },
+    "dhuhr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.94
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SINGKAWANG",
+   "province": "KALIMANTAN BARAT",
+   "lat": 0.8866504430770874,
+   "lng": 109.03227996826172,
+   "elev": 5,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 94.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.06
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 4.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.96
+    },
+    "isha": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SITUBONDO",
+   "province": "JAWA TIMUR",
+   "lat": -7.801438331604004,
+   "lng": 114.05136108398438,
+   "elev": 33,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SOLOK",
+   "province": "SUMATERA BARAT",
+   "lat": -0.9835702776908875,
+   "lng": 100.8412857055664,
+   "elev": 1025,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 39.2,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.61
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 38.9,
+     "med": 2,
+     "maex": 1.61
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 142,
+   "all_six_pct": 38.9
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "province": "JAWA BARAT",
+   "lat": -6.48464298248291,
+   "lng": 107.7318344116211,
+   "elev": 96,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 44.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 6.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.93
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 94.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SUBULUSSALAM",
+   "province": "ACEH",
+   "lat": 2.7307403087615967,
+   "lng": 97.9360122680664,
+   "elev": 74,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 18.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.81
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 82.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "province": "JAWA BARAT",
+   "lat": -7.076318264007568,
+   "lng": 106.70757293701172,
+   "elev": 19,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 69,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 31.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.68
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "province": "JAWA BARAT",
+   "lat": -6.8247480392456055,
+   "lng": 107.98126983642578,
+   "elev": 463,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.34
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 68.5,
+     "med": -1,
+     "maex": 1.32
+    },
+    "isha": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KAB. SUMENEP",
+   "province": "JAWA TIMUR",
+   "lat": -6.966307163238525,
+   "lng": 114.40313720703125,
+   "elev": 14,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 76.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.24
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 24.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.75
+    },
+    "isha": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SUNGAI PENUH",
+   "province": "JAMBI",
+   "lat": -2.113290786743164,
+   "lng": 101.3392562866211,
+   "elev": 838,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 9.3,
+     "within1": 95.9,
+     "med": -1,
+     "maex": 0.95
+    },
+    "dhuhr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "asr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 5.5,
+     "med": 2,
+     "maex": 2.02
+    },
+    "isha": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 20,
+   "all_six_pct": 5.5
+  },
+  {
+   "unit": "KOTA SURABAYA",
+   "province": "JAWA TIMUR",
+   "lat": -7.274322986602783,
+   "lng": 112.72358703613281,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 86,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "maghrib": {
+     "exact": 16.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SURAKARTA",
+   "province": "JAWA TENGAH",
+   "lat": -7.557893753051758,
+   "lng": 110.8231430053711,
+   "elev": 96,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 43.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.57
+    },
+    "sunrise": {
+     "exact": 4.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.96
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 94.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.06
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "province": "BANTEN",
+   "lat": -6.302120208740234,
+   "lng": 106.70738220214844,
+   "elev": 31,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 45.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 39.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.6
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "province": "BANTEN",
+   "lat": -6.174464702606201,
+   "lng": 106.51892852783203,
+   "elev": 35,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TANJUNG BALAI",
+   "province": "SUMATERA UTARA",
+   "lat": 2.9639954566955566,
+   "lng": 99.79472351074219,
+   "elev": 4,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 94.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 4.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.96
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TANJUNG PINANG",
+   "province": "KEPULAUAN RIAU",
+   "lat": 0.9195814728736877,
+   "lng": 104.487060546875,
+   "elev": 9,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 83,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.17
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 14.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.86
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TAPANULI SELATAN",
+   "province": "SUMATERA UTARA",
+   "lat": 1.500619888305664,
+   "lng": 99.26696014404297,
+   "elev": 142,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 82.5,
+     "med": 1,
+     "maex": 1.18
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 81.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 301,
+   "all_six_pct": 82.5
+  },
+  {
+   "unit": "KAB. TAPANULI TENGAH",
+   "province": "SUMATERA UTARA",
+   "lat": 1.83597993850708,
+   "lng": 98.65371704101562,
+   "elev": 4,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 95.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 2.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.98
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TAPANULI UTARA",
+   "province": "SUMATERA UTARA",
+   "lat": 2.0011911392211914,
+   "lng": 99.06507873535156,
+   "elev": 953,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 23.8,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.76
+    },
+    "dhuhr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 26.6,
+     "med": 2,
+     "maex": 1.73
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 97,
+   "all_six_pct": 26.6
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "province": "JAWA BARAT",
+   "lat": -7.4967360496521,
+   "lng": 108.14156341552734,
+   "elev": 434,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 57.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.43
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 0,
+     "med": 2,
+     "maex": 2.3
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 71,
+     "med": -1,
+     "maex": 1.29
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 0,
+   "all_six_pct": 0
+  },
+  {
+   "unit": "KOTA TEBING TINGGI",
+   "province": "SUMATERA UTARA",
+   "lat": 3.3282697200775146,
+   "lng": 99.1560287475586,
+   "elev": 23,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 63.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.36
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 35.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TEGAL",
+   "province": "JAWA TENGAH",
+   "lat": -7.028775691986084,
+   "lng": 109.15851593017578,
+   "elev": 39,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TOBA",
+   "province": "SUMATERA UTARA",
+   "lat": 2.388958215713501,
+   "lng": 99.24756622314453,
+   "elev": 956,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 25.8,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.74
+    },
+    "dhuhr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 24.7,
+     "med": 2,
+     "maex": 1.75
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 90,
+   "all_six_pct": 24.7
+  },
+  {
+   "unit": "KAB. TRENGGALEK",
+   "province": "JAWA TIMUR",
+   "lat": -8.160655975341797,
+   "lng": 111.6273193359375,
+   "elev": 116,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 95.6,
+     "med": 1,
+     "maex": 1.04
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 96.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.04
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 349,
+   "all_six_pct": 95.6
+  },
+  {
+   "unit": "KAB. TUBAN",
+   "province": "JAWA TIMUR",
+   "lat": -6.953413009643555,
+   "lng": 111.89224243164062,
+   "elev": 8,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 87.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 44.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    },
+    "maghrib": {
+     "exact": 12.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.87
+    },
+    "isha": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TULUNGAGUNG",
+   "province": "JAWA TIMUR",
+   "lat": -8.113471031188965,
+   "lng": 111.88772583007812,
+   "elev": 92,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 3.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.96
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 91,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.09
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA YOGYAKARTA",
+   "province": "D.I. YOGYAKARTA",
+   "lat": -7.803297519683838,
+   "lng": 110.37435913085938,
+   "elev": 116,
+   "tz": "Asia/Jakarta",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 92.9,
+     "med": 1,
+     "maex": 1.07
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 95.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "isha": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 339,
+   "all_six_pct": 92.9
+  }
+ ]
+}

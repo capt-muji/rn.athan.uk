@@ -1,0 +1,68 @@
+{
+ "city": "borlange",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 60.4858,
+ "lon": 15.4371,
+ "rows": 699,
+ "solarGateMedAbs": 0.18,
+ "fajrAngle": {
+  "n": 531,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 524,
+  "med": 17,
+  "min": 10,
+  "max": 17.25,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.6,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0.03,
+   "min": -0.4,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.02,
+   "min": -2.3,
+   "max": 2.2
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.23,
+   "min": -79,
+   "max": -19.4
+  },
+  "maghrib": {
+   "n": 699,
+   "med": -0.03,
+   "min": -0.6,
+   "max": 0.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 258,
+  "isha": 389
+ }
+}

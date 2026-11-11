@@ -1,0 +1,10376 @@
+[
+ {
+  "country": "sudan",
+  "city": "rabak",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "tshela",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "dedougou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kambove",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kipushi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "kosti",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "banfora",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "lubango",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "aleg",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 54
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "pout",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "sawakin",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 13,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "kayar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "benguela",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "ziway",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "beledweyne",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "tokar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 13,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "kisii",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "bati",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "dori",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kindu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "atbara",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -11,
+    "max_abs": 13,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "caxito",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "tshikapa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "lisala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "hobyo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "marsassoum",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "pikine",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "nyala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "kongoussi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "velingara",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "buta",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "nyeri",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "kaolack",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "birnin-gaoure",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "kitale",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kasongo-lunda",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "jimma",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "luau",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kabinda",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "uige",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "gambela",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "mendi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bunia",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "gorom-gorom",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "matadi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "ayorou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "uvira",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "gondar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "isiolo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tera",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "kolda",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "timbuktu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "ouahigouya",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "debark",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "huambo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "bure",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "say",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "adigrat",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tibiri",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kananga",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "bougouni",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "zalingei",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "atar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 52
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "voi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "boma",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "mombasa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "san",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "nouna",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bulungu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "dongola",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 13,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "kollo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "singa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "nairobi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "kassala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -11,
+    "max_abs": 14,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "malindi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "mekele",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "ilebo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "thies",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "finote-selam",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "loga",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "mane",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "nioki",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "lodja",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "lamu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "leo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "boromo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "gimbi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "koutiala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "djenne",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "bobo-dioulasso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "sedhiou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "yako",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tchirozerine",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "mweka",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "gemena",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "bargaal",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "marka",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "metu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "gaya",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "ndalatando",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "nioro-du-rip",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "kilifi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "birni-n-konni",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kolwezi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "barah",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "dire-dawa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "caala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "diapaga",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "kisumu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "luebo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "bignona",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "tenkodogo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "jijiga",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "debre-birhan",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "kaffrine",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "diffa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tahoua",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "gao",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "mbandaka",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "dosso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "bingo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -2,
+    "max_abs": 3,
+    "within1": 18
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "mbanza-ngungu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "diofior",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "bichena",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "likasi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "debre-tabor",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "inongo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "argo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 12,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "abalak",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "yabelo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "berbera",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "mbuji-mayi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kongolo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "kaya",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "debre-markos",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "fada-n-gourma",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "yirga-alem",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "isiro",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "omdurman",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -11,
+    "max_abs": 14,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "sikasso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "buulobarde",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "moyale",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "koulikoro",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kampene",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kalemie",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "agadez",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "garissa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "louga",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "gelemso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "dakar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "libenge",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "jinka",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "kati",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "oursi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "burao",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "kayes",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "lusambo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "kedougou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "zouerate",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 56
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "demba",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "jilib",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "chinguetti",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 54
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "ginir",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "doka",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "tougan",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tchintabaraden",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "beni",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "maychew",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "jamaame",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "cabinda",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "touba",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "fiche",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "dembi-dolo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "korem",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "el-fasher",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "thika",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bandundu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "ziguinchor",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "rosso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 56
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "banamba",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kasangulu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "shashemene",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kisangani",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "matam",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "zinder",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "mopti",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "senegal",
+  "city": "koungheul",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "lucapa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "lodwar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "dilling",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "kurmuk",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "el-obeid",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "barani",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "sindou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "dogondoutchi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "kombolcha",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": -9,
+    "max_abs": 10,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -17,
+    "max_abs": 17,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": -3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "asr": {
+    "median": -1,
+    "max_abs": 2,
+    "within1": 41
+   },
+   "maghrib": {
+    "median": -2,
+    "max_abs": 2,
+    "within1": 24
+   },
+   "isha": {
+    "median": -20,
+    "max_abs": 23,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "luanda",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "menongue",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "goma",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "buur-gaabo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "hawassa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "camacupa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "eldoret",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "bilma",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "mandera",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "ruiru",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "bamako",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bukama",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kabalo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "lubumbashi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "ceelbuur",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "niamey",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "arlit",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "bedesa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": -12,
+    "max_abs": 13,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -20,
+    "max_abs": 20,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": -8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": -8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": -10,
+    "max_abs": 10,
+    "within1": 0
+   },
+   "isha": {
+    "median": -28,
+    "max_abs": 31,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "saurimo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "gourcy",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "deou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "gaalkacyo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "butembo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "berber",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 13,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "boulsa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "wad-medani",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "nakuru",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "koupela",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "segou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "kismayo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tanout",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "eyl",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "al-qadarif",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kamina",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "nema",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 51
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "garbahaarrey",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "markala",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "arba-minch",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "gandajika",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "sumbe",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "mushie",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "nouadhibou",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 54
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "bahir-dar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "wajir",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "homa-bay",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "ouallam",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mali",
+  "city": "bafoulabe",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "harar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "jawhar",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -3,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 9,
+    "max_abs": 10,
+    "within1": 0
+   },
+   "asr": {
+    "median": 9,
+    "max_abs": 10,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 9,
+    "max_abs": 10,
+    "within1": 0
+   },
+   "isha": {
+    "median": -10,
+    "max_abs": 14,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kabare",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bolobo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "goba",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kasongo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "akjoujt",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 56
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "tidjikja",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 51
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "kaedi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 56
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "luena",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 5,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "angola",
+  "city": "lobito",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "burkina-faso",
+  "city": "djibo",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "maradi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "shendi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -11,
+    "max_abs": 14,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "kemise",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "adet",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "mauritania",
+  "city": "kiffa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 1,
+    "max_abs": 2,
+    "within1": 56
+   },
+   "sunrise": {
+    "median": -4,
+    "max_abs": 4,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "isha": {
+    "median": 8,
+    "max_abs": 9,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "port-sudan",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 8,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -9,
+    "max_abs": 12,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "geneina",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "sudan",
+  "city": "an-nuhud",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 8,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -12,
+    "max_abs": 15,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "kenya",
+  "city": "embu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 0,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "baardheere",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -14,
+    "max_abs": 17,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "kikwit",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "bukavu",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "tillaberi",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "dr-congo",
+  "city": "lubao",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "hargeysa",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "ethiopia",
+  "city": "butajira",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 3,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "somalia",
+  "city": "bosaso",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 2,
+    "max_abs": 3,
+    "within1": 0
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 5,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "isha": {
+    "median": -13,
+    "max_abs": 16,
+    "within1": 0
+   }
+  }
+ },
+ {
+  "country": "niger",
+  "city": "filingue",
+  "days": 61,
+  "span": "2026-11-01..2026-12-31",
+  "columns": {
+   "fajr": {
+    "median": 0,
+    "max_abs": 1,
+    "within1": 61
+   },
+   "sunrise": {
+    "median": -5,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "dhuhr": {
+    "median": 6,
+    "max_abs": 6,
+    "within1": 0
+   },
+   "asr": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   },
+   "maghrib": {
+    "median": 4,
+    "max_abs": 5,
+    "within1": 0
+   },
+   "isha": {
+    "median": 7,
+    "max_abs": 7,
+    "within1": 0
+   }
+  }
+ }
+]

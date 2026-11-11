@@ -1,0 +1,204 @@
+{
+ "id": "33767",
+ "name": "Mesquita Abu Baker Assadik - CAXIAS DO SUL - RS",
+ "city": "Mesquita Abu Baker Assadik - CAXIAS DO SUL - RS",
+ "tz": "America/Sao_Paulo",
+ "lat": -29.167739744671,
+ "lon": -51.180720180273,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaKind": "angle",
+  "isha": 16.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 52.6,
+   "w1Pct": 100,
+   "mean": -0.47,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 52.6,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 98.1,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.1,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 18.6,
+   "w1Pct": 84.1,
+   "mean": 0,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 84.1,
+     "exactPct": 18.6,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 4.1,
+   "w1Pct": 97,
+   "mean": 0.99,
+   "worst": 2,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 97,
+     "exactPct": 4.1,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 52.6,
+   "w1Pct": 100,
+   "mean": -0.47,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 52.6,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 98.1,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.1,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 18.6,
+   "w1Pct": 84.1,
+   "mean": 0,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 84.1,
+     "exactPct": 18.6,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 92.9,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 92.9,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 105
+}

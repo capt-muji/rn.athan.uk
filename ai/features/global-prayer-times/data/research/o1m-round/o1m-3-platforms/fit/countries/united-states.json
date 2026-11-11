@@ -1,0 +1,132 @@
+{
+ "country": "united-states",
+ "cities": 3,
+ "excludedClockCities": 4,
+ "rows": 1095,
+ "recipe": {
+  "fajr": "angle",
+  "fajrAngle": 15.54,
+  "fajrInterval": null,
+  "isha": "angle",
+  "ishaAngle": 15.16,
+  "ishaInterval": null,
+  "madhab": "shafi",
+  "margins": {
+   "fajr": -2,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "solarRms": 5.69,
+ "jointExactPc": 0,
+ "jointW1Pc": 0,
+ "cellsW1Pc": 23.4,
+ "worst": 36,
+ "worstWhere": "san-diego 2027-06-19 isha table 22:25 calc 21:49",
+ "implied": {
+  "fajrAngle": 15.94,
+  "ishaAngle": 15.31,
+  "ishaAngleSd": 2.14,
+  "ishaGap": 82,
+  "ishaGapSd": 7.7,
+  "fajrSunriseGap": -83,
+  "asrFactor": 0.997
+ },
+ "extent": {
+  "latMin": 27.76,
+  "latMax": 42.08,
+  "lonMin": -98.24,
+  "lonMax": -71.02
+ },
+ "seasonal": {
+  "2026-11": {
+   "sunrise": 4.59,
+   "dhuhr": 1.68
+  },
+  "2026-12": {
+   "sunrise": 5.8,
+   "dhuhr": 1.73
+  },
+  "2027-01": {
+   "sunrise": 4.85,
+   "dhuhr": 1.69
+  },
+  "2027-02": {
+   "sunrise": 2.5,
+   "dhuhr": 1.6
+  },
+  "2027-03": {
+   "sunrise": -0.93,
+   "dhuhr": 1.45
+  },
+  "2027-04": {
+   "sunrise": -3.81,
+   "dhuhr": 1.47
+  },
+  "2027-05": {
+   "sunrise": -5.94,
+   "dhuhr": 1.62
+  },
+  "2027-06": {
+   "sunrise": -6.71,
+   "dhuhr": 1.72
+  },
+  "2027-07": {
+   "sunrise": -5.7,
+   "dhuhr": 1.68
+  },
+  "2027-08": {
+   "sunrise": -3.41,
+   "dhuhr": 1.49
+  },
+  "2027-09": {
+   "sunrise": -0.73,
+   "dhuhr": 1.4
+  },
+  "2027-10": {
+   "sunrise": 2.2,
+   "dhuhr": 1.47
+  }
+ },
+ "byCol": {
+  "fajr": {
+   "exactPc": 1.9,
+   "w1Pc": 2.6,
+   "mae": 8.29,
+   "worst": 30.8
+  },
+  "sunrise": {
+   "exactPc": 16,
+   "w1Pc": 32.5,
+   "mae": 4.14,
+   "worst": 11.9
+  },
+  "dhuhr": {
+   "exactPc": 29.1,
+   "w1Pc": 33.5,
+   "mae": 2.77,
+   "worst": 7.1
+  },
+  "asr": {
+   "exactPc": 20.7,
+   "w1Pc": 35.3,
+   "mae": 3.87,
+   "worst": 12.8
+  },
+  "maghrib": {
+   "exactPc": 16.4,
+   "w1Pc": 31.9,
+   "mae": 4.22,
+   "worst": 15.4
+  },
+  "isha": {
+   "exactPc": 1.4,
+   "w1Pc": 4.5,
+   "mae": 8.79,
+   "worst": 36
+  }
+ }
+}

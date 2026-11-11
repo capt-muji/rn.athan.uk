@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-blr-bhoopasandra-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 14.24,
+  "lon": 78
+ },
+ "coarse": {
+  "lat": 14.3,
+  "lon": 78,
+  "mae": 339.63
+ },
+ "mid": {
+  "lat": 14.24,
+  "lon": 78,
+  "mae": 339.62
+ },
+ "meta": {
+  "name": "MAJLIS E MUNTAZIMA ",
+  "address": "Nti, No 1, Bhoopasandra Main Road, Bhoopasandra, R.M.V. 2nd Stage, Bengaluru, Karnataka, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 13.7,
+ "fajr_sweep": [
+  {
+   "a": 13.7,
+   "med": -0.5,
+   "mae": 13.1,
+   "mad": 14.5
+  },
+  {
+   "a": 13.65,
+   "med": -0.5,
+   "mae": 13.12,
+   "mad": 14.5
+  },
+  {
+   "a": 13.75,
+   "med": -0.5,
+   "mae": 13.12,
+   "mad": 14.5
+  },
+  {
+   "a": 13.85,
+   "med": 0.5,
+   "mae": 13.12,
+   "mad": 14.5
+  }
+ ],
+ "isha_angle": 13,
+ "isha_sweep": [
+  {
+   "a": 13,
+   "med": -660,
+   "mae": 656.98,
+   "mad": 17.5
+  },
+  {
+   "a": 13.05,
+   "med": -660.5,
+   "mae": 657.22,
+   "mad": 17.5
+  },
+  {
+   "a": 13.1,
+   "med": -660.5,
+   "mae": 657.36,
+   "mad": 17
+  },
+  {
+   "a": 13.15,
+   "med": -660.5,
+   "mae": 657.52,
+   "mad": 17
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": -632.5,
+   "mad": 7.5
+  },
+  "1": {
+   "med": -700.5,
+   "mad": 7.5
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 2,
+  "dhuhr": -677,
+  "asr": -632,
+  "maghrib": 6,
+  "isha": -661
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 2.9,
+   "within1": 10.5,
+   "mae": 13.03,
+   "worst": 26,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 14.5,
+   "within1": 55.5,
+   "mae": 1.33,
+   "worst": 3,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4.1,
+   "within1": 12.8,
+   "mae": 7.36,
+   "worst": 16,
+   "med": 0
+  },
+  "asr": {
+   "exact": 1.7,
+   "within1": 12.2,
+   "mae": 8.54,
+   "worst": -20,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 23.5,
+   "within1": 45.3,
+   "mae": 298.69,
+   "worst": 718,
+   "med": 0
+  },
+  "isha": {
+   "exact": 2.3,
+   "within1": 6.7,
+   "mae": 17.2,
+   "worst": 37,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 15
+}

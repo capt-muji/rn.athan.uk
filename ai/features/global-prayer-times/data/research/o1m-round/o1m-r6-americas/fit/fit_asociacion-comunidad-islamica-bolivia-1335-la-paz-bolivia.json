@@ -1,0 +1,259 @@
+{
+ "id": "asociacion-comunidad-islamica-bolivia-1335-la-paz-bolivia",
+ "name": "Asociacion Comunidad Islamica Bolivia",
+ "city": "Asociacion Comunidad Islamica Bolivia",
+ "tz": "America/La_Paz",
+ "lat": -16.495950568157,
+ "lon": -68.124158996416,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [
+  {
+   "from": "2026-01-01",
+   "to": "2026-02-03",
+   "offset": -420,
+   "n": 34
+  },
+  {
+   "from": "2026-02-04",
+   "to": "2026-03-06",
+   "offset": -405,
+   "n": 31
+  },
+  {
+   "from": "2026-03-07",
+   "to": "2026-04-07",
+   "offset": -390,
+   "n": 32
+  },
+  {
+   "from": "2026-04-08",
+   "to": "2026-05-11",
+   "offset": -375,
+   "n": 34
+  },
+  {
+   "from": "2026-05-12",
+   "to": "2026-08-09",
+   "offset": -360,
+   "n": 90
+  },
+  {
+   "from": "2026-08-10",
+   "to": "2026-09-10",
+   "offset": -375,
+   "n": 32
+  },
+  {
+   "from": "2026-09-11",
+   "to": "2026-10-10",
+   "offset": -390,
+   "n": 30
+  },
+  {
+   "from": "2026-10-11",
+   "to": "2026-11-10",
+   "offset": -405,
+   "n": 31
+  },
+  {
+   "from": "2026-11-11",
+   "to": "2026-12-31",
+   "offset": -420,
+   "n": 51
+  }
+ ],
+ "recipe": {
+  "fajrAngle": 9,
+  "ishaKind": "angle",
+  "isha": 9,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 332,
+   "sunrise": 298,
+   "dhuhr": 0,
+   "asr": 174,
+   "maghrib": 209,
+   "isha": 343
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 329.73,
+   "worst": 357,
+   "med": 332,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 357
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 294,
+   "worst": 321,
+   "med": 298,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 321
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 8.5,
+   "w1Pct": 28.8,
+   "mean": -0.24,
+   "worst": 8,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 28.8,
+     "exactPct": 8.5,
+     "worst": 8
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 177.16,
+   "worst": 217,
+   "med": 174,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 217
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 207.71,
+   "worst": 221,
+   "med": 209,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 221
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 340.88,
+   "worst": 374,
+   "med": 343,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 374
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 8.5,
+   "w1Pct": 16.7,
+   "mean": -2.27,
+   "worst": -30,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 16.7,
+     "exactPct": 8.5,
+     "worst": -30
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 8.2,
+   "w1Pct": 16.4,
+   "mean": -4,
+   "worst": -33,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 16.4,
+     "exactPct": 8.2,
+     "worst": -33
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 8.5,
+   "w1Pct": 28.8,
+   "mean": -0.24,
+   "worst": 8,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 28.8,
+     "exactPct": 8.5,
+     "worst": 8
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 5.2,
+   "w1Pct": 14.2,
+   "mean": 3.16,
+   "worst": 43,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 14.2,
+     "exactPct": 5.2,
+     "worst": 43
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 8.8,
+   "w1Pct": 18.6,
+   "mean": -1.29,
+   "worst": -15,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 18.6,
+     "exactPct": 8.8,
+     "worst": -15
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 8.8,
+   "w1Pct": 17,
+   "mean": -2.12,
+   "worst": -36,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 17,
+     "exactPct": 8.8,
+     "worst": -36
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -3
+}

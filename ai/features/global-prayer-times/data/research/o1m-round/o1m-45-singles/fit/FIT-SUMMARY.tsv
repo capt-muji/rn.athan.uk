@@ -1,0 +1,27 @@
+country	second	tier	cities	rows	class	fajr_off	sunrise_off	dhuhr_off	asr_off	maghrib_off	isha_off	fajr_w1	sunrise_w1	dhuhr_w1	asr_w1	maghrib_w1	isha_w1	fajr_worst	sunrise_worst	dhuhr_worst	asr_worst	maghrib_worst	isha_worst
+british-virgin-islands	turktakvim	platform	1	30	MARGIN DISPUTE	+1.0	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+caribbean-netherlands	turktakvim	platform	2	60	MARGIN DISPUTE	+0.5	-4.5	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+cayman-islands	turktakvim	platform	5	150	MARGIN DISPUTE	+0.5	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	7	6	8
+christmas-island	turktakvim	platform	1	30	MARGIN DISPUTE	+1.0	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+cook-islands	turktakvim	platform	1	30	MARGIN DISPUTE	+0.0	-5.0	+7.0	+7.5	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+falkland-islands	turktakvim	platform	1	30	CONVENTION DISPUTE	+1.0	-9.0	+13.0	+13.0	+10.0	+13.0	100	0	0	0	0	0	1	9	13	14	10	14
+guinea-bissau	turktakvim	platform	3	90	MARGIN DISPUTE	+0.0	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	7	7	6	8
+marshall-islands	turktakvim	platform	4	120	MARGIN DISPUTE	+0.5	-4.5	+7.0	+7.0	+5.8	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+nauru	turktakvim	platform	2	60	MARGIN DISPUTE	+1.0	-4.5	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	7	7	6	7
+norfolk-island	turktakvim	platform	1	30	MARGIN DISPUTE	+0.5	-5.0	+8.0	+8.0	+6.0	+8.0	100	0	0	0	0	0	1	6	9	9	7	9
+northern-mariana-islands	turktakvim	platform	1	30	MARGIN DISPUTE	+1.0	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+republic-of-the-congo	turktakvim	platform	4	120	MARGIN DISPUTE	+0.5	-4.5	+7.0	+7.0	+5.8	+7.0	100	0	0	0	0	0	1	5	7	7	6	7
+saint-helena-ascension-and-tristan-da-cunha	turktakvim	platform	2	60	MARGIN DISPUTE	+0.5	-5.5	+8.0	+8.0	+6.5	+8.0	100	0	0	0	0	0	1	6	8	9	6	9
+saint-kitts-and-nevis	turktakvim	platform	2	60	MARGIN DISPUTE	+0.5	-5.0	+7.5	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+saint-vincent-and-the-grenadines	turktakvim	platform	3	60	MARGIN DISPUTE	+0.5	-5.0	+7.0	+7.0	+5.8	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+san-marino	turktakvim	platform	1	30	CONVENTION DISPUTE	-18.0	-7.0	+10.0	+9.0	+8.0	+22.0	0	0	0	0	0	0	19	7	11	10	9	23
+sao-tome-and-principe	turktakvim	platform	7	210	MARGIN DISPUTE	+1.0	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	7	7	6	7
+sint-maarten	turktakvim	platform	1	30	CONVENTION DISPUTE	-12.0	-5.0	+7.0	+6.0	+6.0	+16.0	0	0	0	0	0	0	13	5	8	7	6	16
+south-georgia	turktakvim	platform	1	30	CONVENTION DISPUTE	+1.0	-10.0	+15.0	+15.0	+11.0	+15.0	100	0	0	0	0	0	1	10	15	15	11	15
+tajikistan	turktakvim	platform	7	210	MARGIN DISPUTE	+0.0	-6.0	+9.0	+9.0	+7.0	+9.0	100	0	0	0	0	0	1	7	9	9	7	9
+turks-and-caicos-islands	turktakvim	platform	1	30	MARGIN DISPUTE	+0.5	-5.0	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+tuvalu	turktakvim	platform	1	30	MARGIN DISPUTE	+1.0	-4.5	+7.0	+7.0	+6.0	+7.0	100	0	0	0	0	0	1	5	8	8	6	8
+western-sahara	turktakvim	platform	1	11	CONVENTION DISPUTE	+5.0	-2.0	+3.0	+8.0	+2.0	+8.0	0	45	0	0	0	0	6	2	3	9	3	9
+jersey	Jersey Islamic Centre sheet	community	1	30	CONVENTION DISPUTE	+0.0	+0.0	-4.0	+1.5	-5.0	+14.0	100	100	0	50	0	0	1	0	5	2	5	18
+svalbard	Diyanet	publisher	1	30	CONVENTION DISPUTE	-49.5	+8.0	-5.0	-6.0	-13.0	+48.5	0	0	0	0	0	0	70	9	6	7	15	70
+ascension	Diyanet (Ascension)	publisher	1	30	MARGIN DISPUTE	+0.0	+2.0	+1.5	+2.0	-2.0	+7.0	100	0	50	0	27	0	1	3	2	3	2	7

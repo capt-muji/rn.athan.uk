@@ -1,0 +1,2518 @@
+{
+ "sheets": {
+  "2024-08-19": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2024-09-15": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -2,
+     "vsRecipe": -2
+    },
+    "sunrise": {
+     "vsAladkar": -2,
+     "vsRecipe": -2
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    },
+    "isha": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    },
+    "maghrib": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    },
+    "isha": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 2,
+     "vsRecipe": 2
+    }
+   }
+  },
+  "2024-11-07": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2024-12-16": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   }
+  },
+  "2025-02-14": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-02-19": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2024-10-31": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2024-11-01": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    }
+   }
+  },
+  "2024-12-21": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-01-15": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-03-01": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": 0,
+     "vsRecipe": 1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-03-29": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-03-30": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   }
+  },
+  "2025-04-24": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   }
+  },
+  "2025-04-27": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2025-06-21": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   }
+  },
+  "2026-02-18": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2026-03-20": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -2,
+     "vsRecipe": -1
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": 1,
+     "vsRecipe": 1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "maghrib": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   }
+  },
+  "2026-04-26": {
+   "cairo": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "alexandria": {
+    "fajr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "sunrise": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   },
+   "tanta": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "asyut": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    }
+   },
+   "aswan": {
+    "fajr": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "sunrise": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "dhuhr": {
+     "vsAladkar": -1,
+     "vsRecipe": 0
+    },
+    "asr": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    },
+    "maghrib": {
+     "vsAladkar": 0,
+     "vsRecipe": 0
+    },
+    "isha": {
+     "vsAladkar": -1,
+     "vsRecipe": -1
+    }
+   }
+  }
+ },
+ "summary": {
+  "cellsGated": 570,
+  "worstVsAladkar": 2,
+  "worstVsRecipe": 2,
+  "flagged": []
+ }
+}

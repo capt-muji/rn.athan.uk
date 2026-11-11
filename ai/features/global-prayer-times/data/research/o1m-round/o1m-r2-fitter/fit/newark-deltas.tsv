@@ -1,0 +1,12 @@
+state	years	rows	geo2025	fajrAng	ishaAng	fajr	sunrise	dhuhr	asr	maghrib	isha
+banked	2024+2025+2026	1096	40.7,-74.404,k0,rms26.657	14.72	15.02	52/2	55/-3	69/-721	71/-722	29/-721	35/722
+buggy	2024+2026	731	ABSENT	-	-	-	-	-	-	-	-
+let	2024+2025+2026	1096	40.7,-74.404,k0,rms26.657	14.72	15.02	52/2	55/-3	69/-721	71/-722	29/-721	35/722
+repaired	2024+2025+2026	1096	40.73,-74.154,k2,rms0.849	14.71	15.35	44/3	264/2	11/3	37/4	248/-3	20/3
+PASS	buggy drops 2025
+PASS	let restores 2025 at 365 rows
+PASS	let geo rms 26.657
+PASS	repair geo rms 0.849
+PASS	repair isha worst +3
+PASS	banked let-equivalent rms 26.657
+PASS	corrected 3-year row total 1,096

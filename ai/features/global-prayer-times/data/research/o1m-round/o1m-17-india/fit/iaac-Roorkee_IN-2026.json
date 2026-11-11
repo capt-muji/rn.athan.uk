@@ -1,0 +1,134 @@
+{
+ "rows": "data/iaac/Roorkee_IN-2026.json",
+ "year": 2026,
+ "n_days": 360,
+ "declared_point": [
+  29.8667,
+  77.8667
+ ],
+ "solved_point": {
+  "lat": 29.817,
+  "lon": 77.767,
+  "mae": 0.383
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.2,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.3,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.33,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.63,
+   "mad": 0,
+   "med": 1
+  }
+ ],
+ "isha_angle": 18.15,
+ "isha_sweep": [
+  {
+   "a": 18.15,
+   "mae": 0.37,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.2,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.25,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 55.5,
+   "mad": 11
+  },
+  "1": {
+   "med": 1,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 4,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 73.6,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 69.2,
+   "within1": 100,
+   "mae": 0.31,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 79.4,
+   "within1": 100,
+   "mae": 0.21,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 64.7,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 67.5,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 60.6,
+   "within1": 100,
+   "mae": 0.39,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 360,
+ "all_six_exact": 49,
+ "amplitude_fajr_min": 131
+}

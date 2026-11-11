@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Gurgaon_IN-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 28.4667,
+  "lon": 77.0167
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.96,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.24,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.25,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.39,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.42,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.3,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.36,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.43,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.47,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 57.98,
+   "med": 55
+  },
+  "1": {
+   "mae": 0.36,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 75.9,
+   "within1": 100,
+   "mae": 0.24,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 73.2,
+   "within1": 99.7,
+   "mae": 0.27,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 54.2,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 63.6,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 69.3,
+   "within1": 100,
+   "mae": 0.31,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 70.4,
+   "within1": 100,
+   "mae": 0.3,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 364,
+ "isha_tier": {
+  "17": {
+   "mae": 5.33,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.43,
+   "med": 0,
+   "within1": 99.2,
+   "exact": 57.5,
+   "worst": 2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.95,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 123
+}

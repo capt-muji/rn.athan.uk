@@ -1,0 +1,61 @@
+{
+ "city": "Reykjavik",
+ "nightFraction": null,
+ "country": "Iceland",
+ "source": "felagmuslima.is",
+ "tz": "Atlantic/Reykjavik",
+ "lat": 64.1466,
+ "lon": -21.9426,
+ "rows": 30,
+ "solarGateMedAbs": 0.31,
+ "fajrAngle": {
+  "n": 30,
+  "med": 14.2,
+  "min": 14.15,
+  "max": 14.25,
+  "jun": null,
+  "dec": null
+ },
+ "ishaAngle": null,
+ "solarMargin": {
+  "sunrise": {
+   "n": 30,
+   "med": -0.4,
+   "min": -0.7,
+   "max": 0.1
+  },
+  "dhuhr": {
+   "n": 30,
+   "med": -0.1,
+   "min": -0.5,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 30,
+   "med": 12.98,
+   "min": 9.7,
+   "max": 14.8
+  },
+  "asrHanafi": {
+   "n": 30,
+   "med": -8.72,
+   "min": -19.8,
+   "max": -0.7
+  },
+  "maghrib": {
+   "n": 30,
+   "med": -0.17,
+   "min": -0.8,
+   "max": 0.1
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 66,
+  "isha": 81
+ }
+}

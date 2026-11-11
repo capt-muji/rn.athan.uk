@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-saharanpur-dhalanwali-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 29.86,
+  "lon": 77.36
+ },
+ "coarse": {
+  "lat": 30,
+  "lon": 77.4,
+  "mae": 0.471
+ },
+ "mid": {
+  "lat": 29.86,
+  "lon": 77.36,
+  "mae": 0.392
+ },
+ "meta": {
+  "name": "Masjid Dhalanwali",
+  "address": "Khanalampura, Saharanpur, Uttar Pradesh, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18.1,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.14,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.18,
+   "mad": 0
+  },
+  {
+   "a": 18.15,
+   "med": 0,
+   "mae": 0.33,
+   "mad": 0
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.41,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17.95,
+ "isha_sweep": [
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.1,
+   "mad": 0
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.24,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.27,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.47,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -54,
+   "mad": 10
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 85.5,
+   "within1": 100,
+   "mae": 0.15,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 72.6,
+   "within1": 100,
+   "mae": 0.27,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 67.2,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 70.9,
+   "within1": 100,
+   "mae": 0.29,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 73.8,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 84.3,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 60,
+ "amplitude_fajr_min": 130
+}

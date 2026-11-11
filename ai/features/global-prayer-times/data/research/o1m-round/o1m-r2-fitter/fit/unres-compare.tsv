@@ -1,0 +1,3 @@
+DIFF	fit_0aAeyzAj.json	2024 isna.dhuhr 26/6 vs 26/-714; 2024 mwl.dhuhr 26/6 vs 26/-714
+DIFF	fit_8KXm93LM.json	2025 geo {"lat":40.73,"lon":-74.154,"k":2,"resid":0.849} vs {"lat":40.7,"lon":-74.404,"k":0,"resid":26.657}; 2025 isna.fajr 44/3 vs 52/2; 2025 mwl.fajr 0/29 vs 0/28; 2025 isna.sunrise 264/2 vs 55/-3; 2025 mwl.sunrise 264/2 vs 55/-3; 2025 isna.dhuhr 11/3 vs 69/-721
+SUMMARY	identical 37	diff 2	only_bank 0	scored 39

@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-jamia-masjid-sector-d-rawalpindi-4600-pakistan.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 33.54,
+  "lon": 72.95,
+  "mae": 0.033
+ },
+ "coarse": {
+  "lat": 33.5,
+  "lon": 73,
+  "mae": 0.225
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.03
+  },
+  {
+   "a": 17.8,
+   "med": -1,
+   "maeCentred": 0.09
+  },
+  {
+   "a": 18.2,
+   "med": 1,
+   "maeCentred": 0.11
+  }
+ ],
+ "isha_angle": 18,
+ "isha_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.09
+  },
+  {
+   "a": 17.8,
+   "med": 1,
+   "maeCentred": 0.12
+  },
+  {
+   "a": 18.2,
+   "med": -1,
+   "maeCentred": 0.13
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 53,
+   "maeCentred": 10.93
+  },
+  "1": {
+   "med": 0,
+   "maeCentred": 0.62
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 96.7,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 95.9,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 97.5,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 37.8,
+   "within1": 100,
+   "mae": 0.62,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 96.7,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 91.2,
+   "within1": 100,
+   "mae": 0.09,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 116,
+ "amplitude_fajr_min": 151
+}

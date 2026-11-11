@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Amritsar-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 31.6167,
+  "lon": 74.9167
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.98,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.41,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.43,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.3,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.38,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.4,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.51,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 56.72,
+   "med": 55
+  },
+  "1": {
+   "mae": 0.33,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 74.2,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 67.4,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 50.4,
+   "within1": 100,
+   "mae": 0.5,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 67.4,
+   "within1": 99.7,
+   "mae": 0.33,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 63.6,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 70.4,
+   "within1": 100,
+   "mae": 0.3,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 364,
+ "isha_tier": {
+  "17": {
+   "mae": 5.55,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 7
+  },
+  "18": {
+   "mae": 0.4,
+   "med": 0,
+   "within1": 99.7,
+   "exact": 60.5,
+   "worst": 2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 5.2,
+  "min": 4,
+  "max": 7
+ },
+ "amplitude_fajr_min": 140
+}

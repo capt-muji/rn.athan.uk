@@ -1,0 +1,71 @@
+{
+ "surface": "centro-islamico-de-santa-cruz-45678-santa-cruz-de-la-sierra-bolivia",
+ "name": "Centro Islámico de Santa Cruz",
+ "lat": -17.7931928,
+ "lon": -63.1965353,
+ "tz": "America/La_Paz",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "recipe": {
+  "fajr": 18,
+  "isha": 15.9,
+  "asr": "Shafi"
+ },
+ "temkin": {
+  "fajr": 0,
+  "sunrise": -7,
+  "dhuhr": 5,
+  "asr": 4,
+  "maghrib": 7,
+  "isha": 5
+ },
+ "within1": {
+  "fajr": 94.2,
+  "sunrise": 95.9,
+  "dhuhr": 92.3,
+  "asr": 94.8,
+  "maghrib": 94.2,
+  "isha": 93.2
+ },
+ "mae": {
+  "fajr": 0.25,
+  "sunrise": 0.22,
+  "dhuhr": 0.27,
+  "asr": 0.59,
+  "maghrib": 0.4,
+  "isha": 0.43
+ },
+ "worst": {
+  "fajr": 6,
+  "sunrise": 5,
+  "dhuhr": 3,
+  "asr": 3,
+  "maghrib": 3,
+  "isha": 2
+ },
+ "seasonal_amplitude_jan_to_jul": {
+  "fajr": 57,
+  "sunrise": 53,
+  "dhuhr": -3,
+  "asr": -8,
+  "maghrib": -60,
+  "isha": -63
+ },
+ "perYear": {
+  "2026": {
+   "days": 365,
+   "within1": [
+    94.2,
+    95.9,
+    92.3,
+    94.8,
+    94.2,
+    93.2
+   ]
+  }
+ },
+ "clock_blocks": []
+}

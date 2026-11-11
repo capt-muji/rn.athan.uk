@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-kgf-quba-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 12.98,
+  "lon": 78.08
+ },
+ "coarse": {
+  "lat": 13.1,
+  "lon": 78,
+  "mae": 0.529
+ },
+ "mid": {
+  "lat": 12.98,
+  "lon": 78.08,
+  "mae": 0.471
+ },
+ "meta": {
+  "name": "Masjid e Quba",
+  "address": "Vijay Nagar, Robertsonpet, Chinnakote, Karnataka, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.12,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.14,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.29,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.35,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 18,
+ "isha_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.06,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.31,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.33,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -62,
+   "mad": 9
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 89.5,
+   "within1": 100,
+   "mae": 0.11,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 92.9,
+   "within1": 100,
+   "mae": 0.07,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 87.7,
+   "within1": 100,
+   "mae": 0.12,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 91.7,
+   "within1": 100,
+   "mae": 0.08,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 89.2,
+   "within1": 100,
+   "mae": 0.11,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 92.6,
+   "within1": 100,
+   "mae": 0.07,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 190,
+ "amplitude_fajr_min": 59
+}

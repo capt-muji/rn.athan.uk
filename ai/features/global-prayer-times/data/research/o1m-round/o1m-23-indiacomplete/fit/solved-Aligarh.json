@@ -1,0 +1,15 @@
+{
+ "rows": "data/tms/tms-Aligarh_IN-2026.json",
+ "year": 2026,
+ "samples": 12,
+ "solved": {
+  "lat": 31.94,
+  "lon": 74
+ },
+ "lon_mae": 19.08,
+ "lat_mae": 23.83,
+ "coarse": {
+  "lon": 74,
+  "lat": 31.95
+ }
+}

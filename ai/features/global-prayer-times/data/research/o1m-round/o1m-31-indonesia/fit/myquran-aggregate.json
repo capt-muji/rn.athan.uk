@@ -1,0 +1,188 @@
+{
+ "2028": {
+  "fajr": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 4.42,
+   "median_of_medians": 2.55
+  },
+  "sunrise": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 8.83,
+   "median_of_medians": -3.22
+  },
+  "dhuhr": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 0,
+   "w1": 1049,
+   "exact_pc": 0,
+   "w1_pc": 9.9,
+   "worst_abs": 5.22,
+   "median_of_medians": 3.53
+  },
+  "asr": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 1025,
+   "w1": 8622,
+   "exact_pc": 9.7,
+   "w1_pc": 81.2,
+   "worst_abs": 4.85,
+   "median_of_medians": 2.57
+  },
+  "maghrib": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 10,
+   "w1": 2815,
+   "exact_pc": 0.1,
+   "w1_pc": 26.5,
+   "worst_abs": 8.78,
+   "median_of_medians": 3.27
+  },
+  "isha": {
+   "units": 29,
+   "cells": 10614,
+   "exact": 1054,
+   "w1": 8597,
+   "exact_pc": 9.9,
+   "w1_pc": 81,
+   "worst_abs": 4.43,
+   "median_of_medians": 2.54
+  }
+ },
+ "2029": {
+  "fajr": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 4.23,
+   "median_of_medians": 2.52
+  },
+  "sunrise": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 8.62,
+   "median_of_medians": -3.24
+  },
+  "dhuhr": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 169,
+   "w1": 1353,
+   "exact_pc": 1.5,
+   "w1_pc": 12.4,
+   "worst_abs": 4.92,
+   "median_of_medians": 3.54
+  },
+  "asr": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 1209,
+   "w1": 9167,
+   "exact_pc": 11,
+   "w1_pc": 83.7,
+   "worst_abs": 4.13,
+   "median_of_medians": 2.54
+  },
+  "maghrib": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 249,
+   "w1": 3165,
+   "exact_pc": 2.3,
+   "w1_pc": 28.9,
+   "worst_abs": 8.75,
+   "median_of_medians": 3.25
+  },
+  "isha": {
+   "units": 30,
+   "cells": 10950,
+   "exact": 1274,
+   "w1": 9090,
+   "exact_pc": 11.6,
+   "w1_pc": 83,
+   "worst_abs": 4.12,
+   "median_of_medians": 2.54
+  }
+ },
+ "2030": {
+  "fajr": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 4.43,
+   "median_of_medians": 2.53
+  },
+  "sunrise": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 0,
+   "w1": 0,
+   "exact_pc": 0,
+   "w1_pc": 0,
+   "worst_abs": 8.8,
+   "median_of_medians": -3.2
+  },
+  "dhuhr": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 162,
+   "w1": 1373,
+   "exact_pc": 1.4,
+   "w1_pc": 12.1,
+   "worst_abs": 5.22,
+   "median_of_medians": 3.52
+  },
+  "asr": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 1274,
+   "w1": 9129,
+   "exact_pc": 11.3,
+   "w1_pc": 80.7,
+   "worst_abs": 4.72,
+   "median_of_medians": 2.53
+  },
+  "maghrib": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 229,
+   "w1": 3163,
+   "exact_pc": 2,
+   "w1_pc": 28,
+   "worst_abs": 8.77,
+   "median_of_medians": 3.27
+  },
+  "isha": {
+   "units": 31,
+   "cells": 11315,
+   "exact": 1304,
+   "w1": 9118,
+   "exact_pc": 11.5,
+   "w1_pc": 80.6,
+   "worst_abs": 4.43,
+   "median_of_medians": 2.55
+  }
+ }
+}

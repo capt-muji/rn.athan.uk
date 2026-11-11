@@ -1,0 +1,137 @@
+{
+ "2028": {
+  "units": 47,
+  "fajr": {
+   "median_margin": 1.43,
+   "p5": -2.22,
+   "p95": 7.75,
+   "median_sd": 0.29,
+   "units_integer_margin": 34
+  },
+  "sunrise": {
+   "median_margin": -5.18,
+   "p5": -9.3,
+   "p95": 1.55,
+   "median_sd": 0.29,
+   "units_integer_margin": 34
+  },
+  "dhuhr": {
+   "median_margin": 2.43,
+   "p5": -1.25,
+   "p95": 8.78,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "asr": {
+   "median_margin": 1.43,
+   "p5": -2.25,
+   "p95": 7.75,
+   "median_sd": 0.29,
+   "units_integer_margin": 36
+  },
+  "maghrib": {
+   "median_margin": 3.82,
+   "p5": -1.53,
+   "p95": 11.45,
+   "median_sd": 0.29,
+   "units_integer_margin": 32
+  },
+  "isha": {
+   "median_margin": 1.43,
+   "p5": -2.33,
+   "p95": 7.77,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  }
+ },
+ "2029": {
+  "units": 47,
+  "fajr": {
+   "median_margin": 0.98,
+   "p5": -2.23,
+   "p95": 7.83,
+   "median_sd": 0.29,
+   "units_integer_margin": 33
+  },
+  "sunrise": {
+   "median_margin": -5.4,
+   "p5": -9.8,
+   "p95": 2.05,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "dhuhr": {
+   "median_margin": 1.98,
+   "p5": -1.23,
+   "p95": 8.77,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "asr": {
+   "median_margin": 1,
+   "p5": -2.27,
+   "p95": 7.83,
+   "median_sd": 0.29,
+   "units_integer_margin": 36
+  },
+  "maghrib": {
+   "median_margin": 3.8,
+   "p5": -1.52,
+   "p95": 8.6,
+   "median_sd": 0.3,
+   "units_integer_margin": 32
+  },
+  "isha": {
+   "median_margin": 1.08,
+   "p5": -2.33,
+   "p95": 7.82,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  }
+ },
+ "2030": {
+  "units": 46,
+  "fajr": {
+   "median_margin": 1.55,
+   "p5": -2.23,
+   "p95": 7.83,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "sunrise": {
+   "median_margin": -4.83,
+   "p5": -9.32,
+   "p95": 2.07,
+   "median_sd": 0.29,
+   "units_integer_margin": 33
+  },
+  "dhuhr": {
+   "median_margin": 2.59,
+   "p5": -1.25,
+   "p95": 8.8,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "asr": {
+   "median_margin": 1.58,
+   "p5": -2.25,
+   "p95": 7.83,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  },
+  "maghrib": {
+   "median_margin": 4.1,
+   "p5": -1.52,
+   "p95": 11.47,
+   "median_sd": 0.29,
+   "units_integer_margin": 31
+  },
+  "isha": {
+   "median_margin": 1.57,
+   "p5": -2.32,
+   "p95": 7.83,
+   "median_sd": 0.29,
+   "units_integer_margin": 35
+  }
+ }
+}

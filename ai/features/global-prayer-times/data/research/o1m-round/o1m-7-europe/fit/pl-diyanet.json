@@ -1,0 +1,3551 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "15843",
+   "name": "Lodz",
+   "lat": 51.77058,
+   "lon": 19.47395,
+   "tz": "Europe/Warsaw",
+   "days": 303,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 62,
+   "honestDays": 303,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 303,
+     "exact": 31.4,
+     "w1": 79.5,
+     "w2": 79.5,
+     "mae": 10.49,
+     "worst": 134
+    },
+    "sunrise": {
+     "n": 303,
+     "exact": 66.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 303,
+     "exact": 84.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": -1
+    },
+    "asr": {
+     "n": 303,
+     "exact": 7.3,
+     "w1": 49.8,
+     "w2": 100,
+     "mae": 1.43,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 303,
+     "exact": 9.6,
+     "w1": 75.6,
+     "w2": 100,
+     "mae": 1.15,
+     "worst": -2
+    },
+    "isha": {
+     "n": 303,
+     "exact": 19.8,
+     "w1": 53.1,
+     "w2": 64.7,
+     "mae": 7.35,
+     "worst": -70
+    }
+   },
+   "allW1": 76.3
+  },
+  {
+   "key": "15844",
+   "name": "Katowice",
+   "lat": 50.2597,
+   "lon": 19.02173,
+   "tz": "Europe/Warsaw",
+   "days": 321,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 44,
+   "honestDays": 321,
+   "summerIshaGapMedian": 81,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 321,
+     "exact": 52.3,
+     "w1": 77.9,
+     "w2": 78.2,
+     "mae": 11.43,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 321,
+     "exact": 76.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 321,
+     "exact": 89.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 321,
+     "exact": 8.7,
+     "w1": 63.2,
+     "w2": 100,
+     "mae": 1.28,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 321,
+     "exact": 10,
+     "w1": 82.6,
+     "w2": 100,
+     "mae": 1.07,
+     "worst": -2
+    },
+    "isha": {
+     "n": 321,
+     "exact": 19.6,
+     "w1": 51.1,
+     "w2": 66.4,
+     "mae": 7.91,
+     "worst": -69
+    }
+   },
+   "allW1": 79.1
+  },
+  {
+   "key": "15845",
+   "name": "Krakow",
+   "lat": 50.06143,
+   "lon": 19.93658,
+   "tz": "Europe/Warsaw",
+   "days": 323,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 42,
+   "honestDays": 323,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 323,
+     "exact": 53.3,
+     "w1": 76.8,
+     "w2": 77.4,
+     "mae": 12,
+     "worst": 130
+    },
+    "sunrise": {
+     "n": 323,
+     "exact": 74.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 323,
+     "exact": 91.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 323,
+     "exact": 11.1,
+     "w1": 64.4,
+     "w2": 100,
+     "mae": 1.24,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 323,
+     "exact": 9.6,
+     "w1": 80.2,
+     "w2": 100,
+     "mae": 1.1,
+     "worst": -2
+    },
+    "isha": {
+     "n": 323,
+     "exact": 17.6,
+     "w1": 53.3,
+     "w2": 69.3,
+     "mae": 8.32,
+     "worst": -71
+    }
+   },
+   "allW1": 79.1
+  },
+  {
+   "key": "15846",
+   "name": "Poznan",
+   "lat": 52.40692,
+   "lon": 16.92993,
+   "tz": "Europe/Warsaw",
+   "days": 297,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 68,
+   "honestDays": 297,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.94,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 297,
+     "exact": 34.7,
+     "w1": 79.8,
+     "w2": 79.8,
+     "mae": 10.21,
+     "worst": 142
+    },
+    "sunrise": {
+     "n": 297,
+     "exact": 66.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 297,
+     "exact": 82.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": -1
+    },
+    "asr": {
+     "n": 297,
+     "exact": 4.7,
+     "w1": 48.5,
+     "w2": 98,
+     "mae": 1.49,
+     "worst": 3
+    },
+    "maghrib": {
+     "n": 297,
+     "exact": 11.8,
+     "w1": 72.7,
+     "w2": 100,
+     "mae": 1.15,
+     "worst": -2
+    },
+    "isha": {
+     "n": 297,
+     "exact": 18.9,
+     "w1": 50.2,
+     "w2": 64.6,
+     "mae": 7.22,
+     "worst": -70
+    }
+   },
+   "allW1": 75.2
+  },
+  {
+   "key": "15847",
+   "name": "Lublin",
+   "lat": 51.25058,
+   "lon": 22.57009,
+   "tz": "Europe/Warsaw",
+   "days": 309,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 56,
+   "honestDays": 309,
+   "summerIshaGapMedian": 76,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 309,
+     "exact": 59.5,
+     "w1": 78,
+     "w2": 78.3,
+     "mae": 11.55,
+     "worst": 143
+    },
+    "sunrise": {
+     "n": 309,
+     "exact": 68,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.32,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 309,
+     "exact": 90,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 309,
+     "exact": 9.1,
+     "w1": 54,
+     "w2": 100,
+     "mae": 1.37,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 309,
+     "exact": 9.7,
+     "w1": 79.6,
+     "w2": 100,
+     "mae": 1.11,
+     "worst": -2
+    },
+    "isha": {
+     "n": 309,
+     "exact": 23.9,
+     "w1": 48.9,
+     "w2": 62.1,
+     "mae": 8.1,
+     "worst": -74
+    }
+   },
+   "allW1": 76.8
+  },
+  {
+   "key": "15848",
+   "name": "Bielsko-biala",
+   "lat": 49.82245,
+   "lon": 19.04686,
+   "tz": "Europe/Warsaw",
+   "days": 327,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 38,
+   "honestDays": 327,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 327,
+     "exact": 53.5,
+     "w1": 75.8,
+     "w2": 76.5,
+     "mae": 12.98,
+     "worst": 136
+    },
+    "sunrise": {
+     "n": 327,
+     "exact": 72.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 327,
+     "exact": 92.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 327,
+     "exact": 11,
+     "w1": 65.4,
+     "w2": 100,
+     "mae": 1.24,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 327,
+     "exact": 13.8,
+     "w1": 81.7,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "isha": {
+     "n": 327,
+     "exact": 19.3,
+     "w1": 51.7,
+     "w2": 66.4,
+     "mae": 8.99,
+     "worst": -72
+    }
+   },
+   "allW1": 79.1
+  },
+  {
+   "key": "15849",
+   "name": "Legnica",
+   "lat": 51.21006,
+   "lon": 16.1619,
+   "tz": "Europe/Warsaw",
+   "days": 309,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 56,
+   "honestDays": 309,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 309,
+     "exact": 28.8,
+     "w1": 78.6,
+     "w2": 79,
+     "mae": 11.01,
+     "worst": 136
+    },
+    "sunrise": {
+     "n": 309,
+     "exact": 69.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 309,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 309,
+     "exact": 9.4,
+     "w1": 56.3,
+     "w2": 100,
+     "mae": 1.34,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 309,
+     "exact": 11.3,
+     "w1": 74.8,
+     "w2": 100,
+     "mae": 1.14,
+     "worst": -2
+    },
+    "isha": {
+     "n": 309,
+     "exact": 19.1,
+     "w1": 52.1,
+     "w2": 65.7,
+     "mae": 7.67,
+     "worst": -71
+    }
+   },
+   "allW1": 77
+  },
+  {
+   "key": "15850",
+   "name": "Bydgoszcz",
+   "lat": 53.1235,
+   "lon": 18.00762,
+   "tz": "Europe/Warsaw",
+   "days": 291,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 74,
+   "honestDays": 291,
+   "summerIshaGapMedian": 75,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 291,
+     "exact": 56,
+     "w1": 79.7,
+     "w2": 79.7,
+     "mae": 10.21,
+     "worst": 145
+    },
+    "sunrise": {
+     "n": 291,
+     "exact": 65.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.34,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 291,
+     "exact": 88.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 291,
+     "exact": 4.5,
+     "w1": 42.6,
+     "w2": 100,
+     "mae": 1.53,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 291,
+     "exact": 8.6,
+     "w1": 70.4,
+     "w2": 100,
+     "mae": 1.21,
+     "worst": -2
+    },
+    "isha": {
+     "n": 291,
+     "exact": 16.2,
+     "w1": 51.9,
+     "w2": 67.4,
+     "mae": 7.23,
+     "worst": -72
+    }
+   },
+   "allW1": 74.1
+  },
+  {
+   "key": "15851",
+   "name": "Czestochowa",
+   "lat": 50.79646,
+   "lon": 19.12409,
+   "tz": "Europe/Warsaw",
+   "days": 314,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 51,
+   "honestDays": 314,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.85
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 314,
+     "exact": 64,
+     "w1": 78,
+     "w2": 78.3,
+     "mae": 11.32,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 314,
+     "exact": 68.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 314,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 314,
+     "exact": 9.2,
+     "w1": 59.2,
+     "w2": 100,
+     "mae": 1.32,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 314,
+     "exact": 12.1,
+     "w1": 78,
+     "w2": 100,
+     "mae": 1.1,
+     "worst": -2
+    },
+    "isha": {
+     "n": 314,
+     "exact": 28.3,
+     "w1": 48.4,
+     "w2": 60.8,
+     "mae": 7.88,
+     "worst": -71
+    }
+   },
+   "allW1": 77.3
+  },
+  {
+   "key": "15852",
+   "name": "Elblag",
+   "lat": 54.1522,
+   "lon": 19.40884,
+   "tz": "Europe/Warsaw",
+   "days": 283,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 82,
+   "honestDays": 283,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 283,
+     "exact": 60.1,
+     "w1": 81.3,
+     "w2": 81.3,
+     "mae": 9.41,
+     "worst": 141
+    },
+    "sunrise": {
+     "n": 283,
+     "exact": 63.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.36,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 283,
+     "exact": 88.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 283,
+     "exact": 6,
+     "w1": 38.9,
+     "w2": 97.5,
+     "mae": 1.58,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 283,
+     "exact": 10.2,
+     "w1": 65.4,
+     "w2": 100,
+     "mae": 1.24,
+     "worst": -2
+    },
+    "isha": {
+     "n": 283,
+     "exact": 16.6,
+     "w1": 53.4,
+     "w2": 65.4,
+     "mae": 6.58,
+     "worst": -69
+    }
+   },
+   "allW1": 73.2
+  },
+  {
+   "key": "15853",
+   "name": "Bytom",
+   "lat": 50.34802,
+   "lon": 18.93282,
+   "tz": "Europe/Warsaw",
+   "days": 319,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 46,
+   "honestDays": 319,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 319,
+     "exact": 30.7,
+     "w1": 77.7,
+     "w2": 78.4,
+     "mae": 11.61,
+     "worst": 129
+    },
+    "sunrise": {
+     "n": 319,
+     "exact": 72.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 319,
+     "exact": 85.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 319,
+     "exact": 8.5,
+     "w1": 61.4,
+     "w2": 100,
+     "mae": 1.3,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 319,
+     "exact": 11.6,
+     "w1": 84.6,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "isha": {
+     "n": 319,
+     "exact": 18.8,
+     "w1": 53.3,
+     "w2": 66.5,
+     "mae": 8.08,
+     "worst": -70
+    }
+   },
+   "allW1": 79.5
+  },
+  {
+   "key": "15854",
+   "name": "Gliwice",
+   "lat": 50.29761,
+   "lon": 18.67658,
+   "tz": "Europe/Warsaw",
+   "days": 320,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 45,
+   "honestDays": 320,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 320,
+     "exact": 55.6,
+     "w1": 77.8,
+     "w2": 78.1,
+     "mae": 11.47,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 320,
+     "exact": 67.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 320,
+     "exact": 91.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 320,
+     "exact": 10,
+     "w1": 61.3,
+     "w2": 100,
+     "mae": 1.29,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 320,
+     "exact": 10.6,
+     "w1": 84.1,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "isha": {
+     "n": 320,
+     "exact": 20.6,
+     "w1": 52.5,
+     "w2": 67.2,
+     "mae": 7.91,
+     "worst": -69
+    }
+   },
+   "allW1": 79.3
+  },
+  {
+   "key": "15855",
+   "name": "Chorzow",
+   "lat": 50.30582,
+   "lon": 18.9742,
+   "tz": "Europe/Warsaw",
+   "days": 319,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 46,
+   "honestDays": 319,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.8
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 319,
+     "exact": 61.4,
+     "w1": 77.7,
+     "w2": 78.4,
+     "mae": 11.24,
+     "worst": 139
+    },
+    "sunrise": {
+     "n": 319,
+     "exact": 68.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 319,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": -1
+    },
+    "asr": {
+     "n": 319,
+     "exact": 9.1,
+     "w1": 62.1,
+     "w2": 99.7,
+     "mae": 1.29,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 319,
+     "exact": 11.3,
+     "w1": 79.3,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    },
+    "isha": {
+     "n": 319,
+     "exact": 16,
+     "w1": 54.5,
+     "w2": 71.5,
+     "mae": 7.76,
+     "worst": -68
+    }
+   },
+   "allW1": 78.9
+  },
+  {
+   "key": "15856",
+   "name": "Gorzow wielkopolski",
+   "lat": 52.73371,
+   "lon": 15.22505,
+   "tz": "Europe/Warsaw",
+   "days": 295,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 70,
+   "honestDays": 295,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 295,
+     "exact": 62.4,
+     "w1": 80.3,
+     "w2": 80.3,
+     "mae": 9.94,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 295,
+     "exact": 62.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.38,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 295,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 295,
+     "exact": 5.1,
+     "w1": 42.7,
+     "w2": 100,
+     "mae": 1.52,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 295,
+     "exact": 9.5,
+     "w1": 67.1,
+     "w2": 100,
+     "mae": 1.23,
+     "worst": -2
+    },
+    "isha": {
+     "n": 295,
+     "exact": 15.3,
+     "w1": 52.5,
+     "w2": 68.1,
+     "mae": 6.91,
+     "worst": -70
+    }
+   },
+   "allW1": 73.8
+  },
+  {
+   "key": "15857",
+   "name": "Walbrzych",
+   "lat": 50.77141,
+   "lon": 16.28432,
+   "tz": "Europe/Warsaw",
+   "days": 315,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 50,
+   "honestDays": 315,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 315,
+     "exact": 28.6,
+     "w1": 78.4,
+     "w2": 78.7,
+     "mae": 11.22,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 315,
+     "exact": 70.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.3,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 315,
+     "exact": 92.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 315,
+     "exact": 6,
+     "w1": 59,
+     "w2": 100,
+     "mae": 1.35,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 315,
+     "exact": 10.5,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1.1,
+     "worst": -2
+    },
+    "isha": {
+     "n": 315,
+     "exact": 19.7,
+     "w1": 53.3,
+     "w2": 67.6,
+     "mae": 7.67,
+     "worst": -70
+    }
+   },
+   "allW1": 78.4
+  },
+  {
+   "key": "15858",
+   "name": "Kalisz",
+   "lat": 51.76109,
+   "lon": 18.09102,
+   "tz": "Europe/Warsaw",
+   "days": 303,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 62,
+   "honestDays": 303,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 303,
+     "exact": 29.7,
+     "w1": 79.2,
+     "w2": 79.5,
+     "mae": 10.43,
+     "worst": 133
+    },
+    "sunrise": {
+     "n": 303,
+     "exact": 69,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 303,
+     "exact": 87.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 303,
+     "exact": 5.6,
+     "w1": 56.1,
+     "w2": 100,
+     "mae": 1.38,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 303,
+     "exact": 10.2,
+     "w1": 75.2,
+     "w2": 100,
+     "mae": 1.15,
+     "worst": -2
+    },
+    "isha": {
+     "n": 303,
+     "exact": 22.1,
+     "w1": 51.8,
+     "w2": 67,
+     "mae": 7.27,
+     "worst": -70
+    }
+   },
+   "allW1": 77
+  },
+  {
+   "key": "15859",
+   "name": "Kielce",
+   "lat": 50.87033,
+   "lon": 20.62752,
+   "tz": "Europe/Warsaw",
+   "days": 313,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 52,
+   "honestDays": 313,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 313,
+     "exact": 62,
+     "w1": 77.6,
+     "w2": 78,
+     "mae": 11.74,
+     "worst": 143
+    },
+    "sunrise": {
+     "n": 313,
+     "exact": 71.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 313,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 313,
+     "exact": 7,
+     "w1": 57.5,
+     "w2": 100,
+     "mae": 1.35,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 313,
+     "exact": 9.3,
+     "w1": 79.9,
+     "w2": 100,
+     "mae": 1.11,
+     "worst": -2
+    },
+    "isha": {
+     "n": 313,
+     "exact": 26.5,
+     "w1": 47.6,
+     "w2": 61.7,
+     "mae": 8.23,
+     "worst": -73
+    }
+   },
+   "allW1": 77.1
+  },
+  {
+   "key": "15860",
+   "name": "Koszalin",
+   "lat": 54.19438,
+   "lon": 16.17222,
+   "tz": "Europe/Warsaw",
+   "days": 283,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 82,
+   "honestDays": 283,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.8
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 283,
+     "exact": 60.1,
+     "w1": 80.9,
+     "w2": 80.9,
+     "mae": 9.45,
+     "worst": 142
+    },
+    "sunrise": {
+     "n": 283,
+     "exact": 60.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 283,
+     "exact": 90.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 283,
+     "exact": 4.2,
+     "w1": 36,
+     "w2": 96.1,
+     "mae": 1.64,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 283,
+     "exact": 10.2,
+     "w1": 64.7,
+     "w2": 100,
+     "mae": 1.25,
+     "worst": -2
+    },
+    "isha": {
+     "n": 283,
+     "exact": 13.8,
+     "w1": 50.2,
+     "w2": 67.1,
+     "mae": 6.71,
+     "worst": -70
+    }
+   },
+   "allW1": 72
+  },
+  {
+   "key": "15861",
+   "name": "Grudziadz",
+   "lat": 53.48411,
+   "lon": 18.75366,
+   "tz": "Europe/Warsaw",
+   "days": 289,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 76,
+   "honestDays": 289,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.94,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 289,
+     "exact": 51.2,
+     "w1": 80.3,
+     "w2": 80.6,
+     "mae": 9.99,
+     "worst": 142
+    },
+    "sunrise": {
+     "n": 289,
+     "exact": 66.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.34,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 289,
+     "exact": 86.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 289,
+     "exact": 5.5,
+     "w1": 44.6,
+     "w2": 99,
+     "mae": 1.51,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 289,
+     "exact": 9.3,
+     "w1": 72.7,
+     "w2": 100,
+     "mae": 1.18,
+     "worst": -2
+    },
+    "isha": {
+     "n": 289,
+     "exact": 16.3,
+     "w1": 50.9,
+     "w2": 66.4,
+     "mae": 7,
+     "worst": -72
+    }
+   },
+   "allW1": 74.8
+  },
+  {
+   "key": "15862",
+   "name": "Nowy bytom",
+   "lat": 50.286,
+   "lon": 18.87534,
+   "tz": "Europe/Warsaw",
+   "days": 321,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 44,
+   "honestDays": 321,
+   "summerIshaGapMedian": 81,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 321,
+     "exact": 57.3,
+     "w1": 77.6,
+     "w2": 77.9,
+     "mae": 11.79,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 321,
+     "exact": 70.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 321,
+     "exact": 89.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 321,
+     "exact": 10,
+     "w1": 60.4,
+     "w2": 100,
+     "mae": 1.3,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 321,
+     "exact": 13.7,
+     "w1": 83.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "isha": {
+     "n": 321,
+     "exact": 26.2,
+     "w1": 49.5,
+     "w2": 62.3,
+     "mae": 8.12,
+     "worst": -71
+    }
+   },
+   "allW1": 78.5
+  },
+  {
+   "key": "15863",
+   "name": "Opole",
+   "lat": 50.67119,
+   "lon": 17.92604,
+   "tz": "Europe/Warsaw",
+   "days": 315,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 50,
+   "honestDays": 315,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 315,
+     "exact": 51.4,
+     "w1": 78.1,
+     "w2": 78.1,
+     "mae": 11.31,
+     "worst": 131
+    },
+    "sunrise": {
+     "n": 315,
+     "exact": 68.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 315,
+     "exact": 91.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 315,
+     "exact": 7.6,
+     "w1": 60,
+     "w2": 100,
+     "mae": 1.32,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 315,
+     "exact": 10.5,
+     "w1": 77.1,
+     "w2": 100,
+     "mae": 1.12,
+     "worst": -2
+    },
+    "isha": {
+     "n": 315,
+     "exact": 17.8,
+     "w1": 51.4,
+     "w2": 67,
+     "mae": 7.9,
+     "worst": -71
+    }
+   },
+   "allW1": 77.8
+  },
+  {
+   "key": "15864",
+   "name": "Olzstyn",
+   "lat": 53.78376,
+   "lon": 20.49272,
+   "tz": "Europe/Warsaw",
+   "days": 285,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 80,
+   "honestDays": 285,
+   "summerIshaGapMedian": 76,
+   "implied": {
+    "fajr": 17.94,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 285,
+     "exact": 54,
+     "w1": 80.7,
+     "w2": 80.7,
+     "mae": 9.52,
+     "worst": 142
+    },
+    "sunrise": {
+     "n": 285,
+     "exact": 66,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.34,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 285,
+     "exact": 85.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 285,
+     "exact": 3.5,
+     "w1": 41.8,
+     "w2": 98.6,
+     "mae": 1.56,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 285,
+     "exact": 10.2,
+     "w1": 65.3,
+     "w2": 100,
+     "mae": 1.25,
+     "worst": -2
+    },
+    "isha": {
+     "n": 285,
+     "exact": 15.8,
+     "w1": 51.2,
+     "w2": 66.7,
+     "mae": 6.79,
+     "worst": -70
+    }
+   },
+   "allW1": 73.2
+  },
+  {
+   "key": "15865",
+   "name": "Plock",
+   "lat": 52.54682,
+   "lon": 19.70638,
+   "tz": "Europe/Warsaw",
+   "days": 297,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 68,
+   "honestDays": 297,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 297,
+     "exact": 50.5,
+     "w1": 79.8,
+     "w2": 79.8,
+     "mae": 10.28,
+     "worst": 141
+    },
+    "sunrise": {
+     "n": 297,
+     "exact": 71,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 297,
+     "exact": 89.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 297,
+     "exact": 5.1,
+     "w1": 49.5,
+     "w2": 99.7,
+     "mae": 1.46,
+     "worst": 3
+    },
+    "maghrib": {
+     "n": 297,
+     "exact": 8.8,
+     "w1": 71.4,
+     "w2": 100,
+     "mae": 1.2,
+     "worst": -2
+    },
+    "isha": {
+     "n": 297,
+     "exact": 18.5,
+     "w1": 52.9,
+     "w2": 65.7,
+     "mae": 7.14,
+     "worst": -71
+    }
+   },
+   "allW1": 75.6
+  },
+  {
+   "key": "15866",
+   "name": "Radom",
+   "lat": 51.40253,
+   "lon": 21.14714,
+   "tz": "Europe/Warsaw",
+   "days": 307,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 58,
+   "honestDays": 307,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 307,
+     "exact": 56.4,
+     "w1": 78.5,
+     "w2": 78.8,
+     "mae": 10.9,
+     "worst": 143
+    },
+    "sunrise": {
+     "n": 307,
+     "exact": 71.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 307,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 307,
+     "exact": 6.8,
+     "w1": 55.4,
+     "w2": 100,
+     "mae": 1.38,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 307,
+     "exact": 9.4,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    },
+    "isha": {
+     "n": 307,
+     "exact": 16.9,
+     "w1": 53.7,
+     "w2": 66.8,
+     "mae": 7.65,
+     "worst": -71
+    }
+   },
+   "allW1": 78.1
+  },
+  {
+   "key": "15867",
+   "name": "Rzeszow",
+   "lat": 50.04132,
+   "lon": 21.99901,
+   "tz": "Europe/Warsaw",
+   "days": 323,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 42,
+   "honestDays": 323,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 323,
+     "exact": 29.4,
+     "w1": 77.4,
+     "w2": 78,
+     "mae": 11.84,
+     "worst": 126
+    },
+    "sunrise": {
+     "n": 323,
+     "exact": 69.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 323,
+     "exact": 88.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 323,
+     "exact": 9.6,
+     "w1": 68.7,
+     "w2": 100,
+     "mae": 1.22,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 323,
+     "exact": 9.6,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "isha": {
+     "n": 323,
+     "exact": 18.6,
+     "w1": 53.6,
+     "w2": 66.9,
+     "mae": 8.2,
+     "worst": -70
+    }
+   },
+   "allW1": 80.9
+  },
+  {
+   "key": "15868",
+   "name": "Sonsdwiec",
+   "lat": 50.28682,
+   "lon": 19.10385,
+   "tz": "Europe/Warsaw",
+   "days": 321,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 44,
+   "honestDays": 321,
+   "summerIshaGapMedian": 81,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 321,
+     "exact": 57.6,
+     "w1": 77.6,
+     "w2": 77.9,
+     "mae": 11.79,
+     "worst": 137
+    },
+    "sunrise": {
+     "n": 321,
+     "exact": 72.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 321,
+     "exact": 89.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 321,
+     "exact": 9,
+     "w1": 60.1,
+     "w2": 100,
+     "mae": 1.31,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 321,
+     "exact": 14.3,
+     "w1": 80.1,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    },
+    "isha": {
+     "n": 321,
+     "exact": 24.6,
+     "w1": 49.8,
+     "w2": 63.6,
+     "mae": 8.11,
+     "worst": -71
+    }
+   },
+   "allW1": 77.9
+  },
+  {
+   "key": "15869",
+   "name": "Tarnow",
+   "lat": 50.01381,
+   "lon": 20.98698,
+   "tz": "Europe/Warsaw",
+   "days": 325,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 40,
+   "honestDays": 325,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 325,
+     "exact": 29.8,
+     "w1": 77.2,
+     "w2": 77.5,
+     "mae": 12.25,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 325,
+     "exact": 70.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 325,
+     "exact": 88.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 325,
+     "exact": 10.2,
+     "w1": 66.8,
+     "w2": 100,
+     "mae": 1.23,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 325,
+     "exact": 10.8,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "isha": {
+     "n": 325,
+     "exact": 18.5,
+     "w1": 53.2,
+     "w2": 67.4,
+     "mae": 8.38,
+     "worst": -70
+    }
+   },
+   "allW1": 80.7
+  },
+  {
+   "key": "15870",
+   "name": "Torun",
+   "lat": 53.01375,
+   "lon": 18.59814,
+   "tz": "Europe/Warsaw",
+   "days": 291,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 74,
+   "honestDays": 291,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 291,
+     "exact": 56.4,
+     "w1": 80.4,
+     "w2": 80.8,
+     "mae": 9.57,
+     "worst": 141
+    },
+    "sunrise": {
+     "n": 291,
+     "exact": 61.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.38,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 291,
+     "exact": 88.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 291,
+     "exact": 5.5,
+     "w1": 48.5,
+     "w2": 97.9,
+     "mae": 1.48,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 291,
+     "exact": 8.9,
+     "w1": 70.4,
+     "w2": 100,
+     "mae": 1.21,
+     "worst": -2
+    },
+    "isha": {
+     "n": 291,
+     "exact": 16.8,
+     "w1": 54,
+     "w2": 67.7,
+     "mae": 6.65,
+     "worst": -68
+    }
+   },
+   "allW1": 75.5
+  },
+  {
+   "key": "15871",
+   "name": "Tychy",
+   "lat": 50.13717,
+   "lon": 18.96641,
+   "tz": "Europe/Warsaw",
+   "days": 322,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 43,
+   "honestDays": 322,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 6,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 322,
+     "exact": 61.2,
+     "w1": 77.6,
+     "w2": 77.6,
+     "mae": 11.77,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 322,
+     "exact": 67.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 322,
+     "exact": 84.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 322,
+     "exact": 8.7,
+     "w1": 63.4,
+     "w2": 100,
+     "mae": 1.28,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 322,
+     "exact": 41,
+     "w1": 63,
+     "w2": 90.4,
+     "mae": 1.06,
+     "worst": 3
+    },
+    "isha": {
+     "n": 322,
+     "exact": 14,
+     "w1": 55.3,
+     "w2": 68.9,
+     "mae": 8.07,
+     "worst": -70
+    }
+   },
+   "allW1": 76.5
+  },
+  {
+   "key": "15872",
+   "name": "Wloclawek",
+   "lat": 52.64817,
+   "lon": 19.0678,
+   "tz": "Europe/Warsaw",
+   "days": 295,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 70,
+   "honestDays": 295,
+   "summerIshaGapMedian": 76,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 295,
+     "exact": 53.2,
+     "w1": 79.3,
+     "w2": 79.7,
+     "mae": 10.41,
+     "worst": 145
+    },
+    "sunrise": {
+     "n": 295,
+     "exact": 65.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.35,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 295,
+     "exact": 89.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 295,
+     "exact": 4.7,
+     "w1": 45.8,
+     "w2": 100,
+     "mae": 1.49,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 295,
+     "exact": 9.8,
+     "w1": 72.5,
+     "w2": 100,
+     "mae": 1.18,
+     "worst": -2
+    },
+    "isha": {
+     "n": 295,
+     "exact": 16.3,
+     "w1": 51.2,
+     "w2": 66.1,
+     "mae": 7.4,
+     "worst": -72
+    }
+   },
+   "allW1": 74.8
+  },
+  {
+   "key": "15873",
+   "name": "Slupsk",
+   "lat": 54.46405,
+   "lon": 17.02872,
+   "tz": "Europe/Warsaw",
+   "days": 281,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 84,
+   "honestDays": 281,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 281,
+     "exact": 55.2,
+     "w1": 80.4,
+     "w2": 81.1,
+     "mae": 9.59,
+     "worst": 142
+    },
+    "sunrise": {
+     "n": 281,
+     "exact": 61.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.38,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 281,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 281,
+     "exact": 4.6,
+     "w1": 36.7,
+     "w2": 95.4,
+     "mae": 1.63,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 281,
+     "exact": 11.7,
+     "w1": 65.8,
+     "w2": 100,
+     "mae": 1.22,
+     "worst": -2
+    },
+    "isha": {
+     "n": 281,
+     "exact": 14.2,
+     "w1": 53.7,
+     "w2": 66.9,
+     "mae": 6.77,
+     "worst": -71
+    }
+   },
+   "allW1": 72.8
+  },
+  {
+   "key": "15874",
+   "name": "Zabrze",
+   "lat": 50.32492,
+   "lon": 18.78576,
+   "tz": "Europe/Warsaw",
+   "days": 320,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 45,
+   "honestDays": 320,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 320,
+     "exact": 30,
+     "w1": 78.1,
+     "w2": 78.1,
+     "mae": 11.62,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 320,
+     "exact": 71.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 320,
+     "exact": 91.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 320,
+     "exact": 9.7,
+     "w1": 61.9,
+     "w2": 100,
+     "mae": 1.28,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 320,
+     "exact": 10.3,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    },
+    "isha": {
+     "n": 320,
+     "exact": 18.8,
+     "w1": 50,
+     "w2": 66.9,
+     "mae": 8,
+     "worst": -69
+    }
+   },
+   "allW1": 78.4
+  },
+  {
+   "key": "15875",
+   "name": "Zielona gora",
+   "lat": 51.93548,
+   "lon": 15.50643,
+   "tz": "Europe/Warsaw",
+   "days": 301,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 64,
+   "honestDays": 301,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.84
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 301,
+     "exact": 29.9,
+     "w1": 80.1,
+     "w2": 80.1,
+     "mae": 10.08,
+     "worst": 127
+    },
+    "sunrise": {
+     "n": 301,
+     "exact": 70.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 301,
+     "exact": 85.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 301,
+     "exact": 6.6,
+     "w1": 47.2,
+     "w2": 99.7,
+     "mae": 1.47,
+     "worst": 3
+    },
+    "maghrib": {
+     "n": 301,
+     "exact": 11,
+     "w1": 74.4,
+     "w2": 100,
+     "mae": 1.15,
+     "worst": -2
+    },
+    "isha": {
+     "n": 301,
+     "exact": 21.9,
+     "w1": 50.2,
+     "w2": 65.1,
+     "mae": 7.07,
+     "worst": -69
+    }
+   },
+   "allW1": 75.3
+  },
+  {
+   "key": "15876",
+   "name": "Jastrzebie zbros",
+   "lat": 49.59269,
+   "lon": 20.47783,
+   "tz": "Europe/Warsaw",
+   "days": 357,
+   "fajrAngle": 16.9,
+   "ishaAngle": 17.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 8,
+   "honestDays": 357,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 16.76,
+    "isha": 17.03
+   },
+   "offsets": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 13,
+    "asr": 11,
+    "maghrib": 15,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 357,
+     "exact": 33.1,
+     "w1": 49,
+     "w2": 57.4,
+     "mae": 17.29,
+     "worst": 120
+    },
+    "sunrise": {
+     "n": 357,
+     "exact": 22.7,
+     "w1": 68.6,
+     "w2": 96.4,
+     "mae": 1.12,
+     "worst": -3
+    },
+    "dhuhr": {
+     "n": 357,
+     "exact": 58,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.42,
+     "worst": -1
+    },
+    "asr": {
+     "n": 357,
+     "exact": 16.5,
+     "w1": 48.7,
+     "w2": 94.1,
+     "mae": 1.41,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 357,
+     "exact": 17.4,
+     "w1": 49,
+     "w2": 86,
+     "mae": 1.48,
+     "worst": -3
+    },
+    "isha": {
+     "n": 357,
+     "exact": 23,
+     "w1": 47.3,
+     "w2": 56.6,
+     "mae": 17.76,
+     "worst": -135
+    }
+   },
+   "allW1": 60.4
+  },
+  {
+   "key": "15877",
+   "name": "Wodzislaw slaski",
+   "lat": 50.00377,
+   "lon": 18.47205,
+   "tz": "Europe/Warsaw",
+   "days": 325,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 40,
+   "honestDays": 325,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.93,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 325,
+     "exact": 55.7,
+     "w1": 76.9,
+     "w2": 76.9,
+     "mae": 12.62,
+     "worst": 139
+    },
+    "sunrise": {
+     "n": 325,
+     "exact": 67.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.32,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 325,
+     "exact": 68,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.32,
+     "worst": 1
+    },
+    "asr": {
+     "n": 325,
+     "exact": 13.5,
+     "w1": 59.7,
+     "w2": 100,
+     "mae": 1.27,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 325,
+     "exact": 18.2,
+     "w1": 75.4,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": 2
+    },
+    "isha": {
+     "n": 325,
+     "exact": 31.7,
+     "w1": 46.8,
+     "w2": 56,
+     "mae": 8.58,
+     "worst": -72
+    }
+   },
+   "allW1": 76.5
+  },
+  {
+   "key": "15878",
+   "name": "Rybnik",
+   "lat": 50.09713,
+   "lon": 18.54179,
+   "tz": "Europe/Warsaw",
+   "days": 323,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 42,
+   "honestDays": 323,
+   "summerIshaGapMedian": 77,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 323,
+     "exact": 52.3,
+     "w1": 76.8,
+     "w2": 76.8,
+     "mae": 12.59,
+     "worst": 139
+    },
+    "sunrise": {
+     "n": 323,
+     "exact": 70.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 323,
+     "exact": 91.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 323,
+     "exact": 9.3,
+     "w1": 62.5,
+     "w2": 100,
+     "mae": 1.28,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 323,
+     "exact": 12.7,
+     "w1": 85.4,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "isha": {
+     "n": 323,
+     "exact": 15.2,
+     "w1": 52,
+     "w2": 67.2,
+     "mae": 8.78,
+     "worst": -73
+    }
+   },
+   "allW1": 79.5
+  },
+  {
+   "key": "15879",
+   "name": "Dabrowa gornicza",
+   "lat": 50.33394,
+   "lon": 19.20479,
+   "tz": "Europe/Warsaw",
+   "days": 320,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 45,
+   "honestDays": 320,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.85
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 320,
+     "exact": 63.8,
+     "w1": 77.5,
+     "w2": 77.5,
+     "mae": 11.9,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 320,
+     "exact": 70.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 320,
+     "exact": 89.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 320,
+     "exact": 9.1,
+     "w1": 62.5,
+     "w2": 100,
+     "mae": 1.28,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 320,
+     "exact": 13.8,
+     "w1": 84.4,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "isha": {
+     "n": 320,
+     "exact": 26.9,
+     "w1": 46.9,
+     "w2": 60,
+     "mae": 8.2,
+     "worst": -72
+    }
+   },
+   "allW1": 78.5
+  },
+  {
+   "key": "15880",
+   "name": "Gdansk",
+   "lat": 54.35227,
+   "lon": 18.64912,
+   "tz": "Europe/Warsaw",
+   "days": 281,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 84,
+   "honestDays": 281,
+   "summerIshaGapMedian": 74,
+   "implied": {
+    "fajr": 17.94,
+    "isha": 15.8
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 281,
+     "exact": 55.2,
+     "w1": 80.4,
+     "w2": 80.4,
+     "mae": 9.97,
+     "worst": 147
+    },
+    "sunrise": {
+     "n": 281,
+     "exact": 65.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.35,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 281,
+     "exact": 87.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 281,
+     "exact": 6,
+     "w1": 36.7,
+     "w2": 96.1,
+     "mae": 1.61,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 281,
+     "exact": 10.7,
+     "w1": 63,
+     "w2": 100,
+     "mae": 1.26,
+     "worst": -2
+    },
+    "isha": {
+     "n": 281,
+     "exact": 16.4,
+     "w1": 52,
+     "w2": 63.3,
+     "mae": 7.11,
+     "worst": -73
+    }
+   },
+   "allW1": 72
+  },
+  {
+   "key": "15881",
+   "name": "Gdynia",
+   "lat": 54.51889,
+   "lon": 18.53188,
+   "tz": "Europe/Warsaw",
+   "days": 279,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 86,
+   "honestDays": 279,
+   "summerIshaGapMedian": 76,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.8
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 279,
+     "exact": 57.7,
+     "w1": 81,
+     "w2": 81.4,
+     "mae": 9.08,
+     "worst": 135
+    },
+    "sunrise": {
+     "n": 279,
+     "exact": 61.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 279,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 279,
+     "exact": 2.9,
+     "w1": 33.3,
+     "w2": 96.8,
+     "mae": 1.67,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 279,
+     "exact": 8.6,
+     "w1": 59.5,
+     "w2": 100,
+     "mae": 1.32,
+     "worst": -2
+    },
+    "isha": {
+     "n": 279,
+     "exact": 15.8,
+     "w1": 51.6,
+     "w2": 66.7,
+     "mae": 6.52,
+     "worst": -69
+    }
+   },
+   "allW1": 70.9
+  },
+  {
+   "key": "15882",
+   "name": "Wroclaw",
+   "lat": 51.10286,
+   "lon": 17.03006,
+   "tz": "Europe/Warsaw",
+   "days": 311,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 54,
+   "honestDays": 311,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 311,
+     "exact": 60.5,
+     "w1": 78.8,
+     "w2": 79.1,
+     "mae": 10.95,
+     "worst": 139
+    },
+    "sunrise": {
+     "n": 311,
+     "exact": 67.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 311,
+     "exact": 92.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 311,
+     "exact": 9,
+     "w1": 61.1,
+     "w2": 100,
+     "mae": 1.3,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 311,
+     "exact": 11.6,
+     "w1": 75.2,
+     "w2": 100,
+     "mae": 1.13,
+     "worst": -2
+    },
+    "isha": {
+     "n": 311,
+     "exact": 17.4,
+     "w1": 51.8,
+     "w2": 66.6,
+     "mae": 7.55,
+     "worst": -70
+    }
+   },
+   "allW1": 77.8
+  },
+  {
+   "key": "15883",
+   "name": "Bialystok",
+   "lat": 53.13333,
+   "lon": 23.16433,
+   "tz": "Europe/Warsaw",
+   "days": 291,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 74,
+   "honestDays": 291,
+   "summerIshaGapMedian": 75,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 291,
+     "exact": 50.9,
+     "w1": 79.7,
+     "w2": 79.7,
+     "mae": 10.43,
+     "worst": 145
+    },
+    "sunrise": {
+     "n": 291,
+     "exact": 64.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.35,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 291,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 291,
+     "exact": 5.5,
+     "w1": 47.8,
+     "w2": 99,
+     "mae": 1.48,
+     "worst": 3
+    },
+    "maghrib": {
+     "n": 291,
+     "exact": 10.3,
+     "w1": 72.5,
+     "w2": 100,
+     "mae": 1.17,
+     "worst": -2
+    },
+    "isha": {
+     "n": 291,
+     "exact": 17.9,
+     "w1": 50.2,
+     "w2": 65.6,
+     "mae": 7.36,
+     "worst": -72
+    }
+   },
+   "allW1": 75
+  },
+  {
+   "key": "15884",
+   "name": "Varsova",
+   "lat": 52.22977,
+   "lon": 21.01178,
+   "tz": "Europe/Warsaw",
+   "days": 299,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 66,
+   "honestDays": 299,
+   "summerIshaGapMedian": 74,
+   "implied": {
+    "fajr": 17.95,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 299,
+     "exact": 58.9,
+     "w1": 78.6,
+     "w2": 78.6,
+     "mae": 11.18,
+     "worst": 146
+    },
+    "sunrise": {
+     "n": 299,
+     "exact": 69.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.3,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 299,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 299,
+     "exact": 7,
+     "w1": 50.8,
+     "w2": 100,
+     "mae": 1.42,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 299,
+     "exact": 8,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.16,
+     "worst": -2
+    },
+    "isha": {
+     "n": 299,
+     "exact": 19.1,
+     "w1": 52.2,
+     "w2": 65.2,
+     "mae": 7.79,
+     "worst": -74
+    }
+   },
+   "allW1": 76.3
+  },
+  {
+   "key": "15885",
+   "name": "Szczecin",
+   "lat": 53.42894,
+   "lon": 14.55302,
+   "tz": "Europe/Warsaw",
+   "days": 289,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 76,
+   "honestDays": 289,
+   "summerIshaGapMedian": 79,
+   "implied": {
+    "fajr": 17.94,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 289,
+     "exact": 60.6,
+     "w1": 80.6,
+     "w2": 80.6,
+     "mae": 9.71,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 289,
+     "exact": 61.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.39,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 289,
+     "exact": 85.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 289,
+     "exact": 5.9,
+     "w1": 41.9,
+     "w2": 97.2,
+     "mae": 1.55,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 289,
+     "exact": 10.4,
+     "w1": 66.1,
+     "w2": 100,
+     "mae": 1.24,
+     "worst": -2
+    },
+    "isha": {
+     "n": 289,
+     "exact": 23.5,
+     "w1": 47.8,
+     "w2": 60.2,
+     "mae": 6.85,
+     "worst": -71
+    }
+   },
+   "allW1": 72.7
+  },
+  {
+   "key": "27074",
+   "name": "Starachowice",
+   "lat": 51.0374,
+   "lon": 21.07126,
+   "tz": "Europe/Warsaw",
+   "days": 311,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 54,
+   "honestDays": 311,
+   "summerIshaGapMedian": 78,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 15.83
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 311,
+     "exact": 55.3,
+     "w1": 78.1,
+     "w2": 78.5,
+     "mae": 11.2,
+     "worst": 140
+    },
+    "sunrise": {
+     "n": 311,
+     "exact": 73.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 311,
+     "exact": 89.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 311,
+     "exact": 7.7,
+     "w1": 61.7,
+     "w2": 100,
+     "mae": 1.31,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 311,
+     "exact": 11.3,
+     "w1": 79.1,
+     "w2": 100,
+     "mae": 1.1,
+     "worst": -2
+    },
+    "isha": {
+     "n": 311,
+     "exact": 18.3,
+     "w1": 51.8,
+     "w2": 66.9,
+     "mae": 7.82,
+     "worst": -71
+    }
+   },
+   "allW1": 78.5
+  },
+  {
+   "key": "33328",
+   "name": "Skarzysko kamienna",
+   "lat": 51.11311,
+   "lon": 20.87162,
+   "tz": "Europe/Warsaw",
+   "days": 310,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 55,
+   "honestDays": 310,
+   "summerIshaGapMedian": 80,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.81
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 310,
+     "exact": 57.7,
+     "w1": 79,
+     "w2": 79.4,
+     "mae": 10.63,
+     "worst": 138
+    },
+    "sunrise": {
+     "n": 310,
+     "exact": 68.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 310,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 310,
+     "exact": 6.1,
+     "w1": 56.1,
+     "w2": 100,
+     "mae": 1.38,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 310,
+     "exact": 9.7,
+     "w1": 79.4,
+     "w2": 100,
+     "mae": 1.11,
+     "worst": -2
+    },
+    "isha": {
+     "n": 310,
+     "exact": 15.5,
+     "w1": 53.2,
+     "w2": 70.3,
+     "mae": 7.35,
+     "worst": -68
+    }
+   },
+   "allW1": 78
+  },
+  {
+   "key": "33371",
+   "name": "Siemiatycze",
+   "lat": 52.42719,
+   "lon": 22.86231,
+   "tz": "Europe/Warsaw",
+   "days": 297,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 68,
+   "honestDays": 297,
+   "summerIshaGapMedian": 76,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.82
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 297,
+     "exact": 64.6,
+     "w1": 79.5,
+     "w2": 79.5,
+     "mae": 10.43,
+     "worst": 143
+    },
+    "sunrise": {
+     "n": 297,
+     "exact": 68.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.31,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 297,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 297,
+     "exact": 4.4,
+     "w1": 46.1,
+     "w2": 100,
+     "mae": 1.49,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 297,
+     "exact": 10.8,
+     "w1": 76.4,
+     "w2": 100,
+     "mae": 1.13,
+     "worst": -2
+    },
+    "isha": {
+     "n": 297,
+     "exact": 22.9,
+     "w1": 48.5,
+     "w2": 63,
+     "mae": 7.36,
+     "worst": -72
+    }
+   },
+   "allW1": 75.1
+  }
+ ]
+}

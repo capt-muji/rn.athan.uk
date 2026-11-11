@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-guntur-firdous-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 16.32,
+  "lon": 80.3
+ },
+ "coarse": {
+  "lat": 16.2,
+  "lon": 80.3,
+  "mae": 0.11
+ },
+ "mid": {
+  "lat": 16.32,
+  "lon": 80.3,
+  "mae": 0.03
+ },
+ "meta": {
+  "name": "Masjid Firdous",
+  "address": "Guntur, Andhra Pradesh, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.04,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.22,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.24,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0.02,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.28,
+   "mad": 0
+  },
+  {
+   "a": 16.9,
+   "med": 0,
+   "mae": 0.42,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -60.5,
+   "mad": 11.5
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 95.3,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 95.9,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 95.3,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 97.7,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 95.9,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 95.3,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 344,
+ "all_six_exact": 267,
+ "amplitude_fajr_min": 71
+}

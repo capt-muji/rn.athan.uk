@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-mughalsarai-ghausia-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 25.28,
+  "lon": 82.98
+ },
+ "coarse": {
+  "lat": 25.2,
+  "lon": 83,
+  "mae": 0.059
+ },
+ "mid": {
+  "lat": 25.28,
+  "lon": 82.98,
+  "mae": 0.01
+ },
+ "meta": {
+  "name": "Ghausia Masjid",
+  "address": "Mughalsarai, Uttar Pradesh, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.04,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.24,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.31,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.39,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0.1,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.35,
+   "mad": 0
+  },
+  {
+   "a": 16.9,
+   "med": 0,
+   "mae": 0.41,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -57,
+   "mad": 11
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 95.2,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 95.7,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 97.7,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 95.2,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 94.9,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 95.2,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 267,
+ "amplitude_fajr_min": 108
+}

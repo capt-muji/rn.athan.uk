@@ -1,0 +1,54 @@
+{
+ "file": "lc-alawwal-mawaqit-2026.json",
+ "lat": 14.0094768,
+ "lon": -60.9860536,
+ "tz": "America/St_Lucia",
+ "rows": 365,
+ "span": "2026-01-01..2026-12-31",
+ "recipe": {
+  "fajrAngle": 15,
+  "ishaAngle": 15,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "380 exact / 764 within-1 of 1825",
+ "pctWithin1": 41.86,
+ "worst": 100,
+ "per": {
+  "fajr": {
+   "exact": 68,
+   "within1": 153,
+   "worst": 31
+  },
+  "sunrise": {
+   "exact": 183,
+   "within1": 365,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 42
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 100
+  },
+  "maghrib": {
+   "exact": 187,
+   "within1": 365,
+   "worst": 1
+  },
+  "isha": {
+   "exact": 125,
+   "within1": 246,
+   "worst": 26
+  }
+ },
+ "amplitudeFajrJanJul": -30,
+ "amplitudeIshaJanJul": 40,
+ "years": [
+  "2026"
+ ]
+}

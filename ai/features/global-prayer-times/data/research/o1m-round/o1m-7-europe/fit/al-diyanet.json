@@ -1,0 +1,1549 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "11203",
+   "name": "Tiran",
+   "lat": 41.32744,
+   "lon": 19.81866,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 84.7,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "11204",
+   "name": "Iskodra(shkoder)",
+   "lat": 42.06828,
+   "lon": 19.51258,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95.2
+  },
+  {
+   "key": "11205",
+   "name": "Elbasan",
+   "lat": 41.11138,
+   "lon": 20.08224,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    }
+   },
+   "allW1": 95.8
+  },
+  {
+   "key": "11206",
+   "name": "Durres",
+   "lat": 41.32355,
+   "lon": 19.45469,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 84.4,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 94.9
+  },
+  {
+   "key": "11207",
+   "name": "Bajram curri",
+   "lat": 42.35734,
+   "lon": 20.07679,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 93.9
+  },
+  {
+   "key": "11208",
+   "name": "Rreshen",
+   "lat": 41.7675,
+   "lon": 19.87556,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 84.7,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95.3
+  },
+  {
+   "key": "11209",
+   "name": "Lushnje",
+   "lat": 40.94194,
+   "lon": 19.705,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 95.6
+  },
+  {
+   "key": "11210",
+   "name": "Vlore",
+   "lat": 40.4696,
+   "lon": 19.48379,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "11211",
+   "name": "Erseke",
+   "lat": 40.33778,
+   "lon": 20.67889,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "11212",
+   "name": "Sarande",
+   "lat": 39.87534,
+   "lon": 20.00477,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.6,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.64,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 97.2
+  },
+  {
+   "key": "11213",
+   "name": "Gjirokaster",
+   "lat": 40.07583,
+   "lon": 20.13889,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "11214",
+   "name": "Peshkopi",
+   "lat": 41.685,
+   "lon": 20.42858,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 86.6,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 96
+  },
+  {
+   "key": "11215",
+   "name": "Kruje",
+   "lat": 41.50917,
+   "lon": 19.79278,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "11216",
+   "name": "Fier",
+   "lat": 40.7251,
+   "lon": 19.55823,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 89.3,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  },
+  {
+   "key": "11217",
+   "name": "Berat",
+   "lat": 40.70583,
+   "lon": 19.95222,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 88.8,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "11218",
+   "name": "Permet",
+   "lat": 40.23361,
+   "lon": 20.35167,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 89.3,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 96
+  },
+  {
+   "key": "11219",
+   "name": "Korçe",
+   "lat": 40.61861,
+   "lon": 20.78083,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 86.6,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 96
+  },
+  {
+   "key": "11220",
+   "name": "Pogradec",
+   "lat": 40.9025,
+   "lon": 20.6525,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.02,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 96.6
+  },
+  {
+   "key": "11221",
+   "name": "Burrel",
+   "lat": 41.61028,
+   "lon": 20.00889,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.5,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "20102",
+   "name": "Librazhd",
+   "lat": 41.17944,
+   "lon": 20.315,
+   "tz": "Europe/Tirane",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  }
+ ]
+}

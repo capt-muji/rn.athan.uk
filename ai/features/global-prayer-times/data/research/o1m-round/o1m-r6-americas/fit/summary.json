@@ -1,0 +1,2184 @@
+[
+ {
+  "surface": "cl-antofagasta-wayback",
+  "city": "Antofagasta",
+  "tz": "America/Santiago",
+  "lat": -23.651,
+  "lon": -70.398,
+  "rows": 124,
+  "recipe": {
+   "fajrAngle": 16.6,
+   "ishaKind": "angle",
+   "isha": 18.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 96.8,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 97.6,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": -351,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-arica-wayback",
+  "city": "Arica",
+  "tz": "America/Santiago",
+  "lat": -18.478,
+  "lon": -70.313,
+  "rows": 93,
+  "recipe": {
+   "fajrAngle": 16.5,
+   "ishaKind": "angle",
+   "isha": 18.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 5,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 96.8,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 87.1
+  },
+  "worst": 2,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "aruba-mezquita-sabana-basora-savaneta-aruba",
+  "city": "Aruba Mezquita",
+  "tz": "America/Aruba",
+  "lat": 12.474752224187,
+  "lon": -69.956817626953,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 14.8,
+   "ishaKind": "angle",
+   "isha": 14.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": -45,
+  "repairRows": 0
+ },
+ {
+  "surface": "1XAlJWKb",
+  "city": "Brampton ON",
+  "tz": "America/Toronto",
+  "lat": 43.677444,
+  "lon": -79.7603883,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 95,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 95.8,
+   "isha": 91.9
+  },
+  "worst": 22,
+  "amp": -145,
+  "repairRows": 0
+ },
+ {
+  "surface": "1QL0lpLZ",
+  "city": "Burlington ON",
+  "tz": "America/Toronto",
+  "lat": 43.3683097,
+  "lon": -79.7687716,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 15.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": -1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 91.4,
+   "sunrise": 88.1,
+   "dhuhr": 96.3,
+   "asr": 71.8,
+   "maghrib": 63,
+   "isha": 64.8
+  },
+  "worst": 63,
+  "amp": -133,
+  "repairRows": 0
+ },
+ {
+  "surface": "nDAga1K0",
+  "city": "Calgary AB",
+  "tz": "America/Edmonton",
+  "lat": 51.109572,
+  "lon": -113.9798157,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "blocks": [
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 61
+   }
+  ],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 96.5,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 64,
+  "amp": -222,
+  "repairRows": 341
+ },
+ {
+  "surface": "aAeo3XKj",
+  "city": "Calgary AB",
+  "tz": "America/Edmonton",
+  "lat": 51.1525294,
+  "lon": -113.9714654,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.8,
+   "ishaKind": "angle",
+   "isha": 15.2,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 2,
+    "isha": 0
+   }
+  },
+  "blocks": [
+   {
+    "from": "2021-01-01",
+    "to": "2022-11-30",
+    "offset": 180,
+    "n": 699
+   },
+   {
+    "from": "2023-01-01",
+    "to": "2023-04-30",
+    "offset": 180,
+    "n": 120
+   },
+   {
+    "from": "2023-06-01",
+    "to": "2023-11-30",
+    "offset": 180,
+    "n": 183
+   },
+   {
+    "from": "2024-02-01",
+    "to": "2024-03-31",
+    "offset": 180,
+    "n": 60
+   },
+   {
+    "from": "2024-07-01",
+    "to": "2024-10-31",
+    "offset": 180,
+    "n": 123
+   },
+   {
+    "from": "2024-12-01",
+    "to": "2025-07-31",
+    "offset": 180,
+    "n": 243
+   },
+   {
+    "from": "2025-09-01",
+    "to": "2026-07-31",
+    "offset": 180,
+    "n": 334
+   },
+   {
+    "from": "2026-09-01",
+    "to": "2026-10-31",
+    "offset": 180,
+    "n": 61
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "offset": 60,
+    "n": 30
+   },
+   {
+    "from": "2026-12-01",
+    "to": "2026-12-31",
+    "offset": 180,
+    "n": 31
+   }
+  ],
+  "w1": {
+   "fajr": 76.9,
+   "sunrise": 86.4,
+   "dhuhr": 86.1,
+   "asr": 58.2,
+   "maghrib": 86.6,
+   "isha": 78
+  },
+  "worst": 191,
+  "amp": -222,
+  "repairRows": 1025
+ },
+ {
+  "surface": "centro-islamico-de-la-provincia-265-cordoba-argentina",
+  "city": "Centro Islámico de la Provincia - CóRDOBA",
+  "tz": "America/Argentina/Buenos_Aires",
+  "lat": -31.4206892,
+  "lon": -64.1796418,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaKind": "angle",
+   "isha": 16.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 4,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 79.7,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 115,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-copiapo-wayback",
+  "city": "Copiapó",
+  "tz": "America/Santiago",
+  "lat": -27.367,
+  "lon": -70.332,
+  "rows": 92,
+  "recipe": {
+   "fajrAngle": 16.5,
+   "ishaKind": "angle",
+   "isha": 18.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 96.7,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 98.9,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-coyhaique-wayback",
+  "city": "Coyhaique",
+  "tz": "America/Santiago",
+  "lat": -45.575,
+  "lon": -72.066,
+  "rows": 62,
+  "recipe": {
+   "fajrAngle": 17.5,
+   "ishaKind": "angle",
+   "isha": 17.4,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 5,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 98.4,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 98.4
+  },
+  "worst": 2,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "Vdw3Dode",
+  "city": "Dollard-des-Ormeaux QC",
+  "tz": "America/Toronto",
+  "lat": 45.4789972,
+  "lon": -73.8127866,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.5,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 72.1,
+   "sunrise": 97.9,
+   "dhuhr": 99.9,
+   "asr": 89.1,
+   "maghrib": 96.9,
+   "isha": 89.6
+  },
+  "worst": 74,
+  "amp": -152,
+  "repairRows": 0
+ },
+ {
+  "surface": "M0dYkvL6",
+  "city": "Edmonton AB",
+  "tz": "America/Edmonton",
+  "lat": 53.4535782,
+  "lon": -113.4726634,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaKind": "angle",
+   "isha": 18,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": -7
+   }
+  },
+  "blocks": [
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 61
+   }
+  ],
+  "w1": {
+   "fajr": 64.9,
+   "sunrise": 97.4,
+   "dhuhr": 85.9,
+   "asr": 88.9,
+   "maghrib": 87.9,
+   "isha": 21
+  },
+  "worst": 164,
+  "amp": -203,
+  "repairRows": 0
+ },
+ {
+  "surface": "M9L2WrAZ",
+  "city": "Edmonton AB",
+  "tz": "America/Edmonton",
+  "lat": 53.4557345,
+  "lon": -113.4146844,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaKind": "angle",
+   "isha": 17.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": -1
+   }
+  },
+  "blocks": [
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 61
+   }
+  ],
+  "w1": {
+   "fajr": 38.7,
+   "sunrise": 85.1,
+   "dhuhr": 76.6,
+   "asr": 67.5,
+   "maghrib": 79.1,
+   "isha": 30.1
+  },
+  "worst": 161,
+  "amp": -195,
+  "repairRows": 87
+ },
+ {
+  "surface": "VrdRkwKG",
+  "city": "Edmonton AB",
+  "tz": "America/Edmonton",
+  "lat": 53.4682304,
+  "lon": -113.4547994,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18.1,
+   "ishaKind": "angle",
+   "isha": 17.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 2,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": -15
+   }
+  },
+  "blocks": [
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-06",
+    "offset": 60,
+    "n": 36
+   },
+   {
+    "from": "2026-12-08",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 24
+   }
+  ],
+  "w1": {
+   "fajr": 24.6,
+   "sunrise": 99.9,
+   "dhuhr": 77.8,
+   "asr": 59.3,
+   "maghrib": 78.1,
+   "isha": 13.9
+  },
+  "worst": 148,
+  "amp": -199,
+  "repairRows": 78
+ },
+ {
+  "surface": "aAe3Z4Kj",
+  "city": "Edmonton AB",
+  "tz": "America/Edmonton",
+  "lat": 53.5608781,
+  "lon": -113.5294052,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18.4,
+   "ishaKind": "angle",
+   "isha": 17.4,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 4,
+    "sunrise": -4,
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 3,
+    "isha": -17
+   }
+  },
+  "blocks": [
+   {
+    "from": "2021-01-01",
+    "to": "2021-03-13",
+    "offset": 60,
+    "n": 72
+   },
+   {
+    "from": "2021-11-07",
+    "to": "2022-03-12",
+    "offset": 60,
+    "n": 126
+   },
+   {
+    "from": "2022-11-06",
+    "to": "2023-03-11",
+    "offset": 60,
+    "n": 126
+   },
+   {
+    "from": "2023-11-05",
+    "to": "2023-12-31",
+    "offset": 60,
+    "n": 57
+   },
+   {
+    "from": "2026-01-01",
+    "to": "2026-01-31",
+    "offset": 60,
+    "n": 31
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 61
+   }
+  ],
+  "w1": {
+   "fajr": 2.6,
+   "sunrise": 77.2,
+   "dhuhr": 92.6,
+   "asr": 52.3,
+   "maghrib": 85.4,
+   "isha": 6.7
+  },
+  "worst": 229,
+  "amp": -160,
+  "repairRows": 28
+ },
+ {
+  "surface": "pVdwyVLe",
+  "city": "Edmonton AB",
+  "tz": "America/Edmonton",
+  "lat": 53.551101,
+  "lon": -113.4941971,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaKind": "angle",
+   "isha": 12.7,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 2
+   }
+  },
+  "blocks": [
+   {
+    "from": "2021-01-01",
+    "to": "2021-03-13",
+    "offset": 60,
+    "n": 72
+   },
+   {
+    "from": "2021-11-07",
+    "to": "2022-03-12",
+    "offset": 60,
+    "n": 126
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "offset": 60,
+    "n": 30
+   }
+  ],
+  "w1": {
+   "fajr": 81.6,
+   "sunrise": 100,
+   "dhuhr": 90.1,
+   "asr": 55.2,
+   "maghrib": 61.1,
+   "isha": 16.6
+  },
+  "worst": 131,
+  "amp": -229,
+  "repairRows": 376
+ },
+ {
+  "surface": "cl-la-serena-wayback",
+  "city": "La Serena",
+  "tz": "America/Santiago",
+  "lat": -29.903,
+  "lon": -71.252,
+  "rows": 154,
+  "recipe": {
+   "fajrAngle": 16.8,
+   "ishaKind": "angle",
+   "isha": 18.2,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 93.5,
+   "sunrise": 97.4,
+   "dhuhr": 100,
+   "asr": 94.8,
+   "maghrib": 98.7,
+   "isha": 77.3
+  },
+  "worst": 3,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "1XAlR4Kb",
+  "city": "Leduc AB",
+  "tz": "America/Edmonton",
+  "lat": 53.2647784,
+  "lon": -113.5692185,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18.1,
+   "ishaKind": "angle",
+   "isha": 17.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": -2
+   }
+  },
+  "blocks": [
+   {
+    "from": "2024-02-01",
+    "to": "2024-02-29",
+    "offset": 120,
+    "n": 29
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "offset": 60,
+    "n": 30
+   },
+   {
+    "from": "2026-12-01",
+    "to": "2026-12-31",
+    "offset": 120,
+    "n": 31
+   }
+  ],
+  "w1": {
+   "fajr": 42.9,
+   "sunrise": 43.6,
+   "dhuhr": 99.9,
+   "asr": 35.4,
+   "maghrib": 46.7,
+   "isha": 16.7
+  },
+  "worst": 161,
+  "amp": -190,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-linares-wayback",
+  "city": "Linares",
+  "tz": "America/Santiago",
+  "lat": -35.847,
+  "lon": -71.593,
+  "rows": 31,
+  "recipe": {
+   "fajrAngle": 17,
+   "ishaKind": "angle",
+   "isha": 17.7,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "33767",
+  "city": "Mesquita Abu Baker Assadik - CAXIAS DO SUL - RS",
+  "tz": "America/Sao_Paulo",
+  "lat": -29.167739744671,
+  "lon": -51.180720180273,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaKind": "angle",
+   "isha": 16.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 84.1,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 105,
+  "repairRows": 0
+ },
+ {
+  "surface": "mesquita-khaled-ibn-08021290-sao-paulo-brazil",
+  "city": "Mesquita Khaled Ibn el Walid",
+  "tz": "America/Sao_Paulo",
+  "lat": -23.5016088,
+  "lon": -46.4330729,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "interval",
+   "isha": 74,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 88.2,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 79,
+  "repairRows": 0
+ },
+ {
+  "surface": "mezquita-al-ahmad-1541-alberti-buenos-aires-argentina",
+  "city": "Mezquita Al Ahmad",
+  "tz": "America/Argentina/Buenos_Aires",
+  "lat": -34.604,
+  "lon": -58.382,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaKind": "angle",
+   "isha": 16.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 99.5,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 91.8,
+   "isha": 100
+  },
+  "worst": 3,
+  "amp": 133,
+  "repairRows": 0
+ },
+ {
+  "surface": "mezquita-as-salam-santiago-7770353-chile-1",
+  "city": "Mezquita As-Salam - SANTIAGO",
+  "tz": "America/Santiago",
+  "lat": -33.451,
+  "lon": -70.599,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 16.8,
+   "ishaKind": "interval",
+   "isha": 85,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 6,
+    "asr": 8,
+    "maghrib": 8,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 83,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 79.7,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 3,
+  "amp": 67,
+  "repairRows": 0
+ },
+ {
+  "surface": "mezquita-mar-del-plata-2577-bolivar-b7600-mar-del-plata-argentina",
+  "city": "Mezquita Mar del Plata - MAR DEL PLATA",
+  "tz": "America/Argentina/Buenos_Aires",
+  "lat": -38.0027269764,
+  "lon": -57.548992580481,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "angle",
+   "isha": 14.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 6,
+    "asr": 33,
+    "maghrib": 0,
+    "isha": 73
+   }
+  },
+  "blocks": [
+   {
+    "from": "2026-10-13",
+    "to": "2026-11-28",
+    "offset": 30,
+    "n": 47
+   }
+  ],
+  "w1": {
+   "fajr": 64.7,
+   "sunrise": 87.1,
+   "dhuhr": 12.6,
+   "asr": 3.6,
+   "maghrib": 87.1,
+   "isha": 1.4
+  },
+  "worst": 103,
+  "amp": 105,
+  "repairRows": 0
+ },
+ {
+  "surface": "mezquita-nurul-islam-lima-15084-peru",
+  "city": "Mezquita Nurul Islam",
+  "tz": "America/Lima",
+  "lat": -12.085073,
+  "lon": -77.0636529,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "angle",
+   "isha": 16.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 94.2,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 36,
+  "repairRows": 0
+ },
+ {
+  "surface": "mezquita-de-magdalena-del-mar-lima-07921-peru",
+  "city": "Mezquita de Magdalena del mar - Lima",
+  "tz": "America/Lima",
+  "lat": -12.0938736,
+  "lon": -77.0719611,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "angle",
+   "isha": 16.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 95.1,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 36,
+  "repairRows": 0
+ },
+ {
+  "surface": "0xdyV4KX",
+  "city": "Milton ON",
+  "tz": "America/Toronto",
+  "lat": 43.5177898,
+  "lon": -79.8972278,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaKind": "angle",
+   "isha": 14.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 93.5,
+   "maghrib": 100,
+   "isha": 57.8
+  },
+  "worst": 7,
+  "amp": -135,
+  "repairRows": 0
+ },
+ {
+  "surface": "norfolk-ash-shura-masjidbox",
+  "city": "Norfolk VA",
+  "tz": "America/New_York",
+  "lat": 36.8780493,
+  "lon": -76.294684,
+  "rows": 2197,
+  "recipe": {
+   "fajrAngle": 14.2,
+   "ishaKind": "angle",
+   "isha": 16.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 64,
+    "sunrise": 85,
+    "dhuhr": -1,
+    "asr": -34,
+    "maghrib": -51,
+    "isha": -54
+   }
+  },
+  "blocks": [
+   {
+    "from": "2021-01-10",
+    "to": "2021-03-13",
+    "offset": -30,
+    "n": 63
+   },
+   {
+    "from": "2021-03-14",
+    "to": "2021-03-26",
+    "offset": -90,
+    "n": 13
+   },
+   {
+    "from": "2021-03-27",
+    "to": "2021-09-28",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2021-09-29",
+    "to": "2021-11-06",
+    "offset": -60,
+    "n": 39
+   },
+   {
+    "from": "2022-01-10",
+    "to": "2022-03-12",
+    "offset": -30,
+    "n": 62
+   },
+   {
+    "from": "2022-03-13",
+    "to": "2022-03-26",
+    "offset": -90,
+    "n": 14
+   },
+   {
+    "from": "2022-03-27",
+    "to": "2022-09-28",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2022-09-29",
+    "to": "2022-11-05",
+    "offset": -60,
+    "n": 38
+   },
+   {
+    "from": "2023-01-10",
+    "to": "2023-03-11",
+    "offset": -30,
+    "n": 61
+   },
+   {
+    "from": "2023-03-12",
+    "to": "2023-03-27",
+    "offset": -90,
+    "n": 16
+   },
+   {
+    "from": "2023-03-28",
+    "to": "2023-09-29",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2023-09-30",
+    "to": "2023-11-04",
+    "offset": -60,
+    "n": 36
+   },
+   {
+    "from": "2024-01-10",
+    "to": "2024-03-09",
+    "offset": -30,
+    "n": 60
+   },
+   {
+    "from": "2024-03-10",
+    "to": "2024-03-26",
+    "offset": -90,
+    "n": 17
+   },
+   {
+    "from": "2024-03-27",
+    "to": "2024-09-28",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2024-09-29",
+    "to": "2024-11-02",
+    "offset": -60,
+    "n": 35
+   },
+   {
+    "from": "2025-01-10",
+    "to": "2025-03-08",
+    "offset": -30,
+    "n": 58
+   },
+   {
+    "from": "2025-03-09",
+    "to": "2025-03-26",
+    "offset": -90,
+    "n": 18
+   },
+   {
+    "from": "2025-03-27",
+    "to": "2025-09-28",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2025-09-29",
+    "to": "2025-11-01",
+    "offset": -60,
+    "n": 34
+   },
+   {
+    "from": "2026-01-10",
+    "to": "2026-03-07",
+    "offset": -30,
+    "n": 57
+   },
+   {
+    "from": "2026-03-08",
+    "to": "2026-03-26",
+    "offset": -90,
+    "n": 19
+   },
+   {
+    "from": "2026-03-27",
+    "to": "2026-09-28",
+    "offset": -75,
+    "n": 186
+   },
+   {
+    "from": "2026-09-29",
+    "to": "2026-10-31",
+    "offset": -60,
+    "n": 33
+   }
+  ],
+  "w1": {
+   "fajr": 2,
+   "sunrise": 50.8,
+   "dhuhr": 27.9,
+   "asr": 3.3,
+   "maghrib": 2,
+   "isha": 1.9
+  },
+  "worst": 106,
+  "amp": 45,
+  "repairRows": 0
+ },
+ {
+  "surface": "okc-norman-masjidbox",
+  "city": "Norman OK",
+  "tz": "America/Chicago",
+  "lat": 35.2035954,
+  "lon": -97.4371735,
+  "rows": 1769,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaKind": "angle",
+   "isha": 16.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": -84,
+  "repairRows": 0
+ },
+ {
+  "surface": "EdoleqK7",
+  "city": "Oakville ON",
+  "tz": "America/Toronto",
+  "lat": 43.5042789,
+  "lon": -79.7372416,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 14.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": -1
+   }
+  },
+  "blocks": [
+   {
+    "from": "2022-12-01",
+    "to": "2022-12-23",
+    "offset": 75,
+    "n": 23
+   },
+   {
+    "from": "2022-12-24",
+    "to": "2023-03-11",
+    "offset": 60,
+    "n": 78
+   },
+   {
+    "from": "2023-11-05",
+    "to": "2023-12-24",
+    "offset": 75,
+    "n": 50
+   },
+   {
+    "from": "2023-12-25",
+    "to": "2024-03-09",
+    "offset": 60,
+    "n": 76
+   },
+   {
+    "from": "2024-11-03",
+    "to": "2024-12-23",
+    "offset": 75,
+    "n": 51
+   },
+   {
+    "from": "2024-12-24",
+    "to": "2025-03-08",
+    "offset": 60,
+    "n": 75
+   },
+   {
+    "from": "2025-11-02",
+    "to": "2025-12-23",
+    "offset": 75,
+    "n": 52
+   },
+   {
+    "from": "2025-12-24",
+    "to": "2026-03-07",
+    "offset": 60,
+    "n": 74
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-23",
+    "offset": 75,
+    "n": 53
+   },
+   {
+    "from": "2026-12-24",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 8
+   }
+  ],
+  "w1": {
+   "fajr": 33.3,
+   "sunrise": 70.7,
+   "dhuhr": 44.2,
+   "asr": 19,
+   "maghrib": 66.4,
+   "isha": 15.3
+  },
+  "worst": 76,
+  "amp": -45,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-osorno-wayback",
+  "city": "Osorno",
+  "tz": "America/Santiago",
+  "lat": -40.574,
+  "lon": -73.134,
+  "rows": 62,
+  "recipe": {
+   "fajrAngle": 17.2,
+   "ishaKind": "angle",
+   "isha": 17.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 93.5,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 72.6
+  },
+  "worst": 3,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "1VL4rndx",
+  "city": "Ottawa ON",
+  "tz": "America/Toronto",
+  "lat": 45.2600165,
+  "lon": -75.9220306,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 15,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 75.9,
+   "sunrise": 98.8,
+   "dhuhr": 74.2,
+   "asr": 83.7,
+   "maghrib": 98.3,
+   "isha": 92.3
+  },
+  "worst": 64,
+  "amp": -145,
+  "repairRows": 21
+ },
+ {
+  "surface": "cl-puerto-montt-wayback",
+  "city": "Puerto Montt",
+  "tz": "America/Santiago",
+  "lat": -41.469,
+  "lon": -72.942,
+  "rows": 61,
+  "recipe": {
+   "fajrAngle": 17,
+   "ishaKind": "angle",
+   "isha": 18.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 7,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 72.1,
+   "sunrise": 95.1,
+   "dhuhr": 100,
+   "asr": 68.9,
+   "maghrib": 96.7,
+   "isha": 90.2
+  },
+  "worst": 3,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-punta-arenas-wayback",
+  "city": "Punta Arenas",
+  "tz": "America/Punta_Arenas",
+  "lat": -53.164,
+  "lon": -70.917,
+  "rows": 62,
+  "recipe": {
+   "fajrAngle": 17.5,
+   "ishaKind": "angle",
+   "isha": 17.6,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 3,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": -87
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 4.8,
+   "sunrise": 98.4,
+   "dhuhr": 100,
+   "asr": 98.4,
+   "maghrib": 98.4,
+   "isha": 24.2
+  },
+  "worst": 89,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-rancagua-wayback",
+  "city": "Rancagua",
+  "tz": "America/Santiago",
+  "lat": -34.171,
+  "lon": -70.744,
+  "rows": 93,
+  "recipe": {
+   "fajrAngle": 16.9,
+   "ishaKind": "angle",
+   "isha": 18.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 86,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 95.7,
+   "maghrib": 100,
+   "isha": 80.6
+  },
+  "worst": 2,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "Vdw3zode",
+  "city": "Saint John NB",
+  "tz": "America/Moncton",
+  "lat": 45.3318599,
+  "lon": -66.0283584,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 80.4,
+   "sunrise": 89.9,
+   "dhuhr": 100,
+   "asr": 87.9,
+   "maghrib": 97.1,
+   "isha": 99.1
+  },
+  "worst": 3,
+  "amp": -149,
+  "repairRows": 0
+ },
+ {
+  "surface": "slc-madina-masjidbox",
+  "city": "Salt Lake City UT",
+  "tz": "America/Denver",
+  "lat": 40.7711776,
+  "lon": -111.9411753,
+  "rows": 2197,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 14.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": -114,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-san-felipe-wayback",
+  "city": "San Felipe",
+  "tz": "America/Santiago",
+  "lat": -32.751,
+  "lon": -70.726,
+  "rows": 62,
+  "recipe": {
+   "fajrAngle": 16.9,
+   "ishaKind": "angle",
+   "isha": 18,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 88.7
+  },
+  "worst": 2,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-santiago-wayback",
+  "city": "Santiago",
+  "tz": "America/Santiago",
+  "lat": -33.449,
+  "lon": -70.669,
+  "rows": 154,
+  "recipe": {
+   "fajrAngle": 16.7,
+   "ishaKind": "angle",
+   "isha": 18.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 77.3,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 92.2,
+   "maghrib": 98.7,
+   "isha": 78.6
+  },
+  "worst": 3,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "DAgvk6L0",
+  "city": "Sarnia ON",
+  "tz": "America/Toronto",
+  "lat": 42.9831767,
+  "lon": -82.3354929,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 14.9,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 84.6,
+   "isha": 100
+  },
+  "worst": 4,
+  "amp": -131,
+  "repairRows": 0
+ },
+ {
+  "surface": "yLjO8JAQ",
+  "city": "Sherwood Park AB",
+  "tz": "America/Edmonton",
+  "lat": 53.5190603,
+  "lon": -113.3090392,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaKind": "angle",
+   "isha": 18.1,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": -20
+   }
+  },
+  "blocks": [
+   {
+    "from": "2021-01-01",
+    "to": "2021-03-13",
+    "offset": 60,
+    "n": 72
+   },
+   {
+    "from": "2021-11-07",
+    "to": "2022-03-12",
+    "offset": 60,
+    "n": 126
+   },
+   {
+    "from": "2022-11-06",
+    "to": "2022-12-31",
+    "offset": 60,
+    "n": 56
+   },
+   {
+    "from": "2026-01-01",
+    "to": "2026-03-07",
+    "offset": 60,
+    "n": 66
+   },
+   {
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "offset": 60,
+    "n": 61
+   }
+  ],
+  "w1": {
+   "fajr": 53.2,
+   "sunrise": 92.9,
+   "dhuhr": 100,
+   "asr": 79.6,
+   "maghrib": 93,
+   "isha": 5.3
+  },
+  "worst": 177,
+  "amp": -262,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-talca-wayback",
+  "city": "Talca",
+  "tz": "America/Santiago",
+  "lat": -35.426,
+  "lon": -71.655,
+  "rows": 31,
+  "recipe": {
+   "fajrAngle": 16.7,
+   "ishaKind": "angle",
+   "isha": 18.1,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-temuco-wayback",
+  "city": "Temuco",
+  "tz": "America/Santiago",
+  "lat": -38.736,
+  "lon": -72.59,
+  "rows": 59,
+  "recipe": {
+   "fajrAngle": 17.1,
+   "ishaKind": "angle",
+   "isha": 17.7,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 5,
+    "dhuhr": 6,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 83.1,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 98.3,
+   "maghrib": 100,
+   "isha": 57.6
+  },
+  "worst": 4,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "DAgvw3L0",
+  "city": "Toronto ON",
+  "tz": "America/Toronto",
+  "lat": 43.7702275,
+  "lon": -79.2806617,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 15,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 94.2,
+   "sunrise": 100,
+   "dhuhr": 99.6,
+   "asr": 98.6,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 41,
+  "amp": -137,
+  "repairRows": 0
+ },
+ {
+  "surface": "0dYB46K6",
+  "city": "Toronto ON",
+  "tz": "America/Toronto",
+  "lat": 43.67507,
+  "lon": -79.47915,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.1,
+   "ishaKind": "angle",
+   "isha": 11.3,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": 5,
+    "dhuhr": 1,
+    "asr": 3,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 71.8,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 86.1,
+   "maghrib": 93.3,
+   "isha": 80
+  },
+  "worst": 44,
+  "amp": -136,
+  "repairRows": 0
+ },
+ {
+  "surface": "RKxw8gdO",
+  "city": "Toronto ON",
+  "tz": "America/Toronto",
+  "lat": 43.68041,
+  "lon": -79.33607,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 11.9,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 73.8
+  },
+  "worst": 20,
+  "amp": -136,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-valdivia-wayback",
+  "city": "Valdivia",
+  "tz": "America/Santiago",
+  "lat": -39.814,
+  "lon": -73.246,
+  "rows": 31,
+  "recipe": {
+   "fajrAngle": 17.2,
+   "ishaKind": "angle",
+   "isha": 17.6,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "norfolk-crescent-cc-masjidal",
+  "city": "Virginia Beach VA",
+  "tz": "America/New_York",
+  "lat": 36.75518,
+  "lon": -76.109401,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 14.9,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 99.8,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": -88,
+  "repairRows": 0
+ },
+ {
+  "surface": "cl-vina-del-mar-wayback",
+  "city": "Viña del Mar",
+  "tz": "America/Santiago",
+  "lat": -33.025,
+  "lon": -71.552,
+  "rows": 31,
+  "recipe": {
+   "fajrAngle": 16.9,
+   "ishaKind": "angle",
+   "isha": 17.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 6,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 1,
+  "amp": 0,
+  "repairRows": 0
+ },
+ {
+  "surface": "5AvP54KX",
+  "city": "Whitby ON",
+  "tz": "America/Toronto",
+  "lat": 43.9216925,
+  "lon": -78.9819337,
+  "rows": 2191,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaKind": "angle",
+   "isha": 15.1,
+   "asr": "Hanafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": -1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 100,
+   "maghrib": 98.7,
+   "isha": 97.3
+  },
+  "worst": 3,
+  "amp": -138,
+  "repairRows": 0
+ },
+ {
+  "surface": "islamic-center-guayaquil-090511-ecuador",
+  "city": "مسجد جواياكيلIslamic Center of Guayaquil - GUAYAQUIL",
+  "tz": "America/Guayaquil",
+  "lat": -2.1736764,
+  "lon": -79.9044825,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "angle",
+   "isha": 16.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 84.9,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 3,
+  "repairRows": 0
+ },
+ {
+  "surface": "msjd-fytwry-mesquita-vitoria-vitoria-es-29090-750-brazil",
+  "city": "مسجد فيتوريا  Mesquita Vitória - VITÓRIA, ES",
+  "tz": "America/Sao_Paulo",
+  "lat": -20.2556414,
+  "lon": -40.2665494,
+  "rows": 365,
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaKind": "angle",
+   "isha": 16.8,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "blocks": [],
+  "w1": {
+   "fajr": 100,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 83.8,
+   "maghrib": 100,
+   "isha": 100
+  },
+  "worst": 2,
+  "amp": 67,
+  "repairRows": 0
+ }
+]

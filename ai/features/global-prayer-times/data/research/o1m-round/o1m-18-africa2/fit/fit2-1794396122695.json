@@ -1,0 +1,293 @@
+[
+ {
+  "file": "mq-sibila-missiriba-sibila-segou-41051-mali.json",
+  "source": "Sibila Missiriba - SIBILA ( SéGOU)",
+  "label": "Sibila Missiriba - SIBILA ( SéGOU)",
+  "lat": 13.7803219,
+  "lon": -5.8781787,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaAngle": 15.1,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 14,
+    "asr": 16,
+    "maghrib": 1
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 14.9,
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "isha": {
+    "angle": 15.1,
+    "exact": 337,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.08,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 191,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.48,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 187,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.49,
+    "n": 365
+   },
+   "asr": {
+    "exact": 79,
+    "within1": 257,
+    "worst": 3,
+    "mae": 1.08,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 193,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.47,
+    "n": 365
+   },
+   "isha": {
+    "exact": 337,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.08,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 2082,
+   "of": 2190,
+   "worst": 3
+  },
+  "amplitude_fajr_jan_jul": 56
+ },
+ {
+  "file": "mq-mosquee-al-tawfiq-bamako-91095-mali.json",
+  "source": "MOSQUEE AL TAWFIQ - Bamako",
+  "label": "MOSQUEE AL TAWFIQ - Bamako",
+  "lat": 12.5867259,
+  "lon": -7.9945056,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 20.1,
+   "ishaAngle": 13,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 43,
+    "asr": -10,
+    "maghrib": -5
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 20.1,
+    "exact": 49,
+    "within1": 132,
+    "worst": 33,
+    "mae": 10.95,
+    "n": 365
+   },
+   "isha": {
+    "angle": 13,
+    "exact": 143,
+    "within1": 356,
+    "worst": -2,
+    "mae": 0.63,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 49,
+    "within1": 132,
+    "worst": 33,
+    "mae": 10.95,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 203,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.44,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 14,
+    "within1": 42,
+    "worst": 17,
+    "mae": 7.18,
+    "n": 365
+   },
+   "asr": {
+    "exact": 49,
+    "within1": 206,
+    "worst": 6,
+    "mae": 1.68,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 150,
+    "within1": 292,
+    "worst": 13,
+    "mae": 2.15,
+    "n": 365
+   },
+   "isha": {
+    "exact": 143,
+    "within1": 356,
+    "worst": -2,
+    "mae": 0.63,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1393,
+   "of": 2190,
+   "worst": 33
+  },
+  "amplitude_fajr_jan_jul": 25
+ },
+ {
+  "file": "mq-al-huqma-bamako-99000-mali.json",
+  "source": "MOSQUÉE AL HIKMA - BAMAKO",
+  "label": "MOSQUÉE AL HIKMA - BAMAKO",
+  "lat": 12.604189600799,
+  "lon": -8.0287836492062,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.65,
+   "ishaAngle": 17.1,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 43,
+    "asr": 1,
+    "maghrib": 1
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.65,
+    "exact": 13,
+    "within1": 161,
+    "worst": 27,
+    "mae": 7.48,
+    "n": 365
+   },
+   "isha": {
+    "angle": 17.1,
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 13,
+    "within1": 161,
+    "worst": 27,
+    "mae": 7.48,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 202,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.45,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 14,
+    "within1": 44,
+    "worst": 17,
+    "mae": 7.18,
+    "n": 365
+   },
+   "asr": {
+    "exact": 47,
+    "within1": 189,
+    "worst": 9,
+    "mae": 2.64,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 176,
+    "within1": 360,
+    "worst": 2,
+    "mae": 0.53,
+    "n": 365
+   },
+   "isha": {
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1484,
+   "of": 2190,
+   "worst": 27
+  },
+  "amplitude_fajr_jan_jul": 30
+ }
+]

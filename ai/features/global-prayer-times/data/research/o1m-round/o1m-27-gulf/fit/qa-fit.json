@@ -1,0 +1,391 @@
+{
+ "job": "o1m-27 Qatar ministry PrayerTimes gateway",
+ "years": [
+  "2024",
+  "2025",
+  "2026",
+  "2027"
+ ],
+ "lat": 25.2854,
+ "lon": 51.41,
+ "lonScan": {
+  "lon": 51.41,
+  "sum": 108
+ },
+ "perYear": {
+  "2024": {
+   "rows": 366,
+   "from": "2024-01-01",
+   "to": "2024-12-31",
+   "total": {
+    "exactPct": 66.6,
+    "w1Pct": 100,
+    "mae": 0.334,
+    "max": 1,
+    "n": 2196,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 60.7,
+      "w1Pct": 100,
+      "mae": 0.393,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 68.6,
+      "w1Pct": 100,
+      "mae": 0.314,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 85,
+      "w1Pct": 100,
+      "mae": 0.15,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 69.7,
+      "w1Pct": 100,
+      "mae": 0.303,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 57.9,
+      "w1Pct": 100,
+      "mae": 0.421,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 57.9,
+      "w1Pct": 100,
+      "mae": 0.421,
+      "max": 1
+     }
+    }
+   }
+  },
+  "2025": {
+   "rows": 365,
+   "from": "2025-01-01",
+   "to": "2025-12-31",
+   "total": {
+    "exactPct": 75.1,
+    "w1Pct": 100,
+    "mae": 0.249,
+    "max": 1,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 72.1,
+      "w1Pct": 100,
+      "mae": 0.279,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 77.3,
+      "w1Pct": 100,
+      "mae": 0.227,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 92.6,
+      "w1Pct": 100,
+      "mae": 0.074,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 68.8,
+      "w1Pct": 100,
+      "mae": 0.312,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 69.9,
+      "w1Pct": 100,
+      "mae": 0.301,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 69.9,
+      "w1Pct": 100,
+      "mae": 0.301,
+      "max": 1
+     }
+    }
+   }
+  },
+  "2026": {
+   "rows": 365,
+   "from": "2026-01-01",
+   "to": "2026-12-31",
+   "total": {
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 83.3,
+      "w1Pct": 100,
+      "mae": 0.167,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 90.7,
+      "w1Pct": 100,
+      "mae": 0.093,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 97.3,
+      "w1Pct": 100,
+      "mae": 0.027,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 72.9,
+      "w1Pct": 100,
+      "mae": 0.271,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 82.7,
+      "w1Pct": 100,
+      "mae": 0.173,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 82.7,
+      "w1Pct": 100,
+      "mae": 0.173,
+      "max": 1
+     }
+    }
+   }
+  },
+  "2027": {
+   "rows": 365,
+   "from": "2027-01-01",
+   "to": "2027-12-31",
+   "total": {
+    "exactPct": 87.9,
+    "w1Pct": 99.8,
+    "mae": 0.123,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 86.6,
+      "w1Pct": 100,
+      "mae": 0.134,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 94.5,
+      "w1Pct": 100,
+      "mae": 0.055,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 95.6,
+      "w1Pct": 100,
+      "mae": 0.044,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 78.1,
+      "w1Pct": 100,
+      "mae": 0.219,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 86.3,
+      "w1Pct": 99.5,
+      "mae": 0.142,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 86.3,
+      "w1Pct": 99.5,
+      "mae": 0.142,
+      "max": 2
+     }
+    }
+   }
+  }
+ },
+ "ishaInterval": {
+  "values": {
+   "90": 1461
+  },
+  "violations": 0,
+  "rows": 1461
+ },
+ "angleScan": {
+  "floor": {
+   "fajr": {
+    "angle": 18.42,
+    "mae": 0.244,
+    "sum": 356
+   },
+   "isha": {
+    "angle": 20.44,
+    "mae": 4.372,
+    "sum": 6388
+   }
+  },
+  "round": {
+   "fajr": {
+    "angle": 18.53,
+    "mae": 0.27,
+    "sum": 395
+   },
+   "isha": {
+    "angle": 20.35,
+    "mae": 4.332,
+    "sum": 6329
+   }
+  }
+ },
+ "angleScanNote": "isha free fit runs against the printed isha column; the +90 interval is proven separately above",
+ "padScan": {
+  "fajr": {
+   "mode": "floor",
+   "pad": 1,
+   "mae": 0.244
+  },
+  "sunrise": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.172
+  },
+  "dhuhr": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.074
+  },
+  "asr": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.277
+  },
+  "maghrib": {
+   "mode": "floor",
+   "pad": 2,
+   "mae": 0.259
+  }
+ },
+ "recipe": {
+  "fajrAngle": 18.42,
+  "ishaAngle": 18,
+  "ishaOffset": 90,
+  "pad": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": 0
+  },
+  "mode": {
+   "fajr": "floor",
+   "sunrise": "floor",
+   "dhuhr": "floor",
+   "asr": "floor",
+   "maghrib": "floor",
+   "isha": "floor"
+  }
+ },
+ "held": {
+  "exactPct": 78.6,
+  "w1Pct": 100,
+  "mae": 0.214,
+  "max": 2,
+  "n": 8766,
+  "perColumn": {
+   "fajr": {
+    "exactPct": 75.6,
+    "w1Pct": 100,
+    "mae": 0.244,
+    "max": 1
+   },
+   "sunrise": {
+    "exactPct": 82.8,
+    "w1Pct": 100,
+    "mae": 0.172,
+    "max": 1
+   },
+   "dhuhr": {
+    "exactPct": 92.6,
+    "w1Pct": 100,
+    "mae": 0.074,
+    "max": 1
+   },
+   "asr": {
+    "exactPct": 72.3,
+    "w1Pct": 100,
+    "mae": 0.277,
+    "max": 1
+   },
+   "maghrib": {
+    "exactPct": 74.2,
+    "w1Pct": 99.9,
+    "mae": 0.259,
+    "max": 2
+   },
+   "isha": {
+    "exactPct": 74.2,
+    "w1Pct": 99.9,
+    "mae": 0.259,
+    "max": 2
+   }
+  }
+ },
+ "amplitude": {
+  "fajr": 107,
+  "sunrise": 98,
+  "dhuhr": 31,
+  "asr": 45,
+  "maghrib": 105,
+  "isha": 105
+ },
+ "janJulFajr": {
+  "janMin": 297,
+  "julMin": 197
+ },
+ "latScan": {
+  "lat": 25.26,
+  "mae": 0.208
+ },
+ "outliers": [
+  {
+   "date": "2027-02-15",
+   "col": "maghrib",
+   "err": -2,
+   "printed": "17:31",
+   "pred": 1049
+  },
+  {
+   "date": "2027-02-15",
+   "col": "isha",
+   "err": -2,
+   "printed": "19:01",
+   "pred": 1139
+  },
+  {
+   "date": "2027-02-25",
+   "col": "maghrib",
+   "err": -2,
+   "printed": "17:37",
+   "pred": 1055
+  },
+  {
+   "date": "2027-02-25",
+   "col": "isha",
+   "err": -2,
+   "printed": "19:07",
+   "pred": 1145
+  }
+ ],
+ "outlierCount": 4
+}

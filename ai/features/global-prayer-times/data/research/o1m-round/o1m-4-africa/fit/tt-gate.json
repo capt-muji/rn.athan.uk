@@ -1,0 +1,632 @@
+[
+ {
+  "city_id": 6135,
+  "country": "guinea",
+  "city": "Kankan",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 6140,
+  "country": "guinea",
+  "city": "Nzerekore",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9011,
+  "country": "mali",
+  "city": "Mopti",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9020,
+  "country": "mali",
+  "city": "Sikasso",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9006,
+  "country": "mali",
+  "city": "Kayes",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5068,
+  "country": "ethiopia",
+  "city": "Dire Dawa",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 74682,
+  "country": "ethiopia",
+  "city": "Harar",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 74574,
+  "country": "ethiopia",
+  "city": "Hawassa",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8628,
+  "country": "kenya",
+  "city": "Nairobi",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8617,
+  "country": "kenya",
+  "city": "Mombasa",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8634,
+  "country": "kenya",
+  "city": "Kisumu",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8641,
+  "country": "kenya",
+  "city": "Nakuru",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 81485,
+  "country": "somalia",
+  "city": "Bosaso",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 62588,
+  "country": "somalia",
+  "city": "Kismayo (Kismaayo)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2866,
+  "country": "burkina-faso",
+  "city": "Bobo Dioulasso",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2861,
+  "country": "burkina-faso",
+  "city": "Kudugu (Koudougou)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9985,
+  "country": "niger",
+  "city": "Niamey",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9994,
+  "country": "niger",
+  "city": "Zinder",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 62558,
+  "country": "niger",
+  "city": "Maradi",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9990,
+  "country": "niger",
+  "city": "Tahoua",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 3860,
+  "country": "chad",
+  "city": "Abeche",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 3854,
+  "country": "chad",
+  "city": "Moundou",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 122820,
+  "country": "sudan",
+  "city": "Omdurman",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15778,
+  "country": "sudan",
+  "city": "Port Sudan",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15823,
+  "country": "sudan",
+  "city": "Kassala",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5031,
+  "country": "eritrea",
+  "city": "Asmara (Asmera)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21060,
+  "country": "dr-congo",
+  "city": "Kinşasa (Kinshasa)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21040,
+  "country": "dr-congo",
+  "city": "Lubumbashi",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21064,
+  "country": "dr-congo",
+  "city": "Goma",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21062,
+  "country": "dr-congo",
+  "city": "Bukavu",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 20995,
+  "country": "dr-congo",
+  "city": "Kananga",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2968,
+  "country": "cameroon",
+  "city": "Yaounde",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2972,
+  "country": "cameroon",
+  "city": "Douala",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2979,
+  "country": "cameroon",
+  "city": "Garoua",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 81483,
+  "country": "cameroon",
+  "city": "Bamenda",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5695,
+  "country": "gabon",
+  "city": "Libreville",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5697,
+  "country": "gabon",
+  "city": "Franceville",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9467,
+  "country": "mozambique",
+  "city": "Maputo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9495,
+  "country": "mozambique",
+  "city": "Beira",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9484,
+  "country": "mozambique",
+  "city": "Nampula",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21122,
+  "country": "zambia",
+  "city": "Lusaka",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 81518,
+  "country": "zambia",
+  "city": "Kitwe",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21114,
+  "country": "zambia",
+  "city": "Ndola",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21138,
+  "country": "zambia",
+  "city": "Livingstone",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21153,
+  "country": "zimbabwe",
+  "city": "Harare (Salisbury)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21152,
+  "country": "zimbabwe",
+  "city": "Bulawayo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21156,
+  "country": "zimbabwe",
+  "city": "Mutare (Umtali)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 21185,
+  "country": "zimbabwe",
+  "city": "Gweru",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 193,
+  "country": "angola",
+  "city": "Luanda",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 121,
+  "country": "angola",
+  "city": "Benguela",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 177,
+  "country": "angola",
+  "city": "Huambo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 189,
+  "country": "angola",
+  "city": "Lubango",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 70390,
+  "country": "senegal",
+  "city": "Dakar",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 71576,
+  "country": "senegal",
+  "city": "Touba",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15203,
+  "country": "senegal",
+  "city": "St Louis",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15192,
+  "country": "senegal",
+  "city": "Kaolack",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15206,
+  "country": "senegal",
+  "city": "Thies",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5968,
+  "country": "ghana",
+  "city": "Akra (Accra)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5956,
+  "country": "ghana",
+  "city": "Kumasi",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5971,
+  "country": "ghana",
+  "city": "Tamale",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5978,
+  "country": "ghana",
+  "city": "Takoradi",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15219,
+  "country": "sierra-leone",
+  "city": "Freetown",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 15216,
+  "country": "sierra-leone",
+  "city": "Bo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 41436,
+  "country": "sierra-leone",
+  "city": "Kenema",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 41439,
+  "country": "sierra-leone",
+  "city": "Makeni",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 16650,
+  "country": "gambia",
+  "city": "Banjul (Bathurst)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 43412,
+  "country": "gambia",
+  "city": "Serrekunda",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 71759,
+  "country": "gambia",
+  "city": "Brikama",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 121875,
+  "country": "mauritania",
+  "city": "Nouakchott-Oumtounsy Havaalanı",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9042,
+  "country": "mauritania",
+  "city": "Nouadhibou (Port Etienne)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9040,
+  "country": "mauritania",
+  "city": "Kiffa",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8761,
+  "country": "madagascar",
+  "city": "Antananarivo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8871,
+  "country": "madagascar",
+  "city": "Toamasina (Tamatave)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8839,
+  "country": "madagascar",
+  "city": "Mahajanga (Majunga)",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8797,
+  "country": "madagascar",
+  "city": "Fianarantsoa",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 9997,
+  "country": "nigeria",
+  "city": "Abuja",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 118265,
+  "country": "egypt",
+  "city": "New Cairo City",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 4991,
+  "country": "egypt",
+  "city": "Aswan",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 43,
+  "country": "algeria",
+  "city": "Algiers",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 102,
+  "country": "algeria",
+  "city": "Oran",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 79,
+  "country": "algeria",
+  "city": "Constantine",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 2945,
+  "country": "burundi",
+  "city": "Bujumbura",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8037,
+  "country": "ivory-coast",
+  "city": "Abidjan",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 8042,
+  "country": "ivory-coast",
+  "city": "Bouake",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 1549,
+  "country": "benin",
+  "city": "Cotonou",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 3813,
+  "country": "central-african-republic",
+  "city": "Bangui",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 4666,
+  "country": "congo",
+  "city": "Brazzaville",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 4662,
+  "country": "comoros",
+  "city": "Moroni",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 5028,
+  "country": "equatorial-guinea",
+  "city": "Malabo",
+  "checked": 5,
+  "diff": 0
+ },
+ {
+  "city_id": 6144,
+  "country": "guinea-bissau",
+  "city": "Bissau",
+  "checked": 5,
+  "diff": 0
+ }
+]

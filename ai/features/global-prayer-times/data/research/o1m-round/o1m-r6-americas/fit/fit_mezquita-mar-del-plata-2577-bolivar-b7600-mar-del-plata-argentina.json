@@ -1,0 +1,211 @@
+{
+ "id": "mezquita-mar-del-plata-2577-bolivar-b7600-mar-del-plata-argentina",
+ "name": "Mezquita Mar del Plata - MAR DEL PLATA",
+ "city": "Mezquita Mar del Plata - MAR DEL PLATA",
+ "tz": "America/Argentina/Buenos_Aires",
+ "lat": -38.0027269764,
+ "lon": -57.548992580481,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [
+  {
+   "from": "2026-10-13",
+   "to": "2026-11-28",
+   "offset": 30,
+   "n": 47
+  }
+ ],
+ "recipe": {
+  "fajrAngle": 17.8,
+  "ishaKind": "angle",
+  "isha": 14.9,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 6,
+   "asr": 33,
+   "maghrib": 0,
+   "isha": 73
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 33.7,
+   "w1Pct": 64.7,
+   "mean": 12.72,
+   "worst": 77,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 64.7,
+     "exactPct": 33.7,
+     "worst": 77
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 84.9,
+   "w1Pct": 87.1,
+   "mean": -3.85,
+   "worst": -31,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 87.1,
+     "exactPct": 84.9,
+     "worst": -31
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 15.9,
+   "w1Pct": 17.5,
+   "mean": 6.35,
+   "worst": 23,
+   "med": 6,
+   "byYear": {
+    "2026": {
+     "w1Pct": 17.5,
+     "exactPct": 15.9,
+     "worst": 23
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 3.8,
+   "w1Pct": 15.6,
+   "mean": 33.62,
+   "worst": 86,
+   "med": 33,
+   "byYear": {
+    "2026": {
+     "w1Pct": 15.6,
+     "exactPct": 3.8,
+     "worst": 86
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 84.7,
+   "w1Pct": 87.1,
+   "mean": -3.87,
+   "worst": -31,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 87.1,
+     "exactPct": 84.7,
+     "worst": -31
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 4.7,
+   "w1Pct": 20.8,
+   "mean": 64.35,
+   "worst": 140,
+   "med": 73,
+   "byYear": {
+    "2026": {
+     "w1Pct": 20.8,
+     "exactPct": 4.7,
+     "worst": 140
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 33.7,
+   "w1Pct": 64.7,
+   "mean": 12.72,
+   "worst": 77,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 64.7,
+     "exactPct": 33.7,
+     "worst": 77
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 84.9,
+   "w1Pct": 87.1,
+   "mean": -3.85,
+   "worst": -31,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 87.1,
+     "exactPct": 84.9,
+     "worst": -31
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 4.1,
+   "w1Pct": 12.6,
+   "mean": 0.35,
+   "worst": 17,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 12.6,
+     "exactPct": 4.1,
+     "worst": 17
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 1.1,
+   "w1Pct": 3.6,
+   "mean": 0.62,
+   "worst": 53,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 3.6,
+     "exactPct": 1.1,
+     "worst": 53
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 84.7,
+   "w1Pct": 87.1,
+   "mean": -3.87,
+   "worst": -31,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 87.1,
+     "exactPct": 84.7,
+     "worst": -31
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 0.5,
+   "w1Pct": 1.4,
+   "mean": -8.65,
+   "worst": -103,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 1.4,
+     "exactPct": 0.5,
+     "worst": -103
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 105
+}

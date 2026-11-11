@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-bishnupur-ramkrishnapur-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 22.38,
+  "lon": 88.14
+ },
+ "coarse": {
+  "lat": 22.3,
+  "lon": 88.2,
+  "mae": 0.245
+ },
+ "mid": {
+  "lat": 22.38,
+  "lon": 88.14,
+  "mae": 0
+ },
+ "meta": {
+  "name": "Ramkrishnapur jummha mosjid ",
+  "address": "Bishnupur, West Bengal, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.02,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.1,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.24,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.29,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0.02,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.33,
+   "mad": 0
+  },
+  {
+   "a": 17.1,
+   "med": 0,
+   "mae": 0.33,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -58,
+   "mad": 11
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 98,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 99.1,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 98,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 98,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 98.6,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 319,
+ "amplitude_fajr_min": 95
+}

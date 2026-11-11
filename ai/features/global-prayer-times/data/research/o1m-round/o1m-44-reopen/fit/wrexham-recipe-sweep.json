@@ -1,0 +1,984 @@
+{
+ "recipe": "15/12.5",
+ "point": "53.0430,-2.9930",
+ "months": 4,
+ "rows": 122,
+ "residuals": [
+  {
+   "fajr": 93,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": -75
+  },
+  {
+   "fajr": 91,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": -75
+  },
+  {
+   "fajr": 90,
+   "sunrise": -1,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": -77
+  },
+  {
+   "fajr": 88,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": -78
+  },
+  {
+   "fajr": 87,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": -80
+  },
+  {
+   "fajr": 86,
+   "sunrise": -1,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": -81
+  },
+  {
+   "fajr": 85,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": -82
+  },
+  {
+   "fajr": 83,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1356
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1355
+  },
+  {
+   "fajr": 82,
+   "sunrise": -1,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1354
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": 1353
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1351
+  },
+  {
+   "fajr": 82,
+   "sunrise": -1,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1350
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 1350
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1,
+   "isha": 1349
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": 1349
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1,
+   "isha": 1348
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 81,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 81,
+   "sunrise": -1,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1347
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1348
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1349
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1350
+  },
+  {
+   "fajr": 82,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1351
+  },
+  {
+   "fajr": 83,
+   "sunrise": 0,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1352
+  },
+  {
+   "fajr": 83,
+   "sunrise": 0,
+   "dhuhr": -2,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1352
+  },
+  {
+   "fajr": 83,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1354
+  },
+  {
+   "fajr": 84,
+   "sunrise": -5,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": 1354
+  },
+  {
+   "fajr": 83,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1355
+  },
+  {
+   "fajr": 83,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1357
+  },
+  {
+   "fajr": 84,
+   "sunrise": -5,
+   "dhuhr": -2,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1358
+  },
+  {
+   "fajr": 84,
+   "sunrise": -5,
+   "dhuhr": -2,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -80
+  },
+  {
+   "fajr": 84,
+   "sunrise": -5,
+   "dhuhr": -2,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -79
+  },
+  {
+   "fajr": 85,
+   "sunrise": -5,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -78
+  },
+  {
+   "fajr": 85,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -77
+  },
+  {
+   "fajr": 86,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -76
+  },
+  {
+   "fajr": 85,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -74
+  },
+  {
+   "fajr": 85,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -73
+  },
+  {
+   "fajr": 67,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -72
+  },
+  {
+   "fajr": 57,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -70
+  },
+  {
+   "fajr": 50,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -69
+  },
+  {
+   "fajr": 44,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -67
+  },
+  {
+   "fajr": 38,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -66
+  },
+  {
+   "fajr": 33,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": -1,
+   "isha": -65
+  },
+  {
+   "fajr": 28,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -63
+  },
+  {
+   "fajr": 24,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 0,
+   "maghrib": -1,
+   "isha": -62
+  },
+  {
+   "fajr": 20,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": -1,
+   "isha": -61
+  },
+  {
+   "fajr": 15,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -58
+  },
+  {
+   "fajr": 11,
+   "sunrise": -4,
+   "dhuhr": -1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -57
+  },
+  {
+   "fajr": 7,
+   "sunrise": -4,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -56
+  },
+  {
+   "fajr": 4,
+   "sunrise": -4,
+   "dhuhr": -1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -54
+  },
+  {
+   "fajr": 0,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -54
+  },
+  {
+   "fajr": -4,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -52
+  },
+  {
+   "fajr": -8,
+   "sunrise": -5,
+   "dhuhr": -1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -51
+  },
+  {
+   "fajr": -10,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -50
+  },
+  {
+   "fajr": -14,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -49
+  },
+  {
+   "fajr": -18,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -48
+  },
+  {
+   "fajr": 3,
+   "sunrise": -3,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -47
+  },
+  {
+   "fajr": 3,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -50
+  },
+  {
+   "fajr": 1,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -47
+  },
+  {
+   "fajr": 1,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -45
+  },
+  {
+   "fajr": 1,
+   "sunrise": -5,
+   "dhuhr": -3,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -43
+  },
+  {
+   "fajr": -1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -42
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -41
+  },
+  {
+   "fajr": -1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -40
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -39
+  },
+  {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -39
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -38
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": -2,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -37
+  },
+  {
+   "fajr": -2,
+   "sunrise": -3,
+   "dhuhr": 1,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -36
+  },
+  {
+   "fajr": -2,
+   "sunrise": -4,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -35
+  },
+  {
+   "fajr": -2,
+   "sunrise": -5,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -34
+  },
+  {
+   "fajr": 0,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -34
+  },
+  {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -33
+  },
+  {
+   "fajr": 0,
+   "sunrise": -4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -33
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": -1,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -32
+  },
+  {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -31
+  },
+  {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -30
+  },
+  {
+   "fajr": -2,
+   "sunrise": -5,
+   "dhuhr": 1,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -30
+  },
+  {
+   "fajr": -1,
+   "sunrise": -4,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -30
+  },
+  {
+   "fajr": -2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -29
+  },
+  {
+   "fajr": -2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -28
+  },
+  {
+   "fajr": -3,
+   "sunrise": -4,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 0,
+   "isha": -27
+  },
+  {
+   "fajr": -2,
+   "sunrise": -3,
+   "dhuhr": 1,
+   "asr": 2,
+   "maghrib": -1,
+   "isha": -28
+  },
+  {
+   "fajr": -2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 3,
+   "maghrib": 0,
+   "isha": -27
+  },
+  {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": -26
+  },
+  {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 0,
+   "asr": 3,
+   "maghrib": -1,
+   "isha": -27
+  },
+  {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": 1,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": -25
+  },
+  {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -4,
+   "maghrib": 0,
+   "isha": -5
+  },
+  {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -8,
+   "maghrib": -1,
+   "isha": -5
+  },
+  {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -7,
+   "maghrib": 0,
+   "isha": -4
+  },
+  {
+   "fajr": -1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -7,
+   "maghrib": 0,
+   "isha": -3
+  },
+  {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -5,
+   "maghrib": -1,
+   "isha": -4
+  },
+  {
+   "fajr": -2,
+   "sunrise": 1,
+   "dhuhr": 1,
+   "asr": -5,
+   "maghrib": 0,
+   "isha": -3
+  },
+  {
+   "fajr": -3,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -4,
+   "maghrib": 0,
+   "isha": -2
+  },
+  {
+   "fajr": -3,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": 0,
+   "isha": -2
+  },
+  {
+   "fajr": -3,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": 0,
+   "isha": -2
+  },
+  {
+   "fajr": -3,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -1,
+   "isha": -2
+  },
+  {
+   "fajr": -4,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": 0,
+   "isha": -1
+  },
+  {
+   "fajr": -4,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": -1
+  },
+  {
+   "fajr": -4,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": -1
+  },
+  {
+   "fajr": -5,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  {
+   "fajr": -5,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -1,
+   "isha": -1
+  },
+  {
+   "fajr": -6,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  {
+   "fajr": -6,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": -1,
+   "isha": 0
+  },
+  {
+   "fajr": -5,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 0
+  },
+  {
+   "fajr": -5,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 1
+  },
+  {
+   "fajr": -6,
+   "sunrise": 1,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  {
+   "fajr": -6,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 1
+  },
+  {
+   "fajr": -6,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -1,
+   "isha": 1
+  },
+  {
+   "fajr": -7,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 1
+  },
+  {
+   "fajr": -8,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": 0,
+   "isha": 2
+  },
+  {
+   "fajr": -8,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 1
+  },
+  {
+   "fajr": -8,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 2
+  },
+  {
+   "fajr": -7,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -1,
+   "isha": 1
+  },
+  {
+   "fajr": -7,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -2,
+   "maghrib": -1,
+   "isha": 1
+  },
+  {
+   "fajr": -7,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -1,
+   "isha": 1
+  },
+  {
+   "fajr": -7,
+   "sunrise": 2,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 0,
+   "isha": 2
+  }
+ ]
+}

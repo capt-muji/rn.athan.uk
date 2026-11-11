@@ -1,0 +1,344 @@
+[
+ {
+  "key": "toulon-lmv",
+  "lat": 43.125,
+  "n": 366,
+  "fajr": {
+   "med": 73,
+   "min": -113,
+   "max": 89,
+   "spread": 202,
+   "atMedian": "69/366"
+  },
+  "isha": {
+   "med": 73,
+   "min": 62,
+   "max": 116,
+   "spread": 54,
+   "atMedian": "20/366"
+  }
+ },
+ {
+  "key": "toulon-pontdulas",
+  "lat": 43.132,
+  "n": 366,
+  "fajr": {
+   "med": 70,
+   "min": 65,
+   "max": 86,
+   "spread": 21,
+   "atMedian": "73/366"
+  },
+  "isha": {
+   "med": 78,
+   "min": 73,
+   "max": 94,
+   "spread": 21,
+   "atMedian": "76/366"
+  }
+ },
+ {
+  "key": "marseille-khalid",
+  "lat": 43.305,
+  "n": 366,
+  "fajr": {
+   "med": 73,
+   "min": 67,
+   "max": 89,
+   "spread": 22,
+   "atMedian": "67/366"
+  },
+  "isha": {
+   "med": 69,
+   "min": 62,
+   "max": 86,
+   "spread": 24,
+   "atMedian": "70/366"
+  }
+ },
+ {
+  "key": "marseille-mariam",
+  "lat": 43.335,
+  "n": 366,
+  "fajr": {
+   "med": 72.5,
+   "min": 67,
+   "max": 89,
+   "spread": 22,
+   "atMedian": "43/366"
+  },
+  "isha": {
+   "med": 69,
+   "min": 64,
+   "max": 86,
+   "spread": 22,
+   "atMedian": "72/366"
+  }
+ },
+ {
+  "key": "toulouse-assalam",
+  "lat": 43.569,
+  "n": 366,
+  "fajr": {
+   "med": 85,
+   "min": 78,
+   "max": 110,
+   "spread": 32,
+   "atMedian": "70/366"
+  },
+  "isha": {
+   "med": 84,
+   "min": 72,
+   "max": 111,
+   "spread": 39,
+   "atMedian": "17/366"
+  }
+ },
+ {
+  "key": "toulouse-reynerie",
+  "lat": 43.569,
+  "n": 366,
+  "fajr": {
+   "med": 85,
+   "min": 78,
+   "max": 110,
+   "spread": 32,
+   "atMedian": "65/366"
+  },
+  "isha": {
+   "med": 79,
+   "min": 72,
+   "max": 105,
+   "spread": 33,
+   "atMedian": "68/366"
+  }
+ },
+ {
+  "key": "montpellier-ibnrochd",
+  "lat": 43.628,
+  "n": 366,
+  "fajr": {
+   "med": 84,
+   "min": 78,
+   "max": 101,
+   "spread": 23,
+   "atMedian": "72/366"
+  },
+  "isha": {
+   "med": 80,
+   "min": 80,
+   "max": 80,
+   "spread": 0,
+   "atMedian": "366/366"
+  }
+ },
+ {
+  "key": "toulouse-alfath",
+  "lat": 43.642,
+  "n": 366,
+  "fajr": {
+   "med": 84.5,
+   "min": 74,
+   "max": 111,
+   "spread": 37,
+   "atMedian": "40/366"
+  },
+  "isha": {
+   "med": 91.5,
+   "min": 17,
+   "max": 118,
+   "spread": 101,
+   "atMedian": "12/366"
+  }
+ },
+ {
+  "key": "nice-ennour",
+  "lat": 43.689,
+  "n": 366,
+  "fajr": {
+   "med": 73,
+   "min": 67,
+   "max": 90,
+   "spread": 23,
+   "atMedian": "62/366"
+  },
+  "isha": {
+   "med": 67.5,
+   "min": 61,
+   "max": 84,
+   "spread": 23,
+   "atMedian": "33/366"
+  }
+ },
+ {
+  "key": "nice-errahma",
+  "lat": 43.74,
+  "n": 366,
+  "fajr": {
+   "med": 71,
+   "min": 65,
+   "max": 88,
+   "spread": 23,
+   "atMedian": "68/366"
+  },
+  "isha": {
+   "med": 73,
+   "min": 63,
+   "max": 109,
+   "spread": 46,
+   "atMedian": "22/366"
+  }
+ },
+ {
+  "key": "bordeaux-gm",
+  "lat": 44.83,
+  "n": 366,
+  "fajr": {
+   "med": 72,
+   "min": 67,
+   "max": 91,
+   "spread": 24,
+   "atMedian": "64/366"
+  },
+  "isha": {
+   "med": 70,
+   "min": 65,
+   "max": 89,
+   "spread": 24,
+   "atMedian": "64/366"
+  }
+ },
+ {
+  "key": "lyon-gm",
+  "lat": 45.737,
+  "n": 366,
+  "fajr": {
+   "med": 84,
+   "min": 76,
+   "max": 205,
+   "spread": 129,
+   "atMedian": "51/366"
+  },
+  "isha": {
+   "med": 77,
+   "min": 69,
+   "max": 103,
+   "spread": 34,
+   "atMedian": "65/366"
+  }
+ },
+ {
+  "key": "lyon-attawba",
+  "lat": 45.788,
+  "n": 366,
+  "fajr": {
+   "med": 84,
+   "min": 76,
+   "max": 115,
+   "spread": 39,
+   "atMedian": "55/366"
+  },
+  "isha": {
+   "med": 77,
+   "min": 70,
+   "max": 103,
+   "spread": 33,
+   "atMedian": "63/366"
+  }
+ },
+ {
+  "key": "nantes-gm",
+  "lat": 47.22,
+  "n": 366,
+  "fajr": {
+   "med": 78,
+   "min": 71,
+   "max": 102,
+   "spread": 31,
+   "atMedian": "56/366"
+  },
+  "isha": {
+   "med": 74,
+   "min": 67,
+   "max": 98,
+   "spread": 31,
+   "atMedian": "55/366"
+  }
+ },
+ {
+  "key": "rennes-ibnkhaldoun",
+  "lat": 48.094,
+  "n": 366,
+  "fajr": {
+   "med": 78.5,
+   "min": 72,
+   "max": 102,
+   "spread": 30,
+   "atMedian": "33/366"
+  },
+  "isha": {
+   "med": 82,
+   "min": 69,
+   "max": 124,
+   "spread": 55,
+   "atMedian": "18/366"
+  }
+ },
+ {
+  "key": "rennes-ennour",
+  "lat": 48.116,
+  "n": 366,
+  "fajr": {
+   "med": 79,
+   "min": 72,
+   "max": 105,
+   "spread": 33,
+   "atMedian": "54/366"
+  },
+  "isha": {
+   "med": 78,
+   "min": 69,
+   "max": 104,
+   "spread": 35,
+   "atMedian": "17/366"
+  }
+ },
+ {
+  "key": "lille-gm",
+  "lat": 50.613,
+  "n": 366,
+  "fajr": {
+   "med": 82,
+   "min": 74,
+   "max": 119,
+   "spread": 45,
+   "atMedian": "41/366"
+  },
+  "isha": {
+   "med": 80,
+   "min": 72,
+   "max": 117,
+   "spread": 45,
+   "atMedian": "46/366"
+  }
+ },
+ {
+  "key": "lille-assalam",
+  "lat": 50.62,
+  "n": 366,
+  "fajr": {
+   "med": 83.5,
+   "min": 17,
+   "max": 111,
+   "spread": 94,
+   "atMedian": "27/366"
+  },
+  "isha": {
+   "med": 80,
+   "min": 72,
+   "max": 117,
+   "spread": 45,
+   "atMedian": "42/366"
+  }
+ }
+]

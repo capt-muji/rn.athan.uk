@@ -1,0 +1,90 @@
+{
+ "city": "kandalaksha",
+ "nightFraction": {
+  "n": 103,
+  "med": 0.498,
+  "p10": 0.489,
+  "p90": 0.509
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Europe/Moscow",
+ "lat": 67.15123,
+ "lon": 32.41284,
+ "rows": 365,
+ "solarGateMedAbs": 0.88,
+ "fajrAngle": {
+  "n": 213,
+  "med": 15.95,
+  "min": 10.25,
+  "max": 16.1,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 220,
+  "med": 15,
+  "min": 10.65,
+  "max": 15.3,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 288,
+   "med": 0.47,
+   "min": -1.1,
+   "max": 1.4
+  },
+  "dhuhr": {
+   "n": 288,
+   "med": 0.5,
+   "min": 0.1,
+   "max": 0.9
+  },
+  "asrShafi": {
+   "n": 288,
+   "med": -0.55,
+   "min": -14.2,
+   "max": 16.9
+  },
+  "asrHanafi": {
+   "n": 288,
+   "med": -38.37,
+   "min": -76.6,
+   "max": 9.5
+  },
+  "maghrib": {
+   "n": 288,
+   "med": -0.37,
+   "min": -2.1,
+   "max": 2.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-10",
+    "to": "2027-09-02",
+    "days": 146
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2027-05-29",
+    "to": "2027-05-31",
+    "days": 3
+   },
+   {
+    "from": "2027-06-02",
+    "to": "2027-07-15",
+    "days": 44
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 423,
+  "isha": 1449
+ }
+}

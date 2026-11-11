@@ -1,0 +1,241 @@
+{
+ "id": "fundacion-centro-educativo-de-panama-00507-la-chorrera-panama",
+ "name": "FUNDACIÓN CENTRO EDUCATIVO DE PANAMÁ - LA CHORRERA",
+ "city": "FUNDACIÓN CENTRO EDUCATIVO DE PANAMÁ - LA CHORRERA",
+ "tz": "America/Panama",
+ "lat": 8.8431565086244,
+ "lon": -79.858535528183,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [
+  {
+   "from": "2026-01-01",
+   "to": "2026-04-06",
+   "offset": 45,
+   "n": 96
+  },
+  {
+   "from": "2026-04-07",
+   "to": "2026-07-01",
+   "offset": 60,
+   "n": 86
+  },
+  {
+   "from": "2026-07-02",
+   "to": "2026-08-24",
+   "offset": 45,
+   "n": 54
+  },
+  {
+   "from": "2026-08-25",
+   "to": "2026-10-09",
+   "offset": 60,
+   "n": 46
+  },
+  {
+   "from": "2026-10-10",
+   "to": "2026-11-30",
+   "offset": 75,
+   "n": 52
+  },
+  {
+   "from": "2026-12-01",
+   "to": "2026-12-31",
+   "offset": 60,
+   "n": 31
+  }
+ ],
+ "recipe": {
+  "fajrAngle": 9,
+  "ishaKind": "interval",
+  "isha": 80,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -77,
+   "sunrise": -60,
+   "dhuhr": -1,
+   "asr": 8,
+   "maghrib": -60,
+   "isha": -1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": -76.11,
+   "worst": -98,
+   "med": -77,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": -98
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": -55.98,
+   "worst": -75,
+   "med": -60,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": -75
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 3.3,
+   "w1Pct": 16.7,
+   "mean": -0.42,
+   "worst": 8,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 16.7,
+     "exactPct": 3.3,
+     "worst": 8
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0.8,
+   "w1Pct": 2.2,
+   "mean": 7.57,
+   "worst": 27,
+   "med": 8,
+   "byYear": {
+    "2026": {
+     "w1Pct": 2.2,
+     "exactPct": 0.8,
+     "worst": 27
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": -55.48,
+   "worst": -75,
+   "med": -60,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": -75
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 9.9,
+   "w1Pct": 18.4,
+   "mean": -4.17,
+   "worst": -27,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 18.4,
+     "exactPct": 9.9,
+     "worst": -27
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 4.9,
+   "w1Pct": 11.2,
+   "mean": 0.89,
+   "worst": 24,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 11.2,
+     "exactPct": 4.9,
+     "worst": 24
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 44.4,
+   "w1Pct": 44.7,
+   "mean": 4.02,
+   "worst": 15,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 44.7,
+     "exactPct": 44.4,
+     "worst": 15
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 10.4,
+   "w1Pct": 21.9,
+   "mean": 0.58,
+   "worst": 9,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 21.9,
+     "exactPct": 10.4,
+     "worst": 9
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 4.4,
+   "w1Pct": 13.4,
+   "mean": -0.43,
+   "worst": -21,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 13.4,
+     "exactPct": 4.4,
+     "worst": -21
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 42.5,
+   "w1Pct": 43,
+   "mean": 4.52,
+   "worst": 15,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 43,
+     "exactPct": 42.5,
+     "worst": 15
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 4.4,
+   "w1Pct": 15.9,
+   "mean": -3.17,
+   "worst": -26,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 15.9,
+     "exactPct": 4.4,
+     "worst": -26
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -5
+}

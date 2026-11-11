@@ -1,0 +1,79 @@
+{
+ "city": "lulea",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 65.5848,
+ "lon": 22.1547,
+ "rows": 760,
+ "solarGateMedAbs": 0.36,
+ "fajrAngle": {
+  "n": 521,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 518,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 758,
+   "med": -0.02,
+   "min": -0.8,
+   "max": 0.8
+  },
+  "dhuhr": {
+   "n": 758,
+   "med": 0.03,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 758,
+   "med": 0.17,
+   "min": -6.1,
+   "max": 5.9
+  },
+  "asrHanafi": {
+   "n": 758,
+   "med": -47.2,
+   "min": -84.2,
+   "max": -3.7
+  },
+  "maghrib": {
+   "n": 758,
+   "med": 0,
+   "min": -0.8,
+   "max": 0.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": [
+   {
+    "from": "2026-06-16",
+    "to": "2026-06-25",
+    "days": 10
+   },
+   {
+    "from": "2027-06-17",
+    "to": "2027-06-26",
+    "days": 10
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 320,
+  "isha": 1441
+ }
+}

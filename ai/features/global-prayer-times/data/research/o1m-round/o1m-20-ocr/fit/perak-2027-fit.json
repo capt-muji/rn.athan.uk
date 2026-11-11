@@ -1,0 +1,380 @@
+[
+ {
+  "zone": "zon1",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 10,
+    "exact": 246,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -1,
+    "exact": 188,
+    "within1": 356,
+    "worst": 2,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 2,
+    "exact": 295,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 2,
+    "exact": 262,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 2,
+    "exact": 264,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 2,
+    "exact": 274,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon2",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 11,
+    "exact": 257,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -2,
+    "exact": 193,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 3,
+    "exact": 200,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 3,
+    "exact": 192,
+    "within1": 357,
+    "worst": 2,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 2,
+    "exact": 194,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 2,
+    "exact": 198,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon3",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 11,
+    "exact": 161,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -1,
+    "exact": 245,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 2,
+    "exact": 325,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 2,
+    "exact": 228,
+    "within1": 363,
+    "worst": 2,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 2,
+    "exact": 272,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 2,
+    "exact": 261,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon4",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 10,
+    "exact": 235,
+    "within1": 361,
+    "worst": 2,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -2,
+    "exact": 236,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 2,
+    "exact": 222,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 2,
+    "exact": 201,
+    "within1": 361,
+    "worst": 2,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 2,
+    "exact": 226,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 2,
+    "exact": 228,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon5",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 11,
+    "exact": 226,
+    "within1": 360,
+    "worst": 2,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -1,
+    "exact": 250,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 3,
+    "exact": 361,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 3,
+    "exact": 263,
+    "within1": 361,
+    "worst": 2,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 3,
+    "exact": 281,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 3,
+    "exact": 281,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon6",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 11,
+    "exact": 238,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -1,
+    "exact": 220,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 3,
+    "exact": 192,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 2,
+    "exact": 175,
+    "within1": 363,
+    "worst": 2,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 2,
+    "exact": 213,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 2,
+    "exact": 210,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ },
+ {
+  "zone": "zon7",
+  "method": "Singapore",
+  "n": 364,
+  "per": {
+   "subuh": {
+    "offset": 9,
+    "exact": 235,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "matahari": {
+    "offset": -5,
+    "exact": 239,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "zohor": {
+    "offset": 1,
+    "exact": 343,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "asar": {
+    "offset": 1,
+    "exact": 264,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "maghrib": {
+    "offset": 6,
+    "exact": 313,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   },
+   "isyak": {
+    "offset": 1,
+    "exact": 295,
+    "within1": 364,
+    "worst": 1,
+    "n": 364
+   }
+  },
+  "imsak_minus_subuh": {
+   "min": 10,
+   "max": 10,
+   "mean": 10
+  }
+ }
+]

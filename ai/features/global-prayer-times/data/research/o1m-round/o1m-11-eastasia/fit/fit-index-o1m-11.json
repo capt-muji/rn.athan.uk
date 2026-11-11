@@ -1,0 +1,76 @@
+{
+ "wave": "o1m-11-eastasia",
+ "round": "o1m",
+ "fitted": "2026-11-11T10:15Z..13:15Z",
+ "engine": "adhan 4.4.6, Rounding.None, IANA zone pinned, dates from printed strings",
+ "entries": [
+  {
+   "surface": "Diyanet tree (namazvakitleri.diyanet.gov.tr) - East Asia",
+   "tier": "platform",
+   "grade": "provisional",
+   "years": [2026],
+   "cities": 489,
+   "rows": 178485,
+   "recipes": {
+    "CIN": {"fajr": 18, "isha": 16, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "MOGOLISTAN": {"fajr": 18, "isha": 16, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}, "note": "summer substitution block May-Aug, unmodelled"},
+    "JAPONYA": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "GUNEY KORE": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "TAYVAN": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "HONG KONG": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "MAKAO": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}},
+    "KUZEY KORE": {"fajr": 18, "isha": 17, "asr": "shafi", "margins": {"sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7}}
+   },
+   "scores": {"citiesAt100AllSix": 252, "medianAllSixPc": 100.0, "perColumnWithin1MedianPc": 100}
+  },
+  {
+   "surface": "Nagoya Mosque full-year table (nagoyamosque.com Daily-Prayer-Time-Table.pdf)",
+   "tier": "authority mosque",
+   "grade": "provisional",
+   "years": ["undated, leap-shaped; 2024 and 2028 reproduce alike"],
+   "cities": 1,
+   "rows": 365,
+   "recipe": {"fajr": 17.95, "isha": 17.05, "asr": "shafi", "margins": {"sunrise": -1, "maghrib": 1}},
+   "scores": {"allSixPc": 91.5, "fajr": "361/365", "dhuhr": "365/365", "isha": "360/365"}
+  },
+  {
+   "surface": "norislam county grid (norislam.com/tool/lb/run.asp) - 10 county points",
+   "tier": "community calculator, yearless",
+   "grade": "measured",
+   "years": ["undated, 2004 computation"],
+   "cities": 10,
+   "rows": 1424,
+   "recipe": {"fajr": 15, "isha": 15, "asr": "hanafi", "margins": "0-1 min on all six columns"},
+   "scores": {"maeRange": [0.25, 1.09], "latRange": [24.93, 53.48]}
+  },
+  {
+   "surface": "Masjidal Kowloon range API (masjid_id=pVdwkode)",
+   "tier": "platform",
+   "grade": "A",
+   "years": [2024, 2025, 2026, 2027, 2028],
+   "rows": 1827,
+   "recipe": {"fajr": 17.9, "isha": 18.5, "asr": "hanafi+1", "dhuhr": "noon+5", "maghrib": "sunset+3"},
+   "scores": {"2025": 100, "2026": 100, "2027": 100, "2028": 100, "2024": 69.1},
+   "note": "2024 is a separate generation; 2025-2028 one recipe at 100 pc"
+  }
+ ],
+ "negatives": [
+  {"place": "Osaka", "language": "Japanese", "cause": "congregation-only site, waqt columns computed client-side, no dated table"},
+  {"place": "Fukuoka", "language": "Japanese", "cause": "site under construction, widget only"},
+  {"place": "Sapporo", "language": "Japanese", "cause": "iqamah widget frozen on 2025-11-07, no year table"},
+  {"place": "Sendai", "language": "Japanese", "cause": "Google Sites, 2021/2022 Ramadan PDFs only"},
+  {"place": "Hiroshima", "language": "Japanese", "cause": "no domain resolves"},
+  {"place": "Busan/Incheon/Gwangju/Daejeon", "language": "Korean", "cause": "no own table; KMF publishes Seoul only"},
+  {"place": "Taiwan 1448 edition", "language": "Chinese", "cause": "not published; CMA index newest item 2026-07-24"},
+  {"place": "Macau 1448 / full year", "language": "Chinese, Portuguese", "cause": "mosque page public, no timetable post"},
+  {"place": "China mosque layer beyond islamichina", "language": "Simplified Chinese", "cause": "no 43rd islamichina city; cheen.cn has one city"},
+  {"place": "Mongolia Mongolian-language table", "language": "Mongolian", "cause": "none; Diyanet tree is the surface"}
+ ],
+ "defects": [
+  {"class": "two-hour clock", "cities": ["Urumqi", "Turpan", "Dunhuang", "Lhasa"], "publisher": "islamichina.com", "verified": "118.8-120.1 min at named point, 0.15-1.41 after -120"},
+  {"class": "latitude offset", "cities": ["Shijiazhuang +1.00 deg", "Sanya +0.80 deg"], "publisher": "islamichina.com"},
+  {"class": "summer substitution block", "cities": "China above 45N (Hailar, Altay, Bugt, Aihui, ...) and all Mongolia", "publisher": "Diyanet", "status": "flagged, unmodelled"},
+  {"class": "second 1-minute temkin variant", "cities": "43 Chinese, 22 Japanese, 6 Korean, 4 Mongolian", "publisher": "Diyanet"},
+  {"class": "undated leap-shaped edition", "cities": ["Nagoya"], "publisher": "nagoyamosque.com", "note": "2024 and 2028 reproduce alike"}
+ ]
+}

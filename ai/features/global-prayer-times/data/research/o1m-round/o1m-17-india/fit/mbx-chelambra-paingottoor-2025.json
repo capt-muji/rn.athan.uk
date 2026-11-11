@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-chelambra-paingottoor-2025.json",
+ "year": 2025,
+ "n_days": 344,
+ "point": {
+  "lat": 11.6,
+  "lon": 75.58
+ },
+ "coarse": {
+  "lat": 11.6,
+  "lon": 75.6,
+  "mae": 0.48
+ },
+ "mid": {
+  "lat": 11.6,
+  "lon": 75.58,
+  "mae": 0.46
+ },
+ "meta": {
+  "name": "SALAFI MASJID PAINGOTTOOR",
+  "address": "Paingottoor, Kakkanchery, Chelambra, Kerala, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 17.9,
+ "fajr_sweep": [
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.48,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.54,
+   "mad": 1
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.56,
+   "mad": 1
+  },
+  {
+   "a": 17.8,
+   "med": -1,
+   "mae": 0.6,
+   "mad": 1
+  }
+ ],
+ "isha_angle": 18.05,
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.36,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.46,
+   "mad": 0
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.48,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.56,
+   "mad": 0.5
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0.5
+  },
+  "1": {
+   "med": -64.5,
+   "mad": 6.5
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 49.7,
+   "within1": 100,
+   "mae": 0.5,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 54.1,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 64,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 52.9,
+   "within1": 96.5,
+   "mae": 0.51,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 52.9,
+   "within1": 99.4,
+   "mae": 0.48,
+   "worst": 2,
+   "med": 0
+  },
+  "isha": {
+   "exact": 54.4,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 330,
+ "all_six_exact": 9,
+ "amplitude_fajr_min": 53
+}

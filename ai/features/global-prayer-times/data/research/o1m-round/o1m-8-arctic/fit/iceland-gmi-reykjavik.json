@@ -1,0 +1,67 @@
+{
+ "city": "Reykjavik",
+ "nightFraction": null,
+ "country": "Iceland",
+ "source": "grandmosque-iceland.is",
+ "tz": "Atlantic/Reykjavik",
+ "lat": 64.1466,
+ "lon": -21.9426,
+ "rows": 60,
+ "solarGateMedAbs": 0.22,
+ "fajrAngle": {
+  "n": 29,
+  "med": 18.05,
+  "min": 16.1,
+  "max": 20.05,
+  "jun": null,
+  "dec": 18.05
+ },
+ "ishaAngle": null,
+ "solarMargin": {
+  "sunrise": {
+   "n": 58,
+   "med": 0.22,
+   "min": -1.4,
+   "max": 2.2
+  },
+  "dhuhr": {
+   "n": 58,
+   "med": 0.5,
+   "min": -0.1,
+   "max": 1.1
+  },
+  "asrShafi": {
+   "n": 58,
+   "med": -0.55,
+   "min": -4.7,
+   "max": 0.5
+  },
+  "asrHanafi": {
+   "n": 58,
+   "med": -25.3,
+   "min": -83,
+   "max": -12.5
+  },
+  "maghrib": {
+   "n": 58,
+   "med": -0.03,
+   "min": -2.3,
+   "max": 1.1
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": [
+   {
+    "from": "2026-06-15",
+    "to": "2026-06-28",
+    "days": 14
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 359,
+  "isha": 1441
+ }
+}

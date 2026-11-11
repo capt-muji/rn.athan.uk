@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-koothanallur-khaja-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 8.04,
+  "lon": 80.2
+ },
+ "coarse": {
+  "lat": 8.2,
+  "lon": 80.2,
+  "mae": 346.373
+ },
+ "mid": {
+  "lat": 8.04,
+  "lon": 80.2,
+  "mae": 346.353
+ },
+ "meta": {
+  "name": "KHAJA JUMMA MASJID KOOTHANALLUR",
+  "address": "Sisthi nagar. Abdul mohamed salai, Chisty Nagar, Koothanallur, Tamil Nadu, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 10.24,
+   "mad": 8
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 10.27,
+   "mad": 8
+  },
+  {
+   "a": 18.2,
+   "med": 1,
+   "mae": 10.29,
+   "mad": 8
+  },
+  {
+   "a": 18.25,
+   "med": 1,
+   "mae": 10.29,
+   "mad": 8
+  }
+ ],
+ "isha_angle": 13,
+ "isha_sweep": [
+  {
+   "a": 13,
+   "med": -678,
+   "mae": 674.69,
+   "mad": 9
+  },
+  {
+   "a": 13.05,
+   "med": -678,
+   "mae": 674.96,
+   "mad": 9
+  },
+  {
+   "a": 13.1,
+   "med": -679,
+   "mae": 675.12,
+   "mad": 9
+  },
+  {
+   "a": 13.15,
+   "med": -679,
+   "mae": 675.39,
+   "mad": 10
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": -639,
+   "mad": 10
+  },
+  "1": {
+   "med": -702,
+   "mad": 8
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 28,
+  "dhuhr": -670,
+  "asr": -702,
+  "maghrib": -708,
+  "isha": -678
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 6,
+   "within1": 21.7,
+   "mae": 10.19,
+   "worst": -28,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 8,
+   "within1": 18.8,
+   "mae": 9.61,
+   "worst": -28,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.4,
+   "within1": 11.7,
+   "mae": 6.78,
+   "worst": 18,
+   "med": 0
+  },
+  "asr": {
+   "exact": 3.1,
+   "within1": 9.7,
+   "mae": 8.77,
+   "worst": 24,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 1.7,
+   "within1": 14.8,
+   "mae": 10.3,
+   "worst": 31,
+   "med": -1
+  },
+  "isha": {
+   "exact": 11.7,
+   "within1": 23.4,
+   "mae": 10.51,
+   "worst": 31,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 0
+}

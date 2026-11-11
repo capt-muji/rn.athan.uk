@@ -1,0 +1,79 @@
+{
+ "city": "arvidsjaur",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 65.591,
+ "lon": 19.1666,
+ "rows": 699,
+ "solarGateMedAbs": 0.35,
+ "fajrAngle": {
+  "n": 461,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 457,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 698,
+   "med": -0.02,
+   "min": -0.8,
+   "max": 0.8
+  },
+  "dhuhr": {
+   "n": 698,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 698,
+   "med": -0.05,
+   "min": -6.3,
+   "max": 5.2
+  },
+  "asrHanafi": {
+   "n": 698,
+   "med": -51.15,
+   "min": -84.5,
+   "max": -7.3
+  },
+  "maghrib": {
+   "n": 698,
+   "med": 0,
+   "min": -0.9,
+   "max": 0.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": [
+   {
+    "from": "2026-06-12",
+    "to": "2026-06-30",
+    "days": 19
+   },
+   {
+    "from": "2027-06-13",
+    "to": "2027-06-30",
+    "days": 18
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 320,
+  "isha": 1441
+ }
+}

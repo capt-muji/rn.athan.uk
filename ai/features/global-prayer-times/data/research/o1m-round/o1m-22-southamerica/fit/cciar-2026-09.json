@@ -1,0 +1,71 @@
+{
+ "surface": "cciar",
+ "name": "Centro Cultural Islámico Rey Fahd, Av. Bullrich 55, Buenos Aires",
+ "lat": -34.555,
+ "lon": -58.39,
+ "tz": "America/Argentina/Buenos_Aires",
+ "rows": 30,
+ "span": [
+  "2026-09-12",
+  "2026-10-11"
+ ],
+ "recipe": {
+  "fajr": 17.7,
+  "isha": 17.9,
+  "asr": "Shafi"
+ },
+ "temkin": {
+  "fajr": -3,
+  "sunrise": -1,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 1,
+  "isha": -4
+ },
+ "within1": {
+  "fajr": 100,
+  "sunrise": 93.3,
+  "dhuhr": 100,
+  "asr": 100,
+  "maghrib": 100,
+  "isha": 100
+ },
+ "mae": {
+  "fajr": 0.7,
+  "sunrise": 0.37,
+  "dhuhr": 0.07,
+  "asr": 0.33,
+  "maghrib": 0.23,
+  "isha": 0.13
+ },
+ "worst": {
+  "fajr": 1,
+  "sunrise": 2,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 1,
+  "isha": 1
+ },
+ "seasonal_amplitude_jan_to_jul": {
+  "fajr": null,
+  "sunrise": null,
+  "dhuhr": null,
+  "asr": null,
+  "maghrib": null,
+  "isha": null
+ },
+ "perYear": {
+  "2026": {
+   "days": 30,
+   "within1": [
+    100,
+    93.3,
+    100,
+    100,
+    100,
+    100
+   ]
+  }
+ },
+ "clock_blocks": []
+}

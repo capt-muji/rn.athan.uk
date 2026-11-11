@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-chn-madeena-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 8.8,
+  "lon": 76.52
+ },
+ "coarse": {
+  "lat": 8.6,
+  "lon": 76.6,
+  "mae": 25.48
+ },
+ "mid": {
+  "lat": 8.8,
+  "lon": 76.52,
+  "mae": 25.461
+ },
+ "meta": {
+  "name": "Madeena Masjid ",
+  "address": "Chennai, Tamil Nadu, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 17.75,
+ "fajr_sweep": [
+  {
+   "a": 17.75,
+   "med": 0,
+   "mae": 5.16,
+   "mad": 6
+  },
+  {
+   "a": 17.5,
+   "med": -1,
+   "mae": 5.18,
+   "mad": 6
+  },
+  {
+   "a": 17.55,
+   "med": -1,
+   "mae": 5.18,
+   "mad": 6
+  },
+  {
+   "a": 17.65,
+   "med": 0,
+   "mae": 5.18,
+   "mad": 6
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 8,
+   "mae": 16.02,
+   "mad": 13
+  },
+  {
+   "a": 19.95,
+   "med": 9,
+   "mae": 16.22,
+   "mad": 12
+  },
+  {
+   "a": 19.9,
+   "med": 9,
+   "mae": 16.37,
+   "mad": 12
+  },
+  {
+   "a": 19.8,
+   "med": 9,
+   "mae": 16.41,
+   "mad": 12
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 62,
+   "mad": 11
+  },
+  "1": {
+   "med": 0,
+   "mad": 9
+  }
+ },
+ "margins": {
+  "fajr": 1,
+  "sunrise": -14,
+  "dhuhr": 36,
+  "asr": 0,
+  "maghrib": -11,
+  "isha": 8
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 3.1,
+   "within1": 12.8,
+   "mae": 5.16,
+   "worst": -10,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 4.8,
+   "within1": 13.1,
+   "mae": 4.82,
+   "worst": -9,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4,
+   "within1": 11.7,
+   "mae": 7.34,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 2.8,
+   "within1": 8.3,
+   "mae": 9.85,
+   "worst": 23,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 6.3,
+   "within1": 12.8,
+   "mae": 4.85,
+   "worst": -9,
+   "med": 0
+  },
+  "isha": {
+   "exact": 18.2,
+   "within1": 24.5,
+   "mae": 12.6,
+   "worst": 31,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 59
+}

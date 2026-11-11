@@ -1,0 +1,204 @@
+{
+ "id": "aruba-mezquita-sabana-basora-savaneta-aruba",
+ "name": "Aruba Mezquita",
+ "city": "Aruba Mezquita",
+ "tz": "America/Aruba",
+ "lat": 12.474752224187,
+ "lon": -69.956817626953,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 14.8,
+  "ishaKind": "angle",
+  "isha": 14.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 13.2,
+   "w1Pct": 100,
+   "mean": -0.87,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 13.2,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": 0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 41.9,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 41.9,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 100,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 0,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 100,
+     "worst": 0
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 13.7,
+   "w1Pct": 100,
+   "mean": 0.86,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 13.7,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 86.8,
+   "w1Pct": 100,
+   "mean": 0.13,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 86.8,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": 0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 41.9,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 41.9,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 100,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 0,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 100,
+     "worst": 0
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 86.3,
+   "w1Pct": 100,
+   "mean": -0.14,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 86.3,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -45
+}

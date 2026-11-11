@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Gonda-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 27.1333,
+  "lon": 81.9667
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 18,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.32,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.37,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.41,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.51,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.32,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.35,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.39,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.48,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 58.55,
+   "med": 56
+  },
+  "1": {
+   "mae": 0.31,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 69.6,
+   "within1": 98.9,
+   "mae": 0.32,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 65.8,
+   "within1": 98.4,
+   "mae": 0.36,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 52.3,
+   "within1": 100,
+   "mae": 0.48,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 68.8,
+   "within1": 100,
+   "mae": 0.31,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 64.9,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 67.9,
+   "within1": 99.7,
+   "mae": 0.32,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 357,
+ "isha_tier": {
+  "17": {
+   "mae": 5.2,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.39,
+   "med": 0,
+   "within1": 99.5,
+   "exact": 61.6,
+   "worst": -2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.89,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 116
+}

@@ -1,0 +1,2667 @@
+{
+ "year": 2026,
+ "crossers": [
+  {
+   "id": 5789,
+   "name": "Мамырсу",
+   "region": "Абай облысы",
+   "lat": 47.951147,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.1141552511415525,
+   "wrongMae": 1.3853881278538813,
+   "actualExact": 88.58447488584476,
+   "wrongExact": 28.538812785388128
+  },
+  {
+   "id": 29,
+   "name": "Аягөз қаласы",
+   "region": "Абай облысы",
+   "lat": 47.966667,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11963470319634703,
+   "wrongMae": 1.365296803652968,
+   "actualExact": 88.03652968036529,
+   "wrongExact": 29.315068493150687
+  },
+  {
+   "id": 10947,
+   "name": "Қылыш",
+   "region": "Ұлытау облысы",
+   "lat": 47.976867,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12876712328767123,
+   "wrongMae": 1.3744292237442923,
+   "actualExact": 87.12328767123287,
+   "wrongExact": 29.1324200913242
+  },
+  {
+   "id": 5928,
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.982723,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11735159817351598,
+   "wrongMae": 1.3703196347031963,
+   "actualExact": 88.2648401826484,
+   "wrongExact": 29.589041095890412
+  },
+  {
+   "id": 5780,
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.983381,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11643835616438356,
+   "wrongMae": 1.3648401826484018,
+   "actualExact": 88.35616438356165,
+   "wrongExact": 29.680365296803654
+  },
+  {
+   "id": 8626,
+   "name": "Ақшатау",
+   "region": "Қарағанды облысы",
+   "lat": 47.984876,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12420091324200913,
+   "wrongMae": 1.382648401826484,
+   "actualExact": 87.57990867579909,
+   "wrongExact": 28.812785388127853
+  },
+  {
+   "id": 7354,
+   "name": "Батырбек",
+   "region": "Атырау облысы",
+   "lat": 47.992975,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.1324200913242009,
+   "wrongMae": 1.3771689497716895,
+   "actualExact": 86.7579908675799,
+   "wrongExact": 29.22374429223744
+  },
+  {
+   "id": 7373,
+   "name": "Өтешқали атамбаев",
+   "region": "Атырау облысы",
+   "lat": 47.994187,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.1187214611872146,
+   "wrongMae": 1.378082191780822,
+   "actualExact": 88.12785388127854,
+   "wrongExact": 29.1324200913242
+  },
+  {
+   "id": 11119,
+   "name": "Аманат",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.999819,
+   "set": "A",
+   "margin": 3,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11643835616438356,
+   "wrongMae": 1.3621004566210047,
+   "actualExact": 88.35616438356165,
+   "wrongExact": 29.315068493150687
+  },
+  {
+   "id": 79,
+   "name": "Қаражал қаласы",
+   "region": "Ұлытау облысы",
+   "lat": 48.001042,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.13378995433789953,
+   "wrongMae": 1.3757990867579908,
+   "actualExact": 86.62100456621005,
+   "wrongExact": 28.72146118721461
+  },
+  {
+   "id": 8424,
+   "name": "Ақтұмсық",
+   "region": "Қарағанды облысы",
+   "lat": 48.0034,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11643835616438356,
+   "wrongMae": 1.373972602739726,
+   "actualExact": 88.35616438356165,
+   "wrongExact": 29.863013698630137
+  },
+  {
+   "id": 10988,
+   "name": "Жыланды",
+   "region": "Ұлытау облысы",
+   "lat": 48.008741,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11552511415525114,
+   "wrongMae": 1.3812785388127853,
+   "actualExact": 88.44748858447488,
+   "wrongExact": 28.904109589041095
+  },
+  {
+   "id": 11121,
+   "name": "Бұран",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.008988,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11050228310502283,
+   "wrongMae": 1.36986301369863,
+   "actualExact": 88.94977168949772,
+   "wrongExact": 29.680365296803654
+  },
+  {
+   "id": 5838,
+   "name": "Қожакелді",
+   "region": "Абай облысы",
+   "lat": 48.009,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12374429223744292,
+   "wrongMae": 1.3721461187214612,
+   "actualExact": 87.62557077625571,
+   "wrongExact": 28.58447488584475
+  },
+  {
+   "id": 5782,
+   "name": "Қосагаш",
+   "region": "Абай облысы",
+   "lat": 48.009133,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11095890410958904,
+   "wrongMae": 1.3639269406392693,
+   "actualExact": 88.9041095890411,
+   "wrongExact": 29.817351598173516
+  },
+  {
+   "id": 11126,
+   "name": "Ол жақ қалжыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.012086,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11187214611872145,
+   "wrongMae": 1.373972602739726,
+   "actualExact": 88.81278538812785,
+   "wrongExact": 29.680365296803654
+  },
+  {
+   "id": 8404,
+   "name": "Ақшкөл",
+   "region": "Қарағанды облысы",
+   "lat": 48.017818,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12511415525114156,
+   "wrongMae": 1.376255707762557,
+   "actualExact": 87.48858447488584,
+   "wrongExact": 29.315068493150687
+  },
+  {
+   "id": 11122,
+   "name": "Жиделі",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.025707,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.1136986301369863,
+   "wrongMae": 1.3611872146118722,
+   "actualExact": 88.63013698630137,
+   "wrongExact": 29.95433789954338
+  },
+  {
+   "id": 6868,
+   "name": "Қауылжыр",
+   "region": "Ақтөбе облысы",
+   "lat": 48.031883,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11552511415525114,
+   "wrongMae": 1.3757990867579908,
+   "actualExact": 88.44748858447488,
+   "wrongExact": 29.49771689497717
+  },
+  {
+   "id": 6657,
+   "name": "Жайсанбай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.039595,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12648401826484018,
+   "wrongMae": 1.3785388127853881,
+   "actualExact": 87.35159817351598,
+   "wrongExact": 28.767123287671232
+  },
+  {
+   "id": 7304,
+   "name": "Мұқыр",
+   "region": "Атырау облысы",
+   "lat": 48.043824,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.12054794520547946,
+   "wrongMae": 1.3680365296803654,
+   "actualExact": 87.94520547945206,
+   "wrongExact": 29.45205479452055
+  },
+  {
+   "id": 6632,
+   "name": "Ақтам",
+   "region": "Ақтөбе облысы",
+   "lat": 48.045926,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.1187214611872146,
+   "wrongMae": 1.3789954337899544,
+   "actualExact": 88.12785388127854,
+   "wrongExact": 28.767123287671232
+  },
+  {
+   "id": 8403,
+   "name": "Абай",
+   "region": "Қарағанды облысы",
+   "lat": 48.046245,
+   "set": "B",
+   "margin": 5,
+   "days": 365,
+   "wrongDayWins": 0,
+   "ties": 0,
+   "actualMae": 0.11187214611872145,
+   "wrongMae": 1.3639269406392693,
+   "actualExact": 88.81278538812785,
+   "wrongExact": 30.182648401826484
+  }
+ ],
+ "near": [
+  {
+   "id": 7388,
+   "name": "Сарайшық",
+   "region": "Атырау облысы",
+   "lat": 47.500786,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11066,
+   "name": "Сарытерек",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.502375,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11045,
+   "name": "Айнабұлақ",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.504268,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8637,
+   "name": "Киікті",
+   "region": "Қарағанды облысы",
+   "lat": 47.5089,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10986,
+   "name": "Құлжанбай",
+   "region": "Ұлытау облысы",
+   "lat": 47.508955,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5772,
+   "name": "Қарабұлақ",
+   "region": "Абай облысы",
+   "lat": 47.5117,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6869,
+   "name": "Шілікті",
+   "region": "Ақтөбе облысы",
+   "lat": 47.516204,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11162,
+   "name": "Жаңалық",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.51834,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5793,
+   "name": "Желдіқара",
+   "region": "Абай облысы",
+   "lat": 47.520129,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7367,
+   "name": "Доссор",
+   "region": "Атырау облысы",
+   "lat": 47.530278,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 9229,
+   "name": "Атанши",
+   "region": "Қызылорда облысы",
+   "lat": 47.536465,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5791,
+   "name": "Ақтас",
+   "region": "Абай облысы",
+   "lat": 47.539257,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7381,
+   "name": "Еңбекшіл",
+   "region": "Атырау облысы",
+   "lat": 47.5393,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5834,
+   "name": "Ойшілік",
+   "region": "Абай облысы",
+   "lat": 47.54371,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11047,
+   "name": "Қайнар",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.546994,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7376,
+   "name": "Тандай",
+   "region": "Атырау облысы",
+   "lat": 47.550127,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11061,
+   "name": "Бақасу",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.551288,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11055,
+   "name": "Қарабұлақ",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.551434,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6874,
+   "name": "Тосбұлақ",
+   "region": "Ақтөбе облысы",
+   "lat": 47.555414,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11274,
+   "name": "Тоғыз",
+   "region": "Ақтөбе облысы",
+   "lat": 47.555417,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11062,
+   "name": "Жарсу",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.557163,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5802,
+   "name": "Ақшокы",
+   "region": "Абай облысы",
+   "lat": 47.559486,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5790,
+   "name": "Ай",
+   "region": "Абай облысы",
+   "lat": 47.559808,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11182,
+   "name": "Жамбыл",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.560994,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5797,
+   "name": "Өркен",
+   "region": "Абай облысы",
+   "lat": 47.567706,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5829,
+   "name": "Құмкөл",
+   "region": "Абай облысы",
+   "lat": 47.570041,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11161,
+   "name": "Ақжар",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.577992,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11056,
+   "name": "Мұқашы",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.578879,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11053,
+   "name": "Жамбыл",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.579797,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11065,
+   "name": "Көгедай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.586537,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11067,
+   "name": "Шалқар",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.597579,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8413,
+   "name": "Нарманбет",
+   "region": "Қарағанды облысы",
+   "lat": 47.598241,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5792,
+   "name": "Ескенебұлақ",
+   "region": "Абай облысы",
+   "lat": 47.601893,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11057,
+   "name": "Сәтбай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.60196,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5833,
+   "name": "Үштөбе",
+   "region": "Абай облысы",
+   "lat": 47.602829,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11163,
+   "name": "Жаңатілеу",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.6058,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7384,
+   "name": "Жалғансай",
+   "region": "Атырау облысы",
+   "lat": 47.607646,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8628,
+   "name": "Ақшоки",
+   "region": "Қарағанды облысы",
+   "lat": 47.611589,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11059,
+   "name": "Қаратал",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.612743,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11052,
+   "name": "Дайыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.623591,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11060,
+   "name": "Үлкен қаратал",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.62387,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5801,
+   "name": "Әбден",
+   "region": "Абай облысы",
+   "lat": 47.630222,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7365,
+   "name": "Бәйгетөбе",
+   "region": "Атырау облысы",
+   "lat": 47.636398,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7383,
+   "name": "Ортақшыл",
+   "region": "Атырау облысы",
+   "lat": 47.637187,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11058,
+   "name": "Жіңішкесу",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.638104,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7368,
+   "name": "Мақат",
+   "region": "Атырау облысы",
+   "lat": 47.64752,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5794,
+   "name": "Кенқолат",
+   "region": "Абай облысы",
+   "lat": 47.648631,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11054,
+   "name": "Көкжыра",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.658099,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8645,
+   "name": "Пикет",
+   "region": "Қарағанды облысы",
+   "lat": 47.663015,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7385,
+   "name": "Махамбет",
+   "region": "Атырау облысы",
+   "lat": 47.675545,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11051,
+   "name": "Қуаныш",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.676037,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5804,
+   "name": "Ортаарал",
+   "region": "Абай облысы",
+   "lat": 47.678494,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6872,
+   "name": "Кендала",
+   "region": "Ақтөбе облысы",
+   "lat": 47.679197,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6871,
+   "name": "Қаратал",
+   "region": "Ақтөбе облысы",
+   "lat": 47.68237,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11180,
+   "name": "Шолақорда",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.687593,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7285,
+   "name": "Жасқайрат",
+   "region": "Атырау облысы",
+   "lat": 47.688685,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7382,
+   "name": "Есбол",
+   "region": "Атырау облысы",
+   "lat": 47.704538,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5767,
+   "name": "Айқыз",
+   "region": "Абай облысы",
+   "lat": 47.71787,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11050,
+   "name": "Біржан",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.719343,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7386,
+   "name": "Сарытоғай",
+   "region": "Атырау облысы",
+   "lat": 47.724768,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11186,
+   "name": "Тұғыл",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.727326,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5778,
+   "name": "Емелтау",
+   "region": "Абай облысы",
+   "lat": 47.727423,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10945,
+   "name": "Айшырақ",
+   "region": "Ұлытау облысы",
+   "lat": 47.729193,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7303,
+   "name": "Кенбай",
+   "region": "Атырау облысы",
+   "lat": 47.729478,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6873,
+   "name": "Қопатай",
+   "region": "Ақтөбе облысы",
+   "lat": 47.736841,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5828,
+   "name": "Қарғыба",
+   "region": "Абай облысы",
+   "lat": 47.740525,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11178,
+   "name": "Қарасу",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.740586,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10946,
+   "name": "Ақтау",
+   "region": "Ұлытау облысы",
+   "lat": 47.740931,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5796,
+   "name": "Шынқожа",
+   "region": "Абай облысы",
+   "lat": 47.743537,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6867,
+   "name": "Қопасор",
+   "region": "Ақтөбе облысы",
+   "lat": 47.746912,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8620,
+   "name": "Ақжал",
+   "region": "Қарағанды облысы",
+   "lat": 47.747493,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11179,
+   "name": "Өтеген",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.749123,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5822,
+   "name": "Ақсуат",
+   "region": "Абай облысы",
+   "lat": 47.761535,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8426,
+   "name": "Кенелі",
+   "region": "Қарағанды облысы",
+   "lat": 47.764534,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5830,
+   "name": "Қызылжұлдыз",
+   "region": "Абай облысы",
+   "lat": 47.766877,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11049,
+   "name": "Ақарал",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.76692,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5824,
+   "name": "Екпін",
+   "region": "Абай облысы",
+   "lat": 47.777814,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6875,
+   "name": "Үшқұрай",
+   "region": "Ақтөбе облысы",
+   "lat": 47.785183,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7370,
+   "name": "Ақтоғай",
+   "region": "Атырау облысы",
+   "lat": 47.786811,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5823,
+   "name": "Аққала",
+   "region": "Абай облысы",
+   "lat": 47.787962,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7301,
+   "name": "Жамансор",
+   "region": "Атырау облысы",
+   "lat": 47.788355,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7307,
+   "name": "Тасқұдық",
+   "region": "Атырау облысы",
+   "lat": 47.788858,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5803,
+   "name": "Малтүгел",
+   "region": "Абай облысы",
+   "lat": 47.78916,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 38,
+   "name": "Жезқазған қаласы",
+   "region": "Ұлытау облысы",
+   "lat": 47.799711,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5805,
+   "name": "Тарбағатай",
+   "region": "Абай облысы",
+   "lat": 47.805775,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5826,
+   "name": "Көкжыра",
+   "region": "Абай облысы",
+   "lat": 47.819463,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7322,
+   "name": "Қоныртерек",
+   "region": "Атырау облысы",
+   "lat": 47.820503,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10979,
+   "name": "Байқоныр",
+   "region": "Ұлытау облысы",
+   "lat": 47.823915,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5777,
+   "name": "Бидайық",
+   "region": "Абай облысы",
+   "lat": 47.824992,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5773,
+   "name": "Ақтүбек",
+   "region": "Абай облысы",
+   "lat": 47.830243,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 26,
+   "name": "Шалқар қаласы",
+   "region": "Ақтөбе облысы",
+   "lat": 47.831392,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10983,
+   "name": "Қарсақпай",
+   "region": "Ұлытау облысы",
+   "lat": 47.83337,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7320,
+   "name": "Азғыр",
+   "region": "Атырау облысы",
+   "lat": 47.836824,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5827,
+   "name": "Серіктес",
+   "region": "Абай облысы",
+   "lat": 47.837453,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7321,
+   "name": "Балқұдық",
+   "region": "Атырау облысы",
+   "lat": 47.837846,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6634,
+   "name": "Қаражар",
+   "region": "Ақтөбе облысы",
+   "lat": 47.840646,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5835,
+   "name": "Танамырза",
+   "region": "Абай облысы",
+   "lat": 47.842297,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11176,
+   "name": "Ақмектеп",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.844498,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7371,
+   "name": "Бала ораз",
+   "region": "Атырау облысы",
+   "lat": 47.844861,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11173,
+   "name": "Тәуке",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.849034,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11174,
+   "name": "Шенгелді",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.854004,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11177,
+   "name": "Жолқұрылысы",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.854155,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5836,
+   "name": "Көктүбек",
+   "region": "Абай облысы",
+   "lat": 47.857638,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11172,
+   "name": "Қазақстан",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.857789,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11171,
+   "name": "Қабанбай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.866869,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5788,
+   "name": "Бозай",
+   "region": "Абай облысы",
+   "lat": 47.875421,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5783,
+   "name": "Мәдениет",
+   "region": "Абай облысы",
+   "lat": 47.875941,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5787,
+   "name": "Батпақ",
+   "region": "Абай облысы",
+   "lat": 47.876013,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8630,
+   "name": "Босаға",
+   "region": "Қарағанды облысы",
+   "lat": 47.877397,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7369,
+   "name": "Ақжайық",
+   "region": "Атырау облысы",
+   "lat": 47.880032,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5832,
+   "name": "Қызылкесік",
+   "region": "Абай облысы",
+   "lat": 47.880353,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11185,
+   "name": "Байтоғас",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.883791,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7372,
+   "name": "Кеңөріс",
+   "region": "Атырау облысы",
+   "lat": 47.885102,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5837,
+   "name": "Сәтбаев",
+   "region": "Абай облысы",
+   "lat": 47.888274,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5831,
+   "name": "Егіндібұлақ",
+   "region": "Абай облысы",
+   "lat": 47.895434,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6876,
+   "name": "Жылтыр",
+   "region": "Ақтөбе облысы",
+   "lat": 47.900581,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11128,
+   "name": "Шенгелді",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.902254,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10977,
+   "name": "Борсенгір",
+   "region": "Ұлытау облысы",
+   "lat": 47.904706,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7325,
+   "name": "Үштаған",
+   "region": "Атырау облысы",
+   "lat": 47.905063,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 40,
+   "name": "Сәтпаев қаласы",
+   "region": "Ұлытау облысы",
+   "lat": 47.907455,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7324,
+   "name": "Асан",
+   "region": "Атырау облысы",
+   "lat": 47.907491,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10971,
+   "name": "Кенжебай-самай",
+   "region": "Ұлытау облысы",
+   "lat": 47.918114,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11175,
+   "name": "Шорға",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.922293,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5774,
+   "name": "Ақши",
+   "region": "Абай облысы",
+   "lat": 47.924889,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7302,
+   "name": "Жантерек",
+   "region": "Атырау облысы",
+   "lat": 47.927715,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6633,
+   "name": "Жарқамыс",
+   "region": "Ақтөбе облысы",
+   "lat": 47.936987,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5784,
+   "name": "Ески майлин",
+   "region": "Абай облысы",
+   "lat": 47.941653,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7309,
+   "name": "Қоңыраулы",
+   "region": "Атырау облысы",
+   "lat": 47.949011,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5789,
+   "name": "Мамырсу",
+   "region": "Абай облысы",
+   "lat": 47.951147,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 29,
+   "name": "Аягөз қаласы",
+   "region": "Абай облысы",
+   "lat": 47.966667,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10947,
+   "name": "Қылыш",
+   "region": "Ұлытау облысы",
+   "lat": 47.976867,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5928,
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.982723,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5780,
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.983381,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8626,
+   "name": "Ақшатау",
+   "region": "Қарағанды облысы",
+   "lat": 47.984876,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7354,
+   "name": "Батырбек",
+   "region": "Атырау облысы",
+   "lat": 47.992975,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7373,
+   "name": "Өтешқали атамбаев",
+   "region": "Атырау облысы",
+   "lat": 47.994187,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11119,
+   "name": "Аманат",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.999819,
+   "set": "A",
+   "margin": 3,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 79,
+   "name": "Қаражал қаласы",
+   "region": "Ұлытау облысы",
+   "lat": 48.001042,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8424,
+   "name": "Ақтұмсық",
+   "region": "Қарағанды облысы",
+   "lat": 48.0034,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10988,
+   "name": "Жыланды",
+   "region": "Ұлытау облысы",
+   "lat": 48.008741,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11121,
+   "name": "Бұран",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.008988,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5838,
+   "name": "Қожакелді",
+   "region": "Абай облысы",
+   "lat": 48.009,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5782,
+   "name": "Қосагаш",
+   "region": "Абай облысы",
+   "lat": 48.009133,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11126,
+   "name": "Ол жақ қалжыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.012086,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8404,
+   "name": "Ақшкөл",
+   "region": "Қарағанды облысы",
+   "lat": 48.017818,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11122,
+   "name": "Жиделі",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.025707,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6868,
+   "name": "Қауылжыр",
+   "region": "Ақтөбе облысы",
+   "lat": 48.031883,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6657,
+   "name": "Жайсанбай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.039595,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7304,
+   "name": "Мұқыр",
+   "region": "Атырау облысы",
+   "lat": 48.043824,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6632,
+   "name": "Ақтам",
+   "region": "Ақтөбе облысы",
+   "lat": 48.045926,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8403,
+   "name": "Абай",
+   "region": "Қарағанды облысы",
+   "lat": 48.046245,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5785,
+   "name": "Майлин",
+   "region": "Абай облысы",
+   "lat": 48.053515,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10973,
+   "name": "Ақтас",
+   "region": "Ұлытау облысы",
+   "lat": 48.055696,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11299,
+   "name": "Жезді",
+   "region": "Ұлытау облысы",
+   "lat": 48.058863,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6030,
+   "name": "Жантикей",
+   "region": "Абай облысы",
+   "lat": 48.059006,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8405,
+   "name": "Айыртас",
+   "region": "Қарағанды облысы",
+   "lat": 48.066649,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8427,
+   "name": "Сарытерек",
+   "region": "Қарағанды облысы",
+   "lat": 48.068076,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6644,
+   "name": "Көптоғай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.068185,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6647,
+   "name": "Кемерші",
+   "region": "Ақтөбе облысы",
+   "lat": 48.078564,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6652,
+   "name": "Баршакум",
+   "region": "Ақтөбе облысы",
+   "lat": 48.083422,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11270,
+   "name": "Ебейты",
+   "region": "Ақтөбе облысы",
+   "lat": 48.089591,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7356,
+   "name": "Жалғызапан",
+   "region": "Атырау облысы",
+   "lat": 48.096783,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8421,
+   "name": "Нүркен",
+   "region": "Қарағанды облысы",
+   "lat": 48.107764,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8419,
+   "name": "Жалантөс",
+   "region": "Қарағанды облысы",
+   "lat": 48.108113,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10980,
+   "name": "Қызылүй",
+   "region": "Ұлытау облысы",
+   "lat": 48.121714,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7274,
+   "name": "Құрылыс",
+   "region": "Атырау облысы",
+   "lat": 48.123939,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7276,
+   "name": "Көктоғай",
+   "region": "Атырау облысы",
+   "lat": 48.130813,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7357,
+   "name": "Сүйіндік",
+   "region": "Атырау облысы",
+   "lat": 48.131342,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11120,
+   "name": "Жолнұсқау",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.133188,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11125,
+   "name": "Қалжыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.135955,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6643,
+   "name": "Қопа",
+   "region": "Ақтөбе облысы",
+   "lat": 48.140055,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6646,
+   "name": "Жаңатан",
+   "region": "Ақтөбе облысы",
+   "lat": 48.143344,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5769,
+   "name": "Дөненбай",
+   "region": "Абай облысы",
+   "lat": 48.144607,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5799,
+   "name": "Сарыарқа",
+   "region": "Абай облысы",
+   "lat": 48.145791,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5798,
+   "name": "Биесімас",
+   "region": "Абай облысы",
+   "lat": 48.149061,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11127,
+   "name": "Тақыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.149771,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7355,
+   "name": "Егінқұдық",
+   "region": "Атырау облысы",
+   "lat": 48.159574,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6870,
+   "name": "Мөңке би",
+   "region": "Ақтөбе облысы",
+   "lat": 48.161371,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6653,
+   "name": "Шұқыршы",
+   "region": "Ақтөбе облысы",
+   "lat": 48.167573,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5776,
+   "name": "Баршатас",
+   "region": "Абай облысы",
+   "lat": 48.173318,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8425,
+   "name": "Жетімшоқы",
+   "region": "Қарағанды облысы",
+   "lat": 48.192452,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11140,
+   "name": "Қарашілік",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.204823,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7275,
+   "name": "Қызылжар",
+   "region": "Атырау облысы",
+   "lat": 48.207183,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5800,
+   "name": "Шубартос",
+   "region": "Абай облысы",
+   "lat": 48.20743,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8417,
+   "name": "Қошқар",
+   "region": "Қарағанды облысы",
+   "lat": 48.214496,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10992,
+   "name": "Талдысай",
+   "region": "Ұлытау облысы",
+   "lat": 48.215145,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7271,
+   "name": "Ақтан",
+   "region": "Атырау облысы",
+   "lat": 48.215211,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6738,
+   "name": "Қожасай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.216057,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6877,
+   "name": "Талдықұм",
+   "region": "Ақтөбе облысы",
+   "lat": 48.216286,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6651,
+   "name": "Алтай батыр",
+   "region": "Ақтөбе облысы",
+   "lat": 48.220656,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6645,
+   "name": "Бұлақтыкөл",
+   "region": "Ақтөбе облысы",
+   "lat": 48.228399,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7310,
+   "name": "Сағыз",
+   "region": "Атырау облысы",
+   "lat": 48.234179,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6671,
+   "name": "Құйылыс",
+   "region": "Ақтөбе облысы",
+   "lat": 48.244267,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8653,
+   "name": "Ортау",
+   "region": "Қарағанды облысы",
+   "lat": 48.251838,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8619,
+   "name": "Ақадыр",
+   "region": "Қарағанды облысы",
+   "lat": 48.261928,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5779,
+   "name": "Жорға",
+   "region": "Абай облысы",
+   "lat": 48.262762,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7272,
+   "name": "Жарсуат",
+   "region": "Атырау облысы",
+   "lat": 48.264046,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10975,
+   "name": "Боздақ",
+   "region": "Ұлытау облысы",
+   "lat": 48.265635,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8430,
+   "name": "Бегазы",
+   "region": "Қарағанды облысы",
+   "lat": 48.266823,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7277,
+   "name": "Өрлік",
+   "region": "Атырау облысы",
+   "lat": 48.267368,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8638,
+   "name": "Ақжол",
+   "region": "Қарағанды облысы",
+   "lat": 48.274667,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11117,
+   "name": "Күнгей-бөкенбай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.279974,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10962,
+   "name": "Байғұл",
+   "region": "Ұлытау облысы",
+   "lat": 48.283379,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11137,
+   "name": "Бұлғар табыты",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.291599,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10961,
+   "name": "Қызылжар",
+   "region": "Ұлытау облысы",
+   "lat": 48.296796,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8654,
+   "name": "Сарыбұлақ",
+   "region": "Қарағанды облысы",
+   "lat": 48.308351,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8420,
+   "name": "Қаратал",
+   "region": "Қарағанды облысы",
+   "lat": 48.314397,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5770,
+   "name": "Қоңыртау",
+   "region": "Абай облысы",
+   "lat": 48.314643,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8406,
+   "name": "Ақтоғай",
+   "region": "Қарағанды облысы",
+   "lat": 48.316087,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8431,
+   "name": "Сона",
+   "region": "Қарағанды облысы",
+   "lat": 48.318256,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6642,
+   "name": "Айрық",
+   "region": "Ақтөбе облысы",
+   "lat": 48.323253,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5970,
+   "name": "Үшкүмей",
+   "region": "Абай облысы",
+   "lat": 48.331082,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11118,
+   "name": "Теріскей-бөкенбай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.33119,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5737,
+   "name": "ЖӘЙРЕМ ауылы",
+   "region": "Ұлытау облысы",
+   "lat": 48.333113,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5825,
+   "name": "Кіндікті",
+   "region": "Абай облысы",
+   "lat": 48.337659,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7305,
+   "name": "Сарықұмақ",
+   "region": "Атырау облысы",
+   "lat": 48.339222,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7298,
+   "name": "Бұқар",
+   "region": "Атырау облысы",
+   "lat": 48.341552,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6028,
+   "name": "Ұзынбұлақ",
+   "region": "Абай облысы",
+   "lat": 48.3427,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5969,
+   "name": "Тассай",
+   "region": "Абай облысы",
+   "lat": 48.356551,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6879,
+   "name": "Тұмалыкөл",
+   "region": "Ақтөбе облысы",
+   "lat": 48.366291,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7269,
+   "name": "Есбол",
+   "region": "Атырау облысы",
+   "lat": 48.368219,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8652,
+   "name": "Босаға",
+   "region": "Қарағанды облысы",
+   "lat": 48.370278,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10972,
+   "name": "Түгіскен",
+   "region": "Ұлытау облысы",
+   "lat": 48.371942,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11139,
+   "name": "Қараой",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.385801,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11123,
+   "name": "Егіндібұлақ",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.394148,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11124,
+   "name": "Қаратоғай",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.39474,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5775,
+   "name": "Байқошқар",
+   "region": "Абай облысы",
+   "lat": 48.394896,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7266,
+   "name": "Бөдене",
+   "region": "Атырау облысы",
+   "lat": 48.395093,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6857,
+   "name": "Қорғанжар",
+   "region": "Ақтөбе облысы",
+   "lat": 48.397791,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7311,
+   "name": "Шолақсай",
+   "region": "Атырау облысы",
+   "lat": 48.399998,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6655,
+   "name": "Жарма",
+   "region": "Ақтөбе облысы",
+   "lat": 48.401859,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8432,
+   "name": "Шабанбай би",
+   "region": "Қарағанды облысы",
+   "lat": 48.402289,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11141,
+   "name": "Марқақөл",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.42679,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8409,
+   "name": "Сәуле",
+   "region": "Қарағанды облысы",
+   "lat": 48.426856,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6630,
+   "name": "Ноғайты",
+   "region": "Ақтөбе облысы",
+   "lat": 48.434317,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6772,
+   "name": "Башенкөл",
+   "region": "Ақтөбе облысы",
+   "lat": 48.43556,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7308,
+   "name": "Былқылдақты",
+   "region": "Атырау облысы",
+   "lat": 48.43599,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11138,
+   "name": "Қайнарлы",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.438411,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10981,
+   "name": "Талдықұдық",
+   "region": "Ұлытау облысы",
+   "lat": 48.442147,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6641,
+   "name": "Қораши",
+   "region": "Ақтөбе облысы",
+   "lat": 48.442924,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6656,
+   "name": "Құттыкөл",
+   "region": "Ақтөбе облысы",
+   "lat": 48.444006,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5786,
+   "name": "Қорық",
+   "region": "Абай облысы",
+   "lat": 48.446898,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8656,
+   "name": "Жұмыскер",
+   "region": "Қарағанды облысы",
+   "lat": 48.449271,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7299,
+   "name": "Қарабау",
+   "region": "Атырау облысы",
+   "lat": 48.450908,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8647,
+   "name": "Төменгі қайрақты",
+   "region": "Қарағанды облысы",
+   "lat": 48.453281,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8415,
+   "name": "Қуаныш",
+   "region": "Қарағанды облысы",
+   "lat": 48.454643,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5953,
+   "name": "Үшбік",
+   "region": "Абай облысы",
+   "lat": 48.45876,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10957,
+   "name": "Жомарт",
+   "region": "Ұлытау облысы",
+   "lat": 48.46299,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11116,
+   "name": "Ақбұлақ",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.466443,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 11131,
+   "name": "Алғабас",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.466742,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 5962,
+   "name": "Қарағандыкөл",
+   "region": "Абай облысы",
+   "lat": 48.468594,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7306,
+   "name": "Соркөл",
+   "region": "Атырау облысы",
+   "lat": 48.470338,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 8410,
+   "name": "Үшарал",
+   "region": "Қарағанды облысы",
+   "lat": 48.475487,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 7273,
+   "name": "Кетебай",
+   "region": "Атырау облысы",
+   "lat": 48.481454,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6860,
+   "name": "Сарысай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.485532,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 6739,
+   "name": "Саға",
+   "region": "Ақтөбе облысы",
+   "lat": 48.489611,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  },
+  {
+   "id": 10955,
+   "name": "Ақбастау",
+   "region": "Ұлытау облысы",
+   "lat": 48.496633,
+   "set": "B",
+   "margin": 5,
+   "wrongDayWins": 0
+  }
+ ],
+ "disagree": [],
+ "marginMismatch": []
+}

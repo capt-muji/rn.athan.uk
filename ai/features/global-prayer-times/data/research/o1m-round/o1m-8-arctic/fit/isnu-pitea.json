@@ -1,0 +1,68 @@
+{
+ "city": "pitea",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 65.3172,
+ "lon": 21.4794,
+ "rows": 699,
+ "solarGateMedAbs": 0.33,
+ "fajrAngle": {
+  "n": 463,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 462,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.8,
+   "max": 0.8
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.08,
+   "min": -5.5,
+   "max": 4.7
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.32,
+   "min": -84.1,
+   "max": -8
+  },
+  "maghrib": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.8,
+   "max": 0.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 311,
+  "isha": 448
+ }
+}

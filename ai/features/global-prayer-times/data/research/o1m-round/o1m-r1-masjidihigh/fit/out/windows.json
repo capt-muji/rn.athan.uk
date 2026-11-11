@@ -1,0 +1,229 @@
+{
+ "394": {
+  "name": "Asker NO",
+  "lat": 59.9225,
+  "lon": 9.99,
+  "h0": -1.1478125,
+  "columns": {
+   "fajr": {
+    "angle": 16.353125,
+    "honest_n": 1,
+    "freeze_windows": [
+     [
+      "2028-04-14",
+      "2028-05-14",
+      158
+     ],
+     [
+      "2028-07-15",
+      "2028-08-25",
+      139
+     ]
+    ],
+    "interval_windows": [],
+    "fraction_windows": []
+   },
+   "isha": {
+    "angle": 14.7640625,
+    "honest_n": 0,
+    "pin_windows": [
+     [
+      "2028-05-31",
+      "2028-07-23"
+     ]
+    ],
+    "fraction_windows": []
+   }
+  },
+  "frac_p_fajr": [],
+  "frac_p_isha": []
+ },
+ "444": {
+  "name": "Fredrikstad NO",
+  "lat": 59.1746875,
+  "lon": 10.36,
+  "h0": -1.1534375,
+  "columns": {
+   "fajr": {
+    "angle": 16.3609375,
+    "honest_n": 0,
+    "freeze_windows": [
+     [
+      "2028-04-18",
+      "2028-05-22",
+      145
+     ],
+     [
+      "2028-07-07",
+      "2028-08-22",
+      132
+     ]
+    ],
+    "interval_windows": [],
+    "fraction_windows": []
+   },
+   "isha": {
+    "angle": 14.75625,
+    "honest_n": 0,
+    "pin_windows": [
+     [
+      "2028-06-01",
+      "2028-07-22"
+     ]
+    ],
+    "fraction_windows": []
+   }
+  },
+  "frac_p_fajr": [],
+  "frac_p_isha": []
+ },
+ "5587": {
+  "name": "Fagersta SE",
+  "lat": 60.1034375,
+  "lon": 15.8046875,
+  "h0": -1.6653125,
+  "columns": {
+   "fajr": {
+    "angle": 18.03125,
+    "honest_n": 2,
+    "freeze_windows": [
+     [
+      "2028-06-27",
+      "2028-07-03",
+      92
+     ]
+    ],
+    "interval_windows": [],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-04-04"
+     ],
+     [
+      "2028-04-06",
+      "2028-09-04"
+     ],
+     [
+      "2028-09-06",
+      "2028-12-31"
+     ]
+    ]
+   },
+   "isha": {
+    "angle": 16.053125,
+    "honest_n": 0,
+    "pin_windows": [],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-12-31"
+     ]
+    ]
+   }
+  },
+  "frac_p_fajr": [
+   0.1589,
+   0.2123,
+   0.1573
+  ],
+  "frac_p_isha": [
+   0.1489
+  ]
+ },
+ "5622": {
+  "name": "Lidkoping SE",
+  "lat": 58.5775,
+  "lon": 13.15,
+  "h0": -1.696875,
+  "columns": {
+   "fajr": {
+    "angle": 18.03125,
+    "honest_n": 1,
+    "freeze_windows": [],
+    "interval_windows": [],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-04-13"
+     ],
+     [
+      "2028-04-15",
+      "2028-12-31"
+     ]
+    ]
+   },
+   "isha": {
+    "angle": 16.0375,
+    "honest_n": 0,
+    "pin_windows": [],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-12-31"
+     ]
+    ]
+   }
+  },
+  "frac_p_fajr": [
+   0.1568,
+   0.1641
+  ],
+  "frac_p_isha": [
+   0.1438
+  ]
+ },
+ "1641": {
+  "name": "Charleroi BE",
+  "lat": 50.325625,
+  "lon": 4.37875,
+  "h0": -0.9753125,
+  "columns": {
+   "fajr": {
+    "angle": 18.046875,
+    "honest_n": 1,
+    "freeze_windows": [
+     [
+      "2028-06-07",
+      "2028-06-15",
+      130
+     ]
+    ],
+    "interval_windows": [
+     [
+      "2028-12-05",
+      "2028-12-10",
+      118.0
+     ]
+    ],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-08-03"
+     ],
+     [
+      "2028-08-05",
+      "2028-12-31"
+     ]
+    ]
+   },
+   "isha": {
+    "angle": 17.153125,
+    "honest_n": 0,
+    "pin_windows": [],
+    "fraction_windows": [
+     [
+      "2028-01-01",
+      "2028-12-31"
+     ]
+    ]
+   }
+  },
+  "frac_p_fajr": [
+   0.1838,
+   0.1412
+  ],
+  "frac_p_isha": [
+   0.1551
+  ]
+ }
+}

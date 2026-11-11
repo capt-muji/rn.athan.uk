@@ -1,0 +1,1595 @@
+{
+ "n_units": 156,
+ "histograms": {
+  "fajr": {
+   "2": 156
+  },
+  "sunrise": {
+   "0": 87,
+   "-4": 8,
+   "-1": 15,
+   "-3": 21,
+   "-2": 24,
+   "-5": 1
+  },
+  "dhuhr": {
+   "2": 156
+  },
+  "asr": {
+   "2": 156
+  },
+  "maghrib": {
+   "2": 88,
+   "3": 15,
+   "4": 23,
+   "5": 21,
+   "6": 7,
+   "7": 2
+  },
+  "isha": {
+   "2": 156
+  }
+ },
+ "units": [
+  {
+   "unit": "KAB. ALOR",
+   "elevation": 881,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BADUNG",
+   "elevation": 102,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BALANGAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BALIKPAPAN",
+   "elevation": 28,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANGGAI KEPULAUAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANGGAI LAUT",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANGGAI",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANGLI",
+   "elevation": 1186,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BANJARBARU",
+   "elevation": 16,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BANJARMASIN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANTAENG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BARITO KUALA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BARITO SELATAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BARITO TIMUR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BARITO UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BARRU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BAU BAU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BELU",
+   "elevation": 427,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BENGKALIS",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BERAU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BIMA",
+   "elevation": 139,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BITUNG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOALEMO",
+   "elevation": 360,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW SELATAN",
+   "elevation": 603,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW TIMUR",
+   "elevation": 644,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW UTARA",
+   "elevation": 371,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW",
+   "elevation": 506,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BOMBANA",
+   "elevation": 240,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BONE BOLANGO",
+   "elevation": 510,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BONE",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BONTANG",
+   "elevation": 8,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BULELENG",
+   "elevation": 33,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BULUKUMBA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BULUNGAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BUOL",
+   "elevation": 30,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BUTON SELATAN",
+   "elevation": 259,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BUTON TENGAH",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BUTON UTARA",
+   "elevation": 9,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BUTON",
+   "elevation": 395,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA DENPASAR",
+   "elevation": 19,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. DOMPU",
+   "elevation": 406,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. DONGGALA",
+   "elevation": 244,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA DUMAI",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. ENDE",
+   "elevation": 466,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. ENREKANG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. FLORES TIMUR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. GIANYAR",
+   "elevation": 301,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. GORONTALO UTARA",
+   "elevation": 238,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. GORONTALO",
+   "elevation": 175,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. GOWA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. HULU SUNGAI SELATAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. HULU SUNGAI TENGAH",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. HULU SUNGAI UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. JEMBRANA",
+   "elevation": 279,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. JENEPONTO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. BANJAR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KARANGASEM",
+   "elevation": 1115,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA KENDARI",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KEPULAUAN SANGIHE",
+   "elevation": 363,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KEPULAUAN SELAYAR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KEPULAUAN SIAU TAGULANDANG BIARO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KEPULAUAN TALAUD",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KLUNGKUNG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KOLAKA TIMUR",
+   "elevation": 682,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KOLAKA UTARA",
+   "elevation": 1190,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KOLAKA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KONAWE KEPULAUAN",
+   "elevation": 541,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KONAWE SELATAN",
+   "elevation": 233,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KONAWE UTARA",
+   "elevation": 659,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KONAWE",
+   "elevation": 922,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA BIMA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA GORONTALO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA KUPANG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KOTABARU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA KOTAMOBAGU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KUPANG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KUTAI BARAT",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KUTAI KARTANEGARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. KUTAI TIMUR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LEMBATA",
+   "elevation": 121,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LOMBOK BARAT",
+   "elevation": 146,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LOMBOK TENGAH",
+   "elevation": 112,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LOMBOK TIMUR",
+   "elevation": 438,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LOMBOK UTARA",
+   "elevation": 497,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LUWU TIMUR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LUWU UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. LUWU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAHAKAM ULU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAJENE",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA MAKASSAR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MALAKA",
+   "elevation": 232,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MALINAU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAMASA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAMUJU TENGAH",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAMUJU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA MANADO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MANGGARAI BARAT",
+   "elevation": 868,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MANGGARAI TIMUR",
+   "elevation": 1322,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 7,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MANGGARAI",
+   "elevation": 1101,
+   "fajr": 2,
+   "sunrise": -4,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 6,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MAROS",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA MATARAM",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MINAHASA SELATAN",
+   "elevation": 475,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MINAHASA TENGGARA",
+   "elevation": 392,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MINAHASA UTARA",
+   "elevation": 237,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MINAHASA",
+   "elevation": 822,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MOROWALI UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MOROWALI",
+   "elevation": 586,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MUNA BARAT",
+   "elevation": 26,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. MUNA",
+   "elevation": 205,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. NAGEKEO",
+   "elevation": 473,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. NGADA",
+   "elevation": 540,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. NUNUKAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA PALOPO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA PALU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PANGKAJENE KEPULAUAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA PAREPARE",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PARIGI MAUTONG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PASANGKAYU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PASER",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PENAJAM PASER UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. PINRANG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. POHUWATO",
+   "elevation": 316,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. POLEWALI MANDAR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. POSO",
+   "elevation": 1409,
+   "fajr": 2,
+   "sunrise": -5,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 7,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. ROKAN HILIR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. ROTE NDAO",
+   "elevation": 93,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SABU RAIJUA",
+   "elevation": 77,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA SAMARINDA",
+   "elevation": 44,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SIDENRENG RAPPANG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SIGI",
+   "elevation": 651,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SIKKA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SINJAI",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SOPPENG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBA BARAT DAYA",
+   "elevation": 411,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBA BARAT",
+   "elevation": 403,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBA TENGAH",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBA TIMUR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBAWA BARAT",
+   "elevation": 116,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. SUMBAWA",
+   "elevation": 633,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TABALONG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TABANAN",
+   "elevation": 482,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TAKALAR",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TANA TIDUNG",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TANA TORAJA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TANAH BUMBU",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TANAH LAUT",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TAPIN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA TARAKAN",
+   "elevation": 54,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TIMOR TENGAH SELATAN",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TIMOR TENGAH UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TOJO UNA UNA",
+   "elevation": 517,
+   "fajr": 2,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 5,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TOLITOLI",
+   "elevation": 403,
+   "fajr": 2,
+   "sunrise": -2,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 4,
+   "isha": 2
+  },
+  {
+   "unit": "KOTA TOMOHON",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. TORAJA UTARA",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. WAJO",
+   "elevation": 0,
+   "fajr": 2,
+   "sunrise": 0,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 2
+  },
+  {
+   "unit": "KAB. WAKATOBI",
+   "elevation": 61,
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 3,
+   "isha": 2
+  }
+ ]
+}

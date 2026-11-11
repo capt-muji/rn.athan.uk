@@ -1,0 +1,79 @@
+{
+ "city": "neryungri",
+ "nightFraction": {
+  "n": 78,
+  "med": 0.501,
+  "p10": 0.499,
+  "p90": 0.502
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yakutsk",
+ "lat": 56.65836,
+ "lon": 124.72499,
+ "rows": 365,
+ "solarGateMedAbs": 0.52,
+ "fajrAngle": {
+  "n": 283,
+  "med": 15.95,
+  "min": 10.8,
+  "max": 16.15,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 290,
+  "med": 15.05,
+  "min": 10,
+  "max": 15.45,
+  "jun": 10.6,
+  "dec": 15.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.48,
+   "min": -0.7,
+   "max": 1.6
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.47,
+   "min": 0,
+   "max": 0.9
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.45,
+   "min": -0.4,
+   "max": 1.5
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.68,
+   "min": -75.9,
+   "max": -23.9
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.53,
+   "min": -0.3,
+   "max": 1.4
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-05-14",
+    "to": "2027-07-30",
+    "days": 78
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 390,
+  "isha": 404
+ }
+}

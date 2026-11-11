@@ -1,0 +1,134 @@
+{
+ "rows": "data/iaac/Chennai_IN-2026.json",
+ "year": 2026,
+ "n_days": 360,
+ "declared_point": [
+  13.0667,
+  80.2667
+ ],
+ "solved_point": {
+  "lat": 12.917,
+  "lon": 80.117,
+  "mae": 0.4
+ },
+ "fajr_angle": 17.95,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.33,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.85,
+   "mae": 0.43,
+   "mad": 0,
+   "med": 0
+  }
+ ],
+ "isha_angle": 18.15,
+ "isha_sweep": [
+  {
+   "a": 18.15,
+   "mae": 0.3,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.2,
+   "mae": 0.3,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.25,
+   "mae": 0.37,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 63,
+   "mad": 8.5
+  },
+  "1": {
+   "med": 1,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 4,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 73.3,
+   "within1": 100,
+   "mae": 0.27,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 71.1,
+   "within1": 100,
+   "mae": 0.29,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 83.6,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 73.3,
+   "within1": 100,
+   "mae": 0.27,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 71.1,
+   "within1": 100,
+   "mae": 0.29,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 67.5,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 360,
+ "all_six_exact": 52,
+ "amplitude_fajr_min": 60
+}

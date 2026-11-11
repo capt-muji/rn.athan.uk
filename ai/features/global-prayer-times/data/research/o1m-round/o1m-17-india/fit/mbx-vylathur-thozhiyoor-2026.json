@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-vylathur-thozhiyoor-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 10.56,
+  "lon": 75.9
+ },
+ "coarse": {
+  "lat": 10.4,
+  "lon": 75.8,
+  "mae": 0.382
+ },
+ "mid": {
+  "lat": 10.56,
+  "lon": 75.9,
+  "mae": 0.039
+ },
+ "meta": {
+  "name": "Thozhiyoor Salafi Masjid",
+  "address": "Salafi Masjid Thozhiyoor, Thozhiyoor - High School Road, Vylathur, Kerala, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.14,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.16,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.31,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.37,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 18,
+ "isha_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.1,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.24,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.25,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.41,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -65,
+   "mad": 6
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 87.5,
+   "within1": 100,
+   "mae": 0.13,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 90.9,
+   "within1": 100,
+   "mae": 0.09,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 95.2,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 91.7,
+   "within1": 100,
+   "mae": 0.08,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 89.7,
+   "within1": 100,
+   "mae": 0.1,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 220,
+ "amplitude_fajr_min": 51
+}

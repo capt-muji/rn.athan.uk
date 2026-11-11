@@ -1,0 +1,204 @@
+{
+ "id": "mesquita-khaled-ibn-08021290-sao-paulo-brazil",
+ "name": "Mesquita Khaled Ibn el Walid",
+ "city": "Mesquita Khaled Ibn el Walid",
+ "tz": "America/Sao_Paulo",
+ "lat": -23.5016088,
+ "lon": -46.4330729,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.8,
+  "ishaKind": "interval",
+  "isha": 74,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 68.8,
+   "w1Pct": 100,
+   "mean": -0.31,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 68.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0.3,
+   "w1Pct": 100,
+   "mean": 1,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 0.3,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 37.3,
+   "w1Pct": 61.4,
+   "mean": 0.98,
+   "worst": 3,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 61.4,
+     "exactPct": 37.3,
+     "worst": 3
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0.8,
+   "w1Pct": 100,
+   "mean": 0.99,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 0.8,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 0.8,
+   "w1Pct": 100,
+   "mean": 0.99,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 0.8,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 68.8,
+   "w1Pct": 100,
+   "mean": -0.31,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 68.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 19.2,
+   "w1Pct": 88.2,
+   "mean": -0.02,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 88.2,
+     "exactPct": 19.2,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 79
+}

@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-mum-risalat-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 19.12,
+  "lon": 72.78
+ },
+ "coarse": {
+  "lat": 19.2,
+  "lon": 72.7,
+  "mae": 0.255
+ },
+ "mid": {
+  "lat": 19.12,
+  "lon": 72.78,
+  "mae": 0.02
+ },
+ "meta": {
+  "name": "Anjuman Risalat-e-Haq",
+  "address": "Anjuman Risalat-e-Haq Masjid Azad Nagar, Sane Guruji Nagar, Parsi Wadi, Azad Nagar, Ghatkopar West, Mumbai, Maharashtra, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.04,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.12,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.31,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.35,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0.04,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.16,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.33,
+   "mad": 0
+  },
+  {
+   "a": 17.1,
+   "med": 0,
+   "mae": 0.37,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -60,
+   "mad": 12
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 95.2,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 97.2,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 97.2,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 96.3,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 96.3,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 95.7,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 277,
+ "amplitude_fajr_min": 81
+}

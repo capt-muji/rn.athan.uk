@@ -1,0 +1,69 @@
+{
+ "source": "nagoyamosque.com Daily-Prayer-Time-Table.pdf",
+ "zone": "Asia/Tokyo",
+ "year": 2028,
+ "lat": 35.17,
+ "lon": 136.75,
+ "latSpread": 1.19,
+ "fajrAngle": 17.95,
+ "ishaAngle": 17.05,
+ "asr": "shafi",
+ "schoolMAE": {
+  "shafi": 0.45,
+  "hanafi": 54.73
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 1,
+  "isha": 0
+ },
+ "rows": 365,
+ "allSixPc": 91.2,
+ "score": {
+  "fajr": {
+   "exact": 259,
+   "w1": 361,
+   "n": 365,
+   "mae": 0.3,
+   "worst": 2
+  },
+  "sunrise": {
+   "exact": 222,
+   "w1": 352,
+   "n": 365,
+   "mae": 0.44,
+   "worst": 3
+  },
+  "dhuhr": {
+   "exact": 239,
+   "w1": 365,
+   "n": 365,
+   "mae": 0.35,
+   "worst": 1
+  },
+  "asr": {
+   "exact": 203,
+   "w1": 362,
+   "n": 365,
+   "mae": 0.45,
+   "worst": 2
+  },
+  "maghrib": {
+   "exact": 171,
+   "w1": 344,
+   "n": 365,
+   "mae": 0.59,
+   "worst": 2
+  },
+  "isha": {
+   "exact": 183,
+   "w1": 360,
+   "n": 365,
+   "mae": 0.52,
+   "worst": 3
+  }
+ }
+}

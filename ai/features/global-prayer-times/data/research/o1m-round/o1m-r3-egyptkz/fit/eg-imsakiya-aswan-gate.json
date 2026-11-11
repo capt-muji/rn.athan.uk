@@ -1,0 +1,197 @@
+{
+ "city": "aswan",
+ "years": {
+  "1445": {
+   "gregorian_span": [
+    "2024-03-11",
+    "2024-04-09"
+   ],
+   "days": 30,
+   "perCol": {
+    "fajr": {
+     "n": 30,
+     "e": 29,
+     "w1": 30,
+     "bias": -1,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 29
+    },
+    "sunrise": {
+     "n": 30,
+     "e": 30,
+     "w1": 30,
+     "bias": 0,
+     "worst": 0,
+     "vsAladkarWorst": 0,
+     "vsAladkarExact": 30
+    },
+    "dhuhr": {
+     "n": 30,
+     "e": 29,
+     "w1": 30,
+     "bias": 1,
+     "worst": 1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 1
+    },
+    "asr": {
+     "n": 30,
+     "e": 16,
+     "w1": 30,
+     "bias": -14,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 16
+    },
+    "maghrib": {
+     "n": 30,
+     "e": 29,
+     "w1": 30,
+     "bias": 1,
+     "worst": 1,
+     "vsAladkarWorst": 1,
+     "vsAladkarExact": 29
+    },
+    "isha": {
+     "n": 30,
+     "e": 30,
+     "w1": 30,
+     "bias": 0,
+     "worst": 0,
+     "vsAladkarWorst": 0,
+     "vsAladkarExact": 30
+    }
+   }
+  },
+  "1446": {
+   "gregorian_span": [
+    "2025-03-01",
+    "2025-03-29"
+   ],
+   "days": 29,
+   "perCol": {
+    "fajr": {
+     "n": 29,
+     "e": 29,
+     "w1": 29,
+     "bias": 0,
+     "worst": 0,
+     "vsAladkarWorst": 0,
+     "vsAladkarExact": 29
+    },
+    "sunrise": {
+     "n": 29,
+     "e": 28,
+     "w1": 29,
+     "bias": -1,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 28
+    },
+    "dhuhr": {
+     "n": 29,
+     "e": 28,
+     "w1": 29,
+     "bias": -1,
+     "worst": -1,
+     "vsAladkarWorst": -2,
+     "vsAladkarExact": 0
+    },
+    "asr": {
+     "n": 29,
+     "e": 16,
+     "w1": 29,
+     "bias": -13,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 16
+    },
+    "maghrib": {
+     "n": 29,
+     "e": 29,
+     "w1": 29,
+     "bias": 0,
+     "worst": 0,
+     "vsAladkarWorst": 0,
+     "vsAladkarExact": 29
+    },
+    "isha": {
+     "n": 29,
+     "e": 29,
+     "w1": 29,
+     "bias": 0,
+     "worst": 0,
+     "vsAladkarWorst": 0,
+     "vsAladkarExact": 29
+    }
+   }
+  },
+  "1447": {
+   "gregorian_span": [
+    "2026-02-18",
+    "2026-03-19"
+   ],
+   "days": 30,
+   "perCol": {
+    "fajr": {
+     "n": 30,
+     "e": 28,
+     "w1": 30,
+     "bias": -2,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 28
+    },
+    "sunrise": {
+     "n": 30,
+     "e": 19,
+     "w1": 30,
+     "bias": -11,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 19
+    },
+    "dhuhr": {
+     "n": 30,
+     "e": 29,
+     "w1": 30,
+     "bias": -1,
+     "worst": -1,
+     "vsAladkarWorst": -2,
+     "vsAladkarExact": 0
+    },
+    "asr": {
+     "n": 30,
+     "e": 14,
+     "w1": 30,
+     "bias": -16,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 14
+    },
+    "maghrib": {
+     "n": 30,
+     "e": 26,
+     "w1": 30,
+     "bias": 2,
+     "worst": 1,
+     "vsAladkarWorst": 1,
+     "vsAladkarExact": 26
+    },
+    "isha": {
+     "n": 30,
+     "e": 27,
+     "w1": 30,
+     "bias": -3,
+     "worst": -1,
+     "vsAladkarWorst": -1,
+     "vsAladkarExact": 27
+    }
+   }
+  }
+ },
+ "flagged": [],
+ "offsets": {},
+ "cells": 534
+}

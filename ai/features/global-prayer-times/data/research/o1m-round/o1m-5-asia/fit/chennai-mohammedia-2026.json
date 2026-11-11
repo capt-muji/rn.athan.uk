@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-chennai-mohammedia-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 12.965,
+  "lon": 80.06,
+  "mae": 0.004
+ },
+ "coarse": {
+  "lat": 12.95,
+  "lon": 80.05,
+  "mae": 0.029
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 17.75,
+   "med": -1,
+   "maeCentred": 0.07
+  },
+  {
+   "a": 17.55,
+   "med": -2,
+   "maeCentred": 0.08
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 16.75,
+   "med": 1,
+   "maeCentred": 0.08
+  },
+  {
+   "a": 17.45,
+   "med": -2,
+   "maeCentred": 0.09
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "maeCentred": 0
+  },
+  "1": {
+   "med": -63,
+   "maeCentred": 8.35
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 99.5,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 100,
+   "within1": 100,
+   "mae": 0,
+   "worst": 0,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 100,
+   "within1": 100,
+   "mae": 0,
+   "worst": 0,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 353,
+ "amplitude_fajr_min": 58
+}

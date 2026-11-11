@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_cu_havana_2026.json",
+ "tz": "America/Havana",
+ "meta": {
+  "name": "Mosque Abdallah - HAVANA",
+  "lat": 23.1374373,
+  "lon": -82.3489425,
+  "country": "CU"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 15,
+  "offset": -21,
+  "exact": 353,
+  "within1": 365,
+  "mae": 0.26,
+  "worst": 0.52
+ },
+ "isha": {
+  "angle": 15,
+  "offset": 12,
+  "exact": 349,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.58
+ },
+ "asr_shafi": {
+  "offset": 1,
+  "exact": 53,
+  "within1": 263,
+  "mae": 1.13,
+  "worst": 2.13
+ },
+ "asr_hanafi": {
+  "offset": -56,
+  "exact": 9,
+  "within1": 23,
+  "mae": 11.57,
+  "worst": 25.65
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 359,
+  "within1": 365,
+  "mae": 0.24,
+  "worst": 0.52
+ },
+ "maghrib": {
+  "offset": 3,
+  "exact": 359,
+  "within1": 365,
+  "mae": 0.26,
+  "worst": 0.5
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 358,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.52
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   343,
+   346
+  ],
+  "jul": [
+   315,
+   331
+  ]
+ }
+}

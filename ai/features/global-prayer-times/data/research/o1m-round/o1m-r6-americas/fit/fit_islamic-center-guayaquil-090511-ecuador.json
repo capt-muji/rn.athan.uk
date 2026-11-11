@@ -1,0 +1,204 @@
+{
+ "id": "islamic-center-guayaquil-090511-ecuador",
+ "name": "مسجد جواياكيلIslamic Center of Guayaquil - GUAYAQUIL",
+ "city": "مسجد جواياكيلIslamic Center of Guayaquil - GUAYAQUIL",
+ "tz": "America/Guayaquil",
+ "lat": -2.1736764,
+ "lon": -79.9044825,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.8,
+  "ishaKind": "angle",
+  "isha": 16.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 15.3,
+   "w1Pct": 100,
+   "mean": -0.85,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 15.3,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 21.9,
+   "w1Pct": 84.9,
+   "mean": -0.03,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 84.9,
+     "exactPct": 21.9,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 15.1,
+   "w1Pct": 100,
+   "mean": 0.85,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 15.1,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 84.7,
+   "w1Pct": 100,
+   "mean": 0.15,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 84.7,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 21.9,
+   "w1Pct": 84.9,
+   "mean": -0.03,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 84.9,
+     "exactPct": 21.9,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 84.9,
+   "w1Pct": 100,
+   "mean": -0.15,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 84.9,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 3
+}

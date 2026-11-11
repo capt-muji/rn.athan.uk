@@ -1,0 +1,68 @@
+{
+ "city": "skelleftea",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 64.7507,
+ "lon": 20.9528,
+ "rows": 699,
+ "solarGateMedAbs": 0.28,
+ "fajrAngle": {
+  "n": 469,
+  "med": 18,
+  "min": 10.1,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 466,
+  "med": 17,
+  "min": 10.05,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.7,
+   "max": 0.8
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0.03,
+   "min": -0.4,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.15,
+   "min": -4.5,
+   "max": 4
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.32,
+   "min": -83.5,
+   "max": -9.9
+  },
+  "maghrib": {
+   "n": 699,
+   "med": 0.02,
+   "min": -0.7,
+   "max": 0.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 301,
+  "isha": 436
+ }
+}

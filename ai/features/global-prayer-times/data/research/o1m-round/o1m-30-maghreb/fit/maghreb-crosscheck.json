@@ -1,0 +1,192 @@
+{
+ "algeria": {
+  "masjidi": {
+   "fajr": {
+    "n": 219,
+    "exact": 0,
+    "w1": 1,
+    "worst": 3,
+    "bias": -2.2
+   },
+   "sunrise": {
+    "n": 219,
+    "exact": 119,
+    "w1": 219,
+    "worst": 1,
+    "bias": -0.5
+   },
+   "dhuhr": {
+    "n": 219,
+    "exact": 95,
+    "w1": 219,
+    "worst": 1,
+    "bias": -0.6
+   },
+   "asr": {
+    "n": 219,
+    "exact": 110,
+    "w1": 207,
+    "worst": 2,
+    "bias": -0.5
+   },
+   "maghrib": {
+    "n": 219,
+    "exact": 0,
+    "w1": 0,
+    "worst": 4,
+    "bias": -3.6
+   },
+   "isha": {
+    "n": 219,
+    "exact": 0,
+    "w1": 45,
+    "worst": 3,
+    "bias": -1.8
+   }
+  },
+  "national": {
+   "fajr": {
+    "n": 219,
+    "exact": 6,
+    "w1": 207,
+    "worst": 2,
+    "bias": -1
+   },
+   "sunrise": {
+    "n": 219,
+    "exact": 119,
+    "w1": 219,
+    "worst": 1,
+    "bias": -0.5
+   },
+   "dhuhr": {
+    "n": 219,
+    "exact": 95,
+    "w1": 219,
+    "worst": 1,
+    "bias": -0.6
+   },
+   "asr": {
+    "n": 219,
+    "exact": 110,
+    "w1": 207,
+    "worst": 2,
+    "bias": -0.5
+   },
+   "maghrib": {
+    "n": 219,
+    "exact": 0,
+    "w1": 0,
+    "worst": 4,
+    "bias": -3.6
+   },
+   "isha": {
+    "n": 219,
+    "exact": 93,
+    "w1": 219,
+    "worst": 1,
+    "bias": -0.6
+   }
+  }
+ },
+ "tunisia": {
+  "masjidi": {
+   "fajr": {
+    "n": 20,
+    "exact": 0,
+    "w1": 11,
+    "worst": 2,
+    "bias": -1.4
+   },
+   "dhuhr": {
+    "n": 20,
+    "exact": 0,
+    "w1": 0,
+    "worst": 7,
+    "bias": -6.8
+   },
+   "asr": {
+    "n": 20,
+    "exact": 10,
+    "w1": 19,
+    "worst": 2,
+    "bias": -0.1
+   },
+   "maghrib": {
+    "n": 20,
+    "exact": 0,
+    "w1": 0,
+    "worst": 4,
+    "bias": -3.4
+   },
+   "isha": {
+    "n": 20,
+    "exact": 14,
+    "w1": 20,
+    "worst": 1,
+    "bias": -0.3
+   }
+  },
+  "national2026": {
+   "fajr": {
+    "n": 20,
+    "exact": 19,
+    "w1": 20,
+    "worst": 1,
+    "bias": -0.1
+   },
+   "dhuhr": {
+    "n": 20,
+    "exact": 0,
+    "w1": 0,
+    "worst": 7,
+    "bias": -6.8
+   },
+   "asr": {
+    "n": 20,
+    "exact": 10,
+    "w1": 19,
+    "worst": 2,
+    "bias": -0.1
+   },
+   "maghrib": {
+    "n": 20,
+    "exact": 0,
+    "w1": 0,
+    "worst": 4,
+    "bias": -3.4
+   },
+   "isha": {
+    "n": 20,
+    "exact": 20,
+    "w1": 20,
+    "worst": 0,
+    "bias": 0
+   }
+  }
+ },
+ "morocco": {},
+ "libya": {},
+ "geometry": {
+  "morocco": {
+   "2026-01-15": {
+    "fajr": -2.5,
+    "isha": -2
+   },
+   "2026-07-15": {
+    "fajr": -3.5,
+    "isha": -2.7
+   }
+  },
+  "libya": {
+   "2026-01-15": {
+    "fajr": -2.8,
+    "isha": -0.8
+   },
+   "2026-07-15": {
+    "fajr": -3.7,
+    "isha": -1
+   }
+  }
+ }
+}

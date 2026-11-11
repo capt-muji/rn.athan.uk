@@ -1,0 +1,11180 @@
+[
+ {
+  "country": "TÜRKİYE",
+  "countryId": "2",
+  "states": 81,
+  "latRecovered": 36.62,
+  "horizon": 0.833,
+  "latSpreadSd": 1.69,
+  "imsakAngle": 17.39,
+  "ishaAngle": 16.35,
+  "ishaGap": 82,
+  "ishaGapSd": 2.2,
+  "asrFactor": 0.948,
+  "scored": 900,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 79.9,
+    "mae": 0.63,
+    "worst": 2.2
+   },
+   "sunrise": {
+    "w1Pct": 73.8,
+    "mae": 0.71,
+    "worst": 2.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 71.3,
+    "mae": 0.73,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "w1Pct": 67.2,
+    "mae": 0.79,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 75.2,
+    "mae": 0.68,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "ABD",
+  "countryId": "33",
+  "states": 51,
+  "latRecovered": 36.41,
+  "horizon": 0.833,
+  "latSpreadSd": 6.65,
+  "imsakAngle": 17.36,
+  "ishaAngle": 15.29,
+  "ishaGap": 76,
+  "ishaGapSd": 14.3,
+  "asrFactor": 0.952,
+  "scored": 900,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 61.6,
+    "mae": 0.98,
+    "worst": 5.4
+   },
+   "sunrise": {
+    "w1Pct": 72.9,
+    "mae": 0.72,
+    "worst": 2.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.6,
+    "mae": 0.9,
+    "worst": 4.6
+   },
+   "maghrib": {
+    "w1Pct": 68,
+    "mae": 0.79,
+    "worst": 2.7
+   },
+   "isha": {
+    "w1Pct": 58.4,
+    "mae": 1.07,
+    "worst": 6.2
+   }
+  }
+ },
+ {
+  "country": "ALMANYA",
+  "countryId": "13",
+  "states": 16,
+  "latRecovered": 49.68,
+  "horizon": 0.833,
+  "latSpreadSd": 1.77,
+  "imsakAngle": 17.7,
+  "ishaAngle": 15.62,
+  "ishaGap": 100,
+  "ishaGapSd": 4.9,
+  "asrFactor": 0.938,
+  "scored": 480,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.9,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 2.1
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.84,
+    "worst": 2.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 68.3,
+    "mae": 0.79,
+    "worst": 2.6
+   },
+   "maghrib": {
+    "w1Pct": 52.9,
+    "mae": 0.95,
+    "worst": 2.6
+   },
+   "isha": {
+    "w1Pct": 72.5,
+    "mae": 0.74,
+    "worst": 2.3
+   }
+  }
+ },
+ {
+  "country": "KANADA",
+  "countryId": "52",
+  "states": 12,
+  "latRecovered": 47.44,
+  "horizon": 0.833,
+  "latSpreadSd": 7.55,
+  "imsakAngle": 17.67,
+  "ishaAngle": 15.56,
+  "ishaGap": 94,
+  "ishaGapSd": 28.1,
+  "asrFactor": 0.937,
+  "scored": 360,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 61.1,
+    "mae": 1.06,
+    "worst": 6.3
+   },
+   "sunrise": {
+    "w1Pct": 58.9,
+    "mae": 2.44,
+    "worst": 34.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 54.2,
+    "mae": 2.1,
+    "worst": 15.8
+   },
+   "maghrib": {
+    "w1Pct": 50.8,
+    "mae": 2.65,
+    "worst": 40.3
+   },
+   "isha": {
+    "w1Pct": 55,
+    "mae": 1.28,
+    "worst": 8.6
+   }
+  }
+ },
+ {
+  "country": "KUZEY KIBRIS",
+  "countryId": "1",
+  "states": 1,
+  "latRecovered": 31.73,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.29,
+  "ishaAngle": 16.22,
+  "ishaGap": 77,
+  "ishaGapSd": 1,
+  "asrFactor": 0.955,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.71,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.78,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.8,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.74,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "VATIKAN",
+  "countryId": "10",
+  "states": 1,
+  "latRecovered": 39.21,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.46,
+  "ishaAngle": 16.4,
+  "ishaGap": 86,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.944,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.8,
+   "isha": -4.7
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.72,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.8,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "MAKAO",
+  "countryId": "100",
+  "states": 1,
+  "latRecovered": 18.1,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.86,
+  "ishaAngle": 15.84,
+  "ishaGap": 67,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.988,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.7,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.67,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "SENEGAL",
+  "countryId": "102",
+  "states": 1,
+  "latRecovered": 10.24,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.63,
+  "ishaAngle": 15.59,
+  "ishaGap": 64,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.002,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.6,
+   "maghrib": -5.1,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.75,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.68,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "MALDIVLER",
+  "countryId": "103",
+  "states": 1,
+  "latRecovered": -0.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.38,
+  "ishaAngle": 15.38,
+  "ishaGap": 62,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.029,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.3,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.56,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.52,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.52,
+    "worst": 1.2
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "ERMENISTAN",
+  "countryId": "104",
+  "states": 1,
+  "latRecovered": 37.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.41,
+  "ishaAngle": 16.35,
+  "ishaGap": 83,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -5.1,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.75,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "HONDURAS",
+  "countryId": "105",
+  "states": 1,
+  "latRecovered": 8.76,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.58,
+  "ishaAngle": 15.53,
+  "ishaGap": 63.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.006,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.4,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.75,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.69,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.49,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "MORITANYA",
+  "countryId": "106",
+  "states": 1,
+  "latRecovered": 12.37,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.69,
+  "ishaAngle": 15.71,
+  "ishaGap": 65,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.999,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.9,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.48,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "MALEZYA",
+  "countryId": "107",
+  "states": 1,
+  "latRecovered": 1.61,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.42,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.024,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -2.8,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.7,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 96.7,
+    "mae": 0.55,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.58,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "TAYVAN",
+  "countryId": "108",
+  "states": 1,
+  "latRecovered": 19.49,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.89,
+  "ishaAngle": 15.92,
+  "ishaGap": 68,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.979,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -6.2,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "GAMBIYA",
+  "countryId": "109",
+  "states": 1,
+  "latRecovered": 9,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.56,
+  "ishaAngle": 15.58,
+  "ishaGap": 64,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.005,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.5,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.65,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "BELCIKA",
+  "countryId": "11",
+  "states": 1,
+  "latRecovered": 49.05,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.68,
+  "ishaAngle": 15.62,
+  "ishaGap": 98.5,
+  "ishaGapSd": 2.1,
+  "asrFactor": 0.938,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.3,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.8,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.85,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.84,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "TANZANYA",
+  "countryId": "110",
+  "states": 1,
+  "latRecovered": -7.83,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.17,
+  "ishaAngle": 15.18,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.046,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -0.5,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "GINE",
+  "countryId": "111",
+  "states": 1,
+  "latRecovered": 5.03,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.49,
+  "ishaAngle": 15.44,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.015,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.6,
+   "maghrib": -5,
+   "isha": -4.7
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 66.7,
+    "mae": 0.44,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 53.3,
+    "mae": 0.64,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "REUNION",
+  "countryId": "112",
+  "states": 1,
+  "latRecovered": -24.54,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.99,
+  "ishaAngle": 15.04,
+  "ishaGap": 71,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.966,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -9.2,
+   "maghrib": -5.1,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.53,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 30,
+    "mae": 2.1,
+    "worst": 6
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.59,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "HONG KONG",
+  "countryId": "113",
+  "states": 1,
+  "latRecovered": 18.13,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.87,
+  "ishaAngle": 15.78,
+  "ishaGap": 67,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.981,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.2,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "KENYA",
+  "countryId": "114",
+  "states": 1,
+  "latRecovered": -4.07,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.22,
+  "ishaAngle": 15.23,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.037,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -1.4,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.84,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.6,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "YENI KALEDONYA",
+  "countryId": "115",
+  "states": 1,
+  "latRecovered": -24.3,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.97,
+  "ishaAngle": 15.01,
+  "ishaGap": 70,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.967,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -9.1,
+   "maghrib": -5.2,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 20,
+    "mae": 2.62,
+    "worst": 7.5
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "JAPONYA",
+  "countryId": "116",
+  "states": 1,
+  "latRecovered": 32.67,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.31,
+  "ishaAngle": 16.27,
+  "ishaGap": 78,
+  "ishaGapSd": 1.1,
+  "asrFactor": 0.954,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "TUNUS",
+  "countryId": "118",
+  "states": 1,
+  "latRecovered": 32.52,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.29,
+  "ishaAngle": 16.27,
+  "ishaGap": 78,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.958,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.7,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.9
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.77,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "JAMAIKA",
+  "countryId": "119",
+  "states": 1,
+  "latRecovered": 13.56,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.7,
+  "ishaAngle": 15.64,
+  "ishaGap": 65,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.991,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -5.3,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.65,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.59,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "ISVEC",
+  "countryId": "12",
+  "states": 1,
+  "latRecovered": 58.34,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.88,
+  "ishaAngle": 15.81,
+  "ishaGap": 130.5,
+  "ishaGapSd": 4.6,
+  "asrFactor": 0.949,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -4.5,
+   "dhuhr": 0,
+   "asr": -5.1,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 36.7,
+    "mae": 1.09,
+    "worst": 2.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.86,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 40,
+    "mae": 1.24,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.75,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "FILDISI SAHILI",
+  "countryId": "120",
+  "states": 1,
+  "latRecovered": 0.7,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.28,
+  "ishaAngle": 15.34,
+  "ishaGap": 62,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.026,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.6,
+   "maghrib": -5.6,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.52,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.62,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "ATLANTİK OKYANUSU",
+  "countryId": "1216",
+  "states": 1,
+  "latRecovered": -4.5,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.25,
+  "ishaAngle": 15.27,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.04,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -1.3,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "IZLANDA",
+  "countryId": "122",
+  "states": 1,
+  "latRecovered": 63.29,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 18,
+  "ishaAngle": 15.85,
+  "ishaGap": 162,
+  "ishaGapSd": 6.4,
+  "asrFactor": 0.933,
+  "scored": 30,
+  "temkin": {
+   "imsak": -3.7,
+   "sunrise": -3.4,
+   "dhuhr": 0,
+   "asr": -2.5,
+   "maghrib": -4.4,
+   "isha": -4.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 23.3,
+    "mae": 1.51,
+    "worst": 3.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "w1Pct": 36.7,
+    "mae": 2.38,
+    "worst": 10.6
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.76,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "DOMINIK",
+  "countryId": "123",
+  "states": 1,
+  "latRecovered": 10.92,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.65,
+  "ishaAngle": 15.65,
+  "ishaGap": 64,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -4.8,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.5,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.7,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.61,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "IRAK",
+  "countryId": "124",
+  "states": 1,
+  "latRecovered": 28.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.17,
+  "ishaAngle": 16.11,
+  "ishaGap": 74,
+  "ishaGapSd": 1,
+  "asrFactor": 0.959,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.55,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.74,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "ANGUILLA",
+  "countryId": "125",
+  "states": 1,
+  "latRecovered": 13.95,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.75,
+  "ishaAngle": 15.75,
+  "ishaGap": 65,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.996,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.2,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "FILIPINLER",
+  "countryId": "126",
+  "states": 1,
+  "latRecovered": 10.66,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.64,
+  "ishaAngle": 15.59,
+  "ishaGap": 64,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.999,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -4.8,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.54,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "NIJERYA",
+  "countryId": "127",
+  "states": 1,
+  "latRecovered": 0.67,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.39,
+  "ishaAngle": 15.43,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.025,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.4,
+   "dhuhr": 0,
+   "asr": -2.5,
+   "maghrib": -4.6,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 100,
+    "mae": 0.55,
+    "worst": 1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.71,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 100,
+    "mae": 0.56,
+    "worst": 1
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "GUNEY KORE",
+  "countryId": "128",
+  "states": 1,
+  "latRecovered": 33.32,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.25,
+  "ishaAngle": 16.26,
+  "ishaGap": 79,
+  "ishaGapSd": 1.1,
+  "asrFactor": 0.954,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -7.9,
+   "maghrib": -5.2,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.75,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.84,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.73,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "SUDAN",
+  "countryId": "129",
+  "states": 1,
+  "latRecovered": 9.55,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.59,
+  "ishaAngle": 15.61,
+  "ishaGap": 64,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.003,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.6,
+   "maghrib": -5.1,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.48,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.51,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "TONGA",
+  "countryId": "130",
+  "states": 1,
+  "latRecovered": -24.78,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.97,
+  "ishaAngle": 15.06,
+  "ishaGap": 71,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.963,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -9.7,
+   "maghrib": -5.3,
+   "isha": -5.4
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.59,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 36.7,
+    "mae": 1.78,
+    "worst": 5.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.5,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "OZBEKISTAN",
+  "countryId": "131",
+  "states": 1,
+  "latRecovered": 37.03,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.36,
+  "ishaAngle": 16.39,
+  "ishaGap": 83,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.947,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.78,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.86,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "BAHREYN",
+  "countryId": "132",
+  "states": 1,
+  "latRecovered": 22.4,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.98,
+  "ishaAngle": 16.01,
+  "ishaGap": 70,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.972,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.7,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.64,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.73,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "KUVEYT",
+  "countryId": "133",
+  "states": 1,
+  "latRecovered": 25.62,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.1,
+  "ishaAngle": 16.09,
+  "ishaGap": 72,
+  "ishaGapSd": 1,
+  "asrFactor": 0.961,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.1,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.74,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.75,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.6,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "LAOS",
+  "countryId": "134",
+  "states": 1,
+  "latRecovered": 16.07,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.77,
+  "ishaAngle": 15.78,
+  "ishaGap": 66,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.989,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -5.6,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.5,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.8,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.66,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "VIETNAM",
+  "countryId": "135",
+  "states": 1,
+  "latRecovered": 6.46,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.52,
+  "ishaAngle": 15.52,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.012,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.8,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 96.7,
+    "mae": 0.54,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.2
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.58,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "ST. LUCIA",
+  "countryId": "136",
+  "states": 1,
+  "latRecovered": 9.55,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.6,
+  "ishaAngle": 15.57,
+  "ishaGap": 64,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.003,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.6,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.73,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.68,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "TAYLAND",
+  "countryId": "137",
+  "states": 1,
+  "latRecovered": 4.91,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.45,
+  "ishaAngle": 15.5,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.014,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.7,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 66.7,
+    "mae": 0.45,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 56.7,
+    "mae": 0.52,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "SEYSEL ADALARI",
+  "countryId": "138",
+  "states": 1,
+  "latRecovered": -9.08,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.15,
+  "ishaAngle": 15.16,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.049,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.54,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.46,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "EKVATOR",
+  "countryId": "139",
+  "states": 1,
+  "latRecovered": -5.76,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.2,
+  "ishaAngle": 15.23,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.043,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.58,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "SLOVAKYA",
+  "countryId": "14",
+  "states": 1,
+  "latRecovered": 46.63,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.63,
+  "ishaAngle": 15.55,
+  "ishaGap": 93,
+  "ishaGapSd": 1.9,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.8,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.77,
+    "worst": 2.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.92,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.71,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "ANGOLA",
+  "countryId": "140",
+  "states": 1,
+  "latRecovered": -16.74,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.05,
+  "ishaAngle": 15.05,
+  "ishaGap": 66,
+  "ishaGapSd": 1,
+  "asrFactor": 1.067,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": -5.3,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.78,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.55,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "NIKARAGUA",
+  "countryId": "141",
+  "states": 1,
+  "latRecovered": 7.54,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.55,
+  "ishaAngle": 15.53,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.009,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.2,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.67,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "KUZEY KORE",
+  "countryId": "142",
+  "states": 1,
+  "latRecovered": 36.04,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.35,
+  "ishaAngle": 16.33,
+  "ishaGap": 82,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.946,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.83,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.76,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.7,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "GANA",
+  "countryId": "143",
+  "states": 1,
+  "latRecovered": 1.01,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.34,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.026,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.7,
+   "maghrib": -5.1,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 73.3,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 96.7,
+    "mae": 0.6,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.69,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 100,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "YESIL BURUN",
+  "countryId": "144",
+  "states": 1,
+  "latRecovered": 12.55,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.7,
+  "ishaAngle": 15.67,
+  "ishaGap": 65,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.997,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.1,
+   "maghrib": -5.1,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.76,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.69,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "FAS",
+  "countryId": "145",
+  "states": 1,
+  "latRecovered": 26.79,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.12,
+  "ishaAngle": 16.1,
+  "ishaGap": 72.5,
+  "ishaGapSd": 1.1,
+  "asrFactor": 0.964,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.1,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.71,
+    "worst": 2.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.71,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "BREZILYA",
+  "countryId": "146",
+  "states": 1,
+  "latRecovered": -6.27,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.19,
+  "ishaAngle": 15.17,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.043,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.46,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "MONTSERRAT (U.K.)",
+  "countryId": "147",
+  "states": 1,
+  "latRecovered": 12.47,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.69,
+  "ishaAngle": 15.7,
+  "ishaGap": 65,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.996,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -5,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "YEMEN",
+  "countryId": "148",
+  "states": 1,
+  "latRecovered": 8.29,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.5,
+  "ishaAngle": 15.55,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.005,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.5,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 70,
+    "mae": 0.57,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "PALAU",
+  "countryId": "149",
+  "states": 1,
+  "latRecovered": 2.77,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.41,
+  "ishaAngle": 15.41,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.022,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.9,
+   "maghrib": -5.2,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.43,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.54,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.8,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.55,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "INGILTERE",
+  "countryId": "15",
+  "states": 1,
+  "latRecovered": 49.9,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.7,
+  "ishaAngle": 15.62,
+  "ishaGap": 100.5,
+  "ishaGapSd": 2.2,
+  "asrFactor": 0.939,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7,
+   "maghrib": -4.7,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.9,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.86,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.98,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "SOMALI",
+  "countryId": "150",
+  "states": 1,
+  "latRecovered": 4.95,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.46,
+  "ishaAngle": 15.52,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.015,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.7,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 66.7,
+    "mae": 0.45,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 53.3,
+    "mae": 0.67,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 60,
+    "mae": 0.55,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "MOZAMBIK",
+  "countryId": "151",
+  "states": 1,
+  "latRecovered": -23.62,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.96,
+  "ishaAngle": 14.98,
+  "ishaGap": 70,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.991,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -6.6,
+   "maghrib": -5.2,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.55,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 10,
+    "mae": 3.84,
+    "worst": 6.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.53,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "MALI",
+  "countryId": "152",
+  "states": 1,
+  "latRecovered": 8.21,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.58,
+  "ishaAngle": 15.55,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.007,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.2,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 100,
+    "mae": 0.5,
+    "worst": 1
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.76,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.57,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "ARUBA",
+  "countryId": "153",
+  "states": 1,
+  "latRecovered": 8.08,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.6,
+  "ishaAngle": 15.55,
+  "ishaGap": 63,
+  "ishaGapSd": 0.6,
+  "asrFactor": 1.008,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 96.7,
+    "mae": 0.51,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.78,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "MYANMAR",
+  "countryId": "154",
+  "states": 1,
+  "latRecovered": 12.43,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.7,
+  "ishaAngle": 15.7,
+  "ishaGap": 65,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.996,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -5.1,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "BUTAN",
+  "countryId": "155",
+  "states": 1,
+  "latRecovered": 23.64,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.03,
+  "ishaAngle": 15.99,
+  "ishaGap": 70,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.971,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.6,
+   "maghrib": -5.1,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.71,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "CAD",
+  "countryId": "156",
+  "states": 1,
+  "latRecovered": 9.35,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.6,
+  "ishaAngle": 15.57,
+  "ishaGap": 64,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.003,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.7,
+   "maghrib": -5.1,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.54,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.6,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.69,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "MAYOTTE",
+  "countryId": "157",
+  "states": 1,
+  "latRecovered": -16.86,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16,
+  "ishaAngle": 15.08,
+  "ishaGap": 66,
+  "ishaGapSd": 1,
+  "asrFactor": 1.066,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.51,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "ZAMBIYA",
+  "countryId": "158",
+  "states": 1,
+  "latRecovered": -16.67,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.04,
+  "ishaAngle": 15.08,
+  "ishaGap": 66,
+  "ishaGapSd": 1,
+  "asrFactor": 1.065,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": -5.2,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.65,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.55,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "TURKMENISTAN",
+  "countryId": "159",
+  "states": 1,
+  "latRecovered": 34.88,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.33,
+  "ishaAngle": 16.31,
+  "ishaGap": 80.5,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.95,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5.2,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 2.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "CEK CUMHURIYETI",
+  "countryId": "16",
+  "states": 1,
+  "latRecovered": 47.8,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.69,
+  "ishaAngle": 15.6,
+  "ishaGap": 96,
+  "ishaGapSd": 1.9,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.7,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.84,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.66,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "CIBUTI",
+  "countryId": "160",
+  "states": 1,
+  "latRecovered": 6.63,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.48,
+  "ishaAngle": 15.53,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.011,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.3,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.7,
+   "maghrib": -5,
+   "isha": -5.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 100,
+    "mae": 0.58,
+    "worst": 1
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "KAMBOCYA",
+  "countryId": "161",
+  "states": 1,
+  "latRecovered": 8.7,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.6,
+  "ishaAngle": 15.59,
+  "ishaGap": 64,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.006,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -4.3,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "KOSTARIKA",
+  "countryId": "162",
+  "states": 1,
+  "latRecovered": 5.46,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.46,
+  "ishaAngle": 15.47,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.012,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.4,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 60,
+    "mae": 0.46,
+    "worst": 1.1
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 43.3,
+    "mae": 0.74,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 60,
+    "mae": 0.53,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "SVALBARD",
+  "countryId": "163",
+  "states": 1,
+  "latRecovered": 65.09,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 14.45,
+  "ishaAngle": 9.4,
+  "ishaGap": 112,
+  "ishaGapSd": 34.4,
+  "asrFactor": 0,
+  "scored": 30,
+  "temkin": {
+   "imsak": 0.4,
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "asr": -27.6,
+   "maghrib": 0.3,
+   "isha": 0.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 0,
+    "mae": 15.39,
+    "worst": 35.4
+   },
+   "sunrise": {
+    "w1Pct": 0,
+    "mae": 21.82,
+    "worst": 46.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 6.7,
+    "mae": 11.78,
+    "worst": 28
+   },
+   "maghrib": {
+    "w1Pct": 0,
+    "mae": 21.64,
+    "worst": 46.5
+   },
+   "isha": {
+    "w1Pct": 0,
+    "mae": 16.04,
+    "worst": 36
+   }
+  }
+ },
+ {
+  "country": "MAURITIUS ADASI",
+  "countryId": "164",
+  "states": 1,
+  "latRecovered": -23.92,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.96,
+  "ishaAngle": 15.06,
+  "ishaGap": 70,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.98,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -7.9,
+   "maghrib": -5.1,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 10,
+    "mae": 3.22,
+    "worst": 7.4
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.49,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "EL SALVADOR",
+  "countryId": "165",
+  "states": 1,
+  "latRecovered": 9.35,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.61,
+  "ishaAngle": 15.58,
+  "ishaGap": 64,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.004,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.5,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 96.7,
+    "mae": 0.48,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "AFGANISTAN",
+  "countryId": "166",
+  "states": 1,
+  "latRecovered": 31.21,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.29,
+  "ishaAngle": 16.23,
+  "ishaGap": 76,
+  "ishaGapSd": 1,
+  "asrFactor": 0.958,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.72,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "BOTSVANA",
+  "countryId": "167",
+  "states": 1,
+  "latRecovered": -28.13,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.97,
+  "ishaAngle": 15.01,
+  "ishaGap": 74,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.962,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -9.8,
+   "maghrib": -5.3,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 93.3,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.52,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "KIRGIZISTAN",
+  "countryId": "168",
+  "states": 1,
+  "latRecovered": 40.2,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.45,
+  "ishaAngle": 16.46,
+  "ishaGap": 88,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.945,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 93.3,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.78,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.91,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "GUAM ADASI",
+  "countryId": "169",
+  "states": 1,
+  "latRecovered": 8.96,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.59,
+  "ishaAngle": 15.56,
+  "ishaGap": 63.5,
+  "ishaGapSd": 1,
+  "asrFactor": 1.004,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -4.4,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "ANDORRA",
+  "countryId": "17",
+  "states": 1,
+  "latRecovered": 39.89,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.56,
+  "ishaAngle": 16.47,
+  "ishaGap": 87,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.947,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.67,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.79,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 63.3,
+    "mae": 0.79,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "ESWATINI",
+  "countryId": "170",
+  "states": 1,
+  "latRecovered": -29.57,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.03,
+  "ishaAngle": 15.09,
+  "ishaGap": 76,
+  "ishaGapSd": 1.7,
+  "asrFactor": 0.968,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -9.2,
+   "maghrib": -5.2,
+   "isha": -5.4
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 2
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.54,
+    "worst": 1.1
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.48,
+    "worst": 1.2
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.38,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "GUADELOPE",
+  "countryId": "171",
+  "states": 1,
+  "latRecovered": 11.5,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.62,
+  "ishaAngle": 15.58,
+  "ishaGap": 64,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.996,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -5,
+   "maghrib": -4.8,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.81,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "SURINAM",
+  "countryId": "172",
+  "states": 1,
+  "latRecovered": 0.37,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.29,
+  "ishaAngle": 15.32,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.029,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.6,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.55,
+    "worst": 1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.71,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.55,
+    "worst": 1
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "UMMAN",
+  "countryId": "173",
+  "states": 1,
+  "latRecovered": 19.53,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.9,
+  "ishaAngle": 15.85,
+  "ishaGap": 68,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.984,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.63,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "LESOTO",
+  "countryId": "174",
+  "states": 1,
+  "latRecovered": -32.4,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.02,
+  "ishaAngle": 15.05,
+  "ishaGap": 79,
+  "ishaGapSd": 1.9,
+  "asrFactor": 0.976,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.3,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -8,
+   "maghrib": -5.2,
+   "isha": -5.4
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.49,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.47,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "ERITRE",
+  "countryId": "175",
+  "states": 1,
+  "latRecovered": 10.46,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.63,
+  "ishaAngle": 15.63,
+  "ishaGap": 64,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.002,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.8,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.51,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "DOGU TIMOR",
+  "countryId": "176",
+  "states": 1,
+  "latRecovered": -12.84,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.07,
+  "ishaAngle": 15.14,
+  "ishaGap": 64,
+  "ishaGapSd": 1,
+  "asrFactor": 1.058,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.62,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.57,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "BANGLADES",
+  "countryId": "177",
+  "states": 1,
+  "latRecovered": 19.45,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.9,
+  "ishaAngle": 15.91,
+  "ishaGap": 68,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.98,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -6.3,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.53,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.6,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 2.4
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "NIUE",
+  "countryId": "178",
+  "states": 1,
+  "latRecovered": -22.77,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.05,
+  "ishaAngle": 15.04,
+  "ishaGap": 69,
+  "ishaGapSd": 1.2,
+  "asrFactor": 1.015,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.3,
+   "maghrib": -5,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 10,
+    "mae": 4.62,
+    "worst": 7.8
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "SINGAPUR",
+  "countryId": "179",
+  "states": 1,
+  "latRecovered": -3.22,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.25,
+  "ishaAngle": 15.28,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.036,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -1.5,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.68,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.66,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.6,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "KOSOVA",
+  "countryId": "18",
+  "states": 1,
+  "latRecovered": 39.71,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.44,
+  "ishaAngle": 16.43,
+  "ishaGap": 87,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.944,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 2
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.76,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.67,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "DEMOKRATIK KONGO CUMHURIYETI",
+  "countryId": "180",
+  "states": 1,
+  "latRecovered": -10.22,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.13,
+  "ishaAngle": 15.17,
+  "ishaGap": 63,
+  "ishaGapSd": 1,
+  "asrFactor": 1.054,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": -5.1,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "BENIN",
+  "countryId": "181",
+  "states": 1,
+  "latRecovered": 2.62,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.39,
+  "ishaAngle": 15.41,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.021,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -3.2,
+   "maghrib": -5.3,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.54,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "BELIZE",
+  "countryId": "182",
+  "states": 1,
+  "latRecovered": 13.17,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.67,
+  "ishaAngle": 15.7,
+  "ishaGap": 65,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.992,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -5.3,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.68,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "PITCAIRN ADASI",
+  "countryId": "183",
+  "states": 1,
+  "latRecovered": -28.42,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.02,
+  "ishaAngle": 15.07,
+  "ishaGap": 74.5,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.966,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -9.4,
+   "maghrib": -5.3,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.52,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.49,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.45,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "KAMERUN",
+  "countryId": "184",
+  "states": 1,
+  "latRecovered": 0.99,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.4,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.026,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.7,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.61,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 96.7,
+    "mae": 0.51,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "PAPUA YENI GINE",
+  "countryId": "185",
+  "states": 1,
+  "latRecovered": -14.46,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.07,
+  "ishaAngle": 15.16,
+  "ishaGap": 65,
+  "ishaGapSd": 1,
+  "asrFactor": 1.061,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": -5,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.72,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "VENEZUELA",
+  "countryId": "186",
+  "states": 1,
+  "latRecovered": 5.06,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.5,
+  "ishaAngle": 15.45,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.015,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.6,
+   "maghrib": -5.1,
+   "isha": -4.6
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 56.7,
+    "mae": 0.54,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 53.3,
+    "mae": 0.66,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.6,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 53.3,
+    "mae": 0.64,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "HINDISTAN",
+  "countryId": "187",
+  "states": 1,
+  "latRecovered": 15.48,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.81,
+  "ishaAngle": 15.77,
+  "ishaGap": 66,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.99,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.5,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.67,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "BARBADOS",
+  "countryId": "188",
+  "states": 1,
+  "latRecovered": 8.6,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.56,
+  "ishaAngle": 15.54,
+  "ishaGap": 63.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.005,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.4,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.68,
+    "worst": 2.1
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.52,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "MISIR",
+  "countryId": "189",
+  "states": 1,
+  "latRecovered": 25.67,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.08,
+  "ishaAngle": 16.04,
+  "ishaGap": 72,
+  "ishaGapSd": 1,
+  "asrFactor": 0.969,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.8,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "SLOVENYA",
+  "countryId": "19",
+  "states": 1,
+  "latRecovered": 43.92,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.54,
+  "ishaAngle": 15.49,
+  "ishaGap": 88,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.942,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.56,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.75,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.84,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.58,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "SURIYE",
+  "countryId": "191",
+  "states": 1,
+  "latRecovered": 32.87,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.28,
+  "ishaAngle": 16.27,
+  "ishaGap": 78,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.955,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.75,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.82,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.83,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "URDUN",
+  "countryId": "192",
+  "states": 1,
+  "latRecovered": 25.87,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.1,
+  "ishaAngle": 16.04,
+  "ishaGap": 72,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.969,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.7,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.62,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.72,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.67,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "YENI ZELANDA",
+  "countryId": "193",
+  "states": 1,
+  "latRecovered": -39.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.18,
+  "ishaAngle": 15.23,
+  "ishaGap": 93,
+  "ishaGapSd": 2.9,
+  "asrFactor": 0.994,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.4,
+   "sunrise": -5.3,
+   "dhuhr": 0,
+   "asr": -6.1,
+   "maghrib": -5.3,
+   "isha": -5.6
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.47,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "PARAGUAY",
+  "countryId": "194",
+  "states": 1,
+  "latRecovered": -28.63,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.01,
+  "ishaAngle": 15.07,
+  "ishaGap": 75,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.965,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -9.4,
+   "maghrib": -5.3,
+   "isha": -5.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "NAMIBYA",
+  "countryId": "196",
+  "states": 1,
+  "latRecovered": -29.86,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.02,
+  "ishaAngle": 15.13,
+  "ishaGap": 76,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.97,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -8.9,
+   "maghrib": -5.1,
+   "isha": -5.6
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.58,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.5,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "FIJI",
+  "countryId": "197",
+  "states": 1,
+  "latRecovered": -21.44,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.03,
+  "ishaAngle": 15.05,
+  "ishaGap": 68,
+  "ishaGapSd": 1.2,
+  "asrFactor": 1.058,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 20,
+    "mae": 3.69,
+    "worst": 12.1
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.47,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "SAMOA",
+  "countryId": "198",
+  "states": 1,
+  "latRecovered": -17.87,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.05,
+  "ishaAngle": 15.04,
+  "ishaGap": 66,
+  "ishaGapSd": 1,
+  "asrFactor": 1.066,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "ARJANTIN",
+  "countryId": "199",
+  "states": 1,
+  "latRecovered": -37.3,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.13,
+  "ishaAngle": 15.17,
+  "ishaGap": 88,
+  "ishaGapSd": 2.7,
+  "asrFactor": 0.988,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -6.7,
+   "maghrib": -5.3,
+   "isha": -5.6
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.56,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.46,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "LETONYA",
+  "countryId": "20",
+  "states": 1,
+  "latRecovered": 54.46,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.78,
+  "ishaAngle": 15.73,
+  "ishaGap": 114.5,
+  "ishaGapSd": 3.2,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.3,
+   "maghrib": -4.8,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.46,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 53.3,
+    "mae": 0.93,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 1.11,
+    "worst": 2.5
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.8,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "SILI",
+  "countryId": "200",
+  "states": 1,
+  "latRecovered": -27.13,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.01,
+  "ishaAngle": 15.04,
+  "ishaGap": 73,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.96,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -10,
+   "maghrib": -5.2,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 2
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.47,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "URUGUAY",
+  "countryId": "201",
+  "states": 1,
+  "latRecovered": -33.36,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.06,
+  "ishaAngle": 15.11,
+  "ishaGap": 81,
+  "ishaGapSd": 2,
+  "asrFactor": 0.98,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -8,
+   "maghrib": -5.2,
+   "isha": -5.4
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.5,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.54,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.49,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "IRAN",
+  "countryId": "202",
+  "states": 1,
+  "latRecovered": 27.78,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.12,
+  "ishaAngle": 16.09,
+  "ishaGap": 73,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.962,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.3,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.75,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 2.3
+   }
+  }
+ },
+ {
+  "country": "LIBYA",
+  "countryId": "203",
+  "states": 1,
+  "latRecovered": 29.3,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.21,
+  "ishaAngle": 16.16,
+  "ishaGap": 75,
+  "ishaGapSd": 1,
+  "asrFactor": 0.96,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "FILISTIN",
+  "countryId": "204",
+  "states": 1,
+  "latRecovered": 28.03,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.14,
+  "ishaAngle": 16.12,
+  "ishaGap": 73.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.962,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "ISRAIL",
+  "countryId": "205",
+  "states": 1,
+  "latRecovered": 28.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.19,
+  "ishaAngle": 16.16,
+  "ishaGap": 74,
+  "ishaGapSd": 1,
+  "asrFactor": 0.963,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.3,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.6,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "KUDUS",
+  "countryId": "206",
+  "states": 1,
+  "latRecovered": 28.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.18,
+  "ishaAngle": 16.12,
+  "ishaGap": 74,
+  "ishaGapSd": 1,
+  "asrFactor": 0.961,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.1,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.77,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.75,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.71,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "RUSYA",
+  "countryId": "207",
+  "states": 1,
+  "latRecovered": 52.09,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.74,
+  "ishaAngle": 15.68,
+  "ishaGap": 106.5,
+  "ishaGapSd": 2.5,
+  "asrFactor": 0.94,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.7,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 53.3,
+    "mae": 0.96,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.81,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 0.93,
+    "worst": 2.8
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "BELARUS",
+  "countryId": "208",
+  "states": 1,
+  "latRecovered": 52.89,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.77,
+  "ishaAngle": 15.71,
+  "ishaGap": 109.5,
+  "ishaGapSd": 2.7,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.6,
+   "maghrib": -4.8,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.61,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.91,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.92,
+    "worst": 2.6
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "KUBA",
+  "countryId": "209",
+  "states": 1,
+  "latRecovered": 16.14,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.79,
+  "ishaAngle": 15.79,
+  "ishaGap": 66,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.991,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.6,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.62,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "FRANSA",
+  "countryId": "21",
+  "states": 1,
+  "latRecovered": 47.02,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.65,
+  "ishaAngle": 15.54,
+  "ishaGap": 94,
+  "ishaGapSd": 1.7,
+  "asrFactor": 0.935,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.3,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.7,
+   "isha": -4.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.8,
+    "worst": 2.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.82,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 0.93,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 53.3,
+    "mae": 0.82,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "SIERRA LEONE",
+  "countryId": "210",
+  "states": 1,
+  "latRecovered": 3.41,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.42,
+  "ishaAngle": 15.45,
+  "ishaGap": 63,
+  "ishaGapSd": 0.7,
+  "asrFactor": 1.02,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.4,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.46,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.55,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "MAN ADASI",
+  "countryId": "212",
+  "states": 1,
+  "latRecovered": 52.53,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.77,
+  "ishaAngle": 15.67,
+  "ishaGap": 107.5,
+  "ishaGapSd": 2.7,
+  "asrFactor": 0.936,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.5,
+   "dhuhr": 0,
+   "asr": -6.6,
+   "maghrib": -4.7,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.82,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.86,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 50,
+    "mae": 1,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "ASCENSION",
+  "countryId": "213",
+  "states": 1,
+  "latRecovered": -12.18,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.09,
+  "ishaAngle": 15.17,
+  "ishaGap": 64,
+  "ishaGapSd": 1,
+  "asrFactor": 1.055,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 0.9,
+   "maghrib": -5,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 2
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.52,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "GUNEY SUDAN",
+  "countryId": "214",
+  "states": 1,
+  "latRecovered": 0.37,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.39,
+  "ishaAngle": 15.42,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.028,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.5,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.51,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 86.7,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.48,
+    "worst": 1
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.59,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "ZIMBABVE",
+  "countryId": "216",
+  "states": 1,
+  "latRecovered": -23.84,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.02,
+  "ishaAngle": 15.05,
+  "ishaGap": 70,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.975,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -8.2,
+   "maghrib": -5.2,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.49,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 6.7,
+    "mae": 3.37,
+    "worst": 7.9
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.62,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.48,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "YUNANISTAN",
+  "countryId": "22",
+  "states": 1,
+  "latRecovered": 37.85,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.42,
+  "ishaAngle": 16.4,
+  "ishaGap": 84,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.947,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.7,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.5,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.79,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "ISPANYA",
+  "countryId": "23",
+  "states": 1,
+  "latRecovered": 36.08,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.41,
+  "ishaAngle": 16.32,
+  "ishaGap": 82,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.949,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.8,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.77,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "MALTA",
+  "countryId": "24",
+  "states": 1,
+  "latRecovered": 32.75,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.34,
+  "ishaAngle": 16.29,
+  "ishaGap": 78,
+  "ishaGapSd": 1.1,
+  "asrFactor": 0.958,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.77,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "ARNAVUTLUK",
+  "countryId": "25",
+  "states": 1,
+  "latRecovered": 39.65,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.46,
+  "ishaAngle": 16.42,
+  "ishaGap": 87,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -7.9,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.5,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.74,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.75,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.83,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "DANIMARKA",
+  "countryId": "26",
+  "states": 1,
+  "latRecovered": 53.57,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.79,
+  "ishaAngle": 15.73,
+  "ishaGap": 111.5,
+  "ishaGapSd": 2.9,
+  "asrFactor": 0.945,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -6.5,
+   "maghrib": -4.9,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.91,
+    "worst": 2.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 1.03,
+    "worst": 2.6
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "SIRBISTAN",
+  "countryId": "27",
+  "states": 1,
+  "latRecovered": 42.7,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.51,
+  "ishaAngle": 15.49,
+  "ishaGap": 86,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.948,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -4.8,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.58,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.85,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 46.7,
+    "mae": 0.91,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "MAKEDONYA",
+  "countryId": "28",
+  "states": 1,
+  "latRecovered": 38.98,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.46,
+  "ishaAngle": 16.41,
+  "ishaGap": 86,
+  "ishaGapSd": 1.3,
+  "asrFactor": 0.945,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.76,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.82,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.71,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "UKRAYNA-KIRIM",
+  "countryId": "29",
+  "states": 1,
+  "latRecovered": 42.58,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.53,
+  "ishaAngle": 15.48,
+  "ishaGap": 85.5,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.9
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.81,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.75,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.93,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 60,
+    "mae": 0.76,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "MONAKO",
+  "countryId": "3",
+  "states": 1,
+  "latRecovered": 41.2,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.54,
+  "ishaAngle": 16.46,
+  "ishaGap": 89,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.79,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.79,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 0.88,
+    "worst": 2.4
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "HIRVATISTAN",
+  "countryId": "30",
+  "states": 1,
+  "latRecovered": 42.54,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.59,
+  "ishaAngle": 15.46,
+  "ishaGap": 85.5,
+  "ishaGapSd": 1.5,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.85,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.79,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "LUKSEMBURG",
+  "countryId": "31",
+  "states": 1,
+  "latRecovered": 47.47,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.64,
+  "ishaAngle": 15.57,
+  "ishaGap": 95,
+  "ishaGapSd": 1.9,
+  "asrFactor": 0.936,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.44,
+    "worst": 1.1
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 2.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.77,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.79,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.67,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "IRLANDA",
+  "countryId": "32",
+  "states": 1,
+  "latRecovered": 51.78,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.75,
+  "ishaAngle": 15.68,
+  "ishaGap": 106,
+  "ishaGapSd": 2.5,
+  "asrFactor": 0.936,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.4,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -6.5,
+   "maghrib": -4.9,
+   "isha": -4.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.87,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.79,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.95,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "KARADAG",
+  "countryId": "34",
+  "states": 1,
+  "latRecovered": 39.37,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.44,
+  "ishaAngle": 16.42,
+  "ishaGap": 86,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.78,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "AVUSTURYA",
+  "countryId": "35",
+  "states": 1,
+  "latRecovered": 45.07,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.59,
+  "ishaAngle": 15.54,
+  "ishaGap": 90,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.939,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.71,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "NORVEC",
+  "countryId": "36",
+  "states": 1,
+  "latRecovered": 58.1,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.83,
+  "ishaAngle": 15.83,
+  "ishaGap": 129.5,
+  "ishaGapSd": 4.6,
+  "asrFactor": 0.939,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -5.1,
+   "maghrib": -4.8,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.98,
+    "worst": 2.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.89,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 43.3,
+    "mae": 1.32,
+    "worst": 2.6
+   },
+   "isha": {
+    "w1Pct": 63.3,
+    "mae": 0.77,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "ROMANYA",
+  "countryId": "37",
+  "states": 1,
+  "latRecovered": 41.6,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.57,
+  "ishaAngle": 15.46,
+  "ishaGap": 84,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.945,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -5,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.77,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.8,
+    "worst": 2.5
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "LIECHTENSTEIN",
+  "countryId": "38",
+  "states": 1,
+  "latRecovered": 44.84,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.6,
+  "ishaAngle": 15.5,
+  "ishaGap": 89,
+  "ishaGapSd": 1.7,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.8,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.52,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 63.3,
+    "mae": 0.81,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 0.93,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 63.3,
+    "mae": 0.78,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "POLONYA",
+  "countryId": "39",
+  "states": 1,
+  "latRecovered": 51.43,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.73,
+  "ishaAngle": 15.67,
+  "ishaGap": 105,
+  "ishaGapSd": 2.4,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.9,
+   "maghrib": -5,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 73.3,
+    "mae": 0.6,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.82,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 53.3,
+    "mae": 0.85,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 56.7,
+    "mae": 0.96,
+    "worst": 2.9
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.78,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "HOLLANDA",
+  "countryId": "4",
+  "states": 1,
+  "latRecovered": 50.51,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.7,
+  "ishaAngle": 15.67,
+  "ishaGap": 102,
+  "ishaGapSd": 2.5,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -6.8,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.54,
+    "worst": 1
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.76,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.84,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 43.3,
+    "mae": 1.05,
+    "worst": 2.3
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.72,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "UKRAYNA",
+  "countryId": "40",
+  "states": 1,
+  "latRecovered": 46.29,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.58,
+  "ishaAngle": 15.54,
+  "ishaGap": 92.5,
+  "ishaGapSd": 1.7,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.74,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.79,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.7,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "FINLANDIYA",
+  "countryId": "41",
+  "states": 1,
+  "latRecovered": 59.16,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.88,
+  "ishaAngle": 15.83,
+  "ishaGap": 134.5,
+  "ishaGapSd": 5,
+  "asrFactor": 0.952,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.7,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 50,
+    "mae": 1.03,
+    "worst": 2.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 40,
+    "mae": 1.23,
+    "worst": 3.1
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 2.4
+   }
+  }
+ },
+ {
+  "country": "LUBNAN",
+  "countryId": "42",
+  "states": 1,
+  "latRecovered": 30.74,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.25,
+  "ishaAngle": 16.2,
+  "ishaGap": 76,
+  "ishaGapSd": 1,
+  "asrFactor": 0.959,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.47,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.71,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.79,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.67,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.69,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "BULGARISTAN",
+  "countryId": "44",
+  "states": 1,
+  "latRecovered": 38.89,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.42,
+  "ishaAngle": 16.46,
+  "ishaGap": 86,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.948,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -7.8,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.74,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.71,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "PORTEKIZ",
+  "countryId": "45",
+  "states": 1,
+  "latRecovered": 37.77,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.43,
+  "ishaAngle": 16.38,
+  "ishaGap": 84,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.944,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 70,
+    "mae": 0.77,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.81,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.82,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "MOLDAVYA",
+  "countryId": "46",
+  "states": 1,
+  "latRecovered": 45.54,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.61,
+  "ishaAngle": 15.53,
+  "ishaGap": 91,
+  "ishaGapSd": 1.7,
+  "asrFactor": 0.938,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5.3,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.93,
+    "worst": 2.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 90,
+    "mae": 0.69,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.88,
+    "worst": 2.4
+   },
+   "isha": {
+    "w1Pct": 60,
+    "mae": 0.73,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "LITVANYA",
+  "countryId": "47",
+  "states": 1,
+  "latRecovered": 52.85,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.77,
+  "ishaAngle": 15.69,
+  "ishaGap": 109,
+  "ishaGapSd": 2.8,
+  "asrFactor": 0.946,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -6.4,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.45,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.82,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.9,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 43.3,
+    "mae": 1.01,
+    "worst": 2.5
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.69,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "GRONLAND",
+  "countryId": "48",
+  "states": 1,
+  "latRecovered": 63.33,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.98,
+  "ishaAngle": 15.87,
+  "ishaGap": 162,
+  "ishaGapSd": 6.2,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4,
+   "sunrise": -3.7,
+   "dhuhr": 0,
+   "asr": -2.5,
+   "maghrib": -4.4,
+   "isha": -4.7
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.53,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 30,
+    "mae": 1.48,
+    "worst": 3.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 2.4
+   },
+   "maghrib": {
+    "w1Pct": 26.7,
+    "mae": 2.56,
+    "worst": 11.2
+   },
+   "isha": {
+    "w1Pct": 63.3,
+    "mae": 0.86,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "ISVICRE",
+  "countryId": "49",
+  "states": 1,
+  "latRecovered": 45.19,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.61,
+  "ishaAngle": 15.52,
+  "ishaGap": 90,
+  "ishaGapSd": 1.8,
+  "asrFactor": 0.938,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.7,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.88,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.78,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.94,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "AZERBAYCAN",
+  "countryId": "5",
+  "states": 1,
+  "latRecovered": 35.98,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.37,
+  "ishaAngle": 16.33,
+  "ishaGap": 82,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.947,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -4.8,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.83,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.79,
+    "worst": 1.9
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.67,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "BERMUDA",
+  "countryId": "51",
+  "states": 1,
+  "latRecovered": 28.78,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.17,
+  "ishaAngle": 16.15,
+  "ishaGap": 74,
+  "ishaGapSd": 1,
+  "asrFactor": 0.957,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.4,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.74,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.68,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "MEKSIKA",
+  "countryId": "53",
+  "states": 1,
+  "latRecovered": 15.83,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.82,
+  "ishaAngle": 15.8,
+  "ishaGap": 66,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.988,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -5.6,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "BAHAMALAR",
+  "countryId": "54",
+  "states": 1,
+  "latRecovered": 18.21,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.87,
+  "ishaAngle": 15.82,
+  "ishaGap": 67,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.979,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.2,
+   "maghrib": -5,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.62,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.73,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "MALAVI",
+  "countryId": "55",
+  "states": 1,
+  "latRecovered": -19.67,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.03,
+  "ishaAngle": 15.09,
+  "ishaGap": 67,
+  "ishaGapSd": 1.1,
+  "asrFactor": 1.065,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2.6,
+   "maghrib": -5.1,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.52,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 1.2,
+    "worst": 6.5
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "VANUATU",
+  "countryId": "56",
+  "states": 1,
+  "latRecovered": -21.66,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.95,
+  "ishaAngle": 15.02,
+  "ishaGap": 68,
+  "ishaGapSd": 1.2,
+  "asrFactor": 1.052,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": -5.4,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 13.3,
+    "mae": 4.01,
+    "worst": 12.5
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "KOLOMBIYA",
+  "countryId": "57",
+  "states": 1,
+  "latRecovered": 2.5,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.4,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.022,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -3.1,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.58,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 96.7,
+    "mae": 0.53,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.76,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.7,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "GRENADA",
+  "countryId": "58",
+  "states": 1,
+  "latRecovered": 7.58,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.57,
+  "ishaAngle": 15.54,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.007,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.1,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.52,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.73,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.58,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "AVUSTRALYA",
+  "countryId": "59",
+  "states": 1,
+  "latRecovered": -37.53,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.14,
+  "ishaAngle": 15.17,
+  "ishaGap": 88.5,
+  "ishaGapSd": 2.4,
+  "asrFactor": 0.991,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -6.4,
+   "maghrib": -5.3,
+   "isha": -5.4
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 96.7,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "maghrib": {
+    "w1Pct": 93.3,
+    "mae": 0.37,
+    "worst": 1.2
+   },
+   "isha": {
+    "w1Pct": 100,
+    "mae": 0.46,
+    "worst": 0.9
+   }
+  }
+ },
+ {
+  "country": "ESTONYA",
+  "countryId": "6",
+  "states": 1,
+  "latRecovered": 57.58,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.87,
+  "ishaAngle": 15.81,
+  "ishaGap": 127,
+  "ishaGapSd": 4.2,
+  "asrFactor": 0.947,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -5.3,
+   "maghrib": -4.8,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 1.01,
+    "worst": 2.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.83,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 50,
+    "mae": 1.16,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "MOGOLISTAN",
+  "countryId": "60",
+  "states": 1,
+  "latRecovered": 47.16,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.65,
+  "ishaAngle": 15.56,
+  "ishaGap": 94,
+  "ishaGapSd": 2,
+  "asrFactor": 0.937,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.2,
+   "maghrib": -4.9,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 66.7,
+    "mae": 0.72,
+    "worst": 2
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.81,
+    "worst": 2.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.8,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.61,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "CIN",
+  "countryId": "61",
+  "states": 1,
+  "latRecovered": 48.28,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.68,
+  "ishaAngle": 15.61,
+  "ishaGap": 97,
+  "ishaGapSd": 2.1,
+  "asrFactor": 0.933,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.3,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.75,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.78,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.89,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "GURCISTAN",
+  "countryId": "62",
+  "states": 1,
+  "latRecovered": 38.98,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.44,
+  "ishaAngle": 16.42,
+  "ishaGap": 86,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.946,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -4.7,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.47,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.68,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.75,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "EKVATOR GINESI",
+  "countryId": "63",
+  "states": 1,
+  "latRecovered": -1.24,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.25,
+  "ishaAngle": 15.3,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.03,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.5,
+   "dhuhr": 0,
+   "asr": -2.2,
+   "maghrib": -5.5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 56.7,
+    "mae": 0.65,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "S. ARABISTAN",
+  "countryId": "64",
+  "states": 1,
+  "latRecovered": 22.52,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.97,
+  "ishaAngle": 15.98,
+  "ishaGap": 70,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.973,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.5,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.68,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.66,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "BURUNDI",
+  "countryId": "65",
+  "states": 1,
+  "latRecovered": -7.8,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.21,
+  "ishaAngle": 15.21,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.048,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.52,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "ÇURAÇAO",
+  "countryId": "66",
+  "states": 1,
+  "latRecovered": 7.72,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.59,
+  "ishaAngle": 15.56,
+  "ishaGap": 63,
+  "ishaGapSd": 0.6,
+  "asrFactor": 1.009,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4.1,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.5,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 93.3,
+    "mae": 0.67,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "GUNEY AFRIKA",
+  "countryId": "67",
+  "states": 1,
+  "latRecovered": -29.35,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.04,
+  "ishaAngle": 15.11,
+  "ishaGap": 75,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.969,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -9,
+   "maghrib": -5.2,
+   "isha": -5.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.47,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "PORTO RIKO",
+  "countryId": "68",
+  "states": 1,
+  "latRecovered": 14.15,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.72,
+  "ishaAngle": 15.73,
+  "ishaGap": 65,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.992,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.3,
+   "maghrib": -4.9,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.65,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "PERU",
+  "countryId": "69",
+  "states": 1,
+  "latRecovered": -20.31,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.06,
+  "ishaAngle": 15.03,
+  "ishaGap": 67.5,
+  "ishaGapSd": 1.2,
+  "asrFactor": 1.065,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": -5.2,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.5,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 1.85,
+    "worst": 9
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 93.3,
+    "mae": 0.45,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "MACARISTAN",
+  "countryId": "7",
+  "states": 1,
+  "latRecovered": 45,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.56,
+  "ishaAngle": 15.51,
+  "ishaGap": 90,
+  "ishaGapSd": 1.6,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -7.6,
+   "maghrib": -5,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.84,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.89,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 60,
+    "mae": 0.77,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "HAITI",
+  "countryId": "70",
+  "states": 1,
+  "latRecovered": 15.53,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.8,
+  "ishaAngle": 15.78,
+  "ishaGap": 66,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.992,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -5.5,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.69,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.63,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "TOGO",
+  "countryId": "71",
+  "states": 1,
+  "latRecovered": 1.63,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.42,
+  "ishaAngle": 15.4,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.023,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.47,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.5,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.71,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 86.7,
+    "mae": 0.63,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "DOMINIK CUMHURIYETI",
+  "countryId": "72",
+  "states": 1,
+  "latRecovered": 14.05,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.72,
+  "ishaAngle": 15.67,
+  "ishaGap": 65,
+  "ishaGapSd": 0.7,
+  "asrFactor": 0.989,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -5.5,
+   "maghrib": -4.9,
+   "isha": -4.7
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.75,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "LIBERYA",
+  "countryId": "73",
+  "states": 1,
+  "latRecovered": 1.33,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.38,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.025,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.7,
+   "maghrib": -4.8,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.55,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.78,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.57,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.49,
+    "worst": 1.1
+   }
+  }
+ },
+ {
+  "country": "SRI LANKA",
+  "countryId": "74",
+  "states": 1,
+  "latRecovered": 2.36,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.39,
+  "ishaAngle": 15.39,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.022,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -2.9,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 93.3,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.72,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 96.7,
+    "mae": 0.53,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "UGANDA",
+  "countryId": "75",
+  "states": 1,
+  "latRecovered": -1.57,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.28,
+  "ishaAngle": 15.28,
+  "ishaGap": 62,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.031,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.2,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.74,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.56,
+    "worst": 1.3
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.52,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "NEPAL",
+  "countryId": "76",
+  "states": 1,
+  "latRecovered": 23.89,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17,
+  "ishaAngle": 16.04,
+  "ishaGap": 71,
+  "ishaGapSd": 1,
+  "asrFactor": 0.968,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -6.7,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.56,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "PAKISTAN",
+  "countryId": "77",
+  "states": 1,
+  "latRecovered": 25.66,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.08,
+  "ishaAngle": 16.06,
+  "ishaGap": 72,
+  "ishaGapSd": 1,
+  "asrFactor": 0.962,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.1,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 63.3,
+    "mae": 0.74,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "GABON",
+  "countryId": "79",
+  "states": 1,
+  "latRecovered": -4.15,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.21,
+  "ishaAngle": 15.26,
+  "ishaGap": 62,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.039,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -1.4,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.66,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.56,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "ITALYA",
+  "countryId": "8",
+  "states": 1,
+  "latRecovered": 42.24,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.54,
+  "ishaAngle": 15.44,
+  "ishaGap": 85,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.943,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.7,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -5,
+   "isha": -4.8
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.51,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 60,
+    "mae": 0.82,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 80,
+    "mae": 0.65,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "w1Pct": 66.7,
+    "mae": 0.78,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.73,
+    "worst": 2.1
+   }
+  }
+ },
+ {
+  "country": "ORTA AFRIKA CUMHURIYETI",
+  "countryId": "80",
+  "states": 1,
+  "latRecovered": 1.29,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.42,
+  "ishaGap": 62,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.024,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.2,
+   "dhuhr": 0,
+   "asr": -2.6,
+   "maghrib": -4.7,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.58,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.67,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 96.7,
+    "mae": 0.58,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 96.7,
+    "mae": 0.52,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "RUANDA",
+  "countryId": "81",
+  "states": 1,
+  "latRecovered": -7.05,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.24,
+  "ishaAngle": 15.19,
+  "ishaGap": 63,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.046,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -0.8,
+   "maghrib": -5.2,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.49,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.77,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.54,
+    "worst": 1.6
+   }
+  }
+ },
+ {
+  "country": "GUYANA",
+  "countryId": "82",
+  "states": 1,
+  "latRecovered": 2.26,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.41,
+  "ishaAngle": 15.42,
+  "ishaGap": 62.5,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.023,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.9,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.55,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "BOLIVYA",
+  "countryId": "83",
+  "states": 1,
+  "latRecovered": -22.1,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.96,
+  "ishaAngle": 15.01,
+  "ishaGap": 69,
+  "ishaGapSd": 1.3,
+  "asrFactor": 1.04,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -0.8,
+   "maghrib": -5.3,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 6.7,
+    "mae": 4.49,
+    "worst": 10.7
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.52,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "NIJER",
+  "countryId": "84",
+  "states": 1,
+  "latRecovered": 12.68,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.69,
+  "ishaAngle": 15.71,
+  "ishaGap": 65,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.997,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5.1,
+   "dhuhr": 0,
+   "asr": -5.2,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.55,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.67,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.58,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "MIKRONEZYA",
+  "countryId": "85",
+  "states": 1,
+  "latRecovered": 2.36,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.39,
+  "ishaAngle": 15.41,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.022,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.9,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.68,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.62,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "w1Pct": 96.7,
+    "mae": 0.54,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 76.7,
+    "mae": 0.62,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "CEZAYIR",
+  "countryId": "86",
+  "states": 1,
+  "latRecovered": 33.74,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.29,
+  "ishaAngle": 16.26,
+  "ishaGap": 79,
+  "ishaGapSd": 1.2,
+  "asrFactor": 0.952,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -7.5,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.58,
+    "worst": 1.9
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.7,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.83,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 73.3,
+    "mae": 0.73,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "MARTINIK",
+  "countryId": "87",
+  "states": 1,
+  "latRecovered": 10.24,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.61,
+  "ishaAngle": 15.65,
+  "ishaGap": 64,
+  "ishaGapSd": 0.9,
+  "asrFactor": 1.004,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -4.6,
+   "maghrib": -4.9,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.65,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "w1Pct": 76.7,
+    "mae": 0.61,
+    "worst": 1.9
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 73.3,
+    "mae": 0.61,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.52,
+    "worst": 2
+   }
+  }
+ },
+ {
+  "country": "KOMORLAR",
+  "countryId": "88",
+  "states": 1,
+  "latRecovered": -15.95,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16,
+  "ishaAngle": 15.05,
+  "ishaGap": 65,
+  "ishaGapSd": 1.1,
+  "asrFactor": 1.063,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": -5.3,
+   "isha": -5.3
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 90,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.53,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 60,
+    "mae": 0.82,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 90,
+    "mae": 0.49,
+    "worst": 1.4
+   }
+  }
+ },
+ {
+  "country": "PANAMA",
+  "countryId": "89",
+  "states": 1,
+  "latRecovered": 4.82,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.47,
+  "ishaAngle": 15.48,
+  "ishaGap": 63,
+  "ishaGapSd": 1,
+  "asrFactor": 1.014,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.7,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 63.3,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "w1Pct": 90,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.69,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.77,
+    "worst": 1.8
+   },
+   "isha": {
+    "w1Pct": 63.3,
+    "mae": 0.46,
+    "worst": 1.2
+   }
+  }
+ },
+ {
+  "country": "BOSNA HERSEK",
+  "countryId": "9",
+  "states": 1,
+  "latRecovered": 42.33,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.58,
+  "ishaAngle": 15.46,
+  "ishaGap": 85,
+  "ishaGapSd": 1.4,
+  "asrFactor": 0.941,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -7.7,
+   "maghrib": -4.9,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.6,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 66.7,
+    "mae": 0.69,
+    "worst": 2
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.64,
+    "worst": 2.2
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.84,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.81,
+    "worst": 2.2
+   }
+  }
+ },
+ {
+  "country": "ANTIGUA VE BARBUDA",
+  "countryId": "90",
+  "states": 1,
+  "latRecovered": 12.69,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.72,
+  "ishaAngle": 15.68,
+  "ishaGap": 65,
+  "ishaGapSd": 0.9,
+  "asrFactor": 0.997,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -5.2,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.48,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.71,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.65,
+    "worst": 2.1
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.9
+   }
+  }
+ },
+ {
+  "country": "BURKINA FASO",
+  "countryId": "91",
+  "states": 1,
+  "latRecovered": 6.1,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.51,
+  "ishaAngle": 15.47,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.011,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4,
+   "maghrib": -5.1,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 86.7,
+    "mae": 0.62,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.64,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 43.3,
+    "mae": 0.7,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.6,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "KAZAKISTAN",
+  "countryId": "92",
+  "states": 1,
+  "latRecovered": 47.65,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 17.67,
+  "ishaAngle": 15.6,
+  "ishaGap": 95.5,
+  "ishaGapSd": 2.1,
+  "asrFactor": 0.94,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.6,
+   "dhuhr": 0,
+   "asr": -7.3,
+   "maghrib": -5.1,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.43,
+    "worst": 1.9
+   },
+   "sunrise": {
+    "w1Pct": 63.3,
+    "mae": 0.86,
+    "worst": 2.3
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 56.7,
+    "mae": 0.77,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "w1Pct": 60,
+    "mae": 0.98,
+    "worst": 2.2
+   },
+   "isha": {
+    "w1Pct": 70,
+    "mae": 0.68,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "BIRLESIK ARAP EMIRLIGI",
+  "countryId": "93",
+  "states": 1,
+  "latRecovered": 20.42,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.9,
+  "ishaAngle": 15.89,
+  "ishaGap": 68,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.976,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.5,
+   "maghrib": -5,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.53,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.7
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.67,
+    "worst": 1.6
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.61,
+    "worst": 1.7
+   }
+  }
+ },
+ {
+  "country": "KATAR",
+  "countryId": "94",
+  "states": 1,
+  "latRecovered": 21.38,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.95,
+  "ishaAngle": 15.96,
+  "ishaGap": 69,
+  "ishaGapSd": 0.8,
+  "asrFactor": 0.979,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -6.3,
+   "maghrib": -5,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 80,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.66,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 70,
+    "mae": 0.7,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 73.3,
+    "mae": 0.65,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 80,
+    "mae": 0.61,
+    "worst": 1.5
+   }
+  }
+ },
+ {
+  "country": "ETYOPYA",
+  "countryId": "95",
+  "states": 1,
+  "latRecovered": 4.45,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.43,
+  "ishaAngle": 15.46,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.017,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -3.8,
+   "maghrib": -5.1,
+   "isha": -5.5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 66.7,
+    "mae": 0.57,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "w1Pct": 73.3,
+    "mae": 0.63,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 66.7,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 66.7,
+    "mae": 0.57,
+    "worst": 2.2
+   }
+  }
+ },
+ {
+  "country": "TRINIDAT VE TOBAGO",
+  "countryId": "96",
+  "states": 1,
+  "latRecovered": 6.2,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.55,
+  "ishaAngle": 15.5,
+  "ishaGap": 63,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.011,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -4,
+   "maghrib": -5,
+   "isha": -5.1
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 93.3,
+    "mae": 0.54,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "w1Pct": 80,
+    "mae": 0.62,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 50,
+    "mae": 0.72,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "w1Pct": 70,
+    "mae": 0.69,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.6,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "BRUNEI",
+  "countryId": "97",
+  "states": 1,
+  "latRecovered": 0.37,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.4,
+  "ishaAngle": 15.32,
+  "ishaGap": 62,
+  "ishaGapSd": 1,
+  "asrFactor": 1.029,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -4.9,
+   "dhuhr": 0,
+   "asr": -2.5,
+   "maghrib": -5.1,
+   "isha": -4.9
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 46.7,
+    "mae": 0.58,
+    "worst": 1
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.65,
+    "worst": 2.1
+   },
+   "maghrib": {
+    "w1Pct": 53.3,
+    "mae": 0.62,
+    "worst": 2
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.54,
+    "worst": 1.8
+   }
+  }
+ },
+ {
+  "country": "MADAGASKAR",
+  "countryId": "98",
+  "states": 1,
+  "latRecovered": -22.74,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 15.95,
+  "ishaAngle": 15.03,
+  "ishaGap": 69,
+  "ishaGapSd": 1.2,
+  "asrFactor": 1.016,
+  "scored": 30,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -5,
+   "dhuhr": 0,
+   "asr": -3.2,
+   "maghrib": -5.1,
+   "isha": -5.2
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 83.3,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "w1Pct": 83.3,
+    "mae": 0.6,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 10,
+    "mae": 4.71,
+    "worst": 8.1
+   },
+   "maghrib": {
+    "w1Pct": 80,
+    "mae": 0.6,
+    "worst": 1.5
+   },
+   "isha": {
+    "w1Pct": 86.7,
+    "mae": 0.53,
+    "worst": 1.3
+   }
+  }
+ },
+ {
+  "country": "GUATEMALA",
+  "countryId": "99",
+  "states": 1,
+  "latRecovered": 10.34,
+  "horizon": 0.833,
+  "latSpreadSd": 0,
+  "imsakAngle": 16.62,
+  "ishaAngle": 15.6,
+  "ishaGap": 64,
+  "ishaGapSd": 0.8,
+  "asrFactor": 1.002,
+  "scored": 30,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -4.8,
+   "dhuhr": 0,
+   "asr": -4.6,
+   "maghrib": -4.9,
+   "isha": -5
+  },
+  "byCol": {
+   "imsak": {
+    "w1Pct": 76.7,
+    "mae": 0.57,
+    "worst": 1.4
+   },
+   "sunrise": {
+    "w1Pct": 86.7,
+    "mae": 0.59,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "w1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "asr": {
+    "w1Pct": 83.3,
+    "mae": 0.63,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "w1Pct": 76.7,
+    "mae": 0.66,
+    "worst": 1.7
+   },
+   "isha": {
+    "w1Pct": 83.3,
+    "mae": 0.55,
+    "worst": 1.3
+   }
+  }
+ }
+]

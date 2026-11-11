@@ -1,0 +1,79 @@
+{
+ "city": "mirny",
+ "nightFraction": {
+  "n": 120,
+  "med": 0.501,
+  "p10": 0.498,
+  "p90": 0.503
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yakutsk",
+ "lat": 62.53528,
+ "lon": 113.96111,
+ "rows": 365,
+ "solarGateMedAbs": 0.62,
+ "fajrAngle": {
+  "n": 239,
+  "med": 15.95,
+  "min": 14.5,
+  "max": 16.2,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 245,
+  "med": 15.05,
+  "min": 10.4,
+  "max": 15.5,
+  "jun": null,
+  "dec": 15.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.3,
+   "min": -0.9,
+   "max": 1.8
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.45,
+   "min": 0,
+   "max": 0.9
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.5,
+   "min": -1,
+   "max": 2
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -48.83,
+   "min": -80.1,
+   "max": -13
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.58,
+   "min": -0.5,
+   "max": 1.7
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-23",
+    "to": "2027-08-20",
+    "days": 120
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 406,
+  "isha": 421
+ }
+}

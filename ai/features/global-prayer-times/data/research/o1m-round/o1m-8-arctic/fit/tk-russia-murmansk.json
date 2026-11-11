@@ -1,0 +1,96 @@
+{
+ "city": "murmansk",
+ "nightFraction": {
+  "n": 91,
+  "med": 0.498,
+  "p10": 0.491,
+  "p90": 0.512
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Europe/Moscow",
+ "lat": 68.96778,
+ "lon": 33.09922,
+ "rows": 365,
+ "solarGateMedAbs": 1.11,
+ "fajrAngle": {
+  "n": 146,
+  "med": 15.95,
+  "min": 15.85,
+  "max": 16.1,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 153,
+  "med": 14.95,
+  "min": 12.35,
+  "max": 15.3,
+  "jun": null,
+  "dec": 14.95
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 200,
+   "med": 0.53,
+   "min": -1.1,
+   "max": 1.7
+  },
+  "dhuhr": {
+   "n": 200,
+   "med": 0.58,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 200,
+   "med": -1.27,
+   "min": -17.6,
+   "max": 9.1
+  },
+  "asrHanafi": {
+   "n": 200,
+   "med": -41.75,
+   "min": -74.7,
+   "max": -6.1
+  },
+  "maghrib": {
+   "n": 200,
+   "med": -0.98,
+   "min": -2.3,
+   "max": 2.9
+  }
+ },
+ "polar": {
+  "noonCollapse": [
+   {
+    "from": "2026-12-02",
+    "to": "2027-01-10",
+    "days": 40
+   }
+  ],
+  "nightMid": [
+   {
+    "from": "2027-04-06",
+    "to": "2027-09-07",
+    "days": 155
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2026-12-02",
+    "to": "2027-01-11",
+    "days": 41
+   },
+   {
+    "from": "2027-05-19",
+    "to": "2027-07-24",
+    "days": 67
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 431,
+  "isha": 1450
+ }
+}

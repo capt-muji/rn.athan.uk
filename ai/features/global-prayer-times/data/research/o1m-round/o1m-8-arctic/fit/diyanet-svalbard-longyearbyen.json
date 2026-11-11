@@ -1,0 +1,35 @@
+{
+ "city": "LONGYEARBYEN",
+ "nightFraction": null,
+ "country": "SVALBARD",
+ "source": "namazvakti.diyanet.gov.tr",
+ "tz": "Arctic/Longyearbyen",
+ "lat": 78.2232,
+ "lon": 15.6469,
+ "rows": 30,
+ "solarGateMedAbs": null,
+ "fajrAngle": null,
+ "ishaAngle": null,
+ "solarMargin": {
+  "sunrise": null,
+  "dhuhr": null,
+  "asrShafi": null,
+  "asrHanafi": null,
+  "maghrib": null
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": [
+   {
+    "from": "2026-11-12",
+    "to": "2026-12-11",
+    "days": 30
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 115,
+  "isha": 105
+ }
+}

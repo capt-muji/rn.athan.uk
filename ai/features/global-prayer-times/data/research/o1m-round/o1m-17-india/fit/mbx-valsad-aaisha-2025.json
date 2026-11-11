@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-valsad-aaisha-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 24.92,
+  "lon": 70.56
+ },
+ "coarse": {
+  "lat": 24.8,
+  "lon": 70.6,
+  "mae": 9.755
+ },
+ "mid": {
+  "lat": 24.92,
+  "lon": 70.56,
+  "mae": 9.745
+ },
+ "meta": {
+  "name": "Madresa Hidayatul Islam & Aaisha RD Ibadatkhana Trust",
+  "address": "Green Park 3, Green Park, Bhagdawada, Valsad, Gujarat, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 13,
+ "fajr_sweep": [
+  {
+   "a": 13,
+   "med": 2,
+   "mae": 5,
+   "mad": 5
+  },
+  {
+   "a": 13.05,
+   "med": 2,
+   "mae": 5.02,
+   "mad": 5
+  },
+  {
+   "a": 13.1,
+   "med": 2,
+   "mae": 5.08,
+   "mad": 5
+  },
+  {
+   "a": 13.15,
+   "med": 2,
+   "mae": 5.16,
+   "mad": 5
+  }
+ ],
+ "isha_angle": 18.35,
+ "isha_sweep": [
+  {
+   "a": 18.35,
+   "med": 1,
+   "mae": 6.1,
+   "mad": 7
+  },
+  {
+   "a": 18.2,
+   "med": 2,
+   "mae": 6.12,
+   "mad": 6
+  },
+  {
+   "a": 18.4,
+   "med": 1,
+   "mae": 6.12,
+   "mad": 6
+  },
+  {
+   "a": 18.5,
+   "med": 0,
+   "mae": 6.12,
+   "mad": 7
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 62,
+   "mad": 3
+  },
+  "1": {
+   "med": 5,
+   "mad": 5
+  }
+ },
+ "margins": {
+  "fajr": 2,
+  "sunrise": -8,
+  "dhuhr": 11,
+  "asr": 63,
+  "maghrib": -7,
+  "isha": 1
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 4.8,
+   "within1": 13.4,
+   "mae": 4.72,
+   "worst": -11,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 4.6,
+   "within1": 13.4,
+   "mae": 5.33,
+   "worst": -10,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 94.6,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 4,
+   "within1": 12.8,
+   "mae": 6.44,
+   "worst": 20,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 4.3,
+   "within1": 11.7,
+   "mae": 5.35,
+   "worst": 10,
+   "med": 0
+  },
+  "isha": {
+   "exact": 3.7,
+   "within1": 12.5,
+   "mae": 6.05,
+   "worst": -11,
+   "med": 0
+  }
+ },
+ "all_six_within1": 35,
+ "all_six_exact": 4,
+ "amplitude_fajr_min": 87
+}

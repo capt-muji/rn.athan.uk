@@ -1,0 +1,904 @@
+{
+ "meta": {
+  "points": {
+   "site": [
+    36.7538,
+    3.0588
+   ],
+   "implied": [
+    36.7838,
+    3.0488
+   ]
+  },
+  "months": [
+   "2",
+   "3",
+   "4",
+   "7",
+   "9",
+   "10",
+   "11",
+   "12"
+  ]
+ },
+ "site": {
+  "frozen1610": {
+   "perMonth": {
+    "2": {
+     "fajr": "19/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "28/29 exact, 29/29 w1, worst 1",
+     "asr": "16/29 exact, 29/29 w1, worst 1",
+     "maghrib": "28/29 exact, 29/29 w1, worst 1",
+     "isha": "0/29 exact, 15/29 w1, worst 2"
+    },
+    "3": {
+     "fajr": "24/30 exact, 30/30 w1, worst 1",
+     "sunrise": "29/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "10/30 exact, 30/30 w1, worst 1",
+     "maghrib": "25/30 exact, 30/30 w1, worst 1",
+     "isha": "8/30 exact, 30/30 w1, worst 1"
+    },
+    "4": {
+     "fajr": "25/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "28/29 exact, 29/29 w1, worst 1",
+     "asr": "6/29 exact, 29/29 w1, worst 1",
+     "maghrib": "23/29 exact, 29/29 w1, worst 1",
+     "isha": "22/29 exact, 29/29 w1, worst 1"
+    },
+    "7": {
+     "fajr": "14/16 exact, 16/16 w1, worst 1",
+     "sunrise": "13/16 exact, 16/16 w1, worst 1",
+     "dhuhr": "15/16 exact, 16/16 w1, worst 1",
+     "asr": "12/16 exact, 16/16 w1, worst 1",
+     "maghrib": "15/16 exact, 16/16 w1, worst 1",
+     "isha": "15/16 exact, 16/16 w1, worst 1"
+    },
+    "9": {
+     "fajr": "27/27 exact, 27/27 w1, worst 0",
+     "sunrise": "27/27 exact, 27/27 w1, worst 0",
+     "dhuhr": "26/27 exact, 27/27 w1, worst 1",
+     "asr": "9/27 exact, 27/27 w1, worst 1",
+     "maghrib": "27/27 exact, 27/27 w1, worst 0",
+     "isha": "26/27 exact, 27/27 w1, worst 1"
+    },
+    "10": {
+     "fajr": "27/29 exact, 29/29 w1, worst 1",
+     "sunrise": "26/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "11/29 exact, 29/29 w1, worst 1",
+     "maghrib": "27/29 exact, 29/29 w1, worst 1",
+     "isha": "23/29 exact, 29/29 w1, worst 1"
+    },
+    "11": {
+     "fajr": "22/30 exact, 30/30 w1, worst 1",
+     "sunrise": "28/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "15/30 exact, 30/30 w1, worst 1",
+     "maghrib": "28/30 exact, 30/30 w1, worst 1",
+     "isha": "8/30 exact, 30/30 w1, worst 1"
+    },
+    "12": {
+     "fajr": "17/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "21/29 exact, 29/29 w1, worst 1",
+     "maghrib": "29/29 exact, 29/29 w1, worst 0",
+     "isha": "0/29 exact, 9/29 w1, worst 2"
+    }
+   },
+   "total": {
+    "fajr": "175/219 exact, 219/219 w1, worst 1",
+    "sunrise": "208/219 exact, 219/219 w1, worst 1",
+    "dhuhr": "215/219 exact, 219/219 w1, worst 1",
+    "asr": "100/219 exact, 219/219 w1, worst 1",
+    "maghrib": "202/219 exact, 219/219 w1, worst 1",
+    "isha": "102/219 exact, 185/219 w1, worst 2"
+   },
+   "misses": {
+    "fajr": {
+     "n": 219,
+     "exact": 175,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "sunrise": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "dhuhr": {
+     "n": 219,
+     "exact": 215,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "asr": {
+     "n": 219,
+     "exact": 100,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "maghrib": {
+     "n": 219,
+     "exact": 202,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "isha": {
+     "n": 219,
+     "exact": 102,
+     "w1": 185,
+     "worst": 2,
+     "miss": [
+      {
+       "date": "2026-07-17",
+       "printed": 1306,
+       "value": 1304,
+       "d": 2
+      },
+      {
+       "date": "2026-07-18",
+       "printed": 1305,
+       "value": 1303,
+       "d": 2
+      },
+      {
+       "date": "2026-07-19",
+       "printed": 1304,
+       "value": 1302,
+       "d": 2
+      },
+      {
+       "date": "2026-07-20",
+       "printed": 1303,
+       "value": 1301,
+       "d": 2
+      },
+      {
+       "date": "2026-07-21",
+       "printed": 1302,
+       "value": 1300,
+       "d": 2
+      },
+      {
+       "date": "2026-07-22",
+       "printed": 1301,
+       "value": 1299,
+       "d": 2
+      },
+      {
+       "date": "2026-07-23",
+       "printed": 1300,
+       "value": 1298,
+       "d": 2
+      },
+      {
+       "date": "2026-07-24",
+       "printed": 1299,
+       "value": 1297,
+       "d": 2
+      },
+      {
+       "date": "2026-07-25",
+       "printed": 1298,
+       "value": 1296,
+       "d": 2
+      },
+      {
+       "date": "2026-07-29",
+       "printed": 1293,
+       "value": 1291,
+       "d": 2
+      },
+      {
+       "date": "2026-07-30",
+       "printed": 1292,
+       "value": 1290,
+       "d": 2
+      },
+      {
+       "date": "2026-08-02",
+       "printed": 1288,
+       "value": 1286,
+       "d": 2
+      },
+      {
+       "date": "2026-08-05",
+       "printed": 1284,
+       "value": 1282,
+       "d": 2
+      },
+      {
+       "date": "2026-08-10",
+       "printed": 1277,
+       "value": 1275,
+       "d": 2
+      },
+      {
+       "date": "2027-05-10",
+       "printed": 1279,
+       "value": 1277,
+       "d": 2
+      },
+      {
+       "date": "2027-05-11",
+       "printed": 1280,
+       "value": 1278,
+       "d": 2
+      },
+      {
+       "date": "2027-05-15",
+       "printed": 1285,
+       "value": 1283,
+       "d": 2
+      },
+      {
+       "date": "2027-05-16",
+       "printed": 1286,
+       "value": 1284,
+       "d": 2
+      },
+      {
+       "date": "2027-05-21",
+       "printed": 1292,
+       "value": 1290,
+       "d": 2
+      },
+      {
+       "date": "2027-05-22",
+       "printed": 1293,
+       "value": 1291,
+       "d": 2
+      },
+      {
+       "date": "2027-05-23",
+       "printed": 1294,
+       "value": 1292,
+       "d": 2
+      },
+      {
+       "date": "2027-05-24",
+       "printed": 1295,
+       "value": 1293,
+       "d": 2
+      },
+      {
+       "date": "2027-05-25",
+       "printed": 1296,
+       "value": 1294,
+       "d": 2
+      },
+      {
+       "date": "2027-05-26",
+       "printed": 1297,
+       "value": 1295,
+       "d": 2
+      },
+      {
+       "date": "2027-05-27",
+       "printed": 1298,
+       "value": 1296,
+       "d": 2
+      },
+      {
+       "date": "2027-05-28",
+       "printed": 1299,
+       "value": 1297,
+       "d": 2
+      },
+      {
+       "date": "2027-05-29",
+       "printed": 1300,
+       "value": 1298,
+       "d": 2
+      },
+      {
+       "date": "2027-05-30",
+       "printed": 1301,
+       "value": 1299,
+       "d": 2
+      },
+      {
+       "date": "2027-05-31",
+       "printed": 1302,
+       "value": 1300,
+       "d": 2
+      },
+      {
+       "date": "2027-06-01",
+       "printed": 1303,
+       "value": 1301,
+       "d": 2
+      },
+      {
+       "date": "2027-06-02",
+       "printed": 1304,
+       "value": 1302,
+       "d": 2
+      },
+      {
+       "date": "2027-06-03",
+       "printed": 1305,
+       "value": 1303,
+       "d": 2
+      },
+      {
+       "date": "2027-06-04",
+       "printed": 1306,
+       "value": 1304,
+       "d": 2
+      },
+      {
+       "date": "2027-06-05",
+       "printed": 1306,
+       "value": 1304,
+       "d": 2
+      }
+     ]
+    }
+   }
+  },
+  "isha1700": {
+   "perMonth": {
+    "2": {
+     "fajr": "19/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "28/29 exact, 29/29 w1, worst 1",
+     "asr": "16/29 exact, 29/29 w1, worst 1",
+     "maghrib": "28/29 exact, 29/29 w1, worst 1",
+     "isha": "24/29 exact, 29/29 w1, worst 1"
+    },
+    "3": {
+     "fajr": "24/30 exact, 30/30 w1, worst 1",
+     "sunrise": "29/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "10/30 exact, 30/30 w1, worst 1",
+     "maghrib": "25/30 exact, 30/30 w1, worst 1",
+     "isha": "22/30 exact, 30/30 w1, worst 1"
+    },
+    "4": {
+     "fajr": "25/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "28/29 exact, 29/29 w1, worst 1",
+     "asr": "6/29 exact, 29/29 w1, worst 1",
+     "maghrib": "23/29 exact, 29/29 w1, worst 1",
+     "isha": "23/29 exact, 29/29 w1, worst 1"
+    },
+    "7": {
+     "fajr": "14/16 exact, 16/16 w1, worst 1",
+     "sunrise": "13/16 exact, 16/16 w1, worst 1",
+     "dhuhr": "15/16 exact, 16/16 w1, worst 1",
+     "asr": "12/16 exact, 16/16 w1, worst 1",
+     "maghrib": "15/16 exact, 16/16 w1, worst 1",
+     "isha": "15/16 exact, 16/16 w1, worst 1"
+    },
+    "9": {
+     "fajr": "27/27 exact, 27/27 w1, worst 0",
+     "sunrise": "27/27 exact, 27/27 w1, worst 0",
+     "dhuhr": "26/27 exact, 27/27 w1, worst 1",
+     "asr": "9/27 exact, 27/27 w1, worst 1",
+     "maghrib": "27/27 exact, 27/27 w1, worst 0",
+     "isha": "26/27 exact, 27/27 w1, worst 1"
+    },
+    "10": {
+     "fajr": "27/29 exact, 29/29 w1, worst 1",
+     "sunrise": "26/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "11/29 exact, 29/29 w1, worst 1",
+     "maghrib": "27/29 exact, 29/29 w1, worst 1",
+     "isha": "27/29 exact, 29/29 w1, worst 1"
+    },
+    "11": {
+     "fajr": "22/30 exact, 30/30 w1, worst 1",
+     "sunrise": "28/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "15/30 exact, 30/30 w1, worst 1",
+     "maghrib": "28/30 exact, 30/30 w1, worst 1",
+     "isha": "28/30 exact, 30/30 w1, worst 1"
+    },
+    "12": {
+     "fajr": "17/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "21/29 exact, 29/29 w1, worst 1",
+     "maghrib": "29/29 exact, 29/29 w1, worst 0",
+     "isha": "29/29 exact, 29/29 w1, worst 0"
+    }
+   },
+   "total": {
+    "fajr": "175/219 exact, 219/219 w1, worst 1",
+    "sunrise": "208/219 exact, 219/219 w1, worst 1",
+    "dhuhr": "215/219 exact, 219/219 w1, worst 1",
+    "asr": "100/219 exact, 219/219 w1, worst 1",
+    "maghrib": "202/219 exact, 219/219 w1, worst 1",
+    "isha": "194/219 exact, 219/219 w1, worst 1"
+   },
+   "misses": {
+    "fajr": {
+     "n": 219,
+     "exact": 175,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "sunrise": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "dhuhr": {
+     "n": 219,
+     "exact": 215,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "asr": {
+     "n": 219,
+     "exact": 100,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "maghrib": {
+     "n": 219,
+     "exact": 202,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "isha": {
+     "n": 219,
+     "exact": 194,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    }
+   }
+  }
+ },
+ "implied": {
+  "frozen1610": {
+   "perMonth": {
+    "2": {
+     "fajr": "20/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "27/29 exact, 29/29 w1, worst 1",
+     "asr": "19/29 exact, 29/29 w1, worst 1",
+     "maghrib": "28/29 exact, 29/29 w1, worst 1",
+     "isha": "0/29 exact, 19/29 w1, worst 2"
+    },
+    "3": {
+     "fajr": "25/30 exact, 30/30 w1, worst 1",
+     "sunrise": "29/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "12/30 exact, 30/30 w1, worst 1",
+     "maghrib": "29/30 exact, 30/30 w1, worst 1",
+     "isha": "11/30 exact, 30/30 w1, worst 1"
+    },
+    "4": {
+     "fajr": "24/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "6/29 exact, 29/29 w1, worst 1",
+     "maghrib": "25/29 exact, 29/29 w1, worst 1",
+     "isha": "22/29 exact, 29/29 w1, worst 1"
+    },
+    "7": {
+     "fajr": "16/16 exact, 16/16 w1, worst 0",
+     "sunrise": "16/16 exact, 16/16 w1, worst 0",
+     "dhuhr": "16/16 exact, 16/16 w1, worst 0",
+     "asr": "13/16 exact, 16/16 w1, worst 1",
+     "maghrib": "15/16 exact, 16/16 w1, worst 1",
+     "isha": "15/16 exact, 16/16 w1, worst 1"
+    },
+    "9": {
+     "fajr": "26/27 exact, 27/27 w1, worst 1",
+     "sunrise": "24/27 exact, 27/27 w1, worst 1",
+     "dhuhr": "25/27 exact, 27/27 w1, worst 1",
+     "asr": "9/27 exact, 27/27 w1, worst 1",
+     "maghrib": "27/27 exact, 27/27 w1, worst 0",
+     "isha": "27/27 exact, 27/27 w1, worst 0"
+    },
+    "10": {
+     "fajr": "27/29 exact, 29/29 w1, worst 1",
+     "sunrise": "25/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "26/29 exact, 29/29 w1, worst 1",
+     "asr": "9/29 exact, 29/29 w1, worst 1",
+     "maghrib": "29/29 exact, 29/29 w1, worst 0",
+     "isha": "24/29 exact, 29/29 w1, worst 1"
+    },
+    "11": {
+     "fajr": "25/30 exact, 30/30 w1, worst 1",
+     "sunrise": "28/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "13/30 exact, 30/30 w1, worst 1",
+     "maghrib": "29/30 exact, 30/30 w1, worst 1",
+     "isha": "10/30 exact, 30/30 w1, worst 1"
+    },
+    "12": {
+     "fajr": "20/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "17/29 exact, 29/29 w1, worst 1",
+     "maghrib": "26/29 exact, 29/29 w1, worst 1",
+     "isha": "0/29 exact, 16/29 w1, worst 2"
+    }
+   },
+   "total": {
+    "fajr": "183/219 exact, 219/219 w1, worst 1",
+    "sunrise": "208/219 exact, 219/219 w1, worst 1",
+    "dhuhr": "212/219 exact, 219/219 w1, worst 1",
+    "asr": "98/219 exact, 219/219 w1, worst 1",
+    "maghrib": "208/219 exact, 219/219 w1, worst 1",
+    "isha": "109/219 exact, 196/219 w1, worst 2"
+   },
+   "misses": {
+    "fajr": {
+     "n": 219,
+     "exact": 183,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "sunrise": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "dhuhr": {
+     "n": 219,
+     "exact": 212,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "asr": {
+     "n": 219,
+     "exact": 98,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "maghrib": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "isha": {
+     "n": 219,
+     "exact": 109,
+     "w1": 196,
+     "worst": 2,
+     "miss": [
+      {
+       "date": "2026-07-17",
+       "printed": 1306,
+       "value": 1304,
+       "d": 2
+      },
+      {
+       "date": "2026-07-18",
+       "printed": 1305,
+       "value": 1303,
+       "d": 2
+      },
+      {
+       "date": "2026-07-19",
+       "printed": 1304,
+       "value": 1302,
+       "d": 2
+      },
+      {
+       "date": "2026-07-20",
+       "printed": 1303,
+       "value": 1301,
+       "d": 2
+      },
+      {
+       "date": "2026-07-21",
+       "printed": 1302,
+       "value": 1300,
+       "d": 2
+      },
+      {
+       "date": "2026-07-22",
+       "printed": 1301,
+       "value": 1299,
+       "d": 2
+      },
+      {
+       "date": "2026-07-23",
+       "printed": 1300,
+       "value": 1298,
+       "d": 2
+      },
+      {
+       "date": "2026-07-24",
+       "printed": 1299,
+       "value": 1297,
+       "d": 2
+      },
+      {
+       "date": "2026-07-25",
+       "printed": 1298,
+       "value": 1296,
+       "d": 2
+      },
+      {
+       "date": "2026-07-30",
+       "printed": 1292,
+       "value": 1290,
+       "d": 2
+      },
+      {
+       "date": "2027-05-10",
+       "printed": 1279,
+       "value": 1277,
+       "d": 2
+      },
+      {
+       "date": "2027-05-15",
+       "printed": 1285,
+       "value": 1283,
+       "d": 2
+      },
+      {
+       "date": "2027-05-21",
+       "printed": 1292,
+       "value": 1290,
+       "d": 2
+      },
+      {
+       "date": "2027-05-22",
+       "printed": 1293,
+       "value": 1291,
+       "d": 2
+      },
+      {
+       "date": "2027-05-23",
+       "printed": 1294,
+       "value": 1292,
+       "d": 2
+      },
+      {
+       "date": "2027-05-24",
+       "printed": 1295,
+       "value": 1293,
+       "d": 2
+      },
+      {
+       "date": "2027-05-25",
+       "printed": 1296,
+       "value": 1294,
+       "d": 2
+      },
+      {
+       "date": "2027-05-30",
+       "printed": 1301,
+       "value": 1299,
+       "d": 2
+      },
+      {
+       "date": "2027-05-31",
+       "printed": 1302,
+       "value": 1300,
+       "d": 2
+      },
+      {
+       "date": "2027-06-01",
+       "printed": 1303,
+       "value": 1301,
+       "d": 2
+      },
+      {
+       "date": "2027-06-02",
+       "printed": 1304,
+       "value": 1302,
+       "d": 2
+      },
+      {
+       "date": "2027-06-03",
+       "printed": 1305,
+       "value": 1303,
+       "d": 2
+      },
+      {
+       "date": "2027-06-04",
+       "printed": 1306,
+       "value": 1304,
+       "d": 2
+      }
+     ]
+    }
+   }
+  },
+  "isha1700": {
+   "perMonth": {
+    "2": {
+     "fajr": "20/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "27/29 exact, 29/29 w1, worst 1",
+     "asr": "19/29 exact, 29/29 w1, worst 1",
+     "maghrib": "28/29 exact, 29/29 w1, worst 1",
+     "isha": "28/29 exact, 29/29 w1, worst 1"
+    },
+    "3": {
+     "fajr": "25/30 exact, 30/30 w1, worst 1",
+     "sunrise": "29/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "12/30 exact, 30/30 w1, worst 1",
+     "maghrib": "29/30 exact, 30/30 w1, worst 1",
+     "isha": "23/30 exact, 30/30 w1, worst 1"
+    },
+    "4": {
+     "fajr": "24/29 exact, 29/29 w1, worst 1",
+     "sunrise": "28/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "6/29 exact, 29/29 w1, worst 1",
+     "maghrib": "25/29 exact, 29/29 w1, worst 1",
+     "isha": "24/29 exact, 29/29 w1, worst 1"
+    },
+    "7": {
+     "fajr": "16/16 exact, 16/16 w1, worst 0",
+     "sunrise": "16/16 exact, 16/16 w1, worst 0",
+     "dhuhr": "16/16 exact, 16/16 w1, worst 0",
+     "asr": "13/16 exact, 16/16 w1, worst 1",
+     "maghrib": "15/16 exact, 16/16 w1, worst 1",
+     "isha": "15/16 exact, 16/16 w1, worst 1"
+    },
+    "9": {
+     "fajr": "26/27 exact, 27/27 w1, worst 1",
+     "sunrise": "24/27 exact, 27/27 w1, worst 1",
+     "dhuhr": "25/27 exact, 27/27 w1, worst 1",
+     "asr": "9/27 exact, 27/27 w1, worst 1",
+     "maghrib": "27/27 exact, 27/27 w1, worst 0",
+     "isha": "26/27 exact, 27/27 w1, worst 1"
+    },
+    "10": {
+     "fajr": "27/29 exact, 29/29 w1, worst 1",
+     "sunrise": "25/29 exact, 29/29 w1, worst 1",
+     "dhuhr": "26/29 exact, 29/29 w1, worst 1",
+     "asr": "9/29 exact, 29/29 w1, worst 1",
+     "maghrib": "29/29 exact, 29/29 w1, worst 0",
+     "isha": "28/29 exact, 29/29 w1, worst 1"
+    },
+    "11": {
+     "fajr": "25/30 exact, 30/30 w1, worst 1",
+     "sunrise": "28/30 exact, 30/30 w1, worst 1",
+     "dhuhr": "30/30 exact, 30/30 w1, worst 0",
+     "asr": "13/30 exact, 30/30 w1, worst 1",
+     "maghrib": "29/30 exact, 30/30 w1, worst 1",
+     "isha": "27/30 exact, 30/30 w1, worst 1"
+    },
+    "12": {
+     "fajr": "20/29 exact, 29/29 w1, worst 1",
+     "sunrise": "29/29 exact, 29/29 w1, worst 0",
+     "dhuhr": "29/29 exact, 29/29 w1, worst 0",
+     "asr": "17/29 exact, 29/29 w1, worst 1",
+     "maghrib": "26/29 exact, 29/29 w1, worst 1",
+     "isha": "26/29 exact, 29/29 w1, worst 1"
+    }
+   },
+   "total": {
+    "fajr": "183/219 exact, 219/219 w1, worst 1",
+    "sunrise": "208/219 exact, 219/219 w1, worst 1",
+    "dhuhr": "212/219 exact, 219/219 w1, worst 1",
+    "asr": "98/219 exact, 219/219 w1, worst 1",
+    "maghrib": "208/219 exact, 219/219 w1, worst 1",
+    "isha": "197/219 exact, 219/219 w1, worst 1"
+   },
+   "misses": {
+    "fajr": {
+     "n": 219,
+     "exact": 183,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "sunrise": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "dhuhr": {
+     "n": 219,
+     "exact": 212,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "asr": {
+     "n": 219,
+     "exact": 98,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "maghrib": {
+     "n": 219,
+     "exact": 208,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    },
+    "isha": {
+     "n": 219,
+     "exact": 197,
+     "w1": 219,
+     "worst": 1,
+     "miss": []
+    }
+   }
+  }
+ },
+ "withheld": {
+  "2": {
+   "kept": 29,
+   "dropped": []
+  },
+  "3": {
+   "kept": 30,
+   "dropped": []
+  },
+  "4": {
+   "kept": 29,
+   "dropped": []
+  },
+  "7": {
+   "kept": 16,
+   "dropped": [
+    "2026-12-25",
+    "2026-12-26",
+    "2026-12-27",
+    "2026-12-28",
+    "2026-12-29",
+    "2026-12-30",
+    "2026-12-31",
+    "2027-01-01",
+    "2027-01-02",
+    "2027-01-03",
+    "2027-01-04",
+    "2027-01-05",
+    "2027-01-06"
+   ]
+  },
+  "9": {
+   "kept": 27,
+   "dropped": [
+    "2027-02-10",
+    "2027-02-11",
+    "2027-02-22"
+   ]
+  },
+  "10": {
+   "kept": 29,
+   "dropped": []
+  },
+  "11": {
+   "kept": 30,
+   "dropped": []
+  },
+  "12": {
+   "kept": 29,
+   "dropped": []
+  }
+ }
+}

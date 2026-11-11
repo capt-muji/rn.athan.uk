@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-pudukkottai-madina-2025.json",
+ "year": 2025,
+ "n_days": 351,
+ "point": {
+  "lat": 8.06,
+  "lon": 76.82
+ },
+ "coarse": {
+  "lat": 8,
+  "lon": 76.8,
+  "mae": 15.147
+ },
+ "mid": {
+  "lat": 8.06,
+  "lon": 76.82,
+  "mae": 15.108
+ },
+ "meta": {
+  "name": "al Madina Jumma masjid ",
+  "address": "Rajagopalapuram, Pudukkottai, Tamil Nadu, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "ta",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 19.55,
+ "fajr_sweep": [
+  {
+   "a": 19.55,
+   "med": 0,
+   "mae": 10.39,
+   "mad": 9
+  },
+  {
+   "a": 19.6,
+   "med": 0,
+   "mae": 10.39,
+   "mad": 9
+  },
+  {
+   "a": 19.65,
+   "med": 0,
+   "mae": 10.39,
+   "mad": 9
+  },
+  {
+   "a": 19.7,
+   "med": 0,
+   "mae": 10.39,
+   "mad": 9
+  }
+ ],
+ "isha_angle": 13,
+ "isha_sweep": [
+  {
+   "a": 13,
+   "med": -3,
+   "mae": 11.63,
+   "mad": 9
+  },
+  {
+   "a": 13.05,
+   "med": -4,
+   "mae": 11.65,
+   "mad": 9
+  },
+  {
+   "a": 13.1,
+   "med": -4,
+   "mae": 11.65,
+   "mad": 9
+  },
+  {
+   "a": 13.15,
+   "med": -4,
+   "mae": 11.73,
+   "mad": 9
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 50,
+   "mad": 11
+  },
+  "1": {
+   "med": -14,
+   "mad": 8
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -7,
+  "dhuhr": 23,
+  "asr": -14,
+  "maghrib": -34,
+  "isha": -3
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 6,
+   "within1": 21.7,
+   "mae": 10.32,
+   "worst": -28,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 10.5,
+   "within1": 26.8,
+   "mae": 2.52,
+   "worst": -5,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4.3,
+   "within1": 12.5,
+   "mae": 7.19,
+   "worst": 16,
+   "med": 0
+  },
+  "asr": {
+   "exact": 3.7,
+   "within1": 10,
+   "mae": 9.26,
+   "worst": 23,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 7.1,
+   "within1": 17.9,
+   "mae": 10.95,
+   "worst": 32,
+   "med": 0
+  },
+  "isha": {
+   "exact": 6.3,
+   "within1": 18.5,
+   "mae": 11.22,
+   "worst": 30,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 0
+}

@@ -1,0 +1,59 @@
+{
+ "label": "diy-samoa-apia",
+ "file": "data/diyanet-samoa-apia.json",
+ "lat": -13.8333,
+ "lon": -171.7667,
+ "tz": "Pacific/Apia",
+ "asr": "shafi",
+ "days": 30,
+ "span": [
+  "2026-11-12",
+  "2026-12-11"
+ ],
+ "fajrAngle": 18.02,
+ "ishaAngle": 16.81,
+ "columns": {
+  "fajr": {
+   "margin": -0.02,
+   "mae": 0.24,
+   "within1": 30,
+   "exact": 27,
+   "worst": 0.68
+  },
+  "sunrise": {
+   "margin": -6.95,
+   "mae": 0.26,
+   "within1": 30,
+   "exact": 25,
+   "worst": 0.72
+  },
+  "dhuhr": {
+   "margin": 4.72,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 27,
+   "worst": 0.57
+  },
+  "asr": {
+   "margin": 3.48,
+   "mae": 0.26,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.58
+  },
+  "maghrib": {
+   "margin": 6.42,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.53
+  },
+  "isha": {
+   "margin": 0,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.52
+  }
+ }
+}

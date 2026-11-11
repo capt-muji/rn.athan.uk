@@ -1,0 +1,204 @@
+{
+ "id": "cl-punta-arenas-wayback",
+ "name": "Punta Arenas",
+ "city": "Punta Arenas",
+ "tz": "America/Punta_Arenas",
+ "lat": -53.164,
+ "lon": -70.917,
+ "address": "city centre",
+ "rows": 62,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.5,
+  "ishaKind": "angle",
+  "isha": 17.6,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 3,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": -87
+  }
+ },
+ "zero": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 14.5,
+   "w1Pct": 40.3,
+   "mean": 44.06,
+   "worst": 91,
+   "med": 3,
+   "byYear": {
+    "2022": {
+     "w1Pct": 40.3,
+     "exactPct": 14.5,
+     "worst": 91
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.9,
+   "worst": 8,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.5,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.77,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 14.5,
+   "w1Pct": 40.3,
+   "mean": -44.56,
+   "worst": -93,
+   "med": -87,
+   "byYear": {
+    "2022": {
+     "w1Pct": 40.3,
+     "exactPct": 14.5,
+     "worst": -93
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 1.6,
+   "w1Pct": 4.8,
+   "mean": 41.06,
+   "worst": 88,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 4.8,
+     "exactPct": 1.6,
+     "worst": 88
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 79,
+   "w1Pct": 98.4,
+   "mean": -0.1,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 98.4,
+     "exactPct": 79,
+     "worst": 2
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 50,
+   "w1Pct": 100,
+   "mean": 0.5,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 50,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 72.6,
+   "w1Pct": 98.4,
+   "mean": -0.23,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 98.4,
+     "exactPct": 72.6,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 91.9,
+   "w1Pct": 98.4,
+   "mean": 0,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 98.4,
+     "exactPct": 91.9,
+     "worst": -2
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 1.6,
+   "w1Pct": 24.2,
+   "mean": 42.44,
+   "worst": 89,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 24.2,
+     "exactPct": 1.6,
+     "worst": 89
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

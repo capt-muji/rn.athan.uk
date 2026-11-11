@@ -1,0 +1,142 @@
+{
+ "rows": "$HOME/athan-gitree/census/o1m/o1m-17-india/data/iaac/Mau_IN-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 25.6167,
+  "lon": 80.8667
+ },
+ "n_days": 360,
+ "table_shift_min": 0,
+ "fajr_angle": 18.1,
+ "isha_angle": 18.07,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.27,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.33,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.41,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.44,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.31,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.33,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.41,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.42,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 59.23,
+   "med": 56
+  },
+  "1": {
+   "mae": 0.36,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 73.3,
+   "within1": 99.7,
+   "mae": 0.27,
+   "worst": 2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 62.2,
+   "within1": 100,
+   "mae": 0.38,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 51.4,
+   "within1": 100,
+   "mae": 0.49,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 64.2,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 65.8,
+   "within1": 100,
+   "mae": 0.34,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 71.7,
+   "within1": 100,
+   "mae": 0.28,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 359,
+ "isha_tier": {
+  "17": {
+   "mae": 5.14,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.41,
+   "med": 0,
+   "within1": 100,
+   "exact": 59.2,
+   "worst": 1
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.79,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 109
+}

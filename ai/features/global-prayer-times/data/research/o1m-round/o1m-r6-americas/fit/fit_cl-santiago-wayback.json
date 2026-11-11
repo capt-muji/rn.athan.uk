@@ -1,0 +1,326 @@
+{
+ "id": "cl-santiago-wayback",
+ "name": "Santiago",
+ "city": "Santiago",
+ "tz": "America/Santiago",
+ "lat": -33.449,
+ "lon": -70.669,
+ "address": "city centre",
+ "rows": 154,
+ "repairRows": 0,
+ "years": [
+  2018,
+  2022,
+  2023
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 16.7,
+  "ishaKind": "angle",
+  "isha": 18.1,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 6,
+   "dhuhr": 7,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 154,
+  "fajr": {
+   "exactPct": 33.1,
+   "w1Pct": 77.3,
+   "mean": -0.46,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 100,
+     "exactPct": 25.8,
+     "worst": 1
+    },
+    "2022": {
+     "w1Pct": 62,
+     "exactPct": 26.1,
+     "worst": -3
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.56,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2018": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    },
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.56,
+   "worst": 7,
+   "med": 7,
+   "byYear": {
+    "2018": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.43,
+   "worst": 8,
+   "med": 6,
+   "byYear": {
+    "2018": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    },
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.42,
+   "worst": 8,
+   "med": 6,
+   "byYear": {
+    "2018": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    },
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2023": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 8.4,
+   "w1Pct": 79.9,
+   "mean": 0.51,
+   "worst": 3,
+   "med": 1,
+   "byYear": {
+    "2018": {
+     "w1Pct": 83.9,
+     "exactPct": 0,
+     "worst": 3
+    },
+    "2022": {
+     "w1Pct": 79.3,
+     "exactPct": 12,
+     "worst": 2
+    },
+    "2023": {
+     "w1Pct": 77.4,
+     "exactPct": 6.5,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 154,
+  "fajr": {
+   "exactPct": 33.1,
+   "w1Pct": 77.3,
+   "mean": -0.46,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 100,
+     "exactPct": 25.8,
+     "worst": 1
+    },
+    "2022": {
+     "w1Pct": 62,
+     "exactPct": 26.1,
+     "worst": -3
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 53.2,
+   "w1Pct": 99.4,
+   "mean": -0.44,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 100,
+     "exactPct": 51.6,
+     "worst": -1
+    },
+    "2022": {
+     "w1Pct": 98.9,
+     "exactPct": 60.9,
+     "worst": -2
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 32.3,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 55.8,
+   "w1Pct": 100,
+   "mean": -0.44,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 100,
+     "exactPct": 45.2,
+     "worst": -1
+    },
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 53.3,
+     "worst": -1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 74.2,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 48.1,
+   "w1Pct": 92.2,
+   "mean": 0.43,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 64.5,
+     "exactPct": 0,
+     "worst": 2
+    },
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 79.3,
+     "worst": -1
+    },
+    "2023": {
+     "w1Pct": 96.8,
+     "exactPct": 3.2,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 55.2,
+   "w1Pct": 98.7,
+   "mean": 0.42,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 93.5,
+     "exactPct": 38.7,
+     "worst": 2
+    },
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 66.3,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 38.7,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 60.4,
+   "w1Pct": 78.6,
+   "mean": -0.49,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2018": {
+     "w1Pct": 96.8,
+     "exactPct": 83.9,
+     "worst": 2
+    },
+    "2022": {
+     "w1Pct": 65.2,
+     "exactPct": 48.9,
+     "worst": -3
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 71,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

@@ -1,0 +1,70 @@
+{
+ "point": [
+  -6.2088,
+  106.8456
+ ],
+ "year": 2027,
+ "fajrAngle": 20,
+ "ishaAngle": 17.75,
+ "columns": {
+  "fajr": {
+   "margin": 2.57,
+   "exact": 337,
+   "within1": 365,
+   "n": 365,
+   "pctExact": 92.3,
+   "pctWithin1": 100,
+   "worst": 0.6
+  },
+  "sunrise": {
+   "margin": -3.15,
+   "exact": 344,
+   "within1": 365,
+   "n": 365,
+   "pctExact": 94.2,
+   "pctWithin1": 100,
+   "worst": 0.6
+  },
+  "dhuhr": {
+   "margin": 2.58,
+   "exact": 354,
+   "within1": 365,
+   "n": 365,
+   "pctExact": 97,
+   "pctWithin1": 100,
+   "worst": 0.5
+  },
+  "asr": {
+   "margin": 2.57,
+   "exact": 345,
+   "within1": 364,
+   "n": 365,
+   "pctExact": 94.5,
+   "pctWithin1": 99.7,
+   "worst": 1
+  },
+  "maghrib": {
+   "margin": 3.3,
+   "exact": 339,
+   "within1": 365,
+   "n": 365,
+   "pctExact": 92.9,
+   "pctWithin1": 100,
+   "worst": 0.6
+  },
+  "isha": {
+   "margin": 3.55,
+   "exact": 342,
+   "within1": 365,
+   "n": 365,
+   "pctExact": 93.7,
+   "pctWithin1": 100,
+   "worst": 0.8
+  }
+ },
+ "amplitude": {
+  "fajrJan15": "04:27",
+  "fajrJul15": "04:45",
+  "span": 18
+ }
+}

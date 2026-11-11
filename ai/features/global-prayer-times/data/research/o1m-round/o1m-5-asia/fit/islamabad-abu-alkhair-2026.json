@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-islamabad-abu-alkhair-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 33.7,
+  "lon": 72.91,
+  "mae": 0.001
+ },
+ "coarse": {
+  "lat": 33.7,
+  "lon": 72.9,
+  "mae": 0.033
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0
+  },
+  {
+   "a": 17.8,
+   "med": -1,
+   "maeCentred": 0.12
+  },
+  {
+   "a": 18.2,
+   "med": 1,
+   "maeCentred": 0.12
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 17.2,
+   "med": -1,
+   "maeCentred": 0.09
+  },
+  {
+   "a": 16.8,
+   "med": 1,
+   "maeCentred": 0.1
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "maeCentred": 0
+  },
+  "1": {
+   "med": -55,
+   "maeCentred": 10.72
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 100,
+   "within1": 100,
+   "mae": 0,
+   "worst": 0,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 99.4,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 99.4,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 344,
+ "all_six_exact": 337,
+ "amplitude_fajr_min": 150
+}

@@ -1,0 +1,479 @@
+{
+  "cities": 29,
+  "distinct": 13,
+  "variants": [
+    {
+      "margins": "-0.5/+0.0/+0.5/+0.5/+3.5/+0.5",
+      "cities": [
+        "Bahawalpur",
+        "DeraGhaziKhan",
+        "DeraIsmailKhan",
+        "Lahore",
+        "Narowal",
+        "Sahiwal",
+        "Sargodha"
+      ]
+    },
+    {
+      "margins": "-0.5/-0.5/+0.5/+0.5/+3.5/+0.5",
+      "cities": [
+        "Jhang",
+        "Jhelum",
+        "Larkana",
+        "Mardan",
+        "MirpurKhas",
+        "Okara"
+      ]
+    },
+    {
+      "margins": "+0.0/+0.0/+0.5/+0.5/+3.5/+0.5",
+      "cities": [
+        "Gujranwala",
+        "Multan",
+        "Nawabshah",
+        "Peshawar"
+      ]
+    },
+    {
+      "margins": "-0.5/-0.5/+0.5/+0.0/+3.0/+0.0",
+      "cities": [
+        "Kohat",
+        "Rawalpindi"
+      ]
+    },
+    {
+      "margins": "-0.5/-0.5/+0.5/+0.5/+3.0/+0.5",
+      "cities": [
+        "Attock",
+        "Sukkur"
+      ]
+    },
+    {
+      "margins": "+0.0/+0.0/+1.0/+0.5/+3.5/+0.5",
+      "cities": [
+        "Faisalabad"
+      ]
+    },
+    {
+      "margins": "-5.5/-5.0/-4.5/-4.5/-1.5/-4.5",
+      "cities": [
+        "Hyderabad"
+      ]
+    },
+    {
+      "margins": "-0.5/-0.5/+0.5/+0.0/+3.0/+0.5",
+      "cities": [
+        "Karachi"
+      ]
+    },
+    {
+      "margins": "-1.0/-1.0/+0.0/+0.0/+3.0/+0.0",
+      "cities": [
+        "Islamabad"
+      ]
+    },
+    {
+      "margins": "+4.0/+4.0/+5.0/+4.5/+7.5/+5.0",
+      "cities": [
+        "Quetta"
+      ]
+    },
+    {
+      "margins": "-0.5/-0.5/+0.5/+0.0/+3.5/+0.5",
+      "cities": [
+        "Bahawalnagar"
+      ]
+    },
+    {
+      "margins": "+2.5/+2.0/+2.5/+2.5/+5.5/+2.0",
+      "cities": [
+        "Sialkot"
+      ]
+    },
+    {
+      "margins": "-1.0/-0.5/+0.0/+0.0/+3.0/+0.0",
+      "cities": [
+        "Swat"
+      ]
+    }
+  ],
+  "table": {
+    "Rawalpindi": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0,
+        "maghrib": 3,
+        "isha": 0
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Faisalabad": {
+      "margins": {
+        "fajr": 0,
+        "sunrise": 0,
+        "zuhr": 1,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Hyderabad": {
+      "margins": {
+        "fajr": -5.5,
+        "sunrise": -5,
+        "zuhr": -4.5,
+        "asr": -4.5,
+        "maghrib": -1.5,
+        "isha": -4.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Karachi": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0,
+        "maghrib": 3,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Lahore": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Islamabad": {
+      "margins": {
+        "fajr": -1,
+        "sunrise": -1,
+        "zuhr": 0,
+        "asr": 0,
+        "maghrib": 3,
+        "isha": 0
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "DeraGhaziKhan": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "DeraIsmailKhan": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Kohat": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0,
+        "maghrib": 3,
+        "isha": 0
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Larkana": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 363,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "MirpurKhas": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 364,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Multan": {
+      "margins": {
+        "fajr": 0,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Narowal": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Quetta": {
+      "margins": {
+        "fajr": 4,
+        "sunrise": 4,
+        "zuhr": 5,
+        "asr": 4.5,
+        "maghrib": 7.5,
+        "isha": 5
+      },
+      "days": 365,
+      "fit": "o1m-39, new chart",
+      "six": 260
+    },
+    "Sahiwal": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-28, single edition",
+      "six": null
+    },
+    "Attock": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 297
+    },
+    "Bahawalnagar": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 293
+    },
+    "Bahawalpur": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 304
+    },
+    "Gujranwala": {
+      "margins": {
+        "fajr": 0,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 295
+    },
+    "Jhang": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 317
+    },
+    "Jhelum": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 291
+    },
+    "Nawabshah": {
+      "margins": {
+        "fajr": 0,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 345
+    },
+    "Okara": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 307
+    },
+    "Sargodha": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 315
+    },
+    "Sialkot": {
+      "margins": {
+        "fajr": 2.5,
+        "sunrise": 2,
+        "zuhr": 2.5,
+        "asr": 2.5,
+        "maghrib": 5.5,
+        "isha": 2
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 101
+    },
+    "Sukkur": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, both editions united",
+      "six": 328
+    },
+    "Mardan": {
+      "margins": {
+        "fajr": -0.5,
+        "sunrise": -0.5,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 365,
+      "fit": "o1m-39, new chart",
+      "six": 248
+    },
+    "Swat": {
+      "margins": {
+        "fajr": -1,
+        "sunrise": -0.5,
+        "zuhr": 0,
+        "asr": 0,
+        "maghrib": 3,
+        "isha": 0
+      },
+      "days": 365,
+      "fit": "o1m-39, new chart",
+      "six": 285
+    },
+    "Peshawar": {
+      "margins": {
+        "fajr": 0,
+        "sunrise": 0,
+        "zuhr": 0.5,
+        "asr": 0.5,
+        "maghrib": 3.5,
+        "isha": 0.5
+      },
+      "days": 358,
+      "fit": "o1m-39, new chart",
+      "six": 302
+    }
+  }
+}

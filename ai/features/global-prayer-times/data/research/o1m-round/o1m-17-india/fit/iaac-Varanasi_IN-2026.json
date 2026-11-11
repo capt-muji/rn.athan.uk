@@ -1,0 +1,134 @@
+{
+ "rows": "data/iaac/Varanasi_IN-2026.json",
+ "year": 2026,
+ "n_days": 360,
+ "declared_point": [
+  25.3167,
+  83
+ ],
+ "solved_point": {
+  "lat": 25.567,
+  "lon": 82.8,
+  "mae": 0.4
+ },
+ "fajr_angle": 18.1,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.53,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.75,
+   "mae": 1.17,
+   "mad": 0,
+   "med": -1
+  },
+  {
+   "a": 18.3,
+   "mae": 1.43,
+   "mad": 0,
+   "med": 1
+  },
+  {
+   "a": 17.55,
+   "mae": 2.07,
+   "mad": 0,
+   "med": -2
+  }
+ ],
+ "isha_angle": 18.15,
+ "isha_sweep": [
+  {
+   "a": 18.15,
+   "mae": 0.27,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.2,
+   "mae": 0.3,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.25,
+   "mae": 0.33,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 57,
+   "mad": 10.5
+  },
+  "1": {
+   "med": 1,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 1,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 4,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 49.7,
+   "within1": 97.5,
+   "mae": 0.53,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 63.9,
+   "within1": 98.9,
+   "mae": 0.37,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 83.6,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 68.6,
+   "within1": 100,
+   "mae": 0.31,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 71.4,
+   "within1": 100,
+   "mae": 0.29,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 68.3,
+   "within1": 99.4,
+   "mae": 0.32,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 345,
+ "all_six_exact": 51,
+ "amplitude_fajr_min": 108
+}

@@ -1,0 +1,234 @@
+{
+ "engine": "adhan 4.4.6",
+ "recipe": "MWL 18/17 Shafi, zero margins",
+ "point": "62.2415,25.7209",
+ "years": {
+  "2023": {
+   "rows": 148,
+   "substitutionRun": [
+    "2023-08-01",
+    "2023-09-07"
+   ],
+   "scored": 111,
+   "per": {
+    "fajr": {
+     "exact": 92,
+     "within1": 111,
+     "of": 111,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 83,
+     "within1": 111,
+     "of": 111,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 98,
+     "within1": 111,
+     "of": 111,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 5,
+     "within1": 41,
+     "of": 111,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 77,
+     "within1": 111,
+     "of": 111,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 90,
+     "within1": 111,
+     "of": 111,
+     "worst": 1
+    }
+   }
+  },
+  "2024": {
+   "rows": 351,
+   "substitutionRun": [
+    "2024-04-05",
+    "2024-09-07"
+   ],
+   "scored": 202,
+   "per": {
+    "fajr": {
+     "exact": 166,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 169,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 183,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 5,
+     "within1": 51,
+     "of": 202,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 174,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 144,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    }
+   }
+  },
+  "2025": {
+   "rows": 352,
+   "substitutionRun": [
+    "2025-04-05",
+    "2025-09-07"
+   ],
+   "scored": 203,
+   "per": {
+    "fajr": {
+     "exact": 173,
+     "within1": 203,
+     "of": 203,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 164,
+     "within1": 203,
+     "of": 203,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 185,
+     "within1": 203,
+     "of": 203,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 5,
+     "within1": 45,
+     "of": 203,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 171,
+     "within1": 203,
+     "of": 203,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 144,
+     "within1": 203,
+     "of": 203,
+     "worst": 1
+    }
+   }
+  },
+  "2026": {
+   "rows": 353,
+   "substitutionRun": [
+    "2026-04-05",
+    "2026-09-07"
+   ],
+   "scored": 202,
+   "per": {
+    "fajr": {
+     "exact": 169,
+     "within1": 201,
+     "of": 202,
+     "worst": 59
+    },
+    "sunrise": {
+     "exact": 158,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 187,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 5,
+     "within1": 52,
+     "of": 202,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 167,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 147,
+     "within1": 202,
+     "of": 202,
+     "worst": 1
+    }
+   }
+  },
+  "2027": {
+   "rows": 30,
+   "substitutionRun": null,
+   "scored": 30,
+   "per": {
+    "fajr": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 23,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 26,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 0,
+     "within1": 0,
+     "of": 30,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 25,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 25,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    }
+   }
+  }
+ }
+}

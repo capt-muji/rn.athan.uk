@@ -1,0 +1,79 @@
+{
+ "city": "koryazhma",
+ "nightFraction": {
+  "n": 112,
+  "med": 0.501,
+  "p10": 0.497,
+  "p90": 0.503
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Europe/Moscow",
+ "lat": 61.31242,
+ "lon": 47.14829,
+ "rows": 365,
+ "solarGateMedAbs": 0.53,
+ "fajrAngle": {
+  "n": 248,
+  "med": 15.95,
+  "min": 10.55,
+  "max": 16.1,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 254,
+  "med": 15,
+  "min": 10.55,
+  "max": 15.3,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.32,
+   "min": -0.4,
+   "max": 1.2
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.38,
+   "min": 0,
+   "max": 0.8
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.35,
+   "min": -1.8,
+   "max": 3
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.12,
+   "min": -79.1,
+   "max": -15.8
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.33,
+   "min": -1,
+   "max": 2
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-27",
+    "to": "2027-08-16",
+    "days": 112
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 402,
+  "isha": 417
+ }
+}

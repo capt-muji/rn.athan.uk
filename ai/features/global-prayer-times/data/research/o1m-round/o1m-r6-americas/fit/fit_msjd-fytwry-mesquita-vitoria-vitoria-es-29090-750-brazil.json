@@ -1,0 +1,204 @@
+{
+ "id": "msjd-fytwry-mesquita-vitoria-vitoria-es-29090-750-brazil",
+ "name": "مسجد فيتوريا  Mesquita Vitória - VITÓRIA, ES",
+ "city": "مسجد فيتوريا  Mesquita Vitória - VITÓRIA, ES",
+ "tz": "America/Sao_Paulo",
+ "lat": -20.2556414,
+ "lon": -40.2665494,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.8,
+  "ishaKind": "angle",
+  "isha": 16.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 7.4,
+   "w1Pct": 99.7,
+   "mean": -0.93,
+   "worst": -2,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 99.7,
+     "exactPct": 7.4,
+     "worst": -2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 18.1,
+   "w1Pct": 83.8,
+   "mean": 0.01,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 83.8,
+     "exactPct": 18.1,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 8.8,
+   "w1Pct": 100,
+   "mean": 0.91,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 8.8,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 92.3,
+   "w1Pct": 100,
+   "mean": 0.07,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 92.3,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 18.1,
+   "w1Pct": 83.8,
+   "mean": 0.01,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 83.8,
+     "exactPct": 18.1,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 91.2,
+   "w1Pct": 100,
+   "mean": -0.09,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 91.2,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 67
+}

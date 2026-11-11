@@ -1,0 +1,213 @@
+{
+ "year": 2026,
+ "variants": 9,
+ "records": [
+  {
+   "id": 10633,
+   "name": "Сарытоғай",
+   "region": "Түркістан облысы",
+   "lat": 42.599038,
+   "set": "A",
+   "marginAgreed": 3,
+   "rows": 365,
+   "blocks": {
+    "3": 336,
+    "5": 29
+   },
+   "transitions": [
+    {
+     "from": "2026-12-02",
+     "to": "2026-12-03",
+     "was": 3,
+     "now": 5
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:58.984Z"
+  },
+  {
+   "id": 53,
+   "name": "Павлодар қаласы",
+   "region": "Павлодар облысы",
+   "lat": 52.315556,
+   "set": "B",
+   "marginAgreed": 5,
+   "rows": 365,
+   "blocks": {
+    "3": 198,
+    "5": 167
+   },
+   "transitions": [
+    {
+     "from": "2026-06-16",
+     "to": "2026-06-17",
+     "was": 5,
+     "now": 3
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:49.183Z"
+  },
+  {
+   "id": 6023,
+   "name": "Шолпан",
+   "region": "Абай облысы",
+   "lat": 47.062351,
+   "set": "A",
+   "marginAgreed": 3,
+   "rows": 365,
+   "blocks": {
+    "3": 241,
+    "5": 124
+   },
+   "transitions": [
+    {
+     "from": "2026-08-29",
+     "to": "2026-08-30",
+     "was": 3,
+     "now": 5
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:50.198Z"
+  },
+  {
+   "id": 7307,
+   "name": "Тасқұдық",
+   "region": "Атырау облысы",
+   "lat": 47.788858,
+   "set": "A",
+   "marginAgreed": 3,
+   "rows": 365,
+   "blocks": {
+    "3": 87,
+    "5": 278
+   },
+   "transitions": [
+    {
+     "from": "2026-03-28",
+     "to": "2026-03-29",
+     "was": 3,
+     "now": 5
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:52.135Z"
+  },
+  {
+   "id": 7581,
+   "name": "Жігер",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 49.692263,
+   "set": "B",
+   "marginAgreed": 5,
+   "rows": 365,
+   "blocks": {
+    "3": 191,
+    "5": 174
+   },
+   "transitions": [
+    {
+     "from": "2026-06-23",
+     "to": "2026-06-24",
+     "was": 5,
+     "now": 3
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:53.130Z"
+  },
+  {
+   "id": 8429,
+   "name": "Тасарал",
+   "region": "Қарағанды облысы",
+   "lat": 46.302924,
+   "set": "A",
+   "marginAgreed": 3,
+   "rows": 365,
+   "blocks": {
+    "3": 74,
+    "5": 291
+   },
+   "transitions": [
+    {
+     "from": "2026-03-15",
+     "to": "2026-03-16",
+     "was": 3,
+     "now": 5
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:54.579Z"
+  },
+  {
+   "id": 9597,
+   "name": "Жаңатілек",
+   "region": "Павлодар облысы",
+   "lat": 51.780409,
+   "set": "B",
+   "marginAgreed": 5,
+   "rows": 365,
+   "blocks": {
+    "3": 290,
+    "5": 75
+   },
+   "transitions": [
+    {
+     "from": "2026-03-16",
+     "to": "2026-03-17",
+     "was": 5,
+     "now": 3
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:56.017Z"
+  },
+  {
+   "id": 9699,
+   "name": "Алексеевка",
+   "region": "Павлодар облысы",
+   "lat": 52.5301,
+   "set": "B",
+   "marginAgreed": 5,
+   "rows": 365,
+   "blocks": {
+    "3": 125,
+    "5": 240
+   },
+   "transitions": [
+    {
+     "from": "2026-08-28",
+     "to": "2026-08-29",
+     "was": 5,
+     "now": 3
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:56.824Z"
+  },
+  {
+   "id": 9762,
+   "name": "Междуозерное",
+   "region": "Солтүстік Қазақстан облысы",
+   "lat": 53.447639,
+   "set": "B",
+   "marginAgreed": 5,
+   "rows": 365,
+   "blocks": {
+    "3": 93,
+    "5": 272
+   },
+   "transitions": [
+    {
+     "from": "2026-09-29",
+     "to": "2026-09-30",
+     "was": 5,
+     "now": 3
+    }
+   ],
+   "wrongBlockIsOppositeMargin": true,
+   "capturedAt": "2026-11-11T13:02:57.608Z"
+  }
+ ]
+}

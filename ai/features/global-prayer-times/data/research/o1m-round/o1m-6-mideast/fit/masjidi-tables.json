@@ -1,0 +1,1822 @@
+{
+ "144": {
+  "label": "Kuwait national",
+  "city": "Kuwait City",
+  "anchor": [
+   29.3759,
+   47.9774
+  ],
+  "params": {
+   "lat": 29.313,
+   "lon": 47.996,
+   "h0": -0.836,
+   "fa": 18.025,
+   "ia": 17.5,
+   "f": 1.0,
+   "dm": -0.038
+  },
+  "rms": 0.539,
+  "total": {
+   "exactPct": 80.0,
+   "w1Pct": 100.0,
+   "mae": 0.208,
+   "max": 18,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 76.8,
+    "w1Pct": 99.7,
+    "mae": 0.279,
+    "max": 18
+   },
+   "Sunrise": {
+    "exactPct": 79.0,
+    "w1Pct": 100.0,
+    "mae": 0.21,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 91.0,
+    "w1Pct": 100.0,
+    "mae": 0.09,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 78.1,
+    "w1Pct": 100.0,
+    "mae": 0.219,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 79.0,
+    "w1Pct": 100.0,
+    "mae": 0.21,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 76.0,
+    "w1Pct": 100.0,
+    "mae": 0.24,
+    "max": 1
+   }
+  },
+  "outliers": 1,
+  "year": 2026
+ },
+ "164": {
+  "label": "Qatar Al-Rayyan",
+  "city": "Al-Rayyan",
+  "anchor": [
+   25.2919,
+   51.4244
+  ],
+  "params": {
+   "lat": 24.773,
+   "lon": 51.224,
+   "h0": -1.067,
+   "fa": 18.575,
+   "ia": 20.112,
+   "f": 1.0,
+   "dm": -0.256
+  },
+  "rms": 2.015,
+  "total": {
+   "exactPct": 39.9,
+   "w1Pct": 85.3,
+   "mae": 1.112,
+   "max": 9,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 36.9,
+    "w1Pct": 98.9,
+    "mae": 0.642,
+    "max": 2
+   },
+   "Sunrise": {
+    "exactPct": 33.3,
+    "w1Pct": 96.2,
+    "mae": 0.705,
+    "max": 2
+   },
+   "Dhuhr": {
+    "exactPct": 94.3,
+    "w1Pct": 100.0,
+    "mae": 0.057,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 32.2,
+    "w1Pct": 97.5,
+    "mae": 0.702,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 35.2,
+    "w1Pct": 93.2,
+    "mae": 0.716,
+    "max": 2
+   },
+   "Isha": {
+    "exactPct": 7.7,
+    "w1Pct": 26.0,
+    "mae": 3.847,
+    "max": 9
+   }
+  },
+  "outliers": 323,
+  "year": 2026
+ },
+ "5883": {
+  "label": "Bahrain Manama",
+  "city": "Manama",
+  "anchor": [
+   26.2235,
+   50.5853
+  ],
+  "params": {
+   "lat": 26.174,
+   "lon": 50.604,
+   "h0": -0.986,
+   "fa": 18.188,
+   "ia": 17.844,
+   "f": 1.0,
+   "dm": 1.212
+  },
+  "rms": 0.331,
+  "total": {
+   "exactPct": 87.7,
+   "w1Pct": 100.0,
+   "mae": 0.123,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 90.7,
+    "w1Pct": 100.0,
+    "mae": 0.093,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 91.0,
+    "w1Pct": 100.0,
+    "mae": 0.09,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 97.0,
+    "w1Pct": 100.0,
+    "mae": 0.03,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 87.4,
+    "w1Pct": 100.0,
+    "mae": 0.126,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 84.4,
+    "w1Pct": 100.0,
+    "mae": 0.156,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 75.4,
+    "w1Pct": 100.0,
+    "mae": 0.246,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2029
+ },
+ "173": {
+  "label": "Iraq Hawija",
+  "city": "Hawija",
+  "anchor": [
+   35.32,
+   43.77
+  ],
+  "params": {
+   "lat": 34.42,
+   "lon": 42.957,
+   "h0": -0.948,
+   "fa": 16.194,
+   "ia": 16.094,
+   "f": 1.05,
+   "dm": 1.319
+  },
+  "rms": 2.511,
+  "total": {
+   "exactPct": 28.1,
+   "w1Pct": 55.2,
+   "mae": 1.768,
+   "max": 9,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 18.3,
+    "w1Pct": 45.6,
+    "mae": 2.421,
+    "max": 9
+   },
+   "Sunrise": {
+    "exactPct": 40.4,
+    "w1Pct": 84.7,
+    "mae": 0.757,
+    "max": 3
+   },
+   "Dhuhr": {
+    "exactPct": 79.8,
+    "w1Pct": 100.0,
+    "mae": 0.202,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 16.9,
+    "w1Pct": 46.4,
+    "mae": 1.579,
+    "max": 4
+   },
+   "Maghrib": {
+    "exactPct": 6.6,
+    "w1Pct": 31.7,
+    "mae": 1.992,
+    "max": 4
+   },
+   "Isha": {
+    "exactPct": 6.8,
+    "w1Pct": 23.0,
+    "mae": 3.658,
+    "max": 9
+   }
+  },
+  "outliers": 983,
+  "year": 2026
+ },
+ "8145": {
+  "label": "Iraq Sulaymaniyah",
+  "city": "Sulaymaniyah",
+  "anchor": [
+   35.56,
+   45.43
+  ],
+  "params": {
+   "lat": 34.497,
+   "lon": 44.536,
+   "h0": -1.617,
+   "fa": 17.219,
+   "ia": 16.288,
+   "f": 0.975,
+   "dm": 2.531
+  },
+  "rms": 2.463,
+  "total": {
+   "exactPct": 23.6,
+   "w1Pct": 47.4,
+   "mae": 1.847,
+   "max": 8,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 8.7,
+    "w1Pct": 32.5,
+    "mae": 2.907,
+    "max": 8
+   },
+   "Sunrise": {
+    "exactPct": 12.0,
+    "w1Pct": 39.6,
+    "mae": 1.781,
+    "max": 4
+   },
+   "Dhuhr": {
+    "exactPct": 83.6,
+    "w1Pct": 100.0,
+    "mae": 0.164,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 15.0,
+    "w1Pct": 34.4,
+    "mae": 1.907,
+    "max": 4
+   },
+   "Maghrib": {
+    "exactPct": 16.9,
+    "w1Pct": 54.9,
+    "mae": 1.413,
+    "max": 3
+   },
+   "Isha": {
+    "exactPct": 5.2,
+    "w1Pct": 23.0,
+    "mae": 2.913,
+    "max": 8
+   }
+  },
+  "outliers": 1155,
+  "year": 2028
+ },
+ "7208": {
+  "label": "Iraq Biji",
+  "city": "Baiji",
+  "anchor": [
+   34.37,
+   43.49
+  ],
+  "params": {
+   "lat": 34.858,
+   "lon": 43.227,
+   "h0": -1.423,
+   "fa": 18.206,
+   "ia": 16.831,
+   "f": 1.025,
+   "dm": 3.981
+  },
+  "rms": 0.509,
+  "total": {
+   "exactPct": 70.9,
+   "w1Pct": 99.8,
+   "mae": 0.294,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 91.3,
+    "w1Pct": 100.0,
+    "mae": 0.087,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 86.9,
+    "w1Pct": 100.0,
+    "mae": 0.131,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 93.7,
+    "w1Pct": 100.0,
+    "mae": 0.063,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 52.2,
+    "w1Pct": 99.2,
+    "mae": 0.486,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 57.7,
+    "w1Pct": 100.0,
+    "mae": 0.423,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 43.4,
+    "w1Pct": 99.5,
+    "mae": 0.571,
+    "max": 2
+   }
+  },
+  "outliers": 5,
+  "year": 2029
+ },
+ "9": {
+  "label": "Iraq Harir",
+  "city": "Harir",
+  "anchor": [
+   36.45,
+   44.55
+  ],
+  "params": {
+   "lat": 35.525,
+   "lon": 42.587,
+   "h0": -0.598,
+   "fa": 17.431,
+   "ia": 14.638,
+   "f": 0.994,
+   "dm": 4.175
+  },
+  "rms": 3.683,
+  "total": {
+   "exactPct": 19.1,
+   "w1Pct": 44.2,
+   "mae": 2.659,
+   "max": 12,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 3.0,
+    "w1Pct": 13.1,
+    "mae": 5.137,
+    "max": 12
+   },
+   "Sunrise": {
+    "exactPct": 19.7,
+    "w1Pct": 51.9,
+    "mae": 1.514,
+    "max": 5
+   },
+   "Dhuhr": {
+    "exactPct": 32.8,
+    "w1Pct": 78.7,
+    "mae": 0.932,
+    "max": 3
+   },
+   "Asr": {
+    "exactPct": 2.2,
+    "w1Pct": 9.3,
+    "mae": 3.751,
+    "max": 8
+   },
+   "Maghrib": {
+    "exactPct": 46.4,
+    "w1Pct": 87.2,
+    "mae": 0.675,
+    "max": 3
+   },
+   "Isha": {
+    "exactPct": 10.4,
+    "w1Pct": 25.1,
+    "mae": 3.948,
+    "max": 10
+   }
+  },
+  "outliers": 1225,
+  "year": 2029
+ },
+ "40": {
+  "label": "Libya Tripoli",
+  "city": "Tripoli",
+  "anchor": [
+   32.8872,
+   13.1913
+  ],
+  "params": {
+   "lat": 32.875,
+   "lon": 13.191,
+   "h0": -0.836,
+   "fa": 18.006,
+   "ia": 17.0,
+   "f": 1.0,
+   "dm": 0.025
+  },
+  "rms": 0.38,
+  "total": {
+   "exactPct": 82.2,
+   "w1Pct": 100.0,
+   "mae": 0.178,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 93.4,
+    "w1Pct": 100.0,
+    "mae": 0.066,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 94.8,
+    "w1Pct": 100.0,
+    "mae": 0.052,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 96.4,
+    "w1Pct": 100.0,
+    "mae": 0.036,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 76.2,
+    "w1Pct": 100.0,
+    "mae": 0.238,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 64.2,
+    "w1Pct": 100.0,
+    "mae": 0.358,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 68.3,
+    "w1Pct": 100.0,
+    "mae": 0.317,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2029
+ },
+ "20": {
+  "label": "Libya Zawiya",
+  "city": "Zawiya",
+  "anchor": [
+   32.75,
+   15.42
+  ],
+  "params": {
+   "lat": 32.681,
+   "lon": 12.37,
+   "h0": -1.23,
+   "fa": 18.681,
+   "ia": 17.931,
+   "f": 0.975,
+   "dm": 1.988
+  },
+  "rms": 0.452,
+  "total": {
+   "exactPct": 71.2,
+   "w1Pct": 100.0,
+   "mae": 0.288,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 62.3,
+    "w1Pct": 100.0,
+    "mae": 0.377,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 70.8,
+    "w1Pct": 100.0,
+    "mae": 0.292,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 81.1,
+    "w1Pct": 100.0,
+    "mae": 0.189,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 55.5,
+    "w1Pct": 100.0,
+    "mae": 0.445,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 84.2,
+    "w1Pct": 100.0,
+    "mae": 0.158,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 73.2,
+    "w1Pct": 100.0,
+    "mae": 0.268,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2029
+ },
+ "42": {
+  "label": "Libya Gharyan",
+  "city": "Gharyan",
+  "anchor": [
+   32.17,
+   13.02
+  ],
+  "params": {
+   "lat": 32.089,
+   "lon": 15.195,
+   "h0": -4.361,
+   "fa": 17.694,
+   "ia": 20.781,
+   "f": 1.1,
+   "dm": 12.325
+  },
+  "rms": 2.884,
+  "total": {
+   "exactPct": 32.1,
+   "w1Pct": 64.1,
+   "mae": 1.664,
+   "max": 28,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 49.2,
+    "w1Pct": 98.6,
+    "mae": 0.612,
+    "max": 21
+   },
+   "Sunrise": {
+    "exactPct": 6.0,
+    "w1Pct": 18.0,
+    "mae": 4.566,
+    "max": 22
+   },
+   "Dhuhr": {
+    "exactPct": 75.7,
+    "w1Pct": 99.7,
+    "mae": 0.27,
+    "max": 11
+   },
+   "Asr": {
+    "exactPct": 14.8,
+    "w1Pct": 38.8,
+    "mae": 1.814,
+    "max": 28
+   },
+   "Maghrib": {
+    "exactPct": 35.5,
+    "w1Pct": 91.5,
+    "mae": 0.852,
+    "max": 28
+   },
+   "Isha": {
+    "exactPct": 11.7,
+    "w1Pct": 38.0,
+    "mae": 1.872,
+    "max": 17
+   }
+  },
+  "outliers": 788,
+  "year": 2028
+ },
+ "44": {
+  "label": "Libya Misrata",
+  "city": "Misrata",
+  "anchor": [
+   32.37,
+   15.09
+  ],
+  "params": {
+   "lat": 32.314,
+   "lon": 14.702,
+   "h0": -1.236,
+   "fa": 18.681,
+   "ia": 17.931,
+   "f": 0.975,
+   "dm": 1.981
+  },
+  "rms": 0.454,
+  "total": {
+   "exactPct": 71.6,
+   "w1Pct": 100.0,
+   "mae": 0.284,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 62.6,
+    "w1Pct": 100.0,
+    "mae": 0.374,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 73.5,
+    "w1Pct": 100.0,
+    "mae": 0.265,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 78.4,
+    "w1Pct": 100.0,
+    "mae": 0.216,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 53.3,
+    "w1Pct": 100.0,
+    "mae": 0.467,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 85.0,
+    "w1Pct": 100.0,
+    "mae": 0.15,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 77.0,
+    "w1Pct": 100.0,
+    "mae": 0.23,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2029
+ },
+ "247": {
+  "label": "Jordan Amman group",
+  "city": "Amman",
+  "anchor": [
+   31.95,
+   35.93
+  ],
+  "params": {
+   "lat": 31.938,
+   "lon": 35.905,
+   "h0": -0.83,
+   "fa": 15.013,
+   "ia": 15.0,
+   "f": 1.0,
+   "dm": -0.025
+  },
+  "rms": 0.489,
+  "total": {
+   "exactPct": 73.8,
+   "w1Pct": 99.6,
+   "mae": 0.266,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 88.5,
+    "w1Pct": 100.0,
+    "mae": 0.115,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.2,
+    "w1Pct": 100.0,
+    "mae": 0.098,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 98.1,
+    "w1Pct": 100.0,
+    "mae": 0.019,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 24.3,
+    "w1Pct": 97.5,
+    "mae": 0.781,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 71.3,
+    "w1Pct": 100.0,
+    "mae": 0.287,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 70.2,
+    "w1Pct": 100.0,
+    "mae": 0.298,
+    "max": 1
+   }
+  },
+  "outliers": 9,
+  "year": 2029
+ },
+ "248": {
+  "label": "Jordan Irbid",
+  "city": "Irbid",
+  "anchor": [
+   32.55,
+   35.85
+  ],
+  "params": {
+   "lat": 32.544,
+   "lon": 35.844,
+   "h0": -0.83,
+   "fa": 15.006,
+   "ia": 15.0,
+   "f": 1.0,
+   "dm": -0.025
+  },
+  "rms": 0.485,
+  "total": {
+   "exactPct": 74.1,
+   "w1Pct": 99.6,
+   "mae": 0.263,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 88.5,
+    "w1Pct": 100.0,
+    "mae": 0.115,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.7,
+    "w1Pct": 100.0,
+    "mae": 0.093,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 96.2,
+    "w1Pct": 100.0,
+    "mae": 0.038,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 26.2,
+    "w1Pct": 97.5,
+    "mae": 0.762,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 74.0,
+    "w1Pct": 100.0,
+    "mae": 0.26,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 69.1,
+    "w1Pct": 100.0,
+    "mae": 0.309,
+    "max": 1
+   }
+  },
+  "outliers": 9,
+  "year": 2029
+ },
+ "250": {
+  "label": "Jordan Basira",
+  "city": "Basira",
+  "anchor": [
+   30.85,
+   35.68
+  ],
+  "params": {
+   "lat": 30.8,
+   "lon": 35.611,
+   "h0": -2.373,
+   "fa": 18.037,
+   "ia": 18.013,
+   "f": 1.0,
+   "dm": 0.025
+  },
+  "rms": 0.37,
+  "total": {
+   "exactPct": 82.1,
+   "w1Pct": 100.0,
+   "mae": 0.179,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 88.0,
+    "w1Pct": 100.0,
+    "mae": 0.12,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 91.3,
+    "w1Pct": 100.0,
+    "mae": 0.087,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 96.4,
+    "w1Pct": 100.0,
+    "mae": 0.036,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 76.2,
+    "w1Pct": 100.0,
+    "mae": 0.238,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 71.9,
+    "w1Pct": 100.0,
+    "mae": 0.281,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 69.1,
+    "w1Pct": 100.0,
+    "mae": 0.309,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2029
+ },
+ "255": {
+  "label": "Jordan Umm al-Quttain",
+  "city": "Umm al-Quttain",
+  "anchor": [
+   32.02,
+   36.85
+  ],
+  "params": {
+   "lat": 32.326,
+   "lon": 36.206,
+   "h0": -0.836,
+   "fa": 15.006,
+   "ia": 15.006,
+   "f": 1.0,
+   "dm": 0.025
+  },
+  "rms": 0.479,
+  "total": {
+   "exactPct": 75.3,
+   "w1Pct": 99.7,
+   "mae": 0.25,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 90.2,
+    "w1Pct": 100.0,
+    "mae": 0.098,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.7,
+    "w1Pct": 100.0,
+    "mae": 0.093,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 97.0,
+    "w1Pct": 100.0,
+    "mae": 0.03,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 27.9,
+    "w1Pct": 98.4,
+    "mae": 0.738,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 73.2,
+    "w1Pct": 99.7,
+    "mae": 0.27,
+    "max": 2
+   },
+   "Isha": {
+    "exactPct": 73.0,
+    "w1Pct": 100.0,
+    "mae": 0.27,
+    "max": 1
+   }
+  },
+  "outliers": 7,
+  "year": 2029
+ },
+ "7617": {
+  "label": "Syria Baramkeh",
+  "city": "Damascus",
+  "anchor": [
+   33.51,
+   36.28
+  ],
+  "params": {
+   "lat": 33.523,
+   "lon": 36.03,
+   "h0": -1.03,
+   "fa": 18.181,
+   "ia": 16.806,
+   "f": 0.988,
+   "dm": -0.031
+  },
+  "rms": 0.536,
+  "total": {
+   "exactPct": 72.3,
+   "w1Pct": 98.1,
+   "mae": 0.296,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 80.1,
+    "w1Pct": 100.0,
+    "mae": 0.199,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 85.0,
+    "w1Pct": 100.0,
+    "mae": 0.15,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 97.8,
+    "w1Pct": 100.0,
+    "mae": 0.022,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 21.6,
+    "w1Pct": 88.5,
+    "mae": 0.899,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 76.0,
+    "w1Pct": 100.0,
+    "mae": 0.24,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 73.5,
+    "w1Pct": 100.0,
+    "mae": 0.265,
+    "max": 1
+   }
+  },
+  "outliers": 42,
+  "year": 2026
+ },
+ "7518": {
+  "label": "Syria Harasta",
+  "city": "Harasta",
+  "anchor": [
+   33.53,
+   36.34
+  ],
+  "params": {
+   "lat": 33.568,
+   "lon": 36.121,
+   "h0": -1.03,
+   "fa": 18.175,
+   "ia": 16.819,
+   "f": 0.988,
+   "dm": 0.012
+  },
+  "rms": 0.462,
+  "total": {
+   "exactPct": 73.4,
+   "w1Pct": 100.0,
+   "mae": 0.266,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 87.4,
+    "w1Pct": 100.0,
+    "mae": 0.126,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.7,
+    "w1Pct": 100.0,
+    "mae": 0.093,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 91.0,
+    "w1Pct": 100.0,
+    "mae": 0.09,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 74.0,
+    "w1Pct": 100.0,
+    "mae": 0.26,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 53.0,
+    "w1Pct": 100.0,
+    "mae": 0.47,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 44.3,
+    "w1Pct": 99.7,
+    "mae": 0.56,
+    "max": 2
+   }
+  },
+  "outliers": 1,
+  "year": 2028
+ },
+ "7614": {
+  "label": "Syria Idlib",
+  "city": "Idlib",
+  "anchor": [
+   35.93,
+   36.63
+  ],
+  "params": {
+   "lat": 35.943,
+   "lon": 36.399,
+   "h0": -1.023,
+   "fa": 18.169,
+   "ia": 16.831,
+   "f": 0.988,
+   "dm": 0.044
+  },
+  "rms": 0.481,
+  "total": {
+   "exactPct": 72.3,
+   "w1Pct": 99.9,
+   "mae": 0.278,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 85.8,
+    "w1Pct": 100.0,
+    "mae": 0.142,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 89.3,
+    "w1Pct": 100.0,
+    "mae": 0.107,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 92.1,
+    "w1Pct": 100.0,
+    "mae": 0.079,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 75.1,
+    "w1Pct": 100.0,
+    "mae": 0.249,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 49.7,
+    "w1Pct": 100.0,
+    "mae": 0.503,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 41.8,
+    "w1Pct": 99.2,
+    "mae": 0.59,
+    "max": 2
+   }
+  },
+  "outliers": 3,
+  "year": 2028
+ },
+ "7655": {
+  "label": "Syria Maarat al-Numan",
+  "city": "Maarat al-Numan",
+  "anchor": [
+   35.63,
+   36.67
+  ],
+  "params": {
+   "lat": 35.649,
+   "lon": 36.432,
+   "h0": -1.023,
+   "fa": 18.162,
+   "ia": 16.819,
+   "f": 0.988,
+   "dm": 0.012
+  },
+  "rms": 0.476,
+  "total": {
+   "exactPct": 71.8,
+   "w1Pct": 100.0,
+   "mae": 0.282,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 82.8,
+    "w1Pct": 100.0,
+    "mae": 0.172,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 89.9,
+    "w1Pct": 100.0,
+    "mae": 0.101,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 90.4,
+    "w1Pct": 100.0,
+    "mae": 0.096,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 75.4,
+    "w1Pct": 100.0,
+    "mae": 0.246,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 51.6,
+    "w1Pct": 100.0,
+    "mae": 0.484,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 40.7,
+    "w1Pct": 100.0,
+    "mae": 0.593,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2028
+ },
+ "8414": {
+  "label": "Syria Muadamiya",
+  "city": "Muadamiya",
+  "anchor": [
+   33.43,
+   36.23
+  ],
+  "params": {
+   "lat": 33.73,
+   "lon": 35.811,
+   "h0": -1.023,
+   "fa": 18.181,
+   "ia": 16.812,
+   "f": 0.988,
+   "dm": -0.0
+  },
+  "rms": 0.494,
+  "total": {
+   "exactPct": 71.5,
+   "w1Pct": 100.0,
+   "mae": 0.286,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 89.6,
+    "w1Pct": 100.0,
+    "mae": 0.104,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 96.4,
+    "w1Pct": 100.0,
+    "mae": 0.036,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 92.3,
+    "w1Pct": 100.0,
+    "mae": 0.077,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 29.2,
+    "w1Pct": 99.7,
+    "mae": 0.71,
+    "max": 2
+   },
+   "Maghrib": {
+    "exactPct": 61.5,
+    "w1Pct": 100.0,
+    "mae": 0.385,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 59.8,
+    "w1Pct": 100.0,
+    "mae": 0.402,
+    "max": 1
+   }
+  },
+  "outliers": 1,
+  "year": 2027
+ },
+ "8086": {
+  "label": "Syria Deir Hafer",
+  "city": "Deir Hafer",
+  "anchor": [
+   36.15,
+   37.55
+  ],
+  "params": {
+   "lat": 36.163,
+   "lon": 37.462,
+   "h0": -1.023,
+   "fa": 18.169,
+   "ia": 16.831,
+   "f": 0.988,
+   "dm": 0.025
+  },
+  "rms": 0.483,
+  "total": {
+   "exactPct": 71.7,
+   "w1Pct": 99.9,
+   "mae": 0.284,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 86.9,
+    "w1Pct": 100.0,
+    "mae": 0.131,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 88.0,
+    "w1Pct": 100.0,
+    "mae": 0.12,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 91.5,
+    "w1Pct": 100.0,
+    "mae": 0.085,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 74.3,
+    "w1Pct": 100.0,
+    "mae": 0.257,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 47.3,
+    "w1Pct": 100.0,
+    "mae": 0.527,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.3,
+    "w1Pct": 99.2,
+    "mae": 0.585,
+    "max": 2
+   }
+  },
+  "outliers": 3,
+  "year": 2028
+ },
+ "7510": {
+  "label": "Syria Hama",
+  "city": "Hama",
+  "anchor": [
+   35.13,
+   36.75
+  ],
+  "params": {
+   "lat": 35.143,
+   "lon": 36.5,
+   "h0": -1.023,
+   "fa": 18.175,
+   "ia": 16.819,
+   "f": 0.988,
+   "dm": -0.013
+  },
+  "rms": 0.479,
+  "total": {
+   "exactPct": 72.3,
+   "w1Pct": 100.0,
+   "mae": 0.277,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 87.7,
+    "w1Pct": 100.0,
+    "mae": 0.123,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.7,
+    "w1Pct": 100.0,
+    "mae": 0.093,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 92.9,
+    "w1Pct": 100.0,
+    "mae": 0.071,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 74.6,
+    "w1Pct": 100.0,
+    "mae": 0.254,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 44.8,
+    "w1Pct": 100.0,
+    "mae": 0.552,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.9,
+    "w1Pct": 100.0,
+    "mae": 0.571,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2028
+ },
+ "8082": {
+  "label": "Syria Aleppo",
+  "city": "Aleppo",
+  "anchor": [
+   36.2,
+   37.13
+  ],
+  "params": {
+   "lat": 36.206,
+   "lon": 36.886,
+   "h0": -1.023,
+   "fa": 18.169,
+   "ia": 16.825,
+   "f": 0.988,
+   "dm": 0.019
+  },
+  "rms": 0.491,
+  "total": {
+   "exactPct": 70.7,
+   "w1Pct": 99.8,
+   "mae": 0.295,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 83.6,
+    "w1Pct": 100.0,
+    "mae": 0.164,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 86.3,
+    "w1Pct": 100.0,
+    "mae": 0.137,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 93.2,
+    "w1Pct": 100.0,
+    "mae": 0.068,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 76.2,
+    "w1Pct": 100.0,
+    "mae": 0.238,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 41.8,
+    "w1Pct": 100.0,
+    "mae": 0.582,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.9,
+    "w1Pct": 98.9,
+    "mae": 0.582,
+    "max": 2
+   }
+  },
+  "outliers": 4,
+  "year": 2028
+ },
+ "7609": {
+  "label": "Syria Jableh",
+  "city": "Jableh",
+  "anchor": [
+   35.4,
+   35.93
+  ],
+  "params": {
+   "lat": 35.363,
+   "lon": 35.68,
+   "h0": -1.023,
+   "fa": 18.175,
+   "ia": 16.825,
+   "f": 0.988,
+   "dm": 0.019
+  },
+  "rms": 0.48,
+  "total": {
+   "exactPct": 72.0,
+   "w1Pct": 99.9,
+   "mae": 0.281,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 88.8,
+    "w1Pct": 100.0,
+    "mae": 0.112,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 88.3,
+    "w1Pct": 100.0,
+    "mae": 0.117,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 90.2,
+    "w1Pct": 100.0,
+    "mae": 0.098,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 75.7,
+    "w1Pct": 100.0,
+    "mae": 0.243,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 46.7,
+    "w1Pct": 100.0,
+    "mae": 0.533,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.3,
+    "w1Pct": 99.5,
+    "mae": 0.582,
+    "max": 2
+   }
+  },
+  "outliers": 2,
+  "year": 2028
+ },
+ "7525": {
+  "label": "Syria Maliha",
+  "city": "Al-Maliha",
+  "anchor": [
+   33.48,
+   36.29
+  ],
+  "params": {
+   "lat": 33.492,
+   "lon": 36.127,
+   "h0": -1.03,
+   "fa": 18.175,
+   "ia": 16.819,
+   "f": 0.988,
+   "dm": 0.012
+  },
+  "rms": 0.454,
+  "total": {
+   "exactPct": 74.2,
+   "w1Pct": 100.0,
+   "mae": 0.258,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 86.1,
+    "w1Pct": 100.0,
+    "mae": 0.139,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 92.1,
+    "w1Pct": 100.0,
+    "mae": 0.079,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 91.3,
+    "w1Pct": 100.0,
+    "mae": 0.087,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 74.0,
+    "w1Pct": 100.0,
+    "mae": 0.26,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 53.6,
+    "w1Pct": 100.0,
+    "mae": 0.464,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 48.4,
+    "w1Pct": 100.0,
+    "mae": 0.516,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2028
+ },
+ "7943": {
+  "label": "Syria Madina",
+  "city": "Damascus-2",
+  "anchor": [
+   33.51,
+   36.28
+  ],
+  "params": {
+   "lat": 34.735,
+   "lon": 36.461,
+   "h0": -1.023,
+   "fa": 18.175,
+   "ia": 16.819,
+   "f": 0.988,
+   "dm": -0.0
+  },
+  "rms": 0.478,
+  "total": {
+   "exactPct": 72.1,
+   "w1Pct": 99.9,
+   "mae": 0.28,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 88.5,
+    "w1Pct": 100.0,
+    "mae": 0.115,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.4,
+    "w1Pct": 100.0,
+    "mae": 0.096,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 92.6,
+    "w1Pct": 100.0,
+    "mae": 0.074,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 74.3,
+    "w1Pct": 100.0,
+    "mae": 0.257,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 44.0,
+    "w1Pct": 100.0,
+    "mae": 0.56,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.9,
+    "w1Pct": 99.5,
+    "mae": 0.577,
+    "max": 2
+   }
+  },
+  "outliers": 2,
+  "year": 2028
+ },
+ "7930": {
+  "label": "Syria Qusayr",
+  "city": "Qusayr",
+  "anchor": [
+   34.55,
+   36.57
+  ],
+  "params": {
+   "lat": 34.512,
+   "lon": 36.332,
+   "h0": -1.03,
+   "fa": 18.175,
+   "ia": 16.825,
+   "f": 0.988,
+   "dm": -0.0
+  },
+  "rms": 0.465,
+  "total": {
+   "exactPct": 73.7,
+   "w1Pct": 100.0,
+   "mae": 0.263,
+   "max": 1,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 87.7,
+    "w1Pct": 100.0,
+    "mae": 0.123,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 87.2,
+    "w1Pct": 100.0,
+    "mae": 0.128,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 92.9,
+    "w1Pct": 100.0,
+    "mae": 0.071,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 76.2,
+    "w1Pct": 100.0,
+    "mae": 0.238,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 49.7,
+    "w1Pct": 100.0,
+    "mae": 0.503,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 48.6,
+    "w1Pct": 100.0,
+    "mae": 0.514,
+    "max": 1
+   }
+  },
+  "outliers": 0,
+  "year": 2028
+ },
+ "8091": {
+  "label": "Syria Manbij",
+  "city": "Manbij",
+  "anchor": [
+   36.43,
+   37.95
+  ],
+  "params": {
+   "lat": 36.53,
+   "lon": 37.712,
+   "h0": -1.023,
+   "fa": 18.169,
+   "ia": 16.825,
+   "f": 0.988,
+   "dm": 0.025
+  },
+  "rms": 0.487,
+  "total": {
+   "exactPct": 71.1,
+   "w1Pct": 99.8,
+   "mae": 0.291,
+   "max": 2,
+   "n": 2196
+  },
+  "perColumn": {
+   "Fajr": {
+    "exactPct": 85.8,
+    "w1Pct": 100.0,
+    "mae": 0.142,
+    "max": 1
+   },
+   "Sunrise": {
+    "exactPct": 90.2,
+    "w1Pct": 100.0,
+    "mae": 0.098,
+    "max": 1
+   },
+   "Dhuhr": {
+    "exactPct": 91.5,
+    "w1Pct": 100.0,
+    "mae": 0.085,
+    "max": 1
+   },
+   "Asr": {
+    "exactPct": 73.8,
+    "w1Pct": 100.0,
+    "mae": 0.262,
+    "max": 1
+   },
+   "Maghrib": {
+    "exactPct": 42.9,
+    "w1Pct": 100.0,
+    "mae": 0.571,
+    "max": 1
+   },
+   "Isha": {
+    "exactPct": 42.6,
+    "w1Pct": 98.6,
+    "mae": 0.587,
+    "max": 2
+   }
+  },
+  "outliers": 5,
+  "year": 2028
+ }
+}

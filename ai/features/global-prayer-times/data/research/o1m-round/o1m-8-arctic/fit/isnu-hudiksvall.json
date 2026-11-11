@@ -1,0 +1,68 @@
+{
+ "city": "hudiksvall",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 61.7274,
+ "lon": 17.1056,
+ "rows": 699,
+ "solarGateMedAbs": 0.21,
+ "fajrAngle": {
+  "n": 511,
+  "med": 18,
+  "min": 10.1,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 508,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0,
+   "min": -0.6,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.17,
+   "min": -2.6,
+   "max": 2.4
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.28,
+   "min": -80.2,
+   "max": -17.1
+  },
+  "maghrib": {
+   "n": 699,
+   "med": 0,
+   "min": -0.6,
+   "max": 0.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 268,
+  "isha": 400
+ }
+}

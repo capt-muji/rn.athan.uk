@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_pa_perejil.json",
+ "tz": "America/Panama",
+ "meta": {
+  "name": "MUSALLAH DE PEREJIL - PANAMA",
+  "lat": 8.9751507329409,
+  "lon": -79.537220299244,
+  "country": "PA"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 18.5,
+  "offset": 2,
+  "exact": 271,
+  "within1": 363,
+  "mae": 0.35,
+  "worst": 1.58
+ },
+ "isha": {
+  "angle": 17.05,
+  "offset": 5,
+  "exact": 264,
+  "within1": 365,
+  "mae": 0.36,
+  "worst": 1.48
+ },
+ "asr_shafi": {
+  "offset": 64,
+  "exact": 28,
+  "within1": 70,
+  "mae": 6.38,
+  "worst": 13.72
+ },
+ "asr_hanafi": {
+  "offset": 1,
+  "exact": 160,
+  "within1": 363,
+  "mae": 0.59,
+  "worst": 1.62
+ },
+ "dhuhr": {
+  "offset": 10,
+  "exact": 286,
+  "within1": 365,
+  "mae": 0.32,
+  "worst": 1.05
+ },
+ "maghrib": {
+  "offset": 6,
+  "exact": 188,
+  "within1": 212,
+  "mae": 2.26,
+  "worst": 5.83
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 290,
+  "within1": 365,
+  "mae": 0.29,
+  "worst": 0.95
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   318,
+   326
+  ],
+  "jul": [
+   286,
+   295
+  ]
+ }
+}

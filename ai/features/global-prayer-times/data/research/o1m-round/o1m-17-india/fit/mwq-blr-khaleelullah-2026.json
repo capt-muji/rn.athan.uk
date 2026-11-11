@@ -1,0 +1,146 @@
+{
+ "rows": "data/mawaqit-masjid-e-khaleelullah-be.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 13.29,
+  "lon": 77.3
+ },
+ "coarse": {
+  "lat": 13.11,
+  "lon": 77.48,
+  "mae": 10.245
+ },
+ "mid": {
+  "lat": 13.29,
+  "lon": 77.3,
+  "mae": 10.113
+ },
+ "meta": {
+  "name": "Masjid-e-Khaleelullah - BENGALURU",
+  "address": null,
+  "lat": 13.0275325,
+  "lon": 77.5976218,
+  "tz": "Asia/Kolkata"
+ },
+ "fajr_angle": 13,
+ "fajr_sweep": [
+  {
+   "a": 13,
+   "med": 10,
+   "mae": 16.45,
+   "mad": 15
+  },
+  {
+   "a": 13.05,
+   "med": 10,
+   "mae": 16.45,
+   "mad": 14
+  },
+  {
+   "a": 13.1,
+   "med": 10,
+   "mae": 16.57,
+   "mad": 14
+  },
+  {
+   "a": 13.15,
+   "med": 10,
+   "mae": 16.57,
+   "mad": 14
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 26,
+   "mae": 28.98,
+   "mad": 18
+  },
+  {
+   "a": 19.95,
+   "med": 27,
+   "mae": 29.17,
+   "mad": 19
+  },
+  {
+   "a": 19.9,
+   "med": 27,
+   "mae": 29.38,
+   "mad": 19
+  },
+  {
+   "a": 19.85,
+   "med": 27,
+   "mae": 29.57,
+   "mad": 18
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 23,
+   "mad": 9
+  },
+  "1": {
+   "med": -43,
+   "mad": 9
+  }
+ },
+ "margins": {
+  "fajr": 10,
+  "sunrise": -1,
+  "dhuhr": 19,
+  "asr": 23,
+  "maghrib": -1,
+  "isha": 26
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 5.5,
+   "within1": 15.1,
+   "mae": 14.43,
+   "worst": -33,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 60,
+   "within1": 100,
+   "mae": 0.4,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.8,
+   "within1": 11.5,
+   "mae": 7.16,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 1.6,
+   "within1": 6,
+   "mae": 9.06,
+   "worst": -18,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 63,
+   "within1": 100,
+   "mae": 0.37,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 3.3,
+   "within1": 8.8,
+   "mae": 17.51,
+   "worst": 36,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 3
+}

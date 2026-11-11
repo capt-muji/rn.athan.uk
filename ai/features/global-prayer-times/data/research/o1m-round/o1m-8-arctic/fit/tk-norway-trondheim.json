@@ -1,0 +1,79 @@
+{
+ "city": "trondheim",
+ "nightFraction": {
+  "n": 136,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.503
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 63.43049,
+ "lon": 10.39506,
+ "rows": 365,
+ "solarGateMedAbs": 0.25,
+ "fajrAngle": {
+  "n": 223,
+  "med": 18,
+  "min": 17.75,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 228,
+  "med": 17,
+  "min": 12.1,
+  "max": 17.2,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": -0.08,
+   "min": -2,
+   "max": 1.9
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.02,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.05,
+   "min": -2.5,
+   "max": 3
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.43,
+   "min": -81.5,
+   "max": -10.8
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.08,
+   "min": -1.9,
+   "max": 2
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-14",
+    "to": "2027-08-27",
+    "days": 136
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 329,
+  "isha": 465
+ }
+}

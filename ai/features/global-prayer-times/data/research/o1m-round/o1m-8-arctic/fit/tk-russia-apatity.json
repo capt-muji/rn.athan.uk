@@ -1,0 +1,96 @@
+{
+ "city": "apatity",
+ "nightFraction": {
+  "n": 99,
+  "med": 0.499,
+  "p10": 0.49,
+  "p90": 0.511
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Europe/Moscow",
+ "lat": 67.58267,
+ "lon": 33.41339,
+ "rows": 365,
+ "solarGateMedAbs": 0.96,
+ "fajrAngle": {
+  "n": 176,
+  "med": 15.95,
+  "min": 15.8,
+  "max": 16.1,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 183,
+  "med": 14.95,
+  "min": 10.9,
+  "max": 15.75,
+  "jun": null,
+  "dec": 14.95
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 247,
+   "med": 0.43,
+   "min": -1.1,
+   "max": 1.5
+  },
+  "dhuhr": {
+   "n": 247,
+   "med": 0.53,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 247,
+   "med": -0.9,
+   "min": -16.6,
+   "max": 8.4
+  },
+  "asrHanafi": {
+   "n": 247,
+   "med": -43.07,
+   "min": -75.6,
+   "max": -7
+  },
+  "maghrib": {
+   "n": 247,
+   "med": -0.28,
+   "min": -2.2,
+   "max": 2.9
+  }
+ },
+ "polar": {
+  "noonCollapse": [
+   {
+    "from": "2026-12-16",
+    "to": "2026-12-28",
+    "days": 13
+   }
+  ],
+  "nightMid": [
+   {
+    "from": "2027-04-09",
+    "to": "2027-09-03",
+    "days": 148
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2026-12-15",
+    "to": "2026-12-28",
+    "days": 14
+   },
+   {
+    "from": "2027-05-27",
+    "to": "2027-07-17",
+    "days": 52
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 425,
+  "isha": 1449
+ }
+}

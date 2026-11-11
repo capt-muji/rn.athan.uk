@@ -1,0 +1,4090 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "15912",
+   "name": "Iasi Prayer Times",
+   "lat": 47.1615598,
+   "lon": 27.5837814,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 63.3,
+     "w1": 76.4,
+     "w2": 76.4,
+     "mae": 9.44,
+     "worst": 62
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29,
+     "w1": 47.9,
+     "w2": 60,
+     "mae": 6.63,
+     "worst": -39
+    }
+   },
+   "allW1": 83.4
+  },
+  {
+   "key": "15913",
+   "name": "Tirgu mures Prayer Times",
+   "lat": 46.5446253,
+   "lon": 24.561196,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 65.8,
+     "w1": 78.1,
+     "w2": 78.4,
+     "mae": 6.94,
+     "worst": 48
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 51.5,
+     "w2": 63.8,
+     "mae": 4.93,
+     "worst": -29
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "15914",
+   "name": "Bacau Prayer Times",
+   "lat": 46.5560493,
+   "lon": 26.9153557,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 49.3,
+     "w1": 78.1,
+     "w2": 78.6,
+     "mae": 7.05,
+     "worst": 47
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 83,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26,
+     "w1": 54.5,
+     "w2": 71.8,
+     "mae": 4.85,
+     "worst": -29
+    }
+   },
+   "allW1": 84.4
+  },
+  {
+   "key": "15915",
+   "name": "Reghin Prayer Times",
+   "lat": 46.7796886,
+   "lon": 24.7000238,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 77.8,
+     "w2": 78.1,
+     "mae": 7.84,
+     "worst": 51
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 52.9,
+     "w2": 71.2,
+     "mae": 5.44,
+     "worst": -33
+    }
+   },
+   "allW1": 83.5
+  },
+  {
+   "key": "15916",
+   "name": "Galati Prayer Times",
+   "lat": 45.4338215,
+   "lon": 28.0549395,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 34,
+     "w1": 81.9,
+     "w2": 82.5,
+     "mae": 3.79,
+     "worst": 27
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51.8,
+     "w2": 66.8,
+     "mae": 2.75,
+     "worst": -15
+    }
+   },
+   "allW1": 85.2
+  },
+  {
+   "key": "15917",
+   "name": "Alexandria  Prayer Times",
+   "lat": 43.9702236,
+   "lon": 25.3288462,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 89.3,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 94.6
+  },
+  {
+   "key": "15918",
+   "name": "Giurgio  Prayer Times",
+   "lat": 43.8961275,
+   "lon": 25.9656448,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 83.6,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.74,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    }
+   },
+   "allW1": 93.3
+  },
+  {
+   "key": "15919",
+   "name": "Cernavoda Prayer Times",
+   "lat": 44.3416349,
+   "lon": 28.0316248,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 84.7,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 94.1
+  },
+  {
+   "key": "15920",
+   "name": "Navodari  Prayer Times",
+   "lat": 44.3212304,
+   "lon": 28.6110868,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 94.1
+  },
+  {
+   "key": "15921",
+   "name": "Negru voda Prayer Times",
+   "lat": 43.819144,
+   "lon": 28.2185873,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    }
+   },
+   "allW1": 94.4
+  },
+  {
+   "key": "15922",
+   "name": "Ovidiu  Prayer Times",
+   "lat": 44.2571604,
+   "lon": 28.5611237,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    }
+   },
+   "allW1": 93.4
+  },
+  {
+   "key": "15923",
+   "name": "Topraisar  Prayer Times",
+   "lat": 44.0275712,
+   "lon": 28.4772269,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 86.3,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 93.8
+  },
+  {
+   "key": "15924",
+   "name": "Bestepe Prayer Times",
+   "lat": 45.096063,
+   "lon": 29.0063876,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 56.4,
+     "w1": 82.5,
+     "w2": 83,
+     "mae": 2.99,
+     "worst": 23
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 52.1,
+     "w2": 73.2,
+     "mae": 2.21,
+     "worst": -12
+    }
+   },
+   "allW1": 86
+  },
+  {
+   "key": "15925",
+   "name": "Niculitel Prayer Times",
+   "lat": 45.1887403,
+   "lon": 28.4886751,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 70.1,
+     "w1": 82.2,
+     "w2": 82.5,
+     "mae": 3.08,
+     "worst": 24
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 51,
+     "w2": 70.1,
+     "mae": 2.38,
+     "worst": -12
+    }
+   },
+   "allW1": 85.9
+  },
+  {
+   "key": "15926",
+   "name": "Sulina Prayer Times",
+   "lat": 45.155824,
+   "lon": 29.655027,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 69.6,
+     "w1": 82.5,
+     "w2": 82.7,
+     "mae": 2.99,
+     "worst": 24
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 54,
+     "w2": 72.6,
+     "mae": 2.26,
+     "worst": -12
+    }
+   },
+   "allW1": 86.2
+  },
+  {
+   "key": "15927",
+   "name": "Baia mare Prayer Times",
+   "lat": 47.6565584,
+   "lon": 23.5719843,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.86
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 74.8,
+     "w2": 75.3,
+     "mae": 11.83,
+     "worst": 74
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.4,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.4,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 53.2,
+     "w2": 68.8,
+     "mae": 8.19,
+     "worst": -48
+    }
+   },
+   "allW1": 82.8
+  },
+  {
+   "key": "15928",
+   "name": "Buzau Prayer Times",
+   "lat": 45.2692582,
+   "lon": 26.7748173,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 52.3,
+     "w1": 82.2,
+     "w2": 82.5,
+     "mae": 3.4,
+     "worst": 25
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 66.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.34,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 48.8,
+     "w2": 82.5,
+     "mae": 2.51,
+     "worst": -14
+    }
+   },
+   "allW1": 84.9
+  },
+  {
+   "key": "15929",
+   "name": "Cluj-napoca Prayer Times",
+   "lat": 46.769379,
+   "lon": 23.5899542,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 53.2,
+     "w1": 77.5,
+     "w2": 77.8,
+     "mae": 7.79,
+     "worst": 52
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 55.1,
+     "w2": 71,
+     "mae": 5.41,
+     "worst": -33
+    }
+   },
+   "allW1": 84.8
+  },
+  {
+   "key": "15930",
+   "name": "Oradea Prayer Times",
+   "lat": 47.0549163,
+   "lon": 21.9285231,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.5,
+     "w1": 76.4,
+     "w2": 77,
+     "mae": 9,
+     "worst": 60
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 89.3,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 48.2,
+     "w2": 61.9,
+     "mae": 6.3,
+     "worst": -37
+    }
+   },
+   "allW1": 82
+  },
+  {
+   "key": "15931",
+   "name": "Petrosani Prayer Times",
+   "lat": 45.4141065,
+   "lon": 23.373969,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.3,
+     "w1": 81.6,
+     "w2": 81.6,
+     "mae": 3.63,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 81.4,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 58.1,
+     "w2": 78.1,
+     "mae": 2.61,
+     "worst": -15
+    }
+   },
+   "allW1": 86.1
+  },
+  {
+   "key": "15932",
+   "name": "Ploiesti Prayer Times",
+   "lat": 44.9417468,
+   "lon": 26.0236504,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 72.6,
+     "w1": 83,
+     "w2": 83.3,
+     "mae": 2.52,
+     "worst": 21
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 53.7,
+     "w2": 74.8,
+     "mae": 1.93,
+     "worst": -10
+    }
+   },
+   "allW1": 85.8
+  },
+  {
+   "key": "15933",
+   "name": "Satu mare Prayer Times",
+   "lat": 47.7891763,
+   "lon": 22.8725598,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.85
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 57.5,
+     "w1": 74.2,
+     "w2": 74.5,
+     "mae": 12.79,
+     "worst": 82
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 52.3,
+     "w2": 67.9,
+     "mae": 8.69,
+     "worst": -51
+    }
+   },
+   "allW1": 82.4
+  },
+  {
+   "key": "15934",
+   "name": "Drobeta-turnu severin Prayer Times",
+   "lat": 44.6257835,
+   "lon": 22.6531975,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 69.3,
+     "w1": 84.1,
+     "w2": 84.4,
+     "mae": 1.97,
+     "worst": 17
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 53.4,
+     "w2": 76.2,
+     "mae": 1.59,
+     "worst": -7
+    }
+   },
+   "allW1": 86.1
+  },
+  {
+   "key": "15935",
+   "name": "Suceava Prayer Times",
+   "lat": 47.5326535,
+   "lon": 25.8345939,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18.2,
+   "ishaAngle": 15.7,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.25,
+    "isha": 15.62
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -9,
+    "dhuhr": 3,
+    "asr": 2,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 38.4,
+     "w1": 74.8,
+     "w2": 75.3,
+     "mae": 12.12,
+     "worst": 78
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 59.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.4,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 67.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.33,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 74,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 47.7,
+     "w2": 58.4,
+     "mae": 7.59,
+     "worst": -44
+    }
+   },
+   "allW1": 79.3
+  },
+  {
+   "key": "15936",
+   "name": "Botosani Prayer Times",
+   "lat": 47.8528263,
+   "lon": 26.759334,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.89,
+    "isha": 15.92
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 55.1,
+     "w1": 74.2,
+     "w2": 74.8,
+     "mae": 12.65,
+     "worst": 81
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 51.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.48,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 58.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.42,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 69.6,
+     "w2": 96.7,
+     "mae": 1.09,
+     "worst": 3
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.4,
+     "w1": 41.9,
+     "w2": 72.6,
+     "mae": 9.14,
+     "worst": -53
+    }
+   },
+   "allW1": 78
+  },
+  {
+   "key": "15937",
+   "name": "Piatra neamt Prayer Times",
+   "lat": 46.9319894,
+   "lon": 26.3695046,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 63.3,
+     "w1": 77,
+     "w2": 77.5,
+     "mae": 8.42,
+     "worst": 57
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 48.5,
+     "w2": 64.1,
+     "mae": 5.96,
+     "worst": -35
+    }
+   },
+   "allW1": 83.8
+  },
+  {
+   "key": "15938",
+   "name": "Focsani Prayer Times",
+   "lat": 45.697274,
+   "lon": 27.1856921,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 71.2,
+     "w1": 81.1,
+     "w2": 81.1,
+     "mae": 4.29,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 80.8,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51,
+     "w2": 66.6,
+     "mae": 3.18,
+     "worst": -18
+    }
+   },
+   "allW1": 84.7
+  },
+  {
+   "key": "15939",
+   "name": "Targoviste Prayer Times",
+   "lat": 44.9267709,
+   "lon": 25.462816,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 72.1,
+     "w1": 83.3,
+     "w2": 83.6,
+     "mae": 2.52,
+     "worst": 21
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 53.2,
+     "w2": 70.1,
+     "mae": 1.99,
+     "worst": -10
+    }
+   },
+   "allW1": 86.3
+  },
+  {
+   "key": "15940",
+   "name": "Barlad Prayer Times",
+   "lat": 46.227535,
+   "lon": 27.66897,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.9,
+     "w1": 78.9,
+     "w2": 79.5,
+     "mae": 5.87,
+     "worst": 42
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 52.1,
+     "w2": 67.7,
+     "mae": 4.17,
+     "worst": -25
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "15941",
+   "name": "Krayova(craio) Prayer Times",
+   "lat": 44.3190159,
+   "lon": 23.7965614,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 93.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 83,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 94
+  },
+  {
+   "key": "15942",
+   "name": "Ramnicu valcea Prayer Times",
+   "lat": 45.1031731,
+   "lon": 24.3647209,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18.6,
+   "ishaAngle": 15.3,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.64,
+    "isha": 15.27
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -11,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 36.4,
+     "w1": 77.3,
+     "w2": 82.2,
+     "mae": 3.96,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 84.7,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 66.3,
+     "w2": 78.4,
+     "mae": 1.81,
+     "worst": -9
+    }
+   },
+   "allW1": 87.5
+  },
+  {
+   "key": "15943",
+   "name": "Kostence(constanta) Prayer Times",
+   "lat": 44.1767161,
+   "lon": 28.6507598,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.99
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    }
+   },
+   "allW1": 93.4
+  },
+  {
+   "key": "15944",
+   "name": "Bukres(bucharest) Prayer Times",
+   "lat": 44.4361414,
+   "lon": 26.102684,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 70.7,
+     "w1": 84.9,
+     "w2": 85.2,
+     "mae": 1.63,
+     "worst": 14
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 56.2,
+     "w2": 78.6,
+     "mae": 1.4,
+     "worst": -5
+    }
+   },
+   "allW1": 87.4
+  },
+  {
+   "key": "15945",
+   "name": "Pitesti Prayer Times",
+   "lat": 44.8572882,
+   "lon": 24.8721156,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.7,
+     "w1": 83.6,
+     "w2": 83.8,
+     "mae": 2.42,
+     "worst": 20
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.5,
+     "w1": 52.6,
+     "w2": 70.1,
+     "mae": 1.92,
+     "worst": -9
+    }
+   },
+   "allW1": 86.1
+  },
+  {
+   "key": "15946",
+   "name": "Arad Prayer Times",
+   "lat": 46.1753793,
+   "lon": 21.3196342,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.3,
+     "w1": 79.2,
+     "w2": 79.5,
+     "mae": 5.7,
+     "worst": 41
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 81.4,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 53.7,
+     "w2": 70.4,
+     "mae": 4.04,
+     "worst": -24
+    }
+   },
+   "allW1": 84.7
+  },
+  {
+   "key": "15947",
+   "name": "Subi(sibiu) Prayer Times",
+   "lat": 45.7973912,
+   "lon": 24.1519202,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.67,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 55.1,
+     "w2": 76.2,
+     "mae": 3.23,
+     "worst": -19
+    }
+   },
+   "allW1": 84.7
+  },
+  {
+   "key": "15948",
+   "name": "Tulcea Prayer Times",
+   "lat": 45.177518,
+   "lon": 28.8016348,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 70.4,
+     "w1": 82.5,
+     "w2": 82.7,
+     "mae": 3.04,
+     "worst": 24
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 51.8,
+     "w2": 70.4,
+     "mae": 2.33,
+     "worst": -13
+    }
+   },
+   "allW1": 85.9
+  },
+  {
+   "key": "15949",
+   "name": "Temisvar Prayer Times",
+   "lat": 45.7538355,
+   "lon": 21.2257474,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.6,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.47,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 80,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 52.9,
+     "w2": 67.4,
+     "mae": 3.25,
+     "worst": -19
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "15950",
+   "name": "Ibrail(braila) Prayer Times",
+   "lat": 45.2716092,
+   "lon": 27.9742932,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.4,
+     "w1": 81.6,
+     "w2": 82.2,
+     "mae": 3.32,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 51.2,
+     "w2": 66.3,
+     "mae": 2.51,
+     "worst": -14
+    }
+   },
+   "allW1": 85.6
+  },
+  {
+   "key": "15951",
+   "name": "Babadag Prayer Times",
+   "lat": 44.8929054,
+   "lon": 28.7211038,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 69.9,
+     "w1": 83,
+     "w2": 83.6,
+     "mae": 2.47,
+     "worst": 20
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 54.8,
+     "w2": 74.2,
+     "mae": 1.9,
+     "worst": -10
+    }
+   },
+   "allW1": 87.1
+  },
+  {
+   "key": "15952",
+   "name": "Mangalia Prayer Times",
+   "lat": 43.8150793,
+   "lon": 28.5830306,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    }
+   },
+   "allW1": 94.5
+  },
+  {
+   "key": "15953",
+   "name": "Cobadin Prayer Times",
+   "lat": 44.0430775,
+   "lon": 28.2176064,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.02,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 84.9,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 93.9
+  },
+  {
+   "key": "15954",
+   "name": "Hirsova Prayer Times",
+   "lat": 44.6845557,
+   "lon": 27.9513766,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 75.3,
+     "w1": 83.8,
+     "w2": 84.1,
+     "mae": 2.03,
+     "worst": 18
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 35.1,
+     "w1": 54,
+     "w2": 72.1,
+     "mae": 1.68,
+     "worst": -8
+    }
+   },
+   "allW1": 86.5
+  },
+  {
+   "key": "15955",
+   "name": "Bogazkoy Prayer Times",
+   "lat": 44.3416349,
+   "lon": 28.0316248,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    }
+   },
+   "allW1": 94.2
+  },
+  {
+   "key": "15956",
+   "name": "Mecidiye Prayer Times",
+   "lat": 44.2443001,
+   "lon": 28.269625,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 94
+  },
+  {
+   "key": "15957",
+   "name": "Brasov Prayer Times",
+   "lat": 45.6525105,
+   "lon": 25.6105654,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 68.8,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.24,
+     "worst": 31
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 51.8,
+     "w2": 64.9,
+     "mae": 3.14,
+     "worst": -18
+    }
+   },
+   "allW1": 84.9
+  },
+  {
+   "key": "16708",
+   "name": "Resita Prayer Times",
+   "lat": 45.289027,
+   "lon": 21.887861,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.9,
+     "w1": 81.9,
+     "w2": 82.5,
+     "mae": 3.36,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 80.8,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 53.2,
+     "w2": 72.3,
+     "mae": 2.46,
+     "worst": -14
+    }
+   },
+   "allW1": 85.2
+  },
+  {
+   "key": "16749",
+   "name": "Ciucurova Prayer Times",
+   "lat": 44.9146085,
+   "lon": 28.4478484,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 69.6,
+     "w1": 83,
+     "w2": 83.6,
+     "mae": 2.52,
+     "worst": 21
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 54.8,
+     "w2": 74.2,
+     "mae": 1.96,
+     "worst": -10
+    }
+   },
+   "allW1": 87.1
+  },
+  {
+   "key": "16750",
+   "name": "Braila Prayer Times",
+   "lat": 45.2716092,
+   "lon": 27.9742932,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.4,
+     "w1": 81.6,
+     "w2": 82.2,
+     "mae": 3.32,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 51.2,
+     "w2": 66.3,
+     "mae": 2.51,
+     "worst": -14
+    }
+   },
+   "allW1": 85.6
+  },
+  {
+   "key": "16751",
+   "name": "Calarasi Prayer Times",
+   "lat": 44.1961646,
+   "lon": 27.3313233,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18.2,
+   "ishaAngle": 14.5,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.81,
+    "isha": 15.55
+   },
+   "offsets": {
+    "fajr": -2,
+    "sunrise": -12,
+    "dhuhr": 1,
+    "asr": -2,
+    "maghrib": 4,
+    "isha": 2
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 3.6,
+     "w1": 13.4,
+     "w2": 22.5,
+     "mae": 7.98,
+     "worst": -23
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 3.3,
+     "w1": 9.9,
+     "w2": 17,
+     "mae": 7.22,
+     "worst": 13
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 4.4,
+     "w1": 11.2,
+     "w2": 20,
+     "mae": 5.55,
+     "worst": -10
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 3.6,
+     "w1": 10.1,
+     "w2": 15.1,
+     "mae": 7.29,
+     "worst": -13
+    },
+    "isha": {
+     "n": 365,
+     "exact": 4.1,
+     "w1": 15.1,
+     "w2": 28.5,
+     "mae": 8.07,
+     "worst": 26
+    }
+   },
+   "allW1": 26.6
+  },
+  {
+   "key": "21170",
+   "name": "Macin Prayer Times",
+   "lat": 45.247359,
+   "lon": 28.1341543,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 70.7,
+     "w1": 81.9,
+     "w2": 82.5,
+     "mae": 3.22,
+     "worst": 25
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 53.4,
+     "w2": 71.2,
+     "mae": 2.39,
+     "worst": -13
+    }
+   },
+   "allW1": 85.1
+  },
+  {
+   "key": "21171",
+   "name": "Isaccea Prayer Times",
+   "lat": 45.2721887,
+   "lon": 28.4571456,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 65.2,
+     "w1": 81.6,
+     "w2": 82.2,
+     "mae": 3.33,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51.5,
+     "w2": 69.6,
+     "mae": 2.5,
+     "worst": -14
+    }
+   },
+   "allW1": 86.2
+  },
+  {
+   "key": "21172",
+   "name": "Adamclisi  Prayer Times",
+   "lat": 44.111979,
+   "lon": 27.9407076,
+   "tz": "Europe/Bucharest",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 94.5
+  }
+ ]
+}

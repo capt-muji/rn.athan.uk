@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Bareilly-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 28.35,
+  "lon": 79.45
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.99,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.3,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.39,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.47,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.29,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.34,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.4,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.48,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 58.01,
+   "med": 56
+  },
+  "1": {
+   "mae": 0.34,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 74.5,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 66,
+   "within1": 99.2,
+   "mae": 0.35,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 53.7,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.8,
+   "within1": 100,
+   "mae": 0.34,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 65.5,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 70.7,
+   "within1": 100,
+   "mae": 0.29,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 362,
+ "isha_tier": {
+  "17": {
+   "mae": 5.32,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 7
+  },
+  "18": {
+   "mae": 0.4,
+   "med": 0,
+   "within1": 100,
+   "exact": 60.3,
+   "worst": 1
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.98,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 122
+}

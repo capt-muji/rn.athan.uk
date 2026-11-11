@@ -1,0 +1,437 @@
+{
+ "394": {
+  "name": "Asker NO",
+  "fajr": {
+   "HONEST": {
+    "n": 219,
+    "exact": 99,
+    "within1": 191,
+    "within2": 215,
+    "rms": 1.01,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 13,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 4.39,
+    "worst": -9
+   },
+   "RULE": {
+    "n": 132,
+    "exact": 132,
+    "within1": 132,
+    "within2": 132,
+    "rms": 0.0,
+    "worst": 0
+   }
+  },
+  "isha": {
+   "HONEST": {
+    "n": 203,
+    "exact": 27,
+    "within1": 146,
+    "within2": 198,
+    "rms": 1.35,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 32,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 62.32,
+    "worst": 139
+   },
+   "RULE": {
+    "n": 84,
+    "exact": 74,
+    "within1": 84,
+    "within2": 84,
+    "rms": 0.35,
+    "worst": -1
+   }
+  },
+  "asr": {
+   "n": 366,
+   "exact": 182,
+   "within1": 330,
+   "within2": 365,
+   "rms": 0.9,
+   "worst": -3
+  },
+  "sunrise": {
+   "n": 366,
+   "exact": 137,
+   "within1": 295,
+   "within2": 358,
+   "rms": 1.15,
+   "worst": 3
+  },
+  "maghrib": {
+   "n": 366,
+   "exact": 142,
+   "within1": 284,
+   "within2": 362,
+   "rms": 1.16,
+   "worst": -3
+  },
+  "dhuhr": {
+   "n": 366,
+   "exact": 94,
+   "within1": 184,
+   "within2": 184,
+   "rms": 3.19,
+   "worst": 5
+  }
+ },
+ "444": {
+  "name": "Fredrikstad NO",
+  "fajr": {
+   "HONEST": {
+    "n": 226,
+    "exact": 100,
+    "within1": 197,
+    "within2": 217,
+    "rms": 1.07,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 13,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 4.67,
+    "worst": -10
+   },
+   "RULE": {
+    "n": 125,
+    "exact": 125,
+    "within1": 125,
+    "within2": 125,
+    "rms": 0.0,
+    "worst": 0
+   }
+  },
+  "isha": {
+   "HONEST": {
+    "n": 208,
+    "exact": 32,
+    "within1": 155,
+    "within2": 202,
+    "rms": 1.32,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 32,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 66.61,
+    "worst": 155
+   },
+   "RULE": {
+    "n": 83,
+    "exact": 70,
+    "within1": 83,
+    "within2": 83,
+    "rms": 0.4,
+    "worst": -1
+   }
+  },
+  "asr": {
+   "n": 366,
+   "exact": 183,
+   "within1": 330,
+   "within2": 366,
+   "rms": 0.89,
+   "worst": -2
+  },
+  "sunrise": {
+   "n": 366,
+   "exact": 155,
+   "within1": 311,
+   "within2": 359,
+   "rms": 1.06,
+   "worst": 3
+  },
+  "maghrib": {
+   "n": 366,
+   "exact": 142,
+   "within1": 295,
+   "within2": 365,
+   "rms": 1.1,
+   "worst": -3
+  },
+  "dhuhr": {
+   "n": 366,
+   "exact": 89,
+   "within1": 184,
+   "within2": 184,
+   "rms": 3.18,
+   "worst": 5
+  }
+ },
+ "5587": {
+  "name": "Fagersta SE",
+  "fajr": {
+   "HONEST": {
+    "n": 195,
+    "exact": 68,
+    "within1": 168,
+    "within2": 181,
+    "rms": 1.19,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 17,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 8.88,
+    "worst": 15
+   },
+   "RULE": {
+    "n": 154,
+    "exact": 21,
+    "within1": 76,
+    "within2": 118,
+    "rms": 2.58,
+    "worst": 11
+   }
+  },
+  "isha": {
+   "HONEST": {
+    "n": 200,
+    "exact": 66,
+    "within1": 174,
+    "within2": 190,
+    "rms": 1.14,
+    "worst": 3
+   },
+   "TRANSITION": {
+    "n": 20,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 7.66,
+    "worst": -12
+   },
+   "RULE": {
+    "n": 146,
+    "exact": 33,
+    "within1": 87,
+    "within2": 121,
+    "rms": 1.83,
+    "worst": -5
+   }
+  },
+  "asr": {
+   "n": 366,
+   "exact": 23,
+   "within1": 93,
+   "within2": 172,
+   "rms": 2.55,
+   "worst": -4
+  },
+  "sunrise": {
+   "n": 366,
+   "exact": 39,
+   "within1": 181,
+   "within2": 275,
+   "rms": 3.82,
+   "worst": -15
+  },
+  "maghrib": {
+   "n": 366,
+   "exact": 44,
+   "within1": 169,
+   "within2": 269,
+   "rms": 2.83,
+   "worst": 7
+  },
+  "dhuhr": {
+   "n": 366,
+   "exact": 332,
+   "within1": 366,
+   "within2": 366,
+   "rms": 0.3,
+   "worst": -1
+  }
+ },
+ "5622": {
+  "name": "Lidkoping SE",
+  "fajr": {
+   "HONEST": {
+    "n": 201,
+    "exact": 70,
+    "within1": 171,
+    "within2": 191,
+    "rms": 1.16,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 18,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 10.9,
+    "worst": 17
+   },
+   "RULE": {
+    "n": 147,
+    "exact": 33,
+    "within1": 79,
+    "within2": 113,
+    "rms": 2.71,
+    "worst": 11
+   }
+  },
+  "isha": {
+   "HONEST": {
+    "n": 211,
+    "exact": 68,
+    "within1": 180,
+    "within2": 202,
+    "rms": 1.15,
+    "worst": 3
+   },
+   "TRANSITION": {
+    "n": 16,
+    "exact": 0,
+    "within1": 0,
+    "within2": 0,
+    "rms": 10.41,
+    "worst": -15
+   },
+   "RULE": {
+    "n": 139,
+    "exact": 49,
+    "within1": 92,
+    "within2": 113,
+    "rms": 2.16,
+    "worst": -7
+   }
+  },
+  "asr": {
+   "n": 366,
+   "exact": 30,
+   "within1": 102,
+   "within2": 227,
+   "rms": 2.26,
+   "worst": -4
+  },
+  "sunrise": {
+   "n": 366,
+   "exact": 48,
+   "within1": 207,
+   "within2": 293,
+   "rms": 2.13,
+   "worst": -5
+  },
+  "maghrib": {
+   "n": 366,
+   "exact": 52,
+   "within1": 192,
+   "within2": 283,
+   "rms": 2.27,
+   "worst": 5
+  },
+  "dhuhr": {
+   "n": 366,
+   "exact": 321,
+   "within1": 366,
+   "within2": 366,
+   "rms": 0.35,
+   "worst": -1
+  }
+ },
+ "1641": {
+  "name": "Charleroi BE",
+  "fajr": {
+   "HONEST": {
+    "n": 279,
+    "exact": 71,
+    "within1": 204,
+    "within2": 276,
+    "rms": 1.27,
+    "worst": 3
+   },
+   "TRANSITION": {
+    "n": 25,
+    "exact": 9,
+    "within1": 16,
+    "within2": 16,
+    "rms": 5.97,
+    "worst": 15
+   },
+   "RULE": {
+    "n": 62,
+    "exact": 44,
+    "within1": 62,
+    "within2": 62,
+    "rms": 0.54,
+    "worst": 1
+   }
+  },
+  "isha": {
+   "HONEST": {
+    "n": 287,
+    "exact": 56,
+    "within1": 218,
+    "within2": 284,
+    "rms": 1.26,
+    "worst": -3
+   },
+   "TRANSITION": {
+    "n": 16,
+    "exact": 3,
+    "within1": 15,
+    "within2": 16,
+    "rms": 1.0,
+    "worst": 2
+   },
+   "RULE": {
+    "n": 63,
+    "exact": 32,
+    "within1": 62,
+    "within2": 63,
+    "rms": 0.73,
+    "worst": -2
+   }
+  },
+  "asr": {
+   "n": 366,
+   "exact": 163,
+   "within1": 317,
+   "within2": 366,
+   "rms": 0.98,
+   "worst": -2
+  },
+  "sunrise": {
+   "n": 366,
+   "exact": 67,
+   "within1": 255,
+   "within2": 357,
+   "rms": 1.36,
+   "worst": -3
+  },
+  "maghrib": {
+   "n": 366,
+   "exact": 101,
+   "within1": 305,
+   "within2": 366,
+   "rms": 1.11,
+   "worst": -2
+  },
+  "dhuhr": {
+   "n": 366,
+   "exact": 313,
+   "within1": 366,
+   "within2": 366,
+   "rms": 0.38,
+   "worst": -1
+  }
+ }
+}

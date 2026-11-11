@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-srinagar-masjid-i-umar-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 34.115,
+  "lon": 74.6,
+  "mae": 14.744
+ },
+ "coarse": {
+  "lat": 34.1,
+  "lon": 74.65,
+  "mae": 14.852
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 1,
+   "maeCentred": 0.32
+  },
+  {
+   "a": 18.2,
+   "med": 2,
+   "maeCentred": 0.36
+  },
+  {
+   "a": 17.8,
+   "med": 0,
+   "maeCentred": 0.37
+  }
+ ],
+ "isha_angle": 17.15,
+ "isha_sweep": [
+  {
+   "a": 17.15,
+   "med": 5,
+   "maeCentred": 1.41
+  },
+  {
+   "a": 16.95,
+   "med": 6,
+   "maeCentred": 1.42
+  },
+  {
+   "a": 17.35,
+   "med": 4,
+   "maeCentred": 1.42
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 54,
+   "maeCentred": 10.53
+  },
+  "1": {
+   "med": 1,
+   "maeCentred": 1.67
+  }
+ },
+ "margins": {
+  "fajr": 1,
+  "sunrise": 0,
+  "dhuhr": 28,
+  "asr": 1,
+  "maghrib": 3,
+  "isha": 5
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 68.8,
+   "within1": 99.2,
+   "mae": 0.32,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 43.8,
+   "within1": 96.2,
+   "mae": 0.6,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.8,
+   "within1": 11.2,
+   "mae": 7.16,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 19.2,
+   "within1": 51.8,
+   "mae": 1.67,
+   "worst": -6,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 43.8,
+   "within1": 96.2,
+   "mae": 0.6,
+   "worst": -2,
+   "med": 0
+  },
+  "isha": {
+   "exact": 21.6,
+   "within1": 58.6,
+   "mae": 1.41,
+   "worst": -5,
+   "med": 0
+  }
+ },
+ "all_six_within1": 14,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 155
+}

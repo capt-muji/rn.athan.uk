@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Port_Blair_IN-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 11.6667,
+  "lon": 92.75
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.95,
+ "isha_angle": 17.9,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.52,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.56,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.57,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.58,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 17.9,
+   "mae": 0.26,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.34,
+   "med": 0
+  },
+  {
+   "a": 17.85,
+   "mae": 0.38,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.42,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 61.02,
+   "med": 63
+  },
+  "1": {
+   "mae": 0.62,
+   "med": -1
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": -1,
+  "maghrib": 2,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 49.6,
+   "within1": 98.1,
+   "mae": 0.52,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 48.2,
+   "within1": 97.8,
+   "mae": 0.54,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 51.5,
+   "within1": 100,
+   "mae": 0.48,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 61.4,
+   "within1": 100,
+   "mae": 0.39,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 49.3,
+   "within1": 89.6,
+   "mae": 0.61,
+   "worst": 2,
+   "med": 0
+  },
+  "isha": {
+   "exact": 74,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 314,
+ "isha_tier": {
+  "17": {
+   "mae": 3.95,
+   "med": 4,
+   "within1": 0,
+   "exact": 0,
+   "worst": 5
+  },
+  "18": {
+   "mae": 0.42,
+   "med": 0,
+   "within1": 99.5,
+   "exact": 58.4,
+   "worst": -2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.31,
+  "min": 4,
+  "max": 5
+ },
+ "amplitude_fajr_min": 57
+}

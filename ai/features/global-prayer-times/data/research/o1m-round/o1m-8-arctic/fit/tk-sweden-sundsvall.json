@@ -1,0 +1,79 @@
+{
+ "city": "sundsvall",
+ "nightFraction": {
+  "n": 130,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Sweden",
+ "source": "tawkit.net",
+ "tz": "Europe/Stockholm",
+ "lat": 62.39129,
+ "lon": 17.3063,
+ "rows": 365,
+ "solarGateMedAbs": 0.23,
+ "fajrAngle": {
+  "n": 229,
+  "med": 18,
+  "min": 14.05,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 237,
+  "med": 17.05,
+  "min": 10.25,
+  "max": 17.2,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.02,
+   "min": -1.9,
+   "max": 1.8
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": -0.03,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.02,
+   "min": -1.9,
+   "max": 2.5
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.65,
+   "min": -80.6,
+   "max": -13.6
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.08,
+   "min": -1.8,
+   "max": 1.9
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-17",
+    "to": "2027-08-24",
+    "days": 130
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 326,
+  "isha": 462
+ }
+}

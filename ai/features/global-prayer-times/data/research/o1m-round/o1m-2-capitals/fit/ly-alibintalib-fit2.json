@@ -1,0 +1,54 @@
+{
+ "file": "ly-alibintalib-mawaqit-2026.json",
+ "lat": 32.7758031,
+ "lon": 13.32687,
+ "tz": "Africa/Tripoli",
+ "rows": 365,
+ "span": "2026-01-01..2026-12-31",
+ "recipe": {
+  "fajrAngle": 18.5,
+  "ishaAngle": 18.5,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "355 exact / 946 within-1 of 1825",
+ "pctWithin1": 51.84,
+ "worst": 6,
+ "per": {
+  "fajr": {
+   "exact": 18,
+   "within1": 279,
+   "worst": 2
+  },
+  "sunrise": {
+   "exact": 228,
+   "within1": 365,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 4
+  },
+  "asr": {
+   "exact": 186,
+   "within1": 356,
+   "worst": 2
+  },
+  "maghrib": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 6
+  },
+  "isha": {
+   "exact": 151,
+   "within1": 311,
+   "worst": 2
+  }
+ },
+ "amplitudeFajrJanJul": -133,
+ "amplitudeIshaJanJul": 125,
+ "years": [
+  "2026"
+ ]
+}

@@ -1,0 +1,265 @@
+{
+ "id": "cl-temuco-wayback",
+ "name": "Temuco",
+ "city": "Temuco",
+ "tz": "America/Santiago",
+ "lat": -38.736,
+ "lon": -72.59,
+ "address": "city centre",
+ "rows": 59,
+ "repairRows": 0,
+ "years": [
+  2022,
+  2025
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.1,
+  "ishaKind": "angle",
+  "isha": 17.7,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 5,
+   "dhuhr": 6,
+   "asr": 7,
+   "maghrib": 7,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 59,
+  "fajr": {
+   "exactPct": 10.2,
+   "w1Pct": 83.1,
+   "mean": 0.19,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 16.1,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 64.3,
+     "exactPct": 3.6,
+     "worst": 2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.19,
+   "worst": 6,
+   "med": 5,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 5
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.47,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.75,
+   "worst": 8,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.8,
+   "worst": 8,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 28.8,
+   "w1Pct": 52.5,
+   "mean": 1.76,
+   "worst": 5,
+   "med": 1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": 1
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 5
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 59,
+  "fajr": {
+   "exactPct": 10.2,
+   "w1Pct": 83.1,
+   "mean": 0.19,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 16.1,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 64.3,
+     "exactPct": 3.6,
+     "worst": 2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 74.6,
+   "w1Pct": 100,
+   "mean": 0.19,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 58.1,
+     "worst": 1
+    },
+    "2025": {
+     "w1Pct": 100,
+     "exactPct": 92.9,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 49.2,
+   "w1Pct": 100,
+   "mean": 0.47,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 64.5,
+     "worst": 1
+    },
+    "2025": {
+     "w1Pct": 100,
+     "exactPct": 32.1,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 28.8,
+   "w1Pct": 98.3,
+   "mean": -0.25,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 9.7,
+     "worst": -2
+    },
+    "2025": {
+     "w1Pct": 100,
+     "exactPct": 50,
+     "worst": 1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 52.5,
+   "w1Pct": 100,
+   "mean": -0.2,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 35.5,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 100,
+     "exactPct": 71.4,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 23.7,
+   "w1Pct": 57.6,
+   "mean": 0.76,
+   "worst": 4,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 45.2,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 10.7,
+     "exactPct": 0,
+     "worst": 4
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

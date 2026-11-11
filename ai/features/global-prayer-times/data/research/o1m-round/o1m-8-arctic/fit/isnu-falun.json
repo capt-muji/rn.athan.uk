@@ -1,0 +1,68 @@
+{
+ "city": "falun",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 60.6065,
+ "lon": 15.6355,
+ "rows": 699,
+ "solarGateMedAbs": 0.18,
+ "fajrAngle": {
+  "n": 529,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 523,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 699,
+   "med": 0.05,
+   "min": -0.5,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 699,
+   "med": 0.03,
+   "min": -0.4,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 699,
+   "med": -0.1,
+   "min": -2.3,
+   "max": 2.3
+  },
+  "asrHanafi": {
+   "n": 699,
+   "med": -51.22,
+   "min": -79.2,
+   "max": -18.9
+  },
+  "maghrib": {
+   "n": 699,
+   "med": 0.03,
+   "min": -0.5,
+   "max": 0.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 259,
+  "isha": 390
+ }
+}

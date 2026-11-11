@@ -1,0 +1,59 @@
+{
+ "label": "diy-myanmar-pathein",
+ "file": "data/diyanet-myanmar-pathein.json",
+ "lat": 16.7792,
+ "lon": 94.7321,
+ "tz": "Asia/Yangon",
+ "asr": "shafi",
+ "days": 30,
+ "span": [
+  "2026-11-12",
+  "2026-12-11"
+ ],
+ "fajrAngle": 17.98,
+ "ishaAngle": 17.02,
+ "columns": {
+  "fajr": {
+   "margin": 0.02,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.52
+  },
+  "sunrise": {
+   "margin": -6.95,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.5
+  },
+  "dhuhr": {
+   "margin": 5.02,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.57
+  },
+  "asr": {
+   "margin": 4,
+   "mae": 0.2,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.63
+  },
+  "maghrib": {
+   "margin": 7.12,
+   "mae": 0.3,
+   "within1": 30,
+   "exact": 24,
+   "worst": 0.58
+  },
+  "isha": {
+   "margin": 0,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 27,
+   "worst": 0.65
+  }
+ }
+}

@@ -1,0 +1,258 @@
+[
+ {
+  "city": "ganja",
+  "lat": 40.6828,
+  "lng": 46.3606,
+  "rows": 365,
+  "margins": {
+   "fajr": -0.07,
+   "sunrise": 0.02,
+   "dhuhr": -0.03,
+   "asr": -0.02,
+   "maghrib": -0.05,
+   "isha": -0.02
+  },
+  "cols": {
+   "fajr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 93.2,
+    "mae": 0.25,
+    "worst": 0.6,
+    "bias": 0.01
+   },
+   "sunrise": {
+    "n": 365,
+    "w1": 100,
+    "exact": 94.8,
+    "mae": 0.25,
+    "worst": 0.6,
+    "bias": -0.03
+   },
+   "dhuhr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97.8,
+    "mae": 0.24,
+    "worst": 0.5,
+    "bias": 0
+   },
+   "asr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 54.5,
+    "mae": 0.5,
+    "worst": 1.2,
+    "bias": -0.01
+   },
+   "maghrib": {
+    "n": 365,
+    "w1": 100,
+    "exact": 95.3,
+    "mae": 0.26,
+    "worst": 0.5,
+    "bias": 0
+   },
+   "isha": {
+    "n": 365,
+    "w1": 100,
+    "exact": 85.5,
+    "mae": 0.28,
+    "worst": 0.8,
+    "bias": 0
+   }
+  }
+ },
+ {
+  "city": "sumqayit",
+  "lat": 40.5897,
+  "lng": 49.6686,
+  "rows": 365,
+  "margins": {
+   "fajr": 0.17,
+   "sunrise": 0.15,
+   "dhuhr": 0.15,
+   "asr": 0.15,
+   "maghrib": 0.15,
+   "isha": 0.18
+  },
+  "cols": {
+   "fajr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 95.9,
+    "mae": 0.25,
+    "worst": 0.6,
+    "bias": 0.01
+   },
+   "sunrise": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97,
+    "mae": 0.25,
+    "worst": 0.5,
+    "bias": -0.01
+   },
+   "dhuhr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97.3,
+    "mae": 0.24,
+    "worst": 0.5,
+    "bias": 0.01
+   },
+   "asr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 55.9,
+    "mae": 0.47,
+    "worst": 1.1,
+    "bias": 0.03
+   },
+   "maghrib": {
+    "n": 365,
+    "w1": 100,
+    "exact": 95.1,
+    "mae": 0.25,
+    "worst": 0.5,
+    "bias": -0.01
+   },
+   "isha": {
+    "n": 365,
+    "w1": 100,
+    "exact": 87.1,
+    "mae": 0.27,
+    "worst": 0.8,
+    "bias": -0.02
+   }
+  }
+ },
+ {
+  "city": "lankaran",
+  "lat": 38.7543,
+  "lng": 48.8506,
+  "rows": 365,
+  "margins": {
+   "fajr": 0.07,
+   "sunrise": 0.03,
+   "dhuhr": 0.03,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -0.03
+  },
+  "cols": {
+   "fajr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 92.3,
+    "mae": 0.25,
+    "worst": 0.6,
+    "bias": -0.03
+   },
+   "sunrise": {
+    "n": 365,
+    "w1": 100,
+    "exact": 94.8,
+    "mae": 0.25,
+    "worst": 0.6,
+    "bias": -0.01
+   },
+   "dhuhr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97.8,
+    "mae": 0.24,
+    "worst": 0.5,
+    "bias": 0
+   },
+   "asr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 54,
+    "mae": 0.48,
+    "worst": 1.2,
+    "bias": 0.01
+   },
+   "maghrib": {
+    "n": 365,
+    "w1": 100,
+    "exact": 95.3,
+    "mae": 0.26,
+    "worst": 0.5,
+    "bias": 0
+   },
+   "isha": {
+    "n": 365,
+    "w1": 100,
+    "exact": 87.4,
+    "mae": 0.27,
+    "worst": 0.7,
+    "bias": 0.03
+   }
+  }
+ },
+ {
+  "city": "sheki",
+  "lat": 41.1919,
+  "lng": 47.1706,
+  "rows": 365,
+  "margins": {
+   "fajr": 0.03,
+   "sunrise": 0.17,
+   "dhuhr": 0.08,
+   "asr": 0.05,
+   "maghrib": 0.05,
+   "isha": 0.08
+  },
+  "cols": {
+   "fajr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 95.6,
+    "mae": 0.26,
+    "worst": 0.6,
+    "bias": 0.02
+   },
+   "sunrise": {
+    "n": 365,
+    "w1": 100,
+    "exact": 91,
+    "mae": 0.27,
+    "worst": 0.6,
+    "bias": -0.03
+   },
+   "dhuhr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97.8,
+    "mae": 0.24,
+    "worst": 0.5,
+    "bias": -0.03
+   },
+   "asr": {
+    "n": 365,
+    "w1": 100,
+    "exact": 53.4,
+    "mae": 0.51,
+    "worst": 1.2,
+    "bias": -0.01
+   },
+   "maghrib": {
+    "n": 365,
+    "w1": 100,
+    "exact": 97.5,
+    "mae": 0.26,
+    "worst": 0.5,
+    "bias": 0.01
+   },
+   "isha": {
+    "n": 365,
+    "w1": 100,
+    "exact": 86.8,
+    "mae": 0.27,
+    "worst": 0.7,
+    "bias": -0.01
+   }
+  }
+ }
+]

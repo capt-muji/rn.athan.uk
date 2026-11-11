@@ -1,0 +1,222 @@
+[
+ {
+  "city": "alger_1447",
+  "lat": 36.7538,
+  "lon": 3.0588,
+  "n": 175,
+  "span": [
+   "2025-06-27",
+   "2026-06-15"
+  ],
+  "recipe": "adhan 4.4.6 MuslimWorldLeague (fajr 18, isha 17), Shafi asr, Rounding.None, Africa/Algiers",
+  "per_prayer": {
+   "fajr": {
+    "offset_minutes": 1,
+    "exact_raw": 165,
+    "within1_raw": 174,
+    "worst_raw": 2,
+    "n": 175
+   },
+   "sunrise": {
+    "offset_minutes": 1,
+    "exact_raw": 165,
+    "within1_raw": 173,
+    "worst_raw": 30,
+    "n": 175
+   },
+   "dhuhr": {
+    "offset_minutes": 0,
+    "exact_raw": 172,
+    "within1_raw": 175,
+    "worst_raw": 1,
+    "n": 175
+   },
+   "asr": {
+    "offset_minutes": 1,
+    "exact_raw": 84,
+    "within1_raw": 172,
+    "worst_raw": 119,
+    "n": 175
+   },
+   "maghrib": {
+    "offset_minutes": 4,
+    "exact_raw": 162,
+    "within1_raw": 172,
+    "worst_raw": 10,
+    "n": 175
+   },
+   "isha": {
+    "offset_minutes": 1,
+    "exact_raw": 146,
+    "within1_raw": 169,
+    "worst_raw": 60,
+    "n": 175
+   }
+  }
+ },
+ {
+  "city": "adrar_1447",
+  "lat": 27.8743,
+  "lon": -0.2939,
+  "n": 189,
+  "span": [
+   "2025-06-27",
+   "2026-06-16"
+  ],
+  "recipe": "adhan 4.4.6 MuslimWorldLeague (fajr 18, isha 17), Shafi asr, Rounding.None, Africa/Algiers",
+  "per_prayer": {
+   "fajr": {
+    "offset_minutes": 1,
+    "exact_raw": 152,
+    "within1_raw": 170,
+    "worst_raw": 61,
+    "n": 189
+   },
+   "sunrise": {
+    "offset_minutes": 1,
+    "exact_raw": 172,
+    "within1_raw": 187,
+    "worst_raw": 120,
+    "n": 189
+   },
+   "dhuhr": {
+    "offset_minutes": 0,
+    "exact_raw": 170,
+    "within1_raw": 188,
+    "worst_raw": 4,
+    "n": 189
+   },
+   "asr": {
+    "offset_minutes": 1,
+    "exact_raw": 100,
+    "within1_raw": 186,
+    "worst_raw": 61,
+    "n": 189
+   },
+   "maghrib": {
+    "offset_minutes": 4,
+    "exact_raw": 176,
+    "within1_raw": 187,
+    "worst_raw": 16,
+    "n": 189
+   },
+   "isha": {
+    "offset_minutes": 1,
+    "exact_raw": 173,
+    "within1_raw": 188,
+    "worst_raw": 20,
+    "n": 189
+   }
+  }
+ },
+ {
+  "city": "djelfa_1447",
+  "lat": 34.6719,
+  "lon": 3.263,
+  "n": 205,
+  "span": [
+   "2025-06-27",
+   "2026-06-17"
+  ],
+  "recipe": "adhan 4.4.6 MuslimWorldLeague (fajr 18, isha 17), Shafi asr, Rounding.None, Africa/Algiers",
+  "per_prayer": {
+   "fajr": {
+    "offset_minutes": 1,
+    "exact_raw": 166,
+    "within1_raw": 182,
+    "worst_raw": 60,
+    "n": 205
+   },
+   "sunrise": {
+    "offset_minutes": 1,
+    "exact_raw": 174,
+    "within1_raw": 194,
+    "worst_raw": 72,
+    "n": 205
+   },
+   "dhuhr": {
+    "offset_minutes": 0,
+    "exact_raw": 190,
+    "within1_raw": 199,
+    "worst_raw": 10,
+    "n": 205
+   },
+   "asr": {
+    "offset_minutes": 1,
+    "exact_raw": 93,
+    "within1_raw": 190,
+    "worst_raw": 120,
+    "n": 205
+   },
+   "maghrib": {
+    "offset_minutes": 4,
+    "exact_raw": 174,
+    "within1_raw": 198,
+    "worst_raw": 23,
+    "n": 205
+   },
+   "isha": {
+    "offset_minutes": 1,
+    "exact_raw": 174,
+    "within1_raw": 197,
+    "worst_raw": 32,
+    "n": 205
+   }
+  }
+ },
+ {
+  "city": "alger_1448",
+  "lat": 36.7538,
+  "lon": 3.0588,
+  "n": 163,
+  "span": [
+   "2026-06-23",
+   "2027-06-05"
+  ],
+  "recipe": "adhan 4.4.6 MuslimWorldLeague (fajr 18, isha 17), Shafi asr, Rounding.None, Africa/Algiers",
+  "per_prayer": {
+   "fajr": {
+    "offset_minutes": 1,
+    "exact_raw": 143,
+    "within1_raw": 154,
+    "worst_raw": 10,
+    "n": 163
+   },
+   "sunrise": {
+    "offset_minutes": 1,
+    "exact_raw": 145,
+    "within1_raw": 153,
+    "worst_raw": 120,
+    "n": 163
+   },
+   "dhuhr": {
+    "offset_minutes": 0,
+    "exact_raw": 155,
+    "within1_raw": 161,
+    "worst_raw": 8,
+    "n": 163
+   },
+   "asr": {
+    "offset_minutes": 1,
+    "exact_raw": 63,
+    "within1_raw": 157,
+    "worst_raw": 11,
+    "n": 163
+   },
+   "maghrib": {
+    "offset_minutes": 4,
+    "exact_raw": 138,
+    "within1_raw": 149,
+    "worst_raw": 30,
+    "n": 163
+   },
+   "isha": {
+    "offset_minutes": 1,
+    "exact_raw": 131,
+    "within1_raw": 152,
+    "worst_raw": 8,
+    "n": 163
+   }
+  }
+ }
+]

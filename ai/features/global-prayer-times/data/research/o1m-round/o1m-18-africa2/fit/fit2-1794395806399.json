@@ -1,0 +1,584 @@
+[
+ {
+  "file": "mq-mosquee-babou-kane-de-niarela-bamako-mali.json",
+  "source": "MOSQUÉE  DE NIARELA - Bamako",
+  "label": "MOSQUÉE  DE NIARELA - Bamako",
+  "lat": 12.646768889184,
+  "lon": -7.9847690870821,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 15.6,
+   "ishaAngle": 11.2,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 73,
+    "asr": -3,
+    "maghrib": 11
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 15.6,
+    "exact": 100,
+    "within1": 228,
+    "worst": 22,
+    "mae": 5.35,
+    "n": 365
+   },
+   "isha": {
+    "angle": 11.2,
+    "exact": 21,
+    "within1": 51,
+    "worst": 58,
+    "mae": 25.44,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 100,
+    "within1": 228,
+    "worst": 22,
+    "mae": 5.35,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 210,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.42,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 15,
+    "within1": 43,
+    "worst": 17,
+    "mae": 7.17,
+    "n": 365
+   },
+   "asr": {
+    "exact": 6,
+    "within1": 20,
+    "worst": -19,
+    "mae": 9.3,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 10,
+    "within1": 32,
+    "worst": 39,
+    "mae": 15.62,
+    "n": 365
+   },
+   "isha": {
+    "exact": 21,
+    "within1": 51,
+    "worst": 58,
+    "mae": 25.44,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 739,
+   "of": 2190,
+   "worst": 58
+  },
+  "amplitude_fajr_jan_jul": 34
+ },
+ {
+  "file": "mq-mosquee-sunnite-de-quinzambougou-bamako-125-mali.json",
+  "source": "Mosquée Sunnite de Quinzambougou - Bamako",
+  "label": "Mosquée Sunnite de Quinzambougou - Bamako",
+  "lat": 12.6500255,
+  "lon": -7.9819622,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 11.95,
+   "ishaAngle": 15.35,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 13,
+    "asr": -2,
+    "maghrib": 1
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 11.95,
+    "exact": 43,
+    "within1": 66,
+    "worst": -35,
+    "mae": 13.78,
+    "n": 365
+   },
+   "isha": {
+    "angle": 15.35,
+    "exact": 154,
+    "within1": 265,
+    "worst": 20,
+    "mae": 4.01,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 43,
+    "within1": 66,
+    "worst": -35,
+    "mae": 13.78,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 210,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.42,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 14,
+    "within1": 42,
+    "worst": 17,
+    "mae": 7.12,
+    "n": 365
+   },
+   "asr": {
+    "exact": 6,
+    "within1": 20,
+    "worst": 14,
+    "mae": 6.4,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 143,
+    "within1": 278,
+    "worst": 17,
+    "mae": 3.08,
+    "n": 365
+   },
+   "isha": {
+    "exact": 154,
+    "within1": 265,
+    "worst": 20,
+    "mae": 4.01,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1036,
+   "of": 2190,
+   "worst": 35
+  },
+  "amplitude_fajr_jan_jul": 0
+ },
+ {
+  "file": "mq-mosquee-atata-senou-bamako-senou-91096-mali.json",
+  "source": "MOSQUEE ATATA SENOU - Bamako-Senou",
+  "label": "MOSQUEE ATATA SENOU - Bamako-Senou",
+  "lat": 12.5220743,
+  "lon": -7.9211555,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 14.9,
+   "ishaAngle": 13.5,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 1,
+    "dhuhr": 88,
+    "asr": 7,
+    "maghrib": 8
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 14.9,
+    "exact": 340,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "isha": {
+    "angle": 13.5,
+    "exact": 283,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.22,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 340,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 197,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.46,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 15,
+    "within1": 42,
+    "worst": 17,
+    "mae": 7.13,
+    "n": 365
+   },
+   "asr": {
+    "exact": 93,
+    "within1": 265,
+    "worst": 3,
+    "mae": 1.02,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 185,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.49,
+    "n": 365
+   },
+   "isha": {
+    "exact": 283,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.22,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1767,
+   "of": 2190,
+   "worst": 17
+  },
+  "amplitude_fajr_jan_jul": 52
+ },
+ {
+  "file": "mq-mosquee-al-madina-al-mounawara-bamako-99-mali.json",
+  "source": "Mosqueé  Al Madina Al Mounawara - Bamako",
+  "label": "Mosqueé  Al Madina Al Mounawara - Bamako",
+  "lat": 12.608605403242,
+  "lon": -7.9542249441147,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.25,
+   "ishaAngle": 18.3,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 29,
+    "asr": 8,
+    "maghrib": 4
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.25,
+    "exact": 262,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.28,
+    "n": 365
+   },
+   "isha": {
+    "angle": 18.3,
+    "exact": 277,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.24,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 262,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.28,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 185,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.49,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 187,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.49,
+    "n": 365
+   },
+   "asr": {
+    "exact": 137,
+    "within1": 297,
+    "worst": 2,
+    "mae": 0.81,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 188,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.48,
+    "n": 365
+   },
+   "isha": {
+    "exact": 277,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.24,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 2122,
+   "of": 2190,
+   "worst": 2
+  },
+  "amplitude_fajr_jan_jul": 53
+ },
+ {
+  "file": "mq-ar-rahma-bamako.json",
+  "source": "Mosquée AR-RAHMAN Badalabougou - Bamako",
+  "label": "Mosquée AR-RAHMAN Badalabougou - Bamako",
+  "lat": 12.6401342,
+  "lon": -8.0031389,
+  "tz": "Africa/Bamako",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.7,
+   "ishaAngle": 13.7,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 13,
+    "asr": -3,
+    "maghrib": -5
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.7,
+    "exact": 47,
+    "within1": 160,
+    "worst": 27,
+    "mae": 7.61,
+    "n": 365
+   },
+   "isha": {
+    "angle": 13.7,
+    "exact": 109,
+    "within1": 275,
+    "worst": 17,
+    "mae": 3.33,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 47,
+    "within1": 160,
+    "worst": 27,
+    "mae": 7.61,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 206,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.44,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 15,
+    "within1": 42,
+    "worst": 17,
+    "mae": 7.12,
+    "n": 365
+   },
+   "asr": {
+    "exact": 7,
+    "within1": 22,
+    "worst": 14,
+    "mae": 7.42,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 154,
+    "within1": 312,
+    "worst": 8,
+    "mae": 1.25,
+    "n": 365
+   },
+   "isha": {
+    "exact": 109,
+    "within1": 275,
+    "worst": 17,
+    "mae": 3.33,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1176,
+   "of": 2190,
+   "worst": 27
+  },
+  "amplitude_fajr_jan_jul": 30
+ },
+ {
+  "file": "mq-sayyidna-abubakar-mosque-12-york-terrace-12345-kampala-uganda.json",
+  "source": "Sayyidina Abubakar Mosque - KAMPALA",
+  "label": "Sayyidina Abubakar Mosque - KAMPALA",
+  "lat": 0.328,
+  "lon": 32.598,
+  "tz": "Africa/Kampala",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "live_page_gate": {
+   "date": "2026-11-11",
+   "pass": true
+  },
+  "served_year": 2026,
+  "recipe": {
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.35,
+   "madhab": "Shafi",
+   "offsets": {
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.9,
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "isha": {
+    "angle": 17.35,
+    "exact": 337,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.08,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 341,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 200,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.45,
+    "n": 365
+   },
+   "dhuhr": {
+    "exact": 183,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.5,
+    "n": 365
+   },
+   "asr": {
+    "exact": 176,
+    "within1": 338,
+    "worst": 2,
+    "mae": 0.59,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 187,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.49,
+    "n": 365
+   },
+   "isha": {
+    "exact": 337,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.08,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 2163,
+   "of": 2190,
+   "worst": 2
+  },
+  "amplitude_fajr_jan_jul": 14
+ }
+]

@@ -1,0 +1,165 @@
+{
+ "block": {
+  "from": 2027,
+  "to": 2076,
+  "years": 50,
+  "days": 18263,
+  "leap_years": [
+   2028,
+   2032,
+   2036,
+   2040,
+   2044,
+   2048,
+   2052,
+   2056,
+   2060,
+   2064,
+   2068,
+   2072,
+   2076
+  ]
+ },
+ "rule_2027_minutes": {
+  "fajr": -3,
+  "sunrise": -3,
+  "dhuhr": 0,
+  "asr": 2,
+  "asr2": 2,
+  "magrib": 3,
+  "isha": 3
+ },
+ "engine": "publisher's Meeus core (o1m-35 harness): Meeus low-precision solar sequence at local noon, Charing Cross 51.5073/-0.12755, published interval table for fajr (97-121 min) and isha (63-97 min), allowances applied by rule",
+ "totals": {
+  "fajr": {
+   "rule": -3,
+   "exact_days": 18262,
+   "days": 18263,
+   "exact_pct": 99.995,
+   "days_off_rule": 1,
+   "max_deviation_min": 1,
+   "mean_margin_min": -2.998,
+   "mean_margin_year_range": [
+    -3.028,
+    -2.977
+   ]
+  },
+  "sunrise": {
+   "rule": -3,
+   "exact_days": 18262,
+   "days": 18263,
+   "exact_pct": 99.995,
+   "days_off_rule": 1,
+   "max_deviation_min": 1,
+   "mean_margin_min": -2.998,
+   "mean_margin_year_range": [
+    -3.028,
+    -2.977
+   ]
+  },
+  "dhuhr": {
+   "rule": 0,
+   "exact_days": 18262,
+   "days": 18263,
+   "exact_pct": 99.995,
+   "days_off_rule": 1,
+   "max_deviation_min": 1,
+   "mean_margin_min": -0.001,
+   "mean_margin_year_range": [
+    -0.012,
+    0.01
+   ]
+  },
+  "asr": {
+   "rule": 2,
+   "exact_days": 18263,
+   "days": 18263,
+   "exact_pct": 100,
+   "days_off_rule": 0,
+   "max_deviation_min": 0,
+   "mean_margin_min": 1.992,
+   "mean_margin_year_range": [
+    1.97,
+    2.014
+   ]
+  },
+  "asr2": {
+   "rule": 2,
+   "exact_days": 18263,
+   "days": 18263,
+   "exact_pct": 100,
+   "days_off_rule": 0,
+   "max_deviation_min": 0,
+   "mean_margin_min": 2.003,
+   "mean_margin_year_range": [
+    1.962,
+    2.032
+   ]
+  },
+  "magrib": {
+   "rule": 3,
+   "exact_days": 18263,
+   "days": 18263,
+   "exact_pct": 100,
+   "days_off_rule": 0,
+   "max_deviation_min": 0,
+   "mean_margin_min": 3,
+   "mean_margin_year_range": [
+    2.979,
+    3.027
+   ]
+  },
+  "isha": {
+   "rule": 3,
+   "exact_days": 18263,
+   "days": 18263,
+   "exact_pct": 100,
+   "days_off_rule": 0,
+   "max_deviation_min": 0,
+   "mean_margin_min": 3,
+   "mean_margin_year_range": [
+    2.979,
+    3.027
+   ]
+  }
+ },
+ "years_off_target": [
+  {
+   "year": 2057,
+   "deviations": [
+    {
+     "column": "fajr",
+     "exact": 364,
+     "days": 365,
+     "worst": 1,
+     "dates": [
+      "2057-02-10"
+     ]
+    },
+    {
+     "column": "sunrise",
+     "exact": 364,
+     "days": 365,
+     "worst": 1,
+     "dates": [
+      "2057-02-10"
+     ]
+    }
+   ]
+  },
+  {
+   "year": 2064,
+   "deviations": [
+    {
+     "column": "dhuhr",
+     "exact": 365,
+     "days": 366,
+     "worst": 1,
+     "dates": [
+      "2064-03-10"
+     ]
+    }
+   ]
+  }
+ ]
+}

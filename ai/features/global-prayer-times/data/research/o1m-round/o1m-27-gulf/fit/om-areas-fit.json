@@ -1,0 +1,5972 @@
+{
+ "job": "o1m-27 Oman 86 named areas, 2026",
+ "areas": {
+  "10": {
+   "order": 11,
+   "name": "الحمرة",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "11": {
+   "order": 12,
+   "name": "الخابورة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.9708646,
+    "lon": 57.0910976,
+    "label": "ولاية الخابورة, محافظة شمال الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.75,
+   "ishaAngle": 18.25,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 0.318,
+    "sunrise": 0.253,
+    "dhuhr": 0.254,
+    "asr": 0.441,
+    "maghrib": 0.386,
+    "isha": 0.497
+   },
+   "held": {
+    "exactPct": 58.2,
+    "w1Pct": 98.8,
+    "mae": 0.43,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 73.7,
+      "w1Pct": 100,
+      "mae": 0.263,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 50.7,
+      "w1Pct": 100,
+      "mae": 0.493,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 56.7,
+      "w1Pct": 100,
+      "mae": 0.433,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 49.9,
+      "w1Pct": 96.2,
+      "mae": 0.54,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 56.2,
+      "w1Pct": 98.4,
+      "mae": 0.455,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 61.9,
+      "w1Pct": 98.4,
+      "mae": 0.397,
+      "max": 2
+     }
+    }
+   }
+  },
+  "12": {
+   "order": 13,
+   "name": "الخضرفي",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "13": {
+   "order": 14,
+   "name": "الخوير",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.5862946,
+    "lon": 58.4297409,
+    "label": "الخوير, ولاية بوشر, محافظة مسقط, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 12,
+    "dhuhr": 17,
+    "asr": 17,
+    "maghrib": 17,
+    "isha": 23
+   },
+   "spread": {
+    "fajr": 0.61,
+    "sunrise": 0.981,
+    "dhuhr": 0.279,
+    "asr": 0.957,
+    "maghrib": 0.978,
+    "isha": 0.639
+   },
+   "held": {
+    "exactPct": 27.3,
+    "w1Pct": 82.5,
+    "mae": 0.906,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 27.4,
+      "w1Pct": 97,
+      "mae": 0.756,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 23.6,
+      "w1Pct": 70.4,
+      "mae": 1.082,
+      "max": 3
+     },
+     "dhuhr": {
+      "exactPct": 33.7,
+      "w1Pct": 100,
+      "mae": 0.663,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 25.2,
+      "w1Pct": 75.3,
+      "mae": 0.995,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 21.6,
+      "w1Pct": 70.4,
+      "mae": 1.079,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 32.1,
+      "w1Pct": 81.9,
+      "mae": 0.86,
+      "max": 2
+     }
+    }
+   }
+  },
+  "14": {
+   "order": 15,
+   "name": "الدقم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 19.6230411,
+    "lon": 57.6340004,
+    "label": "ولاية الدقم, محافظة الوسطى, 700, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.45,
+   "ishaAngle": 17.75,
+   "pads": {
+    "fajr": 2,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.266,
+    "sunrise": 0.254,
+    "dhuhr": 0.249,
+    "asr": 0.41,
+    "maghrib": 0.341,
+    "isha": 0.396
+   },
+   "held": {
+    "exactPct": 47.4,
+    "w1Pct": 98.9,
+    "mae": 0.537,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 43,
+      "w1Pct": 100,
+      "mae": 0.57,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 50.1,
+      "w1Pct": 100,
+      "mae": 0.499,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 48.5,
+      "w1Pct": 100,
+      "mae": 0.515,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 49.9,
+      "w1Pct": 98.1,
+      "mae": 0.521,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 51.5,
+      "w1Pct": 99.7,
+      "mae": 0.488,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 41.1,
+      "w1Pct": 95.9,
+      "mae": 0.63,
+      "max": 2
+     }
+    }
+   }
+  },
+  "15": {
+   "order": 16,
+   "name": "الرستاق",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.388616,
+    "lon": 57.4264059,
+    "label": "ولاية الرستاق, محافظة جنوب الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.3,
+   "ishaAngle": 18.1,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.395,
+    "sunrise": 0.258,
+    "dhuhr": 0.254,
+    "asr": 0.432,
+    "maghrib": 0.396,
+    "isha": 0.559
+   },
+   "held": {
+    "exactPct": 47.5,
+    "w1Pct": 99.4,
+    "mae": 0.531,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 12.1,
+      "w1Pct": 100,
+      "mae": 0.879,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 52.1,
+      "w1Pct": 100,
+      "mae": 0.479,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 49.6,
+      "w1Pct": 100,
+      "mae": 0.504,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 51,
+      "w1Pct": 97.8,
+      "mae": 0.512,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 52.6,
+      "w1Pct": 98.4,
+      "mae": 0.49,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 67.9,
+      "w1Pct": 100,
+      "mae": 0.321,
+      "max": 1
+     }
+    }
+   }
+  },
+  "16": {
+   "order": 17,
+   "name": "العوابي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.4994322,
+    "lon": 58.3190047,
+    "label": "العوابي, ولاية بوشر, محافظة مسقط, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.1,
+   "ishaAngle": 17.4,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 3,
+    "dhuhr": 8,
+    "asr": 8,
+    "maghrib": 8,
+    "isha": 6
+   },
+   "spread": {
+    "fajr": 0.287,
+    "sunrise": 0.339,
+    "dhuhr": 0.264,
+    "asr": 0.467,
+    "maghrib": 0.401,
+    "isha": 0.464
+   },
+   "held": {
+    "exactPct": 48.4,
+    "w1Pct": 98.9,
+    "mae": 0.527,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 50.4,
+      "w1Pct": 100,
+      "mae": 0.496,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 40.5,
+      "w1Pct": 100,
+      "mae": 0.595,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 43.6,
+      "w1Pct": 100,
+      "mae": 0.564,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 50.4,
+      "w1Pct": 95.3,
+      "mae": 0.542,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 44.7,
+      "w1Pct": 98.1,
+      "mae": 0.573,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 60.5,
+      "w1Pct": 100,
+      "mae": 0.395,
+      "max": 1
+     }
+    }
+   }
+  },
+  "17": {
+   "order": 18,
+   "name": "القابل الشرقية",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5854949,
+    "lon": 58.6860734,
+    "label": "نفط عمان, طريق السلطان تركي بن سعيد, الدريز, ولاية القابل, محافظة شمال الشرقية, عمان",
+    "type": "fuel"
+   },
+   "fajrAngle": 17.7,
+   "ishaAngle": 17.9,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.346,
+    "sunrise": 0.255,
+    "dhuhr": 0.257,
+    "asr": 0.411,
+    "maghrib": 0.33,
+    "isha": 0.556
+   },
+   "held": {
+    "exactPct": 48.3,
+    "w1Pct": 96.2,
+    "mae": 0.556,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 81.4,
+      "w1Pct": 100,
+      "mae": 0.186,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 48.5,
+      "w1Pct": 100,
+      "mae": 0.515,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 44.9,
+      "w1Pct": 100,
+      "mae": 0.551,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 49.3,
+      "w1Pct": 96.4,
+      "mae": 0.542,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 46.3,
+      "w1Pct": 99.2,
+      "mae": 0.545,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 19.2,
+      "w1Pct": 81.4,
+      "mae": 0.995,
+      "max": 2
+     }
+    }
+   }
+  },
+  "18": {
+   "order": 19,
+   "name": "القابل الظاهرة",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "19": {
+   "order": 20,
+   "name": "الكامل و الوافي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.180678,
+    "lon": 59.2244209,
+    "label": "الكامل و الوافي, ولاية الكامل و الوافي, محافظة جنوب الشرقية, عمان",
+    "type": "city"
+   },
+   "fajrAngle": 18.6,
+   "ishaAngle": 17.95,
+   "pads": {
+    "fajr": 3,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.296,
+    "sunrise": 0.269,
+    "dhuhr": 0.275,
+    "asr": 0.402,
+    "maghrib": 0.361,
+    "isha": 0.496
+   },
+   "held": {
+    "exactPct": 42.1,
+    "w1Pct": 96.5,
+    "mae": 0.613,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 66.3,
+      "w1Pct": 100,
+      "mae": 0.337,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 37.5,
+      "w1Pct": 100,
+      "mae": 0.625,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 38.9,
+      "w1Pct": 100,
+      "mae": 0.611,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 40.5,
+      "w1Pct": 95.3,
+      "mae": 0.641,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 42.7,
+      "w1Pct": 97.5,
+      "mae": 0.597,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 26.8,
+      "w1Pct": 86.3,
+      "mae": 0.868,
+      "max": 2
+     }
+    }
+   }
+  },
+  "20": {
+   "order": 21,
+   "name": "المضيبي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5696483,
+    "lon": 58.1150218,
+    "label": "ولاية المضيبي, محافظة شمال الشرقية, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.05,
+   "ishaAngle": 17.9,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.296,
+    "sunrise": 0.254,
+    "dhuhr": 0.249,
+    "asr": 0.397,
+    "maghrib": 0.378,
+    "isha": 0.534
+   },
+   "held": {
+    "exactPct": 41.6,
+    "w1Pct": 97,
+    "mae": 0.614,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 26.3,
+      "w1Pct": 100,
+      "mae": 0.737,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 47.7,
+      "w1Pct": 100,
+      "mae": 0.523,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 51.2,
+      "w1Pct": 100,
+      "mae": 0.488,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 48.5,
+      "w1Pct": 98.4,
+      "mae": 0.532,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 55.1,
+      "w1Pct": 99.5,
+      "mae": 0.455,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 21.1,
+      "w1Pct": 84.1,
+      "mae": 0.948,
+      "max": 2
+     }
+    }
+   }
+  },
+  "21": {
+   "order": 22,
+   "name": "المعمورة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.9858104,
+    "lon": 57.310866,
+    "label": "المعمورة, طريق ازكي - نزوى - بهلاء, بهلاء, المعموره, ولاية بهلاء, الداخلية, 617, عمان",
+    "type": "caravan_site"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 5,
+    "sunrise": 13,
+    "dhuhr": 17,
+    "asr": 18,
+    "maghrib": 17,
+    "isha": 20
+   },
+   "spread": {
+    "fajr": 7.389,
+    "sunrise": 7.269,
+    "dhuhr": 0.38,
+    "asr": 5.991,
+    "maghrib": 7.209,
+    "isha": 7.373
+   },
+   "held": {
+    "exactPct": 6.2,
+    "w1Pct": 24.9,
+    "mae": 5.997,
+    "max": 15,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 3,
+      "w1Pct": 9.6,
+      "mae": 7.389,
+      "max": 13
+     },
+     "sunrise": {
+      "exactPct": 3.6,
+      "w1Pct": 9.6,
+      "mae": 7.26,
+      "max": 12
+     },
+     "dhuhr": {
+      "exactPct": 18.9,
+      "w1Pct": 100,
+      "mae": 0.811,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 4.7,
+      "w1Pct": 11.8,
+      "mae": 5.981,
+      "max": 15
+     },
+     "maghrib": {
+      "exactPct": 3.3,
+      "w1Pct": 9.6,
+      "mae": 7.208,
+      "max": 13
+     },
+     "isha": {
+      "exactPct": 3.8,
+      "w1Pct": 9,
+      "mae": 7.332,
+      "max": 13
+     }
+    }
+   }
+  },
+  "22": {
+   "order": 23,
+   "name": "الهويسة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.6293033,
+    "lon": 58.491043,
+    "label": "شارع الحويسة, مرتفعات القرم, ولاية بوشر, محافظة مسقط, 282, عمان",
+    "type": "residential"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 11,
+    "dhuhr": 15,
+    "asr": 15,
+    "maghrib": 15,
+    "isha": 21
+   },
+   "spread": {
+    "fajr": 1.937,
+    "sunrise": 2.272,
+    "dhuhr": 0.416,
+    "asr": 2.131,
+    "maghrib": 2.195,
+    "isha": 1.89
+   },
+   "held": {
+    "exactPct": 10.6,
+    "w1Pct": 45.4,
+    "mae": 1.89,
+    "max": 5,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 8.8,
+      "w1Pct": 42.7,
+      "mae": 1.926,
+      "max": 5
+     },
+     "sunrise": {
+      "exactPct": 10.1,
+      "w1Pct": 29.9,
+      "mae": 2.238,
+      "max": 4
+     },
+     "dhuhr": {
+      "exactPct": 11.2,
+      "w1Pct": 100,
+      "mae": 0.888,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 11.8,
+      "w1Pct": 32.6,
+      "mae": 2.167,
+      "max": 4
+     },
+     "maghrib": {
+      "exactPct": 10.7,
+      "w1Pct": 28.8,
+      "mae": 2.26,
+      "max": 5
+     },
+     "isha": {
+      "exactPct": 11.2,
+      "w1Pct": 38.4,
+      "mae": 1.86,
+      "max": 4
+     }
+    }
+   }
+  },
+  "23": {
+   "order": 24,
+   "name": "الواسط",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.28,
+    "lon": 57.46,
+    "label": "الواسط, ولاية الرستاق, محافظة جنوب الباطنة, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 16,
+    "sunrise": 5,
+    "dhuhr": 10,
+    "asr": 10,
+    "maghrib": 10,
+    "isha": -6
+   },
+   "spread": {
+    "fajr": 0.814,
+    "sunrise": 1.231,
+    "dhuhr": 0.311,
+    "asr": 1.433,
+    "maghrib": 1.279,
+    "isha": 0.924
+   },
+   "held": {
+    "exactPct": 32.3,
+    "w1Pct": 71.1,
+    "mae": 1.004,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 48.5,
+      "w1Pct": 83.8,
+      "mae": 0.679,
+      "max": 3
+     },
+     "sunrise": {
+      "exactPct": 20.5,
+      "w1Pct": 63.8,
+      "mae": 1.17,
+      "max": 3
+     },
+     "dhuhr": {
+      "exactPct": 71.5,
+      "w1Pct": 100,
+      "mae": 0.285,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 13.2,
+      "w1Pct": 48.8,
+      "mae": 1.567,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 14.5,
+      "w1Pct": 53.4,
+      "mae": 1.345,
+      "max": 3
+     },
+     "isha": {
+      "exactPct": 25.5,
+      "w1Pct": 76.7,
+      "mae": 0.978,
+      "max": 2
+     }
+    }
+   }
+  },
+  "24": {
+   "order": 25,
+   "name": "الواصل",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5044275,
+    "lon": 58.7491316,
+    "label": "الواصل, ولاية بدية, محافظة شمال الشرقية, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 18.3,
+   "ishaAngle": 17.6,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.436,
+    "sunrise": 0.247,
+    "dhuhr": 0.265,
+    "asr": 0.407,
+    "maghrib": 0.362,
+    "isha": 0.455
+   },
+   "held": {
+    "exactPct": 45.8,
+    "w1Pct": 98.9,
+    "mae": 0.553,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 13.2,
+      "w1Pct": 97.8,
+      "mae": 0.89,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 51.2,
+      "w1Pct": 100,
+      "mae": 0.488,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 49.3,
+      "w1Pct": 100,
+      "mae": 0.507,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 53.2,
+      "w1Pct": 97.5,
+      "mae": 0.493,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 49.3,
+      "w1Pct": 99.5,
+      "mae": 0.512,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 58.9,
+      "w1Pct": 98.4,
+      "mae": 0.427,
+      "max": 2
+     }
+    }
+   }
+  },
+  "25": {
+   "order": 26,
+   "name": "بخا",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 26.1445957,
+    "lon": 56.1462282,
+    "label": "ولاية بخا, محافظة مسندم, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.15,
+   "ishaAngle": 18,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.358,
+    "sunrise": 0.262,
+    "dhuhr": 0.251,
+    "asr": 0.466,
+    "maghrib": 0.4,
+    "isha": 0.475
+   },
+   "held": {
+    "exactPct": 60.1,
+    "w1Pct": 99,
+    "mae": 0.408,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 81.9,
+      "w1Pct": 100,
+      "mae": 0.181,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 59.5,
+      "w1Pct": 100,
+      "mae": 0.405,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 52.3,
+      "w1Pct": 100,
+      "mae": 0.477,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 52.6,
+      "w1Pct": 98.1,
+      "mae": 0.493,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 57.3,
+      "w1Pct": 99.2,
+      "mae": 0.436,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 57.3,
+      "w1Pct": 97,
+      "mae": 0.458,
+      "max": 2
+     }
+    }
+   }
+  },
+  "26": {
+   "order": 27,
+   "name": "بدبد",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.41,
+    "lon": 58.13,
+    "label": "ولاية بدبد, الداخلية, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.3,
+   "ishaAngle": 18.15,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 0.433,
+    "sunrise": 0.255,
+    "dhuhr": 0.248,
+    "asr": 0.442,
+    "maghrib": 0.393,
+    "isha": 0.489
+   },
+   "held": {
+    "exactPct": 40.6,
+    "w1Pct": 96.3,
+    "mae": 0.631,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 12.3,
+      "w1Pct": 96.4,
+      "mae": 0.912,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 49.3,
+      "w1Pct": 100,
+      "mae": 0.507,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 51,
+      "w1Pct": 100,
+      "mae": 0.49,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 52.3,
+      "w1Pct": 97,
+      "mae": 0.507,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 48.2,
+      "w1Pct": 97.5,
+      "mae": 0.542,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 30.7,
+      "w1Pct": 86.6,
+      "mae": 0.827,
+      "max": 2
+     }
+    }
+   }
+  },
+  "27": {
+   "order": 28,
+   "name": "بدية",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.1377768,
+    "lon": 58.7925121,
+    "label": "ولاية بدية, محافظة شمال الشرقية, 421, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 19.45,
+   "ishaAngle": 19.25,
+   "pads": {
+    "fajr": 6,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -6
+   },
+   "spread": {
+    "fajr": 0.504,
+    "sunrise": 0.433,
+    "dhuhr": 0.265,
+    "asr": 0.629,
+    "maghrib": 0.533,
+    "isha": 0.569
+   },
+   "held": {
+    "exactPct": 41.6,
+    "w1Pct": 94.1,
+    "mae": 0.643,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 19.2,
+      "w1Pct": 91.2,
+      "mae": 0.896,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 52.3,
+      "w1Pct": 100,
+      "mae": 0.477,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 59.2,
+      "w1Pct": 100,
+      "mae": 0.408,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 41.4,
+      "w1Pct": 93.4,
+      "mae": 0.652,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 42.2,
+      "w1Pct": 97.3,
+      "mae": 0.605,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 35.6,
+      "w1Pct": 82.5,
+      "mae": 0.819,
+      "max": 2
+     }
+    }
+   }
+  },
+  "28": {
+   "order": 29,
+   "name": "بركاء",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.6665754,
+    "lon": 57.8820597,
+    "label": "ولاية بركاء, محافظة جنوب الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18,
+   "ishaAngle": 17.75,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.258,
+    "sunrise": 0.252,
+    "dhuhr": 0.249,
+    "asr": 0.425,
+    "maghrib": 0.389,
+    "isha": 0.451
+   },
+   "held": {
+    "exactPct": 52.5,
+    "w1Pct": 98.4,
+    "mae": 0.491,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 55.1,
+      "w1Pct": 100,
+      "mae": 0.449,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 54.8,
+      "w1Pct": 100,
+      "mae": 0.452,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 54,
+      "w1Pct": 100,
+      "mae": 0.46,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 52.1,
+      "w1Pct": 97.8,
+      "mae": 0.501,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 56.4,
+      "w1Pct": 99.7,
+      "mae": 0.438,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 42.7,
+      "w1Pct": 92.9,
+      "mae": 0.644,
+      "max": 2
+     }
+    }
+   }
+  },
+  "29": {
+   "order": 30,
+   "name": "بهلاء",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.9984735,
+    "lon": 57.316806,
+    "label": "ولاية بهلاء, الداخلية, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.7,
+   "ishaAngle": 18.25,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 0.348,
+    "sunrise": 0.261,
+    "dhuhr": 0.262,
+    "asr": 0.411,
+    "maghrib": 0.374,
+    "isha": 0.476
+   },
+   "held": {
+    "exactPct": 52.5,
+    "w1Pct": 98.9,
+    "mae": 0.486,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 79.7,
+      "w1Pct": 100,
+      "mae": 0.203,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 40.5,
+      "w1Pct": 100,
+      "mae": 0.595,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 44.4,
+      "w1Pct": 100,
+      "mae": 0.556,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 45.8,
+      "w1Pct": 96.7,
+      "mae": 0.575,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 46,
+      "w1Pct": 99.5,
+      "mae": 0.545,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 58.6,
+      "w1Pct": 97,
+      "mae": 0.444,
+      "max": 2
+     }
+    }
+   }
+  },
+  "30": {
+   "order": 31,
+   "name": "ثمريت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.6167707,
+    "lon": 54.0458294,
+    "label": "ثمريت, ولاية ثمريت, ظفار, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 18.15,
+   "ishaAngle": 17.2,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 4
+   },
+   "spread": {
+    "fajr": 0.348,
+    "sunrise": 0.257,
+    "dhuhr": 0.258,
+    "asr": 0.378,
+    "maghrib": 0.327,
+    "isha": 0.53
+   },
+   "held": {
+    "exactPct": 60,
+    "w1Pct": 99.7,
+    "mae": 0.403,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 84.7,
+      "w1Pct": 100,
+      "mae": 0.153,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 51.5,
+      "w1Pct": 100,
+      "mae": 0.485,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 51.8,
+      "w1Pct": 100,
+      "mae": 0.482,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 53.7,
+      "w1Pct": 98.4,
+      "mae": 0.479,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 48.2,
+      "w1Pct": 100,
+      "mae": 0.518,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1
+     }
+    }
+   }
+  },
+  "31": {
+   "order": 32,
+   "name": "جدة الحراسيس",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "32": {
+   "order": 33,
+   "name": "جعلان بوحسن",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.0892855,
+    "lon": 59.2926795,
+    "label": "جعلان بني بو حسن, ولاية جعلان بني بو حسن, محافظة جنوب الشرقية, عمان",
+    "type": "city"
+   },
+   "fajrAngle": 18.1,
+   "ishaAngle": 17.6,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.473,
+    "sunrise": 0.258,
+    "dhuhr": 0.261,
+    "asr": 0.406,
+    "maghrib": 0.364,
+    "isha": 0.412
+   },
+   "held": {
+    "exactPct": 56.5,
+    "w1Pct": 99.3,
+    "mae": 0.442,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 95.6,
+      "w1Pct": 100,
+      "mae": 0.044,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 43.6,
+      "w1Pct": 100,
+      "mae": 0.564,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 47.7,
+      "w1Pct": 100,
+      "mae": 0.523,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 44.4,
+      "w1Pct": 97.3,
+      "mae": 0.584,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 47.9,
+      "w1Pct": 99.2,
+      "mae": 0.529,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 60,
+      "w1Pct": 99.5,
+      "mae": 0.405,
+      "max": 2
+     }
+    }
+   }
+  },
+  "33": {
+   "order": 34,
+   "name": "جعلان بوعلي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.0608529,
+    "lon": 59.3002468,
+    "label": "Oman oil, طريق جعلان بني بو حسن - جعلان بني بو علي, Jalan Bani Bu Hassan, جعلان بني بو حسن, ولاية جعلان بني بو حسن, محافظة جنوب الشرقية, عمان",
+    "type": "fuel"
+   },
+   "fajrAngle": 17.6,
+   "ishaAngle": 17.7,
+   "pads": {
+    "fajr": -2,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.274,
+    "sunrise": 0.296,
+    "dhuhr": 0.299,
+    "asr": 0.448,
+    "maghrib": 0.403,
+    "isha": 0.408
+   },
+   "held": {
+    "exactPct": 58.9,
+    "w1Pct": 99.5,
+    "mae": 0.416,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 43.6,
+      "w1Pct": 100,
+      "mae": 0.564,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 68.2,
+      "w1Pct": 100,
+      "mae": 0.318,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 71.2,
+      "w1Pct": 100,
+      "mae": 0.288,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 61.1,
+      "w1Pct": 100,
+      "mae": 0.389,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 68.5,
+      "w1Pct": 100,
+      "mae": 0.315,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 40.8,
+      "w1Pct": 97,
+      "mae": 0.622,
+      "max": 2
+     }
+    }
+   }
+  },
+  "34": {
+   "order": 35,
+   "name": "حبروت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.2,
+    "lon": 54.47,
+    "label": "حبروت, ولاية طاقة, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 18.6,
+   "ishaAngle": 18.5,
+   "pads": {
+    "fajr": 10,
+    "sunrise": 7,
+    "dhuhr": 12,
+    "asr": 12,
+    "maghrib": 12,
+    "isha": 5
+   },
+   "spread": {
+    "fajr": 0.485,
+    "sunrise": 0.28,
+    "dhuhr": 0.275,
+    "asr": 0.428,
+    "maghrib": 0.362,
+    "isha": 0.473
+   },
+   "held": {
+    "exactPct": 64.3,
+    "w1Pct": 99.8,
+    "mae": 0.358,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 91.2,
+      "w1Pct": 100,
+      "mae": 0.088,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 63,
+      "w1Pct": 100,
+      "mae": 0.37,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 60.8,
+      "w1Pct": 100,
+      "mae": 0.392,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 52.3,
+      "w1Pct": 98.9,
+      "mae": 0.488,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 55.1,
+      "w1Pct": 100,
+      "mae": 0.449,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     }
+    }
+   }
+  },
+  "35": {
+   "order": 36,
+   "name": "حج",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 20.7622514,
+    "lon": 58.2910063,
+    "label": "حج, ولاية محوت, محافظة الوسطى, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 18.15,
+   "ishaAngle": 17.85,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.374,
+    "sunrise": 0.252,
+    "dhuhr": 0.259,
+    "asr": 0.395,
+    "maghrib": 0.353,
+    "isha": 0.514
+   },
+   "held": {
+    "exactPct": 60.5,
+    "w1Pct": 99.7,
+    "mae": 0.398,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 85.5,
+      "w1Pct": 100,
+      "mae": 0.145,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 51.8,
+      "w1Pct": 100,
+      "mae": 0.482,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 53.2,
+      "w1Pct": 100,
+      "mae": 0.468,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 51.2,
+      "w1Pct": 98.6,
+      "mae": 0.501,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 51.5,
+      "w1Pct": 99.7,
+      "mae": 0.488,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 69.9,
+      "w1Pct": 100,
+      "mae": 0.301,
+      "max": 1
+     }
+    }
+   }
+  },
+  "36": {
+   "order": 37,
+   "name": "خزان",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.248733,
+    "lon": 57.5238987,
+    "label": "خزان مياه, الدص, ولاية العوابي, محافظة جنوب الباطنة, عمان",
+    "type": "plot"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 14,
+    "sunrise": 5,
+    "dhuhr": 10,
+    "asr": 11,
+    "maghrib": 11,
+    "isha": -4
+   },
+   "spread": {
+    "fajr": 2.814,
+    "sunrise": 3.127,
+    "dhuhr": 0.28,
+    "asr": 3.479,
+    "maghrib": 3.214,
+    "isha": 2.891
+   },
+   "held": {
+    "exactPct": 13,
+    "w1Pct": 34.7,
+    "mae": 2.701,
+    "max": 7,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 8.5,
+      "w1Pct": 27.9,
+      "mae": 2.849,
+      "max": 7
+     },
+     "sunrise": {
+      "exactPct": 10.1,
+      "w1Pct": 20.3,
+      "mae": 3.121,
+      "max": 6
+     },
+     "dhuhr": {
+      "exactPct": 37.3,
+      "w1Pct": 100,
+      "mae": 0.627,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 6.8,
+      "w1Pct": 17.8,
+      "mae": 3.515,
+      "max": 7
+     },
+     "maghrib": {
+      "exactPct": 6,
+      "w1Pct": 20.3,
+      "mae": 3.205,
+      "max": 6
+     },
+     "isha": {
+      "exactPct": 9.3,
+      "w1Pct": 22.2,
+      "mae": 2.89,
+      "max": 6
+     }
+    }
+   }
+  },
+  "37": {
+   "order": 38,
+   "name": "دبا البيعة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 25.6490341,
+    "lon": 56.2562342,
+    "label": "ولاية دبا, محافظة مسندم, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -23,
+    "sunrise": -14,
+    "dhuhr": -9,
+    "asr": -10,
+    "maghrib": -9,
+    "isha": -5
+   },
+   "spread": {
+    "fajr": 3.866,
+    "sunrise": 4.085,
+    "dhuhr": 0.271,
+    "asr": 4.24,
+    "maghrib": 4.02,
+    "isha": 3.859
+   },
+   "held": {
+    "exactPct": 15.2,
+    "w1Pct": 29.4,
+    "mae": 3.419,
+    "max": 8,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 4.7,
+      "w1Pct": 16.4,
+      "mae": 3.877,
+      "max": 7
+     },
+     "sunrise": {
+      "exactPct": 7.4,
+      "w1Pct": 14.5,
+      "mae": 4.101,
+      "max": 8
+     },
+     "dhuhr": {
+      "exactPct": 62.7,
+      "w1Pct": 100,
+      "mae": 0.373,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 5.2,
+      "w1Pct": 14,
+      "mae": 4.244,
+      "max": 8
+     },
+     "maghrib": {
+      "exactPct": 5.5,
+      "w1Pct": 16.4,
+      "mae": 4.036,
+      "max": 7
+     },
+     "isha": {
+      "exactPct": 5.5,
+      "w1Pct": 14.8,
+      "mae": 3.885,
+      "max": 8
+     }
+    }
+   }
+  },
+  "38": {
+   "order": 39,
+   "name": "راس الحد",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5093848,
+    "lon": 59.7943802,
+    "label": "رأس الحد, ولاية جعلان بني يو علي, محافظة جنوب الشرقية, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 8,
+    "dhuhr": 13,
+    "asr": 14,
+    "maghrib": 13,
+    "isha": 17
+   },
+   "spread": {
+    "fajr": 4.255,
+    "sunrise": 4.35,
+    "dhuhr": 0.283,
+    "asr": 3.825,
+    "maghrib": 4.331,
+    "isha": 4.189
+   },
+   "held": {
+    "exactPct": 15.8,
+    "w1Pct": 29.7,
+    "mae": 3.553,
+    "max": 10,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 4.9,
+      "w1Pct": 15.3,
+      "mae": 4.266,
+      "max": 8
+     },
+     "sunrise": {
+      "exactPct": 5.8,
+      "w1Pct": 14.8,
+      "mae": 4.381,
+      "max": 8
+     },
+     "dhuhr": {
+      "exactPct": 65.5,
+      "w1Pct": 100,
+      "mae": 0.345,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 6.3,
+      "w1Pct": 19.5,
+      "mae": 3.795,
+      "max": 10
+     },
+     "maghrib": {
+      "exactPct": 5.2,
+      "w1Pct": 14.8,
+      "mae": 4.332,
+      "max": 7
+     },
+     "isha": {
+      "exactPct": 7.1,
+      "w1Pct": 13.7,
+      "mae": 4.2,
+      "max": 8
+     }
+    }
+   }
+  },
+  "39": {
+   "order": 40,
+   "name": "راس مدركة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.9808851,
+    "lon": 57.7806041,
+    "label": "رأس مدركة, ولاية الدقم, محافظة الوسطى, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 6,
+    "sunrise": 16,
+    "dhuhr": 20,
+    "asr": 22,
+    "maghrib": 20,
+    "isha": 25
+   },
+   "spread": {
+    "fajr": 2.496,
+    "sunrise": 2.671,
+    "dhuhr": 0.428,
+    "asr": 2.149,
+    "maghrib": 2.624,
+    "isha": 2.434
+   },
+   "held": {
+    "exactPct": 9.5,
+    "w1Pct": 42.3,
+    "mae": 2.218,
+    "max": 7,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 8.5,
+      "w1Pct": 25.8,
+      "mae": 2.518,
+      "max": 5
+     },
+     "sunrise": {
+      "exactPct": 7.7,
+      "w1Pct": 23.8,
+      "mae": 2.658,
+      "max": 5
+     },
+     "dhuhr": {
+      "exactPct": 9,
+      "w1Pct": 100,
+      "mae": 0.91,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 12.3,
+      "w1Pct": 48.8,
+      "mae": 2.118,
+      "max": 7
+     },
+     "maghrib": {
+      "exactPct": 9,
+      "w1Pct": 25.8,
+      "mae": 2.655,
+      "max": 5
+     },
+     "isha": {
+      "exactPct": 10.4,
+      "w1Pct": 29.6,
+      "mae": 2.452,
+      "max": 6
+     }
+    }
+   }
+  },
+  "40": {
+   "order": 41,
+   "name": "رخيوت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 16.7484937,
+    "lon": 53.4195173,
+    "label": "رخيوت, ولاية رخيوت, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": -14,
+    "sunrise": -22,
+    "dhuhr": -16,
+    "asr": -18,
+    "maghrib": -16,
+    "isha": -29
+   },
+   "spread": {
+    "fajr": 6.85,
+    "sunrise": 6.653,
+    "dhuhr": 0.464,
+    "asr": 5.714,
+    "maghrib": 6.74,
+    "isha": 6.947
+   },
+   "held": {
+    "exactPct": 18.4,
+    "w1Pct": 25,
+    "mae": 5.508,
+    "max": 16,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 3.3,
+      "w1Pct": 9.9,
+      "mae": 6.874,
+      "max": 13
+     },
+     "sunrise": {
+      "exactPct": 3.6,
+      "w1Pct": 9.6,
+      "mae": 6.671,
+      "max": 12
+     },
+     "dhuhr": {
+      "exactPct": 92.9,
+      "w1Pct": 100,
+      "mae": 0.071,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 3.8,
+      "w1Pct": 11.8,
+      "mae": 5.729,
+      "max": 16
+     },
+     "maghrib": {
+      "exactPct": 3.3,
+      "w1Pct": 9.3,
+      "mae": 6.762,
+      "max": 11
+     },
+     "isha": {
+      "exactPct": 3.8,
+      "w1Pct": 9.3,
+      "mae": 6.94,
+      "max": 12
+     }
+    }
+   }
+  },
+  "41": {
+   "order": 42,
+   "name": "رمال الوهيبة",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "42": {
+   "order": 43,
+   "name": "ريسوت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 16.949734,
+    "lon": 53.9979681,
+    "label": "ريسوت, ولاية صلالة, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 18.05,
+   "ishaAngle": 18.25,
+   "pads": {
+    "fajr": -4,
+    "sunrise": -4,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": -5
+   },
+   "spread": {
+    "fajr": 0.265,
+    "sunrise": 0.308,
+    "dhuhr": 0.297,
+    "asr": 0.435,
+    "maghrib": 0.38,
+    "isha": 0.444
+   },
+   "held": {
+    "exactPct": 63.2,
+    "w1Pct": 100,
+    "mae": 0.368,
+    "max": 1,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 55.3,
+      "w1Pct": 100,
+      "mae": 0.447,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 66.8,
+      "w1Pct": 100,
+      "mae": 0.332,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 71.5,
+      "w1Pct": 100,
+      "mae": 0.285,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 58.4,
+      "w1Pct": 100,
+      "mae": 0.416,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 61.4,
+      "w1Pct": 100,
+      "mae": 0.386,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 65.8,
+      "w1Pct": 100,
+      "mae": 0.342,
+      "max": 1
+     }
+    }
+   }
+  },
+  "43": {
+   "order": 44,
+   "name": "سدح",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.0519074,
+    "lon": 55.0711265,
+    "label": "ولاية سدح, ظفار, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": -5,
+    "sunrise": -12,
+    "dhuhr": -7,
+    "asr": -8,
+    "maghrib": -6,
+    "isha": -18
+   },
+   "spread": {
+    "fajr": 7.988,
+    "sunrise": 7.662,
+    "dhuhr": 0.474,
+    "asr": 6.527,
+    "maghrib": 7.74,
+    "isha": 8.038
+   },
+   "held": {
+    "exactPct": 3.7,
+    "w1Pct": 23.9,
+    "mae": 6.484,
+    "max": 17,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 2.7,
+      "w1Pct": 7.9,
+      "mae": 7.992,
+      "max": 14
+     },
+     "sunrise": {
+      "exactPct": 2.5,
+      "w1Pct": 9,
+      "mae": 7.674,
+      "max": 14
+     },
+     "dhuhr": {
+      "exactPct": 6.8,
+      "w1Pct": 99.2,
+      "mae": 0.94,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 4.1,
+      "w1Pct": 11,
+      "mae": 6.532,
+      "max": 17
+     },
+     "maghrib": {
+      "exactPct": 3,
+      "w1Pct": 8.8,
+      "mae": 7.737,
+      "max": 13
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 7.7,
+      "mae": 8.027,
+      "max": 14
+     }
+    }
+   }
+  },
+  "44": {
+   "order": 45,
+   "name": "سمائل",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.2959676,
+    "lon": 57.9569143,
+    "label": "ولاية سمائل, الداخلية, 620, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 16.35,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -8,
+    "sunrise": -1,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 4,
+    "isha": 11
+   },
+   "spread": {
+    "fajr": 0.535,
+    "sunrise": 0.802,
+    "dhuhr": 0.327,
+    "asr": 0.815,
+    "maghrib": 0.824,
+    "isha": 0.62
+   },
+   "held": {
+    "exactPct": 33.3,
+    "w1Pct": 88.1,
+    "mae": 0.786,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 29.6,
+      "w1Pct": 99.5,
+      "mae": 0.71,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 32.9,
+      "w1Pct": 72.6,
+      "mae": 0.945,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 23.6,
+      "w1Pct": 100,
+      "mae": 0.764,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 30.7,
+      "w1Pct": 82.7,
+      "mae": 0.866,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 26.6,
+      "w1Pct": 73.7,
+      "mae": 0.997,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 56.4,
+      "w1Pct": 100,
+      "mae": 0.436,
+      "max": 1
+     }
+    }
+   }
+  },
+  "45": {
+   "order": 46,
+   "name": "سمد الشان",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.8209476,
+    "lon": 58.1602408,
+    "label": "سمد الشأن, ولاية المضيبي, محافظة شمال الشرقية, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 17.2,
+   "ishaAngle": 16.35,
+   "pads": {
+    "fajr": -3,
+    "sunrise": 1,
+    "dhuhr": 6,
+    "asr": 5,
+    "maghrib": 6,
+    "isha": 8
+   },
+   "spread": {
+    "fajr": 0.364,
+    "sunrise": 0.571,
+    "dhuhr": 0.497,
+    "asr": 0.642,
+    "maghrib": 0.62,
+    "isha": 0.396
+   },
+   "held": {
+    "exactPct": 53.7,
+    "w1Pct": 96.4,
+    "mae": 0.499,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 43.8,
+      "w1Pct": 100,
+      "mae": 0.562,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 57.3,
+      "w1Pct": 100,
+      "mae": 0.427,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 94.2,
+      "w1Pct": 100,
+      "mae": 0.058,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 27.4,
+      "w1Pct": 78.4,
+      "mae": 0.942,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 51.2,
+      "w1Pct": 100,
+      "mae": 0.488,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 48.5,
+      "w1Pct": 100,
+      "mae": 0.515,
+      "max": 1
+     }
+    }
+   }
+  },
+  "46": {
+   "order": 47,
+   "name": "سناو",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5044431,
+    "lon": 58.033243,
+    "label": "سناو, ولاية سناو, محافظة شمال الشرقية, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 12,
+    "sunrise": 2,
+    "dhuhr": 7,
+    "asr": 8,
+    "maghrib": 8,
+    "isha": -8
+   },
+   "spread": {
+    "fajr": 1.336,
+    "sunrise": 1.736,
+    "dhuhr": 0.436,
+    "asr": 1.806,
+    "maghrib": 1.835,
+    "isha": 1.423
+   },
+   "held": {
+    "exactPct": 16.4,
+    "w1Pct": 54.4,
+    "mae": 1.557,
+    "max": 5,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 36.4,
+      "w1Pct": 57.5,
+      "mae": 1.545,
+      "max": 5
+     },
+     "sunrise": {
+      "exactPct": 12.3,
+      "w1Pct": 43.3,
+      "mae": 1.789,
+      "max": 4
+     },
+     "dhuhr": {
+      "exactPct": 8.5,
+      "w1Pct": 99.7,
+      "mae": 0.918,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 16.7,
+      "w1Pct": 39.2,
+      "mae": 1.778,
+      "max": 4
+     },
+     "maghrib": {
+      "exactPct": 12.9,
+      "w1Pct": 38.6,
+      "mae": 1.789,
+      "max": 4
+     },
+     "isha": {
+      "exactPct": 11.8,
+      "w1Pct": 48.2,
+      "mae": 1.521,
+      "max": 3
+     }
+    }
+   }
+  },
+  "47": {
+   "order": 48,
+   "name": "سويق",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.8243906,
+    "lon": 57.4238094,
+    "label": "ولاية السويق, محافظة شمال الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -6,
+    "sunrise": 3,
+    "dhuhr": 8,
+    "asr": 8,
+    "maghrib": 8,
+    "isha": 13
+   },
+   "spread": {
+    "fajr": 3.021,
+    "sunrise": 3.284,
+    "dhuhr": 0.258,
+    "asr": 2.977,
+    "maghrib": 3.226,
+    "isha": 2.973
+   },
+   "held": {
+    "exactPct": 13.3,
+    "w1Pct": 34.7,
+    "mae": 2.68,
+    "max": 7,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 7.4,
+      "w1Pct": 22.7,
+      "mae": 3,
+      "max": 6
+     },
+     "sunrise": {
+      "exactPct": 5.8,
+      "w1Pct": 18.9,
+      "mae": 3.315,
+      "max": 6
+     },
+     "dhuhr": {
+      "exactPct": 41.9,
+      "w1Pct": 100,
+      "mae": 0.581,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 7.9,
+      "w1Pct": 25.8,
+      "mae": 2.984,
+      "max": 7
+     },
+     "maghrib": {
+      "exactPct": 7.9,
+      "w1Pct": 18.6,
+      "mae": 3.247,
+      "max": 6
+     },
+     "isha": {
+      "exactPct": 8.8,
+      "w1Pct": 22.2,
+      "mae": 2.953,
+      "max": 6
+     }
+    }
+   }
+  },
+  "48": {
+   "order": 49,
+   "name": "سيح الرول",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.973656,
+    "lon": 57.0567092,
+    "label": "سيح الرول, ولاية بهلاء, الداخلية, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 18.75,
+   "ishaAngle": 18.5,
+   "pads": {
+    "fajr": 1,
+    "sunrise": -2,
+    "dhuhr": 3,
+    "asr": 3,
+    "maghrib": 3,
+    "isha": -5
+   },
+   "spread": {
+    "fajr": 0.267,
+    "sunrise": 0.392,
+    "dhuhr": 0.37,
+    "asr": 0.516,
+    "maghrib": 0.534,
+    "isha": 0.531
+   },
+   "held": {
+    "exactPct": 59.8,
+    "w1Pct": 97.3,
+    "mae": 0.429,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 43.3,
+      "w1Pct": 100,
+      "mae": 0.567,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 81.1,
+      "w1Pct": 100,
+      "mae": 0.189,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 86,
+      "w1Pct": 100,
+      "mae": 0.14,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 59.5,
+      "w1Pct": 100,
+      "mae": 0.405,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 63,
+      "w1Pct": 100,
+      "mae": 0.37,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 26,
+      "w1Pct": 83.8,
+      "mae": 0.901,
+      "max": 2
+     }
+    }
+   }
+  },
+  "49": {
+   "order": 50,
+   "name": "سيق",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5102478,
+    "lon": 59.1235834,
+    "label": "سيق, ولاية الكامل و الوافي, محافظة جنوب الشرقية, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 6,
+    "sunrise": 14,
+    "dhuhr": 19,
+    "asr": 20,
+    "maghrib": 19,
+    "isha": 22
+   },
+   "spread": {
+    "fajr": 5.42,
+    "sunrise": 5.442,
+    "dhuhr": 0.253,
+    "asr": 4.651,
+    "maghrib": 5.404,
+    "isha": 5.39
+   },
+   "held": {
+    "exactPct": 13.1,
+    "w1Pct": 27.8,
+    "mae": 4.455,
+    "max": 12,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 4.1,
+      "w1Pct": 13.2,
+      "mae": 5.389,
+      "max": 10
+     },
+     "sunrise": {
+      "exactPct": 3.6,
+      "w1Pct": 13.2,
+      "mae": 5.444,
+      "max": 10
+     },
+     "dhuhr": {
+      "exactPct": 58.1,
+      "w1Pct": 100,
+      "mae": 0.419,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 4.7,
+      "w1Pct": 15.3,
+      "mae": 4.668,
+      "max": 12
+     },
+     "maghrib": {
+      "exactPct": 4.4,
+      "w1Pct": 12.6,
+      "mae": 5.381,
+      "max": 9
+     },
+     "isha": {
+      "exactPct": 3.8,
+      "w1Pct": 12.6,
+      "mae": 5.427,
+      "max": 10
+     }
+    }
+   }
+  },
+  "50": {
+   "order": 51,
+   "name": "شليم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.1073097,
+    "lon": 55.6501265,
+    "label": "شليم, ولاية شليم وجزر الحلانيات, ظفار, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 3,
+    "sunrise": -4,
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 2,
+    "isha": -10
+   },
+   "spread": {
+    "fajr": 8.64,
+    "sunrise": 8.282,
+    "dhuhr": 0.31,
+    "asr": 6.971,
+    "maghrib": 8.327,
+    "isha": 8.727
+   },
+   "held": {
+    "exactPct": 14.4,
+    "w1Pct": 23.7,
+    "mae": 6.879,
+    "max": 17,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 3.3,
+      "w1Pct": 6.6,
+      "mae": 8.658,
+      "max": 16
+     },
+     "sunrise": {
+      "exactPct": 2.2,
+      "w1Pct": 7.1,
+      "mae": 8.279,
+      "max": 15
+     },
+     "dhuhr": {
+      "exactPct": 71.2,
+      "w1Pct": 100,
+      "mae": 0.288,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 3.3,
+      "w1Pct": 13.4,
+      "mae": 6.981,
+      "max": 17
+     },
+     "maghrib": {
+      "exactPct": 3.3,
+      "w1Pct": 7.9,
+      "mae": 8.326,
+      "max": 14
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 6.8,
+      "mae": 8.742,
+      "max": 15
+     }
+    }
+   }
+  },
+  "51": {
+   "order": 52,
+   "name": "شناص",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.7441619,
+    "lon": 56.4598209,
+    "label": "ولاية شناص, محافظة شمال الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 16.6,
+   "ishaAngle": 16.35,
+   "pads": {
+    "fajr": -7,
+    "sunrise": -1,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 4,
+    "isha": 6
+   },
+   "spread": {
+    "fajr": 0.487,
+    "sunrise": 0.551,
+    "dhuhr": 0.274,
+    "asr": 0.704,
+    "maghrib": 0.592,
+    "isha": 0.592
+   },
+   "held": {
+    "exactPct": 46.3,
+    "w1Pct": 95.3,
+    "mae": 0.584,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 67.1,
+      "w1Pct": 100,
+      "mae": 0.329,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 47.9,
+      "w1Pct": 95.9,
+      "mae": 0.562,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 57,
+      "w1Pct": 100,
+      "mae": 0.43,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 42.7,
+      "w1Pct": 92.9,
+      "mae": 0.644,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 38.4,
+      "w1Pct": 97.3,
+      "mae": 0.644,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 24.7,
+      "w1Pct": 86,
+      "mae": 0.893,
+      "max": 2
+     }
+    }
+   }
+  },
+  "52": {
+   "order": 53,
+   "name": "صحار",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.3419881,
+    "lon": 56.7298385,
+    "label": "ولاية صحار, محافظة شمال الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.25,
+   "ishaAngle": 17,
+   "pads": {
+    "fajr": -4,
+    "sunrise": -1,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 4,
+    "isha": 4
+   },
+   "spread": {
+    "fajr": 0.268,
+    "sunrise": 0.502,
+    "dhuhr": 0.419,
+    "asr": 0.51,
+    "maghrib": 0.494,
+    "isha": 0.419
+   },
+   "held": {
+    "exactPct": 32,
+    "w1Pct": 94.8,
+    "mae": 0.732,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 54.5,
+      "w1Pct": 100,
+      "mae": 0.455,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 16.7,
+      "w1Pct": 93.4,
+      "mae": 0.899,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 11.2,
+      "w1Pct": 99.7,
+      "mae": 0.89,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 33.7,
+      "w1Pct": 85.2,
+      "mae": 0.811,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 26.3,
+      "w1Pct": 90.7,
+      "mae": 0.83,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 49.6,
+      "w1Pct": 99.7,
+      "mae": 0.507,
+      "max": 2
+     }
+    }
+   }
+  },
+  "53": {
+   "order": 54,
+   "name": "صحم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.142469,
+    "lon": 56.8757899,
+    "label": "ولاية صحم, محافظة شمال الباطنة, 319, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -12,
+    "sunrise": -3,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 5
+   },
+   "spread": {
+    "fajr": 4.957,
+    "sunrise": 5.01,
+    "dhuhr": 0.314,
+    "asr": 4.408,
+    "maghrib": 4.954,
+    "isha": 4.887
+   },
+   "held": {
+    "exactPct": 8.4,
+    "w1Pct": 28.4,
+    "mae": 4.16,
+    "max": 10,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 5.2,
+      "w1Pct": 12.3,
+      "mae": 4.967,
+      "max": 9
+     },
+     "sunrise": {
+      "exactPct": 4.7,
+      "w1Pct": 12.9,
+      "mae": 5.011,
+      "max": 9
+     },
+     "dhuhr": {
+      "exactPct": 25.2,
+      "w1Pct": 100,
+      "mae": 0.748,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 6,
+      "w1Pct": 16.7,
+      "mae": 4.386,
+      "max": 10
+     },
+     "maghrib": {
+      "exactPct": 5.2,
+      "w1Pct": 13.7,
+      "mae": 4.951,
+      "max": 9
+     },
+     "isha": {
+      "exactPct": 4.1,
+      "w1Pct": 14.5,
+      "mae": 4.899,
+      "max": 9
+     }
+    }
+   }
+  },
+  "54": {
+   "order": 55,
+   "name": "صراب",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.1485104,
+    "lon": 57.5593375,
+    "label": "سراب, شريجة ثقبة, ولاية الجبل الأخضر, الداخلية, عمان",
+    "type": "locality"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 11,
+    "sunrise": 18,
+    "dhuhr": 23,
+    "asr": 24,
+    "maghrib": 23,
+    "isha": 26
+   },
+   "spread": {
+    "fajr": 8.082,
+    "sunrise": 7.917,
+    "dhuhr": 0.285,
+    "asr": 6.404,
+    "maghrib": 7.856,
+    "isha": 8.051
+   },
+   "held": {
+    "exactPct": 14.2,
+    "w1Pct": 24.4,
+    "mae": 6.43,
+    "max": 16,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 2.7,
+      "w1Pct": 7.7,
+      "mae": 8.077,
+      "max": 14
+     },
+     "sunrise": {
+      "exactPct": 3.8,
+      "w1Pct": 9,
+      "mae": 7.918,
+      "max": 14
+     },
+     "dhuhr": {
+      "exactPct": 68.8,
+      "w1Pct": 100,
+      "mae": 0.312,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 3.3,
+      "w1Pct": 12.3,
+      "mae": 6.414,
+      "max": 16
+     },
+     "maghrib": {
+      "exactPct": 3.3,
+      "w1Pct": 8.5,
+      "mae": 7.836,
+      "max": 13
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 8.8,
+      "mae": 8.025,
+      "max": 14
+     }
+    }
+   }
+  },
+  "55": {
+   "order": 56,
+   "name": "صرفيت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 16.6825731,
+    "lon": 53.1157569,
+    "label": "صرفيت, ولاية ضلكوت, ظفار, عمان",
+    "type": "hamlet"
+   },
+   "fajrAngle": 19.05,
+   "ishaAngle": 18.95,
+   "pads": {
+    "fajr": 1,
+    "sunrise": -4,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": -8
+   },
+   "spread": {
+    "fajr": 0.489,
+    "sunrise": 0.471,
+    "dhuhr": 0.274,
+    "asr": 0.565,
+    "maghrib": 0.564,
+    "isha": 0.546
+   },
+   "held": {
+    "exactPct": 44.8,
+    "w1Pct": 93.9,
+    "mae": 0.612,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 71.8,
+      "w1Pct": 100,
+      "mae": 0.282,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 41.9,
+      "w1Pct": 94.5,
+      "mae": 0.636,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 37.8,
+      "w1Pct": 100,
+      "mae": 0.622,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 45.5,
+      "w1Pct": 87.7,
+      "mae": 0.668,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 34.2,
+      "w1Pct": 90.4,
+      "mae": 0.753,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 37.8,
+      "w1Pct": 91,
+      "mae": 0.712,
+      "max": 2
+     }
+    }
+   }
+  },
+  "56": {
+   "order": 57,
+   "name": "صلالة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.0174945,
+    "lon": 54.1010923,
+    "label": "ولاية صلالة, ظفار, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": -14,
+    "sunrise": -22,
+    "dhuhr": -17,
+    "asr": -18,
+    "maghrib": -16,
+    "isha": -29
+   },
+   "spread": {
+    "fajr": 6.982,
+    "sunrise": 6.749,
+    "dhuhr": 0.326,
+    "asr": 5.849,
+    "maghrib": 6.842,
+    "isha": 7.041
+   },
+   "held": {
+    "exactPct": 6.8,
+    "w1Pct": 24.7,
+    "mae": 5.713,
+    "max": 16,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 2.7,
+      "w1Pct": 8.8,
+      "mae": 6.975,
+      "max": 12
+     },
+     "sunrise": {
+      "exactPct": 4.1,
+      "w1Pct": 9.9,
+      "mae": 6.756,
+      "max": 12
+     },
+     "dhuhr": {
+      "exactPct": 24.7,
+      "w1Pct": 100,
+      "mae": 0.753,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 2.7,
+      "w1Pct": 11.5,
+      "mae": 5.879,
+      "max": 16
+     },
+     "maghrib": {
+      "exactPct": 3.3,
+      "w1Pct": 8.8,
+      "mae": 6.844,
+      "max": 12
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 9,
+      "mae": 7.068,
+      "max": 12
+     }
+    }
+   }
+  },
+  "57": {
+   "order": 58,
+   "name": "صور",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.5693088,
+    "lon": 59.5295518,
+    "label": "صور, ولاية جعلان بني يو علي, محافظة جنوب الشرقية, 411, عمان",
+    "type": "city"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 24,
+    "sunrise": 13,
+    "dhuhr": 18,
+    "asr": 19,
+    "maghrib": 18,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.819,
+    "sunrise": 1.251,
+    "dhuhr": 0.286,
+    "asr": 1.425,
+    "maghrib": 1.365,
+    "isha": 1.042
+   },
+   "held": {
+    "exactPct": 25.1,
+    "w1Pct": 68.8,
+    "mae": 1.119,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 51.5,
+      "w1Pct": 76.4,
+      "mae": 0.759,
+      "max": 3
+     },
+     "sunrise": {
+      "exactPct": 17.5,
+      "w1Pct": 62.5,
+      "mae": 1.274,
+      "max": 3
+     },
+     "dhuhr": {
+      "exactPct": 35.9,
+      "w1Pct": 100,
+      "mae": 0.641,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 18.4,
+      "w1Pct": 54,
+      "mae": 1.351,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 15.1,
+      "w1Pct": 52.3,
+      "mae": 1.458,
+      "max": 3
+     },
+     "isha": {
+      "exactPct": 12.1,
+      "w1Pct": 67.7,
+      "mae": 1.23,
+      "max": 3
+     }
+    }
+   }
+  },
+  "58": {
+   "order": 59,
+   "name": "ضنك",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.5521949,
+    "lon": 56.2439756,
+    "label": "ولاية ضنك, محافظة الظاهرة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 8,
+    "dhuhr": 12,
+    "asr": 14,
+    "maghrib": 12,
+    "isha": 15
+   },
+   "spread": {
+    "fajr": 8.208,
+    "sunrise": 8.038,
+    "dhuhr": 0.426,
+    "asr": 6.518,
+    "maghrib": 7.994,
+    "isha": 8.161
+   },
+   "held": {
+    "exactPct": 4.1,
+    "w1Pct": 24.1,
+    "mae": 6.637,
+    "max": 17,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 3,
+      "w1Pct": 8.2,
+      "mae": 8.216,
+      "max": 14
+     },
+     "sunrise": {
+      "exactPct": 3,
+      "w1Pct": 7.9,
+      "mae": 8.049,
+      "max": 14
+     },
+     "dhuhr": {
+      "exactPct": 11,
+      "w1Pct": 100,
+      "mae": 0.89,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 2.5,
+      "w1Pct": 12.1,
+      "mae": 6.518,
+      "max": 17
+     },
+     "maghrib": {
+      "exactPct": 3,
+      "w1Pct": 8.2,
+      "mae": 7.995,
+      "max": 14
+     },
+     "isha": {
+      "exactPct": 2.2,
+      "w1Pct": 8.2,
+      "mae": 8.153,
+      "max": 14
+     }
+    }
+   }
+  },
+  "59": {
+   "order": 60,
+   "name": "طاقة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.0440079,
+    "lon": 54.3913553,
+    "label": "طاقة, ولاية طاقة, ظفار, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 16.6,
+   "ishaAngle": 16.15,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 5,
+    "dhuhr": 10,
+    "asr": 10,
+    "maghrib": 10,
+    "isha": 13
+   },
+   "spread": {
+    "fajr": 0.518,
+    "sunrise": 0.551,
+    "dhuhr": 0.424,
+    "asr": 0.523,
+    "maghrib": 0.567,
+    "isha": 0.449
+   },
+   "held": {
+    "exactPct": 67.5,
+    "w1Pct": 100,
+    "mae": 0.325,
+    "max": 1,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 69.9,
+      "w1Pct": 100,
+      "mae": 0.301,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 57.5,
+      "w1Pct": 100,
+      "mae": 0.425,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 87.9,
+      "w1Pct": 100,
+      "mae": 0.121,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 56.4,
+      "w1Pct": 100,
+      "mae": 0.436,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 69.9,
+      "w1Pct": 100,
+      "mae": 0.301,
+      "max": 1
+     }
+    }
+   }
+  },
+  "60": {
+   "order": 61,
+   "name": "ظلكوت",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "61": {
+   "order": 62,
+   "name": "عبري",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.2161642,
+    "lon": 56.5153547,
+    "label": "ولاية عبري, محافظة الظاهرة, 500, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -11,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 11
+   },
+   "spread": {
+    "fajr": 0.833,
+    "sunrise": 1.132,
+    "dhuhr": 0.29,
+    "asr": 1.147,
+    "maghrib": 1.119,
+    "isha": 0.761
+   },
+   "held": {
+    "exactPct": 24.8,
+    "w1Pct": 74.9,
+    "mae": 1.02,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 17,
+      "w1Pct": 82.2,
+      "mae": 1.008,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 21.6,
+      "w1Pct": 63,
+      "mae": 1.214,
+      "max": 3
+     },
+     "dhuhr": {
+      "exactPct": 35.1,
+      "w1Pct": 100,
+      "mae": 0.649,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 18.4,
+      "w1Pct": 62.7,
+      "mae": 1.203,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 17.8,
+      "w1Pct": 64.1,
+      "mae": 1.211,
+      "max": 3
+     },
+     "isha": {
+      "exactPct": 39.2,
+      "w1Pct": 77.5,
+      "mae": 0.836,
+      "max": 3
+     }
+    }
+   }
+  },
+  "62": {
+   "order": 63,
+   "name": "فهود",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.3543844,
+    "lon": 56.484888,
+    "label": "مطار فهود, طريق نتية-فهود, ولاية عبري, محافظة الظاهرة, عمان",
+    "type": "aerodrome"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -15,
+    "sunrise": -5,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 6
+   },
+   "spread": {
+    "fajr": 1.235,
+    "sunrise": 1.606,
+    "dhuhr": 0.31,
+    "asr": 1.516,
+    "maghrib": 1.569,
+    "isha": 1.207
+   },
+   "held": {
+    "exactPct": 18.1,
+    "w1Pct": 60.3,
+    "mae": 1.343,
+    "max": 4,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 12.9,
+      "w1Pct": 63.6,
+      "mae": 1.293,
+      "max": 3
+     },
+     "sunrise": {
+      "exactPct": 14.2,
+      "w1Pct": 46.3,
+      "mae": 1.668,
+      "max": 4
+     },
+     "dhuhr": {
+      "exactPct": 28.8,
+      "w1Pct": 100,
+      "mae": 0.712,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 14.5,
+      "w1Pct": 41.4,
+      "mae": 1.592,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 14.5,
+      "w1Pct": 42.5,
+      "mae": 1.633,
+      "max": 3
+     },
+     "isha": {
+      "exactPct": 23.6,
+      "w1Pct": 67.9,
+      "mae": 1.162,
+      "max": 3
+     }
+    }
+   }
+  },
+  "63": {
+   "order": 64,
+   "name": "قرن العلم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 21.3250787,
+    "lon": 57.0925221,
+    "label": "قرن العلم, ولاية أدم, الداخلية, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 3,
+    "sunrise": -7,
+    "dhuhr": -2,
+    "asr": -2,
+    "maghrib": -2,
+    "isha": -17
+   },
+   "spread": {
+    "fajr": 2.017,
+    "sunrise": 2.342,
+    "dhuhr": 0.313,
+    "asr": 2.386,
+    "maghrib": 2.404,
+    "isha": 2.081
+   },
+   "held": {
+    "exactPct": 21.3,
+    "w1Pct": 41.6,
+    "mae": 1.911,
+    "max": 6,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 10.1,
+      "w1Pct": 35.6,
+      "mae": 2,
+      "max": 5
+     },
+     "sunrise": {
+      "exactPct": 8.2,
+      "w1Pct": 28.5,
+      "mae": 2.315,
+      "max": 4
+     },
+     "dhuhr": {
+      "exactPct": 78.4,
+      "w1Pct": 100,
+      "mae": 0.216,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 11.8,
+      "w1Pct": 29.6,
+      "mae": 2.375,
+      "max": 6
+     },
+     "maghrib": {
+      "exactPct": 9.6,
+      "w1Pct": 24.9,
+      "mae": 2.43,
+      "max": 4
+     },
+     "isha": {
+      "exactPct": 9.9,
+      "w1Pct": 30.7,
+      "mae": 2.129,
+      "max": 5
+     }
+    }
+   }
+  },
+  "64": {
+   "order": 65,
+   "name": "قريات",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.2650161,
+    "lon": 58.9186547,
+    "label": "ولاية قريات, محافظة مسقط, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 19.2,
+   "ishaAngle": 19.45,
+   "pads": {
+    "fajr": 14,
+    "sunrise": 9,
+    "dhuhr": 14,
+    "asr": 14,
+    "maghrib": 14,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.318,
+    "sunrise": 0.554,
+    "dhuhr": 0.467,
+    "asr": 0.586,
+    "maghrib": 0.576,
+    "isha": 0.556
+   },
+   "held": {
+    "exactPct": 59.4,
+    "w1Pct": 98.6,
+    "mae": 0.42,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 51.2,
+      "w1Pct": 100,
+      "mae": 0.488,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 64.1,
+      "w1Pct": 100,
+      "mae": 0.359,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 93.2,
+      "w1Pct": 100,
+      "mae": 0.068,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 41.4,
+      "w1Pct": 100,
+      "mae": 0.586,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 55.1,
+      "w1Pct": 100,
+      "mae": 0.449,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 51.5,
+      "w1Pct": 91.5,
+      "mae": 0.57,
+      "max": 2
+     }
+    }
+   }
+  },
+  "65": {
+   "order": 66,
+   "name": "كنهات",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "66": {
+   "order": 67,
+   "name": "لوى",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.5185885,
+    "lon": 56.5610044,
+    "label": "لوى, ولاية لوى, محافظة شمال الباطنة, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 17.55,
+   "ishaAngle": 17.7,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 2,
+    "dhuhr": 7,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 4
+   },
+   "spread": {
+    "fajr": 0.39,
+    "sunrise": 0.438,
+    "dhuhr": 0.441,
+    "asr": 0.484,
+    "maghrib": 0.489,
+    "isha": 0.476
+   },
+   "held": {
+    "exactPct": 25.9,
+    "w1Pct": 94.7,
+    "mae": 0.793,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 13.2,
+      "w1Pct": 100,
+      "mae": 0.868,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 14.8,
+      "w1Pct": 95.9,
+      "mae": 0.893,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 10.7,
+      "w1Pct": 100,
+      "mae": 0.893,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 28.8,
+      "w1Pct": 84.1,
+      "mae": 0.871,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 24.1,
+      "w1Pct": 88.5,
+      "mae": 0.874,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 64.1,
+      "w1Pct": 100,
+      "mae": 0.359,
+      "max": 1
+     }
+    }
+   }
+  },
+  "67": {
+   "order": 68,
+   "name": "محضة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.4004169,
+    "lon": 55.9678543,
+    "label": "محضة, ولاية محضة, محافظة البريمي, عمان",
+    "type": "residential"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -17,
+    "sunrise": -8,
+    "dhuhr": -4,
+    "asr": -4,
+    "maghrib": -4,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 4.776,
+    "sunrise": 4.89,
+    "dhuhr": 0.319,
+    "asr": 4.339,
+    "maghrib": 4.833,
+    "isha": 4.742
+   },
+   "held": {
+    "exactPct": 8.4,
+    "w1Pct": 29.3,
+    "mae": 4.05,
+    "max": 10,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 4.9,
+      "w1Pct": 14,
+      "mae": 4.756,
+      "max": 9
+     },
+     "sunrise": {
+      "exactPct": 4.7,
+      "w1Pct": 14,
+      "mae": 4.86,
+      "max": 9
+     },
+     "dhuhr": {
+      "exactPct": 26.3,
+      "w1Pct": 100,
+      "mae": 0.737,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 5.5,
+      "w1Pct": 20,
+      "mae": 4.337,
+      "max": 10
+     },
+     "maghrib": {
+      "exactPct": 4.9,
+      "w1Pct": 13.4,
+      "mae": 4.83,
+      "max": 9
+     },
+     "isha": {
+      "exactPct": 4.1,
+      "w1Pct": 14.5,
+      "mae": 4.781,
+      "max": 9
+     }
+    }
+   }
+  },
+  "68": {
+   "order": 69,
+   "name": "محوت",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 20.6456761,
+    "lon": 57.9685548,
+    "label": "ولاية محوت, محافظة الوسطى, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 15,
+    "sunrise": 6,
+    "dhuhr": 12,
+    "asr": 14,
+    "maghrib": 12,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 5.978,
+    "sunrise": 5.873,
+    "dhuhr": 0.358,
+    "asr": 5.488,
+    "maghrib": 5.983,
+    "isha": 6.052
+   },
+   "held": {
+    "exactPct": 17.4,
+    "w1Pct": 26.8,
+    "mae": 4.925,
+    "max": 11,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 3.8,
+      "w1Pct": 11.8,
+      "mae": 5.951,
+      "max": 10
+     },
+     "sunrise": {
+      "exactPct": 4.1,
+      "w1Pct": 12.9,
+      "mae": 5.882,
+      "max": 11
+     },
+     "dhuhr": {
+      "exactPct": 83,
+      "w1Pct": 100,
+      "mae": 0.17,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 7.4,
+      "w1Pct": 16.2,
+      "mae": 5.485,
+      "max": 11
+     },
+     "maghrib": {
+      "exactPct": 2.7,
+      "w1Pct": 10.7,
+      "mae": 6.016,
+      "max": 10
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 9,
+      "mae": 6.047,
+      "max": 11
+     }
+    }
+   }
+  },
+  "69": {
+   "order": 70,
+   "name": "مدحا",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 25.2862774,
+    "lon": 56.334479,
+    "label": "مدحاء, ولاية مدحاء, محافظة مسندم, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 7,
+    "dhuhr": 12,
+    "asr": 11,
+    "maghrib": 11,
+    "isha": 13
+   },
+   "spread": {
+    "fajr": 10.742,
+    "sunrise": 10.358,
+    "dhuhr": 0.39,
+    "asr": 8.094,
+    "maghrib": 10.316,
+    "isha": 10.692
+   },
+   "held": {
+    "exactPct": 16.9,
+    "w1Pct": 22.8,
+    "mae": 8.381,
+    "max": 19,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 1.1,
+      "w1Pct": 5.5,
+      "mae": 10.77,
+      "max": 19
+     },
+     "sunrise": {
+      "exactPct": 1.6,
+      "w1Pct": 5.5,
+      "mae": 10.384,
+      "max": 18
+     },
+     "dhuhr": {
+      "exactPct": 91,
+      "w1Pct": 100,
+      "mae": 0.09,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 4.4,
+      "w1Pct": 12.9,
+      "mae": 8.06,
+      "max": 18
+     },
+     "maghrib": {
+      "exactPct": 2.2,
+      "w1Pct": 6.3,
+      "mae": 10.304,
+      "max": 18
+     },
+     "isha": {
+      "exactPct": 1.1,
+      "w1Pct": 6.8,
+      "mae": 10.677,
+      "max": 18
+     }
+    }
+   }
+  },
+  "70": {
+   "order": 71,
+   "name": "مرباط",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 16.9820654,
+    "lon": 54.6932621,
+    "label": "ولاية مرباط, ظفار, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 11,
+    "sunrise": 1,
+    "dhuhr": 6,
+    "asr": 5,
+    "maghrib": 6,
+    "isha": -9
+   },
+   "spread": {
+    "fajr": 0.876,
+    "sunrise": 1.171,
+    "dhuhr": 0.286,
+    "asr": 1.178,
+    "maghrib": 1.245,
+    "isha": 1.06
+   },
+   "held": {
+    "exactPct": 36.1,
+    "w1Pct": 71.9,
+    "mae": 1.011,
+    "max": 4,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 48.5,
+      "w1Pct": 69.9,
+      "mae": 0.964,
+      "max": 3
+     },
+     "sunrise": {
+      "exactPct": 19.5,
+      "w1Pct": 66.3,
+      "mae": 1.153,
+      "max": 3
+     },
+     "dhuhr": {
+      "exactPct": 63.3,
+      "w1Pct": 100,
+      "mae": 0.367,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 38.4,
+      "w1Pct": 61.6,
+      "mae": 1.312,
+      "max": 4
+     },
+     "maghrib": {
+      "exactPct": 15.6,
+      "w1Pct": 57.3,
+      "mae": 1.293,
+      "max": 3
+     },
+     "isha": {
+      "exactPct": 31.5,
+      "w1Pct": 76.4,
+      "mae": 0.973,
+      "max": 3
+     }
+    }
+   }
+  },
+  "71": {
+   "order": 72,
+   "name": "مرمور",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "72": {
+   "order": 73,
+   "name": "مرمول",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.1309153,
+    "lon": 55.2699677,
+    "label": "مرمول, ولاية شليم وجزر الحلانيات, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 1,
+    "sunrise": -5,
+    "dhuhr": 1,
+    "asr": 4,
+    "maghrib": 2,
+    "isha": -9
+   },
+   "spread": {
+    "fajr": 10.76,
+    "sunrise": 10.178,
+    "dhuhr": 0.277,
+    "asr": 8.546,
+    "maghrib": 10.226,
+    "isha": 10.829
+   },
+   "held": {
+    "exactPct": 9,
+    "w1Pct": 23.2,
+    "mae": 8.533,
+    "max": 19,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 1.6,
+      "w1Pct": 6.6,
+      "mae": 10.775,
+      "max": 19
+     },
+     "sunrise": {
+      "exactPct": 2.5,
+      "w1Pct": 7.1,
+      "mae": 10.203,
+      "max": 18
+     },
+     "dhuhr": {
+      "exactPct": 39.2,
+      "w1Pct": 100,
+      "mae": 0.608,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 5.8,
+      "w1Pct": 13.4,
+      "mae": 8.534,
+      "max": 17
+     },
+     "maghrib": {
+      "exactPct": 2.2,
+      "w1Pct": 6,
+      "mae": 10.255,
+      "max": 17
+     },
+     "isha": {
+      "exactPct": 3,
+      "w1Pct": 5.8,
+      "mae": 10.822,
+      "max": 18
+     }
+    }
+   }
+  },
+  "73": {
+   "order": 74,
+   "name": "مسندم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 25.999736,
+    "lon": 56.2498627,
+    "label": "محافظة مسندم, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -15,
+    "sunrise": -5,
+    "dhuhr": -1,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 4
+   },
+   "spread": {
+    "fajr": 2.629,
+    "sunrise": 2.954,
+    "dhuhr": 0.445,
+    "asr": 3.188,
+    "maghrib": 2.907,
+    "isha": 2.596
+   },
+   "held": {
+    "exactPct": 8.4,
+    "w1Pct": 36.8,
+    "mae": 2.544,
+    "max": 6,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 7.9,
+      "w1Pct": 24.1,
+      "mae": 2.63,
+      "max": 5
+     },
+     "sunrise": {
+      "exactPct": 7.9,
+      "w1Pct": 24.1,
+      "mae": 2.945,
+      "max": 5
+     },
+     "dhuhr": {
+      "exactPct": 7.9,
+      "w1Pct": 99.7,
+      "mae": 0.923,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 7.7,
+      "w1Pct": 20.5,
+      "mae": 3.195,
+      "max": 6
+     },
+     "maghrib": {
+      "exactPct": 9.3,
+      "w1Pct": 23.3,
+      "mae": 2.929,
+      "max": 6
+     },
+     "isha": {
+      "exactPct": 9.6,
+      "w1Pct": 28.8,
+      "mae": 2.641,
+      "max": 6
+     }
+    }
+   }
+  },
+  "74": {
+   "order": 75,
+   "name": "مصنعة",
+   "rows": 365,
+   "gazetteer": null,
+   "fitted": false
+  },
+  "75": {
+   "order": 76,
+   "name": "مصيرة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 20.4162857,
+    "lon": 58.7319337,
+    "label": "مسيرة, ولاية المصيرة, محافظة جنوب الشرقية, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": 5,
+    "sunrise": 16,
+    "dhuhr": 20,
+    "asr": 21,
+    "maghrib": 21,
+    "isha": 26
+   },
+   "spread": {
+    "fajr": 0.763,
+    "sunrise": 1.136,
+    "dhuhr": 0.426,
+    "asr": 0.981,
+    "maghrib": 1.107,
+    "isha": 0.754
+   },
+   "held": {
+    "exactPct": 24.5,
+    "w1Pct": 82.7,
+    "mae": 0.934,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 29.6,
+      "w1Pct": 90.7,
+      "mae": 0.797,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 20,
+      "w1Pct": 74.5,
+      "mae": 1.055,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 10.4,
+      "w1Pct": 99.7,
+      "mae": 0.899,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 26.6,
+      "w1Pct": 80.5,
+      "mae": 0.951,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 21.9,
+      "w1Pct": 74.8,
+      "mae": 1.033,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 38.6,
+      "w1Pct": 75.9,
+      "mae": 0.868,
+      "max": 3
+     }
+    }
+   }
+  },
+  "76": {
+   "order": 77,
+   "name": "مقشن",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 19.5647825,
+    "lon": 54.8910714,
+    "label": "مقشن, ولاية مقشن, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": -2,
+    "sunrise": -11,
+    "dhuhr": -6,
+    "asr": -6,
+    "maghrib": -5,
+    "isha": -20
+   },
+   "spread": {
+    "fajr": 3.86,
+    "sunrise": 3.982,
+    "dhuhr": 0.278,
+    "asr": 3.797,
+    "maghrib": 4.06,
+    "isha": 3.971
+   },
+   "held": {
+    "exactPct": 10.7,
+    "w1Pct": 30.9,
+    "mae": 3.394,
+    "max": 9,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 6.6,
+      "w1Pct": 19.2,
+      "mae": 3.868,
+      "max": 8
+     },
+     "sunrise": {
+      "exactPct": 5.5,
+      "w1Pct": 16.7,
+      "mae": 3.997,
+      "max": 7
+     },
+     "dhuhr": {
+      "exactPct": 33.2,
+      "w1Pct": 100,
+      "mae": 0.668,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 7.4,
+      "w1Pct": 18.1,
+      "mae": 3.781,
+      "max": 9
+     },
+     "maghrib": {
+      "exactPct": 5.2,
+      "w1Pct": 15.6,
+      "mae": 4.06,
+      "max": 7
+     },
+     "isha": {
+      "exactPct": 6.3,
+      "w1Pct": 15.6,
+      "mae": 3.989,
+      "max": 7
+     }
+    }
+   }
+  },
+  "77": {
+   "order": 78,
+   "name": "منح",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.7876518,
+    "lon": 57.611126,
+    "label": "منح, ولاية منح, الداخلية, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 20,
+   "ishaAngle": 19.95,
+   "pads": {
+    "fajr": 8,
+    "sunrise": -1,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 4,
+    "isha": -10
+   },
+   "spread": {
+    "fajr": 0.482,
+    "sunrise": 0.784,
+    "dhuhr": 0.269,
+    "asr": 1.026,
+    "maghrib": 0.917,
+    "isha": 0.843
+   },
+   "held": {
+    "exactPct": 33.5,
+    "w1Pct": 81,
+    "mae": 0.869,
+    "max": 3,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 54.5,
+      "w1Pct": 91,
+      "mae": 0.545,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 33.7,
+      "w1Pct": 81.9,
+      "mae": 0.844,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 39.5,
+      "w1Pct": 100,
+      "mae": 0.605,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 26,
+      "w1Pct": 64.7,
+      "mae": 1.134,
+      "max": 3
+     },
+     "maghrib": {
+      "exactPct": 23.6,
+      "w1Pct": 74.8,
+      "mae": 1.016,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 23.6,
+      "w1Pct": 73.4,
+      "mae": 1.068,
+      "max": 3
+     }
+    }
+   }
+  },
+  "78": {
+   "order": 79,
+   "name": "نخل",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.395468,
+    "lon": 57.8289398,
+    "label": "ولاية نخل, محافظة جنوب الباطنة, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 16.25,
+   "ishaAngle": 16.05,
+   "pads": {
+    "fajr": -7,
+    "sunrise": 1,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 10
+   },
+   "spread": {
+    "fajr": 0.55,
+    "sunrise": 0.667,
+    "dhuhr": 0.289,
+    "asr": 0.711,
+    "maghrib": 0.682,
+    "isha": 0.469
+   },
+   "held": {
+    "exactPct": 33.6,
+    "w1Pct": 90,
+    "mae": 0.764,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 25.8,
+      "w1Pct": 87.7,
+      "mae": 0.866,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 35.6,
+      "w1Pct": 80.5,
+      "mae": 0.838,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 35.6,
+      "w1Pct": 100,
+      "mae": 0.644,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 35.6,
+      "w1Pct": 86.6,
+      "mae": 0.778,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 31.2,
+      "w1Pct": 86.3,
+      "mae": 0.825,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 37.5,
+      "w1Pct": 99.2,
+      "mae": 0.633,
+      "max": 2
+     }
+    }
+   }
+  },
+  "79": {
+   "order": 80,
+   "name": "نزوى",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.9323884,
+    "lon": 57.5311,
+    "label": "ولاية نزوى, الداخلية, 611, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.5,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 7,
+    "dhuhr": 12,
+    "asr": 13,
+    "maghrib": 12,
+    "isha": 15
+   },
+   "spread": {
+    "fajr": 5.438,
+    "sunrise": 5.425,
+    "dhuhr": 0.336,
+    "asr": 4.679,
+    "maghrib": 5.407,
+    "isha": 5.37
+   },
+   "held": {
+    "exactPct": 16.7,
+    "w1Pct": 27.5,
+    "mae": 4.416,
+    "max": 12,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 4.4,
+      "w1Pct": 12.9,
+      "mae": 5.422,
+      "max": 10
+     },
+     "sunrise": {
+      "exactPct": 4.4,
+      "w1Pct": 11.8,
+      "mae": 5.436,
+      "max": 10
+     },
+     "dhuhr": {
+      "exactPct": 78.1,
+      "w1Pct": 100,
+      "mae": 0.219,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 6,
+      "w1Pct": 14.2,
+      "mae": 4.649,
+      "max": 12
+     },
+     "maghrib": {
+      "exactPct": 4.4,
+      "w1Pct": 12.3,
+      "mae": 5.4,
+      "max": 9
+     },
+     "isha": {
+      "exactPct": 2.7,
+      "w1Pct": 13.7,
+      "mae": 5.373,
+      "max": 10
+     }
+    }
+   }
+  },
+  "80": {
+   "order": 81,
+   "name": "نمر",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.5401287,
+    "lon": 55.8811493,
+    "label": "نمر, ولاية الجازر, محافظة الوسطى, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 15.9,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -4,
+    "sunrise": 5,
+    "dhuhr": 10,
+    "asr": 10,
+    "maghrib": 10,
+    "isha": 16
+   },
+   "spread": {
+    "fajr": 0.479,
+    "sunrise": 0.637,
+    "dhuhr": 0.249,
+    "asr": 0.563,
+    "maghrib": 0.649,
+    "isha": 0.456
+   },
+   "held": {
+    "exactPct": 41.1,
+    "w1Pct": 96.1,
+    "mae": 0.628,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 44.7,
+      "w1Pct": 100,
+      "mae": 0.553,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 40.3,
+      "w1Pct": 91.2,
+      "mae": 0.685,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 50.4,
+      "w1Pct": 100,
+      "mae": 0.496,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 34.2,
+      "w1Pct": 94.8,
+      "mae": 0.71,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 31.5,
+      "w1Pct": 92.9,
+      "mae": 0.756,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 45.8,
+      "w1Pct": 97.5,
+      "mae": 0.567,
+      "max": 2
+     }
+    }
+   }
+  },
+  "81": {
+   "order": 82,
+   "name": "هرويل",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 17.9121591,
+    "lon": 54.7537073,
+    "label": "طريق هرويل, ولاية شليم وجزر الحلانيات, ظفار, عمان",
+    "type": "tertiary"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 3,
+    "sunrise": -6,
+    "dhuhr": -1,
+    "asr": -2,
+    "maghrib": -1,
+    "isha": -15
+   },
+   "spread": {
+    "fajr": 2.403,
+    "sunrise": 2.611,
+    "dhuhr": 0.288,
+    "asr": 2.435,
+    "maghrib": 2.652,
+    "isha": 2.484
+   },
+   "held": {
+    "exactPct": 18.7,
+    "w1Pct": 42.5,
+    "mae": 2.153,
+    "max": 7,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 9,
+      "w1Pct": 34,
+      "mae": 2.452,
+      "max": 6
+     },
+     "sunrise": {
+      "exactPct": 7.9,
+      "w1Pct": 24.9,
+      "mae": 2.581,
+      "max": 5
+     },
+     "dhuhr": {
+      "exactPct": 68.8,
+      "w1Pct": 100,
+      "mae": 0.312,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 9.6,
+      "w1Pct": 43.3,
+      "mae": 2.422,
+      "max": 7
+     },
+     "maghrib": {
+      "exactPct": 7.7,
+      "w1Pct": 24.4,
+      "mae": 2.688,
+      "max": 5
+     },
+     "isha": {
+      "exactPct": 9.3,
+      "w1Pct": 28.2,
+      "mae": 2.466,
+      "max": 6
+     }
+    }
+   }
+  },
+  "82": {
+   "order": 83,
+   "name": "هيماء",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 19.9546947,
+    "lon": 56.2812639,
+    "label": "ولاية هيماء, محافظة الوسطى, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 20.5,
+   "ishaAngle": 20.5,
+   "pads": {
+    "fajr": 8,
+    "sunrise": -2,
+    "dhuhr": 3,
+    "asr": 3,
+    "maghrib": 4,
+    "isha": -11
+   },
+   "spread": {
+    "fajr": 2.317,
+    "sunrise": 2.582,
+    "dhuhr": 0.384,
+    "asr": 2.576,
+    "maghrib": 2.625,
+    "isha": 2.399
+   },
+   "held": {
+    "exactPct": 10,
+    "w1Pct": 39.6,
+    "mae": 2.228,
+    "max": 7,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 9.3,
+      "w1Pct": 31.5,
+      "mae": 2.31,
+      "max": 6
+     },
+     "sunrise": {
+      "exactPct": 9,
+      "w1Pct": 25.8,
+      "mae": 2.6,
+      "max": 5
+     },
+     "dhuhr": {
+      "exactPct": 14.8,
+      "w1Pct": 100,
+      "mae": 0.852,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 8.8,
+      "w1Pct": 26.6,
+      "mae": 2.592,
+      "max": 7
+     },
+     "maghrib": {
+      "exactPct": 10.1,
+      "w1Pct": 25.5,
+      "mae": 2.608,
+      "max": 5
+     },
+     "isha": {
+      "exactPct": 7.7,
+      "w1Pct": 28.5,
+      "mae": 2.408,
+      "max": 5
+     }
+    }
+   }
+  },
+  "83": {
+   "order": 84,
+   "name": "وادي بني خالد",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.4698291,
+    "lon": 59.1106164,
+    "label": "وادي بني خالد, الباطن, ولاية الكامل و الوافي, محافظة جنوب الشرقية, عمان",
+    "type": "locality"
+   },
+   "fajrAngle": 18.1,
+   "ishaAngle": 17.85,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.439,
+    "sunrise": 0.261,
+    "dhuhr": 0.25,
+    "asr": 0.402,
+    "maghrib": 0.374,
+    "isha": 0.477
+   },
+   "held": {
+    "exactPct": 45.9,
+    "w1Pct": 99.8,
+    "mae": 0.543,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 5.8,
+      "w1Pct": 100,
+      "mae": 0.942,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 50.4,
+      "w1Pct": 100,
+      "mae": 0.496,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 52.9,
+      "w1Pct": 100,
+      "mae": 0.471,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 47.9,
+      "w1Pct": 99.2,
+      "mae": 0.529,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 52.6,
+      "w1Pct": 99.7,
+      "mae": 0.477,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 65.8,
+      "w1Pct": 100,
+      "mae": 0.342,
+      "max": 1
+     }
+    }
+   }
+  },
+  "84": {
+   "order": 85,
+   "name": "وادي حيبي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.01,
+    "lon": 56.54,
+    "label": "وادي حيبي, ولاية صحار, محافظة شمال الباطنة, عمان",
+    "type": "locality"
+   },
+   "fajrAngle": 17.75,
+   "ishaAngle": 17.75,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.276,
+    "sunrise": 0.273,
+    "dhuhr": 0.26,
+    "asr": 0.454,
+    "maghrib": 0.402,
+    "isha": 0.415
+   },
+   "held": {
+    "exactPct": 55.5,
+    "w1Pct": 98.8,
+    "mae": 0.457,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 62.2,
+      "w1Pct": 100,
+      "mae": 0.378,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 56.2,
+      "w1Pct": 100,
+      "mae": 0.438,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 53.7,
+      "w1Pct": 100,
+      "mae": 0.463,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 60.3,
+      "w1Pct": 97.3,
+      "mae": 0.425,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 53.4,
+      "w1Pct": 99.2,
+      "mae": 0.474,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 47.4,
+      "w1Pct": 96.4,
+      "mae": 0.562,
+      "max": 2
+     }
+    }
+   }
+  },
+  "85": {
+   "order": 86,
+   "name": "ينقل",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.5912798,
+    "lon": 56.5547372,
+    "label": "ينقل, ولاية ينقل, محافظة الظاهرة, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 17.85,
+   "ishaAngle": 18.3,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 0.372,
+    "sunrise": 0.253,
+    "dhuhr": 0.259,
+    "asr": 0.438,
+    "maghrib": 0.362,
+    "isha": 0.556
+   },
+   "held": {
+    "exactPct": 45.9,
+    "w1Pct": 99.1,
+    "mae": 0.549,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 18.9,
+      "w1Pct": 100,
+      "mae": 0.811,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 47.1,
+      "w1Pct": 100,
+      "mae": 0.529,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 48.8,
+      "w1Pct": 100,
+      "mae": 0.512,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 49.3,
+      "w1Pct": 95.1,
+      "mae": 0.556,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 50.1,
+      "w1Pct": 99.7,
+      "mae": 0.501,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 61.4,
+      "w1Pct": 100,
+      "mae": 0.386,
+      "max": 1
+     }
+    }
+   }
+  },
+  "00": {
+   "order": 1,
+   "name": "مسقط",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.6123628,
+    "lon": 58.5938134,
+    "label": "مسقط, ولاية مسقط, محافظة مسقط, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.9,
+   "pads": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 6,
+    "asr": 6,
+    "maghrib": 6,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.284,
+    "sunrise": 0.325,
+    "dhuhr": 0.311,
+    "asr": 0.47,
+    "maghrib": 0.401,
+    "isha": 0.473
+   },
+   "held": {
+    "exactPct": 42.4,
+    "w1Pct": 97.9,
+    "mae": 0.596,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 68.8,
+      "w1Pct": 100,
+      "mae": 0.312,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 23.8,
+      "w1Pct": 100,
+      "mae": 0.762,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 28.5,
+      "w1Pct": 100,
+      "mae": 0.715,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 34.8,
+      "w1Pct": 91,
+      "mae": 0.742,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 32.6,
+      "w1Pct": 96.7,
+      "mae": 0.707,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 66,
+      "w1Pct": 100,
+      "mae": 0.34,
+      "max": 1
+     }
+    }
+   }
+  },
+  "01": {
+   "order": 2,
+   "name": "ابراء",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.7081773,
+    "lon": 58.5409926,
+    "label": "ولاية إبراء, محافظة شمال الشرقية, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.65,
+   "ishaAngle": 17.85,
+   "pads": {
+    "fajr": -2,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.391,
+    "sunrise": 0.259,
+    "dhuhr": 0.259,
+    "asr": 0.412,
+    "maghrib": 0.362,
+    "isha": 0.523
+   },
+   "held": {
+    "exactPct": 47.2,
+    "w1Pct": 99.6,
+    "mae": 0.532,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 13.4,
+      "w1Pct": 100,
+      "mae": 0.866,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 52.6,
+      "w1Pct": 100,
+      "mae": 0.474,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 53.2,
+      "w1Pct": 100,
+      "mae": 0.468,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 47.7,
+      "w1Pct": 97.5,
+      "mae": 0.548,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 52.1,
+      "w1Pct": 100,
+      "mae": 0.479,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 64.4,
+      "w1Pct": 100,
+      "mae": 0.356,
+      "max": 1
+     }
+    }
+   }
+  },
+  "02": {
+   "order": 3,
+   "name": "ادم",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.3840219,
+    "lon": 57.5240243,
+    "label": "ولاية أدم, الداخلية, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 17.8,
+   "ishaAngle": 17.75,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.274,
+    "sunrise": 0.248,
+    "dhuhr": 0.261,
+    "asr": 0.402,
+    "maghrib": 0.355,
+    "isha": 0.414
+   },
+   "held": {
+    "exactPct": 50.2,
+    "w1Pct": 98.7,
+    "mae": 0.511,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 46.3,
+      "w1Pct": 100,
+      "mae": 0.537,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 50.1,
+      "w1Pct": 100,
+      "mae": 0.499,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 53.4,
+      "w1Pct": 100,
+      "mae": 0.466,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 54,
+      "w1Pct": 97.5,
+      "mae": 0.485,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 53.7,
+      "w1Pct": 99.7,
+      "mae": 0.466,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 43.8,
+      "w1Pct": 94.8,
+      "mae": 0.614,
+      "max": 2
+     }
+    }
+   }
+  },
+  "03": {
+   "order": 4,
+   "name": "ازكي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 22.9372399,
+    "lon": 57.7570944,
+    "label": "ولاية إزكي, الداخلية, 614, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.05,
+   "ishaAngle": 18.3,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": -1
+   },
+   "spread": {
+    "fajr": 0.283,
+    "sunrise": 0.256,
+    "dhuhr": 0.27,
+    "asr": 0.417,
+    "maghrib": 0.373,
+    "isha": 0.596
+   },
+   "held": {
+    "exactPct": 54.6,
+    "w1Pct": 99.8,
+    "mae": 0.456,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 34,
+      "w1Pct": 100,
+      "mae": 0.66,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 57,
+      "w1Pct": 100,
+      "mae": 0.43,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 62.7,
+      "w1Pct": 100,
+      "mae": 0.373,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 55.3,
+      "w1Pct": 98.9,
+      "mae": 0.458,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 59.2,
+      "w1Pct": 100,
+      "mae": 0.408,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 59.2,
+      "w1Pct": 100,
+      "mae": 0.408,
+      "max": 1
+     }
+    }
+   }
+  },
+  "04": {
+   "order": 5,
+   "name": "الأشخرة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 21.85,
+    "lon": 59.57,
+    "label": "الأشخرة, ولاية جعلان بني بو علي, محافظة جنوب الشرقية, عمان",
+    "type": "town"
+   },
+   "fajrAngle": 17.95,
+   "ishaAngle": 17.65,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.277,
+    "sunrise": 0.252,
+    "dhuhr": 0.257,
+    "asr": 0.409,
+    "maghrib": 0.356,
+    "isha": 0.495
+   },
+   "held": {
+    "exactPct": 54.8,
+    "w1Pct": 99.5,
+    "mae": 0.457,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 70.4,
+      "w1Pct": 100,
+      "mae": 0.296,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 46.8,
+      "w1Pct": 100,
+      "mae": 0.532,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 49,
+      "w1Pct": 100,
+      "mae": 0.51,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 50.1,
+      "w1Pct": 98.1,
+      "mae": 0.518,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 48.2,
+      "w1Pct": 98.9,
+      "mae": 0.529,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 64.4,
+      "w1Pct": 100,
+      "mae": 0.356,
+      "max": 1
+     }
+    }
+   }
+  },
+  "05": {
+   "order": 6,
+   "name": "البريمي",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 24.25919,
+    "lon": 55.783763,
+    "label": "ولاية البريمي, محافظة البريمي, 512, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.05,
+   "ishaAngle": 18,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "spread": {
+    "fajr": 0.327,
+    "sunrise": 0.236,
+    "dhuhr": 0.261,
+    "asr": 0.445,
+    "maghrib": 0.402,
+    "isha": 0.43
+   },
+   "held": {
+    "exactPct": 47.8,
+    "w1Pct": 98.2,
+    "mae": 0.541,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 23.8,
+      "w1Pct": 100,
+      "mae": 0.762,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 55.6,
+      "w1Pct": 100,
+      "mae": 0.444,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 50.7,
+      "w1Pct": 100,
+      "mae": 0.493,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 50.1,
+      "w1Pct": 95.6,
+      "mae": 0.542,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 52.6,
+      "w1Pct": 98.9,
+      "mae": 0.485,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 53.7,
+      "w1Pct": 94.5,
+      "mae": 0.518,
+      "max": 2
+     }
+    }
+   }
+  },
+  "06": {
+   "order": 7,
+   "name": "الجازر",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.5190166,
+    "lon": 56.2241548,
+    "label": "ولاية الجازر, محافظة الوسطى, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 18.65,
+   "ishaAngle": 18.15,
+   "pads": {
+    "fajr": 2,
+    "sunrise": -1,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 4,
+    "isha": -2
+   },
+   "spread": {
+    "fajr": 0.462,
+    "sunrise": 0.375,
+    "dhuhr": 0.344,
+    "asr": 0.488,
+    "maghrib": 0.451,
+    "isha": 0.432
+   },
+   "held": {
+    "exactPct": 68.9,
+    "w1Pct": 99,
+    "mae": 0.32,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 89.9,
+      "w1Pct": 100,
+      "mae": 0.101,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 78.6,
+      "w1Pct": 100,
+      "mae": 0.214,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 80.5,
+      "w1Pct": 100,
+      "mae": 0.195,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 61.6,
+      "w1Pct": 100,
+      "mae": 0.384,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 62.2,
+      "w1Pct": 100,
+      "mae": 0.378,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 40.8,
+      "w1Pct": 94.2,
+      "mae": 0.649,
+      "max": 2
+     }
+    }
+   }
+  },
+  "07": {
+   "order": 8,
+   "name": "الجمة",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 23.5591029,
+    "lon": 57.5603072,
+    "label": "الجمة, ولاية الرستاق, محافظة جنوب الباطنة, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.9,
+   "pads": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 1
+   },
+   "spread": {
+    "fajr": 0.425,
+    "sunrise": 0.254,
+    "dhuhr": 0.26,
+    "asr": 0.422,
+    "maghrib": 0.363,
+    "isha": 0.58
+   },
+   "held": {
+    "exactPct": 55.9,
+    "w1Pct": 99.1,
+    "mae": 0.45,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 92.1,
+      "w1Pct": 100,
+      "mae": 0.079,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 46.3,
+      "w1Pct": 100,
+      "mae": 0.537,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 47.4,
+      "w1Pct": 100,
+      "mae": 0.526,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 46,
+      "w1Pct": 95.1,
+      "mae": 0.589,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 45.8,
+      "w1Pct": 99.5,
+      "mae": 0.548,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 58.1,
+      "w1Pct": 100,
+      "mae": 0.419,
+      "max": 1
+     }
+    }
+   }
+  },
+  "08": {
+   "order": 9,
+   "name": "الحشمان",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.4596994,
+    "lon": 53.0982277,
+    "label": "الحشمان, ولاية ثمريت, ظفار, عمان",
+    "type": "village"
+   },
+   "fajrAngle": 17.75,
+   "ishaAngle": 17.65,
+   "pads": {
+    "fajr": -1,
+    "sunrise": 0,
+    "dhuhr": 5,
+    "asr": 5,
+    "maghrib": 5,
+    "isha": 2
+   },
+   "spread": {
+    "fajr": 0.261,
+    "sunrise": 0.267,
+    "dhuhr": 0.26,
+    "asr": 0.385,
+    "maghrib": 0.338,
+    "isha": 0.485
+   },
+   "held": {
+    "exactPct": 49.6,
+    "w1Pct": 99.4,
+    "mae": 0.51,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 53.7,
+      "w1Pct": 100,
+      "mae": 0.463,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 40,
+      "w1Pct": 100,
+      "mae": 0.6,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 44.9,
+      "w1Pct": 100,
+      "mae": 0.551,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 43.6,
+      "w1Pct": 97.3,
+      "mae": 0.592,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 46.3,
+      "w1Pct": 99.2,
+      "mae": 0.545,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 69.3,
+      "w1Pct": 100,
+      "mae": 0.307,
+      "max": 1
+     }
+    }
+   }
+  },
+  "09": {
+   "order": 10,
+   "name": "الحلانيات",
+   "rows": 365,
+   "fitted": true,
+   "gazetteer": {
+    "lat": 18.2120406,
+    "lon": 55.3631908,
+    "label": "ولاية شليم وجزر الحلانيات, ظفار, عمان",
+    "type": "administrative"
+   },
+   "fajrAngle": 15.55,
+   "ishaAngle": 15.5,
+   "pads": {
+    "fajr": -13,
+    "sunrise": -2,
+    "dhuhr": 2,
+    "asr": 3,
+    "maghrib": 3,
+    "isha": 8
+   },
+   "spread": {
+    "fajr": 0.643,
+    "sunrise": 0.945,
+    "dhuhr": 0.486,
+    "asr": 0.734,
+    "maghrib": 0.889,
+    "isha": 0.609
+   },
+   "held": {
+    "exactPct": 27,
+    "w1Pct": 91.1,
+    "mae": 0.819,
+    "max": 2,
+    "n": 2190,
+    "perColumn": {
+     "fajr": {
+      "exactPct": 24.7,
+      "w1Pct": 97.8,
+      "mae": 0.775,
+      "max": 2
+     },
+     "sunrise": {
+      "exactPct": 25.2,
+      "w1Pct": 84.9,
+      "mae": 0.899,
+      "max": 2
+     },
+     "dhuhr": {
+      "exactPct": 6.3,
+      "w1Pct": 97.5,
+      "mae": 0.962,
+      "max": 2
+     },
+     "asr": {
+      "exactPct": 39.2,
+      "w1Pct": 92.6,
+      "mae": 0.682,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 27.7,
+      "w1Pct": 91,
+      "mae": 0.814,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 39.2,
+      "w1Pct": 82.7,
+      "mae": 0.781,
+      "max": 2
+     }
+    }
+   }
+  }
+ },
+ "span": {
+  "areas": 86,
+  "fitted": 77,
+  "unfitted": 9,
+  "cityDays": 28105,
+  "prayerCells": 168630,
+  "w1Min": 22.8,
+  "w1Median": 94.1,
+  "w1Max": 100,
+  "whollyWithin1": 2,
+  "atLeast99": 17,
+  "atLeast95": 36,
+  "fajrAngleMin": 15.5,
+  "fajrAngleMedian": 17.9,
+  "fajrAngleMax": 20.5,
+  "ishaAngleMin": 15.5,
+  "ishaAngleMedian": 17.85,
+  "ishaAngleMax": 20.5,
+  "padModes": {
+   "fajr": [
+    [
+     "1",
+     13
+    ],
+    [
+     "-1",
+     11
+    ],
+    [
+     "0",
+     10
+    ],
+    [
+     "3",
+     4
+    ]
+   ],
+   "sunrise": [
+    [
+     "0",
+     27
+    ],
+    [
+     "-1",
+     5
+    ],
+    [
+     "1",
+     4
+    ],
+    [
+     "5",
+     4
+    ]
+   ],
+   "dhuhr": [
+    [
+     "5",
+     27
+    ],
+    [
+     "4",
+     5
+    ],
+    [
+     "12",
+     5
+    ],
+    [
+     "1",
+     4
+    ]
+   ],
+   "asr": [
+    [
+     "5",
+     29
+    ],
+    [
+     "4",
+     6
+    ],
+    [
+     "14",
+     4
+    ],
+    [
+     "1",
+     3
+    ]
+   ],
+   "maghrib": [
+    [
+     "5",
+     27
+    ],
+    [
+     "4",
+     6
+    ],
+    [
+     "6",
+     4
+    ],
+    [
+     "12",
+     4
+    ]
+   ],
+   "isha": [
+    [
+     "1",
+     9
+    ],
+    [
+     "0",
+     7
+    ],
+    [
+     "2",
+     7
+    ],
+    [
+     "-1",
+     6
+    ]
+   ]
+  }
+ }
+}

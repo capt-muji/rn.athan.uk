@@ -1,0 +1,146 @@
+{
+ "rows": "data/mawaqit-masjid-e-samad-bengaluru.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 12.81,
+  "lon": 77.32
+ },
+ "coarse": {
+  "lat": 13.01,
+  "lon": 77.52,
+  "mae": 42.953
+ },
+ "mid": {
+  "lat": 12.81,
+  "lon": 77.32,
+  "mae": 42.396
+ },
+ "meta": {
+  "name": "Masjid-E-Samad - BENGALURU",
+  "address": null,
+  "lat": 13.1302375,
+  "lon": 77.6355469,
+  "tz": "Asia/Kolkata"
+ },
+ "fajr_angle": 13.1,
+ "fajr_sweep": [
+  {
+   "a": 13.1,
+   "med": 3,
+   "mae": 16.4,
+   "mad": 16
+  },
+  {
+   "a": 13.05,
+   "med": 3,
+   "mae": 16.42,
+   "mad": 17
+  },
+  {
+   "a": 13,
+   "med": 2,
+   "mae": 16.45,
+   "mad": 16
+  },
+  {
+   "a": 13.25,
+   "med": 3,
+   "mae": 16.47,
+   "mad": 16
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 40,
+   "mae": 40.94,
+   "mad": 15
+  },
+  {
+   "a": 19.95,
+   "med": 41,
+   "mae": 41.21,
+   "mad": 15
+  },
+  {
+   "a": 19.9,
+   "med": 41,
+   "mae": 41.45,
+   "mad": 15
+  },
+  {
+   "a": 19.85,
+   "med": 41,
+   "mae": 41.6,
+   "mad": 15
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 91,
+   "mad": 10
+  },
+  "1": {
+   "med": 28,
+   "mad": 6
+  }
+ },
+ "margins": {
+  "fajr": 2,
+  "sunrise": 16,
+  "dhuhr": 67,
+  "asr": 28,
+  "maghrib": 20,
+  "isha": 40
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 1.1,
+   "within1": 3,
+   "mae": 16.41,
+   "worst": 30,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 1.9,
+   "within1": 4.4,
+   "mae": 15.18,
+   "worst": -43,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4.9,
+   "within1": 15.1,
+   "mae": 5.97,
+   "worst": 19,
+   "med": 0
+  },
+  "asr": {
+   "exact": 4.4,
+   "within1": 11.8,
+   "mae": 9.69,
+   "worst": 33,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 1.4,
+   "within1": 4.7,
+   "mae": 16.27,
+   "worst": 44,
+   "med": 0
+  },
+  "isha": {
+   "exact": 3.6,
+   "within1": 10.1,
+   "mae": 15.39,
+   "worst": 37,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 30
+}

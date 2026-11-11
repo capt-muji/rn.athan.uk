@@ -1,0 +1,265 @@
+{
+ "id": "cl-puerto-montt-wayback",
+ "name": "Puerto Montt",
+ "city": "Puerto Montt",
+ "tz": "America/Santiago",
+ "lat": -41.469,
+ "lon": -72.942,
+ "address": "city centre",
+ "rows": 61,
+ "repairRows": 0,
+ "years": [
+  2022,
+  2025
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17,
+  "ishaKind": "angle",
+  "isha": 18.1,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 6,
+   "dhuhr": 7,
+   "asr": 6,
+   "maghrib": 7,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 61,
+  "fajr": {
+   "exactPct": 23,
+   "w1Pct": 72.1,
+   "mean": 0.46,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 41.9,
+     "worst": -2
+    },
+    "2025": {
+     "w1Pct": 46.7,
+     "exactPct": 3.3,
+     "worst": 2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.57,
+   "worst": 8,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.59,
+   "worst": 7,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.7,
+   "worst": 9,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 9
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.54,
+   "worst": 9,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    },
+    "2025": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 9
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 24.6,
+   "w1Pct": 90.2,
+   "mean": 0.16,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 90.3,
+     "exactPct": 41.9,
+     "worst": -3
+    },
+    "2025": {
+     "w1Pct": 90,
+     "exactPct": 6.7,
+     "worst": 3
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 61,
+  "fajr": {
+   "exactPct": 23,
+   "w1Pct": 72.1,
+   "mean": 0.46,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 41.9,
+     "worst": -2
+    },
+    "2025": {
+     "w1Pct": 46.7,
+     "exactPct": 3.3,
+     "worst": 2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 55.7,
+   "w1Pct": 95.1,
+   "mean": -0.43,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 90.3,
+     "worst": 2
+    },
+    "2025": {
+     "w1Pct": 93.3,
+     "exactPct": 20,
+     "worst": -2
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 59,
+   "w1Pct": 100,
+   "mean": -0.41,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 100,
+     "exactPct": 63.3,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 37.7,
+   "w1Pct": 68.9,
+   "mean": 0.7,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 74.2,
+     "worst": -1
+    },
+    "2025": {
+     "w1Pct": 36.7,
+     "exactPct": 0,
+     "worst": 3
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 47.5,
+   "w1Pct": 96.7,
+   "mean": -0.46,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 96.8,
+     "exactPct": 12.9,
+     "worst": -2
+    },
+    "2025": {
+     "w1Pct": 96.7,
+     "exactPct": 83.3,
+     "worst": 2
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 24.6,
+   "w1Pct": 90.2,
+   "mean": 0.16,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 90.3,
+     "exactPct": 41.9,
+     "worst": -3
+    },
+    "2025": {
+     "w1Pct": 90,
+     "exactPct": 6.7,
+     "worst": 3
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

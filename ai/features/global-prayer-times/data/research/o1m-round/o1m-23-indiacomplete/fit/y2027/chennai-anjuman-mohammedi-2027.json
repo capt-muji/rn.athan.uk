@@ -1,0 +1,142 @@
+{
+ "rows": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/data/masjidbox-chennai-anjuman-mohammedi-2027.json",
+ "year": 2027,
+ "point": {
+  "lat": 13.035,
+  "lon": 80.045
+ },
+ "n_days": 351,
+ "table_shift_min": 0,
+ "fajr_angle": 18.16,
+ "isha_angle": 21.12,
+ "fajr_sweep": [
+  {
+   "a": 18.15,
+   "mae": 0.26,
+   "med": -0.03
+  },
+  {
+   "a": 18.2,
+   "mae": 0.29,
+   "med": 0.18
+  },
+  {
+   "a": 18.1,
+   "mae": 0.33,
+   "med": -0.25
+  },
+  {
+   "a": 18.25,
+   "mae": 0.41,
+   "med": 0.4
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 21,
+   "mae": 1.11,
+   "med": 1.12
+  },
+  {
+   "a": 20.95,
+   "mae": 1.26,
+   "med": 1.33
+  },
+  {
+   "a": 20.9,
+   "mae": 1.44,
+   "med": 1.55
+  },
+  {
+   "a": 20.85,
+   "mae": 1.64,
+   "med": 1.77
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "mae": 6.33,
+   "med": 6.3
+  },
+  "1": {
+   "mae": 55.27,
+   "med": -57
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 49,
+  "asr": 6,
+  "maghrib": 4,
+  "isha": 1
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 2.6,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": 0.6499999999999773,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 1.4,
+   "within1": 100,
+   "mae": 0.39,
+   "worst": 1,
+   "med": 0.37
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 7.7,
+   "mae": 7.11,
+   "worst": 17.633333333333326,
+   "med": 0.02
+  },
+  "asr": {
+   "exact": 2,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": 0.966666666666697,
+   "med": 0.32
+  },
+  "maghrib": {
+   "exact": 2.8,
+   "within1": 100,
+   "mae": 0.39,
+   "worst": 1,
+   "med": 0.38
+  },
+  "isha": {
+   "exact": 1.4,
+   "within1": 72.6,
+   "mae": 0.76,
+   "worst": -2.566666666666606,
+   "med": -0.4
+  }
+ },
+ "all_six_within1": 17,
+ "isha_tier": {
+  "17": {
+   "mae": 17.39,
+   "med": 17.38,
+   "within1": 0,
+   "exact": 0,
+   "worst": 17.98333333333335
+  },
+  "18": {
+   "mae": 13.05,
+   "med": 13.02,
+   "within1": 0,
+   "exact": 0,
+   "worst": 13.716666666666697
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.34,
+  "min": 4.1,
+  "max": 4.75
+ },
+ "amplitude_fajr_min": 59
+}

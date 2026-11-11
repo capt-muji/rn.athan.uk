@@ -1,0 +1,134 @@
+{
+ "rows": "data/iaac/Bhagalpur_IN-2026.json",
+ "year": 2026,
+ "n_days": 360,
+ "declared_point": [
+  24.8667,
+  86.9167
+ ],
+ "solved_point": {
+  "lat": 25.117,
+  "lon": 86.667,
+  "mae": 0.417
+ },
+ "fajr_angle": 17.95,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.47,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.57,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.75,
+   "mae": 0.97,
+   "mad": 0,
+   "med": -1
+  },
+  {
+   "a": 18.15,
+   "mae": 1.1,
+   "mad": 0,
+   "med": 1
+  }
+ ],
+ "isha_angle": 18.15,
+ "isha_sweep": [
+  {
+   "a": 18.15,
+   "mae": 0.33,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.2,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.25,
+   "mae": 0.6,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.8,
+   "mad": 0,
+   "med": 1
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 57,
+   "mad": 10.5
+  },
+  "1": {
+   "med": 1,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 4,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 52.8,
+   "within1": 98.1,
+   "mae": 0.49,
+   "worst": 2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 50.8,
+   "within1": 98.1,
+   "mae": 0.51,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 83.9,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.3,
+   "within1": 99.7,
+   "mae": 0.35,
+   "worst": -2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 59.2,
+   "within1": 96.9,
+   "mae": 0.44,
+   "worst": -2,
+   "med": 0
+  },
+  "isha": {
+   "exact": 63.6,
+   "within1": 96.1,
+   "mae": 0.4,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 321,
+ "all_six_exact": 25,
+ "amplitude_fajr_min": 107
+}

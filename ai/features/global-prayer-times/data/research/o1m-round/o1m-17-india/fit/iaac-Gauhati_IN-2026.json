@@ -1,0 +1,134 @@
+{
+ "rows": "data/iaac/Gauhati_IN-2026.json",
+ "year": 2026,
+ "n_days": 360,
+ "declared_point": [
+  26.1667,
+  91.7167
+ ],
+ "solved_point": {
+  "lat": 26.267,
+  "lon": 91.517,
+  "mae": 0.367
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.47,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 17.8,
+   "mae": 1.03,
+   "mad": 0,
+   "med": -1
+  },
+  {
+   "a": 18.2,
+   "mae": 1.1,
+   "mad": 0,
+   "med": 1
+  },
+  {
+   "a": 18.25,
+   "mae": 1.27,
+   "mad": 0,
+   "med": 1
+  }
+ ],
+ "isha_angle": 18.1,
+ "isha_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.33,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.37,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.4,
+   "mad": 0,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.53,
+   "mad": 0,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 55.5,
+   "mad": 10.5
+  },
+  "1": {
+   "med": 0,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 50.8,
+   "within1": 98.1,
+   "mae": 0.51,
+   "worst": 2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 51.1,
+   "within1": 98.1,
+   "mae": 0.51,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 82.2,
+   "within1": 100,
+   "mae": 0.18,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 55.8,
+   "within1": 99.7,
+   "mae": 0.44,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 56.4,
+   "within1": 98.9,
+   "mae": 0.45,
+   "worst": 2,
+   "med": 0
+  },
+  "isha": {
+   "exact": 49.7,
+   "within1": 99.2,
+   "mae": 0.51,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 338,
+ "all_six_exact": 12,
+ "amplitude_fajr_min": 113
+}

@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-ahmedabad-tekrawali-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 23.02,
+  "lon": 72.465,
+  "mae": 0.003
+ },
+ "coarse": {
+  "lat": 23.05,
+  "lon": 72.45,
+  "mae": 0.052
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 5,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 18.2,
+   "med": 6,
+   "maeCentred": 0.07
+  },
+  {
+   "a": 17.55,
+   "med": 3,
+   "maeCentred": 0.1
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 16.8,
+   "med": 1,
+   "maeCentred": 0.07
+  },
+  {
+   "a": 17.2,
+   "med": -1,
+   "maeCentred": 0.11
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  "1": {
+   "med": -57,
+   "maeCentred": 11.59
+  }
+ },
+ "margins": {
+  "fajr": 5,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 99.5,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 99.5,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 353,
+ "amplitude_fajr_min": 97
+}

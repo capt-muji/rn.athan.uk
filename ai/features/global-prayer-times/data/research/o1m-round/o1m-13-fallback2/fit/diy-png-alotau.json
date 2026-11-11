@@ -1,0 +1,59 @@
+{
+ "label": "diy-png-alotau",
+ "file": "data/diyanet-png-alotau.json",
+ "lat": -10.3167,
+ "lon": 150.4333,
+ "tz": "Pacific/Port_Moresby",
+ "asr": "shafi",
+ "days": 30,
+ "span": [
+  "2026-11-12",
+  "2026-12-11"
+ ],
+ "fajrAngle": 17.98,
+ "ishaAngle": 16.95,
+ "columns": {
+  "fajr": {
+   "margin": 0.07,
+   "mae": 0.22,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.55
+  },
+  "sunrise": {
+   "margin": -7.2,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 26,
+   "worst": 0.72
+  },
+  "dhuhr": {
+   "margin": 4.9,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.48
+  },
+  "asr": {
+   "margin": 3.85,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.53
+  },
+  "maghrib": {
+   "margin": 6.82,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.53
+  },
+  "isha": {
+   "margin": 0.02,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.47
+  }
+ }
+}

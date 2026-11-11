@@ -1,0 +1,130 @@
+{
+ "job": "o1m-27 point fit bh-adnan-2026-rows.json",
+ "lat": 26.2285,
+ "lon": 50.47,
+ "zone": 3,
+ "rows": 329,
+ "intervalMode": false,
+ "lonScan": {
+  "lon": 50.47,
+  "pad": 1,
+  "sum": 4
+ },
+ "angleScan": {
+  "fajr": {
+   "angle": 17.99,
+   "mae": 0.015
+  },
+  "isha": {
+   "angle": 17.01,
+   "mae": 0.021
+  }
+ },
+ "padScan": {
+  "fajr": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.015
+  },
+  "sunrise": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.033
+  },
+  "dhuhr": {
+   "mode": "floor",
+   "pad": 1,
+   "mae": 0.024
+  },
+  "asr": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.03
+  },
+  "maghrib": {
+   "mode": "floor",
+   "pad": 0,
+   "mae": 0.027
+  }
+ },
+ "recipe": {
+  "fajrAngle": 17.99,
+  "ishaAngle": 17.01,
+  "interval": null,
+  "pad": {
+   "isha": 0,
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 0
+  },
+  "mode": {
+   "isha": "floor",
+   "fajr": "floor",
+   "sunrise": "floor",
+   "dhuhr": "floor",
+   "asr": "floor",
+   "maghrib": "floor"
+  }
+ },
+ "held": {
+  "exactPct": 97.5,
+  "w1Pct": 100,
+  "mae": 0.025,
+  "max": 1,
+  "n": 1974,
+  "perColumn": {
+   "fajr": {
+    "exactPct": 98.5,
+    "w1Pct": 100,
+    "mae": 0.015,
+    "max": 1
+   },
+   "sunrise": {
+    "exactPct": 96.7,
+    "w1Pct": 100,
+    "mae": 0.033,
+    "max": 1
+   },
+   "dhuhr": {
+    "exactPct": 97.6,
+    "w1Pct": 100,
+    "mae": 0.024,
+    "max": 1
+   },
+   "asr": {
+    "exactPct": 97,
+    "w1Pct": 100,
+    "mae": 0.03,
+    "max": 1
+   },
+   "maghrib": {
+    "exactPct": 97.3,
+    "w1Pct": 100,
+    "mae": 0.027,
+    "max": 1
+   },
+   "isha": {
+    "exactPct": 97.9,
+    "w1Pct": 100,
+    "mae": 0.021,
+    "max": 1
+   }
+  }
+ },
+ "latScan": {
+  "lat": 26.21,
+  "mae": 0.025
+ },
+ "amplitude": {
+  "fajr": 112,
+  "sunrise": 102,
+  "dhuhr": 31,
+  "asr": 47,
+  "maghrib": 108,
+  "isha": 116
+ },
+ "outlierCount": 0,
+ "outliers": []
+}

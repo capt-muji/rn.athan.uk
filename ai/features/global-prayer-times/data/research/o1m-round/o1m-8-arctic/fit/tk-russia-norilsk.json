@@ -1,0 +1,96 @@
+{
+ "city": "norilsk",
+ "nightFraction": {
+  "n": 90,
+  "med": 0.499,
+  "p10": 0.492,
+  "p90": 0.511
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Krasnoyarsk",
+ "lat": 69.3535,
+ "lon": 88.2027,
+ "rows": 365,
+ "solarGateMedAbs": 1.11,
+ "fajrAngle": {
+  "n": 156,
+  "med": 15.95,
+  "min": 11.45,
+  "max": 16.2,
+  "jun": null,
+  "dec": 16
+ },
+ "ishaAngle": {
+  "n": 160,
+  "med": 15,
+  "min": 10.55,
+  "max": 15.3,
+  "jun": null,
+  "dec": 14.95
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 228,
+   "med": 0.08,
+   "min": -1.5,
+   "max": 2.1
+  },
+  "dhuhr": {
+   "n": 228,
+   "med": 0.52,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 228,
+   "med": -0.43,
+   "min": -10.8,
+   "max": 8.5
+  },
+  "asrHanafi": {
+   "n": 228,
+   "med": -42.95,
+   "min": -73.5,
+   "max": -2
+  },
+  "maghrib": {
+   "n": 228,
+   "med": 0.15,
+   "min": -1.6,
+   "max": 2.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [
+   {
+    "from": "2026-11-30",
+    "to": "2027-01-13",
+    "days": 45
+   }
+  ],
+  "nightMid": [
+   {
+    "from": "2027-04-05",
+    "to": "2027-09-08",
+    "days": 157
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2026-11-30",
+    "to": "2027-01-13",
+    "days": 45
+   },
+   {
+    "from": "2027-05-16",
+    "to": "2027-07-28",
+    "days": 74
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 433,
+  "isha": 1450
+ }
+}

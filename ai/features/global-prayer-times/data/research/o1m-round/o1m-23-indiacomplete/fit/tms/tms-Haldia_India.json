@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Haldia_India-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 21.9333,
+  "lon": 86.3333
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 18,
+ "isha_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.55,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.59,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.61,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.63,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18,
+   "mae": 0.46,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.46,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.51,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.59,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 60.8,
+   "med": 58
+  },
+  "1": {
+   "mae": 0.35,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 47.9,
+   "within1": 97.3,
+   "mae": 0.55,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 45.2,
+   "within1": 97,
+   "mae": 0.58,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 52.9,
+   "within1": 100,
+   "mae": 0.47,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.5,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 70.1,
+   "within1": 100,
+   "mae": 0.3,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 56.2,
+   "within1": 98.1,
+   "mae": 0.46,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 341,
+ "isha_tier": {
+  "17": {
+   "mae": 4.69,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.46,
+   "med": 0,
+   "within1": 98.1,
+   "exact": 56.2,
+   "worst": -2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.66,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 95
+}

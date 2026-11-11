@@ -1,0 +1,662 @@
+[
+ {
+  "cid": 7,
+  "name": "Brandýs nad Labem",
+  "printed": {
+   "lat": 50.18,
+   "lon": 14.67
+  },
+  "implied": {
+   "lat": 50.09,
+   "lon": 12.67
+  },
+  "dLat": -0.09,
+  "dLon": -2,
+  "dayLenDev": 1.32
+ },
+ {
+  "cid": 28,
+  "name": "Havlíčkův Brod",
+  "printed": {
+   "lat": 49.62,
+   "lon": 15.58
+  },
+  "implied": {
+   "lat": 49.54,
+   "lon": 13.57
+  },
+  "dLat": -0.08,
+  "dLon": -2.01,
+  "dayLenDev": 1.23
+ },
+ {
+  "cid": 83,
+  "name": "Loket",
+  "printed": {
+   "lat": 50.18,
+   "lon": 12.75
+  },
+  "implied": {
+   "lat": 50.245,
+   "lon": 10.73
+  },
+  "dLat": 0.06,
+  "dLon": -2.02,
+  "dayLenDev": 1.22
+ },
+ {
+  "cid": 36,
+  "name": "Hradec Králové",
+  "printed": {
+   "lat": 50.22,
+   "lon": 15.83
+  },
+  "implied": {
+   "lat": 50.29,
+   "lon": 13.83
+  },
+  "dLat": 0.07,
+  "dLon": -2,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 3,
+  "name": "Beroun",
+  "printed": {
+   "lat": 49.97,
+   "lon": 14.07
+  },
+  "implied": {
+   "lat": 49.9,
+   "lon": 12.07
+  },
+  "dLat": -0.07,
+  "dLon": -2,
+  "dayLenDev": 1.35
+ },
+ {
+  "cid": 145,
+  "name": "Soběslav",
+  "printed": {
+   "lat": 49.25,
+   "lon": 14.72
+  },
+  "implied": {
+   "lat": 49.18,
+   "lon": 12.72
+  },
+  "dLat": -0.07,
+  "dLon": -2,
+  "dayLenDev": 1.43
+ },
+ {
+  "cid": 108,
+  "name": "Nymburk",
+  "printed": {
+   "lat": 50.18,
+   "lon": 15.05
+  },
+  "implied": {
+   "lat": 50.125,
+   "lon": 13.03
+  },
+  "dLat": -0.05,
+  "dLon": -2.02,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 138,
+  "name": "Rumburk",
+  "printed": {
+   "lat": 50.95,
+   "lon": 14.55
+  },
+  "implied": {
+   "lat": 51,
+   "lon": 12.53
+  },
+  "dLat": 0.05,
+  "dLon": -2.02,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 40,
+  "name": "Cheb",
+  "printed": {
+   "lat": 50.08,
+   "lon": 12.37
+  },
+  "implied": {
+   "lat": 50.035,
+   "lon": 10.37
+  },
+  "dLat": -0.05,
+  "dLon": -2,
+  "dayLenDev": 1.25
+ },
+ {
+  "cid": 77,
+  "name": "Liberec",
+  "printed": {
+   "lat": 50.77,
+   "lon": 15.05
+  },
+  "implied": {
+   "lat": 50.745,
+   "lon": 13.03
+  },
+  "dLat": -0.03,
+  "dLon": -2.02,
+  "dayLenDev": 1.25
+ },
+ {
+  "cid": 189,
+  "name": "Žatec",
+  "printed": {
+   "lat": 50.33,
+   "lon": 13.55
+  },
+  "implied": {
+   "lat": 50.34,
+   "lon": 11.51
+  },
+  "dLat": 0.01,
+  "dLon": -2.04,
+  "dayLenDev": 1.37
+ },
+ {
+  "cid": 59,
+  "name": "Kladno",
+  "printed": {
+   "lat": 51.5,
+   "lon": 14.1
+  },
+  "implied": {
+   "lat": 51.515,
+   "lon": 12.08
+  },
+  "dLat": 0.02,
+  "dLon": -2.02,
+  "dayLenDev": 1.4
+ },
+ {
+  "cid": 96,
+  "name": "Most",
+  "printed": {
+   "lat": 50.5,
+   "lon": 13.63
+  },
+  "implied": {
+   "lat": 50.52,
+   "lon": 11.61
+  },
+  "dLat": 0.02,
+  "dLon": -2.02,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 57,
+  "name": "Kašperské Hory",
+  "printed": {
+   "lat": 49.15,
+   "lon": 13.57
+  },
+  "implied": {
+   "lat": 49.11,
+   "lon": 11.57
+  },
+  "dLat": -0.04,
+  "dLon": -2,
+  "dayLenDev": 1.4
+ },
+ {
+  "cid": 105,
+  "name": "Nový Bohumín",
+  "printed": {
+   "lat": 49.92,
+   "lon": 18.33
+  },
+  "implied": {
+   "lat": 49.88,
+   "lon": 16.33
+  },
+  "dLat": -0.04,
+  "dLon": -2,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 118,
+  "name": "Plzeň",
+  "printed": {
+   "lat": 49.75,
+   "lon": 13.37
+  },
+  "implied": {
+   "lat": 49.715,
+   "lon": 11.36
+  },
+  "dLat": -0.03,
+  "dLon": -2.01,
+  "dayLenDev": 1.17
+ },
+ {
+  "cid": 181,
+  "name": "Vrchlabí",
+  "printed": {
+   "lat": 50.62,
+   "lon": 15.6
+  },
+  "implied": {
+   "lat": 50.675,
+   "lon": 13.62
+  },
+  "dLat": 0.05,
+  "dLon": -1.98,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 41,
+  "name": "Chomutov",
+  "printed": {
+   "lat": 50.47,
+   "lon": 13.42
+  },
+  "implied": {
+   "lat": 50.52,
+   "lon": 11.44
+  },
+  "dLat": 0.05,
+  "dLon": -1.98,
+  "dayLenDev": 1.3
+ },
+ {
+  "cid": 1,
+  "name": "Aš",
+  "printed": {
+   "lat": 50.22,
+   "lon": 12.18
+  },
+  "implied": {
+   "lat": 50.27,
+   "lon": 10.2
+  },
+  "dLat": 0.05,
+  "dLon": -1.98,
+  "dayLenDev": 1.37
+ },
+ {
+  "cid": 67,
+  "name": "Kralupy nad Vltavou",
+  "printed": {
+   "lat": 50.23,
+   "lon": 14.32
+  },
+  "implied": {
+   "lat": 50.275,
+   "lon": 12.34
+  },
+  "dLat": 0.05,
+  "dLon": -1.98,
+  "dayLenDev": 1.3
+ },
+ {
+  "cid": 21,
+  "name": "Děčín",
+  "printed": {
+   "lat": 50.78,
+   "lon": 14.22
+  },
+  "implied": {
+   "lat": 50.745,
+   "lon": 12.23
+  },
+  "dLat": -0.04,
+  "dLon": -1.99,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 140,
+  "name": "Rychnov nad Kněžnou",
+  "printed": {
+   "lat": 50.17,
+   "lon": 16.28
+  },
+  "implied": {
+   "lat": 50.2,
+   "lon": 14.28
+  },
+  "dLat": 0.03,
+  "dLon": -2,
+  "dayLenDev": 1.32
+ },
+ {
+  "cid": 177,
+  "name": "Varnsdorf",
+  "printed": {
+   "lat": 50.92,
+   "lon": 14.62
+  },
+  "implied": {
+   "lat": 50.885,
+   "lon": 12.63
+  },
+  "dLat": -0.04,
+  "dLon": -1.99,
+  "dayLenDev": 1.35
+ },
+ {
+  "cid": 35,
+  "name": "Hostinné",
+  "printed": {
+   "lat": 50.55,
+   "lon": 15.72
+  },
+  "implied": {
+   "lat": 50.5,
+   "lon": 13.74
+  },
+  "dLat": -0.05,
+  "dLon": -1.98,
+  "dayLenDev": 1.23
+ },
+ {
+  "cid": 174,
+  "name": "Ústí nad Labem",
+  "printed": {
+   "lat": 50.65,
+   "lon": 14.03
+  },
+  "implied": {
+   "lat": 50.675,
+   "lon": 12.02
+  },
+  "dLat": 0.02,
+  "dLon": -2.01,
+  "dayLenDev": 1.3
+ },
+ {
+  "cid": 158,
+  "name": "Šumperk",
+  "printed": {
+   "lat": 49.97,
+   "lon": 16.98
+  },
+  "implied": {
+   "lat": 49.95,
+   "lon": 14.97
+  },
+  "dLat": -0.02,
+  "dLon": -2.01,
+  "dayLenDev": 1.2
+ },
+ {
+  "cid": 84,
+  "name": "Louny",
+  "printed": {
+   "lat": 50.35,
+   "lon": 13.8
+  },
+  "implied": {
+   "lat": 50.35,
+   "lon": 11.78
+  },
+  "dLat": 0,
+  "dLon": -2.02,
+  "dayLenDev": 1.18
+ },
+ {
+  "cid": 30,
+  "name": "Hlučín",
+  "printed": {
+   "lat": 49.9,
+   "lon": 18.18
+  },
+  "implied": {
+   "lat": 49.86,
+   "lon": 16.2
+  },
+  "dLat": -0.04,
+  "dLon": -1.98,
+  "dayLenDev": 1.22
+ },
+ {
+  "cid": 52,
+  "name": "Jilemnice",
+  "printed": {
+   "lat": 50.62,
+   "lon": 15.5
+  },
+  "implied": {
+   "lat": 50.6,
+   "lon": 13.5
+  },
+  "dLat": -0.02,
+  "dLon": -2,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 45,
+  "name": "Jablonec nad Nisou",
+  "printed": {
+   "lat": 50.72,
+   "lon": 15.17
+  },
+  "implied": {
+   "lat": 50.74,
+   "lon": 13.17
+  },
+  "dLat": 0.02,
+  "dLon": -2,
+  "dayLenDev": 1.12
+ },
+ {
+  "cid": 55,
+  "name": "Karlovy Vary",
+  "printed": {
+   "lat": 50.23,
+   "lon": 12.88
+  },
+  "implied": {
+   "lat": 50.185,
+   "lon": 10.9
+  },
+  "dLat": -0.04,
+  "dLon": -1.98,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 4,
+  "name": "Bílina",
+  "printed": {
+   "lat": 50.55,
+   "lon": 13.78
+  },
+  "implied": {
+   "lat": 50.56,
+   "lon": 11.77
+  },
+  "dLat": 0.01,
+  "dLon": -2.01,
+  "dayLenDev": 1.3
+ },
+ {
+  "cid": 144,
+  "name": "Slaný",
+  "printed": {
+   "lat": 50.23,
+   "lon": 14.08
+  },
+  "implied": {
+   "lat": 50.28,
+   "lon": 12.12
+  },
+  "dLat": 0.05,
+  "dLon": -1.96,
+  "dayLenDev": 1.33
+ },
+ {
+  "cid": 26,
+  "name": "Dvůr Králové nad Labem",
+  "printed": {
+   "lat": 50.43,
+   "lon": 15.82
+  },
+  "implied": {
+   "lat": 50.445,
+   "lon": 13.83
+  },
+  "dLat": 0.02,
+  "dLon": -1.99,
+  "dayLenDev": 1.38
+ },
+ {
+  "cid": 5,
+  "name": "Bohosudov",
+  "printed": {
+   "lat": 50.68,
+   "lon": 13.87
+  },
+  "implied": {
+   "lat": 50.665,
+   "lon": 11.88
+  },
+  "dLat": -0.02,
+  "dLon": -1.99,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 121,
+  "name": "Podmokly (Děčín)",
+  "printed": {
+   "lat": 50.77,
+   "lon": 14.2
+  },
+  "implied": {
+   "lat": 50.765,
+   "lon": 12.21
+  },
+  "dLat": -0.01,
+  "dLon": -1.99,
+  "dayLenDev": 1.17
+ },
+ {
+  "cid": 68,
+  "name": "Kraslice",
+  "printed": {
+   "lat": 50.33,
+   "lon": 12.52
+  },
+  "implied": {
+   "lat": 50.325,
+   "lon": 10.52
+  },
+  "dLat": 0,
+  "dLon": -2,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 161,
+  "name": "Teplice",
+  "printed": {
+   "lat": 50.65,
+   "lon": 13.83
+  },
+  "implied": {
+   "lat": 50.68,
+   "lon": 11.86
+  },
+  "dLat": 0.03,
+  "dLon": -1.97,
+  "dayLenDev": 1.3
+ },
+ {
+  "cid": 11,
+  "name": "Broumov",
+  "printed": {
+   "lat": 50.58,
+   "lon": 16.33
+  },
+  "implied": {
+   "lat": 50.54,
+   "lon": 14.37
+  },
+  "dLat": -0.04,
+  "dLon": -1.96,
+  "dayLenDev": 1.27
+ },
+ {
+  "cid": 192,
+  "name": "Lobendava - Severní",
+  "printed": {
+   "lat": 51.5,
+   "lon": 14.32
+  },
+  "implied": {
+   "lat": 51.495,
+   "lon": 12.34
+  },
+  "dLat": -0.01,
+  "dLon": -1.98,
+  "dayLenDev": 1.28
+ },
+ {
+  "cid": 119,
+  "name": "Podbořany",
+  "printed": {
+   "lat": 50.23,
+   "lon": 13.42
+  },
+  "implied": {
+   "lat": 50.21,
+   "lon": 11.45
+  },
+  "dLat": -0.02,
+  "dLon": -1.97,
+  "dayLenDev": 1.33
+ },
+ {
+  "cid": 18,
+  "name": "Český Brod",
+  "printed": {
+   "lat": 50.07,
+   "lon": 14.87
+  },
+  "implied": {
+   "lat": 50.08,
+   "lon": 12.89
+  },
+  "dLat": 0.01,
+  "dLon": -1.98,
+  "dayLenDev": 1.35
+ },
+ {
+  "cid": 50,
+  "name": "Jičín",
+  "printed": {
+   "lat": 50.43,
+   "lon": 15.35
+  },
+  "implied": {
+   "lat": 50.44,
+   "lon": 13.37
+  },
+  "dLat": 0.01,
+  "dLon": -1.98,
+  "dayLenDev": 1.33
+ },
+ {
+  "cid": 92,
+  "name": "Mladá Boleslav",
+  "printed": {
+   "lat": 50.42,
+   "lon": 14.9
+  },
+  "implied": {
+   "lat": 50.425,
+   "lon": 12.92
+  },
+  "dLat": 0,
+  "dLon": -1.98,
+  "dayLenDev": 1.23
+ }
+]

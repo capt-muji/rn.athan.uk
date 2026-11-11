@@ -1,0 +1,4013 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "14213",
+   "name": "Valladolid",
+   "lat": 41.65541,
+   "lon": -4.72353,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 76.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 84.1,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.2,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    }
+   },
+   "allW1": 93.2
+  },
+  {
+   "key": "14214",
+   "name": "Santander",
+   "lat": 43.46589,
+   "lon": -3.80493,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 71.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 75.6,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 66.8,
+     "w2": 88.5,
+     "mae": 9.02,
+     "worst": -1438
+    }
+   },
+   "allW1": 89.3
+  },
+  {
+   "key": "14215",
+   "name": "Vigo",
+   "lat": 42.23282,
+   "lon": -8.72264,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 71.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 71,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 74.8,
+     "w2": 99.5,
+     "mae": 8.95,
+     "worst": -1439
+    }
+   },
+   "allW1": 91.1
+  },
+  {
+   "key": "14216",
+   "name": "Bilbao",
+   "lat": 43.26271,
+   "lon": -2.92528,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 17
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 75.1,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 70.7,
+     "w2": 98.6,
+     "mae": 8.99,
+     "worst": -1439
+    }
+   },
+   "allW1": 88.8
+  },
+  {
+   "key": "14217",
+   "name": "San antonio abad",
+   "lat": 38.98068,
+   "lon": 1.30362,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.6
+  },
+  {
+   "key": "14218",
+   "name": "Cordoba",
+   "lat": 37.89155,
+   "lon": -4.77275,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.4,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "14219",
+   "name": "Vitoria",
+   "lat": 42.84998,
+   "lon": -2.67268,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 71,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 14,
+     "w1": 72.1,
+     "w2": 98.6,
+     "mae": 20.84,
+     "worst": -1440
+    }
+   },
+   "allW1": 90.6
+  },
+  {
+   "key": "14220",
+   "name": "San sebastian",
+   "lat": 43.31283,
+   "lon": -1.97499,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 75.3,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 71.8,
+     "w2": 99.2,
+     "mae": 12.93,
+     "worst": -1440
+    }
+   },
+   "allW1": 89.4
+  },
+  {
+   "key": "14221",
+   "name": "Palma de mallorca",
+   "lat": 39.56939,
+   "lon": 2.65024,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 94.8
+  },
+  {
+   "key": "14222",
+   "name": "Salamanca",
+   "lat": 40.42972,
+   "lon": -3.67975,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 16.6,
+   "ishaAngle": 18.3,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 16.72,
+    "isha": 18.37
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": 1,
+    "dhuhr": 13,
+    "asr": 12,
+    "maghrib": 15,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 9,
+     "w1": 35.3,
+     "w2": 69.3,
+     "mae": 2.67,
+     "worst": -8
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 69,
+     "w2": 100,
+     "mae": 1.07,
+     "worst": 2
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 61.9,
+     "w2": 92.1,
+     "mae": 1.27,
+     "worst": -3
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 16.2,
+     "w1": 52.1,
+     "w2": 95.9,
+     "mae": 1.36,
+     "worst": -3
+    },
+    "isha": {
+     "n": 365,
+     "exact": 36.4,
+     "w1": 68.8,
+     "w2": 78.9,
+     "mae": 1.2,
+     "worst": 4
+    }
+   },
+   "allW1": 64.5
+  },
+  {
+   "key": "14223",
+   "name": "Seville",
+   "lat": 37.38283,
+   "lon": -5.97317,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 95.1
+  },
+  {
+   "key": "14224",
+   "name": "Granada",
+   "lat": 37.18817,
+   "lon": -3.60667,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.94
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "14225",
+   "name": "Alcala de henr.",
+   "lat": 40.48205,
+   "lon": -3.35996,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    }
+   },
+   "allW1": 93.5
+  },
+  {
+   "key": "14226",
+   "name": "La laguna",
+   "lat": 28.4853,
+   "lon": -16.32014,
+   "tz": "Atlantic/Canary",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 40,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 50.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.49,
+     "worst": -1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 39.7,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    }
+   },
+   "allW1": 99.3
+  },
+  {
+   "key": "14227",
+   "name": "Santiago de co.",
+   "lat": 42.88052,
+   "lon": -8.54569,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.9,
+     "w1": 73.2,
+     "w2": 99.7,
+     "mae": 5.05,
+     "worst": -1439
+    }
+   },
+   "allW1": 90.9
+  },
+  {
+   "key": "14228",
+   "name": "Valencia",
+   "lat": 39.47391,
+   "lon": -0.37966,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  },
+  {
+   "key": "14229",
+   "name": "Malaga",
+   "lat": 36.72016,
+   "lon": -4.42034,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    }
+   },
+   "allW1": 96.7
+  },
+  {
+   "key": "14230",
+   "name": "Cartagena",
+   "lat": 37.60197,
+   "lon": -0.98397,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.3,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    }
+   },
+   "allW1": 95.8
+  },
+  {
+   "key": "14231",
+   "name": "Cadiz",
+   "lat": 36.52672,
+   "lon": -6.2891,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 37.3,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.64,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    }
+   },
+   "allW1": 97.7
+  },
+  {
+   "key": "14232",
+   "name": "La coruna",
+   "lat": 43.37135,
+   "lon": -8.396,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.96,
+    "isha": 17
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 53.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.47,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 71.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.29,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 74.2,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 64.7,
+     "w2": 95.3,
+     "mae": 5.07,
+     "worst": -1438
+    }
+   },
+   "allW1": 87.7
+  },
+  {
+   "key": "14233",
+   "name": "Albacete",
+   "lat": 38.99424,
+   "lon": -1.85643,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 94.9
+  },
+  {
+   "key": "14234",
+   "name": "Elche",
+   "lat": 38.26218,
+   "lon": -0.70107,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 50.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.5,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 40,
+     "w1": 75.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    }
+   },
+   "allW1": 93.6
+  },
+  {
+   "key": "14235",
+   "name": "Algeciras",
+   "lat": 36.13326,
+   "lon": -5.45051,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 97.6
+  },
+  {
+   "key": "14236",
+   "name": "Alicante",
+   "lat": 38.34517,
+   "lon": -0.48149,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 85.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.5,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 95.7
+  },
+  {
+   "key": "14237",
+   "name": "Almeria",
+   "lat": 36.83814,
+   "lon": -2.45974,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    }
+   },
+   "allW1": 96.5
+  },
+  {
+   "key": "14238",
+   "name": "Arrecife",
+   "lat": 28.96302,
+   "lon": -13.54769,
+   "tz": "Atlantic/Canary",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 41.1,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.61,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 46.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.53,
+     "worst": -1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 42.5,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.6,
+     "worst": 2
+    }
+   },
+   "allW1": 99.3
+  },
+  {
+   "key": "14239",
+   "name": "Badajoz",
+   "lat": 38.87789,
+   "lon": -6.97061,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.94
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 88.8,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 95.5
+  },
+  {
+   "key": "14240",
+   "name": "Burgos",
+   "lat": 42.34106,
+   "lon": -3.70184,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 76.4,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.3,
+     "w1": 72.3,
+     "w2": 98.1,
+     "mae": 28.7,
+     "worst": -1440
+    }
+   },
+   "allW1": 90.5
+  },
+  {
+   "key": "14241",
+   "name": "Castellon de la plana",
+   "lat": 39.98567,
+   "lon": -0.04935,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95
+  },
+  {
+   "key": "14242",
+   "name": "Ciudadela",
+   "lat": 40.00112,
+   "lon": 3.84144,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 85.2,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95.3
+  },
+  {
+   "key": "14243",
+   "name": "Gijon",
+   "lat": 43.53573,
+   "lon": -5.66152,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.4,
+     "w1": 73.2,
+     "w2": 99.7,
+     "mae": 5.04,
+     "worst": -1438
+    }
+   },
+   "allW1": 90.8
+  },
+  {
+   "key": "14244",
+   "name": "Huelva",
+   "lat": 37.26638,
+   "lon": -6.94004,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.2,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "14245",
+   "name": "Ibiza",
+   "lat": 38.90883,
+   "lon": 1.43296,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 88.8,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "14246",
+   "name": "Jaen",
+   "lat": 37.76922,
+   "lon": -3.79028,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "14247",
+   "name": "Jerez de la frontera",
+   "lat": 36.68645,
+   "lon": -6.13606,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "14248",
+   "name": "Las palmas",
+   "lat": 28.10178,
+   "lon": -15.41573,
+   "tz": "Atlantic/Canary",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.99
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 57.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.42,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 43.8,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.59,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 50.4,
+     "w1": 99.7,
+     "w2": 100,
+     "mae": 0.5,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 52.6,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    }
+   },
+   "allW1": 96.5
+  },
+  {
+   "key": "14249",
+   "name": "Leon",
+   "lat": 42.60003,
+   "lon": -5.57032,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 71.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.28,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 75.3,
+     "w2": 99.7,
+     "mae": 5.01,
+     "worst": -1439
+    }
+   },
+   "allW1": 91.2
+  },
+  {
+   "key": "14250",
+   "name": "Lleida",
+   "lat": 41.61674,
+   "lon": 0.62218,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    }
+   },
+   "allW1": 93.1
+  },
+  {
+   "key": "14251",
+   "name": "Logrono",
+   "lat": 42.46615,
+   "lon": -2.45115,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.9,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    }
+   },
+   "allW1": 93
+  },
+  {
+   "key": "14252",
+   "name": "Marbella",
+   "lat": 36.51543,
+   "lon": -4.88583,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.2,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "14253",
+   "name": "Murcia",
+   "lat": 37.98704,
+   "lon": -1.13004,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 96
+  },
+  {
+   "key": "14254",
+   "name": "Orense",
+   "lat": 42.33669,
+   "lon": -7.86407,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16.8,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.29,
+    "isha": 17.33
+   },
+   "offsets": {
+    "fajr": -2,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 2
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 6.3,
+     "w1": 26,
+     "w2": 42.2,
+     "mae": 3.07,
+     "worst": -8
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 10.7,
+     "w1": 31.5,
+     "w2": 57.3,
+     "mae": 2.1,
+     "worst": 4
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 85.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 12.1,
+     "w1": 37.8,
+     "w2": 71.8,
+     "mae": 1.94,
+     "worst": -5
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 9.9,
+     "w1": 29.9,
+     "w2": 50.4,
+     "mae": 2.32,
+     "worst": -4
+    },
+    "isha": {
+     "n": 365,
+     "exact": 8.5,
+     "w1": 26.6,
+     "w2": 46,
+     "mae": 54.18,
+     "worst": -1434
+    }
+   },
+   "allW1": 42
+  },
+  {
+   "key": "14255",
+   "name": "Oviedo",
+   "lat": 43.36029,
+   "lon": -5.84476,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 69.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.3,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.9,
+     "w1": 72.6,
+     "w2": 99.7,
+     "mae": 5.05,
+     "worst": -1439
+    }
+   },
+   "allW1": 90.9
+  },
+  {
+   "key": "14256",
+   "name": "Pamplona",
+   "lat": 42.81687,
+   "lon": -1.64323,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 74.5,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.5
+  },
+  {
+   "key": "14257",
+   "name": "Santa cruz de tenerife",
+   "lat": 28.46824,
+   "lon": -16.25462,
+   "tz": "Atlantic/Canary",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 39.2,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 46.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.53,
+     "worst": -1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 39.2,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    }
+   },
+   "allW1": 99.5
+  },
+  {
+   "key": "14258",
+   "name": "Toledo",
+   "lat": 39.8581,
+   "lon": -4.02263,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.93,
+    "isha": 16.93
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 54.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.45,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 55.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.44,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    }
+   },
+   "allW1": 93.6
+  },
+  {
+   "key": "14259",
+   "name": "Ceuta",
+   "lat": 35.88919,
+   "lon": -5.32042,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.66,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 96.9
+  },
+  {
+   "key": "14260",
+   "name": "Tarragona",
+   "lat": 41.11905,
+   "lon": 1.24544,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 85.2,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    }
+   },
+   "allW1": 93.8
+  },
+  {
+   "key": "14261",
+   "name": "San cristobal de la laguna",
+   "lat": 28.4853,
+   "lon": -16.32014,
+   "tz": "Atlantic/Canary",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 40.3,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 50.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.49,
+     "worst": -1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 39.7,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    }
+   },
+   "allW1": 99.3
+  },
+  {
+   "key": "14262",
+   "name": "Barcelona",
+   "lat": 41.38879,
+   "lon": 2.15899,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.94
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 81.4,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 94.3
+  },
+  {
+   "key": "14263",
+   "name": "Madrid",
+   "lat": 40.4165,
+   "lon": -3.70256,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    }
+   },
+   "allW1": 93.7
+  },
+  {
+   "key": "14264",
+   "name": "Zaragoza",
+   "lat": 41.65606,
+   "lon": -0.87734,
+   "tz": "Europe/Madrid",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 92.5
+  }
+ ]
+}

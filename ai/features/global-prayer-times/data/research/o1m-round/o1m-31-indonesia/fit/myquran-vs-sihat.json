@@ -1,0 +1,623 @@
+{
+ "summary": {
+  "units": 32,
+  "sihat_margins": {
+   "fajr": 2.02,
+   "sunrise": -2.72,
+   "dhuhr": 3,
+   "asr": 2.02,
+   "maghrib": 2.73,
+   "isha": 2
+  },
+  "myquran_minus_sihat": {
+   "fajr": {
+    "median": 0.28,
+    "p5": 0.07,
+    "p95": 0.98
+   },
+   "sunrise": {
+    "median": -0.73,
+    "p5": -0.98,
+    "p95": -0.02
+   },
+   "dhuhr": {
+    "median": 0.75,
+    "p5": 0.07,
+    "p95": 0.97
+   },
+   "asr": {
+    "median": 0.72,
+    "p5": -0.02,
+    "p95": 0.88
+   },
+   "maghrib": {
+    "median": 0.52,
+    "p5": 0.02,
+    "p95": 1.05
+   },
+   "isha": {
+    "median": 0.75,
+    "p5": 0,
+    "p95": 0.93
+   }
+  }
+ },
+ "pairs": [
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "n": 366,
+   "fajr": 0.27,
+   "sunrise": -0.75,
+   "dhuhr": 0.75,
+   "asr": 0.53,
+   "maghrib": 0.23,
+   "isha": 0.72,
+   "sihat_margins": {
+    "fajr": 1.98,
+    "sunrise": -2.7,
+    "dhuhr": 2.98,
+    "asr": 2.05,
+    "maghrib": 2.72,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KOTA METRO",
+   "n": 366,
+   "fajr": 0.25,
+   "sunrise": -0.27,
+   "dhuhr": 0.2,
+   "asr": 0.72,
+   "maghrib": 0.23,
+   "isha": 0.73,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.73,
+    "dhuhr": 3,
+    "asr": 2.02,
+    "maghrib": 2.68,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KAB. SERANG",
+   "n": 366,
+   "fajr": 0.2,
+   "sunrise": -0.78,
+   "dhuhr": 0.15,
+   "asr": 0.33,
+   "maghrib": 0.2,
+   "isha": 0.17,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.72,
+    "dhuhr": 3.03,
+    "asr": 2,
+    "maghrib": 2.7,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "n": 366,
+   "fajr": 0.83,
+   "sunrise": -0.15,
+   "dhuhr": 0.88,
+   "asr": 0.75,
+   "maghrib": 0.78,
+   "isha": 0.85,
+   "sihat_margins": {
+    "fajr": 1.98,
+    "sunrise": -2.65,
+    "dhuhr": 2.98,
+    "asr": 1.97,
+    "maghrib": 2.72,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "n": 366,
+   "fajr": 0.18,
+   "sunrise": -0.8,
+   "dhuhr": 0.15,
+   "asr": 0.25,
+   "maghrib": 0.13,
+   "isha": 0.2,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.72,
+    "dhuhr": 2.98,
+    "asr": 2.03,
+    "maghrib": 2.7,
+    "isha": 2
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "n": 366,
+   "fajr": 0.27,
+   "sunrise": -0.75,
+   "dhuhr": 0.17,
+   "asr": 0.42,
+   "maghrib": 0.2,
+   "isha": 0.72,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -2.7,
+    "dhuhr": 3.03,
+    "asr": 2.05,
+    "maghrib": 2.77,
+    "isha": 1.95
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG",
+   "n": 366,
+   "fajr": 0.98,
+   "sunrise": -0.03,
+   "dhuhr": 0.95,
+   "asr": 0.88,
+   "maghrib": 0.93,
+   "isha": 0.9,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -6.9,
+    "dhuhr": 3,
+    "asr": 2.05,
+    "maghrib": 6.9,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "n": 366,
+   "fajr": 0.07,
+   "sunrise": -0.95,
+   "dhuhr": 0.08,
+   "asr": 0,
+   "maghrib": 0.03,
+   "isha": 0.03,
+   "sihat_margins": {
+    "fajr": 2,
+    "sunrise": -6.87,
+    "dhuhr": 3.03,
+    "asr": 2.05,
+    "maghrib": 6.93,
+    "isha": 2.03
+   }
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "n": 366,
+   "fajr": 0.12,
+   "sunrise": -0.8,
+   "dhuhr": 0.13,
+   "asr": 0.02,
+   "maghrib": 0.1,
+   "isha": 0.1,
+   "sihat_margins": {
+    "fajr": 2.05,
+    "sunrise": -2.73,
+    "dhuhr": 3,
+    "asr": 2.03,
+    "maghrib": 2.68,
+    "isha": 2.08
+   }
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "n": 366,
+   "fajr": 0.17,
+   "sunrise": -0.85,
+   "dhuhr": 0.13,
+   "asr": 0.15,
+   "maghrib": 0.1,
+   "isha": 0.1,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.68,
+    "dhuhr": 2.98,
+    "asr": 1.98,
+    "maghrib": 2.7,
+    "isha": 2.05
+   }
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "n": 366,
+   "fajr": 0.95,
+   "sunrise": -0.07,
+   "dhuhr": 0.95,
+   "asr": 0.88,
+   "maghrib": 0.9,
+   "isha": 0.93,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -2.72,
+    "dhuhr": 3.02,
+    "asr": 2.02,
+    "maghrib": 2.75,
+    "isha": 1.97
+   }
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "n": 366,
+   "fajr": 0.28,
+   "sunrise": -0.73,
+   "dhuhr": 0.75,
+   "asr": 0.73,
+   "maghrib": 0.83,
+   "isha": 0.8,
+   "sihat_margins": {
+    "fajr": 2.07,
+    "sunrise": -2.7,
+    "dhuhr": 3.03,
+    "asr": 2.03,
+    "maghrib": 2.77,
+    "isha": 1.97
+   }
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "n": 366,
+   "fajr": 0.93,
+   "sunrise": -0.03,
+   "dhuhr": 0.95,
+   "asr": 0.88,
+   "maghrib": 0.92,
+   "isha": 0.9,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.75,
+    "dhuhr": 2.98,
+    "asr": 1.98,
+    "maghrib": 2.77,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KAB. GARUT",
+   "n": 366,
+   "fajr": 0.07,
+   "sunrise": -0.95,
+   "dhuhr": 0.07,
+   "asr": -0.02,
+   "maghrib": 0.02,
+   "isha": 0,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -6.88,
+    "dhuhr": 2.98,
+    "asr": 2.02,
+    "maghrib": 6.87,
+    "isha": 2.07
+   }
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "n": 366,
+   "fajr": 0.03,
+   "sunrise": -0.98,
+   "dhuhr": -0.03,
+   "asr": -0.1,
+   "maghrib": -0.05,
+   "isha": -0.08,
+   "sihat_margins": {
+    "fajr": 2.05,
+    "sunrise": -2.72,
+    "dhuhr": 3.03,
+    "asr": 2.03,
+    "maghrib": 2.72,
+    "isha": 2
+   }
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "n": 366,
+   "fajr": 0.93,
+   "sunrise": -0.1,
+   "dhuhr": 0.93,
+   "asr": 0.88,
+   "maghrib": 0.9,
+   "isha": 0.87,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.7,
+    "dhuhr": 3,
+    "asr": 2.02,
+    "maghrib": 2.67,
+    "isha": 2.07
+   }
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "n": 366,
+   "fajr": 0.97,
+   "sunrise": -0.02,
+   "dhuhr": 0.97,
+   "asr": 0.88,
+   "maghrib": 0.92,
+   "isha": 0.92,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -6.95,
+    "dhuhr": 3,
+    "asr": 2.02,
+    "maghrib": 6.9,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "n": 366,
+   "fajr": 0.9,
+   "sunrise": -0.12,
+   "dhuhr": 0.88,
+   "asr": 0.75,
+   "maghrib": 0.85,
+   "isha": 0.85,
+   "sihat_margins": {
+    "fajr": 1.97,
+    "sunrise": -2.75,
+    "dhuhr": 3,
+    "asr": 1.97,
+    "maghrib": 2.73,
+    "isha": 1.97
+   }
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "n": 366,
+   "fajr": 0.72,
+   "sunrise": -0.13,
+   "dhuhr": 0.82,
+   "asr": 0.73,
+   "maghrib": 0.78,
+   "isha": 0.82,
+   "sihat_margins": {
+    "fajr": 2.05,
+    "sunrise": -2.72,
+    "dhuhr": 2.98,
+    "asr": 2,
+    "maghrib": 2.72,
+    "isha": 1.95
+   }
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "n": 366,
+   "fajr": 0.25,
+   "sunrise": -0.75,
+   "dhuhr": 0.15,
+   "asr": 0.35,
+   "maghrib": 0.25,
+   "isha": 0.22,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -2.72,
+    "dhuhr": 3.02,
+    "asr": 2.07,
+    "maghrib": 2.68,
+    "isha": 2.03
+   }
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "n": 366,
+   "fajr": 0.18,
+   "sunrise": -0.8,
+   "dhuhr": 0.15,
+   "asr": 0.28,
+   "maghrib": 0.2,
+   "isha": 0.17,
+   "sihat_margins": {
+    "fajr": 2.07,
+    "sunrise": -2.7,
+    "dhuhr": 3.02,
+    "asr": 2.02,
+    "maghrib": 2.7,
+    "isha": 2.03
+   }
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "n": 366,
+   "fajr": 1.08,
+   "sunrise": 0.05,
+   "dhuhr": 1.08,
+   "asr": 1.02,
+   "maghrib": 1.05,
+   "isha": 1.05,
+   "sihat_margins": {
+    "fajr": 2,
+    "sunrise": -2.68,
+    "dhuhr": 3.03,
+    "asr": 1.97,
+    "maghrib": 2.73,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "n": 366,
+   "fajr": 0.93,
+   "sunrise": -0.12,
+   "dhuhr": 0.9,
+   "asr": 0.82,
+   "maghrib": 0.9,
+   "isha": 0.88,
+   "sihat_margins": {
+    "fajr": 1.95,
+    "sunrise": -2.68,
+    "dhuhr": 3.02,
+    "asr": 1.98,
+    "maghrib": 2.68,
+    "isha": 2
+   }
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "n": 366,
+   "fajr": 0.9,
+   "sunrise": -0.27,
+   "dhuhr": 0.88,
+   "asr": 0.73,
+   "maghrib": 0.87,
+   "isha": 0.82,
+   "sihat_margins": {
+    "fajr": 1.95,
+    "sunrise": -2.65,
+    "dhuhr": 3.02,
+    "asr": 2.03,
+    "maghrib": 2.68,
+    "isha": 2
+   }
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "n": 366,
+   "fajr": 0.28,
+   "sunrise": -0.23,
+   "dhuhr": 0.85,
+   "asr": 0.73,
+   "maghrib": 0.82,
+   "isha": 0.77,
+   "sihat_margins": {
+    "fajr": 2.07,
+    "sunrise": -6.87,
+    "dhuhr": 3.02,
+    "asr": 2.05,
+    "maghrib": 6.92,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "n": 366,
+   "fajr": 0.7,
+   "sunrise": -0.23,
+   "dhuhr": 0.88,
+   "asr": 0.72,
+   "maghrib": 0.82,
+   "isha": 0.78,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.68,
+    "dhuhr": 2.97,
+    "asr": 2.03,
+    "maghrib": 2.73,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "n": 366,
+   "fajr": 0.25,
+   "sunrise": -0.82,
+   "dhuhr": 0.15,
+   "asr": 0.27,
+   "maghrib": 0.18,
+   "isha": 0.23,
+   "sihat_margins": {
+    "fajr": 1.98,
+    "sunrise": -2.68,
+    "dhuhr": 3.03,
+    "asr": 2.07,
+    "maghrib": 2.75,
+    "isha": 1.95
+   }
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "n": 366,
+   "fajr": 0.28,
+   "sunrise": -4.78,
+   "dhuhr": 0.87,
+   "asr": 0.75,
+   "maghrib": 4.9,
+   "isha": 0.8,
+   "sihat_margins": {
+    "fajr": 2,
+    "sunrise": -2.7,
+    "dhuhr": 2.98,
+    "asr": 2,
+    "maghrib": 2.75,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "n": 366,
+   "fajr": 0.28,
+   "sunrise": -0.73,
+   "dhuhr": 0.75,
+   "asr": 0.72,
+   "maghrib": 0.23,
+   "isha": 0.73,
+   "sihat_margins": {
+    "fajr": 2.02,
+    "sunrise": -6.93,
+    "dhuhr": 2.98,
+    "asr": 2.02,
+    "maghrib": 6.95,
+    "isha": 1.97
+   }
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "n": 366,
+   "fajr": 0.27,
+   "sunrise": -0.73,
+   "dhuhr": 0.18,
+   "asr": 0.65,
+   "maghrib": 0.22,
+   "isha": 0.27,
+   "sihat_margins": {
+    "fajr": 2.03,
+    "sunrise": -2.75,
+    "dhuhr": 3,
+    "asr": 1.98,
+    "maghrib": 2.77,
+    "isha": 1.98
+   }
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "n": 366,
+   "fajr": 0.9,
+   "sunrise": -0.13,
+   "dhuhr": 0.9,
+   "asr": 0.83,
+   "maghrib": 0.88,
+   "isha": 0.83,
+   "sihat_margins": {
+    "fajr": 1.97,
+    "sunrise": -2.68,
+    "dhuhr": 2.97,
+    "asr": 2,
+    "maghrib": 2.65,
+    "isha": 2.02
+   }
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "n": 366,
+   "fajr": 0.28,
+   "sunrise": -0.75,
+   "dhuhr": 0.17,
+   "asr": 0.6,
+   "maghrib": 0.25,
+   "isha": 0.7,
+   "sihat_margins": {
+    "fajr": 2,
+    "sunrise": -6.87,
+    "dhuhr": 3.03,
+    "asr": 2.03,
+    "maghrib": 6.9,
+    "isha": 2.02
+   }
+  }
+ ]
+}

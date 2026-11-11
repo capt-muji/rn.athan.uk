@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-etawah-darulhuda-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 26.8,
+  "lon": 78.9
+ },
+ "coarse": {
+  "lat": 26.8,
+  "lon": 79,
+  "mae": 0.363
+ },
+ "mid": {
+  "lat": 26.8,
+  "lon": 78.9,
+  "mae": 0.02
+ },
+ "meta": {
+  "name": "Madrasa Darul Huda",
+  "address": "Etawah, Uttar Pradesh, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.02,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.1,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.22,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.49,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.16,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.27,
+   "mad": 0
+  },
+  {
+   "a": 16.9,
+   "med": 0,
+   "mae": 0.37,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -57,
+   "mad": 12
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 97.2,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 99.4,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 98.6,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 96.9,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 96.9,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 98,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 306,
+ "amplitude_fajr_min": 115
+}

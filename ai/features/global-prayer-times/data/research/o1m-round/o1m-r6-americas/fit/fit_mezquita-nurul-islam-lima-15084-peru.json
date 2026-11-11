@@ -1,0 +1,204 @@
+{
+ "id": "mezquita-nurul-islam-lima-15084-peru",
+ "name": "Mezquita Nurul Islam",
+ "city": "Mezquita Nurul Islam",
+ "tz": "America/Lima",
+ "lat": -12.085073,
+ "lon": -77.0636529,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.8,
+  "ishaKind": "angle",
+  "isha": 16.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 15.6,
+   "w1Pct": 100,
+   "mean": -0.84,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 15.6,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 26.3,
+   "w1Pct": 94.2,
+   "mean": -0.01,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 94.2,
+     "exactPct": 26.3,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 15.9,
+   "w1Pct": 100,
+   "mean": 0.84,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 15.9,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 84.4,
+   "w1Pct": 100,
+   "mean": 0.16,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 84.4,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.5,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.5,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 26.3,
+   "w1Pct": 94.2,
+   "mean": -0.01,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 94.2,
+     "exactPct": 26.3,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 84.1,
+   "w1Pct": 100,
+   "mean": -0.16,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 84.1,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 36
+}

@@ -1,0 +1,132 @@
+[
+ {
+  "file": "cosim-ci-joumada1448-2026.json",
+  "edition": "JOUMADA-AL-OULA 1448 / Oct-Nov 2026",
+  "lat": 5.3599,
+  "lon": -4.0083,
+  "tz": "Africa/Abidjan",
+  "rows": 30,
+  "span": [
+   "2026-10-12",
+   "2026-11-10"
+  ],
+  "fajr_angle": {
+   "angle": 14.95,
+   "exact": 29,
+   "within1": 30,
+   "worst": -1,
+   "mae": 0.03,
+   "n": 30,
+   "key": 30029
+  },
+  "isha_angle": {
+   "angle": 15.1,
+   "exact": 26,
+   "within1": 30,
+   "worst": -1,
+   "mae": 0.13,
+   "n": 30,
+   "key": 30026
+  },
+  "margins": {
+   "sunrise": 2,
+   "maghrib": 0
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.03,
+    "n": 30
+   },
+   "isha": {
+    "exact": 26,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.13,
+    "n": 30
+   },
+   "maghrib": {
+    "exact": 19,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.37,
+    "n": 30
+   },
+   "sunrise": {
+    "exact": 23,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.23,
+    "n": 30
+   }
+  },
+  "imsak_minus_fajr": null,
+  "dhuhr_asr": {
+   "dhuhr": "13:00 fixed clock (13 Heures conventionnelle en Côte d'Ivoire)",
+   "asr": "16:00 fixed clock (16 Heures conventionnelle en Côte d'Ivoire)"
+  },
+  "fajr_july_minus_jan": null
+ },
+ {
+  "file": "cosim-ci-safar1436-fit-input.json",
+  "edition": "SAFAR 1436 / Nov-Dec 2014",
+  "lat": 5.3599,
+  "lon": -4.0083,
+  "tz": "Africa/Abidjan",
+  "rows": 30,
+  "span": [
+   "2014-11-24",
+   "2014-12-23"
+  ],
+  "fajr_angle": {
+   "angle": 14.1,
+   "exact": 21,
+   "within1": 30,
+   "worst": -1,
+   "mae": 0.3,
+   "n": 30,
+   "key": 30021
+  },
+  "isha_angle": {
+   "angle": 15.85,
+   "exact": 24,
+   "within1": 30,
+   "worst": -1,
+   "mae": 0.2,
+   "n": 30,
+   "key": 30024
+  },
+  "margins": {
+   "maghrib": 3
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 21,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.3,
+    "n": 30
+   },
+   "isha": {
+    "exact": 24,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.2,
+    "n": 30
+   },
+   "maghrib": {
+    "exact": 20,
+    "within1": 30,
+    "worst": -1,
+    "mae": 0.33,
+    "n": 30
+   }
+  },
+  "imsak_minus_fajr": [
+   15
+  ],
+  "fajr_july_minus_jan": null
+ }
+]

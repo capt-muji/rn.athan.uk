@@ -1,0 +1,422 @@
+[
+ {
+  "year": 2014,
+  "rows": 24,
+  "magWinMode": 40,
+  "magWinShare": 100,
+  "magWinValues": [
+   40
+  ],
+  "fajrWinMode": 95,
+  "fajrWinRange": [
+   95,
+   95
+  ],
+  "asrWinMode": 92,
+  "asrWinRange": [
+   92,
+   95
+  ],
+  "sunsetWinRange": [
+   25,
+   28
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   90,
+   90
+  ]
+ },
+ {
+  "year": 2015,
+  "rows": 363,
+  "magWinMode": 40,
+  "magWinShare": 61.2,
+  "magWinValues": [
+   38,
+   39,
+   40,
+   41,
+   48
+  ],
+  "fajrWinMode": 93,
+  "fajrWinRange": [
+   93,
+   1204
+  ],
+  "asrWinMode": 93,
+  "asrWinRange": [
+   72,
+   467
+  ],
+  "sunsetWinRange": [
+   20,
+   388
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   29,
+   98
+  ]
+ },
+ {
+  "year": 2016,
+  "rows": 365,
+  "magWinMode": 40,
+  "magWinShare": 40.8,
+  "magWinValues": [
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   50
+  ],
+  "fajrWinMode": 110,
+  "fajrWinRange": [
+   89,
+   115
+  ],
+  "asrWinMode": 97,
+  "asrWinRange": [
+   90,
+   454
+  ],
+  "sunsetWinRange": [
+   16,
+   22
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   81,
+   100
+  ]
+ },
+ {
+  "year": 2017,
+  "rows": 364,
+  "magWinMode": 45,
+  "magWinShare": 54.9,
+  "magWinValues": [
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   65,
+   105,
+   389
+  ],
+  "fajrWinMode": 92,
+  "fajrWinRange": [
+   89,
+   101
+  ],
+  "asrWinMode": 106,
+  "asrWinRange": [
+   97,
+   113
+  ],
+  "sunsetWinRange": [
+   9,
+   22
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   89,
+   110
+  ]
+ },
+ {
+  "year": 2018,
+  "rows": 338,
+  "magWinMode": 40,
+  "magWinShare": 99.4,
+  "magWinValues": [
+   39,
+   40,
+   49
+  ],
+  "fajrWinMode": 93,
+  "fajrWinRange": [
+   84,
+   1205
+  ],
+  "asrWinMode": 97,
+  "asrWinRange": [
+   47,
+   158
+  ],
+  "sunsetWinRange": [
+   14,
+   25
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   30,
+   150
+  ]
+ },
+ {
+  "year": 2019,
+  "rows": 360,
+  "magWinMode": 40,
+  "magWinShare": 76.4,
+  "magWinValues": [
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46
+  ],
+  "fajrWinMode": 96,
+  "fajrWinRange": [
+   87,
+   96
+  ],
+  "asrWinMode": 97,
+  "asrWinRange": [
+   95,
+   541
+  ],
+  "sunsetWinRange": [
+   9,
+   357
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   -1131,
+   90
+  ]
+ },
+ {
+  "year": 2020,
+  "rows": 360,
+  "magWinMode": 40,
+  "magWinShare": 95.3,
+  "magWinValues": [
+   39,
+   40,
+   41,
+   100
+  ],
+  "fajrWinMode": 96,
+  "fajrWinRange": [
+   85,
+   97
+  ],
+  "asrWinMode": 108,
+  "asrWinRange": [
+   96,
+   109
+  ],
+  "sunsetWinRange": [
+   10,
+   48
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   89,
+   150
+  ]
+ },
+ {
+  "year": 2021,
+  "rows": 364,
+  "magWinMode": 40,
+  "magWinShare": 98.1,
+  "magWinValues": [
+   39,
+   40,
+   41,
+   276
+  ],
+  "fajrWinMode": 94,
+  "fajrWinRange": [
+   87,
+   101
+  ],
+  "asrWinMode": 114,
+  "asrWinRange": [
+   99,
+   1434
+  ],
+  "sunsetWinRange": [
+   12,
+   57
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   -1180,
+   91
+  ]
+ },
+ {
+  "year": 2022,
+  "rows": 364,
+  "magWinMode": 41,
+  "magWinShare": 49.5,
+  "magWinValues": [
+   0,
+   1,
+   39,
+   40,
+   41,
+   42,
+   269
+  ],
+  "fajrWinMode": 94,
+  "fajrWinRange": [
+   91,
+   101
+  ],
+  "asrWinMode": 107,
+  "asrWinRange": [
+   99,
+   117
+  ],
+  "sunsetWinRange": [
+   11,
+   21
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   89,
+   91
+  ]
+ },
+ {
+  "year": 2023,
+  "rows": 362,
+  "magWinMode": 40,
+  "magWinShare": 90.9,
+  "magWinValues": [
+   39,
+   40,
+   41,
+   42
+  ],
+  "fajrWinMode": 92,
+  "fajrWinRange": [
+   83,
+   143
+  ],
+  "asrWinMode": 101,
+  "asrWinRange": [
+   99,
+   104
+  ],
+  "sunsetWinRange": [
+   10,
+   41
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   88,
+   91
+  ]
+ },
+ {
+  "year": 2024,
+  "rows": 365,
+  "magWinMode": 40,
+  "magWinShare": 89,
+  "magWinValues": [
+   39,
+   40,
+   41,
+   50
+  ],
+  "fajrWinMode": 96,
+  "fajrWinRange": [
+   83,
+   100
+  ],
+  "asrWinMode": 99,
+  "asrWinRange": [
+   97,
+   104
+  ],
+  "sunsetWinRange": [
+   10,
+   411
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   90,
+   100
+  ]
+ },
+ {
+  "year": 2025,
+  "rows": 365,
+  "magWinMode": 40,
+  "magWinShare": 98.6,
+  "magWinValues": [
+   20,
+   39,
+   40,
+   41
+  ],
+  "fajrWinMode": 97,
+  "fajrWinRange": [
+   86,
+   108
+  ],
+  "asrWinMode": 101,
+  "asrWinRange": [
+   99,
+   109
+  ],
+  "sunsetWinRange": [
+   13,
+   20
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   70,
+   90
+  ]
+ },
+ {
+  "year": 2026,
+  "rows": 334,
+  "magWinMode": 40,
+  "magWinShare": 93.1,
+  "magWinValues": [
+   40,
+   41
+  ],
+  "fajrWinMode": 87,
+  "fajrWinRange": [
+   85,
+   99
+  ],
+  "asrWinMode": 107,
+  "asrWinRange": [
+   92,
+   108
+  ],
+  "sunsetWinRange": [
+   13,
+   21
+  ],
+  "nightToMaghribMode": 90,
+  "nightToMaghribRange": [
+   89,
+   91
+  ]
+ }
+]

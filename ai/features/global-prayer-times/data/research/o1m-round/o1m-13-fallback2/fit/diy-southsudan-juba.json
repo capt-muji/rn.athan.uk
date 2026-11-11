@@ -1,0 +1,59 @@
+{
+ "label": "diy-southsudan-juba",
+ "file": "data/diyanet-southsudan-juba.json",
+ "lat": 4.8594,
+ "lon": 31.5713,
+ "tz": "Africa/Juba",
+ "asr": "shafi",
+ "days": 30,
+ "span": [
+  "2026-11-12",
+  "2026-12-11"
+ ],
+ "fajrAngle": 18.03,
+ "ishaAngle": 16.93,
+ "columns": {
+  "fajr": {
+   "margin": 0.03,
+   "mae": 0.26,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.53
+  },
+  "sunrise": {
+   "margin": -7.22,
+   "mae": 0.26,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.48
+  },
+  "dhuhr": {
+   "margin": 4.73,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.47
+  },
+  "asr": {
+   "margin": 3.97,
+   "mae": 0.24,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.53
+  },
+  "maghrib": {
+   "margin": 6.75,
+   "mae": 0.22,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.5
+  },
+  "isha": {
+   "margin": 0.02,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.6
+  }
+ }
+}

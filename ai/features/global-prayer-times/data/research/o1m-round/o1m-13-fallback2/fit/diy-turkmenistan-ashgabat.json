@@ -1,0 +1,59 @@
+{
+ "label": "diy-turkmenistan-ashgabat",
+ "file": "data/diyanet-turkmenistan-ashgabat.json",
+ "lat": 37.9601,
+ "lon": 58.3261,
+ "tz": "Asia/Ashgabat",
+ "asr": "shafi",
+ "days": 30,
+ "span": [
+  "2026-11-12",
+  "2026-12-11"
+ ],
+ "fajrAngle": 18.04,
+ "ishaAngle": 16.97,
+ "columns": {
+  "fajr": {
+   "margin": -0.03,
+   "mae": 0.25,
+   "within1": 30,
+   "exact": 27,
+   "worst": 0.55
+  },
+  "sunrise": {
+   "margin": -7.42,
+   "mae": 0.19,
+   "within1": 30,
+   "exact": 30,
+   "worst": 0.48
+  },
+  "dhuhr": {
+   "margin": 4.68,
+   "mae": 0.26,
+   "within1": 30,
+   "exact": 29,
+   "worst": 0.53
+  },
+  "asr": {
+   "margin": 4.3,
+   "mae": 0.23,
+   "within1": 30,
+   "exact": 28,
+   "worst": 0.58
+  },
+  "maghrib": {
+   "margin": 6.95,
+   "mae": 0.24,
+   "within1": 30,
+   "exact": 26,
+   "worst": 0.63
+  },
+  "isha": {
+   "margin": 0.02,
+   "mae": 0.31,
+   "within1": 30,
+   "exact": 26,
+   "worst": 0.65
+  }
+ }
+}

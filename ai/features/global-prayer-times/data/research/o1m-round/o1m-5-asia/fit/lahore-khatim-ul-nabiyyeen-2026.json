@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-masjid-khatim-ul-nabiyyeen-lahore-54000-pakistan.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 31.4,
+  "lon": 74.15,
+  "mae": 21.092
+ },
+ "coarse": {
+  "lat": 31.45,
+  "lon": 74.2,
+  "mae": 21.284
+ },
+ "fajr_angle": 11,
+ "fajr_sweep": [
+  {
+   "a": 11,
+   "med": -4,
+   "maeCentred": 31.23
+  },
+  {
+   "a": 11.05,
+   "med": -4,
+   "maeCentred": 31.23
+  },
+  {
+   "a": 11.1,
+   "med": -3,
+   "maeCentred": 31.27
+  }
+ ],
+ "isha_angle": 17.85,
+ "isha_sweep": [
+  {
+   "a": 17.85,
+   "med": 1,
+   "maeCentred": 2.92
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "maeCentred": 2.93
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 2.96
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 54,
+   "maeCentred": 10.37
+  },
+  "1": {
+   "med": 0,
+   "maeCentred": 1.19
+  }
+ },
+ "margins": {
+  "fajr": -4,
+  "sunrise": 0,
+  "dhuhr": 41,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 1
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 0.5,
+   "within1": 1.9,
+   "mae": 31.23,
+   "worst": 65,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 93.4,
+   "within1": 100,
+   "mae": 0.07,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.8,
+   "within1": 11.5,
+   "mae": 7.17,
+   "worst": 18,
+   "med": 0
+  },
+  "asr": {
+   "exact": 33.7,
+   "within1": 88.5,
+   "mae": 1.19,
+   "worst": 8,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 79.2,
+   "within1": 87.9,
+   "mae": 0.82,
+   "worst": 8,
+   "med": 0
+  },
+  "isha": {
+   "exact": 66.3,
+   "within1": 78.6,
+   "mae": 2.92,
+   "worst": 19,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 34
+}

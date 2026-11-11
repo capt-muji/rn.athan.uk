@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Silchar_India-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 24.8167,
+  "lon": 92.7833
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.98,
+ "isha_angle": 17.91,
+ "fajr_sweep": [
+  {
+   "a": 17.95,
+   "mae": 0.56,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.58,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.58,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.65,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 17.9,
+   "mae": 0.43,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.48,
+   "med": 0
+  },
+  {
+   "a": 17.85,
+   "mae": 0.5,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.53,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 58.96,
+   "med": 56
+  },
+  "1": {
+   "mae": 0.48,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 48.5,
+   "within1": 98.4,
+   "mae": 0.53,
+   "worst": -2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 44.9,
+   "within1": 96.2,
+   "mae": 0.59,
+   "worst": 2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 53.2,
+   "within1": 100,
+   "mae": 0.47,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 52.6,
+   "within1": 99.7,
+   "mae": 0.48,
+   "worst": -2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 50.1,
+   "within1": 100,
+   "mae": 0.5,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 58.4,
+   "within1": 99.2,
+   "mae": 0.42,
+   "worst": 2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 342,
+ "isha_tier": {
+  "17": {
+   "mae": 4.48,
+   "med": 4,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.53,
+   "med": 0,
+   "within1": 98.6,
+   "exact": 48.5,
+   "worst": -2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.78,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 107
+}

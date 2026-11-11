@@ -1,0 +1,2403 @@
+[
+ {
+  "unit_id": "1001",
+  "unit": "KAB. LAMPUNG TENGAH",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -4.9763,
+     105.6721
+    ],
+    "margins": {
+     "fajr": 4.32,
+     "sunrise": -1.42,
+     "dhuhr": 5.33,
+     "asr": 4.32,
+     "maghrib": 5.03,
+     "isha": 4.37
+    }
+   },
+   "2029": {
+    "point": [
+     -5.0363,
+     105.4121
+    ],
+    "margins": {
+     "fajr": 3.27,
+     "sunrise": -2.47,
+     "dhuhr": 4.28,
+     "asr": 3.27,
+     "maghrib": 3.95,
+     "isha": 3.32
+    }
+   },
+   "2030": {
+    "point": [
+     -5.0563,
+     105.1121
+    ],
+    "margins": {
+     "fajr": 2.1,
+     "sunrise": -3.67,
+     "dhuhr": 3.08,
+     "asr": 2.07,
+     "maghrib": 2.78,
+     "isha": 2.1
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1002",
+  "unit": "KAB. LAMPUNG UTARA",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -4.8168,
+     104.3674
+    ],
+    "margins": {
+     "fajr": 0.43,
+     "sunrise": -5.27,
+     "dhuhr": 1.43,
+     "asr": 0.38,
+     "maghrib": 1.17,
+     "isha": 0.47
+    }
+   },
+   "2029": {
+    "point": [
+     -4.8368,
+     105.4074
+    ],
+    "margins": {
+     "fajr": 4.6,
+     "sunrise": -1.08,
+     "dhuhr": 5.6,
+     "asr": 4.53,
+     "maghrib": 5.3,
+     "isha": 4.6
+    }
+   },
+   "2030": {
+    "point": [
+     -4.8168,
+     104.9874
+    ],
+    "margins": {
+     "fajr": 2.92,
+     "sunrise": -2.77,
+     "dhuhr": 3.92,
+     "asr": 2.87,
+     "maghrib": 3.6,
+     "isha": 2.92
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1003",
+  "unit": "KAB. LAMPUNG SELATAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.6899,
+     104.9012
+    ],
+    "margins": {
+     "fajr": -0.25,
+     "sunrise": -5.93,
+     "dhuhr": 0.77,
+     "asr": -0.22,
+     "maghrib": 0.45,
+     "isha": -0.26
+    }
+   },
+   "2029": {
+    "point": [
+     -5.7299,
+     106.0812
+    ],
+    "margins": {
+     "fajr": 4.5,
+     "sunrise": -1.23,
+     "dhuhr": 5.47,
+     "asr": 4.47,
+     "maghrib": 5.17,
+     "isha": 4.47
+    }
+   },
+   "2030": {
+    "point": [
+     -5.7099,
+     105.0612
+    ],
+    "margins": {
+     "fajr": 0.42,
+     "sunrise": -5.33,
+     "dhuhr": 1.42,
+     "asr": 0.4,
+     "maghrib": 1.12,
+     "isha": 0.38
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1004",
+  "unit": "KAB. LAMPUNG BARAT",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.0306,
+     104.833
+    ],
+    "margins": {
+     "fajr": 5.53,
+     "sunrise": -4.38,
+     "dhuhr": 6.54,
+     "asr": 5.5,
+     "maghrib": 10.35,
+     "isha": 5.5
+    }
+   },
+   "2029": {
+    "point": [
+     -5.0106,
+     103.713
+    ],
+    "margins": {
+     "fajr": 1.05,
+     "sunrise": -8.87,
+     "dhuhr": 2.05,
+     "asr": 1.03,
+     "maghrib": 5.88,
+     "isha": 1
+    }
+   },
+   "2030": {
+    "point": [
+     -4.9906,
+     104.393
+    ],
+    "margins": {
+     "fajr": 3.75,
+     "sunrise": -6.12,
+     "dhuhr": 4.77,
+     "asr": 3.78,
+     "maghrib": 8.62,
+     "isha": 3.73
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1005",
+  "unit": "KAB. LAMPUNG TIMUR",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.0313,
+     106.169
+    ],
+    "margins": {
+     "fajr": 4.97,
+     "sunrise": -0.69,
+     "dhuhr": 5.99,
+     "asr": 5,
+     "maghrib": 5.65,
+     "isha": 4.98
+    }
+   },
+   "2029": {
+    "point": [
+     -5.0513,
+     106.109
+    ],
+    "margins": {
+     "fajr": 4.72,
+     "sunrise": -0.95,
+     "dhuhr": 5.75,
+     "asr": 4.77,
+     "maghrib": 5.43,
+     "isha": 4.75
+    }
+   },
+   "2030": {
+    "point": [
+     -4.9913,
+     105.749
+    ],
+    "margins": {
+     "fajr": 3.32,
+     "sunrise": -2.37,
+     "dhuhr": 4.32,
+     "asr": 3.33,
+     "maghrib": 4,
+     "isha": 3.28
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1006",
+  "unit": "KAB. MESUJI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -3.9248,
+     105.8584
+    ],
+    "margins": {
+     "fajr": 4.25,
+     "sunrise": -1.49,
+     "dhuhr": 5.2,
+     "asr": 4.25,
+     "maghrib": 4.88,
+     "isha": 4.19
+    }
+   },
+   "2029": {
+    "point": [
+     -3.9048,
+     105.7984
+    ],
+    "margins": {
+     "fajr": 4,
+     "sunrise": -1.7,
+     "dhuhr": 4.92,
+     "asr": 3.98,
+     "maghrib": 4.65,
+     "isha": 3.95
+    }
+   },
+   "2030": {
+    "point": [
+     -3.9248,
+     105.9784
+    ],
+    "margins": {
+     "fajr": 4.73,
+     "sunrise": -0.98,
+     "dhuhr": 5.68,
+     "asr": 4.7,
+     "maghrib": 5.37,
+     "isha": 4.65
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1007",
+  "unit": "KAB. PESAWARAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.4535,
+     104.7952
+    ],
+    "margins": {
+     "fajr": 1.3,
+     "sunrise": -4.41,
+     "dhuhr": 2.33,
+     "asr": 1.35,
+     "maghrib": 2.02,
+     "isha": 1.32
+    }
+   },
+   "2029": {
+    "point": [
+     -5.4135,
+     105.5552
+    ],
+    "margins": {
+     "fajr": 4.33,
+     "sunrise": -1.35,
+     "dhuhr": 5.37,
+     "asr": 4.42,
+     "maghrib": 5.05,
+     "isha": 4.35
+    }
+   },
+   "2030": {
+    "point": [
+     -5.4135,
+     105.3352
+    ],
+    "margins": {
+     "fajr": 3.47,
+     "sunrise": -2.25,
+     "dhuhr": 4.52,
+     "asr": 3.55,
+     "maghrib": 4.17,
+     "isha": 3.52
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1008",
+  "unit": "KAB. PESISIR BARAT",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.1755,
+     104.2228
+    ],
+    "margins": {
+     "fajr": 3.68,
+     "sunrise": -2.07,
+     "dhuhr": 4.64,
+     "asr": 3.62,
+     "maghrib": 4.35,
+     "isha": 3.6
+    }
+   },
+   "2029": {
+    "point": [
+     -5.1955,
+     104.5428
+    ],
+    "margins": {
+     "fajr": 4.97,
+     "sunrise": -0.78,
+     "dhuhr": 5.88,
+     "asr": 4.92,
+     "maghrib": 5.63,
+     "isha": 4.87
+    }
+   },
+   "2030": {
+    "point": [
+     -5.1755,
+     104.6828
+    ],
+    "margins": {
+     "fajr": 5.53,
+     "sunrise": -0.25,
+     "dhuhr": 6.47,
+     "asr": 5.48,
+     "maghrib": 6.2,
+     "isha": 5.45
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1009",
+  "unit": "KAB. PRINGSEWU",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.3364,
+     105.0334
+    ],
+    "margins": {
+     "fajr": 2.78,
+     "sunrise": -2.95,
+     "dhuhr": 3.73,
+     "asr": 2.73,
+     "maghrib": 3.45,
+     "isha": 2.73
+    }
+   },
+   "2029": {
+    "point": [
+     -5.3164,
+     105.1934
+    ],
+    "margins": {
+     "fajr": 3.42,
+     "sunrise": -2.3,
+     "dhuhr": 4.37,
+     "asr": 3.37,
+     "maghrib": 4.07,
+     "isha": 3.37
+    }
+   },
+   "2030": {
+    "point": [
+     -5.3364,
+     104.4334
+    ],
+    "margins": {
+     "fajr": 0.38,
+     "sunrise": -5.35,
+     "dhuhr": 1.33,
+     "asr": 0.33,
+     "maghrib": 1.07,
+     "isha": 0.35
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1010",
+  "unit": "KAB. TULANG BAWANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -4.4932,
+     105.2276
+    ],
+    "margins": {
+     "fajr": 2.53,
+     "sunrise": -3.18,
+     "dhuhr": 3.52,
+     "asr": 2.56,
+     "maghrib": 3.23,
+     "isha": 2.53
+    }
+   },
+   "2029": {
+    "point": [
+     -4.5532,
+     106.1476
+    ],
+    "margins": {
+     "fajr": 6.22,
+     "sunrise": 0.52,
+     "dhuhr": 7.2,
+     "asr": 6.23,
+     "maghrib": 6.9,
+     "isha": 6.18
+    }
+   },
+   "2030": {
+    "point": [
+     -4.5332,
+     105.8276
+    ],
+    "margins": {
+     "fajr": 4.95,
+     "sunrise": -0.75,
+     "dhuhr": 5.92,
+     "asr": 4.95,
+     "maghrib": 5.65,
+     "isha": 4.92
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1011",
+  "unit": "KAB. TULANG BAWANG BARAT",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -4.4857,
+     105.3274
+    ],
+    "margins": {
+     "fajr": 3.43,
+     "sunrise": -2.27,
+     "dhuhr": 4.46,
+     "asr": 3.43,
+     "maghrib": 4.12,
+     "isha": 3.44
+    }
+   },
+   "2029": {
+    "point": [
+     -4.4257,
+     104.7474
+    ],
+    "margins": {
+     "fajr": 1.13,
+     "sunrise": -4.58,
+     "dhuhr": 2.13,
+     "asr": 1.13,
+     "maghrib": 1.83,
+     "isha": 1.15
+    }
+   },
+   "2030": {
+    "point": [
+     -4.4057,
+     105.1074
+    ],
+    "margins": {
+     "fajr": 2.58,
+     "sunrise": -3.13,
+     "dhuhr": 3.6,
+     "asr": 2.57,
+     "maghrib": 3.25,
+     "isha": 2.58
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1012",
+  "unit": "KAB. TANGGAMUS",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.5481,
+     105.1941
+    ],
+    "margins": {
+     "fajr": 4.75,
+     "sunrise": -0.97,
+     "dhuhr": 5.78,
+     "asr": 4.78,
+     "maghrib": 5.47,
+     "isha": 4.78
+    }
+   },
+   "2029": {
+    "point": [
+     -5.4681,
+     104.4341
+    ],
+    "margins": {
+     "fajr": 1.68,
+     "sunrise": -4.02,
+     "dhuhr": 2.73,
+     "asr": 1.73,
+     "maghrib": 2.42,
+     "isha": 1.73
+    }
+   },
+   "2030": {
+    "point": [
+     -5.4881,
+     105.0541
+    ],
+    "margins": {
+     "fajr": 4.18,
+     "sunrise": -1.48,
+     "dhuhr": 5.22,
+     "asr": 4.27,
+     "maghrib": 4.92,
+     "isha": 4.2
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1013",
+  "unit": "KAB. WAY KANAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -4.5343,
+     104.3262
+    ],
+    "margins": {
+     "fajr": 1.91,
+     "sunrise": -3.81,
+     "dhuhr": 2.87,
+     "asr": 1.92,
+     "maghrib": 2.62,
+     "isha": 1.88
+    }
+   },
+   "2029": {
+    "point": [
+     -4.5543,
+     105.1062
+    ],
+    "margins": {
+     "fajr": 5.02,
+     "sunrise": -0.68,
+     "dhuhr": 6,
+     "asr": 5.03,
+     "maghrib": 5.72,
+     "isha": 5
+    }
+   },
+   "2030": {
+    "point": [
+     -4.5543,
+     104.0062
+    ],
+    "margins": {
+     "fajr": 0.62,
+     "sunrise": -5.1,
+     "dhuhr": 1.58,
+     "asr": 0.63,
+     "maghrib": 1.33,
+     "isha": 0.6
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1014",
+  "unit": "KOTA BANDAR LAMPUNG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.3942,
+     105.3621
+    ],
+    "margins": {
+     "fajr": 2.93,
+     "sunrise": -2.78,
+     "dhuhr": 3.91,
+     "asr": 2.92,
+     "maghrib": 3.62,
+     "isha": 2.94
+    }
+   },
+   "2029": {
+    "point": [
+     -5.4142,
+     105.6021
+    ],
+    "margins": {
+     "fajr": 3.88,
+     "sunrise": -1.8,
+     "dhuhr": 4.87,
+     "asr": 3.88,
+     "maghrib": 4.55,
+     "isha": 3.87
+    }
+   },
+   "2030": {
+    "point": [
+     -5.4142,
+     105.2421
+    ],
+    "margins": {
+     "fajr": 2.43,
+     "sunrise": -3.25,
+     "dhuhr": 3.43,
+     "asr": 2.42,
+     "maghrib": 3.12,
+     "isha": 2.45
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1015",
+  "unit": "KOTA METRO",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -5.0573,
+     105.408
+    ],
+    "margins": {
+     "fajr": 2.9,
+     "sunrise": -2.75,
+     "dhuhr": 3.93,
+     "asr": 2.94,
+     "maghrib": 3.6,
+     "isha": 2.93
+    }
+   },
+   "2029": {
+    "point": [
+     -5.0973,
+     105.908
+    ],
+    "margins": {
+     "fajr": 4.88,
+     "sunrise": -0.77,
+     "dhuhr": 5.95,
+     "asr": 4.92,
+     "maghrib": 5.6,
+     "isha": 4.92
+    }
+   },
+   "2030": {
+    "point": [
+     -5.0773,
+     105.368
+    ],
+    "margins": {
+     "fajr": 2.73,
+     "sunrise": -2.92,
+     "dhuhr": 3.77,
+     "asr": 2.78,
+     "maghrib": 3.47,
+     "isha": 2.75
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1101",
+  "unit": "KAB. LEBAK",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.402,
+     105.6924
+    ],
+    "margins": {
+     "fajr": 0.27,
+     "sunrise": -5.47,
+     "dhuhr": 1.28,
+     "asr": 0.3,
+     "maghrib": 0.98,
+     "isha": 0.29
+    }
+   },
+   "2029": {
+    "point": [
+     -6.382,
+     106.6124
+    ],
+    "margins": {
+     "fajr": 3.95,
+     "sunrise": -1.78,
+     "dhuhr": 4.95,
+     "asr": 3.97,
+     "maghrib": 4.67,
+     "isha": 3.98
+    }
+   },
+   "2030": {
+    "point": [
+     -6.422,
+     105.6924
+    ],
+    "margins": {
+     "fajr": 0.28,
+     "sunrise": -5.47,
+     "dhuhr": 1.28,
+     "asr": 0.3,
+     "maghrib": 0.98,
+     "isha": 0.33
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1102",
+  "unit": "KAB. PANDEGLANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.2502,
+     105.243
+    ],
+    "margins": {
+     "fajr": -0.97,
+     "sunrise": -6.63,
+     "dhuhr": 0.05,
+     "asr": -0.93,
+     "maghrib": -0.22,
+     "isha": -1
+    }
+   },
+   "2029": {
+    "point": [
+     -6.2702,
+     106.043
+    ],
+    "margins": {
+     "fajr": 2.22,
+     "sunrise": -3.43,
+     "dhuhr": 3.25,
+     "asr": 2.22,
+     "maghrib": 2.98,
+     "isha": 2.18
+    }
+   },
+   "2030": {
+    "point": [
+     -6.2502,
+     105.403
+    ],
+    "margins": {
+     "fajr": -0.32,
+     "sunrise": -5.98,
+     "dhuhr": 0.7,
+     "asr": -0.32,
+     "maghrib": 0.43,
+     "isha": -0.35
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1103",
+  "unit": "KAB. SERANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.1617,
+     106.6661
+    ],
+    "margins": {
+     "fajr": 4.45,
+     "sunrise": -1.22,
+     "dhuhr": 5.45,
+     "asr": 4.47,
+     "maghrib": 5.15,
+     "isha": 4.47
+    }
+   },
+   "2029": {
+    "point": [
+     -6.1617,
+     105.5661
+    ],
+    "margins": {
+     "fajr": 0.08,
+     "sunrise": -5.62,
+     "dhuhr": 1,
+     "asr": 0.08,
+     "maghrib": 0.77,
+     "isha": 0.07
+    }
+   },
+   "2030": {
+    "point": [
+     -6.1417,
+     105.8261
+    ],
+    "margins": {
+     "fajr": 1.12,
+     "sunrise": -4.6,
+     "dhuhr": 2.08,
+     "asr": 1.12,
+     "maghrib": 1.8,
+     "isha": 1.1
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1104",
+  "unit": "KAB. TANGERANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.3345,
+     106.6389
+    ],
+    "margins": {
+     "fajr": 3.13,
+     "sunrise": -2.62,
+     "dhuhr": 4.1,
+     "asr": 3.13,
+     "maghrib": 3.78,
+     "isha": 3.15
+    }
+   },
+   "2029": {
+    "point": [
+     -6.3145,
+     106.3389
+    ],
+    "margins": {
+     "fajr": 1.93,
+     "sunrise": -3.85,
+     "dhuhr": 2.9,
+     "asr": 1.93,
+     "maghrib": 2.58,
+     "isha": 1.98
+    }
+   },
+   "2030": {
+    "point": [
+     -6.3345,
+     105.9389
+    ],
+    "margins": {
+     "fajr": 0.35,
+     "sunrise": -5.42,
+     "dhuhr": 1.3,
+     "asr": 0.37,
+     "maghrib": 0.98,
+     "isha": 0.37
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1105",
+  "unit": "KOTA CILEGON",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.0189,
+     105.5985
+    ],
+    "margins": {
+     "fajr": 0.67,
+     "sunrise": -5.02,
+     "dhuhr": 1.72,
+     "asr": 0.67,
+     "maghrib": 1.37,
+     "isha": 0.72
+    }
+   },
+   "2029": {
+    "point": [
+     -5.9789,
+     106.6385
+    ],
+    "margins": {
+     "fajr": 4.8,
+     "sunrise": -0.85,
+     "dhuhr": 5.88,
+     "asr": 4.87,
+     "maghrib": 5.52,
+     "isha": 4.88
+    }
+   },
+   "2030": {
+    "point": [
+     -5.9789,
+     106.1785
+    ],
+    "margins": {
+     "fajr": 2.98,
+     "sunrise": -2.68,
+     "dhuhr": 4.05,
+     "asr": 2.98,
+     "maghrib": 3.7,
+     "isha": 3.05
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1106",
+  "unit": "KOTA SERANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.1433,
+     105.7667
+    ],
+    "margins": {
+     "fajr": 0.93,
+     "sunrise": -4.75,
+     "dhuhr": 1.92,
+     "asr": 0.96,
+     "maghrib": 1.63,
+     "isha": 0.93
+    }
+   },
+   "2029": {
+    "point": [
+     -6.1633,
+     105.7667
+    ],
+    "margins": {
+     "fajr": 0.92,
+     "sunrise": -4.75,
+     "dhuhr": 1.92,
+     "asr": 0.93,
+     "maghrib": 1.62,
+     "isha": 0.93
+    }
+   },
+   "2030": {
+    "point": [
+     -6.1433,
+     106.4467
+    ],
+    "margins": {
+     "fajr": 3.65,
+     "sunrise": -2.03,
+     "dhuhr": 4.63,
+     "asr": 3.65,
+     "maghrib": 4.38,
+     "isha": 3.63
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1107",
+  "unit": "KOTA TANGERANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.1644,
+     106.792
+    ],
+    "margins": {
+     "fajr": 3.07,
+     "sunrise": -2.57,
+     "dhuhr": 4.1,
+     "asr": 3.12,
+     "maghrib": 3.82,
+     "isha": 3.11
+    }
+   },
+   "2029": {
+    "point": [
+     -6.1844,
+     106.532
+    ],
+    "margins": {
+     "fajr": 2.03,
+     "sunrise": -3.6,
+     "dhuhr": 3.07,
+     "asr": 2.05,
+     "maghrib": 2.78,
+     "isha": 2.03
+    }
+   },
+   "2030": {
+    "point": [
+     -6.1844,
+     107.212
+    ],
+    "margins": {
+     "fajr": 4.77,
+     "sunrise": -0.87,
+     "dhuhr": 5.77,
+     "asr": 4.77,
+     "maghrib": 5.5,
+     "isha": 4.77
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1108",
+  "unit": "KOTA TANGERANG SELATAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.3221,
+     106.1474
+    ],
+    "margins": {
+     "fajr": 0.23,
+     "sunrise": -5.47,
+     "dhuhr": 1.22,
+     "asr": 0.23,
+     "maghrib": 0.89,
+     "isha": 0.27
+    }
+   },
+   "2029": {
+    "point": [
+     -6.3021,
+     106.0874
+    ],
+    "margins": {
+     "fajr": 0,
+     "sunrise": -5.73,
+     "dhuhr": 0.98,
+     "asr": 0,
+     "maghrib": 0.65,
+     "isha": 0.05
+    }
+   },
+   "2030": {
+    "point": [
+     -6.3221,
+     106.7874
+    ],
+    "margins": {
+     "fajr": 2.78,
+     "sunrise": -2.92,
+     "dhuhr": 3.77,
+     "asr": 2.8,
+     "maghrib": 3.47,
+     "isha": 2.85
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1201",
+  "unit": "KAB. BANDUNG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.9976,
+     107.9487
+    ],
+    "margins": {
+     "fajr": 4.18,
+     "sunrise": -5.72,
+     "dhuhr": 5.2,
+     "asr": 4.18,
+     "maghrib": 9.11,
+     "isha": 4.18
+    }
+   },
+   "2029": {
+    "point": [
+     -7.0376,
+     107.8287
+    ],
+    "margins": {
+     "fajr": 3.72,
+     "sunrise": -6.2,
+     "dhuhr": 4.7,
+     "asr": 3.7,
+     "maghrib": 8.6,
+     "isha": 3.7
+    }
+   },
+   "2030": {
+    "point": [
+     -7.0176,
+     107.3887
+    ],
+    "margins": {
+     "fajr": 1.97,
+     "sunrise": -7.93,
+     "dhuhr": 2.97,
+     "asr": 1.93,
+     "maghrib": 6.82,
+     "isha": 1.95
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1202",
+  "unit": "KAB. BANDUNG BARAT",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.8504,
+     107.235
+    ],
+    "margins": {
+     "fajr": 1.37,
+     "sunrise": -8.5,
+     "dhuhr": 2.38,
+     "asr": 1.38,
+     "maghrib": 6.28,
+     "isha": 1.4
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8704,
+     107.035
+    ],
+    "margins": {
+     "fajr": 0.58,
+     "sunrise": -9.3,
+     "dhuhr": 1.58,
+     "asr": 0.58,
+     "maghrib": 5.47,
+     "isha": 0.58
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8504,
+     107.235
+    ],
+    "margins": {
+     "fajr": 1.38,
+     "sunrise": -8.52,
+     "dhuhr": 2.38,
+     "asr": 1.4,
+     "maghrib": 6.3,
+     "isha": 1.4
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1203",
+  "unit": "KAB. BEKASI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.3597,
+     107.4017
+    ],
+    "margins": {
+     "fajr": 3.37,
+     "sunrise": -2.25,
+     "dhuhr": 4.4,
+     "asr": 3.38,
+     "maghrib": 4.08,
+     "isha": 3.45
+    }
+   },
+   "2029": {
+    "point": [
+     -6.3397,
+     107.1817
+    ],
+    "margins": {
+     "fajr": 2.48,
+     "sunrise": -3.12,
+     "dhuhr": 3.47,
+     "asr": 2.5,
+     "maghrib": 3.17,
+     "isha": 2.55
+    }
+   },
+   "2030": {
+    "point": [
+     -6.3397,
+     107.6017
+    ],
+    "margins": {
+     "fajr": 4.18,
+     "sunrise": -1.43,
+     "dhuhr": 5.18,
+     "asr": 4.2,
+     "maghrib": 4.88,
+     "isha": 4.25
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1204",
+  "unit": "KAB. BOGOR",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.4998,
+     106.967
+    ],
+    "margins": {
+     "fajr": 3.13,
+     "sunrise": -2.63,
+     "dhuhr": 4.1,
+     "asr": 3.12,
+     "maghrib": 3.8,
+     "isha": 3.08
+    }
+   },
+   "2029": {
+    "point": [
+     -6.5198,
+     107.227
+    ],
+    "margins": {
+     "fajr": 4.17,
+     "sunrise": -1.6,
+     "dhuhr": 5.15,
+     "asr": 4.15,
+     "maghrib": 4.82,
+     "isha": 4.12
+    }
+   },
+   "2030": {
+    "point": [
+     -6.4798,
+     107.087
+    ],
+    "margins": {
+     "fajr": 3.6,
+     "sunrise": -2.13,
+     "dhuhr": 4.58,
+     "asr": 3.57,
+     "maghrib": 4.28,
+     "isha": 3.55
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1205",
+  "unit": "KAB. CIAMIS",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -7.3502,
+     108.2086
+    ],
+    "margins": {
+     "fajr": 1.95,
+     "sunrise": -3.8,
+     "dhuhr": 2.93,
+     "asr": 1.9,
+     "maghrib": 2.6,
+     "isha": 1.93
+    }
+   },
+   "2029": {
+    "point": [
+     -7.3302,
+     108.8486
+    ],
+    "margins": {
+     "fajr": 4.5,
+     "sunrise": -1.23,
+     "dhuhr": 5.48,
+     "asr": 4.43,
+     "maghrib": 5.15,
+     "isha": 4.5
+    }
+   },
+   "2030": {
+    "point": [
+     -7.3502,
+     108.7286
+    ],
+    "margins": {
+     "fajr": 4.02,
+     "sunrise": -1.7,
+     "dhuhr": 5.02,
+     "asr": 3.98,
+     "maghrib": 4.72,
+     "isha": 4.05
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1206",
+  "unit": "KAB. CIANJUR",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.8309,
+     107.1592
+    ],
+    "margins": {
+     "fajr": 2.57,
+     "sunrise": -3.17,
+     "dhuhr": 3.55,
+     "asr": 2.57,
+     "maghrib": 3.3,
+     "isha": 2.55
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8309,
+     107.1992
+    ],
+    "margins": {
+     "fajr": 2.72,
+     "sunrise": -3.03,
+     "dhuhr": 3.73,
+     "asr": 2.72,
+     "maghrib": 3.48,
+     "isha": 2.68
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8709,
+     106.7592
+    ],
+    "margins": {
+     "fajr": 0.97,
+     "sunrise": -4.77,
+     "dhuhr": 1.95,
+     "asr": 0.97,
+     "maghrib": 1.7,
+     "isha": 0.92
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1207",
+  "unit": "KAB. CIREBON",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.7462,
+     108.9722
+    ],
+    "margins": {
+     "fajr": 4.48,
+     "sunrise": -1.21,
+     "dhuhr": 5.47,
+     "asr": 4.48,
+     "maghrib": 5.2,
+     "isha": 4.45
+    }
+   },
+   "2029": {
+    "point": [
+     -6.7662,
+     108.2522
+    ],
+    "margins": {
+     "fajr": 1.62,
+     "sunrise": -4.1,
+     "dhuhr": 2.6,
+     "asr": 1.58,
+     "maghrib": 2.32,
+     "isha": 1.58
+    }
+   },
+   "2030": {
+    "point": [
+     -6.7462,
+     108.8922
+    ],
+    "margins": {
+     "fajr": 4.18,
+     "sunrise": -1.52,
+     "dhuhr": 5.15,
+     "asr": 4.15,
+     "maghrib": 4.88,
+     "isha": 4.15
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1208",
+  "unit": "KAB. GARUT",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -7.1994,
+     107.7879
+    ],
+    "margins": {
+     "fajr": 2.02,
+     "sunrise": -7.89,
+     "dhuhr": 3.02,
+     "asr": 2.03,
+     "maghrib": 6.97,
+     "isha": 2.12
+    }
+   },
+   "2029": {
+    "point": [
+     -7.2394,
+     108.3479
+    ],
+    "margins": {
+     "fajr": 4.27,
+     "sunrise": -5.67,
+     "dhuhr": 5.27,
+     "asr": 4.28,
+     "maghrib": 9.17,
+     "isha": 4.37
+    }
+   },
+   "2030": {
+    "point": [
+     -7.2194,
+     108.1479
+    ],
+    "margins": {
+     "fajr": 3.45,
+     "sunrise": -6.43,
+     "dhuhr": 4.47,
+     "asr": 3.52,
+     "maghrib": 8.37,
+     "isha": 3.55
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1209",
+  "unit": "KAB. INDRAMAYU",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.2875,
+     108.309
+    ],
+    "margins": {
+     "fajr": 2.48,
+     "sunrise": -3.27,
+     "dhuhr": 3.47,
+     "asr": 2.46,
+     "maghrib": 3.18,
+     "isha": 2.42
+    }
+   },
+   "2029": {
+    "point": [
+     -6.3275,
+     107.729
+    ],
+    "margins": {
+     "fajr": 0.17,
+     "sunrise": -5.58,
+     "dhuhr": 1.17,
+     "asr": 0.13,
+     "maghrib": 0.87,
+     "isha": 0.08
+    }
+   },
+   "2030": {
+    "point": [
+     -6.3275,
+     108.229
+    ],
+    "margins": {
+     "fajr": 2.17,
+     "sunrise": -3.58,
+     "dhuhr": 3.15,
+     "asr": 2.15,
+     "maghrib": 2.88,
+     "isha": 2.08
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1210",
+  "unit": "KAB. KARAWANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.3323,
+     107.0343
+    ],
+    "margins": {
+     "fajr": 1.52,
+     "sunrise": -4.27,
+     "dhuhr": 2.5,
+     "asr": 1.5,
+     "maghrib": 2.22,
+     "isha": 1.43
+    }
+   },
+   "2029": {
+    "point": [
+     -6.3123,
+     107.8143
+    ],
+    "margins": {
+     "fajr": 4.62,
+     "sunrise": -1.17,
+     "dhuhr": 5.6,
+     "asr": 4.6,
+     "maghrib": 5.32,
+     "isha": 4.55
+    }
+   },
+   "2030": {
+    "point": [
+     -6.3123,
+     107.7343
+    ],
+    "margins": {
+     "fajr": 4.32,
+     "sunrise": -1.47,
+     "dhuhr": 5.3,
+     "asr": 4.32,
+     "maghrib": 5,
+     "isha": 4.25
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1211",
+  "unit": "KAB. KUNINGAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.9634,
+     108.1798
+    ],
+    "margins": {
+     "fajr": 1.35,
+     "sunrise": -8.58,
+     "dhuhr": 2.32,
+     "asr": 1.28,
+     "maghrib": 6.21,
+     "isha": 1.34
+    }
+   },
+   "2029": {
+    "point": [
+     -7.0034,
+     108.9598
+    ],
+    "margins": {
+     "fajr": 4.47,
+     "sunrise": -5.48,
+     "dhuhr": 5.43,
+     "asr": 4.4,
+     "maghrib": 9.35,
+     "isha": 4.43
+    }
+   },
+   "2030": {
+    "point": [
+     -7.0034,
+     108.2198
+    ],
+    "margins": {
+     "fajr": 1.52,
+     "sunrise": -8.43,
+     "dhuhr": 2.45,
+     "asr": 1.48,
+     "maghrib": 6.38,
+     "isha": 1.48
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1212",
+  "unit": "KAB. MAJALENGKA",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.8551,
+     108.1572
+    ],
+    "margins": {
+     "fajr": 2.3,
+     "sunrise": -3.47,
+     "dhuhr": 3.24,
+     "asr": 2.23,
+     "maghrib": 2.97,
+     "isha": 2.24
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8551,
+     108.7772
+    ],
+    "margins": {
+     "fajr": 4.8,
+     "sunrise": -0.98,
+     "dhuhr": 5.72,
+     "asr": 4.72,
+     "maghrib": 5.43,
+     "isha": 4.72
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8351,
+     107.7172
+    ],
+    "margins": {
+     "fajr": 0.53,
+     "sunrise": -5.22,
+     "dhuhr": 1.47,
+     "asr": 0.48,
+     "maghrib": 1.23,
+     "isha": 0.5
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1213",
+  "unit": "KAB. PANGANDARAN",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -7.7156,
+     109.1386
+    ],
+    "margins": {
+     "fajr": 5.08,
+     "sunrise": -0.62,
+     "dhuhr": 6.07,
+     "asr": 5.12,
+     "maghrib": 5.77,
+     "isha": 5.12
+    }
+   },
+   "2029": {
+    "point": [
+     -7.7556,
+     108.8786
+    ],
+    "margins": {
+     "fajr": 4.03,
+     "sunrise": -1.65,
+     "dhuhr": 5.02,
+     "asr": 4.03,
+     "maghrib": 4.72,
+     "isha": 4.08
+    }
+   },
+   "2030": {
+    "point": [
+     -7.7356,
+     108.9986
+    ],
+    "margins": {
+     "fajr": 4.55,
+     "sunrise": -1.18,
+     "dhuhr": 5.52,
+     "asr": 4.55,
+     "maghrib": 5.22,
+     "isha": 4.53
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1214",
+  "unit": "KAB. PURWAKARTA",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.5353,
+     107.7308
+    ],
+    "margins": {
+     "fajr": 3.61,
+     "sunrise": -2.05,
+     "dhuhr": 4.62,
+     "asr": 3.6,
+     "maghrib": 4.37,
+     "isha": 3.63
+    }
+   },
+   "2029": {
+    "point": [
+     -6.5753,
+     107.8108
+    ],
+    "margins": {
+     "fajr": 3.95,
+     "sunrise": -1.72,
+     "dhuhr": 4.95,
+     "asr": 3.95,
+     "maghrib": 4.7,
+     "isha": 3.92
+    }
+   },
+   "2030": {
+    "point": [
+     -6.5353,
+     107.3908
+    ],
+    "margins": {
+     "fajr": 2.27,
+     "sunrise": -3.38,
+     "dhuhr": 3.27,
+     "asr": 2.28,
+     "maghrib": 3.02,
+     "isha": 2.28
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1215",
+  "unit": "KAB. SUBANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.5846,
+     107.2718
+    ],
+    "margins": {
+     "fajr": 0.53,
+     "sunrise": -5.15,
+     "dhuhr": 1.55,
+     "asr": 0.56,
+     "maghrib": 1.25,
+     "isha": 0.52
+    }
+   },
+   "2029": {
+    "point": [
+     -6.5446,
+     107.2518
+    ],
+    "margins": {
+     "fajr": 0.43,
+     "sunrise": -5.27,
+     "dhuhr": 1.45,
+     "asr": 0.48,
+     "maghrib": 1.15,
+     "isha": 0.45
+    }
+   },
+   "2030": {
+    "point": [
+     -6.5646,
+     107.8718
+    ],
+    "margins": {
+     "fajr": 2.93,
+     "sunrise": -2.77,
+     "dhuhr": 3.95,
+     "asr": 2.97,
+     "maghrib": 3.65,
+     "isha": 2.92
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1216",
+  "unit": "KAB. SUKABUMI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.9963,
+     106.7276
+    ],
+    "margins": {
+     "fajr": 3.22,
+     "sunrise": -2.47,
+     "dhuhr": 4.22,
+     "asr": 3.22,
+     "maghrib": 3.93,
+     "isha": 3.2
+    }
+   },
+   "2029": {
+    "point": [
+     -7.0363,
+     106.0876
+    ],
+    "margins": {
+     "fajr": 0.65,
+     "sunrise": -5.03,
+     "dhuhr": 1.67,
+     "asr": 0.63,
+     "maghrib": 1.35,
+     "isha": 0.63
+    }
+   },
+   "2030": {
+    "point": [
+     -7.0163,
+     106.2876
+    ],
+    "margins": {
+     "fajr": 1.47,
+     "sunrise": -4.23,
+     "dhuhr": 2.47,
+     "asr": 1.45,
+     "maghrib": 2.18,
+     "isha": 1.45
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1217",
+  "unit": "KAB. SUMEDANG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.8847,
+     108.1813
+    ],
+    "margins": {
+     "fajr": 3.55,
+     "sunrise": -2.2,
+     "dhuhr": 4.53,
+     "asr": 3.53,
+     "maghrib": 4.28,
+     "isha": 3.5
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8647,
+     108.1413
+    ],
+    "margins": {
+     "fajr": 3.38,
+     "sunrise": -2.37,
+     "dhuhr": 4.33,
+     "asr": 3.37,
+     "maghrib": 4.13,
+     "isha": 3.33
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8847,
+     107.7013
+    ],
+    "margins": {
+     "fajr": 1.65,
+     "sunrise": -4.13,
+     "dhuhr": 2.6,
+     "asr": 1.6,
+     "maghrib": 2.37,
+     "isha": 1.58
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1218",
+  "unit": "KAB. TASIKMALAYA",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -7.3767,
+     107.7816
+    ],
+    "margins": {
+     "fajr": 1.2,
+     "sunrise": -4.56,
+     "dhuhr": 2.2,
+     "asr": 1.15,
+     "maghrib": 1.87,
+     "isha": 1.2
+    }
+   },
+   "2029": {
+    "point": [
+     -7.3567,
+     108.5816
+    ],
+    "margins": {
+     "fajr": 4.4,
+     "sunrise": -1.35,
+     "dhuhr": 5.37,
+     "asr": 4.35,
+     "maghrib": 5.07,
+     "isha": 4.42
+    }
+   },
+   "2030": {
+    "point": [
+     -7.3767,
+     108.5016
+    ],
+    "margins": {
+     "fajr": 4.1,
+     "sunrise": -1.67,
+     "dhuhr": 5.08,
+     "asr": 4.03,
+     "maghrib": 4.75,
+     "isha": 4.1
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1219",
+  "unit": "KOTA BANDUNG",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.9192,
+     107.6366
+    ],
+    "margins": {
+     "fajr": 2.57,
+     "sunrise": -7.3,
+     "dhuhr": 3.62,
+     "asr": 2.64,
+     "maghrib": 7.53,
+     "isha": 2.57
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8992,
+     107.5766
+    ],
+    "margins": {
+     "fajr": 2.3,
+     "sunrise": -7.55,
+     "dhuhr": 3.38,
+     "asr": 2.38,
+     "maghrib": 7.28,
+     "isha": 2.35
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8792,
+     107.5766
+    ],
+    "margins": {
+     "fajr": 2.3,
+     "sunrise": -7.57,
+     "dhuhr": 3.4,
+     "asr": 2.38,
+     "maghrib": 7.25,
+     "isha": 2.37
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1220",
+  "unit": "KOTA BANJAR",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -7.337,
+     107.9872
+    ],
+    "margins": {
+     "fajr": 0.27,
+     "sunrise": -5.42,
+     "dhuhr": 1.32,
+     "asr": 0.27,
+     "maghrib": 1,
+     "isha": 0.25
+    }
+   },
+   "2029": {
+    "point": [
+     -7.337,
+     108.9072
+    ],
+    "margins": {
+     "fajr": 3.92,
+     "sunrise": -1.73,
+     "dhuhr": 4.97,
+     "asr": 3.97,
+     "maghrib": 4.67,
+     "isha": 3.92
+    }
+   },
+   "2030": {
+    "point": [
+     -7.317,
+     108.2472
+    ],
+    "margins": {
+     "fajr": 1.28,
+     "sunrise": -4.38,
+     "dhuhr": 2.35,
+     "asr": 1.32,
+     "maghrib": 2.05,
+     "isha": 1.3
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1221",
+  "unit": "KOTA BEKASI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.2608,
+     107.2154
+    ],
+    "margins": {
+     "fajr": 3.4,
+     "sunrise": -2.38,
+     "dhuhr": 4.35,
+     "asr": 3.35,
+     "maghrib": 4.04,
+     "isha": 3.4
+    }
+   },
+   "2029": {
+    "point": [
+     -6.2408,
+     107.0554
+    ],
+    "margins": {
+     "fajr": 2.77,
+     "sunrise": -3.02,
+     "dhuhr": 3.72,
+     "asr": 2.75,
+     "maghrib": 3.4,
+     "isha": 2.78
+    }
+   },
+   "2030": {
+    "point": [
+     -6.2808,
+     106.6754
+    ],
+    "margins": {
+     "fajr": 1.23,
+     "sunrise": -4.55,
+     "dhuhr": 2.2,
+     "asr": 1.23,
+     "maghrib": 1.88,
+     "isha": 1.25
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1222",
+  "unit": "KOTA BOGOR",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.6135,
+     106.3194
+    ],
+    "margins": {
+     "fajr": 0.64,
+     "sunrise": -9.18,
+     "dhuhr": 1.7,
+     "asr": 0.72,
+     "maghrib": 5.62,
+     "isha": 0.67
+    }
+   },
+   "2029": {
+    "point": [
+     -6.5535,
+     106.3394
+    ],
+    "margins": {
+     "fajr": 0.75,
+     "sunrise": -9.12,
+     "dhuhr": 1.78,
+     "asr": 0.8,
+     "maghrib": 5.68,
+     "isha": 0.77
+    }
+   },
+   "2030": {
+    "point": [
+     -6.5935,
+     107.1594
+    ],
+    "margins": {
+     "fajr": 4.03,
+     "sunrise": -5.87,
+     "dhuhr": 5.08,
+     "asr": 4.08,
+     "maghrib": 8.98,
+     "isha": 4.03
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1223",
+  "unit": "KOTA CIMAHI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.8463,
+     107.0629
+    ],
+    "margins": {
+     "fajr": 0.58,
+     "sunrise": -9.3,
+     "dhuhr": 1.62,
+     "asr": 0.62,
+     "maghrib": 5.46,
+     "isha": 0.62
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8663,
+     106.9429
+    ],
+    "margins": {
+     "fajr": 0.08,
+     "sunrise": -9.8,
+     "dhuhr": 1.1,
+     "asr": 0.12,
+     "maghrib": 4.98,
+     "isha": 0.15
+    }
+   },
+   "2030": {
+    "point": [
+     -6.8663,
+     107.5429
+    ],
+    "margins": {
+     "fajr": 2.48,
+     "sunrise": -7.37,
+     "dhuhr": 3.53,
+     "asr": 2.52,
+     "maghrib": 7.4,
+     "isha": 2.55
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1224",
+  "unit": "KOTA CIREBON",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.7017,
+     109.1333
+    ],
+    "margins": {
+     "fajr": 4.77,
+     "sunrise": -0.87,
+     "dhuhr": 5.83,
+     "asr": 4.82,
+     "maghrib": 5.43,
+     "isha": 4.83
+    }
+   },
+   "2029": {
+    "point": [
+     -6.6217,
+     108.0533
+    ],
+    "margins": {
+     "fajr": 0.47,
+     "sunrise": -5.2,
+     "dhuhr": 1.52,
+     "asr": 0.52,
+     "maghrib": 1.1,
+     "isha": 0.52
+    }
+   },
+   "2030": {
+    "point": [
+     -6.6617,
+     109.0333
+    ],
+    "margins": {
+     "fajr": 4.4,
+     "sunrise": -1.27,
+     "dhuhr": 5.42,
+     "asr": 4.45,
+     "maghrib": 5.03,
+     "isha": 4.45
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1225",
+  "unit": "KOTA DEPOK",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.4362,
+     106.6168
+    ],
+    "margins": {
+     "fajr": 1.9,
+     "sunrise": -3.87,
+     "dhuhr": 2.9,
+     "asr": 1.92,
+     "maghrib": 2.58,
+     "isha": 1.86
+    }
+   },
+   "2029": {
+    "point": [
+     -6.4362,
+     106.5768
+    ],
+    "margins": {
+     "fajr": 1.73,
+     "sunrise": -4.05,
+     "dhuhr": 2.73,
+     "asr": 1.72,
+     "maghrib": 2.43,
+     "isha": 1.72
+    }
+   },
+   "2030": {
+    "point": [
+     -6.4162,
+     106.2568
+    ],
+    "margins": {
+     "fajr": 0.43,
+     "sunrise": -5.32,
+     "dhuhr": 1.47,
+     "asr": 0.48,
+     "maghrib": 1.15,
+     "isha": 0.43
+    }
+   }
+  }
+ },
+ {
+  "unit_id": "1226",
+  "unit": "KOTA SUKABUMI",
+  "zone_offset": 7,
+  "years": {
+   "2028": {
+    "point": [
+     -6.9399,
+     107.4644
+    ],
+    "margins": {
+     "fajr": 4.67,
+     "sunrise": -5.27,
+     "dhuhr": 5.63,
+     "asr": 4.65,
+     "maghrib": 9.55,
+     "isha": 4.63
+    }
+   },
+   "2029": {
+    "point": [
+     -6.8999,
+     107.1244
+    ],
+    "margins": {
+     "fajr": 3.3,
+     "sunrise": -6.63,
+     "dhuhr": 4.23,
+     "asr": 3.27,
+     "maghrib": 8.2,
+     "isha": 3.27
+    }
+   },
+   "2030": {
+    "point": [
+     -6.9399,
+     107.4244
+    ],
+    "margins": {
+     "fajr": 4.52,
+     "sunrise": -5.42,
+     "dhuhr": 5.48,
+     "asr": 4.48,
+     "maghrib": 9.43,
+     "isha": 4.47
+    }
+   }
+  }
+ }
+]

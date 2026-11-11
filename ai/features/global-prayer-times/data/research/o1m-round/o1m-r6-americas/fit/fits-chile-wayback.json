@@ -1,0 +1,2761 @@
+{
+ "cl-antofagasta-wayback": {
+  "slug": "cl-antofagasta-wayback",
+  "city": "Antofagasta",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 50.5,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 99.3,
+    "exactPct": 45.8,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 98.3,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 49.8,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 94.2,
+    "exactPct": 54.9,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 87.5,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 98.9,
+    "exactPct": 55.3,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 97.5,
+      "worst": 2
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 99.3,
+    "exactPct": 52,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 98.3,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-arica-wayback": {
+  "slug": "cl-arica-wayback",
+  "city": "Arica",
+  "tz": "America/Santiago",
+  "days": 306,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 306,
+    "w1Pct": 99.7,
+    "exactPct": 52,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 306,
+    "w1Pct": 99.3,
+    "exactPct": 44.1,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 98.7,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 306,
+    "w1Pct": 100,
+    "exactPct": 56.9,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 306,
+    "w1Pct": 96.1,
+    "exactPct": 53.3,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 92.1,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 306,
+    "w1Pct": 99.3,
+    "exactPct": 54.2,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 98.7,
+      "worst": 2
+     }
+    }
+   },
+   "isha": {
+    "n": 306,
+    "w1Pct": 99,
+    "exactPct": 57.2,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 98,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-concepcion-wayback": {
+  "slug": "cl-concepcion-wayback",
+  "city": "Concepción",
+  "tz": "America/Santiago",
+  "days": 213,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 213,
+    "w1Pct": 96.7,
+    "exactPct": 33.3,
+    "worst": -6,
+    "byYear": {
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 95.2,
+      "worst": -6
+     },
+     "2025": {
+      "w1Pct": 99.2,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 213,
+    "w1Pct": 94.4,
+    "exactPct": 31,
+    "worst": -6,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 91.9,
+      "worst": -6
+     },
+     "2025": {
+      "w1Pct": 94.2,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 213,
+    "w1Pct": 99.1,
+    "exactPct": 50.2,
+    "worst": -6,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -6
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 213,
+    "w1Pct": 81.2,
+    "exactPct": 32.9,
+    "worst": -7,
+    "byYear": {
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -7
+     },
+     "2025": {
+      "w1Pct": 70.8,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 213,
+    "w1Pct": 93.9,
+    "exactPct": 47.4,
+    "worst": -6,
+    "byYear": {
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -6
+     },
+     "2025": {
+      "w1Pct": 92.5,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 213,
+    "w1Pct": 93.4,
+    "exactPct": 39.9,
+    "worst": -7,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 95.2,
+      "worst": -7
+     },
+     "2025": {
+      "w1Pct": 90.8,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-copiapo-wayback": {
+  "slug": "cl-copiapo-wayback",
+  "city": "Copiapó",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [
+   "2022-08"
+  ],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 99.6,
+    "exactPct": 43.3,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 97.1,
+    "exactPct": 41.5,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 96,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 54.9,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 91.6,
+    "exactPct": 46.2,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 85.4,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 98.5,
+    "exactPct": 46.2,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 97.4,
+      "worst": 2
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 98.5,
+    "exactPct": 48,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 97.4,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-coyhaique-wayback": {
+  "slug": "cl-coyhaique-wayback",
+  "city": "Coyhaique",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 94.5,
+    "exactPct": 29.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 94,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 82.9,
+    "exactPct": 23.6,
+    "worst": -3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 71,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 76.2,
+      "worst": -3
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 59.6,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 69.8,
+    "exactPct": 26.5,
+    "worst": 4,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 54.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 55,
+      "worst": 4
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 89.8,
+    "exactPct": 29.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 82.8,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 86.9,
+    "exactPct": 28,
+    "worst": 4,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -3
+     },
+     "2025": {
+      "w1Pct": 77.5,
+      "worst": 4
+     }
+    }
+   }
+  }
+ },
+ "cl-la-serena-wayback": {
+  "slug": "cl-la-serena-wayback",
+  "city": "La Serena",
+  "tz": "America/Santiago",
+  "days": 306,
+  "dropped": [
+   "2022-08"
+  ],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 306,
+    "w1Pct": 92.8,
+    "exactPct": 44.4,
+    "worst": 4,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 85.4,
+      "worst": 4
+     }
+    }
+   },
+   "sunrise": {
+    "n": 306,
+    "w1Pct": 88.6,
+    "exactPct": 36.6,
+    "worst": 5,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 76.8,
+      "worst": 5
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 306,
+    "w1Pct": 92.5,
+    "exactPct": 41.8,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 86.1,
+      "worst": 2
+     }
+    }
+   },
+   "asr": {
+    "n": 306,
+    "w1Pct": 93.1,
+    "exactPct": 43.5,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 88.1,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 306,
+    "w1Pct": 95.4,
+    "exactPct": 50,
+    "worst": -3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 90.7,
+      "worst": -3
+     }
+    }
+   },
+   "isha": {
+    "n": 306,
+    "w1Pct": 92.8,
+    "exactPct": 47.4,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 85.4,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-linares-wayback": {
+  "slug": "cl-linares-wayback",
+  "city": "Linares",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 96.7,
+    "exactPct": 36.7,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 96.7,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 96.4,
+    "exactPct": 31.3,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 93.4,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 53.8,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": -1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 88,
+    "exactPct": 37.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 87.1,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 80.8,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 94.2,
+    "exactPct": 38.5,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 90.1,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 94.5,
+    "exactPct": 46.5,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 90.1,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-osorno-wayback": {
+  "slug": "cl-osorno-wayback",
+  "city": "Osorno",
+  "tz": "America/Santiago",
+  "days": 278,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 278,
+    "w1Pct": 95.3,
+    "exactPct": 36.7,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 83.9,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 95.1,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 278,
+    "w1Pct": 94.6,
+    "exactPct": 38.8,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 91.1,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 278,
+    "w1Pct": 100,
+    "exactPct": 42.8,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 278,
+    "w1Pct": 82.7,
+    "exactPct": 37.1,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 64.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 69.9,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 278,
+    "w1Pct": 95.7,
+    "exactPct": 42.1,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 92.7,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 278,
+    "w1Pct": 96.8,
+    "exactPct": 46.8,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 93.5,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-puerto-montt-wayback": {
+  "slug": "cl-puerto-montt-wayback",
+  "city": "Puerto Montt",
+  "tz": "America/Santiago",
+  "days": 216,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 216,
+    "w1Pct": 96.8,
+    "exactPct": 33.3,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 83.9,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 99.2,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 216,
+    "w1Pct": 90.3,
+    "exactPct": 29.2,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 86.2,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 216,
+    "w1Pct": 100,
+    "exactPct": 41.2,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 216,
+    "w1Pct": 78.2,
+    "exactPct": 26.9,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 80.6,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 66.7,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 216,
+    "w1Pct": 93.5,
+    "exactPct": 33.3,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 91.9,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 216,
+    "w1Pct": 95.4,
+    "exactPct": 39.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 92.7,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-punta-arenas-wayback": {
+  "slug": "cl-punta-arenas-wayback",
+  "city": "Punta Arenas",
+  "tz": "America/Punta_Arenas",
+  "days": 244,
+  "dropped": [
+   "2022-12",
+   "2024-12",
+   "2025-01"
+  ],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 244,
+    "w1Pct": 72.1,
+    "exactPct": 25.8,
+    "worst": 24,
+    "byYear": {
+     "2022": {
+      "w1Pct": 74.2,
+      "worst": -13
+     },
+     "2023": {
+      "w1Pct": 64.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 93.5,
+      "worst": -11
+     },
+     "2025": {
+      "w1Pct": 68.9,
+      "worst": 24
+     }
+    }
+   },
+   "sunrise": {
+    "n": 244,
+    "w1Pct": 78.7,
+    "exactPct": 25.4,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 71,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 64.5,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 79.5,
+      "worst": -3
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 244,
+    "w1Pct": 100,
+    "exactPct": 40.2,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 244,
+    "w1Pct": 51.2,
+    "exactPct": 10.7,
+    "worst": 4,
+    "byYear": {
+     "2022": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2023": {
+      "w1Pct": 25.8,
+      "worst": 3
+     },
+     "2024": {
+      "w1Pct": 93.5,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 38.4,
+      "worst": 4
+     }
+    }
+   },
+   "maghrib": {
+    "n": 244,
+    "w1Pct": 82.4,
+    "exactPct": 29.1,
+    "worst": -3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2023": {
+      "w1Pct": 74.2,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 93.5,
+      "worst": -3
+     },
+     "2025": {
+      "w1Pct": 78.8,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 244,
+    "w1Pct": 81.1,
+    "exactPct": 23.4,
+    "worst": -17,
+    "byYear": {
+     "2022": {
+      "w1Pct": 96.8,
+      "worst": -3
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 41.9,
+      "worst": -5
+     },
+     "2025": {
+      "w1Pct": 83.4,
+      "worst": -17
+     }
+    }
+   }
+  }
+ },
+ "cl-rancagua-wayback": {
+  "slug": "cl-rancagua-wayback",
+  "city": "Rancagua",
+  "tz": "America/Santiago",
+  "days": 214,
+  "dropped": [
+   "2025-04",
+   "2025-05"
+  ],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 214,
+    "w1Pct": 99.1,
+    "exactPct": 44.4,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 214,
+    "w1Pct": 99.1,
+    "exactPct": 46.3,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 96.6,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 214,
+    "w1Pct": 100,
+    "exactPct": 50.9,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 214,
+    "w1Pct": 93,
+    "exactPct": 56.5,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 87.1,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 81.4,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 214,
+    "w1Pct": 96.7,
+    "exactPct": 59.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 88.1,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 214,
+    "w1Pct": 96.7,
+    "exactPct": 58.9,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 88.1,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-san-antonio-wayback": {
+  "slug": "cl-san-antonio-wayback",
+  "city": "San Antonio",
+  "tz": "America/Santiago",
+  "days": 244,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 244,
+    "w1Pct": 98,
+    "exactPct": 31.1,
+    "worst": 2,
+    "byYear": {
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 98.7,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 244,
+    "w1Pct": 96.7,
+    "exactPct": 32.8,
+    "worst": -2,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 94.7,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 244,
+    "w1Pct": 100,
+    "exactPct": 47.5,
+    "worst": 1,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 244,
+    "w1Pct": 84.4,
+    "exactPct": 35.7,
+    "worst": 3,
+    "byYear": {
+     "2023": {
+      "w1Pct": 87.1,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 77.5,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 244,
+    "w1Pct": 95.1,
+    "exactPct": 40.2,
+    "worst": 3,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 92.1,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 244,
+    "w1Pct": 96.7,
+    "exactPct": 45.9,
+    "worst": 2,
+    "byYear": {
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 94.7,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-san-felipe-wayback": {
+  "slug": "cl-san-felipe-wayback",
+  "city": "San Felipe",
+  "tz": "America/Santiago",
+  "days": 306,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 306,
+    "w1Pct": 99,
+    "exactPct": 44.1,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 99.3,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 306,
+    "w1Pct": 97.4,
+    "exactPct": 36.3,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 95.4,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 306,
+    "w1Pct": 100,
+    "exactPct": 50.3,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 306,
+    "w1Pct": 84.6,
+    "exactPct": 45.8,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 87.1,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 71.5,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 306,
+    "w1Pct": 97.1,
+    "exactPct": 47.7,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 94.7,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 306,
+    "w1Pct": 97.1,
+    "exactPct": 49,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 94.7,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-santiago-wayback": {
+  "slug": "cl-santiago-wayback",
+  "city": "Santiago",
+  "tz": "America/Santiago",
+  "days": 305,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 305,
+    "w1Pct": 95.7,
+    "exactPct": 43.3,
+    "worst": 2,
+    "byYear": {
+     "2018": {
+      "w1Pct": 71,
+      "worst": 2
+     },
+     "2022": {
+      "w1Pct": 98.9,
+      "worst": 2
+     },
+     "2023": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 305,
+    "w1Pct": 97.7,
+    "exactPct": 41.3,
+    "worst": -2,
+    "byYear": {
+     "2018": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2022": {
+      "w1Pct": 98.9,
+      "worst": -2
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 95.8,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 305,
+    "w1Pct": 100,
+    "exactPct": 45.9,
+    "worst": 1,
+    "byYear": {
+     "2018": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 305,
+    "w1Pct": 89.2,
+    "exactPct": 43,
+    "worst": 3,
+    "byYear": {
+     "2018": {
+      "w1Pct": 64.5,
+      "worst": 2
+     },
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 82.5,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 305,
+    "w1Pct": 97,
+    "exactPct": 47.2,
+    "worst": 3,
+    "byYear": {
+     "2018": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 95,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 305,
+    "w1Pct": 95.4,
+    "exactPct": 47.9,
+    "worst": 2,
+    "byYear": {
+     "2018": {
+      "w1Pct": 93.5,
+      "worst": 2
+     },
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 90,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-talca-wayback": {
+  "slug": "cl-talca-wayback",
+  "city": "Talca",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 97.1,
+    "exactPct": 39.6,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 83.9,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 98.7,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 96.4,
+    "exactPct": 34.9,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 93.4,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 42.5,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 78.2,
+    "exactPct": 38.2,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 77.4,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 64.9,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 96,
+    "exactPct": 39.3,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 92.7,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 94.2,
+    "exactPct": 40.4,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 90.1,
+      "worst": 2
+     }
+    }
+   }
+  }
+ },
+ "cl-temuco-wayback": {
+  "slug": "cl-temuco-wayback",
+  "city": "Temuco",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 96.7,
+    "exactPct": 29.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 80.6,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 98.7,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 94.9,
+    "exactPct": 28.4,
+    "worst": -3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 91.4,
+      "worst": -3
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 58.5,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": -1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 77.5,
+    "exactPct": 30.2,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 80.6,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 62.9,
+      "worst": 3
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 91.6,
+    "exactPct": 38.9,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 87.4,
+      "worst": 2
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 93.8,
+    "exactPct": 42.2,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 89.4,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-valdivia-wayback": {
+  "slug": "cl-valdivia-wayback",
+  "city": "Valdivia",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 98.2,
+    "exactPct": 37.5,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 3
+     },
+     "2025": {
+      "w1Pct": 99.3,
+      "worst": 2
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 91.3,
+    "exactPct": 28,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 87.1,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 87.4,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 59.3,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 82.2,
+    "exactPct": 32.7,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 80.6,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 71.5,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 95.6,
+    "exactPct": 37.8,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 92.7,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 94.5,
+    "exactPct": 34.2,
+    "worst": -3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -3
+     },
+     "2025": {
+      "w1Pct": 90.7,
+      "worst": 3
+     }
+    }
+   }
+  }
+ },
+ "cl-vina-del-mar-wayback": {
+  "slug": "cl-vina-del-mar-wayback",
+  "city": "Viña del Mar",
+  "tz": "America/Santiago",
+  "days": 275,
+  "dropped": [],
+  "recipe": "18/17 Shafi +6 min all columns",
+  "cols": {
+   "fajr": {
+    "n": 275,
+    "w1Pct": 99.6,
+    "exactPct": 50.9,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": -1
+     }
+    }
+   },
+   "sunrise": {
+    "n": 275,
+    "w1Pct": 93.8,
+    "exactPct": 29.8,
+    "worst": -2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 96.8,
+      "worst": -2
+     },
+     "2024": {
+      "w1Pct": 96.8,
+      "worst": 2
+     },
+     "2025": {
+      "w1Pct": 90.7,
+      "worst": -2
+     }
+    }
+   },
+   "dhuhr": {
+    "n": 275,
+    "w1Pct": 100,
+    "exactPct": 65.8,
+    "worst": 1,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2025": {
+      "w1Pct": 100,
+      "worst": 1
+     }
+    }
+   },
+   "asr": {
+    "n": 275,
+    "w1Pct": 90.2,
+    "exactPct": 37.5,
+    "worst": 2,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2023": {
+      "w1Pct": 90.3,
+      "worst": 2
+     },
+     "2024": {
+      "w1Pct": 100,
+      "worst": -1
+     },
+     "2025": {
+      "w1Pct": 84.1,
+      "worst": 2
+     }
+    }
+   },
+   "maghrib": {
+    "n": 275,
+    "w1Pct": 97.8,
+    "exactPct": 48.7,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 96.7,
+      "worst": 3
+     }
+    }
+   },
+   "isha": {
+    "n": 275,
+    "w1Pct": 98.5,
+    "exactPct": 53.5,
+    "worst": 3,
+    "byYear": {
+     "2022": {
+      "w1Pct": 100,
+      "worst": 0
+     },
+     "2023": {
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "2024": {
+      "w1Pct": 98.4,
+      "worst": -2
+     },
+     "2025": {
+      "w1Pct": 98,
+      "worst": 3
+     }
+    }
+   }
+  }
+ }
+}

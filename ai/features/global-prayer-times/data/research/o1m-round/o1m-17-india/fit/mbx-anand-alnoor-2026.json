@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-anand-alnoor-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 22.46,
+  "lon": 69.02
+ },
+ "coarse": {
+  "lat": 22.6,
+  "lon": 69,
+  "mae": 5.13
+ },
+ "mid": {
+  "lat": 22.46,
+  "lon": 69.02,
+  "mae": 5.09
+ },
+ "meta": {
+  "name": "Masjid Al Noor ",
+  "address": "Parivar Party Plot - Anand, Bhalej Road, behind T.B Hospital, near Samarkha, Ismaile Nagar, Crossing, Anand, Gujarat, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 13,
+ "fajr_sweep": [
+  {
+   "a": 13,
+   "med": -0.5,
+   "mae": 26.58,
+   "mad": 29
+  },
+  {
+   "a": 13.25,
+   "med": 0.5,
+   "mae": 26.6,
+   "mad": 29
+  },
+  {
+   "a": 13.45,
+   "med": 1.5,
+   "mae": 26.6,
+   "mad": 29
+  },
+  {
+   "a": 13.05,
+   "med": -0.5,
+   "mae": 26.62,
+   "mad": 29.5
+  }
+ ],
+ "isha_angle": 13,
+ "isha_sweep": [
+  {
+   "a": 13,
+   "med": -20,
+   "mae": 32.58,
+   "mad": 32.5
+  },
+  {
+   "a": 13.05,
+   "med": -20.5,
+   "mae": 32.68,
+   "mad": 32.5
+  },
+  {
+   "a": 13.1,
+   "med": -20.5,
+   "mae": 32.74,
+   "mad": 32.5
+  },
+  {
+   "a": 13.15,
+   "med": -20.5,
+   "mae": 32.78,
+   "mad": 32.5
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 17,
+   "mad": 8
+  },
+  "1": {
+   "med": -47.5,
+   "mad": 16.5
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 5,
+  "asr": 17,
+  "maghrib": -52,
+  "isha": -21
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 1.2,
+   "within1": 3.5,
+   "mae": 26.2,
+   "worst": 47,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 75.6,
+   "within1": 91,
+   "mae": 1.5,
+   "worst": -15,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.2,
+   "within1": 10.2,
+   "mae": 7.51,
+   "worst": 18,
+   "med": 0
+  },
+  "asr": {
+   "exact": 3.2,
+   "within1": 10.5,
+   "mae": 9.99,
+   "worst": 26,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 0.9,
+   "within1": 2.9,
+   "mae": 27.73,
+   "worst": 50,
+   "med": -0.5
+  },
+  "isha": {
+   "exact": 1.2,
+   "within1": 2.9,
+   "mae": 28.64,
+   "worst": -51,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 0
+}

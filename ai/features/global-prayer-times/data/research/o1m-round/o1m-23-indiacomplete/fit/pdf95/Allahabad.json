@@ -1,0 +1,142 @@
+{
+ "rows": "$HOME/athan-gitree/census/o1m/o1m-17-india/data/iaac/Allahabad-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 25.4667,
+  "lon": 81.8667
+ },
+ "n_days": 360,
+ "table_shift_min": 0,
+ "fajr_angle": 18.08,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.34,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.35,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.45,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.5,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.3,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.38,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.46,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 59.29,
+   "med": 56.5
+  },
+  "1": {
+   "mae": 0.33,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 68.3,
+   "within1": 99.4,
+   "mae": 0.32,
+   "worst": 2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 61.7,
+   "within1": 99.2,
+   "mae": 0.39,
+   "worst": -2,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 51.4,
+   "within1": 100,
+   "mae": 0.49,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 67.2,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 71.7,
+   "within1": 100,
+   "mae": 0.28,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 72.2,
+   "within1": 99.7,
+   "mae": 0.28,
+   "worst": -2,
+   "med": 0
+  }
+ },
+ "all_six_within1": 354,
+ "isha_tier": {
+  "17": {
+   "mae": 5.13,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 6
+  },
+  "18": {
+   "mae": 0.38,
+   "med": 0,
+   "within1": 99.7,
+   "exact": 62.2,
+   "worst": -2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.8,
+  "min": 4,
+  "max": 6
+ },
+ "amplitude_fajr_min": 108
+}

@@ -1,0 +1,8 @@
+{
+ "date": "2026-06-02",
+ "source_poster": "data/eg-poster-2026-06-02.json",
+ "source_grid": "o1l-city/egypt-82/data/eg-esa-<idx>-2026.json",
+ "cells": 30,
+ "diffs": [],
+ "verdict": "identical"
+}

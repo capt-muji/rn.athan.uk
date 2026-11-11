@@ -1,0 +1,380 @@
+{
+ "recipe": {
+  "fajr": 20,
+  "isha": 18,
+  "madhab": "shafi",
+  "margins": "fajr+2, dhuhr+3, asr+2, isha+2, sunrise-2-dip, maghrib+2+dip",
+  "dip": "0.1173*sqrt(m) min"
+ },
+ "n_units": 6,
+ "aggregate": {
+  "fajr": {
+   "exact": 49.7,
+   "within1": 100
+  },
+  "sunrise": {
+   "exact": 64.2,
+   "within1": 98.5
+  },
+  "dhuhr": {
+   "exact": 49.1,
+   "within1": 100
+  },
+  "asr": {
+   "exact": 49.9,
+   "within1": 100
+  },
+  "maghrib": {
+   "exact": 31.1,
+   "within1": 100
+  },
+  "isha": {
+   "exact": 50.2,
+   "within1": 100
+  }
+ },
+ "units": [
+  {
+   "unit": "KOTA AMBON",
+   "province": "MALUKU",
+   "lat": -3.685356616973877,
+   "lng": 128.19497680664062,
+   "elev": 10,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 81.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 15.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.85
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. JAYAPURA",
+   "province": "PAPUA",
+   "lat": -3.0100162029266357,
+   "lng": 139.9887237548828,
+   "elev": 117,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 91,
+     "med": 1,
+     "maex": 1.09
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 92.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.07
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 332,
+   "all_six_pct": 91
+  },
+  {
+   "unit": "KAB. SORONG",
+   "province": "PAPUA BARAT",
+   "lat": -1.166700005531311,
+   "lng": 131.3000030517578,
+   "elev": 13,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 71.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.28
+    },
+    "dhuhr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 20.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.8
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TERNATE",
+   "province": "MALUKU UTARA",
+   "lat": 0.838480532169342,
+   "lng": 127.17252349853516,
+   "elev": 9,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 82.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.17
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 12.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.87
+    },
+    "isha": {
+     "exact": 54.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TIDORE KEPULAUAN",
+   "province": "MALUKU UTARA",
+   "lat": 0.47927603125572205,
+   "lng": 127.67501068115234,
+   "elev": 14,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 73.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.27
+    },
+    "dhuhr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 21.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.78
+    },
+    "isha": {
+     "exact": 44.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA TUAL",
+   "province": "MALUKU",
+   "lat": -5.556896209716797,
+   "lng": 132.48263549804688,
+   "elev": 15,
+   "tz": "Asia/Jayapura",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 75.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.24
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 24.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.76
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  }
+ ]
+}

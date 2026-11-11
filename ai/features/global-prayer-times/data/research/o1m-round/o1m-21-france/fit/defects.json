@@ -1,0 +1,82 @@
+{
+ "lyon-gm": [
+  "2026-03-29 fajr jump 306->366",
+  "2026-04-13 fajr span 205",
+  "2026-10-25 fajr jump 410->353"
+ ],
+ "lyon-attawba": [
+  "2026-03-29 fajr jump 306->364",
+  "2026-10-25 fajr jump 410->353"
+ ],
+ "lille-gm": [
+  "2026-03-29 fajr jump 317->374",
+  "2026-10-25 fajr jump 429->371"
+ ],
+ "lille-assalam": [
+  "2026-03-29 fajr jump 315->372",
+  "2026-10-25 fajr jump 429->371",
+  "2026-10-27 fajr span 17",
+  "2026-10-28 fajr span 18",
+  "2026-10-29 fajr span 18",
+  "2026-10-30 fajr span 18",
+  "2026-10-31 fajr span 18"
+ ],
+ "marseille-mariam": [
+  "2026-03-29 fajr jump 319->377",
+  "2026-10-25 fajr jump 415->356"
+ ],
+ "marseille-khalid": [
+  "2026-03-29 fajr jump 320->378",
+  "2026-10-25 fajr jump 415->356"
+ ],
+ "bordeaux-gm": [
+  "2026-03-29 fajr jump 343->401",
+  "2026-10-25 fajr jump 441->382"
+ ],
+ "montpellier-ibnrochd": [
+  "2026-03-29 fajr jump 314->372",
+  "2026-10-25 fajr jump 410->351"
+ ],
+ "nantes-gm": [
+  "2026-03-29 fajr jump 342->400",
+  "2026-10-25 fajr jump 445->386"
+ ],
+ "nice-ennour": [
+  "2026-03-29 fajr jump 311->369",
+  "2026-10-25 fajr jump 408->349"
+ ],
+ "nice-errahma": [
+  "2026-03-29 fajr jump 313->371",
+  "2026-10-25 fajr jump 409->350"
+ ],
+ "rennes-ennour": [
+  "2026-03-29 fajr jump 339->397",
+  "2026-10-25 fajr jump 447->388"
+ ],
+ "rennes-ibnkhaldoun": [
+  "2026-03-29 fajr jump 340->398",
+  "2026-10-25 fajr jump 446->387"
+ ],
+ "toulon-lmv": [
+  "2026-03-29 fajr jump 318->376",
+  "2026-10-01 fajr span -113",
+  "2026-10-25 fajr jump 413->354"
+ ],
+ "toulon-pontdulas": [
+  "2026-03-29 fajr jump 319->378",
+  "2026-10-25 fajr jump 414->356"
+ ],
+ "toulouse-alfath": [
+  "2026-03-29 fajr jump 323->381",
+  "2026-09-06 isha span 17",
+  "2026-10-25 fajr jump 420->361"
+ ],
+ "toulouse-assalam": [
+  "2026-03-29 fajr jump 323->381",
+  "2026-10-25 fajr jump 420->361"
+ ],
+ "toulouse-reynerie": [
+  "2026-03-29 fajr jump 323->381",
+  "2026-10-25 fajr jump 420->361"
+ ]
+}

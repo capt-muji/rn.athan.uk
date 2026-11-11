@@ -1,0 +1,560 @@
+{
+ "year": 2026,
+ "band": 0.05,
+ "crossers": 23,
+ "disagreements": 0,
+ "records": [
+  {
+   "id": 5789,
+   "ids": [
+    5789
+   ],
+   "name": "Мамырсу",
+   "region": "Абай облысы",
+   "lat": 47.951147,
+   "lng": 80.382042,
+   "latitudeSet": "A",
+   "offsetDeg": -0.048853000000001146,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 29,
+   "ids": [
+    29
+   ],
+   "name": "Аягөз қаласы",
+   "region": "Абай облысы",
+   "lat": 47.966667,
+   "lng": 80.433333,
+   "latitudeSet": "A",
+   "offsetDeg": -0.03333299999999895,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 10947,
+   "ids": [
+    10947
+   ],
+   "name": "Қылыш",
+   "region": "Ұлытау облысы",
+   "lat": 47.976867,
+   "lng": 71.054026,
+   "latitudeSet": "A",
+   "offsetDeg": -0.023133000000001402,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 5928,
+   "ids": [
+    5928
+   ],
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.982723,
+   "lng": 80.703882,
+   "latitudeSet": "A",
+   "offsetDeg": -0.017276999999999987,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 5780,
+   "ids": [
+    5780
+   ],
+   "name": "Қаражал",
+   "region": "Абай облысы",
+   "lat": 47.983381,
+   "lng": 80.706711,
+   "latitudeSet": "A",
+   "offsetDeg": -0.016618999999998607,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 8626,
+   "ids": [
+    8626
+   ],
+   "name": "Ақшатау",
+   "region": "Қарағанды облысы",
+   "lat": 47.984876,
+   "lng": 74.040394,
+   "latitudeSet": "A",
+   "offsetDeg": -0.015124000000000137,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 7354,
+   "ids": [
+    7354
+   ],
+   "name": "Батырбек",
+   "region": "Атырау облысы",
+   "lat": 47.992975,
+   "lng": 47.818374,
+   "latitudeSet": "A",
+   "offsetDeg": -0.007024999999998727,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 7373,
+   "ids": [
+    7373
+   ],
+   "name": "Өтешқали атамбаев",
+   "region": "Атырау облысы",
+   "lat": 47.994187,
+   "lng": 51.622514,
+   "latitudeSet": "A",
+   "offsetDeg": -0.005813000000003399,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 11119,
+   "ids": [
+    11119
+   ],
+   "name": "Аманат",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 47.999819,
+   "lng": 84.415038,
+   "latitudeSet": "A",
+   "offsetDeg": -0.00018099999999776628,
+   "apiMargin": "3",
+   "apiSet": "A",
+   "engineMargin3": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "engineMargin5": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 79,
+   "ids": [
+    79
+   ],
+   "name": "Қаражал қаласы",
+   "region": "Ұлытау облысы",
+   "lat": 48.001042,
+   "lng": 70.785762,
+   "latitudeSet": "B",
+   "offsetDeg": 0.001041999999998211,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 8424,
+   "ids": [
+    8424
+   ],
+   "name": "Ақтұмсық",
+   "region": "Қарағанды облысы",
+   "lat": 48.0034,
+   "lng": 75.441712,
+   "latitudeSet": "B",
+   "offsetDeg": 0.0033999999999991815,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 10988,
+   "ids": [
+    10988
+   ],
+   "name": "Жыланды",
+   "region": "Ұлытау облысы",
+   "lat": 48.008741,
+   "lng": 69.132242,
+   "latitudeSet": "B",
+   "offsetDeg": 0.008741000000000554,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 11121,
+   "ids": [
+    11121
+   ],
+   "name": "Бұран",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.008988,
+   "lng": 85.196051,
+   "latitudeSet": "B",
+   "offsetDeg": 0.008988000000002216,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 5838,
+   "ids": [
+    5838
+   ],
+   "name": "Қожакелді",
+   "region": "Абай облысы",
+   "lat": 48.009,
+   "lng": 82.513349,
+   "latitudeSet": "B",
+   "offsetDeg": 0.009000000000000341,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 5782,
+   "ids": [
+    5782
+   ],
+   "name": "Қосагаш",
+   "region": "Абай облысы",
+   "lat": 48.009133,
+   "lng": 78.604977,
+   "latitudeSet": "B",
+   "offsetDeg": 0.009132999999998503,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 11126,
+   "ids": [
+    11126
+   ],
+   "name": "Ол жақ қалжыр",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.012086,
+   "lng": 85.173135,
+   "latitudeSet": "B",
+   "offsetDeg": 0.012085999999996488,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 8404,
+   "ids": [
+    8404
+   ],
+   "name": "Ақшкөл",
+   "region": "Қарағанды облысы",
+   "lat": 48.017818,
+   "lng": 75.962277,
+   "latitudeSet": "B",
+   "offsetDeg": 0.017817999999998335,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 11122,
+   "ids": [
+    11122
+   ],
+   "name": "Жиделі",
+   "region": "Шығыс Қазақстан облысы",
+   "lat": 48.025707,
+   "lng": 85.30472,
+   "latitudeSet": "B",
+   "offsetDeg": 0.025706999999997038,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 6868,
+   "ids": [
+    6868
+   ],
+   "name": "Қауылжыр",
+   "region": "Ақтөбе облысы",
+   "lat": 48.031883,
+   "lng": 59.190605,
+   "latitudeSet": "B",
+   "offsetDeg": 0.03188300000000055,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 6657,
+   "ids": [
+    6657
+   ],
+   "name": "Жайсанбай",
+   "region": "Ақтөбе облысы",
+   "lat": 48.039595,
+   "lng": 62.512135,
+   "latitudeSet": "B",
+   "offsetDeg": 0.03959499999999849,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 7304,
+   "ids": [
+    7304
+   ],
+   "name": "Мұқыр",
+   "region": "Атырау облысы",
+   "lat": 48.043824,
+   "lng": 54.49503,
+   "latitudeSet": "B",
+   "offsetDeg": 0.04382400000000075,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 6632,
+   "ids": [
+    6632
+   ],
+   "name": "Ақтам",
+   "region": "Ақтөбе облысы",
+   "lat": 48.045926,
+   "lng": 56.659548,
+   "latitudeSet": "B",
+   "offsetDeg": 0.045926000000001466,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  },
+  {
+   "id": 8403,
+   "ids": [
+    8403
+   ],
+   "name": "Абай",
+   "region": "Қарағанды облысы",
+   "lat": 48.046245,
+   "lng": 75.859079,
+   "latitudeSet": "B",
+   "offsetDeg": 0.04624499999999898,
+   "apiMargin": "5",
+   "apiSet": "B",
+   "engineMargin3": {
+    "samePct": 33.333333333333336,
+    "worst": 2
+   },
+   "engineMargin5": {
+    "samePct": 100,
+    "worst": 0
+   },
+   "agrees": true,
+   "rows": 365
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-blr-touheed-2026.json",
+ "year": 2026,
+ "n_days": 344,
+ "point": {
+  "lat": 11.7,
+  "lon": 78.48
+ },
+ "coarse": {
+  "lat": 11.9,
+  "lon": 78.4,
+  "mae": 350.22
+ },
+ "mid": {
+  "lat": 11.7,
+  "lon": 78.48,
+  "mae": 350.09
+ },
+ "meta": {
+  "name": "Touheed educational trust ",
+  "address": "Masjid E Touheed, Dooravani Nagar, Bengaluru, Karnataka, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 13.25,
+ "fajr_sweep": [
+  {
+   "a": 13.25,
+   "med": 0.5,
+   "mae": 13.76,
+   "mad": 13
+  },
+  {
+   "a": 13,
+   "med": -0.5,
+   "mae": 13.78,
+   "mad": 13
+  },
+  {
+   "a": 13.05,
+   "med": -0.5,
+   "mae": 13.78,
+   "mad": 13
+  },
+  {
+   "a": 13.1,
+   "med": -0.5,
+   "mae": 13.84,
+   "mad": 14
+  }
+ ],
+ "isha_angle": 13,
+ "isha_sweep": [
+  {
+   "a": 13,
+   "med": -675.5,
+   "mae": 671.68,
+   "mad": 16
+  },
+  {
+   "a": 13.05,
+   "med": -676,
+   "mae": 671.88,
+   "mad": 16
+  },
+  {
+   "a": 13.1,
+   "med": -676,
+   "mae": 672.08,
+   "mad": 16
+  },
+  {
+   "a": 13.15,
+   "med": -676,
+   "mae": 672.26,
+   "mad": 15.5
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": -665,
+   "mad": 10
+  },
+  "1": {
+   "med": 703,
+   "mad": 8
+  }
+ },
+ "margins": {
+  "fajr": 1,
+  "sunrise": 30,
+  "dhuhr": -677,
+  "asr": 704,
+  "maghrib": 683,
+  "isha": -676
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 11,
+   "within1": 16.3,
+   "mae": 13.59,
+   "worst": -33,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 2.3,
+   "within1": 18.3,
+   "mae": 13.11,
+   "worst": -35,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4.4,
+   "within1": 12.2,
+   "mae": 7.16,
+   "worst": 18,
+   "med": 0
+  },
+  "asr": {
+   "exact": 6.7,
+   "within1": 13.4,
+   "mae": 12.24,
+   "worst": 35,
+   "med": 7
+  },
+  "maghrib": {
+   "exact": 3.2,
+   "within1": 13.4,
+   "mae": 15.01,
+   "worst": 40,
+   "med": 2
+  },
+  "isha": {
+   "exact": 7,
+   "within1": 14.5,
+   "mae": 15.19,
+   "worst": 36,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 0
+}

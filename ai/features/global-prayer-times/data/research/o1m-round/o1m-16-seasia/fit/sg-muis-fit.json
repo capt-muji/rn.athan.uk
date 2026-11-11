@@ -1,0 +1,288 @@
+{
+ "point": {
+  "lat": 1.3521,
+  "lon": 103.8198
+ },
+ "angles": {
+  "fajr": 20,
+  "isha": 18
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "magrib": 0,
+  "isha": 0
+ },
+ "rounding": "ceil (dhuhr round)",
+ "span": [
+  "2024-01-01",
+  "2027-12-31"
+ ],
+ "days": 1461,
+ "perYear": {
+  "2024": {
+   "days": 366,
+   "score": {
+    "fajr": {
+     "n": 366,
+     "exact": 253,
+     "within1": 366,
+     "mean": 0.03,
+     "worst": 1,
+     "best": 1
+    },
+    "sunrise": {
+     "n": 366,
+     "exact": 268,
+     "within1": 366,
+     "mean": 0.03,
+     "worst": 1,
+     "best": 1
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact": 145,
+     "within1": 365,
+     "mean": 0.61,
+     "worst": 2,
+     "best": 2
+    },
+    "asr": {
+     "n": 366,
+     "exact": 199,
+     "within1": 366,
+     "mean": 0.05,
+     "worst": 1,
+     "best": 1
+    },
+    "magrib": {
+     "n": 366,
+     "exact": 280,
+     "within1": 366,
+     "mean": 0.13,
+     "worst": 1,
+     "best": 1
+    },
+    "isha": {
+     "n": 366,
+     "exact": 289,
+     "within1": 366,
+     "mean": 0.03,
+     "worst": 1,
+     "best": 1
+    }
+   }
+  },
+  "2025": {
+   "days": 365,
+   "score": {
+    "fajr": {
+     "n": 365,
+     "exact": 284,
+     "within1": 365,
+     "mean": 0.03,
+     "worst": -1,
+     "best": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 288,
+     "within1": 365,
+     "mean": 0.04,
+     "worst": -1,
+     "best": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 149,
+     "within1": 365,
+     "mean": 0.59,
+     "worst": 1,
+     "best": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 260,
+     "within1": 363,
+     "mean": 0.05,
+     "worst": 2,
+     "best": 2
+    },
+    "magrib": {
+     "n": 365,
+     "exact": 248,
+     "within1": 354,
+     "mean": 0.12,
+     "worst": 2,
+     "best": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 251,
+     "within1": 365,
+     "mean": 0.01,
+     "worst": -1,
+     "best": 1
+    }
+   }
+  },
+  "2026": {
+   "days": 365,
+   "score": {
+    "fajr": {
+     "n": 365,
+     "exact": 252,
+     "within1": 365,
+     "mean": 0.01,
+     "worst": 1,
+     "best": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 269,
+     "within1": 365,
+     "mean": 0.05,
+     "worst": 1,
+     "best": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 148,
+     "within1": 365,
+     "mean": 0.59,
+     "worst": 1,
+     "best": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 196,
+     "within1": 360,
+     "mean": 0.04,
+     "worst": -2,
+     "best": 2
+    },
+    "magrib": {
+     "n": 365,
+     "exact": 264,
+     "within1": 365,
+     "mean": 0.12,
+     "worst": 1,
+     "best": 1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 298,
+     "within1": 365,
+     "mean": 0.02,
+     "worst": 1,
+     "best": 1
+    }
+   }
+  },
+  "2027": {
+   "days": 365,
+   "score": {
+    "fajr": {
+     "n": 365,
+     "exact": 254,
+     "within1": 365,
+     "mean": -0.01,
+     "worst": 1,
+     "best": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 266,
+     "within1": 365,
+     "mean": 0.04,
+     "worst": 1,
+     "best": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 158,
+     "within1": 363,
+     "mean": 0.57,
+     "worst": 2,
+     "best": 2
+    },
+    "asr": {
+     "n": 365,
+     "exact": 198,
+     "within1": 365,
+     "mean": 0.03,
+     "worst": 1,
+     "best": 1
+    },
+    "magrib": {
+     "n": 365,
+     "exact": 273,
+     "within1": 359,
+     "mean": 0.12,
+     "worst": 2,
+     "best": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 292,
+     "within1": 365,
+     "mean": 0.03,
+     "worst": 1,
+     "best": 1
+    }
+   }
+  }
+ },
+ "all": {
+  "fajr": {
+   "n": 1461,
+   "exact": 1043,
+   "within1": 1461,
+   "mean": 0.02,
+   "worst": 1,
+   "best": 1
+  },
+  "sunrise": {
+   "n": 1461,
+   "exact": 1091,
+   "within1": 1461,
+   "mean": 0.04,
+   "worst": 1,
+   "best": 1
+  },
+  "dhuhr": {
+   "n": 1461,
+   "exact": 600,
+   "within1": 1458,
+   "mean": 0.59,
+   "worst": 2,
+   "best": 2
+  },
+  "asr": {
+   "n": 1461,
+   "exact": 853,
+   "within1": 1454,
+   "mean": 0.04,
+   "worst": 2,
+   "best": 2
+  },
+  "magrib": {
+   "n": 1461,
+   "exact": 1065,
+   "within1": 1444,
+   "mean": 0.12,
+   "worst": 2,
+   "best": 2
+  },
+  "isha": {
+   "n": 1461,
+   "exact": 1130,
+   "within1": 1461,
+   "mean": 0.02,
+   "worst": 1,
+   "best": 1
+  }
+ }
+}

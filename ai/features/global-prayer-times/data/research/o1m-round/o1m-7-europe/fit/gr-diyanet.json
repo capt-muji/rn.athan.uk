@@ -1,0 +1,3397 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "16643",
+   "name": "Amphissa",
+   "lat": 38.52813,
+   "lon": 22.37713,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 42.7,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.58,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    }
+   },
+   "allW1": 97.6
+  },
+  {
+   "key": "16644",
+   "name": "Khalkis",
+   "lat": 38.46354,
+   "lon": 23.60284,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.6,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 35.1,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    }
+   },
+   "allW1": 97.7
+  },
+  {
+   "key": "16645",
+   "name": "Levadhia",
+   "lat": 38.43616,
+   "lon": 22.87665,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.3,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.61,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    }
+   },
+   "allW1": 97.8
+  },
+  {
+   "key": "16646",
+   "name": "Nauplion",
+   "lat": 37.56863,
+   "lon": 22.80691,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 43,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.58,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    }
+   },
+   "allW1": 98.2
+  },
+  {
+   "key": "16647",
+   "name": "Ferai",
+   "lat": 40.89305,
+   "lon": 26.17234,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "16648",
+   "name": "Orestias",
+   "lat": 41.50306,
+   "lon": 26.52972,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "16649",
+   "name": "Peplos",
+   "lat": 40.95755,
+   "lon": 26.26577,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 97.1
+  },
+  {
+   "key": "16650",
+   "name": "Sapai",
+   "lat": 41.02861,
+   "lon": 25.69306,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "16651",
+   "name": "Alexandria",
+   "lat": 40.62667,
+   "lon": 22.44417,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "16652",
+   "name": "Epanomi",
+   "lat": 40.42614,
+   "lon": 22.92782,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "16653",
+   "name": "Kilkis",
+   "lat": 40.99302,
+   "lon": 22.87433,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.66,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "16654",
+   "name": "Ormilia",
+   "lat": 40.29451,
+   "lon": 23.54332,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "16655",
+   "name": "Vasilika",
+   "lat": 40.47966,
+   "lon": 23.13695,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 17,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.72,
+    "isha": 16.49
+   },
+   "offsets": {
+    "fajr": -2,
+    "sunrise": -8,
+    "dhuhr": 4,
+    "asr": 4,
+    "maghrib": 6,
+    "isha": -2
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 8.5,
+     "w1": 24.9,
+     "w2": 43,
+     "mae": 3.16,
+     "worst": -7
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 7.4,
+     "w1": 23.3,
+     "w2": 39.5,
+     "mae": 2.91,
+     "worst": 6
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 8.5,
+     "w1": 29.9,
+     "w2": 45.8,
+     "mae": 2.45,
+     "worst": -5
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 7.7,
+     "w1": 23,
+     "w2": 40.3,
+     "mae": 2.89,
+     "worst": 5
+    },
+    "isha": {
+     "n": 365,
+     "exact": 7.4,
+     "w1": 23,
+     "w2": 39.7,
+     "mae": 3.7,
+     "worst": -10
+    }
+   },
+   "allW1": 37.4
+  },
+  {
+   "key": "16656",
+   "name": "Igoumenitsa",
+   "lat": 39.50342,
+   "lon": 20.26728,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 17.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 58.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.42,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 36.4,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    }
+   },
+   "allW1": 94.2
+  },
+  {
+   "key": "16657",
+   "name": "Patrass",
+   "lat": 38.2462,
+   "lon": 21.73508,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    }
+   },
+   "allW1": 97.5
+  },
+  {
+   "key": "16658",
+   "name": "Rodos",
+   "lat": 36.43556,
+   "lon": 28.22199,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 35.1,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.66,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 43.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.56,
+     "worst": -1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    }
+   },
+   "allW1": 98.9
+  },
+  {
+   "key": "16659",
+   "name": "Corinth",
+   "lat": 37.94007,
+   "lon": 22.9513,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.9,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    }
+   },
+   "allW1": 98.2
+  },
+  {
+   "key": "16660",
+   "name": "Iraklion",
+   "lat": 35.32787,
+   "lon": 25.14341,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 91.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 37.3,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 45.5,
+     "w1": 99.7,
+     "w2": 100,
+     "mae": 0.55,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 36.4,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    }
+   },
+   "allW1": 98.8
+  },
+  {
+   "key": "16661",
+   "name": "Kalamaria",
+   "lat": 40.5825,
+   "lon": 22.95028,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.94
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 96.7
+  },
+  {
+   "key": "16662",
+   "name": "Kalamata",
+   "lat": 37.03913,
+   "lon": 22.11265,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 42.5,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.58,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    }
+   },
+   "allW1": 98.5
+  },
+  {
+   "key": "16663",
+   "name": "Katerini",
+   "lat": 40.26956,
+   "lon": 22.50608,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "16664",
+   "name": "Kavala",
+   "lat": 40.93959,
+   "lon": 24.40687,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 87.4,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "16665",
+   "name": "Kerkira",
+   "lat": 39.62441,
+   "lon": 19.92016,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "16666",
+   "name": "Kos",
+   "lat": 36.89295,
+   "lon": 27.28768,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.8,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.6,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    }
+   },
+   "allW1": 98.6
+  },
+  {
+   "key": "16667",
+   "name": "Kozani",
+   "lat": 40.29931,
+   "lon": 21.78984,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.5
+  },
+  {
+   "key": "16668",
+   "name": "Karditsa",
+   "lat": 39.36485,
+   "lon": 21.92191,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 97.3
+  },
+  {
+   "key": "16669",
+   "name": "Mytilene",
+   "lat": 39.10772,
+   "lon": 26.55529,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.3,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.61,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 97.8
+  },
+  {
+   "key": "16670",
+   "name": "Idannina",
+   "lat": 39.66341,
+   "lon": 20.85187,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 43.6,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.58,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 97.1
+  },
+  {
+   "key": "16671",
+   "name": "Neapolis",
+   "lat": 40.93959,
+   "lon": 24.40687,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 14.5,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 15.82,
+    "isha": 16.91
+   },
+   "offsets": {
+    "fajr": 2,
+    "sunrise": -1,
+    "dhuhr": 10,
+    "asr": 11,
+    "maghrib": 12,
+    "isha": 2
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 3.8,
+     "w1": 10.7,
+     "w2": 19.2,
+     "mae": 12.73,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 2.2,
+     "w1": 8.2,
+     "w2": 13.7,
+     "mae": 8.14,
+     "worst": 14
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 57,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.43,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 4.1,
+     "w1": 8.5,
+     "w2": 15.1,
+     "mae": 6.97,
+     "worst": -12
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 3.8,
+     "w1": 7.1,
+     "w2": 14.2,
+     "mae": 8.11,
+     "worst": -14
+    },
+    "isha": {
+     "n": 365,
+     "exact": 3.3,
+     "w1": 9.9,
+     "w2": 18.1,
+     "mae": 11.59,
+     "worst": 24
+    }
+   },
+   "allW1": 24.1
+  },
+  {
+   "key": "16672",
+   "name": "Serrai",
+   "lat": 41.08499,
+   "lon": 23.54757,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 86.3,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 96
+  },
+  {
+   "key": "16673",
+   "name": "Khania",
+   "lat": 35.51124,
+   "lon": 24.02921,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 37.3,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 44.4,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.56,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    }
+   },
+   "allW1": 98.2
+  },
+  {
+   "key": "16674",
+   "name": "Veroia",
+   "lat": 40.52437,
+   "lon": 22.20242,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "16675",
+   "name": "Trikala",
+   "lat": 39.55493,
+   "lon": 21.76837,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 97.5
+  },
+  {
+   "key": "16676",
+   "name": "Tripolis",
+   "lat": 37.50959,
+   "lon": 22.37883,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.6,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    }
+   },
+   "allW1": 97.6
+  },
+  {
+   "key": "16677",
+   "name": "Volos",
+   "lat": 39.36923,
+   "lon": 22.94769,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    }
+   },
+   "allW1": 97
+  },
+  {
+   "key": "16678",
+   "name": "Ermoupolis",
+   "lat": 37.44466,
+   "lon": 24.9429,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.2,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    }
+   },
+   "allW1": 98.5
+  },
+  {
+   "key": "16679",
+   "name": "Katakolon",
+   "lat": 37.65597,
+   "lon": 21.31742,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 95.3,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.1,
+     "w1": 99.5,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    }
+   },
+   "allW1": 98.1
+  },
+  {
+   "key": "16680",
+   "name": "Lamia",
+   "lat": 38.89947,
+   "lon": 22.4335,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 36.2,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    }
+   },
+   "allW1": 97.4
+  },
+  {
+   "key": "16681",
+   "name": "Larisa",
+   "lat": 39.62847,
+   "lon": 22.42112,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "16682",
+   "name": "Dedeagac",
+   "lat": 40.84995,
+   "lon": 25.87644,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 96.7
+  },
+  {
+   "key": "16683",
+   "name": "Gumulcine(komotini)",
+   "lat": 41.11758,
+   "lon": 25.40587,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 96.5
+  },
+  {
+   "key": "16684",
+   "name": "Selanik(thessaloniki)",
+   "lat": 40.64072,
+   "lon": 22.93493,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.94
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  },
+  {
+   "key": "16685",
+   "name": "Atina",
+   "lat": 37.98376,
+   "lon": 23.72784,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.8,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.6,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    }
+   },
+   "allW1": 98.1
+  },
+  {
+   "key": "16686",
+   "name": "Iskece(xanthi)",
+   "lat": 41.13488,
+   "lon": 24.888,
+   "tz": "Europe/Athens",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 16.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 96.4
+  }
+ ]
+}

@@ -1,0 +1,6532 @@
+{
+ "recipe": "adhan 4.4.6 Other(19.5,17.5) Shafi zero margins Rounding.None, tz Europe/London per DST window",
+ "cities": {
+  "ابوزنيمة": {
+   "city": "ابوزنيمة",
+   "editions": {
+    "1445": {
+     "page": "001.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.0475,
+      "lng": 33.11034,
+      "exact": 151,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 83.89
+     },
+     "implied": {
+      "lat": 29.0375,
+      "lng": 33.0853,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.7
+    },
+    "1446": {
+     "page": "001.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.0475,
+      "lng": 33.11034,
+      "exact": 153,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 87.93
+     },
+     "implied": {
+      "lat": 29.0575,
+      "lng": 33.0803,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.1
+    },
+    "1447": {
+     "page": "001.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.0475,
+      "lng": 33.11034,
+      "exact": 150,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 83.33
+     },
+     "implied": {
+      "lat": 28.8975,
+      "lng": 33.0903,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 16.8
+    }
+   }
+  },
+  "ادفو": {
+   "city": "ادفو",
+   "editions": {
+    "1445": {
+     "page": "002.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 24.97916,
+      "lng": 32.87722,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 24.8792,
+      "lng": 32.8372,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 11.8
+    },
+    "1446": {
+     "page": "002.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 24.97916,
+      "lng": 32.87722,
+      "exact": 146,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 83.91
+     },
+     "implied": {
+      "lat": 25.0892,
+      "lng": 32.8372,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 12.9
+    },
+    "1447": {
+     "page": "002.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 24.97916,
+      "lng": 32.87722,
+      "exact": 142,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 78.89
+     },
+     "implied": {
+      "lat": 24.7892,
+      "lng": 32.8422,
+      "exactPct": 90.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 21.4
+    }
+   }
+  },
+  "اسنا": {
+   "city": "اسنا",
+   "editions": {
+    "1445": {
+     "page": "003.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 25.29336,
+      "lng": 32.55402,
+      "exact": 169,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.89
+     },
+     "implied": {
+      "lat": 25.29336,
+      "lng": 32.55402,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    },
+    "1446": {
+     "page": "003.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 25.29336,
+      "lng": 32.55402,
+      "exact": 161,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 92.53
+     },
+     "implied": {
+      "lat": 25.2734,
+      "lng": 32.574,
+      "exactPct": 95.4,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3
+    },
+    "1447": {
+     "page": "003.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 25.29336,
+      "lng": 32.55402,
+      "exact": 165,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 25.5734,
+      "lng": 32.474,
+      "exactPct": 65,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 32.1
+    }
+   }
+  },
+  "أسوان": {
+   "city": "أسوان",
+   "editions": {
+    "1445": {
+     "page": "004.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 24.09082,
+      "lng": 32.89942,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 24.0108,
+      "lng": 32.8994,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    },
+    "1446": {
+     "page": "004.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 24.09082,
+      "lng": 32.89942,
+      "exact": 159,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.38
+     },
+     "implied": {
+      "lat": 24.0608,
+      "lng": 32.9094,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.5
+    },
+    "1447": {
+     "page": "004.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 24.09082,
+      "lng": 32.89942,
+      "exact": 142,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 78.89
+     },
+     "implied": {
+      "lat": 23.7408,
+      "lng": 32.9344,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 39
+    }
+   }
+  },
+  "أسيوط": {
+   "city": "أسيوط",
+   "editions": {
+    "1445": {
+     "page": "005.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 27.18096,
+      "lng": 31.18368,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 27.18096,
+      "lng": 31.18368,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    },
+    "1446": {
+     "page": "005.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 27.18096,
+      "lng": 31.18368,
+      "exact": 159,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.38
+     },
+     "implied": {
+      "lat": 27.101,
+      "lng": 31.1837,
+      "exactPct": 92.53,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    },
+    "1447": {
+     "page": "005.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 27.18096,
+      "lng": 31.18368,
+      "exact": 162,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 26.721,
+      "lng": 31.1137,
+      "exactPct": 60,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 51.5
+    }
+   }
+  },
+  "6أكتوبر": {
+   "city": "6أكتوبر",
+   "editions": {
+    "1445": {
+     "page": "006.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.9361,
+      "lng": 30.9188,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 29.8861,
+      "lng": 30.9338,
+      "exactPct": 95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.7
+    },
+    "1446": {
+     "page": "006.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.9361,
+      "lng": 30.9188,
+      "exact": 150,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.21
+     },
+     "implied": {
+      "lat": 29.9061,
+      "lng": 30.9288,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.5
+    },
+    "1447": {
+     "page": "006.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.9361,
+      "lng": 30.9188,
+      "exact": 153,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85
+     },
+     "implied": {
+      "lat": 30.0111,
+      "lng": 30.9238,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.3
+    }
+   }
+  },
+  "الأسكندرية": {
+   "city": "الأسكندرية",
+   "editions": {
+    "1445": {
+     "page": "007.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.20176,
+      "lng": 29.91582,
+      "exact": 127,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 70.56
+     },
+     "implied": {
+      "lat": 31.2018,
+      "lng": 29.9758,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.7
+    },
+    "1446": {
+     "page": "022.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.20176,
+      "lng": 29.91582,
+      "exact": 26,
+      "w1": 158,
+      "n": 174,
+      "worst": 2,
+      "exactPct": 14.94
+     },
+     "implied": {
+      "lat": 30.6918,
+      "lng": 29.6708,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 61.2
+    },
+    "1447": {
+     "page": "007.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.20176,
+      "lng": 29.91582,
+      "exact": 132,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 73.33
+     },
+     "implied": {
+      "lat": 31.1668,
+      "lng": 29.9708,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.5
+    }
+   }
+  },
+  "الإسماعيلية": {
+   "city": "الإسماعيلية",
+   "editions": {
+    "1445": {
+     "page": "008.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.60427,
+      "lng": 32.27225,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 30.6293,
+      "lng": 32.2722,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.8
+    },
+    "1446": {
+     "page": "008.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.60427,
+      "lng": 32.27225,
+      "exact": 156,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 89.66
+     },
+     "implied": {
+      "lat": 30.5843,
+      "lng": 32.2623,
+      "exactPct": 90.23,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.4
+    },
+    "1447": {
+     "page": "008.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.60427,
+      "lng": 32.27225,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 30.6443,
+      "lng": 32.2722,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    }
+   }
+  },
+  "الحامول": {
+   "city": "الحامول",
+   "editions": {
+    "1445": {
+     "page": "009.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.31146,
+      "lng": 31.14766,
+      "exact": 165,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 31.2915,
+      "lng": 31.1577,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.4
+    },
+    "1446": {
+     "page": "009.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.31146,
+      "lng": 31.14766,
+      "exact": 150,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.21
+     },
+     "implied": {
+      "lat": 31.2615,
+      "lng": 31.1677,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.9
+    },
+    "1447": {
+     "page": "009.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.31146,
+      "lng": 31.14766,
+      "exact": 165,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 31.3115,
+      "lng": 31.1477,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    }
+   }
+  },
+  "الحمام": {
+   "city": "الحمام",
+   "editions": {
+    "1445": {
+     "page": "010.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.84532,
+      "lng": 29.38818,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 30.8253,
+      "lng": 29.4082,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.9
+    },
+    "1446": {
+     "page": "010.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.84532,
+      "lng": 29.38818,
+      "exact": 156,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 89.66
+     },
+     "implied": {
+      "lat": 30.7903,
+      "lng": 29.3982,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.2
+    },
+    "1447": {
+     "page": "010.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.84532,
+      "lng": 29.38818,
+      "exact": 159,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 30.7953,
+      "lng": 29.4032,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.7
+    }
+   }
+  },
+  "الخارجة": {
+   "city": "الخارجة",
+   "editions": {
+    "1445": {
+     "page": "011.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 25.45101,
+      "lng": 30.54653,
+      "exact": 5,
+      "w1": 159,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 2.78
+     },
+     "implied": {
+      "lat": 25.391,
+      "lng": 30.2665,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 28.8
+    },
+    "1446": {
+     "page": "034.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 25.45101,
+      "lng": 30.54653,
+      "exact": 109,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 62.64
+     },
+     "implied": {
+      "lat": 24.921,
+      "lng": 30.5165,
+      "exactPct": 82.18,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 58.9
+    },
+    "1447": {
+     "page": "011.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 25.45101,
+      "lng": 30.54653,
+      "exact": 5,
+      "w1": 170,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 2.78
+     },
+     "implied": {
+      "lat": 25.451,
+      "lng": 30.2665,
+      "exactPct": 96.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 28.1
+    }
+   }
+  },
+  "الدلنجات": {
+   "city": "الدلنجات",
+   "editions": {
+    "1445": {
+     "page": "012.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.82796,
+      "lng": 30.53552,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 30.823,
+      "lng": 30.5455,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.1
+    },
+    "1446": {
+     "page": "012.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.82796,
+      "lng": 30.53552,
+      "exact": 160,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.95
+     },
+     "implied": {
+      "lat": 30.808,
+      "lng": 30.5355,
+      "exactPct": 92.53,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    },
+    "1447": {
+     "page": "012.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.82796,
+      "lng": 30.53552,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 30.768,
+      "lng": 30.5355,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.7
+    }
+   }
+  },
+  "الزقازيق": {
+   "city": "الزقازيق",
+   "editions": {
+    "1445": {
+     "page": "013.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.58768,
+      "lng": 31.502,
+      "exact": 167,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.78
+     },
+     "implied": {
+      "lat": 30.5627,
+      "lng": 31.507,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.8
+    },
+    "1446": {
+     "page": "013.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.58768,
+      "lng": 31.502,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 30.6277,
+      "lng": 31.522,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.8
+    },
+    "1447": {
+     "page": "013.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.58768,
+      "lng": 31.502,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 30.6327,
+      "lng": 31.522,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.4
+    }
+   }
+  },
+  "السادات": {
+   "city": "السادات",
+   "editions": {
+    "1445": {
+     "page": "014.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.36742,
+      "lng": 30.50871,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 30.4474,
+      "lng": 30.5287,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.1
+    },
+    "1446": {
+     "page": "014.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.36742,
+      "lng": 30.50871,
+      "exact": 154,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 88.51
+     },
+     "implied": {
+      "lat": 30.4474,
+      "lng": 30.5287,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.1
+    },
+    "1447": {
+     "page": "014.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.36742,
+      "lng": 30.50871,
+      "exact": 158,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 87.78
+     },
+     "implied": {
+      "lat": 30.4874,
+      "lng": 30.5287,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 13.5
+    }
+   }
+  },
+  "السلوم": {
+   "city": "السلوم",
+   "editions": {
+    "1445": {
+     "page": "015.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.55371,
+      "lng": 25.15793,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 31.4937,
+      "lng": 25.1779,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.9
+    },
+    "1446": {
+     "page": "015.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.55371,
+      "lng": 25.15793,
+      "exact": 151,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.78
+     },
+     "implied": {
+      "lat": 31.5237,
+      "lng": 25.1729,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.6
+    },
+    "1447": {
+     "page": "015.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.55371,
+      "lng": 25.15793,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 31.5937,
+      "lng": 25.1779,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.8
+    }
+   }
+  },
+  "السويس": {
+   "city": "السويس",
+   "editions": {
+    "1445": {
+     "page": "016.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.97371,
+      "lng": 32.52627,
+      "exact": 148,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.22
+     },
+     "implied": {
+      "lat": 29.9887,
+      "lng": 32.5513,
+      "exactPct": 90,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.9
+    },
+    "1446": {
+     "page": "056.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.97371,
+      "lng": 32.52627,
+      "exact": 77,
+      "w1": 163,
+      "n": 174,
+      "worst": 2,
+      "exactPct": 44.25
+     },
+     "implied": {
+      "lat": 30.5037,
+      "lng": 32.6263,
+      "exactPct": 78.16,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 59.6
+    },
+    "1447": {
+     "page": "016.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.97371,
+      "lng": 32.52627,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 29.8637,
+      "lng": 32.5413,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 12.3
+    }
+   }
+  },
+  "الصالحية الجديدة": {
+   "city": "الصالحية الجديدة",
+   "editions": {
+    "1445": {
+     "page": "017.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.63146,
+      "lng": 31.93927,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 30.6115,
+      "lng": 31.9393,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    },
+    "1446": {
+     "page": "017.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.63146,
+      "lng": 31.93927,
+      "exact": 159,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.38
+     },
+     "implied": {
+      "lat": 30.6115,
+      "lng": 31.9393,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    },
+    "1447": {
+     "page": "017.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.63146,
+      "lng": 31.93927,
+      "exact": 165,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 30.5765,
+      "lng": 31.9343,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.1
+    }
+   }
+  },
+  "الضبعة": {
+   "city": "الضبعة",
+   "editions": {
+    "1445": {
+     "page": "018.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.02819,
+      "lng": 28.44498,
+      "exact": 157,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 87.22
+     },
+     "implied": {
+      "lat": 31.0182,
+      "lng": 28.455,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.5
+    },
+    "1446": {
+     "page": "018.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.02819,
+      "lng": 28.44498,
+      "exact": 150,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.21
+     },
+     "implied": {
+      "lat": 30.9482,
+      "lng": 28.465,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.1
+    },
+    "1447": {
+     "page": "018.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.02819,
+      "lng": 28.44498,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 30.9682,
+      "lng": 28.45,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.7
+    }
+   }
+  },
+  "الطور": {
+   "city": "الطور",
+   "editions": {
+    "1445": {
+     "page": "019.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.24168,
+      "lng": 33.6222,
+      "exact": 159,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 28.1917,
+      "lng": 33.6372,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.7
+    },
+    "1446": {
+     "page": "019.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.24168,
+      "lng": 33.6222,
+      "exact": 154,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 88.51
+     },
+     "implied": {
+      "lat": 28.2417,
+      "lng": 33.6422,
+      "exactPct": 94.83,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2
+    },
+    "1447": {
+     "page": "019.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.24168,
+      "lng": 33.6222,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 28.1617,
+      "lng": 33.6222,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    }
+   }
+  },
+  "العاشر من رمضان": {
+   "city": "العاشر من رمضان",
+   "editions": {
+    "1445": {
+     "page": "020.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.29636,
+      "lng": 31.74633,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 30.3364,
+      "lng": 31.7463,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    },
+    "1446": {
+     "page": "020.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.29636,
+      "lng": 31.74633,
+      "exact": 158,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.8
+     },
+     "implied": {
+      "lat": 30.2814,
+      "lng": 31.7513,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1447": {
+     "page": "020.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.29636,
+      "lng": 31.74633,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 30.2764,
+      "lng": 31.7413,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.3
+    }
+   }
+  },
+  "بدر": {
+   "city": "بدر",
+   "editions": {
+    "1445": {
+     "page": "021.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.136,
+      "lng": 31.715,
+      "exact": 74,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 41.11
+     },
+     "implied": {
+      "lat": 29.936,
+      "lng": 31.855,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 26
+    },
+    "1446": {
+     "page": "021.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.136,
+      "lng": 31.715,
+      "exact": 70,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 40.23
+     },
+     "implied": {
+      "lat": 29.926,
+      "lng": 31.845,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 26.4
+    },
+    "1447": {
+     "page": "021.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.136,
+      "lng": 31.715,
+      "exact": 63,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 35
+     },
+     "implied": {
+      "lat": 29.916,
+      "lng": 31.855,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 27.9
+    }
+   }
+  },
+  "حدائق العاصمة": {
+   "city": "حدائق العاصمة",
+   "editions": {
+    "1445": {
+     "page": "022.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.05,
+      "lng": 31.65,
+      "exact": 133,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 73.89
+     },
+     "implied": {
+      "lat": 30.27,
+      "lng": 31.57,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 25.6
+    },
+    "1446": {
+     "page": "037.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.05,
+      "lng": 31.65,
+      "exact": 129,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 74.14
+     },
+     "implied": {
+      "lat": 30.22,
+      "lng": 31.58,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 20
+    },
+    "1447": {
+     "page": "022.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.05,
+      "lng": 31.65,
+      "exact": 138,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 76.67
+     },
+     "implied": {
+      "lat": 30.37,
+      "lng": 31.57,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 36.3
+    }
+   }
+  },
+  "العريش": {
+   "city": "العريش",
+   "editions": {
+    "1445": {
+     "page": "023.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.13159,
+      "lng": 33.79844,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 31.1166,
+      "lng": 33.8084,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.9
+    },
+    "1446": {
+     "page": "038.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.13159,
+      "lng": 33.79844,
+      "exact": 160,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.95
+     },
+     "implied": {
+      "lat": 31.0916,
+      "lng": 33.8034,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.5
+    },
+    "1447": {
+     "page": "023.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.13159,
+      "lng": 33.79844,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 31.0466,
+      "lng": 33.7984,
+      "exactPct": 90,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.4
+    }
+   }
+  },
+  "العلمين": {
+   "city": "العلمين",
+   "editions": {
+    "1445": {
+     "page": "024.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.83007,
+      "lng": 28.95502,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 30.8001,
+      "lng": 28.97,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.6
+    },
+    "1446": {
+     "page": "039.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.83007,
+      "lng": 28.95502,
+      "exact": 163,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 93.68
+     },
+     "implied": {
+      "lat": 30.83007,
+      "lng": 28.95502,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    },
+    "1447": {
+     "page": "024.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.83007,
+      "lng": 28.95502,
+      "exact": 165,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 30.83007,
+      "lng": 28.95502,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    }
+   }
+  },
+  "الغردقة": {
+   "city": "الغردقة",
+   "editions": {
+    "1445": {
+     "page": "025.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 27.25738,
+      "lng": 33.81291,
+      "exact": 152,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 84.44
+     },
+     "implied": {
+      "lat": 27.1374,
+      "lng": 33.8529,
+      "exactPct": 95.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 13.9
+    },
+    "1446": {
+     "page": "040.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 27.25738,
+      "lng": 33.81291,
+      "exact": 146,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 83.91
+     },
+     "implied": {
+      "lat": 27.1674,
+      "lng": 33.8429,
+      "exactPct": 94.83,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 10.4
+    },
+    "1447": {
+     "page": "025.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 27.25738,
+      "lng": 33.81291,
+      "exact": 150,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 83.33
+     },
+     "implied": {
+      "lat": 27.2074,
+      "lng": 33.8429,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.3
+    }
+   }
+  },
+  "الفرافرة": {
+   "city": "الفرافرة",
+   "editions": {
+    "1445": {
+     "page": "026.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 27.0568,
+      "lng": 27.96979,
+      "exact": 141,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 78.33
+     },
+     "implied": {
+      "lat": 27.0618,
+      "lng": 27.9948,
+      "exactPct": 87.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.5
+    },
+    "1446": {
+     "page": "041.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 27.0568,
+      "lng": 27.96979,
+      "exact": 136,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 78.16
+     },
+     "implied": {
+      "lat": 27.0218,
+      "lng": 28.0148,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.9
+    },
+    "1447": {
+     "page": "026.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 27.0568,
+      "lng": 27.96979,
+      "exact": 147,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 81.67
+     },
+     "implied": {
+      "lat": 27.0618,
+      "lng": 27.9998,
+      "exactPct": 90.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3
+    }
+   }
+  },
+  "سمالوط": {
+   "city": "سمالوط",
+   "editions": {
+    "1445": {
+     "page": "027.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.31214,
+      "lng": 30.71007,
+      "exact": 124,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 68.89
+     },
+     "implied": {
+      "lat": 28.7871,
+      "lng": 30.6751,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 52.8
+    },
+    "1446": {
+     "page": "084.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.31214,
+      "lng": 30.71007,
+      "exact": 161,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 92.53
+     },
+     "implied": {
+      "lat": 28.2671,
+      "lng": 30.7151,
+      "exactPct": 94.83,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5
+    },
+    "1447": {
+     "page": "027.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.31214,
+      "lng": 30.71007,
+      "exact": 129,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 71.67
+     },
+     "implied": {
+      "lat": 28.7571,
+      "lng": 30.6651,
+      "exactPct": 90.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 49.6
+    }
+   }
+  },
+  "الفيوم": {
+   "city": "الفيوم",
+   "editions": {
+    "1445": {
+     "page": "028.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.30995,
+      "lng": 30.8418,
+      "exact": 166,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.22
+     },
+     "implied": {
+      "lat": 29.2799,
+      "lng": 30.8368,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.4
+    },
+    "1446": {
+     "page": "043.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.30995,
+      "lng": 30.8418,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 29.19,
+      "lng": 30.8368,
+      "exactPct": 92.53,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 13.3
+    },
+    "1447": {
+     "page": "028.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.30995,
+      "lng": 30.8418,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 29.33,
+      "lng": 30.8368,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.3
+    }
+   }
+  },
+  "القاهرة الجديدة": {
+   "city": "القاهرة الجديدة",
+   "editions": {
+    "1445": {
+     "page": "029.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.03,
+      "lng": 31.47,
+      "exact": 141,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 78.33
+     },
+     "implied": {
+      "lat": 30.015,
+      "lng": 31.405,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.5
+    },
+    "1446": {
+     "page": "044.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.03,
+      "lng": 31.47,
+      "exact": 131,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 75.29
+     },
+     "implied": {
+      "lat": 30.015,
+      "lng": 31.405,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.5
+    }
+   }
+  },
+  "القاهرة": {
+   "city": "القاهرة",
+   "editions": {
+    "1445": {
+     "page": "030.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.06263,
+      "lng": 31.24967,
+      "exact": 140,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 77.78
+     },
+     "implied": {
+      "lat": 30.0626,
+      "lng": 31.2747,
+      "exactPct": 85,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.4
+    },
+    "1446": {
+     "page": "045.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.06263,
+      "lng": 31.24967,
+      "exact": 142,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 81.61
+     },
+     "implied": {
+      "lat": 30.1226,
+      "lng": 31.2897,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.7
+    },
+    "1447": {
+     "page": "030.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.06263,
+      "lng": 31.24967,
+      "exact": 149,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.78
+     },
+     "implied": {
+      "lat": 29.9326,
+      "lng": 31.2847,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 14.8
+    }
+   }
+  },
+  "القصير": {
+   "city": "القصير",
+   "editions": {
+    "1445": {
+     "page": "031.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 26.10611,
+      "lng": 34.27716,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 25.9661,
+      "lng": 34.2972,
+      "exactPct": 96.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 15.7
+    },
+    "1446": {
+     "page": "046.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.10611,
+      "lng": 34.27716,
+      "exact": 160,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.95
+     },
+     "implied": {
+      "lat": 26.0211,
+      "lng": 34.2922,
+      "exactPct": 95.4,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.6
+    },
+    "1447": {
+     "page": "031.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 26.10611,
+      "lng": 34.27716,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 26.0061,
+      "lng": 34.2972,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 11.3
+    }
+   }
+  },
+  "منوف": {
+   "city": "منوف",
+   "editions": {
+    "1445": {
+     "page": "032.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.46597,
+      "lng": 30.93199,
+      "exact": 122,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 67.78
+     },
+     "implied": {
+      "lat": 30.966,
+      "lng": 30.952,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 55.5
+    },
+    "1446": {
+     "page": "090.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.46597,
+      "lng": 30.93199,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 30.441,
+      "lng": 30.932,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.8
+    },
+    "1447": {
+     "page": "032.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.46597,
+      "lng": 30.93199,
+      "exact": 135,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 75
+     },
+     "implied": {
+      "lat": 30.846,
+      "lng": 30.952,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 42.2
+    }
+   }
+  },
+  "المنصورة الجديدة": {
+   "city": "المنصورة الجديدة",
+   "editions": {
+    "1445": {
+     "page": "033.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.3667,
+      "lng": 31.55,
+      "exact": 86,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 47.78
+     },
+     "implied": {
+      "lat": 31.4567,
+      "lng": 31.415,
+      "exactPct": 95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 16.2
+    },
+    "1446": {
+     "page": "049.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.3667,
+      "lng": 31.55,
+      "exact": 137,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 78.74
+     },
+     "implied": {
+      "lat": 30.9867,
+      "lng": 31.515,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 42.3
+    },
+    "1447": {
+     "page": "046.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.3667,
+      "lng": 31.55,
+      "exact": 20,
+      "w1": 109,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 11.11
+     },
+     "implied": {
+      "lat": 30.8367,
+      "lng": 31.93,
+      "exactPct": 76.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 69
+    }
+   }
+  },
+  "المنصورة": {
+   "city": "المنصورة",
+   "editions": {
+    "1445": {
+     "page": "034.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.03637,
+      "lng": 31.38069,
+      "exact": 149,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.78
+     },
+     "implied": {
+      "lat": 31.0164,
+      "lng": 31.4007,
+      "exactPct": 90.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.9
+    },
+    "1446": {
+     "page": "048.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.03637,
+      "lng": 31.38069,
+      "exact": 124,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 71.26
+     },
+     "implied": {
+      "lat": 31.4264,
+      "lng": 31.4107,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 43.4
+    },
+    "1447": {
+     "page": "034.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.03637,
+      "lng": 31.38069,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 31.1014,
+      "lng": 31.4107,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.8
+    }
+   }
+  },
+  "المنيا": {
+   "city": "المنيا",
+   "editions": {
+    "1445": {
+     "page": "035.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.09193,
+      "lng": 30.75813,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 28.0769,
+      "lng": 30.7581,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1446": {
+     "page": "050.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.09193,
+      "lng": 30.75813,
+      "exact": 162,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 93.1
+     },
+     "implied": {
+      "lat": 28.0519,
+      "lng": 30.7581,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    },
+    "1447": {
+     "page": "035.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.09193,
+      "lng": 30.75813,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 28.0219,
+      "lng": 30.7681,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.8
+    }
+   }
+  },
+  "النوبارية الجديدة": {
+   "city": "النوبارية الجديدة",
+   "editions": {
+    "1445": {
+     "page": "036.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.6687,
+      "lng": 30.07391,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 30.6337,
+      "lng": 30.0639,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4
+    },
+    "1446": {
+     "page": "051.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.6687,
+      "lng": 30.07391,
+      "exact": 155,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 89.08
+     },
+     "implied": {
+      "lat": 30.6487,
+      "lng": 30.0789,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.3
+    },
+    "1447": {
+     "page": "036.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.6687,
+      "lng": 30.07391,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 30.5937,
+      "lng": 30.0689,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.3
+    }
+   }
+  },
+  "برنيس": {
+   "city": "برنيس",
+   "editions": {
+    "1445": {
+     "page": "037.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 23.94556,
+      "lng": 35.48417,
+      "exact": 144,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 80
+     },
+     "implied": {
+      "lat": 23.6756,
+      "lng": 35.5092,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 30.1
+    },
+    "1446": {
+     "page": "052.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 23.94556,
+      "lng": 35.48417,
+      "exact": 150,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.21
+     },
+     "implied": {
+      "lat": 23.7106,
+      "lng": 35.5092,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 26.2
+    },
+    "1447": {
+     "page": "037.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 23.94556,
+      "lng": 35.48417,
+      "exact": 159,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 23.8456,
+      "lng": 35.5042,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 11.3
+    }
+   }
+  },
+  "بلطيم": {
+   "city": "بلطيم",
+   "editions": {
+    "1445": {
+     "page": "038.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.55582,
+      "lng": 31.08918,
+      "exact": 154,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85.56
+     },
+     "implied": {
+      "lat": 31.3708,
+      "lng": 31.0992,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 20.6
+    },
+    "1446": {
+     "page": "053.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.55582,
+      "lng": 31.08918,
+      "exact": 147,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 84.48
+     },
+     "implied": {
+      "lat": 31.3758,
+      "lng": 31.0892,
+      "exactPct": 90.23,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 20
+    },
+    "1447": {
+     "page": "038.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.55582,
+      "lng": 31.08918,
+      "exact": 153,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85
+     },
+     "implied": {
+      "lat": 31.3658,
+      "lng": 31.0992,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 21.1
+    }
+   }
+  },
+  "بنى سويف": {
+   "city": "بنى سويف",
+   "editions": {
+    "1445": {
+     "page": "039.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.07441,
+      "lng": 31.09785,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 29.0944,
+      "lng": 31.0929,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.3
+    },
+    "1446": {
+     "page": "054.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.07441,
+      "lng": 31.09785,
+      "exact": 158,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.8
+     },
+     "implied": {
+      "lat": 29.0944,
+      "lng": 31.0979,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    },
+    "1447": {
+     "page": "039.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.07441,
+      "lng": 31.09785,
+      "exact": 160,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 28.9944,
+      "lng": 31.0979,
+      "exactPct": 90,
+      "w1Pct": 99.44,
+      "worst": 2
+     },
+     "deltaKm": 8.9
+    }
+   }
+  },
+  "الفشن الجديدة": {
+   "city": "الفشن الجديدة",
+   "editions": {
+    "1445": {
+     "page": "040.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.82306,
+      "lng": 30.89903,
+      "exact": 122,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 67.78
+     },
+     "implied": {
+      "lat": 28.4831,
+      "lng": 30.939,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 37.9
+    },
+    "1446": {
+     "page": "079.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.82306,
+      "lng": 30.89903,
+      "exact": 129,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 74.14
+     },
+     "implied": {
+      "lat": 28.9681,
+      "lng": 30.944,
+      "exactPct": 90.23,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 16.7
+    },
+    "1447": {
+     "page": "040.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.82306,
+      "lng": 30.89903,
+      "exact": 126,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 70
+     },
+     "implied": {
+      "lat": 28.6831,
+      "lng": 30.959,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 16.6
+    }
+   }
+  },
+  "بورسعيد الجديدة سلام": {
+   "city": "بورسعيد الجديدة سلام",
+   "editions": {
+    "1445": {
+     "page": "041.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.1833,
+      "lng": 32.2833,
+      "exact": 0,
+      "w1": 111,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 30.9933,
+      "lng": 32.6283,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 39
+    },
+    "1446": {
+     "page": "061.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.1833,
+      "lng": 32.2833,
+      "exact": 10,
+      "w1": 90,
+      "n": 174,
+      "worst": 3,
+      "exactPct": 5.75
+     },
+     "implied": {
+      "lat": 30.6533,
+      "lng": 31.8983,
+      "exactPct": 75.29,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 69.3
+    },
+    "1447": {
+     "page": "041.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.1833,
+      "lng": 32.2833,
+      "exact": 0,
+      "w1": 111,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 31.0433,
+      "lng": 32.6233,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 35.8
+    }
+   }
+  },
+  "بورسعيد": {
+   "city": "بورسعيد",
+   "editions": {
+    "1445": {
+     "page": "042.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.26531,
+      "lng": 32.3019,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 31.2503,
+      "lng": 32.3069,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1446": {
+     "page": "057.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.26531,
+      "lng": 32.3019,
+      "exact": 152,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 87.36
+     },
+     "implied": {
+      "lat": 31.2203,
+      "lng": 32.3119,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.1
+    },
+    "1447": {
+     "page": "042.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.26531,
+      "lng": 32.3019,
+      "exact": 159,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 31.1753,
+      "lng": 32.3069,
+      "exactPct": 90,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 10
+    }
+   }
+  },
+  "بئر العبد الجديدة": {
+   "city": "بئر العبد الجديدة",
+   "editions": {
+    "1445": {
+     "page": "043.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.0167,
+      "lng": 33.0167,
+      "exact": 158,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 87.78
+     },
+     "implied": {
+      "lat": 30.9967,
+      "lng": 33.0067,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.4
+    },
+    "1446": {
+     "page": "058.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.0167,
+      "lng": 33.0167,
+      "exact": 149,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 85.63
+     },
+     "implied": {
+      "lat": 31.0417,
+      "lng": 32.9917,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.7
+    },
+    "1447": {
+     "page": "043.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.0167,
+      "lng": 33.0167,
+      "exact": 151,
+      "w1": 179,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 83.89
+     },
+     "implied": {
+      "lat": 30.7417,
+      "lng": 32.9867,
+      "exactPct": 84.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 30.7
+    }
+   }
+  },
+  "توشكى الجديدة": {
+   "city": "توشكى الجديدة",
+   "editions": {
+    "1445": {
+     "page": "044.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 2,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.7224,
+      "lng": 31.4373,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 58.7
+    },
+    "1446": {
+     "page": "060.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 1,
+      "n": 174,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.5274,
+      "lng": 31.4373,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 54.3
+    },
+    "1447": {
+     "page": "045.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 3,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.4874,
+      "lng": 31.4373,
+      "exactPct": 86.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 54.5
+    }
+   }
+  },
+  "توشكى": {
+   "city": "توشكى",
+   "editions": {
+    "1445": {
+     "page": "045.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 93,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.8424,
+      "lng": 31.5873,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 52.7
+    },
+    "1446": {
+     "page": "059.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 97,
+      "n": 174,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.7624,
+      "lng": 31.5873,
+      "exactPct": 88.51,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 47.2
+    },
+    "1447": {
+     "page": "044.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 22.5224,
+      "lng": 31.96734,
+      "exact": 0,
+      "w1": 94,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 22.8624,
+      "lng": 31.5873,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 54.2
+    }
+   }
+  },
+  "العبور": {
+   "city": "العبور",
+   "editions": {
+    "1445": {
+     "page": "046.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.22886,
+      "lng": 31.48149,
+      "exact": 0,
+      "w1": 48,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 30.1039,
+      "lng": 31.9065,
+      "exactPct": 95.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 43.1
+    },
+    "1446": {
+     "page": "047.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.22886,
+      "lng": 31.48149,
+      "exact": 0,
+      "w1": 29,
+      "n": 174,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 30.7339,
+      "lng": 30.9765,
+      "exactPct": 86.21,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 74.1
+    },
+    "1447": {
+     "page": "029.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.22886,
+      "lng": 31.48149,
+      "exact": 142,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 78.89
+     },
+     "implied": {
+      "lat": 29.9689,
+      "lng": 31.4165,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 29.5
+    }
+   }
+  },
+  "حلايب": {
+   "city": "حلايب",
+   "editions": {
+    "1445": {
+     "page": "047.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 22.22273,
+      "lng": 36.64679,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 22.0127,
+      "lng": 36.6568,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 23.3
+    },
+    "1446": {
+     "page": "062.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 22.22273,
+      "lng": 36.64679,
+      "exact": 153,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 87.93
+     },
+     "implied": {
+      "lat": 22.1477,
+      "lng": 36.6668,
+      "exactPct": 89.66,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.6
+    },
+    "1447": {
+     "page": "047.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 22.22273,
+      "lng": 36.64679,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 22.1027,
+      "lng": 36.6668,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 13.5
+    }
+   }
+  },
+  "دمنهور": {
+   "city": "دمنهور",
+   "editions": {
+    "1445": {
+     "page": "048.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.03408,
+      "lng": 30.46823,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 31.0041,
+      "lng": 30.4632,
+      "exactPct": 87.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.4
+    },
+    "1446": {
+     "page": "063.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.03408,
+      "lng": 30.46823,
+      "exact": 159,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 91.38
+     },
+     "implied": {
+      "lat": 31.0841,
+      "lng": 30.4732,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.6
+    },
+    "1447": {
+     "page": "048.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.03408,
+      "lng": 30.46823,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 30.9741,
+      "lng": 30.4682,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.7
+    }
+   }
+  },
+  "دمياط": {
+   "city": "دمياط",
+   "editions": {
+    "1445": {
+     "page": "049.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.41648,
+      "lng": 31.81332,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 31.3565,
+      "lng": 31.8333,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.9
+    },
+    "1446": {
+     "page": "064.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.41648,
+      "lng": 31.81332,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 31.3615,
+      "lng": 31.8233,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.2
+    },
+    "1447": {
+     "page": "049.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.41648,
+      "lng": 31.81332,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 31.4965,
+      "lng": 31.8183,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    }
+   }
+  },
+  "دهب": {
+   "city": "دهب",
+   "editions": {
+    "1445": {
+     "page": "050.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.48208,
+      "lng": 34.49505,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 28.5271,
+      "lng": 34.5001,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5
+    },
+    "1446": {
+     "page": "065.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.48208,
+      "lng": 34.49505,
+      "exact": 155,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 89.08
+     },
+     "implied": {
+      "lat": 28.4421,
+      "lng": 34.52,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.1
+    },
+    "1447": {
+     "page": "050.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.48208,
+      "lng": 34.49505,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 28.4021,
+      "lng": 34.5151,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.1
+    }
+   }
+  },
+  "راس سدر": {
+   "city": "راس سدر",
+   "editions": {
+    "1445": {
+     "page": "051.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.5833,
+      "lng": 32.6667,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 29.5983,
+      "lng": 32.6717,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1446": {
+     "page": "066.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.5833,
+      "lng": 32.6667,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 29.5983,
+      "lng": 32.6717,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1447": {
+     "page": "051.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.5833,
+      "lng": 32.6667,
+      "exact": 167,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.78
+     },
+     "implied": {
+      "lat": 29.5833,
+      "lng": 32.6667,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    }
+   }
+  },
+  "راس غارب": {
+   "city": "راس غارب",
+   "editions": {
+    "1445": {
+     "page": "052.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.35831,
+      "lng": 33.07829,
+      "exact": 0,
+      "w1": 153,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 28.3983,
+      "lng": 33.3383,
+      "exactPct": 87.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 25.8
+    },
+    "1446": {
+     "page": "067.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.35831,
+      "lng": 33.07829,
+      "exact": 0,
+      "w1": 146,
+      "n": 174,
+      "worst": 2,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 28.3583,
+      "lng": 33.3583,
+      "exactPct": 89.08,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 27.4
+    }
+   }
+  },
+  "رشيد الجديدة": {
+   "city": "رشيد الجديدة",
+   "editions": {
+    "1445": {
+     "page": "053.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.39951,
+      "lng": 30.41718,
+      "exact": 147,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 81.67
+     },
+     "implied": {
+      "lat": 31.3645,
+      "lng": 30.3722,
+      "exactPct": 93.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.8
+    },
+    "1446": {
+     "page": "068.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.39951,
+      "lng": 30.41718,
+      "exact": 141,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 81.03
+     },
+     "implied": {
+      "lat": 31.3245,
+      "lng": 30.3672,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.6
+    },
+    "1447": {
+     "page": "053.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.39951,
+      "lng": 30.41718,
+      "exact": 148,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.22
+     },
+     "implied": {
+      "lat": 31.2695,
+      "lng": 30.3722,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 15
+    }
+   }
+  },
+  "رفح الجديدة": {
+   "city": "رفح الجديدة",
+   "editions": {
+    "1445": {
+     "page": "054.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.28204,
+      "lng": 34.23869,
+      "exact": 139,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 77.22
+     },
+     "implied": {
+      "lat": 31.202,
+      "lng": 34.1837,
+      "exactPct": 90,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 10.3
+    },
+    "1446": {
+     "page": "069.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.28204,
+      "lng": 34.23869,
+      "exact": 146,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 83.91
+     },
+     "implied": {
+      "lat": 31.222,
+      "lng": 34.1987,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.7
+    },
+    "1447": {
+     "page": "054.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.28204,
+      "lng": 34.23869,
+      "exact": 145,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 80.56
+     },
+     "implied": {
+      "lat": 31.232,
+      "lng": 34.1837,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.6
+    }
+   }
+  },
+  "سفاجة": {
+   "city": "سفاجة",
+   "editions": {
+    "1445": {
+     "page": "055.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 26.74906,
+      "lng": 33.93891,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 26.7341,
+      "lng": 33.9489,
+      "exactPct": 87.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.9
+    },
+    "1446": {
+     "page": "070.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.74906,
+      "lng": 33.93891,
+      "exact": 149,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 85.63
+     },
+     "implied": {
+      "lat": 26.7091,
+      "lng": 33.9389,
+      "exactPct": 86.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    },
+    "1447": {
+     "page": "055.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 26.74906,
+      "lng": 33.93891,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 26.6391,
+      "lng": 33.9439,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 12.2
+    }
+   }
+  },
+  "سفنكس الجديدة": {
+   "city": "سفنكس الجديدة",
+   "editions": {
+    "1445": {
+     "page": "056.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.95,
+      "lng": 31.05,
+      "exact": 9,
+      "w1": 153,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 5
+     },
+     "implied": {
+      "lat": 30.1,
+      "lng": 30.765,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 32.1
+    },
+    "1446": {
+     "page": "085.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.95,
+      "lng": 31.05,
+      "exact": 111,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 63.79
+     },
+     "implied": {
+      "lat": 30.475,
+      "lng": 31.045,
+      "exactPct": 82.76,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 58.3
+    }
+   }
+  },
+  "سوهاج": {
+   "city": "سوهاج",
+   "editions": {
+    "1445": {
+     "page": "057.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 26.55695,
+      "lng": 31.69478,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 26.552,
+      "lng": 31.7048,
+      "exactPct": 87.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.1
+    },
+    "1446": {
+     "page": "072.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.55695,
+      "lng": 31.69478,
+      "exact": 148,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 85.06
+     },
+     "implied": {
+      "lat": 26.517,
+      "lng": 31.6948,
+      "exactPct": 85.63,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    },
+    "1447": {
+     "page": "057.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 26.55695,
+      "lng": 31.69478,
+      "exact": 162,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90
+     },
+     "implied": {
+      "lat": 26.577,
+      "lng": 31.6948,
+      "exactPct": 90.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    }
+   }
+  },
+  "سيدى برانى": {
+   "city": "سيدى برانى",
+   "editions": {
+    "1445": {
+     "page": "058.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.61166,
+      "lng": 25.92539,
+      "exact": 152,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 84.44
+     },
+     "implied": {
+      "lat": 31.7467,
+      "lng": 25.9354,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 15
+    },
+    "1446": {
+     "page": "073.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.61166,
+      "lng": 25.92539,
+      "exact": 148,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 85.06
+     },
+     "implied": {
+      "lat": 31.7817,
+      "lng": 25.9354,
+      "exactPct": 90.23,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 18.9
+    },
+    "1447": {
+     "page": "058.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.61166,
+      "lng": 25.92539,
+      "exact": 159,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 31.7617,
+      "lng": 25.9304,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 16.7
+    }
+   }
+  },
+  "شرق العوينات": {
+   "city": "شرق العوينات",
+   "editions": {
+    "1445": {
+     "page": "059.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 22.5833,
+      "lng": 28.7167,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 22.6933,
+      "lng": 28.7267,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 12.3
+    },
+    "1446": {
+     "page": "074.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 22.5833,
+      "lng": 28.7167,
+      "exact": 164,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 94.25
+     },
+     "implied": {
+      "lat": 22.5683,
+      "lng": 28.7217,
+      "exactPct": 95.4,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1447": {
+     "page": "059.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 22.5833,
+      "lng": 28.7167,
+      "exact": 170,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 94.44
+     },
+     "implied": {
+      "lat": 22.6433,
+      "lng": 28.7367,
+      "exactPct": 95.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7
+    }
+   }
+  },
+  "شرم الشيخ": {
+   "city": "شرم الشيخ",
+   "editions": {
+    "1445": {
+     "page": "060.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 27.91582,
+      "lng": 34.32995,
+      "exact": 149,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.78
+     },
+     "implied": {
+      "lat": 27.7958,
+      "lng": 34.3099,
+      "exactPct": 87.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 13.5
+    },
+    "1446": {
+     "page": "075.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 27.91582,
+      "lng": 34.32995,
+      "exact": 142,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 81.61
+     },
+     "implied": {
+      "lat": 27.7608,
+      "lng": 34.2999,
+      "exactPct": 87.36,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 17.5
+    },
+    "1447": {
+     "page": "060.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 27.91582,
+      "lng": 34.32995,
+      "exact": 149,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 82.78
+     },
+     "implied": {
+      "lat": 27.7808,
+      "lng": 34.2949,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 15.4
+    }
+   }
+  },
+  "شلاتين": {
+   "city": "شلاتين",
+   "editions": {
+    "1445": {
+     "page": "061.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 23.13235,
+      "lng": 35.59094,
+      "exact": 160,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 88.89
+     },
+     "implied": {
+      "lat": 23.0723,
+      "lng": 35.6059,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.8
+    },
+    "1446": {
+     "page": "076.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 23.13235,
+      "lng": 35.59094,
+      "exact": 148,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 85.06
+     },
+     "implied": {
+      "lat": 22.9923,
+      "lng": 35.6109,
+      "exactPct": 90.23,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 15.7
+    },
+    "1447": {
+     "page": "061.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 23.13235,
+      "lng": 35.59094,
+      "exact": 154,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85.56
+     },
+     "implied": {
+      "lat": 23.1423,
+      "lng": 35.6009,
+      "exactPct": 90,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.5
+    }
+   }
+  },
+  "طابا": {
+   "city": "طابا",
+   "editions": {
+    "1445": {
+     "page": "062.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.49199,
+      "lng": 34.89572,
+      "exact": 0,
+      "w1": 11,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 29.487,
+      "lng": 34.3907,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 48.8
+    },
+    "1446": {
+     "page": "077.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.49199,
+      "lng": 34.89572,
+      "exact": 0,
+      "w1": 15,
+      "n": 174,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 29.447,
+      "lng": 34.4007,
+      "exactPct": 91.95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 48.1
+    },
+    "1447": {
+     "page": "062.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.49199,
+      "lng": 34.89572,
+      "exact": 0,
+      "w1": 12,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 0
+     },
+     "implied": {
+      "lat": 29.342,
+      "lng": 34.3907,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 51.6
+    }
+   }
+  },
+  "طنطا": {
+   "city": "طنطا",
+   "editions": {
+    "1445": {
+     "page": "063.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.78847,
+      "lng": 31.00192,
+      "exact": 168,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.33
+     },
+     "implied": {
+      "lat": 30.7935,
+      "lng": 30.9919,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.1
+    },
+    "1446": {
+     "page": "078.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.78847,
+      "lng": 31.00192,
+      "exact": 158,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.8
+     },
+     "implied": {
+      "lat": 30.7635,
+      "lng": 30.9969,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.8
+    },
+    "1447": {
+     "page": "063.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.78847,
+      "lng": 31.00192,
+      "exact": 169,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.89
+     },
+     "implied": {
+      "lat": 30.7285,
+      "lng": 31.0019,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.7
+    }
+   }
+  },
+  "غرب النوبارية": {
+   "city": "غرب النوبارية",
+   "editions": {
+    "1445": {
+     "page": "064.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.65,
+      "lng": 29.95,
+      "exact": 3,
+      "w1": 163,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 1.67
+     },
+     "implied": {
+      "lat": 30.61,
+      "lng": 29.685,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 25.7
+    },
+    "1446": {
+     "page": "007.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.65,
+      "lng": 29.95,
+      "exact": 126,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 72.41
+     },
+     "implied": {
+      "lat": 31.15,
+      "lng": 29.97,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 55.5
+    },
+    "1447": {
+     "page": "064.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.65,
+      "lng": 29.95,
+      "exact": 9,
+      "w1": 165,
+      "n": 180,
+      "worst": 3,
+      "exactPct": 5
+     },
+     "implied": {
+      "lat": 30.76,
+      "lng": 29.66,
+      "exactPct": 91.67,
+      "w1Pct": 99.44,
+      "worst": 2
+     },
+     "deltaKm": 30.3
+    }
+   }
+  },
+  "قنا": {
+   "city": "قنا",
+   "editions": {
+    "1445": {
+     "page": "065.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 26.16418,
+      "lng": 32.72671,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 26.2142,
+      "lng": 32.7217,
+      "exactPct": 88.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.6
+    },
+    "1446": {
+     "page": "023.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.16418,
+      "lng": 32.72671,
+      "exact": 155,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 89.08
+     },
+     "implied": {
+      "lat": 26.2442,
+      "lng": 32.7267,
+      "exactPct": 89.66,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    },
+    "1447": {
+     "page": "065.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 26.16418,
+      "lng": 32.72671,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 26.0892,
+      "lng": 32.7217,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.3
+    }
+   }
+  },
+  "كاترين": {
+   "city": "كاترين",
+   "editions": {
+    "1445": {
+     "page": "066.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.56199,
+      "lng": 33.95005,
+      "exact": 168,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.33
+     },
+     "implied": {
+      "lat": 28.552,
+      "lng": 33.95,
+      "exactPct": 93.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.1
+    },
+    "1446": {
+     "page": "024.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.56199,
+      "lng": 33.95005,
+      "exact": 163,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 93.68
+     },
+     "implied": {
+      "lat": 28.552,
+      "lng": 33.96,
+      "exactPct": 95.4,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.5
+    },
+    "1447": {
+     "page": "066.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.56199,
+      "lng": 33.95005,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 28.507,
+      "lng": 33.955,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.1
+    }
+   }
+  },
+  "كفر الشيخ": {
+   "city": "كفر الشيخ",
+   "editions": {
+    "1445": {
+     "page": "067.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.11174,
+      "lng": 30.93991,
+      "exact": 158,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 87.78
+     },
+     "implied": {
+      "lat": 31.0967,
+      "lng": 30.9449,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.7
+    },
+    "1446": {
+     "page": "025.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.11174,
+      "lng": 30.93991,
+      "exact": 158,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.8
+     },
+     "implied": {
+      "lat": 31.1017,
+      "lng": 30.9449,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.2
+    },
+    "1447": {
+     "page": "067.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.11174,
+      "lng": 30.93991,
+      "exact": 161,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 89.44
+     },
+     "implied": {
+      "lat": 31.0167,
+      "lng": 30.9399,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 10.5
+    }
+   }
+  },
+  "مدينة 15 مايو": {
+   "city": "مدينة 15 مايو",
+   "editions": {
+    "1445": {
+     "page": "068.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.82983,
+      "lng": 31.36965,
+      "exact": 168,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.33
+     },
+     "implied": {
+      "lat": 29.7898,
+      "lng": 31.3697,
+      "exactPct": 95,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.4
+    },
+    "1446": {
+     "page": "026.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.82983,
+      "lng": 31.36965,
+      "exact": 153,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 87.93
+     },
+     "implied": {
+      "lat": 29.8298,
+      "lng": 31.3896,
+      "exactPct": 93.1,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.9
+    },
+    "1447": {
+     "page": "068.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.82983,
+      "lng": 31.36965,
+      "exact": 163,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 90.56
+     },
+     "implied": {
+      "lat": 29.7798,
+      "lng": 31.3747,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.6
+    }
+   }
+  },
+  "الأقصر": {
+   "city": "الأقصر",
+   "editions": {
+    "1445": {
+     "page": "069.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 25.69893,
+      "lng": 32.6421,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 25.6639,
+      "lng": 32.6521,
+      "exactPct": 88.33,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4
+    },
+    "1446": {
+     "page": "027.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 25.69893,
+      "lng": 32.6421,
+      "exact": 146,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 83.91
+     },
+     "implied": {
+      "lat": 25.6589,
+      "lng": 32.6621,
+      "exactPct": 89.08,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 4.9
+    },
+    "1447": {
+     "page": "069.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 25.69893,
+      "lng": 32.6421,
+      "exact": 159,
+      "w1": 178,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 88.33
+     },
+     "implied": {
+      "lat": 25.6089,
+      "lng": 32.6471,
+      "exactPct": 89.44,
+      "w1Pct": 98.89,
+      "worst": 2
+     },
+     "deltaKm": 10
+    }
+   }
+  },
+  "البويطى": {
+   "city": "البويطى",
+   "editions": {
+    "1445": {
+     "page": "070.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 28.34827,
+      "lng": 28.86936,
+      "exact": 112,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 62.22
+     },
+     "implied": {
+      "lat": 28.3283,
+      "lng": 28.9544,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.6
+    },
+    "1446": {
+     "page": "028.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.34827,
+      "lng": 28.86936,
+      "exact": 108,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 62.07
+     },
+     "implied": {
+      "lat": 28.2883,
+      "lng": 28.9494,
+      "exactPct": 94.83,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 10.3
+    },
+    "1447": {
+     "page": "070.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.34827,
+      "lng": 28.86936,
+      "exact": 108,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 60
+     },
+     "implied": {
+      "lat": 28.3183,
+      "lng": 28.9544,
+      "exactPct": 92.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    }
+   }
+  },
+  "العاصمة الادارية الجديدة": {
+   "city": "العاصمة الادارية الجديدة",
+   "editions": {
+    "1445": {
+     "page": "071.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 30.0167,
+      "lng": 31.75,
+      "exact": 152,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 84.44
+     },
+     "implied": {
+      "lat": 30.1167,
+      "lng": 31.745,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 11.1
+    },
+    "1446": {
+     "page": "029.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.0167,
+      "lng": 31.75,
+      "exact": 154,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 88.51
+     },
+     "implied": {
+      "lat": 30.0967,
+      "lng": 31.75,
+      "exactPct": 89.08,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    },
+    "1447": {
+     "page": "071.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.0167,
+      "lng": 31.75,
+      "exact": 153,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85
+     },
+     "implied": {
+      "lat": 30.1267,
+      "lng": 31.755,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 12.2
+    }
+   }
+  },
+  "مطروح": {
+   "city": "مطروح",
+   "editions": {
+    "1445": {
+     "page": "072.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 31.3529,
+      "lng": 27.23725,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 31.3829,
+      "lng": 27.2572,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.8
+    },
+    "1446": {
+     "page": "031.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 31.3529,
+      "lng": 27.23725,
+      "exact": 150,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 86.21
+     },
+     "implied": {
+      "lat": 31.3729,
+      "lng": 27.2572,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.9
+    },
+    "1447": {
+     "page": "073.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 31.3529,
+      "lng": 27.23725,
+      "exact": 154,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 85.56
+     },
+     "implied": {
+      "lat": 31.3429,
+      "lng": 27.2522,
+      "exactPct": 91.67,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 1.8
+    }
+   }
+  },
+  "نجع حمادى": {
+   "city": "نجع حمادى",
+   "editions": {
+    "1445": {
+     "page": "073.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 26.04949,
+      "lng": 32.24142,
+      "exact": 164,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.11
+     },
+     "implied": {
+      "lat": 25.9795,
+      "lng": 32.2464,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 7.8
+    },
+    "1446": {
+     "page": "032.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.04949,
+      "lng": 32.24142,
+      "exact": 162,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 93.1
+     },
+     "implied": {
+      "lat": 25.9895,
+      "lng": 32.2514,
+      "exactPct": 96.55,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.7
+    },
+    "1447": {
+     "page": "074.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 26.04949,
+      "lng": 32.24142,
+      "exact": 165,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 91.67
+     },
+     "implied": {
+      "lat": 25.9645,
+      "lng": 32.2464,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 9.4
+    }
+   }
+  },
+  "نويبع": {
+   "city": "نويبع",
+   "editions": {
+    "1445": {
+     "page": "074.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.04681,
+      "lng": 34.6634,
+      "exact": 155,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.11
+     },
+     "implied": {
+      "lat": 29.0968,
+      "lng": 34.6534,
+      "exactPct": 87.22,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 5.6
+    },
+    "1446": {
+     "page": "033.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.04681,
+      "lng": 34.6634,
+      "exact": 157,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 90.23
+     },
+     "implied": {
+      "lat": 29.0668,
+      "lng": 34.6634,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 2.2
+    },
+    "1447": {
+     "page": "075.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.04681,
+      "lng": 34.6634,
+      "exact": 167,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 92.78
+     },
+     "implied": {
+      "lat": 29.04681,
+      "lng": 34.6634,
+      "exactPct": 92.78,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 0
+    }
+   }
+  },
+  "باريس": {
+   "city": "باريس",
+   "editions": {
+    "1445": {
+     "page": "075.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 24.67379,
+      "lng": 30.60101,
+      "exact": 97,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 53.89
+     },
+     "implied": {
+      "lat": 24.3938,
+      "lng": 30.501,
+      "exactPct": 94.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 32.7
+    },
+    "1446": {
+     "page": "011.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 24.67379,
+      "lng": 30.60101,
+      "exact": 5,
+      "w1": 125,
+      "n": 174,
+      "worst": 2,
+      "exactPct": 2.87
+     },
+     "implied": {
+      "lat": 25.1488,
+      "lng": 30.286,
+      "exactPct": 93.68,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 61.6
+    },
+    "1447": {
+     "page": "076.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 24.67379,
+      "lng": 30.60101,
+      "exact": 127,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 70.56
+     },
+     "implied": {
+      "lat": 24.3338,
+      "lng": 30.501,
+      "exactPct": 95.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 39.1
+    }
+   }
+  },
+  "واحة سيوة": {
+   "city": "واحة سيوة",
+   "editions": {
+    "1445": {
+     "page": "076.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 29.2032,
+      "lng": 25.51965,
+      "exact": 169,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 93.89
+     },
+     "implied": {
+      "lat": 29.1732,
+      "lng": 25.5296,
+      "exactPct": 95.56,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 3.5
+    },
+    "1446": {
+     "page": "035.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 29.2032,
+      "lng": 25.51965,
+      "exact": 13,
+      "w1": 36,
+      "n": 174,
+      "worst": 29,
+      "exactPct": 7.47
+     },
+     "implied": {
+      "lat": 29.2232,
+      "lng": 25.6996,
+      "exactPct": 2.3,
+      "w1Pct": 26.44,
+      "worst": 28
+     },
+     "deltaKm": 17.6
+    },
+    "1447": {
+     "page": "077.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 29.2032,
+      "lng": 25.51965,
+      "exact": 152,
+      "w1": 177,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 84.44
+     },
+     "implied": {
+      "lat": 29.4732,
+      "lng": 25.4847,
+      "exactPct": 71.67,
+      "w1Pct": 98.89,
+      "worst": 2
+     },
+     "deltaKm": 30.2
+    }
+   }
+  },
+  "موط (الداخلة )": {
+   "city": "موط (الداخلة )",
+   "editions": {
+    "1445": {
+     "page": "077.jpg",
+     "days": 30,
+     "span": [
+      "2024-03-11",
+      "2024-04-09"
+     ],
+     "gazetteer": {
+      "lat": 25.48742,
+      "lng": 28.97918,
+      "exact": 147,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 81.67
+     },
+     "implied": {
+      "lat": 25.4774,
+      "lng": 28.9142,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.6
+    },
+    "1446": {
+     "page": "036.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 25.48742,
+      "lng": 28.97918,
+      "exact": 139,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 79.89
+     },
+     "implied": {
+      "lat": 25.4674,
+      "lng": 28.9192,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.4
+    },
+    "1447": {
+     "page": "078.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 25.48742,
+      "lng": 28.97918,
+      "exact": 130,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 72.22
+     },
+     "implied": {
+      "lat": 25.4374,
+      "lng": 28.9142,
+      "exactPct": 91.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.6
+    }
+   }
+  },
+  "مرسى علم": {
+   "city": "مرسى علم",
+   "editions": {
+    "1446": {
+     "page": "030.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 25.06305,
+      "lng": 34.89005,
+      "exact": 154,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 88.51
+     },
+     "implied": {
+      "lat": 24.9831,
+      "lng": 34.8901,
+      "exactPct": 89.08,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 8.9
+    },
+    "1447": {
+     "page": "072.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 25.06305,
+      "lng": 34.89005,
+      "exact": 156,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 86.67
+     },
+     "implied": {
+      "lat": 25.0081,
+      "lng": 34.8801,
+      "exactPct": 89.44,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 6.2
+    }
+   }
+  },
+  "بنى مزار الجديدة": {
+   "city": "بنى مزار الجديدة",
+   "editions": {
+    "1446": {
+     "page": "042.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 28.49456,
+      "lng": 30.80526,
+      "exact": 91,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 52.3
+     },
+     "implied": {
+      "lat": 28.6346,
+      "lng": 30.6853,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 19.5
+    },
+    "1447": {
+     "page": "056.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 28.49456,
+      "lng": 30.80526,
+      "exact": 77,
+      "w1": 173,
+      "n": 180,
+      "worst": 2,
+      "exactPct": 42.78
+     },
+     "implied": {
+      "lat": 29.0246,
+      "lng": 30.7953,
+      "exactPct": 56.11,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 58.8
+    }
+   }
+  },
+  "المحلة الكبرى": {
+   "city": "المحلة الكبرى",
+   "editions": {
+    "1446": {
+     "page": "080.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.97063,
+      "lng": 31.1669,
+      "exact": 116,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 66.67
+     },
+     "implied": {
+      "lat": 30.4406,
+      "lng": 31.1969,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 58.9
+    }
+   }
+  },
+  "ابو تشت": {
+   "city": "ابو تشت",
+   "editions": {
+    "1446": {
+     "page": "081.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 26.12039,
+      "lng": 32.09543,
+      "exact": 38,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 21.84
+     },
+     "implied": {
+      "lat": 26.2204,
+      "lng": 31.8954,
+      "exactPct": 91.38,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 22.8
+    }
+   }
+  },
+  "ديرب نجم": {
+   "city": "ديرب نجم",
+   "editions": {
+    "1446": {
+     "page": "083.jpg",
+     "days": 29,
+     "span": [
+      "2025-03-01",
+      "2025-03-29"
+     ],
+     "gazetteer": {
+      "lat": 30.75438,
+      "lng": 31.44016,
+      "exact": 61,
+      "w1": 174,
+      "n": 174,
+      "worst": 1,
+      "exactPct": 35.06
+     },
+     "implied": {
+      "lat": 30.7744,
+      "lng": 31.2602,
+      "exactPct": 90.8,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 17.3
+    },
+    "1447": {
+     "page": "033.jpg",
+     "days": 30,
+     "span": [
+      "2026-02-18",
+      "2026-03-19"
+     ],
+     "gazetteer": {
+      "lat": 30.75438,
+      "lng": 31.44016,
+      "exact": 120,
+      "w1": 180,
+      "n": 180,
+      "worst": 1,
+      "exactPct": 66.67
+     },
+     "implied": {
+      "lat": 31.2744,
+      "lng": 31.4252,
+      "exactPct": 88.89,
+      "w1Pct": 100,
+      "worst": 1
+     },
+     "deltaKm": 57.7
+    }
+   }
+  }
+ },
+ "editions": {
+  "1445": {
+   "pages": 77,
+   "cells": 13860,
+   "exact": 12721,
+   "w1": 13860,
+   "worst": -1,
+   "perCol": {
+    "fajr": {
+     "n": 2310,
+     "e": 2282,
+     "w1": 2310,
+     "worst": -1,
+     "exactPct": 98.79,
+     "w1Pct": 100
+    },
+    "sunrise": {
+     "n": 2310,
+     "e": 2240,
+     "w1": 2310,
+     "worst": -1,
+     "exactPct": 96.97,
+     "w1Pct": 100
+    },
+    "dhuhr": {
+     "n": 2310,
+     "e": 2269,
+     "w1": 2310,
+     "worst": 1,
+     "exactPct": 98.23,
+     "w1Pct": 100
+    },
+    "asr": {
+     "n": 2310,
+     "e": 1504,
+     "w1": 2310,
+     "worst": -1,
+     "exactPct": 65.11,
+     "w1Pct": 100
+    },
+    "maghrib": {
+     "n": 2310,
+     "e": 2164,
+     "w1": 2310,
+     "worst": 1,
+     "exactPct": 93.68,
+     "w1Pct": 100
+    },
+    "isha": {
+     "n": 2310,
+     "e": 2262,
+     "w1": 2310,
+     "worst": 1,
+     "exactPct": 97.92,
+     "w1Pct": 100
+    }
+   },
+   "citiesOver1": [],
+   "impliedSpread": [],
+   "exactPct": 91.78,
+   "w1Pct": 100
+  },
+  "1446": {
+   "pages": 84,
+   "cells": 14616,
+   "exact": 13169,
+   "w1": 14488,
+   "worst": -28,
+   "perCol": {
+    "fajr": {
+     "n": 2436,
+     "e": 2344,
+     "w1": 2407,
+     "worst": -28,
+     "exactPct": 96.22,
+     "w1Pct": 98.81
+    },
+    "sunrise": {
+     "n": 2436,
+     "e": 2328,
+     "w1": 2407,
+     "worst": -24,
+     "exactPct": 95.57,
+     "w1Pct": 98.81
+    },
+    "dhuhr": {
+     "n": 2436,
+     "e": 2374,
+     "w1": 2429,
+     "worst": -6,
+     "exactPct": 97.45,
+     "w1Pct": 99.71
+    },
+    "asr": {
+     "n": 2436,
+     "e": 1502,
+     "w1": 2431,
+     "worst": 2,
+     "exactPct": 61.66,
+     "w1Pct": 99.79
+    },
+    "maghrib": {
+     "n": 2436,
+     "e": 2280,
+     "w1": 2407,
+     "worst": 14,
+     "exactPct": 93.6,
+     "w1Pct": 98.81
+    },
+    "isha": {
+     "n": 2436,
+     "e": 2341,
+     "w1": 2407,
+     "worst": 17,
+     "exactPct": 96.1,
+     "w1Pct": 98.81
+    }
+   },
+   "citiesOver1": [
+    [
+     "واحة سيوة",
+     26.44,
+     28
+    ]
+   ],
+   "impliedSpread": [],
+   "exactPct": 90.1,
+   "w1Pct": 99.12
+  },
+  "1447": {
+   "pages": 78,
+   "cells": 14040,
+   "exact": 12553,
+   "w1": 14030,
+   "worst": 2,
+   "perCol": {
+    "fajr": {
+     "n": 2340,
+     "e": 2223,
+     "w1": 2340,
+     "worst": 1,
+     "exactPct": 95,
+     "w1Pct": 100
+    },
+    "sunrise": {
+     "n": 2340,
+     "e": 2205,
+     "w1": 2336,
+     "worst": 2,
+     "exactPct": 94.23,
+     "w1Pct": 99.83
+    },
+    "dhuhr": {
+     "n": 2340,
+     "e": 2267,
+     "w1": 2339,
+     "worst": 2,
+     "exactPct": 96.88,
+     "w1Pct": 99.96
+    },
+    "asr": {
+     "n": 2340,
+     "e": 1392,
+     "w1": 2340,
+     "worst": -1,
+     "exactPct": 59.49,
+     "w1Pct": 100
+    },
+    "maghrib": {
+     "n": 2340,
+     "e": 2213,
+     "w1": 2338,
+     "worst": 2,
+     "exactPct": 94.57,
+     "w1Pct": 99.91
+    },
+    "isha": {
+     "n": 2340,
+     "e": 2253,
+     "w1": 2337,
+     "worst": 2,
+     "exactPct": 96.28,
+     "w1Pct": 99.87
+    }
+   },
+   "citiesOver1": [
+    [
+     "بنى سويف",
+     99.44,
+     2
+    ],
+    [
+     "سفاجة",
+     97.78,
+     2
+    ],
+    [
+     "غرب النوبارية",
+     99.44,
+     2
+    ],
+    [
+     "الأقصر",
+     98.89,
+     2
+    ],
+    [
+     "واحة سيوة",
+     98.89,
+     2
+    ]
+   ],
+   "impliedSpread": [],
+   "exactPct": 89.41,
+   "w1Pct": 99.93
+  }
+ }
+}

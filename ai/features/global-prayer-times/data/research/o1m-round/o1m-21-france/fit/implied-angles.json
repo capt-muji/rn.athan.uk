@@ -1,0 +1,2624 @@
+[
+ {
+  "key": "lyon-gm",
+  "name": "lyon-gm",
+  "lat": 45.7368163,
+  "lon": 4.8902183,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.42,
+    "ishaAngle": 13.52,
+    "fajrPortion": 0.0948,
+    "ishaPortion": 0.0865,
+    "night": 14.88,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 14.42,
+    "ishaAngle": 13.55,
+    "fajrPortion": 0.0979,
+    "ishaPortion": 0.0892,
+    "night": 13.57,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 14.76,
+    "ishaAngle": 13.79,
+    "fajrPortion": 0.1094,
+    "ishaPortion": 0.0993,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 14.45,
+    "ishaAngle": 13.52,
+    "fajrPortion": 0.1384,
+    "ishaPortion": 0.1236,
+    "night": 10.41,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 14.5,
+    "ishaAngle": 13.5,
+    "fajrPortion": 0.1849,
+    "ishaPortion": 0.1683,
+    "night": 9.01,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 14.45,
+    "ishaAngle": 13.53,
+    "fajrPortion": 0.2274,
+    "ishaPortion": 0.2043,
+    "night": 8.32,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.41,
+    "ishaAngle": 13.66,
+    "fajrPortion": 0.2016,
+    "ishaPortion": 0.1843,
+    "night": 8.68,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.34,
+    "ishaAngle": 13.72,
+    "fajrPortion": 0.1477,
+    "ishaPortion": 0.1343,
+    "night": 9.93,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.32,
+    "ishaAngle": 13.76,
+    "fajrPortion": 0.1134,
+    "ishaPortion": 0.1049,
+    "night": 11.49,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 14.3,
+    "ishaAngle": 13.73,
+    "fajrPortion": 0.0977,
+    "ishaPortion": 0.0899,
+    "night": 13.11,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 14.15,
+    "ishaAngle": 13.5,
+    "fajrPortion": 0.0935,
+    "ishaPortion": 0.086,
+    "night": 14.55,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 14.3,
+    "ishaAngle": 13.62,
+    "fajrPortion": 0.0938,
+    "ishaPortion": 0.086,
+    "night": 15.29,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": -1,
+    "hi": 121
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 7
+   },
+   "asr": {
+    "median": 1,
+    "lo": 0,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": -1,
+    "hi": 6
+   }
+  }
+ },
+ {
+  "key": "lyon-attawba",
+  "name": "lyon-attawba",
+  "lat": 45.7882926,
+  "lon": 4.7930922,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.5,
+    "ishaAngle": 13.47,
+    "fajrPortion": 0.0948,
+    "ishaPortion": 0.0865,
+    "night": 14.88,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 14.49,
+    "ishaAngle": 13.49,
+    "fajrPortion": 0.0979,
+    "ishaPortion": 0.0892,
+    "night": 13.57,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 14.82,
+    "ishaAngle": 13.71,
+    "fajrPortion": 0.1094,
+    "ishaPortion": 0.0993,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 14.48,
+    "ishaAngle": 13.43,
+    "fajrPortion": 0.1377,
+    "ishaPortion": 0.1236,
+    "night": 10.41,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 14.5,
+    "ishaAngle": 13.42,
+    "fajrPortion": 0.185,
+    "ishaPortion": 0.1684,
+    "night": 9.01,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 14.45,
+    "ishaAngle": 13.45,
+    "fajrPortion": 0.2276,
+    "ishaPortion": 0.2045,
+    "night": 8.31,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.41,
+    "ishaAngle": 13.58,
+    "fajrPortion": 0.2017,
+    "ishaPortion": 0.1844,
+    "night": 8.68,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.37,
+    "ishaAngle": 13.64,
+    "fajrPortion": 0.1477,
+    "ishaPortion": 0.1343,
+    "night": 9.93,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.36,
+    "ishaAngle": 13.68,
+    "fajrPortion": 0.1134,
+    "ishaPortion": 0.1044,
+    "night": 11.49,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 14.36,
+    "ishaAngle": 13.66,
+    "fajrPortion": 0.0976,
+    "ishaPortion": 0.0899,
+    "night": 13.11,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 14.23,
+    "ishaAngle": 13.45,
+    "fajrPortion": 0.0934,
+    "ishaPortion": 0.086,
+    "night": 14.55,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 14.38,
+    "ishaAngle": 13.57,
+    "fajrPortion": 0.0937,
+    "ishaPortion": 0.086,
+    "night": 15.3,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": -2,
+    "hi": 2
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 7
+   },
+   "asr": {
+    "median": 1,
+    "lo": -1,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": 1,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "lille-gm",
+  "name": "lille-gm",
+  "lat": 50.6134747,
+  "lon": 3.0612652,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.62,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.0889,
+    "ishaPortion": 0.0867,
+    "night": 15.46,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.65,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.0916,
+    "ishaPortion": 0.0892,
+    "night": 13.89,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.64,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.1031,
+    "ishaPortion": 0.1009,
+    "night": 12.05,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.55,
+    "ishaAngle": 12.61,
+    "fajrPortion": 0.1342,
+    "ishaPortion": 0.1309,
+    "night": 10.12,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.4,
+    "ishaAngle": 12.45,
+    "fajrPortion": 0.1957,
+    "ishaPortion": 0.1918,
+    "night": 8.43,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.28,
+    "ishaAngle": 12.34,
+    "fajrPortion": 0.2587,
+    "ishaPortion": 0.2543,
+    "night": 7.57,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.33,
+    "ishaAngle": 12.45,
+    "fajrPortion": 0.2244,
+    "ishaPortion": 0.2182,
+    "night": 8.02,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.47,
+    "ishaAngle": 12.65,
+    "fajrPortion": 0.1519,
+    "ishaPortion": 0.1467,
+    "night": 9.55,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.59,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.1117,
+    "ishaPortion": 0.1081,
+    "night": 11.41,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.64,
+    "ishaAngle": 12.81,
+    "fajrPortion": 0.0942,
+    "ishaPortion": 0.0913,
+    "night": 13.33,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.63,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.0888,
+    "ishaPortion": 0.0867,
+    "night": 15.07,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.6,
+    "ishaAngle": 12.75,
+    "fajrPortion": 0.0887,
+    "ishaPortion": 0.0865,
+    "night": 15.98,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 5,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 1,
+    "lo": -3,
+    "hi": 4
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "lille-assalam",
+  "name": "lille-assalam",
+  "lat": 50.6201929149,
+  "lon": 3.0749747546324,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.67,
+    "ishaAngle": 12.66,
+    "fajrPortion": 0.0901,
+    "ishaPortion": 0.0869,
+    "night": 15.47,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.62,
+    "ishaAngle": 12.65,
+    "fajrPortion": 0.0928,
+    "ishaPortion": 0.0892,
+    "night": 13.89,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.65,
+    "ishaAngle": 12.9,
+    "fajrPortion": 0.1023,
+    "ishaPortion": 0.1009,
+    "night": 12.05,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.8,
+    "ishaAngle": 12.77,
+    "fajrPortion": 0.1358,
+    "ishaPortion": 0.1317,
+    "night": 10.12,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.58,
+    "ishaAngle": 12.58,
+    "fajrPortion": 0.1997,
+    "ishaPortion": 0.1937,
+    "night": 8.43,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 10.69,
+    "ishaAngle": 12.38,
+    "fajrPortion": 0.2104,
+    "ishaPortion": 0.2555,
+    "night": 7.57,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.34,
+    "ishaAngle": 12.37,
+    "fajrPortion": 0.2201,
+    "ishaPortion": 0.2182,
+    "night": 8.02,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.51,
+    "ishaAngle": 12.48,
+    "fajrPortion": 0.1536,
+    "ishaPortion": 0.1467,
+    "night": 9.55,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.63,
+    "ishaAngle": 12.62,
+    "fajrPortion": 0.1128,
+    "ishaPortion": 0.1081,
+    "night": 11.41,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.67,
+    "ishaAngle": 12.67,
+    "fajrPortion": 0.095,
+    "ishaPortion": 0.0913,
+    "night": 13.33,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.66,
+    "ishaAngle": 12.7,
+    "fajrPortion": 0.0902,
+    "ishaPortion": 0.0868,
+    "night": 15.07,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.68,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.0897,
+    "ishaPortion": 0.0866,
+    "night": 15.98,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": -59,
+    "hi": 4
+   },
+   "dhuhr": {
+    "median": 12,
+    "lo": 5,
+    "hi": 29
+   },
+   "asr": {
+    "median": 1,
+    "lo": -2,
+    "hi": 35
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": 2,
+    "hi": 5
+   }
+  }
+ },
+ {
+  "key": "marseille-mariam",
+  "name": "marseille-mariam",
+  "lat": 43.335260258005,
+  "lon": 5.3605473922175,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 13.02,
+    "ishaAngle": 13.04,
+    "fajrPortion": 0.0829,
+    "ishaPortion": 0.0796,
+    "night": 14.63,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 13.08,
+    "ishaAngle": 13.08,
+    "fajrPortion": 0.0853,
+    "ishaPortion": 0.0817,
+    "night": 13.44,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 13.07,
+    "ishaAngle": 13.05,
+    "fajrPortion": 0.0935,
+    "ishaPortion": 0.0898,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.99,
+    "ishaAngle": 12.94,
+    "fajrPortion": 0.1139,
+    "ishaPortion": 0.1087,
+    "night": 10.53,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.81,
+    "ishaAngle": 12.79,
+    "fajrPortion": 0.1445,
+    "ishaPortion": 0.1404,
+    "night": 9.26,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.71,
+    "ishaAngle": 12.71,
+    "fajrPortion": 0.1699,
+    "ishaPortion": 0.1641,
+    "night": 8.63,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.74,
+    "ishaAngle": 12.77,
+    "fajrPortion": 0.1563,
+    "ishaPortion": 0.1507,
+    "night": 8.96,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.89,
+    "ishaAngle": 12.94,
+    "fajrPortion": 0.1238,
+    "ishaPortion": 0.1177,
+    "night": 10.09,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 13.04,
+    "ishaAngle": 13.07,
+    "fajrPortion": 0.0991,
+    "ishaPortion": 0.0945,
+    "night": 11.53,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 13.09,
+    "ishaAngle": 13.09,
+    "fajrPortion": 0.0868,
+    "ishaPortion": 0.0832,
+    "night": 13.01,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 13.09,
+    "ishaAngle": 13.07,
+    "fajrPortion": 0.0832,
+    "ishaPortion": 0.0797,
+    "night": 14.33,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 13.05,
+    "ishaAngle": 13.03,
+    "fajrPortion": 0.0831,
+    "ishaPortion": 0.0793,
+    "night": 15,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 1,
+    "lo": -1,
+    "hi": 4
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "marseille-khalid",
+  "name": "marseille-khalid",
+  "lat": 43.305,
+  "lon": 5.372,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.99,
+    "ishaAngle": 12.87,
+    "fajrPortion": 0.0835,
+    "ishaPortion": 0.0777,
+    "night": 14.62,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 13.03,
+    "ishaAngle": 12.9,
+    "fajrPortion": 0.0856,
+    "ishaPortion": 0.0793,
+    "night": 13.44,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.99,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.094,
+    "ishaPortion": 0.087,
+    "night": 12.02,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.9,
+    "ishaAngle": 15.16,
+    "fajrPortion": 0.1134,
+    "ishaPortion": 0.1297,
+    "night": 10.54,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.74,
+    "ishaAngle": 12.64,
+    "fajrPortion": 0.144,
+    "ishaPortion": 0.1368,
+    "night": 9.26,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.66,
+    "ishaAngle": 12.56,
+    "fajrPortion": 0.1699,
+    "ishaPortion": 0.1604,
+    "night": 8.63,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.7,
+    "ishaAngle": 12.62,
+    "fajrPortion": 0.1581,
+    "ishaPortion": 0.1488,
+    "night": 8.96,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.84,
+    "ishaAngle": 12.74,
+    "fajrPortion": 0.1233,
+    "ishaPortion": 0.1139,
+    "night": 10.1,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.98,
+    "ishaAngle": 12.86,
+    "fajrPortion": 0.0994,
+    "ishaPortion": 0.0911,
+    "night": 11.53,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 13.02,
+    "ishaAngle": 12.91,
+    "fajrPortion": 0.0874,
+    "ishaPortion": 0.0808,
+    "night": 13.01,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.97,
+    "ishaAngle": 12.89,
+    "fajrPortion": 0.0835,
+    "ishaPortion": 0.0776,
+    "night": 14.33,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.93,
+    "ishaAngle": 12.86,
+    "fajrPortion": 0.0832,
+    "ishaPortion": 0.0777,
+    "night": 15,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 1,
+    "hi": 3
+   },
+   "dhuhr": {
+    "median": 5,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 0,
+    "lo": -1,
+    "hi": 2
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 5
+   }
+  }
+ },
+ {
+  "key": "bordeaux-gm",
+  "name": "bordeaux-gm",
+  "lat": 44.829584549868,
+  "lon": -0.56449562759243,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.67,
+    "ishaAngle": 12.85,
+    "fajrPortion": 0.0821,
+    "ishaPortion": 0.0797,
+    "night": 14.78,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.7,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.0845,
+    "ishaPortion": 0.0818,
+    "night": 13.52,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.69,
+    "ishaAngle": 12.85,
+    "fajrPortion": 0.0928,
+    "ishaPortion": 0.0904,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.59,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.1131,
+    "ishaPortion": 0.1108,
+    "night": 10.46,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.52,
+    "ishaAngle": 12.62,
+    "fajrPortion": 0.15,
+    "ishaPortion": 0.1464,
+    "night": 9.11,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.45,
+    "ishaAngle": 12.55,
+    "fajrPortion": 0.1778,
+    "ishaPortion": 0.1739,
+    "night": 8.44,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.46,
+    "ishaAngle": 12.64,
+    "fajrPortion": 0.1612,
+    "ishaPortion": 0.1593,
+    "night": 8.79,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.56,
+    "ishaAngle": 12.8,
+    "fajrPortion": 0.1245,
+    "ishaPortion": 0.1212,
+    "night": 9.99,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.66,
+    "ishaAngle": 12.89,
+    "fajrPortion": 0.0985,
+    "ishaPortion": 0.0956,
+    "night": 11.51,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.71,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.0861,
+    "ishaPortion": 0.0832,
+    "night": 13.07,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.69,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.0822,
+    "ishaPortion": 0.08,
+    "night": 14.46,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.67,
+    "ishaAngle": 12.84,
+    "fajrPortion": 0.0822,
+    "ishaPortion": 0.08,
+    "night": 15.18,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 0.5,
+    "lo": -2,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "montpellier-ibnrochd",
+  "name": "montpellier-ibnrochd",
+  "lat": 43.6281426,
+  "lon": 3.8254201,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.97,
+    "ishaAngle": 14.08,
+    "fajrPortion": 0.0957,
+    "ishaPortion": 0.091,
+    "night": 14.66,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 15.05,
+    "ishaAngle": 14.87,
+    "fajrPortion": 0.0993,
+    "ishaPortion": 0.0991,
+    "night": 13.45,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 15,
+    "ishaAngle": 15.01,
+    "fajrPortion": 0.109,
+    "ishaPortion": 0.1109,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 14.74,
+    "ishaAngle": 14.03,
+    "fajrPortion": 0.1315,
+    "ishaPortion": 0.1267,
+    "night": 10.52,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 14.24,
+    "ishaAngle": 12.48,
+    "fajrPortion": 0.1661,
+    "ishaPortion": 0.1445,
+    "night": 9.23,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 13.94,
+    "ishaAngle": 11.55,
+    "fajrPortion": 0.1939,
+    "ishaPortion": 0.1551,
+    "night": 8.59,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.06,
+    "ishaAngle": 12.02,
+    "fajrPortion": 0.1793,
+    "ishaPortion": 0.1494,
+    "night": 8.93,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.52,
+    "ishaAngle": 13.58,
+    "fajrPortion": 0.1423,
+    "ishaPortion": 0.1323,
+    "night": 10.07,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.94,
+    "ishaAngle": 14.79,
+    "fajrPortion": 0.1157,
+    "ishaPortion": 0.1157,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 15.06,
+    "ishaAngle": 15.03,
+    "fajrPortion": 0.1013,
+    "ishaPortion": 0.1024,
+    "night": 13.02,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 14.99,
+    "ishaAngle": 14.33,
+    "fajrPortion": 0.096,
+    "ishaPortion": 0.0929,
+    "night": 14.36,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 14.91,
+    "ishaAngle": 13.74,
+    "fajrPortion": 0.0952,
+    "ishaPortion": 0.0887,
+    "night": 15.04,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": -4,
+    "lo": -5,
+    "hi": 32
+   },
+   "asr": {
+    "median": 0,
+    "lo": -2,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": -1,
+    "lo": -1,
+    "hi": 0
+   }
+  }
+ },
+ {
+  "key": "nantes-gm",
+  "name": "nantes-gm",
+  "lat": 47.219673909345,
+  "lon": -1.5182903871394,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.73,
+    "ishaAngle": 12.82,
+    "fajrPortion": 0.0867,
+    "ishaPortion": 0.0825,
+    "night": 15.04,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.73,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.0893,
+    "ishaPortion": 0.0844,
+    "night": 13.66,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.71,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.0997,
+    "ishaPortion": 0.0941,
+    "night": 12.04,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.63,
+    "ishaAngle": 12.65,
+    "fajrPortion": 0.1242,
+    "ishaPortion": 0.1186,
+    "night": 10.33,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.53,
+    "ishaAngle": 12.5,
+    "fajrPortion": 0.1676,
+    "ishaPortion": 0.162,
+    "night": 8.85,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.46,
+    "ishaAngle": 12.46,
+    "fajrPortion": 0.2075,
+    "ishaPortion": 0.1993,
+    "night": 8.11,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.54,
+    "ishaAngle": 12.6,
+    "fajrPortion": 0.1863,
+    "ishaPortion": 0.1785,
+    "night": 8.5,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.72,
+    "ishaAngle": 12.81,
+    "fajrPortion": 0.1381,
+    "ishaPortion": 0.1306,
+    "night": 9.82,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.85,
+    "ishaAngle": 12.96,
+    "fajrPortion": 0.1061,
+    "ishaPortion": 0.1003,
+    "night": 11.47,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.9,
+    "ishaAngle": 12.98,
+    "fajrPortion": 0.0915,
+    "ishaPortion": 0.0862,
+    "night": 13.17,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.87,
+    "ishaAngle": 12.89,
+    "fajrPortion": 0.0869,
+    "ishaPortion": 0.0824,
+    "night": 14.7,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.85,
+    "ishaAngle": 12.79,
+    "fajrPortion": 0.0869,
+    "ishaPortion": 0.0822,
+    "night": 15.48,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 2,
+    "lo": 1,
+    "hi": 4
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 0,
+    "lo": -2,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 1,
+    "hi": 5
+   }
+  }
+ },
+ {
+  "key": "nice-ennour",
+  "name": "nice-ennour",
+  "lat": 43.68870270089,
+  "lon": 7.2008836269379,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 13.05,
+    "ishaAngle": 12.7,
+    "fajrPortion": 0.0834,
+    "ishaPortion": 0.0764,
+    "night": 14.66,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 13.08,
+    "ishaAngle": 12.71,
+    "fajrPortion": 0.0858,
+    "ishaPortion": 0.078,
+    "night": 13.46,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 13.08,
+    "ishaAngle": 12.69,
+    "fajrPortion": 0.0942,
+    "ishaPortion": 0.0859,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.98,
+    "ishaAngle": 12.63,
+    "fajrPortion": 0.1141,
+    "ishaPortion": 0.1046,
+    "night": 10.52,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.8,
+    "ishaAngle": 12.5,
+    "fajrPortion": 0.1464,
+    "ishaPortion": 0.1355,
+    "night": 9.22,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.7,
+    "ishaAngle": 12.45,
+    "fajrPortion": 0.1727,
+    "ishaPortion": 0.1611,
+    "night": 8.59,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.73,
+    "ishaAngle": 12.51,
+    "fajrPortion": 0.1589,
+    "ishaPortion": 0.1476,
+    "night": 8.92,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.9,
+    "ishaAngle": 12.63,
+    "fajrPortion": 0.1241,
+    "ishaPortion": 0.1137,
+    "night": 10.07,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 13.04,
+    "ishaAngle": 12.69,
+    "fajrPortion": 0.0996,
+    "ishaPortion": 0.0911,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 13.08,
+    "ishaAngle": 12.71,
+    "fajrPortion": 0.0873,
+    "ishaPortion": 0.0797,
+    "night": 13.02,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 13.06,
+    "ishaAngle": 13.54,
+    "fajrPortion": 0.0834,
+    "ishaPortion": 0.0818,
+    "night": 14.36,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 13.01,
+    "ishaAngle": 14.69,
+    "fajrPortion": 0.083,
+    "ishaPortion": 0.0896,
+    "night": 15.04,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 0,
+    "lo": -3,
+    "hi": 4
+   },
+   "maghrib": {
+    "median": 5,
+    "lo": 4,
+    "hi": 5
+   }
+  }
+ },
+ {
+  "key": "nice-errahma",
+  "name": "nice-errahma",
+  "lat": 43.7401835,
+  "lon": 7.3078289,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.67,
+    "ishaAngle": 15,
+    "fajrPortion": 0.0812,
+    "ishaPortion": 0.0932,
+    "night": 14.67,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.69,
+    "ishaAngle": 12.89,
+    "fajrPortion": 0.0832,
+    "ishaPortion": 0.0808,
+    "night": 13.46,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.7,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.0911,
+    "ishaPortion": 0.0887,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.64,
+    "ishaAngle": 12.76,
+    "fajrPortion": 0.111,
+    "ishaPortion": 0.108,
+    "night": 10.51,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.54,
+    "ishaAngle": 12.65,
+    "fajrPortion": 0.1434,
+    "ishaPortion": 0.141,
+    "night": 9.22,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.48,
+    "ishaAngle": 12.56,
+    "fajrPortion": 0.169,
+    "ishaPortion": 0.1651,
+    "night": 8.58,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.48,
+    "ishaAngle": 12.66,
+    "fajrPortion": 0.1571,
+    "ishaPortion": 0.1515,
+    "night": 8.91,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.59,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.1209,
+    "ishaPortion": 0.1175,
+    "night": 10.07,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.69,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.0969,
+    "ishaPortion": 0.094,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.74,
+    "ishaAngle": 12.92,
+    "fajrPortion": 0.0848,
+    "ishaPortion": 0.0841,
+    "night": 13.03,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.72,
+    "ishaAngle": 18.06,
+    "fajrPortion": 0.0811,
+    "ishaPortion": 0.1131,
+    "night": 14.37,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.7,
+    "ishaAngle": 19.11,
+    "fajrPortion": 0.0809,
+    "ishaPortion": 0.1194,
+    "night": 15.05,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 46
+   },
+   "asr": {
+    "median": 0,
+    "lo": -2,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "rennes-ennour",
+  "name": "rennes-ennour",
+  "lat": 48.1164797,
+  "lon": -1.7152497,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.85,
+    "ishaAngle": 12.94,
+    "fajrPortion": 0.0868,
+    "ishaPortion": 0.084,
+    "night": 15.15,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.93,
+    "ishaAngle": 12.9,
+    "fajrPortion": 0.0891,
+    "ishaPortion": 0.0858,
+    "night": 13.72,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.93,
+    "ishaAngle": 12.88,
+    "fajrPortion": 0.1001,
+    "ishaPortion": 0.0955,
+    "night": 12.04,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.85,
+    "ishaAngle": 12.79,
+    "fajrPortion": 0.1265,
+    "ishaPortion": 0.122,
+    "night": 10.28,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.66,
+    "ishaAngle": 12.6,
+    "fajrPortion": 0.1734,
+    "ishaPortion": 0.1696,
+    "night": 8.75,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.47,
+    "ishaAngle": 12.44,
+    "fajrPortion": 0.2173,
+    "ishaPortion": 0.2109,
+    "night": 7.98,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.47,
+    "ishaAngle": 12.43,
+    "fajrPortion": 0.1929,
+    "ishaPortion": 0.187,
+    "night": 8.38,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.6,
+    "ishaAngle": 12.54,
+    "fajrPortion": 0.1401,
+    "ishaPortion": 0.1333,
+    "night": 9.75,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.73,
+    "ishaAngle": 12.63,
+    "fajrPortion": 0.1069,
+    "ishaPortion": 0.1024,
+    "night": 11.45,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.76,
+    "ishaAngle": 12.66,
+    "fajrPortion": 0.0917,
+    "ishaPortion": 0.0877,
+    "night": 13.21,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.75,
+    "ishaAngle": 15.22,
+    "fajrPortion": 0.0869,
+    "ishaPortion": 0.1009,
+    "night": 14.79,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.76,
+    "ishaAngle": 16.74,
+    "fajrPortion": 0.0865,
+    "ishaPortion": 0.1098,
+    "night": 15.61,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": -1,
+    "hi": 3
+   },
+   "dhuhr": {
+    "median": 5,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 0,
+    "lo": -1,
+    "hi": 1
+   },
+   "maghrib": {
+    "median": 3,
+    "lo": 1,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "rennes-ibnkhaldoun",
+  "name": "rennes-ibnkhaldoun",
+  "lat": 48.093922073502,
+  "lon": -1.6539111809764,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.8,
+    "ishaAngle": 15.92,
+    "fajrPortion": 0.0868,
+    "ishaPortion": 0.1046,
+    "night": 15.14,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.81,
+    "ishaAngle": 12.82,
+    "fajrPortion": 0.0892,
+    "ishaPortion": 0.0858,
+    "night": 13.71,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.83,
+    "ishaAngle": 12.8,
+    "fajrPortion": 0.0996,
+    "ishaPortion": 0.096,
+    "night": 12.04,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.72,
+    "ishaAngle": 12.69,
+    "fajrPortion": 0.1257,
+    "ishaPortion": 0.1216,
+    "night": 10.28,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.57,
+    "ishaAngle": 12.53,
+    "fajrPortion": 0.1734,
+    "ishaPortion": 0.1684,
+    "night": 8.75,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.21,
+    "ishaAngle": 12.18,
+    "fajrPortion": 0.2098,
+    "ishaPortion": 0.2036,
+    "night": 7.98,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.49,
+    "ishaAngle": 12.51,
+    "fajrPortion": 0.1929,
+    "ishaPortion": 0.1849,
+    "night": 8.38,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.65,
+    "ishaAngle": 12.7,
+    "fajrPortion": 0.1393,
+    "ishaPortion": 0.1333,
+    "night": 9.76,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.79,
+    "ishaAngle": 12.8,
+    "fajrPortion": 0.1069,
+    "ishaPortion": 0.1026,
+    "night": 11.46,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.84,
+    "ishaAngle": 12.86,
+    "fajrPortion": 0.0916,
+    "ishaPortion": 0.0898,
+    "night": 13.21,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.82,
+    "ishaAngle": 18.55,
+    "fajrPortion": 0.0867,
+    "ishaPortion": 0.1223,
+    "night": 14.79,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.79,
+    "ishaAngle": 20,
+    "fajrPortion": 0.0864,
+    "ishaPortion": 0.1311,
+    "night": 15.6,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 0,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 20
+   },
+   "asr": {
+    "median": 1,
+    "lo": -1,
+    "hi": 4
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "toulon-lmv",
+  "name": "toulon-lmv",
+  "lat": 43.124660083393,
+  "lon": 5.9413355029679,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.88,
+    "ishaAngle": 16.53,
+    "fajrPortion": 0.0836,
+    "ishaPortion": 0.1016,
+    "night": 14.61,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.97,
+    "ishaAngle": 12.94,
+    "fajrPortion": 0.0857,
+    "ishaPortion": 0.0798,
+    "night": 13.43,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.97,
+    "ishaAngle": 12.96,
+    "fajrPortion": 0.094,
+    "ishaPortion": 0.0867,
+    "night": 12.02,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.93,
+    "ishaAngle": 12.91,
+    "fajrPortion": 0.1133,
+    "ishaPortion": 0.1059,
+    "night": 10.54,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.82,
+    "ishaAngle": 12.8,
+    "fajrPortion": 0.1432,
+    "ishaPortion": 0.1365,
+    "night": 9.28,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.77,
+    "ishaAngle": 12.73,
+    "fajrPortion": 0.1695,
+    "ishaPortion": 0.16,
+    "night": 8.66,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.8,
+    "ishaAngle": 12.78,
+    "fajrPortion": 0.1578,
+    "ishaPortion": 0.1485,
+    "night": 8.98,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.89,
+    "ishaAngle": 12.89,
+    "fajrPortion": 0.1231,
+    "ishaPortion": 0.1154,
+    "night": 10.11,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.98,
+    "ishaAngle": 12.95,
+    "fajrPortion": 0.0993,
+    "ishaPortion": 0.0911,
+    "night": 11.53,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.96,
+    "ishaAngle": 12.98,
+    "fajrPortion": 0.0875,
+    "ishaPortion": 0.0825,
+    "night": 13,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.88,
+    "ishaAngle": 19.68,
+    "fajrPortion": 0.0836,
+    "ishaPortion": 0.1217,
+    "night": 14.31,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.82,
+    "ishaAngle": 20.64,
+    "fajrPortion": 0.0833,
+    "ishaPortion": 0.1268,
+    "night": 14.98,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": -179,
+    "hi": 3
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 7
+   },
+   "asr": {
+    "median": 1,
+    "lo": -2,
+    "hi": 2
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 8
+   }
+  }
+ },
+ {
+  "key": "toulon-pontdulas",
+  "name": "toulon-pontdulas",
+  "lat": 43.131885041777,
+  "lon": 5.9142669422284,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 12.71,
+    "ishaAngle": 14.59,
+    "fajrPortion": 0.0806,
+    "ishaPortion": 0.0895,
+    "night": 14.61,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 12.7,
+    "ishaAngle": 14.72,
+    "fajrPortion": 0.0825,
+    "ishaPortion": 0.0925,
+    "night": 13.43,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 12.72,
+    "ishaAngle": 14.66,
+    "fajrPortion": 0.0905,
+    "ishaPortion": 0.1016,
+    "night": 12.02,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 12.67,
+    "ishaAngle": 14.38,
+    "fajrPortion": 0.1095,
+    "ishaPortion": 0.1225,
+    "night": 10.54,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 12.56,
+    "ishaAngle": 13.99,
+    "fajrPortion": 0.1401,
+    "ishaPortion": 0.1545,
+    "night": 9.28,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 12.46,
+    "ishaAngle": 13.76,
+    "fajrPortion": 0.1638,
+    "ishaPortion": 0.1792,
+    "night": 8.66,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.5,
+    "ishaAngle": 13.91,
+    "fajrPortion": 0.1522,
+    "ishaPortion": 0.1671,
+    "night": 8.98,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 12.6,
+    "ishaAngle": 14.3,
+    "fajrPortion": 0.1187,
+    "ishaPortion": 0.1319,
+    "night": 10.11,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 12.69,
+    "ishaAngle": 14.64,
+    "fajrPortion": 0.096,
+    "ishaPortion": 0.107,
+    "night": 11.53,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 12.74,
+    "ishaAngle": 14.73,
+    "fajrPortion": 0.0843,
+    "ishaPortion": 0.0945,
+    "night": 13,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 12.7,
+    "ishaAngle": 14.67,
+    "fajrPortion": 0.0806,
+    "ishaPortion": 0.0901,
+    "night": 14.31,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 12.67,
+    "ishaAngle": 14.58,
+    "fajrPortion": 0.0801,
+    "ishaPortion": 0.0892,
+    "night": 14.98,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 6,
+    "lo": 5,
+    "hi": 41
+   },
+   "asr": {
+    "median": 0,
+    "lo": -2,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 4,
+    "lo": 3,
+    "hi": 4
+   }
+  }
+ },
+ {
+  "key": "toulouse-alfath",
+  "name": "toulouse-alfath",
+  "lat": 43.6415755,
+  "lon": 1.4447664,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.99,
+    "ishaAngle": 17,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.1035,
+    "night": 14.66,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 15.02,
+    "ishaAngle": 15.08,
+    "fajrPortion": 0.0984,
+    "ishaPortion": 0.0926,
+    "night": 13.45,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 15,
+    "ishaAngle": 20.21,
+    "fajrPortion": 0.1095,
+    "ishaPortion": 0.1362,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 15.03,
+    "ishaAngle": 14.98,
+    "fajrPortion": 0.1347,
+    "ishaPortion": 0.1265,
+    "night": 10.52,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 14.98,
+    "ishaAngle": 14.98,
+    "fajrPortion": 0.177,
+    "ishaPortion": 0.1698,
+    "night": 9.23,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 14.99,
+    "ishaAngle": 14.97,
+    "fajrPortion": 0.213,
+    "ishaPortion": 0.2036,
+    "night": 8.59,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.97,
+    "ishaAngle": 14.95,
+    "fajrPortion": 0.1924,
+    "ishaPortion": 0.183,
+    "night": 8.92,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.97,
+    "ishaAngle": 14.97,
+    "fajrPortion": 0.1472,
+    "ishaPortion": 0.139,
+    "night": 10.07,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.98,
+    "ishaAngle": 15.02,
+    "fajrPortion": 0.1162,
+    "ishaPortion": 0.108,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 14.99,
+    "ishaAngle": 15.01,
+    "fajrPortion": 0.1004,
+    "ishaPortion": 0.0963,
+    "night": 13.02,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 15.03,
+    "ishaAngle": 20.11,
+    "fajrPortion": 0.0962,
+    "ishaPortion": 0.1236,
+    "night": 14.36,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 15.01,
+    "ishaAngle": 21.12,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.1295,
+    "night": 15.04,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": -7,
+    "hi": 3
+   },
+   "dhuhr": {
+    "median": 2,
+    "lo": 1,
+    "hi": 13
+   },
+   "asr": {
+    "median": 1,
+    "lo": 0,
+    "hi": 2
+   },
+   "maghrib": {
+    "median": 6,
+    "lo": 5,
+    "hi": 65
+   }
+  }
+ },
+ {
+  "key": "toulouse-assalam",
+  "name": "toulouse-assalam",
+  "lat": 43.568702,
+  "lon": 1.408338,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.99,
+    "ishaAngle": 16.08,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.0956,
+    "night": 14.65,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 15.01,
+    "ishaAngle": 14.99,
+    "fajrPortion": 0.0986,
+    "ishaPortion": 0.0911,
+    "night": 13.45,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 15.01,
+    "ishaAngle": 14.98,
+    "fajrPortion": 0.109,
+    "ishaPortion": 0.1008,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 15.09,
+    "ishaAngle": 14.98,
+    "fajrPortion": 0.1346,
+    "ishaPortion": 0.1249,
+    "night": 10.52,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 15.02,
+    "ishaAngle": 14.97,
+    "fajrPortion": 0.1769,
+    "ishaPortion": 0.1678,
+    "night": 9.24,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 14.98,
+    "ishaAngle": 15,
+    "fajrPortion": 0.2131,
+    "ishaPortion": 0.2004,
+    "night": 8.6,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.98,
+    "ishaAngle": 14.99,
+    "fajrPortion": 0.1941,
+    "ishaPortion": 0.181,
+    "night": 8.93,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.99,
+    "ishaAngle": 14.99,
+    "fajrPortion": 0.1472,
+    "ishaPortion": 0.1356,
+    "night": 10.08,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.99,
+    "ishaAngle": 15.02,
+    "fajrPortion": 0.116,
+    "ishaPortion": 0.107,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 15.01,
+    "ishaAngle": 15.03,
+    "fajrPortion": 0.1008,
+    "ishaPortion": 0.0943,
+    "night": 13.02,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 15.03,
+    "ishaAngle": 19.18,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.1166,
+    "night": 14.35,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 15.01,
+    "ishaAngle": 20.19,
+    "fajrPortion": 0.096,
+    "ishaPortion": 0.1218,
+    "night": 15.03,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "asr": {
+    "median": 0.5,
+    "lo": -3,
+    "hi": 3
+   },
+   "maghrib": {
+    "median": 7,
+    "lo": 6,
+    "hi": 7
+   }
+  }
+ },
+ {
+  "key": "toulouse-reynerie",
+  "name": "toulouse-reynerie",
+  "lat": 43.569,
+  "lon": 1.3975831,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 14.98,
+    "ishaAngle": 15.19,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.0892,
+    "night": 14.65,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 15.01,
+    "ishaAngle": 15.18,
+    "fajrPortion": 0.0985,
+    "ishaPortion": 0.0911,
+    "night": 13.45,
+    "n": 29
+   },
+   {
+    "month": "03",
+    "fajrAngle": 15.02,
+    "ishaAngle": 15.17,
+    "fajrPortion": 0.109,
+    "ishaPortion": 0.1012,
+    "night": 12.03,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 14.94,
+    "ishaAngle": 15.13,
+    "fajrPortion": 0.1331,
+    "ishaPortion": 0.1249,
+    "night": 10.52,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 15.01,
+    "ishaAngle": 15.1,
+    "fajrPortion": 0.1769,
+    "ishaPortion": 0.1666,
+    "night": 9.24,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 14.98,
+    "ishaAngle": 15.1,
+    "fajrPortion": 0.2131,
+    "ishaPortion": 0.2013,
+    "night": 8.6,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 14.99,
+    "ishaAngle": 15.11,
+    "fajrPortion": 0.1941,
+    "ishaPortion": 0.181,
+    "night": 8.93,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 14.99,
+    "ishaAngle": 15.14,
+    "fajrPortion": 0.1472,
+    "ishaPortion": 0.1356,
+    "night": 10.08,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 14.99,
+    "ishaAngle": 15.19,
+    "fajrPortion": 0.1162,
+    "ishaPortion": 0.107,
+    "night": 11.52,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 15.01,
+    "ishaAngle": 15.2,
+    "fajrPortion": 0.1006,
+    "ishaPortion": 0.0931,
+    "night": 13.02,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 15.03,
+    "ishaAngle": 15.16,
+    "fajrPortion": 0.0962,
+    "ishaPortion": 0.0892,
+    "night": 14.35,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 15.02,
+    "ishaAngle": 15.18,
+    "fajrPortion": 0.0961,
+    "ishaPortion": 0.0891,
+    "night": 15.03,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "dhuhr": {
+    "median": 1,
+    "lo": 0,
+    "hi": 1
+   },
+   "asr": {
+    "median": 1,
+    "lo": -2,
+    "hi": 4
+   },
+   "maghrib": {
+    "median": 8,
+    "lo": 7,
+    "hi": 8
+   }
+  }
+ },
+ {
+  "key": "strasbourg-gms",
+  "name": "strasbourg-gms",
+  "lat": 48.5833,
+  "lon": 7.7458,
+  "months": [
+   {
+    "month": "01",
+    "fajrAngle": 17.98,
+    "ishaAngle": 15.83,
+    "fajrPortion": 0.1153,
+    "ishaPortion": 0.1017,
+    "night": 15.2,
+    "n": 31
+   },
+   {
+    "month": "02",
+    "fajrAngle": 17.95,
+    "ishaAngle": 15.8,
+    "fajrPortion": 0.1192,
+    "ishaPortion": 0.1048,
+    "night": 13.78,
+    "n": 28
+   },
+   {
+    "month": "03",
+    "fajrAngle": 17.95,
+    "ishaAngle": 15.79,
+    "fajrPortion": 0.1356,
+    "ishaPortion": 0.1184,
+    "night": 12.05,
+    "n": 31
+   },
+   {
+    "month": "04",
+    "fajrAngle": 17.96,
+    "ishaAngle": 15.77,
+    "fajrPortion": 0.1797,
+    "ishaPortion": 0.1545,
+    "night": 10.25,
+    "n": 30
+   },
+   {
+    "month": "05",
+    "fajrAngle": 13.67,
+    "ishaAngle": 13.32,
+    "fajrPortion": 0.1841,
+    "ishaPortion": 0.1822,
+    "night": 8.69,
+    "n": 31
+   },
+   {
+    "month": "06",
+    "fajrAngle": 11.4,
+    "ishaAngle": 10.5,
+    "fajrPortion": 0.1829,
+    "ishaPortion": 0.1653,
+    "night": 7.9,
+    "n": 30
+   },
+   {
+    "month": "07",
+    "fajrAngle": 12.83,
+    "ishaAngle": 11.25,
+    "fajrPortion": 0.1904,
+    "ishaPortion": 0.1577,
+    "night": 8.31,
+    "n": 31
+   },
+   {
+    "month": "08",
+    "fajrAngle": 18,
+    "ishaAngle": 16.23,
+    "fajrPortion": 0.2025,
+    "ishaPortion": 0.1712,
+    "night": 9.72,
+    "n": 31
+   },
+   {
+    "month": "09",
+    "fajrAngle": 18.06,
+    "ishaAngle": 16.28,
+    "fajrPortion": 0.1478,
+    "ishaPortion": 0.1281,
+    "night": 11.45,
+    "n": 30
+   },
+   {
+    "month": "10",
+    "fajrAngle": 18.04,
+    "ishaAngle": 16.2,
+    "fajrPortion": 0.1224,
+    "ishaPortion": 0.1079,
+    "night": 13.23,
+    "n": 31
+   },
+   {
+    "month": "11",
+    "fajrAngle": 18.04,
+    "ishaAngle": 16.13,
+    "fajrPortion": 0.1154,
+    "ishaPortion": 0.1018,
+    "night": 14.84,
+    "n": 30
+   },
+   {
+    "month": "12",
+    "fajrAngle": 18.05,
+    "ishaAngle": 15.96,
+    "fajrPortion": 0.115,
+    "ishaPortion": 0.1018,
+    "night": 15.67,
+    "n": 31
+   }
+  ],
+  "margins": {
+   "sunrise": {
+    "median": -7,
+    "lo": -7,
+    "hi": -6
+   },
+   "dhuhr": {
+    "median": 5,
+    "lo": 5,
+    "hi": 6
+   },
+   "asr": {
+    "median": 4,
+    "lo": 2,
+    "hi": 7
+   },
+   "maghrib": {
+    "median": 7,
+    "lo": 6,
+    "hi": 10
+   }
+  }
+ }
+]

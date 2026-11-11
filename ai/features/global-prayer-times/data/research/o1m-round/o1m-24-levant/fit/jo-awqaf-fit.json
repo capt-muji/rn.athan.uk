@@ -1,0 +1,144 @@
+{
+ "jo/amman": {
+  "city": "Amman",
+  "rows": 184,
+  "pointRecovered": false,
+  "lat": 31.9539,
+  "lon": 35.9106,
+  "fajr": {
+   "angle": 18.1,
+   "pad": 0,
+   "mode": "round"
+  },
+  "isha": {
+   "angle": 18.15,
+   "pad": 0,
+   "mode": "floor"
+  },
+  "margins": {
+   "sunrise": "-5 floor",
+   "dhuhr": "0 ceil",
+   "asr": "1 floor",
+   "maghrib": "7 floor"
+  },
+  "maghribBasis": "sunset + margin",
+  "recipe": {
+   "perColumn": {
+    "fajr": {
+     "exactPct": 93.5,
+     "w1Pct": 100,
+     "mae": 0.065,
+     "max": 1,
+     "meanSigned": 0.07,
+     "n": 184
+    },
+    "sunrise": {
+     "exactPct": 6.5,
+     "w1Pct": 85.3,
+     "mae": 1.082,
+     "max": 2,
+     "meanSigned": -1.08,
+     "n": 184
+    },
+    "dhuhr": {
+     "exactPct": 83.7,
+     "w1Pct": 100,
+     "mae": 0.163,
+     "max": 1,
+     "meanSigned": -0.16,
+     "n": 184
+    },
+    "asr": {
+     "exactPct": 75,
+     "w1Pct": 100,
+     "mae": 0.25,
+     "max": 1,
+     "meanSigned": 0.02,
+     "n": 184
+    },
+    "maghrib": {
+     "exactPct": 76.6,
+     "w1Pct": 100,
+     "mae": 0.234,
+     "max": 1,
+     "meanSigned": 0.07,
+     "n": 184
+    },
+    "isha": {
+     "exactPct": 91.8,
+     "w1Pct": 100,
+     "mae": 0.082,
+     "max": 1,
+     "meanSigned": 0.08,
+     "n": 184
+    }
+   },
+   "total": {
+    "exactPct": 71.2,
+    "w1Pct": 97.6,
+    "mae": 0.313,
+    "max": 2,
+    "meanSigned": -0.17,
+    "n": 1104
+   }
+  },
+  "byYear": {
+   "2021": {
+    "exactPct": 65,
+    "w1Pct": 96.7,
+    "mae": 0.383,
+    "max": 2,
+    "meanSigned": -0.22,
+    "n": 60
+   },
+   "2022": {
+    "exactPct": 70,
+    "w1Pct": 100,
+    "mae": 0.3,
+    "max": 1,
+    "meanSigned": -0.1,
+    "n": 60
+   },
+   "2023": {
+    "exactPct": 63.3,
+    "w1Pct": 93.3,
+    "mae": 0.433,
+    "max": 2,
+    "meanSigned": -0.27,
+    "n": 60
+   },
+   "2024": {
+    "exactPct": 72.4,
+    "w1Pct": 98.1,
+    "mae": 0.295,
+    "max": 2,
+    "meanSigned": -0.16,
+    "n": 366
+   },
+   "2025": {
+    "exactPct": 72.1,
+    "w1Pct": 97.2,
+    "mae": 0.307,
+    "max": 2,
+    "meanSigned": -0.16,
+    "n": 498
+   },
+   "2026": {
+    "exactPct": 71.7,
+    "w1Pct": 100,
+    "mae": 0.283,
+    "max": 1,
+    "meanSigned": -0.15,
+    "n": 60
+   }
+  },
+  "amplitude": {
+   "fajr": -66,
+   "sunrise": -56,
+   "dhuhr": 53,
+   "asr": 95,
+   "maghrib": 154,
+   "isha": 166
+  }
+ }
+}

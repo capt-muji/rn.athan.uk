@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-chennai-anjuman-mohammedi-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 13.035,
+  "lon": 80.045,
+  "mae": 25.393
+ },
+ "coarse": {
+  "lat": 13.05,
+  "lon": 80.05,
+  "mae": 25.396
+ },
+ "fajr_angle": 18.5,
+ "fajr_sweep": [
+  {
+   "a": 18.5,
+   "med": 2,
+   "maeCentred": 0.06
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "maeCentred": 0.07
+  },
+  {
+   "a": 17.8,
+   "med": -1,
+   "maeCentred": 0.1
+  }
+ ],
+ "isha_angle": 17.45,
+ "isha_sweep": [
+  {
+   "a": 17.45,
+   "med": 17,
+   "maeCentred": 0.07
+  },
+  {
+   "a": 17.2,
+   "med": 18,
+   "maeCentred": 0.08
+  },
+  {
+   "a": 17.65,
+   "med": 16,
+   "maeCentred": 0.1
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 7,
+   "maeCentred": 0.13
+  },
+  "1": {
+   "med": -56,
+   "maeCentred": 8.39
+  }
+ },
+ "margins": {
+  "fajr": 2,
+  "sunrise": 0,
+  "dhuhr": 50,
+  "asr": 7,
+  "maghrib": 5,
+  "isha": 17
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 93.7,
+   "within1": 100,
+   "mae": 0.06,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 88.5,
+   "within1": 100,
+   "mae": 0.12,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.8,
+   "within1": 11.2,
+   "mae": 7.17,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 86.8,
+   "within1": 100,
+   "mae": 0.13,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 83.8,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 92.6,
+   "within1": 100,
+   "mae": 0.07,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 41,
+ "all_six_exact": 9,
+ "amplitude_fajr_min": 59
+}

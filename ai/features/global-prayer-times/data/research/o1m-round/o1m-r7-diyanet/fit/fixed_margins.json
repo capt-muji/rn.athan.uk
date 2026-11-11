@@ -1,0 +1,9938 @@
+[
+ {
+  "country": "ALMANYA",
+  "countryId": "13",
+  "cities": 1241,
+  "latMedian": 50.57,
+  "rows": 452965,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.7
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.7
+  },
+  "within1": {
+   "imsak": 59.8,
+   "sunrise": 92.4,
+   "dhuhr": 100,
+   "asr": 35.9,
+   "maghrib": 45.1,
+   "isha": 25.5
+  },
+  "worst": {
+   "imsak": 149.1,
+   "sunrise": 1.9,
+   "dhuhr": 0,
+   "asr": 3.4,
+   "maghrib": 2.8,
+   "isha": 147
+  },
+  "seasonalAmplitude": {
+   "imsak": 106.8,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.7,
+   "isha": -77.8
+  }
+ },
+ {
+  "country": "TÜRKİYE",
+  "countryId": "2",
+  "cities": 869,
+  "latMedian": 39.3,
+  "rows": 317185,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.4,
+   "sunrise": 96.6,
+   "dhuhr": 100,
+   "asr": 60.4,
+   "maghrib": 73.1,
+   "isha": 57.6
+  },
+  "worst": {
+   "imsak": 2.1,
+   "sunrise": 1.7,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.3,
+   "isha": 3.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1,
+   "isha": 1.5
+  }
+ },
+ {
+  "country": "FRANSA",
+  "countryId": "21",
+  "cities": 587,
+  "latMedian": 47.78,
+  "rows": 214255,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7
+  },
+  "within1": {
+   "imsak": 70.9,
+   "sunrise": 94,
+   "dhuhr": 100,
+   "asr": 42.2,
+   "maghrib": 53.8,
+   "isha": 31.3
+  },
+  "worst": {
+   "imsak": 144.8,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.1,
+   "maghrib": 2.6,
+   "isha": 142.9
+  },
+  "seasonalAmplitude": {
+   "imsak": 39.7,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -36.1
+  }
+ },
+ {
+  "country": "ABD",
+  "countryId": "33",
+  "cities": 485,
+  "latMedian": 39.35,
+  "rows": 176955,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -10.7
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -5.7
+  },
+  "within1": {
+   "imsak": 95,
+   "sunrise": 96.4,
+   "dhuhr": 100,
+   "asr": 62.2,
+   "maghrib": 73.5,
+   "isha": 49
+  },
+  "worst": {
+   "imsak": 166.5,
+   "sunrise": 22.8,
+   "dhuhr": 0,
+   "asr": 8.1,
+   "maghrib": 31.9,
+   "isha": 166.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1,
+   "isha": -0.7
+  }
+ },
+ {
+  "country": "ATLANTİK OKYANUSU",
+  "countryId": "1216",
+  "cities": 357,
+  "latMedian": -1.94,
+  "rows": 130305,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.2,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 93.8,
+   "maghrib": 96.4,
+   "isha": 93.7
+  },
+  "worst": {
+   "imsak": 143.5,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.5,
+   "maghrib": 2.6,
+   "isha": 148.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "country": "HOLLANDA",
+  "countryId": "4",
+  "cities": 283,
+  "latMedian": 52.05,
+  "rows": 103295,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -13.1
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -8.1
+  },
+  "within1": {
+   "imsak": 56.5,
+   "sunrise": 91,
+   "dhuhr": 100,
+   "asr": 32.4,
+   "maghrib": 40.4,
+   "isha": 23.6
+  },
+  "worst": {
+   "imsak": 146.9,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.3,
+   "maghrib": 2.8,
+   "isha": 144.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 130.8,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.8,
+   "isha": -129.6
+  }
+ },
+ {
+  "country": "RUSYA",
+  "countryId": "207",
+  "cities": 241,
+  "latMedian": 55.05,
+  "rows": 87965,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 1.9,
+   "isha": -13.5
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 6.9,
+   "isha": -8.5
+  },
+  "within1": {
+   "imsak": 59.2,
+   "sunrise": 86.1,
+   "dhuhr": 100,
+   "asr": 31.9,
+   "maghrib": 37.7,
+   "isha": 18.1
+  },
+  "worst": {
+   "imsak": 182.1,
+   "sunrise": 163.1,
+   "dhuhr": 0,
+   "asr": 185.2,
+   "maghrib": 181.1,
+   "isha": 172.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 111.3,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 1.9,
+   "isha": -107.2
+  }
+ },
+ {
+  "country": "CIN",
+  "countryId": "61",
+  "cities": 222,
+  "latMedian": 32.64,
+  "rows": 81030,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -10.3
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -5.3
+  },
+  "within1": {
+   "imsak": 95.7,
+   "sunrise": 97.5,
+   "dhuhr": 100,
+   "asr": 70.3,
+   "maghrib": 80,
+   "isha": 57.9
+  },
+  "worst": {
+   "imsak": 162.9,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.4,
+   "isha": 142.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.9,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "BELCIKA",
+  "countryId": "11",
+  "cities": 221,
+  "latMedian": 50.9,
+  "rows": 80665,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.7
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.7
+  },
+  "within1": {
+   "imsak": 58.8,
+   "sunrise": 92.3,
+   "dhuhr": 100,
+   "asr": 35.5,
+   "maghrib": 44.2,
+   "isha": 25.8
+  },
+  "worst": {
+   "imsak": 145.7,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.3,
+   "maghrib": 2.7,
+   "isha": 143.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 131.2,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": -87.9
+  }
+ },
+ {
+  "country": "AVUSTRALYA",
+  "countryId": "59",
+  "cities": 216,
+  "latMedian": -33.87,
+  "rows": 78840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.9,
+   "sunrise": 98.1,
+   "dhuhr": 100,
+   "asr": 73.8,
+   "maghrib": 83.2,
+   "isha": 74
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.2,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": -0.8,
+   "isha": -1.1
+  }
+ },
+ {
+  "country": "AVUSTURYA",
+  "countryId": "35",
+  "cities": 191,
+  "latMedian": 47.47,
+  "rows": 69715,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.1
+  },
+  "temkinAbs": {
+   "imsak": 0.3,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.1
+  },
+  "within1": {
+   "imsak": 68.2,
+   "sunrise": 94.3,
+   "dhuhr": 100,
+   "asr": 42.2,
+   "maghrib": 53.6,
+   "isha": 31
+  },
+  "worst": {
+   "imsak": 143,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.4,
+   "isha": 96.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 40.8,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -37.9
+  }
+ },
+ {
+  "country": "ISVEC",
+  "countryId": "12",
+  "cities": 165,
+  "latMedian": 58.39,
+  "rows": 60225,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.2,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 1.9,
+   "isha": -15.5
+  },
+  "temkinAbs": {
+   "imsak": 0.8,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 6.9,
+   "isha": -10.5
+  },
+  "within1": {
+   "imsak": 38.3,
+   "sunrise": 79.2,
+   "dhuhr": 100,
+   "asr": 21.9,
+   "maghrib": 23.4,
+   "isha": 10.7
+  },
+  "worst": {
+   "imsak": 184.1,
+   "sunrise": 157.8,
+   "dhuhr": 0,
+   "asr": 157.7,
+   "maghrib": 178.4,
+   "isha": 178.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 112.3,
+   "sunrise": -0.9,
+   "dhuhr": 0,
+   "asr": 3.5,
+   "maghrib": 2.6,
+   "isha": -111.4
+  }
+ },
+ {
+  "country": "BREZILYA",
+  "countryId": "146",
+  "cities": 163,
+  "latMedian": -20.15,
+  "rows": 59495,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 90.9,
+   "maghrib": 95.1,
+   "isha": 92.4
+  },
+  "worst": {
+   "imsak": 1.6,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.7,
+   "isha": 2
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -0.3,
+   "isha": -0.4
+  }
+ },
+ {
+  "country": "INGILTERE",
+  "countryId": "15",
+  "cities": 159,
+  "latMedian": 52.42,
+  "rows": 58035,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -13.2
+  },
+  "temkinAbs": {
+   "imsak": 0.5,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -8.2
+  },
+  "within1": {
+   "imsak": 54.4,
+   "sunrise": 90.6,
+   "dhuhr": 100,
+   "asr": 31.8,
+   "maghrib": 38.7,
+   "isha": 22.2
+  },
+  "worst": {
+   "imsak": 151.2,
+   "sunrise": 2.1,
+   "dhuhr": 0,
+   "asr": 4,
+   "maghrib": 3,
+   "isha": 148.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 130.1,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 1.8,
+   "isha": -126.5
+  }
+ },
+ {
+  "country": "ISVICRE",
+  "countryId": "49",
+  "cities": 147,
+  "latMedian": 47.19,
+  "rows": 53655,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7
+  },
+  "within1": {
+   "imsak": 70.6,
+   "sunrise": 94.1,
+   "dhuhr": 100,
+   "asr": 43.3,
+   "maghrib": 54.4,
+   "isha": 32.5
+  },
+  "worst": {
+   "imsak": 84,
+   "sunrise": 1.9,
+   "dhuhr": 0,
+   "asr": 3,
+   "maghrib": 2.6,
+   "isha": 64.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 31.4,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -30.2
+  }
+ },
+ {
+  "country": "ITALYA",
+  "countryId": "8",
+  "cities": 144,
+  "latMedian": 43.82,
+  "rows": 52560,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.3
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.3
+  },
+  "within1": {
+   "imsak": 88.4,
+   "sunrise": 95.9,
+   "dhuhr": 100,
+   "asr": 51.7,
+   "maghrib": 64.3,
+   "isha": 40.2
+  },
+  "worst": {
+   "imsak": 50.5,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.8,
+   "maghrib": 2.3,
+   "isha": 40.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": -1.7
+  }
+ },
+ {
+  "country": "JAPONYA",
+  "countryId": "116",
+  "cities": 143,
+  "latMedian": 35.36,
+  "rows": 52195,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 97.5,
+   "sunrise": 97.5,
+   "dhuhr": 100,
+   "asr": 68.3,
+   "maghrib": 79.7,
+   "isha": 66.7
+  },
+  "worst": {
+   "imsak": 1.9,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.3,
+   "isha": 3.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.9,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "KAZAKISTAN",
+  "countryId": "92",
+  "cities": 125,
+  "latMedian": 44.93,
+  "rows": 45625,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.8
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.8
+  },
+  "within1": {
+   "imsak": 78.6,
+   "sunrise": 94.1,
+   "dhuhr": 100,
+   "asr": 43.8,
+   "maghrib": 55,
+   "isha": 32.2
+  },
+  "worst": {
+   "imsak": 162.7,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.3,
+   "maghrib": 2.8,
+   "isha": 145.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.8,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -4.5
+  }
+ },
+ {
+  "country": "HINDISTAN",
+  "countryId": "187",
+  "cities": 115,
+  "latMedian": 20.98,
+  "rows": 41975,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 88.9,
+   "maghrib": 93.9,
+   "isha": 90.9
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": 2.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "MEKSIKA",
+  "countryId": "53",
+  "cities": 95,
+  "latMedian": 20.8,
+  "rows": 34675,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 86.8,
+   "maghrib": 93,
+   "isha": 89
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.8,
+   "isha": 2.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "NORVEC",
+  "countryId": "36",
+  "cities": 86,
+  "latMedian": 59.81,
+  "rows": 31390,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -3.9,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 1.7,
+   "isha": -16.8
+  },
+  "temkinAbs": {
+   "imsak": 1.1,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 6.7,
+   "isha": -11.8
+  },
+  "within1": {
+   "imsak": 26.5,
+   "sunrise": 68.5,
+   "dhuhr": 100,
+   "asr": 18.6,
+   "maghrib": 19.2,
+   "isha": 6.3
+  },
+  "worst": {
+   "imsak": 182.9,
+   "sunrise": 156.4,
+   "dhuhr": 0,
+   "asr": 153.9,
+   "maghrib": 171.1,
+   "isha": 178.8
+  },
+  "seasonalAmplitude": {
+   "imsak": 101.7,
+   "sunrise": -1.2,
+   "dhuhr": 0,
+   "asr": 4.2,
+   "maghrib": 3.1,
+   "isha": -98.9
+  }
+ },
+ {
+  "country": "DANIMARKA",
+  "countryId": "26",
+  "cities": 83,
+  "latMedian": 55.64,
+  "rows": 30295,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.4,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -14.1
+  },
+  "temkinAbs": {
+   "imsak": 0.6,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -9.1
+  },
+  "within1": {
+   "imsak": 46,
+   "sunrise": 88.7,
+   "dhuhr": 100,
+   "asr": 26.1,
+   "maghrib": 30.1,
+   "isha": 18.4
+  },
+  "worst": {
+   "imsak": 152.1,
+   "sunrise": 1.9,
+   "dhuhr": 0,
+   "asr": 3.9,
+   "maghrib": 3,
+   "isha": 149.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 122.8,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.1,
+   "isha": -123
+  }
+ },
+ {
+  "country": "KANADA",
+  "countryId": "52",
+  "cities": 80,
+  "latMedian": 45.56,
+  "rows": 28988,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.9
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.9
+  },
+  "within1": {
+   "imsak": 73.3,
+   "sunrise": 90.6,
+   "dhuhr": 100,
+   "asr": 42.5,
+   "maghrib": 53.2,
+   "isha": 31.3
+  },
+  "worst": {
+   "imsak": 178.7,
+   "sunrise": 211.9,
+   "dhuhr": 0,
+   "asr": 186,
+   "maghrib": 136.2,
+   "isha": 176.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 13,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -13.4
+  }
+ },
+ {
+  "country": "UKRAYNA",
+  "countryId": "40",
+  "cities": 79,
+  "latMedian": 49.35,
+  "rows": 28835,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.4
+  },
+  "temkinAbs": {
+   "imsak": 0.3,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.4
+  },
+  "within1": {
+   "imsak": 63.7,
+   "sunrise": 93.2,
+   "dhuhr": 100,
+   "asr": 38.5,
+   "maghrib": 48.9,
+   "isha": 28.1
+  },
+  "worst": {
+   "imsak": 161.9,
+   "sunrise": 1.7,
+   "dhuhr": 0,
+   "asr": 3.2,
+   "maghrib": 2.6,
+   "isha": 143.8
+  },
+  "seasonalAmplitude": {
+   "imsak": 73,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.6,
+   "isha": -60
+  }
+ },
+ {
+  "country": "FINLANDIYA",
+  "countryId": "41",
+  "cities": 71,
+  "latMedian": 60.94,
+  "rows": 25915,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -3.9,
+   "sunrise": -11.8,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 1.2,
+   "isha": -17
+  },
+  "temkinAbs": {
+   "imsak": 1.1,
+   "sunrise": -6.8,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 6.2,
+   "isha": -12
+  },
+  "within1": {
+   "imsak": 24.8,
+   "sunrise": 60.1,
+   "dhuhr": 100,
+   "asr": 17.9,
+   "maghrib": 25.7,
+   "isha": 6.9
+  },
+  "worst": {
+   "imsak": 171.6,
+   "sunrise": 158.1,
+   "dhuhr": 0,
+   "asr": 24.8,
+   "maghrib": 164.9,
+   "isha": 166.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 96.6,
+   "sunrise": -1.5,
+   "dhuhr": 0,
+   "asr": 4.8,
+   "maghrib": 3.8,
+   "isha": -91.4
+  }
+ },
+ {
+  "country": "MOGOLISTAN",
+  "countryId": "60",
+  "cities": 67,
+  "latMedian": 48.39,
+  "rows": 24455,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.2
+  },
+  "temkinAbs": {
+   "imsak": 0.3,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.2
+  },
+  "within1": {
+   "imsak": 66.8,
+   "sunrise": 93.6,
+   "dhuhr": 100,
+   "asr": 40.2,
+   "maghrib": 51.9,
+   "isha": 29.7
+  },
+  "worst": {
+   "imsak": 144.3,
+   "sunrise": 1.7,
+   "dhuhr": 0,
+   "asr": 3,
+   "maghrib": 2.5,
+   "isha": 140
+  },
+  "seasonalAmplitude": {
+   "imsak": 55.4,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -48
+  }
+ },
+ {
+  "country": "ARJANTIN",
+  "countryId": "199",
+  "cities": 58,
+  "latMedian": -34.51,
+  "rows": 21170,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.7,
+   "sunrise": 97.5,
+   "dhuhr": 100,
+   "asr": 69.6,
+   "maghrib": 80.1,
+   "isha": 69.1
+  },
+  "worst": {
+   "imsak": 11.9,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 3.1,
+   "maghrib": 2.7,
+   "isha": 106.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": -0.7,
+   "isha": -1.1
+  }
+ },
+ {
+  "country": "KIRGIZISTAN",
+  "countryId": "168",
+  "cities": 55,
+  "latMedian": 41.76,
+  "rows": 20075,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 95.9,
+   "sunrise": 96.4,
+   "dhuhr": 100,
+   "asr": 55.1,
+   "maghrib": 67.8,
+   "isha": 50.2
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.2,
+   "isha": 3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.1,
+   "isha": 1.7
+  }
+ },
+ {
+  "country": "ISPANYA",
+  "countryId": "23",
+  "cities": 53,
+  "latMedian": 39.49,
+  "rows": 19345,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.2,
+   "sunrise": 96.5,
+   "dhuhr": 100,
+   "asr": 60.7,
+   "maghrib": 72.4,
+   "isha": 57.8
+  },
+  "worst": {
+   "imsak": 1.9,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.3,
+   "isha": 3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.6
+  }
+ },
+ {
+  "country": "ROMANYA",
+  "countryId": "37",
+  "cities": 53,
+  "latMedian": 45.2,
+  "rows": 19345,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.7
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.7
+  },
+  "within1": {
+   "imsak": 80.8,
+   "sunrise": 95,
+   "dhuhr": 100,
+   "asr": 46.3,
+   "maghrib": 59.2,
+   "isha": 35.8
+  },
+  "worst": {
+   "imsak": 82.6,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.8,
+   "maghrib": 2.3,
+   "isha": 63.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 5.8,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": -8.8
+  }
+ },
+ {
+  "country": "OZBEKISTAN",
+  "countryId": "131",
+  "cities": 50,
+  "latMedian": 40.19,
+  "rows": 18250,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 96.2,
+   "sunrise": 96.6,
+   "dhuhr": 100,
+   "asr": 57.8,
+   "maghrib": 70.9,
+   "isha": 54.3
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.1,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.7
+  }
+ },
+ {
+  "country": "BULGARISTAN",
+  "countryId": "44",
+  "cities": 49,
+  "latMedian": 42.57,
+  "rows": 17885,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 94.8,
+   "sunrise": 95.8,
+   "dhuhr": 100,
+   "asr": 52.9,
+   "maghrib": 65.9,
+   "isha": 47.9
+  },
+  "worst": {
+   "imsak": 2,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 3.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.2,
+   "isha": 1.8
+  }
+ },
+ {
+  "country": "BOSNA HERSEK",
+  "countryId": "9",
+  "cities": 47,
+  "latMedian": 44.27,
+  "rows": 17155,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.5
+  },
+  "within1": {
+   "imsak": 88.5,
+   "sunrise": 95.4,
+   "dhuhr": 100,
+   "asr": 49.8,
+   "maghrib": 61.7,
+   "isha": 38.2
+  },
+  "worst": {
+   "imsak": 23.3,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.6,
+   "maghrib": 2.3,
+   "isha": 17.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": -2.4
+  }
+ },
+ {
+  "country": "POLONYA",
+  "countryId": "39",
+  "cities": 46,
+  "latMedian": 51.23,
+  "rows": 16790,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -13
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -8
+  },
+  "within1": {
+   "imsak": 56.6,
+   "sunrise": 92.1,
+   "dhuhr": 100,
+   "asr": 33.2,
+   "maghrib": 41.9,
+   "isha": 23.9
+  },
+  "worst": {
+   "imsak": 145.8,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.4,
+   "maghrib": 2.8,
+   "isha": 143.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 129.3,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.8,
+   "isha": -104.1
+  }
+ },
+ {
+  "country": "YUNANISTAN",
+  "countryId": "22",
+  "cities": 44,
+  "latMedian": 39.56,
+  "rows": 16060,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.8,
+   "sunrise": 97,
+   "dhuhr": 100,
+   "asr": 60,
+   "maghrib": 72.7,
+   "isha": 57.2
+  },
+  "worst": {
+   "imsak": 1.6,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.2,
+   "isha": 2.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.6
+  }
+ },
+ {
+  "country": "IRAN",
+  "countryId": "202",
+  "cities": 42,
+  "latMedian": 35.82,
+  "rows": 15330,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.7,
+   "sunrise": 97.6,
+   "dhuhr": 100,
+   "asr": 68.8,
+   "maghrib": 80.4,
+   "isha": 67.9
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 2.1,
+   "isha": 2.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.9,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "CEK CUMHURIYETI",
+  "countryId": "16",
+  "cities": 41,
+  "latMedian": 50.04,
+  "rows": 14965,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.5
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.5
+  },
+  "within1": {
+   "imsak": 59.9,
+   "sunrise": 92.8,
+   "dhuhr": 100,
+   "asr": 37.1,
+   "maghrib": 47.1,
+   "isha": 27.2
+  },
+  "worst": {
+   "imsak": 144.5,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 3.1,
+   "maghrib": 2.5,
+   "isha": 142.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 95.6,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": -71.9
+  }
+ },
+ {
+  "country": "GUNEY KORE",
+  "countryId": "128",
+  "cities": 40,
+  "latMedian": 35.99,
+  "rows": 14600,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 97.2,
+   "sunrise": 97,
+   "dhuhr": 100,
+   "asr": 66.8,
+   "maghrib": 78.6,
+   "isha": 64.8
+  },
+  "worst": {
+   "imsak": 2,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 2,
+   "isha": 2.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.9,
+   "isha": 1.3
+  }
+ },
+ {
+  "country": "KOLOMBIYA",
+  "countryId": "57",
+  "cities": 40,
+  "latMedian": 5.72,
+  "rows": 14600,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.7,
+   "maghrib": 99.1,
+   "isha": 99
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "AZERBAYCAN",
+  "countryId": "5",
+  "cities": 37,
+  "latMedian": 40.1,
+  "rows": 13505,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.2,
+   "sunrise": 96.4,
+   "dhuhr": 100,
+   "asr": 58.4,
+   "maghrib": 71.1,
+   "isha": 55.4
+  },
+  "worst": {
+   "imsak": 1.7,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.2,
+   "isha": 2.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.5,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.8
+  }
+ },
+ {
+  "country": "BOLIVYA",
+  "countryId": "83",
+  "cities": 37,
+  "latMedian": -17.39,
+  "rows": 13505,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 92.5,
+   "maghrib": 96,
+   "isha": 94.1
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -0.3,
+   "isha": -0.4
+  }
+ },
+ {
+  "country": "FILIPINLER",
+  "countryId": "126",
+  "cities": 36,
+  "latMedian": 13.92,
+  "rows": 13140,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 94.8,
+   "maghrib": 97.9,
+   "isha": 96.3
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "GURCISTAN",
+  "countryId": "62",
+  "cities": 36,
+  "latMedian": 41.8,
+  "rows": 13140,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 96.7,
+   "sunrise": 95.9,
+   "dhuhr": 100,
+   "asr": 54.5,
+   "maghrib": 67.9,
+   "isha": 50.4
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.2,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.7
+  }
+ },
+ {
+  "country": "MAKEDONYA",
+  "countryId": "28",
+  "cities": 35,
+  "latMedian": 41.67,
+  "rows": 12775,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 95.9,
+   "sunrise": 96.3,
+   "dhuhr": 100,
+   "asr": 54.3,
+   "maghrib": 67.7,
+   "isha": 50.7
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.1,
+   "isha": 3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.7
+  }
+ },
+ {
+  "country": "BELARUS",
+  "countryId": "208",
+  "cities": 34,
+  "latMedian": 53.89,
+  "rows": 12410,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -13.5
+  },
+  "temkinAbs": {
+   "imsak": 0.5,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -8.5
+  },
+  "within1": {
+   "imsak": 51.2,
+   "sunrise": 90.1,
+   "dhuhr": 100,
+   "asr": 29.4,
+   "maghrib": 35.5,
+   "isha": 21.5
+  },
+  "worst": {
+   "imsak": 149.1,
+   "sunrise": 1.8,
+   "dhuhr": 0,
+   "asr": 3.4,
+   "maghrib": 2.9,
+   "isha": 146.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 129,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2,
+   "isha": -128.3
+  }
+ },
+ {
+  "country": "TURKMENISTAN",
+  "countryId": "159",
+  "cities": 33,
+  "latMedian": 38.11,
+  "rows": 12045,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 96.8,
+   "sunrise": 96.9,
+   "dhuhr": 100,
+   "asr": 61.2,
+   "maghrib": 74.4,
+   "isha": 58.2
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.2,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1,
+   "isha": 1.4
+  }
+ },
+ {
+  "country": "MACARISTAN",
+  "countryId": "7",
+  "cities": 33,
+  "latMedian": 47.35,
+  "rows": 12045,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7
+  },
+  "within1": {
+   "imsak": 70.8,
+   "sunrise": 94.3,
+   "dhuhr": 100,
+   "asr": 42.9,
+   "maghrib": 53.8,
+   "isha": 32.2
+  },
+  "worst": {
+   "imsak": 99.5,
+   "sunrise": 1.7,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.4,
+   "isha": 74.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 34,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": -32.6
+  }
+ },
+ {
+  "country": "SURIYE",
+  "countryId": "191",
+  "cities": 32,
+  "latMedian": 36.57,
+  "rows": 11680,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 97.6,
+   "sunrise": 97.6,
+   "dhuhr": 100,
+   "asr": 67.3,
+   "maghrib": 78.7,
+   "isha": 64.6
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.9,
+   "isha": 2.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0.9,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "MALEZYA",
+  "countryId": "107",
+  "cities": 31,
+  "latMedian": 4.21,
+  "rows": 11315,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 98.3,
+   "maghrib": 99.6,
+   "isha": 99.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "GUNEY AFRIKA",
+  "countryId": "67",
+  "cities": 31,
+  "latMedian": -27.99,
+  "rows": 11315,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.5,
+   "sunrise": 98.6,
+   "dhuhr": 100,
+   "asr": 80.1,
+   "maghrib": 87.4,
+   "isha": 80.9
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": 2.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.7,
+   "maghrib": -0.7,
+   "isha": -0.8
+  }
+ },
+ {
+  "country": "VENEZUELA",
+  "countryId": "186",
+  "cities": 30,
+  "latMedian": 10.24,
+  "rows": 10950,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 96.6,
+   "maghrib": 98.7,
+   "isha": 97.7
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "SIRBISTAN",
+  "countryId": "27",
+  "cities": 30,
+  "latMedian": 44.36,
+  "rows": 10950,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.5
+  },
+  "within1": {
+   "imsak": 87.9,
+   "sunrise": 95.5,
+   "dhuhr": 100,
+   "asr": 49.8,
+   "maghrib": 62.2,
+   "isha": 38.1
+  },
+  "worst": {
+   "imsak": 39.8,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 31.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": -2.2
+  }
+ },
+ {
+  "country": "NIJERYA",
+  "countryId": "127",
+  "cities": 28,
+  "latMedian": 7.67,
+  "rows": 10220,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.2,
+   "maghrib": 99,
+   "isha": 98.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "YENI ZELANDA",
+  "countryId": "193",
+  "cities": 28,
+  "latMedian": -39.85,
+  "rows": 10220,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.5,
+   "sunrise": 96.6,
+   "dhuhr": 100,
+   "asr": 60.3,
+   "maghrib": 72.1,
+   "isha": 56.7
+  },
+  "worst": {
+   "imsak": 1.9,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.6,
+   "maghrib": 2.3,
+   "isha": 2.9
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": -1.2,
+   "maghrib": -1,
+   "isha": -1.5
+  }
+ },
+ {
+  "country": "PAKISTAN",
+  "countryId": "77",
+  "cities": 28,
+  "latMedian": 31.24,
+  "rows": 10220,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.3,
+   "sunrise": 98.2,
+   "dhuhr": 100,
+   "asr": 76.9,
+   "maghrib": 86.3,
+   "isha": 77.6
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.8,
+   "isha": 2.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.8,
+   "isha": 1.1
+  }
+ },
+ {
+  "country": "UKRAYNA-KIRIM",
+  "countryId": "29",
+  "cities": 27,
+  "latMedian": 45.06,
+  "rows": 9855,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.6
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.6
+  },
+  "within1": {
+   "imsak": 76.9,
+   "sunrise": 95.3,
+   "dhuhr": 100,
+   "asr": 47.6,
+   "maghrib": 59.7,
+   "isha": 37.2
+  },
+  "worst": {
+   "imsak": 33.4,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.8,
+   "maghrib": 2.3,
+   "isha": 26.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 5.9,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.3,
+   "isha": -9.4
+  }
+ },
+ {
+  "country": "IRAK",
+  "countryId": "124",
+  "cities": 25,
+  "latMedian": 33.85,
+  "rows": 9125,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 97.6,
+   "sunrise": 97.7,
+   "dhuhr": 100,
+   "asr": 71.6,
+   "maghrib": 82.3,
+   "isha": 70
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 1.9,
+   "isha": 2.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.8,
+   "isha": 1.1
+  }
+ },
+ {
+  "country": "SILI",
+  "countryId": "200",
+  "cities": 24,
+  "latMedian": -34.16,
+  "rows": 8760,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.6,
+   "sunrise": 97.2,
+   "dhuhr": 100,
+   "asr": 69.8,
+   "maghrib": 80.2,
+   "isha": 69.3
+  },
+  "worst": {
+   "imsak": 4.6,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 3.2,
+   "maghrib": 2.6,
+   "isha": 115.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": -0.8,
+   "isha": -1.1
+  }
+ },
+ {
+  "country": "EKVATOR",
+  "countryId": "139",
+  "cities": 23,
+  "latMedian": -1.19,
+  "rows": 8395,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 98.1,
+   "maghrib": 99.6,
+   "isha": 99.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": -0.1,
+   "isha": 0.1
+  }
+ },
+ {
+  "country": "MISIR",
+  "countryId": "189",
+  "cities": 23,
+  "latMedian": 30.4,
+  "rows": 8395,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.2,
+   "sunrise": 98.3,
+   "dhuhr": 100,
+   "asr": 79.1,
+   "maghrib": 87.6,
+   "isha": 80.1
+  },
+  "worst": {
+   "imsak": 1.6,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": 2.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.7,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "VIETNAM",
+  "countryId": "135",
+  "cities": 22,
+  "latMedian": 13.84,
+  "rows": 8030,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 93.8,
+   "maghrib": 96.6,
+   "isha": 95.1
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "HIRVATISTAN",
+  "countryId": "30",
+  "cities": 22,
+  "latMedian": 45.3,
+  "rows": 8030,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.6
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.6
+  },
+  "within1": {
+   "imsak": 80,
+   "sunrise": 95.1,
+   "dhuhr": 100,
+   "asr": 46.7,
+   "maghrib": 59.9,
+   "isha": 36.7
+  },
+  "worst": {
+   "imsak": 44,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 34.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 5.4,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": -8.7
+  }
+ },
+ {
+  "country": "KARADAG",
+  "countryId": "34",
+  "cities": 22,
+  "latMedian": 42.53,
+  "rows": 8030,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 95.5,
+   "sunrise": 95.8,
+   "dhuhr": 100,
+   "asr": 52.5,
+   "maghrib": 66.2,
+   "isha": 46.8
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.2,
+   "isha": 3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.8
+  }
+ },
+ {
+  "country": "PORTEKIZ",
+  "countryId": "45",
+  "cities": 21,
+  "latMedian": 40.2,
+  "rows": 7665,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 96.7,
+   "sunrise": 97.1,
+   "dhuhr": 100,
+   "asr": 59,
+   "maghrib": 72.1,
+   "isha": 55.9
+  },
+  "worst": {
+   "imsak": 1.7,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.6
+  }
+ },
+ {
+  "country": "LITVANYA",
+  "countryId": "47",
+  "cities": 21,
+  "latMedian": 54.95,
+  "rows": 7665,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.4,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -13.9
+  },
+  "temkinAbs": {
+   "imsak": 0.6,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -8.9
+  },
+  "within1": {
+   "imsak": 47.7,
+   "sunrise": 87.5,
+   "dhuhr": 100,
+   "asr": 26.9,
+   "maghrib": 32.4,
+   "isha": 19.6
+  },
+  "worst": {
+   "imsak": 149.1,
+   "sunrise": 2,
+   "dhuhr": 0,
+   "asr": 3.6,
+   "maghrib": 2.9,
+   "isha": 146.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 124.9,
+   "sunrise": -0.8,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.2,
+   "isha": -125.1
+  }
+ },
+ {
+  "country": "KUZEY KIBRIS",
+  "countryId": "1",
+  "cities": 20,
+  "latMedian": 35.14,
+  "rows": 7300,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.4,
+   "sunrise": 97.2,
+   "dhuhr": 100,
+   "asr": 68.4,
+   "maghrib": 80.5,
+   "isha": 68.5
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.9,
+   "isha": 2.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 0.9,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "SLOVAKYA",
+  "countryId": "14",
+  "cities": 20,
+  "latMedian": 48.54,
+  "rows": 7300,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.2
+  },
+  "temkinAbs": {
+   "imsak": 0.3,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.2
+  },
+  "within1": {
+   "imsak": 63.1,
+   "sunrise": 92.8,
+   "dhuhr": 100,
+   "asr": 39,
+   "maghrib": 50.3,
+   "isha": 27.9
+  },
+  "worst": {
+   "imsak": 143.7,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.5,
+   "isha": 115.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 64.9,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.6,
+   "isha": -56.3
+  }
+ },
+ {
+  "country": "ARNAVUTLUK",
+  "countryId": "25",
+  "cities": 20,
+  "latMedian": 41.14,
+  "rows": 7300,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 96.2,
+   "sunrise": 96.8,
+   "dhuhr": 100,
+   "asr": 56.5,
+   "maghrib": 69.5,
+   "isha": 53.3
+  },
+  "worst": {
+   "imsak": 1.7,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.1,
+   "isha": 2.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.1,
+   "isha": 1.5
+  }
+ },
+ {
+  "country": "PERU",
+  "countryId": "69",
+  "cities": 20,
+  "latMedian": -9.59,
+  "rows": 7300,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 96.5,
+   "maghrib": 98.5,
+   "isha": 97.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.2,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "AFGANISTAN",
+  "countryId": "166",
+  "cities": 19,
+  "latMedian": 34.66,
+  "rows": 6935,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.5,
+   "sunrise": 97.7,
+   "dhuhr": 100,
+   "asr": 69.7,
+   "maghrib": 80.1,
+   "isha": 67.6
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 2,
+   "isha": 2.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.1,
+   "maghrib": 0.9,
+   "isha": 1.1
+  }
+ },
+ {
+  "country": "CEZAYIR",
+  "countryId": "86",
+  "cities": 18,
+  "latMedian": 36.17,
+  "rows": 6570,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.7,
+   "sunrise": 97.5,
+   "dhuhr": 100,
+   "asr": 67.7,
+   "maghrib": 78.2,
+   "isha": 66.3
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.9,
+   "isha": 2.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.3
+  }
+ },
+ {
+  "country": "HONDURAS",
+  "countryId": "105",
+  "cities": 17,
+  "latMedian": 14.95,
+  "rows": 6205,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 93.7,
+   "maghrib": 97,
+   "isha": 95.5
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.5,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "LUKSEMBURG",
+  "countryId": "31",
+  "cities": 17,
+  "latMedian": 49.59,
+  "rows": 6205,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.6,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12.5
+  },
+  "temkinAbs": {
+   "imsak": 0.4,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7.5
+  },
+  "within1": {
+   "imsak": 60.6,
+   "sunrise": 92.7,
+   "dhuhr": 100,
+   "asr": 37.4,
+   "maghrib": 47.2,
+   "isha": 27.1
+  },
+  "worst": {
+   "imsak": 144.4,
+   "sunrise": 1.6,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.5,
+   "isha": 141.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 89.6,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.7,
+   "isha": -68.8
+  }
+ },
+ {
+  "country": "MORITANYA",
+  "countryId": "106",
+  "cities": 16,
+  "latMedian": 18.03,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 91.5,
+   "maghrib": 95.9,
+   "isha": 93.8
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "TAYLAND",
+  "countryId": "137",
+  "cities": 16,
+  "latMedian": 15.32,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 94.4,
+   "maghrib": 97.3,
+   "isha": 96
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "FAS",
+  "countryId": "145",
+  "cities": 16,
+  "latMedian": 33.91,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.3,
+   "sunrise": 97.8,
+   "dhuhr": 100,
+   "asr": 72.2,
+   "maghrib": 82.8,
+   "isha": 72.1
+  },
+  "worst": {
+   "imsak": 1.6,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": 2.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "CAD",
+  "countryId": "156",
+  "cities": 16,
+  "latMedian": 11.48,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 95.7,
+   "maghrib": 98.2,
+   "isha": 97.7
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "DEMOKRATIK KONGO CUMHURIYETI",
+  "countryId": "180",
+  "cities": 16,
+  "latMedian": -5.02,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 98,
+   "maghrib": 99.4,
+   "isha": 98.8
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": -0.1,
+   "isha": -0.1
+  }
+ },
+ {
+  "country": "BAHAMALAR",
+  "countryId": "54",
+  "cities": 16,
+  "latMedian": 24.85,
+  "rows": 5840,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.7,
+   "sunrise": 99,
+   "dhuhr": 100,
+   "asr": 85.7,
+   "maghrib": 91.8,
+   "isha": 88.1
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.7,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "NIKARAGUA",
+  "countryId": "141",
+  "cities": 15,
+  "latMedian": 12.44,
+  "rows": 5475,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 95.9,
+   "maghrib": 98.1,
+   "isha": 97.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "KOSOVA",
+  "countryId": "18",
+  "cities": 15,
+  "latMedian": 42.46,
+  "rows": 5475,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 95.3,
+   "sunrise": 95.4,
+   "dhuhr": 100,
+   "asr": 53.7,
+   "maghrib": 65.7,
+   "isha": 48
+  },
+  "worst": {
+   "imsak": 1.8,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.2,
+   "isha": 2.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.8
+  }
+ },
+ {
+  "country": "URUGUAY",
+  "countryId": "201",
+  "cities": 15,
+  "latMedian": -33.46,
+  "rows": 5475,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.8,
+   "sunrise": 97.8,
+   "dhuhr": 100,
+   "asr": 73.3,
+   "maghrib": 82.6,
+   "isha": 74.2
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.9,
+   "isha": 2.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": -0.8,
+   "maghrib": -0.8,
+   "isha": -1.1
+  }
+ },
+ {
+  "country": "DOMINIK CUMHURIYETI",
+  "countryId": "72",
+  "cities": 15,
+  "latMedian": 18.54,
+  "rows": 5475,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 91.7,
+   "maghrib": 95.5,
+   "isha": 93.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.4,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "MYANMAR",
+  "countryId": "154",
+  "cities": 14,
+  "latMedian": 17.25,
+  "rows": 5110,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99,
+   "dhuhr": 100,
+   "asr": 92.2,
+   "maghrib": 95.9,
+   "isha": 93.4
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.4,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "BENIN",
+  "countryId": "181",
+  "cities": 14,
+  "latMedian": 7.99,
+  "rows": 5110,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.5,
+   "maghrib": 98.6,
+   "isha": 97.9
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "KUBA",
+  "countryId": "209",
+  "cities": 14,
+  "latMedian": 21.88,
+  "rows": 5110,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 89.7,
+   "maghrib": 93.7,
+   "isha": 91.5
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.6,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.4,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "SLOVENYA",
+  "countryId": "19",
+  "cities": 12,
+  "latMedian": 46.26,
+  "rows": 4380,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.8
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.8
+  },
+  "within1": {
+   "imsak": 73.6,
+   "sunrise": 94.7,
+   "dhuhr": 100,
+   "asr": 44,
+   "maghrib": 56.6,
+   "isha": 34.4
+  },
+  "worst": {
+   "imsak": 50.1,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 39.8
+  },
+  "seasonalAmplitude": {
+   "imsak": 17.9,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": -19.4
+  }
+ },
+ {
+  "country": "PANAMA",
+  "countryId": "89",
+  "cities": 12,
+  "latMedian": 8.52,
+  "rows": 4380,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 97.4,
+   "maghrib": 98.9,
+   "isha": 98.3
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "ETYOPYA",
+  "countryId": "95",
+  "cities": 12,
+  "latMedian": 11.12,
+  "rows": 4380,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 97,
+   "maghrib": 98.4,
+   "isha": 97.8
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "GUATEMALA",
+  "countryId": "99",
+  "cities": 12,
+  "latMedian": 14.91,
+  "rows": 4380,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 94.5,
+   "maghrib": 96.9,
+   "isha": 95.7
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "TANZANYA",
+  "countryId": "110",
+  "cities": 11,
+  "latMedian": -5.08,
+  "rows": 4015,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 98.3,
+   "maghrib": 99.5,
+   "isha": 98.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "country": "ANGOLA",
+  "countryId": "140",
+  "cities": 11,
+  "latMedian": -11.28,
+  "rows": 4015,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 96,
+   "maghrib": 98.3,
+   "isha": 97.6
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.1,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "LIBYA",
+  "countryId": "203",
+  "cities": 11,
+  "latMedian": 32.08,
+  "rows": 4015,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98,
+   "sunrise": 97.9,
+   "dhuhr": 100,
+   "asr": 77.4,
+   "maghrib": 86.8,
+   "isha": 79
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.8,
+   "isha": 2.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.9,
+   "maghrib": 0.8,
+   "isha": 0.9
+  }
+ },
+ {
+  "country": "PALESTINE",
+  "countryId": "204",
+  "cities": 11,
+  "latMedian": 31.71,
+  "rows": 4015,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.8,
+   "sunrise": 98.1,
+   "dhuhr": 100,
+   "asr": 76.1,
+   "maghrib": 85.6,
+   "isha": 75.6
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.8,
+   "isha": 2.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0.8,
+   "isha": 1.2
+  }
+ },
+ {
+  "country": "TAYVAN",
+  "countryId": "108",
+  "cities": 10,
+  "latMedian": 24.12,
+  "rows": 3650,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98,
+   "sunrise": 98.6,
+   "dhuhr": 100,
+   "asr": 86.1,
+   "maghrib": 92.2,
+   "isha": 87.5
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.6,
+   "isha": 2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.6,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "SIERRA LEONE",
+  "countryId": "210",
+  "cities": 10,
+  "latMedian": 8.52,
+  "rows": 3650,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 97.3,
+   "maghrib": 98.8,
+   "isha": 98.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.1,
+   "isha": 0.1
+  }
+ },
+ {
+  "country": "ESTONYA",
+  "countryId": "6",
+  "cities": 10,
+  "latMedian": 58.42,
+  "rows": 3650,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.2,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -15.4
+  },
+  "temkinAbs": {
+   "imsak": 0.8,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -10.4
+  },
+  "within1": {
+   "imsak": 37.4,
+   "sunrise": 83,
+   "dhuhr": 100,
+   "asr": 21.8,
+   "maghrib": 23.1,
+   "isha": 12
+  },
+  "worst": {
+   "imsak": 153.2,
+   "sunrise": 2.1,
+   "dhuhr": 0,
+   "asr": 4.3,
+   "maghrib": 3.3,
+   "isha": 150.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 110,
+   "sunrise": -0.8,
+   "dhuhr": 0,
+   "asr": 3.3,
+   "maghrib": 2.6,
+   "isha": -108.4
+  }
+ },
+ {
+  "country": "S. ARABISTAN",
+  "countryId": "64",
+  "cities": 10,
+  "latMedian": 25.29,
+  "rows": 3650,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 98.6,
+   "dhuhr": 100,
+   "asr": 84.1,
+   "maghrib": 91.2,
+   "isha": 86.9
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.6,
+   "isha": 1.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "SUDAN",
+  "countryId": "129",
+  "cities": 9,
+  "latMedian": 15.46,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 93.5,
+   "maghrib": 96.3,
+   "isha": 95
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "GANA",
+  "countryId": "143",
+  "cities": 9,
+  "latMedian": 5.54,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 97.5,
+   "maghrib": 98.9,
+   "isha": 98.7
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "SOMALI",
+  "countryId": "150",
+  "cities": 9,
+  "latMedian": 7.97,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 97.1,
+   "maghrib": 98.7,
+   "isha": 98.1
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "EL SALVADOR",
+  "countryId": "165",
+  "cities": 9,
+  "latMedian": 13.61,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.8,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 94.7,
+   "maghrib": 97.7,
+   "isha": 96.3
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "PAPUA YENI GINE",
+  "countryId": "185",
+  "cities": 9,
+  "latMedian": -7.81,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.6,
+   "maghrib": 99,
+   "isha": 98.5
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": -0.1,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "LETONYA",
+  "countryId": "20",
+  "cities": 9,
+  "latMedian": 56.94,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.3,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -14.6
+  },
+  "temkinAbs": {
+   "imsak": 0.7,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -9.6
+  },
+  "within1": {
+   "imsak": 43,
+   "sunrise": 87.5,
+   "dhuhr": 100,
+   "asr": 24.6,
+   "maghrib": 27.1,
+   "isha": 16
+  },
+  "worst": {
+   "imsak": 155.2,
+   "sunrise": 2,
+   "dhuhr": 0,
+   "asr": 3.8,
+   "maghrib": 3.3,
+   "isha": 149.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 118.9,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 2.9,
+   "maghrib": 2.3,
+   "isha": -117.8
+  }
+ },
+ {
+  "country": "ORTA AFRIKA CUMHURIYETI",
+  "countryId": "80",
+  "cities": 9,
+  "latMedian": 5.82,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 97.7,
+   "maghrib": 99.2,
+   "isha": 98.6
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "BURKINA FASO",
+  "countryId": "91",
+  "cities": 9,
+  "latMedian": 12.05,
+  "rows": 3285,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 95.8,
+   "maghrib": 98.4,
+   "isha": 97.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "TUNUS",
+  "countryId": "118",
+  "cities": 8,
+  "latMedian": 35.87,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 97.8,
+   "dhuhr": 100,
+   "asr": 67.9,
+   "maghrib": 78.2,
+   "isha": 66.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.9,
+   "isha": 2.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1,
+   "isha": 1.3
+  }
+ },
+ {
+  "country": "MOZAMBIK",
+  "countryId": "151",
+  "cities": 8,
+  "latMedian": -17.79,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 90,
+   "maghrib": 95.7,
+   "isha": 92.5
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.5,
+   "maghrib": -0.5,
+   "isha": -0.7
+  }
+ },
+ {
+  "country": "ZAMBIYA",
+  "countryId": "158",
+  "cities": 8,
+  "latMedian": -12.96,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 95.4,
+   "maghrib": 97.6,
+   "isha": 96.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.3,
+   "isha": -0.3
+  }
+ },
+ {
+  "country": "KAMBOCYA",
+  "countryId": "161",
+  "cities": 8,
+  "latMedian": 12.45,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 95.5,
+   "maghrib": 97.5,
+   "isha": 96.6
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "KAMERUN",
+  "countryId": "184",
+  "cities": 8,
+  "latMedian": 5.53,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 100,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 98,
+   "maghrib": 99.2,
+   "isha": 98.3
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "IRLANDA",
+  "countryId": "32",
+  "cities": 8,
+  "latMedian": 53.26,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 1.9,
+   "isha": -13.3
+  },
+  "temkinAbs": {
+   "imsak": 0.5,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 6.9,
+   "isha": -8.3
+  },
+  "within1": {
+   "imsak": 51.7,
+   "sunrise": 89.6,
+   "dhuhr": 100,
+   "asr": 30.7,
+   "maghrib": 37.9,
+   "isha": 22.9
+  },
+  "worst": {
+   "imsak": 143.9,
+   "sunrise": 1.9,
+   "dhuhr": 0,
+   "asr": 3.4,
+   "maghrib": 2.8,
+   "isha": 141.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 129.6,
+   "sunrise": -0.9,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.2,
+   "isha": -128.4
+  }
+ },
+ {
+  "country": "NIJER",
+  "countryId": "84",
+  "cities": 8,
+  "latMedian": 13.84,
+  "rows": 2920,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 94.8,
+   "maghrib": 97.6,
+   "isha": 96.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "LAOS",
+  "countryId": "134",
+  "cities": 7,
+  "latMedian": 20.24,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 90,
+   "maghrib": 95.4,
+   "isha": 93.3
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "BOTSVANA",
+  "countryId": "167",
+  "cities": 7,
+  "latMedian": -21.71,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.7,
+   "sunrise": 98.9,
+   "dhuhr": 100,
+   "asr": 88.6,
+   "maghrib": 93.6,
+   "isha": 90.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.5,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -0.3,
+   "isha": -0.4
+  }
+ },
+ {
+  "country": "BELIZE",
+  "countryId": "182",
+  "cities": 7,
+  "latMedian": 17.35,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 93.2,
+   "maghrib": 96.2,
+   "isha": 94.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.5,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.4,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "PALESTINE",
+  "countryId": "205",
+  "cities": 7,
+  "latMedian": 32.02,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.2,
+   "sunrise": 98.1,
+   "dhuhr": 100,
+   "asr": 76.2,
+   "maghrib": 84.7,
+   "isha": 75.8
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.8,
+   "isha": 2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1.3
+  }
+ },
+ {
+  "country": "LUBNAN",
+  "countryId": "42",
+  "cities": 7,
+  "latMedian": 33.93,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 97.9,
+   "sunrise": 97.9,
+   "dhuhr": 100,
+   "asr": 70.9,
+   "maghrib": 81.2,
+   "isha": 70.4
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.8,
+   "isha": 2.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.8,
+   "isha": 0.9
+  }
+ },
+ {
+  "country": "SRI LANKA",
+  "countryId": "74",
+  "cities": 7,
+  "latMedian": 6.97,
+  "rows": 2555,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.2,
+   "maghrib": 99.1,
+   "isha": 98.3
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "SENEGAL",
+  "countryId": "102",
+  "cities": 6,
+  "latMedian": 14.81,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 94.1,
+   "maghrib": 97.3,
+   "isha": 95.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "KENYA",
+  "countryId": "114",
+  "cities": 6,
+  "latMedian": -0.31,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 98.5,
+   "maghrib": 99.9,
+   "isha": 99.4
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": -0.1,
+   "isha": 0.1
+  }
+ },
+ {
+  "country": "YEMEN",
+  "countryId": "148",
+  "cities": 6,
+  "latMedian": 14.73,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 94.1,
+   "maghrib": 97.2,
+   "isha": 95.8
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.4,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "KOSTARIKA",
+  "countryId": "162",
+  "cities": 6,
+  "latMedian": 10.05,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 96.9,
+   "maghrib": 98.4,
+   "isha": 97.7
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "UMMAN",
+  "countryId": "173",
+  "cities": 6,
+  "latMedian": 23.02,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 88.8,
+   "maghrib": 95.2,
+   "isha": 90.5
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "ERITRE",
+  "countryId": "175",
+  "cities": 6,
+  "latMedian": 14.83,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 93.2,
+   "maghrib": 97.6,
+   "isha": 95.8
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.5,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "PARAGUAY",
+  "countryId": "194",
+  "cities": 6,
+  "latMedian": -25.37,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99,
+   "sunrise": 99.1,
+   "dhuhr": 100,
+   "asr": 86.3,
+   "maghrib": 92.2,
+   "isha": 88.5
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.6,
+   "maghrib": -0.5,
+   "isha": -0.7
+  }
+ },
+ {
+  "country": "MOLDAVYA",
+  "countryId": "46",
+  "cities": 6,
+  "latMedian": 46.86,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -11.9
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -6.9
+  },
+  "within1": {
+   "imsak": 72.2,
+   "sunrise": 94.5,
+   "dhuhr": 100,
+   "asr": 44.1,
+   "maghrib": 55,
+   "isha": 33.3
+  },
+  "worst": {
+   "imsak": 82.6,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 63
+  },
+  "seasonalAmplitude": {
+   "imsak": 26.7,
+   "sunrise": -0.5,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.3,
+   "isha": -26.5
+  }
+ },
+ {
+  "country": "BURUNDI",
+  "countryId": "65",
+  "cities": 6,
+  "latMedian": -3.4,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 98.8,
+   "dhuhr": 100,
+   "asr": 97.9,
+   "maghrib": 99.1,
+   "isha": 97.9
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.4,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0.1,
+   "isha": 0.1
+  }
+ },
+ {
+  "country": "HAITI",
+  "countryId": "70",
+  "cities": 6,
+  "latMedian": 18.57,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 91.2,
+   "maghrib": 95.3,
+   "isha": 93.9
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.4,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "UGANDA",
+  "countryId": "75",
+  "cities": 6,
+  "latMedian": 2.77,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.8,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 98.4,
+   "maghrib": 99.2,
+   "isha": 99.4
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.3,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "BIRLESIK ARAP EMIRLIGI",
+  "countryId": "93",
+  "cities": 6,
+  "latMedian": 25.38,
+  "rows": 2190,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 85.2,
+   "maghrib": 92.2,
+   "isha": 88
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.6,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "GINE",
+  "countryId": "111",
+  "cities": 5,
+  "latMedian": 10.06,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.8,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 97.1,
+   "maghrib": 98.4,
+   "isha": 97.5
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "HONG KONG",
+  "countryId": "113",
+  "cities": 5,
+  "latMedian": 22.19,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 98.7,
+   "dhuhr": 100,
+   "asr": 88.1,
+   "maghrib": 93.9,
+   "isha": 89.3
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.6,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.5,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.7,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "FILDISI SAHILI",
+  "countryId": "120",
+  "cities": 5,
+  "latMedian": 6.84,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.8,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.3,
+   "maghrib": 99,
+   "isha": 98
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.2,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0.1,
+   "isha": 0
+  }
+ },
+ {
+  "country": "NAMIBYA",
+  "countryId": "196",
+  "cities": 5,
+  "latMedian": -22.65,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 98,
+   "sunrise": 98.8,
+   "dhuhr": 100,
+   "asr": 86.6,
+   "maghrib": 92.3,
+   "isha": 87
+  },
+  "worst": {
+   "imsak": 1.7,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.7,
+   "isha": 1.9
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.4,
+   "maghrib": -0.4,
+   "isha": -0.4
+  }
+ },
+ {
+  "country": "ZIMBABVE",
+  "countryId": "216",
+  "cities": 5,
+  "latMedian": -18.94,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.1,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 91.7,
+   "maghrib": 95.7,
+   "isha": 94
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.2,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "PORTO RIKO",
+  "countryId": "68",
+  "cities": 5,
+  "latMedian": 18.39,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 93.1,
+   "maghrib": 95.9,
+   "isha": 93.7
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.4,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "NEPAL",
+  "countryId": "76",
+  "cities": 5,
+  "latMedian": 27.69,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.3,
+   "sunrise": 98.2,
+   "dhuhr": 100,
+   "asr": 82.6,
+   "maghrib": 89.6,
+   "isha": 84.1
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.7,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.5,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "GABON",
+  "countryId": "79",
+  "cities": 5,
+  "latMedian": 0.31,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.8,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 98.2,
+   "maghrib": 99.5,
+   "isha": 99.3
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.3,
+   "isha": 1.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "MADAGASKAR",
+  "countryId": "98",
+  "cities": 5,
+  "latMedian": -18.95,
+  "rows": 1825,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 99,
+   "dhuhr": 100,
+   "asr": 92.4,
+   "maghrib": 95.7,
+   "isha": 92.9
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.5,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.2,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "JAMAIKA",
+  "countryId": "119",
+  "cities": 4,
+  "latMedian": 18.03,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.4,
+   "dhuhr": 100,
+   "asr": 92,
+   "maghrib": 95.8,
+   "isha": 93.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.4,
+   "isha": 0.6
+  }
+ },
+ {
+  "country": "KUVEYT",
+  "countryId": "133",
+  "cities": 4,
+  "latMedian": 29.36,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 98.9,
+   "dhuhr": 100,
+   "asr": 80.5,
+   "maghrib": 88.2,
+   "isha": 77.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.7,
+   "isha": 1.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "MALI",
+  "countryId": "152",
+  "cities": 4,
+  "latMedian": 16.32,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 95,
+   "maghrib": 97.1,
+   "isha": 94.6
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.1,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "CIBUTI",
+  "countryId": "160",
+  "cities": 4,
+  "latMedian": 11.48,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 95.4,
+   "maghrib": 97.7,
+   "isha": 96.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.4,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "BANGLADES",
+  "countryId": "177",
+  "cities": 4,
+  "latMedian": 23.76,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.8,
+   "sunrise": 98.5,
+   "dhuhr": 100,
+   "asr": 84.6,
+   "maghrib": 91.2,
+   "isha": 87.5
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.6,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.9,
+   "maghrib": 0.8,
+   "isha": 0.9
+  }
+ },
+ {
+  "country": "URDUN",
+  "countryId": "192",
+  "cities": 4,
+  "latMedian": 32.07,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 97.9,
+   "sunrise": 98.2,
+   "dhuhr": 100,
+   "asr": 76.9,
+   "maghrib": 85.7,
+   "isha": 77.3
+  },
+  "worst": {
+   "imsak": 1.5,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2,
+   "maghrib": 1.7,
+   "isha": 2.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 0.8,
+   "isha": 1.1
+  }
+ },
+ {
+  "country": "MALTA",
+  "countryId": "24",
+  "cities": 4,
+  "latMedian": 35.91,
+  "rows": 1460,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": -0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.9,
+   "sunrise": 96.8,
+   "dhuhr": 100,
+   "asr": 69.9,
+   "maghrib": 80.3,
+   "isha": 65.3
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.9,
+   "isha": 2.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.6,
+   "sunrise": -0.6,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1,
+   "isha": 1.5
+  }
+ },
+ {
+  "country": "ERMENISTAN",
+  "countryId": "104",
+  "cities": 3,
+  "latMedian": 40.65,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": -0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 93.9,
+   "sunrise": 94.9,
+   "dhuhr": 100,
+   "asr": 58.9,
+   "maghrib": 70.6,
+   "isha": 53.4
+  },
+  "worst": {
+   "imsak": 1.9,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 2.1,
+   "isha": 2.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.6,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.5,
+   "isha": 2.1
+  }
+ },
+ {
+  "country": "BAHREYN",
+  "countryId": "132",
+  "cities": 3,
+  "latMedian": 26.22,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99,
+   "sunrise": 99,
+   "dhuhr": 100,
+   "asr": 84.3,
+   "maghrib": 91.7,
+   "isha": 85.3
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.5,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.7,
+   "isha": 1
+  }
+ },
+ {
+  "country": "BARBADOS",
+  "countryId": "188",
+  "cities": 3,
+  "latMedian": 13.12,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 94.5,
+   "maghrib": 98.1,
+   "isha": 96.8
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.4,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "FIJI",
+  "countryId": "197",
+  "cities": 3,
+  "latMedian": -17.66,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.8,
+   "dhuhr": 100,
+   "asr": 91.8,
+   "maghrib": 95.7,
+   "isha": 94.4
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -0.5,
+   "isha": -0.6
+  }
+ },
+ {
+  "country": "LIECHTENSTEIN",
+  "countryId": "38",
+  "cities": 3,
+  "latMedian": 47.15,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.7,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -12
+  },
+  "temkinAbs": {
+   "imsak": 0.3,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -7
+  },
+  "within1": {
+   "imsak": 69.7,
+   "sunrise": 94.3,
+   "dhuhr": 100,
+   "asr": 42.9,
+   "maghrib": 54.9,
+   "isha": 33.2
+  },
+  "worst": {
+   "imsak": 63.3,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.7,
+   "maghrib": 2.3,
+   "isha": 49.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 32.7,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.7,
+   "isha": -31.3
+  }
+ },
+ {
+  "country": "BERMUDA",
+  "countryId": "51",
+  "cities": 3,
+  "latMedian": 32.31,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 98.6,
+   "dhuhr": 100,
+   "asr": 74.9,
+   "maghrib": 85.7,
+   "isha": 76.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.1,
+   "maghrib": 1.7,
+   "isha": 1.9
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.8,
+   "maghrib": 0.7,
+   "isha": 0.9
+  }
+ },
+ {
+  "country": "MALAVI",
+  "countryId": "55",
+  "cities": 3,
+  "latMedian": -14.04,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.4,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 95.2,
+   "maghrib": 97.5,
+   "isha": 95.9
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": 0.1,
+   "isha": -0.1
+  }
+ },
+ {
+  "country": "TOGO",
+  "countryId": "71",
+  "cities": 3,
+  "latMedian": 9.02,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 98,
+   "maghrib": 99.1,
+   "isha": 99
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": -0.1,
+   "isha": 0
+  }
+ },
+ {
+  "country": "GUYANA",
+  "countryId": "82",
+  "cities": 3,
+  "latMedian": 6.2,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 97.4,
+   "maghrib": 99.3,
+   "isha": 98.6
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.1
+  }
+ },
+ {
+  "country": "KATAR",
+  "countryId": "94",
+  "cities": 3,
+  "latMedian": 25.33,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 98.4,
+   "dhuhr": 100,
+   "asr": 84.1,
+   "maghrib": 92.4,
+   "isha": 87.5
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.6,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.7,
+   "maghrib": 0.6,
+   "isha": 0.8
+  }
+ },
+ {
+  "country": "TRINIDAT VE TOBAGO",
+  "countryId": "96",
+  "cities": 3,
+  "latMedian": 10.59,
+  "rows": 1095,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 96.8,
+   "maghrib": 98.7,
+   "isha": 98
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "GAMBIYA",
+  "countryId": "109",
+  "cities": 2,
+  "latMedian": 13.5,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 95.6,
+   "maghrib": 97.7,
+   "isha": 96.4
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "YENI KALEDONYA",
+  "countryId": "115",
+  "cities": 2,
+  "latMedian": -20.62,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.5,
+   "sunrise": 98.5,
+   "dhuhr": 100,
+   "asr": 89.9,
+   "maghrib": 92.9,
+   "isha": 89.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.1,
+   "isha": -0.3
+  }
+ },
+ {
+  "country": "YESIL BURUN",
+  "countryId": "144",
+  "cities": 2,
+  "latMedian": 16.84,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.3,
+   "sunrise": 98.6,
+   "dhuhr": 100,
+   "asr": 94.1,
+   "maghrib": 95.9,
+   "isha": 93.6
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.1,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "MONTSERRAT (U.K.)",
+  "countryId": "147",
+  "cities": 2,
+  "latMedian": 16.76,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.9,
+   "dhuhr": 100,
+   "asr": 94.5,
+   "maghrib": 97.1,
+   "isha": 94.9
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "SVALBARD",
+  "countryId": "163",
+  "cities": 2,
+  "latMedian": 63.23,
+  "rows": 730,
+  "dhuhrMargin": 0,
+  "temkin": {
+   "imsak": 49.6,
+   "sunrise": 6.6,
+   "dhuhr": 0,
+   "asr": -29.4,
+   "maghrib": -7.8,
+   "isha": -86.9
+  },
+  "temkinAbs": {
+   "imsak": 49.6,
+   "sunrise": 6.6,
+   "dhuhr": 0,
+   "asr": -29.4,
+   "maghrib": -7.8,
+   "isha": -86.9
+  },
+  "within1": {
+   "imsak": 0.5,
+   "sunrise": 1.1,
+   "dhuhr": 100,
+   "asr": 3.3,
+   "maghrib": 1.4,
+   "isha": 0.3
+  },
+  "worst": {
+   "imsak": 122.6,
+   "sunrise": 141.5,
+   "dhuhr": 0,
+   "asr": 107.1,
+   "maghrib": 141.9,
+   "isha": 116.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 51.2,
+   "sunrise": -18.4,
+   "dhuhr": 0,
+   "asr": 116.9,
+   "maghrib": 16.1,
+   "isha": -15.9
+  }
+ },
+ {
+  "country": "MAURITIUS ADASI",
+  "countryId": "164",
+  "cities": 2,
+  "latMedian": -20.11,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 89.3,
+   "maghrib": 92.6,
+   "isha": 91.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": -0.7,
+   "maghrib": -0.7,
+   "isha": -0.8
+  }
+ },
+ {
+  "country": "GUADELOPE",
+  "countryId": "171",
+  "cities": 2,
+  "latMedian": 16.29,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.6,
+   "dhuhr": 100,
+   "asr": 94.4,
+   "maghrib": 96,
+   "isha": 94.9
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "SURINAM",
+  "countryId": "172",
+  "cities": 2,
+  "latMedian": 5.87,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 97.8,
+   "maghrib": 99.7,
+   "isha": 99
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.1,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "GUNEY SUDAN",
+  "countryId": "214",
+  "cities": 2,
+  "latMedian": 8.58,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2.1,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7.1,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.9,
+   "dhuhr": 100,
+   "asr": 96.3,
+   "maghrib": 99,
+   "isha": 98.8
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "EKVATOR GINESI",
+  "countryId": "63",
+  "cities": 2,
+  "latMedian": 3.74,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.4,
+   "maghrib": 99.7,
+   "isha": 99.3
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1.1,
+   "isha": 1.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "LIBERYA",
+  "countryId": "73",
+  "cities": 2,
+  "latMedian": 6.21,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 97.4,
+   "maghrib": 99.2,
+   "isha": 98.9
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.6,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "RUANDA",
+  "countryId": "81",
+  "cities": 2,
+  "latMedian": -1.94,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.9,
+   "sunrise": 99.9,
+   "dhuhr": 100,
+   "asr": 98.6,
+   "maghrib": 99.7,
+   "isha": 99.5
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": -0.1
+  }
+ },
+ {
+  "country": "ANTIGUA VE BARBUDA",
+  "countryId": "90",
+  "cities": 2,
+  "latMedian": 17.2,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.6,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 93.6,
+   "maghrib": 97.1,
+   "isha": 95.3
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.4,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.3,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "BRUNEI",
+  "countryId": "97",
+  "cities": 2,
+  "latMedian": 4.93,
+  "rows": 730,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 98.6,
+   "sunrise": 99.3,
+   "dhuhr": 100,
+   "asr": 97.9,
+   "maghrib": 97.7,
+   "isha": 98.5
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "VATIKAN",
+  "countryId": "10",
+  "cities": 1,
+  "latMedian": 41.95,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5.1
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": -0.1
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 95.6,
+   "dhuhr": 100,
+   "asr": 49,
+   "maghrib": 69,
+   "isha": 49.6
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 1.9,
+   "isha": 2.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1,
+   "isha": 1.3
+  }
+ },
+ {
+  "country": "MAKAO",
+  "countryId": "100",
+  "cities": 1,
+  "latMedian": 22.3,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.8,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.1,
+   "sunrise": 98.4,
+   "dhuhr": 100,
+   "asr": 87.7,
+   "maghrib": 94.8,
+   "isha": 92.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.3,
+   "isha": 0.5
+  }
+ },
+ {
+  "country": "MALDIVLER",
+  "countryId": "103",
+  "cities": 1,
+  "latMedian": 4.1,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12.1,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7.1,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.1,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 98.4,
+   "maghrib": 98.9,
+   "isha": 98.9
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.4,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "REUNION",
+  "countryId": "112",
+  "cities": 1,
+  "latMedian": -20.89,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 89.3,
+   "maghrib": 93.2,
+   "isha": 91.5
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.5,
+   "maghrib": -0.5,
+   "isha": -0.4
+  }
+ },
+ {
+  "country": "IZLANDA",
+  "countryId": "122",
+  "cities": 1,
+  "latMedian": 64.03,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": 2.4,
+   "sunrise": -11.8,
+   "dhuhr": 0,
+   "asr": -0.6,
+   "maghrib": 0.4,
+   "isha": -19.3
+  },
+  "temkinAbs": {
+   "imsak": 7.4,
+   "sunrise": -6.8,
+   "dhuhr": 5,
+   "asr": 4.4,
+   "maghrib": 5.4,
+   "isha": -14.3
+  },
+  "within1": {
+   "imsak": 0.3,
+   "sunrise": 41.1,
+   "dhuhr": 100,
+   "asr": 14.2,
+   "maghrib": 22.2,
+   "isha": 2.5
+  },
+  "worst": {
+   "imsak": 155.1,
+   "sunrise": 73.3,
+   "dhuhr": 0,
+   "asr": 7.2,
+   "maghrib": 62.7,
+   "isha": 152.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 92.2,
+   "sunrise": 28.1,
+   "dhuhr": 0,
+   "asr": 7.2,
+   "maghrib": -19.9,
+   "isha": -82.2
+  }
+ },
+ {
+  "country": "DOMINIK",
+  "countryId": "123",
+  "cities": 1,
+  "latMedian": 15.31,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 98.9,
+   "dhuhr": 100,
+   "asr": 93.4,
+   "maghrib": 95.9,
+   "isha": 96.2
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.4,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.2,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "ANGUILLA",
+  "countryId": "125",
+  "cities": 1,
+  "latMedian": 18.27,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 93.4,
+   "maghrib": 96.4,
+   "isha": 92.6
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.1,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "TONGA",
+  "countryId": "130",
+  "cities": 1,
+  "latMedian": -21.08,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2.1,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7.1,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 93.2,
+   "maghrib": 95.6,
+   "isha": 92.9
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.4,
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "asr": -0.3,
+   "maghrib": -0.4,
+   "isha": -0.6
+  }
+ },
+ {
+  "country": "ST. LUCIA",
+  "countryId": "136",
+  "cities": 1,
+  "latMedian": 13.94,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 94.5,
+   "maghrib": 95.3,
+   "isha": 95.1
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.6,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.3,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.5,
+   "isha": 1
+  }
+ },
+ {
+  "country": "SEYSEL ADALARI",
+  "countryId": "138",
+  "cities": 1,
+  "latMedian": -4.63,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2.1,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7.1,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 100,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 98.6,
+   "maghrib": 99.7,
+   "isha": 98.9
+  },
+  "worst": {
+   "imsak": 0.9,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 1.2,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "country": "KUZEY KORE",
+  "countryId": "142",
+  "cities": 1,
+  "latMedian": 39.03,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.1,
+   "sunrise": 96.2,
+   "dhuhr": 100,
+   "asr": 66.6,
+   "maghrib": 80,
+   "isha": 63
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.2,
+   "maghrib": 1.8,
+   "isha": 2.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.5,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 0.8,
+   "isha": 1.1
+  }
+ },
+ {
+  "country": "PALAU",
+  "countryId": "149",
+  "cities": 1,
+  "latMedian": 7.36,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 98.1,
+   "maghrib": 98.9,
+   "isha": 99.2
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0
+  }
+ },
+ {
+  "country": "ARUBA",
+  "countryId": "153",
+  "cities": 1,
+  "latMedian": 12.54,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 100,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 95.9,
+   "maghrib": 98.4,
+   "isha": 95.1
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "BUTAN",
+  "countryId": "155",
+  "cities": 1,
+  "latMedian": 27.48,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.6,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 80.8,
+   "maghrib": 90.1,
+   "isha": 84.9
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.7,
+   "isha": 1.8
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 0.6,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "MAYOTTE",
+  "countryId": "157",
+  "cities": 1,
+  "latMedian": -12.67,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 94.2,
+   "maghrib": 96.7,
+   "isha": 96.2
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.5,
+   "maghrib": -0.7,
+   "isha": -0.8
+  }
+ },
+ {
+  "country": "GUAM ADASI",
+  "countryId": "169",
+  "cities": 1,
+  "latMedian": 13.55,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2.1,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7.1,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 96.2,
+   "maghrib": 98.4,
+   "isha": 96.4
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.1,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "ANDORRA",
+  "countryId": "17",
+  "cities": 1,
+  "latMedian": 42.47,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": -0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 96.7,
+   "sunrise": 96.7,
+   "dhuhr": 100,
+   "asr": 51.8,
+   "maghrib": 66,
+   "isha": 51.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 2.3,
+   "maghrib": 2,
+   "isha": 2.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.8,
+   "sunrise": -0.7,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.1,
+   "isha": 1.9
+  }
+ },
+ {
+  "country": "ESWATINI",
+  "countryId": "170",
+  "cities": 1,
+  "latMedian": -26.31,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 85.2,
+   "maghrib": 91.5,
+   "isha": 87.7
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.6,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.3,
+   "sunrise": 0.3,
+   "dhuhr": 0,
+   "asr": -0.7,
+   "maghrib": -0.6,
+   "isha": -0.7
+  }
+ },
+ {
+  "country": "LESOTO",
+  "countryId": "174",
+  "cities": 1,
+  "latMedian": -29.32,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 76.7,
+   "maghrib": 85.5,
+   "isha": 77.3
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.7,
+   "maghrib": 1.7,
+   "isha": 1.7
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.7,
+   "maghrib": -0.7,
+   "isha": -1
+  }
+ },
+ {
+  "country": "DOGU TIMOR",
+  "countryId": "176",
+  "cities": 1,
+  "latMedian": -8.47,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 97,
+   "maghrib": 98.9,
+   "isha": 98.6
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.5,
+   "sunrise": 0.5,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.3,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "NIUE",
+  "countryId": "178",
+  "cities": 1,
+  "latMedian": -19.07,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.5,
+   "dhuhr": 100,
+   "asr": 92.9,
+   "maghrib": 96.7,
+   "isha": 93.2
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.5,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.1,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.3,
+   "isha": -0.3
+  }
+ },
+ {
+  "country": "SINGAPUR",
+  "countryId": "179",
+  "cities": 1,
+  "latMedian": 1.21,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2.1,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7.1,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 99.2,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 98.4,
+   "maghrib": 99.5,
+   "isha": 98.4
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.2,
+   "maghrib": 0.3,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "PITCAIRN ADASI",
+  "countryId": "183",
+  "cities": 1,
+  "latMedian": -25.1,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 97.8,
+   "dhuhr": 100,
+   "asr": 84.9,
+   "maghrib": 93.7,
+   "isha": 88.2
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.4,
+   "isha": 1.6
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": -0.6,
+   "maghrib": -0.3,
+   "isha": -0.6
+  }
+ },
+ {
+  "country": "SAMOA",
+  "countryId": "198",
+  "cities": 1,
+  "latMedian": -13.86,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 96.2,
+   "maghrib": 96.7,
+   "isha": 95.9
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": -0.2,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.1,
+   "isha": -0.3
+  }
+ },
+ {
+  "country": "PALESTINE",
+  "countryId": "206",
+  "cities": 1,
+  "latMedian": 31.71,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5.1,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -0.9,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": -0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4.1,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 97.5,
+   "sunrise": 97.5,
+   "dhuhr": 100,
+   "asr": 77.8,
+   "maghrib": 86,
+   "isha": 77.5
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1.3,
+   "dhuhr": 0,
+   "asr": 1.9,
+   "maghrib": 1.6,
+   "isha": 2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.7,
+   "sunrise": -0.8,
+   "dhuhr": 0,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1.4
+  }
+ },
+ {
+  "country": "MAN ADASI",
+  "countryId": "212",
+  "cities": 1,
+  "latMedian": 54.16,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.5,
+   "sunrise": -11.9,
+   "dhuhr": 0,
+   "asr": -1.1,
+   "maghrib": 1.9,
+   "isha": -13.6
+  },
+  "temkinAbs": {
+   "imsak": 0.5,
+   "sunrise": -6.9,
+   "dhuhr": 5,
+   "asr": 3.9,
+   "maghrib": 6.9,
+   "isha": -8.6
+  },
+  "within1": {
+   "imsak": 49.6,
+   "sunrise": 89.6,
+   "dhuhr": 100,
+   "asr": 29.6,
+   "maghrib": 32.1,
+   "isha": 20.5
+  },
+  "worst": {
+   "imsak": 148,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 3.2,
+   "maghrib": 2.7,
+   "isha": 144.6
+  },
+  "seasonalAmplitude": {
+   "imsak": 131.8,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 2.5,
+   "maghrib": 2.1,
+   "isha": -131.4
+  }
+ },
+ {
+  "country": "ASCENSION",
+  "countryId": "213",
+  "cities": 1,
+  "latMedian": -7.88,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -4.9
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0.1
+  },
+  "within1": {
+   "imsak": 98.4,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 96.4,
+   "maghrib": 98.6,
+   "isha": 99.2
+  },
+  "worst": {
+   "imsak": 1.3,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.2,
+   "isha": 1.1
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.3,
+   "sunrise": 0.4,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": -0.2,
+   "isha": -0.2
+  }
+ },
+ {
+  "country": "MONAKO",
+  "countryId": "3",
+  "cities": 1,
+  "latMedian": 43.66,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5.2,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 1.9,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": -0.2,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 6.9,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 93.4,
+   "sunrise": 93.7,
+   "dhuhr": 100,
+   "asr": 49.9,
+   "maghrib": 62.7,
+   "isha": 43.3
+  },
+  "worst": {
+   "imsak": 1.4,
+   "sunrise": 1.5,
+   "dhuhr": 0,
+   "asr": 2.4,
+   "maghrib": 2.2,
+   "isha": 3.1
+  },
+  "seasonalAmplitude": {
+   "imsak": -1.1,
+   "sunrise": -0.9,
+   "dhuhr": 0,
+   "asr": 1.8,
+   "maghrib": 1.7,
+   "isha": 2.5
+  }
+ },
+ {
+  "country": "GRONLAND",
+  "countryId": "48",
+  "cities": 1,
+  "latMedian": 64.05,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": 2.6,
+   "sunrise": -11.8,
+   "dhuhr": 0,
+   "asr": -0.8,
+   "maghrib": 0.6,
+   "isha": -19.3
+  },
+  "temkinAbs": {
+   "imsak": 7.6,
+   "sunrise": -6.8,
+   "dhuhr": 5,
+   "asr": 4.2,
+   "maghrib": 5.6,
+   "isha": -14.3
+  },
+  "within1": {
+   "imsak": 0.3,
+   "sunrise": 38.1,
+   "dhuhr": 100,
+   "asr": 16.7,
+   "maghrib": 17,
+   "isha": 1.9
+  },
+  "worst": {
+   "imsak": 154.9,
+   "sunrise": 74.7,
+   "dhuhr": 0,
+   "asr": 7.5,
+   "maghrib": 62.6,
+   "isha": 153.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 92.9,
+   "sunrise": 28.1,
+   "dhuhr": 0,
+   "asr": 7.3,
+   "maghrib": -19.2,
+   "isha": -82.2
+  }
+ },
+ {
+  "country": "VANUATU",
+  "countryId": "56",
+  "cities": 1,
+  "latMedian": -17.75,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 100,
+   "dhuhr": 100,
+   "asr": 92.3,
+   "maghrib": 95.3,
+   "isha": 93.2
+  },
+  "worst": {
+   "imsak": 1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 1.4,
+   "maghrib": 1.3,
+   "isha": 1.5
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "maghrib": -0.3,
+   "isha": -0.3
+  }
+ },
+ {
+  "country": "GRENADA",
+  "countryId": "58",
+  "cities": 1,
+  "latMedian": 12.07,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.5,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 96.7,
+   "maghrib": 98.6,
+   "isha": 96.7
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.3
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.1,
+   "sunrise": -0.1,
+   "dhuhr": 0,
+   "asr": 0.3,
+   "maghrib": 0.2,
+   "isha": 0.2
+  }
+ },
+ {
+  "country": "ÇURAÇAO",
+  "countryId": "66",
+  "cities": 1,
+  "latMedian": 12.1,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -4.9,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0.1,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.2,
+   "dhuhr": 100,
+   "asr": 95.3,
+   "maghrib": 99.5,
+   "isha": 96.7
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.6,
+   "maghrib": 0.5,
+   "isha": 0.4
+  }
+ },
+ {
+  "country": "MIKRONEZYA",
+  "countryId": "85",
+  "cities": 1,
+  "latMedian": 6.99,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 99.7,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 97.8,
+   "maghrib": 99.5,
+   "isha": 99.2
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.1,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": 0.3,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "maghrib": 0,
+   "isha": 0.3
+  }
+ },
+ {
+  "country": "MARTINIK",
+  "countryId": "87",
+  "cities": 1,
+  "latMedian": 14.53,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.6,
+   "sunrise": 98.9,
+   "dhuhr": 100,
+   "asr": 93.7,
+   "maghrib": 96.7,
+   "isha": 95.1
+  },
+  "worst": {
+   "imsak": 1.2,
+   "sunrise": 1.2,
+   "dhuhr": 0,
+   "asr": 1.5,
+   "maghrib": 1.3,
+   "isha": 1.4
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.4,
+   "sunrise": -0.3,
+   "dhuhr": 0,
+   "asr": 0.4,
+   "maghrib": 0.6,
+   "isha": 0.7
+  }
+ },
+ {
+  "country": "KOMORLAR",
+  "countryId": "88",
+  "cities": 1,
+  "latMedian": -11.72,
+  "rows": 365,
+  "dhuhrMargin": 5,
+  "temkin": {
+   "imsak": -5,
+   "sunrise": -12,
+   "dhuhr": 0,
+   "asr": -1,
+   "maghrib": 2,
+   "isha": -5
+  },
+  "temkinAbs": {
+   "imsak": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "within1": {
+   "imsak": 98.9,
+   "sunrise": 99.7,
+   "dhuhr": 100,
+   "asr": 95.1,
+   "maghrib": 98.6,
+   "isha": 97.5
+  },
+  "worst": {
+   "imsak": 1.1,
+   "sunrise": 1.1,
+   "dhuhr": 0,
+   "asr": 1.3,
+   "maghrib": 1.2,
+   "isha": 1.2
+  },
+  "seasonalAmplitude": {
+   "imsak": -0.2,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.1,
+   "maghrib": -0.3,
+   "isha": -0.4
+  }
+ }
+]

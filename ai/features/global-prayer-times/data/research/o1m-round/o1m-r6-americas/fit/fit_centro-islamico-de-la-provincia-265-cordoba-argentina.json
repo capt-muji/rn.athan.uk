@@ -1,0 +1,204 @@
+{
+ "id": "centro-islamico-de-la-provincia-265-cordoba-argentina",
+ "name": "Centro Islámico de la Provincia - CóRDOBA",
+ "city": "Centro Islámico de la Provincia - CóRDOBA",
+ "tz": "America/Argentina/Buenos_Aires",
+ "lat": -31.4206892,
+ "lon": -64.1796418,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaKind": "angle",
+  "isha": 16.9,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 4,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 44.1,
+   "w1Pct": 100,
+   "mean": -0.56,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 44.1,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 97.3,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 97.3,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 17.8,
+   "w1Pct": 79.7,
+   "mean": -0.03,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 79.7,
+     "exactPct": 17.8,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 4,
+   "worst": 5,
+   "med": 4,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 5
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 45.2,
+   "w1Pct": 100,
+   "mean": 0.55,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 45.2,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 55.9,
+   "w1Pct": 100,
+   "mean": 0.44,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 55.9,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 97.3,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 97.3,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 17.8,
+   "w1Pct": 79.7,
+   "mean": -0.03,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 79.7,
+     "exactPct": 17.8,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.6,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.6,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 54.8,
+   "w1Pct": 100,
+   "mean": -0.45,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 54.8,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 115
+}

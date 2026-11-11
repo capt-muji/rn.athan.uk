@@ -1,0 +1,272 @@
+[
+ {
+  "file": "cerfi-dakar-all-fit.json",
+  "source": "CERFI — Horaires de Prières au Sénégal (weekly sheets, Dakar)",
+  "lat": 14.6928,
+  "lon": -17.4467,
+  "tz": "Africa/Dakar",
+  "rows": 238,
+  "span": [
+   "2026-11-06",
+   "2027-07-01"
+  ],
+  "recipe": {
+   "fajrAngle": 14.55,
+   "ishaAngle": 14.95,
+   "madhab": "Shafi",
+   "offsets": {
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 2
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 14.55,
+    "exact": 32,
+    "within1": 112,
+    "worst": -4,
+    "mae": 1.89,
+    "n": 238
+   },
+   "isha": {
+    "angle": 14.95,
+    "exact": 41,
+    "within1": 115,
+    "worst": 4,
+    "mae": 1.82,
+    "n": 238
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 32,
+    "within1": 112,
+    "worst": -4,
+    "mae": 1.89,
+    "n": 238
+   },
+   "sunrise": {
+    "exact": 0,
+    "within1": 0,
+    "worst": 0,
+    "mae": null,
+    "n": 0
+   },
+   "dhuhr": {
+    "exact": 209,
+    "within1": 238,
+    "worst": 1,
+    "mae": 0.12,
+    "n": 238
+   },
+   "asr": {
+    "exact": 142,
+    "within1": 238,
+    "worst": 1,
+    "mae": 0.4,
+    "n": 238
+   },
+   "maghrib": {
+    "exact": 205,
+    "within1": 238,
+    "worst": -1,
+    "mae": 0.14,
+    "n": 238
+   },
+   "isha": {
+    "exact": 41,
+    "within1": 115,
+    "worst": 4,
+    "mae": 1.82,
+    "n": 238
+   }
+  },
+  "totals": {
+   "within1": 941,
+   "of": 1190,
+   "worst": 4
+  },
+  "amplitude_fajr_jan_jul": null
+ },
+ {
+  "file": "cerfi-dakar-2026-fit.json",
+  "source": "CERFI — Horaires de Prières au Sénégal (weekly sheets, Dakar)",
+  "lat": 14.6928,
+  "lon": -17.4467,
+  "tz": "Africa/Dakar",
+  "rows": 56,
+  "span": [
+   "2026-11-06",
+   "2026-12-31"
+  ],
+  "recipe": {
+   "fajrAngle": 14.45,
+   "ishaAngle": 14.95,
+   "madhab": "Shafi",
+   "offsets": {
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 2
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 14.45,
+    "exact": 15,
+    "within1": 52,
+    "worst": -2,
+    "mae": 0.8,
+    "n": 56
+   },
+   "isha": {
+    "angle": 14.95,
+    "exact": 17,
+    "within1": 54,
+    "worst": 2,
+    "mae": 0.73,
+    "n": 56
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 15,
+    "within1": 52,
+    "worst": -2,
+    "mae": 0.8,
+    "n": 56
+   },
+   "sunrise": {
+    "exact": 0,
+    "within1": 0,
+    "worst": 0,
+    "mae": null,
+    "n": 0
+   },
+   "dhuhr": {
+    "exact": 53,
+    "within1": 56,
+    "worst": 1,
+    "mae": 0.05,
+    "n": 56
+   },
+   "asr": {
+    "exact": 44,
+    "within1": 56,
+    "worst": 1,
+    "mae": 0.21,
+    "n": 56
+   },
+   "maghrib": {
+    "exact": 50,
+    "within1": 56,
+    "worst": -1,
+    "mae": 0.11,
+    "n": 56
+   },
+   "isha": {
+    "exact": 17,
+    "within1": 54,
+    "worst": 2,
+    "mae": 0.73,
+    "n": 56
+   }
+  },
+  "totals": {
+   "within1": 274,
+   "of": 280,
+   "worst": 2
+  },
+  "amplitude_fajr_jan_jul": null
+ },
+ {
+  "file": "cerfi-dakar-2027-fit.json",
+  "source": "CERFI — Horaires de Prières au Sénégal (weekly sheets, Dakar)",
+  "lat": 14.6928,
+  "lon": -17.4467,
+  "tz": "Africa/Dakar",
+  "rows": 182,
+  "span": [
+   "2027-01-01",
+   "2027-07-01"
+  ],
+  "recipe": {
+   "fajrAngle": 15.1,
+   "ishaAngle": 15.55,
+   "madhab": "Shafi",
+   "offsets": {
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 2
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 15.1,
+    "exact": 26,
+    "within1": 86,
+    "worst": 7,
+    "mae": 2.41,
+    "n": 182
+   },
+   "isha": {
+    "angle": 15.55,
+    "exact": 28,
+    "within1": 81,
+    "worst": -7,
+    "mae": 2.6,
+    "n": 182
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 26,
+    "within1": 86,
+    "worst": 7,
+    "mae": 2.41,
+    "n": 182
+   },
+   "sunrise": {
+    "exact": 0,
+    "within1": 0,
+    "worst": 0,
+    "mae": null,
+    "n": 0
+   },
+   "dhuhr": {
+    "exact": 156,
+    "within1": 182,
+    "worst": -1,
+    "mae": 0.14,
+    "n": 182
+   },
+   "asr": {
+    "exact": 98,
+    "within1": 182,
+    "worst": -1,
+    "mae": 0.46,
+    "n": 182
+   },
+   "maghrib": {
+    "exact": 155,
+    "within1": 182,
+    "worst": -1,
+    "mae": 0.15,
+    "n": 182
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 81,
+    "worst": -7,
+    "mae": 2.6,
+    "n": 182
+   }
+  },
+  "totals": {
+   "within1": 713,
+   "of": 910,
+   "worst": 7
+  },
+  "amplitude_fajr_jan_jul": null
+ }
+]

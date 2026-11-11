@@ -1,0 +1,79 @@
+{
+ "city": "kristiansund",
+ "nightFraction": {
+  "n": 134,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 63.11045,
+ "lon": 7.72795,
+ "rows": 365,
+ "solarGateMedAbs": 0.25,
+ "fajrAngle": {
+  "n": 226,
+  "med": 18,
+  "min": 10.35,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 237,
+  "med": 17,
+  "min": 11.5,
+  "max": 17.2,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": -0.02,
+   "min": -2,
+   "max": 1.8
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": -0.02,
+   "min": -2.4,
+   "max": 2.9
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.62,
+   "min": -81.3,
+   "max": -11.8
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.05,
+   "min": -1.9,
+   "max": 1.9
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-15",
+    "to": "2027-08-26",
+    "days": 134
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 329,
+  "isha": 464
+ }
+}

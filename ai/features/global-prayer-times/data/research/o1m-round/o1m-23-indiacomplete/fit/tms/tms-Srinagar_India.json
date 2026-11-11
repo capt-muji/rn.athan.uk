@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Srinagar_India-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 34.0667,
+  "lon": 74.8167
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 18,
+ "isha_angle": 18.06,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.22,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.42,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.42,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.38,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.45,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.47,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.59,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 55.88,
+   "med": 54
+  },
+  "1": {
+   "mae": 0.37,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 77.5,
+   "within1": 100,
+   "mae": 0.22,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 75.3,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 51.8,
+   "within1": 100,
+   "mae": 0.48,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 63.6,
+   "within1": 99.7,
+   "mae": 0.37,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 65.2,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 62.7,
+   "within1": 100,
+   "mae": 0.37,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 364,
+ "isha_tier": {
+  "17": {
+   "mae": 5.78,
+   "med": 6,
+   "within1": 0,
+   "exact": 0,
+   "worst": 7
+  },
+  "18": {
+   "mae": 0.47,
+   "med": 0,
+   "within1": 98.4,
+   "exact": 54.2,
+   "worst": 2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 5.43,
+  "min": 4,
+  "max": 7
+ },
+ "amplitude_fajr_min": 155
+}

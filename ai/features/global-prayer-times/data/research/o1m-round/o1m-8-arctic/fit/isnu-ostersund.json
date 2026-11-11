@@ -1,0 +1,68 @@
+{
+ "city": "ostersund",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 63.1792,
+ "lon": 14.6357,
+ "rows": 760,
+ "solarGateMedAbs": 0.23,
+ "fajrAngle": {
+  "n": 553,
+  "med": 18,
+  "min": 10,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 548,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 760,
+   "med": 0,
+   "min": -0.6,
+   "max": 0.7
+  },
+  "dhuhr": {
+   "n": 760,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 760,
+   "med": 0.15,
+   "min": -3.3,
+   "max": 3.2
+  },
+  "asrHanafi": {
+   "n": 760,
+   "med": -47.83,
+   "min": -81.5,
+   "max": -11.5
+  },
+  "maghrib": {
+   "n": 760,
+   "med": 0.02,
+   "min": -0.7,
+   "max": 0.7
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 281,
+  "isha": 414
+ }
+}

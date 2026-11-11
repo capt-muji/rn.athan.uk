@@ -1,0 +1,90 @@
+{
+ "city": "salekhard",
+ "nightFraction": {
+  "n": 109,
+  "med": 0.499,
+  "p10": 0.492,
+  "p90": 0.511
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Yekaterinburg",
+ "lat": 66.53373,
+ "lon": 66.60955,
+ "rows": 365,
+ "solarGateMedAbs": 0.94,
+ "fajrAngle": {
+  "n": 220,
+  "med": 15.95,
+  "min": 10.85,
+  "max": 16.15,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 225,
+  "med": 15,
+  "min": 10.95,
+  "max": 15.3,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 317,
+   "med": 0.28,
+   "min": -1,
+   "max": 1.8
+  },
+  "dhuhr": {
+   "n": 317,
+   "med": 0.53,
+   "min": 0.1,
+   "max": 1
+  },
+  "asrShafi": {
+   "n": 317,
+   "med": -0.05,
+   "min": -10.1,
+   "max": 10.6
+  },
+  "asrHanafi": {
+   "n": 317,
+   "med": -42.27,
+   "min": -79.6,
+   "max": 3.9
+  },
+  "maghrib": {
+   "n": 317,
+   "med": 0.33,
+   "min": -1.6,
+   "max": 2.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-12",
+    "to": "2027-08-31",
+    "days": 142
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2027-06-04",
+    "to": "2027-07-06",
+    "days": 33
+   },
+   {
+    "from": "2027-07-08",
+    "to": "2027-07-08",
+    "days": 1
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 1851,
+  "isha": 1449
+ }
+}

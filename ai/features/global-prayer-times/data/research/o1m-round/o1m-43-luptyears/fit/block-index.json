@@ -1,0 +1,441 @@
+{
+ "block": {
+  "from": 2027,
+  "to": 2076,
+  "years": 50,
+  "days": 18263,
+  "leap_years": [
+   2028,
+   2032,
+   2036,
+   2040,
+   2044,
+   2048,
+   2052,
+   2056,
+   2060,
+   2064,
+   2068,
+   2072,
+   2076
+  ]
+ },
+ "rule_2027": {
+  "fajr": -3,
+  "sunrise": -3,
+  "dhuhr": 0,
+  "asr": 2,
+  "asr2": 2,
+  "magrib": 3,
+  "isha": 3
+ },
+ "files": [
+  "lupt-2027-2036.json",
+  "lupt-2037-2046.json",
+  "lupt-2047-2056.json",
+  "lupt-2057-2066.json",
+  "lupt-2067-2076.json"
+ ],
+ "years": [
+  {
+   "year": 2027,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2028,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2029,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2030,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2031,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2032,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2033,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2034,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2035,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2036,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2037,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2038,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2039,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2040,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2041,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2042,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2043,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2044,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2045,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2046,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2047,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2048,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2049,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2050,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2051,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2052,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2053,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2054,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2055,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2056,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2057,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 1
+  },
+  {
+   "year": 2058,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2059,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2060,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2061,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2062,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2063,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2064,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 1
+  },
+  {
+   "year": 2065,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2066,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2067,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2068,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2069,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2070,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2071,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2072,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  },
+  {
+   "year": 2073,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2074,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2075,
+   "leap": false,
+   "days": 365,
+   "asr_exact": 365,
+   "asr2_exact": 365,
+   "worst_other": 0
+  },
+  {
+   "year": 2076,
+   "leap": true,
+   "days": 366,
+   "asr_exact": 366,
+   "asr2_exact": 366,
+   "worst_other": 0
+  }
+ ]
+}

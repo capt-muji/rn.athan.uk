@@ -1,0 +1,142 @@
+{
+ "rows": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/data/masjidbox-mughalsarai-ghausia-2027.json",
+ "year": 2027,
+ "point": {
+  "lat": 25.26,
+  "lon": 83
+ },
+ "n_days": 344,
+ "table_shift_min": 0,
+ "fajr_angle": 18.09,
+ "isha_angle": 16.9,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.26,
+   "med": -0.03
+  },
+  {
+   "a": 18.15,
+   "mae": 0.3,
+   "med": 0.2
+  },
+  {
+   "a": 18.05,
+   "mae": 0.32,
+   "med": -0.27
+  },
+  {
+   "a": 18.2,
+   "mae": 0.47,
+   "med": 0.43
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 16.9,
+   "mae": 0.25,
+   "med": 0.02
+  },
+  {
+   "a": 16.95,
+   "mae": 0.3,
+   "med": -0.23
+  },
+  {
+   "a": 16.85,
+   "mae": 0.33,
+   "med": 0.25
+  },
+  {
+   "a": 17,
+   "mae": 0.46,
+   "med": -0.47
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "mae": 0.43,
+   "med": -0.4
+  },
+  "1": {
+   "mae": 58.89,
+   "med": -55
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 2.9,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": -0.5666666666666629,
+   "med": -0.08
+  },
+  "sunrise": {
+   "exact": 2.3,
+   "within1": 100,
+   "mae": 0.43,
+   "worst": -1,
+   "med": -0.42
+  },
+  "dhuhr": {
+   "exact": 2.6,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": -0.9500000000000455,
+   "med": -0.47
+  },
+  "asr": {
+   "exact": 2,
+   "within1": 100,
+   "mae": 0.43,
+   "worst": -0.9833333333333485,
+   "med": -0.4
+  },
+  "maghrib": {
+   "exact": 1.2,
+   "within1": 100,
+   "mae": 0.45,
+   "worst": -0.9833333333333485,
+   "med": -0.43
+  },
+  "isha": {
+   "exact": 2.6,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": 0.650000000000091,
+   "med": 0.02
+  }
+ },
+ "all_six_within1": 344,
+ "isha_tier": {
+  "17": {
+   "mae": 0.46,
+   "med": -0.47,
+   "within1": 100,
+   "exact": 2,
+   "worst": -0.9833333333333485
+  },
+  "18": {
+   "mae": 5.22,
+   "med": -5.2,
+   "within1": 0,
+   "exact": 0,
+   "worst": -6.4166666666667425
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.77,
+  "min": 4.42,
+  "max": 5.58
+ },
+ "amplitude_fajr_min": 108
+}

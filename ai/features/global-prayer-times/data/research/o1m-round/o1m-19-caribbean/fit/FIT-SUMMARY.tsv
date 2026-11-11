@@ -1,0 +1,11 @@
+fit	tz	days	fajr_angle	off	isha_angle	off	asr_school	asr_off	asr_mae	dhuhr_off	maghrib_off	sunrise_off	window
+bs_nassau_athanpro	America/Nassau	30	18.45	2	15.25	8	SHAFI	1	0.29	0	0	0	underdetermined angles
+cu_havana_2026	America/Havana	365	15	-21	15	12	SHAFI	1	1.13	0	3	0	season+
+do_santodomingo	America/Santo_Domingo	7	21.25	14	10.75	27	SHAFI	0	0.19	0	0	0	underdetermined angles
+ni_managua	America/Managua	365	15	0	15	5	SHAFI	0	1	0	2	0	season+
+pa_loceria	America/Panama	365	18.5	2	17.05	5	HANAFI	1	0.59	10	6	0	season+
+pa_musallacentral	America/Panama	365	18.5	2	16.85	6	HANAFI	1	0.64	10	6	0	season+
+pa_perejil	America/Panama	365	18.5	2	17.05	5	HANAFI	1	0.59	10	6	0	season+
+tt_chaguanas	America/New_York	7	20.55	11	18.1	-5	SHAFI	0	0.22	0	0	0	underdetermined angles
+tt_princesTown_ahad	America/Port_of_Spain	365	15	0	15	0	SHAFI	0	0.63	0	0	0	season+
+tt_sanfernando	America/Port_of_Spain	7	12.1	-25	10.65	31	HANAFI	0	0.21	0	3	0	underdetermined angles

@@ -1,0 +1,142 @@
+{
+ "rows": "$HOME/athan-gitree/census/o1m/o1m-17-india/data/iaac/Haldwani_IN-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 29.2167,
+  "lon": 79.5167
+ },
+ "n_days": 360,
+ "table_shift_min": 0,
+ "fajr_angle": 18.07,
+ "isha_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18.1,
+   "mae": 0.25,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.27,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.41,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.41,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.28,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.36,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.44,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.49,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 57.65,
+   "med": 55
+  },
+  "1": {
+   "mae": 0.33,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 76.9,
+   "within1": 99.7,
+   "mae": 0.23,
+   "worst": 2,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 67.8,
+   "within1": 100,
+   "mae": 0.32,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 54.4,
+   "within1": 100,
+   "mae": 0.46,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 66.7,
+   "within1": 100,
+   "mae": 0.33,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 63.3,
+   "within1": 100,
+   "mae": 0.37,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 71.7,
+   "within1": 100,
+   "mae": 0.28,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 359,
+ "isha_tier": {
+  "17": {
+   "mae": 5.36,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 7
+  },
+  "18": {
+   "mae": 0.44,
+   "med": 0,
+   "within1": 100,
+   "exact": 56.4,
+   "worst": 1
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 4.99,
+  "min": 4,
+  "max": 7
+ },
+ "amplitude_fajr_min": 127
+}

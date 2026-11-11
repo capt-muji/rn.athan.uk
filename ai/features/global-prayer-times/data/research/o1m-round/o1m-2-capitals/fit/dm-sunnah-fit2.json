@@ -1,0 +1,54 @@
+{
+ "file": "dm-sunnah-mawaqit-2026.json",
+ "lat": 15.302525963803,
+ "lon": -61.389062516391,
+ "tz": "America/Dominica",
+ "rows": 365,
+ "span": "2026-01-01..2026-12-31",
+ "recipe": {
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "842 exact / 1732 within-1 of 1825",
+ "pctWithin1": 94.9,
+ "worst": 2,
+ "per": {
+  "fajr": {
+   "exact": 184,
+   "within1": 365,
+   "worst": 1
+  },
+  "sunrise": {
+   "exact": 184,
+   "within1": 365,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 177,
+   "within1": 365,
+   "worst": 1
+  },
+  "asr": {
+   "exact": 107,
+   "within1": 272,
+   "worst": 2
+  },
+  "maghrib": {
+   "exact": 191,
+   "within1": 365,
+   "worst": 1
+  },
+  "isha": {
+   "exact": 183,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "amplitudeFajrJanJul": -56,
+ "amplitudeIshaJanJul": 48,
+ "years": [
+  "2026"
+ ]
+}

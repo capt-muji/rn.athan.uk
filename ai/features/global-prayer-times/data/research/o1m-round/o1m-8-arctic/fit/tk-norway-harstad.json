@@ -1,0 +1,95 @@
+{
+ "city": "harstad",
+ "nightFraction": {
+  "n": 103,
+  "med": 0.499,
+  "p10": 0.496,
+  "p90": 0.506
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 68.79833,
+ "lon": 16.54165,
+ "rows": 265,
+ "solarGateMedAbs": 0.47,
+ "fajrAngle": {
+  "n": 130,
+  "med": 17.95,
+  "min": 12.4,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18.1
+ },
+ "ishaAngle": {
+  "n": 135,
+  "med": 16.95,
+  "min": 12.15,
+  "max": 17.15,
+  "jun": null,
+  "dec": 17.15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 190,
+   "med": 0.35,
+   "min": -2.6,
+   "max": 2.5
+  },
+  "dhuhr": {
+   "n": 190,
+   "med": -0.03,
+   "min": -0.6,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 190,
+   "med": 0.23,
+   "min": -4.7,
+   "max": 11.5
+  },
+  "asrHanafi": {
+   "n": 190,
+   "med": -42.28,
+   "min": -68.3,
+   "max": -1.1
+  },
+  "maghrib": {
+   "n": 190,
+   "med": -1.5,
+   "min": -2.6,
+   "max": 2.7
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-03-31",
+    "to": "2027-05-21",
+    "days": 52
+   },
+   {
+    "from": "2027-07-22",
+    "to": "2027-09-11",
+    "days": 52
+   }
+  ],
+  "neverRises": [
+   {
+    "from": "2027-05-20",
+    "to": "2027-05-21",
+    "days": 2
+   },
+   {
+    "from": "2027-07-23",
+    "to": "2027-07-24",
+    "days": 2
+   }
+  ]
+ },
+ "amplitude": {
+  "fajr": 340,
+  "isha": 1445
+ }
+}

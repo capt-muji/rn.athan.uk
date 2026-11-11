@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-hyd-ansar-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 15.82,
+  "lon": 77.32
+ },
+ "coarse": {
+  "lat": 16,
+  "lon": 77.5,
+  "mae": 21.84
+ },
+ "mid": {
+  "lat": 15.82,
+  "lon": 77.32,
+  "mae": 21.255
+ },
+ "meta": {
+  "name": "Masjid al ansar ",
+  "address": "18-8-208, Indira Nagar, Mustafa Nagar, Riyasat Nagar, Hyderabad, Telangana, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 16.35,
+ "fajr_sweep": [
+  {
+   "a": 16.35,
+   "med": -1,
+   "mae": 18.04,
+   "mad": 17
+  },
+  {
+   "a": 16.55,
+   "med": -1,
+   "mae": 18.06,
+   "mad": 18
+  },
+  {
+   "a": 16.6,
+   "med": 0,
+   "mae": 18.06,
+   "mad": 18
+  },
+  {
+   "a": 16.7,
+   "med": 0,
+   "mae": 18.09,
+   "mad": 18
+  }
+ ],
+ "isha_angle": 19.05,
+ "isha_sweep": [
+  {
+   "a": 19.05,
+   "med": 1,
+   "mae": 20.47,
+   "mad": 21
+  },
+  {
+   "a": 18.6,
+   "med": 3,
+   "mae": 20.49,
+   "mad": 21
+  },
+  {
+   "a": 19,
+   "med": 1,
+   "mae": 20.49,
+   "mad": 21
+  },
+  {
+   "a": 19.25,
+   "med": 0,
+   "mae": 20.49,
+   "mad": 21
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": -1,
+   "mad": 9
+  },
+  "1": {
+   "med": -69,
+   "mad": 9
+  }
+ },
+ "margins": {
+  "fajr": -1,
+  "sunrise": 7,
+  "dhuhr": 24,
+  "asr": -1,
+  "maghrib": -47,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 2.7,
+   "within1": 7.9,
+   "mae": 17.81,
+   "worst": -38,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 2.2,
+   "within1": 6.8,
+   "mae": 16.86,
+   "worst": -40,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.6,
+   "within1": 11.5,
+   "mae": 7.14,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 7.1,
+   "within1": 15.3,
+   "mae": 8.53,
+   "worst": -19,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 1.6,
+   "within1": 5.5,
+   "mae": 19.13,
+   "worst": 43,
+   "med": 0
+  },
+  "isha": {
+   "exact": 1.9,
+   "within1": 5.5,
+   "mae": 20.44,
+   "worst": 39,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 0
+}

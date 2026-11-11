@@ -1,0 +1,9702 @@
+[
+ {
+  "country": "russia",
+  "cities": 860,
+  "excludedClockCities": 0,
+  "rows": 313900,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 15.92,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 15.06,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 3.63,
+  "jointExactPc": 2.1,
+  "jointW1Pc": 28.4,
+  "cellsW1Pc": 73.3,
+  "worst": 718.5,
+  "worstWhere": "vorkuta 2026-12-06 asr table 10:35 calc 22:34",
+  "implied": {
+   "fajrAngle": 15.92,
+   "ishaAngle": 15.01,
+   "ishaAngleSd": 1.7,
+   "ishaGap": 113,
+   "ishaGapSd": 40.7,
+   "fajrSunriseGap": -121,
+   "asrFactor": 1.007
+  },
+  "extent": {
+   "latMin": 42.07,
+   "latMax": 69.49,
+   "lonMin": 19.91,
+   "lonMax": 180.94
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.02,
+    "dhuhr": 0.43
+   },
+   "2026-12": {
+    "sunrise": 0.14,
+    "dhuhr": 0.32
+   },
+   "2027-01": {
+    "sunrise": 0.29,
+    "dhuhr": 0.44
+   },
+   "2027-02": {
+    "sunrise": 0.22,
+    "dhuhr": 0.48
+   },
+   "2027-03": {
+    "sunrise": 0.13,
+    "dhuhr": 0.52
+   },
+   "2027-04": {
+    "sunrise": 0.06,
+    "dhuhr": 0.51
+   },
+   "2027-05": {
+    "sunrise": 0.15,
+    "dhuhr": 0.48
+   },
+   "2027-06": {
+    "sunrise": 0.59,
+    "dhuhr": 0.46
+   },
+   "2027-07": {
+    "sunrise": 0.95,
+    "dhuhr": 0.47
+   },
+   "2027-08": {
+    "sunrise": 0.9,
+    "dhuhr": 0.5
+   },
+   "2027-09": {
+    "sunrise": 0.76,
+    "dhuhr": 0.52
+   },
+   "2027-10": {
+    "sunrise": 0.64,
+    "dhuhr": 0.51
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 49.8,
+    "w1Pc": 76.4,
+    "mae": 1.05,
+    "worst": 199.3
+   },
+   "sunrise": {
+    "exactPc": 51,
+    "w1Pc": 87.9,
+    "mae": 0.78,
+    "worst": 150.2
+   },
+   "dhuhr": {
+    "exactPc": 50.7,
+    "w1Pc": 97.1,
+    "mae": 0.54,
+    "worst": 20.2
+   },
+   "asr": {
+    "exactPc": 29.8,
+    "w1Pc": 54.1,
+    "mae": 1.28,
+    "worst": 718.5
+   },
+   "maghrib": {
+    "exactPc": 42.6,
+    "w1Pc": 65.9,
+    "mae": 1.01,
+    "worst": 155.8
+   },
+   "isha": {
+    "exactPc": 29,
+    "w1Pc": 59.2,
+    "mae": 1.37,
+    "worst": 397.3
+   }
+  },
+  "medianSolarRms": 0.81
+ },
+ {
+  "country": "spain",
+  "cities": 609,
+  "excludedClockCities": 6,
+  "rows": 222285,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 15,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 15.01,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.65,
+  "jointExactPc": 12,
+  "jointW1Pc": 77.6,
+  "cellsW1Pc": 95.3,
+  "worst": 60.9,
+  "worstWhere": "eibar 2027-07-13 fajr table 05:59 calc 04:58",
+  "implied": {
+   "fajrAngle": 15,
+   "ishaAngle": 15.01,
+   "ishaAngleSd": 0.16,
+   "ishaGap": 79,
+   "ishaGapSd": 8.8,
+   "fajrSunriseGap": -79,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 27.76,
+   "latMax": 43.66,
+   "lonMin": -17.92,
+   "lonMax": 4.27
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.22,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.11,
+    "dhuhr": 0.13
+   },
+   "2027-01": {
+    "sunrise": -0.16,
+    "dhuhr": 0.18
+   },
+   "2027-02": {
+    "sunrise": -0.52,
+    "dhuhr": 0.01
+   },
+   "2027-03": {
+    "sunrise": -0.71,
+    "dhuhr": -0.1
+   },
+   "2027-04": {
+    "sunrise": -0.7,
+    "dhuhr": -0.08
+   },
+   "2027-05": {
+    "sunrise": -0.42,
+    "dhuhr": 0.02
+   },
+   "2027-06": {
+    "sunrise": 0.05,
+    "dhuhr": 0.11
+   },
+   "2027-07": {
+    "sunrise": 0.41,
+    "dhuhr": 0.05
+   },
+   "2027-08": {
+    "sunrise": 0.48,
+    "dhuhr": -0.08
+   },
+   "2027-09": {
+    "sunrise": 0.46,
+    "dhuhr": -0.16
+   },
+   "2027-10": {
+    "sunrise": 0.48,
+    "dhuhr": -0.09
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 52,
+    "w1Pc": 90.1,
+    "mae": 0.58,
+    "worst": 60.9
+   },
+   "sunrise": {
+    "exactPc": 58.4,
+    "w1Pc": 95.1,
+    "mae": 0.47,
+    "worst": 29.1
+   },
+   "dhuhr": {
+    "exactPc": 89.1,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 7.5
+   },
+   "asr": {
+    "exactPc": 65.2,
+    "w1Pc": 98.9,
+    "mae": 0.4,
+    "worst": 59.4
+   },
+   "maghrib": {
+    "exactPc": 54.7,
+    "w1Pc": 93.1,
+    "mae": 0.5,
+    "worst": 26
+   },
+   "isha": {
+    "exactPc": 60,
+    "w1Pc": 95.1,
+    "mae": 0.49,
+    "worst": 59.4
+   }
+  },
+  "medianSolarRms": 0.57
+ },
+ {
+  "country": "indonesia",
+  "cities": 517,
+  "excludedClockCities": 0,
+  "rows": 188614,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.41,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.59,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -3,
+    "dhuhr": 3,
+    "asr": 2,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.49,
+  "jointExactPc": 11.9,
+  "jointW1Pc": 85.7,
+  "cellsW1Pc": 95.3,
+  "worst": 5.6,
+  "worstWhere": "kab-manggarai 2027-07-01 maghrib table 17:59 calc 17:53",
+  "implied": {
+   "fajrAngle": 19.41,
+   "ishaAngle": 18.59,
+   "ishaAngleSd": 0.13,
+   "ishaGap": 71,
+   "ishaGapSd": 2.7,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.027
+  },
+  "extent": {
+   "latMin": -10.68,
+   "latMax": 6.03,
+   "lonMin": 94.38,
+   "lonMax": 115.17
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.65,
+    "dhuhr": 0.5
+   },
+   "2026-12": {
+    "sunrise": -0.7,
+    "dhuhr": 0.48
+   },
+   "2027-01": {
+    "sunrise": -0.59,
+    "dhuhr": 0.56
+   },
+   "2027-02": {
+    "sunrise": -0.63,
+    "dhuhr": 0.48
+   },
+   "2027-03": {
+    "sunrise": -0.65,
+    "dhuhr": 0.44
+   },
+   "2027-04": {
+    "sunrise": -0.69,
+    "dhuhr": 0.42
+   },
+   "2027-05": {
+    "sunrise": -0.7,
+    "dhuhr": 0.47
+   },
+   "2027-06": {
+    "sunrise": -0.7,
+    "dhuhr": 0.52
+   },
+   "2027-07": {
+    "sunrise": -0.71,
+    "dhuhr": 0.51
+   },
+   "2027-08": {
+    "sunrise": -0.71,
+    "dhuhr": 0.46
+   },
+   "2027-09": {
+    "sunrise": -0.7,
+    "dhuhr": 0.43
+   },
+   "2027-10": {
+    "sunrise": -0.67,
+    "dhuhr": 0.46
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 87.7,
+    "w1Pc": 98.8,
+    "mae": 0.31,
+    "worst": 5.3
+   },
+   "sunrise": {
+    "exactPc": 68.4,
+    "w1Pc": 89.1,
+    "mae": 0.76,
+    "worst": 5.5
+   },
+   "dhuhr": {
+    "exactPc": 51.3,
+    "w1Pc": 99.2,
+    "mae": 0.48,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 51.4,
+    "w1Pc": 96.9,
+    "mae": 0.49,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "exactPc": 72.4,
+    "w1Pc": 89.1,
+    "mae": 0.74,
+    "worst": 5.6
+   },
+   "isha": {
+    "exactPc": 87.1,
+    "w1Pc": 98.8,
+    "mae": 0.32,
+    "worst": 5
+   }
+  },
+  "medianSolarRms": 3.22
+ },
+ {
+  "country": "india",
+  "cities": 460,
+  "excludedClockCities": 1,
+  "rows": 167897,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.95,
+  "jointExactPc": 25.3,
+  "jointW1Pc": 93.9,
+  "cellsW1Pc": 95.3,
+  "worst": 41,
+  "worstWhere": "bilaspur 2027-06-25 isha table 20:29 calc 21:10",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 18,
+   "ishaAngleSd": 0.5,
+   "ishaGap": 78,
+   "ishaGapSd": 5.5,
+   "fajrSunriseGap": -78,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 8.18,
+   "latMax": 34.09,
+   "lonMin": 69.61,
+   "lonMax": 94.91
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.18,
+    "dhuhr": -0.03
+   },
+   "2026-12": {
+    "sunrise": -0.27,
+    "dhuhr": 0.05
+   },
+   "2027-01": {
+    "sunrise": -0.36,
+    "dhuhr": 0.09
+   },
+   "2027-02": {
+    "sunrise": -0.51,
+    "dhuhr": -0.07
+   },
+   "2027-03": {
+    "sunrise": -0.52,
+    "dhuhr": -0.19
+   },
+   "2027-04": {
+    "sunrise": -0.34,
+    "dhuhr": -0.17
+   },
+   "2027-05": {
+    "sunrise": -0.01,
+    "dhuhr": -0.06
+   },
+   "2027-06": {
+    "sunrise": 0.31,
+    "dhuhr": 0.02
+   },
+   "2027-07": {
+    "sunrise": 0.42,
+    "dhuhr": -0.03
+   },
+   "2027-08": {
+    "sunrise": 0.28,
+    "dhuhr": -0.17
+   },
+   "2027-09": {
+    "sunrise": 0.1,
+    "dhuhr": -0.24
+   },
+   "2027-10": {
+    "sunrise": 0,
+    "dhuhr": -0.17
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 71.8,
+    "w1Pc": 94.6,
+    "mae": 0.69,
+    "worst": 33.7
+   },
+   "sunrise": {
+    "exactPc": 75.2,
+    "w1Pc": 95.5,
+    "mae": 0.62,
+    "worst": 27.1
+   },
+   "dhuhr": {
+    "exactPc": 85.5,
+    "w1Pc": 95.6,
+    "mae": 0.48,
+    "worst": 8.6
+   },
+   "asr": {
+    "exactPc": 71.9,
+    "w1Pc": 95.4,
+    "mae": 0.65,
+    "worst": 31.1
+   },
+   "maghrib": {
+    "exactPc": 72.1,
+    "w1Pc": 95.4,
+    "mae": 0.64,
+    "worst": 28.1
+   },
+   "isha": {
+    "exactPc": 74.3,
+    "w1Pc": 95.1,
+    "mae": 0.73,
+    "worst": 41
+   }
+  },
+  "medianSolarRms": 0.38
+ },
+ {
+  "country": "france",
+  "cities": 456,
+  "excludedClockCities": 7,
+  "rows": 166440,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 14.8,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -3,
+    "dhuhr": 6,
+    "asr": 3,
+    "maghrib": 5,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.89,
+  "jointExactPc": 2.9,
+  "jointW1Pc": 40.2,
+  "cellsW1Pc": 77.8,
+  "worst": 61.9,
+  "worstWhere": "grenoble 2027-06-22 fajr table 04:56 calc 03:54",
+  "implied": {
+   "fajrAngle": 14.8,
+   "ishaAngle": 14.78,
+   "ishaAngleSd": 1.7,
+   "ishaGap": 85,
+   "ishaGapSd": 0.3,
+   "fajrSunriseGap": -88,
+   "asrFactor": 1.048
+  },
+  "extent": {
+   "latMin": 41.92,
+   "latMax": 51.03,
+   "lonMin": -4.49,
+   "lonMax": 9.45
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0,
+    "dhuhr": -0.66
+   },
+   "2026-12": {
+    "sunrise": 0.19,
+    "dhuhr": -0.8
+   },
+   "2027-01": {
+    "sunrise": 0.47,
+    "dhuhr": -0.65
+   },
+   "2027-02": {
+    "sunrise": 0.52,
+    "dhuhr": -0.56
+   },
+   "2027-03": {
+    "sunrise": 0.49,
+    "dhuhr": -0.49
+   },
+   "2027-04": {
+    "sunrise": 0.43,
+    "dhuhr": -0.51
+   },
+   "2027-05": {
+    "sunrise": 0.43,
+    "dhuhr": -0.58
+   },
+   "2027-06": {
+    "sunrise": 0.51,
+    "dhuhr": -0.63
+   },
+   "2027-07": {
+    "sunrise": 0.57,
+    "dhuhr": -0.6
+   },
+   "2027-08": {
+    "sunrise": 0.54,
+    "dhuhr": -0.53
+   },
+   "2027-09": {
+    "sunrise": 0.47,
+    "dhuhr": -0.5
+   },
+   "2027-10": {
+    "sunrise": 0.41,
+    "dhuhr": -0.53
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 64.6,
+    "w1Pc": 89.1,
+    "mae": 0.63,
+    "worst": 61.9
+   },
+   "sunrise": {
+    "exactPc": 52.2,
+    "w1Pc": 96.4,
+    "mae": 0.59,
+    "worst": 47.7
+   },
+   "dhuhr": {
+    "exactPc": 47.7,
+    "w1Pc": 95,
+    "mae": 0.59,
+    "worst": 10.7
+   },
+   "asr": {
+    "exactPc": 28.5,
+    "w1Pc": 55,
+    "mae": 1.1,
+    "worst": 43.4
+   },
+   "maghrib": {
+    "exactPc": 44.6,
+    "w1Pc": 65.6,
+    "mae": 0.85,
+    "worst": 57.7
+   },
+   "isha": {
+    "exactPc": 44.7,
+    "w1Pc": 65.8,
+    "mae": 0.84,
+    "worst": 52.7
+   }
+  },
+  "medianSolarRms": 4.34
+ },
+ {
+  "country": "pakistan",
+  "cities": 453,
+  "excludedClockCities": 0,
+  "rows": 165345,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.54,
+  "jointExactPc": 52.2,
+  "jointW1Pc": 99.5,
+  "cellsW1Pc": 99.7,
+  "worst": 25.5,
+  "worstWhere": "alipur 2027-06-17 isha table 20:38 calc 21:03",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 18,
+   "ishaAngleSd": 0.13,
+   "ishaGap": 84,
+   "ishaGapSd": 6.6,
+   "fajrSunriseGap": -84,
+   "asrFactor": 2
+  },
+  "extent": {
+   "latMin": 24.23,
+   "latMax": 36.29,
+   "lonMin": 61.75,
+   "lonMax": 76.33
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.26,
+    "dhuhr": -0.05
+   },
+   "2026-12": {
+    "sunrise": -0.2,
+    "dhuhr": -0.14
+   },
+   "2027-01": {
+    "sunrise": 0,
+    "dhuhr": -0.01
+   },
+   "2027-02": {
+    "sunrise": 0.05,
+    "dhuhr": 0
+   },
+   "2027-03": {
+    "sunrise": 0.05,
+    "dhuhr": 0.01
+   },
+   "2027-04": {
+    "sunrise": 0.03,
+    "dhuhr": 0
+   },
+   "2027-05": {
+    "sunrise": 0.01,
+    "dhuhr": -0.01
+   },
+   "2027-06": {
+    "sunrise": 0,
+    "dhuhr": -0.03
+   },
+   "2027-07": {
+    "sunrise": -0.01,
+    "dhuhr": -0.02
+   },
+   "2027-08": {
+    "sunrise": -0.02,
+    "dhuhr": -0.01
+   },
+   "2027-09": {
+    "sunrise": -0.03,
+    "dhuhr": -0.01
+   },
+   "2027-10": {
+    "sunrise": -0.05,
+    "dhuhr": -0.01
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 90.9,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 13.6
+   },
+   "sunrise": {
+    "exactPc": 92.5,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 16.8
+   },
+   "dhuhr": {
+    "exactPc": 96.3,
+    "w1Pc": 99.8,
+    "mae": 0.26,
+    "worst": 6.5
+   },
+   "asr": {
+    "exactPc": 75.3,
+    "w1Pc": 99.7,
+    "mae": 0.33,
+    "worst": 14.8
+   },
+   "maghrib": {
+    "exactPc": 94.2,
+    "w1Pc": 99.7,
+    "mae": 0.27,
+    "worst": 17.3
+   },
+   "isha": {
+    "exactPc": 87.2,
+    "w1Pc": 99.7,
+    "mae": 0.29,
+    "worst": 25.5
+   }
+  },
+  "medianSolarRms": 0.3
+ },
+ {
+  "country": "turkey",
+  "cities": 391,
+  "excludedClockCities": 0,
+  "rows": 142715,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.13,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.14,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -8,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 8,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.16,
+  "jointExactPc": 5.6,
+  "jointW1Pc": 40.5,
+  "cellsW1Pc": 83,
+  "worst": 31.5,
+  "worstWhere": "eregli 2027-06-21 fajr table 02:56 calc 03:28",
+  "implied": {
+   "fajrAngle": 18.13,
+   "ishaAngle": 17.14,
+   "ishaAngleSd": 0.2,
+   "ishaGap": 82,
+   "ishaGapSd": 9.4,
+   "fajrSunriseGap": -88,
+   "asrFactor": 1.055
+  },
+  "extent": {
+   "latMin": 36.08,
+   "latMax": 42.03,
+   "lonMin": 26.31,
+   "lonMax": 44.57
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.49,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.31,
+    "dhuhr": 0.18
+   },
+   "2027-01": {
+    "sunrise": 0.19,
+    "dhuhr": -0.13
+   },
+   "2027-02": {
+    "sunrise": 0.43,
+    "dhuhr": -0.01
+   },
+   "2027-03": {
+    "sunrise": -1.09,
+    "dhuhr": -0.21
+   },
+   "2027-04": {
+    "sunrise": -1.1,
+    "dhuhr": -0.19
+   },
+   "2027-05": {
+    "sunrise": -0.75,
+    "dhuhr": -0.03
+   },
+   "2027-06": {
+    "sunrise": -0.12,
+    "dhuhr": 0.08
+   },
+   "2027-07": {
+    "sunrise": 0.4,
+    "dhuhr": 0
+   },
+   "2027-08": {
+    "sunrise": 0.56,
+    "dhuhr": -0.19
+   },
+   "2027-09": {
+    "sunrise": 0.57,
+    "dhuhr": -0.29
+   },
+   "2027-10": {
+    "sunrise": 0.68,
+    "dhuhr": -0.19
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 46.5,
+    "w1Pc": 72,
+    "mae": 0.8,
+    "worst": 31.5
+   },
+   "sunrise": {
+    "exactPc": 43.6,
+    "w1Pc": 84.6,
+    "mae": 0.67,
+    "worst": 16.9
+   },
+   "dhuhr": {
+    "exactPc": 85.1,
+    "w1Pc": 98.7,
+    "mae": 0.33,
+    "worst": 10.8
+   },
+   "asr": {
+    "exactPc": 45.6,
+    "w1Pc": 76.1,
+    "mae": 0.71,
+    "worst": 16.3
+   },
+   "maghrib": {
+    "exactPc": 44.7,
+    "w1Pc": 83,
+    "mae": 0.67,
+    "worst": 16.1
+   },
+   "isha": {
+    "exactPc": 46.9,
+    "w1Pc": 83.7,
+    "mae": 0.66,
+    "worst": 21.2
+   }
+  },
+  "medianSolarRms": 7.9
+ },
+ {
+  "country": "yemen",
+  "cities": 313,
+  "excludedClockCities": 0,
+  "rows": 114245,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.51,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.62,
+  "jointExactPc": 32.2,
+  "jointW1Pc": 96.5,
+  "cellsW1Pc": 98.5,
+  "worst": 28,
+  "worstWhere": "hais 2027-03-16 isha table 19:21 calc 19:49",
+  "implied": {
+   "fajrAngle": 18.51,
+   "ishaAngle": 21.6,
+   "ishaAngleSd": 0.87,
+   "ishaGap": 90,
+   "ishaGapSd": 1.4,
+   "fajrSunriseGap": -77,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 12.05,
+   "latMax": 17.8,
+   "lonMin": 42.67,
+   "lonMax": 54.02
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.14,
+    "dhuhr": 0.06
+   },
+   "2026-12": {
+    "sunrise": 0.15,
+    "dhuhr": 0.14
+   },
+   "2027-01": {
+    "sunrise": 0.1,
+    "dhuhr": 0.18
+   },
+   "2027-02": {
+    "sunrise": -0.16,
+    "dhuhr": 0.01
+   },
+   "2027-03": {
+    "sunrise": -0.3,
+    "dhuhr": -0.1
+   },
+   "2027-04": {
+    "sunrise": -0.3,
+    "dhuhr": -0.08
+   },
+   "2027-05": {
+    "sunrise": -0.14,
+    "dhuhr": 0.03
+   },
+   "2027-06": {
+    "sunrise": 0.06,
+    "dhuhr": 0.11
+   },
+   "2027-07": {
+    "sunrise": 0.12,
+    "dhuhr": 0.05
+   },
+   "2027-08": {
+    "sunrise": 0.06,
+    "dhuhr": -0.08
+   },
+   "2027-09": {
+    "sunrise": 0.03,
+    "dhuhr": -0.15
+   },
+   "2027-10": {
+    "sunrise": 0.1,
+    "dhuhr": -0.08
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 79.7,
+    "w1Pc": 98.8,
+    "mae": 0.34,
+    "worst": 9.6
+   },
+   "sunrise": {
+    "exactPc": 82.3,
+    "w1Pc": 98.9,
+    "mae": 0.33,
+    "worst": 10.8
+   },
+   "dhuhr": {
+    "exactPc": 88.5,
+    "w1Pc": 98.7,
+    "mae": 0.31,
+    "worst": 7.3
+   },
+   "asr": {
+    "exactPc": 65.4,
+    "w1Pc": 97.1,
+    "mae": 0.43,
+    "worst": 11.1
+   },
+   "maghrib": {
+    "exactPc": 80,
+    "w1Pc": 98.9,
+    "mae": 0.34,
+    "worst": 10.1
+   },
+   "isha": {
+    "exactPc": 79.9,
+    "w1Pc": 98.6,
+    "mae": 0.42,
+    "worst": 28
+   }
+  },
+  "medianSolarRms": 0.35
+ },
+ {
+  "country": "afghanistan",
+  "cities": 307,
+  "excludedClockCities": 0,
+  "rows": 112055,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.01,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.71,
+  "jointExactPc": 16,
+  "jointW1Pc": 85.5,
+  "cellsW1Pc": 96.7,
+  "worst": 20.5,
+  "worstWhere": "shahran 2027-06-21 isha table 21:33 calc 21:13",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 18.01,
+   "ishaAngleSd": 0.15,
+   "ishaGap": 89,
+   "ishaGapSd": 7.6,
+   "fajrSunriseGap": -89,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 30.15,
+   "latMax": 38.43,
+   "lonMin": 61.07,
+   "lonMax": 72.32
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.22,
+    "dhuhr": 0.04
+   },
+   "2026-12": {
+    "sunrise": 0.15,
+    "dhuhr": 0.11
+   },
+   "2027-01": {
+    "sunrise": -0.08,
+    "dhuhr": 0.16
+   },
+   "2027-02": {
+    "sunrise": -0.43,
+    "dhuhr": -0.01
+   },
+   "2027-03": {
+    "sunrise": -0.64,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": -0.63,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -0.4,
+    "dhuhr": 0.01
+   },
+   "2027-06": {
+    "sunrise": 0,
+    "dhuhr": 0.09
+   },
+   "2027-07": {
+    "sunrise": 0.28,
+    "dhuhr": 0.03
+   },
+   "2027-08": {
+    "sunrise": 0.34,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": 0.34,
+    "dhuhr": -0.18
+   },
+   "2027-10": {
+    "sunrise": 0.4,
+    "dhuhr": -0.11
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 57.2,
+    "w1Pc": 92.5,
+    "mae": 0.5,
+    "worst": 11.8
+   },
+   "sunrise": {
+    "exactPc": 64.2,
+    "w1Pc": 96.8,
+    "mae": 0.44,
+    "worst": 12.5
+   },
+   "dhuhr": {
+    "exactPc": 88.8,
+    "w1Pc": 99,
+    "mae": 0.29,
+    "worst": 5.7
+   },
+   "asr": {
+    "exactPc": 78.4,
+    "w1Pc": 99.1,
+    "mae": 0.34,
+    "worst": 11.4
+   },
+   "maghrib": {
+    "exactPc": 60.9,
+    "w1Pc": 95.9,
+    "mae": 0.46,
+    "worst": 12.9
+   },
+   "isha": {
+    "exactPc": 65,
+    "w1Pc": 96.6,
+    "mae": 0.45,
+    "worst": 20.5
+   }
+  },
+  "medianSolarRms": 0.5
+ },
+ {
+  "country": "syria",
+  "cities": 287,
+  "excludedClockCities": 0,
+  "rows": 104755,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.46,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.67,
+  "jointExactPc": 10.5,
+  "jointW1Pc": 62.8,
+  "cellsW1Pc": 90,
+  "worst": 9.9,
+  "worstWhere": "suran 2027-06-04 fajr table 03:20 calc 03:30",
+  "implied": {
+   "fajrAngle": 18.46,
+   "ishaAngle": 18.17,
+   "ishaAngleSd": 1.19,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -92,
+   "asrFactor": 0.999
+  },
+  "extent": {
+   "latMin": 32.35,
+   "latMax": 37.18,
+   "lonMin": 35.76,
+   "lonMax": 42.14
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.45,
+    "dhuhr": 0.09
+   },
+   "2026-12": {
+    "sunrise": 0.3,
+    "dhuhr": 0.23
+   },
+   "2027-01": {
+    "sunrise": 0.12,
+    "dhuhr": -0.08
+   },
+   "2027-02": {
+    "sunrise": 0.34,
+    "dhuhr": 0.03
+   },
+   "2027-03": {
+    "sunrise": -0.96,
+    "dhuhr": -0.18
+   },
+   "2027-04": {
+    "sunrise": -0.93,
+    "dhuhr": -0.15
+   },
+   "2027-05": {
+    "sunrise": -0.56,
+    "dhuhr": 0.02
+   },
+   "2027-06": {
+    "sunrise": 0.03,
+    "dhuhr": 0.15
+   },
+   "2027-07": {
+    "sunrise": 0.46,
+    "dhuhr": 0.06
+   },
+   "2027-08": {
+    "sunrise": 0.54,
+    "dhuhr": -0.15
+   },
+   "2027-09": {
+    "sunrise": 0.53,
+    "dhuhr": -0.25
+   },
+   "2027-10": {
+    "sunrise": 0.61,
+    "dhuhr": -0.15
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 50.9,
+    "w1Pc": 79.3,
+    "mae": 0.62,
+    "worst": 9.9
+   },
+   "sunrise": {
+    "exactPc": 49,
+    "w1Pc": 89.5,
+    "mae": 0.54,
+    "worst": 5.9
+   },
+   "dhuhr": {
+    "exactPc": 85.8,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 2.6
+   },
+   "asr": {
+    "exactPc": 69.9,
+    "w1Pc": 96.1,
+    "mae": 0.39,
+    "worst": 6.1
+   },
+   "maghrib": {
+    "exactPc": 49.3,
+    "w1Pc": 87.7,
+    "mae": 0.55,
+    "worst": 5.8
+   },
+   "isha": {
+    "exactPc": 49.3,
+    "w1Pc": 87.7,
+    "mae": 0.55,
+    "worst": 5.8
+   }
+  },
+  "medianSolarRms": 0.64
+ },
+ {
+  "country": "australia",
+  "cities": 275,
+  "excludedClockCities": 0,
+  "rows": 100375,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.99,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.52,
+  "jointExactPc": 18.4,
+  "jointW1Pc": 86.3,
+  "cellsW1Pc": 96.4,
+  "worst": 56.1,
+  "worstWhere": "maryborough 2026-12-25 isha table 21:35 calc 22:31",
+  "implied": {
+   "fajrAngle": 17.99,
+   "ishaAngle": 16.99,
+   "ishaAngleSd": 0.83,
+   "ishaGap": 84,
+   "ishaGapSd": 8.3,
+   "fajrSunriseGap": -89,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": -42.88,
+   "latMax": -12.46,
+   "lonMin": 114.61,
+   "lonMax": 153.54
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.16,
+    "dhuhr": 0.02
+   },
+   "2026-12": {
+    "sunrise": 0.11,
+    "dhuhr": 0.1
+   },
+   "2027-01": {
+    "sunrise": 0.52,
+    "dhuhr": 0.15
+   },
+   "2027-02": {
+    "sunrise": 0.49,
+    "dhuhr": -0.02
+   },
+   "2027-03": {
+    "sunrise": 0.39,
+    "dhuhr": -0.13
+   },
+   "2027-04": {
+    "sunrise": 0.34,
+    "dhuhr": -0.12
+   },
+   "2027-05": {
+    "sunrise": 0.29,
+    "dhuhr": 0
+   },
+   "2027-06": {
+    "sunrise": 0.1,
+    "dhuhr": 0.08
+   },
+   "2027-07": {
+    "sunrise": -0.23,
+    "dhuhr": 0.02
+   },
+   "2027-08": {
+    "sunrise": -0.53,
+    "dhuhr": -0.11
+   },
+   "2027-09": {
+    "sunrise": -0.69,
+    "dhuhr": -0.18
+   },
+   "2027-10": {
+    "sunrise": -0.63,
+    "dhuhr": -0.12
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 55,
+    "w1Pc": 90.5,
+    "mae": 0.63,
+    "worst": 46.8
+   },
+   "sunrise": {
+    "exactPc": 61,
+    "w1Pc": 95.5,
+    "mae": 0.55,
+    "worst": 34
+   },
+   "dhuhr": {
+    "exactPc": 88.6,
+    "w1Pc": 98.5,
+    "mae": 0.33,
+    "worst": 7.6
+   },
+   "asr": {
+    "exactPc": 87.8,
+    "w1Pc": 98.6,
+    "mae": 0.38,
+    "worst": 34.8
+   },
+   "maghrib": {
+    "exactPc": 65.7,
+    "w1Pc": 96.8,
+    "mae": 0.51,
+    "worst": 35.5
+   },
+   "isha": {
+    "exactPc": 68.9,
+    "w1Pc": 98.4,
+    "mae": 0.51,
+    "worst": 56.1
+   }
+  },
+  "medianSolarRms": 0.5
+ },
+ {
+  "country": "kazakhstan",
+  "cities": 265,
+  "excludedClockCities": 0,
+  "rows": 96725,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 15.08,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 15.16,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 3,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.63,
+  "jointExactPc": 0,
+  "jointW1Pc": 0.6,
+  "cellsW1Pc": 64.8,
+  "worst": 99.4,
+  "worstWhere": "akkol 2027-07-02 isha table 01:36 calc 23:57",
+  "implied": {
+   "fajrAngle": 15.08,
+   "ishaAngle": 15.06,
+   "ishaAngleSd": 0.36,
+   "ishaGap": 95,
+   "ishaGapSd": 26.4,
+   "fajrSunriseGap": -95,
+   "asrFactor": 2.014
+  },
+  "extent": {
+   "latMin": 40.66,
+   "latMax": 54.91,
+   "lonMin": 46.83,
+   "lonMax": 84.87
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.54,
+    "dhuhr": -1.54
+   },
+   "2026-12": {
+    "sunrise": -0.42,
+    "dhuhr": -1.64
+   },
+   "2027-01": {
+    "sunrise": -0.41,
+    "dhuhr": -1.51
+   },
+   "2027-02": {
+    "sunrise": -0.62,
+    "dhuhr": -1.47
+   },
+   "2027-03": {
+    "sunrise": -0.82,
+    "dhuhr": -1.46
+   },
+   "2027-04": {
+    "sunrise": -0.96,
+    "dhuhr": -1.46
+   },
+   "2027-05": {
+    "sunrise": -0.93,
+    "dhuhr": -1.49
+   },
+   "2027-06": {
+    "sunrise": -0.67,
+    "dhuhr": -1.5
+   },
+   "2027-07": {
+    "sunrise": -0.4,
+    "dhuhr": -1.49
+   },
+   "2027-08": {
+    "sunrise": -0.28,
+    "dhuhr": -1.48
+   },
+   "2027-09": {
+    "sunrise": -0.25,
+    "dhuhr": -1.47
+   },
+   "2027-10": {
+    "sunrise": -0.2,
+    "dhuhr": -1.48
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 58.7,
+    "w1Pc": 88.2,
+    "mae": 0.74,
+    "worst": 92.2
+   },
+   "sunrise": {
+    "exactPc": 44.2,
+    "w1Pc": 85.5,
+    "mae": 0.71,
+    "worst": 29
+   },
+   "dhuhr": {
+    "exactPc": 0,
+    "w1Pc": 1.8,
+    "mae": 1.55,
+    "worst": 10.1
+   },
+   "asr": {
+    "exactPc": 40.4,
+    "w1Pc": 74.4,
+    "mae": 0.78,
+    "worst": 29.1
+   },
+   "maghrib": {
+    "exactPc": 42.8,
+    "w1Pc": 77.3,
+    "mae": 0.77,
+    "worst": 31.2
+   },
+   "isha": {
+    "exactPc": 32.8,
+    "w1Pc": 61.6,
+    "mae": 1.26,
+    "worst": 99.4
+   }
+  },
+  "medianSolarRms": 0.72
+ },
+ {
+  "country": "saudi-arabia",
+  "cities": 202,
+  "excludedClockCities": 2,
+  "rows": 73730,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.43,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 91,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 54.32,
+  "jointExactPc": 4.8,
+  "jointW1Pc": 37.5,
+  "cellsW1Pc": 82.2,
+  "worst": 719.9,
+  "worstWhere": "algoze 2027-09-07 asr table 07:10 calc 19:10",
+  "implied": {
+   "fajrAngle": 18.43,
+   "ishaAngle": 20.54,
+   "ishaAngleSd": 1.44,
+   "ishaGap": 90,
+   "ishaGapSd": 50.5,
+   "fajrSunriseGap": -81,
+   "asrFactor": 1.004
+  },
+  "extent": {
+   "latMin": 9.7,
+   "latMax": 31.67,
+   "lonMin": -15.99,
+   "lonMax": 130.1
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -2.09,
+    "dhuhr": 0.3
+   },
+   "2026-12": {
+    "sunrise": -2.14,
+    "dhuhr": 0.24
+   },
+   "2027-01": {
+    "sunrise": -2.09,
+    "dhuhr": 0.32
+   },
+   "2027-02": {
+    "sunrise": -2.09,
+    "dhuhr": 0.34
+   },
+   "2027-03": {
+    "sunrise": -2.18,
+    "dhuhr": 0.31
+   },
+   "2027-04": {
+    "sunrise": -2.09,
+    "dhuhr": 0.31
+   },
+   "2027-05": {
+    "sunrise": -1.93,
+    "dhuhr": 0.31
+   },
+   "2027-06": {
+    "sunrise": -1.75,
+    "dhuhr": 0.38
+   },
+   "2027-07": {
+    "sunrise": -1.67,
+    "dhuhr": 0.34
+   },
+   "2027-08": {
+    "sunrise": -1.75,
+    "dhuhr": 0.29
+   },
+   "2027-09": {
+    "sunrise": -1.85,
+    "dhuhr": 0.3
+   },
+   "2027-10": {
+    "sunrise": -1.9,
+    "dhuhr": 0.31
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 62.3,
+    "w1Pc": 90,
+    "mae": 3.55,
+    "worst": 629.6
+   },
+   "sunrise": {
+    "exactPc": 31.5,
+    "w1Pc": 56.4,
+    "mae": 3.61,
+    "worst": 555.7
+   },
+   "dhuhr": {
+    "exactPc": 60.9,
+    "w1Pc": 96.3,
+    "mae": 0.55,
+    "worst": 20.3
+   },
+   "asr": {
+    "exactPc": 53.5,
+    "w1Pc": 85.5,
+    "mae": 7.61,
+    "worst": 719.9
+   },
+   "maghrib": {
+    "exactPc": 45.4,
+    "w1Pc": 82.8,
+    "mae": 7.31,
+    "worst": 716.2
+   },
+   "isha": {
+    "exactPc": 45,
+    "w1Pc": 82.1,
+    "mae": 4.04,
+    "worst": 663.6
+   }
+  },
+  "medianSolarRms": 0.61
+ },
+ {
+  "country": "nigeria",
+  "cities": 202,
+  "excludedClockCities": 0,
+  "rows": 73730,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.39,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.62,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.59,
+  "jointExactPc": 3.8,
+  "jointW1Pc": 77.8,
+  "cellsW1Pc": 96.1,
+  "worst": 1.5,
+  "worstWhere": "argungu 2027-02-02 asr table 16:15 calc 16:17",
+  "implied": {
+   "fajrAngle": 19.39,
+   "ishaAngle": 17.62,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 70,
+   "ishaGapSd": 2.5,
+   "fajrSunriseGap": -79,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 4.64,
+   "latMax": 13.06,
+   "lonMin": 2.88,
+   "lonMax": 14.21
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.57,
+    "dhuhr": -0.58
+   },
+   "2026-12": {
+    "sunrise": -0.62,
+    "dhuhr": -0.72
+   },
+   "2027-01": {
+    "sunrise": -0.49,
+    "dhuhr": -0.57
+   },
+   "2027-02": {
+    "sunrise": -0.49,
+    "dhuhr": -0.47
+   },
+   "2027-03": {
+    "sunrise": -0.48,
+    "dhuhr": -0.42
+   },
+   "2027-04": {
+    "sunrise": -0.49,
+    "dhuhr": -0.43
+   },
+   "2027-05": {
+    "sunrise": -0.49,
+    "dhuhr": -0.5
+   },
+   "2027-06": {
+    "sunrise": -0.49,
+    "dhuhr": -0.54
+   },
+   "2027-07": {
+    "sunrise": -0.49,
+    "dhuhr": -0.52
+   },
+   "2027-08": {
+    "sunrise": -0.5,
+    "dhuhr": -0.44
+   },
+   "2027-09": {
+    "sunrise": -0.5,
+    "dhuhr": -0.42
+   },
+   "2027-10": {
+    "sunrise": -0.5,
+    "dhuhr": -0.46
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 95.3,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "exactPc": 48.2,
+    "w1Pc": 98.6,
+    "mae": 0.51,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 48.5,
+    "w1Pc": 96.7,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 48.4,
+    "w1Pc": 87.7,
+    "mae": 0.55,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "exactPc": 49.6,
+    "w1Pc": 93.6,
+    "mae": 0.51,
+    "worst": 1.4
+   },
+   "isha": {
+    "exactPc": 80.2,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.59
+ },
+ {
+  "country": "iran",
+  "cities": 202,
+  "excludedClockCities": 0,
+  "rows": 73730,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.28,
+  "jointExactPc": 15.9,
+  "jointW1Pc": 86.9,
+  "cellsW1Pc": 95.7,
+  "worst": 38.6,
+  "worstWhere": "dowlatabad 2027-06-21 fajr table 03:44 calc 03:05",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 18,
+   "ishaAngleSd": 0.35,
+   "ishaGap": 88,
+   "ishaGapSd": 8.4,
+   "fajrSunriseGap": -88,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 25.29,
+   "latMax": 39.65,
+   "lonMin": 44.77,
+   "lonMax": 61.49
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.21,
+    "dhuhr": 0.1
+   },
+   "2026-12": {
+    "sunrise": 0.12,
+    "dhuhr": 0.17
+   },
+   "2027-01": {
+    "sunrise": -0.1,
+    "dhuhr": 0.22
+   },
+   "2027-02": {
+    "sunrise": -0.4,
+    "dhuhr": 0.05
+   },
+   "2027-03": {
+    "sunrise": -0.57,
+    "dhuhr": -0.06
+   },
+   "2027-04": {
+    "sunrise": -0.52,
+    "dhuhr": -0.04
+   },
+   "2027-05": {
+    "sunrise": -0.24,
+    "dhuhr": 0.07
+   },
+   "2027-06": {
+    "sunrise": 0.16,
+    "dhuhr": 0.15
+   },
+   "2027-07": {
+    "sunrise": 0.43,
+    "dhuhr": 0.09
+   },
+   "2027-08": {
+    "sunrise": 0.45,
+    "dhuhr": -0.04
+   },
+   "2027-09": {
+    "sunrise": 0.4,
+    "dhuhr": -0.11
+   },
+   "2027-10": {
+    "sunrise": 0.42,
+    "dhuhr": -0.05
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 57.8,
+    "w1Pc": 92.4,
+    "mae": 0.68,
+    "worst": 38.6
+   },
+   "sunrise": {
+    "exactPc": 64.7,
+    "w1Pc": 95.9,
+    "mae": 0.52,
+    "worst": 23.1
+   },
+   "dhuhr": {
+    "exactPc": 87.5,
+    "w1Pc": 97.5,
+    "mae": 0.36,
+    "worst": 7.2
+   },
+   "asr": {
+    "exactPc": 74.5,
+    "w1Pc": 97.7,
+    "mae": 0.44,
+    "worst": 21.9
+   },
+   "maghrib": {
+    "exactPc": 61,
+    "w1Pc": 95.2,
+    "mae": 0.55,
+    "worst": 22.3
+   },
+   "isha": {
+    "exactPc": 64.6,
+    "w1Pc": 95.5,
+    "mae": 0.67,
+    "worst": 25.5
+   }
+  },
+  "medianSolarRms": 0.5
+ },
+ {
+  "country": "tanzania",
+  "cities": 185,
+  "excludedClockCities": 0,
+  "rows": 67525,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.5,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.46,
+  "jointExactPc": 39.6,
+  "jointW1Pc": 95.8,
+  "cellsW1Pc": 98.9,
+  "worst": 6.7,
+  "worstWhere": "kisesa 2027-03-12 asr table 15:53 calc 16:00",
+  "implied": {
+   "fajrAngle": 18.5,
+   "ishaAngle": 22.22,
+   "ishaAngleSd": 0.71,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": -11.3,
+   "latMax": -1.14,
+   "lonMin": 29.63,
+   "lonMax": 40.18
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.01,
+    "dhuhr": 0.02
+   },
+   "2026-12": {
+    "sunrise": 0.09,
+    "dhuhr": 0.11
+   },
+   "2027-01": {
+    "sunrise": 0.18,
+    "dhuhr": 0.15
+   },
+   "2027-02": {
+    "sunrise": 0.04,
+    "dhuhr": -0.02
+   },
+   "2027-03": {
+    "sunrise": -0.06,
+    "dhuhr": -0.14
+   },
+   "2027-04": {
+    "sunrise": -0.05,
+    "dhuhr": -0.13
+   },
+   "2027-05": {
+    "sunrise": 0.04,
+    "dhuhr": -0.01
+   },
+   "2027-06": {
+    "sunrise": 0.09,
+    "dhuhr": 0.08
+   },
+   "2027-07": {
+    "sunrise": -0.02,
+    "dhuhr": 0.01
+   },
+   "2027-08": {
+    "sunrise": -0.18,
+    "dhuhr": -0.12
+   },
+   "2027-09": {
+    "sunrise": -0.27,
+    "dhuhr": -0.19
+   },
+   "2027-10": {
+    "sunrise": -0.2,
+    "dhuhr": -0.12
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 87,
+    "w1Pc": 99.5,
+    "mae": 0.29,
+    "worst": 5.8
+   },
+   "sunrise": {
+    "exactPc": 87.6,
+    "w1Pc": 99.5,
+    "mae": 0.29,
+    "worst": 5.7
+   },
+   "dhuhr": {
+    "exactPc": 89,
+    "w1Pc": 99.5,
+    "mae": 0.28,
+    "worst": 5.1
+   },
+   "asr": {
+    "exactPc": 62,
+    "w1Pc": 95.8,
+    "mae": 0.45,
+    "worst": 6.7
+   },
+   "maghrib": {
+    "exactPc": 89.1,
+    "w1Pc": 99.5,
+    "mae": 0.29,
+    "worst": 5.8
+   },
+   "isha": {
+    "exactPc": 89.1,
+    "w1Pc": 99.5,
+    "mae": 0.29,
+    "worst": 5.8
+   }
+  },
+  "medianSolarRms": 0.31
+ },
+ {
+  "country": "malaysia",
+  "cities": 179,
+  "excludedClockCities": 0,
+  "rows": 65335,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.56,
+  "jointExactPc": 4.3,
+  "jointW1Pc": 81.7,
+  "cellsW1Pc": 96.4,
+  "worst": 1.9,
+  "worstWhere": "tanjung-rhu 2027-03-22 asr table 16:38 calc 16:40",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 18.11,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 72,
+   "ishaGapSd": 2.4,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 1.15,
+   "latMax": 6.89,
+   "lonMin": 99.59,
+   "lonMax": 118.61
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.46,
+    "dhuhr": -0.59
+   },
+   "2026-12": {
+    "sunrise": 0.48,
+    "dhuhr": -0.64
+   },
+   "2027-01": {
+    "sunrise": 0.54,
+    "dhuhr": -0.53
+   },
+   "2027-02": {
+    "sunrise": 0.42,
+    "dhuhr": -0.54
+   },
+   "2027-03": {
+    "sunrise": 0.37,
+    "dhuhr": -0.54
+   },
+   "2027-04": {
+    "sunrise": 0.37,
+    "dhuhr": -0.55
+   },
+   "2027-05": {
+    "sunrise": 0.45,
+    "dhuhr": -0.54
+   },
+   "2027-06": {
+    "sunrise": 0.51,
+    "dhuhr": -0.54
+   },
+   "2027-07": {
+    "sunrise": 0.5,
+    "dhuhr": -0.54
+   },
+   "2027-08": {
+    "sunrise": 0.43,
+    "dhuhr": -0.55
+   },
+   "2027-09": {
+    "sunrise": 0.39,
+    "dhuhr": -0.56
+   },
+   "2027-10": {
+    "sunrise": 0.42,
+    "dhuhr": -0.56
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 89.2,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "exactPc": 53.5,
+    "w1Pc": 98.5,
+    "mae": 0.47,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 44,
+    "w1Pc": 94.3,
+    "mae": 0.56,
+    "worst": 1.6
+   },
+   "asr": {
+    "exactPc": 44.5,
+    "w1Pc": 88.4,
+    "mae": 0.57,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "exactPc": 53.8,
+    "w1Pc": 97.9,
+    "mae": 0.47,
+    "worst": 1.1
+   },
+   "isha": {
+    "exactPc": 84.6,
+    "w1Pc": 99.5,
+    "mae": 0.29,
+    "worst": 1.4
+   }
+  },
+  "medianSolarRms": 0.57
+ },
+ {
+  "country": "tunisia",
+  "cities": 151,
+  "excludedClockCities": 3,
+  "rows": 55115,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.26,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.08,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 7,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.95,
+  "jointExactPc": 1.2,
+  "jointW1Pc": 31.1,
+  "cellsW1Pc": 78.3,
+  "worst": 228.9,
+  "worstWhere": "ghardimaou 2027-04-21 fajr table 08:00 calc 04:11",
+  "implied": {
+   "fajrAngle": 18.16,
+   "ishaAngle": 18.13,
+   "ishaAngleSd": 0.4,
+   "ishaGap": 88,
+   "ishaGapSd": 7.9,
+   "fajrSunriseGap": -91,
+   "asrFactor": 0.998
+  },
+  "extent": {
+   "latMin": 32.32,
+   "latMax": 37.27,
+   "lonMin": 7.56,
+   "lonMax": 11.22
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.03,
+    "dhuhr": -0.31
+   },
+   "2026-12": {
+    "sunrise": -0.16,
+    "dhuhr": -0.18
+   },
+   "2027-01": {
+    "sunrise": -0.32,
+    "dhuhr": -0.48
+   },
+   "2027-02": {
+    "sunrise": -0.08,
+    "dhuhr": -0.36
+   },
+   "2027-03": {
+    "sunrise": -1.36,
+    "dhuhr": -0.55
+   },
+   "2027-04": {
+    "sunrise": -1.32,
+    "dhuhr": -0.53
+   },
+   "2027-05": {
+    "sunrise": -0.96,
+    "dhuhr": -0.38
+   },
+   "2027-06": {
+    "sunrise": -0.4,
+    "dhuhr": -0.26
+   },
+   "2027-07": {
+    "sunrise": 0.03,
+    "dhuhr": -0.35
+   },
+   "2027-08": {
+    "sunrise": 0.12,
+    "dhuhr": -0.53
+   },
+   "2027-09": {
+    "sunrise": 0.11,
+    "dhuhr": -0.62
+   },
+   "2027-10": {
+    "sunrise": 0.18,
+    "dhuhr": -0.53
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 27,
+    "w1Pc": 64.8,
+    "mae": 1.06,
+    "worst": 228.9
+   },
+   "sunrise": {
+    "exactPc": 41.4,
+    "w1Pc": 79.2,
+    "mae": 0.87,
+    "worst": 57.7
+   },
+   "dhuhr": {
+    "exactPc": 75.3,
+    "w1Pc": 89.3,
+    "mae": 0.63,
+    "worst": 15.7
+   },
+   "asr": {
+    "exactPc": 57.4,
+    "w1Pc": 85,
+    "mae": 0.73,
+    "worst": 59.1
+   },
+   "maghrib": {
+    "exactPc": 42.6,
+    "w1Pc": 77.2,
+    "mae": 0.88,
+    "worst": 16.5
+   },
+   "isha": {
+    "exactPc": 41.9,
+    "w1Pc": 74.3,
+    "mae": 0.92,
+    "worst": 72.5
+   }
+  },
+  "medianSolarRms": 2.12
+ },
+ {
+  "country": "egypt",
+  "cities": 148,
+  "excludedClockCities": 1,
+  "rows": 54019,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.38,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.62,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.68,
+  "jointExactPc": 1.4,
+  "jointW1Pc": 52.8,
+  "cellsW1Pc": 90.5,
+  "worst": 24.1,
+  "worstWhere": "dikirnis 2027-02-28 sunrise table 06:46 calc 06:22",
+  "implied": {
+   "fajrAngle": 19.43,
+   "ishaAngle": 17.57,
+   "ishaAngleSd": 0.23,
+   "ishaGap": 81,
+   "ishaGapSd": 5.4,
+   "fajrSunriseGap": -90,
+   "asrFactor": 1.004
+  },
+  "extent": {
+   "latMin": 22.35,
+   "latMax": 31.61,
+   "lonMin": 25.39,
+   "lonMax": 34.89
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.19,
+    "dhuhr": 0.3
+   },
+   "2026-12": {
+    "sunrise": 0.22,
+    "dhuhr": 0.19
+   },
+   "2027-01": {
+    "sunrise": 0.36,
+    "dhuhr": 0.32
+   },
+   "2027-02": {
+    "sunrise": 0.35,
+    "dhuhr": 0.37
+   },
+   "2027-03": {
+    "sunrise": 0.29,
+    "dhuhr": 0.42
+   },
+   "2027-04": {
+    "sunrise": 0.28,
+    "dhuhr": 0.41
+   },
+   "2027-05": {
+    "sunrise": 0.3,
+    "dhuhr": 0.36
+   },
+   "2027-06": {
+    "sunrise": 0.36,
+    "dhuhr": 0.33
+   },
+   "2027-07": {
+    "sunrise": 0.4,
+    "dhuhr": 0.35
+   },
+   "2027-08": {
+    "sunrise": 0.39,
+    "dhuhr": 0.39
+   },
+   "2027-09": {
+    "sunrise": 0.38,
+    "dhuhr": 0.41
+   },
+   "2027-10": {
+    "sunrise": 0.38,
+    "dhuhr": 0.39
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 70.9,
+    "w1Pc": 94.9,
+    "mae": 0.44,
+    "worst": 22
+   },
+   "sunrise": {
+    "exactPc": 61.2,
+    "w1Pc": 98.2,
+    "mae": 0.43,
+    "worst": 24.1
+   },
+   "dhuhr": {
+    "exactPc": 62.5,
+    "w1Pc": 98.6,
+    "mae": 0.43,
+    "worst": 14.4
+   },
+   "asr": {
+    "exactPc": 52,
+    "w1Pc": 82,
+    "mae": 0.58,
+    "worst": 16.3
+   },
+   "maghrib": {
+    "exactPc": 37.9,
+    "w1Pc": 76.7,
+    "mae": 0.68,
+    "worst": 23.9
+   },
+   "isha": {
+    "exactPc": 51.9,
+    "w1Pc": 92.4,
+    "mae": 0.59,
+    "worst": 21.6
+   }
+  },
+  "medianSolarRms": 0.61
+ },
+ {
+  "country": "iraq",
+  "cities": 145,
+  "excludedClockCities": 0,
+  "rows": 52925,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.96,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.98,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.25,
+  "jointExactPc": 8.4,
+  "jointW1Pc": 59.6,
+  "cellsW1Pc": 89.4,
+  "worst": 240.4,
+  "worstWhere": "asulaymaniya 2027-09-03 maghrib table 14:27 calc 18:27",
+  "implied": {
+   "fajrAngle": 17.96,
+   "ishaAngle": 16.98,
+   "ishaAngleSd": 0.24,
+   "ishaGap": 83,
+   "ishaGapSd": 7,
+   "fajrSunriseGap": -88,
+   "asrFactor": 0.999
+  },
+  "extent": {
+   "latMin": 29.97,
+   "latMax": 37.17,
+   "lonMin": 40.29,
+   "lonMax": 48.47
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.42,
+    "dhuhr": 0.12
+   },
+   "2026-12": {
+    "sunrise": 0.26,
+    "dhuhr": 0.25
+   },
+   "2027-01": {
+    "sunrise": 0.08,
+    "dhuhr": -0.06
+   },
+   "2027-02": {
+    "sunrise": 0.28,
+    "dhuhr": 0.04
+   },
+   "2027-03": {
+    "sunrise": -0.98,
+    "dhuhr": -0.16
+   },
+   "2027-04": {
+    "sunrise": -0.98,
+    "dhuhr": -0.13
+   },
+   "2027-05": {
+    "sunrise": -0.61,
+    "dhuhr": 0.04
+   },
+   "2027-06": {
+    "sunrise": -0.06,
+    "dhuhr": 0.16
+   },
+   "2027-07": {
+    "sunrise": 0.35,
+    "dhuhr": 0.08
+   },
+   "2027-08": {
+    "sunrise": 0.44,
+    "dhuhr": -0.13
+   },
+   "2027-09": {
+    "sunrise": 0.45,
+    "dhuhr": -0.24
+   },
+   "2027-10": {
+    "sunrise": 0.54,
+    "dhuhr": -0.13
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 52.1,
+    "w1Pc": 80,
+    "mae": 0.69,
+    "worst": 19.9
+   },
+   "sunrise": {
+    "exactPc": 49.6,
+    "w1Pc": 89.3,
+    "mae": 0.58,
+    "worst": 58.7
+   },
+   "dhuhr": {
+    "exactPc": 83.5,
+    "w1Pc": 97.6,
+    "mae": 0.39,
+    "worst": 8.4
+   },
+   "asr": {
+    "exactPc": 69.8,
+    "w1Pc": 94.9,
+    "mae": 0.45,
+    "worst": 62.6
+   },
+   "maghrib": {
+    "exactPc": 50.2,
+    "w1Pc": 87.3,
+    "mae": 0.6,
+    "worst": 240.4
+   },
+   "isha": {
+    "exactPc": 50.4,
+    "w1Pc": 87.2,
+    "mae": 0.64,
+    "worst": 66.5
+   }
+  },
+  "medianSolarRms": 0.63
+ },
+ {
+  "country": "jordan",
+  "cities": 141,
+  "excludedClockCities": 1,
+  "rows": 51465,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -6,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 6,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.52,
+  "jointExactPc": 34.7,
+  "jointW1Pc": 94,
+  "cellsW1Pc": 98.8,
+  "worst": 59.4,
+  "worstWhere": "karak 2027-02-11 fajr table 05:01 calc 06:00",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 18,
+   "ishaAngleSd": 0.07,
+   "ishaGap": 80,
+   "ishaGapSd": 6.1,
+   "fajrSunriseGap": -80,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 29.37,
+   "latMax": 33.31,
+   "lonMin": 34.98,
+   "lonMax": 38.7
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.19,
+    "dhuhr": -0.04
+   },
+   "2026-12": {
+    "sunrise": -0.13,
+    "dhuhr": -0.11
+   },
+   "2027-01": {
+    "sunrise": 0.08,
+    "dhuhr": 0
+   },
+   "2027-02": {
+    "sunrise": 0.11,
+    "dhuhr": 0.01
+   },
+   "2027-03": {
+    "sunrise": 0.09,
+    "dhuhr": 0.02
+   },
+   "2027-04": {
+    "sunrise": 0.04,
+    "dhuhr": 0.01
+   },
+   "2027-05": {
+    "sunrise": 0,
+    "dhuhr": 0
+   },
+   "2027-06": {
+    "sunrise": -0.01,
+    "dhuhr": -0.01
+   },
+   "2027-07": {
+    "sunrise": 0,
+    "dhuhr": -0.01
+   },
+   "2027-08": {
+    "sunrise": 0,
+    "dhuhr": 0
+   },
+   "2027-09": {
+    "sunrise": 0.01,
+    "dhuhr": 0
+   },
+   "2027-10": {
+    "sunrise": 0.02,
+    "dhuhr": 0
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 89,
+    "w1Pc": 99.9,
+    "mae": 0.27,
+    "worst": 59.4
+   },
+   "sunrise": {
+    "exactPc": 89.6,
+    "w1Pc": 98.8,
+    "mae": 0.3,
+    "worst": 17.2
+   },
+   "dhuhr": {
+    "exactPc": 96.2,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 1.8
+   },
+   "asr": {
+    "exactPc": 56.2,
+    "w1Pc": 95.6,
+    "mae": 0.47,
+    "worst": 10
+   },
+   "maghrib": {
+    "exactPc": 90.7,
+    "w1Pc": 98.7,
+    "mae": 0.3,
+    "worst": 14.6
+   },
+   "isha": {
+    "exactPc": 84.5,
+    "w1Pc": 99.8,
+    "mae": 0.28,
+    "worst": 13.5
+   }
+  },
+  "medianSolarRms": 6.02
+ },
+ {
+  "country": "bangladesh",
+  "cities": 104,
+  "excludedClockCities": 0,
+  "rows": 37960,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.39,
+  "jointExactPc": 24.7,
+  "jointW1Pc": 98.9,
+  "cellsW1Pc": 99.7,
+  "worst": 15.7,
+  "worstWhere": "tongigajipur 2027-03-16 isha table 19:09 calc 18:53",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 18,
+   "ishaAngleSd": 0.26,
+   "ishaGap": 79,
+   "ishaGapSd": 4.2,
+   "fajrSunriseGap": -79,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 20.86,
+   "latMax": 26.33,
+   "lonMin": 88.27,
+   "lonMax": 97.74
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.16,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.13,
+    "dhuhr": 0.12
+   },
+   "2027-01": {
+    "sunrise": 0.01,
+    "dhuhr": 0.17
+   },
+   "2027-02": {
+    "sunrise": -0.29,
+    "dhuhr": -0.01
+   },
+   "2027-03": {
+    "sunrise": -0.43,
+    "dhuhr": -0.11
+   },
+   "2027-04": {
+    "sunrise": -0.41,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -0.22,
+    "dhuhr": 0.02
+   },
+   "2027-06": {
+    "sunrise": 0.06,
+    "dhuhr": 0.1
+   },
+   "2027-07": {
+    "sunrise": 0.21,
+    "dhuhr": 0.05
+   },
+   "2027-08": {
+    "sunrise": 0.2,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": 0.16,
+    "dhuhr": -0.17
+   },
+   "2027-10": {
+    "sunrise": 0.22,
+    "dhuhr": -0.1
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 72.4,
+    "w1Pc": 98.9,
+    "mae": 0.36,
+    "worst": 3.7
+   },
+   "sunrise": {
+    "exactPc": 77.6,
+    "w1Pc": 100,
+    "mae": 0.31,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 89.5,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 78.1,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 1.1
+   },
+   "maghrib": {
+    "exactPc": 74,
+    "w1Pc": 100,
+    "mae": 0.33,
+    "worst": 1
+   },
+   "isha": {
+    "exactPc": 76.3,
+    "w1Pc": 99,
+    "mae": 0.41,
+    "worst": 15.7
+   }
+  },
+  "medianSolarRms": 0.39
+ },
+ {
+  "country": "united-kingdom",
+  "cities": 101,
+  "excludedClockCities": 0,
+  "rows": 36865,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 14.37,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 12.64,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 4,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.48,
+  "jointExactPc": 0.8,
+  "jointW1Pc": 23.6,
+  "cellsW1Pc": 70.2,
+  "worst": 87.8,
+  "worstWhere": "blackburn 2027-07-15 isha table 23:53 calc 01:21",
+  "implied": {
+   "fajrAngle": 14.32,
+   "ishaAngle": 12.64,
+   "ishaAngleSd": 0.28,
+   "ishaGap": 83,
+   "ishaGapSd": 22.7,
+   "fajrSunriseGap": -99,
+   "asrFactor": 2.011
+  },
+  "extent": {
+   "latMin": 50.37,
+   "latMax": 57.14,
+   "lonMin": -5.93,
+   "lonMax": 1.42
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.22,
+    "dhuhr": 0.41
+   },
+   "2026-12": {
+    "sunrise": 0.01,
+    "dhuhr": 0.26
+   },
+   "2027-01": {
+    "sunrise": 0.39,
+    "dhuhr": 0.41
+   },
+   "2027-02": {
+    "sunrise": 0.53,
+    "dhuhr": 0.52
+   },
+   "2027-03": {
+    "sunrise": 0.55,
+    "dhuhr": 0.58
+   },
+   "2027-04": {
+    "sunrise": 0.55,
+    "dhuhr": 0.56
+   },
+   "2027-05": {
+    "sunrise": 0.6,
+    "dhuhr": 0.49
+   },
+   "2027-06": {
+    "sunrise": 0.75,
+    "dhuhr": 0.44
+   },
+   "2027-07": {
+    "sunrise": 0.8,
+    "dhuhr": 0.47
+   },
+   "2027-08": {
+    "sunrise": 0.68,
+    "dhuhr": 0.55
+   },
+   "2027-09": {
+    "sunrise": 0.52,
+    "dhuhr": 0.59
+   },
+   "2027-10": {
+    "sunrise": 0.36,
+    "dhuhr": 0.55
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 41.4,
+    "w1Pc": 77.7,
+    "mae": 1.11,
+    "worst": 75.4
+   },
+   "sunrise": {
+    "exactPc": 51.5,
+    "w1Pc": 93.8,
+    "mae": 0.64,
+    "worst": 18
+   },
+   "dhuhr": {
+    "exactPc": 48.4,
+    "w1Pc": 94.2,
+    "mae": 0.57,
+    "worst": 4.8
+   },
+   "asr": {
+    "exactPc": 28.5,
+    "w1Pc": 54.4,
+    "mae": 1.11,
+    "worst": 10.6
+   },
+   "maghrib": {
+    "exactPc": 36.2,
+    "w1Pc": 59.9,
+    "mae": 1.01,
+    "worst": 19.6
+   },
+   "isha": {
+    "exactPc": 23.1,
+    "w1Pc": 41.6,
+    "mae": 1.57,
+    "worst": 87.8
+   }
+  },
+  "medianSolarRms": 3.3
+ },
+ {
+  "country": "oman",
+  "cities": 90,
+  "excludedClockCities": 1,
+  "rows": 32847,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.52,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.48,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -2,
+    "dhuhr": 3,
+    "asr": 3,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "solarRms": 27.04,
+  "jointExactPc": 2.6,
+  "jointW1Pc": 49.8,
+  "cellsW1Pc": 72.6,
+  "worst": 719.6,
+  "worstWhere": "rasalhad 2026-11-23 asr table 02:59 calc 14:59",
+  "implied": {
+   "fajrAngle": 18.52,
+   "ishaAngle": 17.48,
+   "ishaAngleSd": 0.28,
+   "ishaGap": 73,
+   "ishaGapSd": 4.2,
+   "fajrSunriseGap": -78,
+   "asrFactor": 1.03
+  },
+  "extent": {
+   "latMin": 16.62,
+   "latMax": 26.19,
+   "lonMin": 52.12,
+   "lonMax": 59.53
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.19,
+    "dhuhr": -0.12
+   },
+   "2026-12": {
+    "sunrise": -0.18,
+    "dhuhr": -0.24
+   },
+   "2027-01": {
+    "sunrise": -0.05,
+    "dhuhr": -0.14
+   },
+   "2027-02": {
+    "sunrise": 0.01,
+    "dhuhr": -0.02
+   },
+   "2027-03": {
+    "sunrise": -0.04,
+    "dhuhr": 0.02
+   },
+   "2027-04": {
+    "sunrise": 0.21,
+    "dhuhr": 0.01
+   },
+   "2027-05": {
+    "sunrise": -0.04,
+    "dhuhr": -0.05
+   },
+   "2027-06": {
+    "sunrise": -0.04,
+    "dhuhr": -0.11
+   },
+   "2027-07": {
+    "sunrise": -0.04,
+    "dhuhr": -0.1
+   },
+   "2027-08": {
+    "sunrise": -0.03,
+    "dhuhr": 0.01
+   },
+   "2027-09": {
+    "sunrise": 0.63,
+    "dhuhr": 0.04
+   },
+   "2027-10": {
+    "sunrise": -0.04,
+    "dhuhr": 0.02
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 57.8,
+    "w1Pc": 78.1,
+    "mae": 0.82,
+    "worst": 59.5
+   },
+   "sunrise": {
+    "exactPc": 36.8,
+    "w1Pc": 73.1,
+    "mae": 0.97,
+    "worst": 718.1
+   },
+   "dhuhr": {
+    "exactPc": 37.1,
+    "w1Pc": 75.2,
+    "mae": 0.88,
+    "worst": 9.1
+   },
+   "asr": {
+    "exactPc": 35.4,
+    "w1Pc": 64.6,
+    "mae": 3.21,
+    "worst": 719.6
+   },
+   "maghrib": {
+    "exactPc": 36.7,
+    "w1Pc": 68.2,
+    "mae": 3.01,
+    "worst": 718.6
+   },
+   "isha": {
+    "exactPc": 49,
+    "w1Pc": 76.5,
+    "mae": 2.99,
+    "worst": 718.2
+   }
+  },
+  "medianSolarRms": 2.55
+ },
+ {
+  "country": "sri-lanka",
+  "cities": 89,
+  "excludedClockCities": 0,
+  "rows": 32485,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.04,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.32,
+  "jointExactPc": 3.2,
+  "jointW1Pc": 12.8,
+  "cellsW1Pc": 74.7,
+  "worst": 7,
+  "worstWhere": "point-pedro-19-5-71min 2027-06-24 isha table 19:43 calc 19:50",
+  "implied": {
+   "fajrAngle": 19.49,
+   "ishaAngle": 17.85,
+   "ishaAngleSd": 0.51,
+   "ishaGap": 71,
+   "ishaGapSd": 1.1,
+   "fajrSunriseGap": -78,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 5.89,
+   "latMax": 9.84,
+   "lonMin": 79.72,
+   "lonMax": 81.83
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.1,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.15,
+    "dhuhr": 0.13
+   },
+   "2027-01": {
+    "sunrise": 0.11,
+    "dhuhr": 0.13
+   },
+   "2027-02": {
+    "sunrise": -0.05,
+    "dhuhr": 0
+   },
+   "2027-03": {
+    "sunrise": -0.22,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": -0.21,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -0.07,
+    "dhuhr": 0.02
+   },
+   "2027-06": {
+    "sunrise": 0.09,
+    "dhuhr": 0.1
+   },
+   "2027-07": {
+    "sunrise": 0.08,
+    "dhuhr": 0.05
+   },
+   "2027-08": {
+    "sunrise": -0.02,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": -0.07,
+    "dhuhr": -0.18
+   },
+   "2027-10": {
+    "sunrise": -0.01,
+    "dhuhr": -0.11
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 10.3,
+    "w1Pc": 13.5,
+    "mae": 1.74,
+    "worst": 2.8
+   },
+   "sunrise": {
+    "exactPc": 88.5,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 89.4,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 68.3,
+    "w1Pc": 98.3,
+    "mae": 0.38,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "exactPc": 87.6,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 1
+   },
+   "isha": {
+    "exactPc": 21.3,
+    "w1Pc": 36.3,
+    "mae": 1.99,
+    "worst": 7
+   }
+  },
+  "medianSolarRms": 0.32
+ },
+ {
+  "country": "uzbekistan",
+  "cities": 86,
+  "excludedClockCities": 0,
+  "rows": 31390,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.93,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.07,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.63,
+  "jointExactPc": 1.7,
+  "jointW1Pc": 55.1,
+  "cellsW1Pc": 90.9,
+  "worst": 1.9,
+  "worstWhere": "uychi 2027-02-20 asr table 16:09 calc 16:11",
+  "implied": {
+   "fajrAngle": 17.93,
+   "ishaAngle": 17.07,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 91,
+   "ishaGapSd": 10.2,
+   "fajrSunriseGap": -97,
+   "asrFactor": 2.014
+  },
+  "extent": {
+   "latMin": 37.22,
+   "latMax": 43.07,
+   "lonMin": 58.84,
+   "lonMax": 72.83
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.38,
+    "dhuhr": -0.55
+   },
+   "2026-12": {
+    "sunrise": 0.43,
+    "dhuhr": -0.65
+   },
+   "2027-01": {
+    "sunrise": 0.48,
+    "dhuhr": -0.52
+   },
+   "2027-02": {
+    "sunrise": 0.34,
+    "dhuhr": -0.48
+   },
+   "2027-03": {
+    "sunrise": 0.24,
+    "dhuhr": -0.47
+   },
+   "2027-04": {
+    "sunrise": 0.2,
+    "dhuhr": -0.48
+   },
+   "2027-05": {
+    "sunrise": 0.3,
+    "dhuhr": -0.49
+   },
+   "2027-06": {
+    "sunrise": 0.5,
+    "dhuhr": -0.51
+   },
+   "2027-07": {
+    "sunrise": 0.66,
+    "dhuhr": -0.5
+   },
+   "2027-08": {
+    "sunrise": 0.72,
+    "dhuhr": -0.48
+   },
+   "2027-09": {
+    "sunrise": 0.66,
+    "dhuhr": -0.48
+   },
+   "2027-10": {
+    "sunrise": 0.67,
+    "dhuhr": -0.49
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 71.8,
+    "w1Pc": 99.7,
+    "mae": 0.35,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "exactPc": 52.9,
+    "w1Pc": 93.5,
+    "mae": 0.49,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "exactPc": 48.4,
+    "w1Pc": 97.8,
+    "mae": 0.51,
+    "worst": 1.4
+   },
+   "asr": {
+    "exactPc": 46.2,
+    "w1Pc": 81.2,
+    "mae": 0.6,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "exactPc": 48.9,
+    "w1Pc": 84,
+    "mae": 0.57,
+    "worst": 1.7
+   },
+   "isha": {
+    "exactPc": 49.6,
+    "w1Pc": 89.2,
+    "mae": 0.53,
+    "worst": 1.5
+   }
+  },
+  "medianSolarRms": 0.64
+ },
+ {
+  "country": "kyrgyzstan",
+  "cities": 83,
+  "excludedClockCities": 0,
+  "rows": 30295,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.95,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.22,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.58,
+  "jointExactPc": 3.5,
+  "jointW1Pc": 48.9,
+  "cellsW1Pc": 88.5,
+  "worst": 4,
+  "worstWhere": "ivanovka 2027-06-28 isha table 22:45 calc 22:41",
+  "implied": {
+   "fajrAngle": 17.95,
+   "ishaAngle": 16.22,
+   "ishaAngleSd": 0.16,
+   "ishaGap": 87,
+   "ishaGapSd": 10.8,
+   "fajrSunriseGap": -98,
+   "asrFactor": 2.01
+  },
+  "extent": {
+   "latMin": 39.55,
+   "latMax": 42.89,
+   "lonMin": 69.39,
+   "lonMax": 78.53
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.23,
+    "dhuhr": 0.28
+   },
+   "2026-12": {
+    "sunrise": 0.26,
+    "dhuhr": 0.19
+   },
+   "2027-01": {
+    "sunrise": 0.27,
+    "dhuhr": 0.31
+   },
+   "2027-02": {
+    "sunrise": 0.13,
+    "dhuhr": 0.34
+   },
+   "2027-03": {
+    "sunrise": 0.05,
+    "dhuhr": 0.36
+   },
+   "2027-04": {
+    "sunrise": 0,
+    "dhuhr": 0.35
+   },
+   "2027-05": {
+    "sunrise": 0.11,
+    "dhuhr": 0.34
+   },
+   "2027-06": {
+    "sunrise": 0.34,
+    "dhuhr": 0.32
+   },
+   "2027-07": {
+    "sunrise": 0.53,
+    "dhuhr": 0.34
+   },
+   "2027-08": {
+    "sunrise": 0.54,
+    "dhuhr": 0.35
+   },
+   "2027-09": {
+    "sunrise": 0.54,
+    "dhuhr": 0.35
+   },
+   "2027-10": {
+    "sunrise": 0.51,
+    "dhuhr": 0.33
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 63.7,
+    "w1Pc": 96.3,
+    "mae": 0.42,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "exactPc": 61.8,
+    "w1Pc": 95.5,
+    "mae": 0.43,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "exactPc": 65.4,
+    "w1Pc": 99.6,
+    "mae": 0.41,
+    "worst": 1
+   },
+   "asr": {
+    "exactPc": 53.6,
+    "w1Pc": 86.5,
+    "mae": 0.53,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "exactPc": 53.6,
+    "w1Pc": 88.2,
+    "mae": 0.51,
+    "worst": 1.6
+   },
+   "isha": {
+    "exactPc": 34.3,
+    "w1Pc": 64.5,
+    "mae": 0.94,
+    "worst": 4
+   }
+  },
+  "medianSolarRms": 0.63
+ },
+ {
+  "country": "ethiopia",
+  "cities": 81,
+  "excludedClockCities": 0,
+  "rows": 29565,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.5,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.65,
+  "jointExactPc": 37.2,
+  "jointW1Pc": 95.4,
+  "cellsW1Pc": 98.2,
+  "worst": 9.3,
+  "worstWhere": "bedesa 2027-09-06 asr table 15:37 calc 15:28",
+  "implied": {
+   "fajrAngle": 18.5,
+   "ishaAngle": 22.08,
+   "ishaAngleSd": 0.76,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -75,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 4.88,
+   "latMax": 14.28,
+   "lonMin": 34.53,
+   "lonMax": 42.8
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.17,
+    "dhuhr": 0.1
+   },
+   "2026-12": {
+    "sunrise": 0.22,
+    "dhuhr": 0.18
+   },
+   "2027-01": {
+    "sunrise": 0.18,
+    "dhuhr": 0.22
+   },
+   "2027-02": {
+    "sunrise": -0.04,
+    "dhuhr": 0.06
+   },
+   "2027-03": {
+    "sunrise": -0.19,
+    "dhuhr": -0.06
+   },
+   "2027-04": {
+    "sunrise": -0.2,
+    "dhuhr": -0.05
+   },
+   "2027-05": {
+    "sunrise": -0.07,
+    "dhuhr": 0.06
+   },
+   "2027-06": {
+    "sunrise": 0.08,
+    "dhuhr": 0.15
+   },
+   "2027-07": {
+    "sunrise": 0.09,
+    "dhuhr": 0.09
+   },
+   "2027-08": {
+    "sunrise": 0,
+    "dhuhr": -0.05
+   },
+   "2027-09": {
+    "sunrise": -0.02,
+    "dhuhr": -0.12
+   },
+   "2027-10": {
+    "sunrise": 0.09,
+    "dhuhr": -0.04
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 85.9,
+    "w1Pc": 99.1,
+    "mae": 0.31,
+    "worst": 8.2
+   },
+   "sunrise": {
+    "exactPc": 86.5,
+    "w1Pc": 98.2,
+    "mae": 0.32,
+    "worst": 8.4
+   },
+   "dhuhr": {
+    "exactPc": 88.5,
+    "w1Pc": 98.8,
+    "mae": 0.31,
+    "worst": 4.8
+   },
+   "asr": {
+    "exactPc": 62.8,
+    "w1Pc": 96.4,
+    "mae": 0.46,
+    "worst": 9.3
+   },
+   "maghrib": {
+    "exactPc": 84.5,
+    "w1Pc": 98.2,
+    "mae": 0.33,
+    "worst": 8.4
+   },
+   "isha": {
+    "exactPc": 84.5,
+    "w1Pc": 98.2,
+    "mae": 0.33,
+    "worst": 8.4
+   }
+  },
+  "medianSolarRms": 0.32
+ },
+ {
+  "country": "burkina-faso",
+  "cities": 80,
+  "excludedClockCities": 0,
+  "rows": 29200,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.43,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.51,
+  "jointExactPc": 16.2,
+  "jointW1Pc": 85.5,
+  "cellsW1Pc": 96.2,
+  "worst": 1.6,
+  "worstWhere": "gourcy 2027-09-22 asr table 15:22 calc 15:20",
+  "implied": {
+   "fajrAngle": 18.43,
+   "ishaAngle": 21.89,
+   "ishaAngleSd": 0.82,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -76,
+   "asrFactor": 1.003
+  },
+  "extent": {
+   "latMin": 9.88,
+   "latMax": 15.04,
+   "lonMin": -5.17,
+   "lonMax": 1.79
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.21,
+    "dhuhr": 0.22
+   },
+   "2026-12": {
+    "sunrise": 0.18,
+    "dhuhr": 0.07
+   },
+   "2027-01": {
+    "sunrise": 0.33,
+    "dhuhr": 0.23
+   },
+   "2027-02": {
+    "sunrise": 0.33,
+    "dhuhr": 0.34
+   },
+   "2027-03": {
+    "sunrise": 0.34,
+    "dhuhr": 0.39
+   },
+   "2027-04": {
+    "sunrise": 0.33,
+    "dhuhr": 0.38
+   },
+   "2027-05": {
+    "sunrise": 0.31,
+    "dhuhr": 0.3
+   },
+   "2027-06": {
+    "sunrise": 0.31,
+    "dhuhr": 0.26
+   },
+   "2027-07": {
+    "sunrise": 0.31,
+    "dhuhr": 0.28
+   },
+   "2027-08": {
+    "sunrise": 0.31,
+    "dhuhr": 0.36
+   },
+   "2027-09": {
+    "sunrise": 0.3,
+    "dhuhr": 0.4
+   },
+   "2027-10": {
+    "sunrise": 0.31,
+    "dhuhr": 0.36
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 74.5,
+    "w1Pc": 100,
+    "mae": 0.32,
+    "worst": 1.1
+   },
+   "sunrise": {
+    "exactPc": 66.5,
+    "w1Pc": 99.7,
+    "mae": 0.4,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 65.7,
+    "w1Pc": 98.1,
+    "mae": 0.41,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 56.9,
+    "w1Pc": 90,
+    "mae": 0.49,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "exactPc": 60.5,
+    "w1Pc": 94.8,
+    "mae": 0.44,
+    "worst": 1.4
+   },
+   "isha": {
+    "exactPc": 60.5,
+    "w1Pc": 94.8,
+    "mae": 0.44,
+    "worst": 1.4
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "sudan",
+  "cities": 75,
+  "excludedClockCities": 0,
+  "rows": 27375,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.5,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.34,
+  "jointExactPc": 35.1,
+  "jointW1Pc": 98.2,
+  "cellsW1Pc": 99.7,
+  "worst": 1.4,
+  "worstWhere": "geneina 2027-04-21 asr table 15:36 calc 15:37",
+  "implied": {
+   "fajrAngle": 18.5,
+   "ishaAngle": 21.62,
+   "ishaAngleSd": 0.84,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -76,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 10.56,
+   "latMax": 21.07,
+   "lonMin": 22.45,
+   "lonMax": 37.73
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.11,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.12,
+    "dhuhr": 0.12
+   },
+   "2027-01": {
+    "sunrise": 0.07,
+    "dhuhr": 0.17
+   },
+   "2027-02": {
+    "sunrise": -0.18,
+    "dhuhr": -0.02
+   },
+   "2027-03": {
+    "sunrise": -0.3,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": -0.28,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -0.11,
+    "dhuhr": 0.04
+   },
+   "2027-06": {
+    "sunrise": 0.09,
+    "dhuhr": 0.09
+   },
+   "2027-07": {
+    "sunrise": 0.15,
+    "dhuhr": 0.06
+   },
+   "2027-08": {
+    "sunrise": 0.07,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": 0,
+    "dhuhr": -0.18
+   },
+   "2027-10": {
+    "sunrise": 0.08,
+    "dhuhr": -0.1
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 83.7,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 85.5,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   },
+   "dhuhr": {
+    "exactPc": 89.6,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.8
+   },
+   "asr": {
+    "exactPc": 64.7,
+    "w1Pc": 98.2,
+    "mae": 0.4,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 82.4,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   },
+   "isha": {
+    "exactPc": 82.4,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.34
+ },
+ {
+  "country": "dr-congo",
+  "cities": 65,
+  "excludedClockCities": 0,
+  "rows": 23725,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.58,
+  "jointExactPc": 6,
+  "jointW1Pc": 83.5,
+  "cellsW1Pc": 96.9,
+  "worst": 1.5,
+  "worstWhere": "kambove 2027-03-30 asr table 15:38 calc 15:36",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 17.11,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 68,
+   "ishaGapSd": 2.3,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -11.76,
+   "latMax": 4.28,
+   "lonMin": 12.37,
+   "lonMax": 30.25
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.49,
+    "dhuhr": 0.42
+   },
+   "2026-12": {
+    "sunrise": 0.42,
+    "dhuhr": 0.29
+   },
+   "2027-01": {
+    "sunrise": 0.51,
+    "dhuhr": 0.44
+   },
+   "2027-02": {
+    "sunrise": 0.54,
+    "dhuhr": 0.52
+   },
+   "2027-03": {
+    "sunrise": 0.51,
+    "dhuhr": 0.56
+   },
+   "2027-04": {
+    "sunrise": 0.5,
+    "dhuhr": 0.55
+   },
+   "2027-05": {
+    "sunrise": 0.49,
+    "dhuhr": 0.49
+   },
+   "2027-06": {
+    "sunrise": 0.51,
+    "dhuhr": 0.46
+   },
+   "2027-07": {
+    "sunrise": 0.51,
+    "dhuhr": 0.48
+   },
+   "2027-08": {
+    "sunrise": 0.49,
+    "dhuhr": 0.54
+   },
+   "2027-09": {
+    "sunrise": 0.47,
+    "dhuhr": 0.56
+   },
+   "2027-10": {
+    "sunrise": 0.48,
+    "dhuhr": 0.53
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 94.3,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 1.1
+   },
+   "sunrise": {
+    "exactPc": 49.6,
+    "w1Pc": 99.5,
+    "mae": 0.5,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 50.6,
+    "w1Pc": 97.8,
+    "mae": 0.49,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 50.1,
+    "w1Pc": 89.3,
+    "mae": 0.52,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "exactPc": 50.8,
+    "w1Pc": 95,
+    "mae": 0.5,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 82,
+    "w1Pc": 99.9,
+    "mae": 0.29,
+    "worst": 1.4
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "algeria",
+  "cities": 63,
+  "excludedClockCities": 1,
+  "rows": 22995,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.02,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 4,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.6,
+  "jointExactPc": 0.8,
+  "jointW1Pc": 24.9,
+  "cellsW1Pc": 70.3,
+  "worst": 60.6,
+  "worstWhere": "maghnia 2027-03-11 fajr table 05:00 calc 06:01",
+  "implied": {
+   "fajrAngle": 17.81,
+   "ishaAngle": 17.17,
+   "ishaAngleSd": 0.31,
+   "ishaGap": 81,
+   "ishaGapSd": 7.3,
+   "fajrSunriseGap": -89,
+   "asrFactor": 1.011
+  },
+  "extent": {
+   "latMin": 26.48,
+   "latMax": 36.92,
+   "lonMin": -8.15,
+   "lonMax": 8.92
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.09,
+    "dhuhr": -0.49
+   },
+   "2026-12": {
+    "sunrise": -0.23,
+    "dhuhr": -0.37
+   },
+   "2027-01": {
+    "sunrise": -0.43,
+    "dhuhr": -0.39
+   },
+   "2027-02": {
+    "sunrise": -0.51,
+    "dhuhr": -0.46
+   },
+   "2027-03": {
+    "sunrise": -0.66,
+    "dhuhr": -0.53
+   },
+   "2027-04": {
+    "sunrise": -0.61,
+    "dhuhr": -0.51
+   },
+   "2027-05": {
+    "sunrise": -0.57,
+    "dhuhr": -0.42
+   },
+   "2027-06": {
+    "sunrise": -0.34,
+    "dhuhr": -0.38
+   },
+   "2027-07": {
+    "sunrise": -0.07,
+    "dhuhr": -0.4
+   },
+   "2027-08": {
+    "sunrise": 0.04,
+    "dhuhr": -0.57
+   },
+   "2027-09": {
+    "sunrise": 0.03,
+    "dhuhr": -0.64
+   },
+   "2027-10": {
+    "sunrise": 0,
+    "dhuhr": -0.62
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 43.3,
+    "w1Pc": 70.9,
+    "mae": 1.02,
+    "worst": 60.6
+   },
+   "sunrise": {
+    "exactPc": 47.9,
+    "w1Pc": 75.8,
+    "mae": 0.82,
+    "worst": 59.3
+   },
+   "dhuhr": {
+    "exactPc": 58.8,
+    "w1Pc": 80.9,
+    "mae": 0.7,
+    "worst": 3.5
+   },
+   "asr": {
+    "exactPc": 46.5,
+    "w1Pc": 75.8,
+    "mae": 0.8,
+    "worst": 17.6
+   },
+   "maghrib": {
+    "exactPc": 44.7,
+    "w1Pc": 72.2,
+    "mae": 0.96,
+    "worst": 60
+   },
+   "isha": {
+    "exactPc": 19.6,
+    "w1Pc": 46,
+    "mae": 1.24,
+    "worst": 21.1
+   }
+  },
+  "medianSolarRms": 3.01
+ },
+ {
+  "country": "libya",
+  "cities": 61,
+  "excludedClockCities": 3,
+  "rows": 22264,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.87,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.08,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 1,
+    "sunrise": -2,
+    "dhuhr": 2,
+    "asr": -2,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "solarRms": 4.32,
+  "jointExactPc": 0.5,
+  "jointW1Pc": 18.1,
+  "cellsW1Pc": 60,
+  "worst": 239.7,
+  "worstWhere": "shahat 2027-07-29 maghrib table 15:37 calc 19:37",
+  "implied": {
+   "fajrAngle": 18.67,
+   "ishaAngle": 17.98,
+   "ishaAngleSd": 0.96,
+   "ishaGap": 82,
+   "ishaGapSd": 8.5,
+   "fajrSunriseGap": -86,
+   "asrFactor": 0.981
+  },
+  "extent": {
+   "latMin": 24.11,
+   "latMax": 33.9,
+   "lonMin": 9.12,
+   "lonMax": 24.67
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.1,
+    "dhuhr": 0.15
+   },
+   "2026-12": {
+    "sunrise": -0.1,
+    "dhuhr": 0.17
+   },
+   "2027-01": {
+    "sunrise": 0.93,
+    "dhuhr": 0.16
+   },
+   "2027-02": {
+    "sunrise": -0.05,
+    "dhuhr": 0.43
+   },
+   "2027-03": {
+    "sunrise": -0.18,
+    "dhuhr": 0.24
+   },
+   "2027-04": {
+    "sunrise": -0.5,
+    "dhuhr": -0.13
+   },
+   "2027-05": {
+    "sunrise": -0.1,
+    "dhuhr": 0.04
+   },
+   "2027-06": {
+    "sunrise": 0.1,
+    "dhuhr": -0.04
+   },
+   "2027-07": {
+    "sunrise": 0.05,
+    "dhuhr": -0.2
+   },
+   "2027-08": {
+    "sunrise": -0.01,
+    "dhuhr": 0.08
+   },
+   "2027-09": {
+    "sunrise": 0.68,
+    "dhuhr": 0.07
+   },
+   "2027-10": {
+    "sunrise": -0.12,
+    "dhuhr": -0.15
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 26.9,
+    "w1Pc": 57.4,
+    "mae": 1.88,
+    "worst": 180.4
+   },
+   "sunrise": {
+    "exactPc": 45.7,
+    "w1Pc": 65.1,
+    "mae": 1.32,
+    "worst": 188.7
+   },
+   "dhuhr": {
+    "exactPc": 48.4,
+    "w1Pc": 65.9,
+    "mae": 0.95,
+    "worst": 10
+   },
+   "asr": {
+    "exactPc": 32.6,
+    "w1Pc": 61.1,
+    "mae": 1.37,
+    "worst": 60.4
+   },
+   "maghrib": {
+    "exactPc": 22.6,
+    "w1Pc": 55.7,
+    "mae": 1.56,
+    "worst": 239.7
+   },
+   "isha": {
+    "exactPc": 26.4,
+    "w1Pc": 54.5,
+    "mae": 2.1,
+    "worst": 181.7
+   }
+  },
+  "medianSolarRms": 2.09
+ },
+ {
+  "country": "thailand",
+  "cities": 56,
+  "excludedClockCities": 0,
+  "rows": 20440,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.58,
+  "jointExactPc": 4.5,
+  "jointW1Pc": 85.2,
+  "cellsW1Pc": 97.4,
+  "worst": 1.3,
+  "worstWhere": "lampang 2027-02-15 asr table 15:55 calc 15:56",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 17.11,
+   "ishaAngleSd": 0.07,
+   "ishaGap": 70,
+   "ishaGapSd": 2.8,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 6.54,
+   "latMax": 19.91,
+   "lonMin": 98.4,
+   "lonMax": 104.85
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.51,
+    "dhuhr": -0.53
+   },
+   "2026-12": {
+    "sunrise": 0.51,
+    "dhuhr": -0.61
+   },
+   "2027-01": {
+    "sunrise": 0.55,
+    "dhuhr": -0.48
+   },
+   "2027-02": {
+    "sunrise": 0.42,
+    "dhuhr": -0.48
+   },
+   "2027-03": {
+    "sunrise": 0.34,
+    "dhuhr": -0.49
+   },
+   "2027-04": {
+    "sunrise": 0.35,
+    "dhuhr": -0.49
+   },
+   "2027-05": {
+    "sunrise": 0.44,
+    "dhuhr": -0.49
+   },
+   "2027-06": {
+    "sunrise": 0.54,
+    "dhuhr": -0.49
+   },
+   "2027-07": {
+    "sunrise": 0.58,
+    "dhuhr": -0.49
+   },
+   "2027-08": {
+    "sunrise": 0.55,
+    "dhuhr": -0.5
+   },
+   "2027-09": {
+    "sunrise": 0.51,
+    "dhuhr": -0.51
+   },
+   "2027-10": {
+    "sunrise": 0.53,
+    "dhuhr": -0.51
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 89.7,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.8
+   },
+   "sunrise": {
+    "exactPc": 50.7,
+    "w1Pc": 97.9,
+    "mae": 0.49,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 48.9,
+    "w1Pc": 99.1,
+    "mae": 0.51,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 49.5,
+    "w1Pc": 91.3,
+    "mae": 0.53,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "exactPc": 49.2,
+    "w1Pc": 96,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 86.3,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.8
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "somalia",
+  "cities": 56,
+  "excludedClockCities": 0,
+  "rows": 20440,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.4,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.55,
+  "jointExactPc": 9.7,
+  "jointW1Pc": 86.3,
+  "cellsW1Pc": 96.8,
+  "worst": 1.5,
+  "worstWhere": "ceerigaabo 2027-09-27 asr table 15:00 calc 14:59",
+  "implied": {
+   "fajrAngle": 18.4,
+   "ishaAngle": 22.32,
+   "ishaAngleSd": 0.77,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -1.22,
+   "latMax": 11.97,
+   "lonMin": 41.84,
+   "lonMax": 51.08
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.4,
+    "dhuhr": 0.39
+   },
+   "2026-12": {
+    "sunrise": 0.37,
+    "dhuhr": 0.27
+   },
+   "2027-01": {
+    "sunrise": 0.46,
+    "dhuhr": 0.4
+   },
+   "2027-02": {
+    "sunrise": 0.44,
+    "dhuhr": 0.44
+   },
+   "2027-03": {
+    "sunrise": 0.41,
+    "dhuhr": 0.49
+   },
+   "2027-04": {
+    "sunrise": 0.41,
+    "dhuhr": 0.48
+   },
+   "2027-05": {
+    "sunrise": 0.44,
+    "dhuhr": 0.46
+   },
+   "2027-06": {
+    "sunrise": 0.47,
+    "dhuhr": 0.42
+   },
+   "2027-07": {
+    "sunrise": 0.47,
+    "dhuhr": 0.45
+   },
+   "2027-08": {
+    "sunrise": 0.44,
+    "dhuhr": 0.46
+   },
+   "2027-09": {
+    "sunrise": 0.42,
+    "dhuhr": 0.49
+   },
+   "2027-10": {
+    "sunrise": 0.42,
+    "dhuhr": 0.46
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 87.6,
+    "w1Pc": 99.8,
+    "mae": 0.28,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "exactPc": 54.9,
+    "w1Pc": 99.5,
+    "mae": 0.46,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 54.7,
+    "w1Pc": 98.8,
+    "mae": 0.47,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 53.1,
+    "w1Pc": 91.2,
+    "mae": 0.5,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "exactPc": 54,
+    "w1Pc": 95.9,
+    "mae": 0.48,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 54,
+    "w1Pc": 95.9,
+    "mae": 0.48,
+    "worst": 1.3
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "ivory-coast",
+  "cities": 56,
+  "excludedClockCities": 0,
+  "rows": 20440,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.39,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.62,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.59,
+  "jointExactPc": 4,
+  "jointW1Pc": 77,
+  "cellsW1Pc": 95.9,
+  "worst": 1.5,
+  "worstWhere": "boundiali 2027-01-26 asr table 15:59 calc 16:00",
+  "implied": {
+   "fajrAngle": 19.39,
+   "ishaAngle": 17.62,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 70,
+   "ishaGapSd": 2.4,
+   "fajrSunriseGap": -79,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 4.42,
+   "latMax": 10.48,
+   "lonMin": -8.15,
+   "lonMax": -2.8
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.58,
+    "dhuhr": -0.59
+   },
+   "2026-12": {
+    "sunrise": -0.63,
+    "dhuhr": -0.72
+   },
+   "2027-01": {
+    "sunrise": -0.5,
+    "dhuhr": -0.58
+   },
+   "2027-02": {
+    "sunrise": -0.47,
+    "dhuhr": -0.48
+   },
+   "2027-03": {
+    "sunrise": -0.46,
+    "dhuhr": -0.41
+   },
+   "2027-04": {
+    "sunrise": -0.48,
+    "dhuhr": -0.43
+   },
+   "2027-05": {
+    "sunrise": -0.49,
+    "dhuhr": -0.49
+   },
+   "2027-06": {
+    "sunrise": -0.5,
+    "dhuhr": -0.55
+   },
+   "2027-07": {
+    "sunrise": -0.5,
+    "dhuhr": -0.52
+   },
+   "2027-08": {
+    "sunrise": -0.49,
+    "dhuhr": -0.44
+   },
+   "2027-09": {
+    "sunrise": -0.5,
+    "dhuhr": -0.41
+   },
+   "2027-10": {
+    "sunrise": -0.49,
+    "dhuhr": -0.45
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 94.9,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "exactPc": 48.8,
+    "w1Pc": 98.5,
+    "mae": 0.51,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 48.8,
+    "w1Pc": 96.4,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "asr": {
+    "exactPc": 48.3,
+    "w1Pc": 87.3,
+    "mae": 0.56,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "exactPc": 49.9,
+    "w1Pc": 93.4,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 80.2,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.59
+ },
+ {
+  "country": "senegal",
+  "cities": 53,
+  "excludedClockCities": 0,
+  "rows": 19345,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.3,
+  "jointExactPc": 42.8,
+  "jointW1Pc": 97.6,
+  "cellsW1Pc": 99.6,
+  "worst": 1.4,
+  "worstWhere": "bettenty 2027-04-19 asr table 16:14 calc 16:15",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaAngleSd": 0.07,
+   "ishaGap": 70,
+   "ishaGapSd": 2.7,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 12.56,
+   "latMax": 16.51,
+   "lonMin": -17.48,
+   "lonMax": -12.18
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.01,
+    "dhuhr": -0.01
+   },
+   "2026-12": {
+    "sunrise": 0,
+    "dhuhr": 0.01
+   },
+   "2027-01": {
+    "sunrise": 0.03,
+    "dhuhr": 0.09
+   },
+   "2027-02": {
+    "sunrise": -0.08,
+    "dhuhr": 0.01
+   },
+   "2027-03": {
+    "sunrise": -0.15,
+    "dhuhr": -0.05
+   },
+   "2027-04": {
+    "sunrise": -0.14,
+    "dhuhr": -0.04
+   },
+   "2027-05": {
+    "sunrise": -0.05,
+    "dhuhr": 0
+   },
+   "2027-06": {
+    "sunrise": 0.05,
+    "dhuhr": 0.05
+   },
+   "2027-07": {
+    "sunrise": 0.08,
+    "dhuhr": 0
+   },
+   "2027-08": {
+    "sunrise": 0.04,
+    "dhuhr": -0.04
+   },
+   "2027-09": {
+    "sunrise": 0,
+    "dhuhr": -0.09
+   },
+   "2027-10": {
+    "sunrise": 0.05,
+    "dhuhr": -0.05
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 92.5,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "sunrise": {
+    "exactPc": 92.9,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.9
+   },
+   "dhuhr": {
+    "exactPc": 95,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 59.9,
+    "w1Pc": 97.6,
+    "mae": 0.44,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 90.5,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 1
+   },
+   "isha": {
+    "exactPc": 93.2,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.3
+ },
+ {
+  "country": "kenya",
+  "cities": 51,
+  "excludedClockCities": 0,
+  "rows": 18615,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.64,
+  "jointExactPc": 4.1,
+  "jointW1Pc": 81,
+  "cellsW1Pc": 95.4,
+  "worst": 3.8,
+  "worstWhere": "karuri 2026-12-15 maghrib table 18:31 calc 18:35",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 17.11,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 67,
+   "ishaGapSd": 2.2,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -4.05,
+   "latMax": 3.94,
+   "lonMin": 34.11,
+   "lonMax": 41.86
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.45,
+    "dhuhr": -0.59
+   },
+   "2026-12": {
+    "sunrise": 0.41,
+    "dhuhr": -0.72
+   },
+   "2027-01": {
+    "sunrise": 0.52,
+    "dhuhr": -0.58
+   },
+   "2027-02": {
+    "sunrise": 0.52,
+    "dhuhr": -0.52
+   },
+   "2027-03": {
+    "sunrise": 0.46,
+    "dhuhr": -0.48
+   },
+   "2027-04": {
+    "sunrise": 0.46,
+    "dhuhr": -0.49
+   },
+   "2027-05": {
+    "sunrise": 0.47,
+    "dhuhr": -0.52
+   },
+   "2027-06": {
+    "sunrise": 0.48,
+    "dhuhr": -0.57
+   },
+   "2027-07": {
+    "sunrise": 0.48,
+    "dhuhr": -0.54
+   },
+   "2027-08": {
+    "sunrise": 0.44,
+    "dhuhr": -0.5
+   },
+   "2027-09": {
+    "sunrise": 0.43,
+    "dhuhr": -0.47
+   },
+   "2027-10": {
+    "sunrise": 0.44,
+    "dhuhr": -0.5
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 93.2,
+    "w1Pc": 98.4,
+    "mae": 0.28,
+    "worst": 3
+   },
+   "sunrise": {
+    "exactPc": 48.9,
+    "w1Pc": 98.3,
+    "mae": 0.51,
+    "worst": 2.4
+   },
+   "dhuhr": {
+    "exactPc": 47.4,
+    "w1Pc": 95.5,
+    "mae": 0.54,
+    "worst": 2.8
+   },
+   "asr": {
+    "exactPc": 49.2,
+    "w1Pc": 89.1,
+    "mae": 0.53,
+    "worst": 2.3
+   },
+   "maghrib": {
+    "exactPc": 47.6,
+    "w1Pc": 92.9,
+    "mae": 0.55,
+    "worst": 3.8
+   },
+   "isha": {
+    "exactPc": 82.6,
+    "w1Pc": 98.5,
+    "mae": 0.31,
+    "worst": 3.4
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "austria",
+  "cities": 48,
+  "excludedClockCities": 0,
+  "rows": 17520,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.02,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.7,
+  "jointExactPc": 6,
+  "jointW1Pc": 37.4,
+  "cellsW1Pc": 85.1,
+  "worst": 2.3,
+  "worstWhere": "floridsdorf 2027-06-02 fajr table 01:58 calc 02:00",
+  "implied": {
+   "fajrAngle": 17.99,
+   "ishaAngle": 17.02,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 105,
+   "ishaGapSd": 21.6,
+   "fajrSunriseGap": -111,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 46.61,
+   "latMax": 48.41,
+   "lonMin": 9.6,
+   "lonMax": 16.46
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.28,
+    "dhuhr": 0.05
+   },
+   "2026-12": {
+    "sunrise": 0.11,
+    "dhuhr": 0.12
+   },
+   "2027-01": {
+    "sunrise": -0.3,
+    "dhuhr": 0.17
+   },
+   "2027-02": {
+    "sunrise": -0.69,
+    "dhuhr": 0
+   },
+   "2027-03": {
+    "sunrise": -0.94,
+    "dhuhr": -0.1
+   },
+   "2027-04": {
+    "sunrise": -0.95,
+    "dhuhr": -0.09
+   },
+   "2027-05": {
+    "sunrise": -0.63,
+    "dhuhr": 0.03
+   },
+   "2027-06": {
+    "sunrise": 0,
+    "dhuhr": 0.1
+   },
+   "2027-07": {
+    "sunrise": 0.55,
+    "dhuhr": 0.05
+   },
+   "2027-08": {
+    "sunrise": 0.7,
+    "dhuhr": -0.09
+   },
+   "2027-09": {
+    "sunrise": 0.67,
+    "dhuhr": -0.17
+   },
+   "2027-10": {
+    "sunrise": 0.67,
+    "dhuhr": -0.1
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 29.3,
+    "w1Pc": 56.9,
+    "mae": 0.9,
+    "worst": 2.3
+   },
+   "sunrise": {
+    "exactPc": 44,
+    "w1Pc": 84.8,
+    "mae": 0.59,
+    "worst": 1.5
+   },
+   "dhuhr": {
+    "exactPc": 89.3,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.9
+   },
+   "asr": {
+    "exactPc": 67.4,
+    "w1Pc": 98.8,
+    "mae": 0.38,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "exactPc": 40.7,
+    "w1Pc": 83.5,
+    "mae": 0.61,
+    "worst": 1.5
+   },
+   "isha": {
+    "exactPc": 45.3,
+    "w1Pc": 86.8,
+    "mae": 0.57,
+    "worst": 1.6
+   }
+  },
+  "medianSolarRms": 0.7
+ },
+ {
+  "country": "niger",
+  "cities": 44,
+  "excludedClockCities": 0,
+  "rows": 16060,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 2,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.61,
+  "jointExactPc": 3.6,
+  "jointW1Pc": 72,
+  "cellsW1Pc": 94.4,
+  "worst": 2.3,
+  "worstWhere": "kantche 2026-12-29 maghrib table 18:09 calc 18:11",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 17.11,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 69,
+   "ishaGapSd": 2.7,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 11.88,
+   "latMax": 18.74,
+   "lonMin": 0.75,
+   "lonMax": 13.11
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.38,
+    "dhuhr": -0.61
+   },
+   "2026-12": {
+    "sunrise": 0.36,
+    "dhuhr": -0.75
+   },
+   "2027-01": {
+    "sunrise": 0.48,
+    "dhuhr": -0.59
+   },
+   "2027-02": {
+    "sunrise": 0.5,
+    "dhuhr": -0.49
+   },
+   "2027-03": {
+    "sunrise": 0.48,
+    "dhuhr": -0.44
+   },
+   "2027-04": {
+    "sunrise": 0.49,
+    "dhuhr": -0.45
+   },
+   "2027-05": {
+    "sunrise": 0.48,
+    "dhuhr": -0.53
+   },
+   "2027-06": {
+    "sunrise": 0.48,
+    "dhuhr": -0.57
+   },
+   "2027-07": {
+    "sunrise": 0.5,
+    "dhuhr": -0.54
+   },
+   "2027-08": {
+    "sunrise": 0.49,
+    "dhuhr": -0.47
+   },
+   "2027-09": {
+    "sunrise": 0.47,
+    "dhuhr": -0.43
+   },
+   "2027-10": {
+    "sunrise": 0.48,
+    "dhuhr": -0.47
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 93.3,
+    "w1Pc": 98.9,
+    "mae": 0.27,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "exactPc": 50.2,
+    "w1Pc": 99.7,
+    "mae": 0.49,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 47.8,
+    "w1Pc": 94.7,
+    "mae": 0.53,
+    "worst": 2.2
+   },
+   "asr": {
+    "exactPc": 50.3,
+    "w1Pc": 85,
+    "mae": 0.56,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "exactPc": 47.7,
+    "w1Pc": 89.4,
+    "mae": 0.55,
+    "worst": 2.3
+   },
+   "isha": {
+    "exactPc": 74.9,
+    "w1Pc": 98.8,
+    "mae": 0.34,
+    "worst": 1.8
+   }
+  },
+  "medianSolarRms": 1.16
+ },
+ {
+  "country": "uganda",
+  "cities": 37,
+  "excludedClockCities": 0,
+  "rows": 13505,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.88,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.12,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.59,
+  "jointExactPc": 4.9,
+  "jointW1Pc": 81.9,
+  "cellsW1Pc": 96.8,
+  "worst": 1.4,
+  "worstWhere": "nyachera 2027-04-07 asr table 16:14 calc 16:13",
+  "implied": {
+   "fajrAngle": 17.88,
+   "ishaAngle": 17.12,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 68,
+   "ishaGapSd": 2.2,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -1.25,
+   "latMax": 3.47,
+   "lonMin": 29.99,
+   "lonMax": 34.18
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.53,
+    "dhuhr": -0.58
+   },
+   "2026-12": {
+    "sunrise": -0.57,
+    "dhuhr": -0.7
+   },
+   "2027-01": {
+    "sunrise": -0.46,
+    "dhuhr": -0.55
+   },
+   "2027-02": {
+    "sunrise": -0.48,
+    "dhuhr": -0.46
+   },
+   "2027-03": {
+    "sunrise": -0.5,
+    "dhuhr": -0.44
+   },
+   "2027-04": {
+    "sunrise": -0.5,
+    "dhuhr": -0.44
+   },
+   "2027-05": {
+    "sunrise": -0.47,
+    "dhuhr": -0.51
+   },
+   "2027-06": {
+    "sunrise": -0.48,
+    "dhuhr": -0.53
+   },
+   "2027-07": {
+    "sunrise": -0.48,
+    "dhuhr": -0.52
+   },
+   "2027-08": {
+    "sunrise": -0.5,
+    "dhuhr": -0.46
+   },
+   "2027-09": {
+    "sunrise": -0.53,
+    "dhuhr": -0.44
+   },
+   "2027-10": {
+    "sunrise": -0.53,
+    "dhuhr": -0.47
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 97,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "exactPc": 49.4,
+    "w1Pc": 99.1,
+    "mae": 0.5,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 48,
+    "w1Pc": 97.2,
+    "mae": 0.51,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 49.2,
+    "w1Pc": 89.9,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 48.4,
+    "w1Pc": 94.7,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 84.3,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "norway",
+  "cities": 33,
+  "excludedClockCities": 5,
+  "rows": 11976,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.96,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.99,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.53,
+  "jointExactPc": 2.3,
+  "jointW1Pc": 12.5,
+  "cellsW1Pc": 58.8,
+  "worst": 509.1,
+  "worstWhere": "bodo 2027-01-04 asr table 12:08 calc 20:37",
+  "implied": {
+   "fajrAngle": 17.86,
+   "ishaAngle": 16.89,
+   "ishaAngleSd": 3.86,
+   "ishaGap": 152,
+   "ishaGapSd": 37.5,
+   "fajrSunriseGap": -160,
+   "asrFactor": 1.001
+  },
+  "extent": {
+   "latMin": 58.15,
+   "latMax": 67.28,
+   "lonMin": 5.18,
+   "lonMax": 14.38
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.23,
+    "dhuhr": 0.18
+   },
+   "2026-12": {
+    "sunrise": -0.01,
+    "dhuhr": 0.25
+   },
+   "2027-01": {
+    "sunrise": -0.69,
+    "dhuhr": 0.3
+   },
+   "2027-02": {
+    "sunrise": -1.18,
+    "dhuhr": 0.11
+   },
+   "2027-03": {
+    "sunrise": -1.5,
+    "dhuhr": 0.06
+   },
+   "2027-04": {
+    "sunrise": -1.69,
+    "dhuhr": 0.19
+   },
+   "2027-05": {
+    "sunrise": -1.48,
+    "dhuhr": 0.31
+   },
+   "2027-06": {
+    "sunrise": -0.26,
+    "dhuhr": 0.39
+   },
+   "2027-07": {
+    "sunrise": 1.2,
+    "dhuhr": 0.35
+   },
+   "2027-08": {
+    "sunrise": 1.29,
+    "dhuhr": 0.18
+   },
+   "2027-09": {
+    "sunrise": 1.09,
+    "dhuhr": 0.07
+   },
+   "2027-10": {
+    "sunrise": 1,
+    "dhuhr": 0.04
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 21.2,
+    "w1Pc": 40.5,
+    "mae": 3.13,
+    "worst": 144.9
+   },
+   "sunrise": {
+    "exactPc": 20.1,
+    "w1Pc": 45.4,
+    "mae": 1.1,
+    "worst": 62.4
+   },
+   "dhuhr": {
+    "exactPc": 86.7,
+    "w1Pc": 97,
+    "mae": 0.46,
+    "worst": 9.9
+   },
+   "asr": {
+    "exactPc": 38,
+    "w1Pc": 68.9,
+    "mae": 1.49,
+    "worst": 509.1
+   },
+   "maghrib": {
+    "exactPc": 17.6,
+    "w1Pc": 45.2,
+    "mae": 1.15,
+    "worst": 66.4
+   },
+   "isha": {
+    "exactPc": 23,
+    "w1Pc": 56.1,
+    "mae": 3.03,
+    "worst": 184.8
+   }
+  },
+  "medianSolarRms": 1.12
+ },
+ {
+  "country": "sweden",
+  "cities": 30,
+  "excludedClockCities": 2,
+  "rows": 10950,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.01,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.06,
+  "jointExactPc": 3.8,
+  "jointW1Pc": 18.1,
+  "cellsW1Pc": 66.4,
+  "worst": 87.6,
+  "worstWhere": "umea 2027-08-30 isha table 23:57 calc 22:29",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 16.91,
+   "ishaAngleSd": 3.27,
+   "ishaGap": 147,
+   "ishaGapSd": 34.8,
+   "fajrSunriseGap": -156,
+   "asrFactor": 1.001
+  },
+  "extent": {
+   "latMin": 55.61,
+   "latMax": 63.83,
+   "lonMin": 11.97,
+   "lonMax": 20.26
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.37,
+    "dhuhr": 0.06
+   },
+   "2026-12": {
+    "sunrise": 0.12,
+    "dhuhr": 0.11
+   },
+   "2027-01": {
+    "sunrise": -0.53,
+    "dhuhr": 0.17
+   },
+   "2027-02": {
+    "sunrise": -1.04,
+    "dhuhr": -0.01
+   },
+   "2027-03": {
+    "sunrise": -1.35,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": -1.46,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -1.19,
+    "dhuhr": 0.02
+   },
+   "2027-06": {
+    "sunrise": -0.12,
+    "dhuhr": 0.11
+   },
+   "2027-07": {
+    "sunrise": 1.07,
+    "dhuhr": 0.04
+   },
+   "2027-08": {
+    "sunrise": 1.25,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": 1.11,
+    "dhuhr": -0.17
+   },
+   "2027-10": {
+    "sunrise": 1.06,
+    "dhuhr": -0.1
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 24.1,
+    "w1Pc": 46.5,
+    "mae": 1.41,
+    "worst": 28.3
+   },
+   "sunrise": {
+    "exactPc": 22.4,
+    "w1Pc": 53.8,
+    "mae": 0.93,
+    "worst": 2.4
+   },
+   "dhuhr": {
+    "exactPc": 89.4,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 45.5,
+    "w1Pc": 80.3,
+    "mae": 0.65,
+    "worst": 4
+   },
+   "maghrib": {
+    "exactPc": 20.9,
+    "w1Pc": 53.9,
+    "mae": 0.94,
+    "worst": 2.4
+   },
+   "isha": {
+    "exactPc": 27.8,
+    "w1Pc": 63.6,
+    "mae": 0.98,
+    "worst": 87.6
+   }
+  },
+  "medianSolarRms": 1.06
+ },
+ {
+  "country": "panama",
+  "cities": 26,
+  "excludedClockCities": 0,
+  "rows": 9490,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.99,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.36,
+  "jointExactPc": 27.5,
+  "jointW1Pc": 93.7,
+  "cellsW1Pc": 98.9,
+  "worst": 1.4,
+  "worstWhere": "david 2027-09-04 asr table 15:34 calc 15:33",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 16.99,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 68,
+   "ishaGapSd": 2.4,
+   "fajrSunriseGap": -73,
+   "asrFactor": 0.999
+  },
+  "extent": {
+   "latMin": 8.16,
+   "latMax": 9.42,
+   "lonMin": -82.75,
+   "lonMax": -79.51
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.16,
+    "dhuhr": -0.14
+   },
+   "2026-12": {
+    "sunrise": -0.24,
+    "dhuhr": -0.36
+   },
+   "2027-01": {
+    "sunrise": -0.04,
+    "dhuhr": -0.17
+   },
+   "2027-02": {
+    "sunrise": 0.06,
+    "dhuhr": 0.03
+   },
+   "2027-03": {
+    "sunrise": 0.12,
+    "dhuhr": 0.13
+   },
+   "2027-04": {
+    "sunrise": 0.1,
+    "dhuhr": 0.1
+   },
+   "2027-05": {
+    "sunrise": 0.02,
+    "dhuhr": -0.04
+   },
+   "2027-06": {
+    "sunrise": -0.07,
+    "dhuhr": -0.12
+   },
+   "2027-07": {
+    "sunrise": -0.07,
+    "dhuhr": -0.06
+   },
+   "2027-08": {
+    "sunrise": -0.05,
+    "dhuhr": 0.07
+   },
+   "2027-09": {
+    "sunrise": 0.01,
+    "dhuhr": 0.16
+   },
+   "2027-10": {
+    "sunrise": 0.02,
+    "dhuhr": 0.08
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 89.1,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 88.9,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 86.9,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.9
+   },
+   "asr": {
+    "exactPc": 63,
+    "w1Pc": 94.9,
+    "mae": 0.43,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 77.2,
+    "w1Pc": 99.8,
+    "mae": 0.32,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 73.2,
+    "w1Pc": 98.9,
+    "mae": 0.35,
+    "worst": 1.1
+   }
+  },
+  "medianSolarRms": 0.36
+ },
+ {
+  "country": "angola",
+  "cities": 26,
+  "excludedClockCities": 0,
+  "rows": 9490,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 19.5,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.49,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.34,
+  "jointExactPc": 27.7,
+  "jointW1Pc": 95.1,
+  "cellsW1Pc": 99.2,
+  "worst": 1.5,
+  "worstWhere": "ndalatando 2027-10-14 asr table 14:50 calc 14:52",
+  "implied": {
+   "fajrAngle": 19.5,
+   "ishaAngle": 17.49,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 71,
+   "ishaGapSd": 2.6,
+   "fajrSunriseGap": -79,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": -15.17,
+   "latMax": -5.6,
+   "lonMin": 12.15,
+   "lonMax": 22.22
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.02,
+    "dhuhr": 0.04
+   },
+   "2026-12": {
+    "sunrise": 0.08,
+    "dhuhr": 0.1
+   },
+   "2027-01": {
+    "sunrise": 0.25,
+    "dhuhr": 0.15
+   },
+   "2027-02": {
+    "sunrise": 0.11,
+    "dhuhr": -0.03
+   },
+   "2027-03": {
+    "sunrise": 0.02,
+    "dhuhr": -0.14
+   },
+   "2027-04": {
+    "sunrise": 0.04,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": 0.1,
+    "dhuhr": 0
+   },
+   "2027-06": {
+    "sunrise": 0.1,
+    "dhuhr": 0.08
+   },
+   "2027-07": {
+    "sunrise": -0.05,
+    "dhuhr": 0.04
+   },
+   "2027-08": {
+    "sunrise": -0.23,
+    "dhuhr": -0.11
+   },
+   "2027-09": {
+    "sunrise": -0.32,
+    "dhuhr": -0.19
+   },
+   "2027-10": {
+    "sunrise": -0.27,
+    "dhuhr": -0.11
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 81.8,
+    "w1Pc": 99.9,
+    "mae": 0.3,
+    "worst": 1.2
+   },
+   "sunrise": {
+    "exactPc": 83.2,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exactPc": 89.7,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 60.3,
+    "w1Pc": 95.2,
+    "mae": 0.44,
+    "worst": 1.5
+   },
+   "maghrib": {
+    "exactPc": 85.2,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   },
+   "isha": {
+    "exactPc": 86,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.34
+ },
+ {
+  "country": "palestine",
+  "cities": 25,
+  "excludedClockCities": 0,
+  "rows": 9045,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.38,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.63,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -4,
+    "dhuhr": -2,
+    "asr": -2,
+    "maghrib": 5,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.51,
+  "jointExactPc": 1.8,
+  "jointW1Pc": 25.3,
+  "cellsW1Pc": 59.4,
+  "worst": 7.8,
+  "worstWhere": "gaza 2027-06-10 fajr table 03:48 calc 03:56",
+  "implied": {
+   "fajrAngle": 18.33,
+   "ishaAngle": 17.73,
+   "ishaAngleSd": 0.23,
+   "ishaGap": 79,
+   "ishaGapSd": 5.9,
+   "fajrSunriseGap": -84,
+   "asrFactor": 0.983
+  },
+  "extent": {
+   "latMin": 31.3,
+   "latMax": 32.31,
+   "lonMin": 33.84,
+   "lonMax": 35.45
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.98,
+    "dhuhr": 0.67
+   },
+   "2026-12": {
+    "sunrise": -0.01,
+    "dhuhr": 0.76
+   },
+   "2027-01": {
+    "sunrise": 0.44,
+    "dhuhr": 0.81
+   },
+   "2027-02": {
+    "sunrise": 0.81,
+    "dhuhr": 0.83
+   },
+   "2027-03": {
+    "sunrise": -0.55,
+    "dhuhr": 0.66
+   },
+   "2027-04": {
+    "sunrise": -1.16,
+    "dhuhr": 0.69
+   },
+   "2027-05": {
+    "sunrise": -0.79,
+    "dhuhr": 0.59
+   },
+   "2027-06": {
+    "sunrise": 0.1,
+    "dhuhr": 0.65
+   },
+   "2027-07": {
+    "sunrise": 0.46,
+    "dhuhr": 0.62
+   },
+   "2027-08": {
+    "sunrise": 0.54,
+    "dhuhr": 0.69
+   },
+   "2027-09": {
+    "sunrise": 1.05,
+    "dhuhr": 0.67
+   },
+   "2027-10": {
+    "sunrise": 1.64,
+    "dhuhr": 0.64
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 33.2,
+    "w1Pc": 53.7,
+    "mae": 1.36,
+    "worst": 7.8
+   },
+   "sunrise": {
+    "exactPc": 31.3,
+    "w1Pc": 55.4,
+    "mae": 1.15,
+    "worst": 4.6
+   },
+   "dhuhr": {
+    "exactPc": 56.8,
+    "w1Pc": 60.8,
+    "mae": 0.86,
+    "worst": 3.1
+   },
+   "asr": {
+    "exactPc": 43.6,
+    "w1Pc": 63.6,
+    "mae": 0.96,
+    "worst": 4.2
+   },
+   "maghrib": {
+    "exactPc": 33.4,
+    "w1Pc": 61.7,
+    "mae": 1.06,
+    "worst": 5.8
+   },
+   "isha": {
+    "exactPc": 32.1,
+    "w1Pc": 60.9,
+    "mae": 1.06,
+    "worst": 5
+   }
+  },
+  "medianSolarRms": 4.58
+ },
+ {
+  "country": "mali",
+  "cities": 21,
+  "excludedClockCities": 0,
+  "rows": 7665,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.89,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.11,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.6,
+  "jointExactPc": 4,
+  "jointW1Pc": 71.8,
+  "cellsW1Pc": 95,
+  "worst": 1.8,
+  "worstWhere": "bamako 2027-09-22 asr table 15:44 calc 15:42",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 17.11,
+   "ishaAngleSd": 0.09,
+   "ishaGap": 70,
+   "ishaGapSd": 2.6,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 11.32,
+   "latMax": 16.77,
+   "lonMin": -11.44,
+   "lonMax": -0.04
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.61,
+    "dhuhr": -0.6
+   },
+   "2026-12": {
+    "sunrise": -0.64,
+    "dhuhr": -0.72
+   },
+   "2027-01": {
+    "sunrise": -0.49,
+    "dhuhr": -0.58
+   },
+   "2027-02": {
+    "sunrise": -0.48,
+    "dhuhr": -0.48
+   },
+   "2027-03": {
+    "sunrise": -0.45,
+    "dhuhr": -0.4
+   },
+   "2027-04": {
+    "sunrise": -0.48,
+    "dhuhr": -0.41
+   },
+   "2027-05": {
+    "sunrise": -0.5,
+    "dhuhr": -0.49
+   },
+   "2027-06": {
+    "sunrise": -0.51,
+    "dhuhr": -0.54
+   },
+   "2027-07": {
+    "sunrise": -0.49,
+    "dhuhr": -0.52
+   },
+   "2027-08": {
+    "sunrise": -0.49,
+    "dhuhr": -0.43
+   },
+   "2027-09": {
+    "sunrise": -0.46,
+    "dhuhr": -0.41
+   },
+   "2027-10": {
+    "sunrise": -0.51,
+    "dhuhr": -0.45
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 94.4,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.7
+   },
+   "sunrise": {
+    "exactPc": 48.9,
+    "w1Pc": 98.2,
+    "mae": 0.51,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 49,
+    "w1Pc": 96.5,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "asr": {
+    "exactPc": 50.8,
+    "w1Pc": 84.3,
+    "mae": 0.56,
+    "worst": 1.8
+   },
+   "maghrib": {
+    "exactPc": 48.9,
+    "w1Pc": 91.1,
+    "mae": 0.53,
+    "worst": 1.4
+   },
+   "isha": {
+    "exactPc": 76.3,
+    "w1Pc": 99.8,
+    "mae": 0.32,
+    "worst": 1.1
+   }
+  },
+  "medianSolarRms": 0.59
+ },
+ {
+  "country": "mauritania",
+  "cities": 19,
+  "excludedClockCities": 0,
+  "rows": 6935,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.11,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.94,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.59,
+  "jointExactPc": 5.7,
+  "jointW1Pc": 70.3,
+  "cellsW1Pc": 93.9,
+  "worst": 1.6,
+  "worstWhere": "zouerate 2027-01-31 asr table 16:13 calc 16:15",
+  "implied": {
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.89,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 71,
+   "ishaGapSd": 3.1,
+   "fajrSunriseGap": -76,
+   "asrFactor": 0.995
+  },
+  "extent": {
+   "latMin": 15.16,
+   "latMax": 22.74,
+   "lonMin": -17.04,
+   "lonMax": -7.26
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.58,
+    "dhuhr": -0.54
+   },
+   "2026-12": {
+    "sunrise": -0.59,
+    "dhuhr": -0.7
+   },
+   "2027-01": {
+    "sunrise": -0.42,
+    "dhuhr": -0.53
+   },
+   "2027-02": {
+    "sunrise": -0.38,
+    "dhuhr": -0.43
+   },
+   "2027-03": {
+    "sunrise": -0.39,
+    "dhuhr": -0.34
+   },
+   "2027-04": {
+    "sunrise": -0.42,
+    "dhuhr": -0.36
+   },
+   "2027-05": {
+    "sunrise": -0.45,
+    "dhuhr": -0.43
+   },
+   "2027-06": {
+    "sunrise": -0.45,
+    "dhuhr": -0.51
+   },
+   "2027-07": {
+    "sunrise": -0.47,
+    "dhuhr": -0.45
+   },
+   "2027-08": {
+    "sunrise": -0.46,
+    "dhuhr": -0.4
+   },
+   "2027-09": {
+    "sunrise": -0.45,
+    "dhuhr": -0.34
+   },
+   "2027-10": {
+    "sunrise": -0.46,
+    "dhuhr": -0.39
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 91,
+    "w1Pc": 99.8,
+    "mae": 0.27,
+    "worst": 1.1
+   },
+   "sunrise": {
+    "exactPc": 52.5,
+    "w1Pc": 97.9,
+    "mae": 0.49,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "exactPc": 53.4,
+    "w1Pc": 96.3,
+    "mae": 0.48,
+    "worst": 1.3
+   },
+   "asr": {
+    "exactPc": 43.3,
+    "w1Pc": 81.5,
+    "mae": 0.61,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "exactPc": 52,
+    "w1Pc": 90.1,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "isha": {
+    "exactPc": 61.6,
+    "w1Pc": 97.8,
+    "mae": 0.42,
+    "worst": 1.5
+   }
+  },
+  "medianSolarRms": 0.61
+ },
+ {
+  "country": "china",
+  "cities": 18,
+  "excludedClockCities": 0,
+  "rows": 6570,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.45,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 90,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.59,
+  "jointExactPc": 10.9,
+  "jointW1Pc": 68.9,
+  "cellsW1Pc": 90.6,
+  "worst": 2.1,
+  "worstWhere": "yili 2027-05-06 fajr table 03:19 calc 03:21",
+  "implied": {
+   "fajrAngle": 18.45,
+   "ishaAngle": 16.25,
+   "ishaAngleSd": 1.54,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -104,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": 37.08,
+   "latMax": 46.75,
+   "lonMin": 75.99,
+   "lonMax": 112.8
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.32,
+    "dhuhr": 0.31
+   },
+   "2026-12": {
+    "sunrise": 0.37,
+    "dhuhr": 0.25
+   },
+   "2027-01": {
+    "sunrise": 0.28,
+    "dhuhr": 0.37
+   },
+   "2027-02": {
+    "sunrise": 0.08,
+    "dhuhr": 0.37
+   },
+   "2027-03": {
+    "sunrise": -0.03,
+    "dhuhr": 0.38
+   },
+   "2027-04": {
+    "sunrise": -0.07,
+    "dhuhr": 0.37
+   },
+   "2027-05": {
+    "sunrise": 0.05,
+    "dhuhr": 0.36
+   },
+   "2027-06": {
+    "sunrise": 0.34,
+    "dhuhr": 0.36
+   },
+   "2027-07": {
+    "sunrise": 0.59,
+    "dhuhr": 0.37
+   },
+   "2027-08": {
+    "sunrise": 0.66,
+    "dhuhr": 0.37
+   },
+   "2027-09": {
+    "sunrise": 0.61,
+    "dhuhr": 0.36
+   },
+   "2027-10": {
+    "sunrise": 0.63,
+    "dhuhr": 0.35
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 57.2,
+    "w1Pc": 90.9,
+    "mae": 0.48,
+    "worst": 2.1
+   },
+   "sunrise": {
+    "exactPc": 57.9,
+    "w1Pc": 93.8,
+    "mae": 0.46,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "exactPc": 63.1,
+    "w1Pc": 99.8,
+    "mae": 0.43,
+    "worst": 1
+   },
+   "asr": {
+    "exactPc": 52.1,
+    "w1Pc": 82.7,
+    "mae": 0.57,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "exactPc": 56.3,
+    "w1Pc": 88.2,
+    "mae": 0.49,
+    "worst": 1.6
+   },
+   "isha": {
+    "exactPc": 56.3,
+    "w1Pc": 88.2,
+    "mae": 0.49,
+    "worst": 1.6
+   }
+  },
+  "medianSolarRms": 0.64
+ },
+ {
+  "country": "armenia",
+  "cities": 18,
+  "excludedClockCities": 0,
+  "rows": 6570,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.01,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.57,
+  "jointExactPc": 11.5,
+  "jointW1Pc": 73.9,
+  "cellsW1Pc": 95.1,
+  "worst": 1.5,
+  "worstWhere": "ashtarak 2027-04-11 fajr table 04:54 calc 04:56",
+  "implied": {
+   "fajrAngle": 17.99,
+   "ishaAngle": 17.01,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 91,
+   "ishaGapSd": 9.6,
+   "fajrSunriseGap": -96,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 39.21,
+   "latMax": 41.01,
+   "lonMin": 43.85,
+   "lonMax": 46.41
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.23,
+    "dhuhr": 0.06
+   },
+   "2026-12": {
+    "sunrise": 0.13,
+    "dhuhr": 0.13
+   },
+   "2027-01": {
+    "sunrise": -0.2,
+    "dhuhr": 0.17
+   },
+   "2027-02": {
+    "sunrise": -0.53,
+    "dhuhr": 0.01
+   },
+   "2027-03": {
+    "sunrise": -0.74,
+    "dhuhr": -0.11
+   },
+   "2027-04": {
+    "sunrise": -0.73,
+    "dhuhr": -0.1
+   },
+   "2027-05": {
+    "sunrise": -0.44,
+    "dhuhr": 0.01
+   },
+   "2027-06": {
+    "sunrise": 0.06,
+    "dhuhr": 0.1
+   },
+   "2027-07": {
+    "sunrise": 0.43,
+    "dhuhr": 0.02
+   },
+   "2027-08": {
+    "sunrise": 0.5,
+    "dhuhr": -0.09
+   },
+   "2027-09": {
+    "sunrise": 0.47,
+    "dhuhr": -0.17
+   },
+   "2027-10": {
+    "sunrise": 0.5,
+    "dhuhr": -0.09
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 47,
+    "w1Pc": 86.2,
+    "mae": 0.57,
+    "worst": 1.5
+   },
+   "sunrise": {
+    "exactPc": 57.8,
+    "w1Pc": 95.3,
+    "mae": 0.46,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "exactPc": 89,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 76.7,
+    "w1Pc": 100,
+    "mae": 0.32,
+    "worst": 1
+   },
+   "maghrib": {
+    "exactPc": 53.4,
+    "w1Pc": 93.3,
+    "mae": 0.5,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 58.8,
+    "w1Pc": 95.5,
+    "mae": 0.45,
+    "worst": 1.3
+   }
+  },
+  "medianSolarRms": 0.57
+ },
+ {
+  "country": "rwanda",
+  "cities": 11,
+  "excludedClockCities": 0,
+  "rows": 4015,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.88,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.12,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.58,
+  "jointExactPc": 4.5,
+  "jointW1Pc": 82.8,
+  "cellsW1Pc": 97,
+  "worst": 1.4,
+  "worstWhere": "gitarama 2026-12-31 asr table 15:30 calc 15:31",
+  "implied": {
+   "fajrAngle": 17.88,
+   "ishaAngle": 17.12,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 68,
+   "ishaGapSd": 2.2,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -2.6,
+   "latMax": -1.5,
+   "lonMin": 28.91,
+   "lonMax": 30.54
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.5,
+    "dhuhr": 0.44
+   },
+   "2026-12": {
+    "sunrise": -0.53,
+    "dhuhr": 0.33
+   },
+   "2027-01": {
+    "sunrise": -0.44,
+    "dhuhr": 0.44
+   },
+   "2027-02": {
+    "sunrise": -0.48,
+    "dhuhr": 0.49
+   },
+   "2027-03": {
+    "sunrise": -0.5,
+    "dhuhr": 0.56
+   },
+   "2027-04": {
+    "sunrise": -0.51,
+    "dhuhr": 0.56
+   },
+   "2027-05": {
+    "sunrise": -0.5,
+    "dhuhr": 0.52
+   },
+   "2027-06": {
+    "sunrise": -0.48,
+    "dhuhr": 0.46
+   },
+   "2027-07": {
+    "sunrise": -0.54,
+    "dhuhr": 0.5
+   },
+   "2027-08": {
+    "sunrise": -0.5,
+    "dhuhr": 0.56
+   },
+   "2027-09": {
+    "sunrise": -0.54,
+    "dhuhr": 0.54
+   },
+   "2027-10": {
+    "sunrise": -0.53,
+    "dhuhr": 0.53
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 96.3,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "exactPc": 48.8,
+    "w1Pc": 99.2,
+    "mae": 0.5,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 49.4,
+    "w1Pc": 98.3,
+    "mae": 0.5,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 48.8,
+    "w1Pc": 89.2,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 49.6,
+    "w1Pc": 95.5,
+    "mae": 0.5,
+    "worst": 1.1
+   },
+   "isha": {
+    "exactPc": 83.9,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.58
+ },
+ {
+  "country": "germany",
+  "cities": 8,
+  "rows": 2917,
+  "recipe": {
+   "fajr": "sunrise-interval",
+   "fajrAngle": 0,
+   "fajrInterval": 64,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 130,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": -70,
+    "sunrise": 47,
+    "dhuhr": 59,
+    "asr": -13,
+    "maghrib": 48,
+    "isha": -9
+   }
+  },
+  "solarRms": 34.45,
+  "jointExactPc": 0,
+  "jointW1Pc": 0,
+  "cellsW1Pc": 5.9,
+  "worst": 93.4,
+  "worstWhere": "osnabrueck 2027-02-09 sunrise table 07:09 calc 08:42",
+  "implied": {
+   "fajrAngle": 10.41,
+   "ishaAngle": 16.59,
+   "ishaAngleSd": 4.47,
+   "ishaGap": 90,
+   "ishaGapSd": 19.2,
+   "fajrSunriseGap": -103,
+   "asrFactor": 1.751
+  },
+  "extent": {
+   "latMin": 40.83,
+   "latMax": 54.32,
+   "lonMin": -1.11,
+   "lonMax": 10.13
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -58.02,
+    "dhuhr": -57.35
+   },
+   "2026-12": {
+    "sunrise": -58.67,
+    "dhuhr": -57.44
+   },
+   "2027-01": {
+    "sunrise": -57.8,
+    "dhuhr": -57.36
+   },
+   "2027-02": {
+    "sunrise": -56.76,
+    "dhuhr": -57.23
+   },
+   "2027-03": {
+    "sunrise": -46.9,
+    "dhuhr": -48.97
+   },
+   "2027-04": {
+    "sunrise": 6.32,
+    "dhuhr": 2.77
+   },
+   "2027-05": {
+    "sunrise": 7.77,
+    "dhuhr": 2.67
+   },
+   "2027-06": {
+    "sunrise": 8.76,
+    "dhuhr": 2.67
+   },
+   "2027-07": {
+    "sunrise": 8.39,
+    "dhuhr": 2.67
+   },
+   "2027-08": {
+    "sunrise": 7.03,
+    "dhuhr": 2.77
+   },
+   "2027-09": {
+    "sunrise": 5.43,
+    "dhuhr": 2.81
+   },
+   "2027-10": {
+    "sunrise": -3.55,
+    "dhuhr": -4.7
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 1.1,
+    "w1Pc": 2.1,
+    "mae": 30.05,
+    "worst": 88.5
+   },
+   "sunrise": {
+    "exactPc": 4.6,
+    "w1Pc": 6.7,
+    "mae": 27.82,
+    "worst": 93.4
+   },
+   "dhuhr": {
+    "exactPc": 16.9,
+    "w1Pc": 21.8,
+    "mae": 25.79,
+    "worst": 63.7
+   },
+   "asr": {
+    "exactPc": 1.5,
+    "w1Pc": 3,
+    "mae": 17.2,
+    "worst": 48
+   },
+   "maghrib": {
+    "exactPc": 0.1,
+    "w1Pc": 0.3,
+    "mae": 26.56,
+    "worst": 53.8
+   },
+   "isha": {
+    "exactPc": 0.7,
+    "w1Pc": 1.3,
+    "mae": 29.96,
+    "worst": 76.3
+   }
+  },
+  "medianSolarRms": 46.38
+ },
+ {
+  "country": "united-arab-emirates",
+  "cities": 8,
+  "excludedClockCities": 0,
+  "rows": 2880,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.11,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 18.13,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -3,
+    "dhuhr": 3,
+    "asr": 1,
+    "maghrib": 3,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.66,
+  "jointExactPc": 6.7,
+  "jointW1Pc": 67.5,
+  "cellsW1Pc": 91,
+  "worst": 2.3,
+  "worstWhere": "ad-al-ain 2027-01-15 maghrib table 17:55 calc 17:53",
+  "implied": {
+   "fajrAngle": 18.11,
+   "ishaAngle": 18.13,
+   "ishaAngleSd": 0.13,
+   "ishaGap": 77,
+   "ishaGapSd": 4.1,
+   "fajrSunriseGap": -77,
+   "asrFactor": 1.008
+  },
+  "extent": {
+   "latMin": 24.23,
+   "latMax": 25.73,
+   "lonMin": 54.47,
+   "lonMax": 56.29
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.04,
+    "dhuhr": -0.27
+   },
+   "2026-12": {
+    "sunrise": -0.17,
+    "dhuhr": -0.12
+   },
+   "2027-01": {
+    "sunrise": -0.4,
+    "dhuhr": -0.18
+   },
+   "2027-02": {
+    "sunrise": -0.51,
+    "dhuhr": -0.34
+   },
+   "2027-03": {
+    "sunrise": -0.54,
+    "dhuhr": -0.43
+   },
+   "2027-04": {
+    "sunrise": -0.51,
+    "dhuhr": -0.43
+   },
+   "2027-05": {
+    "sunrise": -0.44,
+    "dhuhr": -0.37
+   },
+   "2027-06": {
+    "sunrise": -0.29,
+    "dhuhr": -0.28
+   },
+   "2027-07": {
+    "sunrise": -0.02,
+    "dhuhr": -0.32
+   },
+   "2027-08": {
+    "sunrise": 0.08,
+    "dhuhr": -0.48
+   },
+   "2027-09": {
+    "sunrise": 0.13,
+    "dhuhr": -0.59
+   },
+   "2027-10": {
+    "sunrise": 0.15,
+    "dhuhr": -0.48
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 63.3,
+    "w1Pc": 96.6,
+    "mae": 0.41,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "exactPc": 60,
+    "w1Pc": 90.8,
+    "mae": 0.48,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "exactPc": 53.1,
+    "w1Pc": 92.8,
+    "mae": 0.5,
+    "worst": 1.5
+   },
+   "asr": {
+    "exactPc": 59,
+    "w1Pc": 91.4,
+    "mae": 0.47,
+    "worst": 1.7
+   },
+   "maghrib": {
+    "exactPc": 53,
+    "w1Pc": 86,
+    "mae": 0.55,
+    "worst": 2.3
+   },
+   "isha": {
+    "exactPc": 57.4,
+    "w1Pc": 88.2,
+    "mae": 0.49,
+    "worst": 1.8
+   }
+  },
+  "medianSolarRms": 3.09
+ },
+ {
+  "country": "burundi",
+  "cities": 6,
+  "excludedClockCities": 0,
+  "rows": 2190,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.88,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.12,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.57,
+  "jointExactPc": 4.2,
+  "jointW1Pc": 84.2,
+  "cellsW1Pc": 97.1,
+  "worst": 1.4,
+  "worstWhere": "muyinga 2026-12-29 asr table 15:27 calc 15:28",
+  "implied": {
+   "fajrAngle": 17.88,
+   "ishaAngle": 17.12,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 68,
+   "ishaGapSd": 2.2,
+   "fajrSunriseGap": -72,
+   "asrFactor": 1.005
+  },
+  "extent": {
+   "latMin": -3.93,
+   "latMax": -2.85,
+   "lonMin": 29.36,
+   "lonMax": 30.34
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.47,
+    "dhuhr": -0.55
+   },
+   "2026-12": {
+    "sunrise": 0.43,
+    "dhuhr": -0.72
+   },
+   "2027-01": {
+    "sunrise": 0.52,
+    "dhuhr": -0.56
+   },
+   "2027-02": {
+    "sunrise": 0.49,
+    "dhuhr": -0.48
+   },
+   "2027-03": {
+    "sunrise": 0.5,
+    "dhuhr": -0.44
+   },
+   "2027-04": {
+    "sunrise": 0.5,
+    "dhuhr": -0.44
+   },
+   "2027-05": {
+    "sunrise": 0.51,
+    "dhuhr": -0.47
+   },
+   "2027-06": {
+    "sunrise": 0.52,
+    "dhuhr": -0.53
+   },
+   "2027-07": {
+    "sunrise": 0.5,
+    "dhuhr": -0.47
+   },
+   "2027-08": {
+    "sunrise": 0.48,
+    "dhuhr": -0.45
+   },
+   "2027-09": {
+    "sunrise": 0.46,
+    "dhuhr": -0.43
+   },
+   "2027-10": {
+    "sunrise": 0.49,
+    "dhuhr": -0.48
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 96.6,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.6
+   },
+   "sunrise": {
+    "exactPc": 50.3,
+    "w1Pc": 99.6,
+    "mae": 0.49,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 49.1,
+    "w1Pc": 97.1,
+    "mae": 0.5,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 47.9,
+    "w1Pc": 90.2,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 52.4,
+    "w1Pc": 95.9,
+    "mae": 0.49,
+    "worst": 1.2
+   },
+   "isha": {
+    "exactPc": 83.6,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.56
+ },
+ {
+  "country": "qatar",
+  "cities": 5,
+  "excludedClockCities": 0,
+  "rows": 1825,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 91,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.89,
+  "jointExactPc": 2.8,
+  "jointW1Pc": 36.9,
+  "cellsW1Pc": 80.2,
+  "worst": 16,
+  "worstWhere": "dukhan 2027-02-09 sunrise table 06:00 calc 06:16",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 20.31,
+   "ishaAngleSd": 1.01,
+   "ishaGap": 90,
+   "ishaGapSd": 0,
+   "fajrSunriseGap": -80,
+   "asrFactor": 1.001
+  },
+  "extent": {
+   "latMin": 24.81,
+   "latMax": 26.08,
+   "lonMin": 50.78,
+   "lonMax": 52.23
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.01,
+    "dhuhr": 0.15
+   },
+   "2026-12": {
+    "sunrise": -0.04,
+    "dhuhr": 0.15
+   },
+   "2027-01": {
+    "sunrise": -0.09,
+    "dhuhr": 0.22
+   },
+   "2027-02": {
+    "sunrise": -0.42,
+    "dhuhr": 0.12
+   },
+   "2027-03": {
+    "sunrise": -0.3,
+    "dhuhr": 0.05
+   },
+   "2027-04": {
+    "sunrise": -0.43,
+    "dhuhr": 0.05
+   },
+   "2027-05": {
+    "sunrise": -0.16,
+    "dhuhr": 0.11
+   },
+   "2027-06": {
+    "sunrise": 0.04,
+    "dhuhr": 0.19
+   },
+   "2027-07": {
+    "sunrise": 0.15,
+    "dhuhr": 0.1
+   },
+   "2027-08": {
+    "sunrise": 0.14,
+    "dhuhr": 0.04
+   },
+   "2027-09": {
+    "sunrise": 0.1,
+    "dhuhr": 0.04
+   },
+   "2027-10": {
+    "sunrise": 0.12,
+    "dhuhr": 0.06
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 44.1,
+    "w1Pc": 69.5,
+    "mae": 1.18,
+    "worst": 14.2
+   },
+   "sunrise": {
+    "exactPc": 47.6,
+    "w1Pc": 84.1,
+    "mae": 0.58,
+    "worst": 16
+   },
+   "dhuhr": {
+    "exactPc": 81.3,
+    "w1Pc": 99.2,
+    "mae": 0.32,
+    "worst": 2
+   },
+   "asr": {
+    "exactPc": 64.2,
+    "w1Pc": 95.6,
+    "mae": 0.42,
+    "worst": 6
+   },
+   "maghrib": {
+    "exactPc": 28.2,
+    "w1Pc": 66.3,
+    "mae": 0.82,
+    "worst": 11.6
+   },
+   "isha": {
+    "exactPc": 28.2,
+    "w1Pc": 66.3,
+    "mae": 0.82,
+    "worst": 11.6
+   }
+  },
+  "medianSolarRms": 0.67
+ },
+ {
+  "country": "united-states",
+  "cities": 3,
+  "excludedClockCities": 4,
+  "rows": 1095,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 15.54,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 15.16,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": -2,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "solarRms": 5.69,
+  "jointExactPc": 0,
+  "jointW1Pc": 0,
+  "cellsW1Pc": 23.4,
+  "worst": 36,
+  "worstWhere": "san-diego 2027-06-19 isha table 22:25 calc 21:49",
+  "implied": {
+   "fajrAngle": 15.94,
+   "ishaAngle": 15.31,
+   "ishaAngleSd": 2.14,
+   "ishaGap": 82,
+   "ishaGapSd": 7.7,
+   "fajrSunriseGap": -83,
+   "asrFactor": 0.997
+  },
+  "extent": {
+   "latMin": 27.76,
+   "latMax": 42.08,
+   "lonMin": -98.24,
+   "lonMax": -71.02
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 4.59,
+    "dhuhr": 1.68
+   },
+   "2026-12": {
+    "sunrise": 5.8,
+    "dhuhr": 1.73
+   },
+   "2027-01": {
+    "sunrise": 4.85,
+    "dhuhr": 1.69
+   },
+   "2027-02": {
+    "sunrise": 2.5,
+    "dhuhr": 1.6
+   },
+   "2027-03": {
+    "sunrise": -0.93,
+    "dhuhr": 1.45
+   },
+   "2027-04": {
+    "sunrise": -3.81,
+    "dhuhr": 1.47
+   },
+   "2027-05": {
+    "sunrise": -5.94,
+    "dhuhr": 1.62
+   },
+   "2027-06": {
+    "sunrise": -6.71,
+    "dhuhr": 1.72
+   },
+   "2027-07": {
+    "sunrise": -5.7,
+    "dhuhr": 1.68
+   },
+   "2027-08": {
+    "sunrise": -3.41,
+    "dhuhr": 1.49
+   },
+   "2027-09": {
+    "sunrise": -0.73,
+    "dhuhr": 1.4
+   },
+   "2027-10": {
+    "sunrise": 2.2,
+    "dhuhr": 1.47
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 1.9,
+    "w1Pc": 2.6,
+    "mae": 8.29,
+    "worst": 30.8
+   },
+   "sunrise": {
+    "exactPc": 16,
+    "w1Pc": 32.5,
+    "mae": 4.14,
+    "worst": 11.9
+   },
+   "dhuhr": {
+    "exactPc": 29.1,
+    "w1Pc": 33.5,
+    "mae": 2.77,
+    "worst": 7.1
+   },
+   "asr": {
+    "exactPc": 20.7,
+    "w1Pc": 35.3,
+    "mae": 3.87,
+    "worst": 12.8
+   },
+   "maghrib": {
+    "exactPc": 16.4,
+    "w1Pc": 31.9,
+    "mae": 4.22,
+    "worst": 15.4
+   },
+   "isha": {
+    "exactPc": 1.4,
+    "w1Pc": 4.5,
+    "mae": 8.79,
+    "worst": 36
+   }
+  },
+  "medianSolarRms": 16.19
+ },
+ {
+  "country": "aruba",
+  "cities": 3,
+  "excludedClockCities": 0,
+  "rows": 1095,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.34,
+  "jointExactPc": 22.6,
+  "jointW1Pc": 88.7,
+  "cellsW1Pc": 98.1,
+  "worst": 1.4,
+  "worstWhere": "oranjestad 2027-04-11 asr table 15:51 calc 15:52",
+  "implied": {
+   "fajrAngle": 18,
+   "ishaAngle": 17,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 69,
+   "ishaGapSd": 2.5,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 12.33,
+   "latMax": 12.6,
+   "lonMin": -70.03,
+   "lonMax": -69.91
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.05,
+    "dhuhr": 0.08
+   },
+   "2026-12": {
+    "sunrise": 0.08,
+    "dhuhr": 0.04
+   },
+   "2027-01": {
+    "sunrise": 0.03,
+    "dhuhr": 0.16
+   },
+   "2027-02": {
+    "sunrise": -0.14,
+    "dhuhr": -0.02
+   },
+   "2027-03": {
+    "sunrise": -0.3,
+    "dhuhr": -0.13
+   },
+   "2027-04": {
+    "sunrise": -0.26,
+    "dhuhr": -0.07
+   },
+   "2027-05": {
+    "sunrise": -0.01,
+    "dhuhr": 0.01
+   },
+   "2027-06": {
+    "sunrise": 0.14,
+    "dhuhr": 0.09
+   },
+   "2027-07": {
+    "sunrise": 0.13,
+    "dhuhr": 0.08
+   },
+   "2027-08": {
+    "sunrise": 0.04,
+    "dhuhr": -0.12
+   },
+   "2027-09": {
+    "sunrise": -0.14,
+    "dhuhr": -0.17
+   },
+   "2027-10": {
+    "sunrise": 0.05,
+    "dhuhr": -0.09
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 82.3,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 84.9,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.8
+   },
+   "dhuhr": {
+    "exactPc": 90.9,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 50.3,
+    "w1Pc": 88.7,
+    "mae": 0.54,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 83.1,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   },
+   "isha": {
+    "exactPc": 84,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.35
+ },
+ {
+  "country": "bahrain",
+  "cities": 2,
+  "excludedClockCities": 0,
+  "rows": 730,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.16,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.84,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.57,
+  "jointExactPc": 9.6,
+  "jointW1Pc": 75.9,
+  "cellsW1Pc": 95.4,
+  "worst": 1.7,
+  "worstWhere": "awqaf 2027-06-19 fajr table 03:15 calc 03:13",
+  "implied": {
+   "fajrAngle": 18.16,
+   "ishaAngle": 17.84,
+   "ishaAngleSd": 0.11,
+   "ishaGap": 79,
+   "ishaGapSd": 4.4,
+   "fajrSunriseGap": -81,
+   "asrFactor": 1.002
+  },
+  "extent": {
+   "latMin": 26.08,
+   "latMax": 26.3,
+   "lonMin": 50.61,
+   "lonMax": 50.61
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.59,
+    "dhuhr": 0.41
+   },
+   "2026-12": {
+    "sunrise": 0.47,
+    "dhuhr": 0.51
+   },
+   "2027-01": {
+    "sunrise": 0.3,
+    "dhuhr": 0.4
+   },
+   "2027-02": {
+    "sunrise": 0.01,
+    "dhuhr": 0.26
+   },
+   "2027-03": {
+    "sunrise": -0.19,
+    "dhuhr": 0.19
+   },
+   "2027-04": {
+    "sunrise": -0.06,
+    "dhuhr": 0.17
+   },
+   "2027-05": {
+    "sunrise": 0.03,
+    "dhuhr": 0.2
+   },
+   "2027-06": {
+    "sunrise": 0.35,
+    "dhuhr": 0.43
+   },
+   "2027-07": {
+    "sunrise": 0.5,
+    "dhuhr": 0.18
+   },
+   "2027-08": {
+    "sunrise": 0.49,
+    "dhuhr": 0.14
+   },
+   "2027-09": {
+    "sunrise": 0.53,
+    "dhuhr": 0.05
+   },
+   "2027-10": {
+    "sunrise": 0.64,
+    "dhuhr": 0.25
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 67.7,
+    "w1Pc": 95.8,
+    "mae": 0.4,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "exactPc": 59.7,
+    "w1Pc": 94.7,
+    "mae": 0.45,
+    "worst": 1.6
+   },
+   "dhuhr": {
+    "exactPc": 72.9,
+    "w1Pc": 99.6,
+    "mae": 0.34,
+    "worst": 1.1
+   },
+   "asr": {
+    "exactPc": 68.2,
+    "w1Pc": 97.8,
+    "mae": 0.37,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "exactPc": 58.5,
+    "w1Pc": 88.5,
+    "mae": 0.48,
+    "worst": 1.5
+   },
+   "isha": {
+    "exactPc": 63.4,
+    "w1Pc": 95.9,
+    "mae": 0.41,
+    "worst": 1.2
+   }
+  },
+  "medianSolarRms": 0.82
+ },
+ {
+  "country": "andorra",
+  "cities": 2,
+  "excludedClockCities": 0,
+  "rows": 730,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.02,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.6,
+  "jointExactPc": 9.2,
+  "jointW1Pc": 68.4,
+  "cellsW1Pc": 93.3,
+  "worst": 1.7,
+  "worstWhere": "les-escaldes 2027-05-07 fajr table 04:47 calc 04:49",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 17.02,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 94,
+   "ishaGapSd": 11.7,
+   "fajrSunriseGap": -100,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 42.46,
+   "latMax": 42.46,
+   "lonMin": 1.52,
+   "lonMax": 1.53
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.39,
+    "dhuhr": 0.03
+   },
+   "2026-12": {
+    "sunrise": 0.3,
+    "dhuhr": 0.18
+   },
+   "2027-01": {
+    "sunrise": -0.02,
+    "dhuhr": 0.12
+   },
+   "2027-02": {
+    "sunrise": -0.52,
+    "dhuhr": 0.03
+   },
+   "2027-03": {
+    "sunrise": -0.79,
+    "dhuhr": -0.1
+   },
+   "2027-04": {
+    "sunrise": -0.85,
+    "dhuhr": -0.13
+   },
+   "2027-05": {
+    "sunrise": -0.63,
+    "dhuhr": -0.08
+   },
+   "2027-06": {
+    "sunrise": -0.2,
+    "dhuhr": 0.06
+   },
+   "2027-07": {
+    "sunrise": 0.19,
+    "dhuhr": -0.14
+   },
+   "2027-08": {
+    "sunrise": 0.41,
+    "dhuhr": -0.15
+   },
+   "2027-09": {
+    "sunrise": 0.48,
+    "dhuhr": -0.2
+   },
+   "2027-10": {
+    "sunrise": 0.56,
+    "dhuhr": -0.08
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 37.4,
+    "w1Pc": 82.3,
+    "mae": 0.64,
+    "worst": 1.7
+   },
+   "sunrise": {
+    "exactPc": 53.8,
+    "w1Pc": 92.7,
+    "mae": 0.49,
+    "worst": 1.4
+   },
+   "dhuhr": {
+    "exactPc": 89.2,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 67.9,
+    "w1Pc": 99.3,
+    "mae": 0.38,
+    "worst": 1
+   },
+   "maghrib": {
+    "exactPc": 49.2,
+    "w1Pc": 92.6,
+    "mae": 0.52,
+    "worst": 1.4
+   },
+   "isha": {
+    "exactPc": 58.1,
+    "w1Pc": 92.6,
+    "mae": 0.46,
+    "worst": 1.3
+   }
+  },
+  "medianSolarRms": 0.6
+ },
+ {
+  "country": "new-zealand",
+  "cities": 1,
+  "rows": 365,
+  "recipe": {
+   "fajr": "sunrise-interval",
+   "fajrAngle": 0,
+   "fajrInterval": 113,
+   "isha": "angle",
+   "ishaAngle": 16.69,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": -118,
+    "sunrise": -2,
+    "dhuhr": -2,
+    "asr": -2,
+    "maghrib": -2,
+    "isha": 0
+   }
+  },
+  "solarRms": 41.03,
+  "jointExactPc": 0,
+  "jointW1Pc": 1.6,
+  "cellsW1Pc": 33.3,
+  "worst": 60.7,
+  "worstWhere": "auckland 2027-08-31 asr table 15:00 calc 16:01",
+  "implied": {
+   "fajrAngle": 18.18,
+   "ishaAngle": 16.64,
+   "ishaAngleSd": 5.8,
+   "ishaGap": 86,
+   "ishaGapSd": 7.3,
+   "fajrSunriseGap": -91,
+   "asrFactor": 0.975
+  },
+  "extent": {
+   "latMin": -36.9,
+   "latMax": -36.9,
+   "lonMin": 166.95,
+   "lonMax": 166.95
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.86,
+    "dhuhr": 0.83
+   },
+   "2026-12": {
+    "sunrise": 0.92,
+    "dhuhr": 0.73
+   },
+   "2027-01": {
+    "sunrise": 1.19,
+    "dhuhr": 0.84
+   },
+   "2027-02": {
+    "sunrise": 1.15,
+    "dhuhr": 0.78
+   },
+   "2027-03": {
+    "sunrise": 0.98,
+    "dhuhr": 0.72
+   },
+   "2027-04": {
+    "sunrise": -55.16,
+    "dhuhr": -55.26
+   },
+   "2027-05": {
+    "sunrise": -59.23,
+    "dhuhr": -59.32
+   },
+   "2027-06": {
+    "sunrise": -59.33,
+    "dhuhr": -59.17
+   },
+   "2027-07": {
+    "sunrise": -59.46,
+    "dhuhr": -59.39
+   },
+   "2027-08": {
+    "sunrise": -59.45,
+    "dhuhr": -59.32
+   },
+   "2027-09": {
+    "sunrise": -47.55,
+    "dhuhr": -47.38
+   },
+   "2027-10": {
+    "sunrise": 0.51,
+    "dhuhr": 0.76
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 4.1,
+    "w1Pc": 5.2,
+    "mae": 25.08,
+    "worst": 41.6
+   },
+   "sunrise": {
+    "exactPc": 6.6,
+    "w1Pc": 30.1,
+    "mae": 28.94,
+    "worst": 60
+   },
+   "dhuhr": {
+    "exactPc": 11,
+    "w1Pc": 39.2,
+    "mae": 28.84,
+    "worst": 59.8
+   },
+   "asr": {
+    "exactPc": 22.5,
+    "w1Pc": 29,
+    "mae": 28.86,
+    "worst": 60.7
+   },
+   "maghrib": {
+    "exactPc": 24.4,
+    "w1Pc": 47.1,
+    "mae": 28.65,
+    "worst": 60
+   },
+   "isha": {
+    "exactPc": 31.5,
+    "w1Pc": 49.3,
+    "mae": 28.82,
+    "worst": 60.3
+   }
+  },
+  "medianSolarRms": 42.43
+ },
+ {
+  "country": "kuwait",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.02,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.51,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.35,
+  "jointExactPc": 31.8,
+  "jointW1Pc": 96.2,
+  "cellsW1Pc": 99.3,
+  "worst": 1.3,
+  "worstWhere": "kuwait 2027-09-30 asr table 15:03 calc 15:02",
+  "implied": {
+   "fajrAngle": 18.02,
+   "ishaAngle": 17.51,
+   "ishaAngleSd": 0.07,
+   "ishaGap": 81,
+   "ishaGapSd": 5,
+   "fajrSunriseGap": -83,
+   "asrFactor": 1.002
+  },
+  "extent": {
+   "latMin": 29.27,
+   "latMax": 29.27,
+   "lonMin": 48,
+   "lonMax": 48
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.06,
+    "dhuhr": 0.23
+   },
+   "2026-12": {
+    "sunrise": 0.01,
+    "dhuhr": -0.11
+   },
+   "2027-01": {
+    "sunrise": 0.4,
+    "dhuhr": 0.08
+   },
+   "2027-02": {
+    "sunrise": 0.2,
+    "dhuhr": 0.08
+   },
+   "2027-03": {
+    "sunrise": 0.12,
+    "dhuhr": 0.09
+   },
+   "2027-04": {
+    "sunrise": -0.04,
+    "dhuhr": 0.03
+   },
+   "2027-05": {
+    "sunrise": -0.16,
+    "dhuhr": -0.14
+   },
+   "2027-06": {
+    "sunrise": -0.24,
+    "dhuhr": -0.12
+   },
+   "2027-07": {
+    "sunrise": -0.29,
+    "dhuhr": -0.27
+   },
+   "2027-08": {
+    "sunrise": -0.24,
+    "dhuhr": -0.04
+   },
+   "2027-09": {
+    "sunrise": -0.15,
+    "dhuhr": 0.01
+   },
+   "2027-10": {
+    "sunrise": -0.25,
+    "dhuhr": 0.07
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 81.1,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.8
+   },
+   "sunrise": {
+    "exactPc": 77.5,
+    "w1Pc": 99.5,
+    "mae": 0.31,
+    "worst": 1.1
+   },
+   "dhuhr": {
+    "exactPc": 91,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.8
+   },
+   "asr": {
+    "exactPc": 72.6,
+    "w1Pc": 97.5,
+    "mae": 0.35,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "exactPc": 89.6,
+    "w1Pc": 99.7,
+    "mae": 0.28,
+    "worst": 1.1
+   },
+   "isha": {
+    "exactPc": 82.2,
+    "w1Pc": 98.9,
+    "mae": 0.3,
+    "worst": 1.2
+   }
+  },
+  "medianSolarRms": 0.35
+ },
+ {
+  "country": "italy",
+  "cities": 1,
+  "excludedClockCities": 1,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.96,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.08,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.1,
+  "jointExactPc": 2.5,
+  "jointW1Pc": 31,
+  "cellsW1Pc": 71.3,
+  "worst": 3.1,
+  "worstWhere": "schio 2027-05-26 isha table 23:01 calc 23:04",
+  "implied": {
+   "fajrAngle": 17.96,
+   "ishaAngle": 17.08,
+   "ishaAngleSd": 0.18,
+   "ishaGap": 101,
+   "ishaGapSd": 16.3,
+   "fajrSunriseGap": -106,
+   "asrFactor": 1.007
+  },
+  "extent": {
+   "latMin": 45.71,
+   "latMax": 45.71,
+   "lonMin": 11.36,
+   "lonMax": 11.36
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.06,
+    "dhuhr": 0.25
+   },
+   "2026-12": {
+    "sunrise": 0.05,
+    "dhuhr": 0.19
+   },
+   "2027-01": {
+    "sunrise": 0.25,
+    "dhuhr": 0.32
+   },
+   "2027-02": {
+    "sunrise": 0.38,
+    "dhuhr": 0.38
+   },
+   "2027-03": {
+    "sunrise": 0.75,
+    "dhuhr": 0.37
+   },
+   "2027-04": {
+    "sunrise": 2.17,
+    "dhuhr": 0.6
+   },
+   "2027-05": {
+    "sunrise": 1.58,
+    "dhuhr": 0.23
+   },
+   "2027-06": {
+    "sunrise": 0.52,
+    "dhuhr": 0.16
+   },
+   "2027-07": {
+    "sunrise": -0.37,
+    "dhuhr": 0.13
+   },
+   "2027-08": {
+    "sunrise": -0.84,
+    "dhuhr": 0.52
+   },
+   "2027-09": {
+    "sunrise": -0.91,
+    "dhuhr": 0.69
+   },
+   "2027-10": {
+    "sunrise": -0.9,
+    "dhuhr": 0.6
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 53.4,
+    "w1Pc": 88.8,
+    "mae": 0.51,
+    "worst": 1.8
+   },
+   "sunrise": {
+    "exactPc": 42.7,
+    "w1Pc": 70.4,
+    "mae": 0.79,
+    "worst": 2.8
+   },
+   "dhuhr": {
+    "exactPc": 62.7,
+    "w1Pc": 95.9,
+    "mae": 0.41,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 45.5,
+    "w1Pc": 68.8,
+    "mae": 0.86,
+    "worst": 2.8
+   },
+   "maghrib": {
+    "exactPc": 24.7,
+    "w1Pc": 57.3,
+    "mae": 0.99,
+    "worst": 2.5
+   },
+   "isha": {
+    "exactPc": 34.5,
+    "w1Pc": 46.8,
+    "mae": 1.17,
+    "worst": 3.1
+   }
+  },
+  "medianSolarRms": 23.87
+ },
+ {
+  "country": "albania",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.02,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.57,
+  "jointExactPc": 13.2,
+  "jointW1Pc": 70.4,
+  "cellsW1Pc": 94.4,
+  "worst": 1.6,
+  "worstWhere": "tirana 2027-04-10 fajr table 04:31 calc 04:33",
+  "implied": {
+   "fajrAngle": 17.99,
+   "ishaAngle": 17.02,
+   "ishaAngleSd": 0.1,
+   "ishaGap": 93,
+   "ishaGapSd": 10.5,
+   "fajrSunriseGap": -98,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 41.33,
+   "latMax": 41.33,
+   "lonMin": 19.82,
+   "lonMax": 19.82
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.26,
+    "dhuhr": -0.03
+   },
+   "2026-12": {
+    "sunrise": 0.12,
+    "dhuhr": 0.08
+   },
+   "2027-01": {
+    "sunrise": -0.16,
+    "dhuhr": 0.14
+   },
+   "2027-02": {
+    "sunrise": -0.52,
+    "dhuhr": 0.09
+   },
+   "2027-03": {
+    "sunrise": -0.77,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": -0.79,
+    "dhuhr": -0.09
+   },
+   "2027-05": {
+    "sunrise": -0.55,
+    "dhuhr": -0.05
+   },
+   "2027-06": {
+    "sunrise": 0.02,
+    "dhuhr": 0.08
+   },
+   "2027-07": {
+    "sunrise": 0.36,
+    "dhuhr": -0.02
+   },
+   "2027-08": {
+    "sunrise": 0.5,
+    "dhuhr": -0.09
+   },
+   "2027-09": {
+    "sunrise": 0.29,
+    "dhuhr": -0.14
+   },
+   "2027-10": {
+    "sunrise": 0.55,
+    "dhuhr": -0.17
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 48.2,
+    "w1Pc": 84.7,
+    "mae": 0.57,
+    "worst": 1.6
+   },
+   "sunrise": {
+    "exactPc": 60.5,
+    "w1Pc": 95.1,
+    "mae": 0.45,
+    "worst": 1.3
+   },
+   "dhuhr": {
+    "exactPc": 90.7,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 73.4,
+    "w1Pc": 100,
+    "mae": 0.34,
+    "worst": 1
+   },
+   "maghrib": {
+    "exactPc": 52.3,
+    "w1Pc": 93.4,
+    "mae": 0.5,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 56.7,
+    "w1Pc": 93.4,
+    "mae": 0.47,
+    "worst": 1.3
+   }
+  },
+  "medianSolarRms": 0.57
+ },
+ {
+  "country": "aland-islands",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.05,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 1.09,
+  "jointExactPc": 1.6,
+  "jointW1Pc": 13.7,
+  "cellsW1Pc": 64.2,
+  "worst": 37.3,
+  "worstWhere": "mariehamn 2027-08-19 isha table 01:07 calc 01:44",
+  "implied": {
+   "fajrAngle": 17.89,
+   "ishaAngle": 16.9,
+   "ishaAngleSd": 3.67,
+   "ishaGap": 154,
+   "ishaGapSd": 32,
+   "fajrSunriseGap": -159,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 60.07,
+   "latMax": 60.07,
+   "lonMin": 19.93,
+   "lonMax": 19.93
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.5,
+    "dhuhr": 0.06
+   },
+   "2026-12": {
+    "sunrise": 0.28,
+    "dhuhr": 0.05
+   },
+   "2027-01": {
+    "sunrise": -0.42,
+    "dhuhr": 0.15
+   },
+   "2027-02": {
+    "sunrise": -1.03,
+    "dhuhr": -0.18
+   },
+   "2027-03": {
+    "sunrise": -1.33,
+    "dhuhr": -0.15
+   },
+   "2027-04": {
+    "sunrise": -1.56,
+    "dhuhr": -0.07
+   },
+   "2027-05": {
+    "sunrise": -1.5,
+    "dhuhr": 0.11
+   },
+   "2027-06": {
+    "sunrise": -0.33,
+    "dhuhr": 0.07
+   },
+   "2027-07": {
+    "sunrise": 0.96,
+    "dhuhr": 0.11
+   },
+   "2027-08": {
+    "sunrise": 1.23,
+    "dhuhr": -0.09
+   },
+   "2027-09": {
+    "sunrise": 1.14,
+    "dhuhr": -0.12
+   },
+   "2027-10": {
+    "sunrise": 1.13,
+    "dhuhr": -0.1
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 22.2,
+    "w1Pc": 42.7,
+    "mae": 1.51,
+    "worst": 28.4
+   },
+   "sunrise": {
+    "exactPc": 19.5,
+    "w1Pc": 50.1,
+    "mae": 0.98,
+    "worst": 2.1
+   },
+   "dhuhr": {
+    "exactPc": 91.8,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.6
+   },
+   "asr": {
+    "exactPc": 39.7,
+    "w1Pc": 73.4,
+    "mae": 0.7,
+    "worst": 1.9
+   },
+   "maghrib": {
+    "exactPc": 17.3,
+    "w1Pc": 55.3,
+    "mae": 0.97,
+    "worst": 2
+   },
+   "isha": {
+    "exactPc": 28.5,
+    "w1Pc": 63.3,
+    "mae": 1.02,
+    "worst": 37.3
+   }
+  },
+  "medianSolarRms": 1.09
+ },
+ {
+  "country": "argentina",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.99,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.98,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.5,
+  "jointExactPc": 14.5,
+  "jointW1Pc": 84.4,
+  "cellsW1Pc": 97,
+  "worst": 1.3,
+  "worstWhere": "buenos-aires 2027-01-24 fajr table 04:28 calc 04:27",
+  "implied": {
+   "fajrAngle": 17.99,
+   "ishaAngle": 16.98,
+   "ishaAngleSd": 0.09,
+   "ishaGap": 83,
+   "ishaGapSd": 6.3,
+   "fajrSunriseGap": -89,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": -34.65,
+   "latMax": -34.65,
+   "lonMin": -58.38,
+   "lonMax": -58.38
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.07,
+    "dhuhr": 0
+   },
+   "2026-12": {
+    "sunrise": 0.16,
+    "dhuhr": 0.08
+   },
+   "2027-01": {
+    "sunrise": 0.62,
+    "dhuhr": 0.18
+   },
+   "2027-02": {
+    "sunrise": 0.44,
+    "dhuhr": 0.05
+   },
+   "2027-03": {
+    "sunrise": 0.45,
+    "dhuhr": -0.11
+   },
+   "2027-04": {
+    "sunrise": 0.28,
+    "dhuhr": -0.11
+   },
+   "2027-05": {
+    "sunrise": 0.26,
+    "dhuhr": -0.01
+   },
+   "2027-06": {
+    "sunrise": 0.02,
+    "dhuhr": 0.04
+   },
+   "2027-07": {
+    "sunrise": -0.33,
+    "dhuhr": 0.04
+   },
+   "2027-08": {
+    "sunrise": -0.6,
+    "dhuhr": -0.1
+   },
+   "2027-09": {
+    "sunrise": -0.72,
+    "dhuhr": -0.22
+   },
+   "2027-10": {
+    "sunrise": -0.56,
+    "dhuhr": -0.15
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 58.9,
+    "w1Pc": 92.1,
+    "mae": 0.47,
+    "worst": 1.3
+   },
+   "sunrise": {
+    "exactPc": 61.6,
+    "w1Pc": 96.7,
+    "mae": 0.44,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "exactPc": 89.3,
+    "w1Pc": 100,
+    "mae": 0.25,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 50.7,
+    "w1Pc": 94.2,
+    "mae": 0.5,
+    "worst": 1.2
+   },
+   "maghrib": {
+    "exactPc": 66.6,
+    "w1Pc": 98.9,
+    "mae": 0.39,
+    "worst": 1.1
+   },
+   "isha": {
+    "exactPc": 71.5,
+    "w1Pc": 100,
+    "mae": 0.35,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 0.5
+ },
+ {
+  "country": "antigua-and-barbuda",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.02,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.01,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.37,
+  "jointExactPc": 20,
+  "jointW1Pc": 91.8,
+  "cellsW1Pc": 98.6,
+  "worst": 1.4,
+  "worstWhere": "saint-johns 2027-08-17 asr table 15:26 calc 15:25",
+  "implied": {
+   "fajrAngle": 18.02,
+   "ishaAngle": 17.01,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 71,
+   "ishaGapSd": 2.9,
+   "fajrSunriseGap": -75,
+   "asrFactor": 0.999
+  },
+  "extent": {
+   "latMin": 17.02,
+   "latMax": 17.02,
+   "lonMin": -61.85,
+   "lonMax": -61.85
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.31,
+    "dhuhr": 0
+   },
+   "2026-12": {
+    "sunrise": 0.29,
+    "dhuhr": 0.18
+   },
+   "2027-01": {
+    "sunrise": 0.07,
+    "dhuhr": 0.21
+   },
+   "2027-02": {
+    "sunrise": -0.08,
+    "dhuhr": -0.07
+   },
+   "2027-03": {
+    "sunrise": -0.36,
+    "dhuhr": -0.1
+   },
+   "2027-04": {
+    "sunrise": -0.42,
+    "dhuhr": -0.07
+   },
+   "2027-05": {
+    "sunrise": -0.29,
+    "dhuhr": 0.03
+   },
+   "2027-06": {
+    "sunrise": -0.08,
+    "dhuhr": 0.11
+   },
+   "2027-07": {
+    "sunrise": -0.08,
+    "dhuhr": 0.1
+   },
+   "2027-08": {
+    "sunrise": -0.03,
+    "dhuhr": -0.09
+   },
+   "2027-09": {
+    "sunrise": 0.01,
+    "dhuhr": -0.15
+   },
+   "2027-10": {
+    "sunrise": 0.2,
+    "dhuhr": -0.08
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 79.7,
+    "w1Pc": 100,
+    "mae": 0.31,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 78.6,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.9
+   },
+   "dhuhr": {
+    "exactPc": 89.3,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 49,
+    "w1Pc": 91.8,
+    "mae": 0.53,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 78.4,
+    "w1Pc": 100,
+    "mae": 0.31,
+    "worst": 0.9
+   },
+   "isha": {
+    "exactPc": 80.3,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.8
+   }
+  },
+  "medianSolarRms": 0.37
+ },
+ {
+  "country": "anguilla",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.99,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.36,
+  "jointExactPc": 21.4,
+  "jointW1Pc": 91.2,
+  "cellsW1Pc": 98.5,
+  "worst": 1.2,
+  "worstWhere": "the-valley 2027-03-23 asr table 15:41 calc 15:42",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 16.99,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 71,
+   "ishaGapSd": 3,
+   "fajrSunriseGap": -76,
+   "asrFactor": 1
+  },
+  "extent": {
+   "latMin": 18.18,
+   "latMax": 18.18,
+   "lonMin": -63.06,
+   "lonMax": -63.06
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.12,
+    "dhuhr": 0.04
+   },
+   "2026-12": {
+    "sunrise": 0.16,
+    "dhuhr": 0.1
+   },
+   "2027-01": {
+    "sunrise": 0.06,
+    "dhuhr": 0.13
+   },
+   "2027-02": {
+    "sunrise": -0.25,
+    "dhuhr": -0.17
+   },
+   "2027-03": {
+    "sunrise": -0.35,
+    "dhuhr": -0.15
+   },
+   "2027-04": {
+    "sunrise": -0.38,
+    "dhuhr": -0.13
+   },
+   "2027-05": {
+    "sunrise": -0.12,
+    "dhuhr": 0.14
+   },
+   "2027-06": {
+    "sunrise": 0,
+    "dhuhr": 0.05
+   },
+   "2027-07": {
+    "sunrise": 0.1,
+    "dhuhr": 0.12
+   },
+   "2027-08": {
+    "sunrise": 0.09,
+    "dhuhr": -0.14
+   },
+   "2027-09": {
+    "sunrise": 0.06,
+    "dhuhr": -0.24
+   },
+   "2027-10": {
+    "sunrise": 0.11,
+    "dhuhr": -0.13
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 80.5,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 83.3,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.9
+   },
+   "dhuhr": {
+    "exactPc": 89.3,
+    "w1Pc": 100,
+    "mae": 0.27,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 47.7,
+    "w1Pc": 91.2,
+    "mae": 0.53,
+    "worst": 1.2
+   },
+   "maghrib": {
+    "exactPc": 81.1,
+    "w1Pc": 100,
+    "mae": 0.3,
+    "worst": 0.9
+   },
+   "isha": {
+    "exactPc": 81.6,
+    "w1Pc": 100,
+    "mae": 0.29,
+    "worst": 0.8
+   }
+  },
+  "medianSolarRms": 0.36
+ },
+ {
+  "country": "american-samoa",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.01,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.99,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.34,
+  "jointExactPc": 18.4,
+  "jointW1Pc": 74.2,
+  "cellsW1Pc": 95.7,
+  "worst": 1.6,
+  "worstWhere": "pago-pago 2027-02-19 asr table 15:48 calc 15:46",
+  "implied": {
+   "fajrAngle": 18.01,
+   "ishaAngle": 16.99,
+   "ishaAngleSd": 0.07,
+   "ishaGap": 70,
+   "ishaGapSd": 2.6,
+   "fajrSunriseGap": -74,
+   "asrFactor": 0.999
+  },
+  "extent": {
+   "latMin": -14.23,
+   "latMax": -14.23,
+   "lonMin": -170.71,
+   "lonMax": -170.71
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -0.05,
+    "dhuhr": 0
+   },
+   "2026-12": {
+    "sunrise": 0.07,
+    "dhuhr": 0.07
+   },
+   "2027-01": {
+    "sunrise": 0.21,
+    "dhuhr": 0.12
+   },
+   "2027-02": {
+    "sunrise": 0.13,
+    "dhuhr": 0.03
+   },
+   "2027-03": {
+    "sunrise": 0.05,
+    "dhuhr": -0.12
+   },
+   "2027-04": {
+    "sunrise": 0.07,
+    "dhuhr": -0.15
+   },
+   "2027-05": {
+    "sunrise": 0.15,
+    "dhuhr": -0.11
+   },
+   "2027-06": {
+    "sunrise": 0.21,
+    "dhuhr": 0.03
+   },
+   "2027-07": {
+    "sunrise": -0.06,
+    "dhuhr": -0.11
+   },
+   "2027-08": {
+    "sunrise": -0.23,
+    "dhuhr": -0.06
+   },
+   "2027-09": {
+    "sunrise": -0.41,
+    "dhuhr": -0.13
+   },
+   "2027-10": {
+    "sunrise": -0.32,
+    "dhuhr": -0.15
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 84.4,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   },
+   "sunrise": {
+    "exactPc": 83,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   },
+   "dhuhr": {
+    "exactPc": 92.6,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   },
+   "asr": {
+    "exactPc": 29.3,
+    "w1Pc": 74.2,
+    "mae": 0.71,
+    "worst": 1.6
+   },
+   "maghrib": {
+    "exactPc": 86.3,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.8
+   },
+   "isha": {
+    "exactPc": 87.9,
+    "w1Pc": 100,
+    "mae": 0.26,
+    "worst": 0.7
+   }
+  },
+  "medianSolarRms": 0.34
+ },
+ {
+  "country": "canada",
+  "cities": 1,
+  "rows": 365,
+  "recipe": {
+   "fajr": "sunrise-interval",
+   "fajrAngle": 0,
+   "fajrInterval": 30,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 139,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": -35,
+    "sunrise": 28,
+    "dhuhr": 67,
+    "asr": 58,
+    "maghrib": 34,
+    "isha": 0
+   }
+  },
+  "solarRms": 7.7,
+  "jointExactPc": 0,
+  "jointW1Pc": 0,
+  "cellsW1Pc": 32.1,
+  "worst": 77,
+  "worstWhere": "vancouver 2026-11-02 dhuhr table 14:20 calc 13:03",
+  "implied": {
+   "fajrAngle": 5.36,
+   "ishaAngle": 19.51,
+   "ishaAngleSd": 4.13,
+   "ishaGap": 105,
+   "ishaGapSd": 23.6,
+   "fajrSunriseGap": -58,
+   "asrFactor": 5.112
+  },
+  "extent": {
+   "latMin": 49.25,
+   "latMax": 49.25,
+   "lonMin": -123.12,
+   "lonMax": -123.12
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 8.01,
+    "dhuhr": 23.28
+   },
+   "2026-12": {
+    "sunrise": -0.11,
+    "dhuhr": 4.63
+   },
+   "2027-01": {
+    "sunrise": -0.34,
+    "dhuhr": -8.8
+   },
+   "2027-02": {
+    "sunrise": -0.38,
+    "dhuhr": -13.19
+   },
+   "2027-03": {
+    "sunrise": 3.36,
+    "dhuhr": -4.05
+   },
+   "2027-04": {
+    "sunrise": -0.19,
+    "dhuhr": 0.41
+   },
+   "2027-05": {
+    "sunrise": 0.27,
+    "dhuhr": 3.77
+   },
+   "2027-06": {
+    "sunrise": 0.76,
+    "dhuhr": -0.18
+   },
+   "2027-07": {
+    "sunrise": 1.17,
+    "dhuhr": -5.26
+   },
+   "2027-08": {
+    "sunrise": 1.11,
+    "dhuhr": -3.41
+   },
+   "2027-09": {
+    "sunrise": 0.97,
+    "dhuhr": 5.55
+   },
+   "2027-10": {
+    "sunrise": 0.71,
+    "dhuhr": 14.61
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 4.7,
+    "w1Pc": 9.3,
+    "mae": 9.06,
+    "worst": 59.7
+   },
+   "sunrise": {
+    "exactPc": 37.8,
+    "w1Pc": 78.9,
+    "mae": 1.62,
+    "worst": 60.7
+   },
+   "dhuhr": {
+    "exactPc": 3.8,
+    "w1Pc": 7.7,
+    "mae": 8.04,
+    "worst": 77
+   },
+   "asr": {
+    "exactPc": 2.5,
+    "w1Pc": 4.9,
+    "mae": 13.09,
+    "worst": 54
+   },
+   "maghrib": {
+    "exactPc": 50.1,
+    "w1Pc": 84.7,
+    "mae": 1.51,
+    "worst": 60
+   },
+   "isha": {
+    "exactPc": 4.1,
+    "w1Pc": 7.1,
+    "mae": 17.91,
+    "worst": 61.3
+   }
+  },
+  "medianSolarRms": 32.91
+ },
+ {
+  "country": "south-korea",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 365,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 17.91,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 17.09,
+   "ishaInterval": null,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.62,
+  "jointExactPc": 2.2,
+  "jointW1Pc": 41.6,
+  "cellsW1Pc": 87.9,
+  "worst": 2.3,
+  "worstWhere": "seoul 2027-04-29 fajr table 04:01 calc 04:03",
+  "implied": {
+   "fajrAngle": 17.91,
+   "ishaAngle": 17.09,
+   "ishaAngleSd": 0.09,
+   "ishaGap": 87,
+   "ishaGapSd": 7.8,
+   "fajrSunriseGap": -91,
+   "asrFactor": 1.006
+  },
+  "extent": {
+   "latMin": 37.57,
+   "latMax": 37.57,
+   "lonMin": 126.98,
+   "lonMax": 126.98
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.45,
+    "dhuhr": 0.43
+   },
+   "2026-12": {
+    "sunrise": 0.53,
+    "dhuhr": 0.47
+   },
+   "2027-01": {
+    "sunrise": 0.51,
+    "dhuhr": 0.62
+   },
+   "2027-02": {
+    "sunrise": 0.39,
+    "dhuhr": 0.54
+   },
+   "2027-03": {
+    "sunrise": 0.2,
+    "dhuhr": 0.47
+   },
+   "2027-04": {
+    "sunrise": 0.18,
+    "dhuhr": 0.44
+   },
+   "2027-05": {
+    "sunrise": 0.21,
+    "dhuhr": 0.47
+   },
+   "2027-06": {
+    "sunrise": 0.48,
+    "dhuhr": 0.55
+   },
+   "2027-07": {
+    "sunrise": 0.61,
+    "dhuhr": 0.49
+   },
+   "2027-08": {
+    "sunrise": 0.68,
+    "dhuhr": 0.52
+   },
+   "2027-09": {
+    "sunrise": 0.62,
+    "dhuhr": 0.47
+   },
+   "2027-10": {
+    "sunrise": 0.67,
+    "dhuhr": 0.47
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 22.5,
+    "w1Pc": 54.8,
+    "mae": 0.99,
+    "worst": 2.3
+   },
+   "sunrise": {
+    "exactPc": 53.2,
+    "w1Pc": 91.2,
+    "mae": 0.51,
+    "worst": 1.8
+   },
+   "dhuhr": {
+    "exactPc": 50.4,
+    "w1Pc": 97.5,
+    "mae": 0.5,
+    "worst": 1.2
+   },
+   "asr": {
+    "exactPc": 51.8,
+    "w1Pc": 95.6,
+    "mae": 0.49,
+    "worst": 1.4
+   },
+   "maghrib": {
+    "exactPc": 52.3,
+    "w1Pc": 90.4,
+    "mae": 0.51,
+    "worst": 1.6
+   },
+   "isha": {
+    "exactPc": 62.2,
+    "w1Pc": 97.5,
+    "mae": 0.41,
+    "worst": 1.6
+   }
+  },
+  "medianSolarRms": 0.68
+ },
+ {
+  "country": "denmark",
+  "cities": 1,
+  "rows": 365,
+  "recipe": {
+   "fajr": "sunrise-interval",
+   "fajrAngle": 0,
+   "fajrInterval": 82,
+   "isha": "maghrib-interval",
+   "ishaAngle": null,
+   "ishaInterval": 135,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": -82,
+    "sunrise": 55,
+    "dhuhr": 65,
+    "asr": -13,
+    "maghrib": 64,
+    "isha": 0
+   }
+  },
+  "solarRms": 37.91,
+  "jointExactPc": 0,
+  "jointW1Pc": 0,
+  "cellsW1Pc": 27,
+  "worst": 69.8,
+  "worstWhere": "aarhus 2026-12-25 fajr table 06:28 calc 07:38",
+  "implied": {
+   "fajrAngle": 11.57,
+   "ishaAngle": 16.93,
+   "ishaAngleSd": 4.49,
+   "ishaGap": 115,
+   "ishaGapSd": 21.6,
+   "fajrSunriseGap": -122,
+   "asrFactor": 1.77
+  },
+  "extent": {
+   "latMin": 56.16,
+   "latMax": 56.16,
+   "lonMin": 10.21,
+   "lonMax": 10.21
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -60.41,
+    "dhuhr": -59.9
+   },
+   "2026-12": {
+    "sunrise": -60.13,
+    "dhuhr": -59.98
+   },
+   "2027-01": {
+    "sunrise": -59.65,
+    "dhuhr": -59.84
+   },
+   "2027-02": {
+    "sunrise": -59.65,
+    "dhuhr": -59.81
+   },
+   "2027-03": {
+    "sunrise": -50.09,
+    "dhuhr": -50.05
+   },
+   "2027-04": {
+    "sunrise": 0.08,
+    "dhuhr": 0.28
+   },
+   "2027-05": {
+    "sunrise": 0.06,
+    "dhuhr": 0.26
+   },
+   "2027-06": {
+    "sunrise": 0.25,
+    "dhuhr": 0.15
+   },
+   "2027-07": {
+    "sunrise": 0.25,
+    "dhuhr": 0.23
+   },
+   "2027-08": {
+    "sunrise": 0.33,
+    "dhuhr": 0.26
+   },
+   "2027-09": {
+    "sunrise": 0.26,
+    "dhuhr": 0.31
+   },
+   "2027-10": {
+    "sunrise": -3.67,
+    "dhuhr": -3.66
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 0.8,
+    "w1Pc": 1.9,
+    "mae": 40.44,
+    "worst": 69.8
+   },
+   "sunrise": {
+    "exactPc": 51,
+    "w1Pc": 59.5,
+    "mae": 24.47,
+    "worst": 60.9
+   },
+   "dhuhr": {
+    "exactPc": 47.4,
+    "w1Pc": 59.5,
+    "mae": 24.46,
+    "worst": 60.4
+   },
+   "asr": {
+    "exactPc": 2.7,
+    "w1Pc": 7.1,
+    "mae": 15.65,
+    "worst": 39.6
+   },
+   "maghrib": {
+    "exactPc": 19.5,
+    "w1Pc": 23.6,
+    "mae": 24.85,
+    "worst": 60.4
+   },
+   "isha": {
+    "exactPc": 4.7,
+    "w1Pc": 10.4,
+    "mae": 21.59,
+    "worst": 67.2
+   }
+  },
+  "medianSolarRms": 46.78
+ },
+ {
+  "country": "belgium",
+  "cities": 1,
+  "rows": 365,
+  "recipe": {
+   "fajr": "sunrise-interval",
+   "fajrAngle": 0,
+   "fajrInterval": 38,
+   "isha": "angle",
+   "ishaAngle": 14.95,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": -43,
+    "sunrise": 56,
+    "dhuhr": 60,
+    "asr": -13,
+    "maghrib": 60,
+    "isha": -3
+   }
+  },
+  "solarRms": 38.23,
+  "jointExactPc": 0,
+  "jointW1Pc": 0,
+  "cellsW1Pc": 19.7,
+  "worst": 60.8,
+  "worstWhere": "tournai 2027-03-30 sunrise table 07:23 calc 08:24",
+  "implied": {
+   "fajrAngle": 6,
+   "ishaAngle": 14.85,
+   "ishaAngleSd": 3.44,
+   "ishaGap": 81,
+   "ishaGapSd": 8.7,
+   "fajrSunriseGap": -78,
+   "asrFactor": 1.753
+  },
+  "extent": {
+   "latMin": 50.61,
+   "latMax": 50.61,
+   "lonMin": 3.39,
+   "lonMax": 3.39
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": -57.19,
+    "dhuhr": -59.92
+   },
+   "2026-12": {
+    "sunrise": -57.93,
+    "dhuhr": -59.76
+   },
+   "2027-01": {
+    "sunrise": -58.28,
+    "dhuhr": -60.04
+   },
+   "2027-02": {
+    "sunrise": -58.18,
+    "dhuhr": -59.92
+   },
+   "2027-03": {
+    "sunrise": -58.29,
+    "dhuhr": -58.24
+   },
+   "2027-04": {
+    "sunrise": -0.19,
+    "dhuhr": -0.14
+   },
+   "2027-05": {
+    "sunrise": 0.26,
+    "dhuhr": 0.04
+   },
+   "2027-06": {
+    "sunrise": 1.42,
+    "dhuhr": 0.16
+   },
+   "2027-07": {
+    "sunrise": 2.68,
+    "dhuhr": 0.1
+   },
+   "2027-08": {
+    "sunrise": 3.32,
+    "dhuhr": -0.12
+   },
+   "2027-09": {
+    "sunrise": 3.37,
+    "dhuhr": -0.24
+   },
+   "2027-10": {
+    "sunrise": -6.27,
+    "dhuhr": -9.82
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 2.7,
+    "w1Pc": 4.9,
+    "mae": 24.36,
+    "worst": 47.2
+   },
+   "sunrise": {
+    "exactPc": 12.6,
+    "w1Pc": 18.6,
+    "mae": 25.96,
+    "worst": 60.8
+   },
+   "dhuhr": {
+    "exactPc": 48.5,
+    "w1Pc": 57.5,
+    "mae": 25.61,
+    "worst": 60.7
+   },
+   "asr": {
+    "exactPc": 4.1,
+    "w1Pc": 7.4,
+    "mae": 17.04,
+    "worst": 40
+   },
+   "maghrib": {
+    "exactPc": 19.5,
+    "w1Pc": 29,
+    "mae": 25.62,
+    "worst": 60
+   },
+   "isha": {
+    "exactPc": 0.5,
+    "w1Pc": 0.8,
+    "mae": 24.73,
+    "worst": 48.1
+   }
+  },
+  "medianSolarRms": 45.18
+ },
+ {
+  "country": "grenada",
+  "cities": 1,
+  "excludedClockCities": 0,
+  "rows": 334,
+  "recipe": {
+   "fajr": "angle",
+   "fajrAngle": 18.58,
+   "fajrInterval": null,
+   "isha": "angle",
+   "ishaAngle": 16.42,
+   "ishaInterval": null,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -3,
+    "dhuhr": 2,
+    "asr": -3,
+    "maghrib": 2,
+    "isha": 0
+   }
+  },
+  "solarRms": 0.57,
+  "jointExactPc": 4.5,
+  "jointW1Pc": 83.8,
+  "cellsW1Pc": 97.3,
+  "worst": 1.3,
+  "worstWhere": "saintgeorge 2027-04-23 asr table 16:27 calc 16:26",
+  "implied": {
+   "fajrAngle": 18.58,
+   "ishaAngle": 16.42,
+   "ishaAngleSd": 0.08,
+   "ishaGap": 65,
+   "ishaGapSd": 2.4,
+   "fajrSunriseGap": -74,
+   "asrFactor": 1.937
+  },
+  "extent": {
+   "latMin": 12.05,
+   "latMax": 12.05,
+   "lonMin": -62.41,
+   "lonMax": -62.41
+  },
+  "seasonal": {
+   "2026-11": {
+    "sunrise": 0.6,
+    "dhuhr": 0.56
+   },
+   "2026-12": {
+    "sunrise": 0.56,
+    "dhuhr": 0.49
+   },
+   "2027-01": {
+    "sunrise": 0.4,
+    "dhuhr": 0.56
+   },
+   "2027-02": {
+    "sunrise": 0.35,
+    "dhuhr": 0.37
+   },
+   "2027-03": {
+    "sunrise": 0.19,
+    "dhuhr": 0.27
+   },
+   "2027-04": {
+    "sunrise": 0.25,
+    "dhuhr": 0.29
+   },
+   "2027-05": {
+    "sunrise": 0.48,
+    "dhuhr": 0.43
+   },
+   "2027-06": {
+    "sunrise": 0.66,
+    "dhuhr": 0.5
+   },
+   "2027-07": {
+    "sunrise": 0.73,
+    "dhuhr": 0.51
+   },
+   "2027-08": {
+    "sunrise": 0.59,
+    "dhuhr": 0.28
+   },
+   "2027-10": {
+    "sunrise": 0.46,
+    "dhuhr": 0.33
+   }
+  },
+  "byCol": {
+   "fajr": {
+    "exactPc": 78.4,
+    "w1Pc": 100,
+    "mae": 0.31,
+    "worst": 1
+   },
+   "sunrise": {
+    "exactPc": 53.9,
+    "w1Pc": 96.1,
+    "mae": 0.5,
+    "worst": 1.2
+   },
+   "dhuhr": {
+    "exactPc": 56.3,
+    "w1Pc": 99.7,
+    "mae": 0.44,
+    "worst": 1
+   },
+   "asr": {
+    "exactPc": 51.8,
+    "w1Pc": 92.5,
+    "mae": 0.51,
+    "worst": 1.3
+   },
+   "maghrib": {
+    "exactPc": 55.4,
+    "w1Pc": 95.2,
+    "mae": 0.46,
+    "worst": 1.3
+   },
+   "isha": {
+    "exactPc": 81.7,
+    "w1Pc": 100,
+    "mae": 0.28,
+    "worst": 0.9
+   }
+  },
+  "medianSolarRms": 2.5
+ }
+]

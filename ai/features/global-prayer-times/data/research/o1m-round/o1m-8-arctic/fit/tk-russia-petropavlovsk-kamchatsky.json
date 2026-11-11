@@ -1,0 +1,79 @@
+{
+ "city": "petropavlovsk-kamchatsky",
+ "nightFraction": {
+  "n": 42,
+  "med": 0.501,
+  "p10": 0.499,
+  "p90": 0.501
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Kamchatka",
+ "lat": 53.06393,
+ "lon": 158.62751,
+ "rows": 365,
+ "solarGateMedAbs": 0.57,
+ "fajrAngle": {
+  "n": 310,
+  "med": 15.9,
+  "min": 14.75,
+  "max": 16.2,
+  "jun": null,
+  "dec": 15.95
+ },
+ "ishaAngle": {
+  "n": 321,
+  "med": 15.05,
+  "min": 13.8,
+  "max": 15.2,
+  "jun": 14.2,
+  "dec": 15.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.52,
+   "min": -0.8,
+   "max": 1.6
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.5,
+   "min": 0,
+   "max": 0.9
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.5,
+   "min": -0.1,
+   "max": 1.1
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.67,
+   "min": -74.3,
+   "max": -28.1
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.57,
+   "min": 0,
+   "max": 1.1
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-06-01",
+    "to": "2027-07-12",
+    "days": 42
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 382,
+  "isha": 395
+ }
+}

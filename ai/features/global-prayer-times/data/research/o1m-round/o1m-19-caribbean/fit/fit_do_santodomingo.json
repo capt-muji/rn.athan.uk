@@ -1,0 +1,72 @@
+{
+ "file": "data/masjidbox_do_santodomingo.json",
+ "tz": "America/Santo_Domingo",
+ "meta": {
+  "name": "Masjid Al Noor Santo Domingo",
+  "lat": 18.47,
+  "lon": -69.93,
+  "country": "DO"
+ },
+ "days": 7,
+ "fajr": {
+  "angle": 21.25,
+  "offset": 14,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.23,
+  "worst": 0.4
+ },
+ "isha": {
+  "angle": 10.75,
+  "offset": 27,
+  "exact": 6,
+  "within1": 7,
+  "mae": 0.22,
+  "worst": 0.58
+ },
+ "asr_shafi": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.19,
+  "worst": 0.35
+ },
+ "asr_hanafi": {
+  "offset": -49,
+  "exact": 4,
+  "within1": 7,
+  "mae": 0.47,
+  "worst": 0.95
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 6,
+  "within1": 7,
+  "mae": 0.25,
+  "worst": 0.52
+ },
+ "maghrib": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.24,
+  "worst": 0.42
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.25,
+  "worst": 0.33
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   null,
+   null
+  ],
+  "jul": [
+   null,
+   null
+  ]
+ }
+}

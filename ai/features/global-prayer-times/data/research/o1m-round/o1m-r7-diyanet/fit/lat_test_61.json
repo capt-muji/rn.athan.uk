@@ -1,0 +1,160 @@
+{
+ "country": "CIN",
+ "rows": [
+  {
+   "col": "imsak",
+   "angle": 16,
+   "centre": -15,
+   "spread": 1,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 16.5,
+   "centre": -12.6,
+   "spread": 0.8,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 17,
+   "centre": -10.1,
+   "spread": 0.5,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 17.5,
+   "centre": -7.6,
+   "spread": 0.3,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 18,
+   "centre": -5,
+   "spread": 0.1,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 18.5,
+   "centre": -2.4,
+   "spread": 0.4,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "imsak",
+   "angle": 19,
+   "centre": 0.1,
+   "spread": 0.6,
+   "slope": 0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 14,
+   "centre": 5.1,
+   "spread": 1.1,
+   "slope": 0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 14.5,
+   "centre": 2.7,
+   "spread": 0.8,
+   "slope": 0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 15,
+   "centre": 0.1,
+   "spread": 0.5,
+   "slope": 0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 15.5,
+   "centre": -2.5,
+   "spread": 0.3,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 16,
+   "centre": -5,
+   "spread": 0.3,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 16.5,
+   "centre": -7.7,
+   "spread": 0.5,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 17,
+   "centre": -10.2,
+   "spread": 0.7,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  {
+   "col": "isha",
+   "angle": 17.5,
+   "centre": -12.8,
+   "spread": 1,
+   "slope": -0.1,
+   "latMin": 18.3,
+   "latMax": 47.8
+  }
+ ],
+ "best": {
+  "imsak": {
+   "col": "imsak",
+   "angle": 18,
+   "centre": -5,
+   "spread": 0.1,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  },
+  "isha": {
+   "col": "isha",
+   "angle": 15.5,
+   "centre": -2.5,
+   "spread": 0.3,
+   "slope": 0,
+   "latMin": 18.3,
+   "latMax": 47.8
+  }
+ }
+}

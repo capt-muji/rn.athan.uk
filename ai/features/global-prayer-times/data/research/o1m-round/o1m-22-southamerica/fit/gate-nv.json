@@ -1,0 +1,25 @@
+{
+ "gate": "namazvakti",
+ "final_batch_cities": [
+  10861,
+  10779,
+  10847,
+  10811,
+  4648,
+  4616,
+  4656,
+  20743,
+  20776,
+  3993,
+  3923,
+  60100
+ ],
+ "days_per_city": 2,
+ "cells_ok": 144,
+ "cells_bad": 0,
+ "cumulative": {
+  "cities": 37,
+  "cells_ok": 612,
+  "cells_bad": 0
+ }
+}

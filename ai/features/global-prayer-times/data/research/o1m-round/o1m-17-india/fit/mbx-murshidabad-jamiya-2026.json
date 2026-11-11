@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-murshidabad-jamiya-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 23.82,
+  "lon": 87.96
+ },
+ "coarse": {
+  "lat": 23.9,
+  "lon": 88,
+  "mae": 0.108
+ },
+ "mid": {
+  "lat": 23.82,
+  "lon": 87.96,
+  "mae": 0
+ },
+ "meta": {
+  "name": "Masjid al jamiya muhammadiya",
+  "address": "Raigram, Murshidabad, West Bengal, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.2,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.25,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.43,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "mae": 0,
+   "mad": 0
+  },
+  {
+   "a": 16.95,
+   "med": 0,
+   "mae": 0.16,
+   "mad": 0
+  },
+  {
+   "a": 17.05,
+   "med": 0,
+   "mae": 0.27,
+   "mad": 0
+  },
+  {
+   "a": 16.9,
+   "med": 0,
+   "mae": 0.37,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 0
+  },
+  "1": {
+   "med": -56,
+   "mad": 11
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 96.6,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 98,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 98.9,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 351,
+ "all_six_exact": 319,
+ "amplitude_fajr_min": 101
+}

@@ -1,0 +1,117 @@
+{
+ "rows": "data/masjidbox-hyderabad-farhat-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 17.32,
+  "lon": 78.335,
+  "mae": 0.478
+ },
+ "coarse": {
+  "lat": 17.3,
+  "lon": 78.35,
+  "mae": 0.49
+ },
+ "fajr_angle": 17.8,
+ "fajr_sweep": [
+  {
+   "a": 17.8,
+   "med": -1,
+   "maeCentred": 0.04
+  },
+  {
+   "a": 18.25,
+   "med": 1,
+   "maeCentred": 0.05
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.09
+  }
+ ],
+ "isha_angle": 18.2,
+ "isha_sweep": [
+  {
+   "a": 18.2,
+   "med": -1,
+   "maeCentred": 0.02
+  },
+  {
+   "a": 17.75,
+   "med": 1,
+   "maeCentred": 0.06
+  },
+  {
+   "a": 18.65,
+   "med": -3,
+   "maeCentred": 0.1
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "maeCentred": 0.11
+  },
+  "1": {
+   "med": -60,
+   "maeCentred": 10.21
+  }
+ },
+ "margins": {
+  "fajr": -1,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": -1
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 96.4,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 90.1,
+   "within1": 100,
+   "mae": 0.1,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 85.8,
+   "within1": 100,
+   "mae": 0.14,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 89,
+   "within1": 100,
+   "mae": 0.11,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 89.6,
+   "within1": 100,
+   "mae": 0.1,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 97.8,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 218,
+ "amplitude_fajr_min": 74
+}

@@ -1,0 +1,5546 @@
+{
+ "national_margins_at_reference_point": {
+  "fajr": 2.53,
+  "sunrise": -3.22,
+  "dhuhr": 3.53,
+  "asr": 2.55,
+  "maghrib": 3.3,
+  "isha": 2.55
+ },
+ "per_year": {
+  "2028": {
+   "units": 49,
+   "rows": 17934,
+   "fajr": {
+    "exact_pc": 44.9,
+    "w1_pc": 96.7,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 33.6,
+    "w1_pc": 78.6,
+    "worst": 5
+   },
+   "dhuhr": {
+    "exact_pc": 45.1,
+    "w1_pc": 97.3,
+    "worst": 2
+   },
+   "asr": {
+    "exact_pc": 47.5,
+    "w1_pc": 97.2,
+    "worst": 3
+   },
+   "maghrib": {
+    "exact_pc": 42.2,
+    "w1_pc": 79.3,
+    "worst": 6
+   },
+   "isha": {
+    "exact_pc": 47.5,
+    "w1_pc": 97.2,
+    "worst": 2
+   }
+  },
+  "2029": {
+   "units": 49,
+   "rows": 17855,
+   "fajr": {
+    "exact_pc": 45.2,
+    "w1_pc": 96.7,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 33.5,
+    "w1_pc": 78.6,
+    "worst": 5
+   },
+   "dhuhr": {
+    "exact_pc": 45.3,
+    "w1_pc": 97.3,
+    "worst": 2
+   },
+   "asr": {
+    "exact_pc": 47.3,
+    "w1_pc": 97.3,
+    "worst": 3
+   },
+   "maghrib": {
+    "exact_pc": 42.6,
+    "w1_pc": 79.3,
+    "worst": 6
+   },
+   "isha": {
+    "exact_pc": 47.5,
+    "w1_pc": 97.3,
+    "worst": 2
+   }
+  },
+  "2030": {
+   "units": 49,
+   "rows": 17885,
+   "fajr": {
+    "exact_pc": 44.6,
+    "w1_pc": 96.8,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 33.3,
+    "w1_pc": 78.6,
+    "worst": 5
+   },
+   "dhuhr": {
+    "exact_pc": 44.8,
+    "w1_pc": 97.2,
+    "worst": 2
+   },
+   "asr": {
+    "exact_pc": 46.6,
+    "w1_pc": 97.2,
+    "worst": 3
+   },
+   "maghrib": {
+    "exact_pc": 42.1,
+    "w1_pc": 79.2,
+    "worst": 6
+   },
+   "isha": {
+    "exact_pc": 46.7,
+    "w1_pc": 97.3,
+    "worst": 2
+   }
+  }
+ },
+ "all_years": {
+  "units": 147,
+  "rows": 53674,
+  "fajr": {
+   "exact_pc": 44.9,
+   "w1_pc": 96.7,
+   "worst": 2
+  },
+  "sunrise": {
+   "exact_pc": 33.4,
+   "w1_pc": 78.6,
+   "worst": 5
+  },
+  "dhuhr": {
+   "exact_pc": 45.1,
+   "w1_pc": 97.3,
+   "worst": 2
+  },
+  "asr": {
+   "exact_pc": 47.1,
+   "w1_pc": 97.2,
+   "worst": 3
+  },
+  "maghrib": {
+   "exact_pc": 42.3,
+   "w1_pc": 79.3,
+   "worst": 6
+  },
+  "isha": {
+   "exact_pc": 47.2,
+   "w1_pc": 97.3,
+   "worst": 2
+  }
+ },
+ "per_province": {
+  "BANTEN": {
+   "units": 24,
+   "rows": 8768,
+   "fajr": {
+    "exact_pc": 51.2,
+    "w1_pc": 98.1,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 46.3,
+    "w1_pc": 98.6,
+    "worst": 2
+   },
+   "dhuhr": {
+    "exact_pc": 49.8,
+    "w1_pc": 100,
+    "worst": 1
+   },
+   "asr": {
+    "exact_pc": 52,
+    "w1_pc": 98.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact_pc": 56.5,
+    "w1_pc": 97.8,
+    "worst": 2
+   },
+   "isha": {
+    "exact_pc": 50.6,
+    "w1_pc": 97.5,
+    "worst": 2
+   }
+  },
+  "JAWA BARAT": {
+   "units": 78,
+   "rows": 28466,
+   "fajr": {
+    "exact_pc": 46.9,
+    "w1_pc": 99.3,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 28.6,
+    "w1_pc": 68.5,
+    "worst": 5
+   },
+   "dhuhr": {
+    "exact_pc": 47.3,
+    "w1_pc": 99.7,
+    "worst": 2
+   },
+   "asr": {
+    "exact_pc": 49.4,
+    "w1_pc": 99.7,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact_pc": 36.4,
+    "w1_pc": 69,
+    "worst": 6
+   },
+   "isha": {
+    "exact_pc": 49.8,
+    "w1_pc": 99.6,
+    "worst": 2
+   }
+  },
+  "LAMPUNG": {
+   "units": 45,
+   "rows": 16440,
+   "fajr": {
+    "exact_pc": 38.2,
+    "w1_pc": 91.5,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact_pc": 35,
+    "w1_pc": 85.4,
+    "worst": 4
+   },
+   "dhuhr": {
+    "exact_pc": 38.7,
+    "w1_pc": 91.6,
+    "worst": 2
+   },
+   "asr": {
+    "exact_pc": 40.7,
+    "w1_pc": 92.2,
+    "worst": 3
+   },
+   "maghrib": {
+    "exact_pc": 45,
+    "w1_pc": 87.2,
+    "worst": 6
+   },
+   "isha": {
+    "exact_pc": 41,
+    "w1_pc": 93,
+    "worst": 2
+   }
+  }
+ },
+ "per_unit": [
+  {
+   "unit": "KAB. BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 75,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 74,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 90,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 94,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 64,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 82,
+    "w1": 364,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 104,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 98,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 56,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 73,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 90,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 95,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 346,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 343,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 357,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 348,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 334,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 341,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 336,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 348,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 335,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 343,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 342,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 346,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 289,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 231,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 276,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 291,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 303,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 282,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 287,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 225,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 287,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 285,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 300,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 284,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 281,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 226,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 271,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 272,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 291,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 275,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 272,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 255,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 280,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 271,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 298,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 298,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 270,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 267,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 270,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 281,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 298,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 302,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 263,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 252,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 262,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 287,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 299,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 293,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 76,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 66,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 75,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 89,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 131,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 82,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 79,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 65,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 79,
+    "w1": 364,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 105,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 133,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 74,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 75,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 59,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 76,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 99,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 105,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 70,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 167,
+    "w1": 355,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 160,
+    "w1": 357,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 173,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 167,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 190,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 185,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 171,
+    "w1": 351,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 163,
+    "w1": 355,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 168,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 156,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 190,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 179,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 166,
+    "w1": 350,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 164,
+    "w1": 361,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 170,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 166,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 194,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 180,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 81,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 59,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 72,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 80,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 117,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 98,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 74,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 61,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 73,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 86,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 128,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 93,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 86,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 58,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 83,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 88,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 118,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 80,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. GARUT",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 299,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 355,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 333,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 314,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. GARUT",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 292,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 359,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 332,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 309,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. GARUT",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 295,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "dhuhr": {
+    "ex": 360,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 331,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 307,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 308,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 323,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 311,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 310,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 289,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 291,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 314,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 314,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 321,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 298,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 289,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 284,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 314,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 320,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 324,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 289,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 289,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 280,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 98,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 80,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 98,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 104,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 119,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 128,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 108,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 83,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 108,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 117,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 135,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 92,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 79,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 94,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 94,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 119,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 61,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 59,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 81,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 83,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 72,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 58,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 76,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 83,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 71,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 70,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 75,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 76,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG BARAT",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 0,
+    "w1": 305,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 307,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 310,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 328,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG BARAT",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 306,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 312,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 319,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 328,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG BARAT",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 310,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 296,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 308,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 6
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 325,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG SELATAN",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 263,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 270,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 321,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 308,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 289,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 288,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG SELATAN",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 273,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 268,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 323,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 316,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 289,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 291,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG SELATAN",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 274,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 266,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 307,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 299,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 290,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 292,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TENGAH",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 100,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 98,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 105,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 101,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 134,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 108,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TENGAH",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 107,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 99,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 98,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 107,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 142,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 108,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TENGAH",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 102,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 101,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 96,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 106,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 139,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 110,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TIMUR",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 35,
+    "w1": 365,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 26,
+    "w1": 365,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 59,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 55,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 78,
+    "w1": 365,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 66,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TIMUR",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 58,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 33,
+    "w1": 363,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 45,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 62,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 71,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 65,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG TIMUR",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 40,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 25,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 45,
+    "w1": 364,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 70,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 68,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 63,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG UTARA",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 292,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 291,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 289,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 321,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 319,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 310,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG UTARA",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 296,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 283,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 290,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 316,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 338,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 316,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LAMPUNG UTARA",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 298,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 285,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 296,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 313,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 331,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 318,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LEBAK",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 226,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 218,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 248,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 238,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 237,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 225,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LEBAK",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 216,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 218,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 241,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 246,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 237,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 240,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. LEBAK",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 210,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 225,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 250,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 238,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 231,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 232,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 124,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 114,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 141,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 155,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 165,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 149,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 121,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 111,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 143,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 159,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 153,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 155,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 123,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 112,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 140,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 154,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 159,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 141,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MESUJI",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 263,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 256,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 273,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 269,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 304,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 287,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MESUJI",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 263,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 255,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 283,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 273,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 307,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 286,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. MESUJI",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 255,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 244,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 269,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 280,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 303,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 278,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PANDEGLANG",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 68,
+    "w1": 312,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 68,
+    "w1": 325,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 7,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 48,
+    "w1": 328,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 56,
+    "w1": 303,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 46,
+    "w1": 291,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PANDEGLANG",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 70,
+    "w1": 308,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 68,
+    "w1": 321,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 4,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 36,
+    "w1": 327,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 56,
+    "w1": 301,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 40,
+    "w1": 297,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PANDEGLANG",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 75,
+    "w1": 310,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 74,
+    "w1": 327,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 15,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 29,
+    "w1": 331,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 65,
+    "w1": 299,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 41,
+    "w1": 290,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 169,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 143,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 165,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 165,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 196,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 147,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 176,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 136,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 152,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 166,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 204,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 142,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 160,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 134,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 153,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 162,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 204,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 150,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PESAWARAN",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 160,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 141,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 154,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 162,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 185,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 175,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PESAWARAN",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 158,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 140,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 156,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 143,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 184,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 169,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PESAWARAN",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 163,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 146,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 135,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 142,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 193,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 161,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PESISIR BARAT",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 0,
+    "w1": 203,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 208,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 233,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 242,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 255,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 256,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PESISIR BARAT",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 203,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 213,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 229,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 238,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 254,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 261,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PESISIR BARAT",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 206,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 213,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 226,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 243,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 249,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 263,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. PRINGSEWU",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 235,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 222,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 246,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 265,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 278,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 277,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PRINGSEWU",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 230,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 226,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 252,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 266,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 283,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 282,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PRINGSEWU",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 235,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 222,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 249,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 260,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 276,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 265,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 218,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 185,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 213,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 238,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 234,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 233,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 211,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 185,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 214,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 232,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 230,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 239,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 213,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 186,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 209,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 227,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 229,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 227,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SERANG",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 237,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 206,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 247,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 243,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 254,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 243,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SERANG",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 241,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 211,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 245,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 240,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 255,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 247,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SERANG",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 245,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 208,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 236,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 242,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 264,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 252,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 259,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 224,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 233,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 255,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 265,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 247,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 256,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 222,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 241,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 247,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 268,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 246,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 251,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 223,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 233,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 239,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 257,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 247,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 2,
+    "w1": 315,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 1,
+    "w1": 312,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 336,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 2,
+    "w1": 335,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 9,
+    "w1": 350,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 11,
+    "w1": 332,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 8,
+    "w1": 310,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 4,
+    "w1": 309,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 332,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 1,
+    "w1": 342,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 16,
+    "w1": 351,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 10,
+    "w1": 332,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 3,
+    "w1": 317,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 306,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 334,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 3,
+    "w1": 341,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 18,
+    "w1": 345,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 12,
+    "w1": 327,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 96,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 91,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 112,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 119,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 121,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 120,
+    "w1": 365,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 104,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 97,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 119,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 119,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 124,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 123,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 91,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 96,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 112,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 118,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 145,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 139,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 152,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 159,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 179,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 133,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 139,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 139,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 137,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 155,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 132,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 140,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 137,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 142,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 155,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 129,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TANGGAMUS",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 134,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 120,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 121,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 136,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 151,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 132,
+    "w1": 365,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. TANGGAMUS",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 131,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 110,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 116,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 134,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 152,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 136,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TANGGAMUS",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 105,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 122,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 120,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 156,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 134,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 125,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 146,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 147,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 168,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 185,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 165,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 124,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 138,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 139,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 164,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 164,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 120,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 141,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 147,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 166,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 182,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 171,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 0,
+    "w1": 121,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 104,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 106,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 117,
+    "worst": 3
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 142,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 123,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 119,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 100,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 100,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 121,
+    "worst": 3
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 152,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 130,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 0,
+    "w1": 117,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 86,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 0,
+    "w1": 102,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 0,
+    "w1": 119,
+    "worst": 3
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 141,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 0,
+    "w1": 135,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG BARAT",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 205,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 181,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 192,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 223,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 243,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 203,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG BARAT",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 203,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 192,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 201,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 225,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 197,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. TULANG BAWANG BARAT",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 197,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 176,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 186,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 201,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 234,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 199,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. WAY KANAN",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 12,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 3,
+    "w1": 351,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 10,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 21,
+    "w1": 365,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 30,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 21,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KAB. WAY KANAN",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 11,
+    "w1": 364,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 357,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 11,
+    "w1": 364,
+    "worst": 2
+   },
+   "asr": {
+    "ex": 22,
+    "w1": 361,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 39,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 20,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KAB. WAY KANAN",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 12,
+    "w1": 364,
+    "worst": 2
+   },
+   "sunrise": {
+    "ex": 2,
+    "w1": 353,
+    "worst": 2
+   },
+   "dhuhr": {
+    "ex": 11,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 17,
+    "w1": 363,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 31,
+    "w1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "ex": 17,
+    "w1": 364,
+    "worst": 2
+   }
+  },
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 178,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 168,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 188,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 196,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 215,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 192,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 185,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 167,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 196,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 198,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 223,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 199,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 184,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 161,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 203,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 212,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 191,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 170,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 148,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 164,
+    "w1": 365,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 180,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 174,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 146,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 166,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 169,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 169,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 147,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 158,
+    "w1": 363,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 160,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 158,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 138,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 143,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 176,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 178,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 180,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 166,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 142,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 149,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 165,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 181,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 176,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 169,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 144,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 146,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 166,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 184,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 167,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 219,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 225,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 233,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 241,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 266,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 212,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 335,
+   "fajr": {
+    "ex": 199,
+    "w1": 335,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 203,
+    "w1": 335,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 209,
+    "w1": 335,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 209,
+    "w1": 335,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 255,
+    "w1": 335,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 203,
+    "w1": 335,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 217,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 223,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 235,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 228,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 266,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 221,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 160,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 139,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 152,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 169,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 150,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 149,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 148,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 164,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 156,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 143,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 146,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 160,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 253,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 219,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 246,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 251,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 284,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 247,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 258,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 228,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 239,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 244,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 270,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 248,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 245,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 221,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 231,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 255,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 263,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 238,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 191,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 179,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 193,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 192,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 196,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 188,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 199,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 196,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 194,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 180,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 188,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 202,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 172,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 189,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 199,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 242,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 210,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 200,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 167,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 254,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 197,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 200,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 169,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 190,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 188,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 248,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 194,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 117,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 120,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 117,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 131,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 148,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 148,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 118,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 120,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 122,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 139,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 142,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 148,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 119,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 124,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 122,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 126,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 149,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 141,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA METRO",
+   "province": "LAMPUNG",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 200,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 157,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 182,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 188,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 223,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 190,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA METRO",
+   "province": "LAMPUNG",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 200,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 156,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 177,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 199,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 230,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 194,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA METRO",
+   "province": "LAMPUNG",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 207,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 160,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 184,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 192,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 225,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 202,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SERANG",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 181,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 159,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 187,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 188,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 205,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 192,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SERANG",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 186,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 153,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 185,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 188,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 209,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 188,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SERANG",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 179,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 157,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 184,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 202,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 199,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 194,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 204,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 216,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 219,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 206,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 209,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 217,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "province": "JAWA BARAT",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 186,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 4
+   },
+   "dhuhr": {
+    "ex": 200,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 209,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 0,
+    "w1": 0,
+    "worst": 5
+   },
+   "isha": {
+    "ex": 218,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 187,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 156,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 180,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 182,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 197,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 193,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 192,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 146,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 180,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 194,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 197,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 196,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 185,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 146,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 187,
+    "w1": 364,
+    "worst": 2
+   },
+   "maghrib": {
+    "ex": 197,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 198,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "province": "BANTEN",
+   "year": 2028,
+   "n": 366,
+   "fajr": {
+    "ex": 207,
+    "w1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 188,
+    "w1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 208,
+    "w1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 213,
+    "w1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 244,
+    "w1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 203,
+    "w1": 366,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "province": "BANTEN",
+   "year": 2029,
+   "n": 365,
+   "fajr": {
+    "ex": 205,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 190,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 210,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 220,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 244,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   }
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "province": "BANTEN",
+   "year": 2030,
+   "n": 365,
+   "fajr": {
+    "ex": 203,
+    "w1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "ex": 183,
+    "w1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "ex": 212,
+    "w1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "ex": 223,
+    "w1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "ex": 245,
+    "w1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "ex": 189,
+    "w1": 365,
+    "worst": 1
+   }
+  }
+ ]
+}

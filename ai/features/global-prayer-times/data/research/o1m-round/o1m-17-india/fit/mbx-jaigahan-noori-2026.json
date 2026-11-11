@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-jaigahan-noori-2026.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 26.16,
+  "lon": 82.86
+ },
+ "coarse": {
+  "lat": 26.2,
+  "lon": 83,
+  "mae": 0.462
+ },
+ "mid": {
+  "lat": 26.16,
+  "lon": 82.86,
+  "mae": 0.396
+ },
+ "meta": {
+  "name": "Masjid Noori",
+  "address": "Jaigahan Bazar, Jaigahan, Uttar Pradesh, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18.2,
+ "fajr_sweep": [
+  {
+   "a": 18.2,
+   "med": 0,
+   "mae": 0.02,
+   "mad": 0
+  },
+  {
+   "a": 18.25,
+   "med": 0,
+   "mae": 0.17,
+   "mad": 0
+  },
+  {
+   "a": 18.15,
+   "med": 0,
+   "mae": 0.21,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.42,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17.8,
+ "isha_sweep": [
+  {
+   "a": 17.8,
+   "med": 0,
+   "mae": 0.08,
+   "mad": 0
+  },
+  {
+   "a": 17.85,
+   "med": 0,
+   "mae": 0.25,
+   "mad": 0
+  },
+  {
+   "a": 17.75,
+   "med": 0,
+   "mae": 0.38,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.38,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": -1,
+   "mad": 0
+  },
+  "1": {
+   "med": -56,
+   "mad": 11
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 0,
+  "asr": -1,
+  "maghrib": -1,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 94,
+   "within1": 100,
+   "mae": 0.06,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 88.2,
+   "within1": 100,
+   "mae": 0.12,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 87.4,
+   "within1": 100,
+   "mae": 0.13,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 83.6,
+   "within1": 100,
+   "mae": 0.16,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 89,
+   "within1": 100,
+   "mae": 0.11,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 92.3,
+   "within1": 100,
+   "mae": 0.08,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 184,
+ "amplitude_fajr_min": 111
+}

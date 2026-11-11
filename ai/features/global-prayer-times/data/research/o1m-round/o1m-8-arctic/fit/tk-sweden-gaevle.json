@@ -1,0 +1,79 @@
+{
+ "city": "gaevle",
+ "nightFraction": {
+  "n": 120,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Sweden",
+ "source": "tawkit.net",
+ "tz": "Europe/Stockholm",
+ "lat": 60.67452,
+ "lon": 17.14174,
+ "rows": 365,
+ "solarGateMedAbs": 0.22,
+ "fajrAngle": {
+  "n": 239,
+  "med": 18,
+  "min": 11.2,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 249,
+  "med": 17,
+  "min": 10.45,
+  "max": 17.15,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0,
+   "min": -1.8,
+   "max": 1.6
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.02,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": -0.07,
+   "min": -1.4,
+   "max": 1.8
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -50.12,
+   "min": -78.9,
+   "max": -17.1
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.18,
+   "min": -1.8,
+   "max": 1.6
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-22",
+    "to": "2027-08-19",
+    "days": 120
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 323,
+  "isha": 457
+ }
+}

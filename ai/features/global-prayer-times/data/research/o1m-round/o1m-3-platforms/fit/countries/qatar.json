@@ -1,0 +1,132 @@
+{
+ "country": "qatar",
+ "cities": 5,
+ "excludedClockCities": 0,
+ "rows": 1825,
+ "recipe": {
+  "fajr": "angle",
+  "fajrAngle": 18,
+  "fajrInterval": null,
+  "isha": "maghrib-interval",
+  "ishaAngle": null,
+  "ishaInterval": 91,
+  "madhab": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 0
+  }
+ },
+ "solarRms": 0.89,
+ "jointExactPc": 2.8,
+ "jointW1Pc": 36.9,
+ "cellsW1Pc": 80.2,
+ "worst": 16,
+ "worstWhere": "dukhan 2027-02-09 sunrise table 06:00 calc 06:16",
+ "implied": {
+  "fajrAngle": 18,
+  "ishaAngle": 20.31,
+  "ishaAngleSd": 1.01,
+  "ishaGap": 90,
+  "ishaGapSd": 0,
+  "fajrSunriseGap": -80,
+  "asrFactor": 1.001
+ },
+ "extent": {
+  "latMin": 24.81,
+  "latMax": 26.08,
+  "lonMin": 50.78,
+  "lonMax": 52.23
+ },
+ "seasonal": {
+  "2026-11": {
+   "sunrise": -0.01,
+   "dhuhr": 0.15
+  },
+  "2026-12": {
+   "sunrise": -0.04,
+   "dhuhr": 0.15
+  },
+  "2027-01": {
+   "sunrise": -0.09,
+   "dhuhr": 0.22
+  },
+  "2027-02": {
+   "sunrise": -0.42,
+   "dhuhr": 0.12
+  },
+  "2027-03": {
+   "sunrise": -0.3,
+   "dhuhr": 0.05
+  },
+  "2027-04": {
+   "sunrise": -0.43,
+   "dhuhr": 0.05
+  },
+  "2027-05": {
+   "sunrise": -0.16,
+   "dhuhr": 0.11
+  },
+  "2027-06": {
+   "sunrise": 0.04,
+   "dhuhr": 0.19
+  },
+  "2027-07": {
+   "sunrise": 0.15,
+   "dhuhr": 0.1
+  },
+  "2027-08": {
+   "sunrise": 0.14,
+   "dhuhr": 0.04
+  },
+  "2027-09": {
+   "sunrise": 0.1,
+   "dhuhr": 0.04
+  },
+  "2027-10": {
+   "sunrise": 0.12,
+   "dhuhr": 0.06
+  }
+ },
+ "byCol": {
+  "fajr": {
+   "exactPc": 44.1,
+   "w1Pc": 69.5,
+   "mae": 1.18,
+   "worst": 14.2
+  },
+  "sunrise": {
+   "exactPc": 47.6,
+   "w1Pc": 84.1,
+   "mae": 0.58,
+   "worst": 16
+  },
+  "dhuhr": {
+   "exactPc": 81.3,
+   "w1Pc": 99.2,
+   "mae": 0.32,
+   "worst": 2
+  },
+  "asr": {
+   "exactPc": 64.2,
+   "w1Pc": 95.6,
+   "mae": 0.42,
+   "worst": 6
+  },
+  "maghrib": {
+   "exactPc": 28.2,
+   "w1Pc": 66.3,
+   "mae": 0.82,
+   "worst": 11.6
+  },
+  "isha": {
+   "exactPc": 28.2,
+   "w1Pc": 66.3,
+   "mae": 0.82,
+   "worst": 11.6
+  }
+ }
+}

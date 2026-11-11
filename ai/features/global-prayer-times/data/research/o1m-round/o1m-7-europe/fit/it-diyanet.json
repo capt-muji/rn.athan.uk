@@ -1,0 +1,11097 @@
+{
+ "spec": {
+  "engine": "adhan 4.4.6 Rounding.None",
+  "madhab": "shafi",
+  "highLat": "MiddleOfTheNight"
+ },
+ "cities": [
+  {
+   "key": "14552",
+   "name": "Treviso",
+   "lat": 45.66673,
+   "lon": 12.2416,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.2,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.32,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 78.1,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51.2,
+     "w2": 67.4,
+     "mae": 3.14,
+     "worst": -18
+    }
+   },
+   "allW1": 83.7
+  },
+  {
+   "key": "14553",
+   "name": "Cagliari",
+   "lat": 39.23054,
+   "lon": 9.11917,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.9,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 95.6
+  },
+  {
+   "key": "14554",
+   "name": "Siena",
+   "lat": 43.31822,
+   "lon": 11.33064,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 92.9
+  },
+  {
+   "key": "14555",
+   "name": "Merano",
+   "lat": 46.66817,
+   "lon": 11.15953,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 58.6,
+     "w1": 77.8,
+     "w2": 78.1,
+     "mae": 7.48,
+     "worst": 51
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 48.2,
+     "w2": 59.7,
+     "mae": 5.32,
+     "worst": -31
+    }
+   },
+   "allW1": 82.1
+  },
+  {
+   "key": "14556",
+   "name": "Latina",
+   "lat": 41.46614,
+   "lon": 12.9043,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 83,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 94.6
+  },
+  {
+   "key": "14557",
+   "name": "Arezzo",
+   "lat": 43.46276,
+   "lon": 11.88068,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 92.8
+  },
+  {
+   "key": "14558",
+   "name": "Messina",
+   "lat": 38.19394,
+   "lon": 15.55256,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 37.3,
+     "w1": 98.9,
+     "w2": 100,
+     "mae": 0.64,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    }
+   },
+   "allW1": 97.7
+  },
+  {
+   "key": "14559",
+   "name": "Reggio di calabria",
+   "lat": 38.11047,
+   "lon": 15.66129,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 40.3,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.62,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    }
+   },
+   "allW1": 97.4
+  },
+  {
+   "key": "14560",
+   "name": "Pordenone",
+   "lat": 45.95689,
+   "lon": 12.66051,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 50.4,
+     "w1": 80,
+     "w2": 80.5,
+     "mae": 5.15,
+     "worst": 36
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 77,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 53.4,
+     "w2": 71.5,
+     "mae": 3.61,
+     "worst": -21
+    }
+   },
+   "allW1": 83.6
+  },
+  {
+   "key": "14561",
+   "name": "Ancona",
+   "lat": 43.60717,
+   "lon": 13.5103,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.6,
+     "w1": 80.8,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    }
+   },
+   "allW1": 93.9
+  },
+  {
+   "key": "14562",
+   "name": "Taranto",
+   "lat": 40.46438,
+   "lon": 17.24707,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "14563",
+   "name": "Genova",
+   "lat": 44.40478,
+   "lon": 8.94439,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.91
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 69.9,
+     "w1": 84.9,
+     "w2": 85.5,
+     "mae": 1.61,
+     "worst": 14
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 28.2,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 55.6,
+     "w2": 71.8,
+     "mae": 1.42,
+     "worst": -5
+    }
+   },
+   "allW1": 85.4
+  },
+  {
+   "key": "14564",
+   "name": "Fabriano",
+   "lat": 43.33941,
+   "lon": 12.90327,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 84.1,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 77.3,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.5
+  },
+  {
+   "key": "14565",
+   "name": "Gallarate",
+   "lat": 45.66019,
+   "lon": 8.79164,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.5,
+     "w1": 80.8,
+     "w2": 81.1,
+     "mae": 4.31,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 77,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23,
+     "w1": 55.3,
+     "w2": 72.1,
+     "mae": 3.1,
+     "worst": -18
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "14566",
+   "name": "Monza",
+   "lat": 45.58005,
+   "lon": 9.27246,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.7,
+     "w1": 81.1,
+     "w2": 81.1,
+     "mae": 4.08,
+     "worst": 30
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 51.2,
+     "w2": 65.5,
+     "mae": 2.99,
+     "worst": -17
+    }
+   },
+   "allW1": 83.7
+  },
+  {
+   "key": "14567",
+   "name": "Vigevano",
+   "lat": 45.31407,
+   "lon": 8.85437,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 60.8,
+     "w1": 81.6,
+     "w2": 82.2,
+     "mae": 3.45,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 73.2,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 53.2,
+     "w2": 67.4,
+     "mae": 2.53,
+     "worst": -14
+    }
+   },
+   "allW1": 83.4
+  },
+  {
+   "key": "14568",
+   "name": "Cantu",
+   "lat": 45.74096,
+   "lon": 9.13084,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 80.5,
+     "w2": 81.4,
+     "mae": 4.54,
+     "worst": 31
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 78.1,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 55.1,
+     "w2": 73.4,
+     "mae": 3.21,
+     "worst": -19
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "14569",
+   "name": "Erba",
+   "lat": 45.8088,
+   "lon": 9.22609,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 80.3,
+     "w2": 80.8,
+     "mae": 4.76,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 55.6,
+     "w2": 72.6,
+     "mae": 3.33,
+     "worst": -20
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "14570",
+   "name": "Malnate",
+   "lat": 45.79377,
+   "lon": 8.88104,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 52.1,
+     "w1": 80.5,
+     "w2": 80.5,
+     "mae": 4.67,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 55.6,
+     "w2": 74,
+     "mae": 3.3,
+     "worst": -19
+    }
+   },
+   "allW1": 84.1
+  },
+  {
+   "key": "14571",
+   "name": "Villa guardia",
+   "lat": 45.77505,
+   "lon": 9.02321,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 57,
+     "w1": 80.5,
+     "w2": 80.8,
+     "mae": 4.65,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31,
+     "w1": 51.2,
+     "w2": 66.8,
+     "mae": 3.3,
+     "worst": -19
+    }
+   },
+   "allW1": 84.2
+  },
+  {
+   "key": "14572",
+   "name": "Alassio",
+   "lat": 44.00393,
+   "lon": 8.16713,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 77.3,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    }
+   },
+   "allW1": 91.6
+  },
+  {
+   "key": "14573",
+   "name": "Diano marina",
+   "lat": 43.91088,
+   "lon": 8.08029,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    }
+   },
+   "allW1": 92.9
+  },
+  {
+   "key": "14574",
+   "name": "Marina d andora",
+   "lat": 39.93857,
+   "lon": 16.60585,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18.1,
+   "ishaAngle": 13,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 13.03,
+    "isha": 22.72
+   },
+   "offsets": {
+    "fajr": 2,
+    "sunrise": 26,
+    "dhuhr": 39,
+    "asr": 37,
+    "maghrib": 42,
+    "isha": 2
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 1.4,
+     "w1": 5.8,
+     "w2": 9.3,
+     "mae": 22.68,
+     "worst": 39
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 3,
+     "w1": 8.5,
+     "w2": 14,
+     "mae": 8.2,
+     "worst": 14
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 3.3,
+     "w1": 9.6,
+     "w2": 17.3,
+     "mae": 6.7,
+     "worst": -13
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 2.7,
+     "w1": 8.8,
+     "w2": 14.2,
+     "mae": 8.29,
+     "worst": -15
+    },
+    "isha": {
+     "n": 365,
+     "exact": 0,
+     "w1": 0,
+     "w2": 0,
+     "mae": 58.41,
+     "worst": 86
+    }
+   },
+   "allW1": 22.1
+  },
+  {
+   "key": "14575",
+   "name": "Ventimiglia",
+   "lat": 43.78956,
+   "lon": 7.60872,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 75.3,
+     "w2": 100,
+     "mae": 1.07,
+     "worst": -2
+    }
+   },
+   "allW1": 92
+  },
+  {
+   "key": "14576",
+   "name": "Formigine",
+   "lat": 44.57268,
+   "lon": 10.84737,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.7,
+     "w1": 84.1,
+     "w2": 84.9,
+     "mae": 1.89,
+     "worst": 16
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.5,
+     "w1": 54.5,
+     "w2": 74.2,
+     "mae": 1.54,
+     "worst": -7
+    }
+   },
+   "allW1": 85.9
+  },
+  {
+   "key": "14577",
+   "name": "Sassuolo",
+   "lat": 44.5432,
+   "lon": 10.7848,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.1,
+     "w1": 84.1,
+     "w2": 84.9,
+     "mae": 1.88,
+     "worst": 16
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 53.7,
+     "w2": 72.1,
+     "mae": 1.59,
+     "worst": -7
+    }
+   },
+   "allW1": 85.1
+  },
+  {
+   "key": "14578",
+   "name": "Venedik",
+   "lat": 45.43713,
+   "lon": 12.33265,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 80.8,
+     "w2": 82.5,
+     "mae": 3.79,
+     "worst": 27
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 56.2,
+     "w2": 73.2,
+     "mae": 2.71,
+     "worst": -15
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14579",
+   "name": "Lecco",
+   "lat": 45.85589,
+   "lon": 9.39704,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.86
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 51,
+     "w1": 80.3,
+     "w2": 80.5,
+     "mae": 4.88,
+     "worst": 34
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 73.4,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 54.5,
+     "w2": 73.2,
+     "mae": 3.48,
+     "worst": -20
+    }
+   },
+   "allW1": 83.7
+  },
+  {
+   "key": "14580",
+   "name": "Florence",
+   "lat": 43.77925,
+   "lon": 11.24626,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.3
+  },
+  {
+   "key": "14581",
+   "name": "Rimini",
+   "lat": 44.05755,
+   "lon": 12.56528,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 74.5,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.8
+  },
+  {
+   "key": "14582",
+   "name": "Brescia",
+   "lat": 45.53558,
+   "lon": 10.21472,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 53.4,
+     "w1": 81.1,
+     "w2": 81.6,
+     "mae": 3.99,
+     "worst": 29
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 50.7,
+     "w2": 69.3,
+     "mae": 2.92,
+     "worst": -17
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "14583",
+   "name": "Trieste",
+   "lat": 45.64953,
+   "lon": 13.77678,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 80.8,
+     "w2": 81.4,
+     "mae": 4.35,
+     "worst": 30
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 56.2,
+     "w2": 72.1,
+     "mae": 3.03,
+     "worst": -18
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14584",
+   "name": "Bari",
+   "lat": 41.12066,
+   "lon": 16.86982,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "14585",
+   "name": "Belluno",
+   "lat": 46.14262,
+   "lon": 12.2156,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 64.7,
+     "w1": 79.5,
+     "w2": 79.5,
+     "mae": 5.64,
+     "worst": 40
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 74,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 50.4,
+     "w2": 64.1,
+     "mae": 4.06,
+     "worst": -24
+    }
+   },
+   "allW1": 82.7
+  },
+  {
+   "key": "14586",
+   "name": "Milano",
+   "lat": 45.46427,
+   "lon": 9.18951,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 81.6,
+     "w2": 81.9,
+     "mae": 3.9,
+     "worst": 27
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51.2,
+     "w2": 65.2,
+     "mae": 2.82,
+     "worst": -16
+    }
+   },
+   "allW1": 83.9
+  },
+  {
+   "key": "14587",
+   "name": "Ghedi",
+   "lat": 45.40204,
+   "lon": 10.27681,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.91
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 81.9,
+     "w2": 82.2,
+     "mae": 3.72,
+     "worst": 26
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 49.9,
+     "w2": 61.9,
+     "mae": 2.75,
+     "worst": -15
+    }
+   },
+   "allW1": 83.5
+  },
+  {
+   "key": "14588",
+   "name": "Roma",
+   "lat": 41.89193,
+   "lon": 12.51133,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 94.3
+  },
+  {
+   "key": "14589",
+   "name": "Napoli",
+   "lat": 40.85216,
+   "lon": 14.26811,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 89.3,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 88.8,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "14590",
+   "name": "Torino",
+   "lat": 45.07049,
+   "lon": 7.68682,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 35.6,
+     "w1": 83,
+     "w2": 83.6,
+     "mae": 2.97,
+     "worst": 21
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 78.1,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 56.7,
+     "w2": 72.6,
+     "mae": 2.17,
+     "worst": -11
+    }
+   },
+   "allW1": 85.1
+  },
+  {
+   "key": "14591",
+   "name": "Rieti",
+   "lat": 42.40476,
+   "lon": 12.85735,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    }
+   },
+   "allW1": 94.5
+  },
+  {
+   "key": "14592",
+   "name": "Perugia",
+   "lat": 43.1122,
+   "lon": 12.38878,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 92.9
+  },
+  {
+   "key": "14593",
+   "name": "Terni",
+   "lat": 42.56335,
+   "lon": 12.64329,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    }
+   },
+   "allW1": 93.8
+  },
+  {
+   "key": "14594",
+   "name": "Augusta",
+   "lat": 37.24065,
+   "lon": 15.22121,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 39.5,
+     "w1": 99.7,
+     "w2": 100,
+     "mae": 0.61,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    }
+   },
+   "allW1": 98.4
+  },
+  {
+   "key": "14595",
+   "name": "Codigoro",
+   "lat": 44.83093,
+   "lon": 12.11073,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66,
+     "w1": 83.6,
+     "w2": 83.8,
+     "mae": 2.38,
+     "worst": 19
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.2,
+     "w1": 52.1,
+     "w2": 67.7,
+     "mae": 1.92,
+     "worst": -9
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14596",
+   "name": "Agrigento",
+   "lat": 37.31065,
+   "lon": 13.57661,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 37.5,
+     "w1": 99.7,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    }
+   },
+   "allW1": 97.7
+  },
+  {
+   "key": "14597",
+   "name": "Alba",
+   "lat": 44.6999,
+   "lon": 8.0347,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 54.5,
+     "w1": 83.8,
+     "w2": 84.4,
+     "mae": 2.22,
+     "worst": 17
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34,
+     "w1": 53.2,
+     "w2": 70.7,
+     "mae": 1.73,
+     "worst": -8
+    }
+   },
+   "allW1": 85
+  },
+  {
+   "key": "14598",
+   "name": "Albenga",
+   "lat": 44.04997,
+   "lon": 8.21829,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.1,
+     "w1": 76.4,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.7
+  },
+  {
+   "key": "14599",
+   "name": "Alghero",
+   "lat": 40.55969,
+   "lon": 8.31953,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 86.6,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    }
+   },
+   "allW1": 95.3
+  },
+  {
+   "key": "14600",
+   "name": "Aosta",
+   "lat": 45.73764,
+   "lon": 7.31722,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.2,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.49,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 51,
+     "w2": 64.7,
+     "mae": 3.29,
+     "worst": -19
+    }
+   },
+   "allW1": 83.8
+  },
+  {
+   "key": "14601",
+   "name": "Avellino",
+   "lat": 40.91494,
+   "lon": 14.79103,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31.8,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "14602",
+   "name": "Bassano del grappa",
+   "lat": 45.76656,
+   "lon": 11.72739,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.86
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.7,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.55,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.27,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 77.3,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 52.6,
+     "w2": 67.9,
+     "mae": 3.28,
+     "worst": -19
+    }
+   },
+   "allW1": 83.9
+  },
+  {
+   "key": "14603",
+   "name": "Bergamo",
+   "lat": 45.69601,
+   "lon": 9.66721,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 64.4,
+     "w1": 81.1,
+     "w2": 81.1,
+     "mae": 4.33,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 50.1,
+     "w2": 63.6,
+     "mae": 3.25,
+     "worst": -18
+    }
+   },
+   "allW1": 83.4
+  },
+  {
+   "key": "14604",
+   "name": "Biella",
+   "lat": 45.56304,
+   "lon": 8.05796,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 81.1,
+     "w2": 81.6,
+     "mae": 4.1,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 76.7,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 56.2,
+     "w2": 75.3,
+     "mae": 2.92,
+     "worst": -17
+    }
+   },
+   "allW1": 84.4
+  },
+  {
+   "key": "14605",
+   "name": "Bolzano bozen",
+   "lat": 46.49067,
+   "lon": 11.33982,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 78.4,
+     "w2": 78.9,
+     "mae": 6.81,
+     "worst": 45
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 54.5,
+     "w2": 71,
+     "mae": 4.73,
+     "worst": -28
+    }
+   },
+   "allW1": 84
+  },
+  {
+   "key": "14606",
+   "name": "Caltanissetta",
+   "lat": 37.49025,
+   "lon": 14.06216,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 43.6,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.58,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    }
+   },
+   "allW1": 97.4
+  },
+  {
+   "key": "14607",
+   "name": "Campobasso",
+   "lat": 41.55947,
+   "lon": 14.66737,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 94.8
+  },
+  {
+   "key": "14608",
+   "name": "Caserta",
+   "lat": 41.07262,
+   "lon": 14.33231,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.8
+  },
+  {
+   "key": "14609",
+   "name": "Castelfranco veneto",
+   "lat": 45.67146,
+   "lon": 11.92755,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 65.5,
+     "w1": 80.5,
+     "w2": 81.1,
+     "mae": 4.3,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 50.7,
+     "w2": 66,
+     "mae": 3.17,
+     "worst": -18
+    }
+   },
+   "allW1": 84.2
+  },
+  {
+   "key": "14610",
+   "name": "Castelvetrano",
+   "lat": 37.68081,
+   "lon": 12.79194,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.9,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    }
+   },
+   "allW1": 97.6
+  },
+  {
+   "key": "14611",
+   "name": "Catania",
+   "lat": 37.49223,
+   "lon": 15.07041,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 41.4,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.6,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    }
+   },
+   "allW1": 97.9
+  },
+  {
+   "key": "14612",
+   "name": "Catanzaro",
+   "lat": 38.88247,
+   "lon": 16.60086,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 41.6,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.6,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "14613",
+   "name": "Cecina",
+   "lat": 43.30621,
+   "lon": 10.51729,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 92.4
+  },
+  {
+   "key": "14614",
+   "name": "Cesena",
+   "lat": 44.1391,
+   "lon": 12.24315,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 83.6,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 77,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.4
+  },
+  {
+   "key": "14615",
+   "name": "Chieti",
+   "lat": 42.34827,
+   "lon": 14.16494,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 95
+  },
+  {
+   "key": "14616",
+   "name": "Civitavecchia",
+   "lat": 42.09325,
+   "lon": 11.79674,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 31,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    }
+   },
+   "allW1": 94.2
+  },
+  {
+   "key": "14617",
+   "name": "Conegliano",
+   "lat": 45.88805,
+   "lon": 12.30201,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 63.3,
+     "w1": 80.5,
+     "w2": 80.5,
+     "mae": 4.88,
+     "worst": 36
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 81.4,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 29,
+     "w1": 50.7,
+     "w2": 65.2,
+     "mae": 3.56,
+     "worst": -21
+    }
+   },
+   "allW1": 84
+  },
+  {
+   "key": "14618",
+   "name": "Conversano",
+   "lat": 40.96836,
+   "lon": 17.11329,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  },
+  {
+   "key": "14619",
+   "name": "Cosenza",
+   "lat": 39.2989,
+   "lon": 16.25307,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.68,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    }
+   },
+   "allW1": 97.6
+  },
+  {
+   "key": "14620",
+   "name": "Cremona",
+   "lat": 45.13325,
+   "lon": 10.02129,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 52.9,
+     "w1": 82.7,
+     "w2": 83,
+     "mae": 3.08,
+     "worst": 23
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 57.8,
+     "w2": 73.4,
+     "mae": 2.23,
+     "worst": -12
+    }
+   },
+   "allW1": 85.3
+  },
+  {
+   "key": "14621",
+   "name": "Crotone",
+   "lat": 39.08077,
+   "lon": 17.12764,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.6,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.64,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    }
+   },
+   "allW1": 96.8
+  },
+  {
+   "key": "14622",
+   "name": "Cuneo",
+   "lat": 44.39071,
+   "lon": 7.54828,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 68.5,
+     "w1": 84.7,
+     "w2": 85.5,
+     "mae": 1.58,
+     "worst": 14
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 55.1,
+     "w2": 75.6,
+     "mae": 1.41,
+     "worst": -5
+    }
+   },
+   "allW1": 85.6
+  },
+  {
+   "key": "14623",
+   "name": "Enna",
+   "lat": 37.5655,
+   "lon": 14.27433,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 41.9,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.59,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 97.7
+  },
+  {
+   "key": "14624",
+   "name": "Fermo",
+   "lat": 43.16296,
+   "lon": 13.72274,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 93.8
+  },
+  {
+   "key": "14625",
+   "name": "Ferrara",
+   "lat": 44.83804,
+   "lon": 11.62057,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.6,
+     "w1": 83.6,
+     "w2": 83.8,
+     "mae": 2.4,
+     "worst": 19
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 51.2,
+     "w2": 66.6,
+     "mae": 1.93,
+     "worst": -9
+    }
+   },
+   "allW1": 84.2
+  },
+  {
+   "key": "14626",
+   "name": "Foggia",
+   "lat": 41.45845,
+   "lon": 15.55188,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.4,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 95.3
+  },
+  {
+   "key": "14627",
+   "name": "Foligno",
+   "lat": 42.95488,
+   "lon": 12.70268,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 84.1,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.4,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    }
+   },
+   "allW1": 93
+  },
+  {
+   "key": "14628",
+   "name": "Follonica",
+   "lat": 42.92779,
+   "lon": 10.76451,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 83.3,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.6,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    }
+   },
+   "allW1": 93
+  },
+  {
+   "key": "14629",
+   "name": "Forli",
+   "lat": 44.22177,
+   "lon": 12.04144,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17,
+     "w1": 74,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    }
+   },
+   "allW1": 91.7
+  },
+  {
+   "key": "14630",
+   "name": "Frosinone",
+   "lat": 41.63976,
+   "lon": 13.34109,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 85.8,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 85.2,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 94.6
+  },
+  {
+   "key": "14631",
+   "name": "Gaeta",
+   "lat": 41.21408,
+   "lon": 13.57082,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 95.2
+  },
+  {
+   "key": "14632",
+   "name": "Grosseto",
+   "lat": 42.76296,
+   "lon": 11.10941,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 92.5
+  },
+  {
+   "key": "14633",
+   "name": "Imola",
+   "lat": 44.35916,
+   "lon": 11.7132,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.4,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.8
+  },
+  {
+   "key": "14634",
+   "name": "Imperia",
+   "lat": 43.88917,
+   "lon": 8.03933,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 82.5,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.3,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.6
+  },
+  {
+   "key": "14635",
+   "name": "Ivrea",
+   "lat": 45.46723,
+   "lon": 7.87617,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 60,
+     "w1": 81.4,
+     "w2": 81.6,
+     "mae": 3.84,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 76.7,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 57.5,
+     "w2": 74.2,
+     "mae": 2.77,
+     "worst": -15
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14636",
+   "name": "Jesi",
+   "lat": 43.52142,
+   "lon": 13.24368,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 93.3
+  },
+  {
+   "key": "14637",
+   "name": "L aquila",
+   "lat": 42.35055,
+   "lon": 13.39954,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 95.3
+  },
+  {
+   "key": "14638",
+   "name": "La spezia",
+   "lat": 44.103,
+   "lon": 9.82375,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 83,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.4,
+     "w1": 74.8,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    }
+   },
+   "allW1": 92
+  },
+  {
+   "key": "14639",
+   "name": "Livorno",
+   "lat": 43.54427,
+   "lon": 10.32615,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.99
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 84.4,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.4
+  },
+  {
+   "key": "14640",
+   "name": "Lecce",
+   "lat": 40.35481,
+   "lon": 18.17244,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 33.4,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.7,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 96.3
+  },
+  {
+   "key": "14641",
+   "name": "Lucca",
+   "lat": 43.84369,
+   "lon": 10.50447,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.3,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 1.05,
+     "worst": -2
+    }
+   },
+   "allW1": 92.9
+  },
+  {
+   "key": "14642",
+   "name": "Macerata",
+   "lat": 43.29789,
+   "lon": 13.45293,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 92.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.07,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 80,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 93.8
+  },
+  {
+   "key": "14643",
+   "name": "Mantua",
+   "lat": 45.16031,
+   "lon": 10.79784,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 63.8,
+     "w1": 82.5,
+     "w2": 82.7,
+     "mae": 3.07,
+     "worst": 24
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 51.2,
+     "w2": 69,
+     "mae": 2.33,
+     "worst": -12
+    }
+   },
+   "allW1": 84.8
+  },
+  {
+   "key": "14644",
+   "name": "Massa",
+   "lat": 44.03541,
+   "lon": 10.13927,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 81.9,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.3,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    }
+   },
+   "allW1": 92.6
+  },
+  {
+   "key": "14645",
+   "name": "Matera",
+   "lat": 40.66599,
+   "lon": 16.60463,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.1,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  },
+  {
+   "key": "14646",
+   "name": "Milazzo",
+   "lat": 38.22008,
+   "lon": 15.24023,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.6,
+     "w1": 97.5,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 97.1
+  },
+  {
+   "key": "14647",
+   "name": "Monopoli",
+   "lat": 40.94918,
+   "lon": 17.29717,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.71,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.7
+  },
+  {
+   "key": "14648",
+   "name": "Novara",
+   "lat": 45.44694,
+   "lon": 8.62118,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.5,
+     "w1": 81.6,
+     "w2": 81.6,
+     "mae": 3.77,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 75.6,
+     "w2": 100,
+     "mae": 1.04,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31,
+     "w1": 51,
+     "w2": 67.1,
+     "mae": 2.79,
+     "worst": -15
+    }
+   },
+   "allW1": 83.3
+  },
+  {
+   "key": "14649",
+   "name": "Nuoro",
+   "lat": 40.31991,
+   "lon": 9.32568,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "14650",
+   "name": "Olbia",
+   "lat": 40.92337,
+   "lon": 9.49802,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 89.6,
+     "w2": 100,
+     "mae": 0.86,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 97.3,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.5,
+     "w1": 87.1,
+     "w2": 100,
+     "mae": 0.93,
+     "worst": -2
+    }
+   },
+   "allW1": 95.7
+  },
+  {
+   "key": "14651",
+   "name": "Oristano",
+   "lat": 39.9036,
+   "lon": 8.59257,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.8,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    }
+   },
+   "allW1": 96.1
+  },
+  {
+   "key": "14652",
+   "name": "Osimo",
+   "lat": 43.48539,
+   "lon": 13.48222,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 25.2,
+     "w1": 83.8,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    }
+   },
+   "allW1": 92.6
+  },
+  {
+   "key": "14653",
+   "name": "Pesaro",
+   "lat": 43.90921,
+   "lon": 12.9164,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 28.8,
+     "w1": 94.8,
+     "w2": 100,
+     "mae": 0.76,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 77,
+     "w2": 100,
+     "mae": 1.06,
+     "worst": -2
+    }
+   },
+   "allW1": 92.3
+  },
+  {
+   "key": "14654",
+   "name": "Pescara",
+   "lat": 42.4584,
+   "lon": 14.20283,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.91,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 97.8,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 84.4,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    }
+   },
+   "allW1": 94.8
+  },
+  {
+   "key": "14655",
+   "name": "Piacenza",
+   "lat": 45.05242,
+   "lon": 9.69342,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 52.9,
+     "w1": 83,
+     "w2": 83,
+     "mae": 2.9,
+     "worst": 22
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 57.5,
+     "w2": 74.8,
+     "mae": 2.14,
+     "worst": -11
+    }
+   },
+   "allW1": 85.4
+  },
+  {
+   "key": "14656",
+   "name": "Pinerolo",
+   "lat": 44.88534,
+   "lon": 7.33135,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 50.7,
+     "w1": 83,
+     "w2": 83.6,
+     "mae": 2.62,
+     "worst": 20
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 17.5,
+     "w1": 56.7,
+     "w2": 84.1,
+     "mae": 2.07,
+     "worst": -11
+    }
+   },
+   "allW1": 84.8
+  },
+  {
+   "key": "14657",
+   "name": "Potenza",
+   "lat": 40.64175,
+   "lon": 15.80794,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 89.9,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.1,
+     "w1": 96.4,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 89,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.9
+  },
+  {
+   "key": "14658",
+   "name": "Putignano",
+   "lat": 40.85106,
+   "lon": 17.1219,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 82.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29,
+     "w1": 88.2,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.69,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    }
+   },
+   "allW1": 95.2
+  },
+  {
+   "key": "14659",
+   "name": "Ravenna",
+   "lat": 44.41344,
+   "lon": 12.20121,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 55.1,
+     "w1": 84.9,
+     "w2": 85.8,
+     "mae": 1.72,
+     "worst": 14
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.08,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 81.6,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 35.9,
+     "w1": 56.2,
+     "w2": 74.2,
+     "mae": 1.4,
+     "worst": -5
+    }
+   },
+   "allW1": 86.2
+  },
+  {
+   "key": "14660",
+   "name": "Reggio emilia",
+   "lat": 44.69825,
+   "lon": 10.63125,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 63.6,
+     "w1": 83.6,
+     "w2": 84.4,
+     "mae": 2.17,
+     "worst": 18
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 0.99,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 33.7,
+     "w1": 52.3,
+     "w2": 70.7,
+     "mae": 1.75,
+     "worst": -8
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14661",
+   "name": "Ribera",
+   "lat": 37.49773,
+   "lon": 13.26676,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 91.8,
+     "w2": 100,
+     "mae": 0.78,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 38.6,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.63,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": 2
+    }
+   },
+   "allW1": 97.4
+  },
+  {
+   "key": "14662",
+   "name": "Rovigo",
+   "lat": 45.06982,
+   "lon": 11.79022,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 50.7,
+     "w1": 82.5,
+     "w2": 83,
+     "mae": 3.01,
+     "worst": 22
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 79.7,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34,
+     "w1": 51.2,
+     "w2": 69.6,
+     "mae": 2.18,
+     "worst": -11
+    }
+   },
+   "allW1": 84.4
+  },
+  {
+   "key": "14663",
+   "name": "Salerno",
+   "lat": 40.67545,
+   "lon": 14.79328,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.3,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.9,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.7,
+     "w1": 86.3,
+     "w2": 100,
+     "mae": 0.89,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "14664",
+   "name": "San benedetto del tronto",
+   "lat": 42.9568,
+   "lon": 13.87676,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 84.7,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 27.7,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.77,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 85.5,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    }
+   },
+   "allW1": 94.3
+  },
+  {
+   "key": "14665",
+   "name": "San remo",
+   "lat": 43.81725,
+   "lon": 7.7772,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 81.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 93.7,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.6,
+     "w1": 76.7,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.8
+  },
+  {
+   "key": "14666",
+   "name": "Sassari",
+   "lat": 40.72586,
+   "lon": 8.55552,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 87.9,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 97,
+     "w2": 100,
+     "mae": 0.72,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 87.7,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "14667",
+   "name": "Savona",
+   "lat": 44.30905,
+   "lon": 8.47715,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.98
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.6,
+     "w1": 75.9,
+     "w2": 100,
+     "mae": 1.08,
+     "worst": -2
+    }
+   },
+   "allW1": 91.3
+  },
+  {
+   "key": "14668",
+   "name": "Syracuse",
+   "lat": 37.07542,
+   "lon": 15.28664,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 81.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 96.2,
+     "w2": 100,
+     "mae": 0.74,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 37,
+     "w1": 99.2,
+     "w2": 100,
+     "mae": 0.64,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.2,
+     "w1": 95.1,
+     "w2": 100,
+     "mae": 0.74,
+     "worst": 2
+    }
+   },
+   "allW1": 98.4
+  },
+  {
+   "key": "14669",
+   "name": "Sestri levante",
+   "lat": 44.27317,
+   "lon": 9.39683,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.19,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 79.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 94,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 16.7,
+     "w1": 74.2,
+     "w2": 100,
+     "mae": 1.09,
+     "worst": -2
+    }
+   },
+   "allW1": 91.7
+  },
+  {
+   "key": "14670",
+   "name": "Sondrio",
+   "lat": 46.16852,
+   "lon": 9.87134,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 59.7,
+     "w1": 79.2,
+     "w2": 79.5,
+     "mae": 5.77,
+     "worst": 41
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 18.6,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 49.9,
+     "w2": 64.1,
+     "mae": 4.1,
+     "worst": -24
+    }
+   },
+   "allW1": 83.2
+  },
+  {
+   "key": "14671",
+   "name": "Spoleto",
+   "lat": 42.74071,
+   "lon": 12.73899,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.95
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 83.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.16,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": -1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 86.3,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 96.7,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.94,
+     "worst": -2
+    }
+   },
+   "allW1": 95
+  },
+  {
+   "key": "14672",
+   "name": "Trapani",
+   "lat": 38.0176,
+   "lon": 12.53617,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 32.3,
+     "w1": 93.4,
+     "w2": 100,
+     "mae": 0.74,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.4,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    }
+   },
+   "allW1": 97.3
+  },
+  {
+   "key": "14673",
+   "name": "Trento",
+   "lat": 46.06787,
+   "lon": 11.12108,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 61.6,
+     "w1": 79.5,
+     "w2": 80,
+     "mae": 5.43,
+     "worst": 39
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 49.9,
+     "w2": 66,
+     "mae": 3.91,
+     "worst": -23
+    }
+   },
+   "allW1": 82.9
+  },
+  {
+   "key": "14674",
+   "name": "Udine",
+   "lat": 46.0693,
+   "lon": 13.23715,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 80,
+     "w2": 80,
+     "mae": 5.46,
+     "worst": 37
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 77,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 50.7,
+     "w2": 79.2,
+     "mae": 4.07,
+     "worst": -24
+    }
+   },
+   "allW1": 83.5
+  },
+  {
+   "key": "14675",
+   "name": "Valenza",
+   "lat": 45.01242,
+   "lon": 8.64379,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 64.7,
+     "w1": 82.7,
+     "w2": 83,
+     "mae": 2.78,
+     "worst": 22
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 82.7,
+     "w2": 100,
+     "mae": 0.95,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 52.9,
+     "w2": 67.4,
+     "mae": 2.16,
+     "worst": -11
+    }
+   },
+   "allW1": 85.2
+  },
+  {
+   "key": "14676",
+   "name": "Varese",
+   "lat": 45.82058,
+   "lon": 8.82511,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.5,
+     "w1": 80,
+     "w2": 80.5,
+     "mae": 4.72,
+     "worst": 34
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.3,
+     "w1": 78.6,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.9,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 55.3,
+     "w2": 72.1,
+     "mae": 3.35,
+     "worst": -20
+    }
+   },
+   "allW1": 84.2
+  },
+  {
+   "key": "14677",
+   "name": "Verbania",
+   "lat": 45.92136,
+   "lon": 8.55183,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 62.5,
+     "w1": 80,
+     "w2": 80,
+     "mae": 4.98,
+     "worst": 36
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 77.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 55.1,
+     "w2": 70.7,
+     "mae": 3.58,
+     "worst": -21
+    }
+   },
+   "allW1": 84.1
+  },
+  {
+   "key": "14678",
+   "name": "Vibo valentia",
+   "lat": 38.67618,
+   "lon": 16.10094,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18.01,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 85.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": -1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.8,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 28.5,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.8,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.5,
+     "w1": 98.6,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": -2
+    }
+   },
+   "allW1": 97.4
+  },
+  {
+   "key": "14679",
+   "name": "Viterbo",
+   "lat": 42.41937,
+   "lon": 12.1056,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 22.5,
+     "w1": 86,
+     "w2": 100,
+     "mae": 0.92,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 32.6,
+     "w1": 94.5,
+     "w2": 100,
+     "mae": 0.73,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 19.2,
+     "w1": 83.6,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    }
+   },
+   "allW1": 94
+  },
+  {
+   "key": "14680",
+   "name": "Voghera",
+   "lat": 44.99151,
+   "lon": 9.01175,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.3,
+     "w1": 83,
+     "w2": 83.6,
+     "mae": 2.7,
+     "worst": 22
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 75.1,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 22.7,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 27.9,
+     "w1": 57.8,
+     "w2": 76.4,
+     "mae": 2,
+     "worst": -10
+    }
+   },
+   "allW1": 84.7
+  },
+  {
+   "key": "14681",
+   "name": "Comerio",
+   "lat": 45.84191,
+   "lon": 8.74207,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 80,
+     "w2": 80.8,
+     "mae": 4.84,
+     "worst": 33
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 17.8,
+     "w1": 79.5,
+     "w2": 100,
+     "mae": 1.03,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 18.1,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.9,
+     "worst": -2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 30.7,
+     "w1": 51.2,
+     "w2": 67.4,
+     "mae": 3.47,
+     "worst": -20
+    }
+   },
+   "allW1": 83.8
+  },
+  {
+   "key": "14682",
+   "name": "Modena",
+   "lat": 44.64783,
+   "lon": 10.92539,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 66.3,
+     "w1": 84.1,
+     "w2": 84.1,
+     "mae": 2.07,
+     "worst": 17
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 19.7,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34,
+     "w1": 52.9,
+     "w2": 71.2,
+     "mae": 1.65,
+     "worst": -7
+    }
+   },
+   "allW1": 84.9
+  },
+  {
+   "key": "14683",
+   "name": "Muravera",
+   "lat": 39.41972,
+   "lon": 9.57471,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.96
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 84.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.15,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26,
+     "w1": 86.8,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 37.8,
+     "w1": 95.9,
+     "w2": 100,
+     "mae": 0.66,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 25.5,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": -2
+    }
+   },
+   "allW1": 95.5
+  },
+  {
+   "key": "14684",
+   "name": "Verona",
+   "lat": 45.43854,
+   "lon": 10.9938,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16.1,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 51.2,
+     "w1": 81.4,
+     "w2": 81.9,
+     "mae": 3.81,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.22,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.1,
+     "w1": 81.1,
+     "w2": 100,
+     "mae": 0.98,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.9,
+     "w1": 92.1,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 20,
+     "w1": 53.2,
+     "w2": 81.6,
+     "mae": 2.88,
+     "worst": -17
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14685",
+   "name": "Parma",
+   "lat": 44.79935,
+   "lon": 10.32618,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 67.7,
+     "w1": 83.6,
+     "w2": 84.1,
+     "mae": 2.31,
+     "worst": 19
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.9,
+     "w1": 78.4,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.81,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.2,
+     "w1": 52.1,
+     "w2": 66.6,
+     "mae": 1.87,
+     "worst": -9
+    }
+   },
+   "allW1": 84.5
+  },
+  {
+   "key": "14686",
+   "name": "Como",
+   "lat": 45.80819,
+   "lon": 9.0832,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.89
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 30.1,
+     "w1": 80.3,
+     "w2": 81.1,
+     "mae": 4.74,
+     "worst": 32
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 73.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.8,
+     "w1": 79.2,
+     "w2": 100,
+     "mae": 1,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 91,
+     "w2": 100,
+     "mae": 0.88,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 55.3,
+     "w2": 72.3,
+     "mae": 3.33,
+     "worst": -19
+    }
+   },
+   "allW1": 84.3
+  },
+  {
+   "key": "14687",
+   "name": "Viareggio",
+   "lat": 43.86693,
+   "lon": 10.2502,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 80,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 76.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23,
+     "w1": 80.3,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.6,
+     "w1": 92.9,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 15.3,
+     "w1": 75.1,
+     "w2": 100,
+     "mae": 1.1,
+     "worst": -2
+    }
+   },
+   "allW1": 91.4
+  },
+  {
+   "key": "14688",
+   "name": "Villaputzu",
+   "lat": 39.44058,
+   "lon": 9.57564,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 78.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.21,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 87.4,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 26.8,
+     "w1": 86.6,
+     "w2": 100,
+     "mae": 0.87,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 39.5,
+     "w1": 95.6,
+     "w2": 100,
+     "mae": 0.65,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.6,
+     "w1": 90.4,
+     "w2": 100,
+     "mae": 0.83,
+     "worst": -2
+    }
+   },
+   "allW1": 95.4
+  },
+  {
+   "key": "14689",
+   "name": "Vicenza",
+   "lat": 45.54672,
+   "lon": 11.5475,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 17.9,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.87
+   },
+   "offsets": {
+    "fajr": -1,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 50.4,
+     "w1": 81.4,
+     "w2": 81.6,
+     "mae": 4.05,
+     "worst": 29
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.9,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.24,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.7,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.09,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.4,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 92.6,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31,
+     "w1": 52.9,
+     "w2": 66,
+     "mae": 2.93,
+     "worst": -16
+    }
+   },
+   "allW1": 84.1
+  },
+  {
+   "key": "14690",
+   "name": "Padova",
+   "lat": 45.40797,
+   "lon": 11.88586,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 15.9,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.97,
+    "isha": 15.88
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 65.2,
+     "w1": 81.6,
+     "w2": 81.6,
+     "mae": 3.64,
+     "worst": 28
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 21.6,
+     "w1": 77.8,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.1,
+     "w1": 91.5,
+     "w2": 100,
+     "mae": 0.84,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 56.7,
+     "w2": 73.4,
+     "mae": 2.65,
+     "worst": -15
+    }
+   },
+   "allW1": 84.6
+  },
+  {
+   "key": "14691",
+   "name": "Bologna",
+   "lat": 44.49381,
+   "lon": 11.33875,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 64.9,
+     "w1": 84.7,
+     "w2": 84.9,
+     "mae": 1.79,
+     "worst": 15
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 77.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.23,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 88.2,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.12,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20.5,
+     "w1": 82.2,
+     "w2": 100,
+     "mae": 0.97,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 93.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 31.5,
+     "w1": 54.2,
+     "w2": 73.4,
+     "mae": 1.53,
+     "worst": -6
+    }
+   },
+   "allW1": 85.7
+  },
+  {
+   "key": "14692",
+   "name": "Pisa",
+   "lat": 43.70853,
+   "lon": 10.4036,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 82.5,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.18,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 75.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.25,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 23.8,
+     "w1": 80.5,
+     "w2": 100,
+     "mae": 0.96,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 23.3,
+     "w1": 94.2,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 22.2,
+     "w1": 75.6,
+     "w2": 100,
+     "mae": 1.02,
+     "worst": -2
+    }
+   },
+   "allW1": 91.7
+  },
+  {
+   "key": "14693",
+   "name": "Palermo",
+   "lat": 38.1166,
+   "lon": 13.3636,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.99,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 86.6,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 83,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.17,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 89,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.11,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 29.9,
+     "w1": 91.2,
+     "w2": 100,
+     "mae": 0.79,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 34.8,
+     "w1": 98.1,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 34.2,
+     "w1": 90.7,
+     "w2": 100,
+     "mae": 0.75,
+     "worst": 2
+    }
+   },
+   "allW1": 96.7
+  },
+  {
+   "key": "17863",
+   "name": "Brindisi",
+   "lat": 40.63215,
+   "lon": 17.93607,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 18,
+    "isha": 15.97
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": 0
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 87.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.13,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 80.3,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.2,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 90.1,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.1,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 24.4,
+     "w1": 90.1,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 35.1,
+     "w1": 98.4,
+     "w2": 100,
+     "mae": 0.67,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 26.3,
+     "w1": 88.5,
+     "w2": 100,
+     "mae": 0.85,
+     "worst": -2
+    }
+   },
+   "allW1": 96.2
+  },
+  {
+   "key": "20095",
+   "name": "Acqui terme",
+   "lat": 44.67552,
+   "lon": 8.46934,
+   "tz": "Europe/Rome",
+   "days": 365,
+   "fajrAngle": 18,
+   "ishaAngle": 16,
+   "ishaOffsetMin": null,
+   "clampedDays": 0,
+   "honestDays": 365,
+   "summerIshaGapMedian": null,
+   "implied": {
+    "fajr": 17.98,
+    "isha": 15.9
+   },
+   "offsets": {
+    "fajr": 0,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 4,
+    "maghrib": 7,
+    "isha": -1
+   },
+   "cols": {
+    "fajr": {
+     "n": 365,
+     "exact": 65.5,
+     "w1": 84.1,
+     "w2": 84.1,
+     "mae": 2.11,
+     "worst": 17
+    },
+    "sunrise": {
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.26,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 86,
+     "w1": 100,
+     "w2": 100,
+     "mae": 0.14,
+     "worst": -1
+    },
+    "asr": {
+     "n": 365,
+     "exact": 20,
+     "w1": 78.9,
+     "w2": 100,
+     "mae": 1.01,
+     "worst": -2
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 26,
+     "w1": 92.3,
+     "w2": 100,
+     "mae": 0.82,
+     "worst": 2
+    },
+    "isha": {
+     "n": 365,
+     "exact": 35.3,
+     "w1": 54.8,
+     "w2": 69.3,
+     "mae": 1.69,
+     "worst": -8
+    }
+   },
+   "allW1": 85
+  }
+ ]
+}

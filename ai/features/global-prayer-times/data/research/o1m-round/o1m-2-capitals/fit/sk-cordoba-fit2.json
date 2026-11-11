@@ -1,0 +1,55 @@
+{
+ "file": "sk-cordoba-masjidbox-walk.json",
+ "lat": 48.1452,
+ "lon": 17.1153,
+ "tz": "Europe/Bratislava",
+ "rows": 385,
+ "span": "2025-10-31..2026-11-19",
+ "recipe": {
+  "fajrAngle": 15,
+  "ishaAngle": 16,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "107 exact / 314 within-1 of 1925",
+ "pctWithin1": 16.31,
+ "worst": 59,
+ "per": {
+  "fajr": {
+   "exact": 33,
+   "within1": 162,
+   "worst": 35
+  },
+  "sunrise": {
+   "exact": 0,
+   "within1": 231,
+   "worst": 2
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 6
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 8
+  },
+  "maghrib": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 5
+  },
+  "isha": {
+   "exact": 74,
+   "within1": 152,
+   "worst": 59
+  }
+ },
+ "amplitudeFajrJanJul": null,
+ "amplitudeIshaJanJul": null,
+ "years": [
+  "2025",
+  "2026"
+ ]
+}

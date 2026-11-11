@@ -1,0 +1,146 @@
+{
+ "rows": "data/mawaqit-sondlapara-mallickpara-j.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 22.76,
+  "lon": 88.11
+ },
+ "coarse": {
+  "lat": 22.9,
+  "lon": 88.25,
+  "mae": 34.283
+ },
+ "mid": {
+  "lat": 22.76,
+  "lon": 88.11,
+  "mae": 34.123
+ },
+ "meta": {
+  "name": "Sondla Para  Jama Masjid - KOLKATA",
+  "address": null,
+  "lat": 22.8158959,
+  "lon": 88.374039,
+  "tz": "Asia/Kolkata"
+ },
+ "fajr_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 7.75,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 7.77,
+   "mad": 0
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 7.85,
+   "mad": 1
+  },
+  {
+   "a": 17.85,
+   "med": -1,
+   "mae": 7.94,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 67,
+   "mae": 65.75,
+   "mad": 32
+  },
+  {
+   "a": 19.95,
+   "med": 67,
+   "mae": 65.96,
+   "mad": 32
+  },
+  {
+   "a": 19.9,
+   "med": 67,
+   "mae": 66.19,
+   "mad": 32
+  },
+  {
+   "a": 19.85,
+   "med": 67,
+   "mae": 66.51,
+   "mad": 32
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 98,
+   "mad": 9
+  },
+  "1": {
+   "med": 31,
+   "mad": 14
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 67,
+  "asr": 97,
+  "maghrib": 60,
+  "isha": 66
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 44.1,
+   "within1": 64.7,
+   "mae": 7.99,
+   "worst": 35,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 57,
+   "within1": 100,
+   "mae": 0.43,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 3.8,
+   "within1": 11.2,
+   "mae": 7.15,
+   "worst": 17,
+   "med": 0
+  },
+  "asr": {
+   "exact": 5.8,
+   "within1": 12.3,
+   "mae": 9.88,
+   "worst": 28,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 1.1,
+   "within1": 2.7,
+   "mae": 27.37,
+   "worst": 54,
+   "med": 0
+  },
+  "isha": {
+   "exact": 0.8,
+   "within1": 2.7,
+   "mae": 29.84,
+   "worst": -54,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 61
+}

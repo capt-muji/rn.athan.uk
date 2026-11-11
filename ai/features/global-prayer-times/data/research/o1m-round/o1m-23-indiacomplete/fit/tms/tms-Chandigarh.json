@@ -1,0 +1,142 @@
+{
+ "rows": "data/tms/tms-Chandigarh-2026.json",
+ "year": 2026,
+ "point": {
+  "lat": 30.7,
+  "lon": 76.9
+ },
+ "n_days": 365,
+ "table_shift_min": 0,
+ "fajr_angle": 17.97,
+ "isha_angle": 18.03,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "mae": 0.25,
+   "med": 0
+  },
+  {
+   "a": 17.95,
+   "mae": 0.29,
+   "med": 0
+  },
+  {
+   "a": 17.9,
+   "mae": 0.4,
+   "med": 0
+  },
+  {
+   "a": 18.05,
+   "mae": 0.4,
+   "med": 0
+  }
+ ],
+ "isha_sweep": [
+  {
+   "a": 18.05,
+   "mae": 0.33,
+   "med": 0
+  },
+  {
+   "a": 18.1,
+   "mae": 0.37,
+   "med": 0
+  },
+  {
+   "a": 18,
+   "mae": 0.42,
+   "med": 0
+  },
+  {
+   "a": 18.15,
+   "mae": 0.52,
+   "med": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "mae": 57.07,
+   "med": 55
+  },
+  "1": {
+   "mae": 0.34,
+   "med": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 76.7,
+   "within1": 100,
+   "mae": 0.23,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 72.6,
+   "within1": 100,
+   "mae": 0.27,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 50.4,
+   "within1": 100,
+   "mae": 0.5,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.8,
+   "within1": 100,
+   "mae": 0.34,
+   "worst": 1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 68.5,
+   "within1": 100,
+   "mae": 0.32,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 67.9,
+   "within1": 100,
+   "mae": 0.32,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "isha_tier": {
+  "17": {
+   "mae": 5.47,
+   "med": 5,
+   "within1": 0,
+   "exact": 0,
+   "worst": 7
+  },
+  "18": {
+   "mae": 0.42,
+   "med": 0,
+   "within1": 99.5,
+   "exact": 58.6,
+   "worst": 2
+  }
+ },
+ "isha_17_vs_18": {
+  "mean_gap_min": 5.13,
+  "min": 4,
+  "max": 7
+ },
+ "amplitude_fajr_min": 135
+}

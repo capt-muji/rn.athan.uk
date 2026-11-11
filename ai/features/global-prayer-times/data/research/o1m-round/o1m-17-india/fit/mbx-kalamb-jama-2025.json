@@ -1,0 +1,149 @@
+{
+ "rows": "data/masjidbox-kalamb-jama-2025.json",
+ "year": 2025,
+ "n_days": 344,
+ "point": {
+  "lat": 18.84,
+  "lon": 73.08
+ },
+ "coarse": {
+  "lat": 18.8,
+  "lon": 73.1,
+  "mae": 0.48
+ },
+ "mid": {
+  "lat": 18.84,
+  "lon": 73.08,
+  "mae": 0.45
+ },
+ "meta": {
+  "name": "JAMA MASJID KALAMB",
+  "address": "SUNNI JAMA MASJID KALAMB, Karjat - Murbad Road, Kalamb, Maharashtra, India",
+  "country": "IN",
+  "settings": {
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 18.2,
+ "fajr_sweep": [
+  {
+   "a": 18.2,
+   "med": 0,
+   "mae": 0.3,
+   "mad": 0
+  },
+  {
+   "a": 18.15,
+   "med": 0,
+   "mae": 0.32,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.42,
+   "mad": 0
+  },
+  {
+   "a": 18.25,
+   "med": 0,
+   "mae": 0.42,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 17.9,
+ "isha_sweep": [
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.36,
+   "mad": 0
+  },
+  {
+   "a": 17.85,
+   "med": 0,
+   "mae": 0.4,
+   "mad": 0
+  },
+  {
+   "a": 17.8,
+   "med": 0,
+   "mae": 0.42,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.44,
+   "mad": 0
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": -1,
+   "mad": 0
+  },
+  "1": {
+   "med": -58,
+   "mad": 10
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -1,
+  "dhuhr": 0,
+  "asr": -1,
+  "maghrib": -1,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 69.2,
+   "within1": 100,
+   "mae": 0.31,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 64,
+   "within1": 100,
+   "mae": 0.36,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 74.7,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 74.4,
+   "within1": 100,
+   "mae": 0.26,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 64.8,
+   "within1": 100,
+   "mae": 0.35,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 61.9,
+   "within1": 100,
+   "mae": 0.38,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 344,
+ "all_six_exact": 31,
+ "amplitude_fajr_min": 81
+}

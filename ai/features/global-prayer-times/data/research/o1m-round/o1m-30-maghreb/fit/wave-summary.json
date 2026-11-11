@@ -1,0 +1,68 @@
+{
+ "wave": "o1m-30-maghreb",
+ "countries": [
+  "Morocco",
+  "Algeria",
+  "Tunisia",
+  "Libya"
+ ],
+ "algeria_1448": {
+  "book": "marw.gov.dz/media/calendrier/1448/Alger.pdf via Wayback 20260730202403",
+  "pages": 16,
+  "months_parsed": [
+   2,
+   3,
+   4,
+   7,
+   9,
+   10,
+   11,
+   12
+  ],
+  "days_transcribed": 235,
+  "days_kept": 219,
+  "recipe": {
+   "fajr": "17.80 +0 floor",
+   "sunrise": "+1 floor",
+   "dhuhr": "+1 floor",
+   "asr": "Shafi +1 floor",
+   "maghrib": "+4 floor",
+   "isha": "17.00 +0 ceil"
+  },
+  "scores": "six columns 219/219 within 1, worst 1",
+  "isha_frozen_16.10_plus5": "185/219 within 1, worst 2",
+  "grade": "A (second Hijri year, one wilaya, 219 of 354 days)"
+ },
+ "tunisia": {
+  "rows": 1102,
+  "requests": 1155,
+  "dates": [
+   "2024-12-16",
+   "2026-12-31"
+  ],
+  "delegations": 49,
+  "2027": "closed, data:null",
+  "correction": "TN-INM-FLAT2026 is an angle normalisation to 18.00/18.00 at 20 of 22 Kairouan/Sidi Bouzid delegations, effective between 2025-12-16 and 2026-01-10, permanent to 2026-12-31; horizon unchanged",
+  "national_scope": "21 of 22 governorate capitals unchanged 2024-12-16 vs 2026-12-16"
+ },
+ "morocco": {
+  "december_2026": "404 (153 B)",
+  "2027": "404 at five paths",
+  "wayback_pre_rebuild": "none (only horaires-2026-10.js and a static 2012 old-site table)",
+  "decree": "holds; October 2026 is the discriminating month; December non-discriminating"
+ },
+ "libya": {
+  "verdict": "no year-2 surface",
+  "muazzin": "muazzin.com is a creative agency (trap)",
+  "awqaf": "403 both hosts",
+  "masjidi_tenants": "Tripoli x2, Zawiya, Gharyan, Misrata; no Benghazi/Sabha",
+  "masjidi_tables": "no date, no year field"
+ },
+ "crosscheck": {
+  "morocco": "fajr -2.5..-3.5, isha -2.0..-2.7",
+  "algeria": "fajr -2.2, isha -1.8, maghrib -3.6 on 219 printed days",
+  "tunisia": "fajr -1.4, dhuhr -6.8 on 20 printed days",
+  "libya": "fajr -2.8..-3.7, isha -0.8..-1.0",
+  "verdict": "no platform family reproduces a Maghreb national line at zero margins"
+ }
+}

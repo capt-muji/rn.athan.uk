@@ -1,0 +1,29 @@
+{
+ "city": "REYKJAVIK",
+ "nightFraction": null,
+ "country": "IZLANDA",
+ "source": "namazvakti.diyanet.gov.tr",
+ "tz": "Atlantic/Reykjavik",
+ "lat": 64.1466,
+ "lon": -21.9426,
+ "rows": 30,
+ "solarGateMedAbs": 0.23,
+ "fajrAngle": null,
+ "ishaAngle": null,
+ "solarMargin": {
+  "sunrise": null,
+  "dhuhr": null,
+  "asrShafi": null,
+  "asrHanafi": null,
+  "maghrib": null
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 53,
+  "isha": 36
+ }
+}

@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-alserkal-pp.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 11.46,
+  "lon": 104.9,
+  "mae": 0.471
+ },
+ "coarse": {
+  "lat": 11.5,
+  "lon": 104.9,
+  "mae": 0.475
+ },
+ "fajr_angle": 18.4,
+ "fajr_sweep": [
+  {
+   "a": 18.4,
+   "med": -5,
+   "maeCentred": 0.12
+  },
+  {
+   "a": 18.85,
+   "med": -3,
+   "maeCentred": 0.13
+  },
+  {
+   "a": 18.15,
+   "med": -6,
+   "maeCentred": 0.14
+  }
+ ],
+ "isha_angle": 17.35,
+ "isha_sweep": [
+  {
+   "a": 17.35,
+   "med": 4,
+   "maeCentred": 0.12
+  },
+  {
+   "a": 17.8,
+   "med": 2,
+   "maeCentred": 0.13
+  },
+  {
+   "a": 17.6,
+   "med": 3,
+   "maeCentred": 0.14
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": -1,
+   "maeCentred": 0.64
+  },
+  "1": {
+   "med": -64,
+   "maeCentred": 7.56
+  }
+ },
+ "margins": {
+  "fajr": -5,
+  "sunrise": 0,
+  "dhuhr": -1,
+  "asr": -1,
+  "maghrib": 2,
+  "isha": 4
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 87.9,
+   "within1": 100,
+   "mae": 0.12,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 58.9,
+   "within1": 100,
+   "mae": 0.41,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 53.2,
+   "within1": 100,
+   "mae": 0.47,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 45.2,
+   "within1": 90.4,
+   "mae": 0.64,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 55.9,
+   "within1": 100,
+   "mae": 0.44,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 88.5,
+   "within1": 100,
+   "mae": 0.12,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 330,
+ "all_six_exact": 12,
+ "amplitude_fajr_min": 54
+}

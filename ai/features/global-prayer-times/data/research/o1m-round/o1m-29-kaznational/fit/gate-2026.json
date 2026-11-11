@@ -1,0 +1,909 @@
+{
+ "year": 2026,
+ "sample": 50,
+ "settlementsAvailable": 5658,
+ "cells": 109500,
+ "diffs": 0,
+ "results": [
+  {
+   "id": 10554,
+   "name": "Жеңіс",
+   "region": "Түркістан облысы",
+   "lat": 40.599543,
+   "lng": 68.50476,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 10398,
+   "name": "Аден ата",
+   "region": "Түркістан облысы",
+   "lat": 40.90753,
+   "lng": 68.360293,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 10512,
+   "name": "Береке",
+   "region": "Түркістан облысы",
+   "lat": 41.374544,
+   "lng": 68.792706,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 10437,
+   "name": "Бақабұлақ",
+   "region": "Түркістан облысы",
+   "lat": 41.951948,
+   "lng": 69.006011,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 134,
+   "name": "Арыс қаласы",
+   "region": "Түркістан облысы",
+   "lat": 42.432744,
+   "lng": 68.813798,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 10703,
+   "name": "Ақарыс",
+   "region": "Түркістан облысы",
+   "lat": 42.599702,
+   "lng": 69.571177,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8000,
+   "name": "Мыңқазан",
+   "region": "Жамбыл облысы",
+   "lat": 42.844167,
+   "lng": 73.422222,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8117,
+   "name": "Құмарық (ст.)",
+   "region": "Жамбыл облысы",
+   "lat": 42.965556,
+   "lng": 72.611944,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7817,
+   "name": "Диқан",
+   "region": "Жамбыл облысы",
+   "lat": 43.107778,
+   "lng": 71.583889,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7126,
+   "name": "Әйтей",
+   "region": "Алматы облысы",
+   "lat": 43.233984,
+   "lng": 76.601051,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7088,
+   "name": "Жармұхамбет",
+   "region": "Алматы облысы",
+   "lat": 43.375639,
+   "lng": 76.803118,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8138,
+   "name": "Жаңажол",
+   "region": "Жамбыл облысы",
+   "lat": 43.504444,
+   "lng": 73.835278,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8146,
+   "name": "Төле би",
+   "region": "Жамбыл облысы",
+   "lat": 43.675876,
+   "lng": 73.761989,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8006,
+   "name": "Биназар",
+   "region": "Жамбыл облысы",
+   "lat": 44.065891,
+   "lng": 73.574043,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8287,
+   "name": "Желдіқара",
+   "region": "Жетісу облысы",
+   "lat": 44.439263,
+   "lng": 77.948398,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8230,
+   "name": "Қайнарлы",
+   "region": "Жетісу облысы",
+   "lat": 44.984275,
+   "lng": 78.678711,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8162,
+   "name": "Қызылқайың",
+   "region": "Жетісу облысы",
+   "lat": 45.478954,
+   "lng": 79.59793,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 9235,
+   "name": "Бөген",
+   "region": "Қызылорда облысы",
+   "lat": 46.141452,
+   "lng": 61.224409,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6018,
+   "name": "Науалы",
+   "region": "Абай облысы",
+   "lat": 46.999615,
+   "lng": 81.748631,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7376,
+   "name": "Тандай",
+   "region": "Атырау облысы",
+   "lat": 47.550127,
+   "lng": 51.513594,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 5789,
+   "name": "Мамырсу",
+   "region": "Абай облысы",
+   "lat": 47.951147,
+   "lng": 80.382042,
+   "set": "A",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 5786,
+   "name": "Қорық",
+   "region": "Абай облысы",
+   "lat": 48.446898,
+   "lng": 78.187826,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8623,
+   "name": "Ақсу-аюлы",
+   "region": "Қарағанды облысы",
+   "lat": 48.768143,
+   "lng": 73.672912,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 5935,
+   "name": "Малай",
+   "region": "Абай облысы",
+   "lat": 49.018975,
+   "lng": 81.361269,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6769,
+   "name": "Құмкұдық",
+   "region": "Ақтөбе облысы",
+   "lat": 49.263392,
+   "lng": 55.547909,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7614,
+   "name": "Жас",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 49.508037,
+   "lng": 49.79146,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8491,
+   "name": "Қарабұлақ",
+   "region": "Қарағанды облысы",
+   "lat": 49.706014,
+   "lng": 76.100905,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 11266,
+   "name": "Бейистерек",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 49.917349,
+   "lng": 50.012014,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8703,
+   "name": "Байғабыл",
+   "region": "Қостанай облысы",
+   "lat": 50.114023,
+   "lng": 64.990757,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6837,
+   "name": "Оңғар",
+   "region": "Ақтөбе облысы",
+   "lat": 50.28519,
+   "lng": 58.543405,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 5875,
+   "name": "Боровлянка",
+   "region": "Абай облысы",
+   "lat": 50.479323,
+   "lng": 81.234355,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6723,
+   "name": "Родниковка",
+   "region": "Ақтөбе облысы",
+   "lat": 50.651753,
+   "lng": 57.175037,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6728,
+   "name": "Хазретовка",
+   "region": "Ақтөбе облысы",
+   "lat": 50.797784,
+   "lng": 57.480168,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7778,
+   "name": "Жаңақуш",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 50.965378,
+   "lng": 54.188022,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7772,
+   "name": "Мырзағара",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 51.178217,
+   "lng": 53.748898,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 7539,
+   "name": "Петрово",
+   "region": "Батыс Қазақстан облысы",
+   "lat": 51.409991,
+   "lng": 51.480545,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6145,
+   "name": "Калиновка",
+   "region": "Ақмола облысы",
+   "lat": 51.69267,
+   "lng": 68.530335,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6317,
+   "name": "Свободное",
+   "region": "Ақмола облысы",
+   "lat": 51.995157,
+   "lng": 66.567643,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6198,
+   "name": "Ұлтуған",
+   "region": "Ақмола облысы",
+   "lat": 52.290482,
+   "lng": 70.470817,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 10222,
+   "name": "Сокологоровка",
+   "region": "Солтүстік Қазақстан облысы",
+   "lat": 52.50755,
+   "lng": 67.866741,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8760,
+   "name": "Георгиевка",
+   "region": "Қостанай облысы",
+   "lat": 52.689932,
+   "lng": 61.085062,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8775,
+   "name": "Фрунзенское",
+   "region": "Қостанай облысы",
+   "lat": 52.850135,
+   "lng": 61.52415,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6221,
+   "name": "Баянбай",
+   "region": "Ақмола облысы",
+   "lat": 53.020998,
+   "lng": 69.953141,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 42,
+   "name": "Қостанай қаласы",
+   "region": "Қостанай облысы",
+   "lat": 53.219333,
+   "lng": 63.634194,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6381,
+   "name": "Қонысбай",
+   "region": "Ақмола облысы",
+   "lat": 53.410153,
+   "lng": 69.287606,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 6388,
+   "name": "Қызылағаш",
+   "region": "Ақмола облысы",
+   "lat": 53.598027,
+   "lng": 68.908454,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 9775,
+   "name": "Құмтөккен",
+   "region": "Солтүстік Қазақстан облысы",
+   "lat": 53.763845,
+   "lng": 68.575305,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 8944,
+   "name": "Буденновка",
+   "region": "Қостанай облысы",
+   "lat": 53.941118,
+   "lng": 63.805543,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 9058,
+   "name": "Речное",
+   "region": "Қостанай облысы",
+   "lat": 54.219168,
+   "lng": 65.871879,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  },
+  {
+   "id": 9049,
+   "name": "Белоглинка",
+   "region": "Қостанай облысы",
+   "lat": 54.616752,
+   "lng": 65.867693,
+   "set": "B",
+   "days": 365,
+   "diffs": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "bad": 0
+  }
+ ]
+}

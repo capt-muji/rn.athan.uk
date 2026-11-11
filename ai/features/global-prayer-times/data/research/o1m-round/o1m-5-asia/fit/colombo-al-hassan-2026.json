@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-al-hassan-masjid-colombo-00300-sri-lanka.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 6.9,
+  "lon": 79.7,
+  "mae": 8.596
+ },
+ "coarse": {
+  "lat": 6.85,
+  "lon": 79.75,
+  "mae": 8.759
+ },
+ "fajr_angle": 19.55,
+ "fajr_sweep": [
+  {
+   "a": 19.55,
+   "med": -1,
+   "maeCentred": 12.24
+  },
+  {
+   "a": 19.8,
+   "med": 0,
+   "maeCentred": 12.24
+  },
+  {
+   "a": 20.05,
+   "med": 1,
+   "maeCentred": 12.24
+  }
+ ],
+ "isha_angle": 17.65,
+ "isha_sweep": [
+  {
+   "a": 17.65,
+   "med": 2,
+   "maeCentred": 5.04
+  },
+  {
+   "a": 17.9,
+   "med": 1,
+   "maeCentred": 5.04
+  },
+  {
+   "a": 18.15,
+   "med": 0,
+   "maeCentred": 5.04
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 1,
+   "maeCentred": 4.49
+  },
+  "1": {
+   "med": -62,
+   "maeCentred": 7.81
+  }
+ },
+ "margins": {
+  "fajr": -1,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 1,
+  "isha": 2
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 72.1,
+   "within1": 91.5,
+   "mae": 12.24,
+   "worst": 144,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 75.3,
+   "within1": 91.5,
+   "mae": 12.24,
+   "worst": 145,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 71.2,
+   "within1": 91.5,
+   "mae": 3.95,
+   "worst": 45,
+   "med": 0
+  },
+  "asr": {
+   "exact": 65.8,
+   "within1": 91.5,
+   "mae": 4.49,
+   "worst": -52,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 64.7,
+   "within1": 91.5,
+   "mae": 5.36,
+   "worst": -62,
+   "med": 0
+  },
+  "isha": {
+   "exact": 73.4,
+   "within1": 91.5,
+   "mae": 5.04,
+   "worst": -59,
+   "med": 0
+  }
+ },
+ "all_six_within1": 334,
+ "all_six_exact": 71,
+ "amplitude_fajr_min": 172
+}

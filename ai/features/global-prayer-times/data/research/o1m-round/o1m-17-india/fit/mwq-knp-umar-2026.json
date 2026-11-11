@@ -1,0 +1,146 @@
+{
+ "rows": "data/mawaqit-masjid-umar-bin-khattab-.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 26.61,
+  "lon": 80.1
+ },
+ "coarse": {
+  "lat": 26.55,
+  "lon": 80.22,
+  "mae": 0.547
+ },
+ "mid": {
+  "lat": 26.61,
+  "lon": 80.1,
+  "mae": 0.396
+ },
+ "meta": {
+  "name": "مسجد عمر بن الخطاب - KANPUR",
+  "address": null,
+  "lat": 26.47364388005,
+  "lon": 80.340122133493,
+  "tz": "Asia/Kolkata"
+ },
+ "fajr_angle": 18.05,
+ "fajr_sweep": [
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.26,
+   "mad": 0
+  },
+  {
+   "a": 18.1,
+   "med": 0,
+   "mae": 0.32,
+   "mad": 0
+  },
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.36,
+   "mad": 0
+  },
+  {
+   "a": 18.15,
+   "med": 0,
+   "mae": 0.38,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 20,
+ "isha_sweep": [
+  {
+   "a": 20,
+   "med": 18,
+   "mae": 30.66,
+   "mad": 30
+  },
+  {
+   "a": 19.95,
+   "med": 18,
+   "mae": 30.74,
+   "mad": 29
+  },
+  {
+   "a": 19.9,
+   "med": 18,
+   "mae": 30.75,
+   "mad": 29
+  },
+  {
+   "a": 19.85,
+   "med": 19,
+   "mae": 30.81,
+   "mad": 30
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "mad": 1
+  },
+  "1": {
+   "med": -55,
+   "mad": 11
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 17
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 77.5,
+   "within1": 100,
+   "mae": 0.22,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 58.1,
+   "within1": 100,
+   "mae": 0.42,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 52.9,
+   "within1": 100,
+   "mae": 0.47,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 37.5,
+   "within1": 84.9,
+   "mae": 0.78,
+   "worst": 2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 55.3,
+   "within1": 100,
+   "mae": 0.45,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 0.8,
+   "within1": 2.5,
+   "mae": 28.23,
+   "worst": 56,
+   "med": 0
+  }
+ },
+ "all_six_within1": 7,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 113
+}

@@ -1,0 +1,79 @@
+{
+ "city": "surgut",
+ "nightFraction": {
+  "n": 112,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Russia",
+ "source": "tawkit.net",
+ "tz": "Asia/Anadyr",
+ "lat": 61.2507,
+ "lon": 178.2878,
+ "rows": 365,
+ "solarGateMedAbs": 0.57,
+ "fajrAngle": {
+  "n": 248,
+  "med": 16,
+  "min": 11.6,
+  "max": 16.3,
+  "jun": null,
+  "dec": 16
+ },
+ "ishaAngle": {
+  "n": 254,
+  "med": 15,
+  "min": 12.55,
+  "max": 15.1,
+  "jun": null,
+  "dec": 15
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0,
+   "min": -1.9,
+   "max": 1.7
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": -0.05,
+   "min": -0.5,
+   "max": 0.4
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.75,
+   "min": -79.7,
+   "max": -16.4
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0,
+   "min": -0.6,
+   "max": 0.7
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-27",
+    "to": "2027-08-16",
+    "days": 112
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 402,
+  "isha": 417
+ }
+}

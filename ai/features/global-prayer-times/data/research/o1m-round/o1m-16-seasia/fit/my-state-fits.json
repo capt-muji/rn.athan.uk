@@ -1,0 +1,5430 @@
+{
+ "my-2027-JHR01": {
+  "point": {
+   "lat": 2.5829,
+   "lon": 104.2824
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 316,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 47,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 308,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 305,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 47,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 305,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-JHR02": {
+  "point": {
+   "lat": 1.7272,
+   "lon": 103.5047
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 42,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 311,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 42,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 311,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-JHR03": {
+  "point": {
+   "lat": 1.6589,
+   "lon": 103.176
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 336,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 34,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 334,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 34,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 334,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-JHR04": {
+  "point": {
+   "lat": 2.2773,
+   "lon": 102.5045
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 40,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 321,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 40,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH01": {
+  "point": {
+   "lat": 6.2779,
+   "lon": 100.1741
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 22,
+      "within1": 350,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 313,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 316,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 315,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 28,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 22,
+      "within1": 350,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 20,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 316,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 18,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH02": {
+  "point": {
+   "lat": 5.8558,
+   "lon": 100.4241
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 119,
+      "within1": 344,
+      "worst": 2
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 210,
+      "within1": 363,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 145,
+      "within1": 323,
+      "worst": 3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 155,
+      "within1": 342,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 157,
+      "within1": 360,
+      "worst": 2
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 21,
+      "within1": 243,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 210,
+      "within1": 363,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 19,
+      "within1": 212,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 155,
+      "within1": 342,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 5,
+      "within1": 194,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH03": {
+  "point": {
+   "lat": 6.2794,
+   "lon": 100.4241
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 313,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 316,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 315,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 28,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 20,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 316,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 17,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH04": {
+  "point": {
+   "lat": 5.6981,
+   "lon": 100.6741
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 171,
+      "within1": 363,
+      "worst": 2
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 105,
+      "within1": 332,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 139,
+      "within1": 306,
+      "worst": 4
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 227,
+      "within1": 353,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 228,
+      "within1": 354,
+      "worst": 2
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 2,
+      "within1": 188,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 105,
+      "within1": 332,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 25,
+      "within1": 221,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 227,
+      "within1": 353,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 11,
+      "within1": 123,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH05": {
+  "point": {
+   "lat": 5.3854,
+   "lon": 100.4241
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 250,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 93,
+      "within1": 326,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 211,
+      "within1": 323,
+      "worst": 4
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 202,
+      "within1": 353,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 214,
+      "within1": 353,
+      "worst": 2
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 87,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 93,
+      "within1": 326,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 10,
+      "within1": 104,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 202,
+      "within1": 353,
+      "worst": 2
+     },
+     "isha": {
+      "n": 365,
+      "exact": 12,
+      "within1": 131,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH06": {
+  "point": {
+   "lat": 6.4222,
+   "lon": 99.6742
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 262,
+      "within1": 364,
+      "worst": 2
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 290,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 263,
+      "within1": 363,
+      "worst": 2
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 262,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 1,
+      "within1": 74,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 290,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 2,
+      "within1": 79,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 83,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KDH07": {
+  "point": {
+   "lat": 6.1834,
+   "lon": 100.4241
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -6
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -5
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 115,
+      "within1": 284,
+      "worst": 3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 6
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -8
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -5
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 78,
+      "within1": 240,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": 4
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KTN01": {
+  "point": {
+   "lat": 5.9205,
+   "lon": 101.9708
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 295,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 336,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 293,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -5
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 27,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 336,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 30,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -7
+     }
+    }
+   }
+  }
+ },
+ "my-2027-KTN02": {
+  "point": {
+   "lat": 4.8542,
+   "lon": 101.4879
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 42,
+      "within1": 343,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 350,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 297,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 320,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -5
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 22,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 42,
+      "within1": 343,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 350,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 34,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 320,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -7
+     }
+    }
+   }
+  }
+ },
+ "my-2027-MLK01": {
+  "point": {
+   "lat": 2.4288,
+   "lon": 101.972
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 16,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 299,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 347,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 7,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 16,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 30,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 347,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-NGS01": {
+  "point": {
+   "lat": 2.7123,
+   "lon": 102.1901
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 297,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 339,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 365,
+      "within1": 365,
+      "worst": 0
+     },
+     "asr": {
+      "n": 365,
+      "exact": 251,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 62,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 339,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 365,
+      "within1": 365,
+      "worst": 0
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 68,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 310,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 58,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-NGS02": {
+  "point": {
+   "lat": 2.8968,
+   "lon": 101.9199
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 302,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 33,
+      "within1": 351,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 301,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 62,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 33,
+      "within1": 351,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 65,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 62,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-NGS03": {
+  "point": {
+   "lat": 2.6916,
+   "lon": 101.6896
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 128,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 363,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 252,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 349,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 15,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 128,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 363,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 53,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 349,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 11,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG01": {
+  "point": {
+   "lat": 2.7881,
+   "lon": 104.1277
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 24,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 24,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG02": {
+  "point": {
+   "lat": 3.0869,
+   "lon": 102.7545
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 35,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 35,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 329,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG03": {
+  "point": {
+   "lat": 3.4762,
+   "lon": 102.0867
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 318,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 38,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 312,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 318,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 311,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 38,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 312,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 318,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG04": {
+  "point": {
+   "lat": 3.9871,
+   "lon": 101.7167
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 15,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 15,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 327,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG05": {
+  "point": {
+   "lat": 3.4368,
+   "lon": 101.8071
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 344,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -4
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 4
+     },
+     "isha": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -4
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 4
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PHG06": {
+  "point": {
+   "lat": 4.5397,
+   "lon": 101.3779
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -6
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -6
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": 6
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PLS01": {
+  "point": {
+   "lat": 6.4582,
+   "lon": 100.0822
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 334,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 305,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 318,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 22,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PNG01": {
+  "point": {
+   "lat": 5.3927,
+   "lon": 100.1677
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 181,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 266,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 38,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 181,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 51,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 24,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK01": {
+  "point": {
+   "lat": 4.1266,
+   "lon": 101.0562
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 2,
+      "within1": 249,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 363,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 275,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 321,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 6,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 2,
+      "within1": 249,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 363,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 30,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK02": {
+  "point": {
+   "lat": 4.5701,
+   "lon": 100.7005
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 31,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 249,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 343,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 31,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 359,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 52,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 1,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK03": {
+  "point": {
+   "lat": 5.1959,
+   "lon": 100.8536
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 281,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 286,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 357,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 261,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 281,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 82,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 3,
+      "within1": 286,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 357,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 70,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 299,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 83,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK04": {
+  "point": {
+   "lat": 5.457,
+   "lon": 101.1935
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 279,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 28,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 279,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 44,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 19,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK05": {
+  "point": {
+   "lat": 4.1256,
+   "lon": 100.5143
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 324,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 71,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 263,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 312,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 15,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 71,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 46,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK06": {
+  "point": {
+   "lat": 5.1242,
+   "lon": 100.3505
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 224,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 253,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 336,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 224,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 43,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-PRK07": {
+  "point": {
+   "lat": 4.8402,
+   "lon": 100.7762
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 39,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 265,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 39,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 34,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 325,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH01": {
+  "point": {
+   "lat": 5.5279,
+   "lon": 117.7789
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 318,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 31,
+      "within1": 354,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 290,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 7,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 31,
+      "within1": 354,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 31,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH02": {
+  "point": {
+   "lat": 5.2372,
+   "lon": 116.7994
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 312,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 34,
+      "within1": 352,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 281,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 17,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 34,
+      "within1": 352,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 33,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH03": {
+  "point": {
+   "lat": 5.045,
+   "lon": 118.2789
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 328,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 362,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 283,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 6,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 362,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 28,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH04": {
+  "point": {
+   "lat": 4.4401,
+   "lon": 117.4898
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 27,
+      "within1": 357,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 351,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 283,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 351,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 27,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 27,
+      "within1": 357,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 351,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 36,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 352,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH05": {
+  "point": {
+   "lat": 6.9042,
+   "lon": 116.8104
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 358,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 269,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 7,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 41,
+      "within1": 358,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 34,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH06": {
+  "point": {
+   "lat": 6.366,
+   "lon": 116.5148
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 260,
+      "within1": 362,
+      "worst": 4
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -8
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 343,
+      "within1": 362,
+      "worst": 3
+     },
+     "asr": {
+      "n": 365,
+      "exact": 274,
+      "within1": 359,
+      "worst": 5
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 18,
+      "within1": 31,
+      "worst": 9
+     },
+     "isha": {
+      "n": 365,
+      "exact": 256,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 52,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -8
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 343,
+      "within1": 362,
+      "worst": 3
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 39,
+      "worst": -4
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 18,
+      "within1": 31,
+      "worst": 9
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 41,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH07": {
+  "point": {
+   "lat": 5.7559,
+   "lon": 115.9218
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 306,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 36,
+      "within1": 349,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 269,
+      "within1": 365,
+      "worst": 1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 33,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 36,
+      "within1": 349,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 41,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 3,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH08": {
+  "point": {
+   "lat": 4.9213,
+   "lon": 116.1585
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 168,
+      "within1": 364,
+      "worst": 68
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 97,
+      "within1": 290,
+      "worst": 368
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 334,
+      "within1": 364,
+      "worst": 180
+     },
+     "asr": {
+      "n": 365,
+      "exact": 255,
+      "within1": 363,
+      "worst": 185
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 227,
+      "within1": 364,
+      "worst": 70
+     },
+     "isha": {
+      "n": 365,
+      "exact": 215,
+      "within1": 364,
+      "worst": -880
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 85,
+      "worst": 66
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 97,
+      "within1": 290,
+      "worst": 368
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 334,
+      "within1": 364,
+      "worst": 180
+     },
+     "asr": {
+      "n": 365,
+      "exact": 1,
+      "within1": 49,
+      "worst": 183
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 227,
+      "within1": 364,
+      "worst": 70
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 92,
+      "worst": -882
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SBH09": {
+  "point": {
+   "lat": 5.1654,
+   "lon": 115.5283
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 308,
+      "within1": 361,
+      "worst": 11
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 56,
+      "within1": 353,
+      "worst": 12
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 332,
+      "within1": 361,
+      "worst": 7
+     },
+     "asr": {
+      "n": 365,
+      "exact": 260,
+      "within1": 361,
+      "worst": 20
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 311,
+      "within1": 361,
+      "worst": 4
+     },
+     "isha": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 17,
+      "worst": 9
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 56,
+      "within1": 353,
+      "worst": 12
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 332,
+      "within1": 361,
+      "worst": 7
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 42,
+      "worst": 18
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 311,
+      "within1": 361,
+      "worst": 4
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 2,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SGR01": {
+  "point": {
+   "lat": 3.4259,
+   "lon": 101.3691
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 241,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 83,
+      "within1": 246,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 269,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 277,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 93,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 83,
+      "within1": 246,
+      "worst": -2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 50,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 268,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 73,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SGR02": {
+  "point": {
+   "lat": 3.7294,
+   "lon": 100.7804
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 288,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 9,
+      "within1": 130,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 276,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 9,
+      "within1": 130,
+      "worst": -3
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 31,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 323,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SGR03": {
+  "point": {
+   "lat": 3.1387,
+   "lon": 101.2379
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 280,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 131,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 275,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 300,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 60,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 131,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 53,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 303,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 62,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK01": {
+  "point": {
+   "lat": 4.7853,
+   "lon": 114.8186
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 19,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 302,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 3,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 19,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 18,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 6,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK02": {
+  "point": {
+   "lat": 3.8974,
+   "lon": 113.7077
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 10,
+      "within1": 356,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 307,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 344,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 3,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 10,
+      "within1": 356,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 20,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 344,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 5,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK03": {
+  "point": {
+   "lat": 2.9051,
+   "lon": 112.8464
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 29,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 302,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 1,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 29,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 15,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 2,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK04": {
+  "point": {
+   "lat": 2.8391,
+   "lon": 111.6864
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 16,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 312,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 5,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 16,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 364,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 20,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 9,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK05": {
+  "point": {
+   "lat": 2.2502,
+   "lon": 111.2075
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 11,
+      "within1": 361,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 308,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 6,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 11,
+      "within1": 361,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK06": {
+  "point": {
+   "lat": 1.8139,
+   "lon": 111.0965
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 332,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 30,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 311,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 4,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 30,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 354,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 16,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 330,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 3,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK07": {
+  "point": {
+   "lat": 1.4861,
+   "lon": 110.4764
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 13,
+      "within1": 358,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 308,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 13,
+      "within1": 358,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 21,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK08": {
+  "point": {
+   "lat": 1.8277,
+   "lon": 109.7531
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 22,
+      "within1": 361,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 362,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 320,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 343,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 339,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 5,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 22,
+      "within1": 361,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 362,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 13,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 343,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-SWK09": {
+  "point": {
+   "lat": 4.9843,
+   "lon": 115.4785
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 14,
+      "within1": 357,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 315,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 344,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 14,
+      "within1": 357,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 23,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 8,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-TRG01": {
+  "point": {
+   "lat": 5.285,
+   "lon": 102.9538
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 19,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 304,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 331,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 7,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 19,
+      "within1": 363,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 25,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 340,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 11,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-TRG02": {
+  "point": {
+   "lat": 5.4227,
+   "lon": 102.4062
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 336,
+      "within1": 365,
+      "worst": 1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 25,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 297,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 12,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 25,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 31,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 345,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-TRG03": {
+  "point": {
+   "lat": 5.0187,
+   "lon": 102.5131
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 344,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 31,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 362,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 294,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 337,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 1,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 31,
+      "within1": 364,
+      "worst": 2
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 362,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 28,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 342,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 3,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-TRG04": {
+  "point": {
+   "lat": 4.5288,
+   "lon": 102.8409
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 335,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 36,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 290,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 36,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 348,
+      "within1": 365,
+      "worst": -1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 21,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 333,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 2,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-WLY01": {
+  "point": {
+   "lat": 3.1786,
+   "lon": 101.4234
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 12,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 216,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 322,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 355,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 216,
+      "within1": 365,
+      "worst": -1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 358,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 22,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 356,
+      "within1": 365,
+      "worst": -1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 1,
+      "worst": -3
+     }
+    }
+   }
+  }
+ },
+ "my-2027-WLY02": {
+  "point": {
+   "lat": 5.2807,
+   "lon": 115.1241
+  },
+  "span": [
+   "2027-01-01",
+   "2027-12-31"
+  ],
+  "days": 365,
+  "perYear": {
+   "2027": {
+    "days": 365,
+    "B": {
+     "fajr": {
+      "n": 365,
+      "exact": 326,
+      "within1": 365,
+      "worst": -1
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 276,
+      "within1": 365,
+      "worst": -1
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 346,
+      "within1": 365,
+      "worst": -1
+     }
+    },
+    "A": {
+     "fajr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 10,
+      "worst": -3
+     },
+     "sunrise": {
+      "n": 365,
+      "exact": 314,
+      "within1": 365,
+      "worst": 1
+     },
+     "dhuhr": {
+      "n": 365,
+      "exact": 338,
+      "within1": 365,
+      "worst": 1
+     },
+     "asr": {
+      "n": 365,
+      "exact": 0,
+      "within1": 37,
+      "worst": -3
+     },
+     "magrib": {
+      "n": 365,
+      "exact": 341,
+      "within1": 365,
+      "worst": 1
+     },
+     "isha": {
+      "n": 365,
+      "exact": 0,
+      "within1": 0,
+      "worst": -3
+     }
+    }
+   }
+  }
+ }
+}

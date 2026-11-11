@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-perintalmanna-muthukkumpuram-2026.json",
+ "year": 2026,
+ "n_days": 351,
+ "point": {
+  "lat": 9.84,
+  "lon": 75.62
+ },
+ "coarse": {
+  "lat": 10,
+  "lon": 75.6,
+  "mae": 2.461
+ },
+ "mid": {
+  "lat": 9.84,
+  "lon": 75.62,
+  "mae": 2.441
+ },
+ "meta": {
+  "name": "Nelliparampu juma masjid",
+  "address": "Perintalmanna, Kerala, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Kolkata",
+   "azan": 150
+  }
+ },
+ "fajr_angle": 19.55,
+ "fajr_sweep": [
+  {
+   "a": 19.55,
+   "med": 0,
+   "mae": 1.18,
+   "mad": 1
+  },
+  {
+   "a": 19.65,
+   "med": 1,
+   "mae": 1.18,
+   "mad": 1
+  },
+  {
+   "a": 19.45,
+   "med": 0,
+   "mae": 1.2,
+   "mad": 1
+  },
+  {
+   "a": 19.6,
+   "med": 0,
+   "mae": 1.2,
+   "mad": 1
+  }
+ ],
+ "isha_angle": 18.6,
+ "isha_sweep": [
+  {
+   "a": 18.6,
+   "med": 0,
+   "mae": 1.27,
+   "mad": 1
+  },
+  {
+   "a": 18.65,
+   "med": 0,
+   "mae": 1.27,
+   "mad": 1
+  },
+  {
+   "a": 18.55,
+   "med": 0,
+   "mae": 1.31,
+   "mad": 1
+  },
+  {
+   "a": 18.7,
+   "med": 0,
+   "mae": 1.39,
+   "mad": 1
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 1,
+   "mad": 1
+  },
+  "1": {
+   "med": -61,
+   "mad": 6
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -2,
+  "dhuhr": 3,
+  "asr": 1,
+  "maghrib": 2,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 15.4,
+   "within1": 67,
+   "mae": 1.26,
+   "worst": 3,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 16.2,
+   "within1": 55,
+   "mae": 1.3,
+   "worst": 3,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 91.5,
+   "within1": 100,
+   "mae": 0.09,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 33,
+   "within1": 83.8,
+   "mae": 0.86,
+   "worst": 3,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 17.9,
+   "within1": 55.3,
+   "mae": 1.28,
+   "worst": 3,
+   "med": 0
+  },
+  "isha": {
+   "exact": 18.5,
+   "within1": 58.4,
+   "mae": 1.28,
+   "worst": -3,
+   "med": 0
+  }
+ },
+ "all_six_within1": 90,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 52
+}

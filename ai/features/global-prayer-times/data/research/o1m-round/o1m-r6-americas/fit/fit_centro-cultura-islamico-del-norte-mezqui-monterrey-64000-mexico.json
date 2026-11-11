@@ -1,0 +1,204 @@
+{
+ "id": "centro-cultura-islamico-del-norte-mezqui-monterrey-64000-mexico",
+ "name": "Centro Cultura Islámico del Norte Mezqui - MONTERREY",
+ "city": "Centro Cultura Islámico del Norte Mezqui - MONTERREY",
+ "tz": "America/Monterrey",
+ "lat": 25.6805724,
+ "lon": -100.3134945,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 14.9,
+  "ishaKind": "angle",
+  "isha": 14.9,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 51.8,
+   "w1Pct": 100,
+   "mean": -0.48,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 51.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 14.5,
+   "w1Pct": 65.5,
+   "mean": -0.02,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 65.5,
+     "exactPct": 14.5,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.6,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.6,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 52.1,
+   "w1Pct": 100,
+   "mean": 0.48,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 52.1,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 51.8,
+   "w1Pct": 100,
+   "mean": -0.48,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 51.8,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 99.2,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.2,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 14.5,
+   "w1Pct": 65.5,
+   "mean": -0.02,
+   "worst": -2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 65.5,
+     "exactPct": 14.5,
+     "worst": -2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 98.6,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.6,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 52.1,
+   "w1Pct": 100,
+   "mean": 0.48,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 52.1,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -94
+}

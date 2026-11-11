@@ -1,0 +1,708 @@
+{
+ "recipe": "adhan 4.4.6, 19.5/17.5, Shafi, zero margins, Rounding.None, nearest",
+ "byYear": {
+  "2024": {
+   "cities": 17,
+   "days": 6222,
+   "exactPct": 83.33,
+   "w1Pct": 100,
+   "cells": 37332,
+   "perCol": {
+    "fajr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "sunrise": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 100,
+     "mae": 1,
+     "bias": 1,
+     "worst": 1
+    },
+    "asr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "maghrib": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "isha": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    }
+   }
+  },
+  "2025": {
+   "cities": 17,
+   "days": 6205,
+   "exactPct": 83.33,
+   "w1Pct": 100,
+   "cells": 37230,
+   "perCol": {
+    "fajr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "sunrise": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 100,
+     "mae": 1,
+     "bias": 1,
+     "worst": 1
+    },
+    "asr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "maghrib": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "isha": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    }
+   }
+  },
+  "2026": {
+   "cities": 17,
+   "days": 6205,
+   "exactPct": 83.33,
+   "w1Pct": 100,
+   "cells": 37230,
+   "perCol": {
+    "fajr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "sunrise": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 100,
+     "mae": 1,
+     "bias": 1,
+     "worst": 1
+    },
+    "asr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "maghrib": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "isha": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    }
+   }
+  },
+  "2027": {
+   "cities": 17,
+   "days": 6205,
+   "exactPct": 83.33,
+   "w1Pct": 100,
+   "cells": 37230,
+   "perCol": {
+    "fajr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "sunrise": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "dhuhr": {
+     "exactPct": 0,
+     "w1Pct": 100,
+     "mae": 1,
+     "bias": 1,
+     "worst": 1
+    },
+    "asr": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "maghrib": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    },
+    "isha": {
+     "exactPct": 100,
+     "w1Pct": 100,
+     "mae": 0,
+     "bias": 0,
+     "worst": 0
+    }
+   }
+  }
+ },
+ "byCity": {
+  "alexandria": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "aswan": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "asyut": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "beni-suef": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "cairo": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "damanhur": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "hurghada": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "ismailia": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "luxor": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "mansoura": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "minya": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "port-said": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "qena": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "sohag": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "suez": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "tanta": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  },
+  "zagazig": {
+   "2024": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2025": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2026": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   },
+   "2027": {
+    "exactPct": 83.33,
+    "w1Pct": 100,
+    "worst": 1
+   }
+  }
+ },
+ "span": {
+  "amplitude": {
+   "alexandria": {
+    "lat": 31.2001,
+    "fajrJanJul": 65,
+    "ishaJanJul": 175,
+    "fajrYearSpan": 117,
+    "ishaYearSpan": 203
+   },
+   "aswan": {
+    "lat": 24.0889,
+    "fajrJanJul": 31,
+    "ishaJanJul": 142,
+    "fajrYearSpan": 98,
+    "ishaYearSpan": 168
+   },
+   "asyut": {
+    "lat": 27.1783,
+    "fajrJanJul": 46,
+    "ishaJanJul": 156,
+    "fajrYearSpan": 106,
+    "ishaYearSpan": 182
+   },
+   "beni-suef": {
+    "lat": 29.0661,
+    "fajrJanJul": 54,
+    "ishaJanJul": 164,
+    "fajrYearSpan": 111,
+    "ishaYearSpan": 191
+   },
+   "cairo": {
+    "lat": 30.0444,
+    "fajrJanJul": 60,
+    "ishaJanJul": 169,
+    "fajrYearSpan": 114,
+    "ishaYearSpan": 197
+   },
+   "damanhur": {
+    "lat": 31.0346,
+    "fajrJanJul": 65,
+    "ishaJanJul": 174,
+    "fajrYearSpan": 117,
+    "ishaYearSpan": 202
+   },
+   "hurghada": {
+    "lat": 27.2579,
+    "fajrJanJul": 46,
+    "ishaJanJul": 156,
+    "fajrYearSpan": 106,
+    "ishaYearSpan": 183
+   },
+   "ismailia": {
+    "lat": 30.5965,
+    "fajrJanJul": 62,
+    "ishaJanJul": 172,
+    "fajrYearSpan": 116,
+    "ishaYearSpan": 200
+   },
+   "luxor": {
+    "lat": 25.6872,
+    "fajrJanJul": 39,
+    "ishaJanJul": 149,
+    "fajrYearSpan": 102,
+    "ishaYearSpan": 175
+   },
+   "mansoura": {
+    "lat": 31.0409,
+    "fajrJanJul": 64,
+    "ishaJanJul": 175,
+    "fajrYearSpan": 117,
+    "ishaYearSpan": 202
+   },
+   "minya": {
+    "lat": 28.0871,
+    "fajrJanJul": 49,
+    "ishaJanJul": 160,
+    "fajrYearSpan": 109,
+    "ishaYearSpan": 187
+   },
+   "port-said": {
+    "lat": 31.2653,
+    "fajrJanJul": 66,
+    "ishaJanJul": 176,
+    "fajrYearSpan": 118,
+    "ishaYearSpan": 203
+   },
+   "qena": {
+    "lat": 26.1551,
+    "fajrJanJul": 40,
+    "ishaJanJul": 151,
+    "fajrYearSpan": 103,
+    "ishaYearSpan": 177
+   },
+   "sohag": {
+    "lat": 26.5569,
+    "fajrJanJul": 43,
+    "ishaJanJul": 153,
+    "fajrYearSpan": 104,
+    "ishaYearSpan": 180
+   },
+   "suez": {
+    "lat": 29.9668,
+    "fajrJanJul": 59,
+    "ishaJanJul": 169,
+    "fajrYearSpan": 113,
+    "ishaYearSpan": 196
+   },
+   "tanta": {
+    "lat": 30.7865,
+    "fajrJanJul": 63,
+    "ishaJanJul": 173,
+    "fajrYearSpan": 116,
+    "ishaYearSpan": 201
+   },
+   "zagazig": {
+    "lat": 30.5877,
+    "fajrJanJul": 62,
+    "ishaJanJul": 172,
+    "fajrYearSpan": 116,
+    "ishaYearSpan": 200
+   }
+  }
+ }
+}

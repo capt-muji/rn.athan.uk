@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-masjid-al-noor-hanoi-vietnam-100000-vietnam.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 21.04,
+  "lon": 105.725,
+  "mae": 0.007
+ },
+ "coarse": {
+  "lat": 21,
+  "lon": 105.75,
+  "mae": 0.105
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.01
+  },
+  {
+   "a": 17.55,
+   "med": -2,
+   "maeCentred": 0.08
+  },
+  {
+   "a": 18.2,
+   "med": 1,
+   "maeCentred": 0.08
+  }
+ ],
+ "isha_angle": 17,
+ "isha_sweep": [
+  {
+   "a": 17,
+   "med": 0,
+   "maeCentred": 0.02
+  },
+  {
+   "a": 16.8,
+   "med": 1,
+   "maeCentred": 0.08
+  },
+  {
+   "a": 16.55,
+   "med": 2,
+   "maeCentred": 0.1
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 1,
+   "maeCentred": 0.66
+  },
+  "1": {
+   "med": -57,
+   "maeCentred": 11.35
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 1,
+  "maghrib": -1,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 98.6,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 99.5,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 34.2,
+   "within1": 100,
+   "mae": 0.66,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 99.7,
+   "within1": 100,
+   "mae": 0,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 98.1,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 118,
+ "amplitude_fajr_min": 89
+}

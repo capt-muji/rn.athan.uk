@@ -1,0 +1,117 @@
+{
+ "rows": "fit/inputs/acju-11.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 6.84,
+  "lon": 80.15,
+  "mae": 0.526
+ },
+ "coarse": {
+  "lat": 6.8,
+  "lon": 80.2,
+  "mae": 0.577
+ },
+ "fajr_angle": 18.95,
+ "fajr_sweep": [
+  {
+   "a": 18.95,
+   "med": -4,
+   "maeCentred": 0.13
+  },
+  {
+   "a": 19.2,
+   "med": -3,
+   "maeCentred": 0.14
+  },
+  {
+   "a": 19.65,
+   "med": -1,
+   "maeCentred": 0.14
+  }
+ ],
+ "isha_angle": 17.6,
+ "isha_sweep": [
+  {
+   "a": 17.6,
+   "med": 2,
+   "maeCentred": 0.2
+  },
+  {
+   "a": 17.35,
+   "med": 3,
+   "maeCentred": 0.21
+  },
+  {
+   "a": 17.1,
+   "med": 4,
+   "maeCentred": 0.22
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 1,
+   "maeCentred": 0.25
+  },
+  "1": {
+   "med": -62,
+   "maeCentred": 5.35
+  }
+ },
+ "margins": {
+  "fajr": -4,
+  "sunrise": 0,
+  "dhuhr": 1,
+  "asr": 1,
+  "maghrib": 1,
+  "isha": 2
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 86.6,
+   "within1": 100,
+   "mae": 0.13,
+   "worst": -1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 81.4,
+   "within1": 100,
+   "mae": 0.19,
+   "worst": -1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 81.1,
+   "within1": 100,
+   "mae": 0.19,
+   "worst": -1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 75.1,
+   "within1": 100,
+   "mae": 0.25,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 77,
+   "within1": 100,
+   "mae": 0.23,
+   "worst": -1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 80,
+   "within1": 100,
+   "mae": 0.2,
+   "worst": 1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 88,
+ "amplitude_fajr_min": 40
+}

@@ -1,0 +1,146 @@
+{
+ "rows": "data/mawaqit-masjid-al-khizr-lucknow-.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 26.91,
+  "lon": 80.85
+ },
+ "coarse": {
+  "lat": 26.77,
+  "lon": 80.85,
+  "mae": 0.075
+ },
+ "mid": {
+  "lat": 26.91,
+  "lon": 80.85,
+  "mae": 0
+ },
+ "meta": {
+  "name": "Masjid al-Khizr - LUCKNOW",
+  "address": null,
+  "lat": 26.889662401387,
+  "lon": 80.969687209066,
+  "tz": "Asia/Kolkata"
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0.06,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.25,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.25,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.49,
+   "mad": 0
+  }
+ ],
+ "isha_angle": 18,
+ "isha_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "mae": 0,
+   "mad": 0
+  },
+  {
+   "a": 18.05,
+   "med": 0,
+   "mae": 0.21,
+   "mad": 0
+  },
+  {
+   "a": 17.95,
+   "med": 0,
+   "mae": 0.23,
+   "mad": 0
+  },
+  {
+   "a": 17.9,
+   "med": 0,
+   "mae": 0.43,
+   "mad": 0
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 55,
+   "mad": 10
+  },
+  "1": {
+   "med": 0,
+   "mad": 0
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 3,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 95.3,
+   "within1": 100,
+   "mae": 0.05,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 97.5,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 96.2,
+   "within1": 100,
+   "mae": 0.04,
+   "worst": 1,
+   "med": 0
+  },
+  "asr": {
+   "exact": 52.6,
+   "within1": 100,
+   "mae": 0.47,
+   "worst": -1,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 96.7,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 94,
+   "within1": 100,
+   "mae": 0.06,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 365,
+ "all_six_exact": 152,
+ "amplitude_fajr_min": 115
+}

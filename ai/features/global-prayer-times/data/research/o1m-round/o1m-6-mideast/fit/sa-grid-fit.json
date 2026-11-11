@@ -1,0 +1,8155 @@
+{
+ "job": "O1m-6 Saudi denser grid",
+ "recipe": "18.5 floor+1, isha maghrib+90/+120 Ramadan, Shafi, MiddleOfTheNight, Rounding.None, zone=3",
+ "points": {
+  "shaqra": {
+   "lat": 25.2447,
+   "lon": 45.2532,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.5,
+    "w1Pct": 100,
+    "mae": 0.145,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 56.9,
+     "w1Pct": 100,
+     "mae": 0.431,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.7,
+     "w1Pct": 100,
+     "mae": 0.013,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.6,
+     "w1Pct": 100,
+     "mae": 0.314,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -100,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "hawtat-bani-tamim": {
+   "lat": 23.53,
+   "lon": 46.845,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.7,
+     "w1Pct": 100,
+     "mae": 0.403,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.2,
+     "w1Pct": 100,
+     "mae": 0.058,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.5,
+     "w1Pct": 100,
+     "mae": 0.305,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -92,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "afif": {
+   "lat": 23.9028,
+   "lon": 42.9167,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.9,
+     "w1Pct": 100,
+     "mae": 0.141,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86,
+    "w1Pct": 100,
+    "mae": 0.14,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.9,
+     "w1Pct": 100,
+     "mae": 0.421,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.9,
+     "w1Pct": 100,
+     "mae": 0.301,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -94,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ghat": {
+   "lat": 25.1,
+   "lon": 45.0167,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59,
+     "w1Pct": 100,
+     "mae": 0.41,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.1,
+     "w1Pct": 100,
+     "mae": 0.299,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -100,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "huraymila": {
+   "lat": 25.0667,
+   "lon": 46.1333,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 100,
+    "mae": 0.15,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.5,
+     "w1Pct": 100,
+     "mae": 0.445,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.2,
+     "w1Pct": 100,
+     "mae": 0.058,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.1,
+     "w1Pct": 100,
+     "mae": 0.309,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "thadiq": {
+   "lat": 25.6333,
+   "lon": 45.4667,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.6,
+    "w1Pct": 100,
+    "mae": 0.144,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.9,
+     "w1Pct": 100,
+     "mae": 0.441,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.5,
+     "w1Pct": 100,
+     "mae": 0.025,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.6,
+     "w1Pct": 100,
+     "mae": 0.264,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -102,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-quwayiyyah": {
+   "lat": 23.6333,
+   "lon": 45.2833,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 99.9,
+     "mae": 0.145,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.144,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.9,
+     "w1Pct": 100,
+     "mae": 0.421,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.1,
+     "w1Pct": 100,
+     "mae": 0.059,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.3,
+     "w1Pct": 100,
+     "mae": 0.287,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -93,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "al-muzahmiyyah": {
+   "lat": 24.4667,
+   "lon": 46.2333,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.4,
+     "w1Pct": 100,
+     "mae": 0.156,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.156,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.4,
+     "w1Pct": 100,
+     "mae": 0.446,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.1,
+     "w1Pct": 100,
+     "mae": 0.059,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.9,
+     "w1Pct": 100,
+     "mae": 0.321,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -96,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "dhurma": {
+   "lat": 24.6333,
+   "lon": 46.5,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.7,
+     "w1Pct": 100,
+     "mae": 0.143,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.8,
+    "w1Pct": 100,
+    "mae": 0.142,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.9,
+     "w1Pct": 100,
+     "mae": 0.401,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.9,
+     "w1Pct": 100,
+     "mae": 0.311,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -97,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "harmah": {
+   "lat": 25.13,
+   "lon": 45.43,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.9,
+     "w1Pct": 100,
+     "mae": 0.141,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 100,
+    "mae": 0.146,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 56.6,
+     "w1Pct": 100,
+     "mae": 0.434,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.3,
+     "w1Pct": 100,
+     "mae": 0.287,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "marat": {
+   "lat": 24.83,
+   "lon": 45.62,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 100,
+    "mae": 0.146,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.2,
+     "w1Pct": 100,
+     "mae": 0.428,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 92.9,
+     "w1Pct": 100,
+     "mae": 0.071,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.7,
+     "w1Pct": 100,
+     "mae": 0.273,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -98,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "hawtat-sudair": {
+   "lat": 25.22,
+   "lon": 45.05,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 99.9,
+     "mae": 0.153,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.2,
+     "w1Pct": 100,
+     "mae": 0.458,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 93.4,
+     "w1Pct": 100,
+     "mae": 0.066,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72,
+     "w1Pct": 100,
+     "mae": 0.28,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -100,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 2
+  },
+  "al-harik": {
+   "lat": 24.1,
+   "lon": 46.63,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 99.9,
+     "mae": 0.149,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 100,
+    "mae": 0.147,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.1,
+     "w1Pct": 100,
+     "mae": 0.429,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.5,
+     "w1Pct": 100,
+     "mae": 0.295,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -95,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 2
+  },
+  "al-qunfudhah": {
+   "lat": 19.1333,
+   "lon": 41.0667,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.9,
+     "w1Pct": 100,
+     "mae": 0.131,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.4,
+    "w1Pct": 100,
+    "mae": 0.136,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 68.1,
+     "w1Pct": 100,
+     "mae": 0.319,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.8,
+     "w1Pct": 100,
+     "mae": 0.352,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -72,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "rabigh": {
+   "lat": 22.8,
+   "lon": 39.0333,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.2,
+    "w1Pct": 100,
+    "mae": 0.138,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 64.5,
+     "w1Pct": 100,
+     "mae": 0.355,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.1,
+     "w1Pct": 100,
+     "mae": 0.339,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -89,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "khulays": {
+   "lat": 22.7333,
+   "lon": 39.3167,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87,
+     "w1Pct": 100,
+     "mae": 0.13,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.6,
+     "w1Pct": 100,
+     "mae": 0.134,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.8,
+    "w1Pct": 100,
+    "mae": 0.132,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 63.7,
+     "w1Pct": 100,
+     "mae": 0.363,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72,
+     "w1Pct": 100,
+     "mae": 0.28,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -88,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-jumum": {
+   "lat": 21.68,
+   "lon": 39.71,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.4,
+    "w1Pct": 100,
+    "mae": 0.136,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 65.4,
+     "w1Pct": 100,
+     "mae": 0.346,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.4,
+     "w1Pct": 100,
+     "mae": 0.336,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -83,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "bahrah": {
+   "lat": 21.75,
+   "lon": 39.25,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 88,
+     "w1Pct": 100,
+     "mae": 0.12,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87,
+    "w1Pct": 100,
+    "mae": 0.13,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 65.4,
+     "w1Pct": 100,
+     "mae": 0.346,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.8,
+     "w1Pct": 100,
+     "mae": 0.322,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.5,
+     "w1Pct": 100,
+     "mae": 0.025,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.5,
+     "w1Pct": 100,
+     "mae": 0.025,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -84,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-kamil": {
+   "lat": 21.4,
+   "lon": 40.55,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.3,
+    "w1Pct": 100,
+    "mae": 0.137,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 65.3,
+     "w1Pct": 100,
+     "mae": 0.347,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.5,
+     "w1Pct": 100,
+     "mae": 0.325,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -83,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-muwayh": {
+   "lat": 21.47,
+   "lon": 41.1,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.6,
+     "w1Pct": 100,
+     "mae": 0.124,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.9,
+    "w1Pct": 100,
+    "mae": 0.131,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 66,
+     "w1Pct": 100,
+     "mae": 0.34,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.9,
+     "w1Pct": 100,
+     "mae": 0.311,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -82,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ardiyyat": {
+   "lat": 21.13,
+   "lon": 40.6,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.6,
+     "w1Pct": 100,
+     "mae": 0.124,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.7,
+     "w1Pct": 100,
+     "mae": 0.133,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.1,
+    "w1Pct": 100,
+    "mae": 0.129,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 64.1,
+     "w1Pct": 100,
+     "mae": 0.359,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.2,
+     "w1Pct": 100,
+     "mae": 0.298,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -81,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "ash-sharayi": {
+   "lat": 20.66,
+   "lon": 40.31,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.7,
+     "w1Pct": 100,
+     "mae": 0.133,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.7,
+    "w1Pct": 100,
+    "mae": 0.133,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 65,
+     "w1Pct": 100,
+     "mae": 0.35,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.8,
+     "w1Pct": 100,
+     "mae": 0.302,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -79,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-hinakiyyah": {
+   "lat": 24.53,
+   "lon": 39.28,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.1,
+    "w1Pct": 100,
+    "mae": 0.149,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.6,
+     "w1Pct": 100,
+     "mae": 0.404,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 65,
+     "w1Pct": 99.9,
+     "mae": 0.352,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -97,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 1
+  },
+  "badr": {
+   "lat": 24.03,
+   "lon": 38.78,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 100,
+    "mae": 0.146,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 58.3,
+     "w1Pct": 100,
+     "mae": 0.417,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.8,
+     "w1Pct": 99.9,
+     "mae": 0.314,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -94,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 1
+  },
+  "khaybar": {
+   "lat": 25.7,
+   "lon": 39.28,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 100,
+    "mae": 0.154,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.1,
+     "w1Pct": 100,
+     "mae": 0.469,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.5,
+     "w1Pct": 99.9,
+     "mae": 0.326,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -103,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 1
+  },
+  "al-juhfah": {
+   "lat": 24.85,
+   "lon": 39.2,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.9,
+     "w1Pct": 100,
+     "mae": 0.161,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.7,
+    "w1Pct": 100,
+    "mae": 0.153,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.2,
+     "w1Pct": 100,
+     "mae": 0.428,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 100,
+     "mae": 0.056,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.1,
+     "w1Pct": 100,
+     "mae": 0.329,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "wadi-al-fara": {
+   "lat": 24.83,
+   "lon": 39.83,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87,
+     "w1Pct": 100,
+     "mae": 0.13,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.1,
+    "w1Pct": 100,
+    "mae": 0.139,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 58.8,
+     "w1Pct": 100,
+     "mae": 0.412,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.2,
+     "w1Pct": 100,
+     "mae": 0.278,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -98,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "yanbu-an-nakhl": {
+   "lat": 24.63,
+   "lon": 38.63,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.7,
+    "w1Pct": 100,
+    "mae": 0.153,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.8,
+     "w1Pct": 100,
+     "mae": 0.442,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.6,
+     "w1Pct": 100,
+     "mae": 0.314,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -97,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-bayda": {
+   "lat": 23.35,
+   "lon": 40.72,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 100,
+    "mae": 0.15,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 61.3,
+     "w1Pct": 100,
+     "mae": 0.387,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 100,
+     "mae": 0.056,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 63.7,
+     "w1Pct": 100,
+     "mae": 0.363,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -92,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ghazala": {
+   "lat": 27.1,
+   "lon": 42.05,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.7,
+    "w1Pct": 100,
+    "mae": 0.153,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.2,
+     "w1Pct": 100,
+     "mae": 0.468,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.8,
+     "w1Pct": 99.9,
+     "mae": 0.304,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -109,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 1
+  },
+  "baqa": {
+   "lat": 27,
+   "lon": 43.3,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.8,
+     "w1Pct": 100,
+     "mae": 0.162,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.5,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.3,
+     "w1Pct": 100,
+     "mae": 0.477,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.8,
+     "w1Pct": 100,
+     "mae": 0.052,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.4,
+     "w1Pct": 100,
+     "mae": 0.306,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -109,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-hait": {
+   "lat": 27.17,
+   "lon": 42.5,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.8,
+    "w1Pct": 100,
+    "mae": 0.152,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.4,
+     "w1Pct": 100,
+     "mae": 0.466,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 93.9,
+     "w1Pct": 100,
+     "mae": 0.061,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.3,
+     "w1Pct": 100,
+     "mae": 0.287,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -110,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "ash-shinan": {
+   "lat": 26.9,
+   "lon": 42.4,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.8,
+    "w1Pct": 100,
+    "mae": 0.142,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 56.2,
+     "w1Pct": 100,
+     "mae": 0.438,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.9,
+     "w1Pct": 100,
+     "mae": 0.281,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -109,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-bukayriyyah": {
+   "lat": 26.35,
+   "lon": 43.66,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.3,
+    "w1Pct": 100,
+    "mae": 0.147,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.1,
+     "w1Pct": 100,
+     "mae": 0.459,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.4,
+     "w1Pct": 100,
+     "mae": 0.266,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -106,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-badai": {
+   "lat": 26.5,
+   "lon": 43.73,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.1,
+    "w1Pct": 100,
+    "mae": 0.149,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.8,
+     "w1Pct": 100,
+     "mae": 0.472,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.8,
+     "w1Pct": 100,
+     "mae": 0.052,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.5,
+     "w1Pct": 100,
+     "mae": 0.285,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -106,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-mithnab": {
+   "lat": 26.42,
+   "lon": 44.23,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 100,
+    "mae": 0.154,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52,
+     "w1Pct": 100,
+     "mae": 0.48,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.8,
+     "w1Pct": 99.9,
+     "mae": 0.294,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -106,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 1
+  },
+  "riyadh-al-khabra": {
+   "lat": 26.22,
+   "lon": 43.1,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.1,
+     "w1Pct": 100,
+     "mae": 0.449,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.9,
+     "w1Pct": 100,
+     "mae": 0.331,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -105,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "al-asyah": {
+   "lat": 26.6,
+   "lon": 43.9,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.5,
+    "w1Pct": 100,
+    "mae": 0.145,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.1,
+     "w1Pct": 100,
+     "mae": 0.449,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.3,
+     "w1Pct": 100,
+     "mae": 0.267,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -106,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "uqlat-al-suqur": {
+   "lat": 26.13,
+   "lon": 44.18,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 56.5,
+     "w1Pct": 100,
+     "mae": 0.435,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.2,
+     "w1Pct": 100,
+     "mae": 0.268,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -105,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-nabhaniyyah": {
+   "lat": 26.03,
+   "lon": 43.87,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.1,
+    "w1Pct": 100,
+    "mae": 0.149,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.4,
+     "w1Pct": 100,
+     "mae": 0.466,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.5,
+     "w1Pct": 100,
+     "mae": 0.055,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 74.2,
+     "w1Pct": 100,
+     "mae": 0.258,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -104,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "dariyyah": {
+   "lat": 26.5,
+   "lon": 44.05,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85,
+     "w1Pct": 99.9,
+     "mae": 0.151,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.8,
+     "w1Pct": 100,
+     "mae": 0.162,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.157,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53,
+     "w1Pct": 100,
+     "mae": 0.47,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.8,
+     "w1Pct": 100,
+     "mae": 0.332,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [
+    "2027-09-03"
+   ],
+   "outlierCount": 2
+  },
+  "safwa": {
+   "lat": 26.65,
+   "lon": 49.96,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.2,
+    "w1Pct": 100,
+    "mae": 0.148,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52,
+     "w1Pct": 100,
+     "mae": 0.48,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 74.2,
+     "w1Pct": 100,
+     "mae": 0.258,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "saihat": {
+   "lat": 26.72,
+   "lon": 49.62,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.154,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.3,
+     "w1Pct": 99.9,
+     "mae": 0.158,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.156,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.2,
+     "w1Pct": 100,
+     "mae": 0.468,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.8,
+     "w1Pct": 100,
+     "mae": 0.052,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.4,
+     "w1Pct": 100,
+     "mae": 0.306,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -108,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "awamiyah": {
+   "lat": 26.72,
+   "lon": 49.72,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 100,
+    "mae": 0.15,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.4,
+     "w1Pct": 100,
+     "mae": 0.496,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.7,
+     "w1Pct": 100,
+     "mae": 0.263,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "ras-tanura": {
+   "lat": 26.65,
+   "lon": 50.17,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.1,
+     "w1Pct": 100,
+     "mae": 0.479,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 100,
+     "mae": 0.056,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.6,
+     "w1Pct": 100,
+     "mae": 0.284,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "nairiya": {
+   "lat": 26.48,
+   "lon": 50.13,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.1,
+    "w1Pct": 100,
+    "mae": 0.149,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54,
+     "w1Pct": 100,
+     "mae": 0.46,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 100,
+     "mae": 0.056,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.5,
+     "w1Pct": 100,
+     "mae": 0.025,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.7,
+     "w1Pct": 100,
+     "mae": 0.263,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -106,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "abqaiq": {
+   "lat": 25.93,
+   "lon": 49.7,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 99.9,
+     "mae": 0.148,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 99.9,
+    "mae": 0.151,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54,
+     "w1Pct": 100,
+     "mae": 0.46,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.9,
+     "w1Pct": 99.9,
+     "mae": 0.292,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 99.9,
+     "mae": 0.047,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 99.9,
+     "mae": 0.047,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -103,
+   "outlierDates": [
+    "2027-09-03",
+    "2028-09-20"
+   ],
+   "outlierCount": 3
+  },
+  "khafji": {
+   "lat": 28.42,
+   "lon": 49.02,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84,
+     "w1Pct": 100,
+     "mae": 0.16,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.156,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 48.7,
+     "w1Pct": 100,
+     "mae": 0.513,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.7,
+     "w1Pct": 100,
+     "mae": 0.273,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -116,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "anak": {
+   "lat": 25.85,
+   "lon": 49.43,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.5,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.7,
+     "w1Pct": 100,
+     "mae": 0.453,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.2,
+     "w1Pct": 100,
+     "mae": 0.058,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.8,
+     "w1Pct": 100,
+     "mae": 0.302,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -103,
+   "outlierDates": [
+    "2027-09-04"
+   ],
+   "outlierCount": 2
+  },
+  "qaryat-al-ulya": {
+   "lat": 26,
+   "lon": 49.3,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.154,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53,
+     "w1Pct": 100,
+     "mae": 0.47,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 99.7,
+     "mae": 0.049,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.6,
+     "w1Pct": 100,
+     "mae": 0.314,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -104,
+   "outlierDates": [
+    "2028-03-28",
+    "2029-03-16"
+   ],
+   "outlierCount": 2
+  },
+  "tarout": {
+   "lat": 26.62,
+   "lon": 50.08,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.4,
+     "w1Pct": 99.9,
+     "mae": 0.157,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 99.9,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.4,
+     "w1Pct": 100,
+     "mae": 0.476,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 99.9,
+     "mae": 0.052,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.5,
+     "w1Pct": 100,
+     "mae": 0.295,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 99.9,
+     "mae": 0.047,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 99.9,
+     "mae": 0.047,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [
+    "2027-09-03",
+    "2029-03-16"
+   ],
+   "outlierCount": 3
+  },
+  "al-mubarraz": {
+   "lat": 25.42,
+   "lon": 49.58,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 99.9,
+     "mae": 0.149,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 99.9,
+    "mae": 0.147,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.8,
+     "w1Pct": 100,
+     "mae": 0.442,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.6,
+     "w1Pct": 99.9,
+     "mae": 0.055,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.6,
+     "w1Pct": 100,
+     "mae": 0.274,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -101,
+   "outlierDates": [
+    "2028-03-28",
+    "2028-09-20"
+   ],
+   "outlierCount": 3
+  },
+  "muhayil": {
+   "lat": 18.55,
+   "lon": 42.05,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.5,
+     "w1Pct": 100,
+     "mae": 0.125,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.8,
+    "w1Pct": 100,
+    "mae": 0.132,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 69.8,
+     "w1Pct": 100,
+     "mae": 0.302,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.5,
+     "w1Pct": 100,
+     "mae": 0.355,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -70,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "sarat-abidah": {
+   "lat": 18.02,
+   "lon": 42.32,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.6,
+     "w1Pct": 100,
+     "mae": 0.134,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.7,
+    "w1Pct": 100,
+    "mae": 0.133,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 67.4,
+     "w1Pct": 100,
+     "mae": 0.326,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.3,
+     "w1Pct": 100,
+     "mae": 0.357,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -68,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "ahad-rifaydah": {
+   "lat": 18.28,
+   "lon": 42.93,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87,
+     "w1Pct": 100,
+     "mae": 0.13,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 88.1,
+     "w1Pct": 100,
+     "mae": 0.119,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.5,
+    "w1Pct": 100,
+    "mae": 0.125,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 68.2,
+     "w1Pct": 100,
+     "mae": 0.318,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.9,
+     "w1Pct": 100,
+     "mae": 0.321,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -69,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "tanumah": {
+   "lat": 18.87,
+   "lon": 42.12,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.9,
+     "w1Pct": 100,
+     "mae": 0.131,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.1,
+    "w1Pct": 100,
+    "mae": 0.129,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 70.1,
+     "w1Pct": 100,
+     "mae": 0.299,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.2,
+     "w1Pct": 100,
+     "mae": 0.328,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -72,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-majaridah": {
+   "lat": 18.38,
+   "lon": 42.6,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.3,
+     "w1Pct": 100,
+     "mae": 0.127,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.4,
+    "w1Pct": 100,
+    "mae": 0.126,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 68.4,
+     "w1Pct": 100,
+     "mae": 0.316,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.5,
+     "w1Pct": 100,
+     "mae": 0.315,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -69,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "tathlith": {
+   "lat": 19.57,
+   "lon": 42.97,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.4,
+     "w1Pct": 100,
+     "mae": 0.136,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.4,
+    "w1Pct": 100,
+    "mae": 0.136,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 66.1,
+     "w1Pct": 100,
+     "mae": 0.339,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.8,
+     "w1Pct": 100,
+     "mae": 0.352,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -74,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "rijal-alma": {
+   "lat": 18.15,
+   "lon": 42.12,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86,
+     "w1Pct": 100,
+     "mae": 0.14,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87,
+     "w1Pct": 100,
+     "mae": 0.13,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.5,
+    "w1Pct": 100,
+    "mae": 0.135,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 66.9,
+     "w1Pct": 100,
+     "mae": 0.331,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 65.8,
+     "w1Pct": 100,
+     "mae": 0.342,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -69,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-barq": {
+   "lat": 18.7,
+   "lon": 42.28,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.3,
+    "w1Pct": 100,
+    "mae": 0.137,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 64.5,
+     "w1Pct": 100,
+     "mae": 0.355,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.7,
+     "w1Pct": 100,
+     "mae": 0.353,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -71,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "halat-ammar": {
+   "lat": 29.32,
+   "lon": 36.92,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 83.5,
+     "w1Pct": 100,
+     "mae": 0.165,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.5,
+     "w1Pct": 99.8,
+     "mae": 0.167,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 83.5,
+    "w1Pct": 99.9,
+    "mae": 0.166,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 47.3,
+     "w1Pct": 100,
+     "mae": 0.527,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 99.9,
+     "mae": 0.052,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.3,
+     "w1Pct": 99.9,
+     "mae": 0.298,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.2,
+     "w1Pct": 99.9,
+     "mae": 0.049,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.2,
+     "w1Pct": 99.9,
+     "mae": 0.049,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -121,
+   "outlierDates": [
+    "2028-09-20",
+    "2029-03-16"
+   ],
+   "outlierCount": 4
+  },
+  "al-bad": {
+   "lat": 25.72,
+   "lon": 37.19,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.3,
+    "w1Pct": 100,
+    "mae": 0.147,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 58.2,
+     "w1Pct": 100,
+     "mae": 0.418,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71,
+     "w1Pct": 100,
+     "mae": 0.29,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -102,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "magna": {
+   "lat": 25.42,
+   "lon": 37.35,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 99.9,
+     "mae": 0.146,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.3,
+     "w1Pct": 100,
+     "mae": 0.147,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.4,
+    "w1Pct": 99.9,
+    "mae": 0.147,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.4,
+     "w1Pct": 100,
+     "mae": 0.446,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 99.9,
+     "mae": 0.052,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.6,
+     "w1Pct": 100,
+     "mae": 0.284,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 99.9,
+     "mae": 0.04,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -101,
+   "outlierDates": [
+    "2027-09-04",
+    "2028-03-27"
+   ],
+   "outlierCount": 3
+  },
+  "al-aridah": {
+   "lat": 16.9,
+   "lon": 43.08,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.9,
+     "w1Pct": 100,
+     "mae": 0.121,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87,
+    "w1Pct": 100,
+    "mae": 0.13,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71.9,
+     "w1Pct": 100,
+     "mae": 0.281,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 63.4,
+     "w1Pct": 100,
+     "mae": 0.366,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -63,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-darb": {
+   "lat": 17.05,
+   "lon": 43.1,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.2,
+     "w1Pct": 100,
+     "mae": 0.128,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.9,
+     "w1Pct": 100,
+     "mae": 0.121,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.6,
+    "w1Pct": 100,
+    "mae": 0.124,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71,
+     "w1Pct": 100,
+     "mae": 0.29,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 65.3,
+     "w1Pct": 100,
+     "mae": 0.347,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -64,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "baysh": {
+   "lat": 16.65,
+   "lon": 42.55,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 88.1,
+     "w1Pct": 100,
+     "mae": 0.119,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.9,
+     "w1Pct": 100,
+     "mae": 0.121,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 88,
+    "w1Pct": 100,
+    "mae": 0.12,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 73.9,
+     "w1Pct": 100,
+     "mae": 0.261,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.4,
+     "w1Pct": 100,
+     "mae": 0.336,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -63,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-harth": {
+   "lat": 16.4,
+   "lon": 42.8,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.4,
+    "w1Pct": 100,
+    "mae": 0.126,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 74,
+     "w1Pct": 100,
+     "mae": 0.26,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 64.3,
+     "w1Pct": 100,
+     "mae": 0.357,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -61,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "faifa": {
+   "lat": 17.25,
+   "lon": 43.1,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.5,
+     "w1Pct": 100,
+     "mae": 0.125,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.7,
+     "w1Pct": 100,
+     "mae": 0.123,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.6,
+    "w1Pct": 100,
+    "mae": 0.124,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 70.8,
+     "w1Pct": 100,
+     "mae": 0.292,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.7,
+     "w1Pct": 100,
+     "mae": 0.333,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97,
+     "w1Pct": 100,
+     "mae": 0.03,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97,
+     "w1Pct": 100,
+     "mae": 0.03,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -64,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-khouba": {
+   "lat": 16.98,
+   "lon": 43.25,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.7,
+     "w1Pct": 100,
+     "mae": 0.123,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.9,
+     "w1Pct": 100,
+     "mae": 0.121,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.8,
+    "w1Pct": 100,
+    "mae": 0.122,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71,
+     "w1Pct": 100,
+     "mae": 0.29,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.8,
+     "w1Pct": 100,
+     "mae": 0.332,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -63,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-araymah": {
+   "lat": 16.85,
+   "lon": 42.9,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 88.2,
+     "w1Pct": 100,
+     "mae": 0.118,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 88,
+     "w1Pct": 100,
+     "mae": 0.12,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 88.1,
+    "w1Pct": 100,
+    "mae": 0.119,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71.9,
+     "w1Pct": 100,
+     "mae": 0.281,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.1,
+     "w1Pct": 100,
+     "mae": 0.299,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -63,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-tuhayta": {
+   "lat": 16.55,
+   "lon": 42.95,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.3,
+     "w1Pct": 100,
+     "mae": 0.127,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.2,
+    "w1Pct": 100,
+    "mae": 0.128,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71.6,
+     "w1Pct": 100,
+     "mae": 0.284,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 65.1,
+     "w1Pct": 100,
+     "mae": 0.349,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -62,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "habuna": {
+   "lat": 17.55,
+   "lon": 45.2,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.8,
+     "w1Pct": 100,
+     "mae": 0.122,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.1,
+    "w1Pct": 100,
+    "mae": 0.129,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 68.8,
+     "w1Pct": 100,
+     "mae": 0.312,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.8,
+     "w1Pct": 100,
+     "mae": 0.052,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.8,
+     "w1Pct": 100,
+     "mae": 0.322,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -66,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-mandaq": {
+   "lat": 20.28,
+   "lon": 41.22,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.6,
+     "w1Pct": 100,
+     "mae": 0.134,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.4,
+    "w1Pct": 100,
+    "mae": 0.136,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 63.6,
+     "w1Pct": 100,
+     "mae": 0.364,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.3,
+     "w1Pct": 100,
+     "mae": 0.027,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.5,
+     "w1Pct": 100,
+     "mae": 0.315,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.6,
+     "w1Pct": 100,
+     "mae": 0.034,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -77,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "qilwah": {
+   "lat": 20.2,
+   "lon": 41.35,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.5,
+     "w1Pct": 100,
+     "mae": 0.125,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.2,
+     "w1Pct": 100,
+     "mae": 0.128,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.4,
+    "w1Pct": 100,
+    "mae": 0.126,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 66.4,
+     "w1Pct": 100,
+     "mae": 0.336,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.5,
+     "w1Pct": 100,
+     "mae": 0.305,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -78,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-aqiq": {
+   "lat": 19.98,
+   "lon": 41.53,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.2,
+     "w1Pct": 100,
+     "mae": 0.128,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.7,
+    "w1Pct": 100,
+    "mae": 0.133,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 65.8,
+     "w1Pct": 100,
+     "mae": 0.342,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.6,
+     "w1Pct": 100,
+     "mae": 0.314,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -77,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-mikhwah": {
+   "lat": 19.85,
+   "lon": 41.42,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.7,
+     "w1Pct": 100,
+     "mae": 0.133,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.9,
+    "w1Pct": 100,
+    "mae": 0.131,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 67.9,
+     "w1Pct": 100,
+     "mae": 0.321,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 66.4,
+     "w1Pct": 100,
+     "mae": 0.336,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -76,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-isawiyah": {
+   "lat": 28.85,
+   "lon": 45.1,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 99.9,
+    "mae": 0.154,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 49,
+     "w1Pct": 100,
+     "mae": 0.51,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 99.6,
+     "mae": 0.049,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 74.3,
+     "w1Pct": 100,
+     "mae": 0.257,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -119,
+   "outlierDates": [
+    "2028-03-27",
+    "2028-03-28",
+    "2029-04-14"
+   ],
+   "outlierCount": 3
+  },
+  "dhahran-al-janub": {
+   "lat": 19.72,
+   "lon": 45.2,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.4,
+     "w1Pct": 100,
+     "mae": 0.126,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.8,
+     "w1Pct": 100,
+     "mae": 0.132,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.1,
+    "w1Pct": 100,
+    "mae": 0.129,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 66.5,
+     "w1Pct": 100,
+     "mae": 0.335,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.3,
+     "w1Pct": 100,
+     "mae": 0.037,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.1,
+     "w1Pct": 100,
+     "mae": 0.319,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -76,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "wadi-bin-hashbal": {
+   "lat": 19.57,
+   "lon": 42.61,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.5,
+     "w1Pct": 100,
+     "mae": 0.125,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.7,
+     "w1Pct": 100,
+     "mae": 0.123,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.6,
+    "w1Pct": 100,
+    "mae": 0.124,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 67.7,
+     "w1Pct": 100,
+     "mae": 0.323,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.5,
+     "w1Pct": 100,
+     "mae": 0.305,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -75,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "as-sahinah": {
+   "lat": 24.67,
+   "lon": 46.25,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.4,
+     "w1Pct": 100,
+     "mae": 0.136,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.1,
+    "w1Pct": 100,
+    "mae": 0.139,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 58.3,
+     "w1Pct": 100,
+     "mae": 0.417,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.6,
+     "w1Pct": 100,
+     "mae": 0.284,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -97,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ruwaidah": {
+   "lat": 27.5,
+   "lon": 42.4,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 99.9,
+     "mae": 0.159,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.3,
+    "w1Pct": 100,
+    "mae": 0.158,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 51.8,
+     "w1Pct": 100,
+     "mae": 0.482,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.2,
+     "w1Pct": 100,
+     "mae": 0.308,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -112,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "mawqaq": {
+   "lat": 25.1,
+   "lon": 39.7,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 57.5,
+     "w1Pct": 100,
+     "mae": 0.425,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.2,
+     "w1Pct": 100,
+     "mae": 0.028,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.2,
+     "w1Pct": 100,
+     "mae": 0.278,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 100,
+     "mae": 0.042,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-mubarak": {
+   "lat": 26.43,
+   "lon": 44.06,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.154,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.156,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.5,
+     "w1Pct": 100,
+     "mae": 0.475,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.5,
+     "w1Pct": 99.9,
+     "mae": 0.047,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.5,
+     "w1Pct": 100,
+     "mae": 0.325,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -105,
+   "outlierDates": [
+    "2029-03-16"
+   ],
+   "outlierCount": 1
+  },
+  "tharmah": {
+   "lat": 24.45,
+   "lon": 40.58,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 86.3,
+    "w1Pct": 100,
+    "mae": 0.137,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.7,
+     "w1Pct": 100,
+     "mae": 0.403,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.8,
+     "w1Pct": 100,
+     "mae": 0.282,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -97,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-jadidah-qas": {
+   "lat": 26.39,
+   "lon": 43.59,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 99.9,
+     "mae": 0.156,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.4,
+    "w1Pct": 100,
+    "mae": 0.157,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 53.1,
+     "w1Pct": 100,
+     "mae": 0.469,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.1,
+     "w1Pct": 100,
+     "mae": 0.059,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.5,
+     "w1Pct": 100,
+     "mae": 0.025,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.2,
+     "w1Pct": 100,
+     "mae": 0.298,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -105,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "al-shaqqah": {
+   "lat": 28.35,
+   "lon": 45,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.4,
+     "w1Pct": 100,
+     "mae": 0.156,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.5,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.3,
+     "w1Pct": 100,
+     "mae": 0.497,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.2,
+     "w1Pct": 100,
+     "mae": 0.058,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.2,
+     "w1Pct": 100,
+     "mae": 0.278,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -115,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-jabriyyah": {
+   "lat": 28.35,
+   "lon": 45.02,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.3,
+     "w1Pct": 100,
+     "mae": 0.157,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.9,
+    "w1Pct": 100,
+    "mae": 0.151,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 49.6,
+     "w1Pct": 100,
+     "mae": 0.504,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 75.8,
+     "w1Pct": 100,
+     "mae": 0.242,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -116,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "jalajil": {
+   "lat": 25.08,
+   "lon": 45.03,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.7,
+     "w1Pct": 100,
+     "mae": 0.144,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.2,
+     "w1Pct": 100,
+     "mae": 0.408,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.2,
+     "w1Pct": 99.9,
+     "mae": 0.309,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -100,
+   "outlierDates": [
+    "2027-10-03"
+   ],
+   "outlierCount": 1
+  },
+  "ushaiger": {
+   "lat": 25.05,
+   "lon": 45.2,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.2,
+    "w1Pct": 100,
+    "mae": 0.148,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.1,
+     "w1Pct": 100,
+     "mae": 0.459,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.3,
+     "w1Pct": 100,
+     "mae": 0.277,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "muzayla": {
+   "lat": 26.05,
+   "lon": 44.13,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.6,
+     "w1Pct": 100,
+     "mae": 0.144,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.9,
+    "w1Pct": 100,
+    "mae": 0.141,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.8,
+     "w1Pct": 100,
+     "mae": 0.442,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 74.2,
+     "w1Pct": 100,
+     "mae": 0.258,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -104,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "as-salamiyah": {
+   "lat": 27.4,
+   "lon": 44.6,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.9,
+     "w1Pct": 100,
+     "mae": 0.151,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 100,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 52.3,
+     "w1Pct": 100,
+     "mae": 0.477,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.1,
+     "w1Pct": 99.9,
+     "mae": 0.061,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.5,
+     "w1Pct": 100,
+     "mae": 0.285,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 100,
+     "mae": 0.044,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -111,
+   "outlierDates": [
+    "2029-03-16"
+   ],
+   "outlierCount": 1
+  },
+  "taysiyah": {
+   "lat": 29.1,
+   "lon": 45.15,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.6,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.7,
+     "w1Pct": 99.8,
+     "mae": 0.165,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.1,
+    "w1Pct": 99.9,
+    "mae": 0.16,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 47.2,
+     "w1Pct": 100,
+     "mae": 0.528,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 93.8,
+     "w1Pct": 99.9,
+     "mae": 0.064,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.7,
+     "w1Pct": 99.7,
+     "mae": 0.266,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 99.9,
+     "mae": 0.041,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 99.9,
+     "mae": 0.041,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -120,
+   "outlierDates": [
+    "2027-10-03",
+    "2028-08-21",
+    "2028-09-20",
+    "2029-03-16"
+   ],
+   "outlierCount": 5
+  },
+  "al-jarudiyah": {
+   "lat": 26.55,
+   "lon": 50.05,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84,
+     "w1Pct": 99.9,
+     "mae": 0.161,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.1,
+    "w1Pct": 100,
+    "mae": 0.159,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.6,
+     "w1Pct": 100,
+     "mae": 0.494,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.4,
+     "w1Pct": 100,
+     "mae": 0.316,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [
+    "2027-09-04"
+   ],
+   "outlierCount": 2
+  },
+  "umm-al-sahik": {
+   "lat": 26.62,
+   "lon": 50.03,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85,
+    "w1Pct": 100,
+    "mae": 0.15,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.7,
+     "w1Pct": 100,
+     "mae": 0.493,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 99.9,
+     "mae": 0.058,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.9,
+     "w1Pct": 100,
+     "mae": 0.261,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [
+    "2028-03-27"
+   ],
+   "outlierCount": 1
+  },
+  "qaysumah": {
+   "lat": 28.38,
+   "lon": 46.75,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 100,
+     "mae": 0.155,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.2,
+     "w1Pct": 100,
+     "mae": 0.158,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.3,
+    "w1Pct": 100,
+    "mae": 0.157,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.1,
+     "w1Pct": 100,
+     "mae": 0.499,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.1,
+     "w1Pct": 100,
+     "mae": 0.049,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.5,
+     "w1Pct": 100,
+     "mae": 0.295,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -116,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-juwayl": {
+   "lat": 27.1,
+   "lon": 47.4,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.5,
+     "w1Pct": 99.8,
+     "mae": 0.157,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.6,
+    "w1Pct": 99.9,
+    "mae": 0.155,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.7,
+     "w1Pct": 100,
+     "mae": 0.493,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.4,
+     "w1Pct": 100,
+     "mae": 0.056,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72,
+     "w1Pct": 100,
+     "mae": 0.28,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.3,
+     "w1Pct": 99.7,
+     "mae": 0.04,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 96.3,
+     "w1Pct": 99.7,
+     "mae": 0.04,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -109,
+   "outlierDates": [
+    "2027-09-03",
+    "2027-10-03"
+   ],
+   "outlierCount": 4
+  },
+  "rabwa": {
+   "lat": 26.1,
+   "lon": 44.4,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.8,
+     "w1Pct": 100,
+     "mae": 0.152,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.2,
+    "w1Pct": 100,
+    "mae": 0.148,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.9,
+     "w1Pct": 100,
+     "mae": 0.451,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.8,
+     "w1Pct": 100,
+     "mae": 0.052,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.3,
+     "w1Pct": 100,
+     "mae": 0.297,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.5,
+     "w1Pct": 100,
+     "mae": 0.035,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -105,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "masorah": {
+   "lat": 24.1,
+   "lon": 45.3,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.9,
+     "w1Pct": 99.9,
+     "mae": 0.142,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.9,
+    "w1Pct": 100,
+    "mae": 0.142,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 58.6,
+     "w1Pct": 100,
+     "mae": 0.414,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.3,
+     "w1Pct": 100,
+     "mae": 0.047,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.3,
+     "w1Pct": 100,
+     "mae": 0.287,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -94,
+   "outlierDates": [
+    "2028-09-20"
+   ],
+   "outlierCount": 2
+  },
+  "as-sudayr": {
+   "lat": 25.15,
+   "lon": 45.4,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85,
+     "w1Pct": 100,
+     "mae": 0.15,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.2,
+    "w1Pct": 100,
+    "mae": 0.148,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 55.8,
+     "w1Pct": 100,
+     "mae": 0.442,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.2,
+     "w1Pct": 100,
+     "mae": 0.058,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98,
+     "w1Pct": 100,
+     "mae": 0.02,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.5,
+     "w1Pct": 100,
+     "mae": 0.305,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.8,
+     "w1Pct": 100,
+     "mae": 0.032,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -99,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "sunayfir": {
+   "lat": 25.42,
+   "lon": 45.47,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.8,
+     "w1Pct": 100,
+     "mae": 0.142,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.3,
+    "w1Pct": 100,
+    "mae": 0.147,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 56.4,
+     "w1Pct": 100,
+     "mae": 0.436,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 69.8,
+     "w1Pct": 100,
+     "mae": 0.302,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 96.2,
+     "w1Pct": 100,
+     "mae": 0.038,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -101,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ridaiyan": {
+   "lat": 25.7,
+   "lon": 44.6,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.1,
+    "w1Pct": 100,
+    "mae": 0.149,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.7,
+     "w1Pct": 100,
+     "mae": 0.453,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 71.3,
+     "w1Pct": 100,
+     "mae": 0.287,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.5,
+     "w1Pct": 100,
+     "mae": 0.045,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -102,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "unaizah": {
+   "lat": 26.0843,
+   "lon": 43.9938,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.4,
+     "w1Pct": 100,
+     "mae": 0.146,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.1,
+     "w1Pct": 100,
+     "mae": 0.149,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.2,
+    "w1Pct": 100,
+    "mae": 0.148,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.5,
+     "w1Pct": 100,
+     "mae": 0.455,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96,
+     "w1Pct": 100,
+     "mae": 0.04,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.4,
+     "w1Pct": 100,
+     "mae": 0.016,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73,
+     "w1Pct": 100,
+     "mae": 0.27,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 94.6,
+     "w1Pct": 100,
+     "mae": 0.054,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -104,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "arar": {
+   "lat": 30.9753,
+   "lon": 41.0381,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 82.3,
+     "w1Pct": 99.9,
+     "mae": 0.178,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 82.9,
+     "w1Pct": 100,
+     "mae": 0.171,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 82.6,
+    "w1Pct": 99.9,
+    "mae": 0.175,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 44.1,
+     "w1Pct": 100,
+     "mae": 0.559,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.5,
+     "w1Pct": 100,
+     "mae": 0.055,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 97.7,
+     "w1Pct": 100,
+     "mae": 0.023,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 67.4,
+     "w1Pct": 99.9,
+     "mae": 0.328,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -130,
+   "outlierDates": [
+    "2027-09-04",
+    "2027-10-03"
+   ],
+   "outlierCount": 3
+  },
+  "sakaka": {
+   "lat": 29.9697,
+   "lon": 40.2064,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 83.7,
+     "w1Pct": 100,
+     "mae": 0.163,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 83.9,
+     "w1Pct": 99.9,
+     "mae": 0.163,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 83.8,
+    "w1Pct": 99.9,
+    "mae": 0.163,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 46.8,
+     "w1Pct": 100,
+     "mae": 0.532,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.5,
+     "w1Pct": 99.9,
+     "mae": 0.056,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.2,
+     "w1Pct": 99.9,
+     "mae": 0.27,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.3,
+     "w1Pct": 99.9,
+     "mae": 0.048,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -125,
+   "outlierDates": [
+    "2028-02-27",
+    "2028-09-20"
+   ],
+   "outlierCount": 4
+  },
+  "najran": {
+   "lat": 17.4917,
+   "lon": 44.1322,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.7,
+     "w1Pct": 100,
+     "mae": 0.123,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 88,
+     "w1Pct": 100,
+     "mae": 0.12,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.9,
+    "w1Pct": 100,
+    "mae": 0.121,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 71.2,
+     "w1Pct": 100,
+     "mae": 0.288,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.2,
+     "w1Pct": 100,
+     "mae": 0.018,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 68.9,
+     "w1Pct": 100,
+     "mae": 0.311,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 97,
+     "w1Pct": 100,
+     "mae": 0.03,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 97,
+     "w1Pct": 100,
+     "mae": 0.03,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -66,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "jizan": {
+   "lat": 16.8892,
+   "lon": 42.5511,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 87.6,
+     "w1Pct": 100,
+     "mae": 0.124,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 87.4,
+    "w1Pct": 100,
+    "mae": 0.126,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 73.2,
+     "w1Pct": 100,
+     "mae": 0.268,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 96.9,
+     "w1Pct": 100,
+     "mae": 0.031,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.6,
+     "w1Pct": 100,
+     "mae": 0.014,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 63.7,
+     "w1Pct": 100,
+     "mae": 0.363,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -63,
+   "outlierDates": [],
+   "outlierCount": 0
+  },
+  "al-ahsa": {
+   "lat": 25.3833,
+   "lon": 49.5872,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 85.5,
+     "w1Pct": 100,
+     "mae": 0.145,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.6,
+     "w1Pct": 99.9,
+     "mae": 0.145,
+     "max": 2
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.6,
+    "w1Pct": 99.9,
+    "mae": 0.145,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 54.8,
+     "w1Pct": 100,
+     "mae": 0.452,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.6,
+     "w1Pct": 99.9,
+     "mae": 0.045,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 97.6,
+     "w1Pct": 100,
+     "mae": 0.024,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 73.6,
+     "w1Pct": 100,
+     "mae": 0.264,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 99.9,
+     "mae": 0.042,
+     "max": 2
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -101,
+   "outlierDates": [
+    "2028-03-28",
+    "2028-09-20"
+   ],
+   "outlierCount": 3
+  },
+  "qatif": {
+   "lat": 26.5196,
+   "lon": 50.0115,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 99.9,
+     "mae": 0.153,
+     "max": 2
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 84.7,
+     "w1Pct": 100,
+     "mae": 0.153,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 84.7,
+    "w1Pct": 100,
+    "mae": 0.153,
+    "max": 2
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 50.4,
+     "w1Pct": 100,
+     "mae": 0.496,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 95.8,
+     "w1Pct": 99.9,
+     "mae": 0.044,
+     "max": 2
+    },
+    "dhuhr": {
+     "exactPct": 97.9,
+     "w1Pct": 100,
+     "mae": 0.021,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 72.3,
+     "w1Pct": 99.9,
+     "mae": 0.278,
+     "max": 2
+    },
+    "maghrib": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.9,
+     "w1Pct": 100,
+     "mae": 0.041,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -107,
+   "outlierDates": [
+    "2027-10-03",
+    "2028-03-28"
+   ],
+   "outlierCount": 2
+  },
+  "yanbu": {
+   "lat": 24.0895,
+   "lon": 38.0618,
+   "rows": 708,
+   "years": {
+    "1449": {
+     "n": 2124,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138,
+     "max": 1
+    },
+    "1450": {
+     "n": 2124,
+     "exactPct": 85.2,
+     "w1Pct": 100,
+     "mae": 0.148,
+     "max": 1
+    }
+   },
+   "total": {
+    "n": 4248,
+    "exactPct": 85.7,
+    "w1Pct": 100,
+    "mae": 0.143,
+    "max": 1
+   },
+   "perColumn": {
+    "fajr": {
+     "exactPct": 59.7,
+     "w1Pct": 100,
+     "mae": 0.403,
+     "max": 1
+    },
+    "sunrise": {
+     "exactPct": 94.9,
+     "w1Pct": 100,
+     "mae": 0.051,
+     "max": 1
+    },
+    "dhuhr": {
+     "exactPct": 98.3,
+     "w1Pct": 100,
+     "mae": 0.017,
+     "max": 1
+    },
+    "asr": {
+     "exactPct": 70.6,
+     "w1Pct": 100,
+     "mae": 0.294,
+     "max": 1
+    },
+    "maghrib": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    },
+    "isha": {
+     "exactPct": 95.2,
+     "w1Pct": 100,
+     "mae": 0.048,
+     "max": 1
+    }
+   },
+   "intervals": {
+    "90": 650,
+    "120": 58
+   },
+   "ramadanDays": 58,
+   "fajrAmplitude": -94,
+   "outlierDates": [],
+   "outlierCount": 0
+  }
+ },
+ "bad": []
+}

@@ -1,0 +1,64 @@
+{
+ "file": "gd-ulmadina-mawaqit-2026.json",
+ "lat": 12.011,
+ "lon": -61.773,
+ "tz": "America/Grenada",
+ "rows": 365,
+ "span": "2026-01-01..2026-12-31",
+ "per": {
+  "fajr": {
+   "rule": "fajr angle 17.75",
+   "exact": 40,
+   "within1": 93,
+   "of": 365,
+   "worst": 41
+  },
+  "sunrise": {
+   "rule": "sunrise solar",
+   "exact": 191,
+   "within1": 365,
+   "of": 365,
+   "worst": 1
+  },
+  "dhuhr": {
+   "rule": "dhuhr solar-8",
+   "exact": 0,
+   "within1": 0,
+   "of": 365,
+   "worst": 77
+  },
+  "asr": {
+   "rule": "asr solar-8",
+   "exact": 0,
+   "within1": 0,
+   "of": 365,
+   "worst": 88
+  },
+  "maghrib": {
+   "rule": "maghrib solar+5",
+   "exact": 186,
+   "within1": 365,
+   "of": 365,
+   "worst": 1
+  },
+  "isha": {
+   "rule": "isha maghrib+102",
+   "exact": 24,
+   "within1": 54,
+   "of": 365,
+   "worst": 40
+  }
+ },
+ "jointAllFive": "0/365",
+ "pinnedClocks": {
+  "fajr": null,
+  "dhuhr": "13:00 on 365/365",
+  "asr": null,
+  "isha": "20:00 on 365/365"
+ },
+ "amplitudeFajrJanJul": -12,
+ "amplitudeIshaJanJul": 0,
+ "years": [
+  "2026"
+ ]
+}

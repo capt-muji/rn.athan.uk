@@ -1,0 +1,204 @@
+{
+ "id": "cl-valdivia-wayback",
+ "name": "Valdivia",
+ "city": "Valdivia",
+ "tz": "America/Santiago",
+ "lat": -39.814,
+ "lon": -73.246,
+ "address": "city centre",
+ "rows": 31,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.2,
+  "ishaKind": "angle",
+  "isha": 17.6,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 48.4,
+   "w1Pct": 100,
+   "mean": -0.52,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 48.4,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.52,
+   "worst": 6,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.19,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.03,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.26,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 32.3,
+   "w1Pct": 100,
+   "mean": 0.68,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 32.3,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 51.6,
+   "w1Pct": 100,
+   "mean": 0.48,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 51.6,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 51.6,
+   "w1Pct": 100,
+   "mean": -0.48,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 51.6,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 80.6,
+   "w1Pct": 100,
+   "mean": 0.19,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 80.6,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 90.3,
+   "w1Pct": 100,
+   "mean": 0.03,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 90.3,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 74.2,
+   "w1Pct": 100,
+   "mean": 0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 74.2,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 67.7,
+   "w1Pct": 100,
+   "mean": -0.32,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 67.7,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

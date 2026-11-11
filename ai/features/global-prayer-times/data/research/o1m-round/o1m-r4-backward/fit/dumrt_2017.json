@@ -1,0 +1,340 @@
+{
+ "summary": {
+  "fajr": {
+   "n": 6077,
+   "margin": -1,
+   "fracP10": 0.08,
+   "fracMed": 0.48,
+   "fracP90": 0.88,
+   "mae": 0.26,
+   "w1": 99.8,
+   "worst": 8.3,
+   "boundary": 3
+  },
+  "sunrise": {
+   "n": 8395,
+   "margin": -1.17,
+   "fracP10": 0.1,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.6,
+   "boundary": 0
+  },
+  "zawal": {
+   "n": 8395,
+   "margin": -0.98,
+   "fracP10": 0.08,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.6,
+   "boundary": 0
+  },
+  "dhuhr": {
+   "n": 8395,
+   "margin": -0.98,
+   "fracP10": 0.08,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.6,
+   "boundary": 0
+  },
+  "asr": {
+   "n": 8395,
+   "margin": -0.55,
+   "fracP10": 0.1,
+   "fracMed": 0.5,
+   "fracP90": 0.9,
+   "mae": 0.41,
+   "w1": 94.7,
+   "worst": 1.6,
+   "boundary": 0
+  },
+  "maghrib": {
+   "n": 8395,
+   "margin": -0.82,
+   "fracP10": 0.1,
+   "fracMed": 0.5,
+   "fracP90": 0.88,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.6,
+   "boundary": 0
+  },
+  "isha": {
+   "n": 6270,
+   "margin": -0.98,
+   "fracP10": 0.08,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.7,
+   "boundary": 0
+  }
+ },
+ "substituted": {
+  "fajr": 2318,
+  "isha": 2125
+ },
+ "perCity": [
+  {
+   "slug": "Baltasi",
+   "name": "Балтач",
+   "days": 365,
+   "fajrW1": 99.3,
+   "sunriseW1": 100,
+   "asrW1": 91.8,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.07
+  },
+  {
+   "slug": "Elabuga",
+   "name": "Алабуга",
+   "days": 365,
+   "fajrW1": 99.3,
+   "sunriseW1": 100,
+   "asrW1": 96.4,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Nignekamsk",
+   "name": "Түбән Кама",
+   "days": 365,
+   "fajrW1": 99.3,
+   "sunriseW1": 100,
+   "asrW1": 95.1,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.02
+  },
+  {
+   "slug": "Aktanis",
+   "name": "Актаныш",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 95.1,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.95
+  },
+  {
+   "slug": "Apastovo",
+   "name": "Апас",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 95.1,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.92
+  },
+  {
+   "slug": "Arsk",
+   "name": "Арча",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 93.4,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Aznakay",
+   "name": "Азнакай",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 97.5,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.03
+  },
+  {
+   "slug": "BazarnyeMataki",
+   "name": "Базарлы Матак",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 94.8,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.02
+  },
+  {
+   "slug": "BogatyeSaby",
+   "name": "Байлар Сабасы",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 93.7,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.92
+  },
+  {
+   "slug": "Bugulma",
+   "name": "Бөгелмә",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 98.1,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Buinsk",
+   "name": "Буа",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 95.3,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.1
+  },
+  {
+   "slug": "Kazan",
+   "name": "Казан",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 92.6,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.05
+  },
+  {
+   "slug": "Leninogorsk",
+   "name": "Лениногорск",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 98.1,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "NabChelny",
+   "name": "Яр Чаллы",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 94.8,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Urussu",
+   "name": "Урыссу",
+   "days": 365,
+   "fajrW1": 99.6,
+   "sunriseW1": 100,
+   "asrW1": 98.4,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.97
+  },
+  {
+   "slug": "Agriz",
+   "name": "Әгерҗе",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 92.3,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.98
+  },
+  {
+   "slug": "Aksubay",
+   "name": "Аксубай",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 96.4,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Kukmor",
+   "name": "Кукмара",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 89.9,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.95
+  },
+  {
+   "slug": "Mendeleevsk",
+   "name": "Менделеев",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 94.8,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Nurlat",
+   "name": "Нурлат",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 94.8,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1
+  },
+  {
+   "slug": "Tulyachi",
+   "name": "Теләче",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 94,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.97
+  },
+  {
+   "slug": "Zainsk",
+   "name": "Зәй",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 97,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -1.03
+  },
+  {
+   "slug": "Zelenodolsk",
+   "name": "Яшел Үзән",
+   "days": 365,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 90.7,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.95
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_ni_managua.json",
+ "tz": "America/Managua",
+ "meta": {
+  "name": "Mezquita de Managua - MANAGUA",
+  "lat": 12.1131841,
+  "lon": -86.27302,
+  "country": "NI"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 15,
+  "offset": 0,
+  "exact": 354,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.52
+ },
+ "isha": {
+  "angle": 15,
+  "offset": 5,
+  "exact": 350,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.53
+ },
+ "asr_shafi": {
+  "offset": 0,
+  "exact": 82,
+  "within1": 292,
+  "mae": 1,
+  "worst": 2.08
+ },
+ "asr_hanafi": {
+  "offset": -63,
+  "exact": 6,
+  "within1": 18,
+  "mae": 7.92,
+  "worst": 14.22
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 357,
+  "within1": 365,
+  "mae": 0.26,
+  "worst": 0.5
+ },
+ "maghrib": {
+  "offset": 2,
+  "exact": 358,
+  "within1": 365,
+  "mae": 0.25,
+  "worst": 0.5
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 357,
+  "within1": 365,
+  "mae": 0.27,
+  "worst": 0.52
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   303,
+   310
+  ],
+  "jul": [
+   260,
+   270
+  ]
+ }
+}

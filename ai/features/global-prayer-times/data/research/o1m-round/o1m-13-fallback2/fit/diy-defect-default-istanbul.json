@@ -1,0 +1,59 @@
+{
+ "label": "diy-defect-default-istanbul",
+ "file": "data/diyanet-defect-default-table.json",
+ "lat": 41.0082,
+ "lon": 28.9784,
+ "tz": "Europe/Istanbul",
+ "asr": "shafi",
+ "days": 150,
+ "span": [
+  "2026-11-12",
+  "2027-04-10"
+ ],
+ "fajrAngle": 26.33,
+ "ishaAngle": 9,
+ "columns": {
+  "fajr": {
+   "margin": 0,
+   "mae": 2.08,
+   "within1": 33,
+   "exact": 17,
+   "worst": 4.05
+  },
+  "sunrise": {
+   "margin": -47.05,
+   "mae": 2.86,
+   "within1": 36,
+   "exact": 19,
+   "worst": 9.5
+  },
+  "dhuhr": {
+   "margin": -41.63,
+   "mae": 0.27,
+   "within1": 150,
+   "exact": 138,
+   "worst": 0.63
+  },
+  "asr": {
+   "margin": -49.72,
+   "mae": 2.23,
+   "within1": 44,
+   "exact": 23,
+   "worst": 7.52
+  },
+  "maghrib": {
+   "margin": -46.3,
+   "mae": 2.84,
+   "within1": 32,
+   "exact": 15,
+   "worst": 9.18
+  },
+  "isha": {
+   "margin": -11.08,
+   "mae": 2.06,
+   "within1": 86,
+   "exact": 42,
+   "worst": 11.03
+  }
+ }
+}

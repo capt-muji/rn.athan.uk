@@ -1,0 +1,72 @@
+{
+ "file": "data/mawaqit_pa_loceria.json",
+ "tz": "America/Panama",
+ "meta": {
+  "name": "MUSALLAH LA LOCERÍA - PANAMA",
+  "lat": 8.9951284064302,
+  "lon": -79.539501518011,
+  "country": "PA"
+ },
+ "days": 365,
+ "fajr": {
+  "angle": 18.5,
+  "offset": 2,
+  "exact": 271,
+  "within1": 363,
+  "mae": 0.35,
+  "worst": 1.6
+ },
+ "isha": {
+  "angle": 17.05,
+  "offset": 5,
+  "exact": 264,
+  "within1": 364,
+  "mae": 0.35,
+  "worst": 1.55
+ },
+ "asr_shafi": {
+  "offset": 64,
+  "exact": 28,
+  "within1": 70,
+  "mae": 6.37,
+  "worst": 13.7
+ },
+ "asr_hanafi": {
+  "offset": 1,
+  "exact": 158,
+  "within1": 363,
+  "mae": 0.59,
+  "worst": 1.6
+ },
+ "dhuhr": {
+  "offset": 10,
+  "exact": 292,
+  "within1": 365,
+  "mae": 0.32,
+  "worst": 1.03
+ },
+ "maghrib": {
+  "offset": 6,
+  "exact": 318,
+  "within1": 365,
+  "mae": 0.26,
+  "worst": 0.88
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 289,
+  "within1": 365,
+  "mae": 0.29,
+  "worst": 0.92
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   318,
+   326
+  ],
+  "jul": [
+   286,
+   295
+  ]
+ }
+}

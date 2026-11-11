@@ -1,0 +1,117 @@
+{
+ "rows": "data/mawaqit-masjid-al-hameed-islamabad-44000-pakistan.json",
+ "year": 2026,
+ "n_days": 365,
+ "point": {
+  "lat": 33.66,
+  "lon": 72.875,
+  "mae": 0.01
+ },
+ "coarse": {
+  "lat": 33.65,
+  "lon": 72.9,
+  "mae": 0.103
+ },
+ "fajr_angle": 18,
+ "fajr_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.03
+  },
+  {
+   "a": 17.8,
+   "med": -1,
+   "maeCentred": 0.1
+  },
+  {
+   "a": 18.2,
+   "med": 1,
+   "maeCentred": 0.12
+  }
+ ],
+ "isha_angle": 18,
+ "isha_sweep": [
+  {
+   "a": 18,
+   "med": 0,
+   "maeCentred": 0.06
+  },
+  {
+   "a": 18.2,
+   "med": -1,
+   "maeCentred": 0.13
+  },
+  {
+   "a": 17.8,
+   "med": 1,
+   "maeCentred": 0.14
+  }
+ ],
+ "asr_school": "shafi",
+ "asr_probe": {
+  "0": {
+   "med": 0,
+   "maeCentred": 1.28
+  },
+  "1": {
+   "med": -54,
+   "maeCentred": 10.91
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": 0,
+  "dhuhr": 0,
+  "asr": 0,
+  "maghrib": 0,
+  "isha": 0
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 97,
+   "within1": 100,
+   "mae": 0.03,
+   "worst": 1,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 98.1,
+   "within1": 100,
+   "mae": 0.02,
+   "worst": 1,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 100,
+   "within1": 100,
+   "mae": 0,
+   "worst": 0,
+   "med": 0
+  },
+  "asr": {
+   "exact": 12.6,
+   "within1": 58.9,
+   "mae": 1.28,
+   "worst": -2,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 99.2,
+   "within1": 100,
+   "mae": 0.01,
+   "worst": 1,
+   "med": 0
+  },
+  "isha": {
+   "exact": 93.7,
+   "within1": 100,
+   "mae": 0.06,
+   "worst": -1,
+   "med": 0
+  }
+ },
+ "all_six_within1": 215,
+ "all_six_exact": 43,
+ "amplitude_fajr_min": 151
+}

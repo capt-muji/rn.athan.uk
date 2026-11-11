@@ -1,0 +1,98 @@
+{
+ "summary": {
+  "fajr": {
+   "n": 271,
+   "margin": -0.97,
+   "fracP10": 0.07,
+   "fracMed": 0.45,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.7,
+   "boundary": 0
+  },
+  "sunrise": {
+   "n": 366,
+   "margin": -1.2,
+   "fracP10": 0.1,
+   "fracMed": 0.5,
+   "fracP90": 0.9,
+   "mae": 0.25,
+   "w1": 100,
+   "worst": 0.6,
+   "boundary": 0
+  },
+  "zawal": {
+   "n": 366,
+   "margin": -1.01,
+   "fracP10": 0.11,
+   "fracMed": 0.51,
+   "fracP90": 0.88,
+   "mae": 0.26,
+   "w1": 100,
+   "worst": 0.5,
+   "boundary": 0
+  },
+  "dhuhr": {
+   "n": 366,
+   "margin": 15.29,
+   "fracP10": 0.11,
+   "fracMed": 0.49,
+   "fracP90": 0.91,
+   "mae": 4.11,
+   "w1": 11.6,
+   "worst": 10,
+   "boundary": 116
+  },
+  "asr": {
+   "n": 366,
+   "margin": -0.58,
+   "fracP10": 0.12,
+   "fracMed": 0.57,
+   "fracP90": 0.9,
+   "mae": 0.42,
+   "w1": 94.5,
+   "worst": 1.5,
+   "boundary": 0
+  },
+  "maghrib": {
+   "n": 366,
+   "margin": -0.82,
+   "fracP10": 0.1,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.24,
+   "w1": 100,
+   "worst": 0.5,
+   "boundary": 0
+  },
+  "isha": {
+   "n": 271,
+   "margin": -1,
+   "fracP10": 0.12,
+   "fracMed": 0.48,
+   "fracP90": 0.9,
+   "mae": 0.26,
+   "w1": 100,
+   "worst": 0.7,
+   "boundary": 0
+  }
+ },
+ "substituted": {
+  "fajr": 95,
+  "isha": 95
+ },
+ "perCity": [
+  {
+   "slug": "Kazan",
+   "name": "Казан",
+   "days": 366,
+   "fajrW1": 100,
+   "sunriseW1": 100,
+   "asrW1": 94.5,
+   "maghribW1": 100,
+   "ishaW1": 100,
+   "fajrMargin": -0.97
+  }
+ ]
+}

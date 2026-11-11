@@ -1,0 +1,55 @@
+{
+ "file": "fj-alhaqq-masjidbox-walk.json",
+ "lat": -18.1416,
+ "lon": 178.4419,
+ "tz": "Pacific/Fiji",
+ "rows": 384,
+ "span": "2025-11-01..2026-11-20",
+ "recipe": {
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "603 exact / 1152 within-1 of 1920",
+ "pctWithin1": 60,
+ "worst": 66,
+ "per": {
+  "fajr": {
+   "exact": 201,
+   "within1": 384,
+   "worst": 1
+  },
+  "sunrise": {
+   "exact": 192,
+   "within1": 384,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 66
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 47
+  },
+  "maghrib": {
+   "exact": 202,
+   "within1": 384,
+   "worst": 1
+  },
+  "isha": {
+   "exact": 200,
+   "within1": 384,
+   "worst": 1
+  }
+ },
+ "amplitudeFajrJanJul": null,
+ "amplitudeIshaJanJul": null,
+ "years": [
+  "2025",
+  "2026"
+ ]
+}

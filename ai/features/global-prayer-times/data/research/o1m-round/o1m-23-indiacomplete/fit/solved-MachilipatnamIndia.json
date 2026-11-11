@@ -1,0 +1,15 @@
+{
+ "rows": "data/tms/tms-MachilipatnamIndia-2026.json",
+ "year": 2026,
+ "samples": 12,
+ "solved": {
+  "lat": 16.45,
+  "lon": 80.965
+ },
+ "lon_mae": 0.08,
+ "lat_mae": 0.25,
+ "coarse": {
+  "lon": 81,
+  "lat": 16.45
+ }
+}

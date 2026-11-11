@@ -1,0 +1,72 @@
+{
+ "file": "data/masjidbox_tt_chaguanas.json",
+ "tz": "America/New_York",
+ "meta": {
+  "name": "Masjid Chaguanas",
+  "lat": 10.5167,
+  "lon": -61.4167,
+  "country": "TT"
+ },
+ "days": 7,
+ "fajr": {
+  "angle": 20.55,
+  "offset": 11,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.21,
+  "worst": 0.45
+ },
+ "isha": {
+  "angle": 18.1,
+  "offset": -5,
+  "exact": 5,
+  "within1": 7,
+  "mae": 0.25,
+  "worst": 0.82
+ },
+ "asr_shafi": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.22,
+  "worst": 0.42
+ },
+ "asr_hanafi": {
+  "offset": -52,
+  "exact": 6,
+  "within1": 7,
+  "mae": 0.34,
+  "worst": 0.5
+ },
+ "dhuhr": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.25,
+  "worst": 0.45
+ },
+ "maghrib": {
+  "offset": 0,
+  "exact": 6,
+  "within1": 7,
+  "mae": 0.35,
+  "worst": 0.5
+ },
+ "sunrise": {
+  "offset": 0,
+  "exact": 7,
+  "within1": 7,
+  "mae": 0.26,
+  "worst": 0.48
+ },
+ "amplitude_fajr_janJul": {
+  "jan": [
+   null,
+   null
+  ],
+  "jul": [
+   null,
+   null
+  ]
+ }
+}

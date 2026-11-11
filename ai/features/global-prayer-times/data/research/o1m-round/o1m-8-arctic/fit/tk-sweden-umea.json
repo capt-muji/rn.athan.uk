@@ -1,0 +1,79 @@
+{
+ "city": "umea",
+ "nightFraction": {
+  "n": 138,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Sweden",
+ "source": "tawkit.net",
+ "tz": "Europe/Stockholm",
+ "lat": 63.82842,
+ "lon": 20.25972,
+ "rows": 365,
+ "solarGateMedAbs": 0.28,
+ "fajrAngle": {
+  "n": 221,
+  "med": 18,
+  "min": 17.75,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 233,
+  "med": 17,
+  "min": 10.2,
+  "max": 17.2,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0.02,
+   "min": -2.1,
+   "max": 2
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": -0.03,
+   "min": -2.6,
+   "max": 3.1
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -50,
+   "min": -82.2,
+   "max": -9.7
+  },
+  "maghrib": {
+   "n": 365,
+   "med": -0.02,
+   "min": -2,
+   "max": 2
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-13",
+    "to": "2027-08-28",
+    "days": 138
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 330,
+  "isha": 466
+ }
+}

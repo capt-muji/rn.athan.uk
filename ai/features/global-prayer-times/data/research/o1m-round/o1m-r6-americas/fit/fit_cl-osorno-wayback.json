@@ -1,0 +1,204 @@
+{
+ "id": "cl-osorno-wayback",
+ "name": "Osorno",
+ "city": "Osorno",
+ "tz": "America/Santiago",
+ "lat": -40.574,
+ "lon": -73.134,
+ "address": "city centre",
+ "rows": 62,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.2,
+  "ishaKind": "angle",
+  "isha": 17.8,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 6,
+   "dhuhr": 7,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 25.8,
+   "w1Pct": 93.5,
+   "mean": 0.18,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 93.5,
+     "exactPct": 25.8,
+     "worst": 3
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.79,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.58,
+   "worst": 7,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.03,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.37,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 4.8,
+   "w1Pct": 72.6,
+   "mean": 0.23,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 72.6,
+     "exactPct": 4.8,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 62,
+  "fajr": {
+   "exactPct": 25.8,
+   "w1Pct": 93.5,
+   "mean": 0.18,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 93.5,
+     "exactPct": 25.8,
+     "worst": 3
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 75.8,
+   "w1Pct": 100,
+   "mean": -0.21,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 75.8,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 58.1,
+   "w1Pct": 100,
+   "mean": -0.42,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 58.1,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 80.6,
+   "w1Pct": 100,
+   "mean": 0.03,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 80.6,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 59.7,
+   "w1Pct": 100,
+   "mean": 0.37,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 59.7,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 4.8,
+   "w1Pct": 72.6,
+   "mean": 0.23,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 72.6,
+     "exactPct": 4.8,
+     "worst": 2
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

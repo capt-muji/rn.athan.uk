@@ -1,0 +1,44 @@
+{
+ "recipe": "MWL angles 18.5/18.5 Shafi, Rounding.None",
+ "margins": {
+  "fajr": 1,
+  "dhuhr": 3,
+  "asr": 0,
+  "maghrib": 4,
+  "isha": -1
+ },
+ "jointAllFive": "345/365",
+ "per": {
+  "fajr": {
+   "exact": 261,
+   "within1": 365,
+   "worst": 1
+  },
+  "sunrise": {
+   "exact": 228,
+   "within1": 365,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 270,
+   "within1": 365,
+   "worst": 1
+  },
+  "asr": {
+   "exact": 186,
+   "within1": 356,
+   "worst": 2
+  },
+  "maghrib": {
+   "exact": 235,
+   "within1": 362,
+   "worst": 2
+  },
+  "isha": {
+   "exact": 144,
+   "within1": 349,
+   "worst": 2
+  }
+ },
+ "span": "2026-01-01..2026-12-31"
+}

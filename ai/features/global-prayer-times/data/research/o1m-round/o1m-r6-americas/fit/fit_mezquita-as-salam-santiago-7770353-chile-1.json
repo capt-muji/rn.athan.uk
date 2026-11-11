@@ -1,0 +1,204 @@
+{
+ "id": "mezquita-as-salam-santiago-7770353-chile-1",
+ "name": "Mezquita As-Salam - SANTIAGO",
+ "city": "Mezquita As-Salam - SANTIAGO",
+ "tz": "America/Santiago",
+ "lat": -33.451,
+ "lon": -70.599,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 16.8,
+  "ishaKind": "interval",
+  "isha": 85,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 6,
+   "asr": 8,
+   "maghrib": 8,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 30.4,
+   "w1Pct": 83,
+   "mean": -0.11,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 83,
+     "exactPct": 30.4,
+     "worst": -3
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 8.01,
+   "worst": 10,
+   "med": 8,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 10
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 8,
+   "worst": 8,
+   "med": 8,
+   "byYear": {
+    "2026": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 8
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 0.3,
+   "w1Pct": 100,
+   "mean": 1,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 0.3,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 30.4,
+   "w1Pct": 83,
+   "mean": -0.11,
+   "worst": -3,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 83,
+     "exactPct": 30.4,
+     "worst": -3
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": -0.01,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 98.9,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 98.9,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 16.2,
+   "w1Pct": 79.7,
+   "mean": 0.01,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 79.7,
+     "exactPct": 16.2,
+     "worst": 2
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 99.7,
+   "w1Pct": 100,
+   "mean": 0,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 99.7,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 67
+}

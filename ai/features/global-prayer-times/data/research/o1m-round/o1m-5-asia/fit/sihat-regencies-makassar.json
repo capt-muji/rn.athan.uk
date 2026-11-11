@@ -1,0 +1,2261 @@
+{
+ "recipe": {
+  "fajr": 20,
+  "isha": 18,
+  "madhab": "shafi",
+  "margins": "fajr+2, dhuhr+3, asr+2, isha+2, sunrise-2-dip, maghrib+2+dip",
+  "dip": "0.1173*sqrt(m) min"
+ },
+ "n_units": 39,
+ "aggregate": {
+  "fajr": {
+   "exact": 50.5,
+   "within1": 100
+  },
+  "sunrise": {
+   "exact": 64.2,
+   "within1": 97.2
+  },
+  "dhuhr": {
+   "exact": 49.1,
+   "within1": 100
+  },
+  "asr": {
+   "exact": 50,
+   "within1": 100
+  },
+  "maghrib": {
+   "exact": 24.3,
+   "within1": 92.1
+  },
+  "isha": {
+   "exact": 50.3,
+   "within1": 100
+  }
+ },
+ "units": [
+  {
+   "unit": "KOTA BALIKPAPAN",
+   "province": "KALIMANTAN TIMUR",
+   "lat": -1.1566658020019531,
+   "lng": 116.8722915649414,
+   "elev": 9,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 84.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "dhuhr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "maghrib": {
+     "exact": 16.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BANJARBARU",
+   "province": "KALIMANTAN SELATAN",
+   "lat": -3.4747674465179443,
+   "lng": 114.79117584228516,
+   "elev": 40,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "dhuhr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BANJARMASIN",
+   "province": "KALIMANTAN SELATAN",
+   "lat": -3.3291215896606445,
+   "lng": 114.591796875,
+   "elev": 10,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 80,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.2
+    },
+    "dhuhr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 15.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BANTAENG",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.490180969238281,
+   "lng": 119.98736572265625,
+   "elev": 10,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 81.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "dhuhr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "maghrib": {
+     "exact": 17.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.82
+    },
+    "isha": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BARRU",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.439995765686035,
+   "lng": 119.6948471069336,
+   "elev": 9,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 83.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.16
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 15.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.85
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BAU BAU",
+   "province": "SULAWESI TENGGARA",
+   "lat": -5.428768634796143,
+   "lng": 122.67579650878906,
+   "elev": 10,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 83,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.17
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 15.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BITUNG",
+   "province": "SULAWESI UTARA",
+   "lat": 1.4898111820220947,
+   "lng": 125.15797424316406,
+   "elev": 13,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 74,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.26
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 20.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.79
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BONE",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.694987773895264,
+   "lng": 120.13005065917969,
+   "elev": 36,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA BONTANG",
+   "province": "KALIMANTAN TIMUR",
+   "lat": 0.0932648777961731,
+   "lng": 117.45806884765625,
+   "elev": 12,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 55.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 81.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.19
+    },
+    "dhuhr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 20.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.8
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. BULUKUMBA",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.431450366973877,
+   "lng": 120.23432922363281,
+   "elev": 8,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 84.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 14.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.86
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA DENPASAR",
+   "province": "BALI",
+   "lat": -8.668355941772461,
+   "lng": 115.22081756591797,
+   "elev": 25,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 60.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.4
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "maghrib": {
+     "exact": 35.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. ENREKANG",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.5038557052612305,
+   "lng": 119.87457275390625,
+   "elev": 60,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 31,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.69
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 70.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.3
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. GORONTALO",
+   "province": "GORONTALO",
+   "lat": 0.6928993463516235,
+   "lng": 122.71251678466797,
+   "elev": 15,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 73.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.27
+    },
+    "dhuhr": {
+     "exact": 45.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "asr": {
+     "exact": 53.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 25.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.74
+    },
+    "isha": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. GOWA",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.308904647827148,
+   "lng": 119.71871948242188,
+   "elev": 13,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "sunrise": {
+     "exact": 76.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.24
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 49.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 20.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.79
+    },
+    "isha": {
+     "exact": 45.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. JENEPONTO",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.5670270919799805,
+   "lng": 119.69888305664062,
+   "elev": 11,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 80.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.19
+    },
+    "dhuhr": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 17.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.82
+    },
+    "isha": {
+     "exact": 54.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA KENDARI",
+   "province": "SULAWESI TENGGARA",
+   "lat": -3.9977076053619385,
+   "lng": 122.53288269042969,
+   "elev": 16,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 74.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.25
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 54.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "maghrib": {
+     "exact": 24.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.76
+    },
+    "isha": {
+     "exact": 55.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. KEPULAUAN SELAYAR",
+   "province": "SULAWESI SELATAN",
+   "lat": -6.557894229888916,
+   "lng": 120.71788024902344,
+   "elev": 6,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 45.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "sunrise": {
+     "exact": 89.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.11
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 10.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA KOTAMOBAGU",
+   "province": "SULAWESI UTARA",
+   "lat": 0.7110773324966431,
+   "lng": 124.31830596923828,
+   "elev": 246,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 2,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 35.1,
+     "med": 2,
+     "maex": 1.65
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 35.9,
+     "within1": 100,
+     "med": -1,
+     "maex": 0.64
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 128,
+   "all_six_pct": 35.1
+  },
+  {
+   "unit": "KAB. LUWU TIMUR",
+   "province": "SULAWESI SELATAN",
+   "lat": -2.5560452938079834,
+   "lng": 121.12833404541016,
+   "elev": 2,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 95.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 94,
+     "med": 1,
+     "maex": 1.06
+    },
+    "isha": {
+     "exact": 46.3,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    }
+   },
+   "all_six_within1": 343,
+   "all_six_pct": 94
+  },
+  {
+   "unit": "KAB. LUWU UTARA",
+   "province": "SULAWESI SELATAN",
+   "lat": -2.395935297012329,
+   "lng": 120.16443634033203,
+   "elev": 43,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 39.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.61
+    },
+    "dhuhr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 53.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.46
+    },
+    "isha": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. LUWU",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.1992106437683105,
+   "lng": 120.18312072753906,
+   "elev": 18,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 68.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "dhuhr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 29.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.7
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA MAKASSAR",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.135610103607178,
+   "lng": 119.46389770507812,
+   "elev": 9,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "sunrise": {
+     "exact": 82.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.18
+    },
+    "dhuhr": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 16.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.84
+    },
+    "isha": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA MANADO",
+   "province": "SULAWESI UTARA",
+   "lat": 1.52492094039917,
+   "lng": 124.847900390625,
+   "elev": 24,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 55.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "dhuhr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 39.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.61
+    },
+    "isha": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. MAROS",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.999624729156494,
+   "lng": 119.72628784179688,
+   "elev": 8,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 85.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 9.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PALOPO",
+   "province": "SULAWESI SELATAN",
+   "lat": -2.9797070026397705,
+   "lng": 120.14776611328125,
+   "elev": 11,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 54.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    },
+    "sunrise": {
+     "exact": 77.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.22
+    },
+    "dhuhr": {
+     "exact": 47.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 18.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.82
+    },
+    "isha": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PALU",
+   "province": "SULAWESI TENGAH",
+   "lat": -0.8369318246841431,
+   "lng": 119.9119644165039,
+   "elev": 13,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 47.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 74.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.25
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 19.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.8
+    },
+    "isha": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PANGKAJENE KEPULAUAN",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.938544750213623,
+   "lng": 119.4795913696289,
+   "elev": 8,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "sunrise": {
+     "exact": 85.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.15
+    },
+    "dhuhr": {
+     "exact": 48.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 9.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA PAREPARE",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.031642436981201,
+   "lng": 119.66355895996094,
+   "elev": 59,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "sunrise": {
+     "exact": 27.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.72
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "maghrib": {
+     "exact": 69,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.31
+    },
+    "isha": {
+     "exact": 47.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. PINRANG",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.6282474994659424,
+   "lng": 119.60266876220703,
+   "elev": 13,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 78.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.21
+    },
+    "dhuhr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 22.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.78
+    },
+    "isha": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KOTA SAMARINDA",
+   "province": "KALIMANTAN TIMUR",
+   "lat": -0.5002797245979309,
+   "lng": 117.17706298828125,
+   "elev": 4,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 95.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "dhuhr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "asr": {
+     "exact": 51,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 3.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.96
+    },
+    "isha": {
+     "exact": 45.5,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SIDENRENG RAPPANG",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.813113212585449,
+   "lng": 119.95848083496094,
+   "elev": 21,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 56.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.44
+    },
+    "sunrise": {
+     "exact": 65.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.35
+    },
+    "dhuhr": {
+     "exact": 46.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 32.1,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.68
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SINJAI",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.209283351898193,
+   "lng": 120.13541412353516,
+   "elev": 8,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 86.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.13
+    },
+    "dhuhr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 53.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "maghrib": {
+     "exact": 10.4,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.9
+    },
+    "isha": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. SOPPENG",
+   "province": "SULAWESI SELATAN",
+   "lat": -4.337042331695557,
+   "lng": 119.89337921142578,
+   "elev": 113,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    },
+    "sunrise": {
+     "exact": 0,
+     "within1": 94.8,
+     "med": 1,
+     "maex": 1.05
+    },
+    "dhuhr": {
+     "exact": 46.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.53
+    },
+    "asr": {
+     "exact": 43.8,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.56
+    },
+    "maghrib": {
+     "exact": 98.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.02
+    },
+    "isha": {
+     "exact": 55.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.45
+    }
+   },
+   "all_six_within1": 346,
+   "all_six_pct": 94.8
+  },
+  {
+   "unit": "KAB. TAKALAR",
+   "province": "SULAWESI SELATAN",
+   "lat": -5.418454647064209,
+   "lng": 119.4741439819336,
+   "elev": 8,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 86,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.14
+    },
+    "dhuhr": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 44.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.55
+    },
+    "maghrib": {
+     "exact": 13.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.87
+    },
+    "isha": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  },
+  {
+   "unit": "KAB. TANA TORAJA",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.1156063079833984,
+   "lng": 119.71163177490234,
+   "elev": 774,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 50.4,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "sunrise": {
+     "exact": 1.9,
+     "within1": 86.3,
+     "med": -1,
+     "maex": 1.12
+    },
+    "dhuhr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "asr": {
+     "exact": 49.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 1.9,
+     "med": 2,
+     "maex": 2.13
+    },
+    "isha": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    }
+   },
+   "all_six_within1": 7,
+   "all_six_pct": 1.9
+  },
+  {
+   "unit": "KOTA TARAKAN",
+   "province": "KALIMANTAN UTARA",
+   "lat": 3.359405517578125,
+   "lng": 117.5995101928711,
+   "elev": 1,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 46,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.54
+    },
+    "sunrise": {
+     "exact": 94.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.05
+    },
+    "dhuhr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 51.2,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 90.1,
+     "med": 1,
+     "maex": 1.1
+    },
+    "isha": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    }
+   },
+   "all_six_within1": 329,
+   "all_six_pct": 90.1
+  },
+  {
+   "unit": "KOTA TOMOHON",
+   "province": "SULAWESI UTARA",
+   "lat": 1.3305320739746094,
+   "lng": 124.81504821777344,
+   "elev": 758,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 1,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 1,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 49,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.51
+    },
+    "sunrise": {
+     "exact": 0.8,
+     "within1": 86,
+     "med": -1,
+     "maex": 1.13
+    },
+    "dhuhr": {
+     "exact": 51.5,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "asr": {
+     "exact": 49.6,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.5
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 1.4,
+     "med": 2,
+     "maex": 2.19
+    },
+    "isha": {
+     "exact": 52.6,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 5,
+   "all_six_pct": 1.4
+  },
+  {
+   "unit": "KAB. TORAJA UTARA",
+   "province": "SULAWESI SELATAN",
+   "lat": -2.879621744155884,
+   "lng": 119.8642578125,
+   "elev": 787,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 57.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.42
+    },
+    "sunrise": {
+     "exact": 4.4,
+     "within1": 89.9,
+     "med": -1,
+     "maex": 1.06
+    },
+    "dhuhr": {
+     "exact": 50.1,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.5
+    },
+    "asr": {
+     "exact": 51.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "maghrib": {
+     "exact": 0,
+     "within1": 3.3,
+     "med": 2,
+     "maex": 2.11
+    },
+    "isha": {
+     "exact": 52.9,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.47
+    }
+   },
+   "all_six_within1": 12,
+   "all_six_pct": 3.3
+  },
+  {
+   "unit": "KAB. WAJO",
+   "province": "SULAWESI SELATAN",
+   "lat": -3.991826295852661,
+   "lng": 120.17283630371094,
+   "elev": 19,
+   "tz": "Asia/Makassar",
+   "days": 365,
+   "median_residual": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 1
+   },
+   "per_column": {
+    "fajr": {
+     "exact": 52.3,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.48
+    },
+    "sunrise": {
+     "exact": 66.8,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.33
+    },
+    "dhuhr": {
+     "exact": 48.2,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    },
+    "asr": {
+     "exact": 50.7,
+     "within1": 100,
+     "med": 0,
+     "maex": 0.49
+    },
+    "maghrib": {
+     "exact": 29.9,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.7
+    },
+    "isha": {
+     "exact": 47.7,
+     "within1": 100,
+     "med": 1,
+     "maex": 0.52
+    }
+   },
+   "all_six_within1": 365,
+   "all_six_pct": 100
+  }
+ ]
+}

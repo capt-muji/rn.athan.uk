@@ -1,0 +1,79 @@
+{
+ "city": "molde",
+ "nightFraction": {
+  "n": 132,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.503
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 62.73752,
+ "lon": 7.15912,
+ "rows": 365,
+ "solarGateMedAbs": 0.23,
+ "fajrAngle": {
+  "n": 228,
+  "med": 18,
+  "min": 14.35,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 234,
+  "med": 17,
+  "min": 11,
+  "max": 17.15,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": -0.02,
+   "min": -2,
+   "max": 1.8
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.03,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": 0.02,
+   "min": -2.4,
+   "max": 2.8
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.58,
+   "min": -80.9,
+   "max": -12.8
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.18,
+   "min": -1.8,
+   "max": 1.8
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-16",
+    "to": "2027-08-25",
+    "days": 132
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 328,
+  "isha": 463
+ }
+}

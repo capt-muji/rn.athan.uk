@@ -1,0 +1,54 @@
+{
+ "file": "sc-victoria-iso-jumada2-1448.json",
+ "lat": -4.6195,
+ "lon": 55.4513,
+ "tz": "Indian/Mahe",
+ "rows": 29,
+ "span": "2026-11-11..2026-12-09",
+ "recipe": {
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "asr": "Shafi",
+  "maghribOffsetMin": 0
+ },
+ "joint": "3 exact / 111 within-1 of 145",
+ "pctWithin1": 76.55,
+ "worst": 2,
+ "per": {
+  "fajr": {
+   "exact": 2,
+   "within1": 29,
+   "worst": 1
+  },
+  "sunrise": {
+   "exact": 28,
+   "within1": 29,
+   "worst": 1
+  },
+  "dhuhr": {
+   "exact": 0,
+   "within1": 29,
+   "worst": 1
+  },
+  "asr": {
+   "exact": 0,
+   "within1": 24,
+   "worst": 2
+  },
+  "maghrib": {
+   "exact": 0,
+   "within1": 0,
+   "worst": 2
+  },
+  "isha": {
+   "exact": 1,
+   "within1": 29,
+   "worst": 1
+  }
+ },
+ "amplitudeFajrJanJul": null,
+ "amplitudeIshaJanJul": null,
+ "years": [
+  "2026"
+ ]
+}

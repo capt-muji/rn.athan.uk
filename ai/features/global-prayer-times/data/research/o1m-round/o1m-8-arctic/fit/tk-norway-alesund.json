@@ -1,0 +1,79 @@
+{
+ "city": "alesund",
+ "nightFraction": {
+  "n": 130,
+  "med": 0.5,
+  "p10": 0.498,
+  "p90": 0.502
+ },
+ "country": "Norway",
+ "source": "tawkit.net",
+ "tz": "Europe/Oslo",
+ "lat": 62.47225,
+ "lon": 6.15492,
+ "rows": 365,
+ "solarGateMedAbs": 0.24,
+ "fajrAngle": {
+  "n": 229,
+  "med": 18,
+  "min": 17.75,
+  "max": 18.25,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 239,
+  "med": 17,
+  "min": 10.7,
+  "max": 18.35,
+  "jun": null,
+  "dec": 17.05
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 365,
+   "med": 0,
+   "min": -1.9,
+   "max": 1.7
+  },
+  "dhuhr": {
+   "n": 365,
+   "med": 0.03,
+   "min": -0.5,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 365,
+   "med": -0.02,
+   "min": -2.1,
+   "max": 2.6
+  },
+  "asrHanafi": {
+   "n": 365,
+   "med": -49.98,
+   "min": -80.7,
+   "max": -13.4
+  },
+  "maghrib": {
+   "n": 365,
+   "med": 0.02,
+   "min": -1.8,
+   "max": 1.9
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [
+   {
+    "from": "2027-04-17",
+    "to": "2027-08-24",
+    "days": 130
+   }
+  ],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 327,
+  "isha": 462
+ }
+}

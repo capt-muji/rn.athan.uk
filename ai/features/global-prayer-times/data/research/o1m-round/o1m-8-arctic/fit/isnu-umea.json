@@ -1,0 +1,68 @@
+{
+ "city": "umea",
+ "nightFraction": null,
+ "country": "Sweden",
+ "source": "islam.nu",
+ "tz": "Europe/Stockholm",
+ "lat": 63.8258,
+ "lon": 20.263,
+ "rows": 760,
+ "solarGateMedAbs": 0.26,
+ "fajrAngle": {
+  "n": 544,
+  "med": 18,
+  "min": 10.1,
+  "max": 18.05,
+  "jun": null,
+  "dec": 18
+ },
+ "ishaAngle": {
+  "n": 540,
+  "med": 17,
+  "min": 10,
+  "max": 17.1,
+  "jun": null,
+  "dec": 17
+ },
+ "solarMargin": {
+  "sunrise": {
+   "n": 760,
+   "med": 0,
+   "min": -0.7,
+   "max": 0.6
+  },
+  "dhuhr": {
+   "n": 760,
+   "med": 0.02,
+   "min": -0.4,
+   "max": 0.5
+  },
+  "asrShafi": {
+   "n": 760,
+   "med": 0.08,
+   "min": -3.6,
+   "max": 3.6
+  },
+  "asrHanafi": {
+   "n": 760,
+   "med": -47.65,
+   "min": -82.3,
+   "max": -9.6
+  },
+  "maghrib": {
+   "n": 760,
+   "med": 0,
+   "min": -0.7,
+   "max": 0.7
+  }
+ },
+ "polar": {
+  "noonCollapse": [],
+  "nightMid": [],
+  "neverRises": []
+ },
+ "amplitude": {
+  "fajr": 288,
+  "isha": 421
+ }
+}

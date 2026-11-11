@@ -1,0 +1,204 @@
+{
+ "id": "mezquita-al-ahmad-1541-alberti-buenos-aires-argentina",
+ "name": "Mezquita Al Ahmad",
+ "city": "Mezquita Al Ahmad",
+ "tz": "America/Argentina/Buenos_Aires",
+ "lat": -34.604,
+ "lon": -58.382,
+ "address": "mawaqit confData (page-published)",
+ "rows": 365,
+ "repairRows": 0,
+ "years": [
+  2026
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 17.9,
+  "ishaKind": "angle",
+  "isha": 16.9,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": -1,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 1
+  }
+ },
+ "zero": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 48.5,
+   "w1Pct": 100,
+   "mean": -0.5,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 48.5,
+     "worst": -1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 12.3,
+   "w1Pct": 100,
+   "mean": -0.88,
+   "worst": -1,
+   "med": -1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 12.3,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 95.1,
+   "w1Pct": 100,
+   "mean": 0.04,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 95.1,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 32.1,
+   "w1Pct": 100,
+   "mean": 0.02,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 32.1,
+     "worst": 1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 9.9,
+   "w1Pct": 91.8,
+   "mean": 1.11,
+   "worst": 4,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.8,
+     "exactPct": 9.9,
+     "worst": 4
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 44.7,
+   "w1Pct": 100,
+   "mean": 0.55,
+   "worst": 1,
+   "med": 1,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 44.7,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 365,
+  "fajr": {
+   "exactPct": 51,
+   "w1Pct": 99.5,
+   "mean": 0.5,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 99.5,
+     "exactPct": 51,
+     "worst": 2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 87.7,
+   "w1Pct": 100,
+   "mean": 0.12,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 87.7,
+     "worst": 1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 95.1,
+   "w1Pct": 100,
+   "mean": 0.04,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 95.1,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 32.1,
+   "w1Pct": 100,
+   "mean": 0.02,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 32.1,
+     "worst": 1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 81.9,
+   "w1Pct": 91.8,
+   "mean": 0.11,
+   "worst": 3,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 91.8,
+     "exactPct": 81.9,
+     "worst": 3
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 55.3,
+   "w1Pct": 100,
+   "mean": -0.45,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 55.3,
+     "worst": -1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 133
+}

@@ -1,0 +1,110 @@
+[
+ {
+  "hijri": 1445,
+  "span": "2023-07-19..2023-10-15",
+  "days": 89,
+  "fajrInterval": {
+   "median": 100,
+   "min": 100,
+   "max": 100
+  },
+  "ishaInterval": {
+   "median": 90,
+   "min": 90,
+   "max": 90
+  },
+  "sunriseOffset": {
+   "median": 0
+  },
+  "maghribOffset": {
+   "median": 4,
+   "min": 2,
+   "max": 5
+  },
+  "dhuhrRuleMaxResidual": 0,
+  "asrBestShift": 0,
+  "asrMae": 1,
+  "asrMedianResidual": 1
+ },
+ {
+  "hijri": 1446,
+  "span": "2024-07-07..2025-03-29",
+  "days": 87,
+  "fajrInterval": {
+   "median": 100,
+   "min": 100,
+   "max": 100
+  },
+  "ishaInterval": {
+   "median": 90,
+   "min": 90,
+   "max": 90
+  },
+  "sunriseOffset": {
+   "median": 0
+  },
+  "maghribOffset": {
+   "median": 3,
+   "min": 1,
+   "max": 4
+  },
+  "dhuhrRuleMaxResidual": 1,
+  "asrBestShift": 0,
+  "asrMae": 1,
+  "asrMedianResidual": 0
+ },
+ {
+  "hijri": 1447,
+  "span": "2025-06-26..2025-07-25",
+  "days": 30,
+  "fajrInterval": {
+   "median": 100,
+   "min": 100,
+   "max": 100
+  },
+  "ishaInterval": {
+   "median": 90,
+   "min": 90,
+   "max": 90
+  },
+  "sunriseOffset": {
+   "median": 0
+  },
+  "maghribOffset": {
+   "median": 3,
+   "min": 3,
+   "max": 4
+  },
+  "dhuhrRuleMaxResidual": 0,
+  "asrBestShift": 0,
+  "asrMae": 0,
+  "asrMedianResidual": 0
+ },
+ {
+  "hijri": 1448,
+  "span": "2026-06-16..2027-06-05",
+  "days": 355,
+  "fajrInterval": {
+   "median": 100,
+   "min": 100,
+   "max": 100
+  },
+  "ishaInterval": {
+   "median": 90,
+   "min": 90,
+   "max": 90
+  },
+  "sunriseOffset": {
+   "median": 0
+  },
+  "maghribOffset": {
+   "median": 4,
+   "min": 3,
+   "max": 5
+  },
+  "dhuhrRuleMaxResidual": 0,
+  "asrBestShift": 10,
+  "asrMae": 0,
+  "asrMedianResidual": 0
+ }
+]

@@ -1,0 +1,528 @@
+{
+ "id": "1XAlR4Kb",
+ "name": "Leduc Islamic Association",
+ "city": "Leduc AB",
+ "tz": "America/Edmonton",
+ "lat": 53.2647784,
+ "lon": -113.5692185,
+ "address": "5208 50th Ave, Leduc, AB T9E 6V2, CA",
+ "rows": 2191,
+ "repairRows": 0,
+ "years": [
+  2021,
+  2022,
+  2023,
+  2024,
+  2025,
+  2026
+ ],
+ "blocks": [
+  {
+   "from": "2024-02-01",
+   "to": "2024-02-29",
+   "offset": 120,
+   "n": 29
+  },
+  {
+   "from": "2026-11-01",
+   "to": "2026-11-30",
+   "offset": 60,
+   "n": 30
+  },
+  {
+   "from": "2026-12-01",
+   "to": "2026-12-31",
+   "offset": 120,
+   "n": 31
+  }
+ ],
+ "recipe": {
+  "fajrAngle": 18.1,
+  "ishaKind": "angle",
+  "isha": 17.1,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": -1,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": -2
+  }
+ },
+ "zero": {
+  "n": 2191,
+  "fajr": {
+   "exactPct": 20.1,
+   "w1Pct": 47,
+   "mean": 24.98,
+   "worst": 123,
+   "med": 1,
+   "byYear": {
+    "2021": {
+     "w1Pct": 46.8,
+     "exactPct": 16.4,
+     "worst": 121
+    },
+    "2022": {
+     "w1Pct": 50.7,
+     "exactPct": 23,
+     "worst": 121
+    },
+    "2023": {
+     "w1Pct": 49.3,
+     "exactPct": 22.5,
+     "worst": 123
+    },
+    "2024": {
+     "w1Pct": 38.8,
+     "exactPct": 20.8,
+     "worst": 123
+    },
+    "2025": {
+     "w1Pct": 45.5,
+     "exactPct": 13.4,
+     "worst": 123
+    },
+    "2026": {
+     "w1Pct": 50.7,
+     "exactPct": 24.4,
+     "worst": 123
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 11.1,
+   "w1Pct": 49.2,
+   "mean": -1.02,
+   "worst": -4,
+   "med": -1,
+   "byYear": {
+    "2021": {
+     "w1Pct": 45.8,
+     "exactPct": 10.7,
+     "worst": -4
+    },
+    "2022": {
+     "w1Pct": 55.1,
+     "exactPct": 11,
+     "worst": -4
+    },
+    "2023": {
+     "w1Pct": 51,
+     "exactPct": 15.3,
+     "worst": -3
+    },
+    "2024": {
+     "w1Pct": 48.4,
+     "exactPct": 12.6,
+     "worst": -4
+    },
+    "2025": {
+     "w1Pct": 43.3,
+     "exactPct": 10.4,
+     "worst": -4
+    },
+    "2026": {
+     "w1Pct": 51.8,
+     "exactPct": 6.8,
+     "worst": -4
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 11,
+   "w1Pct": 74.9,
+   "mean": 1.14,
+   "worst": 3,
+   "med": 1,
+   "byYear": {
+    "2021": {
+     "w1Pct": 75.6,
+     "exactPct": 13.4,
+     "worst": 2
+    },
+    "2022": {
+     "w1Pct": 73.4,
+     "exactPct": 13.2,
+     "worst": 2
+    },
+    "2023": {
+     "w1Pct": 69.6,
+     "exactPct": 11.2,
+     "worst": 2
+    },
+    "2024": {
+     "w1Pct": 79,
+     "exactPct": 7.7,
+     "worst": 3
+    },
+    "2025": {
+     "w1Pct": 71.8,
+     "exactPct": 9,
+     "worst": 3
+    },
+    "2026": {
+     "w1Pct": 80.3,
+     "exactPct": 11.2,
+     "worst": 2
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 12.6,
+   "w1Pct": 39.3,
+   "mean": 0.86,
+   "worst": -4,
+   "med": 1,
+   "byYear": {
+    "2021": {
+     "w1Pct": 35.6,
+     "exactPct": 12.1,
+     "worst": -4
+    },
+    "2022": {
+     "w1Pct": 39.5,
+     "exactPct": 12.3,
+     "worst": 4
+    },
+    "2023": {
+     "w1Pct": 42.7,
+     "exactPct": 15.3,
+     "worst": -3
+    },
+    "2024": {
+     "w1Pct": 43.4,
+     "exactPct": 11.2,
+     "worst": 4
+    },
+    "2025": {
+     "w1Pct": 36.2,
+     "exactPct": 12.9,
+     "worst": -4
+    },
+    "2026": {
+     "w1Pct": 38.4,
+     "exactPct": 12.1,
+     "worst": 4
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 15.1,
+   "w1Pct": 38.1,
+   "mean": 2.09,
+   "worst": 7,
+   "med": 2,
+   "byYear": {
+    "2021": {
+     "w1Pct": 42.5,
+     "exactPct": 20.5,
+     "worst": 5
+    },
+    "2022": {
+     "w1Pct": 51,
+     "exactPct": 21.9,
+     "worst": 4
+    },
+    "2023": {
+     "w1Pct": 57.5,
+     "exactPct": 14.8,
+     "worst": 4
+    },
+    "2024": {
+     "w1Pct": 41.5,
+     "exactPct": 20.8,
+     "worst": 5
+    },
+    "2025": {
+     "w1Pct": 21.6,
+     "exactPct": 9,
+     "worst": 7
+    },
+    "2026": {
+     "w1Pct": 14.2,
+     "exactPct": 3.3,
+     "worst": 6
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 9.1,
+   "w1Pct": 30.4,
+   "mean": -43.41,
+   "worst": -163,
+   "med": -2,
+   "byYear": {
+    "2021": {
+     "w1Pct": 28.5,
+     "exactPct": 5.2,
+     "worst": -163
+    },
+    "2022": {
+     "w1Pct": 33.4,
+     "exactPct": 11.2,
+     "worst": -162
+    },
+    "2023": {
+     "w1Pct": 38.4,
+     "exactPct": 19.2,
+     "worst": -162
+    },
+    "2024": {
+     "w1Pct": 24.9,
+     "exactPct": 7.1,
+     "worst": -162
+    },
+    "2025": {
+     "w1Pct": 27.7,
+     "exactPct": 4.1,
+     "worst": -160
+    },
+    "2026": {
+     "w1Pct": 29.3,
+     "exactPct": 7.7,
+     "worst": -160
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 2191,
+  "fajr": {
+   "exactPct": 20,
+   "w1Pct": 42.9,
+   "mean": 23.98,
+   "worst": 122,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 44.1,
+     "exactPct": 25.5,
+     "worst": 120
+    },
+    "2022": {
+     "w1Pct": 43.3,
+     "exactPct": 20,
+     "worst": 120
+    },
+    "2023": {
+     "w1Pct": 41.4,
+     "exactPct": 17.5,
+     "worst": 122
+    },
+    "2024": {
+     "w1Pct": 41,
+     "exactPct": 11.7,
+     "worst": 122
+    },
+    "2025": {
+     "w1Pct": 44.1,
+     "exactPct": 26.6,
+     "worst": 122
+    },
+    "2026": {
+     "w1Pct": 43.6,
+     "exactPct": 18.9,
+     "worst": 122
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 14.1,
+   "w1Pct": 43.6,
+   "mean": -0.02,
+   "worst": 4,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 33.7,
+     "exactPct": 10.1,
+     "worst": 3
+    },
+    "2022": {
+     "w1Pct": 43,
+     "exactPct": 12.3,
+     "worst": 3
+    },
+    "2023": {
+     "w1Pct": 55.1,
+     "exactPct": 11.2,
+     "worst": 3
+    },
+    "2024": {
+     "w1Pct": 43.4,
+     "exactPct": 16.4,
+     "worst": 4
+    },
+    "2025": {
+     "w1Pct": 33.4,
+     "exactPct": 10.4,
+     "worst": 3
+    },
+    "2026": {
+     "w1Pct": 52.9,
+     "exactPct": 24.1,
+     "worst": 3
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 64,
+   "w1Pct": 99.9,
+   "mean": 0.14,
+   "worst": 2,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 100,
+     "exactPct": 62.2,
+     "worst": -1
+    },
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 60.3,
+     "worst": 1
+    },
+    "2023": {
+     "w1Pct": 100,
+     "exactPct": 58.4,
+     "worst": 1
+    },
+    "2024": {
+     "w1Pct": 99.5,
+     "exactPct": 71.3,
+     "worst": 2
+    },
+    "2025": {
+     "w1Pct": 99.7,
+     "exactPct": 62.7,
+     "worst": 2
+    },
+    "2026": {
+     "w1Pct": 100,
+     "exactPct": 69,
+     "worst": 1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 11.3,
+   "w1Pct": 35.4,
+   "mean": -0.14,
+   "worst": -5,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 30.7,
+     "exactPct": 9.6,
+     "worst": -5
+    },
+    "2022": {
+     "w1Pct": 36.2,
+     "exactPct": 12.3,
+     "worst": -4
+    },
+    "2023": {
+     "w1Pct": 51.5,
+     "exactPct": 14.2,
+     "worst": -4
+    },
+    "2024": {
+     "w1Pct": 27,
+     "exactPct": 9,
+     "worst": -4
+    },
+    "2025": {
+     "w1Pct": 30.4,
+     "exactPct": 9.9,
+     "worst": -5
+    },
+    "2026": {
+     "w1Pct": 36.4,
+     "exactPct": 12.9,
+     "worst": -4
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 17.4,
+   "w1Pct": 46.7,
+   "mean": 0.09,
+   "worst": 5,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 41.1,
+     "exactPct": 18.1,
+     "worst": -4
+    },
+    "2022": {
+     "w1Pct": 55.1,
+     "exactPct": 20.5,
+     "worst": -4
+    },
+    "2023": {
+     "w1Pct": 69.6,
+     "exactPct": 20.3,
+     "worst": -3
+    },
+    "2024": {
+     "w1Pct": 33.3,
+     "exactPct": 7.4,
+     "worst": 3
+    },
+    "2025": {
+     "w1Pct": 41.6,
+     "exactPct": 21.6,
+     "worst": 5
+    },
+    "2026": {
+     "w1Pct": 39.5,
+     "exactPct": 16.7,
+     "worst": 4
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 2.3,
+   "w1Pct": 16.7,
+   "mean": -41.41,
+   "worst": -161,
+   "med": 0,
+   "byYear": {
+    "2021": {
+     "w1Pct": 23,
+     "exactPct": 4.9,
+     "worst": -161
+    },
+    "2022": {
+     "w1Pct": 17,
+     "exactPct": 1.4,
+     "worst": -160
+    },
+    "2023": {
+     "w1Pct": 7.9,
+     "exactPct": 0.5,
+     "worst": -160
+    },
+    "2024": {
+     "w1Pct": 13.1,
+     "exactPct": 0.8,
+     "worst": -160
+    },
+    "2025": {
+     "w1Pct": 23.6,
+     "exactPct": 4.1,
+     "worst": -158
+    },
+    "2026": {
+     "w1Pct": 15.3,
+     "exactPct": 1.9,
+     "worst": -158
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": -190
+}

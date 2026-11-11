@@ -1,0 +1,204 @@
+{
+ "id": "cl-talca-wayback",
+ "name": "Talca",
+ "city": "Talca",
+ "tz": "America/Santiago",
+ "lat": -35.426,
+ "lon": -71.655,
+ "address": "city centre",
+ "rows": 31,
+ "repairRows": 0,
+ "years": [
+  2022
+ ],
+ "blocks": [],
+ "recipe": {
+  "fajrAngle": 16.7,
+  "ishaKind": "angle",
+  "isha": 18.1,
+  "asr": "Shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 6,
+   "dhuhr": 7,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 0
+  }
+ },
+ "zero": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 9.7,
+   "w1Pct": 83.9,
+   "mean": -1.06,
+   "worst": -2,
+   "med": -1,
+   "byYear": {
+    "2022": {
+     "w1Pct": 83.9,
+     "exactPct": 9.7,
+     "worst": -2
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.9,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.61,
+   "worst": 7,
+   "med": 7,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 5.81,
+   "worst": 6,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 6
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 0,
+   "w1Pct": 0,
+   "mean": 6.23,
+   "worst": 7,
+   "med": 6,
+   "byYear": {
+    "2022": {
+     "w1Pct": 0,
+     "exactPct": 0,
+     "worst": 7
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 61.3,
+   "w1Pct": 100,
+   "mean": 0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "withMargins": {
+  "n": 31,
+  "fajr": {
+   "exactPct": 74.2,
+   "w1Pct": 100,
+   "mean": -0.06,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 74.2,
+     "worst": 1
+    }
+   }
+  },
+  "sunrise": {
+   "exactPct": 83.9,
+   "w1Pct": 100,
+   "mean": -0.1,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 83.9,
+     "worst": -1
+    }
+   }
+  },
+  "dhuhr": {
+   "exactPct": 61.3,
+   "w1Pct": 100,
+   "mean": -0.39,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": -1
+    }
+   }
+  },
+  "asr": {
+   "exactPct": 80.6,
+   "w1Pct": 100,
+   "mean": -0.19,
+   "worst": -1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 80.6,
+     "worst": -1
+    }
+   }
+  },
+  "maghrib": {
+   "exactPct": 71,
+   "w1Pct": 100,
+   "mean": 0.23,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 71,
+     "worst": 1
+    }
+   }
+  },
+  "isha": {
+   "exactPct": 61.3,
+   "w1Pct": 100,
+   "mean": 0.26,
+   "worst": 1,
+   "med": 0,
+   "byYear": {
+    "2022": {
+     "w1Pct": 100,
+     "exactPct": 61.3,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "amplitudeFajrJanJul": 0
+}

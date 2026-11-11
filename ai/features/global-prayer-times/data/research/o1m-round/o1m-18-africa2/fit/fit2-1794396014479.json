@@ -1,0 +1,92 @@
+[
+ {
+  "file": "msbf-ouaga-1442-2021-fit-input.json",
+  "source": "Mouvement Sunnite du Burkina Faso — Heures de Prière Ouagadougou (Hijri 1442 print)",
+  "lat": 12.3714,
+  "lon": -1.5197,
+  "tz": "Africa/Ouagadougou",
+  "rows": 365,
+  "span": [
+   "2021-01-01",
+   "2021-12-31"
+  ],
+  "recipe": {
+   "fajrAngle": 17.75,
+   "ishaAngle": 17.45,
+   "madhab": "Shafi",
+   "offsets": {
+    "dhuhr": 23,
+    "asr": 1,
+    "maghrib": 1
+   }
+  },
+  "sweeps": {
+   "fajr": {
+    "angle": 17.75,
+    "exact": 280,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.23,
+    "n": 365
+   },
+   "isha": {
+    "angle": 17.45,
+    "exact": 57,
+    "within1": 163,
+    "worst": 16,
+    "mae": 3.7,
+    "n": 365
+   }
+  },
+  "perColumn": {
+   "fajr": {
+    "exact": 280,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.23,
+    "n": 365
+   },
+   "sunrise": {
+    "exact": 0,
+    "within1": 0,
+    "worst": 0,
+    "mae": null,
+    "n": 0
+   },
+   "dhuhr": {
+    "exact": 13,
+    "within1": 38,
+    "worst": 20,
+    "mae": 8.34,
+    "n": 365
+   },
+   "asr": {
+    "exact": 87,
+    "within1": 223,
+    "worst": -3,
+    "mae": 1.25,
+    "n": 365
+   },
+   "maghrib": {
+    "exact": 346,
+    "within1": 365,
+    "worst": -1,
+    "mae": 0.05,
+    "n": 365
+   },
+   "isha": {
+    "exact": 57,
+    "within1": 163,
+    "worst": 16,
+    "mae": 3.7,
+    "n": 365
+   }
+  },
+  "totals": {
+   "within1": 1154,
+   "of": 1825,
+   "worst": 20
+  },
+  "amplitude_fajr_jan_jul": null
+ }
+]

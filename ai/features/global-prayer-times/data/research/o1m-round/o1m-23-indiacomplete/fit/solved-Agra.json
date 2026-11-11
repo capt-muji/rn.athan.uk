@@ -1,0 +1,15 @@
+{
+ "rows": "data/tms/tms-Agra-2026.json",
+ "year": 2026,
+ "samples": 12,
+ "solved": {
+  "lat": 27.295,
+  "lon": 77.715
+ },
+ "lon_mae": 0.08,
+ "lat_mae": 0.25,
+ "coarse": {
+  "lon": 77.75,
+  "lat": 27.3
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "rows": "data/masjidbox-varedia-jama-2025.json",
+ "year": 2025,
+ "n_days": 344,
+ "point": {
+  "lat": 20.2,
+  "lon": 68.82
+ },
+ "coarse": {
+  "lat": 20.4,
+  "lon": 68.8,
+  "mae": 23.71
+ },
+ "mid": {
+  "lat": 20.2,
+  "lon": 68.82,
+  "mae": 23.67
+ },
+ "meta": {
+  "name": "Sunni Jama Masjid, Varedia",
+  "address": "Varedia, Gujarat, India",
+  "country": "IN",
+  "settings": {
+   "ampm": true,
+   "language": "en",
+   "timezone": "Asia/Calcutta",
+   "azan": 300
+  }
+ },
+ "fajr_angle": 18.65,
+ "fajr_sweep": [
+  {
+   "a": 18.65,
+   "med": 0,
+   "mae": 3.38,
+   "mad": 3
+  },
+  {
+   "a": 18.85,
+   "med": 0.5,
+   "mae": 3.4,
+   "mad": 3.5
+  },
+  {
+   "a": 18.55,
+   "med": -0.5,
+   "mae": 3.42,
+   "mad": 3.5
+  },
+  {
+   "a": 18.75,
+   "med": 0.5,
+   "mae": 3.44,
+   "mad": 3.5
+  }
+ ],
+ "isha_angle": 17.3,
+ "isha_sweep": [
+  {
+   "a": 17.3,
+   "med": 0.5,
+   "mae": 2.28,
+   "mad": 1.5
+  },
+  {
+   "a": 17.5,
+   "med": -0.5,
+   "mae": 2.3,
+   "mad": 2
+  },
+  {
+   "a": 17.55,
+   "med": -0.5,
+   "mae": 2.3,
+   "mad": 1.5
+  },
+  {
+   "a": 17.25,
+   "med": 0.5,
+   "mae": 2.34,
+   "mad": 2.5
+  }
+ ],
+ "asr_school": "hanafi",
+ "asr_probe": {
+  "0": {
+   "med": 48.5,
+   "mad": 12.5
+  },
+  "1": {
+   "med": -8.5,
+   "mad": 1.5
+  }
+ },
+ "margins": {
+  "fajr": 0,
+  "sunrise": -16,
+  "dhuhr": 31,
+  "asr": -9,
+  "maghrib": -11,
+  "isha": 1
+ },
+ "per_column": {
+  "fajr": {
+   "exact": 6.1,
+   "within1": 19.2,
+   "mae": 3.51,
+   "worst": -9,
+   "med": 0
+  },
+  "sunrise": {
+   "exact": 10.5,
+   "within1": 34.3,
+   "mae": 2.16,
+   "worst": -5,
+   "med": 0
+  },
+  "dhuhr": {
+   "exact": 4.4,
+   "within1": 12.8,
+   "mae": 7.27,
+   "worst": 16,
+   "med": 0
+  },
+  "asr": {
+   "exact": 19.8,
+   "within1": 49.7,
+   "mae": 1.94,
+   "worst": 6,
+   "med": 0
+  },
+  "maghrib": {
+   "exact": 10.5,
+   "within1": 32,
+   "mae": 2.25,
+   "worst": -5,
+   "med": 0
+  },
+  "isha": {
+   "exact": 10.8,
+   "within1": 34.6,
+   "mae": 2.4,
+   "worst": -6,
+   "med": 0
+  }
+ },
+ "all_six_within1": 0,
+ "all_six_exact": 0,
+ "amplitude_fajr_min": 90
+}

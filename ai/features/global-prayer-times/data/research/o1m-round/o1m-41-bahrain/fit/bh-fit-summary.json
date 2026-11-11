@@ -1,0 +1,281 @@
+{
+  "engine": "adhan 4.4.6, CalculationParameters(Other, fajr, isha), Madhab.Shafi, HighLatitudeRule.MiddleOfTheNight, Rounding.None, tz Asia/Bahrain",
+  "objects": [
+    {
+      "object": "council daily calendar 1448",
+      "file": "fit/bh-1448-stated-fit.json",
+      "rows": 355,
+      "span": [
+        "2026-06-16",
+        "2027-06-05"
+      ],
+      "fajrAngle": 18,
+      "ishaAngle": 17.8,
+      "padding": {
+        "fajr": 0,
+        "sunrise": 0,
+        "dhuhr": 1,
+        "asr": 0,
+        "maghrib": 1,
+        "isha": 0
+      },
+      "exactPct": 82.3,
+      "within1Pct": 100,
+      "mae": 0.177,
+      "worst": 1,
+      "columns": {
+        "fajr": {
+          "exactPct": 92.4,
+          "within1Pct": 100,
+          "mae": 0.076,
+          "worst": 1,
+          "bias": 0.02
+        },
+        "sunrise": {
+          "exactPct": 94.1,
+          "within1Pct": 100,
+          "mae": 0.059,
+          "worst": 1,
+          "bias": 0.02
+        },
+        "dhuhr": {
+          "exactPct": 0,
+          "within1Pct": 92.1,
+          "mae": 1.079,
+          "worst": 2,
+          "bias": 1.079
+        },
+        "asr": {
+          "exactPct": 67.6,
+          "within1Pct": 100,
+          "mae": 0.324,
+          "worst": 1,
+          "bias": -0.008
+        },
+        "maghrib": {
+          "exactPct": 47,
+          "within1Pct": 100,
+          "mae": 0.53,
+          "worst": 1,
+          "bias": 0.53
+        },
+        "isha": {
+          "exactPct": 94.9,
+          "within1Pct": 100,
+          "mae": 0.051,
+          "worst": 1,
+          "bias": 0.017
+        }
+      },
+      "longitudeSolve": {
+        "fajr": 50.675,
+        "sunrise": 50.665,
+        "dhuhr": 50.175,
+        "asr": 50.465,
+        "maghrib": 50.295,
+        "isha": 50.435
+      },
+      "oneSite": {
+        "exactPct": 58.8,
+        "within1Pct": 100,
+        "mae": 0.412,
+        "worst": 1
+      }
+    },
+    {
+      "object": "ministry desk almanac 1442",
+      "file": "fit/bh-1442-stated-fit.json",
+      "rows": 354,
+      "span": [
+        "2020-08-20",
+        "2021-08-08"
+      ],
+      "fajrAngle": 17.78,
+      "ishaAngle": 17.96,
+      "padding": {
+        "fajr": 0,
+        "sunrise": 1,
+        "dhuhr": 0,
+        "asr": 0,
+        "maghrib": 1,
+        "isha": 0
+      },
+      "exactPct": 73.8,
+      "within1Pct": 100,
+      "mae": 0.262,
+      "worst": 1,
+      "columns": {
+        "fajr": {
+          "exactPct": 76,
+          "within1Pct": 100,
+          "mae": 0.24,
+          "worst": 1,
+          "bias": -0.054
+        },
+        "sunrise": {
+          "exactPct": 13.6,
+          "within1Pct": 92.7,
+          "mae": 0.938,
+          "worst": 2,
+          "bias": 0.938
+        },
+        "dhuhr": {
+          "exactPct": 98.6,
+          "within1Pct": 100,
+          "mae": 0.014,
+          "worst": 1,
+          "bias": -0.008
+        },
+        "asr": {
+          "exactPct": 64.4,
+          "within1Pct": 100,
+          "mae": 0.356,
+          "worst": 1,
+          "bias": -0.068
+        },
+        "maghrib": {
+          "exactPct": 50,
+          "within1Pct": 100,
+          "mae": 0.5,
+          "worst": 1,
+          "bias": 0.5
+        },
+        "isha": {
+          "exactPct": 74.6,
+          "within1Pct": 100,
+          "mae": 0.254,
+          "worst": 1,
+          "bias": 0.175
+        }
+      },
+      "longitudeSolve": {
+        "fajr": 50.675,
+        "sunrise": 50.455,
+        "dhuhr": 50.44,
+        "asr": 50.475,
+        "maghrib": 50.34,
+        "isha": 50.4
+      },
+      "oneSite": {
+        "exactPct": 55,
+        "within1Pct": 100,
+        "mae": 0.45,
+        "worst": 1
+      }
+    },
+    {
+      "object": "ministry Ramadan imsakiyya, five years",
+      "span": [
+        "2021-04-13",
+        "2025-03-29"
+      ],
+      "years": [
+        {
+          "file": "fit/bh-ramadan-1442-en-2021-fit.json",
+          "rows": 30,
+          "span": [
+            "2021-04-13",
+            "2021-05-12"
+          ],
+          "fajrAngle": 17.83,
+          "ishaAngle": 19.52,
+          "exactPct": 67.8,
+          "within1Pct": 90.6,
+          "worst": 4,
+          "longitudes": {
+            "fajr": 50.685,
+            "sunrise": 50.48,
+            "dhuhr": 50.425,
+            "asr": 50.54,
+            "maghrib": 50.37,
+            "isha": 50.335
+          }
+        },
+        {
+          "file": "fit/bh-ramadan-1443-en-2022-fit.json",
+          "rows": 30,
+          "span": [
+            "2022-04-02",
+            "2022-05-01"
+          ],
+          "fajrAngle": 17.99,
+          "ishaAngle": 17.79,
+          "exactPct": 82.8,
+          "within1Pct": 100,
+          "worst": 1,
+          "longitudes": {
+            "fajr": 50.675,
+            "sunrise": 50.65,
+            "dhuhr": 50.17,
+            "asr": 50.53,
+            "maghrib": 50.315,
+            "isha": 50.44
+          }
+        },
+        {
+          "file": "fit/bh-ramadan-1444-en-2023-fit.json",
+          "rows": 29,
+          "span": [
+            "2023-03-23",
+            "2023-04-20"
+          ],
+          "fajrAngle": 17.97,
+          "ishaAngle": 17.77,
+          "exactPct": 83.3,
+          "within1Pct": 100,
+          "worst": 1,
+          "longitudes": {
+            "fajr": 50.71,
+            "sunrise": 50.675,
+            "dhuhr": 50.175,
+            "asr": 50.565,
+            "maghrib": 50.31,
+            "isha": 50.425
+          }
+        },
+        {
+          "file": "fit/bh-ramadan-1445-en-2024-fit.json",
+          "rows": 30,
+          "span": [
+            "2024-03-11",
+            "2024-04-09"
+          ],
+          "fajrAngle": 18,
+          "ishaAngle": 17.79,
+          "exactPct": 84.4,
+          "within1Pct": 100,
+          "worst": 1,
+          "longitudes": {
+            "fajr": 50.675,
+            "sunrise": 50.665,
+            "dhuhr": 50.165,
+            "asr": 50.56,
+            "maghrib": 50.31,
+            "isha": 50.44
+          }
+        },
+        {
+          "file": "fit/bh-ramadan-1446-en-2025-fit.json",
+          "rows": 29,
+          "span": [
+            "2025-03-01",
+            "2025-03-29"
+          ],
+          "fajrAngle": 18.01,
+          "ishaAngle": 17.78,
+          "exactPct": 82.2,
+          "within1Pct": 100,
+          "worst": 1,
+          "longitudes": {
+            "fajr": 50.685,
+            "sunrise": 50.67,
+            "dhuhr": 50.175,
+            "asr": 50.57,
+            "maghrib": 50.32,
+            "isha": 50.44
+          }
+        }
+      ]
+    }
+  ]
+}
