@@ -47,14 +47,17 @@ prior round) and extends it with that round's own territory list.
 
 ## Fleet (the /athan-next exception; owner order 2026-11-11, amended the same day)
 
-- Exactly 5 subagents at all times, all on `cpa-glm/GLM: GLM-5.3-Flash` (the 10-agent split and
-  the DeepSeek leg were stood down by owner order on 2026-11-11 after the o1m close). A
-  replacement dispatches the moment a slot frees. The plans-queue no-subagent rule does not
-  apply to research rounds.
-- NO GRANDCHILDREN (owner order 2026-11-11, later the same day): the round's coordinator is the
-  only agent that dispatches. A wave never deploys a subagent of its own; every wave works its
-  mission in its own session, and any child found running under a wave is brought down (bank and
-  end) the moment the order reaches it. The worker model is GLM-5.3-Flash only.
+- Exactly 5 subagents at all times, all on the free-tier chat model
+  `opencode/minimax-m3.1-flash-free` (the 10-agent split, the DeepSeek leg and the GLM legs were
+  stood down by owner order on 2026-11-11 after the o1m close and after the o1n close; the fleet
+  then moved to the coordinator's own free model). The fleet runs CONTINUOUSLY: a replacement
+  dispatches the moment a slot frees, and a wave that returns is replaced. The plans-queue
+  no-subagent rule does not apply to research rounds.
+- NO GRANDCHILDREN (owner order 2026-11-11, later the same day, reaffirmed with the fleet change):
+  the round's coordinator is the only agent that dispatches. A wave never deploys a subagent of
+  its own; every wave works its mission in its own session, and any child found running under a
+  wave is brought down (bank and end) the moment the order reaches it. The worker model is the
+  free-tier flash model above only.
 - MODEL IDS DRIFT: providers rename models (DeepSeek became "...Flash 1017" mid-round on
   2026-11-11). Before a dispatch, resolve the exact id with the models tool; if a dispatch
   returns "unknown provider for model", re-resolve and redispatch — never retry the stale id.
