@@ -1,0 +1,58 @@
+T-674 MY-JAKIM margin arbitration - adhan 4.4.6, Rounding.None, TZ +8 fixed, no clock reads
+Census rounding discipline throughout: syuruk floor, dhuhr round, prayers ceil.
+B1 = 57 JAKIM zones, full 2026, 20805 rows, banked recovered points, isha 17 on KTN01+KTN02.
+B2 = eleven 2027 tables, 4015 rows, own recovered points (fajr at the 2027 subuh point).
+
+== Per-column margin sweep (exact counts; best margin first) ==
+fajr     B1  BEST m=0 exact 17536/20805 (84.3%) | m=0: 17536 (84.3%) | census m=2: 43 (0.2%)
+sunrise  B1  BEST m=0 exact 11490/20805 (55.2%) | m=0: 11490 (55.2%) | census m=-1: 2507 (12.0%)
+sunrise  B2  BEST m=-1.5 exact 2502/4015 (62.3%) | m=0: 130 (3.2%) | census m=-1: 2011 (50.1%)
+dhuhr    B1  BEST m=1.5 exact 19746/20805 (94.9%) | m=0: 0 (0.0%) | census m=1.5: 19746 (94.9%)
+dhuhr    B2  BEST m=1.5 exact 3950/4015 (98.4%) | m=0: 0 (0.0%) | census m=1.5: 3950 (98.4%)
+asr      B1  BEST m=0 exact 16355/20805 (78.6%) | m=0: 16355 (78.6%) | census m=2: 114 (0.5%)
+asr      B2  BEST m=0 exact 3464/4015 (86.3%) | m=0: 3464 (86.3%) | census m=2: 0 (0.0%)
+magrib   B1  BEST m=0 exact 16684/20805 (80.2%) | m=0: 16684 (80.2%) | census m=0: 16684 (80.2%)
+magrib   B2  BEST m=0 exact 3784/4015 (94.2%) | m=0: 3784 (94.2%) | census m=0: 3784 (94.2%)
+isha     B1  BEST m=0 exact 17828/20805 (85.7%) | m=0: 17828 (85.7%) | census m=2: 16 (0.1%)
+isha     B2  BEST m=0 exact 3807/4015 (94.8%) | m=0: 3807 (94.8%) | census m=2: 0 (0.0%)
+
+== B2 fajr, 2027 subuh reference point (the peninsula move) ==
+fajr     B2@subuh  BEST m=0 exact 3843/4015 (95.7%) | m=0: 3843 (95.7%) | census m=+2: 0 (0.0%)
+fajr     B2@zohor  BEST m=-1 exact 3447/4015 (85.9%)  <- uniform -1 = the reference move, not a margin
+
+== Recipe-level scores ==
+--- census A on B1 ---
+fajr                   exact     43/20805 (0.2%)  within1 1436  MAE 2.08  worst 9
+sunrise                exact   2507/20805 (12.0%)  within1 16892  MAE 1.3  worst 12
+dhuhr                  exact  19746/20805 (94.9%)  within1 20798  MAE 0.05  worst 7
+asr                    exact    114/20805 (0.5%)  within1 2246  MAE 1.99  worst 18
+magrib                 exact  16684/20805 (80.2%)  within1 18959  MAE 0.57  worst 9
+isha                   exact     16/20805 (0.1%)  within1 1240  MAE 2.01  worst 4
+--- census A on B2 ---
+fajr                   exact      0/4015 (0.0%)  within1 108  MAE 1.99  worst -3
+sunrise                exact   2011/4015 (50.1%)  within1 3879  MAE 0.53  worst -2
+dhuhr                  exact   3950/4015 (98.4%)  within1 4015  MAE 0.02  worst 1
+asr                    exact      0/4015 (0.0%)  within1 249  MAE 2.01  worst -3
+magrib                 exact   3784/4015 (94.2%)  within1 4015  MAE 0.06  worst -1
+isha                   exact      0/4015 (0.0%)  within1 71  MAE 2.02  worst -3
+--- derived B on B1 ---
+fajr                   exact  17536/20805 (84.3%)  within1 20390  MAE 0.22  worst 11
+sunrise                exact  11490/20805 (55.2%)  within1 14092  MAE 1.18  worst 11
+dhuhr                  exact  19746/20805 (94.9%)  within1 20798  MAE 0.05  worst 7
+asr                    exact  16355/20805 (78.6%)  within1 20627  MAE 0.23  worst 20
+magrib                 exact  16684/20805 (80.2%)  within1 18959  MAE 0.57  worst 9
+isha                   exact  17828/20805 (85.7%)  within1 20424  MAE 0.2  worst 6
+--- derived B on B2 ---
+fajr                   exact   3843/4015 (95.7%)  within1 4015  MAE 0.04  worst -1
+sunrise                exact    130/4015 (3.2%)  within1 2141  MAE 1.47  worst -3
+dhuhr                  exact   3950/4015 (98.4%)  within1 4015  MAE 0.02  worst 1
+asr                    exact   3464/4015 (86.3%)  within1 4015  MAE 0.14  worst -1
+magrib                 exact   3784/4015 (94.2%)  within1 4015  MAE 0.06  worst -1
+isha                   exact   3807/4015 (94.8%)  within1 4015  MAE 0.05  worst 1
+
+== Independence checks ==
+KL 2027 subuh point re-derived: 101.665 deg, 358/365 exact at m=0 (banked 101.665, 358/365)
+WLY01 2026 zohor longitude re-derived: 101.37 deg, 359/365 dhuhr exact (banked 101.3696; Lampiran B Kg. Gedangsa 101.383)
+Dhuhr at m=+1.5, B1, by rounding mode: round 19746/20805 (94.9%)  ceil 10787/20805 (51.8%)  floor 10398/20805 (50.0%)
+Dhuhr at m=+1.5, B2, by rounding mode: round 3950/4015 (98.4%)  ceil 2086/4015 (52.0%)  floor 2010/4015 (50.1%)
+B1 residual printed - ceil(raw), fajr+asr+isha pooled: mean 0.006 min over 62415 cells; hist 0:51719 -1:5024 1:4698 -4:251
