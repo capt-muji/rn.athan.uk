@@ -1,0 +1,508 @@
+{
+ "surface": "dakar-ucad",
+ "years": [
+  2020,
+  2021,
+  2022,
+  2025,
+  2026
+ ],
+ "pairs": [
+  {
+   "from": 2020,
+   "to": 2021,
+   "common_month_days": 366,
+   "columns": {
+    "fajr": {
+     "moving_days": 29,
+     "share_pct": 7.92,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "01-01",
+       "06:18",
+       "06:19",
+       1
+      ],
+      [
+       "01-03",
+       "06:19",
+       "06:20",
+       1
+      ],
+      [
+       "01-06",
+       "06:20",
+       "06:21",
+       1
+      ],
+      [
+       "01-09",
+       "06:21",
+       "06:22",
+       1
+      ]
+     ]
+    },
+    "sunrise": {
+     "moving_days": 36,
+     "share_pct": 9.84,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "01-03",
+       "07:35",
+       "07:36",
+       1
+      ],
+      [
+       "01-06",
+       "07:36",
+       "07:37",
+       1
+      ],
+      [
+       "01-30",
+       "07:39",
+       "07:38",
+       -1
+      ],
+      [
+       "02-04",
+       "07:38",
+       "07:37",
+       -1
+      ]
+     ]
+    },
+    "dhuhr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "asr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "maghrib": {
+     "moving_days": 6,
+     "share_pct": 1.64,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "05-18",
+       "19:32",
+       "19:31",
+       -1
+      ],
+      [
+       "06-06",
+       "19:38",
+       "19:37",
+       -1
+      ],
+      [
+       "07-19",
+       "19:42",
+       "19:43",
+       1
+      ],
+      [
+       "08-09",
+       "19:35",
+       "19:36",
+       1
+      ]
+     ]
+    },
+    "isha": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    }
+   }
+  },
+  {
+   "from": 2021,
+   "to": 2022,
+   "common_month_days": 366,
+   "columns": {
+    "fajr": {
+     "moving_days": 11,
+     "share_pct": 3.01,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "01-03",
+       "06:20",
+       "06:19",
+       -1
+      ],
+      [
+       "01-12",
+       "06:23",
+       "06:22",
+       -1
+      ],
+      [
+       "02-15",
+       "06:21",
+       "06:22",
+       1
+      ],
+      [
+       "03-04",
+       "06:13",
+       "06:14",
+       1
+      ]
+     ]
+    },
+    "sunrise": {
+     "moving_days": 39,
+     "share_pct": 10.66,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "02-20",
+       "07:31",
+       "07:32",
+       1
+      ],
+      [
+       "02-22",
+       "07:30",
+       "07:31",
+       1
+      ],
+      [
+       "02-29",
+       "07:26",
+       "07:27",
+       1
+      ],
+      [
+       "03-01",
+       "07:26",
+       "07:27",
+       1
+      ]
+     ]
+    },
+    "dhuhr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "asr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "maghrib": {
+     "moving_days": 6,
+     "share_pct": 1.64,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "06-03",
+       "19:37",
+       "19:36",
+       -1
+      ],
+      [
+       "06-13",
+       "19:40",
+       "19:39",
+       -1
+      ],
+      [
+       "06-21",
+       "19:42",
+       "19:41",
+       -1
+      ],
+      [
+       "07-24",
+       "19:41",
+       "19:42",
+       1
+      ]
+     ]
+    },
+    "isha": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    }
+   }
+  },
+  {
+   "from": 2022,
+   "to": 2025,
+   "common_month_days": 366,
+   "columns": {
+    "fajr": {
+     "moving_days": 13,
+     "share_pct": 3.55,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "01-03",
+       "06:19",
+       "06:20",
+       1
+      ],
+      [
+       "01-12",
+       "06:22",
+       "06:23",
+       1
+      ],
+      [
+       "02-15",
+       "06:22",
+       "06:21",
+       -1
+      ],
+      [
+       "03-04",
+       "06:14",
+       "06:13",
+       -1
+      ]
+     ]
+    },
+    "sunrise": {
+     "moving_days": 41,
+     "share_pct": 11.2,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "02-20",
+       "07:32",
+       "07:31",
+       -1
+      ],
+      [
+       "02-22",
+       "07:31",
+       "07:30",
+       -1
+      ],
+      [
+       "02-29",
+       "07:27",
+       "07:26",
+       -1
+      ],
+      [
+       "03-01",
+       "07:27",
+       "07:26",
+       -1
+      ]
+     ]
+    },
+    "dhuhr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "asr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "maghrib": {
+     "moving_days": 6,
+     "share_pct": 1.64,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "06-03",
+       "19:36",
+       "19:37",
+       1
+      ],
+      [
+       "06-13",
+       "19:39",
+       "19:40",
+       1
+      ],
+      [
+       "06-21",
+       "19:41",
+       "19:42",
+       1
+      ],
+      [
+       "07-24",
+       "19:42",
+       "19:41",
+       -1
+      ]
+     ]
+    },
+    "isha": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    }
+   }
+  },
+  {
+   "from": 2025,
+   "to": 2026,
+   "common_month_days": 366,
+   "columns": {
+    "fajr": {
+     "moving_days": 12,
+     "share_pct": 3.28,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "01-03",
+       "06:20",
+       "06:19",
+       -1
+      ],
+      [
+       "01-12",
+       "06:23",
+       "06:22",
+       -1
+      ],
+      [
+       "02-15",
+       "06:21",
+       "06:22",
+       1
+      ],
+      [
+       "03-04",
+       "06:13",
+       "06:14",
+       1
+      ]
+     ]
+    },
+    "sunrise": {
+     "moving_days": 34,
+     "share_pct": 9.29,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "02-29",
+       "07:26",
+       "07:27",
+       1
+      ],
+      [
+       "03-01",
+       "07:26",
+       "07:27",
+       1
+      ],
+      [
+       "03-09",
+       "07:21",
+       "07:22",
+       1
+      ],
+      [
+       "03-12",
+       "07:19",
+       "07:20",
+       1
+      ]
+     ]
+    },
+    "dhuhr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "asr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "maghrib": {
+     "moving_days": 6,
+     "share_pct": 1.64,
+     "delta_min_min": -1,
+     "delta_min_max": 1,
+     "examples": [
+      [
+       "06-03",
+       "19:37",
+       "19:36",
+       -1
+      ],
+      [
+       "06-13",
+       "19:40",
+       "19:39",
+       -1
+      ],
+      [
+       "06-21",
+       "19:42",
+       "19:41",
+       -1
+      ],
+      [
+       "07-24",
+       "19:41",
+       "19:42",
+       1
+      ]
+     ]
+    },
+    "isha": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    }
+   }
+  }
+ ]
+}

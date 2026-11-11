@@ -1,22 +1,18 @@
-# O1n queue — the parent updates status
+# O1n queue — session two, the parent updates status
 
-Fleet: 5 concurrent, GLM-5.3-Flash only, no DeepSeek (owner order, fleet change 2026-11-11).
+Fleet: THREE subagents at all times, ALL on `cpa-glm/GLM: GLM-5.3-Flash` (owner order
+2026-11-11). No opencode free, no opencode-go, no DeepSeek. No grandchild agents. The round
+runs continuously to 2026-11-16.
 
-| Job | Wave dir | Provider | Mission | Status |
-| --- | --- | --- | --- | --- |
-| O1n-1 | o1n-1-wtdiff | GLM-5.3-Flash | Adopt wtdiff3: section-4 cross-read vs A1-A82, 48-object amend list, identity arithmetic, Macau/North Korea | RETURNED (adopted, 181 rows) |
-| O1n-2 | o1n-2-integrity | GLM-5.3-Flash | Close the integrity certificate: verify the 13:33 index rebuild, per-workspace verdict table from scan.json, 68-vs-78 reconciliation | RETURNED (certificate closed) |
-| O1n-3 | o1n-3-turktakvim | GLM-5.3-Flash | turktakvim re-enumeration with the semicolon fix, scheduled harvest at polite rate, fits, ladder, cross-check, FALLBACK join | RETURNED (112,854 true; harvest runs to ~21:15Z; FALLBACK join answered) |
-| O1n-4 | o1n-4-fitindex | GLM-5.3-Flash | FIT-INDEX-ROUND4: fold O1m-29/31/51, run the 30-unit myquran live gate, KHGT 2028 sweep 114/518, 2028 national-line comparison | RETURNED (gate PASS, 518/518, myquran+KZ to A) |
-| O1n-5 | o1n-5-flags | GLM-5.3-Flash | Flags tail + housekeeping | RETURNED (Iceland closed two-builders; Saudi edge closed; Algeria 14/16; al-Manar 1,381->2,759) |
-| O1n-6 | o1n-6-watches | GLM-5.3-Flash | December watch cohort: Morocco + Chile first probes 2026-11-29, Madrid 11-30, GMP Paris 12-01, Sri Lanka 12-03 | OPENS 2026-11-29 |
-| O1n-7/r | o1n-7-newterr | GLM-5.3-Flash | NEW territory: small states and unclaimed presences (7r continued after owner cancellation) | RETURNED (Maldives authority 365/365; Caribbean 7 tables; negatives banked) |
-| O1n-8 | o1n-8-recover | GLM-5.3-Flash | RE-COVERING Europe | STOPPED by quota (banked: Cambridge 2026 poster fit, Karimia Nottingham) |
-| O1n-9 | o1n-9-year2archive | GLM-5.3-Flash | Confidence ladder A: Wayback CDX + archive year-2 hunt across every single-cycle surface | RETURNED (Oman A; FAZILET door found, A proposed; Sudan first dated surface) |
-| O1n-10 | o1n-10-councils | GLM-5.3-Flash | Confidence ladder B: council/federation/mosque-association prints for second cycles where platforms relabel | RETURNED (CERFI grade A to 2031; India 4-year A; Kyrgyzstan split) |
-| O1n-11 | o1n-11-americas-depth | GLM-5.3-Flash | RE-COVERING the Americas: authority second witnesses above the platform mass | RETURNED (1,325 rows; Chile 8 recovered + 18 live; OKC second witness; Mexico 5 cities; Brazil 2005) |
-| O1n-12 | o1n-12-mideast-depth | GLM-5.3-Flash | RE-COVERING the Middle East | STOPPED by quota (banked: Yemen awqaf.ye 13,140 rows, Iran to A 44,352 rows, Iraq axis closed, Libya Dar al-Ifta, Syria imsakiyya, Kuwait ruznama) |
-| O1n-13 | o1n-13-fazilet | GLM-5.3-Flash | Fazilet door expansion | STOPPED by quota (banked: 6,506-city list across 211 layers, grade table, plans A/B/C/H/S) |
-| O1n-14 | o1n-14-africa-depth | GLM-5.3-Flash | RE-COVERING Africa: authority witnesses above the platform mass | RETURNED (FAZILET-AFRICA-33 A; Addis hole closed; Uganda adjudicated) |
-| O1n-15 | o1n-15-polar | GLM-5.3-Flash | The polar block pooled | STOPPED by quota (banked: Norway 89-place pooled fit, trigger astronomy) |
-| O1n-16 | o1n-16-russia | GLM-5.3-Flash | Russia and the Caucasus depth | STOPPED by quota (banked: Dagestan 27 districts 9,855 rows, Grozny, Vladikavkaz) |
+| Job | Wave dir | Mission | Status |
+| --- | --- | --- | --- |
+| O1n-17 | o1n-17-turktakvim-close | turktakvim close-out: parse, fit --all, crosscheck, coverage final, ladder, FALLBACK refresh | INTERIM (harvest stopped at 96,312/112,854; parse asterisk defect fixed, +2.95M rows; resume in NOTICE.md) |
+| O1n-18 | o1n-18-fazilet-grade | Fazilet tier-A close, whole-list grade, index placement | RETURNED (grade A, FAZILET-248-CITIES, one entry; tier-A 8,976/8,976; placement settled) |
+| O1n-19 | o1n-19-indexnorm | the two unread stores normalized, one rebuild | RETURNED (DONE; 2,188,540 + 172,280 verified from source; census-index-o1n.db 18:19:28Z) |
+| O1n-20/24 | o1n-20-newterr | new territory + second cycles (CDX boards, NZ, negatives) | RETURNED (FIANZ authority surface NEW 20 cities; masjidbox 2027 x4 genuine; seven CDX boards closed) |
+| O1n-21 | (discarded) | Europe re-covering on the free-tier model | TERMINATED and workspace discarded by owner order; nothing kept |
+| O1n-22 | o1n-22-rucaucasus | Russia and the Caucasus depth | RETURNED (KBR 365 rows; DUM RB retention 353; Vladikavkaz repaired; Dagestan year identity closed; six named negatives; Caucasus trio not reached) |
+| O1n-23 | o1n-23-mena | MENA leftovers: Kuwait ruznama, F-DIYANET-SUMMER, Iran, Jordan, Libya, Syria, Yemen | BANKED AT STOP (F-DIYANET-SUMMER CLOSED as a column mislabel; Kuwait OCR negative with attempts; later fronts open; the wave was live at the close - re-read its REPORT) |
+| O1n-25 | o1n-25-europerecover | Europe re-covering, the GLM rerun | STOPPED before banking a REPORT; fronts open from scratch |
+| O1n-26 | o1n-26-fitindex5 | FIT-INDEX-ROUND5: fold FAZILET-248-CITIES, FIANZ NZ, KBR, DUM RB, the Diyanet closure, NZ second editions, the tree's final numbers | QUEUED (next session; two generator runs byte-identical) |
+| O1n-27 | o1n-27-watches | December watch cohort (Morocco/Chile 2026-11-29, Madrid 11-30, GMP Paris 12-01, Sri Lanka 12-03, Fiji 12-10, Brunei 12-20, Kosovo 12-28; tawkit roll 12-01; COSIM; ACJU 2027) | OPENS 2026-11-29 |

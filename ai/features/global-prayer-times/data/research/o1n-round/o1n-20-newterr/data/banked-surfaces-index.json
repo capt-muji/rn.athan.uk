@@ -1,0 +1,46 @@
+[
+ {
+  "surface": "dakar-ucad",
+  "file": "data/dakar-ucad.json",
+  "years": [
+   2020,
+   2021,
+   2022,
+   2025,
+   2026
+  ],
+  "days": 1830,
+  "captures_agree": true,
+  "all_gates_pass": true
+ },
+ {
+  "surface": "live-dakar",
+  "file": "data/live-dakar.json",
+  "years": [
+   2026
+  ],
+  "days": 366,
+  "captures_agree": true,
+  "all_gates_pass": true
+ },
+ {
+  "surface": "live-santacruz",
+  "file": "data/live-santacruz.json",
+  "years": [
+   2026
+  ],
+  "days": 366,
+  "captures_agree": true,
+  "all_gates_pass": true
+ },
+ {
+  "surface": "santacruz",
+  "file": "data/santacruz.json",
+  "years": [
+   2025
+  ],
+  "days": 366,
+  "captures_agree": true,
+  "all_gates_pass": true
+ }
+]

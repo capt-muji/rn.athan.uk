@@ -1,0 +1,306 @@
+{
+ "abadan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 77.4,
+  "w1Pct": 100,
+  "mae": 0.226,
+  "max": 1
+ },
+ "ahvaz": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 87.8,
+  "w1Pct": 100,
+  "mae": 0.122,
+  "max": 1
+ },
+ "arak": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 84.2,
+  "w1Pct": 100,
+  "mae": 0.158,
+  "max": 1
+ },
+ "ardabil": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 84,
+  "w1Pct": 100,
+  "mae": 0.16,
+  "max": 1
+ },
+ "bam": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 1.2,
+  "w1Pct": 8.7,
+  "mae": 3.099,
+  "max": 6
+ },
+ "bandar-abbas": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 89.2,
+  "w1Pct": 100,
+  "mae": 0.108,
+  "max": 1
+ },
+ "birjand": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 87.6,
+  "w1Pct": 100,
+  "mae": 0.124,
+  "max": 1
+ },
+ "bojnurd": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.7,
+  "w1Pct": 100,
+  "mae": 0.143,
+  "max": 1
+ },
+ "borujerd": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.1,
+  "w1Pct": 100,
+  "mae": 0.139,
+  "max": 1
+ },
+ "bushehr": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 82.9,
+  "w1Pct": 100,
+  "mae": 0.171,
+  "max": 1
+ },
+ "chabahar": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 88.7,
+  "w1Pct": 100,
+  "mae": 0.113,
+  "max": 1
+ },
+ "gorgan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 83.9,
+  "w1Pct": 100,
+  "mae": 0.161,
+  "max": 1
+ },
+ "ilam": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.7,
+  "w1Pct": 100,
+  "mae": 0.133,
+  "max": 1
+ },
+ "isfahan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.5,
+  "w1Pct": 100,
+  "mae": 0.145,
+  "max": 1
+ },
+ "karaj": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.1,
+  "w1Pct": 100,
+  "mae": 0.139,
+  "max": 1
+ },
+ "kerman": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 84,
+  "w1Pct": 100,
+  "mae": 0.16,
+  "max": 1
+ },
+ "kermanshah": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85,
+  "w1Pct": 100,
+  "mae": 0.15,
+  "max": 1
+ },
+ "khorramabad": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 3.3,
+  "w1Pct": 7.1,
+  "mae": 10.33,
+  "max": 28
+ },
+ "kish": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 76.5,
+  "w1Pct": 100,
+  "mae": 0.235,
+  "max": 1
+ },
+ "malayer": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.7,
+  "w1Pct": 100,
+  "mae": 0.143,
+  "max": 1
+ },
+ "mashhad": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.8,
+  "w1Pct": 100,
+  "mae": 0.142,
+  "max": 1
+ },
+ "neyshabur": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85,
+  "w1Pct": 100,
+  "mae": 0.15,
+  "max": 1
+ },
+ "qazvin": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 84.7,
+  "w1Pct": 100,
+  "mae": 0.153,
+  "max": 1
+ },
+ "qeshm": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 91,
+  "w1Pct": 100,
+  "mae": 0.09,
+  "max": 1
+ },
+ "qom": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.8,
+  "w1Pct": 100,
+  "mae": 0.132,
+  "max": 1
+ },
+ "rafsanjan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 88.5,
+  "w1Pct": 100,
+  "mae": 0.115,
+  "max": 1
+ },
+ "rasht": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.6,
+  "w1Pct": 100,
+  "mae": 0.144,
+  "max": 1
+ },
+ "sabzevar": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 87.5,
+  "w1Pct": 100,
+  "mae": 0.125,
+  "max": 1
+ },
+ "sanandaj": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.6,
+  "w1Pct": 100,
+  "mae": 0.144,
+  "max": 1
+ },
+ "sari": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 84.8,
+  "w1Pct": 100,
+  "mae": 0.152,
+  "max": 1
+ },
+ "semnan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.2,
+  "w1Pct": 100,
+  "mae": 0.138,
+  "max": 1
+ },
+ "shiraz": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 88.6,
+  "w1Pct": 100,
+  "mae": 0.114,
+  "max": 1
+ },
+ "tabriz": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 85.1,
+  "w1Pct": 100,
+  "mae": 0.149,
+  "max": 1
+ },
+ "tehran": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 77.3,
+  "w1Pct": 100,
+  "mae": 0.227,
+  "max": 1
+ },
+ "yasuj": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 86.4,
+  "w1Pct": 100,
+  "mae": 0.136,
+  "max": 1
+ },
+ "yazd": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 74.3,
+  "w1Pct": 100,
+  "mae": 0.257,
+  "max": 1
+ },
+ "zahedan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 87.1,
+  "w1Pct": 100,
+  "mae": 0.129,
+  "max": 1
+ },
+ "zanjan": {
+  "rows": 286,
+  "n": 1716,
+  "exactPct": 80.7,
+  "w1Pct": 100,
+  "mae": 0.193,
+  "max": 1
+ }
+}

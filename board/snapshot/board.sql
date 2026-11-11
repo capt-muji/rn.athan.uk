@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict HfXP4fm79ues7kotcCpfwHBaLmwbfFPNfqHGwNWm5lVJ6m3QgmIBRgMSfKWlLZF
+\restrict ltyU83akFFRPGakItjFOqAzQ2p7wpNhdmtVjF7B9UZcwDnJHHtmJ3HK3GPuChts
 
 -- Dumped from database version 17.11
 -- Dumped by pg_dump version 17.11
@@ -17205,6 +17205,7 @@ INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action,
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (7196, 686, 'comment', 'owner', 'O1n-14 returned: the Fazilet door covers Africa - 34 front cities walked across 2026-2027 at 100pc within-1 on one frozen recipe per city (grade A, FAZILET-AFRICA-33), Addis Ababa''s gazetteer hole closed with two fitted years, and Uganda''s two-line question adjudicated as a per-publisher setting. The national bodies (NSCIA, SUPKEM, EIASC) publish no prints - dated negatives with languages. O1n-16 (Russia and the Caucasus depth) dispatched; five slots full.', NULL, '2026-11-11 16:20:46.601451+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (7197, 686, 'comment', 'owner', 'Graceful stop ordered by the owner at ~16:35Z. Stop orders written to all five running waves (they are banking and returning); the turktakvim harvest stopped cleanly at journal line 39,984 (28,584 tables fetched, resumable); the monitor is down. Ten waves returned and consolidated this round; the close commit (citable layer, snapshot) follows the last returns. T-686 stays In progress.', NULL, '2026-11-11 16:33:50.593658+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (7198, 687, 'activity', 'owner', NULL, 'description', '2026-11-11 16:48:44.863498+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{"to": {"value": "Goal: reinstall the Expo, EAS and React Native skill packs removed from .agents/skills for the research round, after the prayer-times programme is done.\n\nWhere: .agents/skills (repo). The packs are archived outside git at $HOME/athan-skills-archive/thirdparty-skills-2026-11-11.tar.gz (350 KB, 28 skills).\n\nReinstall, in this order:\n1. Expo and EAS packs: `npx @expo/agent-cli skills:sync` in the repo root (links the installed packages'' skills), then `npx @expo/agent-cli skills:list` to confirm.\n2. React Native packs (react-native-best-practices, react-native-skills) and any pack the sync does not restore: `tar xzf $HOME/athan-skills-archive/thirdparty-skills-2026-11-11.tar.gz -C $HOME/repos/rn.athan.uk` from the repo root.\n3. `ls .agents/skills` shows the personal set (athan-*, board-workflow, language-wave, writing-for-agents) plus the 28 restored packs; commit with the version bump.\n\nAcceptance:\n- [ ] `ls .agents/skills | wc -l` reads 36 (8 personal + 28 third-party)\n- [ ] `npx @expo/agent-cli skills:list` lists the expo-* and eas-* skills\n- [ ] the archive tarball still exists at $HOME/athan-skills-archive/ and is not in git"}}', NULL);
+INSERT INTO public.issue_activity (id, issue_id, kind, actor_name, body, action, created_at, actor_user_id, initiative_id, reply_to_id, payload, edited_at) VALUES (7199, 686, 'comment', 'owner', 'Round four closed on the owner''s stop order and the provider''s quota wall. Close commit d6880f833 (stamp 2.52.43, pushed) carries the citable layer and the board snapshot: the world table adopted at 181 rows, the integrity certificate closed, the Fazilet door found with 6,506 cities across 211 layers, Yemen''s five absent governorates reached at the other authority, Iran to A on four windows, Dagestan''s own muftiyat opened, and all three FALLBACK rows answered. The turktakvim harvest stops at journal line 39,984 and resumes there. T-686 stays In progress.', NULL, '2026-11-11 16:51:44.760139+00', 'DFppJIU20ig1j5gFRYQIe541IkO7Itfp', NULL, NULL, '{}', NULL);
 
 
 --
@@ -68312,10 +68313,10 @@ INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:663', 1, 6);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:639', 1, 71);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:608', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:609', 1, 7);
-INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:686', 1, 82);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('board:1', 1, 6442);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:613', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:668', 1, 54);
+INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:686', 1, 83);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:578', 1, 7);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:635', 1, 91);
 INSERT INTO public.revision (scope, project_id, rev) VALUES ('issue:523', 1, 5);
@@ -68674,7 +68675,7 @@ SELECT pg_catalog.setval('public.integration_credential_id_seq', 1, false);
 -- Name: issue_activity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.issue_activity_id_seq', 7198, true);
+SELECT pg_catalog.setval('public.issue_activity_id_seq', 7199, true);
 
 
 --
@@ -73234,5 +73235,5 @@ ALTER TABLE ONLY public.workspace_manager
 -- PostgreSQL database dump complete
 --
 
-\unrestrict HfXP4fm79ues7kotcCpfwHBaLmwbfFPNfqHGwNWm5lVJ6m3QgmIBRgMSfKWlLZF
+\unrestrict ltyU83akFFRPGakItjFOqAzQ2p7wpNhdmtVjF7B9UZcwDnJHHtmJ3HK3GPuChts
 

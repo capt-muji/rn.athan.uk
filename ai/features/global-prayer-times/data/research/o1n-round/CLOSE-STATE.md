@@ -1,48 +1,73 @@
-# O1n close state (graceful stop, 2026-11-11 ~16:35Z)
+# O1n close state (session two, graceful stop, 2026-11-11 ~21:30Z)
 
-Round state: STOPPED on the owner's order, then the five running waves hit the GLM provider's
-quota wall mid-bank. Everything banked is on disk under `$HOME/athan-gitree/census/o1n/`; the
-citable layer rides the close commit at ai/features/global-prayer-times/data/research/o1n-round/.
+Round state: STOPPED on the owner's order, mid-flight, banking as it went. Everything banked
+is on disk under `$HOME/athan-gitree/census/o1n/`; the citable layer rides the close commit at
+ai/features/global-prayer-times/data/research/o1n-round/. The round itself is NOT concluded:
+the owner alone stops the research, and the continuation prompt names the open work.
 
-Returned and consolidated (ten waves): O1n-1 (world-table diff ADOPTED at 181 rows, identity
-script-closed, Macau and North Korea ruled in at provisional), O1n-2 (integrity certificate closed:
-DB healthy at 29,567 surfaces / 15,108,920 rows, 15 PASS / 44 WARN / 1 FAIL over 60 workspaces, the
-68-versus-78 error-body count answered with names, o1m-29's 2,188,540 and o1m-11's 172,280 rows
-located), O1n-3 (the true turktakvim tree 112,854 settlements across 181 entries, harvest killed at
-journal line 39,984 = 28,584 table fetches, 162 countries fitted, cross-checks banked, the FALLBACK
-join answering all three remaining rows on presence), O1n-4 (FIT-INDEX-ROUND4, 164 entries, the
-myquran live gate PASS at 32 units / 23,808 cells zero mismatches, KHGT 2028 complete 518/518, the
-2028 subuh line explained by the 20-versus-18 angle pair, an Indonesia solver zone-picker bug found
-and fixed, myquran and the Kazakhstan national layer at grade A), O1n-5 (flags: Iceland closed as
-two builders, the Saudi -2 cells closed as a publisher edge, Alaska closed as a dated negative,
-F-DIYANET-SUMMER open with its structure named, Algeria 14 of 16 days recovered, al-Manar 1,381 to
-2,759 rows, Dundee a 429 negative), O1n-7r (Maldives at authority tier, 365/365 at 18.90/19.05; seven
-Caribbean tables; Bhutan, micro-states, Horn and Pacific dated negatives), O1n-9 (OMAN to A over six
-years; the FAZILET DOOR found with 28 cities at 100 percent within-1 on both years; SUDAN's first
-dated surface ever; the tawkit 2026-12-01 window roll recorded as a watch), O1n-10 (CERFI SENEGAL to A
-on 217 weeklies to 2031-01-02 across five fitted years; INDIA's 34 tenants to four recomputed years;
-Kyrgyzstan's second publisher splitting maghrib by exactly 6 minutes), O1n-11 (1,325 rows: Chile's
-Wayback wall broken, Oklahoma City's second witness, Mexico's Guadalajara publisher's five cities,
-Brazil's Jerrahi 2005 table), O1n-14 (FAZILET-AFRICA-33 at grade A, Addis Ababa's hole closed,
-Uganda adjudicated, the national bodies' dated negatives).
+## Fleet orders settled this session (all pushed)
 
-Stopped by the quota wall with their work banked (five waves): O1n-8 (Cambridge Central Mosque's
-2026 poster fitted per column, Karimia Nottingham captured), O1n-12 (Yemen's five absent
-governorates found at the OTHER authority - 13,140 rows over six nominal years, one perpetual
-template; IRAN to A on four windows and 44,352 rows; Iraq's axis closed with its own bundle code
-and a third community line banked; Jordan's families scored; Libya's Dar al-Ifta surface; Syria's
-ministry imsakiyya; Kuwait's ministry ruznama captured as images with cell extraction open),
-O1n-13 (the Fazilet door's full city list - 6,506 cities across 211 layers - plus the per-country
-grade table and plans A/B/C/H/S), O1n-15 (Norway's 89 places pooled with the summer fraction
-measured at 0.5042-0.5054), O1n-16 (Dagestan's own muftiyat JSON - 27 district tables, 9,855 rows,
-a static year-agnostic edition proven byte-identical to a 2020 Wayback capture, and two isha forms
-inside one republic).
+1. Exactly THREE subagents at all times, ALL on `cpa-glm/GLM: GLM-5.3-Flash`. No opencode
+   free, no opencode-go, no DeepSeek, ever again (owner order). No grandchild agents. The next
+   session's main agent is GLM-5.3 and its three workers are GLM-5.3-Flash.
+2. The round runs continuously to 2026-11-16 (owner order); redeploy every freed slot.
+3. OCR is local and free: `$HOME/athan-gitree/census/tools/ocr <file> [page-limit]`, never a
+   model-vision pass.
 
-Open at the stop (named, not lost): the turktakvim harvest's remaining ~84,000 tables (resumable
-from data/journal-harvest.jsonl, nothing refetches) and its parse pass, fits re-run, ladder,
-cross-check refresh and coverage.json final; the Fazilet family's index grade; the o1m-29 and o1m-11
-normalization pass and one index rebuild; the December watch cohort (Morocco and Chile from
-2026-11-29, the tawkit window roll on 2026-12-01, COSIM's Jumada II roll, the ACJU 2027 edition);
-the two owner rulings (D2 Diyanet-abroad tier, D3 the FALLBACK lift, which empties the class 35 to
-0); F-DIYANET-SUMMER's isha product; Kuwait's ruznama cell extraction; Norway's pooled grade;
-Dagestan's year identity; and the citable rsync of the row-level JSON the close kept archive-only.
+## Where the machines stopped
+
+- turktakvim harvest: STOPPED on the order at journal index 96,312 of 112,854
+  (data/journal-harvest.jsonl, 107,712 lines; ~16,542 tables remain). Resume:
+  `cd $HOME/athan-gitree/census/o1n/o1n-3-turktakvim && python3 scripts/harvest2.py --walk 96313`
+  (one process, one bucket). Then the close-out sequence in o1n-17-turktakvim-close/NOTICE.md.
+- Fazilet tier-A walk: COMPLETED 8,976/8,976 at 20:33:09Z. The consolidation, grade and
+  placement are DONE (O1n-18, CONSOLIDATION block above).
+- Census index: census-index-o1n.db built 18:19:28Z (5.5 GB, both unread stores folded in,
+  ledger to zero). A later rebuild folds the harvest's final rows.
+- One free-tier lane (O1n-21 Europe) was terminated and its workspace discarded whole by owner
+  order; the front was rerun as GLM O1n-25, which was stopped before it banked a report.
+- Four wave sessions (O1n-17, O1n-23, O1n-24, O1n-25) were live at the close and reading their
+  STOP-ORDERs; any report growth after this consolidation lands in their workspaces and is the
+  next session's first read.
+
+## Returned and consolidated this session (blocks in CONSOLIDATION.md)
+
+O1n-18 (Fazilet family grade A, one entry FAZILET-248-CITIES, tier-A closed, placement
+settled), O1n-19 (both unread stores verified from source and folded into a new index,
+ledger to zero), O1n-22 (KBR 365 rows, Bashkortostan retention 353 rows, Vladikavkaz
+repaired, Dagestan year identity closed as a single-capture archive, six named negatives),
+O1n-20/24 (NZ FIANZ authority surface NEW 20 cities, masjidbox 2027 second editions, the seven
+CDX boards closed, negatives sharpened), O1n-23 (F-DIYANET-SUMMER CLOSED as a column mislabel
+with the true yatsi rule measured; Kuwait ruznama local-OCR extraction closed as a negative
+with every attempt banked).
+
+## Open at the stop (named, not lost)
+
+1. The turktakvim close-out: the last ~16,542 tables, then parse, fit --all, crosscheck,
+   coverage.json final, the whole-tree ladder distribution, the FALLBACK join refresh.
+2. FIT-INDEX-ROUND5: fold FAZILET-248-CITIES (grade A), the FIANZ New Zealand authority
+   surface, KBR and DUM RB, the F-DIYANET-SUMMER closure, NZ's masjidbox second editions, and
+   the turktakvim tree's final numbers once they land. Two generator runs byte-identical.
+3. O1n-23's unbanked MENA fronts: Iran year-3, Jordan's Maan retry, Libya's year-2 door,
+   Syria attribution, Yemen's genuine second year at the other authority, the fm6oa.org lead.
+4. O1n-25's Europe fronts, from scratch: Sweden's Imam Ali per-city PDFs (the front was
+   visibly productive before the stop), Portugal's second cycle, France's year-2 posters, the
+   Balkans OCR retries, Denmark, Finland's PSIY, Spain, Poland, then AT/CH/SK/HU/Baltics.
+5. The Caucasus trio and Moscow's mihrab.ru (502 all run, door open).
+6. The December watch cohort: Morocco and Chile first honest probes 2026-11-29, Madrid 11-30,
+   GMP Paris 12-01, Sri Lanka 12-03, Fiji 12-10, Brunei 12-20, Kosovo 12-28; the tawkit
+   2026-12-01 window roll; COSIM's Jumada II roll; the ACJU 2027 edition.
+7. The two owner rulings that move ~50 world-table rows: D2 (Diyanet-abroad tier,
+   recommendation YES) and D3 (the FALLBACK lift on presence, recommendation YES; empties the
+   class 35 to 0). Both still wait on the owner's word.
+8. The row-level JSON decision (four archive-only files: ir-merged-rows 7.4 MB, ir-1403-rows
+   2.9 MB, ye-awqafye-rows 2.0 MB, dagestan_muftiyat_rows 1.2 MB) - the o1m precedent ships
+   normalized rows only for a named block, so they stay archive-only until the owner says ride.
+9. The residual F-DIYANET-SUMMER clamp formula (all numbers banked, the form named).
+
+## Archive and index at the stop
+
+- Archive: 30.7 GB of the 100 GB soft cap (raw and compressed together, the record's own
+  growth measure; the cap is soft and crossing it changes nothing).
+- Index: census-index-o1m.db (the closed certificate's artifact, preserved) and
+  census-index-o1n.db (5.5 GB, 18:19:28Z, both normalized stores folded in).

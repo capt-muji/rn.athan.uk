@@ -1,0 +1,65 @@
+{
+ "surface": "santacruz",
+ "held_file": "$HOME/athan-gitree/census/o1m/o1m-22-southamerica/data/mawaqit/centro-islamico-de-santa-cruz-45678-santa-cruz-de-la-sierra-bolivia.json",
+ "held_year": "2026",
+ "held_lat": -17.7931928,
+ "held_lon": -63.1965353,
+ "held_tz": "America/La_Paz",
+ "new_years": [
+  2025
+ ],
+ "new_lat": -17.7931928,
+ "new_lon": -63.1965353,
+ "new_tz": "America/La_Paz",
+ "diffs": [
+  {
+   "held_year": "2026",
+   "new_year": 2025,
+   "common_month_days": 365,
+   "columns": {
+    "fajr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "sunrise": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "dhuhr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "asr": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "maghrib": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    },
+    "isha": {
+     "moving_days": 0,
+     "share_pct": 0.0,
+     "delta_min_min": 0,
+     "delta_min_max": 0,
+     "examples": []
+    }
+   }
+  }
+ ]
+}

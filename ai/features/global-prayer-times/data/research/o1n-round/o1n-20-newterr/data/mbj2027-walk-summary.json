@@ -1,0 +1,171 @@
+[
+ {
+  "surface": "new-zealand-islamic-cultural-trust",
+  "rows": 358,
+  "common": 358,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 78,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 80,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "masjid-e-umar-185187",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 77,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "masjid-al-ameen",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "aman-islamic-trust",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 365,
+   "sunrise": 92,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "waikato-muslim-association",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "manawatu-muslims-association",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "linwood-islamic-center",
+  "rows": 365,
+  "common": 364,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "ucmusa-musalla",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "wellington-islamic-centre-kilbirnie",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "vicmuslims-club",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "mat",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 111,
+   "sunrise": 92,
+   "dhuhr": 20,
+   "asr": 62,
+   "maghrib": 85,
+   "isha": 89
+  }
+ },
+ {
+  "surface": "masjid-almanar",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  }
+ },
+ {
+  "surface": "lincoln-university-musalla",
+  "rows": 365,
+  "common": 365,
+  "moving": {
+   "fajr": 116,
+   "sunrise": 98,
+   "dhuhr": 20,
+   "asr": 57,
+   "maghrib": 103,
+   "isha": 143
+  }
+ }
+]

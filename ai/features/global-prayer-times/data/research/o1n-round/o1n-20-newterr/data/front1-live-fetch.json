@@ -1,0 +1,51 @@
+[
+ {
+  "key": "nono",
+  "url": "https://mawaqit.net/en/grande-mosquee-de-nono-nono-1234-guinee",
+  "status": "200",
+  "bytes": 60992,
+  "file": "captures/live/live-nono-20261111.html"
+ },
+ {
+  "key": "lusaka",
+  "url": "https://mawaqit.net/en/masjid-barkaatiyah-lusaka-10101-zambia",
+  "status": "200",
+  "bytes": 65685,
+  "file": "captures/live/live-lusaka-20261111.html"
+ },
+ {
+  "key": "nampula",
+  "url": "https://mawaqit.net/en/masjid-fatimah-rua-monomotapa-3100-nampula-mozambique",
+  "status": "200",
+  "bytes": 65333,
+  "file": "captures/live/live-nampula-20261111.html"
+ },
+ {
+  "key": "gbessia",
+  "url": "https://mawaqit.net/en/mosquee-gbessia-port2-conakry-224-guinee",
+  "status": "200",
+  "bytes": 60860,
+  "file": "captures/live/live-gbessia-20261111.html"
+ },
+ {
+  "key": "bissau",
+  "url": "https://mawaqit.net/pt/mesquita-attadamun-bissau-2210-guinea-bissau",
+  "status": "200",
+  "bytes": 67937,
+  "file": "captures/live/live-bissau-20261111.html"
+ },
+ {
+  "key": "rahmaniya",
+  "url": "https://mawaqit.net/en/jama-masjid-rahmaniya-45800-siddharthanagar-nepal",
+  "status": "200",
+  "bytes": 67608,
+  "file": "captures/live/live-rahmaniya-20261111.html"
+ },
+ {
+  "key": "lapaz",
+  "url": "https://mawaqit.net/es/asociacion-comunidad-islamica-bolivia-1335-la-paz-bolivia",
+  "status": "200",
+  "bytes": 69614,
+  "file": "captures/live/live-lapaz-20261111.html"
+ }
+]
