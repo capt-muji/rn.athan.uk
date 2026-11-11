@@ -75,6 +75,11 @@ prior round) and extends it with that round's own territory list.
 - Tooling: agent-browser is FIRST-CLASS for JS- and PDF-hidden tables (own named session
   `AGENT_BROWSER_SESSION=<tag>-<wave>`, never `close --all`); TinyFish for search, curl with a
   browser UA as fallback; opensrc CLI for engine source questions; the docs MCP for libraries.
+- EVERY IMAGE AND PDF IS OCR'd, with the local macOS Vision binary
+  (`$HOME/athan-gitree/census/tools/ocr <file> [page-limit]`), never with a model-vision pass:
+  posters, charts, scans, phone photos, image-only PDFs. Nothing stays unparsed; a capture
+  without its extracted text is an open item, never a finished one. Vision's accurate level
+  hangs in plain CLI processes on this host, so the binary runs the fast level.
 - A feed is evidence only after gating against its own live page (R5). The publisher's engine is
   part of the recipe (PrayTimes-v2 family for platform tables; record engine with the fit).
 

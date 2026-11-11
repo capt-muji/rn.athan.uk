@@ -31,6 +31,7 @@ Reach for these without being asked.
 | Animation smoothness, 30fps floor | `e2e/scripts/frame-audit.sh` |
 | Perf regression vs baseline | `e2e/scripts/baseline-compare.sh e2e/flows/<flow>.yaml` |
 | Read or move a ticket on the board | `itsaplan` MCP (see Workflow) |
+| OCR an image or PDF (posters, charts, scans) | `$HOME/athan-gitree/census/tools/ocr` (macOS Vision; `ocr <file> [page-limit]`) |
 
 Scripts measure. The `vision` subagent interprets.
 
@@ -90,6 +91,10 @@ cadence 5-minute background checks, owner order 2026-10-31 later the same day).
 
 ## Hard rules
 
+- OCR is local and free: every image and PDF is read with the macOS Vision binary above,
+  never with a model-vision pass, because model OCR spends quota and misses coverage. The
+  binary ships the Vision fast level: the accurate level hangs in plain CLI processes on this
+  host. A capture whose text has not been extracted is an open item, never a finished one.
 - Posture is aggressive: fix and report. Update the README when a change adds a user-facing
   feature.
 - The iPhone Duo is banned from all work: no Duo-specific change, measurement, pose or build
