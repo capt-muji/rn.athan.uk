@@ -7524,8 +7524,8 @@
   "priority": 5
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "jerusalem",
   "name": "Jerusalem",
@@ -7535,8 +7535,8 @@
   "priority": 1
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "tel-aviv",
   "name": "Tel Aviv",
@@ -7546,8 +7546,8 @@
   "priority": 2
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "haifa",
   "name": "Haifa",
@@ -7557,8 +7557,8 @@
   "priority": 3
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "rishon-lezion",
   "name": "Rishon LeZion",
@@ -7568,8 +7568,8 @@
   "priority": 4
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "petah-tikva",
   "name": "Petah Tikva",
@@ -7579,8 +7579,8 @@
   "priority": 5
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "ashdod",
   "name": "Ashdod",
@@ -7590,8 +7590,8 @@
   "priority": 6
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "netanya",
   "name": "Netanya",
@@ -7601,8 +7601,8 @@
   "priority": 7
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "beersheba",
   "name": "Beersheba",
@@ -7612,8 +7612,8 @@
   "priority": 8
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "holon",
   "name": "Holon",
@@ -7623,8 +7623,8 @@
   "priority": 9
  },
  {
-  "country_slug": "israel",
-  "country": "Israel",
+  "country_slug": "palestine",
+  "country": "Palestine",
   "country_tz_label": "+02:00",
   "slug": "bnei-brak",
   "name": "Bnei Brak",

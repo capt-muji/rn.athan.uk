@@ -289,7 +289,7 @@ rule, `Hanafi Asr` the two-shadow rule.
 | Syria | Ministry of Awqaf | No authority site reachable | not established | not established | **NULL** | `awkaf.gov.sy` returned no content, `tinyfish`, 2026-09-30 |
 | Lebanon | Dar al-Fatwa (Sunni) and the Higher Islamic Shia Council are separate | Nothing sourceable on either body's own site | not established | Lebanon has the same two-community structure as Iraq | **NULL** | `tinyfish`, 2026-09-30 |
 | Palestine | Ministry of Awqaf and Religious Affairs, `awqaf.ps` | Site returned no content | not established | not established | **NULL** | `tinyfish`, 2026-09-30 |
-| Israel | No Israeli state body publishes Muslim prayer times. The Islamic Movement and local waqf administrations do | Nothing sourceable at national level | not established | The Jerusalem Waqf administers al-Aqsa and sets its own times; not retrieved | **NULL** | `gov.il` read, no prayer content, `tinyfish`, 2026-09-30 |
+| Palestine | No Palestinian state body publishes Muslim prayer times. The Islamic Movement and local waqf administrations do | Nothing sourceable at national level | not established | The Jerusalem Waqf administers al-Aqsa and sets its own times; not retrieved | **NULL** | `gov.il` read, no prayer content, `tinyfish`, 2026-09-30 |
 | Jordan | Ministry of Awqaf, `awqaf.gov.jo` | Unchanged from R2: the authority and its column set are tier A, the parameters are NULL. The table body is JavaScript-rendered | single `العصر` column | none established | **A** for the authority, **NULL** for parameters | as R2 |
 
 ### Africa
@@ -689,7 +689,7 @@ Every country still at tier D or NULL after this report, so that no weak row is 
 | Afghanistan | No ministry website resolves. The only trace is a 2025-02-05 post on the ministry's X account announcing a permanent Kabul table, published as an image that did not extract |
 | India | Unchanged from R2. No national authority |
 | Nigeria | Unchanged from R2. NSCIA's prayer function is moon sighting |
-| Iraq, Syria, Lebanon, Palestine, Israel | No authority table retrieved for any. Iraq and Lebanon are structurally two-community, so a single national convention may not exist to find |
+| Iraq, Syria, Lebanon, Palestine, Palestine | No authority table retrieved for any. Iraq and Lebanon are structurally two-community, so a single national convention may not exist to find |
 | Bahrain | No authority table. The ITL Gulf grouping that covers it is now refuted at three of its four other members |
 | Sudan, Somalia, Senegal, Kenya, Tanzania, Ethiopia, Ghana, Ivory Coast, Mali, Niger, Chad, Mauritania | No national prayer-time authority located for any of the twelve. Between them they hold over 160 million Muslims. This is the largest contiguous gap in the map |
 | South Africa | No national convention. A fatwa recommending an app preset exists and is tier A as a recommendation |

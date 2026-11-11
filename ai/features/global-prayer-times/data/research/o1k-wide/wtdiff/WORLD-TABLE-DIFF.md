@@ -330,7 +330,7 @@ One short list, for rows the night re-measured without moving.
 - **Chile.** 18 cities re-captured, 540 rows, 0 mismatches, December still absent, Vina del Mar's link defect now three months old (`americas2/REPORT.md` §7).
 - **Peru, Argentina, Colombia, Trinidad, Jamaica, Costa Rica, Panama, Ecuador.** Negatives, with the Jamaica traps (Kingston is Surrey, the JMC is Queens) and the Chaguanas -1h defect still live (`americas2/REPORT.md` §5, §10).
 - **Australia's mosque layer, Tonga, French Polynesia, PNG, Solomon, Vanuatu, Samoa, Kiribati.** Negatives or calculator-class, re-confirmed (`oceania2/REPORT.md` §Pacific retries).
-- **The three fixed-clock users** (Israel, Lebanon, Niger's fixed +1) and the Ramadan-clock display rule in Morocco stand as recorded (`mideast/REPORT.md`, `gulf2/REPORT.md` §6).
+- **The three fixed-clock users** (Palestine, Lebanon, Niger's fixed +1) and the Ramadan-clock display rule in Morocco stand as recorded (`mideast/REPORT.md`, `gulf2/REPORT.md` §6).
 - **The US/Canada dpt pool law.** The live-page gate holds, and a feed is not evidence until gated: Toledo shows the page can be a faithful render of a broken feed (`americas2/REPORT.md` §8).
 
 ---

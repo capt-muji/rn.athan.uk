@@ -115,7 +115,7 @@ row count is distinct dates found in the file. GAP states the reason and the ter
 | 103 | Somaliland | Hargeisa | 1.00 | COVERED | somalia-hargeisa-masjid-nuurul-huda.json [o1k-wide/horneast2/data/somalia-hargeisa-masjid-nuurul-huda.json] | 366 | 2026-01-01..2026-12-31 | authority |
 | 104 | Turkmenistan | Ashgabat | 1.00 | GAP | not found under these terms: no surface |  |  |  |
 | 105 | Sweden | Stockholm | 0.98 | COVERED | se-ifis-stockholm-2026.json [o1k-wide/nordics2/data/se-ifis-stockholm-2026.json] | 365 | 2026-01-01..2026-12-31 | authority |
-| 106 | Israel | Jerusalem | 0.95 | GAP | not found under these terms: jerusalem-awqaf capture is empty |  |  |  |
+| 106 | Palestine | Jerusalem | 0.95 | GAP | not found under these terms: jerusalem-awqaf capture is empty |  |  |  |
 | 107 | Laos | Vientiane | 0.95 | COVERED | laos_unity-iklas_vientiane.json [c8-easia/data/laos_unity-iklas_vientiane.json] | 30 | 2026-11-01..2026-11-30 | community |
 | 108 | Central African Republic | Bangui | 0.90 | COVERED | mawaqit-mosquee-saina-youssuf-avenue-udeac-bangui-central-african-republic.json [o1l-city/O1l-33/data/mawaqit-mosquee-saina-youssuf-avenue-udeac-bangui-central-african-republic.json] | 365 | 2026-01-01..2026-12-31 | community |
 | 109 | Eritrea | Asmara | 0.90 | COVERED | mawaqit.net/en/masjid-al-khifa-al-rashidin-abbashawel-asmara-eritrea (captured this wave, gate 2026-11-09) | 365 | 2026-01-01..2026-12-31 | community |
@@ -232,7 +232,7 @@ row count is distinct dates found in the file. GAP states the reason and the ter
 - **Kigali** (Rwanda, 1.20M) — not found under these terms: no surface
 - **Yerevan** (Armenia, 1.10M) — not found under these terms: no surface
 - **Ashgabat** (Turkmenistan, 1.00M) — not found under these terms: no surface
-- **Jerusalem** (Israel, 0.95M) — not found under these terms: jerusalem-awqaf capture is empty
+- **Jerusalem** (Palestine, 0.95M) — not found under these terms: jerusalem-awqaf capture is empty
 - **Kingston** (Jamaica, 0.60M) — not found under these terms: only Kingston, Hobart (Australia) held; no Jamaican surface names Kingston
 - **Asuncion** (Paraguay, 0.50M) — not found under these terms: no surface
 - **Juba** (South Sudan, 0.50M) — not found under these terms: no surface

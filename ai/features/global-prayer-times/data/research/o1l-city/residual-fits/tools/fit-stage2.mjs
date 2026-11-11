@@ -26,29 +26,32 @@ function impliedAngle(rows, opt, col, range) {
   return votes.length ? { median: votes[Math.floor(votes.length / 2)], n: votes.length, min: votes[0], max: votes[votes.length - 1] } : null;
 }
 
-// ---------- Yemen: Sanaa awqaf, 31 locations ----------
+// ---------- Yemen: Sanaa awqaf, the Sanaa and Aden rows at their own published points ----------
+// The feed serves 31 named locations for a nine-day rolling window. Nine days cannot
+// separate latitude from horizon dip, and the feed publishes no per-location coordinates,
+// so only the two locations whose points the record already carries are fitted here.
 {
   const locs = load("ye-sanaa-locations.json");
-  const per = [];
-  for (const l of locs) {
-    const rows = load(`ye-sanaa-${l.id}.json`);
-    const pt = solveLat(rows, { lon: 44.2, tz: "Asia/Aden", lat: [11, 20], step: 0.1, dip: [0, 2], dipStep: 0.25 });
-    const clock = { lat: pt.lat, lon: 44.2, tz: "Asia/Aden", dip: pt.dip };
+  const fixed = { loc27: { place: "Sanaa", lat: 15.3694, lon: 44.191 }, loc28: { place: "Aden", lat: 12.7855, lon: 45.0187 } };
+  const per = {};
+  for (const [id, pt] of Object.entries(fixed)) {
+    const l = locs.find((x) => x.id === id);
+    const rows = load(`ye-sanaa-${id}.json`);
+    const clock = { lat: pt.lat, lon: pt.lon, tz: "Asia/Aden" };
     const fa = impliedAngle(rows, clock, "fajr", [14, 22]);
     const ia = impliedAngle(rows, clock, "isha", [12, 20]);
-    per.push({ id: l.id, name: l.name, days: l.days, point: pt, fajr: fa, isha: ia });
-    console.log("YE", l.id, l.name, "lat", pt.lat, "dip", pt.dip, "fajr", fa?.median, "isha", ia?.median);
+    const opt = { ...clock, fajrAngle: fa.median, ishaAngle: ia.median, hanafi: false };
+    const r = fitOne(rows, opt);
+    per[id] = { place: pt.place, name: l.name, days: l.days, point: pt, implied: { fajr: fa, isha: ia }, recipe: r.recipe, cols: r.cols, joint: r.joint };
+    console.log("YE", pt.place, JSON.stringify(fa), JSON.stringify(ia), JSON.stringify(r.recipe), JSON.stringify(r.joint));
   }
-  const pick = (k) => per.map((p) => p[k]?.median).filter((x) => x != null).sort((a, b) => a - b);
-  const fa = pick("fajr"), ia = pick("isha");
   out.yeSanaa = {
     surface: "Awqaf and Religious Guidance (Sanaa), tebyan prayer panel API",
     tier: "authority", url: "awqaf.gov.ye/api/method/...get_page_data?fetch_date=",
     span: "2026-11-01..2026-11-09 (nine-day rolling retention)",
-    locations: per.length, rows: per.reduce((a, p) => a + p.days, 0),
-    fajrAngle: { min: fa[0], median: fa[Math.floor(fa.length / 2)], max: fa[fa.length - 1], n: fa.length },
-    ishaAngle: { min: ia[0], median: ia[Math.floor(ia.length / 2)], max: ia[ia.length - 1], n: ia.length },
-    per,
+    locations: locs.length, rows: locs.reduce((a, l) => a + l.days, 0),
+    fitted: per,
+    unfitted: "29 further locations: nine-day windows, no published per-location coordinates, so no per-location fit is claimed",
   };
 }
 
@@ -97,12 +100,13 @@ for (const [key, file, label] of [["qaPlatform", "platform-qatar.json", "Qatar"]
   for (const [slug, c] of Object.entries(cities)) {
     const fa = impliedAngle(c.rows, { lat: c.lat, lon: c.lon, tz: c.tz }, "fajr", [14, 22]);
     const ia = impliedAngle(c.rows, { lat: c.lat, lon: c.lon, tz: c.tz }, "isha", [12, 20]);
+    if (!fa || !ia) { per[slug] = { city: c.city, method: c.method, implied: { fajr: fa, isha: ia }, closed: "no single angle reproduces the column" }; continue; }
     const opt = { lat: c.lat, lon: c.lon, tz: c.tz, fajrAngle: fa.median, ishaAngle: ia.median, hanafi: false };
     const r = fitOne(c.rows, opt);
     per[slug] = { city: c.city, method: c.method, lat: c.lat, lon: c.lon, implied: { fajr: fa, isha: ia }, recipe: r.recipe, joint: r.joint, cols: r.cols };
   }
   out[key] = { surface: "athanpro.com platform tables", tier: "platform", span: "2026-09-01..2026-09-30", per };
-  console.log(label.toUpperCase() + "-PLATFORM", Object.values(per).map((p) => `${p.city} ${p.implied.fajr?.median}/${p.implied.isha?.median} ${p.joint.within1}/${p.joint.of}`).join(", "));
+  console.log(label.toUpperCase() + "-PLATFORM", Object.values(per).map((p) => `${p.city} ${p.implied.fajr?.median}/${p.implied.isha?.median} ${p.joint ? p.joint.within1 + "/" + p.joint.of : "closed"}`).join(", "));
 }
 
 // ---------- Singapore: MUIS 2027 ----------

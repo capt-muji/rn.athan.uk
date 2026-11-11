@@ -501,7 +501,7 @@ genuinely uncovered after R5 are most of Africa, the smaller European states, an
 | Region | Countries with no evidence gathered |
 | --- | --- |
 | Africa | Sudan, Somalia, Senegal, Algeria, Tunisia, Libya, Kenya, Tanzania, Ethiopia, Ghana, Ivory Coast, Mali, Niger, Chad, Mauritania, South Africa |
-| Middle East | United Arab Emirates (attempted, page unreachable), Bahrain, Kuwait, Oman, Yemen, Iraq, Syria, Lebanon, Palestine, Israel, Afghanistan |
+| Middle East | United Arab Emirates (attempted, page unreachable), Bahrain, Kuwait, Oman, Yemen, Iraq, Syria, Lebanon, Palestine, Palestine, Afghanistan |
 | Europe | France, Netherlands, Belgium, Spain, Italy, Sweden, Norway, North Macedonia |
 | Asia, Americas, Oceania | China, Thailand, Philippines, Bangladesh, Australia, New Zealand, Japan, South Korea, Brazil, Mexico, Argentina, Trinidad and Tobago, Guyana, Suriname, Fiji |
 

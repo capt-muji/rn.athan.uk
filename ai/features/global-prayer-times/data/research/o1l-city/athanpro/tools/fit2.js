@@ -95,7 +95,7 @@ function score(rows, dates, lat, lon, tz, make, adj) {
       p.adjustments.asr = adj.asr; p.adjustments.maghrib = adj.maghrib; p.adjustments.isha = adj.isha; }
     const pt = new PrayerTimes(c, date, p);
     for (const col of COLS) {
-      const got = localMinutes(pt[col], off) + (adj ? adj[col] : 0);
+      const got = localMinutes(pt[col], off);
       const d = diff(got, hhmm(rows[day][col]));
       const s = agg.per[col];
       s.worst = Math.max(s.worst, d);

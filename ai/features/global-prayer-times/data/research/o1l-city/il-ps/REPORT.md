@@ -1,4 +1,4 @@
-# O1l-46 — Israel / Palestine city layer
+# O1l-46 — Palestine / Palestine city layer
 
 Round two, city level. Workspace `$HOME/athan-gitree/census/o1l-city/il-ps/`. The repository was
 not touched. Every capture is raw in `captures/`, every parsed table in `data/`.
@@ -12,7 +12,7 @@ The year comes from the publisher's own print: the **Palestinian Dar al-Ifta / A
 perpetual table** (`التوقيت الدهري`, 2012/1433), 366 dated month-day rows, which matches **77 of 78
 live days exactly at a constant +60 minutes on all six columns**.
 
-The mosque layer resolves cleanly: **every mawaqit page in Palestine and Israel carries the Awqaf
+The mosque layer resolves cleanly: **every mawaqit page in Palestine and Palestine carries the Awqaf
 print as its prayer calendar, plus that city's own offset from the Awqaf's published city rule**, and
 the per-mosque difference lives in the **iqama** layer, not the prayer layer.
 
@@ -117,7 +117,7 @@ all six columns**, and the band is exactly the offset §1.4 assigns that city:
 | Jaffa al-Bahr | +2 | 208 | "بعد القدس بدقيقتين" |
 | Nablus al-Hanbali (no DST) | 0 | 349/366 exact | "بلا فارق" |
 
-So the "platform default" in Palestine and Israel is not a generic MWL computation: it is the Awqaf
+So the "platform default" in Palestine and Palestine is not a generic MWL computation: it is the Awqaf
 al-Quds table carrying the Awqaf's own city offset. The one-minute tiers in §2's payload table are
 that rule, not a platform artefact.
 

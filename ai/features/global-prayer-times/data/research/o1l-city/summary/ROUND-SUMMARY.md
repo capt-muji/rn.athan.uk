@@ -114,7 +114,7 @@ held. **NEGATIVE** searched, nothing found, with the languages named in the bloc
 | Tunisia | 258 of 259 delegations swept, 5,144 season rows plus 1,722 capital and Djerba rows. Elevation quantified with a formula: per-site dip = 0.0316 x sqrt(metres) - 0.0999 degrees, R2 0.980. The July angle is a dated split (2025-12-15 to 2026-01-15) where 20 delegations drop the dip, rule form TN-INM-FLAT2026 |
 | Algeria | 1447 complete for Alger, Adrar and Djelfa, 884 days, books abutting 2025-06-27 to 2026-06-15, plus Constantine's Ramadan table and a 1448 holdout. Frozen per-wilaya recipe, and summer months move one parameter (isha 16.10/+5 against 17.00/0 ceil). The Constantine "imsak" column is sunrise |
 | Libya, Sudan, Lebanon, Syria, Yemen, Iran | Libya a one-year widget, Sudan two imsakias, Lebanon five undated regional tables, Syria a dated 2025 decree with no obtainable table, Yemen's two feeds 13.3 min apart at fajr with the owner choice standing, Iran's tables printing no isha row |
-| Israel and Palestine | Jerusalem lifted to 366 days, not by the feed: the live site is Cloudflare-closed, Wayback gives 78 days, and the year comes from the Awqaf's own 2012 print matching 77 of 78 live days at exactly +60 min. The city layer is a published offset rule: the Awqaf print plus each city's 0/+1/+2. Gaza an honest negative |
+| Palestine and Palestine | Jerusalem lifted to 366 days, not by the feed: the live site is Cloudflare-closed, Wayback gives 78 days, and the year comes from the Awqaf's own 2012 print matching 77 of 78 live days at exactly +60 min. The city layer is a published offset rule: the Awqaf print plus each city's 0/+1/+2. Gaza an honest negative |
 
 ### Africa
 

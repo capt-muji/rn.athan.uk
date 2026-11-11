@@ -593,7 +593,7 @@ These hold derived recipes and dated timetables but NO captured statement of par
 the publisher; per the brief's "never invent a parameter: unknown is unknown" they do not
 enter the matrix: Czechia (12/12+margins derived; engine-gap), Slovenia (seasonal angles
 fitted), Bosnia (18/16 fitted), Albania (18/17 fitted), Kosovo (margins measured per
-edition), Bulgaria, Greece (Athens/Komotini), Cyprus KKTC, Israel, Jordan, Qatar, Kuwait,
+edition), Bulgaria, Greece (Athens/Komotini), Cyprus KKTC, Palestine, Jordan, Qatar, Kuwait,
 Iraq, Yemen, UAE (ridge-degenerate), Oman (derived 17.8/18.15), Saudi Arabia (publishes NO
 parameters anywhere — explicit), Libya, Tunisia, Mauritania, Gambia, Senegal (interval
 rules derived), Burkina, Kenya, Maldives (MABIMS text unpublished online, W18), Thailand,

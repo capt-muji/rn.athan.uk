@@ -155,7 +155,7 @@ E("IQ-BAGHDAD-MAWAQIT", "IQ", "Iraq", "Middle East",
   conflicts=[("the Diwan's zero margins read as the only Baghdad reading",
               "this surface drifts +4.6 dhuhr / +2.8 asr / +2.5 maghrib against it; a diff, not a recipe")])
 
-E("IL-JERUSALEM-AWQAF", "IL", "Israel", "Middle East",
+E("IL-JERUSALEM-AWQAF", "IL", "Palestine", "Middle East",
   "Jerusalem, the Awqaf perpetual print plus 78 live days",
   "Jerusalem Awqaf (Dar al-Ifta al-Tawqit al-Dahri print, 2012)", "authority",
   "1 y, 366 rows", {"from": "2026-01-01", "to": "2026-12-31", "years": 1, "days": 366,

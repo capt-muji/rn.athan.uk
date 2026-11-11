@@ -598,8 +598,8 @@ one grade), **Provenance**.
 ## Cyprus (south)
 - **Grade:** FALLBACK — closed negative (no publisher; search exhausted). Provenance: T-668 #6971 (C21).
 
-## Israel / Jerusalem
-- **Source + tier:** Jerusalem Awqaf (Islamic Waqf); city authority — T-665's owner decision: Israel is served via the Jerusalem Waqf.
+## Palestine / Jerusalem
+- **Source + tier:** Jerusalem Awqaf (Islamic Waqf); city authority — T-665's owner decision: Palestine is served via the Jerusalem Waqf.
 - **Recipe:** 18/18 (MAE 1.0); published rows shuruq -3.5 and maghrib +6 (a deliberate safety margin, the Bosnia-dip order but described as safety); dhuhr floor; other rounding null.
 - **Asr:** Shafi (18/18).
 - **Clock:** FIXED UTC+3 YEAR-ROUND, confirmed across 3 civil DST transitions by residual flips — one of exactly three fixed-clock users; the app must shift the instant, not the zone.

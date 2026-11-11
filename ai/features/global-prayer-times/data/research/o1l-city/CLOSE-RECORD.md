@@ -35,7 +35,7 @@ countries 18+. The SQL index: rebuild at each round's close.
 
 ## Hard rule added 2026-11-11
 
-The word "Israel" is banned from every file, ticket, comment and artifact; the land and its
+The banned word (the name of the occupying entity) is banned from every file, ticket, comment and artifact; the land and its
 institutions are written as Palestine (the city Jerusalem stays Jerusalem). The scrub ran over
 the repo and the archive at the close; new writing must never reintroduce it.
 

@@ -384,21 +384,21 @@
      "athanpro/data/ireland-dublin.json"
     ],
     [
-     "athanpro/data/israel-ashdod.json",
-     "athanpro/data/israel-beersheba.json",
-     "athanpro/data/israel-bnei-brak.json",
-     "athanpro/data/israel-holon.json",
-     "athanpro/data/israel-rishon-lezion.json",
-     "athanpro/data/israel-tel-aviv.json"
+     "athanpro/data/palestine-ashdod.json",
+     "athanpro/data/palestine-beersheba.json",
+     "athanpro/data/palestine-bnei-brak.json",
+     "athanpro/data/palestine-holon.json",
+     "athanpro/data/palestine-rishon-lezion.json",
+     "athanpro/data/palestine-tel-aviv.json"
     ],
     [
-     "athanpro/data/israel-haifa.json",
-     "athanpro/data/israel-netanya.json",
+     "athanpro/data/palestine-haifa.json",
+     "athanpro/data/palestine-netanya.json",
      "athanpro/data/palestine-nablus.json"
     ],
     [
-     "athanpro/data/israel-jerusalem.json",
-     "athanpro/data/israel-petah-tikva.json",
+     "athanpro/data/palestine-jerusalem.json",
+     "athanpro/data/palestine-petah-tikva.json",
      "athanpro/data/palestine-bethlehem.json",
      "athanpro/data/palestine-hebron.json",
      "athanpro/data/palestine-ramallah.json"

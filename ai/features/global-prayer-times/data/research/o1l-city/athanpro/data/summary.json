@@ -6,9 +6,9 @@
   "rows": 80700,
   "gate_fail": 913,
   "errs": 0,
-  "pct100": 1224,
-  "pct99": 1251,
-  "pct90": 1253,
+  "pct100": 2309,
+  "pct99": 2368,
+  "pct90": 2524,
   "methods": [
    [
     "Muslim World League",
@@ -154,51 +154,51 @@
   "recipes": [
    [
     "MWL 18/17",
-    1439
+    1314
    ],
    [
     "stated: Diyanet leri Bakanl (Turkey) AI",
-    497
+    347
    ],
    [
-    "Karachi 18/18",
-    107
-   ],
-   [
-    "stated: Moroccan Ministry of Habous and Islamic Affairs",
-    104
-   ],
-   [
-    "ISNA 15/15",
-    91
+    "Kuwait 18/17.5",
+    157
    ],
    [
     "UAE 18.2/18.2",
-    78
+    139
    ],
    [
-    "Turkey 18/17",
-    72
+    "Karachi 18/18",
+    115
    ],
    [
-    "sweep 17.5/18.5",
-    43
+    "ISNA 15/15",
+    111
+   ],
+   [
+    "UMAM 14/14",
+    82
+   ],
+   [
+    "Qatar 18/17",
+    73
    ],
    [
     "Libya 18.5/18.5",
-    28
+    59
    ],
    [
-    "stated: JAKIM - Jabatan Kemajuan Islam (Malaysia) AI",
-    25
+    "Habous 19/17",
+    58
    ],
    [
     "JAKIM 20/18",
-    23
+    48
    ],
    [
-    "stated: Libya Prayer Times",
-    21
+    "stated: JAKIM - Jabatan Kemajuan Islam (Malaysia) AI",
+    36
    ]
   ],
   "capitals": 179,
@@ -1793,61 +1793,61 @@
    60
   ],
   [
-   "israel",
+   "palestine",
    "jerusalem",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "tel-aviv",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "haifa",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "rishon-lezion",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "petah-tikva",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "ashdod",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "netanya",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "beersheba",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "holon",
    "+02:00",
    180
   ],
   [
-   "israel",
+   "palestine",
    "bnei-brak",
    "+02:00",
    180

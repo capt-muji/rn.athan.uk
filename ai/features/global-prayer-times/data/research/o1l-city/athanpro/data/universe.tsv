@@ -682,16 +682,16 @@ isle-of-man	Isle of Man	ramsey	Ramsey	54.3227	-4.3928	Europe/Isle_of_Man	2
 isle-of-man	Isle of Man	peel	Peel	54.2231	-4.6921	Europe/Isle_of_Man	3
 isle-of-man	Isle of Man	port-erin	Port Erin	54.0853	-4.7509	Europe/Isle_of_Man	4
 isle-of-man	Isle of Man	onchan	Onchan	54.177	-4.4471	Europe/Isle_of_Man	5
-israel	Israel	jerusalem	Jerusalem	31.7683	35.2137	Asia/Jerusalem	1
-israel	Israel	tel-aviv	Tel Aviv	32.0853	34.7818	Asia/Jerusalem	2
-israel	Israel	haifa	Haifa	32.794	34.9896	Asia/Jerusalem	3
-israel	Israel	rishon-lezion	Rishon LeZion	31.973	34.7925	Asia/Jerusalem	4
-israel	Israel	petah-tikva	Petah Tikva	32.0871	34.8875	Asia/Jerusalem	5
-israel	Israel	ashdod	Ashdod	31.7959	34.6463	Asia/Jerusalem	6
-israel	Israel	netanya	Netanya	32.3329	34.8599	Asia/Jerusalem	7
-israel	Israel	beersheba	Beersheba	31.2518	34.7913	Asia/Jerusalem	8
-israel	Israel	holon	Holon	32.0171	34.7452	Asia/Jerusalem	9
-israel	Israel	bnei-brak	Bnei Brak	32.0876	34.8352	Asia/Jerusalem	10
+palestine	Palestine	jerusalem	Jerusalem	31.7683	35.2137	Asia/Jerusalem	1
+palestine	Palestine	tel-aviv	Tel Aviv	32.0853	34.7818	Asia/Jerusalem	2
+palestine	Palestine	haifa	Haifa	32.794	34.9896	Asia/Jerusalem	3
+palestine	Palestine	rishon-lezion	Rishon LeZion	31.973	34.7925	Asia/Jerusalem	4
+palestine	Palestine	petah-tikva	Petah Tikva	32.0871	34.8875	Asia/Jerusalem	5
+palestine	Palestine	ashdod	Ashdod	31.7959	34.6463	Asia/Jerusalem	6
+palestine	Palestine	netanya	Netanya	32.3329	34.8599	Asia/Jerusalem	7
+palestine	Palestine	beersheba	Beersheba	31.2518	34.7913	Asia/Jerusalem	8
+palestine	Palestine	holon	Holon	32.0171	34.7452	Asia/Jerusalem	9
+palestine	Palestine	bnei-brak	Bnei Brak	32.0876	34.8352	Asia/Jerusalem	10
 italy	Italy	rome	Rome	41.9028	12.4964	Europe/Rome	1
 italy	Italy	milan	Milan	45.4642	9.19	Europe/Rome	2
 italy	Italy	naples	Naples	40.8522	14.2681	Europe/Rome	3

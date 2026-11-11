@@ -1,0 +1,1806 @@
+{
+ "yeSanaa": {
+  "surface": "Awqaf and Religious Guidance (Sanaa), tebyan prayer panel API",
+  "tier": "authority",
+  "url": "awqaf.gov.ye/api/method/...get_page_data?fetch_date=",
+  "span": "2026-11-01..2026-11-09 (nine-day rolling retention)",
+  "locations": 31,
+  "rows": 279,
+  "fitted": {
+   "loc27": {
+    "place": "Sanaa",
+    "name": "صنعاء",
+    "days": 9,
+    "point": {
+     "place": "Sanaa",
+     "lat": 15.3694,
+     "lon": 44.191
+    },
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 85,
+      "min": 17.7,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 16,
+      "n": 84,
+      "min": 15.65,
+      "max": 16.3
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 16,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": 10,
+      "asr": 0,
+      "maghrib": 10,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "ceil",
+      "dhuhr": "floor",
+      "asr": "nearest",
+      "maghrib": "floor",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.11
+     },
+     "sunrise": {
+      "exact": 9,
+      "within1": 9,
+      "n": 9,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 7,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.22
+     },
+     "asr": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.11
+     },
+     "maghrib": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.11
+     },
+     "isha": {
+      "exact": 9,
+      "within1": 9,
+      "n": 9,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     }
+    },
+    "joint": {
+     "exact": 5,
+     "within1": 9,
+     "of": 9,
+     "worst": 1
+    }
+   },
+   "loc28": {
+    "place": "Aden",
+    "name": "عدن",
+    "days": 9,
+    "point": {
+     "place": "Aden",
+     "lat": 12.7855,
+     "lon": 45.0187
+    },
+    "implied": {
+     "fajr": {
+      "median": 18.05,
+      "n": 90,
+      "min": 17.7,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 16,
+      "n": 84,
+      "min": 15.7,
+      "max": 16.3
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18.05,
+     "ishaAngle": 16,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": 8,
+      "asr": 0,
+      "maghrib": 6,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "ceil",
+      "asr": "nearest",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "cols": {
+     "fajr": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.11
+     },
+     "sunrise": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.11
+     },
+     "dhuhr": {
+      "exact": 7,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.22
+     },
+     "asr": {
+      "exact": 9,
+      "within1": 9,
+      "n": 9,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 8,
+      "within1": 9,
+      "n": 9,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.11
+     },
+     "isha": {
+      "exact": 9,
+      "within1": 9,
+      "n": 9,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     }
+    },
+    "joint": {
+     "exact": 5,
+     "within1": 9,
+     "of": 9,
+     "worst": 1
+    }
+   }
+  },
+  "unfitted": "29 further locations: nine-day windows, no published per-location coordinates, so no per-location fit is claimed"
+ },
+ "yeAden": {
+  "surface": "Ministry of Awqaf and Guidance (Aden), yemenawqaf.org/prayer-times",
+  "tier": "authority",
+  "span": "2026-11-01..2026-11-30",
+  "rows": 30,
+  "point": {
+   "lat": 12.7855,
+   "lon": 45.0187,
+   "scheme": "gazetteer (the ministry publishes none)"
+  },
+  "implied": {
+   "fajr": {
+    "median": 16.4,
+    "n": 283,
+    "min": 16.1,
+    "max": 16.7
+   },
+   "isha": {
+    "median": 17,
+    "n": 286,
+    "min": 16.7,
+    "max": 17.35
+   }
+  },
+  "recipe": {
+   "fajrAngle": 16.4,
+   "ishaAngle": 17,
+   "ishaInterval": null,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "ceil",
+    "asr": "nearest",
+    "maghrib": "ceil",
+    "isha": "nearest"
+   },
+   "ceil": null
+  },
+  "cols": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "n": 30,
+    "worst": 0,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "n": 30,
+    "worst": 0,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "dhuhr": {
+    "exact": 25,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": 0.17
+   },
+   "asr": {
+    "exact": 25,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.17
+   },
+   "maghrib": {
+    "exact": 27,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": 0.1
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.1
+   }
+  },
+  "joint": {
+   "exact": 18,
+   "within1": 30,
+   "of": 30,
+   "worst": 1
+  },
+  "amplitude": {
+   "fajrJan": 317.7,
+   "fajrJul": 271.4,
+   "fajrAmplitude": 46.3
+  }
+ },
+ "qaJamiat": {
+  "surface": "Jamiat perpetual table for Doha (salaahtimes.starlite.za.net)",
+  "tier": "community",
+  "point": {
+   "lat": 25.283333,
+   "lon": 51.533333,
+   "scheme": "published on the table"
+  },
+  "span": "2026-11-01..2026-11-30",
+  "rows": 30,
+  "implied": {
+   "fajr": {
+    "median": 18,
+    "n": 268,
+    "min": 17.7,
+    "max": 18.3
+   },
+   "isha": {
+    "median": 15.05,
+    "n": 266,
+    "min": 14.75,
+    "max": 15.4
+   }
+  },
+  "recipe": {
+   "fajrAngle": 18,
+   "ishaAngle": 15.05,
+   "ishaInterval": null,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 4,
+    "asr": 0,
+    "maghrib": 3,
+    "isha": 0
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "ceil",
+    "maghrib": "nearest",
+    "isha": "nearest"
+   },
+   "ceil": null
+  },
+  "cols": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "n": 30,
+    "worst": 0,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "sunrise": {
+    "exact": 30,
+    "within1": 30,
+    "n": 30,
+    "worst": 0,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "dhuhr": {
+    "exact": 30,
+    "within1": 30,
+    "n": 30,
+    "worst": 0,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "asr": {
+    "exact": 28,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": 0
+   },
+   "maghrib": {
+    "exact": 22,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.27
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "n": 30,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.07
+   }
+  },
+  "joint": {
+   "exact": 20,
+   "within1": 30,
+   "of": 30,
+   "worst": 1
+  },
+  "amplitude": {
+   "fajrJan": 300.8,
+   "fajrJul": 205.3,
+   "fajrAmplitude": 95.5
+  }
+ },
+ "qaPlatform": {
+  "surface": "athanpro.com platform tables",
+  "tier": "platform",
+  "span": "2026-09-01..2026-09-30",
+  "per": {
+   "doha": {
+    "city": "Doha",
+    "method": "Mosque Prayer Times",
+    "implied": {
+     "fajr": {
+      "median": 18.4,
+      "n": 269,
+      "min": 18.1,
+      "max": 18.7
+     },
+     "isha": null
+    },
+    "closed": "no single angle reproduces the column"
+   },
+   "al-rayyan": {
+    "city": "Al Rayyan",
+    "method": "Mosque Prayer Times",
+    "implied": {
+     "fajr": {
+      "median": 18.4,
+      "n": 268,
+      "min": 18.1,
+      "max": 18.7
+     },
+     "isha": null
+    },
+    "closed": "no single angle reproduces the column"
+   },
+   "umm-salal-mohammed": {
+    "city": "Umm Salal Mohammed",
+    "method": "Mosque Prayer Times",
+    "implied": {
+     "fajr": {
+      "median": 18.5,
+      "n": 264,
+      "min": 18.2,
+      "max": 18.8
+     },
+     "isha": null
+    },
+    "closed": "no single angle reproduces the column"
+   },
+   "al-wakrah": {
+    "city": "Al Wakrah",
+    "method": "Mosque Prayer Times",
+    "implied": {
+     "fajr": {
+      "median": 18.4,
+      "n": 263,
+      "min": 18.1,
+      "max": 18.7
+     },
+     "isha": null
+    },
+    "closed": "no single angle reproduces the column"
+   },
+   "al-khor": {
+    "city": "Al Khor",
+    "method": "Muslim World League",
+    "lat": 25.6882,
+    "lon": 51.4969,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 268,
+      "min": 17.7,
+      "max": 18.3
+     },
+     "isha": {
+      "median": 17.05,
+      "n": 268,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17.05,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 1,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "floor",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 27,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.1
+     }
+    }
+   }
+  }
+ },
+ "yePlatform": {
+  "surface": "athanpro.com platform tables",
+  "tier": "platform",
+  "span": "2026-09-01..2026-09-30",
+  "per": {
+   "sanaa": {
+    "city": "Sana'a",
+    "method": "Muslim World League",
+    "lat": 15.3695,
+    "lon": 44.191,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 285,
+      "min": 17.7,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 288,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 29,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.03
+     }
+    }
+   },
+   "aden": {
+    "city": "Aden",
+    "method": "Muslim World League",
+    "lat": 12.8,
+    "lon": 45.0367,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 291,
+      "min": 17.65,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 293,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 28,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.03
+     }
+    }
+   },
+   "taiz": {
+    "city": "Taiz",
+    "method": "Muslim World League",
+    "lat": 13.5795,
+    "lon": 44.0209,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 289,
+      "min": 17.65,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 291,
+      "min": 16.65,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 27,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.1
+     }
+    }
+   },
+   "hodeidah": {
+    "city": "Hodeidah",
+    "method": "Muslim World League",
+    "lat": 14.7973,
+    "lon": 42.9545,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 289,
+      "min": 17.65,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 290,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 29,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.03
+     }
+    }
+   },
+   "ibb": {
+    "city": "Ibb",
+    "method": "Muslim World League",
+    "lat": 13.9667,
+    "lon": 44.1833,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 289,
+      "min": 17.65,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 294,
+      "min": 16.65,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 28,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.07
+     }
+    }
+   },
+   "dhamar": {
+    "city": "Dhamar",
+    "method": "Muslim World League",
+    "lat": 14.5518,
+    "lon": 44.411,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 288,
+      "min": 17.7,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 287,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 27,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.1
+     }
+    }
+   },
+   "al-mukalla": {
+    "city": "Al-Mukalla",
+    "method": "Muslim World League",
+    "lat": 14.5361,
+    "lon": 49.1242,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 288,
+      "min": 17.7,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 286,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 30,
+     "within1": 30,
+     "of": 30,
+     "worst": 0
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     }
+    }
+   },
+   "amran": {
+    "city": "Amran",
+    "method": "Muslim World League",
+    "lat": 15.6594,
+    "lon": 43.9439,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 284,
+      "min": 17.65,
+      "max": 18.3
+     },
+     "isha": {
+      "median": 17,
+      "n": 289,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 28,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 28,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.07
+     }
+    }
+   },
+   "sayyan": {
+    "city": "Sayyan",
+    "method": "Muslim World League",
+    "lat": 15.1716,
+    "lon": 44.3242,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 291,
+      "min": 17.65,
+      "max": 18.35
+     },
+     "isha": {
+      "median": 17,
+      "n": 285,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 29,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "maghrib": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "isha": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.03
+     }
+    }
+   },
+   "zabid": {
+    "city": "Zabid",
+    "method": "Muslim World League",
+    "lat": 14.1953,
+    "lon": 43.3153,
+    "implied": {
+     "fajr": {
+      "median": 18,
+      "n": 290,
+      "min": 17.65,
+      "max": 18.3
+     },
+     "isha": {
+      "median": 17,
+      "n": 289,
+      "min": 16.7,
+      "max": 17.35
+     }
+    },
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": -1,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "ceil",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 27,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "sunrise": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "n": 30,
+      "worst": 0,
+      "capped": 0,
+      "signedMean": 0
+     },
+     "asr": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "maghrib": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "isha": {
+      "exact": 29,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.03
+     }
+    }
+   }
+  }
+ },
+ "sgPlatform": {
+  "surface": "athanpro.com platform tables",
+  "tier": "platform",
+  "span": "2026-09-01..2026-09-30",
+  "per": {
+   "singapore": {
+    "city": "Singapore",
+    "method": "MUIS - Majlis Ugama Islam (Singapura)",
+    "lat": 1.3521,
+    "lon": 103.8198,
+    "implied": {
+     "fajr": {
+      "median": 19.95,
+      "n": 301,
+      "min": 19.6,
+      "max": 20.3
+     },
+     "isha": {
+      "median": 18.05,
+      "n": 301,
+      "min": 17.7,
+      "max": 18.4
+     }
+    },
+    "recipe": {
+     "fajrAngle": 19.95,
+     "ishaAngle": 18.05,
+     "ishaInterval": null,
+     "asr": "Shafi",
+     "margins": {
+      "fajr": 0,
+      "sunrise": 0,
+      "dhuhr": 0,
+      "asr": 0,
+      "maghrib": 0,
+      "isha": 0
+     },
+     "rounding": {
+      "fajr": "nearest",
+      "sunrise": "nearest",
+      "dhuhr": "nearest",
+      "asr": "nearest",
+      "maghrib": "nearest",
+      "isha": "nearest"
+     },
+     "ceil": null
+    },
+    "joint": {
+     "exact": 7,
+     "within1": 30,
+     "of": 30,
+     "worst": 1
+    },
+    "cols": {
+     "fajr": {
+      "exact": 27,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.03
+     },
+     "sunrise": {
+      "exact": 25,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.17
+     },
+     "dhuhr": {
+      "exact": 24,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.2
+     },
+     "asr": {
+      "exact": 12,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.13
+     },
+     "maghrib": {
+      "exact": 26,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": -0.13
+     },
+     "isha": {
+      "exact": 28,
+      "within1": 30,
+      "n": 30,
+      "worst": 1,
+      "capped": 0,
+      "signedMean": 0.07
+     }
+    }
+   }
+  }
+ },
+ "sgMuis": {
+  "surface": "MUIS Prayer Timetable 2027 (isomer-user-content PDF)",
+  "tier": "authority",
+  "span": "2027-01-01..2027-12-31",
+  "rows": 365,
+  "implied": {
+   "fajr": {
+    "median": 19.9,
+    "n": 3524,
+    "min": 19.45,
+    "max": 20.35
+   },
+   "isha": {
+    "median": 18.1,
+    "n": 3506,
+    "min": 17.7,
+    "max": 18.55
+   }
+  },
+  "recipe": {
+   "fajrAngle": 19.9,
+   "ishaAngle": 18.1,
+   "ishaInterval": null,
+   "asr": "Shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "ceil",
+    "dhuhr": "floor",
+    "asr": "ceil",
+    "maghrib": "nearest",
+    "isha": "nearest"
+   },
+   "ceil": null
+  },
+  "cols": {
+   "fajr": {
+    "exact": 266,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.07
+   },
+   "sunrise": {
+    "exact": 266,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.04
+   },
+   "dhuhr": {
+    "exact": 285,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.07
+   },
+   "asr": {
+    "exact": 198,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.03
+   },
+   "maghrib": {
+    "exact": 176,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": 0.42
+   },
+   "isha": {
+    "exact": 295,
+    "within1": 365,
+    "n": 365,
+    "worst": 1,
+    "capped": 0,
+    "signedMean": -0.1
+   }
+  },
+  "joint": {
+   "exact": 46,
+   "within1": 365,
+   "of": 365,
+   "worst": 1
+  },
+  "amplitude": {
+   "fajrJan": 350.4,
+   "fajrJul": 342.4,
+   "fajrAmplitude": 8
+  }
+ }
+}
