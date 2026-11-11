@@ -92,12 +92,12 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 96.9,
-    "mae": 0.62
+    "w1": 100,
+    "mae": 0.55
    },
    {
     "rounding": {
@@ -105,23 +105,23 @@
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
-     "maghrib": "floor",
-     "isha": "ceil"
+     "maghrib": "round",
+     "isha": "floor"
     },
-    "w1": 94.2,
-    "mae": 0.63
+    "w1": 100,
+    "mae": 0.61
    },
    {
     "rounding": {
-     "fajr": "ceil",
+     "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "floor",
+     "asr": "round",
+     "maghrib": "round",
      "isha": "floor"
     },
-    "w1": 93,
-    "mae": 0.63
+    "w1": 100,
+    "mae": 0.64
    }
   ]
  },
@@ -132,7 +132,7 @@
    "fajr": "floor",
    "sunrise": "floor",
    "zawal": "floor",
-   "asr": "ceil",
+   "asr": "round",
    "maghrib": "floor",
    "isha": "floor"
   },
@@ -169,10 +169,10 @@
    },
    "asr": {
     "n": 31,
-    "exact": 71,
+    "exact": 67.7,
     "w1": 100,
-    "mae": 0.29,
-    "mean": -0.29,
+    "mae": 0.32,
+    "mean": 0.32,
     "worst": 1
    },
    "maghrib": {
@@ -193,14 +193,26 @@
    },
    "all": {
     "n": 186,
-    "exact": 53.2,
+    "exact": 52.7,
     "w1": 100,
     "mae": 0.47,
-    "mean": -0.47,
+    "mean": -0.37,
     "worst": 1
    }
   },
   "top": [
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "floor",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.47
+   },
    {
     "rounding": {
      "fajr": "floor",
@@ -227,27 +239,15 @@
    },
    {
     "rounding": {
-     "fajr": "floor",
+     "fajr": "round",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "ceil",
+     "asr": "round",
+     "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 96.8,
-    "mae": 0.63
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 96.8,
-    "mae": 0.7
+    "w1": 100,
+    "mae": 0.54
    }
   ]
  },
@@ -344,24 +344,12 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 97.9,
-    "mae": 0.57
-   },
-   {
-    "rounding": {
-     "fajr": "ceil",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "floor",
-     "isha": "floor"
-    },
-    "w1": 94.2,
-    "mae": 0.59
+    "w1": 100,
+    "mae": 0.5
    },
    {
     "rounding": {
@@ -369,11 +357,23 @@
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
-     "maghrib": "floor",
-     "isha": "ceil"
+     "maghrib": "round",
+     "isha": "floor"
     },
-    "w1": 94.2,
-    "mae": 0.59
+    "w1": 100,
+    "mae": 0.57
+   },
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.61
    }
   ]
  },
@@ -470,24 +470,12 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 97.7,
-    "mae": 0.58
-   },
-   {
-    "rounding": {
-     "fajr": "ceil",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "floor",
-     "isha": "floor"
-    },
-    "w1": 94.5,
-    "mae": 0.6
+    "w1": 100,
+    "mae": 0.53
    },
    {
     "rounding": {
@@ -495,11 +483,23 @@
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
-     "maghrib": "floor",
-     "isha": "ceil"
+     "maghrib": "round",
+     "isha": "floor"
     },
-    "w1": 93.8,
-    "mae": 0.6
+    "w1": 100,
+    "mae": 0.59
+   },
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.63
    }
   ]
  },
@@ -596,12 +596,12 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 97,
-    "mae": 0.6
+    "w1": 100,
+    "mae": 0.53
    },
    {
     "rounding": {
@@ -609,23 +609,23 @@
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
-     "maghrib": "floor",
-     "isha": "ceil"
+     "maghrib": "round",
+     "isha": "floor"
     },
-    "w1": 94,
-    "mae": 0.61
+    "w1": 100,
+    "mae": 0.58
    },
    {
     "rounding": {
-     "fajr": "ceil",
+     "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "floor",
+     "asr": "round",
+     "maghrib": "round",
      "isha": "floor"
     },
-    "w1": 93.5,
-    "mae": 0.61
+    "w1": 100,
+    "mae": 0.62
    }
   ]
  },
@@ -722,36 +722,36 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 97.2,
-    "mae": 0.58
+    "w1": 100,
+    "mae": 0.53
    },
    {
     "rounding": {
-     "fajr": "ceil",
+     "fajr": "round",
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 94.2,
-    "mae": 0.6
+    "w1": 100,
+    "mae": 0.54
    },
    {
     "rounding": {
-     "fajr": "floor",
+     "fajr": "round",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "ceil",
+     "asr": "round",
+     "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 94.1,
-    "mae": 0.69
+    "w1": 100,
+    "mae": 0.59
    }
   ]
  },
@@ -762,7 +762,7 @@
    "fajr": "floor",
    "sunrise": "floor",
    "zawal": "floor",
-   "asr": "ceil",
+   "asr": "round",
    "maghrib": "floor",
    "isha": "floor"
   },
@@ -799,10 +799,10 @@
    },
    "asr": {
     "n": 359,
-    "exact": 39,
+    "exact": 63,
     "w1": 100,
-    "mae": 0.61,
-    "mean": -0.53,
+    "mae": 0.37,
+    "mean": -0.03,
     "worst": 1
    },
    "maghrib": {
@@ -823,14 +823,38 @@
    },
    "all": {
     "n": 2154,
-    "exact": 81.2,
+    "exact": 85.2,
     "w1": 100,
-    "mae": 0.19,
-    "mean": -0.1,
+    "mae": 0.15,
+    "mean": -0.01,
     "worst": 1
    }
   },
   "top": [
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "floor",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.15
+   },
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.18
+   },
    {
     "rounding": {
      "fajr": "floor",
@@ -845,39 +869,15 @@
    },
    {
     "rounding": {
-     "fajr": "ceil",
+     "fajr": "round",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
     "w1": 100,
-    "mae": 0.31
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 100,
-    "mae": 0.32
-   },
-   {
-    "rounding": {
-     "fajr": "ceil",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 100,
-    "mae": 0.44
+    "mae": 0.21
    }
   ]
  },
@@ -889,7 +889,7 @@
    "sunrise": "floor",
    "zawal": "floor",
    "asr": "floor",
-   "maghrib": "floor",
+   "maghrib": "round",
    "isha": "floor"
   },
   "score": {
@@ -933,30 +933,54 @@
    },
    "maghrib": {
     "n": 360,
-    "exact": 33.9,
+    "exact": 85.6,
     "w1": 100,
-    "mae": 0.66,
-    "mean": 0.66,
+    "mae": 0.14,
+    "mean": 0.14,
     "worst": 1
    },
    "isha": {
     "n": 360,
-    "exact": 53.6,
+    "exact": 41.4,
     "w1": 100,
-    "mae": 0.46,
-    "mean": -0.46,
+    "mae": 0.59,
+    "mean": -0.59,
     "worst": 1
    },
    "all": {
     "n": 2160,
-    "exact": 44.8,
+    "exact": 51.4,
     "w1": 100,
-    "mae": 0.55,
-    "mean": -0.27,
+    "mae": 0.49,
+    "mean": -0.37,
     "worst": 1
    }
   },
   "top": [
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "floor",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.49
+   },
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.53
+   },
    {
     "rounding": {
      "fajr": "floor",
@@ -974,36 +998,12 @@
      "fajr": "floor",
      "sunrise": "floor",
      "zawal": "floor",
-     "asr": "floor",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 98.5,
-    "mae": 0.54
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
+     "asr": "round",
      "maghrib": "floor",
      "isha": "floor"
     },
-    "w1": 97.3,
-    "mae": 0.65
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 95.8,
-    "mae": 0.63
+    "w1": 100,
+    "mae": 0.59
    }
   ]
  },
@@ -1015,7 +1015,7 @@
    "sunrise": "floor",
    "zawal": "floor",
    "asr": "floor",
-   "maghrib": "floor",
+   "maghrib": "round",
    "isha": "floor"
   },
   "score": {
@@ -1059,30 +1059,54 @@
    },
    "maghrib": {
     "n": 359,
-    "exact": 42.3,
+    "exact": 86.9,
     "w1": 100,
-    "mae": 0.58,
-    "mean": 0.58,
+    "mae": 0.13,
+    "mean": 0.13,
     "worst": 1
    },
    "isha": {
     "n": 359,
-    "exact": 51,
+    "exact": 41.2,
     "w1": 100,
-    "mae": 0.49,
-    "mean": -0.49,
+    "mae": 0.59,
+    "mean": -0.59,
     "worst": 1
    },
    "all": {
     "n": 2154,
-    "exact": 47.7,
+    "exact": 53.5,
     "w1": 100,
-    "mae": 0.52,
-    "mean": -0.27,
+    "mae": 0.46,
+    "mean": -0.36,
     "worst": 1
    }
   },
   "top": [
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "floor",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.46
+   },
+   {
+    "rounding": {
+     "fajr": "floor",
+     "sunrise": "floor",
+     "zawal": "floor",
+     "asr": "round",
+     "maghrib": "round",
+     "isha": "floor"
+    },
+    "w1": 100,
+    "mae": 0.5
+   },
    {
     "rounding": {
      "fajr": "floor",
@@ -1097,39 +1121,15 @@
    },
    {
     "rounding": {
-     "fajr": "floor",
+     "fajr": "round",
      "sunrise": "floor",
      "zawal": "floor",
      "asr": "floor",
-     "maghrib": "ceil",
+     "maghrib": "round",
      "isha": "floor"
     },
-    "w1": 98.1,
-    "mae": 0.54
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "floor",
-     "isha": "floor"
-    },
-    "w1": 97.1,
-    "mae": 0.63
-   },
-   {
-    "rounding": {
-     "fajr": "floor",
-     "sunrise": "floor",
-     "zawal": "floor",
-     "asr": "ceil",
-     "maghrib": "ceil",
-     "isha": "floor"
-    },
-    "w1": 95.2,
-    "mae": 0.64
+    "w1": 100,
+    "mae": 0.52
    }
   ]
  }

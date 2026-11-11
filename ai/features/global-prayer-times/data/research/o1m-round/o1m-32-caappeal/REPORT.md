@@ -227,24 +227,24 @@ name carries the settlement and the shape should not.
 The archive reached only Kazan after 2017, but it reached it repeatedly. Nine editions scored on
 the same engine and the same recipe:
 
-| year | rows | all-column within-1 | MAE | worst | pass (floor/ceil by column) |
+| year | rows | all-column within-1 | MAE | worst | pass (three-mode sweep, per column) |
 | --- | --- | --- | --- | --- | --- |
 | 2017 | 365 | 100 | 0.51 | 1 | all floor |
-| 2018 (Dec) | 31 | 100 | 0.47 | 1 | floor except asr |
+| 2018 (Dec) | 31 | 100 | 0.47 | 1 | asr round, rest floor |
 | 2019 | 365 | 100 | 0.47 | 1 | all floor |
 | 2020 | 366 | 100 | 0.48 | 1 | all floor |
 | 2021 | 365 | 100 | 0.49 | 1 | all floor |
 | 2022 | 365 | 100 | 0.48 | 1 | all floor |
-| 2023 | 365 | 100 | 0.19 | 1 | floor except asr |
-| 2024 | 366 | 100 | 0.55 | 1 | all floor |
-| 2025 | 365 | 100 | 0.52 | 1 | all floor |
+| 2023 | 365 | 100 | **0.15** | 1 | **asr round**, rest floor |
+| 2024 | 366 | 100 | 0.49 | 1 | **maghrib round**, rest floor |
+| 2025 | 365 | 100 | 0.46 | 1 | **maghrib round**, rest floor |
 
 Every edition reproduces at 100 pc within-1 with a worst cell of one minute, so the table is one
-recipe from 2017 to 2025. What moves between editions is the per-column rounding pass, and the
-column means locate it: fajr, sunrise, zawal and isha carry the floor pass (means −0.46 to −0.72)
-in every edition except **2023**, where every column sits at 0.00 ± 0.17 (the nearest pass), and
-**maghrib**, which moves to +0.66 and +0.58 in 2024 and 2025 (a ceil pass). So the pass changed
-in the 2023 edition, not in 2025.
+recipe from 2017 to 2025. What moves between editions is the per-column rounding pass, and a
+729-point sweep over three modes per column finds it: five columns stay on the floor pass
+throughout, **asr changes in the 2023 edition** (floor to round, which drops that year's MAE to
+0.15, the cleanest edition in the span) and **maghrib changes in the 2024 edition** (floor to
+round). So the pass changes twice, in 2023 and 2024, and not in 2025.
 
 The 2025 rows inside the 2024-edition file are **byte-identical to today's live file**: 0 cell
 differences over 365 days and nine columns. The publisher does not recompute the second year of
@@ -318,3 +318,82 @@ Second-year alternatives, measured:
 
 So the Uzbek record stays at one cycle and the 15.5/15.5 zero-margin recipe keeps its
 provisional grade. `differ_minute` still has no dated endpoint to appear on.
+
+## 6. Negatives, with the languages and the surfaces searched
+
+- **Kyrgyzstan second year**: structurally closed by the endpoint, re-proved over a full year at
+  three settlements (section 1.5). Searched in Russian and Kyrgyz beside English.
+- **Bashkortostan before 2025**: not served, with a working control on the same door (section 2).
+  The draft-schedule route would answer but needs a key behind a login: blocked, not probed.
+- **Tatarstan 2018**: nothing exists. A domain-wide prefix query over `/netcat_files/` for the
+  whole of 2018 returns 44 settlement files, all 404, crawled on two January days. Searched in
+  Russian and Tatar beside English, and by year-suffixed file names in both families.
+- **Tatarstan 2019-2025, any settlement but Kazan**: the same domain-wide query returns three
+  successful CSV captures in the whole 2018-2020 band, all Kazan.
+- **Tajikistan before 2014-12**: 72 month probes, every one a 2-byte body, against a working
+  control at 2015-01. The publisher's own year selector starts at 2014.
+- **Uzbekistan second year**: no prayer route exists on the portal's API (eleven routes probed),
+  `namozvaqti.uz` discards a year parameter byte-identically, `namozapi.uz` answers today only
+  with no parameters, and `praytime.uz` computes from the clock. Searched in Uzbek, Russian and
+  English.
+
+## 7. Defects found
+
+1. **The muftiyat.kg window is clamped to two months.** Three months or more answer HTTP 302
+   with no body. A year needs six requests.
+2. **DUM RT's rolling file relabels rather than recomputes.** The 2025 half of the current file
+   is byte-identical to the 2025 half of a 2024-edition capture, 0 differences over 365 days and
+   nine columns.
+3. **DUM RT renamed 21 of its 44 settlement files**, which is what hid them from the previous
+   pass. Any inventory keyed on today's names will keep missing them.
+4. **DUM RT's `dhuhr` column is a fixed `12:00` while `zawal` carries the transit**, in the 2025
+   half of the live file and in the 2016 files, so a fitter that treats `dhuhr` as the prayer
+   instant will score a one-hour error.
+5. **DUM RB's `suhurDo` is null on every 2025 row and populated on every 2026 row** at Ufa: the
+   field arrived with the 2026 edition.
+6. **Tajikistan's dhuhr is a monthly constant, not a computed instant**, and its 2023-02-13 row
+   prints 12:00 against the month's 12:40.
+7. **muftiyat.kg's asr column carries a 1.7-minute seasonal term** (mean +1.05 in February,
+   +2.75 in September) at every one of the 115 settlements, so no single margin is exact.
+
+## 8. Counts (script-derived)
+
+| block | files | dated rows |
+| --- | --- | --- |
+| Kyrgyzstan, muftiyat.kg, 115 settlements, 2026 | 690 | 41,975 |
+| Kyrgyzstan, 2027 label test, 3 settlements | 18 | 1,095 |
+| Tatarstan, DUM RT, 44 settlements, 2016 | 44 | 16,104 |
+| Tatarstan, DUM RT, 44 settlements, 2017 | 44 | 16,060 |
+| Tatarstan, DUM RT, 44 settlements, 2015-12 | 44 | 1,364 |
+| Tatarstan, DUM RT, live 44 settlements, 2025-2026 | 44 | 32,119 |
+| Kazan, archived editions 2017-2025 (Kazan's 2017 counted twice) | 16 | 2,953 |
+| Tajikistan, month probes 2008-2013 | 72 | 0 |
+| **total banked in this wave** | **972** | **111,670** |
+
+`captures/` 16 MB, `data/` 16 MB, `fit/` 596 KB. Nothing was written under a temporary directory
+and the repository was not touched.
+
+## 9. Next
+
+1. **Tatarstan 2016 and 2017 at the remaining 40 settlements of the 44** are already banked here;
+   the next step is the per-settlement table in `fit/dumrt_2016_44_fit.json` and
+   `fit/dumrt_2017_44_fit.json` folded into the record's Russia position set, with the 21 renames
+   recorded as aliases so no later pass loses them again.
+2. **DUM RT's third family**: the 2018 pass shows a third slug set (`NabChelny`, `BolAtnya`,
+   `RibnayaSloboda`) that no year-suffixed query would ever find. A prefix query per year band,
+   not per name, is the only reliable inventory for this publisher.
+3. **Kyrgyzstan's asr seasonal term** needs the publisher's own generator, or a shadow-factor
+   sweep against the daily residuals, to say whether it is a different asr definition or an
+   approximation in their solar engine.
+4. **Uzbekistan** needs an authority surface with a year, not another aggregator: the portal's
+   region list is banked and the recipe is settled, so only a dated table can lift the grade.
+5. **Tajikistan's October-2020 month** is banked as an era; the next question is whether any
+   other month in the 144-cell span carries a second value, which the held series can answer.
+
+## 10. Stop note
+
+This wave was closed on the owner's stop order, at 13:45Z. Banked and finished: all five jobs
+above. Not banked, and left as they were: the archived DUM RF prints, the Ufa almanac sheets, and
+any further Uzbek search. `data/dumrt-cdx-bands.log` shows the Wayback band sweep interrupted
+after the 391/638 2019 band; every band that was read is saved under `captures/dumrt_cdx/`, and
+the interrupted queries answer 503 and are not recorded as findings.
