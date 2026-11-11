@@ -1,0 +1,508 @@
+{
+ "ANCHORAGE": {
+  "lat": 61.18,
+  "per": {
+   "a16": {
+    "exact": 4,
+    "mae": 49.95,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 40.61
+   },
+   "a17pad5": {
+    "exact": 2,
+    "mae": 49.47,
+    "n": 365,
+    "pctExact": 0.5,
+    "bias": 38
+   },
+   "a17": {
+    "exact": 6,
+    "mae": 47.12,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 33
+   },
+   "a18": {
+    "exact": 7,
+    "mae": 45.5,
+    "n": 365,
+    "pctExact": 1.9,
+    "bias": 25.57
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 125
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 125
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 126
+   }
+  ],
+  "served": "Anchorage",
+  "impliedLatitudeByMonth": [
+   {
+    "month": "01",
+    "printLen": 262,
+    "trueLenAt61": 385,
+    "impliedLat": 66
+   },
+   {
+    "month": "02",
+    "printLen": 397,
+    "trueLenAt61": 544,
+    "impliedLat": 66
+   },
+   {
+    "month": "03",
+    "printLen": 535,
+    "trueLenAt61": 704,
+    "impliedLat": 66
+   },
+   {
+    "month": "04",
+    "printLen": 679,
+    "trueLenAt61": 882,
+    "impliedLat": 1
+   },
+   {
+    "month": "05",
+    "printLen": 801,
+    "trueLenAt61": 1048,
+    "impliedLat": 25
+   },
+   {
+    "month": "06",
+    "printLen": 852,
+    "trueLenAt61": 1158,
+    "impliedLat": 31.5
+   },
+   {
+    "month": "07",
+    "printLen": 843,
+    "trueLenAt61": 1107,
+    "impliedLat": 32
+   },
+   {
+    "month": "08",
+    "printLen": 736,
+    "trueLenAt61": 951,
+    "impliedLat": 4.5
+   },
+   {
+    "month": "09",
+    "printLen": 600,
+    "trueLenAt61": 776,
+    "impliedLat": 1
+   },
+   {
+    "month": "10",
+    "printLen": 456,
+    "trueLenAt61": 606,
+    "impliedLat": 66
+   },
+   {
+    "month": "11",
+    "printLen": 310,
+    "trueLenAt61": 438,
+    "impliedLat": 66
+   },
+   {
+    "month": "12",
+    "printLen": 221,
+    "trueLenAt61": 332,
+    "impliedLat": 65
+   }
+  ]
+ },
+ "CORDOVA": {
+  "lat": 60.53,
+  "per": {
+   "a16": {
+    "exact": 3,
+    "mae": 47.97,
+    "n": 365,
+    "pctExact": 0.8,
+    "bias": 41.05
+   },
+   "a17pad5": {
+    "exact": 4,
+    "mae": 47.23,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 38.44
+   },
+   "a17": {
+    "exact": 2,
+    "mae": 44.69,
+    "n": 365,
+    "pctExact": 0.5,
+    "bias": 33.44
+   },
+   "a18": {
+    "exact": 4,
+    "mae": 42.62,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 26.03
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 127
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 128
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 128
+   }
+  ],
+  "served": "Cordova"
+ },
+ "JUNEAU": {
+  "lat": 58.33,
+  "per": {
+   "a16": {
+    "exact": 7,
+    "mae": 43.06,
+    "n": 365,
+    "pctExact": 1.9,
+    "bias": 41.7
+   },
+   "a17pad5": {
+    "exact": 7,
+    "mae": 41.45,
+    "n": 365,
+    "pctExact": 1.9,
+    "bias": 38.91
+   },
+   "a17": {
+    "exact": 5,
+    "mae": 38.18,
+    "n": 365,
+    "pctExact": 1.4,
+    "bias": 33.91
+   },
+   "a18": {
+    "exact": 3,
+    "mae": 34.61,
+    "n": 365,
+    "pctExact": 0.8,
+    "bias": 26.47
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 132
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 133
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 133
+   }
+  ],
+  "served": "Juneau"
+ },
+ "KODIAK": {
+  "lat": 57.85,
+  "per": {
+   "a16": {
+    "exact": 8,
+    "mae": 42.59,
+    "n": 365,
+    "pctExact": 2.2,
+    "bias": 41.8
+   },
+   "a17pad5": {
+    "exact": 6,
+    "mae": 40.8,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 39.13
+   },
+   "a17": {
+    "exact": 6,
+    "mae": 37.3,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 34.13
+   },
+   "a18": {
+    "exact": 6,
+    "mae": 33.4,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 26.72
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 134
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 135
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 135
+   }
+  ],
+  "served": "Kodıak"
+ },
+ "NAKNEK": {
+  "lat": 58.73,
+  "per": {
+   "a16": {
+    "exact": 4,
+    "mae": 43.59,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 41.47
+   },
+   "a17pad5": {
+    "exact": 5,
+    "mae": 42.17,
+    "n": 365,
+    "pctExact": 1.4,
+    "bias": 38.83
+   },
+   "a17": {
+    "exact": 6,
+    "mae": 39.03,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 33.83
+   },
+   "a18": {
+    "exact": 6,
+    "mae": 35.72,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 26.41
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 132
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 133
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 133
+   }
+  ],
+  "served": "Naknek"
+ },
+ "SEWARD": {
+  "lat": 60.02,
+  "per": {
+   "a16": {
+    "exact": 4,
+    "mae": 46.73,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 41.46
+   },
+   "a17pad5": {
+    "exact": 2,
+    "mae": 45.8,
+    "n": 365,
+    "pctExact": 0.5,
+    "bias": 38.85
+   },
+   "a17": {
+    "exact": 4,
+    "mae": 43.08,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 33.85
+   },
+   "a18": {
+    "exact": 6,
+    "mae": 40.61,
+    "n": 365,
+    "pctExact": 1.6,
+    "bias": 26.44
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 129
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 129
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 130
+   }
+  ],
+  "served": "Seward"
+ },
+ "PETERSBURG": {
+  "lat": 56.77,
+  "per": {
+   "a16": {
+    "exact": 1,
+    "mae": 43.19,
+    "n": 365,
+    "pctExact": 0.3,
+    "bias": 42.93
+   },
+   "a17pad5": {
+    "exact": 12,
+    "mae": 40.8,
+    "n": 365,
+    "pctExact": 3.3,
+    "bias": 40.23
+   },
+   "a17": {
+    "exact": 7,
+    "mae": 36.65,
+    "n": 365,
+    "pctExact": 1.9,
+    "bias": 35.23
+   },
+   "a18": {
+    "exact": 4,
+    "mae": 31.9,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 27.58
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 136
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 136
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 135
+   }
+  ],
+  "served": "Petersburg"
+ },
+ "VALDEZ": {
+  "lat": 61,
+  "per": {
+   "a16": {
+    "exact": 4,
+    "mae": 49.63,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 41.01
+   },
+   "a17pad5": {
+    "exact": 4,
+    "mae": 49.05,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 38.4
+   },
+   "a17": {
+    "exact": 5,
+    "mae": 46.63,
+    "n": 365,
+    "pctExact": 1.4,
+    "bias": 33.4
+   },
+   "a18": {
+    "exact": 4,
+    "mae": 44.84,
+    "n": 365,
+    "pctExact": 1.1,
+    "bias": 25.98
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 126
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 126
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 127
+   }
+  ],
+  "served": "Valdez"
+ },
+ "GALENA": {
+  "lat": 64.56,
+  "per": {
+   "a16": {
+    "exact": 5,
+    "mae": 39.38,
+    "n": 295,
+    "pctExact": 1.7,
+    "bias": 8.78
+   },
+   "a17pad5": {
+    "exact": 6,
+    "mae": 39.14,
+    "n": 295,
+    "pctExact": 2,
+    "bias": 4.06
+   },
+   "a17": {
+    "exact": 6,
+    "mae": 38.58,
+    "n": 295,
+    "pctExact": 2,
+    "bias": -0.94
+   },
+   "a18": {
+    "exact": 4,
+    "mae": 39.86,
+    "n": 295,
+    "pctExact": 1.4,
+    "bias": -10.27
+   }
+  },
+  "sample": [
+   {
+    "date": "2026-01-01",
+    "printIv": 130
+   },
+   {
+    "date": "2026-01-02",
+    "printIv": 130
+   },
+   {
+    "date": "2026-01-03",
+    "printIv": 129
+   }
+  ],
+  "served": "Galena"
+ }
+}

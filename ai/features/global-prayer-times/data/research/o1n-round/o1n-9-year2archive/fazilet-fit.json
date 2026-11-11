@@ -1,0 +1,3422 @@
+{
+ "engine": "adhan 4.4.6",
+ "method": "angles + per-column median margins recovered on the base year, frozen, residual-scored on every year held",
+ "cities": {
+  "KG-Bishkek": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -5,
+     "dhuhr": 6,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 71.21,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 47,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 38,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 41,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 45,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 67.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 34,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -4,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 781,
+    "julSpanFajrIshaMin": 1187
+   }
+  },
+  "KG-Osh": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 8,
+     "isha": 3
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 78.79,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 42,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 45,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 76.67,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.1,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 784,
+    "julSpanFajrIshaMin": 1146
+   }
+  },
+  "KG-Uzgen": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 8,
+     "isha": 3
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 72.47,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 38,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 39,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 74.36,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 38,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 37,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.9,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 783,
+    "julSpanFajrIshaMin": 1149
+   }
+  },
+  "KG-Balykchy": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 74.75,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 70,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 39,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 30,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -4.7,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 781,
+    "julSpanFajrIshaMin": 1178
+   }
+  },
+  "AZ-Baku": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 79.55,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 76.92,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 35,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 38,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.6,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 782,
+    "julSpanFajrIshaMin": 1138
+   }
+  },
+  "GE-Tbilisi": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 8,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 68.69,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 35,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 40,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 70.51,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 37,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 38,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.8,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 782,
+    "julSpanFajrIshaMin": 1164
+   }
+  },
+  "UZ-Tashkent": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 96,
+     "cells": 576,
+     "pcExact": 74.48,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 96,
+       "exact": 81,
+       "w1": 96,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 96,
+       "exact": 52,
+       "w1": 96,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 96,
+       "exact": 92,
+       "w1": 96,
+       "worst": 1
+      },
+      "asr": {
+       "n": 96,
+       "exact": 65,
+       "w1": 96,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 96,
+       "exact": 51,
+       "w1": 96,
+       "worst": 1
+      },
+      "isha": {
+       "n": 96,
+       "exact": 88,
+       "w1": 96,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 77.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 39,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.7,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 783,
+    "julSpanFajrIshaMin": 1156
+   }
+  },
+  "TJ-Dushanbe": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 72.98,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 46,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 35,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 75.9,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.9,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 786,
+    "julSpanFajrIshaMin": 1118
+   }
+  },
+  "IQ-Baghdad": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 79.8,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 46,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 82.56,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.8,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 794,
+    "julSpanFajrIshaMin": 1057
+   }
+  },
+  "LY-Tripoli": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 75.76,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 34,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 35,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 74.1,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 38,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 35,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.7,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 794,
+    "julSpanFajrIshaMin": 1050
+   }
+  },
+  "YE-Sanaa": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 86.11,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 43,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.15,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 831,
+    "julSpanFajrIshaMin": 931
+   }
+  },
+  "NP-Kathmandu": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -3.5,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 8,
+     "isha": 3
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 96,
+     "cells": 576,
+     "pcExact": 78.65,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 96,
+       "exact": 90,
+       "w1": 96,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 96,
+       "exact": 48,
+       "w1": 96,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 96,
+       "exact": 96,
+       "w1": 96,
+       "worst": 0
+      },
+      "asr": {
+       "n": 96,
+       "exact": 76,
+       "w1": 96,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 96,
+       "exact": 51,
+       "w1": 96,
+       "worst": 1
+      },
+      "isha": {
+       "n": 96,
+       "exact": 92,
+       "w1": 96,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 75.9,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 25,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 31,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.7,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 803,
+    "julSpanFajrIshaMin": 1009
+   }
+  },
+  "LK-Colombo": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 17,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -1,
+     "dhuhr": 5,
+     "asr": 5,
+     "maghrib": 5,
+     "isha": 3
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 96.46,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 79.49,
+     "pcWithin1": 83.59,
+     "worst": 2,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 0,
+       "w1": 1,
+       "worst": 2
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -17,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 850,
+    "julSpanFajrIshaMin": 890
+   }
+  },
+  "MN-Ulaanbaatar": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 15,
+     "sunrise": -5,
+     "dhuhr": 5,
+     "asr": 4,
+     "maghrib": 6,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 56.82,
+     "pcWithin1": 98.23,
+     "worst": 4,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 37,
+       "w1": 59,
+       "worst": 4
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 38,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 36,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 33,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 59.49,
+     "pcWithin1": 97.95,
+     "worst": 4,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 34,
+       "w1": 57,
+       "worst": 4
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 34,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 39,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.7,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 773,
+    "julSpanFajrIshaMin": 1351
+   }
+  },
+  "JP-Tokyo": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 83.08,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 83.33,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.3,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 791,
+    "julSpanFajrIshaMin": 1082
+   }
+  },
+  "JP-Osaka": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 3
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 73.99,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 40,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 35,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 74.62,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 37,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.6,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 791,
+    "julSpanFajrIshaMin": 1069
+   }
+  },
+  "JP-Nagoya": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 5
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 77.53,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 77.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 35,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 46,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.3,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 790,
+    "julSpanFajrIshaMin": 1073
+   }
+  },
+  "KR-Seoul": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 77.53,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 42,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 38,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 79.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 40,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 788,
+    "julSpanFajrIshaMin": 1105
+   }
+  },
+  "CN-Beijing": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -5,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 9,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 82.32,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 82.82,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 35,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.5,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 787,
+    "julSpanFajrIshaMin": 1140
+   }
+  },
+  "AF-Kabul": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -4,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 80.05,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 47,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 76.92,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 32,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -3.1,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 792,
+    "julSpanFajrIshaMin": 1069
+   }
+  },
+  "SD-Khartoum": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 90.15,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 90,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 831,
+    "julSpanFajrIshaMin": 934
+   }
+  },
+  "KH-PhnomPenh": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 88.13,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 45,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 89.23,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.1,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 840,
+    "julSpanFajrIshaMin": 913
+   }
+  },
+  "LA-Vientiane": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 92.93,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 89.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -3.2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 825,
+    "julSpanFajrIshaMin": 947
+   }
+  },
+  "UG-Kampala": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.25,
+    "ishaAngle": 16.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 12,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 8
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 88.64,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.41,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 873,
+    "julSpanFajrIshaMin": 869
+   }
+  },
+  "ZW-Harare": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 91.92,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 91.79,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.1,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 946,
+    "julSpanFajrIshaMin": 820
+   }
+  },
+  "PA-PanamaCity": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.12,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 85.13,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 846,
+    "julSpanFajrIshaMin": 901
+   }
+  },
+  "TT-PortOfSpain": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.5,
+    "ishaAngle": 16.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 14,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 5
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 88.38,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.41,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 841,
+    "julSpanFajrIshaMin": 908
+   }
+  },
+  "NI-Managua": {
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 86.11,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 47,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.1,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2,
+    "pcW1Change": null
+   },
+   "seasonalAmplitude": {
+    "baseYear": "2026",
+    "janSpanFajrIshaMin": 839,
+    "julSpanFajrIshaMin": 915
+   }
+  }
+ }
+}

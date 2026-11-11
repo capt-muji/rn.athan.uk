@@ -1,0 +1,351 @@
+{
+ "pairs": {
+  "517->Bıskek": {
+   "faziletId": 517,
+   "fazilet_adi": "Bişkek",
+   "diyanet_city": "Bıskek",
+   "diyanet_country": "KIRGIZISTAN",
+   "shared_days": 66,
+   "fazilet_recipe": {
+    "fa": 19.5,
+    "ia": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "imsak": -10,
+     "sabah": 10,
+     "gunes": -11,
+     "ogle": 0,
+     "ikindi": -2,
+     "aksam": 1,
+     "yatsi": -6
+    }
+   },
+   "imsak": {
+    "n": 66,
+    "median": -14.0,
+    "within1": 0,
+    "worst": 21
+   },
+   "sabah": {
+    "n": 66,
+    "median": 6.0,
+    "within1": 19,
+    "worst": 9
+   },
+   "gunes": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 0,
+    "worst": 3
+   },
+   "ogle": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 51,
+    "worst": 2
+   },
+   "ikindi": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 66,
+    "worst": 1
+   },
+   "aksam": {
+    "n": 66,
+    "median": 0.0,
+    "within1": 66,
+    "worst": 1
+   },
+   "yatsi": {
+    "n": 66,
+    "median": 5.0,
+    "within1": 0,
+    "worst": 7
+   }
+  },
+  "494->Tokyo": {
+   "faziletId": 494,
+   "fazilet_adi": "Tokyo",
+   "diyanet_city": "Tokyo",
+   "diyanet_country": "JAPONYA",
+   "shared_days": 66,
+   "fazilet_recipe": {
+    "fa": 19.5,
+    "ia": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "imsak": -10,
+     "sabah": 10,
+     "gunes": -11,
+     "ogle": 0,
+     "ikindi": -2,
+     "aksam": 0,
+     "yatsi": -4
+    }
+   },
+   "imsak": {
+    "n": 66,
+    "median": -11.5,
+    "within1": 0,
+    "worst": 14
+   },
+   "sabah": {
+    "n": 66,
+    "median": 8.5,
+    "within1": 0,
+    "worst": 10
+   },
+   "gunes": {
+    "n": 66,
+    "median": 4.0,
+    "within1": 0,
+    "worst": 4
+   },
+   "ogle": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 0,
+    "worst": 3
+   },
+   "ikindi": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 42,
+    "worst": 2
+   },
+   "aksam": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 65,
+    "worst": 2
+   },
+   "yatsi": {
+    "n": 66,
+    "median": 6.0,
+    "within1": 0,
+    "worst": 7
+   }
+  },
+  "2592->Pekın": {
+   "faziletId": 2592,
+   "fazilet_adi": "Pekin",
+   "diyanet_city": "Pekın",
+   "diyanet_country": "CIN",
+   "shared_days": 66,
+   "fazilet_recipe": {
+    "fa": 20,
+    "ia": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "imsak": -8,
+     "sabah": 12,
+     "gunes": -12,
+     "ogle": 0,
+     "ikindi": -2,
+     "aksam": 2,
+     "yatsi": -4
+    }
+   },
+   "imsak": {
+    "n": 66,
+    "median": -14.5,
+    "within1": 0,
+    "worst": 19
+   },
+   "sabah": {
+    "n": 66,
+    "median": 5.5,
+    "within1": 10,
+    "worst": 9
+   },
+   "gunes": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 12,
+    "worst": 2
+   },
+   "ogle": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 10,
+    "worst": 2
+   },
+   "ikindi": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 60,
+    "worst": 2
+   },
+   "aksam": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 16,
+    "worst": 3
+   },
+   "yatsi": {
+    "n": 66,
+    "median": 13.5,
+    "within1": 0,
+    "worst": 17
+   }
+  },
+  "608->Seul": {
+   "faziletId": 608,
+   "fazilet_adi": "Seoul",
+   "diyanet_city": "Seul",
+   "diyanet_country": "GUNEY KORE",
+   "shared_days": 66,
+   "fazilet_recipe": {
+    "fa": 19.5,
+    "ia": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "imsak": -10,
+     "sabah": 10,
+     "gunes": -11,
+     "ogle": 0,
+     "ikindi": -2,
+     "aksam": 0,
+     "yatsi": -6
+    }
+   },
+   "imsak": {
+    "n": 66,
+    "median": -12.5,
+    "within1": 0,
+    "worst": 16
+   },
+   "sabah": {
+    "n": 66,
+    "median": 7.5,
+    "within1": 0,
+    "worst": 10
+   },
+   "gunes": {
+    "n": 66,
+    "median": 3.0,
+    "within1": 0,
+    "worst": 4
+   },
+   "ogle": {
+    "n": 66,
+    "median": 2.0,
+    "within1": 21,
+    "worst": 2
+   },
+   "ikindi": {
+    "n": 66,
+    "median": 1.0,
+    "within1": 62,
+    "worst": 2
+   },
+   "aksam": {
+    "n": 66,
+    "median": 0.0,
+    "within1": 66,
+    "worst": 1
+   },
+   "yatsi": {
+    "n": 66,
+    "median": 6.0,
+    "within1": 0,
+    "worst": 7
+   }
+  },
+  "90->Graz": {
+   "faziletId": 90,
+   "fazilet_adi": "Graz",
+   "diyanet_city": "Graz",
+   "diyanet_country": "AVUSTURYA",
+   "shared_days": 66,
+   "fazilet_recipe": {
+    "fa": 19.75,
+    "ia": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "imsak": -11,
+     "sabah": 9,
+     "gunes": -14,
+     "ogle": -3,
+     "ikindi": -5,
+     "aksam": -1,
+     "yatsi": -8
+    }
+   },
+   "imsak": {
+    "n": 66,
+    "median": -46.5,
+    "within1": 0,
+    "worst": 162
+   },
+   "sabah": {
+    "n": 66,
+    "median": -26.5,
+    "within1": 0,
+    "worst": 142
+   },
+   "gunes": {
+    "n": 66,
+    "median": -27.0,
+    "within1": 0,
+    "worst": 57
+   },
+   "ogle": {
+    "n": 66,
+    "median": -27.5,
+    "within1": 0,
+    "worst": 58
+   },
+   "ikindi": {
+    "n": 66,
+    "median": -28.0,
+    "within1": 0,
+    "worst": 59
+   },
+   "aksam": {
+    "n": 66,
+    "median": -28.0,
+    "within1": 0,
+    "worst": 60
+   },
+   "yatsi": {
+    "n": 66,
+    "median": 8.5,
+    "within1": 3,
+    "worst": 41
+   }
+  }
+ },
+ "unresolved": [
+  [
+   31,
+   "Istanbul",
+   "no diyanet match TURKIYE/Istanbul"
+  ],
+  [
+   247,
+   "Berlın",
+   "rows/fit not yet present"
+  ],
+  [
+   631,
+   "Moskova",
+   "rows/fit not yet present"
+  ],
+  [
+   415,
+   "Parıs",
+   "rows/fit not yet present"
+  ],
+  [
+   557,
+   "Amsterdam",
+   "rows/fit not yet present"
+  ],
+  [
+   717,
+   "Astana",
+   "rows/fit not yet present"
+  ]
+ ]
+}

@@ -1,0 +1,206 @@
+{
+ "ahmedabad-idara": {
+  "n": 363,
+  "moved": 307,
+  "pc": 84.6,
+  "meanAbsShift": 0.19
+ },
+ "ahmedabad-tekrawali": {
+  "n": 363,
+  "moved": 304,
+  "pc": 83.7,
+  "meanAbsShift": 0.18
+ },
+ "anantapur-abubakar": {
+  "n": 363,
+  "moved": 265,
+  "pc": 73.0,
+  "meanAbsShift": 0.18
+ },
+ "asansol-ayesha": {
+  "n": 363,
+  "moved": 302,
+  "pc": 83.2,
+  "meanAbsShift": 0.18
+ },
+ "bhavnagar-taqva": {
+  "n": 349,
+  "moved": 283,
+  "pc": 81.1,
+  "meanAbsShift": 0.19
+ },
+ "bidar-ali": {
+  "n": 349,
+  "moved": 272,
+  "pc": 77.9,
+  "meanAbsShift": 0.19
+ },
+ "bishnupur-ramkrishnapur": {
+  "n": 355,
+  "moved": 300,
+  "pc": 84.5,
+  "meanAbsShift": 0.19
+ },
+ "chennai-anjuman-mohammedi": {
+  "n": 349,
+  "moved": 252,
+  "pc": 72.2,
+  "meanAbsShift": 0.15
+ },
+ "chennai-azezziyyah": {
+  "n": 349,
+  "moved": 251,
+  "pc": 71.9,
+  "meanAbsShift": 0.17
+ },
+ "chennai-mohammedia": {
+  "n": 335,
+  "moved": 236,
+  "pc": 70.4,
+  "meanAbsShift": 0.17
+ },
+ "etawah-darulhuda": {
+  "n": 335,
+  "moved": 277,
+  "pc": 82.7,
+  "meanAbsShift": 0.18
+ },
+ "guntur-firdous": {
+  "n": 341,
+  "moved": 259,
+  "pc": 76.0,
+  "meanAbsShift": 0.17
+ },
+ "howrah-aaisha": {
+  "n": 363,
+  "moved": 309,
+  "pc": 85.1,
+  "meanAbsShift": 0.19
+ },
+ "hyderabad-farhat": {
+  "n": 342,
+  "moved": 260,
+  "pc": 76.0,
+  "meanAbsShift": 0.18
+ },
+ "hyderabad-yaseen": {
+  "n": 349,
+  "moved": 265,
+  "pc": 75.9,
+  "meanAbsShift": 0.19
+ },
+ "jaigahan-noori": {
+  "n": 335,
+  "moved": 296,
+  "pc": 88.4,
+  "meanAbsShift": 0.19
+ },
+ "jaipur-mansarovar": {
+  "n": 342,
+  "moved": 291,
+  "pc": 85.1,
+  "meanAbsShift": 0.2
+ },
+ "kalamb-jama": {
+  "n": 321,
+  "moved": 254,
+  "pc": 79.1,
+  "meanAbsShift": 0.18
+ },
+ "kgf-quba": {
+  "n": 348,
+  "moved": 253,
+  "pc": 72.7,
+  "meanAbsShift": 0.18
+ },
+ "kodagu-moza": {
+  "n": 342,
+  "moved": 251,
+  "pc": 73.4,
+  "meanAbsShift": 0.17
+ },
+ "mughalsarai-ghausia": {
+  "n": 349,
+  "moved": 294,
+  "pc": 84.2,
+  "meanAbsShift": 0.19
+ },
+ "mum-risalat": {
+  "n": 342,
+  "moved": 272,
+  "pc": 79.5,
+  "meanAbsShift": 0.17
+ },
+ "murshidabad-jamiya": {
+  "n": 342,
+  "moved": 289,
+  "pc": 84.5,
+  "meanAbsShift": 0.19
+ },
+ "pune-ameer-hamza": {
+  "n": 342,
+  "moved": 276,
+  "pc": 80.7,
+  "meanAbsShift": 0.19
+ },
+ "ramagundam-makka": {
+  "n": 342,
+  "moved": 269,
+  "pc": 78.7,
+  "meanAbsShift": 0.18
+ },
+ "ramanagara-hussain": {
+  "n": 342,
+  "moved": 261,
+  "pc": 76.3,
+  "meanAbsShift": 0.18
+ },
+ "shahabad-bilal": {
+  "n": 342,
+  "moved": 303,
+  "pc": 88.6,
+  "meanAbsShift": 0.2
+ },
+ "solapur-qadriya": {
+  "n": 328,
+  "moved": 254,
+  "pc": 77.4,
+  "meanAbsShift": 0.17
+ },
+ "thenhipalam-noorayn": {
+  "n": 342,
+  "moved": 230,
+  "pc": 67.3,
+  "meanAbsShift": 0.17
+ },
+ "tiruchirappalli-thowheed": {
+  "n": 328,
+  "moved": 239,
+  "pc": 72.9,
+  "meanAbsShift": 0.17
+ },
+ "utelwa-marwa": {
+  "n": 342,
+  "moved": 292,
+  "pc": 85.4,
+  "meanAbsShift": 0.19
+ },
+ "vijayapura-bandenawaz": {
+  "n": 363,
+  "moved": 287,
+  "pc": 79.1,
+  "meanAbsShift": 0.19
+ },
+ "vylathur-thozhiyoor": {
+  "n": 370,
+  "moved": 259,
+  "pc": 70.0,
+  "meanAbsShift": 0.17
+ },
+ "wanaparthy-mecca": {
+  "n": 342,
+  "moved": 270,
+  "pc": 78.9,
+  "meanAbsShift": 0.18
+ }
+}

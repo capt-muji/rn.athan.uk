@@ -1,0 +1,150 @@
+{
+ "cities": [
+  {
+   "countryId": 1,
+   "country": "Türkiye",
+   "cityId": 31,
+   "adi": "İstanbul"
+  },
+  {
+   "countryId": 48,
+   "country": "Rusya",
+   "cityId": 631,
+   "adi": "Moskova (Москва)"
+  },
+  {
+   "countryId": 14,
+   "country": "Almanya",
+   "cityId": 247,
+   "adi": "Berlin"
+  },
+  {
+   "countryId": 57,
+   "country": "ABD",
+   "cityId": 692,
+   "adi": "New York City, NY"
+  },
+  {
+   "countryId": 97,
+   "country": "Hindistan",
+   "cityId": 2602,
+   "adi": "Delhi"
+  },
+  {
+   "countryId": 43,
+   "country": "Endonezya",
+   "cityId": 581,
+   "adi": "Jakarta"
+  },
+  {
+   "countryId": 33,
+   "country": "Suudi Arabistan",
+   "cityId": 847,
+   "adi": "Riyad"
+  },
+  {
+   "countryId": 17,
+   "country": "Kenya",
+   "cityId": 361,
+   "adi": "Nairobi"
+  },
+  {
+   "countryId": 59,
+   "country": "Güney Afrika",
+   "cityId": 705,
+   "adi": "Johannesburg"
+  },
+  {
+   "countryId": 130,
+   "country": "Brezilya",
+   "cityId": 3119,
+   "adi": "São Paulo (S. P.)"
+  },
+  {
+   "countryId": 5,
+   "country": "Avustralya",
+   "cityId": 139,
+   "adi": "Sydney"
+  },
+  {
+   "countryId": 30,
+   "country": "Japonya",
+   "cityId": 494,
+   "adi": "Tokyo"
+  },
+  {
+   "countryId": 60,
+   "country": "Kazakistan",
+   "cityId": 717,
+   "adi": "Astana"
+  },
+  {
+   "countryId": 121,
+   "country": "İzlanda",
+   "cityId": 3069,
+   "adi": "Reykjavik"
+  },
+  {
+   "countryId": 57,
+   "country": "ABD",
+   "cityId": 5542,
+   "adi": "Anchorage, AK"
+  },
+  {
+   "countryId": 51,
+   "country": "Singapur",
+   "cityId": 671,
+   "adi": "Singapore"
+  },
+  {
+   "countryId": 67,
+   "country": "Uganda",
+   "cityId": 782,
+   "adi": "Kampala"
+  },
+  {
+   "countryId": 34,
+   "country": "Özbekistan",
+   "cityId": 532,
+   "adi": "Taşkent (Toshkent)"
+  },
+  {
+   "countryId": 130,
+   "country": "Brezilya",
+   "cityId": 7721,
+   "adi": "Colombo(P)"
+  },
+  {
+   "countryId": 63,
+   "country": "Moğolistan",
+   "cityId": 737,
+   "adi": "Ulaanbaatar"
+  }
+ ],
+ "dates": [
+  "2020-03-20",
+  "2020-06-21",
+  "2020-12-21",
+  "2021-03-20",
+  "2021-06-21",
+  "2021-12-21",
+  "2022-03-20",
+  "2022-06-21",
+  "2022-12-21",
+  "2023-03-20",
+  "2023-06-21",
+  "2023-12-21",
+  "2024-03-20",
+  "2024-06-21",
+  "2024-12-21",
+  "2028-03-20",
+  "2028-06-21",
+  "2028-12-21",
+  "2029-03-20",
+  "2029-06-21",
+  "2029-12-21",
+  "2030-03-20",
+  "2030-06-21",
+  "2030-12-21"
+ ]
+}

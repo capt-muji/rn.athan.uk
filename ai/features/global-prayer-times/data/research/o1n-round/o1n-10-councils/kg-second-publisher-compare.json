@@ -1,0 +1,870 @@
+{
+ "pairs": [
+  {
+   "city": "balykchy",
+   "lat": 42.45,
+   "lng": 76.162,
+   "tawkitSlug": "balykchy",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 38,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "batken",
+   "lat": 40.02,
+   "lng": 70.809,
+   "tawkitSlug": "batken",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 40,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "bishkek",
+   "lat": 42.89,
+   "lng": 74.601,
+   "tawkitSlug": "bishkek",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 28,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "cholponata",
+   "lat": 42.62,
+   "lng": 77.059,
+   "tawkitSlug": "cholpon-ata",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 33,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "kant",
+   "lat": 42.91,
+   "lng": 74.883,
+   "tawkitSlug": "kant",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 28,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "karabalta",
+   "lat": 42.84,
+   "lng": 73.882,
+   "tawkitSlug": "kara-balta",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 24,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "karasuu",
+   "lat": 40.72,
+   "lng": 72.882,
+   "tawkitSlug": "kara-suu",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 60,
+     "worst": 2
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 37,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "kemin",
+   "lat": 42.76,
+   "lng": 75.662,
+   "tawkitSlug": "kemin",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 24,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "kochkor",
+   "lat": 42.29,
+   "lng": 75.751,
+   "tawkitSlug": "kochkor",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 38,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "kyzylkiya",
+   "tawkit": null,
+   "note": "no tawkit settlement"
+  },
+  {
+   "city": "mailuusuu",
+   "tawkit": null,
+   "note": "no tawkit settlement"
+  },
+  {
+   "city": "nookat",
+   "lat": 40.3,
+   "lng": 72.632,
+   "tawkitSlug": "nookat",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 34,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "osh",
+   "lat": 40.55,
+   "lng": 72.809,
+   "tawkitSlug": "osh",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 60,
+     "worst": 2
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 60,
+     "worst": 2
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 34,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "suluktu",
+   "lat": 39.98,
+   "lng": 69.559,
+   "tawkitSlug": "suluktu",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 43,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "suzak",
+   "lat": 40.88,
+   "lng": 72.897,
+   "tawkitSlug": "suzak",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 30,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "talas",
+   "lat": 42.54,
+   "lng": 72.206,
+   "tawkitSlug": "talas",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 36,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "tashkumyr",
+   "lat": 41.33,
+   "lng": 72.206,
+   "tawkitSlug": "tash-kumyr",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 31,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "tokmok",
+   "lat": 42.84,
+   "lng": 75.294,
+   "tawkitSlug": "tokmok",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 0,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 7
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 27,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "toktogul",
+   "lat": 41.89,
+   "lng": 72.941,
+   "tawkitSlug": "toktogul",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 59,
+     "worst": 2
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 2,
+     "within1": 24,
+     "worst": 2
+    }
+   }
+  },
+  {
+   "city": "uzgen",
+   "lat": 40.76,
+   "lng": 73.294,
+   "tawkitSlug": "uzgen",
+   "days": 61,
+   "perCity": {
+    "fajr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "sunrise": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "dhuhr": {
+     "n": 61,
+     "median": 1,
+     "within1": 61,
+     "worst": 1
+    },
+    "asr": {
+     "n": 61,
+     "median": -1,
+     "within1": 61,
+     "worst": 1
+    },
+    "maghrib": {
+     "n": 61,
+     "median": -6,
+     "within1": 0,
+     "worst": 6
+    },
+    "isha": {
+     "n": 61,
+     "median": 1,
+     "within1": 34,
+     "worst": 2
+    }
+   }
+  }
+ ],
+ "all": {
+  "fajr": {
+   "n": 1098,
+   "within1": 1095,
+   "rate": 99.73,
+   "worst": 2,
+   "medianSpread": "1..1"
+  },
+  "sunrise": {
+   "n": 1098,
+   "within1": 1096,
+   "rate": 99.82,
+   "worst": 2,
+   "medianSpread": "1..1"
+  },
+  "dhuhr": {
+   "n": 1098,
+   "within1": 1098,
+   "rate": 100,
+   "worst": 1,
+   "medianSpread": "0..1"
+  },
+  "asr": {
+   "n": 1098,
+   "within1": 1098,
+   "rate": 100,
+   "worst": 1,
+   "medianSpread": "-1..-1"
+  },
+  "maghrib": {
+   "n": 1098,
+   "within1": 0,
+   "rate": 0,
+   "worst": 7,
+   "medianSpread": "-6..-6"
+  },
+  "isha": {
+   "n": 1098,
+   "within1": 583,
+   "rate": 53.1,
+   "worst": 2,
+   "medianSpread": "1..2"
+  }
+ },
+ "perColumn": {},
+ "note": "muftiyat year-blind (nominal 2026 labels); tawkit rolling window 2026-11-01..2027-10-31; month-day join"
+}

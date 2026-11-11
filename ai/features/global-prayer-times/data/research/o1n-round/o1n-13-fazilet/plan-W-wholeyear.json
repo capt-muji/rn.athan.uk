@@ -1,0 +1,62 @@
+[
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 31,
+  "adi": "İstanbul"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 631,
+  "adi": "Moskova (Москва)"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 247,
+  "adi": "Berlin"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 692,
+  "adi": "New York City, NY"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 2602,
+  "adi": "Delhi"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 3119,
+  "adi": "São Paulo (S. P.)"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 705,
+  "adi": "Johannesburg"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 139,
+  "adi": "Sydney"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7721,
+  "adi": "Colombo(P)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 737,
+  "adi": "Ulaanbaatar"
+ }
+]

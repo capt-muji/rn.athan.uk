@@ -1,0 +1,818 @@
+[
+ {
+  "city": "AMSTERDAM",
+  "lat": 52.31,
+  "devDays": {
+   "imsak": 136,
+   "isha": 363,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2125,
+    "exact": 74,
+    "n": 136,
+    "pct": 54.4
+   },
+   "isha": {
+    "fr": 0.15,
+    "exact": 20,
+    "n": 363,
+    "pct": 5.5
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.50",
+    "exact": 10,
+    "n": 136,
+    "pct": 7.4
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 363,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 136,
+    "pct": 0
+   },
+   "isha": {
+    "k": 32,
+    "exact": 10,
+    "n": 363,
+    "pct": 2.8
+   }
+  }
+ },
+ {
+  "city": "STOCKHOLM",
+  "lat": 59.39,
+  "devDays": {
+   "imsak": 182,
+   "isha": 363,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.22,
+    "exact": 78,
+    "n": 182,
+    "pct": 42.9
+   },
+   "isha": {
+    "fr": 0.1275,
+    "exact": 11,
+    "n": 363,
+    "pct": 3
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "17.75",
+    "exact": 14,
+    "n": 182,
+    "pct": 7.7
+   },
+   "isha": {
+    "ang": "15.00",
+    "exact": 13,
+    "n": 363,
+    "pct": 3.6
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 182,
+    "pct": 0
+   },
+   "isha": {
+    "k": -71,
+    "exact": 2,
+    "n": 363,
+    "pct": 0.6
+   }
+  }
+ },
+ {
+  "city": "UBERLINGEN",
+  "lat": 47.8,
+  "devDays": {
+   "imsak": 96,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2325,
+    "exact": 27,
+    "n": 96,
+    "pct": 28.1
+   },
+   "isha": {
+    "fr": 0.1575,
+    "exact": 25,
+    "n": 365,
+    "pct": 6.8
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "13.00",
+    "exact": 12,
+    "n": 96,
+    "pct": 12.5
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 96,
+    "pct": 0
+   },
+   "isha": {
+    "k": -5,
+    "exact": 12,
+    "n": 365,
+    "pct": 3.3
+   }
+  }
+ },
+ {
+  "city": "BERLIN",
+  "lat": 52.56,
+  "devDays": {
+   "imsak": 130,
+   "isha": 363,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.215,
+    "exact": 65,
+    "n": 130,
+    "pct": 50
+   },
+   "isha": {
+    "fr": 0.1475,
+    "exact": 11,
+    "n": 363,
+    "pct": 3
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.50",
+    "exact": 13,
+    "n": 130,
+    "pct": 10
+   },
+   "isha": {
+    "ang": "17.75",
+    "exact": 1,
+    "n": 363,
+    "pct": 0.3
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 130,
+    "pct": 0
+   },
+   "isha": {
+    "k": 35,
+    "exact": 11,
+    "n": 363,
+    "pct": 3
+   }
+  }
+ },
+ {
+  "city": "LONDONDERRY",
+  "lat": 55.06,
+  "devDays": {
+   "imsak": 150,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.22,
+    "exact": 76,
+    "n": 150,
+    "pct": 50.7
+   },
+   "isha": {
+    "fr": 0.1425,
+    "exact": 18,
+    "n": 365,
+    "pct": 4.9
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "17.75",
+    "exact": 10,
+    "n": 150,
+    "pct": 6.7
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 150,
+    "pct": 0
+   },
+   "isha": {
+    "k": 62,
+    "exact": 11,
+    "n": 365,
+    "pct": 3
+   }
+  }
+ },
+ {
+  "city": "PARIS",
+  "lat": 48.93,
+  "devDays": {
+   "imsak": 116,
+   "isha": 362,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2075,
+    "exact": 39,
+    "n": 116,
+    "pct": 33.6
+   },
+   "isha": {
+    "fr": 0.155,
+    "exact": 18,
+    "n": 362,
+    "pct": 5
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "11.50",
+    "exact": 18,
+    "n": 116,
+    "pct": 15.5
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 362,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 116,
+    "pct": 0
+   },
+   "isha": {
+    "k": 3,
+    "exact": 12,
+    "n": 362,
+    "pct": 3.3
+   }
+  }
+ },
+ {
+  "city": "NEW LONDON",
+  "lat": 41.34,
+  "devDays": {
+   "imsak": 1,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.1775,
+    "exact": 1,
+    "n": 1,
+    "pct": 100
+   },
+   "isha": {
+    "fr": 0.1675,
+    "exact": 25,
+    "n": 365,
+    "pct": 6.8
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 1,
+    "pct": 0
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 1,
+    "pct": 0
+   },
+   "isha": {
+    "k": -43,
+    "exact": 15,
+    "n": 365,
+    "pct": 4.1
+   }
+  }
+ },
+ {
+  "city": "LONDON",
+  "lat": 39.84,
+  "devDays": {
+   "imsak": 3,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.125,
+    "exact": 1,
+    "n": 3,
+    "pct": 33.3
+   },
+   "isha": {
+    "fr": 0.17,
+    "exact": 20,
+    "n": 365,
+    "pct": 5.5
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 3,
+    "pct": 0
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 3,
+    "pct": 0
+   },
+   "isha": {
+    "k": -49,
+    "exact": 16,
+    "n": 365,
+    "pct": 4.4
+   }
+  }
+ },
+ {
+  "city": "OSLO",
+  "lat": 59.85,
+  "devDays": {
+   "imsak": 184,
+   "isha": 361,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2225,
+    "exact": 69,
+    "n": 184,
+    "pct": 37.5
+   },
+   "isha": {
+    "fr": 0.125,
+    "exact": 13,
+    "n": 361,
+    "pct": 3.6
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "10.75",
+    "exact": 3,
+    "n": 184,
+    "pct": 1.6
+   },
+   "isha": {
+    "ang": "14.50",
+    "exact": 12,
+    "n": 361,
+    "pct": 3.3
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 184,
+    "pct": 0
+   },
+   "isha": {
+    "k": -73,
+    "exact": 2,
+    "n": 361,
+    "pct": 0.6
+   }
+  }
+ },
+ {
+  "city": "LODZ",
+  "lat": 51.77,
+  "devDays": {
+   "imsak": 126,
+   "isha": 364,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.21,
+    "exact": 69,
+    "n": 126,
+    "pct": 54.8
+   },
+   "isha": {
+    "fr": 0.15,
+    "exact": 16,
+    "n": 364,
+    "pct": 4.4
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.75",
+    "exact": 12,
+    "n": 126,
+    "pct": 9.5
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 364,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 126,
+    "pct": 0
+   },
+   "isha": {
+    "k": 27,
+    "exact": 12,
+    "n": 364,
+    "pct": 3.3
+   }
+  }
+ },
+ {
+  "city": "HAMEENKYLA (Helsinki)",
+  "lat": 60.18,
+  "devDays": {
+   "imsak": 205,
+   "isha": 359,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.22,
+    "exact": 67,
+    "n": 205,
+    "pct": 32.7
+   },
+   "isha": {
+    "fr": 0.1225,
+    "exact": 14,
+    "n": 359,
+    "pct": 3.9
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.25",
+    "exact": 2,
+    "n": 205,
+    "pct": 1
+   },
+   "isha": {
+    "ang": "14.00",
+    "exact": 10,
+    "n": 359,
+    "pct": 2.8
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 205,
+    "pct": 0
+   },
+   "isha": {
+    "k": -75,
+    "exact": 2,
+    "n": 359,
+    "pct": 0.6
+   }
+  }
+ },
+ {
+  "city": "NUMMELA (Helsinki)",
+  "lat": 60.3,
+  "devDays": {
+   "imsak": 178,
+   "isha": 362,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2175,
+    "exact": 64,
+    "n": 178,
+    "pct": 36
+   },
+   "isha": {
+    "fr": 0.1225,
+    "exact": 10,
+    "n": 362,
+    "pct": 2.8
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.25",
+    "exact": 4,
+    "n": 178,
+    "pct": 2.2
+   },
+   "isha": {
+    "ang": "14.25",
+    "exact": 10,
+    "n": 362,
+    "pct": 2.8
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 178,
+    "pct": 0
+   },
+   "isha": {
+    "k": -75,
+    "exact": 2,
+    "n": 362,
+    "pct": 0.6
+   }
+  }
+ },
+ {
+  "city": "HELSINKI",
+  "lat": 60.13,
+  "devDays": {
+   "imsak": 179,
+   "isha": 359,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.2075,
+    "exact": 62,
+    "n": 179,
+    "pct": 34.6
+   },
+   "isha": {
+    "fr": 0.125,
+    "exact": 10,
+    "n": 359,
+    "pct": 2.8
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.25",
+    "exact": 2,
+    "n": 179,
+    "pct": 1.1
+   },
+   "isha": {
+    "ang": "14.25",
+    "exact": 9,
+    "n": 359,
+    "pct": 2.5
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 179,
+    "pct": 0
+   },
+   "isha": {
+    "k": -75,
+    "exact": 2,
+    "n": 359,
+    "pct": 0.6
+   }
+  }
+ },
+ {
+  "city": "LONDON",
+  "lat": 42.97,
+  "devDays": {
+   "imsak": 0,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.01,
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "fr": 0.165,
+    "exact": 22,
+    "n": 365,
+    "pct": 6
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "k": -35,
+    "exact": 15,
+    "n": 365,
+    "pct": 4.1
+   }
+  }
+ },
+ {
+  "city": "EAST LONDON",
+  "lat": -33,
+  "devDays": {
+   "imsak": 2,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.1075,
+    "exact": 1,
+    "n": 2,
+    "pct": 50
+   },
+   "isha": {
+    "fr": 0.1775,
+    "exact": 20,
+    "n": 365,
+    "pct": 5.5
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "17.75",
+    "exact": 1,
+    "n": 2,
+    "pct": 50
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 2,
+    "pct": 0
+   },
+   "isha": {
+    "k": -74,
+    "exact": 17,
+    "n": 365,
+    "pct": 4.7
+   }
+  }
+ },
+ {
+  "city": "NEW AMSTERDAM",
+  "lat": 6.2,
+  "devDays": {
+   "imsak": 0,
+   "isha": 365,
+   "total": 365
+  },
+  "nightFraction": {
+   "imsak": {
+    "fr": 0.01,
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "fr": 0.2575,
+    "exact": 68,
+    "n": 365,
+    "pct": 18.6
+   }
+  },
+  "angle": {
+   "imsak": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "ang": "9.00",
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  },
+  "midnight": {
+   "imsak": {
+    "k": -75,
+    "exact": 0,
+    "n": 0,
+    "pct": 100
+   },
+   "isha": {
+    "k": -75,
+    "exact": 0,
+    "n": 365,
+    "pct": 0
+   }
+  }
+ }
+]

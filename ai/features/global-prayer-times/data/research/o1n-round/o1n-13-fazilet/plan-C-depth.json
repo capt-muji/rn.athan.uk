@@ -1,0 +1,3284 @@
+[
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4957,
+  "adi": "Abakan (Абакан)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4994,
+  "adi": "Abdulino (Абдулино)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4985,
+  "adi": "Achinsk (Ачинск)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4826,
+  "adi": "Adamovka (Адамовка)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4719,
+  "adi": "Agryz (Агрыз)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 5723,
+  "adi": "Akbulak (Акбулак), ORE"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4643,
+  "adi": "Aktanysh (Актаныш)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4735,
+  "adi": "Akyar (Акъяр)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4546,
+  "adi": "Alashayka (Алашайка)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4663,
+  "adi": "Alekseevka (Алексеевка)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 7626,
+  "adi": "Alekseyevskoye- Алексеевское"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 5725,
+  "adi": "Almenevo, KGN (Альменево)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 784,
+  "adi": "Almetyevsk (Альметьевск)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 785,
+  "adi": "Amursk (Амурск)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 5524,
+  "adi": "Anapa (Анапа)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4951,
+  "adi": "Angarsk (Ангарск)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 7625,
+  "adi": "Apastovo- Апастово"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4794,
+  "adi": "Aprelevka (Апрелевка)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4571,
+  "adi": "Apsheronsk (Апшеронск)"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 4544,
+  "adi": "Argayash (Аргаяш)"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5937,
+  "adi": "Akron, OH"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5364,
+  "adi": "Alameda, CA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5918,
+  "adi": "Albany, NY"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 4011,
+  "adi": "Albuquerque, NM"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 3240,
+  "adi": "Alexandria, VA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5952,
+  "adi": "Allentown, PA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 4593,
+  "adi": "Alpharetta, GA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5515,
+  "adi": "Altoona, PA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5752,
+  "adi": "Ames, IA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5884,
+  "adi": "Amherst, MA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 3742,
+  "adi": "Anaheim, CA"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5542,
+  "adi": "Anchorage, AK"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5773,
+  "adi": "Anderson, MO"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 5818,
+  "adi": "Ann Arbor, MI"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 3756,
+  "adi": "Annandale, VA"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 236,
+  "adi": "Aachen"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 6892,
+  "adi": "Aalen"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2843,
+  "adi": "Achim"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 237,
+  "adi": "Ahaus"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2829,
+  "adi": "Ahlen"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2891,
+  "adi": "Allersberg"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2856,
+  "adi": "Alsdorf"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 7988,
+  "adi": "Altenkirchen"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2899,
+  "adi": "Altensteig"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 6893,
+  "adi": "Alzey"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2892,
+  "adi": "Amberg"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 2893,
+  "adi": "Ansbach"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 6894,
+  "adi": "Arnsberg"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 7641,
+  "adi": "Arnstadt "
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 238,
+  "adi": "Aschaffenburg"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7101,
+  "adi": "Adoni"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7313,
+  "adi": "Agartala"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 2617,
+  "adi": "Agra"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 2604,
+  "adi": "Ahmedabad"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7243,
+  "adi": "Ahmednagar"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7271,
+  "adi": "Aizawl"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7281,
+  "adi": "Ajmer"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7244,
+  "adi": "Akola"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7209,
+  "adi": "Alappuzha"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7314,
+  "adi": "Aligarh"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7282,
+  "adi": "Alwar"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7102,
+  "adi": "Amaravati AP"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7177,
+  "adi": "Ambala"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7292,
+  "adi": "Ambattur"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 7245,
+  "adi": "Ambernath"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7688,
+  "adi": "Abaetetuba"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7689,
+  "adi": "Americana"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7690,
+  "adi": "Aparecida de Goiania"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7692,
+  "adi": "Aracaju"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7691,
+  "adi": "Aracatuba"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7693,
+  "adi": "Ararangua"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7694,
+  "adi": "Araraquara"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 7695,
+  "adi": "Atalaia(AL)"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 131,
+  "adi": "Adelaide"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5197,
+  "adi": "Albany"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5264,
+  "adi": "Albury"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 3819,
+  "adi": "Alice Springs"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5155,
+  "adi": "Alice Well(NT)"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5265,
+  "adi": "Armidale"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5161,
+  "adi": "Ashgrove(Q)"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 5162,
+  "adi": "Ayr"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3478,
+  "adi": "Altach"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3479,
+  "adi": "Althofen"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 82,
+  "adi": "Amstetten"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3480,
+  "adi": "Andelsbuch"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 83,
+  "adi": "Bad Gastein"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3481,
+  "adi": "Bad Hofgastein"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3482,
+  "adi": "Bad Ischl"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 3483,
+  "adi": "Baden"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 362,
+  "adi": "Aberdeen"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 8183,
+  "adi": "Aberffraw"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 363,
+  "adi": "Aberystwyth"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3366,
+  "adi": "Abingdon"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 8179,
+  "adi": "Amlwch"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3367,
+  "adi": "Aylesbury"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 8166,
+  "adi": "Bangor"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3368,
+  "adi": "Barnet"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3369,
+  "adi": "Barrow in Furness"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3370,
+  "adi": "Basildon"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3371,
+  "adi": "Basingstoke"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 3372,
+  "adi": "Bath"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4057,
+  "adi": "Abay (Karaganda)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4058,
+  "adi": "Akhmetau"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4059,
+  "adi": "Akkol (Ekibastuz)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4060,
+  "adi": "Akkol (Taraz)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 6888,
+  "adi": "Akmol (Tselinograd)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4061,
+  "adi": "Aksengir"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4062,
+  "adi": "Akshiy (Almatı)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 714,
+  "adi": "Aktau"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 715,
+  "adi": "Aktöbe"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4063,
+  "adi": "Akzhar (Zhambyl)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4064,
+  "adi": "Alekseyevka (Pavlodar)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 716,
+  "adi": "Almatı"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4065,
+  "adi": "Anar (Aqmola)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 6658,
+  "adi": "Andreyevka"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4066,
+  "adi": "Arasan"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4055,
+  "adi": "Arkalyk"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4067,
+  "adi": "Arys"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4068,
+  "adi": "Ashcysay (Türkistan)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 6881,
+  "adi": "Astrakhanka"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4069,
+  "adi": "Atabay"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4056,
+  "adi": "Atbasar"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4070,
+  "adi": "Atirav"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4534,
+  "adi": "Ayagoz (Ayaguz)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 5544,
+  "adi": "Ayteke Bi"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4071,
+  "adi": "Badam"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4072,
+  "adi": "Bakyrly"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 719,
+  "adi": "Balkhash"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4074,
+  "adi": "Bautino"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4075,
+  "adi": "Belyye Vody"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 6880,
+  "adi": "Bestobe"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 7499,
+  "adi": "Beyneu"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4073,
+  "adi": "Boskamys"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4076,
+  "adi": "Bostandyk (Taraz)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 8351,
+  "adi": "Botakara"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4077,
+  "adi": "Bugun (Türkistan)"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4078,
+  "adi": "Burunday"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4079,
+  "adi": "Chakpak"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4080,
+  "adi": "Chayan"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 720,
+  "adi": "Chimkent"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 4081,
+  "adi": "Chulakkurgan"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6947,
+  "adi": "Acqui Terme"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6948,
+  "adi": "Agrigento"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6949,
+  "adi": "Alassio"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6950,
+  "adi": "Alba, Piyemonte"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6951,
+  "adi": "Albenga"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 2943,
+  "adi": "Alessandria"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6952,
+  "adi": "Alghero"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 6953,
+  "adi": "Ancona"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 7529,
+  "adi": "Abbeville"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 7530,
+  "adi": "Albert, Somme"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 2923,
+  "adi": "Albertville"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 3285,
+  "adi": "Alençon"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 7595,
+  "adi": "Allonnes"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 3286,
+  "adi": "Amiens"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 2934,
+  "adi": "Angers"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 2924,
+  "adi": "Annecy"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 5047,
+  "adi": "Acornhoek"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 3933,
+  "adi": "Alexandra"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 5048,
+  "adi": "Balfour "
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 5049,
+  "adi": "Barberton"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 7435,
+  "adi": "Beaufort West"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 7440,
+  "adi": "Bela-Bela"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 5050,
+  "adi": "Belfast"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 6358,
+  "adi": "Benoni"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 7438,
+  "adi": "Bergrivier"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 5051,
+  "adi": "Bethal"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 217,
+  "adi": "Aarau"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6235,
+  "adi": "Aarburg"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6236,
+  "adi": "Allschwil"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6237,
+  "adi": "Amriswil"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 3631,
+  "adi": "Andermatt"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6246,
+  "adi": "Appenzell"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6247,
+  "adi": "Arbon"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 6248,
+  "adi": "Arch"
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 4328,
+  "adi": "Acapulco de Juárez"
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 4327,
+  "adi": "Aguascalientes"
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 8220,
+  "adi": "Allende, Coahuila"
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 8221,
+  "adi": "Apatzingán, Mic."
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 8214,
+  "adi": "Arandas, Jal."
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 8215,
+  "adi": "Atlixco"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3958,
+  "adi": "Changchun"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3959,
+  "adi": "Changsha"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3957,
+  "adi": "Changzhou"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3961,
+  "adi": "Chengdu"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3955,
+  "adi": "Chongqing"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3962,
+  "adi": "Dalian"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3963,
+  "adi": "Dongguan"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3964,
+  "adi": "Foshan"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3965,
+  "adi": "Fuzhou"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 2594,
+  "adi": "Guangzhou"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3966,
+  "adi": "Guiyang"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3967,
+  "adi": "Hangzhou"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7865,
+  "adi": "Abbotsford BC"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7882,
+  "adi": "Almonte ON"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7883,
+  "adi": "Arnprior ON"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7884,
+  "adi": "Aurora ON"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7885,
+  "adi": "Aylmer On"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 7863,
+  "adi": "Banff AB"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 3727,
+  "adi": "A Coruña"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6779,
+  "adi": "Albacete"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6780,
+  "adi": "Alcalá de Henares"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 357,
+  "adi": "Alicante"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6781,
+  "adi": "Almería"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6782,
+  "adi": "Arrecife"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6783,
+  "adi": "Badajoz"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 6817,
+  "adi": "Benavente, Zamora"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 72,
+  "adi": "Adana"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 74,
+  "adi": "Adıyaman"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 75,
+  "adi": "Afyon"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 77,
+  "adi": "Aksaray"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 78,
+  "adi": "Amasya"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 80,
+  "adi": "Antalya"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 81,
+  "adi": "Ardahan"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 1,
+  "adi": "Artvin"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 2,
+  "adi": "Aydın"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 76,
+  "adi": "Ağrı"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 3,
+  "adi": "Balıkesir"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 4,
+  "adi": "Bartın"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 5,
+  "adi": "Batman"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 6,
+  "adi": "Bayburt"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 7,
+  "adi": "Bilecik"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 8,
+  "adi": "Bingöl"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 9,
+  "adi": "Bitlis"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 10,
+  "adi": "Bolu"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 11,
+  "adi": "Burdur"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 12,
+  "adi": "Bursa"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 16,
+  "adi": "Denizli"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 17,
+  "adi": "Diyarbakır"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 18,
+  "adi": "Düzce"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 19,
+  "adi": "Edirne"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 20,
+  "adi": "Elazığ"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 21,
+  "adi": "Erzincan"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 22,
+  "adi": "Erzurum"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 23,
+  "adi": "Eskişehir"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 24,
+  "adi": "Gaziantep"
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 25,
+  "adi": "Giresun"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8227,
+  "adi": "Ak Terek"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8226,
+  "adi": "Ak-Bulak, Osh"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8390,
+  "adi": "Ak-Muz"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4268,
+  "adi": "Ak-Suu"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8391,
+  "adi": "Ak-Talaa"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4270,
+  "adi": "Ala-Buka"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4282,
+  "adi": "Aravan"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4277,
+  "adi": "At-Başı"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4276,
+  "adi": "Baetov"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 4286,
+  "adi": "Bakay-Ata"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8392,
+  "adi": "Barskoon"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8393,
+  "adi": "Bash-Kurgandy"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6437,
+  "adi": "Aktash (Narpay)"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6465,
+  "adi": "Almalık (Olmaliq)"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6438,
+  "adi": "Andijan"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6439,
+  "adi": "Angren"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6440,
+  "adi": "Beruni"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6441,
+  "adi": "Bulungur"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6442,
+  "adi": "Chelek"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6443,
+  "adi": "Chinaz"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6444,
+  "adi": "Chirchiq"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6451,
+  "adi": "Cizzak (Jizzakh)"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6436,
+  "adi": "Fergana"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 6445,
+  "adi": "Galaasiya"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4692,
+  "adi": "Abdurahmoni Jomi"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4681,
+  "adi": "Ayni"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4698,
+  "adi": "Bohtar (Qurghonteppa)"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4680,
+  "adi": "Buston "
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4693,
+  "adi": "Danghara"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4709,
+  "adi": "Darvoz"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 5478,
+  "adi": "Dusti"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4689,
+  "adi": "Faizobod"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4694,
+  "adi": "Farkhor"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4738,
+  "adi": "Fayzabad"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 433,
+  "adi": "Adigeni"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 434,
+  "adi": "Akhalkalaki"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 435,
+  "adi": "Akhaltsikhe"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 436,
+  "adi": "Akhmeta"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 437,
+  "adi": "Batumi"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 6826,
+  "adi": "Bolnisi"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 3932,
+  "adi": "Chiatura"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 6103,
+  "adi": "Chokhatauri"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 4912,
+  "adi": "Dedoplistsqaro"
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "cityId": 6827,
+  "adi": "Dmanisi"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8336,
+  "adi": "Altansögs sum (Tsagaantunge)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 885,
+  "adi": "Altay (Govi-Altay)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8332,
+  "adi": "Altay sum (Chihertei)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8335,
+  "adi": "Bayannuur sum (Tsul-Ulaan)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8339,
+  "adi": "Bulgan (Ölgii)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 886,
+  "adi": "Bulgan sum (Khovd)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8341,
+  "adi": "Buyant sum (Khovd)"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 8331,
+  "adi": "Buyant sum (Ölgii)"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4913,
+  "adi": "Anuradhapura"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4914,
+  "adi": "Badulla"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 3832,
+  "adi": "Batticaloa"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4915,
+  "adi": "Beruwela"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4916,
+  "adi": "Dambulla"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4917,
+  "adi": "Hambantota"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 3831,
+  "adi": "Jaffna"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 4918,
+  "adi": "Kalpitiya"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 5540,
+  "adi": "Birgunj"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 5537,
+  "adi": "Chandrapur"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 5539,
+  "adi": "Gorkha"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 4629,
+  "adi": "Janakpur"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 5538,
+  "adi": "Malangwa"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 6866,
+  "adi": "Nepalgunj"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6666,
+  "adi": "Abiko"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6667,
+  "adi": "Adachi"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6668,
+  "adi": "Ageo"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6669,
+  "adi": "Aizuwakamatsu"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6670,
+  "adi": "Akashi"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6671,
+  "adi": "Akita"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6672,
+  "adi": "Anjō"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6673,
+  "adi": "Aomori"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6674,
+  "adi": "Asahikawa"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6675,
+  "adi": "Ashikaga, Tochigi"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6676,
+  "adi": "Atsugi"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 3822,
+  "adi": "Bando"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6677,
+  "adi": "Beppu"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6678,
+  "adi": "Chiba"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6679,
+  "adi": "Ebetsu"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 5005,
+  "adi": "Fuchu"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6680,
+  "adi": "Fuji"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6681,
+  "adi": "Fujieda"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6682,
+  "adi": "Fujinomiya"
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "cityId": 6683,
+  "adi": "Fujisawa"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 3884,
+  "adi": "Altıağaç"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 143,
+  "adi": "Astara"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 141,
+  "adi": "Ağdam"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 845,
+  "adi": "Ağdaş"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 3883,
+  "adi": "Ağdərə"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 2684,
+  "adi": "Ağsu"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 3885,
+  "adi": "Balakən"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 3887,
+  "adi": "Beyləqan "
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 2598,
+  "adi": "Anbar"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 7512,
+  "adi": "Başika"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 861,
+  "adi": "Dohuk"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 862,
+  "adi": "Erbil"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 863,
+  "adi": "Kerkük"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 2600,
+  "adi": "Musul"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 2596,
+  "adi": "Necef"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 7687,
+  "adi": "Qayyarah"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 8195,
+  "adi": "Al Khums"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 6823,
+  "adi": "Cenzur"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 7615,
+  "adi": "El Bayda"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 8197,
+  "adi": "Ghat"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 3752,
+  "adi": "Misrata"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 8198,
+  "adi": "Murzuq"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 8186,
+  "adi": "Al Hudaydah"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 8187,
+  "adi": "Al Mukalla"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 8190,
+  "adi": "Einat"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 8191,
+  "adi": "Seiyun"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 7944,
+  "adi": "Tarim"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 8189,
+  "adi": "Thamud"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2638,
+  "adi": "Bayt Hanun"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2639,
+  "adi": "Dayr al Balah"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2640,
+  "adi": "El Halil"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2642,
+  "adi": "Han Yunus"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2643,
+  "adi": "Jabaliya"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 8072,
+  "adi": "Jericho"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2645,
+  "adi": "Nuşayrat"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2646,
+  "adi": "Rafah"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 8073,
+  "adi": "Ashdod"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 8074,
+  "adi": "Beersheba"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 8078,
+  "adi": "Ma'ale Adumim"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 8076,
+  "adi": "Netanya"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 8077,
+  "adi": "Rishon LeZion"
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "cityId": 3834,
+  "adi": "Ansan"
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "cityId": 3836,
+  "adi": "Busan"
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "cityId": 3835,
+  "adi": "Daegu"
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "cityId": 3833,
+  "adi": "Incheon"
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "cityId": 6615,
+  "adi": "Sejong City Hall"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 580,
+  "adi": "Aceh"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6375,
+  "adi": "Aceh Bireuen"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6391,
+  "adi": "Aceh Jaya"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6376,
+  "adi": "Aceh Singkil"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6390,
+  "adi": "Aceh Tamiyang"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 2648,
+  "adi": "Ambon"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6483,
+  "adi": "Amlapura (Karangasem)"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6380,
+  "adi": "Balikpapan"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 2649,
+  "adi": "Banda Aceh"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 2650,
+  "adi": "Bandar Lampung"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 865,
+  "adi": "Bandung"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 6494,
+  "adi": "Bangkalan"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5611,
+  "adi": "Alor Gajah"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 844,
+  "adi": "Alor Setar"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5602,
+  "adi": "Baling"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5605,
+  "adi": "Bandar Baharu"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5610,
+  "adi": "Bandar Melaka"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5624,
+  "adi": "Batu Gajah"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5532,
+  "adi": "Batu Rakit"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 5621,
+  "adi": "Bentong"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 8228,
+  "adi": "Bahawalpur"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 5588,
+  "adi": "Chowk Azam"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 5590,
+  "adi": "Fatehpur"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 3767,
+  "adi": "Faysalabad"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 3768,
+  "adi": "Gujranwala"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 3763,
+  "adi": "Hafizabad"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 3766,
+  "adi": "Haydarabad(Sindh)"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 882,
+  "adi": "Islamabad"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 4911,
+  "adi": "Jhelum"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 5584,
+  "adi": "Kandiaro"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 4910,
+  "adi": "Larkana"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 5589,
+  "adi": "Layyah"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 4001,
+  "adi": "Barisal"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 3998,
+  "adi": "Comilla"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 183,
+  "adi": "Dakkah"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 7506,
+  "adi": "Feni"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 3994,
+  "adi": "Khulna"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 3996,
+  "adi": "Mymensingh"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 3995,
+  "adi": "Rajshahi"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 7235,
+  "adi": "Ramganj"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 5045,
+  "adi": "Abul Matamir"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 8344,
+  "adi": "Al Badr"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 8345,
+  "adi": "Al Obour"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 8346,
+  "adi": "Al Shoruk"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 5043,
+  "adi": "Ariş"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 5024,
+  "adi": "Aswan"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 5025,
+  "adi": "Asyut"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 5026,
+  "adi": "Banha"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 3077,
+  "adi": "Agadir"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 3078,
+  "adi": "Beni Mellal"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 5498,
+  "adi": "Dakhla"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 7990,
+  "adi": "El Jadida"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 3079,
+  "adi": "Fes"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 3080,
+  "adi": "Kazablanka"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 849,
+  "adi": "Annaba"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 7067,
+  "adi": "Batna"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 850,
+  "adi": "Biskra"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 7070,
+  "adi": "Blida"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 7068,
+  "adi": "Béchar"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 7069,
+  "adi": "Béjaïa"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 4514,
+  "adi": "Afrin"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 4523,
+  "adi": "Amuda"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 4518,
+  "adi": "Ayn el-Arap"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 4533,
+  "adi": "Azez"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 4525,
+  "adi": "Bülbül"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 6286,
+  "adi": "Dabık"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 6536,
+  "adi": "Akabe"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 859,
+  "adi": "Amman"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 6538,
+  "adi": "El-Cize"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 6532,
+  "adi": "El-Kuveysime"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 6541,
+  "adi": "Kerek"
+ },
+ {
+  "countryId": 113,
+  "country": "Kuveyt",
+  "cityId": 2978,
+  "adi": "Kuveyt"
+ },
+ {
+  "countryId": 112,
+  "country": "Katar",
+  "cityId": 7962,
+  "adi": "Ar Rayyan"
+ },
+ {
+  "countryId": 115,
+  "country": "Umman",
+  "cityId": 2983,
+  "adi": "Muscat"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2676,
+  "adi": "Abu Dabi"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2677,
+  "adi": "Ajman"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2679,
+  "adi": "Füceyre"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2682,
+  "adi": "Ummül-Kayveyn"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2681,
+  "adi": "Şerce"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6525,
+  "adi": "Abha"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 8145,
+  "adi": "Bedir"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6526,
+  "adi": "Büreyde"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 846,
+  "adi": "Cidde"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6935,
+  "adi": "Cidde Havalimanı"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6527,
+  "adi": "Ed-Dammam"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6528,
+  "adi": "Hamis Muşayt"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 6936,
+  "adi": "Medine Havalimanı"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 8080,
+  "adi": "Algard"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 6401,
+  "adi": "Alta"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 8081,
+  "adi": "Arendal"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 8085,
+  "adi": "Asker"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 8086,
+  "adi": "Askim (Østfold)"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 8087,
+  "adi": "Avaldsnes"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 3649,
+  "adi": "Ahus"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 3651,
+  "adi": "Arvika"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 3652,
+  "adi": "Avesta"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 4932,
+  "adi": "Boden"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 3654,
+  "adi": "Borlänge"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 3653,
+  "adi": "Borås"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 6029,
+  "adi": "Aalborg"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 351,
+  "adi": "Aarhus"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 6030,
+  "adi": "Albertslund"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 6031,
+  "adi": "Assens, SD"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 6032,
+  "adi": "Ballerup"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 6033,
+  "adi": "Billum"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 3319,
+  "adi": "Alkmaar"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 555,
+  "adi": "Almelo"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 2938,
+  "adi": "Almere"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 7854,
+  "adi": "Alphen aan den Rijn"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 556,
+  "adi": "Amersfoort"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 558,
+  "adi": "Apeldoorn"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 559,
+  "adi": "Arnhem"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 3320,
+  "adi": "Assen"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 158,
+  "adi": "Aalst"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 160,
+  "adi": "Bastogne"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 831,
+  "adi": "Beringen"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 161,
+  "adi": "Brugge"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 162,
+  "adi": "Bruxelles"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 163,
+  "adi": "Charleroi"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4870,
+  "adi": "Bydgoszcz"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 577,
+  "adi": "Gdansk"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4872,
+  "adi": "Gorzów Wielkopolski  "
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4878,
+  "adi": "Katowice"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4879,
+  "adi": "Kielce"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4874,
+  "adi": "Kraków"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 4513,
+  "adi": "Alba Iulia"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 587,
+  "adi": "Arad"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 4010,
+  "adi": "Babadağ"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 3693,
+  "adi": "Bacău"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 3694,
+  "adi": "Baiamare"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 3696,
+  "adi": "Botoşani"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 184,
+  "adi": "Aydos"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 3602,
+  "adi": "Blagoevgrad(Yukarı Cuma)"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 185,
+  "adi": "Burgaz"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 186,
+  "adi": "Dobriç"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 202,
+  "adi": "Eski Cuma"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 201,
+  "adi": "Eski Zağra"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 3613,
+  "adi": "Agrínion"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 3614,
+  "adi": "Amaliás"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 3615,
+  "adi": "Andros"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 3616,
+  "adi": "Argos"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 455,
+  "adi": "Atina"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 454,
+  "adi": "Dedeağaç"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 7946,
+  "adi": "Cherkasy (Черкаси)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 2626,
+  "adi": "Dnipro (Дніпро)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 4750,
+  "adi": "Geniçesk (Генічеськ)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 2627,
+  "adi": "Harkiv (Харків)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 2628,
+  "adi": "Herson (Херсон)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 2686,
+  "adi": "Hmelnitski (Хмельницький)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 3735,
+  "adi": "Jıtomır (Житомир)"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 6665,
+  "adi": "Kostychi (Костичі)"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 3147,
+  "adi": "Banovići"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 204,
+  "adi": "Bihac"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 2717,
+  "adi": "Bijeljina"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 205,
+  "adi": "Bonjaluka"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 3149,
+  "adi": "Brčko"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 3145,
+  "adi": "Bugojno"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 676,
+  "adi": "Belgrad"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 677,
+  "adi": "Niş"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 678,
+  "adi": "Novi Pazar"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 679,
+  "adi": "Novisad"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 547,
+  "adi": "Sjenica"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 3131,
+  "adi": "Subotica"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 105,
+  "adi": "Bajram Curri"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 2703,
+  "adi": "Ballsh"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 106,
+  "adi": "Berat"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 2704,
+  "adi": "Bulqizë"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 107,
+  "adi": "Burrel"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 2705,
+  "adi": "Bushat"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 8289,
+  "adi": "Berovo"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 8290,
+  "adi": "Blatec, Vinica"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 8291,
+  "adi": "Bogdanci"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 8292,
+  "adi": "Debre (Debar)"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 8293,
+  "adi": "Delčevo"
+ },
+ {
+  "countryId": 44,
+  "country": "Kosova",
+  "cityId": 582,
+  "adi": "Ferizaj"
+ },
+ {
+  "countryId": 44,
+  "country": "Kosova",
+  "cityId": 583,
+  "adi": "Gjilan"
+ },
+ {
+  "countryId": 44,
+  "country": "Kosova",
+  "cityId": 8237,
+  "adi": "Istog"
+ },
+ {
+  "countryId": 44,
+  "country": "Kosova",
+  "cityId": 2726,
+  "adi": "Jakovica"
+ }
+]

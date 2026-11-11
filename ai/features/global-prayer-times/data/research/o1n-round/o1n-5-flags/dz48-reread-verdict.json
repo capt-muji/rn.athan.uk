@@ -1,0 +1,1078 @@
+{
+ "p8": {
+  "month": "7",
+  "control": {
+   "n": 29,
+   "same": 2,
+   "off": [
+    {
+     "date": "2026-12-11",
+     "diffs": {}
+    },
+    {
+     "date": "2026-12-14",
+     "diffs": {
+      "isha": 1,
+      "sunrise": 1,
+      "fajr": 1
+     }
+    },
+    {
+     "date": "2026-12-15",
+     "diffs": {
+      "asr": 1,
+      "dhuhr": 1
+     }
+    },
+    {
+     "date": "2026-12-16",
+     "diffs": {
+      "isha": 1,
+      "maghrib": 1,
+      "dhuhr": 1,
+      "sunrise": 1,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-17",
+     "diffs": {
+      "maghrib": 1,
+      "asr": 1,
+      "dhuhr": 1,
+      "sunrise": 1,
+      "fajr": 1
+     }
+    },
+    {
+     "date": "2026-12-18",
+     "diffs": {
+      "isha": 1,
+      "maghrib": 2,
+      "asr": 2,
+      "dhuhr": 1,
+      "sunrise": 2,
+      "fajr": 1
+     }
+    },
+    {
+     "date": "2026-12-19",
+     "diffs": {
+      "isha": 2,
+      "maghrib": 1,
+      "asr": 1,
+      "dhuhr": 2,
+      "sunrise": 2,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-20",
+     "diffs": {
+      "maghrib": 87,
+      "asr": 143,
+      "dhuhr": 153,
+      "sunrise": 194,
+      "fajr": 95
+     }
+    },
+    {
+     "date": "2026-12-21",
+     "diffs": {
+      "isha": 2,
+      "maghrib": 2,
+      "asr": 2,
+      "dhuhr": 2,
+      "sunrise": 2,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-22",
+     "diffs": {
+      "isha": 3,
+      "maghrib": 3,
+      "asr": 3,
+      "dhuhr": 2,
+      "sunrise": 2,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-23",
+     "diffs": {
+      "isha": 3,
+      "maghrib": 3,
+      "asr": 3,
+      "dhuhr": 3,
+      "sunrise": 2,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-24",
+     "diffs": {
+      "isha": 4,
+      "maghrib": 4,
+      "asr": 4,
+      "dhuhr": 3,
+      "sunrise": 2,
+      "fajr": 2
+     }
+    },
+    {
+     "date": "2026-12-25",
+     "diffs": {
+      "isha": 4,
+      "maghrib": 4,
+      "asr": 4,
+      "dhuhr": 3,
+      "sunrise": -580,
+      "fajr": -533
+     }
+    },
+    {
+     "date": "2026-12-26",
+     "diffs": {
+      "isha": 382,
+      "maghrib": -81,
+      "asr": -137,
+      "dhuhr": -149,
+      "sunrise": -666,
+      "fajr": -674
+     }
+    },
+    {
+     "date": "2026-12-27",
+     "diffs": {
+      "maghrib": 381,
+      "asr": -81,
+      "dhuhr": -137,
+      "sunrise": -99,
+      "fajr": -668
+     }
+    },
+    {
+     "date": "2026-12-28",
+     "diffs": {
+      "isha": 89,
+      "maghrib": 146,
+      "asr": 157,
+      "dhuhr": -375,
+      "sunrise": -443,
+      "fajr": -382
+     }
+    },
+    {
+     "date": "2026-12-29",
+     "diffs": {
+      "isha": 4,
+      "maghrib": 4,
+      "asr": 3,
+      "dhuhr": 2,
+      "sunrise": -585,
+      "fajr": -536
+     }
+    },
+    {
+     "date": "2026-12-30",
+     "diffs": {
+      "fajr": -679
+     }
+    },
+    {
+     "date": "2026-12-31",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-01",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-02",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-03",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-04",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-05",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-06",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-07",
+     "diffs": {}
+    },
+    {
+     "date": "2027-01-08",
+     "diffs": {}
+    }
+   ]
+  },
+  "audit": [
+   "2026-12-11",
+   "2026-12-20",
+   "2026-12-27",
+   "2026-12-30",
+   "2026-12-31",
+   "2027-01-01",
+   "2027-01-02",
+   "2027-01-03",
+   "2027-01-04",
+   "2027-01-05",
+   "2027-01-06",
+   "2027-01-07",
+   "2027-01-08"
+  ],
+  "rebuilt": [
+   {
+    "date": "2026-12-25",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1149,
+      "recipe": 1146,
+      "d": 3
+     },
+     "maghrib": {
+      "read": 1065,
+      "recipe": 1061,
+      "d": 4
+     },
+     "asr": {
+      "read": 924,
+      "recipe": 920,
+      "d": 4
+     },
+     "dhuhr": {
+      "read": 771,
+      "recipe": 768,
+      "d": 3
+     },
+     "sunrise": {
+      "read": 481,
+      "recipe": 479,
+      "d": 2
+     },
+     "fajr": {
+      "read": 388,
+      "recipe": 386,
+      "d": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-26",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1151,
+      "recipe": 1146,
+      "d": 5
+     },
+     "maghrib": {
+      "read": 1066,
+      "recipe": 1061,
+      "d": 5
+     },
+     "asr": {
+      "read": 925,
+      "recipe": 921,
+      "d": 4
+     },
+     "dhuhr": {
+      "read": 772,
+      "recipe": 769,
+      "d": 3
+     },
+     "sunrise": {
+      "read": 481,
+      "recipe": 479,
+      "d": 2
+     },
+     "fajr": {
+      "read": 389,
+      "recipe": 386,
+      "d": 3
+     }
+    }
+   },
+   {
+    "date": "2026-12-27",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1147,
+      "d": null
+     },
+     "maghrib": {
+      "read": 1151,
+      "recipe": 1062,
+      "d": 89
+     },
+     "asr": {
+      "read": 1067,
+      "recipe": 921,
+      "d": 146
+     },
+     "dhuhr": {
+      "read": 926,
+      "recipe": 769,
+      "d": 157
+     },
+     "sunrise": {
+      "read": 671,
+      "recipe": 480,
+      "d": 191
+     },
+     "fajr": {
+      "read": 481,
+      "recipe": 387,
+      "d": 94
+     }
+    }
+   },
+   {
+    "date": "2026-12-28",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1153,
+      "recipe": 1147,
+      "d": 6
+     },
+     "maghrib": {
+      "read": 1069,
+      "recipe": 1063,
+      "d": 6
+     },
+     "asr": {
+      "read": 928,
+      "recipe": 922,
+      "d": 6
+     },
+     "dhuhr": {
+      "read": 774,
+      "recipe": 770,
+      "d": 4
+     },
+     "sunrise": {
+      "read": 481,
+      "recipe": 480,
+      "d": 1
+     },
+     "fajr": {
+      "read": 389,
+      "recipe": 387,
+      "d": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-29",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1154,
+      "recipe": 1148,
+      "d": 6
+     },
+     "maghrib": {
+      "read": 1070,
+      "recipe": 1063,
+      "d": 7
+     },
+     "asr": {
+      "read": 928,
+      "recipe": 923,
+      "d": 5
+     },
+     "dhuhr": {
+      "read": 774,
+      "recipe": 770,
+      "d": 4
+     },
+     "sunrise": {
+      "read": 481,
+      "recipe": 480,
+      "d": 1
+     },
+     "fajr": {
+      "read": 389,
+      "recipe": 387,
+      "d": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-30",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1149,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1064,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 923,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 771,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 480,
+      "d": null
+     },
+     "fajr": {
+      "read": 389,
+      "recipe": 388,
+      "d": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-31",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1149,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1065,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 924,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 771,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 388,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-01",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1150,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1066,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 925,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 772,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 388,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-02",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1151,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1066,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 926,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 772,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 389,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-03",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1152,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1067,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 926,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 773,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 389,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-04",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1152,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1068,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 927,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 773,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 389,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-05",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1153,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1069,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 928,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 774,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 389,
+      "d": null
+     }
+    }
+   },
+   {
+    "date": "2027-01-06",
+    "auditedBad": true,
+    "cells": {
+     "isha": {
+      "read": null,
+      "recipe": 1154,
+      "d": null
+     },
+     "maghrib": {
+      "read": null,
+      "recipe": 1070,
+      "d": null
+     },
+     "asr": {
+      "read": null,
+      "recipe": 929,
+      "d": null
+     },
+     "dhuhr": {
+      "read": null,
+      "recipe": 774,
+      "d": null
+     },
+     "sunrise": {
+      "read": null,
+      "recipe": 481,
+      "d": null
+     },
+     "fajr": {
+      "read": null,
+      "recipe": 389,
+      "d": null
+     }
+    }
+   }
+  ]
+ },
+ "p10": {
+  "month": "9",
+  "control": {
+   "n": 30,
+   "same": 1,
+   "off": [
+    {
+     "date": "2027-02-08",
+     "diffs": {}
+    },
+    {
+     "date": "2027-02-10",
+     "diffs": {
+      "isha": 600
+     }
+    },
+    {
+     "date": "2027-02-11",
+     "diffs": {
+      "isha": 516,
+      "maghrib": 521,
+      "asr": -146,
+      "dhuhr": -177,
+      "sunrise": -1,
+      "fajr": -1
+     }
+    },
+    {
+     "date": "2027-02-12",
+     "diffs": {
+      "isha": 1,
+      "maghrib": 1,
+      "asr": 1,
+      "dhuhr": -1,
+      "sunrise": -1,
+      "fajr": -1
+     }
+    },
+    {
+     "date": "2027-02-13",
+     "diffs": {
+      "maghrib": 2,
+      "asr": 14,
+      "sunrise": -2,
+      "fajr": -2
+     }
+    },
+    {
+     "date": "2027-02-14",
+     "diffs": {
+      "isha": 2,
+      "maghrib": 2,
+      "asr": 1,
+      "sunrise": -2,
+      "fajr": -2
+     }
+    },
+    {
+     "date": "2027-02-15",
+     "diffs": {
+      "isha": 2,
+      "maghrib": 2,
+      "asr": 1,
+      "sunrise": -2,
+      "fajr": -2
+     }
+    },
+    {
+     "date": "2027-02-16",
+     "diffs": {
+      "isha": 3,
+      "maghrib": 3,
+      "asr": 3,
+      "sunrise": -4,
+      "fajr": -3
+     }
+    },
+    {
+     "date": "2027-02-17",
+     "diffs": {
+      "isha": 3,
+      "maghrib": 3,
+      "asr": 2,
+      "sunrise": -4,
+      "fajr": -3
+     }
+    },
+    {
+     "date": "2027-02-18",
+     "diffs": {
+      "isha": 4,
+      "maghrib": 4,
+      "asr": 3,
+      "sunrise": -4,
+      "fajr": -5
+     }
+    },
+    {
+     "date": "2027-02-19",
+     "diffs": {
+      "isha": 4,
+      "maghrib": 4,
+      "asr": 2,
+      "sunrise": -5,
+      "fajr": -5
+     }
+    },
+    {
+     "date": "2027-02-20",
+     "diffs": {
+      "isha": 5,
+      "maghrib": 5,
+      "asr": 4,
+      "dhuhr": -1,
+      "sunrise": -6,
+      "fajr": -6
+     }
+    },
+    {
+     "date": "2027-02-21",
+     "diffs": {
+      "isha": 5,
+      "maghrib": 5,
+      "asr": 3,
+      "dhuhr": -1,
+      "sunrise": -7,
+      "fajr": -6
+     }
+    },
+    {
+     "date": "2027-02-22",
+     "diffs": {
+      "isha": 5,
+      "maghrib": 5,
+      "asr": 3,
+      "dhuhr": 599,
+      "sunrise": -7,
+      "fajr": -6
+     }
+    },
+    {
+     "date": "2027-02-23",
+     "diffs": {
+      "isha": 5,
+      "maghrib": 6,
+      "asr": 4,
+      "dhuhr": -1,
+      "sunrise": -8,
+      "fajr": -7
+     }
+    },
+    {
+     "date": "2027-02-24",
+     "diffs": {
+      "isha": 5,
+      "maghrib": 6,
+      "asr": 4,
+      "dhuhr": -1,
+      "sunrise": -8,
+      "fajr": -8
+     }
+    },
+    {
+     "date": "2027-02-25",
+     "diffs": {
+      "isha": 6,
+      "maghrib": 7,
+      "asr": 4,
+      "dhuhr": -1,
+      "sunrise": -10,
+      "fajr": -9
+     }
+    },
+    {
+     "date": "2027-02-26",
+     "diffs": {
+      "isha": 6,
+      "maghrib": 7,
+      "asr": 4,
+      "dhuhr": -1,
+      "sunrise": -9,
+      "fajr": -9
+     }
+    },
+    {
+     "date": "2027-02-27",
+     "diffs": {
+      "isha": 7,
+      "maghrib": 8,
+      "asr": 5,
+      "dhuhr": -2,
+      "sunrise": -11,
+      "fajr": -11
+     }
+    },
+    {
+     "date": "2027-02-28",
+     "diffs": {
+      "isha": 8,
+      "maghrib": 8,
+      "asr": 4,
+      "dhuhr": -2,
+      "sunrise": -11,
+      "fajr": -11
+     }
+    },
+    {
+     "date": "2027-03-01",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-02",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-03",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-04",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-05",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-06",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-07",
+     "diffs": {}
+    },
+    {
+     "date": "2027-03-08",
+     "diffs": {
+      "isha": -555,
+      "fajr": 755
+     }
+    },
+    {
+     "date": "2027-03-09",
+     "diffs": {}
+    }
+   ]
+  },
+  "audit": [
+   "2027-02-08",
+   "2027-02-13",
+   "2027-03-01",
+   "2027-03-02",
+   "2027-03-03",
+   "2027-03-04",
+   "2027-03-05",
+   "2027-03-06",
+   "2027-03-07",
+   "2027-03-08",
+   "2027-03-09"
+  ],
+  "rebuilt": [
+   {
+    "date": "2027-02-10",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1186,
+      "recipe": 1186,
+      "d": 0
+     },
+     "maghrib": {
+      "read": 1106,
+      "recipe": 1106,
+      "d": 0
+     },
+     "asr": {
+      "read": 960,
+      "recipe": 960,
+      "d": 0
+     },
+     "dhuhr": {
+      "read": 782,
+      "recipe": 782,
+      "d": 0
+     },
+     "sunrise": {
+      "read": 462,
+      "recipe": 462,
+      "d": 0
+     },
+     "fajr": {
+      "read": 375,
+      "recipe": 375,
+      "d": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-11",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1187,
+      "recipe": 1187,
+      "d": 0
+     },
+     "maghrib": {
+      "read": 1108,
+      "recipe": 1107,
+      "d": 1
+     },
+     "asr": {
+      "read": 961,
+      "recipe": 961,
+      "d": 0
+     },
+     "dhuhr": {
+      "read": 783,
+      "recipe": 782,
+      "d": 1
+     },
+     "sunrise": {
+      "read": 460,
+      "recipe": 461,
+      "d": -1
+     },
+     "fajr": {
+      "read": 373,
+      "recipe": 374,
+      "d": -1
+     }
+    }
+   },
+   {
+    "date": "2027-02-22",
+    "auditedBad": false,
+    "cells": {
+     "isha": {
+      "read": 1202,
+      "recipe": 1197,
+      "d": 5
+     },
+     "maghrib": {
+      "read": 1123,
+      "recipe": 1118,
+      "d": 5
+     },
+     "asr": {
+      "read": 972,
+      "recipe": 969,
+      "d": 3
+     },
+     "dhuhr": {
+      "read": 781,
+      "recipe": 782,
+      "d": -1
+     },
+     "sunrise": {
+      "read": 442,
+      "recipe": 449,
+      "d": -7
+     },
+     "fajr": {
+      "read": 356,
+      "recipe": 362,
+      "d": -6
+     }
+    }
+   }
+  ]
+ }
+}

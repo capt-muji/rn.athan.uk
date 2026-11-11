@@ -1,0 +1,123 @@
+{
+ "leap": {
+  "units_2028": 517,
+  "with_feb29": 517,
+  "rows_total_2028": 189222,
+  "feb29_rows": 517,
+  "feb29_equals_28feb": [
+   "1001",
+   "1108",
+   "1605",
+   "1618",
+   "1703",
+   "1807",
+   "1918",
+   "2007",
+   "2012",
+   "2013",
+   "2014",
+   "2109",
+   "2111",
+   "2205",
+   "2402",
+   "2621",
+   "2908",
+   "3001",
+   "3203",
+   "3205",
+   "3310",
+   "3323",
+   "3402",
+   "0206",
+   "0307",
+   "0407",
+   "0408"
+  ],
+  "feb29_equals_1mar": [
+   "1636",
+   "1902",
+   "1912",
+   "1914",
+   "1920",
+   "2303",
+   "2613",
+   "2905",
+   "2911",
+   "3004",
+   "3106",
+   "3204",
+   "3206",
+   "3318",
+   "3322",
+   "3325",
+   "3412",
+   "0105",
+   "0201",
+   "0502",
+   "0211",
+   "0115",
+   "0226",
+   "0228",
+   "0231"
+  ],
+  "weekday_wrong": [],
+  "consecutive_identical_pairs": 35772,
+  "consecutive_pairs": 188705,
+  "copy_defect_units": 52,
+  "baseline_adjacent_identical_pc": 18.96
+ },
+ "relabel": [
+  {
+   "pair": "2028-2029",
+   "units": 517,
+   "cells": 1132230,
+   "changed": 98709,
+   "changed_pc": 8.7,
+   "by_column_pc": {
+    "subuh": 9.2,
+    "terbit": 8.1,
+    "dzuhur": 7.3,
+    "ashar": 12,
+    "maghrib": 7.8,
+    "isya": 8
+   },
+   "zero_change_units": 0
+  },
+  {
+   "pair": "2029-2030",
+   "units": 517,
+   "cells": 1132230,
+   "changed": 74365,
+   "changed_pc": 6.6,
+   "by_column_pc": {
+    "subuh": 6.4,
+    "terbit": 6.1,
+    "dzuhur": 5.9,
+    "ashar": 8.7,
+    "maghrib": 6,
+    "isya": 6.3
+   },
+   "zero_change_units": 0
+  },
+  {
+   "pair": "2028-2030",
+   "units": 517,
+   "cells": 1132230,
+   "changed": 146826,
+   "changed_pc": 13,
+   "by_column_pc": {
+    "subuh": 12.5,
+    "terbit": 11.8,
+    "dzuhur": 11.2,
+    "ashar": 18,
+    "maghrib": 11.8,
+    "isya": 12.5
+   },
+   "zero_change_units": 0
+  }
+ ],
+ "audit": {
+  "rows": 566632,
+  "bad": []
+ }
+}

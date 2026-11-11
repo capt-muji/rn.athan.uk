@@ -1,0 +1,461 @@
+[
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "total": 78,
+  "fit2yr": 5,
+  "fit1yr": 0,
+  "w1_100": 5,
+  "departures": 0
+ },
+ {
+  "countryId": 30,
+  "country": "Japonya",
+  "total": 143,
+  "fit2yr": 3,
+  "fit1yr": 0,
+  "w1_100": 3,
+  "departures": 0
+ },
+ {
+  "countryId": 3,
+  "country": "Afganistan",
+  "total": 34,
+  "fit2yr": 2,
+  "fit1yr": 0,
+  "w1_100": 2,
+  "departures": 0
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "total": 67,
+  "fit2yr": 2,
+  "fit1yr": 0,
+  "w1_100": 2,
+  "departures": 0
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "total": 429,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "total": 40,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "total": 210,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "total": 169,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 0
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "total": 14,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "total": 34,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "total": 163,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "total": 26,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "total": 38,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "total": 72,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 19,
+  "country": "Etiyopya",
+  "total": 13,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 21,
+  "country": "Finlandiya",
+  "total": 26,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "total": 224,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 24,
+  "country": "Gana",
+  "total": 10,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 46,
+  "country": "Güney Kore",
+  "total": 7,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 23,
+  "country": "Gürcistan",
+  "total": 40,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 27,
+  "country": "Hong Kong",
+  "total": 2,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 28,
+  "country": "Hırvatistan",
+  "total": 26,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "total": 14,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 31,
+  "country": "K.K.T.C",
+  "total": 21,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 101,
+  "country": "Kamboçya",
+  "total": 8,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "total": 76,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 0
+ },
+ {
+  "countryId": 17,
+  "country": "Kenya",
+  "total": 19,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 104,
+  "country": "Laos",
+  "total": 7,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "total": 12,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 22,
+  "country": "Lihtenştayn",
+  "total": 3,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 0
+ },
+ {
+  "countryId": 26,
+  "country": "Macaristan",
+  "total": 38,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "total": 23,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "total": 9,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 184,
+  "country": "Nikaragua",
+  "total": 1,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 188,
+  "country": "Panama ",
+  "total": 19,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "total": 21,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 75,
+  "country": "Sudan",
+  "total": 10,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "total": 16,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "total": 37,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 199,
+  "country": "Trinidad ve Tobago",
+  "total": 1,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "total": 81,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 67,
+  "country": "Uganda",
+  "total": 7,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "total": 10,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "total": 26,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 118,
+  "country": "Zimbabve",
+  "total": 8,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 13,
+  "country": "Çek Cumhuriyeti",
+  "total": 42,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 0,
+  "departures": 1
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "total": 48,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "total": 48,
+  "fit2yr": 1,
+  "fit1yr": 1,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "total": 63,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "total": 150,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "total": 146,
+  "fit2yr": 1,
+  "fit1yr": 0,
+  "w1_100": 1,
+  "departures": 0
+ }
+]

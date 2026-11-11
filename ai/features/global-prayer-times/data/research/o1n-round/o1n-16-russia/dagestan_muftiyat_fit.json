@@ -1,0 +1,2264 @@
+{
+ "reference": "muftiyatrd.ru /json/namaz/<district>.json, static year-agnostic table (byte-identical archive capture 2020-11-22 vs live 2026-11-12), reference frame year 2026, engine adhan 4.4.6 Rounding.None Europe/Moscow",
+ "recipe": {
+  "fajr": 17.5,
+  "isha": 15,
+  "asr": "Shafi",
+  "margins": "per-column median"
+ },
+ "districts": {
+  "mahashkala": {
+   "pos": [
+    42.9764,
+    47.5024
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 50.1,
+     "w1": 99.5,
+     "worst": 21
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 57.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 53.4,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 25.8,
+     "w1": 74.2,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 54,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 63.3,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    649,
+    1053
+   ],
+   "outliers": [
+    {
+     "date": "2026-04-01",
+     "col": "fajr",
+     "res": -21
+    },
+    {
+     "date": "2026-11-27",
+     "col": "fajr",
+     "res": 10
+    }
+   ]
+  },
+  "agul": {
+   "pos": [
+    42.95,
+    47.05
+   ],
+   "score": {
+    "fajr": {
+     "med": 2,
+     "n": 365,
+     "exact": 9,
+     "w1": 27.1,
+     "worst": 9
+    },
+    "sunrise": {
+     "med": -4,
+     "n": 365,
+     "exact": 8.2,
+     "w1": 27.9,
+     "worst": 5
+    },
+    "dhuhr": {
+     "med": 2,
+     "n": 365,
+     "exact": 66,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 11.2,
+     "w1": 36.7,
+     "worst": 56
+    },
+    "maghrib": {
+     "med": 2,
+     "n": 365,
+     "exact": 9.9,
+     "w1": 27.9,
+     "worst": 5
+    },
+    "isha": {
+     "med": 11,
+     "n": 365,
+     "exact": 11,
+     "w1": 22.2,
+     "worst": 31
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    656,
+    1040
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-01",
+     "col": "fajr",
+     "res": -7
+    },
+    {
+     "date": "2026-01-01",
+     "col": "sunrise",
+     "res": -5
+    },
+    {
+     "date": "2026-01-01",
+     "col": "asr",
+     "res": 4
+    },
+    {
+     "date": "2026-01-01",
+     "col": "maghrib",
+     "res": 4
+    },
+    {
+     "date": "2026-01-02",
+     "col": "fajr",
+     "res": -8
+    },
+    {
+     "date": "2026-01-02",
+     "col": "sunrise",
+     "res": -5
+    },
+    {
+     "date": "2026-01-02",
+     "col": "maghrib",
+     "res": 4
+    },
+    {
+     "date": "2026-01-03",
+     "col": "fajr",
+     "res": -7
+    },
+    {
+     "date": "2026-01-03",
+     "col": "sunrise",
+     "res": -5
+    },
+    {
+     "date": "2026-01-03",
+     "col": "maghrib",
+     "res": 4
+    },
+    {
+     "date": "2026-01-04",
+     "col": "fajr",
+     "res": -7
+    },
+    {
+     "date": "2026-01-04",
+     "col": "sunrise",
+     "res": -5
+    }
+   ]
+  },
+  "ahti": {
+   "pos": [
+    41.475,
+    47.455
+   ],
+   "score": {
+    "fajr": {
+     "med": -1,
+     "n": 365,
+     "exact": 58.1,
+     "w1": 98.6,
+     "worst": 60
+    },
+    "sunrise": {
+     "med": -4,
+     "n": 365,
+     "exact": 61.9,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 63.3,
+     "w1": 89.6,
+     "worst": 60
+    },
+    "asr": {
+     "med": 0,
+     "n": 365,
+     "exact": 24.1,
+     "w1": 83,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 3,
+     "n": 365,
+     "exact": 74,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": -1,
+     "n": 365,
+     "exact": 63.6,
+     "w1": 99.7,
+     "worst": 2
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    655,
+    1036
+   ],
+   "outliers": [
+    {
+     "date": "2026-03-15",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-16",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-17",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-18",
+     "col": "dhuhr",
+     "res": -59
+    },
+    {
+     "date": "2026-03-19",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-20",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-21",
+     "col": "dhuhr",
+     "res": -59
+    },
+    {
+     "date": "2026-03-22",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-23",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-03-24",
+     "col": "dhuhr",
+     "res": -59
+    },
+    {
+     "date": "2026-03-25",
+     "col": "dhuhr",
+     "res": -59
+    },
+    {
+     "date": "2026-03-26",
+     "col": "dhuhr",
+     "res": -60
+    }
+   ]
+  },
+  "ahvah": {
+   "pos": [
+    42.69,
+    46.72
+   ],
+   "score": {
+    "fajr": {
+     "med": 2,
+     "n": 365,
+     "exact": 44.7,
+     "w1": 99.5,
+     "worst": 11
+    },
+    "sunrise": {
+     "med": -1,
+     "n": 365,
+     "exact": 61.9,
+     "w1": 91.5,
+     "worst": 4
+    },
+    "dhuhr": {
+     "med": 6,
+     "n": 365,
+     "exact": 85.2,
+     "w1": 91.5,
+     "worst": 3
+    },
+    "asr": {
+     "med": 3,
+     "n": 365,
+     "exact": 17.5,
+     "w1": 69.3,
+     "worst": 4
+    },
+    "maghrib": {
+     "med": 8,
+     "n": 365,
+     "exact": 63.8,
+     "w1": 96.7,
+     "worst": 2
+    },
+    "isha": {
+     "med": 1,
+     "n": 365,
+     "exact": 49,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    652,
+    1051
+   ],
+   "outliers": [
+    {
+     "date": "2026-03-05",
+     "col": "fajr",
+     "res": -11
+    },
+    {
+     "date": "2026-03-06",
+     "col": "fajr",
+     "res": -6
+    },
+    {
+     "date": "2026-05-02",
+     "col": "asr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-10",
+     "col": "sunrise",
+     "res": -4
+    },
+    {
+     "date": "2026-05-22",
+     "col": "sunrise",
+     "res": -4
+    },
+    {
+     "date": "2026-05-23",
+     "col": "sunrise",
+     "res": -4
+    },
+    {
+     "date": "2026-05-29",
+     "col": "sunrise",
+     "res": -4
+    }
+   ]
+  },
+  "babayurt": {
+   "pos": [
+    43.545,
+    46.76
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 52.3,
+     "w1": 96.4,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -3,
+     "n": 365,
+     "exact": 21.9,
+     "w1": 50.7,
+     "worst": 5
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 91,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 23,
+     "w1": 56.2,
+     "worst": 4
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 13.2,
+     "w1": 38.6,
+     "worst": 6
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 68.2,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    647,
+    1058
+   ],
+   "outliers": [
+    {
+     "date": "2026-05-12",
+     "col": "maghrib",
+     "res": -4
+    },
+    {
+     "date": "2026-05-13",
+     "col": "maghrib",
+     "res": -4
+    },
+    {
+     "date": "2026-05-14",
+     "col": "maghrib",
+     "res": -4
+    },
+    {
+     "date": "2026-05-15",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-16",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-17",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-18",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-19",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-24",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-25",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-26",
+     "col": "sunrise",
+     "res": 4
+    },
+    {
+     "date": "2026-05-27",
+     "col": "sunrise",
+     "res": 4
+    }
+   ]
+  },
+  "botlih": {
+   "pos": [
+    42.885,
+    46.365
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 40.8,
+     "w1": 86,
+     "worst": 3
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 41.1,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 6,
+     "n": 365,
+     "exact": 95.1,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 19.2,
+     "w1": 76.4,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 48.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 30.7,
+     "w1": 98.1,
+     "worst": 32
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    650,
+    1049
+   ],
+   "outliers": [
+    {
+     "date": "2026-05-19",
+     "col": "isha",
+     "res": -32
+    }
+   ]
+  },
+  "buynaksk": {
+   "pos": [
+    42.82,
+    47.115
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 52.3,
+     "w1": 99.7,
+     "worst": 9
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 54.8,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 53.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 22.7,
+     "w1": 72.6,
+     "worst": 9
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 62.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 64.4,
+     "w1": 99.2,
+     "worst": 60
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    649,
+    1051
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-19",
+     "col": "asr",
+     "res": 8
+    },
+    {
+     "date": "2026-01-20",
+     "col": "asr",
+     "res": 9
+    },
+    {
+     "date": "2026-02-18",
+     "col": "fajr",
+     "res": 9
+    },
+    {
+     "date": "2026-03-01",
+     "col": "isha",
+     "res": 60
+    },
+    {
+     "date": "2026-03-02",
+     "col": "isha",
+     "res": 60
+    },
+    {
+     "date": "2026-04-11",
+     "col": "isha",
+     "res": -10
+    }
+   ]
+  },
+  "cumada": {
+   "pos": [
+    42.7,
+    46.22
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 36.7,
+     "w1": 97.5,
+     "worst": 3
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 53.7,
+     "w1": 91.8,
+     "worst": 60
+    },
+    "dhuhr": {
+     "med": 6,
+     "n": 365,
+     "exact": 80.3,
+     "w1": 91.5,
+     "worst": 61
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 18.9,
+     "w1": 77,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 53.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 49,
+     "w1": 98.1,
+     "worst": 2
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    650,
+    1048
+   ],
+   "outliers": [
+    {
+     "date": "2026-06-10",
+     "col": "dhuhr",
+     "res": -61
+    },
+    {
+     "date": "2026-11-01",
+     "col": "sunrise",
+     "res": 59
+    },
+    {
+     "date": "2026-11-01",
+     "col": "dhuhr",
+     "res": 8
+    },
+    {
+     "date": "2026-11-02",
+     "col": "sunrise",
+     "res": 59
+    },
+    {
+     "date": "2026-11-02",
+     "col": "dhuhr",
+     "res": 8
+    },
+    {
+     "date": "2026-11-03",
+     "col": "sunrise",
+     "res": 60
+    },
+    {
+     "date": "2026-11-03",
+     "col": "dhuhr",
+     "res": 8
+    },
+    {
+     "date": "2026-11-04",
+     "col": "sunrise",
+     "res": 59
+    },
+    {
+     "date": "2026-11-04",
+     "col": "dhuhr",
+     "res": 8
+    },
+    {
+     "date": "2026-11-05",
+     "col": "sunrise",
+     "res": 59
+    },
+    {
+     "date": "2026-11-05",
+     "col": "dhuhr",
+     "res": 8
+    },
+    {
+     "date": "2026-11-06",
+     "col": "sunrise",
+     "res": 59
+    }
+   ]
+  },
+  "dagogni": {
+   "pos": [
+    42.125,
+    48.195
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 56.7,
+     "w1": 99.7,
+     "worst": null
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 58.1,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 51.8,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 0,
+     "n": 365,
+     "exact": 48.8,
+     "w1": 93.7,
+     "worst": 3
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 60,
+     "w1": 99.7,
+     "worst": 11
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 67.4,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    652,
+    1044
+   ],
+   "outliers": [
+    {
+     "date": "2026-07-21",
+     "col": "maghrib",
+     "res": 11
+    }
+   ]
+  },
+  "derbent": {
+   "pos": [
+    42.065,
+    48.29
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 54,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": -3,
+     "n": 365,
+     "exact": 50.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 54.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 24.1,
+     "w1": 76.2,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 63.6,
+     "w1": 99.7,
+     "worst": 18
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 69.9,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    653,
+    1043
+   ],
+   "outliers": [
+    {
+     "date": "2026-04-14",
+     "col": "maghrib",
+     "res": -18
+    }
+   ]
+  },
+  "gergebil": {
+   "pos": [
+    42.505,
+    46.925
+   ],
+   "score": {
+    "fajr": {
+     "med": -1,
+     "n": 365,
+     "exact": 49.3,
+     "w1": 98.1,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -3,
+     "n": 365,
+     "exact": 78.9,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 83.6,
+     "w1": 92.6,
+     "worst": 61
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 23.6,
+     "w1": 81.6,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 75.1,
+     "w1": 99.5,
+     "worst": 10
+    },
+    "isha": {
+     "med": -1,
+     "n": 365,
+     "exact": 53.2,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    651,
+    1047
+   ],
+   "outliers": [
+    {
+     "date": "2026-04-01",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-04-02",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-04-03",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-04-04",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-04-05",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-04-06",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-07-01",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-07-02",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-07-03",
+     "col": "dhuhr",
+     "res": -61
+    },
+    {
+     "date": "2026-07-04",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-07-05",
+     "col": "dhuhr",
+     "res": -60
+    },
+    {
+     "date": "2026-07-06",
+     "col": "dhuhr",
+     "res": -60
+    }
+   ]
+  },
+  "gumbet": {
+   "pos": [
+    42.875,
+    46.635
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 44.4,
+     "w1": 98.6,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 66,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 6,
+     "n": 365,
+     "exact": 94,
+     "w1": 99.7,
+     "worst": 18
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 21.6,
+     "w1": 74.8,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 69.9,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 50.1,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    649,
+    1052
+   ],
+   "outliers": [
+    {
+     "date": "2026-06-25",
+     "col": "dhuhr",
+     "res": 18
+    }
+   ]
+  },
+  "hasavyurt": {
+   "pos": [
+    43.25,
+    46.585
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 49.3,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 54.8,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 49,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 30.4,
+     "w1": 87.1,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 59.7,
+     "w1": 99.7,
+     "worst": 3
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 70.1,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    647,
+    1057
+   ],
+   "outliers": []
+  },
+  "hunzah": {
+   "pos": [
+    42.635,
+    46.685
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 45.2,
+     "w1": 97.8,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -3,
+     "n": 365,
+     "exact": 51.2,
+     "w1": 99.2,
+     "worst": 2
+    },
+    "dhuhr": {
+     "med": 1,
+     "n": 365,
+     "exact": 63.3,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 20.8,
+     "w1": 74.5,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 63.8,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 61.6,
+     "w1": 99.5,
+     "worst": 2
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    651,
+    1048
+   ],
+   "outliers": []
+  },
+  "izberbash": {
+   "pos": [
+    42.565,
+    47.865
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 58.9,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 45.8,
+     "w1": 88.2,
+     "worst": 59
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 54.5,
+     "w1": 99.7,
+     "worst": 2
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 43.6,
+     "w1": 83.3,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 63,
+     "w1": 99.5,
+     "worst": 2
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 68.8,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    650,
+    1047
+   ],
+   "outliers": [
+    {
+     "date": "2026-12-04",
+     "col": "sunrise",
+     "res": 59
+    }
+   ]
+  },
+  "kaspiysk": {
+   "pos": [
+    42.88,
+    47.64
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 51.8,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 64.4,
+     "w1": 99.7,
+     "worst": 60
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 52.9,
+     "w1": 99.7,
+     "worst": 9
+    },
+    "asr": {
+     "med": -1,
+     "n": 365,
+     "exact": 25.2,
+     "w1": 64.4,
+     "worst": 4
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 57,
+     "w1": 99.7,
+     "worst": 2
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 68.5,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    649,
+    1052
+   ],
+   "outliers": [
+    {
+     "date": "2026-02-03",
+     "col": "sunrise",
+     "res": 60
+    },
+    {
+     "date": "2026-07-24",
+     "col": "dhuhr",
+     "res": 9
+    },
+    {
+     "date": "2026-07-26",
+     "col": "asr",
+     "res": 4
+    },
+    {
+     "date": "2026-07-29",
+     "col": "asr",
+     "res": 4
+    }
+   ]
+  },
+  "kazbek": {
+   "pos": [
+    42.985,
+    46.855
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 51.5,
+     "w1": 91.5,
+     "worst": 61
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 58.4,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 2,
+     "n": 365,
+     "exact": 65.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 24.1,
+     "w1": 73.7,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 65.2,
+     "w1": 99.5,
+     "worst": 60
+    },
+    "isha": {
+     "med": 1,
+     "n": 365,
+     "exact": 59.7,
+     "w1": 99.7,
+     "worst": 3
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    648,
+    1115
+   ],
+   "outliers": [
+    {
+     "date": "2026-03-12",
+     "col": "maghrib",
+     "res": -60
+    },
+    {
+     "date": "2026-04-24",
+     "col": "maghrib",
+     "res": -45
+    },
+    {
+     "date": "2026-07-01",
+     "col": "fajr",
+     "res": -61
+    },
+    {
+     "date": "2026-07-02",
+     "col": "fajr",
+     "res": -61
+    },
+    {
+     "date": "2026-07-31",
+     "col": "fajr",
+     "res": -8
+    }
+   ]
+  },
+  "kizilurt": {
+   "pos": [
+    43.2,
+    46.87
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 47.9,
+     "w1": 99.5,
+     "worst": 3
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 57.3,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 55.1,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 1,
+     "n": 365,
+     "exact": 24.4,
+     "w1": 75.6,
+     "worst": 9
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 60.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 66,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    647,
+    1057
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-20",
+     "col": "asr",
+     "res": 9
+    }
+   ]
+  },
+  "kizlyar": {
+   "pos": [
+    43.85,
+    46.715
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 49.6,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": 0,
+     "n": 365,
+     "exact": 52.6,
+     "w1": 98.1,
+     "worst": 2
+    },
+    "dhuhr": {
+     "med": 3,
+     "n": 365,
+     "exact": 52.1,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 0,
+     "n": 365,
+     "exact": 49.3,
+     "w1": 98.1,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 3,
+     "n": 365,
+     "exact": 49.6,
+     "w1": 98.4,
+     "worst": 3
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 64.1,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    644,
+    1064
+   ],
+   "outliers": []
+  },
+  "kurah": {
+   "pos": [
+    41.745,
+    47.835
+   ],
+   "score": {
+    "fajr": {
+     "med": 2,
+     "n": 365,
+     "exact": 43,
+     "w1": 100,
+     "worst": 1
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 54.2,
+     "w1": 99.5,
+     "worst": 2
+    },
+    "dhuhr": {
+     "med": 5,
+     "n": 365,
+     "exact": 62.2,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 4,
+     "n": 365,
+     "exact": 35.1,
+     "w1": 70.4,
+     "worst": 3
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 49.3,
+     "w1": 96.4,
+     "worst": 2
+    },
+    "isha": {
+     "med": 13,
+     "n": 365,
+     "exact": 4.9,
+     "w1": 21.1,
+     "worst": 23
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    654,
+    1038
+   ],
+   "outliers": [
+    {
+     "date": "2026-02-09",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-10",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-11",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-12",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-13",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-14",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-15",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-16",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-17",
+     "col": "isha",
+     "res": 5
+    },
+    {
+     "date": "2026-02-18",
+     "col": "isha",
+     "res": 5
+    },
+    {
+     "date": "2026-02-19",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-20",
+     "col": "isha",
+     "res": 4
+    }
+   ]
+  },
+  "levashi": {
+   "pos": [
+    42.545,
+    47.045
+   ],
+   "score": {
+    "fajr": {
+     "med": -1,
+     "n": 365,
+     "exact": 49.6,
+     "w1": 97,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -4,
+     "n": 365,
+     "exact": 53.2,
+     "w1": 99.7,
+     "worst": 2
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 62.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 0,
+     "n": 365,
+     "exact": 23.3,
+     "w1": 78.4,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 3,
+     "n": 365,
+     "exact": 62.7,
+     "w1": 99.7,
+     "worst": 9
+    },
+    "isha": {
+     "med": -1,
+     "n": 365,
+     "exact": 55.9,
+     "w1": 98.1,
+     "worst": 2
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    651,
+    1047
+   ],
+   "outliers": [
+    {
+     "date": "2026-09-01",
+     "col": "maghrib",
+     "res": -9
+    }
+   ]
+  },
+  "rutul": {
+   "pos": [
+    41.645,
+    47.395
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 47.7,
+     "w1": 88.5,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -3,
+     "n": 365,
+     "exact": 56.2,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 4,
+     "n": 365,
+     "exact": 70.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 4,
+     "n": 365,
+     "exact": 24.7,
+     "w1": 81.1,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 64.7,
+     "w1": 100,
+     "worst": 1
+    },
+    "isha": {
+     "med": 13,
+     "n": 365,
+     "exact": 6,
+     "w1": 20,
+     "worst": 23
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    653,
+    1038
+   ],
+   "outliers": [
+    {
+     "date": "2026-02-11",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-12",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-13",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-15",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-16",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-17",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-18",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-19",
+     "col": "isha",
+     "res": 5
+    },
+    {
+     "date": "2026-02-20",
+     "col": "isha",
+     "res": 5
+    },
+    {
+     "date": "2026-02-21",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-22",
+     "col": "isha",
+     "res": 4
+    },
+    {
+     "date": "2026-02-23",
+     "col": "isha",
+     "res": 4
+    }
+   ]
+  },
+  "shamilkala": {
+   "pos": [
+    42.725,
+    46.845
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 44.7,
+     "w1": 70.4,
+     "worst": 55
+    },
+    "sunrise": {
+     "med": -1,
+     "n": 365,
+     "exact": 40.5,
+     "w1": 94.5,
+     "worst": 2
+    },
+    "dhuhr": {
+     "med": 3,
+     "n": 365,
+     "exact": 63.6,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 36.4,
+     "w1": 67.7,
+     "worst": 3
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 39.5,
+     "w1": 86.6,
+     "worst": 25
+    },
+    "isha": {
+     "med": 1,
+     "n": 365,
+     "exact": 37,
+     "w1": 81.4,
+     "worst": 3
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    651,
+    1047
+   ],
+   "outliers": [
+    {
+     "date": "2026-02-28",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-06-23",
+     "col": "fajr",
+     "res": 55
+    },
+    {
+     "date": "2026-12-24",
+     "col": "maghrib",
+     "res": -25
+    }
+   ]
+  },
+  "sharoda": {
+   "pos": [
+    42.305,
+    46.905
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 44.9,
+     "w1": 94.5,
+     "worst": 10
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 72.3,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 2,
+     "n": 365,
+     "exact": 79.5,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 23,
+     "w1": 78.1,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 65.2,
+     "w1": 98.6,
+     "worst": 60
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 63,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    652,
+    1044
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-24",
+     "col": "maghrib",
+     "res": -60
+    },
+    {
+     "date": "2026-01-25",
+     "col": "maghrib",
+     "res": -60
+    },
+    {
+     "date": "2026-02-28",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-03-15",
+     "col": "maghrib",
+     "res": -4
+    },
+    {
+     "date": "2026-04-06",
+     "col": "fajr",
+     "res": -10
+    },
+    {
+     "date": "2026-09-18",
+     "col": "maghrib",
+     "res": -60
+    },
+    {
+     "date": "2026-09-19",
+     "col": "maghrib",
+     "res": -60
+    }
+   ]
+  },
+  "suhokumsk": {
+   "pos": [
+    44.035,
+    47.095
+   ],
+   "score": {
+    "fajr": {
+     "med": 4,
+     "n": 365,
+     "exact": 12.1,
+     "w1": 34,
+     "worst": 10
+    },
+    "sunrise": {
+     "med": 4,
+     "n": 365,
+     "exact": 23.6,
+     "w1": 60,
+     "worst": 4
+    },
+    "dhuhr": {
+     "med": 7,
+     "n": 365,
+     "exact": 69.6,
+     "w1": 91.8,
+     "worst": 3
+    },
+    "asr": {
+     "med": 7,
+     "n": 365,
+     "exact": 11.8,
+     "w1": 48.8,
+     "worst": 4
+    },
+    "maghrib": {
+     "med": 7,
+     "n": 365,
+     "exact": 16.2,
+     "w1": 44.9,
+     "worst": 3
+    },
+    "isha": {
+     "med": 7,
+     "n": 365,
+     "exact": 11.8,
+     "w1": 41.9,
+     "worst": 4
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    637,
+    1074
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-20",
+     "col": "asr",
+     "res": -4
+    },
+    {
+     "date": "2026-01-27",
+     "col": "asr",
+     "res": -4
+    },
+    {
+     "date": "2026-03-06",
+     "col": "fajr",
+     "res": -9
+    },
+    {
+     "date": "2026-03-07",
+     "col": "fajr",
+     "res": -10
+    },
+    {
+     "date": "2026-05-11",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-12",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-13",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-18",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-19",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-20",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-21",
+     "col": "fajr",
+     "res": -4
+    },
+    {
+     "date": "2026-05-22",
+     "col": "fajr",
+     "res": -4
+    }
+   ]
+  },
+  "tlarata": {
+   "pos": [
+    42.415,
+    46.585
+   ],
+   "score": {
+    "fajr": {
+     "med": 1,
+     "n": 365,
+     "exact": 48.8,
+     "w1": 99.7,
+     "worst": 5
+    },
+    "sunrise": {
+     "med": -1,
+     "n": 365,
+     "exact": 34.8,
+     "w1": 77.3,
+     "worst": 120
+    },
+    "dhuhr": {
+     "med": 2,
+     "n": 365,
+     "exact": 63.6,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 24.9,
+     "w1": 70.4,
+     "worst": 3
+    },
+    "maghrib": {
+     "med": 5,
+     "n": 365,
+     "exact": 37.8,
+     "w1": 92.3,
+     "worst": 3
+    },
+    "isha": {
+     "med": 1,
+     "n": 365,
+     "exact": 62.7,
+     "w1": 99.7,
+     "worst": 36
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    652,
+    1046
+   ],
+   "outliers": [
+    {
+     "date": "2026-01-31",
+     "col": "fajr",
+     "res": -5
+    },
+    {
+     "date": "2026-08-16",
+     "col": "sunrise",
+     "res": 119
+    },
+    {
+     "date": "2026-08-17",
+     "col": "sunrise",
+     "res": 119
+    },
+    {
+     "date": "2026-08-18",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-19",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-20",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-21",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-22",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-23",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-24",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-25",
+     "col": "sunrise",
+     "res": 120
+    },
+    {
+     "date": "2026-08-26",
+     "col": "sunrise",
+     "res": 120
+    }
+   ]
+  },
+  "unsukul": {
+   "pos": [
+    42.745,
+    46.935
+   ],
+   "score": {
+    "fajr": {
+     "med": 0,
+     "n": 365,
+     "exact": 48.2,
+     "w1": 96.2,
+     "worst": 2
+    },
+    "sunrise": {
+     "med": -2,
+     "n": 365,
+     "exact": 73.4,
+     "w1": 100,
+     "worst": 1
+    },
+    "dhuhr": {
+     "med": 2,
+     "n": 365,
+     "exact": 94,
+     "w1": 100,
+     "worst": 1
+    },
+    "asr": {
+     "med": 2,
+     "n": 365,
+     "exact": 22.2,
+     "w1": 78.1,
+     "worst": 2
+    },
+    "maghrib": {
+     "med": 4,
+     "n": 365,
+     "exact": 73.2,
+     "w1": 99.7,
+     "worst": 2
+    },
+    "isha": {
+     "med": 0,
+     "n": 365,
+     "exact": 64.7,
+     "w1": 100,
+     "worst": 1
+    }
+   },
+   "ampJanJulFajrMaghrib": [
+    649,
+    1049
+   ],
+   "outliers": []
+  }
+ }
+}

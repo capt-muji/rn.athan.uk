@@ -1,0 +1,68 @@
+{
+ "surface": "OM-MARA-86-CITYIDS (mara.gov.om calendar_page2.asp, 86 CityIDs)",
+ "verdict": "genuine second recomputed year; grade lifts provisional to A",
+ "engine": "adhan 4.4.6, Other 18/18, Shafi, Rounding.None, Asia/Muscat (o1m-40 recipe, om-rule-at-solved.json)",
+ "years_held": {
+  "2026": "data/om-rows-2026.json (o1m-40)",
+  "2027": "data/om-rows-2027.json (o1m-40)",
+  "2028-2031": "data/om-rows-tail.json (o1m-40, 5,160 pages, 156,950 rows)"
+ },
+ "raw_artifacts": "o1m-40-oman/captures/om-page2/ (121 MB) + probe-2021/2023/2024-02/2025/2027.html",
+ "between_year_value_diff": {
+  "cells_compared": 188340,
+  "moving": 19172,
+  "pc_moving": 10.18,
+  "frozen_areas": 0,
+  "class": "recomputed (Algeria class), not a relabel"
+ },
+ "per_year_fit_from_om_tail_fit": {
+  "2026": {
+   "areas": 86,
+   "pc_exact_min": 76.44,
+   "pc_exact_max": 84.43,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  },
+  "2027": {
+   "areas": 86,
+   "pc_exact_min": 76.26,
+   "pc_exact_max": 84.34,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  },
+  "2028": {
+   "areas": 86,
+   "pc_exact_min": 75.62,
+   "pc_exact_max": 84.57,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  },
+  "2029": {
+   "areas": 86,
+   "pc_exact_min": 75.98,
+   "pc_exact_max": 84.52,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  },
+  "2030": {
+   "areas": 86,
+   "pc_exact_min": 76.03,
+   "pc_exact_max": 84.38,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  },
+  "2031": {
+   "areas": 86,
+   "pc_exact_min": 76.62,
+   "pc_exact_max": 84.61,
+   "pc_within1_min": 100,
+   "worst_max": 1
+  }
+ },
+ "seasonal_amplitude_area00_2026": {
+  "jan_fajr_isha_span_min": 821,
+  "jul_fajr_isha_span_min": 989
+ },
+ "between_year_stability": "parameters frozen: one recipe across all six years, per o1m-40 report section 6",
+ "verification": "independent cell diff run by o1n-9 on 2026-11-11 from o1m-40 banked rows"
+}

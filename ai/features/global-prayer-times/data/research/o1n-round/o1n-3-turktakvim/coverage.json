@@ -1,0 +1,1102 @@
+{
+ "wave": "o1n-3-turktakvim",
+ "tree": "semicolon-fixed enumeration 2026-11-11",
+ "countries": [
+  {
+   "country": "afghanistan",
+   "settlements": 1321,
+   "tables_banked": 1321,
+   "dated_rows": 482165
+  },
+  {
+   "country": "albania",
+   "settlements": 443,
+   "tables_banked": 443,
+   "dated_rows": 161695
+  },
+  {
+   "country": "american-samoa",
+   "settlements": 27,
+   "tables_banked": 27,
+   "dated_rows": 9855
+  },
+  {
+   "country": "andorra",
+   "settlements": 53,
+   "tables_banked": 53,
+   "dated_rows": 19345
+  },
+  {
+   "country": "anguilla",
+   "settlements": 15,
+   "tables_banked": 15,
+   "dated_rows": 5475
+  },
+  {
+   "country": "antigua-and-barbuda",
+   "settlements": 11,
+   "tables_banked": 11,
+   "dated_rows": 4015
+  },
+  {
+   "country": "argentina",
+   "settlements": 531,
+   "tables_banked": 517,
+   "dated_rows": 187658
+  },
+  {
+   "country": "armenia",
+   "settlements": 96,
+   "tables_banked": 96,
+   "dated_rows": 35040
+  },
+  {
+   "country": "aruba",
+   "settlements": 26,
+   "tables_banked": 26,
+   "dated_rows": 9490
+  },
+  {
+   "country": "australia",
+   "settlements": 1636,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "austria",
+   "settlements": 152,
+   "tables_banked": 152,
+   "dated_rows": 53771
+  },
+  {
+   "country": "azerbaijan",
+   "settlements": 1087,
+   "tables_banked": 1087,
+   "dated_rows": 396755
+  },
+  {
+   "country": "bahamas",
+   "settlements": 27,
+   "tables_banked": 27,
+   "dated_rows": 9855
+  },
+  {
+   "country": "bahrain",
+   "settlements": 8,
+   "tables_banked": 8,
+   "dated_rows": 2920
+  },
+  {
+   "country": "bangladesh",
+   "settlements": 187,
+   "tables_banked": 187,
+   "dated_rows": 68255
+  },
+  {
+   "country": "barbados",
+   "settlements": 248,
+   "tables_banked": 248,
+   "dated_rows": 90520
+  },
+  {
+   "country": "belarus",
+   "settlements": 81,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "belgium",
+   "settlements": 233,
+   "tables_banked": 129,
+   "dated_rows": 39066
+  },
+  {
+   "country": "belize",
+   "settlements": 72,
+   "tables_banked": 72,
+   "dated_rows": 26280
+  },
+  {
+   "country": "bermuda",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "bhutan",
+   "settlements": 24,
+   "tables_banked": 24,
+   "dated_rows": 8760
+  },
+  {
+   "country": "bolivia",
+   "settlements": 170,
+   "tables_banked": 170,
+   "dated_rows": 62050
+  },
+  {
+   "country": "bosnia-and-herzegovina",
+   "settlements": 598,
+   "tables_banked": 598,
+   "dated_rows": 218270
+  },
+  {
+   "country": "botswana",
+   "settlements": 78,
+   "tables_banked": 78,
+   "dated_rows": 28470
+  },
+  {
+   "country": "brazil",
+   "settlements": 1766,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "british-virgin-islands",
+   "settlements": 11,
+   "tables_banked": 11,
+   "dated_rows": 4015
+  },
+  {
+   "country": "brunei",
+   "settlements": 63,
+   "tables_banked": 63,
+   "dated_rows": 22995
+  },
+  {
+   "country": "bulgaria",
+   "settlements": 890,
+   "tables_banked": 880,
+   "dated_rows": 321200
+  },
+  {
+   "country": "cambodia",
+   "settlements": 13,
+   "tables_banked": 13,
+   "dated_rows": 4745
+  },
+  {
+   "country": "canada",
+   "settlements": 1267,
+   "tables_banked": 809,
+   "dated_rows": 275299
+  },
+  {
+   "country": "canary-islands",
+   "settlements": 21,
+   "tables_banked": 21,
+   "dated_rows": 7665
+  },
+  {
+   "country": "caribbean-netherlands",
+   "settlements": 6,
+   "tables_banked": 6,
+   "dated_rows": 2190
+  },
+  {
+   "country": "cayman-islands",
+   "settlements": 57,
+   "tables_banked": 57,
+   "dated_rows": 20805
+  },
+  {
+   "country": "chile",
+   "settlements": 253,
+   "tables_banked": 229,
+   "dated_rows": 83534
+  },
+  {
+   "country": "china",
+   "settlements": 2250,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "christmas-island",
+   "settlements": 5,
+   "tables_banked": 5,
+   "dated_rows": 1825
+  },
+  {
+   "country": "colombia",
+   "settlements": 258,
+   "tables_banked": 258,
+   "dated_rows": 94170
+  },
+  {
+   "country": "costa-rica",
+   "settlements": 111,
+   "tables_banked": 111,
+   "dated_rows": 40515
+  },
+  {
+   "country": "croatia",
+   "settlements": 890,
+   "tables_banked": 880,
+   "dated_rows": 321200
+  },
+  {
+   "country": "cuba",
+   "settlements": 45,
+   "tables_banked": 45,
+   "dated_rows": 16425
+  },
+  {
+   "country": "cyprus",
+   "settlements": 32,
+   "tables_banked": 32,
+   "dated_rows": 11680
+  },
+  {
+   "country": "czechia",
+   "settlements": 180,
+   "tables_banked": 180,
+   "dated_rows": 56408
+  },
+  {
+   "country": "denmark",
+   "settlements": 238,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "dominica",
+   "settlements": 53,
+   "tables_banked": 53,
+   "dated_rows": 19345
+  },
+  {
+   "country": "dominican-republic",
+   "settlements": 21,
+   "tables_banked": 21,
+   "dated_rows": 7665
+  },
+  {
+   "country": "ecuador",
+   "settlements": 83,
+   "tables_banked": 83,
+   "dated_rows": 30295
+  },
+  {
+   "country": "el-salvador",
+   "settlements": 8,
+   "tables_banked": 8,
+   "dated_rows": 2920
+  },
+  {
+   "country": "estonia",
+   "settlements": 35,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "falkland-islands",
+   "settlements": 7,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "fiji",
+   "settlements": 79,
+   "tables_banked": 72,
+   "dated_rows": 26280
+  },
+  {
+   "country": "finland",
+   "settlements": 971,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "france",
+   "settlements": 2158,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "french-guiana",
+   "settlements": 22,
+   "tables_banked": 22,
+   "dated_rows": 8030
+  },
+  {
+   "country": "french-polynesia",
+   "settlements": 51,
+   "tables_banked": 51,
+   "dated_rows": 18615
+  },
+  {
+   "country": "french-southern-territories",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 642
+  },
+  {
+   "country": "georgia",
+   "settlements": 1535,
+   "tables_banked": 238,
+   "dated_rows": 86870
+  },
+  {
+   "country": "germany",
+   "settlements": 5522,
+   "tables_banked": 20,
+   "dated_rows": 6729
+  },
+  {
+   "country": "gibraltar",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "greece",
+   "settlements": 685,
+   "tables_banked": 685,
+   "dated_rows": 250025
+  },
+  {
+   "country": "greenland",
+   "settlements": 22,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "grenada",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "guadeloupe",
+   "settlements": 9,
+   "tables_banked": 9,
+   "dated_rows": 3285
+  },
+  {
+   "country": "guam",
+   "settlements": 4,
+   "tables_banked": 4,
+   "dated_rows": 1460
+  },
+  {
+   "country": "guatemala",
+   "settlements": 37,
+   "tables_banked": 37,
+   "dated_rows": 13505
+  },
+  {
+   "country": "guyana",
+   "settlements": 8,
+   "tables_banked": 8,
+   "dated_rows": 2920
+  },
+  {
+   "country": "haiti",
+   "settlements": 560,
+   "tables_banked": 560,
+   "dated_rows": 204400
+  },
+  {
+   "country": "honduras",
+   "settlements": 35,
+   "tables_banked": 35,
+   "dated_rows": 12775
+  },
+  {
+   "country": "hungary",
+   "settlements": 226,
+   "tables_banked": 226,
+   "dated_rows": 81769
+  },
+  {
+   "country": "iceland",
+   "settlements": 301,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "india",
+   "settlements": 2514,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "indonesia",
+   "settlements": 569,
+   "tables_banked": 569,
+   "dated_rows": 207685
+  },
+  {
+   "country": "iran",
+   "settlements": 839,
+   "tables_banked": 829,
+   "dated_rows": 302585
+  },
+  {
+   "country": "iraq",
+   "settlements": 325,
+   "tables_banked": 325,
+   "dated_rows": 118625
+  },
+  {
+   "country": "ireland",
+   "settlements": 153,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "palestine",
+   "settlements": 42,
+   "tables_banked": 42,
+   "dated_rows": 15330
+  },
+  {
+   "country": "italy",
+   "settlements": 3063,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "jamaica",
+   "settlements": 21,
+   "tables_banked": 21,
+   "dated_rows": 7665
+  },
+  {
+   "country": "japan",
+   "settlements": 932,
+   "tables_banked": 922,
+   "dated_rows": 336530
+  },
+  {
+   "country": "johnston-atoll",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "jordan",
+   "settlements": 40,
+   "tables_banked": 40,
+   "dated_rows": 14600
+  },
+  {
+   "country": "kazakhstan",
+   "settlements": 393,
+   "tables_banked": 330,
+   "dated_rows": 114819
+  },
+  {
+   "country": "kiribati",
+   "settlements": 18,
+   "tables_banked": 15,
+   "dated_rows": 5475
+  },
+  {
+   "country": "kosovo",
+   "settlements": 23,
+   "tables_banked": 23,
+   "dated_rows": 8395
+  },
+  {
+   "country": "kuwait",
+   "settlements": 4,
+   "tables_banked": 4,
+   "dated_rows": 1460
+  },
+  {
+   "country": "kyrgyzstan",
+   "settlements": 89,
+   "tables_banked": 89,
+   "dated_rows": 32485
+  },
+  {
+   "country": "laos",
+   "settlements": 13,
+   "tables_banked": 13,
+   "dated_rows": 4745
+  },
+  {
+   "country": "latvia",
+   "settlements": 56,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "lebanon",
+   "settlements": 110,
+   "tables_banked": 110,
+   "dated_rows": 40150
+  },
+  {
+   "country": "lesotho",
+   "settlements": 5,
+   "tables_banked": 5,
+   "dated_rows": 1825
+  },
+  {
+   "country": "liechtenstein",
+   "settlements": 26,
+   "tables_banked": 26,
+   "dated_rows": 9490
+  },
+  {
+   "country": "lithuania",
+   "settlements": 21,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "luxembourg",
+   "settlements": 3,
+   "tables_banked": 3,
+   "dated_rows": 945
+  },
+  {
+   "country": "macao",
+   "settlements": 3,
+   "tables_banked": 3,
+   "dated_rows": 1095
+  },
+  {
+   "country": "malaysia",
+   "settlements": 363,
+   "tables_banked": 363,
+   "dated_rows": 132495
+  },
+  {
+   "country": "maldives",
+   "settlements": 14,
+   "tables_banked": 14,
+   "dated_rows": 5110
+  },
+  {
+   "country": "malta",
+   "settlements": 87,
+   "tables_banked": 87,
+   "dated_rows": 31755
+  },
+  {
+   "country": "marshall-islands",
+   "settlements": 14,
+   "tables_banked": 14,
+   "dated_rows": 5110
+  },
+  {
+   "country": "martinique",
+   "settlements": 24,
+   "tables_banked": 24,
+   "dated_rows": 8760
+  },
+  {
+   "country": "mexico",
+   "settlements": 703,
+   "tables_banked": 703,
+   "dated_rows": 256595
+  },
+  {
+   "country": "micronesia",
+   "settlements": 20,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "midway-islands",
+   "settlements": 0,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "moldova",
+   "settlements": 506,
+   "tables_banked": 506,
+   "dated_rows": 182777
+  },
+  {
+   "country": "monaco",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "mongolia",
+   "settlements": 110,
+   "tables_banked": 108,
+   "dated_rows": 37666
+  },
+  {
+   "country": "montenegro",
+   "settlements": 609,
+   "tables_banked": 609,
+   "dated_rows": 222285
+  },
+  {
+   "country": "montserrat",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "myanmar",
+   "settlements": 88,
+   "tables_banked": 88,
+   "dated_rows": 32120
+  },
+  {
+   "country": "namibia",
+   "settlements": 75,
+   "tables_banked": 75,
+   "dated_rows": 27375
+  },
+  {
+   "country": "nauru",
+   "settlements": 4,
+   "tables_banked": 4,
+   "dated_rows": 1460
+  },
+  {
+   "country": "nepal",
+   "settlements": 74,
+   "tables_banked": 74,
+   "dated_rows": 27010
+  },
+  {
+   "country": "netherlands",
+   "settlements": 762,
+   "tables_banked": 27,
+   "dated_rows": 8125
+  },
+  {
+   "country": "new-caledonia",
+   "settlements": 6,
+   "tables_banked": 6,
+   "dated_rows": 2190
+  },
+  {
+   "country": "new-zealand",
+   "settlements": 294,
+   "tables_banked": 282,
+   "dated_rows": 102930
+  },
+  {
+   "country": "nicaragua",
+   "settlements": 18,
+   "tables_banked": 18,
+   "dated_rows": 6570
+  },
+  {
+   "country": "niue",
+   "settlements": 8,
+   "tables_banked": 8,
+   "dated_rows": 2920
+  },
+  {
+   "country": "north-korea",
+   "settlements": 123,
+   "tables_banked": 123,
+   "dated_rows": 44895
+  },
+  {
+   "country": "north-macedonia",
+   "settlements": 249,
+   "tables_banked": 249,
+   "dated_rows": 90885
+  },
+  {
+   "country": "northern-cyprus",
+   "settlements": 123,
+   "tables_banked": 123,
+   "dated_rows": 44895
+  },
+  {
+   "country": "northern-mariana-islands",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "norway",
+   "settlements": 692,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "oman",
+   "settlements": 229,
+   "tables_banked": 229,
+   "dated_rows": 83585
+  },
+  {
+   "country": "pakistan",
+   "settlements": 368,
+   "tables_banked": 368,
+   "dated_rows": 134320
+  },
+  {
+   "country": "palau",
+   "settlements": 8,
+   "tables_banked": 8,
+   "dated_rows": 2920
+  },
+  {
+   "country": "palestine",
+   "settlements": 31,
+   "tables_banked": 31,
+   "dated_rows": 11315
+  },
+  {
+   "country": "palmyra-atoll",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "panama",
+   "settlements": 23,
+   "tables_banked": 23,
+   "dated_rows": 8395
+  },
+  {
+   "country": "papua-new-guinea",
+   "settlements": 116,
+   "tables_banked": 116,
+   "dated_rows": 42340
+  },
+  {
+   "country": "paraguay",
+   "settlements": 132,
+   "tables_banked": 132,
+   "dated_rows": 48180
+  },
+  {
+   "country": "peru",
+   "settlements": 371,
+   "tables_banked": 371,
+   "dated_rows": 135415
+  },
+  {
+   "country": "philippines",
+   "settlements": 1052,
+   "tables_banked": 1052,
+   "dated_rows": 383980
+  },
+  {
+   "country": "poland",
+   "settlements": 242,
+   "tables_banked": 101,
+   "dated_rows": 31089
+  },
+  {
+   "country": "portugal",
+   "settlements": 238,
+   "tables_banked": 238,
+   "dated_rows": 86870
+  },
+  {
+   "country": "qatar",
+   "settlements": 20,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "reunion",
+   "settlements": 9,
+   "tables_banked": 9,
+   "dated_rows": 3285
+  },
+  {
+   "country": "romania",
+   "settlements": 484,
+   "tables_banked": 484,
+   "dated_rows": 176371
+  },
+  {
+   "country": "russia",
+   "settlements": 6940,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "saint-helena",
+   "settlements": 4,
+   "tables_banked": 4,
+   "dated_rows": 1460
+  },
+  {
+   "country": "saint-kitts-and-nevis",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "saint-lucia",
+   "settlements": 77,
+   "tables_banked": 77,
+   "dated_rows": 28105
+  },
+  {
+   "country": "saint-martin",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "saint-pierre-and-miquelon",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "saint-vincent-and-the-grenadines",
+   "settlements": 5,
+   "tables_banked": 5,
+   "dated_rows": 1825
+  },
+  {
+   "country": "samoa",
+   "settlements": 36,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "san-marino",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "saudi-arabia",
+   "settlements": 239,
+   "tables_banked": 239,
+   "dated_rows": 87235
+  },
+  {
+   "country": "serbia",
+   "settlements": 103,
+   "tables_banked": 103,
+   "dated_rows": 37595
+  },
+  {
+   "country": "singapore",
+   "settlements": 3,
+   "tables_banked": 3,
+   "dated_rows": 1095
+  },
+  {
+   "country": "slovakia",
+   "settlements": 25,
+   "tables_banked": 25,
+   "dated_rows": 8218
+  },
+  {
+   "country": "slovenia",
+   "settlements": 71,
+   "tables_banked": 71,
+   "dated_rows": 25915
+  },
+  {
+   "country": "solomon-islands",
+   "settlements": 14,
+   "tables_banked": 14,
+   "dated_rows": 5110
+  },
+  {
+   "country": "south-georgia",
+   "settlements": 3,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "south-korea",
+   "settlements": 122,
+   "tables_banked": 122,
+   "dated_rows": 44530
+  },
+  {
+   "country": "spain",
+   "settlements": 855,
+   "tables_banked": 845,
+   "dated_rows": 308425
+  },
+  {
+   "country": "sri-lanka",
+   "settlements": 424,
+   "tables_banked": 424,
+   "dated_rows": 154760
+  },
+  {
+   "country": "suriname",
+   "settlements": 7,
+   "tables_banked": 7,
+   "dated_rows": 2555
+  },
+  {
+   "country": "svalbard-and-jan-mayen",
+   "settlements": 7,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "sweden",
+   "settlements": 1484,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "switzerland",
+   "settlements": 795,
+   "tables_banked": 785,
+   "dated_rows": 286397
+  },
+  {
+   "country": "syria",
+   "settlements": 518,
+   "tables_banked": 518,
+   "dated_rows": 189070
+  },
+  {
+   "country": "tajikistan",
+   "settlements": 316,
+   "tables_banked": 316,
+   "dated_rows": 115340
+  },
+  {
+   "country": "thailand",
+   "settlements": 657,
+   "tables_banked": 657,
+   "dated_rows": 239805
+  },
+  {
+   "country": "timor-leste",
+   "settlements": 70,
+   "tables_banked": 70,
+   "dated_rows": 25550
+  },
+  {
+   "country": "tonga",
+   "settlements": 94,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "trinidad-and-tobago",
+   "settlements": 142,
+   "tables_banked": 142,
+   "dated_rows": 51830
+  },
+  {
+   "country": "turkiye",
+   "settlements": 43686,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "turkmenistan",
+   "settlements": 59,
+   "tables_banked": 59,
+   "dated_rows": 21535
+  },
+  {
+   "country": "turks-and-caicos-islands",
+   "settlements": 2,
+   "tables_banked": 2,
+   "dated_rows": 730
+  },
+  {
+   "country": "tuvalu",
+   "settlements": 7,
+   "tables_banked": 7,
+   "dated_rows": 2555
+  },
+  {
+   "country": "ukraine",
+   "settlements": 378,
+   "tables_banked": 358,
+   "dated_rows": 123024
+  },
+  {
+   "country": "united-arab-emirates",
+   "settlements": 37,
+   "tables_banked": 37,
+   "dated_rows": 13505
+  },
+  {
+   "country": "united-kingdom",
+   "settlements": 1160,
+   "tables_banked": 101,
+   "dated_rows": 30959
+  },
+  {
+   "country": "united-states",
+   "settlements": 8110,
+   "tables_banked": 20,
+   "dated_rows": 7300
+  },
+  {
+   "country": "uruguay",
+   "settlements": 33,
+   "tables_banked": 33,
+   "dated_rows": 12045
+  },
+  {
+   "country": "us-virgin-islands",
+   "settlements": 24,
+   "tables_banked": 24,
+   "dated_rows": 8760
+  },
+  {
+   "country": "uzbekistan",
+   "settlements": 88,
+   "tables_banked": 88,
+   "dated_rows": 32120
+  },
+  {
+   "country": "vanuatu",
+   "settlements": 5,
+   "tables_banked": 5,
+   "dated_rows": 1825
+  },
+  {
+   "country": "venezuela",
+   "settlements": 546,
+   "tables_banked": 546,
+   "dated_rows": 199290
+  },
+  {
+   "country": "vietnam",
+   "settlements": 49,
+   "tables_banked": 49,
+   "dated_rows": 17885
+  },
+  {
+   "country": "wake-island",
+   "settlements": 1,
+   "tables_banked": 1,
+   "dated_rows": 365
+  },
+  {
+   "country": "wallis-and-futuna",
+   "settlements": 28,
+   "tables_banked": 0,
+   "dated_rows": 0
+  },
+  {
+   "country": "yemen",
+   "settlements": 148,
+   "tables_banked": 148,
+   "dated_rows": 54020
+  }
+ ],
+ "totals": {
+  "countries_enumerated": 181,
+  "countries_with_settlements": 180,
+  "settlements": 112854,
+  "tables_banked": 27181,
+  "dated_rows": 9847751,
+  "zero_entries": [
+   "midway-islands"
+  ]
+ }
+}

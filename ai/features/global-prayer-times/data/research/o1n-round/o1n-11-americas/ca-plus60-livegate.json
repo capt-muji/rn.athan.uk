@@ -1,0 +1,68 @@
+{
+ "nDAga1K0": {
+  "name": "Al-Ansaar Calgary",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 79,
+  "nov1_10_dhuhr_dev_median": 59,
+  "nov1_10_isha_dev_median": 47,
+  "nov1_10_all_plus60": false,
+  "dec_fajr_dev_median": 80,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:55AM dev 79"
+ },
+ "M9L2WrAZ": {
+  "name": "AlFalah Edmonton",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 60,
+  "nov1_10_dhuhr_dev_median": 61,
+  "nov1_10_isha_dev_median": 63,
+  "nov1_10_all_plus60": true,
+  "dec_fajr_dev_median": 61,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:34AM dev 60"
+ },
+ "VrdRkwKG": {
+  "name": "Markaz Ul Islam",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 59,
+  "nov1_10_dhuhr_dev_median": 64,
+  "nov1_10_isha_dev_median": 63,
+  "nov1_10_all_plus60": true,
+  "dec_fajr_dev_median": 60,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:34AM dev 60"
+ },
+ "M0dYkvL6": {
+  "name": "Al-Fatima Edmonton",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 60,
+  "nov1_10_dhuhr_dev_median": 59,
+  "nov1_10_isha_dev_median": 67,
+  "nov1_10_all_plus60": true,
+  "dec_fajr_dev_median": 60,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:34AM dev 59"
+ },
+ "1XAlR4Kb": {
+  "name": "Leduc",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 59,
+  "nov1_10_dhuhr_dev_median": 60,
+  "nov1_10_isha_dev_median": 63,
+  "nov1_10_all_plus60": true,
+  "dec_fajr_dev_median": 120,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:34AM dev 59"
+ },
+ "yLjO8JAQ": {
+  "name": "Ibn Masood Sherwood Park",
+  "tz": "America/Edmonton",
+  "nov1_10_fajr_dev_median": 60,
+  "nov1_10_dhuhr_dev_median": 59,
+  "nov1_10_isha_dev_median": 67,
+  "nov1_10_all_plus60": true,
+  "dec_fajr_dev_median": 60,
+  "dec_rows": 31,
+  "sample": "2026-11-01 fajr 6:34AM dev 60"
+ }
+}

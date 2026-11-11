@@ -1,0 +1,2144 @@
+[
+ {
+  "tag": "hyderabad-farhat",
+  "slug": "masjid-farhat-habeeb",
+  "recipe": {
+   "lat": 17.32,
+   "lon": 78.335,
+   "fajrAngle": 18.12,
+   "ishaAngle": 17.85,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/hyderabad-farhat.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 203,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 53,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 42,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 48,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 44,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 156,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "hyderabad-yaseen",
+  "slug": "yaseen",
+  "recipe": {
+   "lat": 17.53,
+   "lon": 78.255,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/hyderabad-yaseen.json"
+  },
+  "days2028": 371,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 371,
+   "perCol": {
+    "fajr": {
+     "exact": 217,
+     "w1": 371,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 371,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 370,
+     "w1": 371,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 367,
+     "w1": 371,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 370,
+     "w1": 371,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 171,
+     "w1": 371,
+     "worst": 1
+    }
+   },
+   "allSixW1": 371
+  }
+ },
+ {
+  "tag": "mughalsarai-ghausia",
+  "slug": "ghausia-masjid-1663522091412",
+  "recipe": {
+   "lat": 25.26,
+   "lon": 83,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.9,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/mughalsarai-ghausia.json"
+  },
+  "days2028": 371,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 371,
+   "perCol": {
+    "fajr": {
+     "exact": 194,
+     "w1": 371,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 360,
+     "w1": 371,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 371,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 352,
+     "w1": 371,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 371,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 172,
+     "w1": 371,
+     "worst": 1
+    }
+   },
+   "allSixW1": 371
+  }
+ },
+ {
+  "tag": "ahmedabad-tekrawali",
+  "slug": "tekrawali-masjid",
+  "recipe": {
+   "lat": 23.02,
+   "lon": 72.465,
+   "fajrAngle": 17.02,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/ahmedabad-tekrawali.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 178,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 363,
+     "worst": 2
+    },
+    "asr": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 0,
+     "w1": 361,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 181,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 360
+  }
+ },
+ {
+  "tag": "solapur-qadriya",
+  "slug": "qadriya-musjid",
+  "recipe": {
+   "lat": 17.64,
+   "lon": 75.78,
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/solapur-qadriya.json"
+  },
+  "days2028": 364,
+  "days2027": 336,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 205,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 364,
+     "worst": 0
+    },
+    "asr": {
+     "exact": 352,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 166,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "kalamb-jama",
+  "slug": "jama-masjid-kalamb",
+  "recipe": {
+   "lat": 18.88,
+   "lon": 73.06,
+   "fajrAngle": 18.31,
+   "ishaAngle": 17.72,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/kalamb-jama.json"
+  },
+  "days2028": 357,
+  "days2027": 329,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 0,
+   "pc": null
+  },
+  "fit2028": {
+   "n": 357,
+   "perCol": {
+    "fajr": {
+     "exact": 204,
+     "w1": 357,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 258,
+     "w1": 357,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 292,
+     "w1": 357,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 272,
+     "w1": 357,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 263,
+     "w1": 357,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 159,
+     "w1": 347,
+     "worst": 2
+    }
+   },
+   "allSixW1": 347
+  }
+ },
+ {
+  "tag": "utelwa-marwa",
+  "slug": "masjid-marwa",
+  "recipe": {
+   "lat": 26.48,
+   "lon": 81.44,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/utelwa-marwa.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 214,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 363,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 6,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 357,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 167,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "vijayapura-bandenawaz",
+  "slug": "masjid-e-bandenawaz",
+  "recipe": {
+   "lat": 16.8,
+   "lon": 75.56,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/vijayapura-bandenawaz.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 199,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 337,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 332,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 340,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 156,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "bidar-ali",
+  "slug": "masjid-e-ali-rz",
+  "recipe": {
+   "lat": 17.9,
+   "lon": 77.4,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/bidar-ali.json"
+  },
+  "days2028": 364,
+  "days2027": 357,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 205,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 356,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 352,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 165,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "ramagundam-makka",
+  "slug": "makka-masjid-1670845918243",
+  "recipe": {
+   "lat": 18.8,
+   "lon": 79.38,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/ramagundam-makka.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 193,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 340,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 1,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 336,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 9,
+     "w1": 358,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 179,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 358
+  }
+ },
+ {
+  "tag": "bishnupur-ramkrishnapur",
+  "slug": "ramkrishnapur-jummha-mosjid",
+  "recipe": {
+   "lat": 22.38,
+   "lon": 88.14,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/bishnupur-ramkrishnapur.json"
+  },
+  "days2028": 364,
+  "days2027": 357,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 225,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 2,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 6,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 363,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 358,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 186,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "thenhipalam-noorayn",
+  "slug": "masjid-an-noorayn-1737988044620",
+  "recipe": {
+   "lat": 11.08,
+   "lon": 75.76,
+   "fajrAngle": 18.11,
+   "ishaAngle": 17.86,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": -1,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/thenhipalam-noorayn.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 219,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 21,
+     "w1": 360,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 12,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 16,
+     "w1": 361,
+     "worst": 2
+    },
+    "maghrib": {
+     "exact": 16,
+     "w1": 361,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 154,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 354
+  }
+ },
+ {
+  "tag": "jaigahan-noori",
+  "slug": "masjid-noori",
+  "recipe": {
+   "lat": 26.16,
+   "lon": 82.86,
+   "fajrAngle": 18.27,
+   "ishaAngle": 17.7,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/jaigahan-noori.json"
+  },
+  "days2028": 357,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 357,
+   "perCol": {
+    "fajr": {
+     "exact": 224,
+     "w1": 357,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 322,
+     "w1": 357,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 321,
+     "w1": 357,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 316,
+     "w1": 357,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 319,
+     "w1": 357,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 158,
+     "w1": 357,
+     "worst": 1
+    }
+   },
+   "allSixW1": 357
+  }
+ },
+ {
+  "tag": "howrah-aaisha",
+  "slug": "masjid-e-aaisha",
+  "recipe": {
+   "lat": 22.58,
+   "lon": 88.18,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/howrah-aaisha.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 171,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 355,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 2,
+     "w1": 359,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 187,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 359
+  }
+ },
+ {
+  "tag": "anantapur-abubakar",
+  "slug": "masjid-e-abu-bakar",
+  "recipe": {
+   "lat": 14.66,
+   "lon": 77.48,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/anantapur-abubakar.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 201,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 354,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 355,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 357,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 356,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 154,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "etawah-darulhuda",
+  "slug": "madrasa-darul-huda",
+  "recipe": {
+   "lat": 26.8,
+   "lon": 78.9,
+   "fajrAngle": 18.08,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/etawah-darulhuda.json"
+  },
+  "days2028": 364,
+  "days2027": 343,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 221,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 353,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 5,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 9,
+     "w1": 362,
+     "worst": 2
+    },
+    "maghrib": {
+     "exact": 348,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 163,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 362
+  }
+ },
+ {
+  "tag": "mum-risalat",
+  "slug": "anjuman-risalat-e-haq-masjid",
+  "recipe": {
+   "lat": 19.12,
+   "lon": 72.78,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/mum-risalat.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 193,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 348,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 354,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 353,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 167,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "chennai-mohammedia",
+  "slug": "masjid-e-mohammedia",
+  "recipe": {
+   "lat": 12.965,
+   "lon": 80.06,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.87,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/chennai-mohammedia.json"
+  },
+  "days2028": 364,
+  "days2027": 343,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 206,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 0,
+     "w1": 361,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 0,
+     "w1": 361,
+     "worst": 2
+    },
+    "maghrib": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 156,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 358
+  }
+ },
+ {
+  "tag": "pune-ameer-hamza",
+  "slug": "ameer-hamza-masjid",
+  "recipe": {
+   "lat": 18.49,
+   "lon": 73.81,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.87,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/pune-ameer-hamza.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 200,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 363,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 152,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "bhavnagar-taqva",
+  "slug": "masjid-e-taqva",
+  "recipe": {
+   "lat": 21.78,
+   "lon": 72.02,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/bhavnagar-taqva.json"
+  },
+  "days2028": 364,
+  "days2027": 357,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 206,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 359,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 173,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "ramanagara-hussain",
+  "slug": "masjid-e-hussain",
+  "recipe": {
+   "lat": 12.68,
+   "lon": 77.16,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/ramanagara-hussain.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 213,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 7,
+     "w1": 352,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 358,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 352,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 353,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 176,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 352
+  }
+ },
+ {
+  "tag": "tiruchirappalli-thowheed",
+  "slug": "thowheed-mosque",
+  "recipe": {
+   "lat": 10.82,
+   "lon": 78.575,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/tiruchirappalli-thowheed.json"
+  },
+  "days2028": 364,
+  "days2027": 329,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 193,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 363,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 161,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "murshidabad-jamiya",
+  "slug": "masjid-al-jamiya-muhammadiya",
+  "recipe": {
+   "lat": 23.82,
+   "lon": 87.96,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/murshidabad-jamiya.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 222,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 356,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 0,
+     "w1": 363,
+     "worst": 2
+    },
+    "asr": {
+     "exact": 358,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 359,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 165,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 363
+  }
+ },
+ {
+  "tag": "guntur-firdous",
+  "slug": "masjid-firdous",
+  "recipe": {
+   "lat": 16.32,
+   "lon": 80.3,
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.86,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": -1,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/guntur-firdous.json"
+  },
+  "days2028": 364,
+  "days2027": 343,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 198,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 21,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 20,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 18,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 14,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 157,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "jaipur-mansarovar",
+  "slug": "mansarovar-masjid",
+  "recipe": {
+   "lat": 26.875,
+   "lon": 75.63,
+   "fajrAngle": 18.09,
+   "ishaAngle": 16.9,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": -1,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/jaipur-mansarovar.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 202,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 357,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 3,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 5,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 201,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "ahmedabad-idara",
+  "slug": "idara-islahul-muslimeen",
+  "recipe": {
+   "lat": 23,
+   "lon": 72.41,
+   "fajrAngle": 18.1,
+   "ishaAngle": 17.88,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/ahmedabad-idara.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 193,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 359,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 364,
+     "w1": 364,
+     "worst": 0
+    },
+    "maghrib": {
+     "exact": 362,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 146,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "shahabad-bilal",
+  "slug": "bilal-masjid-1706812009102",
+  "recipe": {
+   "lat": 27.64,
+   "lon": 79.82,
+   "fajrAngle": 18.1,
+   "ishaAngle": 16.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/shahabad-bilal.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 180,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 3,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 361,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 9,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 174,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "kodagu-moza",
+  "slug": "moza-masjid",
+  "recipe": {
+   "lat": 12.24,
+   "lon": 75.76,
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.87,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/kodagu-moza.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 183,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 352,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 350,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 344,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 149,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "chennai-anjuman-mohammedi",
+  "slug": "anjuman-e-mohammedi-masjid",
+  "recipe": {
+   "lat": 13.035,
+   "lon": 80.045,
+   "fajrAngle": 18.16,
+   "ishaAngle": 21.12,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 50,
+    "asr": 6,
+    "maghrib": 4,
+    "isha": 1
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/chennai-anjuman-mohammedi.json"
+  },
+  "days2028": 364,
+  "days2027": 357,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 180,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 43,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 14,
+     "w1": 43,
+     "worst": 17
+    },
+    "asr": {
+     "exact": 48,
+     "w1": 363,
+     "worst": 2
+    },
+    "maghrib": {
+     "exact": 51,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 151,
+     "w1": 344,
+     "worst": 2
+    }
+   },
+   "allSixW1": 35
+  }
+ },
+ {
+  "tag": "asansol-ayesha",
+  "slug": "masjid-e-ayesha-1721658711958",
+  "recipe": {
+   "lat": 23.66,
+   "lon": 86.86,
+   "fajrAngle": 18.09,
+   "ishaAngle": 17.91,
+   "madhab": "hanafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/asansol-ayesha.json"
+  },
+  "days2028": 364,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 210,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 339,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 350,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 337,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 338,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 191,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "kgf-quba",
+  "slug": "masjid-e-quba-1750358761872",
+  "recipe": {
+   "lat": 12.98,
+   "lon": 78.08,
+   "fajrAngle": 18.12,
+   "ishaAngle": 17.85,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/kgf-quba.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 216,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 41,
+     "w1": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 36,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 29,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 41,
+     "w1": 364,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 173,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 364
+  }
+ },
+ {
+  "tag": "wanaparthy-mecca",
+  "slug": "mecca-masjid-1712396969641",
+  "recipe": {
+   "lat": 16.4,
+   "lon": 77.8,
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.87,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": -1,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/wanaparthy-mecca.json"
+  },
+  "days2028": 364,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 364,
+   "perCol": {
+    "fajr": {
+     "exact": 202,
+     "w1": 364,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 10,
+     "w1": 362,
+     "worst": 2
+    },
+    "dhuhr": {
+     "exact": 360,
+     "w1": 364,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 345,
+     "w1": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 11,
+     "w1": 361,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 156,
+     "w1": 364,
+     "worst": 1
+    }
+   },
+   "allSixW1": 359
+  }
+ },
+ {
+  "tag": "chennai-azezziyyah",
+  "slug": "masjid-azezziyyah",
+  "recipe": {
+   "lat": 12.9,
+   "lon": 80.08,
+   "fajrAngle": 18.11,
+   "ishaAngle": 16.88,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/chennai-azezziyyah.json"
+  },
+  "days2028": 371,
+  "days2027": 350,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 371,
+   "perCol": {
+    "fajr": {
+     "exact": 196,
+     "w1": 371,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 3,
+     "w1": 371,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 366,
+     "w1": 371,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 3,
+     "w1": 371,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 370,
+     "w1": 371,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 189,
+     "w1": 371,
+     "worst": 1
+    }
+   },
+   "allSixW1": 371
+  }
+ },
+ {
+  "tag": "vylathur-thozhiyoor",
+  "slug": "thozhiyoor-salafi-masjid",
+  "recipe": {
+   "lat": 10.56,
+   "lon": 75.9,
+   "fajrAngle": 18.11,
+   "ishaAngle": 17.89,
+   "madhab": "shafi",
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": -1,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "src": "$HOME/athan-gitree/census/o1m/o1m-23-indiacomplete/fit/y2026/vylathur-thozhiyoor.json"
+  },
+  "days2028": 371,
+  "days2027": 371,
+  "rowsMoved2027to2028": {
+   "moved": 0,
+   "of": 6,
+   "pc": 0
+  },
+  "fit2028": {
+   "n": 371,
+   "perCol": {
+    "fajr": {
+     "exact": 212,
+     "w1": 371,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 341,
+     "w1": 371,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 364,
+     "w1": 371,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 12,
+     "w1": 360,
+     "worst": 2
+    },
+    "maghrib": {
+     "exact": 345,
+     "w1": 371,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 182,
+     "w1": 371,
+     "worst": 1
+    }
+   },
+   "allSixW1": 360
+  }
+ }
+]

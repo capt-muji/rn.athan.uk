@@ -1,0 +1,20 @@
+{
+ "myquran_2028_subuh_jan15_jul15": {
+  "units": 517,
+  "median": 11,
+  "p5": 1,
+  "p95": 26,
+  "min": 0,
+  "max": 34,
+  "note": "near-equator surface per FIT-RULES item 3; measured by O1n-4 from the banked rows"
+ },
+ "khgt_2028_subuh_jan15_jul15": {
+  "units": 518,
+  "median": 11.0,
+  "p5": 1,
+  "p95": 26,
+  "min": 0,
+  "max": 33,
+  "note": "measured by O1n-4 from the completed 518-point 2028 sweep"
+ }
+}

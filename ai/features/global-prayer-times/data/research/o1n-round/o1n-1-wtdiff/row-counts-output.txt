@@ -1,0 +1,71 @@
+base: world-table-v3.json, 174 rows
+  classes: {'A': 17, 'provisional': 40, 'candidate': 65, 'community': 15, 'F': 2, 'FALLBACK': 35, 'UNNAMED': 0}
+  round two applied beneath: NO ( 18 o1l new-country names checked, 0 present )
+  Macau in v3: False | North Korea in v3: False
+
+A items mapped: 82
+distinct rows touched: 50
+of which absent from v3: ['Bolivia'] 1
+non-row A items: ['A34', 'A58', 'A59', 'A60', 'A75', 'A76'] 6
+  ABSENT      Bolivia
+  candidate   Algeria
+  provisional Austria
+  provisional Bahrain
+  provisional Belgium
+  candidate   Cambodia
+  FALLBACK    China
+  provisional Cyprus (north)
+  A           Czechia
+  candidate   DR Congo
+  A           Egypt
+  provisional Fiji
+  candidate   France
+  provisional Hong Kong
+  A           Iceland
+  provisional Iran
+  provisional Iraq
+  candidate   Ireland
+  F           Jordan
+  FALLBACK    Kiribati
+  provisional Kuwait
+  candidate   Laos
+  candidate   Lebanon
+  provisional Libya
+  provisional Malaysia
+  A           Morocco
+  FALLBACK    Nepal
+  community   Nigeria
+  candidate   Norway (Mawaqeet line)
+  candidate   Norway (Rabita line)
+  A           Oman
+  provisional Pakistan
+  candidate   Palestine
+  F           Qatar
+  FALLBACK    Romania
+  provisional Russia (Bashkortostan)
+  provisional Russia (CDUM)
+  A           Russia (Tatarstan)
+  FALLBACK    Samoa
+  A           Saudi Arabia
+  provisional Sri Lanka
+  candidate   Sweden
+  candidate   Syria
+  A           Tunisia
+  A           Turkey
+  A           United Kingdom (London)
+  candidate   United States
+  community   Venezuela
+  candidate   Vietnam
+  provisional Yemen
+
+rows with an object: 87  without: 87
+FALLBACK rows with an object: []
+
+add side (rows moving or entering with no object today)
+  moved (table C) without an object: 12 ['Afghanistan', 'Algeria', 'Canada', 'Georgia', 'Indonesia', 'Lebanon', 'Mongolia', 'Palestine', 'Russia (Bashkortostan)', 'Syria', 'Tonga', 'United States']
+  lifted rows: 32 (none of the 35 FALLBACK rows has an object)
+  new country rows: 5  ruled-in rows: ['Macau', 'North Korea']
+  named no-object in 6.3: ['BH', 'DZ-MARW', 'SY-MWL-POLICY']
+  add side as the diff counts it, plus Bahrain: 50 (the diff's 49 omits Bahrain)
+  add side with the wave-four ruling: 52
+  amend list verified in class-arithmetic.py: 65 ids named -> 48 amendable, add side ['BH', 'DZ-MARW', 'SY-MWL-POLICY']

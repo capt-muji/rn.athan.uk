@@ -1,0 +1,6937 @@
+{
+ "2026-01-01": {
+  "date": "2026-01-01",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 387,
+   "sunrise": 489,
+   "zuhr": 728,
+   "asr": 851,
+   "maghrib": 961,
+   "isha": 1054,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 961,
+   "isha_j": 1140
+  },
+  "source_row": "Thu I 06:27 08:09 12:08 14:11 16:01 17:34 06:45 13:00 14:30 16:01 19:00",
+  "flag": ""
+ },
+ "2026-01-02": {
+  "date": "2026-01-02",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 728,
+   "asr": 852,
+   "maghrib": 962,
+   "isha": 1055,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 962,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 2 06:27 08:08 12:08 14:12 16:02 17:35 06:45 Jum'a 15:00 16:02 20:00",
+  "flag": ""
+ },
+ "2026-01-03": {
+  "date": "2026-01-03",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 729,
+   "asr": 853,
+   "maghrib": 963,
+   "isha": 1056,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 963,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 3 06:27 08:08 12:09 14:13 16:03 17:36 06:45 13:00 15:00 16:03 20:00",
+  "flag": ""
+ },
+ "2026-01-04": {
+  "date": "2026-01-04",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 729,
+   "asr": 854,
+   "maghrib": 964,
+   "isha": 1057,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 964,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 4 06:27 08:08 12:09 14:14 16:04 17:37 06:45 13:00 15:00 16:04 20:00",
+  "flag": ""
+ },
+ "2026-01-05": {
+  "date": "2026-01-05",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 730,
+   "asr": 855,
+   "maghrib": 965,
+   "isha": 1058,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 965,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 5 06:27 08:08 12:10 14:15 16:05 17:38 06:45 13:00 15:00 16:05 20:00",
+  "flag": ""
+ },
+ "2026-01-06": {
+  "date": "2026-01-06",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 387,
+   "sunrise": 487,
+   "zuhr": 730,
+   "asr": 856,
+   "maghrib": 967,
+   "isha": 1059,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 967,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 6 06:27 08:07 12:10 14:16 16:07 17:39 06:45 13:00 15:00 16:07 20:00",
+  "flag": ""
+ },
+ "2026-01-07": {
+  "date": "2026-01-07",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 386,
+   "sunrise": 487,
+   "zuhr": 731,
+   "asr": 858,
+   "maghrib": 968,
+   "isha": 1060,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 968,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 7 06:26 08:07 12:11 14:18 16:08 17:40 06:45 13:00 15:00 16:08 20:00",
+  "flag": ""
+ },
+ "2026-01-08": {
+  "date": "2026-01-08",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 386,
+   "sunrise": 486,
+   "zuhr": 731,
+   "asr": 859,
+   "maghrib": 969,
+   "isha": 1061,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 969,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 8 06:26 08:06 12:11 14:19 16:09 17:41 06:45 13:00 15:00 16:09 20:00",
+  "flag": ""
+ },
+ "2026-01-09": {
+  "date": "2026-01-09",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 385,
+   "sunrise": 486,
+   "zuhr": 731,
+   "asr": 860,
+   "maghrib": 971,
+   "isha": 1062,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 971,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 9 06:25 08:06 12:11 14:20 16:11 17:42 06:45 Jum'a 15:00 16:11 20:00",
+  "flag": ""
+ },
+ "2026-01-10": {
+  "date": "2026-01-10",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 385,
+   "sunrise": 485,
+   "zuhr": 732,
+   "asr": 862,
+   "maghrib": 972,
+   "isha": 1064,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 972,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 10 06:25 08:05 12:12 14:22 16:12 17:44 06:45 13:00 15:00 16:12 20:00",
+  "flag": ""
+ },
+ "2026-01-11": {
+  "date": "2026-01-11",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 384,
+   "sunrise": 485,
+   "zuhr": 732,
+   "asr": 863,
+   "maghrib": 974,
+   "isha": 1065,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 974,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 11 06:24 08:05 12:12 14:23 16:14 17:45 06:45 13:00 15:00 16:14 20:00",
+  "flag": ""
+ },
+ "2026-01-12": {
+  "date": "2026-01-12",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 384,
+   "sunrise": 484,
+   "zuhr": 733,
+   "asr": 864,
+   "maghrib": 975,
+   "isha": 1066,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 975,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 12 06:24 08:04 12:13 14:24 16:15 17:46 06:45 13:00 15:00 16:15 20:00",
+  "flag": ""
+ },
+ "2026-01-13": {
+  "date": "2026-01-13",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 383,
+   "sunrise": 483,
+   "zuhr": 733,
+   "asr": 866,
+   "maghrib": 977,
+   "isha": 1067,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 977,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 13 06:23 08:03 12:13 14:26 16:17 17:47 06:45 13:00 15:00 16:17 20:00",
+  "flag": ""
+ },
+ "2026-01-14": {
+  "date": "2026-01-14",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 382,
+   "sunrise": 482,
+   "zuhr": 733,
+   "asr": 867,
+   "maghrib": 978,
+   "isha": 1069,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 978,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 14 06:22 08:02 12:13 14:27 16:18 17:49 06:45 13:00 15:00 16:18 20:00",
+  "flag": ""
+ },
+ "2026-01-15": {
+  "date": "2026-01-15",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 382,
+   "sunrise": 481,
+   "zuhr": 734,
+   "asr": 869,
+   "maghrib": 980,
+   "isha": 1070,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 980,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 15 06:22 08:01 12:14 14:29 16:20 17:50 06:45 13:00 15:00 16:20 20:00",
+  "flag": ""
+ },
+ "2026-01-16": {
+  "date": "2026-01-16",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 381,
+   "sunrise": 481,
+   "zuhr": 734,
+   "asr": 870,
+   "maghrib": 981,
+   "isha": 1071,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 981,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 16 06-21 08:01 12:14 14:30 16:21 17:51 06:45 Jum'a 15:00 16:21 20:00",
+  "flag": ""
+ },
+ "2026-01-17": {
+  "date": "2026-01-17",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 380,
+   "sunrise": 480,
+   "zuhr": 734,
+   "asr": 872,
+   "maghrib": 983,
+   "isha": 1073,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 983,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 17 06:20 08:00 12:14 14:32 16:23 17:53 06:45 13:00 15:00 16:23 20:00",
+  "flag": ""
+ },
+ "2026-01-18": {
+  "date": "2026-01-18",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 379,
+   "sunrise": 479,
+   "zuhr": 735,
+   "asr": 873,
+   "maghrib": 985,
+   "isha": 1074,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 985,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 18 06:19 07:59 12:15 14:33 16:25 17:54 06:45 13:00 15:00 16:25 20:00",
+  "flag": ""
+ },
+ "2026-01-19": {
+  "date": "2026-01-19",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 378,
+   "sunrise": 478,
+   "zuhr": 735,
+   "asr": 875,
+   "maghrib": 986,
+   "isha": 1076,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 986,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 19 06:18 07:58 12:15 14:35 16:26 17:56 06:45 13:00 15:00 16:26 20:00",
+  "flag": ""
+ },
+ "2026-01-20": {
+  "date": "2026-01-20",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 377,
+   "sunrise": 476,
+   "zuhr": 735,
+   "asr": 877,
+   "maghrib": 988,
+   "isha": 1077,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 988,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 20 06:17 07:56 12:15 14:37 16:28 17:57 06:45 13:00 15:00 16:28 20:00",
+  "flag": ""
+ },
+ "2026-01-21": {
+  "date": "2026-01-21",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 376,
+   "sunrise": 475,
+   "zuhr": 736,
+   "asr": 878,
+   "maghrib": 990,
+   "isha": 1078,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 990,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 21 06:16 07:55 12:16 14:38 16:30 17:58 06:45 13:00 15:00 16:30 20:00",
+  "flag": ""
+ },
+ "2026-01-22": {
+  "date": "2026-01-22",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 375,
+   "sunrise": 474,
+   "zuhr": 736,
+   "asr": 880,
+   "maghrib": 992,
+   "isha": 1080,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 992,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 22 06:15 07:54 12:16 14:40 1632 18:00 06:45 13:00 15:00 1632 20:00",
+  "flag": ""
+ },
+ "2026-01-23": {
+  "date": "2026-01-23",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 374,
+   "sunrise": 473,
+   "zuhr": 736,
+   "asr": 882,
+   "maghrib": 993,
+   "isha": 1081,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 930,
+   "maghrib_j": 993,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 23 06:14 07:53 12:16 14:42 16:33 18:01 06:45 Jum'a 15:30 16:33 20:00",
+  "flag": ""
+ },
+ "2026-01-24": {
+  "date": "2026-01-24",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 373,
+   "sunrise": 472,
+   "zuhr": 736,
+   "asr": 883,
+   "maghrib": 995,
+   "isha": 1083,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 995,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 24 06:13 07:52 12:16 14:43 16:35 18:03 06:45 13:00 15:30 16:35 20:00",
+  "flag": ""
+ },
+ "2026-01-25": {
+  "date": "2026-01-25",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 372,
+   "sunrise": 470,
+   "zuhr": 737,
+   "asr": 885,
+   "maghrib": 997,
+   "isha": 1085,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 997,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 25 06:12 07:50 12:17 14:45 1637 18:05 06:45 13:00 15:30 1637 20:00",
+  "flag": ""
+ },
+ "2026-01-26": {
+  "date": "2026-01-26",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 370,
+   "sunrise": 469,
+   "zuhr": 737,
+   "asr": 887,
+   "maghrib": 999,
+   "isha": 1086,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 999,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 26 06:10 07:49 12:17 14:47 16:39 18:06 06:45 13:00 15:30 16:39 20:00",
+  "flag": ""
+ },
+ "2026-01-27": {
+  "date": "2026-01-27",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 369,
+   "sunrise": 468,
+   "zuhr": 737,
+   "asr": 888,
+   "maghrib": 1000,
+   "isha": 1088,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1000,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 27 06:09 07:48 12:17 14:48 16:40 18:08 06:45 13:00 15:30 16:40 20:00",
+  "flag": ""
+ },
+ "2026-01-28": {
+  "date": "2026-01-28",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 368,
+   "sunrise": 466,
+   "zuhr": 737,
+   "asr": 890,
+   "maghrib": 1002,
+   "isha": 1089,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1002,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 28 06:08 07:46 12:17 14:50 16:42 18:09 06:45 13:00 15:30 16:42 20:00",
+  "flag": ""
+ },
+ "2026-01-29": {
+  "date": "2026-01-29",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 366,
+   "sunrise": 465,
+   "zuhr": 737,
+   "asr": 892,
+   "maghrib": 1004,
+   "isha": 1091,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1004,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 29 06:06 07:45 12:17 14:52 16:44 18:11 06:45 13:00 15:30 16:44 20:00",
+  "flag": ""
+ },
+ "2026-01-30": {
+  "date": "2026-01-30",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 365,
+   "sunrise": 463,
+   "zuhr": 738,
+   "asr": 894,
+   "maghrib": 1006,
+   "isha": 1092,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 930,
+   "maghrib_j": 1006,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 30 06:05 07:43 12:18 14:54 16:46 18:12 06:45 Jum'a 15:30 16:46 20:00",
+  "flag": ""
+ },
+ "2026-01-31": {
+  "date": "2026-01-31",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 363,
+   "sunrise": 462,
+   "zuhr": 738,
+   "asr": 895,
+   "maghrib": 1008,
+   "isha": 1094,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1008,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 31 06:03 07:42 12:18 14:55 16:48 18:14 06:45 13:00 15:30 16:48 20:00",
+  "flag": ""
+ },
+ "2026-02-01": {
+  "date": "2026-02-01",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 362,
+   "sunrise": 460,
+   "zuhr": 738,
+   "asr": 897,
+   "maghrib": 1010,
+   "isha": 1096,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1010,
+   "isha_j": 1200
+  },
+  "source_row": "Sun I 06:02 07:40 12:18 14:57 16:50 18:16 06:45 13:00 15:30 16:50 20:00",
+  "flag": ""
+ },
+ "2026-02-02": {
+  "date": "2026-02-02",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 360,
+   "sunrise": 459,
+   "zuhr": 738,
+   "asr": 899,
+   "maghrib": 1011,
+   "isha": 1097,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1011,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 2 06:00 07:39 12:18 14:59 16:51 18:17 06:45 13:00 15:30 16:51 20:00",
+  "flag": ""
+ },
+ "2026-02-03": {
+  "date": "2026-02-03",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 359,
+   "sunrise": 457,
+   "zuhr": 738,
+   "asr": 901,
+   "maghrib": 1013,
+   "isha": 1099,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1013,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 3 05:59 07:37 12:18 15:01 16:53 18:19 06:45 13:00 15:30 16:53 20:00",
+  "flag": ""
+ },
+ "2026-02-04": {
+  "date": "2026-02-04",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 357,
+   "sunrise": 455,
+   "zuhr": 738,
+   "asr": 902,
+   "maghrib": 1015,
+   "isha": 1100,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1015,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 4 05:57 07:35 12:18 15:02 16:55 18:20 06:45 13:00 1530 16:55 20:00",
+  "flag": ""
+ },
+ "2026-02-05": {
+  "date": "2026-02-05",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 356,
+   "sunrise": 454,
+   "zuhr": 738,
+   "asr": 904,
+   "maghrib": 1017,
+   "isha": 1102,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1017,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 5 05:56 07:34 12:18 15:04 16:57 18:22 06:45 13:00 15:30 16:57 20:00",
+  "flag": ""
+ },
+ "2026-02-06": {
+  "date": "2026-02-06",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 354,
+   "sunrise": 452,
+   "zuhr": 738,
+   "asr": 906,
+   "maghrib": 1019,
+   "isha": 1104,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 960,
+   "maghrib_j": 1019,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 6 05:54 07:32 12:18 15:06 16:59 18:24 0630 Jum'a 16:00 16:59 20:00",
+  "flag": ""
+ },
+ "2026-02-07": {
+  "date": "2026-02-07",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 352,
+   "sunrise": 450,
+   "zuhr": 738,
+   "asr": 908,
+   "maghrib": 1021,
+   "isha": 1105,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1021,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 7 05:52 07:30 12:18 15:08 17:01 18:25 06:30 13:00 16:00 17:01 20:00",
+  "flag": ""
+ },
+ "2026-02-08": {
+  "date": "2026-02-08",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 351,
+   "sunrise": 448,
+   "zuhr": 739,
+   "asr": 909,
+   "maghrib": 1023,
+   "isha": 1107,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1023,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 8 05:51 07:28 12:19 15:09 17:03 18:27 06:30 13:00 16:00 17:03 20:00",
+  "flag": ""
+ },
+ "2026-02-09": {
+  "date": "2026-02-09",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 349,
+   "sunrise": 446,
+   "zuhr": 739,
+   "asr": 911,
+   "maghrib": 1025,
+   "isha": 1109,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1025,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 9 05:49 07:26 12:19 15:11 17:05 18:29 06:30 13:00 16:00 17:05 20:00",
+  "flag": ""
+ },
+ "2026-02-10": {
+  "date": "2026-02-10",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 347,
+   "sunrise": 445,
+   "zuhr": 739,
+   "asr": 913,
+   "maghrib": 1027,
+   "isha": 1110,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1027,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 10 05:47 07:25 12:19 15:13 17:07 18:30 06:30 13:00 16:00 17:07 20:00",
+  "flag": ""
+ },
+ "2026-02-11": {
+  "date": "2026-02-11",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 346,
+   "sunrise": 443,
+   "zuhr": 739,
+   "asr": 915,
+   "maghrib": 1028,
+   "isha": 1112,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1028,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 11 05:46 07:23 12:19 15:15 17:08 18:32 06:30 13:00 16:00 17:08 20:00",
+  "flag": ""
+ },
+ "2026-02-12": {
+  "date": "2026-02-12",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 344,
+   "sunrise": 441,
+   "zuhr": 739,
+   "asr": 916,
+   "maghrib": 1030,
+   "isha": 1114,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1030,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 12 05:44 07:21 12:19 15:16 17:10 18:34 06:30 13:00 16:00 17:10 20:00",
+  "flag": ""
+ },
+ "2026-02-13": {
+  "date": "2026-02-13",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 342,
+   "sunrise": 439,
+   "zuhr": 739,
+   "asr": 918,
+   "maghrib": 1032,
+   "isha": 1115,
+   "fajr_j": 360,
+   "zuhr_j": "Jum'a",
+   "asr_j": 960,
+   "maghrib_j": 1032,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 13 05:42 07:19 12:19 15-18 17:12 18:35 06:00 Jum'a 16:00 17:12 20:00",
+  "flag": ""
+ },
+ "2026-02-14": {
+  "date": "2026-02-14",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 340,
+   "sunrise": 437,
+   "zuhr": 739,
+   "asr": 920,
+   "maghrib": 1034,
+   "isha": 1117,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1034,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 14 05:40 07:17 12:19 15:20 17:14 18:37 06:00 13:00 16:00 17:14 20:00",
+  "flag": ""
+ },
+ "2026-02-15": {
+  "date": "2026-02-15",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 338,
+   "sunrise": 435,
+   "zuhr": 738,
+   "asr": 922,
+   "maghrib": 1036,
+   "isha": 1118,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1036,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 15 05:38 07:15 12:18 15:22 17:16 18:38 06:00 13:00 16:00 17:16 20:00",
+  "flag": ""
+ },
+ "2026-02-16": {
+  "date": "2026-02-16",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 336,
+   "sunrise": 433,
+   "zuhr": 738,
+   "asr": 923,
+   "maghrib": 1038,
+   "isha": 1120,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1038,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 16 05:36 07:13 12:18 15:23 17:18 18:40 06:00 13:00 16:00 17:18 20:00",
+  "flag": ""
+ },
+ "2026-02-17": {
+  "date": "2026-02-17",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 334,
+   "sunrise": 431,
+   "zuhr": 738,
+   "asr": 925,
+   "maghrib": 1040,
+   "isha": 1122,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1040,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 17 05:34 07:11 12:18 15:25 17:20 18:42 06:00 13:00 16:00 17:20 20:00",
+  "flag": ""
+ },
+ "2026-02-18": {
+  "date": "2026-02-18",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 333,
+   "sunrise": 429,
+   "zuhr": 738,
+   "asr": 927,
+   "maghrib": 1042,
+   "isha": 1123,
+   "fajr_j": 353,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1047,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 18 05:33 07:09 12:18 15:27 17:22 18:43 05:53 13:00 16:00 17:27 20:00",
+  "flag": ""
+ },
+ "2026-02-19": {
+  "date": "2026-02-19",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 331,
+   "sunrise": 427,
+   "zuhr": 738,
+   "asr": 929,
+   "maghrib": 1043,
+   "isha": 1125,
+   "fajr_j": 351,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1048,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 19 0531 07:07 12:18 15:29 17:23 18:45 05:51 13:00 16:00 17:28 20:00",
+  "flag": ""
+ },
+ "2026-02-20": {
+  "date": "2026-02-20",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 329,
+   "sunrise": 425,
+   "zuhr": 738,
+   "asr": 930,
+   "maghrib": 1045,
+   "isha": 1127,
+   "fajr_j": 349,
+   "zuhr_j": "Jum'a",
+   "asr_j": 960,
+   "maghrib_j": 1050,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 20 05:29 07:05 12:18 15:30 17:25 18:47 05:49 Jum'a 16:00 17:30 20:00",
+  "flag": ""
+ },
+ "2026-02-21": {
+  "date": "2026-02-21",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 327,
+   "sunrise": 423,
+   "zuhr": 738,
+   "asr": 932,
+   "maghrib": 1047,
+   "isha": 1128,
+   "fajr_j": 347,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1052,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 21 05:27 07:03 12:18 15:32 17:27 18:48 05:47 13:00 16:00 17:32 20:00",
+  "flag": ""
+ },
+ "2026-02-22": {
+  "date": "2026-02-22",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 325,
+   "sunrise": 421,
+   "zuhr": 738,
+   "asr": 934,
+   "maghrib": 1049,
+   "isha": 1130,
+   "fajr_j": 345,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1054,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 22 05:25 07:01 12:18 1534 17:29 18:50 05:45 13:00 16:00 17:34 20:00",
+  "flag": ""
+ },
+ "2026-02-23": {
+  "date": "2026-02-23",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 323,
+   "sunrise": 419,
+   "zuhr": 738,
+   "asr": 935,
+   "maghrib": 1051,
+   "isha": 1131,
+   "fajr_j": 343,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1056,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 23 05:23 06:59 12:18 15:35 17:31 18:51 05:43 13:00 16:00 17:36 20:00",
+  "flag": ""
+ },
+ "2026-02-24": {
+  "date": "2026-02-24",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 321,
+   "sunrise": 417,
+   "zuhr": 738,
+   "asr": 937,
+   "maghrib": 1053,
+   "isha": 1133,
+   "fajr_j": 341,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1058,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 24 05:21 06:57 12:18 15:37 1733 18:53 05:41 13:00 16:00 17:38 20:00",
+  "flag": ""
+ },
+ "2026-02-25": {
+  "date": "2026-02-25",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 319,
+   "sunrise": 414,
+   "zuhr": 737,
+   "asr": 939,
+   "maghrib": 1054,
+   "isha": 1135,
+   "fajr_j": 339,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1059,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 25 05:19 06:54 12:17 1539 17:34 18:55 05:39 13:00 16:00 17:39 20:00",
+  "flag": ""
+ },
+ "2026-02-26": {
+  "date": "2026-02-26",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 316,
+   "sunrise": 412,
+   "zuhr": 737,
+   "asr": 940,
+   "maghrib": 1056,
+   "isha": 1136,
+   "fajr_j": 336,
+   "zuhr_j": 780,
+   "asr_j": 960,
+   "maghrib_j": 1061,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 26 05:16 06:52 12:17 15:40 17:36 18:56 05:36 13:00 16:00 17:41 20:00",
+  "flag": ""
+ },
+ "2026-02-27": {
+  "date": "2026-02-27",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 314,
+   "sunrise": 410,
+   "zuhr": 737,
+   "asr": 942,
+   "maghrib": 1058,
+   "isha": 1138,
+   "fajr_j": 334,
+   "zuhr_j": "Jum'a",
+   "asr_j": 990,
+   "maghrib_j": 1063,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 27 05:14 06:50 12:17 15:42 17:38 18:58 05J4 Jum'a 16:30 17:43 20:00",
+  "flag": ""
+ },
+ "2026-02-28": {
+  "date": "2026-02-28",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 312,
+   "sunrise": 408,
+   "zuhr": 737,
+   "asr": 943,
+   "maghrib": 1060,
+   "isha": 1139,
+   "fajr_j": 332,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1065,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 28 05:12 06:48 12:17 15:43 17:40 18:59 05:32 13:00 16:30 17:45 20:00",
+  "flag": ""
+ },
+ "2026-03-01": {
+  "date": "2026-03-01",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 310,
+   "sunrise": 406,
+   "zuhr": 737,
+   "asr": 945,
+   "maghrib": 1062,
+   "isha": 1141,
+   "fajr_j": 330,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1067,
+   "isha_j": 1200
+  },
+  "source_row": "Sun I 05:10 06:46 12:17 15:45 17:42 19:01 0530 13:00 16:30 17:47 20:00",
+  "flag": ""
+ },
+ "2026-03-02": {
+  "date": "2026-03-02",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 308,
+   "sunrise": 403,
+   "zuhr": 736,
+   "asr": 947,
+   "maghrib": 1064,
+   "isha": 1142,
+   "fajr_j": 328,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1069,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 2 05:08 06:43 12:16 15:47 17:44 19:02 05:28 13:00 16:30 17:49 20:00",
+  "flag": ""
+ },
+ "2026-03-03": {
+  "date": "2026-03-03",
+  "weekday": "Tue",
+  "times": {
+   "fajr": null,
+   "sunrise": 401,
+   "zuhr": 736,
+   "asr": 948,
+   "maghrib": 1065,
+   "isha": 1144,
+   "fajr_j": 326,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1070,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 05:06 06:41 12:16 15:48 17:45 19:04 05:26 13:00 16:30 17:50 20:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-03-04": {
+  "date": "2026-03-04",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 304,
+   "sunrise": 399,
+   "zuhr": 736,
+   "asr": 950,
+   "maghrib": 1067,
+   "isha": 1146,
+   "fajr_j": 324,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1072,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 4 05:04 06:39 12:16 15:50 17:47 19:06 05:24 13:00 16:30 17:52 20:00",
+  "flag": ""
+ },
+ "2026-03-05": {
+  "date": "2026-03-05",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 302,
+   "sunrise": 397,
+   "zuhr": 736,
+   "asr": 951,
+   "maghrib": 1069,
+   "isha": 1147,
+   "fajr_j": 322,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1074,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 5 05:02 06:37 12:16 15:51 17:49 19:07 05:22 13:00 16:30 17:54 20:00",
+  "flag": ""
+ },
+ "2026-03-06": {
+  "date": "2026-03-06",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 300,
+   "sunrise": 394,
+   "zuhr": 736,
+   "asr": 953,
+   "maghrib": 1071,
+   "isha": 1149,
+   "fajr_j": 320,
+   "zuhr_j": "Jum'a",
+   "asr_j": 990,
+   "maghrib_j": 1076,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 6 05:00 06:34 12:16 15:53 17:51 19:09 05:20 Jum'a 16:30 17:56 20:00",
+  "flag": ""
+ },
+ "2026-03-07": {
+  "date": "2026-03-07",
+  "weekday": "Sat",
+  "times": {
+   "fajr": null,
+   "sunrise": 392,
+   "zuhr": 735,
+   "asr": 954,
+   "maghrib": 1073,
+   "isha": 1150,
+   "fajr_j": 317,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1078,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 04:57 06:32 12:15 15:54 17:53 19:10 05:17 13:00 16:30 17:58 20:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-03-08": {
+  "date": "2026-03-08",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 295,
+   "sunrise": 390,
+   "zuhr": 735,
+   "asr": 956,
+   "maghrib": 1074,
+   "isha": 1152,
+   "fajr_j": 315,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1079,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 8 04:55 06:30 12:15 15:56 17:54 19:12 05:15 13:00 16:30 17:59 20:00",
+  "flag": ""
+ },
+ "2026-03-09": {
+  "date": "2026-03-09",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 293,
+   "sunrise": 388,
+   "zuhr": 735,
+   "asr": 957,
+   "maghrib": 1076,
+   "isha": 1153,
+   "fajr_j": 313,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1081,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 9 04:53 06:28 12:15 15:57 17:56 19:13 05:13 13:00 16:30 18:01 20:00",
+  "flag": ""
+ },
+ "2026-03-10": {
+  "date": "2026-03-10",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 291,
+   "sunrise": 385,
+   "zuhr": 735,
+   "asr": 959,
+   "maghrib": 1078,
+   "isha": 1155,
+   "fajr_j": 311,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1083,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 10 04:51 06:25 12:15 15:59 17:58 19:15 05:11 13:00 16:30 18:03 20:00",
+  "flag": ""
+ },
+ "2026-03-11": {
+  "date": "2026-03-11",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 289,
+   "sunrise": 383,
+   "zuhr": 734,
+   "asr": 960,
+   "maghrib": 1080,
+   "isha": 1156,
+   "fajr_j": 309,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1085,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 11 04:49 06:23 12:14 16:00 18:00 19:16 05:09 13:00 16:30 18:05 20:00",
+  "flag": ""
+ },
+ "2026-03-12": {
+  "date": "2026-03-12",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 286,
+   "sunrise": 381,
+   "zuhr": 734,
+   "asr": 962,
+   "maghrib": 1081,
+   "isha": 1158,
+   "fajr_j": 306,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1086,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 12 04:46 06:21 12:14 16:02 18:01 19:18 05:06 13:00 16:30 18:06 20:00",
+  "flag": ""
+ },
+ "2026-03-13": {
+  "date": "2026-03-13",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 284,
+   "sunrise": 378,
+   "zuhr": 734,
+   "asr": 963,
+   "maghrib": 1083,
+   "isha": 1159,
+   "fajr_j": 304,
+   "zuhr_j": "Jum'a",
+   "asr_j": 990,
+   "maghrib_j": 1088,
+   "isha_j": 1230
+  },
+  "source_row": "Fri 13 04:44 06:18 12:14 16:03 18:03 19:19 05:04 Jum'a 16:30 18:08 20:30",
+  "flag": ""
+ },
+ "2026-03-14": {
+  "date": "2026-03-14",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 282,
+   "sunrise": 376,
+   "zuhr": 734,
+   "asr": 965,
+   "maghrib": 1085,
+   "isha": 1161,
+   "fajr_j": 302,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1090,
+   "isha_j": 1230
+  },
+  "source_row": "Sat 14 04:42 06:16 12:14 16:05 18:05 19:21 05:02 13:00 16:30 18:10 20:30",
+  "flag": ""
+ },
+ "2026-03-15": {
+  "date": "2026-03-15",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 280,
+   "sunrise": 374,
+   "zuhr": 733,
+   "asr": 966,
+   "maghrib": 1087,
+   "isha": 1162,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1092,
+   "isha_j": 1230
+  },
+  "source_row": "Sun 15 04:40 06:14 12:13 16:06 18:07 19:22 05:00 13:00 16:30 18:12 20:30",
+  "flag": ""
+ },
+ "2026-03-16": {
+  "date": "2026-03-16",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 278,
+   "sunrise": 372,
+   "zuhr": 733,
+   "asr": 968,
+   "maghrib": 1089,
+   "isha": 1164,
+   "fajr_j": 298,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1094,
+   "isha_j": 1230
+  },
+  "source_row": "Mon 16 04:38 06:12 12:13 16:08 18:09 19:24 04:58 13:00 16:30 18:14 20:30",
+  "flag": ""
+ },
+ "2026-03-17": {
+  "date": "2026-03-17",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 275,
+   "sunrise": 369,
+   "zuhr": 733,
+   "asr": 969,
+   "maghrib": 1090,
+   "isha": 1165,
+   "fajr_j": 295,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1095,
+   "isha_j": 1230
+  },
+  "source_row": "Tue 17 04:35 06:09 12:13 16:09 18:10 19:25 04:55 13:00 16:30 18:15 20:30",
+  "flag": ""
+ },
+ "2026-03-18": {
+  "date": "2026-03-18",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 273,
+   "sunrise": 367,
+   "zuhr": 732,
+   "asr": 971,
+   "maghrib": 1092,
+   "isha": 1167,
+   "fajr_j": 293,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1097,
+   "isha_j": 1230
+  },
+  "source_row": "Wed 18 04:33 06:07 12:12 16:11 18:12 19:27 04:53 13:00 16:30 18:17 20:30",
+  "flag": ""
+ },
+ "2026-03-19": {
+  "date": "2026-03-19",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 271,
+   "sunrise": 365,
+   "zuhr": 732,
+   "asr": 972,
+   "maghrib": 1094,
+   "isha": 1168,
+   "fajr_j": 291,
+   "zuhr_j": 780,
+   "asr_j": 990,
+   "maghrib_j": 1099,
+   "isha_j": 1230
+  },
+  "source_row": "Thu 19 0431 06:05 12:12 16:12 18:14 19:28 04:51 13:00 16:30 18:19 20:30",
+  "flag": ""
+ },
+ "2026-03-20": {
+  "date": "2026-03-20",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 269,
+   "sunrise": 362,
+   "zuhr": 732,
+   "asr": 973,
+   "maghrib": 1096,
+   "isha": 1170,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1020,
+   "maghrib_j": 1096,
+   "isha_j": 1230
+  },
+  "source_row": "Fri 20 04:29 06:02 12:12 16:13 18:16 19:30 05:00 Jum'a 17:00 18:16 20:30",
+  "flag": ""
+ },
+ "2026-03-21": {
+  "date": "2026-03-21",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 266,
+   "sunrise": 360,
+   "zuhr": 732,
+   "asr": 975,
+   "maghrib": 1097,
+   "isha": 1171,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1097,
+   "isha_j": 1230
+  },
+  "source_row": "Sat 21 04:26 06:00 12:12 16:15 18:17 19:31 05:00 13:00 17:00 18:17 20:30",
+  "flag": ""
+ },
+ "2026-03-22": {
+  "date": "2026-03-22",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 264,
+   "sunrise": 358,
+   "zuhr": 731,
+   "asr": 976,
+   "maghrib": 1099,
+   "isha": 1173,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1099,
+   "isha_j": 1230
+  },
+  "source_row": "Sun 22 04:24 05:58 12:11 16:16 18:19 1933 05:00 13:00 17:00 18:19 20:30",
+  "flag": ""
+ },
+ "2026-03-23": {
+  "date": "2026-03-23",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 262,
+   "sunrise": 355,
+   "zuhr": 731,
+   "asr": 978,
+   "maghrib": 1101,
+   "isha": 1174,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1101,
+   "isha_j": 1230
+  },
+  "source_row": "Mon 23 04:22 05:55 12:11 16:18 18:21 19:34 05:00 13:00 17:00 18:21 20:30",
+  "flag": ""
+ },
+ "2026-03-24": {
+  "date": "2026-03-24",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 259,
+   "sunrise": 353,
+   "zuhr": 731,
+   "asr": 979,
+   "maghrib": 1102,
+   "isha": 1176,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1102,
+   "isha_j": 1230
+  },
+  "source_row": "Tue 24 04:19 05:53 12:11 16:19 18:22 19:36 05:00 13:00 17:00 18:22 20:30",
+  "flag": ""
+ },
+ "2026-03-25": {
+  "date": "2026-03-25",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 256,
+   "sunrise": 351,
+   "zuhr": 730,
+   "asr": 980,
+   "maghrib": 1104,
+   "isha": 1177,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1104,
+   "isha_j": 1230
+  },
+  "source_row": "Wed 25 04:16 05:51 12:10 16:20 18:24 19:37 05:00 13:00 17:00 18:24 20:30",
+  "flag": ""
+ },
+ "2026-03-26": {
+  "date": "2026-03-26",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 254,
+   "sunrise": 348,
+   "zuhr": 730,
+   "asr": 982,
+   "maghrib": 1106,
+   "isha": 1179,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1106,
+   "isha_j": 1230
+  },
+  "source_row": "Thu 26 04:14 05:48 12:10 16:22 18:26 19:39 05:00 13:00 17:00 18:26 20:30",
+  "flag": ""
+ },
+ "2026-03-27": {
+  "date": "2026-03-27",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 251,
+   "sunrise": 346,
+   "zuhr": 730,
+   "asr": 983,
+   "maghrib": 1108,
+   "isha": 1180,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1020,
+   "maghrib_j": 1108,
+   "isha_j": 1230
+  },
+  "source_row": "Fri 27 04:11 05:46 12:10 16:23 18:28 19:40 05:00 Jum'a 17:00 18:28 20:30",
+  "flag": ""
+ },
+ "2026-03-28": {
+  "date": "2026-03-28",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 248,
+   "sunrise": 344,
+   "zuhr": 729,
+   "asr": 984,
+   "maghrib": 1109,
+   "isha": 1182,
+   "fajr_j": 300,
+   "zuhr_j": 780,
+   "asr_j": 1020,
+   "maghrib_j": 1109,
+   "isha_j": 1230
+  },
+  "source_row": "Sat 28 04:08 05:44 12:09 16:24 18:29 19:42 05:00 13:00 17:00 18:29 20:30",
+  "flag": ""
+ },
+ "2026-03-29": {
+  "date": "2026-03-29",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 306,
+   "sunrise": 401,
+   "zuhr": 789,
+   "asr": 1045,
+   "maghrib": 1171,
+   "isha": 1243,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": null,
+   "maghrib_j": 1080,
+   "isha_j": 1171
+  },
+  "source_row": "Sun 29 05:06 06:41 13:09 17:25 19:31 20:43 05:30 1330 18:00 1931",
+  "flag": "repaired maghrib_j<begin isha_j<begin"
+ },
+ "2026-03-30": {
+  "date": "2026-03-30",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 303,
+   "sunrise": 399,
+   "zuhr": 789,
+   "asr": 1047,
+   "maghrib": 1173,
+   "isha": 1245,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1173,
+   "isha_j": 1290
+  },
+  "source_row": "Mon 30 05:03 06:39 13:09 17:27 19:33 20:45 05:30 1330 18:00 19:33 2130",
+  "flag": ""
+ },
+ "2026-03-31": {
+  "date": "2026-03-31",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 301,
+   "sunrise": 397,
+   "zuhr": 789,
+   "asr": 1048,
+   "maghrib": 1175,
+   "isha": 1246,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1175,
+   "isha_j": 1290
+  },
+  "source_row": "Tue 31 05:01 06:37 13:09 17:28 19:35 20:46 05:30 13:30 18:00 19:35 21:30",
+  "flag": ""
+ },
+ "2026-04-01": {
+  "date": "2026-04-01",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 298,
+   "sunrise": 394,
+   "zuhr": 788,
+   "asr": 1049,
+   "maghrib": 1176,
+   "isha": 1248,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1176,
+   "isha_j": 1290
+  },
+  "source_row": "Wed I 04:58 06:34 13:08 17:29 1936 20:48 0530 13:30 18:00 1936 2130",
+  "flag": ""
+ },
+ "2026-04-02": {
+  "date": "2026-04-02",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 295,
+   "sunrise": 392,
+   "zuhr": 788,
+   "asr": 1051,
+   "maghrib": 1178,
+   "isha": 1249,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1178,
+   "isha_j": 1290
+  },
+  "source_row": "Thu 2 04:55 06:32 13:08 17:31 19:38 20:49 05:30 13:30 18:00 19:38 21:30",
+  "flag": ""
+ },
+ "2026-04-03": {
+  "date": "2026-04-03",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 293,
+   "sunrise": 390,
+   "zuhr": 788,
+   "asr": 1052,
+   "maghrib": 1180,
+   "isha": 1251,
+   "fajr_j": 330,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1080,
+   "maghrib_j": 1180,
+   "isha_j": 1290
+  },
+  "source_row": "Fri 3 04:53 06:30 13:08 1732 19:40 20:51 0530 Jum'a 18:00 19:40 2130",
+  "flag": ""
+ },
+ "2026-04-04": {
+  "date": "2026-04-04",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 290,
+   "sunrise": 387,
+   "zuhr": 787,
+   "asr": 1053,
+   "maghrib": 1181,
+   "isha": 1252,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1181,
+   "isha_j": 1290
+  },
+  "source_row": "Sat 4 04:50 06:27 13:07 17:33 19:41 20:52 05:30 13:30 18:00 19:41 21:30",
+  "flag": ""
+ },
+ "2026-04-05": {
+  "date": "2026-04-05",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 288,
+   "sunrise": 385,
+   "zuhr": 787,
+   "asr": 1054,
+   "maghrib": 1183,
+   "isha": 1254,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1183,
+   "isha_j": 1290
+  },
+  "source_row": "Sun 5 04:48 06:25 13:07 17:34 19:43 20:54 05:30 13:30 18:00 19:43 21:30",
+  "flag": ""
+ },
+ "2026-04-06": {
+  "date": "2026-04-06",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 285,
+   "sunrise": 383,
+   "zuhr": 787,
+   "asr": 1056,
+   "maghrib": 1185,
+   "isha": 1255,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1185,
+   "isha_j": 1290
+  },
+  "source_row": "Mon 6 04:45 06:23 13:07 17:36 19:45 20:55 05:30 13:30 18:00 19:45 21:30",
+  "flag": ""
+ },
+ "2026-04-07": {
+  "date": "2026-04-07",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 283,
+   "sunrise": 380,
+   "zuhr": 787,
+   "asr": 1057,
+   "maghrib": 1187,
+   "isha": 1257,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1187,
+   "isha_j": 1290
+  },
+  "source_row": "Tue 7 04:43 06:20 13:07 17:37 19:47 20:57 05:30 13:30 18:00 19:47 21:30",
+  "flag": ""
+ },
+ "2026-04-08": {
+  "date": "2026-04-08",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 280,
+   "sunrise": 378,
+   "zuhr": 786,
+   "asr": 1058,
+   "maghrib": 1188,
+   "isha": 1258,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1188,
+   "isha_j": 1290
+  },
+  "source_row": "Wed 8 04:40 06:18 13:06 17:38 19:48 20:58 05:30 13:30 18:00 19:48 21:30",
+  "flag": ""
+ },
+ "2026-04-09": {
+  "date": "2026-04-09",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 277,
+   "sunrise": 376,
+   "zuhr": 786,
+   "asr": 1059,
+   "maghrib": 1190,
+   "isha": 1260,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1190,
+   "isha_j": 1290
+  },
+  "source_row": "Thu 9 04:37 06:16 13:06 1739 19:50 21:00 0530 13:30 18:00 19:50 2130",
+  "flag": ""
+ },
+ "2026-04-10": {
+  "date": "2026-04-10",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 275,
+   "sunrise": 374,
+   "zuhr": 786,
+   "asr": 1060,
+   "maghrib": 1192,
+   "isha": 1261,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1192,
+   "isha_j": 1290
+  },
+  "source_row": "Fri 10 04:35 06:14 13:06 17:40 19:52 21:01 05:00 Jum'a 1830 19:52 2130",
+  "flag": ""
+ },
+ "2026-04-11": {
+  "date": "2026-04-11",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 272,
+   "sunrise": 371,
+   "zuhr": 785,
+   "asr": 1062,
+   "maghrib": 1194,
+   "isha": 1263,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1194,
+   "isha_j": 1290
+  },
+  "source_row": "Sat 11 04:32 06:11 13:05 17:42 19:54 21:03 05:00 13:30 18:30 19:54 2130",
+  "flag": ""
+ },
+ "2026-04-12": {
+  "date": "2026-04-12",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 270,
+   "sunrise": 369,
+   "zuhr": 785,
+   "asr": 1063,
+   "maghrib": 1195,
+   "isha": 1264,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1195,
+   "isha_j": 1290
+  },
+  "source_row": "Sun 12 0430 06:09 13:05 17:43 19:55 21:04 05:00 13:30 18:30 19:55 2130",
+  "flag": ""
+ },
+ "2026-04-13": {
+  "date": "2026-04-13",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 267,
+   "sunrise": 367,
+   "zuhr": 785,
+   "asr": 1064,
+   "maghrib": 1197,
+   "isha": 1266,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1197,
+   "isha_j": 1290
+  },
+  "source_row": "Mon 13 04:27 06:07 13:05 17:44 19:57 21:06 05:00 13:30 18:30 19:57 2130",
+  "flag": ""
+ },
+ "2026-04-14": {
+  "date": "2026-04-14",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 265,
+   "sunrise": 365,
+   "zuhr": 785,
+   "asr": 1065,
+   "maghrib": 1199,
+   "isha": 1267,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1199,
+   "isha_j": 1290
+  },
+  "source_row": "Tue 14 04:25 06:05 13:05 17:45 19:59 21:07 05:00 13:30 18:30 19:59 2130",
+  "flag": ""
+ },
+ "2026-04-15": {
+  "date": "2026-04-15",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 262,
+   "sunrise": 362,
+   "zuhr": 784,
+   "asr": 1066,
+   "maghrib": 1200,
+   "isha": 1269,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1200,
+   "isha_j": 1290
+  },
+  "source_row": "Wed 15 04:22 06:02 13:04 17:46 20:00 21:09 05:00 13:30 1830 20:00 2130",
+  "flag": ""
+ },
+ "2026-04-16": {
+  "date": "2026-04-16",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 260,
+   "sunrise": 360,
+   "zuhr": 784,
+   "asr": 1068,
+   "maghrib": 1202,
+   "isha": 1270,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1202,
+   "isha_j": 1290
+  },
+  "source_row": "Thu 16 04:20 06:00 13:04 17:48 20:02 21:10 05:00 13:30 1830 20:02 2130",
+  "flag": ""
+ },
+ "2026-04-17": {
+  "date": "2026-04-17",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 257,
+   "sunrise": 358,
+   "zuhr": 784,
+   "asr": 1069,
+   "maghrib": 1204,
+   "isha": 1272,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1204,
+   "isha_j": 1320
+  },
+  "source_row": "Fri 17 04:17 05:58 13:04 17:49 20:04 21:12 05:00 Jum'a 1830 20:04 22:00",
+  "flag": ""
+ },
+ "2026-04-18": {
+  "date": "2026-04-18",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 255,
+   "sunrise": 356,
+   "zuhr": 784,
+   "asr": 1070,
+   "maghrib": 1206,
+   "isha": 1273,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1206,
+   "isha_j": 1320
+  },
+  "source_row": "Sat 18 04:15 05:56 13:04 17:50 20:06 21:13 05:00 13:30 1830 20:06 22:00",
+  "flag": ""
+ },
+ "2026-04-19": {
+  "date": "2026-04-19",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 253,
+   "sunrise": 354,
+   "zuhr": 784,
+   "asr": 1071,
+   "maghrib": 1207,
+   "isha": 1275,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1207,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 19 04:13 05:54 13:04 17:51 20:07 21:15 05:00 13:30 1830 20:07 22:00",
+  "flag": ""
+ },
+ "2026-04-20": {
+  "date": "2026-04-20",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 250,
+   "sunrise": 352,
+   "zuhr": 783,
+   "asr": 1072,
+   "maghrib": 1209,
+   "isha": 1276,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1209,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 20 04:10 05:52 13:03 17:52 20:09 21:16 05:00 13:30 1830 20:09 22:00",
+  "flag": ""
+ },
+ "2026-04-21": {
+  "date": "2026-04-21",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 248,
+   "sunrise": 349,
+   "zuhr": 783,
+   "asr": 1073,
+   "maghrib": 1211,
+   "isha": 1278,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1211,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 21 04:08 05:49 13:03 17:53 20:11 21:18 05:00 13:30 1830 20:11 22:00",
+  "flag": ""
+ },
+ "2026-04-22": {
+  "date": "2026-04-22",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 245,
+   "sunrise": 347,
+   "zuhr": 783,
+   "asr": null,
+   "maghrib": 1212,
+   "isha": 1279,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1212,
+   "isha_j": 1320
+  },
+  "source_row": "Wed 22 04:05 05:47 13:03 17: 20:12 21:19 05:00 13:30 18:30 20:12 22:00",
+  "flag": "repaired"
+ },
+ "2026-04-23": {
+  "date": "2026-04-23",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 243,
+   "sunrise": 345,
+   "zuhr": 783,
+   "asr": 1075,
+   "maghrib": 1214,
+   "isha": 1281,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1214,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 23 04:03 05:45 13:03 17:55 20:14 21:21 05:00 13:30 1830 20:14 22:00",
+  "flag": ""
+ },
+ "2026-04-24": {
+  "date": "2026-04-24",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 241,
+   "sunrise": 343,
+   "zuhr": 783,
+   "asr": 1076,
+   "maghrib": 1216,
+   "isha": 1282,
+   "fajr_j": 270,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1216,
+   "isha_j": 1320
+  },
+  "source_row": "Fri 24 04:01 05:43 13:03 17:56 20:16 21:22 04JO Jum'a 1830 20:16 22:00",
+  "flag": ""
+ },
+ "2026-04-25": {
+  "date": "2026-04-25",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 238,
+   "sunrise": 341,
+   "zuhr": 782,
+   "asr": 1078,
+   "maghrib": 1218,
+   "isha": 1284,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1218,
+   "isha_j": 1320
+  },
+  "source_row": "Sat 25 03:58 05:41 13:02 17:58 20:18 21:24 04:30 13:30 1830 20:18 22:00",
+  "flag": ""
+ },
+ "2026-04-26": {
+  "date": "2026-04-26",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 236,
+   "sunrise": 339,
+   "zuhr": 782,
+   "asr": 1079,
+   "maghrib": 1219,
+   "isha": 1285,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1219,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 26 03:56 05:39 13:02 17:59 20:19 21:25 04:30 13:30 1830 20:19 22:00",
+  "flag": ""
+ },
+ "2026-04-27": {
+  "date": "2026-04-27",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 234,
+   "sunrise": 337,
+   "zuhr": 782,
+   "asr": 1080,
+   "maghrib": 1221,
+   "isha": 1287,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1221,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 27 03:54 05:37 13:02 18:00 20:21 21:27 04:30 13:30 1830 20:21 22:00",
+  "flag": ""
+ },
+ "2026-04-28": {
+  "date": "2026-04-28",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 231,
+   "sunrise": 335,
+   "zuhr": 782,
+   "asr": 1081,
+   "maghrib": 1223,
+   "isha": 1288,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1223,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 28 03:51 05:35 13:02 18:01 20:23 21:28 04:30 13:30 18:30 20:23 22:00",
+  "flag": ""
+ },
+ "2026-04-29": {
+  "date": "2026-04-29",
+  "weekday": "We",
+  "times": {
+   "fajr": 229,
+   "sunrise": 333,
+   "zuhr": 782,
+   "asr": 1082,
+   "maghrib": null,
+   "isha": 1290,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1224,
+   "isha_j": 1320
+  },
+  "source_row": "We 29 03:49 05:33 13:02 18:02 0:24 2130 04:30 13:30 1830 20:24 22:00",
+  "flag": " begins-unsorted deviant-null"
+ },
+ "2026-04-30": {
+  "date": "2026-04-30",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 227,
+   "sunrise": 331,
+   "zuhr": 782,
+   "asr": 1083,
+   "maghrib": 1226,
+   "isha": 1291,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1226,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 30 03:47 05:31 13:02 18:03 20:26 21:31 04:30 13:30 18:30 20:26 22:00",
+  "flag": ""
+ },
+ "2026-05-01": {
+  "date": "2026-05-01",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 225,
+   "sunrise": 329,
+   "zuhr": 781,
+   "asr": 1084,
+   "maghrib": 1228,
+   "isha": 1292,
+   "fajr_j": 270,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1228,
+   "isha_j": 1320
+  },
+  "source_row": "Fri I 03:45 05:29 13:01 18:04 20:28 21:32 0430 Jum'a 18:30 20:28 22:00",
+  "flag": ""
+ },
+ "2026-05-02": {
+  "date": "2026-05-02",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 223,
+   "sunrise": 327,
+   "zuhr": 781,
+   "asr": 1085,
+   "maghrib": 1229,
+   "isha": 1294,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1229,
+   "isha_j": 1320
+  },
+  "source_row": "Sat 2 03:43 05:27 13:01 18:05 20:29 21:34 04:30 13:30 18:30 20:29 22:00",
+  "flag": ""
+ },
+ "2026-05-03": {
+  "date": "2026-05-03",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 220,
+   "sunrise": 325,
+   "zuhr": 781,
+   "asr": 1086,
+   "maghrib": 1231,
+   "isha": 1295,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1231,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 3 03:40 05:25 13:01 18:06 20:31 21:35 04:30 13:30 1830 20:31 22:00",
+  "flag": ""
+ },
+ "2026-05-04": {
+  "date": "2026-05-04",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 218,
+   "sunrise": 323,
+   "zuhr": 781,
+   "asr": 1087,
+   "maghrib": 1233,
+   "isha": 1297,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1233,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 4 03:38 05:23 13:01 18:07 20:33 21:37 04:30 13:30 18:30 20:33 22:00",
+  "flag": ""
+ },
+ "2026-05-05": {
+  "date": "2026-05-05",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 216,
+   "sunrise": 322,
+   "zuhr": 781,
+   "asr": 1088,
+   "maghrib": 1234,
+   "isha": 1298,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1234,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 5 03:36 05:22 13:01 18:08 20:34 21:38 04:30 13:30 18:30 20:34 22:00",
+  "flag": ""
+ },
+ "2026-05-06": {
+  "date": "2026-05-06",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 214,
+   "sunrise": 320,
+   "zuhr": 781,
+   "asr": 1089,
+   "maghrib": 1236,
+   "isha": 1300,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1236,
+   "isha_j": 1320
+  },
+  "source_row": "Wed 6 03:34 05:20 13:01 18:09 20:36 21:40 04:30 13:30 18:30 20:36 22:00",
+  "flag": ""
+ },
+ "2026-05-07": {
+  "date": "2026-05-07",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 212,
+   "sunrise": 318,
+   "zuhr": 781,
+   "asr": 1090,
+   "maghrib": 1238,
+   "isha": 1301,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1238,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 7 03:32 05:18 13:01 18:10 20:38 21:41 04:30 13:30 18:30 2038 22:00",
+  "flag": ""
+ },
+ "2026-05-08": {
+  "date": "2026-05-08",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 210,
+   "sunrise": 316,
+   "zuhr": 781,
+   "asr": 1091,
+   "maghrib": 1239,
+   "isha": 1303,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1239,
+   "isha_j": 1350
+  },
+  "source_row": "Fri 8 03:30 05:16 13:01 18:11 20:39 21:43 04:00 Jum'a 19:00 20:39 22:30",
+  "flag": ""
+ },
+ "2026-05-09": {
+  "date": "2026-05-09",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 208,
+   "sunrise": 314,
+   "zuhr": 781,
+   "asr": 1092,
+   "maghrib": 1241,
+   "isha": 1305,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1241,
+   "isha_j": 1350
+  },
+  "source_row": "Sat 9 03:28 05:14 13:01 18:12 20:41 21:45 04:00 13:30 19:00 20:41 22:30",
+  "flag": ""
+ },
+ "2026-05-10": {
+  "date": "2026-05-10",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 206,
+   "sunrise": 313,
+   "zuhr": 781,
+   "asr": 1093,
+   "maghrib": 1243,
+   "isha": 1307,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1243,
+   "isha_j": 1350
+  },
+  "source_row": "Sun 10 03:26 05:13 13:01 18:13 20:43 21:47 04:00 13:30 19:00 20:43 22:30",
+  "flag": ""
+ },
+ "2026-05-11": {
+  "date": "2026-05-11",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 204,
+   "sunrise": 311,
+   "zuhr": 781,
+   "asr": 1094,
+   "maghrib": 1244,
+   "isha": 1309,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1244,
+   "isha_j": 1350
+  },
+  "source_row": "Mon 11 03:24 05:11 13:01 18:14 20:44 21:49 04:00 13:30 19:00 20:44 22:30",
+  "flag": ""
+ },
+ "2026-05-12": {
+  "date": "2026-05-12",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 202,
+   "sunrise": 309,
+   "zuhr": 781,
+   "asr": 1095,
+   "maghrib": 1246,
+   "isha": 1311,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1246,
+   "isha_j": 1350
+  },
+  "source_row": "Tue 12 03:22 05:09 13:01 18:15 20:46 21:51 04:00 13:30 19:00 20:46 22:30",
+  "flag": ""
+ },
+ "2026-05-13": {
+  "date": "2026-05-13",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 200,
+   "sunrise": 308,
+   "zuhr": 781,
+   "asr": 1096,
+   "maghrib": 1247,
+   "isha": 1313,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1247,
+   "isha_j": 1350
+  },
+  "source_row": "Wed 13 03:20 05:08 13:01 18:16 20:47 21:53 04:00 13:30 19:00 20:47 22:30",
+  "flag": ""
+ },
+ "2026-05-14": {
+  "date": "2026-05-14",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 198,
+   "sunrise": 306,
+   "zuhr": 781,
+   "asr": 1097,
+   "maghrib": 1249,
+   "isha": 1315,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1249,
+   "isha_j": 1350
+  },
+  "source_row": "Thu 14 03:18 05:06 13:01 18:17 20:49 21:55 04:00 13:30 19:00 20:49 22:30",
+  "flag": ""
+ },
+ "2026-05-15": {
+  "date": "2026-05-15",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 196,
+   "sunrise": 305,
+   "zuhr": 781,
+   "asr": 1098,
+   "maghrib": 1251,
+   "isha": 1316,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1251,
+   "isha_j": 1350
+  },
+  "source_row": "Fri l5 03:16 05:05 13:01 18:18 20:51 21:56 04:00 Jum'a 19:00 20:51 22:30",
+  "flag": ""
+ },
+ "2026-05-16": {
+  "date": "2026-05-16",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 194,
+   "sunrise": 303,
+   "zuhr": 781,
+   "asr": 1099,
+   "maghrib": 1252,
+   "isha": 1318,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1252,
+   "isha_j": 1350
+  },
+  "source_row": "Sat 16 03:14 05:03 13:01 18:19 20:52 21:58 04:00 13:30 19:00 20:52 22:30",
+  "flag": ""
+ },
+ "2026-05-17": {
+  "date": "2026-05-17",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 192,
+   "sunrise": 302,
+   "zuhr": 781,
+   "asr": 1099,
+   "maghrib": null,
+   "isha": 1320,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": null,
+   "isha_j": 1350
+  },
+  "source_row": "Sun 17 03:12 05:02 13:01 18:19 20: 22:00 04:00 13:30 19:00 20:$4 22:30",
+  "flag": "repaired"
+ },
+ "2026-05-18": {
+  "date": "2026-05-18",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 191,
+   "sunrise": 300,
+   "zuhr": 781,
+   "asr": 1100,
+   "maghrib": 1255,
+   "isha": 1322,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1255,
+   "isha_j": 1350
+  },
+  "source_row": "Mon 18 03:11 05:00 13:01 18:20 20:55 22:02 04:00 13:30 19:00 20:55 22:30",
+  "flag": ""
+ },
+ "2026-05-19": {
+  "date": "2026-05-19",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 189,
+   "sunrise": 299,
+   "zuhr": 781,
+   "asr": 1101,
+   "maghrib": 1257,
+   "isha": 1324,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1257,
+   "isha_j": 1350
+  },
+  "source_row": "Tue 19 03:09 04:59 13:01 18:21 20:57 22:04 04:00 13:30 19:00 20:57 22:30",
+  "flag": ""
+ },
+ "2026-05-20": {
+  "date": "2026-05-20",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 187,
+   "sunrise": 297,
+   "zuhr": 781,
+   "asr": 1102,
+   "maghrib": 1258,
+   "isha": 1325,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1258,
+   "isha_j": 1350
+  },
+  "source_row": "Wed 20 03:07 04:57 13:01 18:22 20:58 22:05 04:00 13:30 19:00 20:58 22:30",
+  "flag": ""
+ },
+ "2026-05-21": {
+  "date": "2026-05-21",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 186,
+   "sunrise": 296,
+   "zuhr": 781,
+   "asr": 1103,
+   "maghrib": 1260,
+   "isha": 1327,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1260,
+   "isha_j": 1350
+  },
+  "source_row": "Thu 21 03:06 04:56 13:01 18:23 21:00 22:07 04:00 13:30 19:00 21:00 22:30",
+  "flag": ""
+ },
+ "2026-05-22": {
+  "date": "2026-05-22",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 184,
+   "sunrise": 295,
+   "zuhr": 781,
+   "asr": 1104,
+   "maghrib": 1261,
+   "isha": 1329,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1261,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 22 03:04 04:55 13:01 18:24 21:01 22:09 04:00 Jum'a 19:00 21:01 23:00",
+  "flag": ""
+ },
+ "2026-05-23": {
+  "date": "2026-05-23",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 182,
+   "sunrise": 294,
+   "zuhr": 781,
+   "asr": 1105,
+   "maghrib": 1262,
+   "isha": 1331,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1262,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 23 03:02 04:54 13:01 18:25 21:02 22:11 04:00 13:30 19:00 21:02 23:00",
+  "flag": ""
+ },
+ "2026-05-24": {
+  "date": "2026-05-24",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 181,
+   "sunrise": 292,
+   "zuhr": 781,
+   "asr": 1105,
+   "maghrib": 1264,
+   "isha": 1332,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1264,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 24 03:01 04:52 13:01 18:25 21:04 22:12 04:00 13:30 19:00 21:04 23:00",
+  "flag": ""
+ },
+ "2026-05-25": {
+  "date": "2026-05-25",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 179,
+   "sunrise": 291,
+   "zuhr": 781,
+   "asr": 1106,
+   "maghrib": 1265,
+   "isha": 1334,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1265,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 25 02:59 04:51 13:01 18:26 21:05 22:14 04:00 13:30 19:00 21:05 23:00",
+  "flag": ""
+ },
+ "2026-05-26": {
+  "date": "2026-05-26",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 178,
+   "sunrise": 290,
+   "zuhr": 781,
+   "asr": 1107,
+   "maghrib": 1266,
+   "isha": 1336,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1266,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 26 02:58 04:50 13:01 18:27 21:06 22:16 04:00 13:30 19:00 21:06 23:00",
+  "flag": ""
+ },
+ "2026-05-27": {
+  "date": "2026-05-27",
+  "weekday": "We",
+  "times": {
+   "fajr": 177,
+   "sunrise": 289,
+   "zuhr": 782,
+   "asr": 1108,
+   "maghrib": 1268,
+   "isha": 1337,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1268,
+   "isha_j": 1380
+  },
+  "source_row": "We 27 02'57 04:49 13:02 18:28 21:08 22:17 04:00 13:30 19:00 21:08 23:00",
+  "flag": ""
+ },
+ "2026-05-28": {
+  "date": "2026-05-28",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 175,
+   "sunrise": 288,
+   "zuhr": 782,
+   "asr": 1108,
+   "maghrib": 1269,
+   "isha": 1339,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1269,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 28 02'55 04:48 13:02 18:28 21:09 22:19 04:00 13:30 19:00 21:09 23:00",
+  "flag": ""
+ },
+ "2026-05-29": {
+  "date": "2026-05-29",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 174,
+   "sunrise": 287,
+   "zuhr": null,
+   "asr": 1109,
+   "maghrib": 1270,
+   "isha": 1340,
+   "fajr_j": 240,
+   "zuhr_j": null,
+   "asr_j": 1140,
+   "maghrib_j": 1270,
+   "isha_j": null
+  },
+  "source_row": "Fri 29 02:54 04:47 3:02 18:29 21:10 22:20 04:00 um'a 19:00 21:10",
+  "flag": "repaired begins-unsorted deviant-null"
+ },
+ "2026-05-30": {
+  "date": "2026-05-30",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 173,
+   "sunrise": 286,
+   "zuhr": 782,
+   "asr": 1110,
+   "maghrib": 1271,
+   "isha": 1342,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1271,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 30 02'53 04:46 13:02 18:30 21:11 22:22 04:00 13:30 19:00 21:11 23:00",
+  "flag": ""
+ },
+ "2026-05-31": {
+  "date": "2026-05-31",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 171,
+   "sunrise": 285,
+   "zuhr": 782,
+   "asr": 1111,
+   "maghrib": 1273,
+   "isha": 1343,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1273,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 31 02:51 04:45 13:02 18:31 21:13 22:23 04:00 13:30 19:00 21:13 23:00",
+  "flag": ""
+ },
+ "2026-06-01": {
+  "date": "2026-06-01",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 170,
+   "sunrise": 284,
+   "zuhr": 782,
+   "asr": 1111,
+   "maghrib": 1274,
+   "isha": 1345,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1274,
+   "isha_j": 1380
+  },
+  "source_row": "Mon I 02:50 04:44 13:02 18:31 21:14 22:25 04:00 1330 19:00 21:14 23:00",
+  "flag": ""
+ },
+ "2026-06-02": {
+  "date": "2026-06-02",
+  "weekday": "Tue",
+  "times": {
+   "fajr": null,
+   "sunrise": 284,
+   "zuhr": 782,
+   "asr": 1112,
+   "maghrib": 1275,
+   "isha": 1346,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1275,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 02:49 04:44 13:02 18:32 21:15 22:26 04:00 13:30 19:00 21:15 23:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-06-03": {
+  "date": "2026-06-03",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 168,
+   "sunrise": 283,
+   "zuhr": 783,
+   "asr": 1113,
+   "maghrib": 1276,
+   "isha": 1348,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1276,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 3 02:48 04:43 13:03 18:33 21:16 22:28 04:00 1330 19:00 21:16 23:00",
+  "flag": ""
+ },
+ "2026-06-04": {
+  "date": "2026-06-04",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 167,
+   "sunrise": 282,
+   "zuhr": 783,
+   "asr": 1113,
+   "maghrib": 1277,
+   "isha": 1349,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1277,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 4 02:47 04:42 13:03 18:33 21:17 22:29 04:00 13:30 19:00 21:17 23:00",
+  "flag": ""
+ },
+ "2026-06-05": {
+  "date": "2026-06-05",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 166,
+   "sunrise": 281,
+   "zuhr": 783,
+   "asr": 1114,
+   "maghrib": 1278,
+   "isha": 1350,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1278,
+   "isha_j": 1380
+  },
+  "source_row": "Fri S 02:46 04:41 13:03 18:34 21:18 22:30 04:00 Jum'a 19:00 21:18 23:00",
+  "flag": ""
+ },
+ "2026-06-06": {
+  "date": "2026-06-06",
+  "weekday": "Sat",
+  "times": {
+   "fajr": null,
+   "sunrise": 281,
+   "zuhr": 783,
+   "asr": 1114,
+   "maghrib": 1279,
+   "isha": 1352,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1279,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 02:45 04:41 13:03 18:34 21:19 22:32 04:00 13:30 19:00 21:19 23:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-06-07": {
+  "date": "2026-06-07",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 164,
+   "sunrise": 280,
+   "zuhr": 783,
+   "asr": 1115,
+   "maghrib": 1280,
+   "isha": 1353,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1280,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 7 02:44 04:40 13:03 18:35 21:20 22:33 04:00 13:30 19:00 21:20 23:00",
+  "flag": ""
+ },
+ "2026-06-08": {
+  "date": "2026-06-08",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 164,
+   "sunrise": 280,
+   "zuhr": 783,
+   "asr": 1116,
+   "maghrib": 1281,
+   "isha": 1354,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1281,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 8 02:44 04:40 13:03 18:36 21:21 22:34 04:00 13:30 19:00 21:21 23:00",
+  "flag": ""
+ },
+ "2026-06-09": {
+  "date": "2026-06-09",
+  "weekday": "Tue",
+  "times": {
+   "fajr": null,
+   "sunrise": 279,
+   "zuhr": 784,
+   "asr": 1116,
+   "maghrib": 1281,
+   "isha": 1355,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1281,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 02:43 04:39 13:04 18:36 21:21 22:35 04:00 13:30 19:00 21:21 23:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-06-10": {
+  "date": "2026-06-10",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 162,
+   "sunrise": 279,
+   "zuhr": 784,
+   "asr": 1117,
+   "maghrib": 1282,
+   "isha": 1356,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1282,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 10 02:42 04:39 13:04 18:37 21:22 22:36 04:00 13:30 19:00 21:22 23:00",
+  "flag": ""
+ },
+ "2026-06-11": {
+  "date": "2026-06-11",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 161,
+   "sunrise": 279,
+   "zuhr": 784,
+   "asr": 1117,
+   "maghrib": 1283,
+   "isha": 1357,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1283,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 11 02'41 04:39 13:04 18:37 21:23 22:37 04:00 13:30 19:00 21:23 23:00",
+  "flag": ""
+ },
+ "2026-06-12": {
+  "date": "2026-06-12",
+  "weekday": "Sat",
+  "times": {
+   "fajr": null,
+   "sunrise": null,
+   "zuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "fajr_j": null,
+   "zuhr_j": null,
+   "asr_j": null,
+   "maghrib_j": null,
+   "isha_j": null
+  },
+  "source_row": "Sat 13 02:40 04:38 13:04 18:38 21:24 22:39 04:00 13:30 19:00 21:24 23:00",
+  "flag": "wrong-row"
+ },
+ "2026-06-13": {
+  "date": "2026-06-13",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 160,
+   "sunrise": 278,
+   "zuhr": 784,
+   "asr": 1118,
+   "maghrib": 1284,
+   "isha": 1359,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1284,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 13 02:40 04:38 13:04 18:38 21:24 22:39 04:00 13:30 19:00 21:24 23:00",
+  "flag": ""
+ },
+ "2026-06-14": {
+  "date": "2026-06-14",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 160,
+   "sunrise": 278,
+   "zuhr": 785,
+   "asr": 1118,
+   "maghrib": 1285,
+   "isha": 1360,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1285,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 14 02:40 04:38 13:05 1838 21:25 22:40 04:00 13:30 19:00 21:25 23:00",
+  "flag": ""
+ },
+ "2026-06-15": {
+  "date": "2026-06-15",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 159,
+   "sunrise": 278,
+   "zuhr": 785,
+   "asr": 1119,
+   "maghrib": 1285,
+   "isha": 1361,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1285,
+   "isha_j": 1380
+  },
+  "source_row": "Mon lS 02:39 04:38 13:05 1839 21:25 22:41 04:00 13:30 19:00 21:25 23:00",
+  "flag": ""
+ },
+ "2026-06-16": {
+  "date": "2026-06-16",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 159,
+   "sunrise": 278,
+   "zuhr": 785,
+   "asr": 1119,
+   "maghrib": 1286,
+   "isha": 1362,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1286,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 16 02:39 04:38 13:05 1839 21:26 22:42 04:00 13:30 19:00 21:26 23:00",
+  "flag": ""
+ },
+ "2026-06-17": {
+  "date": "2026-06-17",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 159,
+   "sunrise": 278,
+   "zuhr": 785,
+   "asr": 1119,
+   "maghrib": 1286,
+   "isha": 1362,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1286,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 17 02:39 04:38 13:05 1839 21:26 22:42 04:00 13:30 19:00 21:26 23:00",
+  "flag": ""
+ },
+ "2026-06-18": {
+  "date": "2026-06-18",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 158,
+   "sunrise": 278,
+   "zuhr": 786,
+   "asr": 1120,
+   "maghrib": 1287,
+   "isha": 1363,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 18 02:38 04:38 13:06 18:40 21:27 22:43 04:00 13:30 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-06-19": {
+  "date": "2026-06-19",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 158,
+   "sunrise": 278,
+   "zuhr": 786,
+   "asr": 1120,
+   "maghrib": 1287,
+   "isha": null,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 19 02:38 04:38 13:06 18:40 21:27 04:00 Jum'a 19:00 21:27 23:00",
+  "flag": "repaired"
+ },
+ "2026-06-20": {
+  "date": "2026-06-20",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 158,
+   "sunrise": 278,
+   "zuhr": 786,
+   "asr": 1120,
+   "maghrib": 1287,
+   "isha": 1364,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 20 02:38 04:38 13:06 18:40 21:27 22:44 04:00 13:30 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-06-21": {
+  "date": "2026-06-21",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 158,
+   "sunrise": 278,
+   "zuhr": 786,
+   "asr": 1120,
+   "maghrib": 1287,
+   "isha": 1365,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 21 02:38 04:38 13:06 18:40 21:27 22:45 04:00 1330 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-06-22": {
+  "date": "2026-06-22",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 158,
+   "sunrise": 278,
+   "zuhr": 786,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1365,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 22 02:38 04:38 13:06 18:41 21:28 22:45 04:00 1330 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-23": {
+  "date": "2026-06-23",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 158,
+   "sunrise": 279,
+   "zuhr": 787,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1365,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 23 02:38 04:39 13:07 18:41 21:28 22:45 04:00 13:30 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-24": {
+  "date": "2026-06-24",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 159,
+   "sunrise": 279,
+   "zuhr": 787,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1365,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 24 02:39 04:39 13:07 18:41 21:28 22:45 04:00 1330 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-25": {
+  "date": "2026-06-25",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 160,
+   "sunrise": 279,
+   "zuhr": 787,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1365,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 25 02:40 04:39 13:07 18:41 21:28 22:45 04:00 1330 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-26": {
+  "date": "2026-06-26",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 160,
+   "sunrise": 280,
+   "zuhr": 787,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1364,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 26 02:40 04:40 13:07 18:41 21:28 22:44 04:00 Jum'a 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-27": {
+  "date": "2026-06-27",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 161,
+   "sunrise": 280,
+   "zuhr": 787,
+   "asr": 1121,
+   "maghrib": 1288,
+   "isha": 1364,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1288,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 27 02'41 04:40 13:07 18:41 21:28 22:44 04:00 1330 19:00 21:28 23:00",
+  "flag": ""
+ },
+ "2026-06-28": {
+  "date": "2026-06-28",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 162,
+   "sunrise": 281,
+   "zuhr": 788,
+   "asr": 1121,
+   "maghrib": 1287,
+   "isha": 1363,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 28 02:42 04:41 13:08 18:41 21:27 22:43 04:00 13:30 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-06-29": {
+  "date": "2026-06-29",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 163,
+   "sunrise": 281,
+   "zuhr": 788,
+   "asr": 1121,
+   "maghrib": 1287,
+   "isha": 1363,
+   "fajr_j": 240,
+   "zuhr_j": null,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 29 02:43 04:41 13:08 18:41 21:27 22:43 04:00 19:00 21:27 23:00",
+  "flag": "repaired"
+ },
+ "2026-06-30": {
+  "date": "2026-06-30",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 164,
+   "sunrise": 282,
+   "zuhr": 788,
+   "asr": 1121,
+   "maghrib": 1287,
+   "isha": 1362,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 30 02:44 04:42 13:08 18:41 21:27 22:42 04:00 13:30 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-07-01": {
+  "date": "2026-07-01",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 165,
+   "sunrise": 283,
+   "zuhr": 788,
+   "asr": 1121,
+   "maghrib": 1287,
+   "isha": 1362,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1287,
+   "isha_j": 1380
+  },
+  "source_row": "Wed I 02:45 04:43 13:08 18:41 21:27 22:42 04:00 13:30 19:00 21:27 23:00",
+  "flag": ""
+ },
+ "2026-07-02": {
+  "date": "2026-07-02",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 166,
+   "sunrise": 283,
+   "zuhr": 788,
+   "asr": 1121,
+   "maghrib": 1286,
+   "isha": 1361,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1286,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 2 02:46 04:43 13:08 18:41 21:26 22:41 04:00 13:30 19:00 21:26 23:00",
+  "flag": ""
+ },
+ "2026-07-03": {
+  "date": "2026-07-03",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 167,
+   "sunrise": 284,
+   "zuhr": 789,
+   "asr": 1121,
+   "maghrib": 1286,
+   "isha": null,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1286,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 3 02:47 04:44 13:09 18:41 21:26 04:00 Jum'a 19:00 21:26 23:00",
+  "flag": "repaired"
+ },
+ "2026-07-04": {
+  "date": "2026-07-04",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 168,
+   "sunrise": 285,
+   "zuhr": 789,
+   "asr": 1121,
+   "maghrib": 1285,
+   "isha": 1359,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1285,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 4 02:48 04:45 13:09 18:41 21:25 22:39 04:00 13:30 19:00 21:25 23:00",
+  "flag": ""
+ },
+ "2026-07-05": {
+  "date": "2026-07-05",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 169,
+   "sunrise": 286,
+   "zuhr": 789,
+   "asr": 1121,
+   "maghrib": 1285,
+   "isha": 1359,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1285,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 5 02:49 04:46 13:09 18:41 21:25 22:39 04:00 13:30 19:00 21:25 23:00",
+  "flag": ""
+ },
+ "2026-07-06": {
+  "date": "2026-07-06",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 171,
+   "sunrise": 287,
+   "zuhr": 789,
+   "asr": 1120,
+   "maghrib": 1284,
+   "isha": 1358,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1284,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 6 02:51 04:47 13:09 18:40 21:24 22:38 04:00 13:30 19:00 21:24 23:00",
+  "flag": ""
+ },
+ "2026-07-07": {
+  "date": "2026-07-07",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 172,
+   "sunrise": 288,
+   "zuhr": 789,
+   "asr": 1120,
+   "maghrib": 1284,
+   "isha": 1357,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1284,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 7 02:52 04:48 13:09 18:40 21:24 22:37 04:00 13:30 19:00 21:24 23:00",
+  "flag": ""
+ },
+ "2026-07-08": {
+  "date": "2026-07-08",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 173,
+   "sunrise": 289,
+   "zuhr": 789,
+   "asr": 1120,
+   "maghrib": 1283,
+   "isha": 1356,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1283,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 8 02:53 04:49 13:09 18:40 21:23 22:36 04:00 13:30 19:00 21:23 23:00",
+  "flag": ""
+ },
+ "2026-07-09": {
+  "date": "2026-07-09",
+  "weekday": "Thu",
+  "times": {
+   "fajr": null,
+   "sunrise": 290,
+   "zuhr": 790,
+   "asr": 1120,
+   "maghrib": 1282,
+   "isha": 1355,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1282,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 9 02: 04:50 13:10 18:40 21:22 22:35 04:00 13:30 19:00 21:22 23:00",
+  "flag": "repaired"
+ },
+ "2026-07-10": {
+  "date": "2026-07-10",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 176,
+   "sunrise": 291,
+   "zuhr": 790,
+   "asr": 1119,
+   "maghrib": 1281,
+   "isha": 1354,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1281,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 10 02:56 04:51 13:10 18:39 21:21 22:34 04:00 Jum'a 19:00 21:21 23:00",
+  "flag": ""
+ },
+ "2026-07-11": {
+  "date": "2026-07-11",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 177,
+   "sunrise": 292,
+   "zuhr": 790,
+   "asr": 1119,
+   "maghrib": 1281,
+   "isha": 1352,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1281,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 11 02:57 04:52 13:10 18:39 21:21 22:32 04:00 13:30 19:00 21:21 23:00",
+  "flag": ""
+ },
+ "2026-07-12": {
+  "date": "2026-07-12",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 179,
+   "sunrise": 293,
+   "zuhr": 790,
+   "asr": 1118,
+   "maghrib": 1280,
+   "isha": 1351,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1280,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 12 02:59 04:53 13:10 18:38 21:20 22:31 04:00 13:30 19:00 21:20 23:00",
+  "flag": ""
+ },
+ "2026-07-13": {
+  "date": "2026-07-13",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 180,
+   "sunrise": 294,
+   "zuhr": 790,
+   "asr": 1118,
+   "maghrib": 1279,
+   "isha": 1350,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1279,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 13 03:00 04:54 13:10 18:38 21:19 22:30 04:00 13:30 19:00 21-19 23:00",
+  "flag": ""
+ },
+ "2026-07-14": {
+  "date": "2026-07-14",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 182,
+   "sunrise": 295,
+   "zuhr": 790,
+   "asr": 1118,
+   "maghrib": 1278,
+   "isha": 1349,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1278,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 14 03:02 04:55 13:10 18:38 21:18 22:29 04:00 13:30 19:00 21:18 23:00",
+  "flag": ""
+ },
+ "2026-07-15": {
+  "date": "2026-07-15",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 183,
+   "sunrise": 296,
+   "zuhr": 790,
+   "asr": 1117,
+   "maghrib": 1277,
+   "isha": 1347,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1277,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 15 03:03 04:56 13:10 18:37 21:17 22:27 04:00 13:30 19:00 21:17 23:00",
+  "flag": ""
+ },
+ "2026-07-16": {
+  "date": "2026-07-16",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 185,
+   "sunrise": 298,
+   "zuhr": 790,
+   "asr": 1116,
+   "maghrib": 1276,
+   "isha": 1346,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1276,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 16 03:05 04:58 13:10 18:36 21:16 22:26 04:00 13:30 19:00 21:16 23:00",
+  "flag": ""
+ },
+ "2026-07-17": {
+  "date": "2026-07-17",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 186,
+   "sunrise": 299,
+   "zuhr": 791,
+   "asr": 1116,
+   "maghrib": 1275,
+   "isha": 1345,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1275,
+   "isha_j": 1380
+  },
+  "source_row": "Fri 17 03:06 04:59 13:11 18:36 21:15 22:25 04:00 Jum'a 19:00 21:15 23:00",
+  "flag": ""
+ },
+ "2026-07-18": {
+  "date": "2026-07-18",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 188,
+   "sunrise": 300,
+   "zuhr": 791,
+   "asr": 1115,
+   "maghrib": 1274,
+   "isha": 1343,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1274,
+   "isha_j": 1380
+  },
+  "source_row": "Sat 18 03:08 05:00 13:11 18:35 21:14 22:23 04:00 13:30 19:00 21:14 23:00",
+  "flag": ""
+ },
+ "2026-07-19": {
+  "date": "2026-07-19",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 189,
+   "sunrise": 302,
+   "zuhr": 791,
+   "asr": 1115,
+   "maghrib": 1272,
+   "isha": 1342,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1272,
+   "isha_j": 1380
+  },
+  "source_row": "Sun 19 03:09 05:02 13:11 18:35 21:12 22:22 04:00 13:30 19:00 21:12 23:00",
+  "flag": ""
+ },
+ "2026-07-20": {
+  "date": "2026-07-20",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 191,
+   "sunrise": 303,
+   "zuhr": 791,
+   "asr": 1114,
+   "maghrib": 1271,
+   "isha": 1340,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1271,
+   "isha_j": 1380
+  },
+  "source_row": "Mon 20 03:11 05:03 13:11 18:34 21:11 22:20 04:00 13:30 19:00 21:11 23:00",
+  "flag": ""
+ },
+ "2026-07-21": {
+  "date": "2026-07-21",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 193,
+   "sunrise": 304,
+   "zuhr": 791,
+   "asr": 1113,
+   "maghrib": 1270,
+   "isha": 1338,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1270,
+   "isha_j": 1380
+  },
+  "source_row": "Tue 21 03:13 05:04 13:11 18:33 21:10 22:18 04:00 13:30 19:00 21:10 23:00",
+  "flag": ""
+ },
+ "2026-07-22": {
+  "date": "2026-07-22",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 194,
+   "sunrise": 306,
+   "zuhr": 791,
+   "asr": 1113,
+   "maghrib": 1269,
+   "isha": 1337,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1269,
+   "isha_j": 1380
+  },
+  "source_row": "Wed 22 03:14 05:06 13:11 18:33 21:09 22:17 04:00 13:30 19:00 21:09 23:00",
+  "flag": ""
+ },
+ "2026-07-23": {
+  "date": "2026-07-23",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 196,
+   "sunrise": 307,
+   "zuhr": 791,
+   "asr": 1112,
+   "maghrib": 1267,
+   "isha": 1335,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1267,
+   "isha_j": 1380
+  },
+  "source_row": "Thu 23 03:16 05:07 13:11 18:32 21:07 22:15 04:00 13:30 19:00 21:07 23:00",
+  "flag": ""
+ },
+ "2026-07-24": {
+  "date": "2026-07-24",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 198,
+   "sunrise": 308,
+   "zuhr": 791,
+   "asr": null,
+   "maghrib": 1266,
+   "isha": 1333,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1266,
+   "isha_j": null
+  },
+  "source_row": "Fri 24 03:18 05:08 13:11 18:51 21:06 22:13 04:00 Jum'a 19:00 21:06 2UO",
+  "flag": "repaired deviant-null"
+ },
+ "2026-07-25": {
+  "date": "2026-07-25",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 200,
+   "sunrise": 310,
+   "zuhr": 791,
+   "asr": 1110,
+   "maghrib": 1264,
+   "isha": 1332,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1264,
+   "isha_j": 1350
+  },
+  "source_row": "Sat 25 03:20 05:10 13:11 18:30 21:04 22:12 04:00 13:30 19:00 21:04 22:30",
+  "flag": ""
+ },
+ "2026-07-26": {
+  "date": "2026-07-26",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 201,
+   "sunrise": 311,
+   "zuhr": 791,
+   "asr": 1109,
+   "maghrib": 1263,
+   "isha": 1330,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1263,
+   "isha_j": 1350
+  },
+  "source_row": "Sun 26 03:21 05:11 13:11 18:29 21:03 22:10 04:00 13:30 19:00 21:03 22:30",
+  "flag": ""
+ },
+ "2026-07-27": {
+  "date": "2026-07-27",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 203,
+   "sunrise": 313,
+   "zuhr": 791,
+   "asr": 1109,
+   "maghrib": 1261,
+   "isha": 1328,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1261,
+   "isha_j": 1350
+  },
+  "source_row": "Mon 27 03:23 05:13 13:11 18:29 21:01 22:08 04:00 13:30 19:00 21:01 22:30",
+  "flag": ""
+ },
+ "2026-07-28": {
+  "date": "2026-07-28",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 205,
+   "sunrise": 314,
+   "zuhr": 791,
+   "asr": 1108,
+   "maghrib": 1260,
+   "isha": 1326,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1260,
+   "isha_j": 1350
+  },
+  "source_row": "Tue 28 03:25 05:14 13:11 18:28 21:00 22:06 04:00 13:30 19:00 21:00 22:30",
+  "flag": ""
+ },
+ "2026-07-29": {
+  "date": "2026-07-29",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 207,
+   "sunrise": 316,
+   "zuhr": 791,
+   "asr": 1107,
+   "maghrib": 1258,
+   "isha": 1324,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1258,
+   "isha_j": 1350
+  },
+  "source_row": "Wed 29 03:27 05:16 13:11 18:27 20:58 22:04 04:00 13:30 19:00 20:58 22:30",
+  "flag": ""
+ },
+ "2026-07-30": {
+  "date": "2026-07-30",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 209,
+   "sunrise": 317,
+   "zuhr": 791,
+   "asr": 1106,
+   "maghrib": 1257,
+   "isha": 1322,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1257,
+   "isha_j": 1350
+  },
+  "source_row": "Thu 30 03:29 05:17 13:11 18:26 20:57 22:02 04:00 13:30 19:00 20:S7 22:30",
+  "flag": ""
+ },
+ "2026-07-31": {
+  "date": "2026-07-31",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 211,
+   "sunrise": 319,
+   "zuhr": 791,
+   "asr": 1105,
+   "maghrib": 1255,
+   "isha": 1320,
+   "fajr_j": 240,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1255,
+   "isha_j": 1350
+  },
+  "source_row": "Fri 31 03:31 05:19 13:11 18:25 20:55 22:00 04:00 Jum'a 19:00 20:55 22:30",
+  "flag": ""
+ },
+ "2026-08-01": {
+  "date": "2026-08-01",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 212,
+   "sunrise": 320,
+   "zuhr": 791,
+   "asr": 1104,
+   "maghrib": 1253,
+   "isha": 1318,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1253,
+   "isha_j": 1350
+  },
+  "source_row": "Sat I 03:32 05:20 13:11 18:24 20:53 21:58 04:00 13:30 19:00 20:53 22:30",
+  "flag": ""
+ },
+ "2026-08-02": {
+  "date": "2026-08-02",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 214,
+   "sunrise": 322,
+   "zuhr": 791,
+   "asr": 1103,
+   "maghrib": 1252,
+   "isha": 1316,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1252,
+   "isha_j": 1350
+  },
+  "source_row": "Sun 2 03:34 05:22 13:11 18:23 20:52 21:56 04:00 13:30 19:00 20:52 22:30",
+  "flag": ""
+ },
+ "2026-08-03": {
+  "date": "2026-08-03",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 216,
+   "sunrise": 324,
+   "zuhr": 791,
+   "asr": 1102,
+   "maghrib": 1250,
+   "isha": 1314,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1250,
+   "isha_j": 1350
+  },
+  "source_row": "Mon 3 03:36 05:24 13:11 18:22 20:50 21:54 04:00 13:30 19:00 20:50 22:30",
+  "flag": ""
+ },
+ "2026-08-04": {
+  "date": "2026-08-04",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 218,
+   "sunrise": 325,
+   "zuhr": 790,
+   "asr": 1101,
+   "maghrib": 1248,
+   "isha": 1312,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1248,
+   "isha_j": 1350
+  },
+  "source_row": "Tue 4 03:38 05:25 13:10 18:21 20:48 21:52 04:00 13:30 19:00 20:48 22:30",
+  "flag": ""
+ },
+ "2026-08-05": {
+  "date": "2026-08-05",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 220,
+   "sunrise": 327,
+   "zuhr": 790,
+   "asr": 1099,
+   "maghrib": 1246,
+   "isha": 1310,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1246,
+   "isha_j": 1350
+  },
+  "source_row": "Wed 5 03:40 05:27 13:10 18:19 20:46 21:50 04:00 13:30 19:00 20:46 22:30",
+  "flag": ""
+ },
+ "2026-08-06": {
+  "date": "2026-08-06",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 222,
+   "sunrise": 328,
+   "zuhr": 790,
+   "asr": 1098,
+   "maghrib": 1244,
+   "isha": 1308,
+   "fajr_j": 240,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1244,
+   "isha_j": 1350
+  },
+  "source_row": "Thu 6 03:42 05:28 13-10 18-18 20:44 21:48 04:00 13:30 19:00 20:44 22:30",
+  "flag": ""
+ },
+ "2026-08-07": {
+  "date": "2026-08-07",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 224,
+   "sunrise": 330,
+   "zuhr": 790,
+   "asr": 1097,
+   "maghrib": 1243,
+   "isha": 1306,
+   "fajr_j": 270,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1243,
+   "isha_j": null
+  },
+  "source_row": "Fri 7 03:44 05:30 13:10 18:17 20:43 21:46 0430 Jum'a 19:00 20:43 \"oo",
+  "flag": "repaired"
+ },
+ "2026-08-08": {
+  "date": "2026-08-08",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 226,
+   "sunrise": 331,
+   "zuhr": 790,
+   "asr": 1096,
+   "maghrib": 1241,
+   "isha": 1304,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1241,
+   "isha_j": 1320
+  },
+  "source_row": "Sat 8 03:46 0531 13:10 18:16 20:41 21:44 04:30 13:30 19:00 20:41 22:00",
+  "flag": ""
+ },
+ "2026-08-09": {
+  "date": "2026-08-09",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 228,
+   "sunrise": 333,
+   "zuhr": 790,
+   "asr": 1095,
+   "maghrib": 1239,
+   "isha": 1303,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1239,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 9 03:48 05:33 13:10 18:15 20:39 21:43 04:30 13:30 19:00 20:39 22:00",
+  "flag": ""
+ },
+ "2026-08-10": {
+  "date": "2026-08-10",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 229,
+   "sunrise": 335,
+   "zuhr": 790,
+   "asr": 1093,
+   "maghrib": 1237,
+   "isha": 1301,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1237,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 10 03:49 05:35 13:10 18:13 20:37 21:41 04:30 13:30 19:00 20:37 22:00",
+  "flag": ""
+ },
+ "2026-08-11": {
+  "date": "2026-08-11",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 231,
+   "sunrise": 336,
+   "zuhr": 790,
+   "asr": 1092,
+   "maghrib": 1235,
+   "isha": 1299,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1235,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 11 03:51 05:36 13:10 18:12 20:35 21:39 04:30 13:30 19:00 20:35 22:00",
+  "flag": ""
+ },
+ "2026-08-12": {
+  "date": "2026-08-12",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 233,
+   "sunrise": 338,
+   "zuhr": 789,
+   "asr": 1091,
+   "maghrib": 1233,
+   "isha": 1297,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1233,
+   "isha_j": 1320
+  },
+  "source_row": "Wed 12 03:53 05:38 13:09 18:11 20:33 21:37 04:30 13:30 19:00 20:33 22:00",
+  "flag": ""
+ },
+ "2026-08-13": {
+  "date": "2026-08-13",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 235,
+   "sunrise": 340,
+   "zuhr": 789,
+   "asr": 1089,
+   "maghrib": 1231,
+   "isha": 1296,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1231,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 13 03:55 05:40 13:09 18:09 20:31 21:36 04:30 13:30 19:00 20:31 22:00",
+  "flag": ""
+ },
+ "2026-08-14": {
+  "date": "2026-08-14",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 237,
+   "sunrise": 341,
+   "zuhr": 789,
+   "asr": 1088,
+   "maghrib": 1229,
+   "isha": 1294,
+   "fajr_j": 270,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1140,
+   "maghrib_j": 1229,
+   "isha_j": 1320
+  },
+  "source_row": "Fri 14 03:57 05:41 13:09 18:08 20'29 21:34 04:30 Jum'a 19:00 20:29 22:00",
+  "flag": ""
+ },
+ "2026-08-15": {
+  "date": "2026-08-15",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 239,
+   "sunrise": 343,
+   "zuhr": 789,
+   "asr": 1087,
+   "maghrib": 1227,
+   "isha": 1292,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1227,
+   "isha_j": 1320
+  },
+  "source_row": "Sat l5 03:59 05:43 13:09 18:07 20:27 21:32 04:30 13:30 19:00 20:27 22:00",
+  "flag": ""
+ },
+ "2026-08-16": {
+  "date": "2026-08-16",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 241,
+   "sunrise": 344,
+   "zuhr": 789,
+   "asr": 1085,
+   "maghrib": 1225,
+   "isha": 1290,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1225,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 16 04:01 05:44 13:09 18:05 20:25 21:30 04:30 13:30 19:00 20:25 22:00",
+  "flag": ""
+ },
+ "2026-08-17": {
+  "date": "2026-08-17",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 243,
+   "sunrise": 346,
+   "zuhr": 788,
+   "asr": 1084,
+   "maghrib": 1223,
+   "isha": 1289,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1223,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 17 04:03 05:46 13:08 18:04 20:23 21:29 04:30 13:30 19:00 20:23 22:00",
+  "flag": ""
+ },
+ "2026-08-18": {
+  "date": "2026-08-18",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 245,
+   "sunrise": 348,
+   "zuhr": 788,
+   "asr": 1082,
+   "maghrib": 1221,
+   "isha": 1287,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1221,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 18 04:05 05:48 13:08 18:02 20:21 21:27 04:30 13:30 19:00 20:21 22:00",
+  "flag": ""
+ },
+ "2026-08-19": {
+  "date": "2026-08-19",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 247,
+   "sunrise": 349,
+   "zuhr": 788,
+   "asr": 1081,
+   "maghrib": 1219,
+   "isha": 1285,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1219,
+   "isha_j": 1320
+  },
+  "source_row": "Wed 19 04:07 05:49 13:08 18:01 20:19 21:25 04:30 13:30 19:00 20:19 22:00",
+  "flag": ""
+ },
+ "2026-08-20": {
+  "date": "2026-08-20",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 249,
+   "sunrise": 351,
+   "zuhr": 788,
+   "asr": 1079,
+   "maghrib": 1217,
+   "isha": 1283,
+   "fajr_j": 270,
+   "zuhr_j": 810,
+   "asr_j": 1140,
+   "maghrib_j": 1217,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 20 04:09 05:51 13:08 17:59 20:17 21:23 04:30 13:30 19:00 20:17 22:00",
+  "flag": ""
+ },
+ "2026-08-21": {
+  "date": "2026-08-21",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 250,
+   "sunrise": 353,
+   "zuhr": 788,
+   "asr": 1078,
+   "maghrib": 1214,
+   "isha": 1281,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1214,
+   "isha_j": 1320
+  },
+  "source_row": "Fri 21 04:10 05:53 13:08 17:58 20:14 21:21 05:00 Jum'a 1830 20:14 22:00",
+  "flag": ""
+ },
+ "2026-08-22": {
+  "date": "2026-08-22",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 252,
+   "sunrise": 354,
+   "zuhr": 787,
+   "asr": 1076,
+   "maghrib": 1212,
+   "isha": 1279,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1212,
+   "isha_j": 1320
+  },
+  "source_row": "Sat 22 04:12 05:54 13:07 17:56 20:12 21:19 05:00 13:30 18:30 20:12 22:00",
+  "flag": ""
+ },
+ "2026-08-23": {
+  "date": "2026-08-23",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 254,
+   "sunrise": 356,
+   "zuhr": 787,
+   "asr": 1075,
+   "maghrib": 1210,
+   "isha": 1277,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1210,
+   "isha_j": 1320
+  },
+  "source_row": "Sun 23 04:14 05:56 13:07 17:55 20:10 21:17 05:00 13:30 18:30 20:10 22:00",
+  "flag": ""
+ },
+ "2026-08-24": {
+  "date": "2026-08-24",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 256,
+   "sunrise": 358,
+   "zuhr": 787,
+   "asr": 1073,
+   "maghrib": 1208,
+   "isha": 1275,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1208,
+   "isha_j": 1320
+  },
+  "source_row": "Mon 24 04:16 05:58 13:07 17:53 20:08 21:15 05:00 13:30 18:30 20:08 22:00",
+  "flag": ""
+ },
+ "2026-08-25": {
+  "date": "2026-08-25",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 258,
+   "sunrise": 359,
+   "zuhr": 786,
+   "asr": 1071,
+   "maghrib": 1206,
+   "isha": 1273,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1206,
+   "isha_j": 1320
+  },
+  "source_row": "Tue 25 04:18 05:59 13:06 17:51 20:06 21:13 05:00 13:30 18:30 20:06 22:00",
+  "flag": ""
+ },
+ "2026-08-26": {
+  "date": "2026-08-26",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 260,
+   "sunrise": 361,
+   "zuhr": 786,
+   "asr": 1070,
+   "maghrib": 1204,
+   "isha": 1271,
+   "fajr_j": 0,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1204,
+   "isha_j": 1320
+  },
+  "source_row": "Wed 26 04:20 06:01 13:06 17:50 20:04 21:11 os:00 13:30 18:30 20:04 22:00",
+  "flag": " fajr_j<begin"
+ },
+ "2026-08-27": {
+  "date": "2026-08-27",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 262,
+   "sunrise": 363,
+   "zuhr": 786,
+   "asr": 1068,
+   "maghrib": 1201,
+   "isha": 1269,
+   "fajr_j": 0,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1201,
+   "isha_j": 1320
+  },
+  "source_row": "Thu 27 04:22 06:03 13:06 17:48 20:01 21:09 os:00 13:30 18:30 20:01 22:00",
+  "flag": " fajr_j<begin"
+ },
+ "2026-08-28": {
+  "date": "2026-08-28",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 264,
+   "sunrise": 364,
+   "zuhr": 786,
+   "asr": 1066,
+   "maghrib": 1199,
+   "isha": 1267,
+   "fajr_j": 300,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1110,
+   "maghrib_j": 1199,
+   "isha_j": 1290
+  },
+  "source_row": "Fri 28 04:24 06:04 13:06 17:46 19:59 21:07 05:00 Jum'a 18:30 19:59 21JO",
+  "flag": ""
+ },
+ "2026-08-29": {
+  "date": "2026-08-29",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 266,
+   "sunrise": 366,
+   "zuhr": 785,
+   "asr": 1065,
+   "maghrib": 1197,
+   "isha": 1265,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1197,
+   "isha_j": 1290
+  },
+  "source_row": "Sat 29 04:26 06:06 13:05 17:45 19:S7 21:05 05:00 13:30 18:30 19:57 21:30",
+  "flag": ""
+ },
+ "2026-08-30": {
+  "date": "2026-08-30",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 268,
+   "sunrise": 367,
+   "zuhr": 785,
+   "asr": 1063,
+   "maghrib": 1195,
+   "isha": 1263,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1195,
+   "isha_j": 1290
+  },
+  "source_row": "Sun 30 04:28 06:07 13:05 17:43 19:55 21:03 05:00 13:30 18:30 19:55 21:30",
+  "flag": ""
+ },
+ "2026-08-31": {
+  "date": "2026-08-31",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 270,
+   "sunrise": 369,
+   "zuhr": 785,
+   "asr": 1061,
+   "maghrib": 1192,
+   "isha": 1261,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1192,
+   "isha_j": 1290
+  },
+  "source_row": "Mon 31 04:30 06:09 13:05 17:41 19:52 21:01 05:00 13:30 18:30 19:52 21:30",
+  "flag": ""
+ },
+ "2026-09-01": {
+  "date": "2026-09-01",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 272,
+   "sunrise": 371,
+   "zuhr": 784,
+   "asr": 1059,
+   "maghrib": 1190,
+   "isha": 1259,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1190,
+   "isha_j": 1290
+  },
+  "source_row": "Tue I 04:32 06:11 13:04 17:39 19:50 20:59 05:00 13:30 18:30 19:50 21:30",
+  "flag": ""
+ },
+ "2026-09-02": {
+  "date": "2026-09-02",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 273,
+   "sunrise": 372,
+   "zuhr": 784,
+   "asr": 1058,
+   "maghrib": 1188,
+   "isha": 1257,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1188,
+   "isha_j": 1290
+  },
+  "source_row": "Wed 2 04:33 06:12 13:04 17:38 19:48 20:57 05:00 13:30 18:30 19:48 21:30",
+  "flag": ""
+ },
+ "2026-09-03": {
+  "date": "2026-09-03",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 275,
+   "sunrise": 374,
+   "zuhr": 784,
+   "asr": 1056,
+   "maghrib": 1185,
+   "isha": 1255,
+   "fajr_j": 300,
+   "zuhr_j": 810,
+   "asr_j": 1110,
+   "maghrib_j": 1185,
+   "isha_j": 1290
+  },
+  "source_row": "Thu 3 04:35 06:14 13:04 17:36 19:45 20:55 05:00 13:30 18:30 19:45 21:30",
+  "flag": ""
+ },
+ "2026-09-04": {
+  "date": "2026-09-04",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 277,
+   "sunrise": 376,
+   "zuhr": 783,
+   "asr": 1054,
+   "maghrib": 1183,
+   "isha": 1253,
+   "fajr_j": 330,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1080,
+   "maghrib_j": 1183,
+   "isha_j": 1290
+  },
+  "source_row": "Fri 4 04:37 06:16 13:03 17:34 19:43 20:53 05:30 Jum'a 18:00 19:43 21:30",
+  "flag": ""
+ },
+ "2026-09-05": {
+  "date": "2026-09-05",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 279,
+   "sunrise": 377,
+   "zuhr": 783,
+   "asr": 1052,
+   "maghrib": 1181,
+   "isha": 1251,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1181,
+   "isha_j": 1290
+  },
+  "source_row": "Sat 5 04:39 06:17 13:03 17:32 19:41 20:51 05:30 13:30 18:00 19:41 21:30",
+  "flag": ""
+ },
+ "2026-09-06": {
+  "date": "2026-09-06",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 281,
+   "sunrise": 379,
+   "zuhr": 783,
+   "asr": 1050,
+   "maghrib": 1179,
+   "isha": 1249,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1179,
+   "isha_j": 1290
+  },
+  "source_row": "Sun 6 04:41 06:19 13:03 17:30 19:39 20:49 05:30 13:30 18:00 19:39 21:30",
+  "flag": ""
+ },
+ "2026-09-07": {
+  "date": "2026-09-07",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 283,
+   "sunrise": 381,
+   "zuhr": 782,
+   "asr": 1049,
+   "maghrib": 1176,
+   "isha": 1247,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1176,
+   "isha_j": 1290
+  },
+  "source_row": "Mon 7 04:43 06:21 13:02 17:29 19:36 20:47 05:30 13:30 18:00 19:36 21:30",
+  "flag": ""
+ },
+ "2026-09-08": {
+  "date": "2026-09-08",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 285,
+   "sunrise": 382,
+   "zuhr": 782,
+   "asr": 1047,
+   "maghrib": 1174,
+   "isha": 1245,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1174,
+   "isha_j": 1290
+  },
+  "source_row": "Tue 8 04:45 06:22 13:02 17:27 19:34 20:45 05:30 13:30 18:00 19:34 21:30",
+  "flag": ""
+ },
+ "2026-09-09": {
+  "date": "2026-09-09",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 287,
+   "sunrise": 384,
+   "zuhr": 782,
+   "asr": 1045,
+   "maghrib": 1172,
+   "isha": 1243,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1172,
+   "isha_j": 1290
+  },
+  "source_row": "Wed 9 04:47 06:24 13:02 17:25 19:32 20:43 05:30 13:30 18:00 19:32 21:30",
+  "flag": ""
+ },
+ "2026-09-10": {
+  "date": "2026-09-10",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 289,
+   "sunrise": 385,
+   "zuhr": 781,
+   "asr": 1043,
+   "maghrib": 1169,
+   "isha": 1240,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1169,
+   "isha_j": 1290
+  },
+  "source_row": "Thu 10 04:49 06:25 13:01 17:23 19:29 20:40 05:30 13:30 18:00 19:29 21:30",
+  "flag": ""
+ },
+ "2026-09-11": {
+  "date": "2026-09-11",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 291,
+   "sunrise": 387,
+   "zuhr": 781,
+   "asr": 1041,
+   "maghrib": 1167,
+   "isha": 1238,
+   "fajr_j": 330,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1080,
+   "maghrib_j": 1167,
+   "isha_j": 1260
+  },
+  "source_row": "Fri 11 04:51 06:27 13:01 17:21 19:27 20:38 05:30 Jum'a 18:00 19:27 21:00",
+  "flag": ""
+ },
+ "2026-09-12": {
+  "date": "2026-09-12",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 293,
+   "sunrise": 389,
+   "zuhr": 781,
+   "asr": 1039,
+   "maghrib": 1165,
+   "isha": 1236,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1165,
+   "isha_j": 1260
+  },
+  "source_row": "Sat 12 04:53 06:29 13:01 17:19 19:25 20:36 05:30 13:30 18:00 19:25 21:00",
+  "flag": ""
+ },
+ "2026-09-13": {
+  "date": "2026-09-13",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 294,
+   "sunrise": 390,
+   "zuhr": 780,
+   "asr": 1037,
+   "maghrib": 1162,
+   "isha": 1234,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1162,
+   "isha_j": 1260
+  },
+  "source_row": "Sun 13 04:54 06:30 13:00 17:17 19:22 20:34 05:30 13:30 18:00 19:22 21:00",
+  "flag": ""
+ },
+ "2026-09-14": {
+  "date": "2026-09-14",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 296,
+   "sunrise": 392,
+   "zuhr": 780,
+   "asr": 1035,
+   "maghrib": 1160,
+   "isha": 1232,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1160,
+   "isha_j": 1260
+  },
+  "source_row": "Mon 14 04:56 06:32 13:00 17:15 19:20 20:32 05:30 13:30 18:00 19:20 21:00",
+  "flag": ""
+ },
+ "2026-09-15": {
+  "date": "2026-09-15",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 298,
+   "sunrise": 394,
+   "zuhr": 780,
+   "asr": 1033,
+   "maghrib": 1157,
+   "isha": 1230,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1157,
+   "isha_j": 1260
+  },
+  "source_row": "Tue l5 04:58 06:34 13:00 17:13 19:17 20:30 05:30 13:30 18:00 19:17 21:00",
+  "flag": ""
+ },
+ "2026-09-16": {
+  "date": "2026-09-16",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 300,
+   "sunrise": 395,
+   "zuhr": 779,
+   "asr": 1031,
+   "maghrib": 1155,
+   "isha": 1228,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1155,
+   "isha_j": 1260
+  },
+  "source_row": "Wed 16 05:00 06:35 12:59 17:11 19:15 20:28 05:30 13:30 18:00 19:15 21:00",
+  "flag": ""
+ },
+ "2026-09-17": {
+  "date": "2026-09-17",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 302,
+   "sunrise": 397,
+   "zuhr": 779,
+   "asr": 1029,
+   "maghrib": 1153,
+   "isha": 1226,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1080,
+   "maghrib_j": 1153,
+   "isha_j": 1260
+  },
+  "source_row": "Thu 17 05:02 06:37 12:59 17:09 19:13 20:26 05:30 13:30 18:00 19:13 21:00",
+  "flag": ""
+ },
+ "2026-09-18": {
+  "date": "2026-09-18",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 304,
+   "sunrise": 399,
+   "zuhr": 778,
+   "asr": 1028,
+   "maghrib": 1150,
+   "isha": 1223,
+   "fajr_j": 330,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1050,
+   "maghrib_j": 1150,
+   "isha_j": 1260
+  },
+  "source_row": "Fri 18 05:04 06:39 12:58 17:08 19:10 20:23 05:30 Jum'a 1730 19:10 21:00",
+  "flag": ""
+ },
+ "2026-09-19": {
+  "date": "2026-09-19",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 306,
+   "sunrise": 400,
+   "zuhr": 778,
+   "asr": 1026,
+   "maghrib": 1148,
+   "isha": 1221,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1148,
+   "isha_j": 1260
+  },
+  "source_row": "Sat 19 05:06 06:40 12:58 17:06 19:08 20:21 05:30 13:30 17:30 19:08 21:00",
+  "flag": ""
+ },
+ "2026-09-20": {
+  "date": "2026-09-20",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 308,
+   "sunrise": 402,
+   "zuhr": 778,
+   "asr": 1024,
+   "maghrib": 1146,
+   "isha": 1219,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1146,
+   "isha_j": 1260
+  },
+  "source_row": "Sun 20 05:08 06:42 12:58 17:04 19:06 20:19 05:30 13:30 17:30 19:06 21:00",
+  "flag": ""
+ },
+ "2026-09-21": {
+  "date": "2026-09-21",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 310,
+   "sunrise": 404,
+   "zuhr": 777,
+   "asr": 1022,
+   "maghrib": 1143,
+   "isha": 1217,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1143,
+   "isha_j": 1260
+  },
+  "source_row": "Mon 21 05:10 06:44 12:57 17:02 19:03 20:17 05:30 13:30 17:30 19:03 21:00",
+  "flag": ""
+ },
+ "2026-09-22": {
+  "date": "2026-09-22",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 312,
+   "sunrise": 405,
+   "zuhr": 777,
+   "asr": 1020,
+   "maghrib": 1141,
+   "isha": 1215,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1141,
+   "isha_j": 1260
+  },
+  "source_row": "Tue 22 05:12 06:45 12:57 17:00 19:01 20:15 05:30 13:30 17:30 19:01 21:00",
+  "flag": ""
+ },
+ "2026-09-23": {
+  "date": "2026-09-23",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 313,
+   "sunrise": 407,
+   "zuhr": 777,
+   "asr": 1018,
+   "maghrib": 1139,
+   "isha": 1213,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1139,
+   "isha_j": 1260
+  },
+  "source_row": "Wed 23 05:13 06:47 12:57 16:58 18:59 20:13 05:30 13:30 17:30 18:59 21:00",
+  "flag": ""
+ },
+ "2026-09-24": {
+  "date": "2026-09-24",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 315,
+   "sunrise": 409,
+   "zuhr": 776,
+   "asr": 1016,
+   "maghrib": 1136,
+   "isha": 1211,
+   "fajr_j": 330,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1136,
+   "isha_j": 1260
+  },
+  "source_row": "Thu 24 05:15 06:49 12:56 16:56 18:56 20:11 05:30 13:30 17:30 18:56 21:00",
+  "flag": ""
+ },
+ "2026-09-25": {
+  "date": "2026-09-25",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 316,
+   "sunrise": 410,
+   "zuhr": 776,
+   "asr": 1013,
+   "maghrib": 1134,
+   "isha": 1209,
+   "fajr_j": 360,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1050,
+   "maghrib_j": 1134,
+   "isha_j": 1230
+  },
+  "source_row": "Fri 25 05:16 06:50 12:56 16:53 18:54 20:09 06:00 Jum'a 17:30 18:54 20JO",
+  "flag": ""
+ },
+ "2026-09-26": {
+  "date": "2026-09-26",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 318,
+   "sunrise": 412,
+   "zuhr": 776,
+   "asr": 1011,
+   "maghrib": 1132,
+   "isha": 1206,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1132,
+   "isha_j": 1230
+  },
+  "source_row": "Sat 26 05:18 06:52 12:56 16:51 18:52 20:06 06:00 13:30 17:30 18:52 20:30",
+  "flag": ""
+ },
+ "2026-09-27": {
+  "date": "2026-09-27",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 320,
+   "sunrise": 414,
+   "zuhr": 775,
+   "asr": 1009,
+   "maghrib": 1129,
+   "isha": 1204,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1129,
+   "isha_j": 1230
+  },
+  "source_row": "Sun 27 0520 06:54 12:55 16:49 18:49 20:04 06:00 13:30 17:30 18:49 20:30",
+  "flag": ""
+ },
+ "2026-09-28": {
+  "date": "2026-09-28",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 321,
+   "sunrise": 415,
+   "zuhr": 775,
+   "asr": 1007,
+   "maghrib": 1127,
+   "isha": 1202,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1127,
+   "isha_j": 1230
+  },
+  "source_row": "Mon 28 05:21 06:55 12:55 16:47 18:47 20:02 06:00 13:30 17:30 18:47 20:30",
+  "flag": ""
+ },
+ "2026-09-29": {
+  "date": "2026-09-29",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 323,
+   "sunrise": 417,
+   "zuhr": 775,
+   "asr": 1005,
+   "maghrib": 1125,
+   "isha": 1200,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1125,
+   "isha_j": 1230
+  },
+  "source_row": "Tue 29 05:23 06:S7 12:55 16:45 18:45 20:00 06:00 13:30 17:30 18:45 20:30",
+  "flag": ""
+ },
+ "2026-09-30": {
+  "date": "2026-09-30",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 324,
+   "sunrise": 419,
+   "zuhr": null,
+   "asr": 1003,
+   "maghrib": 1122,
+   "isha": 1198,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1050,
+   "maghrib_j": 1122,
+   "isha_j": 1230
+  },
+  "source_row": "Wed 30 0524 06:59 12:$4 16:43 18:42 19:58 06:00 13:30 17:30 18:42 20:30",
+  "flag": "repaired"
+ },
+ "2026-10-01": {
+  "date": "2026-10-01",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 326,
+   "sunrise": 420,
+   "zuhr": 1001,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "fajr_j": null,
+   "zuhr_j": 1050,
+   "asr_j": null,
+   "maghrib_j": null,
+   "isha_j": null
+  },
+  "source_row": "Thu I 05:26 07:00 12: 16:41 18:40 19:56 06:00 13:30 1730 18:40 20:30",
+  "flag": "repair-ambiguous begins-unsorted deviant-null deviant-null deviant-null deviant-null deviant-null deviant-null"
+ },
+ "2026-10-02": {
+  "date": "2026-10-02",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 327,
+   "sunrise": 422,
+   "zuhr": 774,
+   "asr": 999,
+   "maghrib": 1118,
+   "isha": 1194,
+   "fajr_j": 360,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1020,
+   "maghrib_j": 1118,
+   "isha_j": 1230
+  },
+  "source_row": "Fri 2 05:27 07:02 12:54 16:39 18:38 19:54 06:00 Jum'a 17:00 18:38 20:30",
+  "flag": ""
+ },
+ "2026-10-03": {
+  "date": "2026-10-03",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 329,
+   "sunrise": 424,
+   "zuhr": 773,
+   "asr": 997,
+   "maghrib": 1115,
+   "isha": 1192,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1115,
+   "isha_j": 1230
+  },
+  "source_row": "Sat 3 05:29 07:04 12:53 16:37 18:35 19:52 06:00 13:30 17:00 18:35 20:30",
+  "flag": ""
+ },
+ "2026-10-04": {
+  "date": "2026-10-04",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 331,
+   "sunrise": 425,
+   "zuhr": 773,
+   "asr": 995,
+   "maghrib": 1113,
+   "isha": 1190,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1113,
+   "isha_j": 1230
+  },
+  "source_row": "Sun 4 05:31 07:05 12:53 16:35 18:33 19:50 06:00 13:30 17:00 18:33 20:30",
+  "flag": ""
+ },
+ "2026-10-05": {
+  "date": "2026-10-05",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 332,
+   "sunrise": 427,
+   "zuhr": 773,
+   "asr": 993,
+   "maghrib": 1111,
+   "isha": 1188,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1111,
+   "isha_j": 1230
+  },
+  "source_row": "Mon 5 05:32 07:07 12:53 16:33 18:31 19:48 06:00 13:30 17:00 18:31 20:30",
+  "flag": ""
+ },
+ "2026-10-06": {
+  "date": "2026-10-06",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 334,
+   "sunrise": 429,
+   "zuhr": 772,
+   "asr": 991,
+   "maghrib": 1108,
+   "isha": 1186,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1108,
+   "isha_j": 1230
+  },
+  "source_row": "Tue 6 05:34 07:09 12:52 16:31 18:28 19:46 06:00 13:30 17:00 18:28 20:30",
+  "flag": ""
+ },
+ "2026-10-07": {
+  "date": "2026-10-07",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 335,
+   "sunrise": 430,
+   "zuhr": 772,
+   "asr": 989,
+   "maghrib": 1106,
+   "isha": 1184,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1106,
+   "isha_j": 1230
+  },
+  "source_row": "Wed 7 05:35 07:10 12:52 16:29 18:26 19:44 06:00 13:30 17:00 18:26 20:30",
+  "flag": ""
+ },
+ "2026-10-08": {
+  "date": "2026-10-08",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 337,
+   "sunrise": 432,
+   "zuhr": 772,
+   "asr": 987,
+   "maghrib": 1104,
+   "isha": 1182,
+   "fajr_j": 360,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1104,
+   "isha_j": 1230
+  },
+  "source_row": "Thu 8 05:37 07:12 12:52 16:27 18:24 19:42 06:00 13:30 17:00 18:24 20:30",
+  "flag": ""
+ },
+ "2026-10-09": {
+  "date": "2026-10-09",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 339,
+   "sunrise": 434,
+   "zuhr": 772,
+   "asr": 985,
+   "maghrib": 1101,
+   "isha": 1180,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 1020,
+   "maghrib_j": 1101,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 9 05:39 07:14 12:52 16:25 18:21 19:40 0630 Jum'a 17:00 18:21 20:00",
+  "flag": ""
+ },
+ "2026-10-10": {
+  "date": "2026-10-10",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 340,
+   "sunrise": 436,
+   "zuhr": 771,
+   "asr": 983,
+   "maghrib": 1099,
+   "isha": 1178,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1099,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 10 05:40 07:16 12:51 16:23 18:19 19:38 06:30 13:30 17:00 18:19 20:00",
+  "flag": ""
+ },
+ "2026-10-11": {
+  "date": "2026-10-11",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 342,
+   "sunrise": 437,
+   "zuhr": 771,
+   "asr": 981,
+   "maghrib": 1097,
+   "isha": 1176,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1097,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 11 05:42 07:17 12:51 16:21 18:17 19:36 06:30 13:30 17:00 18:17 20:00",
+  "flag": ""
+ },
+ "2026-10-12": {
+  "date": "2026-10-12",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 344,
+   "sunrise": 439,
+   "zuhr": 771,
+   "asr": 979,
+   "maghrib": 1095,
+   "isha": 1174,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1095,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 12 05;44 07:19 12:51 16:19 18:15 19:34 06:30 13:30 17:00 18:15 20:00",
+  "flag": ""
+ },
+ "2026-10-13": {
+  "date": "2026-10-13",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 345,
+   "sunrise": 441,
+   "zuhr": 771,
+   "asr": 977,
+   "maghrib": 1093,
+   "isha": 1172,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1093,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 13 05:45 07:21 12:51 16:17 18:13 19:32 06:30 13:30 17:00 18:13 20:00",
+  "flag": ""
+ },
+ "2026-10-14": {
+  "date": "2026-10-14",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 347,
+   "sunrise": 442,
+   "zuhr": 770,
+   "asr": 975,
+   "maghrib": 1090,
+   "isha": 1170,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1090,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 14 05:47 07:22 12:50 16:15 18:10 19:30 06:30 13:30 17:00 18:10 20:00",
+  "flag": ""
+ },
+ "2026-10-15": {
+  "date": "2026-10-15",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 349,
+   "sunrise": 444,
+   "zuhr": 770,
+   "asr": 973,
+   "maghrib": 1088,
+   "isha": 1168,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 1020,
+   "maghrib_j": 1088,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 15 05:49 07:24 12:50 16:13 18:08 19:28 06:30 13:30 17:00 18:08 20:00",
+  "flag": ""
+ },
+ "2026-10-16": {
+  "date": "2026-10-16",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 350,
+   "sunrise": 446,
+   "zuhr": 770,
+   "asr": 971,
+   "maghrib": 1086,
+   "isha": 1166,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 990,
+   "maghrib_j": 1086,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 16 05:50 07:26 12:50 16:11 18:06 19:26 06:30 Jum'a 16:30 18:06 20:00",
+  "flag": ""
+ },
+ "2026-10-17": {
+  "date": "2026-10-17",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 352,
+   "sunrise": 448,
+   "zuhr": 770,
+   "asr": 969,
+   "maghrib": 1084,
+   "isha": 1164,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1084,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 17 05:52 07:28 12:50 16:09 18:04 19:24 06:30 13:30 16:30 18:04 20:00",
+  "flag": ""
+ },
+ "2026-10-18": {
+  "date": "2026-10-18",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 354,
+   "sunrise": 449,
+   "zuhr": 770,
+   "asr": 967,
+   "maghrib": 1082,
+   "isha": 1162,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1082,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 18 05:54 07:29 12:50 16:07 18:02 19:22 06:30 13:30 16:30 18:02 20:00",
+  "flag": ""
+ },
+ "2026-10-19": {
+  "date": "2026-10-19",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 355,
+   "sunrise": 451,
+   "zuhr": 769,
+   "asr": 965,
+   "maghrib": 1079,
+   "isha": 1160,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1079,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 19 05:55 0731 12:49 16:05 17:59 19:20 06:30 13:30 16:30 17S9 20:00",
+  "flag": ""
+ },
+ "2026-10-20": {
+  "date": "2026-10-20",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 357,
+   "sunrise": 453,
+   "zuhr": 769,
+   "asr": 963,
+   "maghrib": 1077,
+   "isha": 1158,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1077,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 20 05:57 07:33 12:49 16:03 17:57 19:18 06:30 13:30 16:30 17:57 20:00",
+  "flag": ""
+ },
+ "2026-10-21": {
+  "date": "2026-10-21",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 359,
+   "sunrise": 455,
+   "zuhr": 769,
+   "asr": 961,
+   "maghrib": 1075,
+   "isha": 1156,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1075,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 21 05:59 07:35 12:49 16:01 17:55 19:16 06:30 13:30 16:30 17:55 20:00",
+  "flag": ""
+ },
+ "2026-10-22": {
+  "date": "2026-10-22",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 360,
+   "sunrise": 457,
+   "zuhr": 769,
+   "asr": 959,
+   "maghrib": 1073,
+   "isha": 1154,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1073,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 22 06:00 07:37 12:49 15:59 17:53 19:14 06:30 13:30 16:30 17:53 20:00",
+  "flag": ""
+ },
+ "2026-10-23": {
+  "date": "2026-10-23",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 362,
+   "sunrise": 458,
+   "zuhr": 769,
+   "asr": 957,
+   "maghrib": 1071,
+   "isha": 1153,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 990,
+   "maghrib_j": 1071,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 23 06:02 07:38 12:49 15:57 1751 19:13 06:30 Jum'a 16:30 17:51 20:00",
+  "flag": ""
+ },
+ "2026-10-24": {
+  "date": "2026-10-24",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 364,
+   "sunrise": 460,
+   "zuhr": 769,
+   "asr": 955,
+   "maghrib": 1069,
+   "isha": 1151,
+   "fajr_j": 390,
+   "zuhr_j": 810,
+   "asr_j": 990,
+   "maghrib_j": 1069,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 24 06:04 07:40 12:49 15:55 17:49 19:11 06:30 13:30 16:30 17:49 20:00",
+  "flag": ""
+ },
+ "2026-10-25": {
+  "date": "2026-10-25",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 305,
+   "sunrise": 402,
+   "zuhr": 708,
+   "asr": 893,
+   "maghrib": 1007,
+   "isha": 1089,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1007,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 25 05:05 06:42 11:48 14:53 16:47 18:09 06:00 13:00 1530 16:47 20:00",
+  "flag": ""
+ },
+ "2026-10-26": {
+  "date": "2026-10-26",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 307,
+   "sunrise": 404,
+   "zuhr": 708,
+   "asr": 892,
+   "maghrib": 1005,
+   "isha": 1087,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1005,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 26 05:07 06:44 11:48 14:52 16:45 18:07 06:00 13:00 1530 16:45 20:00",
+  "flag": ""
+ },
+ "2026-10-27": {
+  "date": "2026-10-27",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 309,
+   "sunrise": 406,
+   "zuhr": 708,
+   "asr": 890,
+   "maghrib": 1003,
+   "isha": 1086,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1003,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 27 05:09 06:46 11:48 14:50 16:43 18:06 06:00 13:00 1530 16:43 20:00",
+  "flag": ""
+ },
+ "2026-10-28": {
+  "date": "2026-10-28",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 310,
+   "sunrise": 407,
+   "zuhr": 708,
+   "asr": 888,
+   "maghrib": 1001,
+   "isha": 1084,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 1001,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 28 05:10 06:47 11:48 14:48 16:41 18:04 06:00 13:00 1530 16:41 20:00",
+  "flag": ""
+ },
+ "2026-10-29": {
+  "date": "2026-10-29",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 312,
+   "sunrise": 409,
+   "zuhr": 708,
+   "asr": 886,
+   "maghrib": 999,
+   "isha": 1082,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 930,
+   "maghrib_j": 999,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 29 05:12 06:49 11:48 14:46 1639 18:02 06:00 13:00 1530 16:39 20:00",
+  "flag": ""
+ },
+ "2026-10-30": {
+  "date": "2026-10-30",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 314,
+   "sunrise": 411,
+   "zuhr": 708,
+   "asr": 884,
+   "maghrib": 997,
+   "isha": 1080,
+   "fajr_j": 360,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 997,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 30 05:14 06:51 11:48 14:44 1637 18:00 06:00 Jum'a 15:00 16:37 20:00",
+  "flag": ""
+ },
+ "2026-10-31": {
+  "date": "2026-10-31",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 316,
+   "sunrise": 413,
+   "zuhr": 708,
+   "asr": 883,
+   "maghrib": 995,
+   "isha": 1079,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 995,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 31 05:16 06:53 11:48 14:43 16:35 17:59 06:00 13:00 15:00 16:35 20:00",
+  "flag": ""
+ },
+ "2026-11-01": {
+  "date": "2026-11-01",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 317,
+   "sunrise": 415,
+   "zuhr": 708,
+   "asr": 881,
+   "maghrib": 993,
+   "isha": 1077,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 993,
+   "isha_j": 1200
+  },
+  "source_row": "Sun I 05:17 06:55 11:48 14:41 16:33 17:57 06:00 13:00 15:00 16:33 20:00",
+  "flag": ""
+ },
+ "2026-11-02": {
+  "date": "2026-11-02",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 319,
+   "sunrise": 416,
+   "zuhr": 708,
+   "asr": 879,
+   "maghrib": 992,
+   "isha": 1076,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 992,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 2 05:19 06:56 11:48 14:39 16:32 17:56 06:00 13:00 15:00 16:32 20:00",
+  "flag": ""
+ },
+ "2026-11-03": {
+  "date": "2026-11-03",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 321,
+   "sunrise": 418,
+   "zuhr": 708,
+   "asr": 877,
+   "maghrib": 990,
+   "isha": 1074,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 990,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 3 05:21 06:58 11:48 14:37 16:30 17:54 06:00 13:00 15:00 16:30 20:00",
+  "flag": ""
+ },
+ "2026-11-04": {
+  "date": "2026-11-04",
+  "weekday": null,
+  "times": {
+   "fajr": null,
+   "sunrise": 420,
+   "zuhr": 708,
+   "asr": 876,
+   "maghrib": 988,
+   "isha": 1072,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 988,
+   "isha_j": 1200
+  },
+  "source_row": "Wed4 05:22 07:00 11:48 14:36 16:28 17:52 06:00 13:00 15:00 16:28 20:00",
+  "flag": "day-unreadable repaired"
+ },
+ "2026-11-05": {
+  "date": "2026-11-05",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 324,
+   "sunrise": 422,
+   "zuhr": 708,
+   "asr": 874,
+   "maghrib": 986,
+   "isha": 1071,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 986,
+   "isha_j": 1200
+  },
+  "source_row": "Thu S 05:24 07:02 11:48 14:34 16:26 17:51 06:00 13:00 15:00 16:26 20:00",
+  "flag": ""
+ },
+ "2026-11-06": {
+  "date": "2026-11-06",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 326,
+   "sunrise": 424,
+   "zuhr": 708,
+   "asr": 872,
+   "maghrib": 984,
+   "isha": 1069,
+   "fajr_j": 360,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 984,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 6 05:26 07:04 11:48 14:32 16:24 17:49 06:00 Jum'a 15:00 16:24 20:00",
+  "flag": ""
+ },
+ "2026-11-07": {
+  "date": "2026-11-07",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 328,
+   "sunrise": 425,
+   "zuhr": 708,
+   "asr": 871,
+   "maghrib": 983,
+   "isha": 1068,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 983,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 7 05:28 07:05 11:48 14:31 16:23 17:48 06:00 13:00 15:00 16:23 20:00",
+  "flag": ""
+ },
+ "2026-11-08": {
+  "date": "2026-11-08",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 329,
+   "sunrise": 427,
+   "zuhr": 708,
+   "asr": 869,
+   "maghrib": 981,
+   "isha": 1067,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 981,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 8 05:29 07:07 11:48 14:29 16:21 17:47 06:00 13:00 15:00 16:21 20:00",
+  "flag": ""
+ },
+ "2026-11-09": {
+  "date": "2026-11-09",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 331,
+   "sunrise": 429,
+   "zuhr": 708,
+   "asr": 868,
+   "maghrib": 979,
+   "isha": 1065,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 979,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 9 05:31 07:09 11:48 14:28 16:19 17:45 06:00 13:00 15:00 16:19 20:00",
+  "flag": ""
+ },
+ "2026-11-10": {
+  "date": "2026-11-10",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 333,
+   "sunrise": 431,
+   "zuhr": 708,
+   "asr": 866,
+   "maghrib": 978,
+   "isha": 1064,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 978,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 10 05:33 07:11 11:48 14:26 16:18 17:44 06:00 13:00 15:00 16:18 20:00",
+  "flag": ""
+ },
+ "2026-11-11": {
+  "date": "2026-11-11",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 334,
+   "sunrise": 433,
+   "zuhr": 708,
+   "asr": 865,
+   "maghrib": 976,
+   "isha": 1063,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 976,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 11 0534 07:13 11:48 14:25 16:16 17:43 06:00 13:00 15:00 16:16 20:00",
+  "flag": ""
+ },
+ "2026-11-12": {
+  "date": "2026-11-12",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 336,
+   "sunrise": 434,
+   "zuhr": 709,
+   "asr": 863,
+   "maghrib": 975,
+   "isha": 1061,
+   "fajr_j": 360,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 975,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 12 05:36 07:14 11:49 14:23 16:15 17:41 06:00 13:00 15:00 16:15 20:00",
+  "flag": ""
+ },
+ "2026-11-13": {
+  "date": "2026-11-13",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 338,
+   "sunrise": 436,
+   "zuhr": 709,
+   "asr": 862,
+   "maghrib": 973,
+   "isha": 1060,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 900,
+   "maghrib_j": 973,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 13 0538 07:16 11:49 14:22 16:13 17:40 06JO Jum'a 15:00 16:13 20:00",
+  "flag": ""
+ },
+ "2026-11-14": {
+  "date": "2026-11-14",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 339,
+   "sunrise": 438,
+   "zuhr": 709,
+   "asr": 860,
+   "maghrib": 972,
+   "isha": 1059,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 972,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 14 05:39 07:18 11:49 14:20 16:12 17:39 0630 13:00 15:00 16:12 20:00",
+  "flag": ""
+ },
+ "2026-11-15": {
+  "date": "2026-11-15",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 341,
+   "sunrise": 440,
+   "zuhr": 709,
+   "asr": 859,
+   "maghrib": 970,
+   "isha": 1058,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 970,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 15 05:41 07:20 11:49 14:19 16:10 17:38 06:30 13:00 15:00 16:10 20:00",
+  "flag": ""
+ },
+ "2026-11-16": {
+  "date": "2026-11-16",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 343,
+   "sunrise": 442,
+   "zuhr": 709,
+   "asr": 858,
+   "maghrib": 969,
+   "isha": 1056,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 969,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 16 05:43 07:22 11:49 14:18 16:09 17:36 0630 13:00 15:00 16:09 20:00",
+  "flag": ""
+ },
+ "2026-11-17": {
+  "date": "2026-11-17",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 344,
+   "sunrise": 443,
+   "zuhr": 709,
+   "asr": 857,
+   "maghrib": 968,
+   "isha": 1055,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 968,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 17 05:44 07:23 11:49 14:17 16:08 17:35 0630 13:00 15:00 16:08 20:00",
+  "flag": ""
+ },
+ "2026-11-18": {
+  "date": "2026-11-18",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 346,
+   "sunrise": 445,
+   "zuhr": 710,
+   "asr": 855,
+   "maghrib": 966,
+   "isha": 1054,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 966,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 18 05:46 07:25 11:50 14:15 16:06 17:34 0630 13:00 15:00 16:06 20:00",
+  "flag": ""
+ },
+ "2026-11-19": {
+  "date": "2026-11-19",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 348,
+   "sunrise": 447,
+   "zuhr": null,
+   "asr": 854,
+   "maghrib": 965,
+   "isha": 1053,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 900,
+   "maghrib_j": 965,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 19 05:48 07:27 11:so 14:14 16:05 17:33 0630 13:00 15:00 16:05 20:00",
+  "flag": "repaired"
+ },
+ "2026-11-20": {
+  "date": "2026-11-20",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 349,
+   "sunrise": 448,
+   "zuhr": 710,
+   "asr": null,
+   "maghrib": 964,
+   "isha": 1052,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 964,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 20 05:49 07:28 1150 4:13 16:04 17:32 0630 Jum'a 1430 16:04 20:00",
+  "flag": " begins-unsorted deviant-null"
+ },
+ "2026-11-21": {
+  "date": "2026-11-21",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 351,
+   "sunrise": 450,
+   "zuhr": 710,
+   "asr": 852,
+   "maghrib": 963,
+   "isha": 1051,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 963,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 21 05:51 07:30 11:50 14:12 16:03 17:31 0630 13:00 14:30 16:03 20:00",
+  "flag": ""
+ },
+ "2026-11-22": {
+  "date": "2026-11-22",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 352,
+   "sunrise": 452,
+   "zuhr": 710,
+   "asr": 851,
+   "maghrib": 962,
+   "isha": 1051,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 962,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 22 05:52 07:32 11:50 14:11 16:02 17:31 0630 13:00 14:30 16:02 20:00",
+  "flag": ""
+ },
+ "2026-11-23": {
+  "date": "2026-11-23",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 354,
+   "sunrise": 453,
+   "zuhr": 711,
+   "asr": 850,
+   "maghrib": 961,
+   "isha": 1050,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 961,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 23 05:54 07:33 11:51 14:10 16:01 17:30 0630 13:00 14:30 16:01 20;00",
+  "flag": ""
+ },
+ "2026-11-24": {
+  "date": "2026-11-24",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 356,
+   "sunrise": 455,
+   "zuhr": 711,
+   "asr": 849,
+   "maghrib": 959,
+   "isha": 1049,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 959,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 24 05:56 07:35 11:51 14:09 15:59 17:29 0630 13:00 14:30 15:59 20:00",
+  "flag": ""
+ },
+ "2026-11-25": {
+  "date": "2026-11-25",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 357,
+   "sunrise": 457,
+   "zuhr": 711,
+   "asr": 848,
+   "maghrib": 958,
+   "isha": 1048,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 958,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 25 05:57 07:37 11:51 14:08 15:58 17:28 0630 13:00 14:30 15:58 20:00",
+  "flag": ""
+ },
+ "2026-11-26": {
+  "date": "2026-11-26",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 358,
+   "sunrise": 458,
+   "zuhr": 712,
+   "asr": 847,
+   "maghrib": 958,
+   "isha": 1047,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 958,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 26 05:58 07:38 11:52 14:07 15:58 17:27 0630 13:00 14:30 15:58 20:00",
+  "flag": ""
+ },
+ "2026-11-27": {
+  "date": "2026-11-27",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 360,
+   "sunrise": 460,
+   "zuhr": 712,
+   "asr": 846,
+   "maghrib": 957,
+   "isha": 1047,
+   "fajr_j": 390,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 957,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 27 06:00 07:40 11:52 14:06 15:57 17:27 0630 Jum'a 14:30 15:57 20:00",
+  "flag": ""
+ },
+ "2026-11-28": {
+  "date": "2026-11-28",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 361,
+   "sunrise": 461,
+   "zuhr": 712,
+   "asr": 845,
+   "maghrib": 956,
+   "isha": 1046,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 956,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 28 06:01 07:41 11:52 14:05 15:56 17:26 0630 13:00 14:30 15:56 20:00",
+  "flag": ""
+ },
+ "2026-11-29": {
+  "date": "2026-11-29",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 363,
+   "sunrise": 463,
+   "zuhr": 713,
+   "asr": 845,
+   "maghrib": 955,
+   "isha": 1046,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 955,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 29 06:03 07:43 11:53 14:05 15:55 17:26 0630 13:00 14:30 15:55 20:00",
+  "flag": ""
+ },
+ "2026-11-30": {
+  "date": "2026-11-30",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 364,
+   "sunrise": 464,
+   "zuhr": 713,
+   "asr": 844,
+   "maghrib": 954,
+   "isha": 1045,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 954,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 30 06:04 07:44 11:53 14:04 15:54 17:25 0630 13:00 14:30 15:54 20:00",
+  "flag": ""
+ },
+ "2026-12-01": {
+  "date": "2026-12-01",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 366,
+   "sunrise": 466,
+   "zuhr": 713,
+   "asr": 843,
+   "maghrib": 954,
+   "isha": 1045,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 954,
+   "isha_j": 1200
+  },
+  "source_row": "Tue I 06:06 07:46 11:53 14:03 15:54 17:25 06:30 13:00 14:30 15:54 20:00",
+  "flag": ""
+ },
+ "2026-12-02": {
+  "date": "2026-12-02",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 367,
+   "sunrise": 467,
+   "zuhr": null,
+   "asr": 843,
+   "maghrib": 953,
+   "isha": 1044,
+   "fajr_j": 390,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 953,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 2 06:07 07:47 11: 14:03 15:53 17:24 06:30 13:00 14:30 15:53 20:00",
+  "flag": "repaired"
+ },
+ "2026-12-03": {
+  "date": "2026-12-03",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 368,
+   "sunrise": 469,
+   "zuhr": 842,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "fajr_j": null,
+   "zuhr_j": 870,
+   "asr_j": null,
+   "maghrib_j": null,
+   "isha_j": null
+  },
+  "source_row": "Thu 3 06:08 07:49 11: 14:02 15:52 17:24 06:30 13:00 14:30 15:52 20:00",
+  "flag": "repair-ambiguous begins-unsorted deviant-null deviant-null deviant-null deviant-null deviant-null deviant-null"
+ },
+ "2026-12-04": {
+  "date": "2026-12-04",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 369,
+   "sunrise": 470,
+   "zuhr": 715,
+   "asr": 842,
+   "maghrib": 952,
+   "isha": 1044,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 952,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 4 06:09 07:50 11:55 14:02 15:52 17:24 0&\"45 Jum'a 14:30 15:52 20:00",
+  "flag": ""
+ },
+ "2026-12-05": {
+  "date": "2026-12-05",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 371,
+   "sunrise": 471,
+   "zuhr": 715,
+   "asr": 841,
+   "maghrib": 951,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Sat S 06:11 07:51 11:55 14:01 15:51 17:23 06:45 13:00 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-06": {
+  "date": "2026-12-06",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 372,
+   "sunrise": 472,
+   "zuhr": 715,
+   "asr": 841,
+   "maghrib": 951,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 6 06:12 07:52 11:55 14:01 15:51 17:23 06:45 13:00 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-07": {
+  "date": "2026-12-07",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 373,
+   "sunrise": 474,
+   "zuhr": 716,
+   "asr": 841,
+   "maghrib": 951,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 7 06:13 07:54 11:56 14:01 15:51 17:23 06:45 13:00 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-08": {
+  "date": "2026-12-08",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 374,
+   "sunrise": 475,
+   "zuhr": 716,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 8 06:14 07:55 11:56 14:00 15:50 17:23 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-09": {
+  "date": "2026-12-09",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 375,
+   "sunrise": 476,
+   "zuhr": 717,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 9 06:15 07:56 11:57 14:00 15:50 17:23 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-10": {
+  "date": "2026-12-10",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 376,
+   "sunrise": 477,
+   "zuhr": 717,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 10 06:16 07:57 11:57 14:00 15:50 17:23 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-11": {
+  "date": "2026-12-11",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 377,
+   "sunrise": 478,
+   "zuhr": 718,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1043,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 11 06:17 07:58 11:58 14:00 15:50 17:23 06:45 Jum'a 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-12": {
+  "date": "2026-12-12",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 378,
+   "sunrise": 479,
+   "zuhr": 718,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1044,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 12 06:18 07:59 11:58 14:00 15:50 17:24 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-13": {
+  "date": "2026-12-13",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 379,
+   "sunrise": 480,
+   "zuhr": 719,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1044,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 13 06:19 08:00 11:59 14:00 15:50 17:24 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-14": {
+  "date": "2026-12-14",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 380,
+   "sunrise": 481,
+   "zuhr": 719,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1044,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 14 06:20 08:01 11:59 14:00 15:50 17:24 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-15": {
+  "date": "2026-12-15",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 380,
+   "sunrise": 482,
+   "zuhr": 719,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1044,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Tue l5 06:20 08:02 11:59 14:00 15:50 17:24 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-16": {
+  "date": "2026-12-16",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 381,
+   "sunrise": 483,
+   "zuhr": 720,
+   "asr": 840,
+   "maghrib": 950,
+   "isha": 1045,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 16 06:21 08:03 12:00 14:00 15:50 17:25 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-17": {
+  "date": "2026-12-17",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 382,
+   "sunrise": 484,
+   "zuhr": 720,
+   "asr": 841,
+   "maghrib": 950,
+   "isha": 1045,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 950,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 17 06:22 08:04 12:00 14:01 15:50 17:25 06:45 13:00 14:30 15:50 20:00",
+  "flag": ""
+ },
+ "2026-12-18": {
+  "date": "2026-12-18",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 382,
+   "sunrise": 484,
+   "zuhr": 721,
+   "asr": 841,
+   "maghrib": 951,
+   "isha": 1046,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 18 06:22 08:04 12:01 14:01 15:51 17:26 06:45 Jum'a 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-19": {
+  "date": "2026-12-19",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 383,
+   "sunrise": 485,
+   "zuhr": 721,
+   "asr": 841,
+   "maghrib": 951,
+   "isha": 1046,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 19 06:23 08:05 12:01 14:01 15:51 17:26 06:45 13:00 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-20": {
+  "date": "2026-12-20",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 384,
+   "sunrise": 486,
+   "zuhr": 722,
+   "asr": 842,
+   "maghrib": 951,
+   "isha": 1047,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 951,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 20 06:24 08:06 12:02 14:02 15:51 17:27 06:45 13:00 14:30 15:51 20:00",
+  "flag": ""
+ },
+ "2026-12-21": {
+  "date": "2026-12-21",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 384,
+   "sunrise": 486,
+   "zuhr": 722,
+   "asr": 842,
+   "maghrib": 952,
+   "isha": 1048,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 952,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 21 06:24 08:06 12:02 14:02 15:52 17:28 06:45 13:00 14:30 15:52 20:00",
+  "flag": ""
+ },
+ "2026-12-22": {
+  "date": "2026-12-22",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 385,
+   "sunrise": 487,
+   "zuhr": 723,
+   "asr": 843,
+   "maghrib": 952,
+   "isha": 1048,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 952,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 22 06:25 08:07 12:03 14:03 15:52 17:28 06:45 13:00 14:30 15:52 20:00",
+  "flag": ""
+ },
+ "2026-12-23": {
+  "date": "2026-12-23",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 385,
+   "sunrise": 487,
+   "zuhr": 723,
+   "asr": 843,
+   "maghrib": 953,
+   "isha": 1049,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 953,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 23 06:25 08:07 12:03 14:03 15:53 17:29 06:45 13:00 14:30 15:53 20:00",
+  "flag": ""
+ },
+ "2026-12-24": {
+  "date": "2026-12-24",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 386,
+   "sunrise": 487,
+   "zuhr": 724,
+   "asr": 844,
+   "maghrib": 953,
+   "isha": 1049,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 953,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 24 06:26 08:07 12:04 14:04 15:53 17:29 06:45 13:00 14:30 15:53 20:00",
+  "flag": ""
+ },
+ "2026-12-25": {
+  "date": "2026-12-25",
+  "weekday": "Fri",
+  "times": {
+   "fajr": 386,
+   "sunrise": 488,
+   "zuhr": 724,
+   "asr": 844,
+   "maghrib": 954,
+   "isha": 1049,
+   "fajr_j": 405,
+   "zuhr_j": "Jum'a",
+   "asr_j": 870,
+   "maghrib_j": 954,
+   "isha_j": 1200
+  },
+  "source_row": "Fri 25 06:26 08:08 12:04 14:04 15:54 17:29 06:45 Jum'a 14:30 15:54 20:00",
+  "flag": ""
+ },
+ "2026-12-26": {
+  "date": "2026-12-26",
+  "weekday": "Sat",
+  "times": {
+   "fajr": 386,
+   "sunrise": 488,
+   "zuhr": 725,
+   "asr": 845,
+   "maghrib": 955,
+   "isha": 1050,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 955,
+   "isha_j": 1200
+  },
+  "source_row": "Sat 26 06:26 08:08 12:05 14:05 15:55 1730 06:45 13:00 14:30 15:55 20:00",
+  "flag": ""
+ },
+ "2026-12-27": {
+  "date": "2026-12-27",
+  "weekday": "Sun",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 725,
+   "asr": 846,
+   "maghrib": 956,
+   "isha": 1051,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 956,
+   "isha_j": 1200
+  },
+  "source_row": "Sun 27 06:27 08:08 12:05 14:06 15:56 17:31 06:45 13:00 14:30 15:56 20:00",
+  "flag": ""
+ },
+ "2026-12-28": {
+  "date": "2026-12-28",
+  "weekday": "Mon",
+  "times": {
+   "fajr": 387,
+   "sunrise": 488,
+   "zuhr": 726,
+   "asr": 847,
+   "maghrib": 957,
+   "isha": 1051,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 957,
+   "isha_j": 1200
+  },
+  "source_row": "Mon 28 06:27 08:08 12:06 14:07 15:57 17:31 06:45 13:00 14:30 15:57 20:00",
+  "flag": ""
+ },
+ "2026-12-29": {
+  "date": "2026-12-29",
+  "weekday": "Tue",
+  "times": {
+   "fajr": 387,
+   "sunrise": 489,
+   "zuhr": 726,
+   "asr": 848,
+   "maghrib": 957,
+   "isha": 1052,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 957,
+   "isha_j": 1200
+  },
+  "source_row": "Tue 29 06:27 08:09 12:06 14:08 15:57 17:32 06:45 13:00 14:30 15:57 20:00",
+  "flag": ""
+ },
+ "2026-12-30": {
+  "date": "2026-12-30",
+  "weekday": "Wed",
+  "times": {
+   "fajr": 387,
+   "sunrise": 489,
+   "zuhr": 727,
+   "asr": 849,
+   "maghrib": 958,
+   "isha": 1052,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 958,
+   "isha_j": 1200
+  },
+  "source_row": "Wed 30 06:27 08:09 12:07 14:09 15:58 17:32 06:45 13:00 14:30 15:58 20:00",
+  "flag": ""
+ },
+ "2026-12-31": {
+  "date": "2026-12-31",
+  "weekday": "Thu",
+  "times": {
+   "fajr": 387,
+   "sunrise": 489,
+   "zuhr": 727,
+   "asr": 849,
+   "maghrib": 959,
+   "isha": 1053,
+   "fajr_j": 405,
+   "zuhr_j": 780,
+   "asr_j": 870,
+   "maghrib_j": 959,
+   "isha_j": 1200
+  },
+  "source_row": "Thu 31 06:27 08:09 12:07 14:09 15:59 17:33 06:45 13:00 14:30 15:59 20:00",
+  "flag": ""
+ }
+}

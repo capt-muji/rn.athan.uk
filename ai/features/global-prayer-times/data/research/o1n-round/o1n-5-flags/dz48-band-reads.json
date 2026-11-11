@@ -1,0 +1,1300 @@
+{
+ "p8": {
+  "pitch": 66.13,
+  "reads": {
+   "0": [],
+   "1": [],
+   "2": [
+    {
+     "isha": 1140,
+     "maghrib": 1055,
+     "asr": 915,
+     "dhuhr": 762,
+     "sunrise": 471,
+     "fajr": 379
+    }
+   ],
+   "3": [
+    {
+     "isha": 1140,
+     "maghrib": 1056,
+     "asr": 915,
+     "dhuhr": 762,
+     "sunrise": 472,
+     "fajr": 379
+    }
+   ],
+   "4": [
+    {
+     "isha": 1140,
+     "maghrib": 1056,
+     "asr": 915,
+     "dhuhr": 763,
+     "sunrise": 473,
+     "fajr": 380
+    },
+    {
+     "isha": 1140,
+     "maghrib": 1056,
+     "asr": 915,
+     "dhuhr": 763,
+     "sunrise": 473,
+     "fajr": 380
+    }
+   ],
+   "5": [
+    {
+     "isha": 1141,
+     "maghrib": 1056,
+     "asr": 915,
+     "dhuhr": 763,
+     "sunrise": 474,
+     "fajr": 381
+    },
+    {
+     "isha": 1141,
+     "maghrib": 1056,
+     "asr": 915,
+     "dhuhr": 763,
+     "sunrise": 474,
+     "fajr": 381
+    }
+   ],
+   "6": [
+    {
+     "isha": 1141,
+     "maghrib": 1056,
+     "asr": 916,
+     "dhuhr": 764,
+     "sunrise": 474,
+     "fajr": 381
+    },
+    {
+     "isha": 1141,
+     "maghrib": 1056,
+     "asr": 916,
+     "dhuhr": 764,
+     "sunrise": 474,
+     "fajr": 381
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 764,
+     "sunrise": 475,
+     "fajr": 382
+    }
+   ],
+   "7": [
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 764,
+     "sunrise": 475,
+     "fajr": 382
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 764,
+     "sunrise": 475,
+     "fajr": 382
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 765,
+     "sunrise": 475,
+     "fajr": 383
+    }
+   ],
+   "8": [
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 765,
+     "sunrise": 475,
+     "fajr": 383
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1057,
+     "asr": 916,
+     "dhuhr": 765,
+     "sunrise": 475,
+     "fajr": 383
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 765,
+     "sunrise": 476,
+     "fajr": 383
+    }
+   ],
+   "9": [
+    {
+     "isha": 1142,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 765,
+     "sunrise": 476,
+     "fajr": 383
+    },
+    {
+     "isha": 1142,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 765,
+     "sunrise": 476,
+     "fajr": 383
+    },
+    {
+     "isha": 1143,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 766,
+     "sunrise": 477,
+     "fajr": 384
+    }
+   ],
+   "10": [
+    {
+     "isha": 1143,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 766,
+     "sunrise": 471,
+     "fajr": 384
+    },
+    {
+     "isha": 1143,
+     "maghrib": 1058,
+     "asr": 917,
+     "dhuhr": 766,
+     "sunrise": 477,
+     "fajr": 384
+    },
+    {
+     "isha": 1143,
+     "maghrib": 1059,
+     "asr": 918,
+     "dhuhr": 766,
+     "sunrise": 477,
+     "fajr": 384
+    }
+   ],
+   "11": [
+    {
+     "isha": 1143,
+     "maghrib": 1059,
+     "asr": 918,
+     "dhuhr": 766,
+     "sunrise": 477,
+     "fajr": 384
+    },
+    {
+     "isha": 1144,
+     "maghrib": 1059,
+     "asr": 918,
+     "dhuhr": 767,
+     "sunrise": 478,
+     "fajr": 385
+    }
+   ],
+   "12": [
+    {
+     "isha": 1144,
+     "maghrib": 1059,
+     "asr": 918,
+     "dhuhr": 767,
+     "sunrise": 478,
+     "fajr": 385
+    },
+    {
+     "isha": 1144,
+     "maghrib": 1060,
+     "asr": 919,
+     "dhuhr": 767,
+     "sunrise": 478,
+     "fajr": 385
+    }
+   ],
+   "13": [
+    {
+     "isha": 1145,
+     "maghrib": 1060,
+     "asr": 919,
+     "dhuhr": 768,
+     "sunrise": 479,
+     "fajr": 386
+    }
+   ],
+   "14": [
+    {
+     "isha": 1146,
+     "maghrib": 1061,
+     "asr": 921,
+     "dhuhr": 769,
+     "sunrise": 479,
+     "fajr": 386
+    }
+   ],
+   "15": [
+    {
+     "isha": 1147,
+     "maghrib": 1062,
+     "asr": 921,
+     "dhuhr": 769,
+     "sunrise": 480,
+     "fajr": 387
+    }
+   ],
+   "16": [
+    {
+     "isha": 1147,
+     "maghrib": 1063,
+     "asr": 922,
+     "dhuhr": 770,
+     "sunrise": 480,
+     "fajr": 387
+    },
+    {
+     "isha": 1147,
+     "maghrib": 1063,
+     "asr": 922,
+     "dhuhr": 770,
+     "sunrise": 480,
+     "fajr": 387
+    }
+   ],
+   "17": [
+    {
+     "isha": 1148,
+     "maghrib": 1063,
+     "asr": 922,
+     "dhuhr": 770,
+     "sunrise": 480,
+     "fajr": 388
+    },
+    {
+     "isha": 1148,
+     "maghrib": 1063,
+     "asr": 922,
+     "dhuhr": 770,
+     "sunrise": 480,
+     "fajr": 388
+    }
+   ],
+   "18": [
+    {
+     "isha": 1149,
+     "maghrib": 1064,
+     "asr": 923,
+     "dhuhr": 771,
+     "sunrise": 481,
+     "fajr": 388
+    },
+    {
+     "isha": 1149,
+     "maghrib": 1064,
+     "asr": 923,
+     "dhuhr": 771,
+     "sunrise": 481,
+     "fajr": 388
+    }
+   ],
+   "19": [
+    {
+     "isha": 1149,
+     "maghrib": 1065,
+     "asr": 924,
+     "dhuhr": 771,
+     "sunrise": 481,
+     "fajr": 388
+    },
+    {
+     "isha": 1149,
+     "maghrib": 1065,
+     "asr": 924,
+     "dhuhr": 771,
+     "sunrise": 481,
+     "fajr": 388
+    }
+   ],
+   "20": [
+    {
+     "isha": 1150,
+     "maghrib": 1066,
+     "asr": 925,
+     "dhuhr": 772,
+     "sunrise": 481,
+     "fajr": 388
+    },
+    {
+     "isha": 1150,
+     "maghrib": 1066,
+     "asr": 925,
+     "dhuhr": 772,
+     "sunrise": 481,
+     "fajr": 388
+    }
+   ],
+   "21": [
+    {
+     "isha": 1151,
+     "maghrib": 1066,
+     "asr": 925,
+     "dhuhr": 772,
+     "sunrise": 481,
+     "fajr": 389
+    },
+    {
+     "isha": 1151,
+     "maghrib": 1066,
+     "asr": 925,
+     "dhuhr": 772,
+     "sunrise": 481,
+     "fajr": 389
+    }
+   ],
+   "22": [
+    {
+     "isha": 1151,
+     "maghrib": 1067,
+     "asr": 926,
+     "dhuhr": 773,
+     "sunrise": 481,
+     "fajr": 389
+    }
+   ],
+   "23": [
+    {
+     "isha": 1152,
+     "maghrib": 1068,
+     "asr": 927,
+     "dhuhr": 773,
+     "sunrise": 481,
+     "fajr": 389
+    }
+   ],
+   "24": [
+    {
+     "isha": 1153,
+     "maghrib": 1069,
+     "asr": 928,
+     "dhuhr": 774,
+     "sunrise": 481,
+     "fajr": 389
+    }
+   ],
+   "25": [],
+   "26": [],
+   "27": [],
+   "28": []
+  }
+ },
+ "p10": {
+  "pitch": 77.55,
+  "reads": {
+   "0": [
+    {
+     "isha": 1184,
+     "maghrib": 1104,
+     "asr": 958,
+     "dhuhr": 782,
+     "sunrise": 464,
+     "fajr": 1185
+    }
+   ],
+   "1": [
+    {
+     "isha": 1184,
+     "maghrib": 1104,
+     "asr": 958,
+     "dhuhr": 782,
+     "sunrise": 377,
+     "fajr": 1185
+    }
+   ],
+   "2": [
+    {
+     "isha": 1105,
+     "maghrib": 959,
+     "asr": 782,
+     "dhuhr": 463,
+     "sunrise": 376,
+     "fajr": 1106
+    }
+   ],
+   "3": [
+    {
+     "isha": 1105,
+     "maghrib": 959,
+     "asr": 782,
+     "dhuhr": 463,
+     "sunrise": 586,
+     "fajr": 1106
+    }
+   ],
+   "4": [
+    {
+     "isha": 960,
+     "maghrib": 782,
+     "asr": 462,
+     "dhuhr": 375,
+     "sunrise": 461,
+     "fajr": 460
+    }
+   ],
+   "5": [
+    {
+     "isha": 960,
+     "maghrib": 782,
+     "asr": 462,
+     "dhuhr": 375,
+     "sunrise": 374,
+     "fajr": 460
+    }
+   ],
+   "6": [
+    {
+     "isha": 373,
+     "maghrib": 459,
+     "asr": 372,
+     "dhuhr": 458,
+     "sunrise": 371,
+     "fajr": 1107
+    }
+   ],
+   "7": [
+    {
+     "isha": 373,
+     "maghrib": 459,
+     "asr": 372,
+     "dhuhr": 458,
+     "sunrise": 1187,
+     "fajr": 1107
+    }
+   ],
+   "8": [
+    {
+     "isha": 1093,
+     "maghrib": 459,
+     "asr": 372,
+     "dhuhr": 458,
+     "sunrise": 371,
+     "fajr": 1107
+    },
+    {
+     "isha": 1191,
+     "maghrib": 1112,
+     "asr": 964,
+     "dhuhr": 782,
+     "sunrise": 459,
+     "fajr": 369
+    }
+   ],
+   "9": [
+    {
+     "isha": 1093,
+     "maghrib": 459,
+     "asr": 372,
+     "dhuhr": 458,
+     "sunrise": 1187,
+     "fajr": 1107
+    },
+    {
+     "isha": 1191,
+     "maghrib": 1112,
+     "asr": 964,
+     "dhuhr": 782,
+     "sunrise": 456,
+     "fajr": 369
+    }
+   ],
+   "10": [
+    {
+     "isha": 960,
+     "maghrib": 783,
+     "asr": 1187,
+     "dhuhr": 1108,
+     "sunrise": 961,
+     "fajr": 1188
+    },
+    {
+     "isha": 1192,
+     "maghrib": 1113,
+     "asr": 965,
+     "dhuhr": 782,
+     "sunrise": 461,
+     "fajr": 368
+    },
+    {
+     "isha": 1193,
+     "maghrib": 1114,
+     "asr": 966,
+     "dhuhr": 782,
+     "sunrise": 463,
+     "fajr": 367
+    }
+   ],
+   "11": [
+    {
+     "isha": 960,
+     "maghrib": 783,
+     "asr": 1187,
+     "dhuhr": 1108,
+     "sunrise": 783,
+     "fajr": 1188
+    },
+    {
+     "isha": 1192,
+     "maghrib": 1113,
+     "asr": 965,
+     "dhuhr": 782,
+     "sunrise": 455,
+     "fajr": 368
+    },
+    {
+     "isha": 1193,
+     "maghrib": 1114,
+     "asr": 966,
+     "dhuhr": 782,
+     "sunrise": 453,
+     "fajr": 367
+    }
+   ],
+   "12": [
+    {
+     "isha": 1109,
+     "maghrib": 962,
+     "asr": 782,
+     "dhuhr": 1189,
+     "sunrise": 1110,
+     "fajr": 782
+    },
+    {
+     "isha": 1193,
+     "maghrib": 1114,
+     "asr": 966,
+     "dhuhr": 782,
+     "sunrise": 463,
+     "fajr": 367
+    },
+    {
+     "isha": 1194,
+     "maghrib": 1115,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 465,
+     "fajr": 366
+    },
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 466,
+     "fajr": 365
+    }
+   ],
+   "13": [
+    {
+     "isha": 1109,
+     "maghrib": 962,
+     "asr": 782,
+     "dhuhr": 1189,
+     "sunrise": 963,
+     "fajr": 782
+    },
+    {
+     "isha": 1193,
+     "maghrib": 1114,
+     "asr": 966,
+     "dhuhr": 782,
+     "sunrise": 453,
+     "fajr": 367
+    },
+    {
+     "isha": 1194,
+     "maghrib": 1115,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 452,
+     "fajr": 366
+    },
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 451,
+     "fajr": 365
+    }
+   ],
+   "14": [
+    {
+     "isha": 1194,
+     "maghrib": 1115,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 465,
+     "fajr": 366
+    },
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 466,
+     "fajr": 365
+    },
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 468,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 470,
+     "fajr": 362
+    }
+   ],
+   "15": [
+    {
+     "isha": 1194,
+     "maghrib": 1115,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 452,
+     "fajr": 366
+    },
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 451,
+     "fajr": 365
+    },
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 450,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 449,
+     "fajr": 362
+    }
+   ],
+   "16": [
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 466,
+     "fajr": 365
+    },
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 468,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 470,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 472,
+     "fajr": 361
+    }
+   ],
+   "17": [
+    {
+     "isha": 1195,
+     "maghrib": 1116,
+     "asr": 967,
+     "dhuhr": 782,
+     "sunrise": 451,
+     "fajr": 365
+    },
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 450,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 449,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 447,
+     "fajr": 361
+    }
+   ],
+   "18": [
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 468,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 470,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 472,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 473,
+     "fajr": 360
+    }
+   ],
+   "19": [
+    {
+     "isha": 1196,
+     "maghrib": 1117,
+     "asr": 968,
+     "dhuhr": 782,
+     "sunrise": 450,
+     "fajr": 363
+    },
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 449,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 447,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 446,
+     "fajr": 360
+    }
+   ],
+   "20": [
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 470,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 472,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 473,
+     "fajr": 360
+    },
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 475,
+     "fajr": 359
+    },
+    {
+     "isha": 1203,
+     "maghrib": 1125,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 482,
+     "fajr": 354
+    }
+   ],
+   "21": [
+    {
+     "isha": 1197,
+     "maghrib": 1118,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 449,
+     "fajr": 362
+    },
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 447,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 446,
+     "fajr": 360
+    },
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 445,
+     "fajr": 359
+    },
+    {
+     "isha": 1203,
+     "maghrib": 1125,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 439,
+     "fajr": 354
+    }
+   ],
+   "22": [
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 472,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 473,
+     "fajr": 360
+    },
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 475,
+     "fajr": 359
+    },
+    {
+     "isha": 1201,
+     "maghrib": 1122,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 477,
+     "fajr": 357
+    },
+    {
+     "isha": 1204,
+     "maghrib": 1126,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 484,
+     "fajr": 352
+    },
+    {
+     "isha": 1205,
+     "maghrib": 1127,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 485,
+     "fajr": 351
+    }
+   ],
+   "23": [
+    {
+     "isha": 1198,
+     "maghrib": 1119,
+     "asr": 969,
+     "dhuhr": 782,
+     "sunrise": 447,
+     "fajr": 361
+    },
+    {
+     "isha": 1199,
+     "maghrib": 1120,
+     "asr": 970,
+     "dhuhr": 781,
+     "sunrise": 446,
+     "fajr": 360
+    },
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 445,
+     "fajr": 359
+    },
+    {
+     "isha": 1201,
+     "maghrib": 1122,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 443,
+     "fajr": 357
+    },
+    {
+     "isha": 1204,
+     "maghrib": 1126,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 438,
+     "fajr": 352
+    },
+    {
+     "isha": 1205,
+     "maghrib": 1127,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 437,
+     "fajr": 351
+    }
+   ],
+   "24": [
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 475,
+     "fajr": 359
+    },
+    {
+     "isha": 1201,
+     "maghrib": 1122,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 477,
+     "fajr": 357
+    },
+    {
+     "isha": 1202,
+     "maghrib": 1123,
+     "asr": 972,
+     "dhuhr": 781,
+     "sunrise": 479,
+     "fajr": 356
+    },
+    {
+     "isha": 1205,
+     "maghrib": 1127,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 485,
+     "fajr": 351
+    },
+    {
+     "isha": 1206,
+     "maghrib": 1128,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 487,
+     "fajr": 350
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 489,
+     "fajr": 348
+    }
+   ],
+   "25": [
+    {
+     "isha": 1200,
+     "maghrib": 1121,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 445,
+     "fajr": 359
+    },
+    {
+     "isha": 1201,
+     "maghrib": 1122,
+     "asr": 971,
+     "dhuhr": 781,
+     "sunrise": 443,
+     "fajr": 357
+    },
+    {
+     "isha": 1202,
+     "maghrib": 1123,
+     "asr": 972,
+     "dhuhr": 781,
+     "sunrise": 442,
+     "fajr": 356
+    },
+    {
+     "isha": 1205,
+     "maghrib": 1127,
+     "asr": 974,
+     "dhuhr": 780,
+     "sunrise": 437,
+     "fajr": 351
+    },
+    {
+     "isha": 1206,
+     "maghrib": 1128,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 435,
+     "fajr": 350
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 434,
+     "fajr": 348
+    }
+   ],
+   "26": [
+    {
+     "isha": 1202,
+     "maghrib": 1123,
+     "asr": 972,
+     "dhuhr": 781,
+     "sunrise": 479,
+     "fajr": 356
+    },
+    {
+     "isha": 1202,
+     "maghrib": 1124,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 480,
+     "fajr": 355
+    },
+    {
+     "isha": 1206,
+     "maghrib": 1128,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 487,
+     "fajr": 350
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 489,
+     "fajr": 348
+    },
+    {
+     "isha": 1208,
+     "maghrib": 1130,
+     "asr": 976,
+     "dhuhr": 780,
+     "sunrise": 491,
+     "fajr": 347
+    }
+   ],
+   "27": [
+    {
+     "isha": 1202,
+     "maghrib": 1123,
+     "asr": 972,
+     "dhuhr": 781,
+     "sunrise": 442,
+     "fajr": 356
+    },
+    {
+     "isha": 1202,
+     "maghrib": 1124,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 441,
+     "fajr": 355
+    },
+    {
+     "isha": 1206,
+     "maghrib": 1128,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 435,
+     "fajr": 350
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 434,
+     "fajr": 348
+    },
+    {
+     "isha": 1208,
+     "maghrib": 1130,
+     "asr": 976,
+     "dhuhr": 780,
+     "sunrise": 433,
+     "fajr": 347
+    }
+   ],
+   "28": [
+    {
+     "isha": 1202,
+     "maghrib": 1124,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 480,
+     "fajr": 355
+    },
+    {
+     "isha": 1203,
+     "maghrib": 1125,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 482,
+     "fajr": 354
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 489,
+     "fajr": 348
+    },
+    {
+     "isha": 1208,
+     "maghrib": 1130,
+     "asr": 976,
+     "dhuhr": 780,
+     "sunrise": 491,
+     "fajr": 347
+    },
+    {
+     "isha": 1209,
+     "maghrib": 1131,
+     "asr": 977,
+     "dhuhr": 779,
+     "sunrise": 492,
+     "fajr": 345
+    }
+   ],
+   "29": [
+    {
+     "isha": 1202,
+     "maghrib": 1124,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 441,
+     "fajr": 355
+    },
+    {
+     "isha": 1203,
+     "maghrib": 1125,
+     "asr": 973,
+     "dhuhr": 781,
+     "sunrise": 439,
+     "fajr": 354
+    },
+    {
+     "isha": 1207,
+     "maghrib": 1129,
+     "asr": 975,
+     "dhuhr": 780,
+     "sunrise": 434,
+     "fajr": 348
+    },
+    {
+     "isha": 1208,
+     "maghrib": 1130,
+     "asr": 976,
+     "dhuhr": 780,
+     "sunrise": 433,
+     "fajr": 347
+    },
+    {
+     "isha": 1209,
+     "maghrib": 1131,
+     "asr": 977,
+     "dhuhr": 779,
+     "sunrise": 431,
+     "fajr": 345
+    }
+   ]
+  }
+ }
+}

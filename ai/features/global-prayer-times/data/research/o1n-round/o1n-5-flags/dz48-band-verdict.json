@@ -1,0 +1,3690 @@
+{
+ "p8": {
+  "rows": [
+   {
+    "date": "2026-12-11",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 378,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 471,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 761,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 914,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1055,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1140,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2026-12-12",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 379,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 471,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 762,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 914,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1055,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1140,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2026-12-13",
+    "agree": 6,
+    "accepted": {
+     "fajr": 379,
+     "sunrise": 471,
+     "dhuhr": 762,
+     "asr": 915,
+     "maghrib": 1055,
+     "isha": 1140
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 379,
+      "vals": [
+       379
+      ],
+      "chosen": 379,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 472,
+      "vals": [
+       471
+      ],
+      "chosen": 471,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 762,
+      "vals": [
+       762
+      ],
+      "chosen": 762,
+      "n": 1
+     },
+     "asr": {
+      "pred": 915,
+      "vals": [
+       915
+      ],
+      "chosen": 915,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1056,
+      "vals": [
+       1055
+      ],
+      "chosen": 1055,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1140,
+      "vals": [
+       1140
+      ],
+      "chosen": 1140,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-14",
+    "agree": 6,
+    "accepted": {
+     "fajr": 379,
+     "sunrise": 472,
+     "dhuhr": 762,
+     "asr": 915,
+     "maghrib": 1056,
+     "isha": 1140
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 380,
+      "vals": [
+       379
+      ],
+      "chosen": 379,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 473,
+      "vals": [
+       472
+      ],
+      "chosen": 472,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 763,
+      "vals": [
+       762
+      ],
+      "chosen": 762,
+      "n": 1
+     },
+     "asr": {
+      "pred": 915,
+      "vals": [
+       915
+      ],
+      "chosen": 915,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1056,
+      "vals": [
+       1056
+      ],
+      "chosen": 1056,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1141,
+      "vals": [
+       1140
+      ],
+      "chosen": 1140,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-15",
+    "agree": 6,
+    "accepted": {
+     "fajr": 380,
+     "sunrise": 473,
+     "dhuhr": 763,
+     "asr": 915,
+     "maghrib": 1056,
+     "isha": 1140
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 381,
+      "vals": [
+       380,
+       380
+      ],
+      "chosen": 380,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 473,
+      "vals": [
+       473,
+       473
+      ],
+      "chosen": 473,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 763,
+      "vals": [
+       763,
+       763
+      ],
+      "chosen": 763,
+      "n": 2
+     },
+     "asr": {
+      "pred": 915,
+      "vals": [
+       915,
+       915
+      ],
+      "chosen": 915,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1056,
+      "vals": [
+       1056,
+       1056
+      ],
+      "chosen": 1056,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1141,
+      "vals": [
+       1140,
+       1140
+      ],
+      "chosen": 1140,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-16",
+    "agree": 6,
+    "accepted": {
+     "fajr": 381,
+     "sunrise": 474,
+     "dhuhr": 763,
+     "asr": 915,
+     "maghrib": 1056,
+     "isha": 1141
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 381,
+      "vals": [
+       381,
+       381
+      ],
+      "chosen": 381,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 474,
+      "vals": [
+       474,
+       474
+      ],
+      "chosen": 474,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 764,
+      "vals": [
+       763,
+       763
+      ],
+      "chosen": 763,
+      "n": 2
+     },
+     "asr": {
+      "pred": 916,
+      "vals": [
+       915,
+       915
+      ],
+      "chosen": 915,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1057,
+      "vals": [
+       1056,
+       1056
+      ],
+      "chosen": 1056,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1141,
+      "vals": [
+       1141,
+       1141
+      ],
+      "chosen": 1141,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-17",
+    "agree": 6,
+    "accepted": {
+     "fajr": 381,
+     "sunrise": 474,
+     "dhuhr": 764,
+     "asr": 916,
+     "maghrib": 1056,
+     "isha": 1141
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 382,
+      "vals": [
+       381,
+       381,
+       382
+      ],
+      "chosen": 381,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 475,
+      "vals": [
+       474,
+       474,
+       475
+      ],
+      "chosen": 474,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 764,
+      "vals": [
+       764,
+       764,
+       764
+      ],
+      "chosen": 764,
+      "n": 3
+     },
+     "asr": {
+      "pred": 916,
+      "vals": [
+       916,
+       916,
+       916
+      ],
+      "chosen": 916,
+      "n": 3
+     },
+     "maghrib": {
+      "pred": 1057,
+      "vals": [
+       1056,
+       1056,
+       1057
+      ],
+      "chosen": 1056,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1142,
+      "vals": [
+       1141,
+       1141,
+       1142
+      ],
+      "chosen": 1141,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-18",
+    "agree": 6,
+    "accepted": {
+     "fajr": 382,
+     "sunrise": 475,
+     "dhuhr": 764,
+     "asr": 916,
+     "maghrib": 1057,
+     "isha": 1142
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 382,
+      "vals": [
+       382,
+       382,
+       383
+      ],
+      "chosen": 382,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 475,
+      "vals": [
+       475,
+       475,
+       475
+      ],
+      "chosen": 475,
+      "n": 3
+     },
+     "dhuhr": {
+      "pred": 765,
+      "vals": [
+       764,
+       764,
+       765
+      ],
+      "chosen": 764,
+      "n": 2
+     },
+     "asr": {
+      "pred": 916,
+      "vals": [
+       916,
+       916,
+       916
+      ],
+      "chosen": 916,
+      "n": 3
+     },
+     "maghrib": {
+      "pred": 1057,
+      "vals": [
+       1057,
+       1057,
+       1057
+      ],
+      "chosen": 1057,
+      "n": 3
+     },
+     "isha": {
+      "pred": 1142,
+      "vals": [
+       1142,
+       1142,
+       1142
+      ],
+      "chosen": 1142,
+      "n": 3
+     }
+    }
+   },
+   {
+    "date": "2026-12-19",
+    "agree": 6,
+    "accepted": {
+     "fajr": 383,
+     "sunrise": 475,
+     "dhuhr": 765,
+     "asr": 916,
+     "maghrib": 1057,
+     "isha": 1142
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 383,
+      "vals": [
+       383,
+       383,
+       383
+      ],
+      "chosen": 383,
+      "n": 3
+     },
+     "sunrise": {
+      "pred": 476,
+      "vals": [
+       475,
+       475,
+       476
+      ],
+      "chosen": 475,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 765,
+      "vals": [
+       765,
+       765,
+       765
+      ],
+      "chosen": 765,
+      "n": 3
+     },
+     "asr": {
+      "pred": 917,
+      "vals": [
+       916,
+       916,
+       917
+      ],
+      "chosen": 916,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1058,
+      "vals": [
+       1057,
+       1057,
+       1058
+      ],
+      "chosen": 1057,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1142,
+      "vals": [
+       1142,
+       1142,
+       1142
+      ],
+      "chosen": 1142,
+      "n": 3
+     }
+    }
+   },
+   {
+    "date": "2026-12-20",
+    "agree": 6,
+    "accepted": {
+     "fajr": 383,
+     "sunrise": 476,
+     "dhuhr": 765,
+     "asr": 917,
+     "maghrib": 1058,
+     "isha": 1142
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 384,
+      "vals": [
+       383,
+       383,
+       384
+      ],
+      "chosen": 383,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 476,
+      "vals": [
+       476,
+       476,
+       477
+      ],
+      "chosen": 476,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 766,
+      "vals": [
+       765,
+       765,
+       766
+      ],
+      "chosen": 765,
+      "n": 2
+     },
+     "asr": {
+      "pred": 917,
+      "vals": [
+       917,
+       917,
+       917
+      ],
+      "chosen": 917,
+      "n": 3
+     },
+     "maghrib": {
+      "pred": 1058,
+      "vals": [
+       1058,
+       1058,
+       1058
+      ],
+      "chosen": 1058,
+      "n": 3
+     },
+     "isha": {
+      "pred": 1143,
+      "vals": [
+       1142,
+       1142,
+       1143
+      ],
+      "chosen": 1142,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-21",
+    "agree": 6,
+    "accepted": {
+     "fajr": 384,
+     "sunrise": 477,
+     "dhuhr": 766,
+     "asr": 917,
+     "maghrib": 1058,
+     "isha": 1143
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 384,
+      "vals": [
+       384,
+       384,
+       384
+      ],
+      "chosen": 384,
+      "n": 3
+     },
+     "sunrise": {
+      "pred": 477,
+      "vals": [
+       477,
+       477
+      ],
+      "chosen": 477,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 766,
+      "vals": [
+       766,
+       766,
+       766
+      ],
+      "chosen": 766,
+      "n": 3
+     },
+     "asr": {
+      "pred": 918,
+      "vals": [
+       917,
+       917,
+       918
+      ],
+      "chosen": 917,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1059,
+      "vals": [
+       1058,
+       1058,
+       1059
+      ],
+      "chosen": 1058,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1143,
+      "vals": [
+       1143,
+       1143,
+       1143
+      ],
+      "chosen": 1143,
+      "n": 3
+     }
+    }
+   },
+   {
+    "date": "2026-12-22",
+    "agree": 6,
+    "accepted": {
+     "fajr": 384,
+     "sunrise": 477,
+     "dhuhr": 766,
+     "asr": 918,
+     "maghrib": 1059,
+     "isha": 1143
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 385,
+      "vals": [
+       384,
+       385
+      ],
+      "chosen": 384,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 478,
+      "vals": [
+       477,
+       478
+      ],
+      "chosen": 477,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 767,
+      "vals": [
+       766,
+       767
+      ],
+      "chosen": 766,
+      "n": 1
+     },
+     "asr": {
+      "pred": 918,
+      "vals": [
+       918,
+       918
+      ],
+      "chosen": 918,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1059,
+      "vals": [
+       1059,
+       1059
+      ],
+      "chosen": 1059,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1144,
+      "vals": [
+       1143,
+       1144
+      ],
+      "chosen": 1143,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-23",
+    "agree": 6,
+    "accepted": {
+     "fajr": 385,
+     "sunrise": 478,
+     "dhuhr": 767,
+     "asr": 918,
+     "maghrib": 1059,
+     "isha": 1144
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 385,
+      "vals": [
+       385,
+       385
+      ],
+      "chosen": 385,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 478,
+      "vals": [
+       478,
+       478
+      ],
+      "chosen": 478,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 767,
+      "vals": [
+       767,
+       767
+      ],
+      "chosen": 767,
+      "n": 2
+     },
+     "asr": {
+      "pred": 919,
+      "vals": [
+       918,
+       919
+      ],
+      "chosen": 918,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1060,
+      "vals": [
+       1059,
+       1060
+      ],
+      "chosen": 1059,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1144,
+      "vals": [
+       1144,
+       1144
+      ],
+      "chosen": 1144,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-24",
+    "agree": 6,
+    "accepted": {
+     "fajr": 386,
+     "sunrise": 479,
+     "dhuhr": 768,
+     "asr": 919,
+     "maghrib": 1060,
+     "isha": 1145
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 385,
+      "vals": [
+       386
+      ],
+      "chosen": 386,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 478,
+      "vals": [
+       479
+      ],
+      "chosen": 479,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 768,
+      "vals": [
+       768
+      ],
+      "chosen": 768,
+      "n": 1
+     },
+     "asr": {
+      "pred": 920,
+      "vals": [
+       919
+      ],
+      "chosen": 919,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1060,
+      "vals": [
+       1060
+      ],
+      "chosen": 1060,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1145,
+      "vals": [
+       1145
+      ],
+      "chosen": 1145,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-25",
+    "agree": 6,
+    "accepted": {
+     "fajr": 386,
+     "sunrise": 479,
+     "dhuhr": 769,
+     "asr": 921,
+     "maghrib": 1061,
+     "isha": 1146
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 386,
+      "vals": [
+       386
+      ],
+      "chosen": 386,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 479,
+      "vals": [
+       479
+      ],
+      "chosen": 479,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 768,
+      "vals": [
+       769
+      ],
+      "chosen": 769,
+      "n": 1
+     },
+     "asr": {
+      "pred": 920,
+      "vals": [
+       921
+      ],
+      "chosen": 921,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1061,
+      "vals": [
+       1061
+      ],
+      "chosen": 1061,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1146,
+      "vals": [
+       1146
+      ],
+      "chosen": 1146,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-26",
+    "agree": 6,
+    "accepted": {
+     "fajr": 387,
+     "sunrise": 480,
+     "dhuhr": 769,
+     "asr": 921,
+     "maghrib": 1062,
+     "isha": 1147
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 386,
+      "vals": [
+       387
+      ],
+      "chosen": 387,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 479,
+      "vals": [
+       480
+      ],
+      "chosen": 480,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 769,
+      "vals": [
+       769
+      ],
+      "chosen": 769,
+      "n": 1
+     },
+     "asr": {
+      "pred": 921,
+      "vals": [
+       921
+      ],
+      "chosen": 921,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1061,
+      "vals": [
+       1062
+      ],
+      "chosen": 1062,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1146,
+      "vals": [
+       1147
+      ],
+      "chosen": 1147,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2026-12-27",
+    "agree": 6,
+    "accepted": {
+     "fajr": 387,
+     "sunrise": 480,
+     "dhuhr": 770,
+     "asr": 922,
+     "maghrib": 1063,
+     "isha": 1147
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 387,
+      "vals": [
+       387,
+       387
+      ],
+      "chosen": 387,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 480,
+      "vals": [
+       480,
+       480
+      ],
+      "chosen": 480,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 769,
+      "vals": [
+       770,
+       770
+      ],
+      "chosen": 770,
+      "n": 2
+     },
+     "asr": {
+      "pred": 921,
+      "vals": [
+       922,
+       922
+      ],
+      "chosen": 922,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1062,
+      "vals": [
+       1063,
+       1063
+      ],
+      "chosen": 1063,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1147,
+      "vals": [
+       1147,
+       1147
+      ],
+      "chosen": 1147,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-28",
+    "agree": 6,
+    "accepted": {
+     "fajr": 388,
+     "sunrise": 480,
+     "dhuhr": 770,
+     "asr": 922,
+     "maghrib": 1063,
+     "isha": 1148
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 387,
+      "vals": [
+       388,
+       388
+      ],
+      "chosen": 388,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 480,
+      "vals": [
+       480,
+       480
+      ],
+      "chosen": 480,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 770,
+      "vals": [
+       770,
+       770
+      ],
+      "chosen": 770,
+      "n": 2
+     },
+     "asr": {
+      "pred": 922,
+      "vals": [
+       922,
+       922
+      ],
+      "chosen": 922,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1063,
+      "vals": [
+       1063,
+       1063
+      ],
+      "chosen": 1063,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1147,
+      "vals": [
+       1148,
+       1148
+      ],
+      "chosen": 1148,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-29",
+    "agree": 6,
+    "accepted": {
+     "fajr": 388,
+     "sunrise": 481,
+     "dhuhr": 771,
+     "asr": 923,
+     "maghrib": 1064,
+     "isha": 1149
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 387,
+      "vals": [
+       388,
+       388
+      ],
+      "chosen": 388,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 480,
+      "vals": [
+       481,
+       481
+      ],
+      "chosen": 481,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 770,
+      "vals": [
+       771,
+       771
+      ],
+      "chosen": 771,
+      "n": 2
+     },
+     "asr": {
+      "pred": 923,
+      "vals": [
+       923,
+       923
+      ],
+      "chosen": 923,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1063,
+      "vals": [
+       1064,
+       1064
+      ],
+      "chosen": 1064,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1148,
+      "vals": [
+       1149,
+       1149
+      ],
+      "chosen": 1149,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-30",
+    "agree": 6,
+    "accepted": {
+     "fajr": 388,
+     "sunrise": 481,
+     "dhuhr": 771,
+     "asr": 924,
+     "maghrib": 1065,
+     "isha": 1149
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 388,
+      "vals": [
+       388,
+       388
+      ],
+      "chosen": 388,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 480,
+      "vals": [
+       481,
+       481
+      ],
+      "chosen": 481,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 771,
+      "vals": [
+       771,
+       771
+      ],
+      "chosen": 771,
+      "n": 2
+     },
+     "asr": {
+      "pred": 923,
+      "vals": [
+       924,
+       924
+      ],
+      "chosen": 924,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1064,
+      "vals": [
+       1065,
+       1065
+      ],
+      "chosen": 1065,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1149,
+      "vals": [
+       1149,
+       1149
+      ],
+      "chosen": 1149,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2026-12-31",
+    "agree": 6,
+    "accepted": {
+     "fajr": 388,
+     "sunrise": 481,
+     "dhuhr": 772,
+     "asr": 925,
+     "maghrib": 1066,
+     "isha": 1150
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 388,
+      "vals": [
+       388,
+       388
+      ],
+      "chosen": 388,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [
+       481,
+       481
+      ],
+      "chosen": 481,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 771,
+      "vals": [
+       772,
+       772
+      ],
+      "chosen": 772,
+      "n": 2
+     },
+     "asr": {
+      "pred": 924,
+      "vals": [
+       925,
+       925
+      ],
+      "chosen": 925,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1065,
+      "vals": [
+       1066,
+       1066
+      ],
+      "chosen": 1066,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1149,
+      "vals": [
+       1150,
+       1150
+      ],
+      "chosen": 1150,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2027-01-01",
+    "agree": 6,
+    "accepted": {
+     "fajr": 389,
+     "sunrise": 481,
+     "dhuhr": 772,
+     "asr": 925,
+     "maghrib": 1066,
+     "isha": 1151
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 388,
+      "vals": [
+       389,
+       389
+      ],
+      "chosen": 389,
+      "n": 2
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [
+       481,
+       481
+      ],
+      "chosen": 481,
+      "n": 2
+     },
+     "dhuhr": {
+      "pred": 772,
+      "vals": [
+       772,
+       772
+      ],
+      "chosen": 772,
+      "n": 2
+     },
+     "asr": {
+      "pred": 925,
+      "vals": [
+       925,
+       925
+      ],
+      "chosen": 925,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1066,
+      "vals": [
+       1066,
+       1066
+      ],
+      "chosen": 1066,
+      "n": 2
+     },
+     "isha": {
+      "pred": 1150,
+      "vals": [
+       1151,
+       1151
+      ],
+      "chosen": 1151,
+      "n": 2
+     }
+    }
+   },
+   {
+    "date": "2027-01-02",
+    "agree": 6,
+    "accepted": {
+     "fajr": 389,
+     "sunrise": 481,
+     "dhuhr": 773,
+     "asr": 926,
+     "maghrib": 1067,
+     "isha": 1151
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [
+       389
+      ],
+      "chosen": 389,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [
+       481
+      ],
+      "chosen": 481,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 772,
+      "vals": [
+       773
+      ],
+      "chosen": 773,
+      "n": 1
+     },
+     "asr": {
+      "pred": 926,
+      "vals": [
+       926
+      ],
+      "chosen": 926,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1066,
+      "vals": [
+       1067
+      ],
+      "chosen": 1067,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1151,
+      "vals": [
+       1151
+      ],
+      "chosen": 1151,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-01-03",
+    "agree": 6,
+    "accepted": {
+     "fajr": 389,
+     "sunrise": 481,
+     "dhuhr": 773,
+     "asr": 927,
+     "maghrib": 1068,
+     "isha": 1152
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [
+       389
+      ],
+      "chosen": 389,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [
+       481
+      ],
+      "chosen": 481,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 773,
+      "vals": [
+       773
+      ],
+      "chosen": 773,
+      "n": 1
+     },
+     "asr": {
+      "pred": 926,
+      "vals": [
+       927
+      ],
+      "chosen": 927,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1067,
+      "vals": [
+       1068
+      ],
+      "chosen": 1068,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1152,
+      "vals": [
+       1152
+      ],
+      "chosen": 1152,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-01-04",
+    "agree": 6,
+    "accepted": {
+     "fajr": 389,
+     "sunrise": 481,
+     "dhuhr": 774,
+     "asr": 928,
+     "maghrib": 1069,
+     "isha": 1153
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [
+       389
+      ],
+      "chosen": 389,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [
+       481
+      ],
+      "chosen": 481,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 773,
+      "vals": [
+       774
+      ],
+      "chosen": 774,
+      "n": 1
+     },
+     "asr": {
+      "pred": 927,
+      "vals": [
+       928
+      ],
+      "chosen": 928,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1068,
+      "vals": [
+       1069
+      ],
+      "chosen": 1069,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1152,
+      "vals": [
+       1153
+      ],
+      "chosen": 1153,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-01-05",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 774,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 928,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1069,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1153,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-01-06",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 774,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 929,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1070,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1154,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-01-07",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 774,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 930,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1071,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1155,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-01-08",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 389,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 481,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 775,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 931,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1072,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1155,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   }
+  ],
+  "ctrlSame": 1,
+  "ctrlN": 12,
+  "ctrlOff": [
+   {
+    "date": "2026-12-11",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2026-12-12",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2026-12-13",
+    "diffs": {
+     "sunrise": -1,
+     "maghrib": -1
+    }
+   },
+   {
+    "date": "2026-12-14",
+    "diffs": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": -1
+    }
+   },
+   {
+    "date": "2026-12-15",
+    "diffs": {
+     "fajr": -1,
+     "sunrise": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2026-12-16",
+    "diffs": {
+     "dhuhr": -1,
+     "asr": -1
+    }
+   },
+   {
+    "date": "2026-12-17",
+    "diffs": {
+     "fajr": -1,
+     "sunrise": -1,
+     "maghrib": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2026-12-18",
+    "diffs": {
+     "fajr": -1,
+     "dhuhr": -1
+    }
+   },
+   {
+    "date": "2026-12-19",
+    "diffs": {
+     "sunrise": -1,
+     "asr": -1,
+     "maghrib": -1
+    }
+   },
+   {
+    "date": "2026-12-20",
+    "diffs": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2026-12-21",
+    "diffs": {
+     "asr": -1,
+     "maghrib": -1
+    }
+   },
+   {
+    "date": "2026-12-22",
+    "diffs": {
+     "fajr": -1,
+     "sunrise": -1,
+     "dhuhr": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2026-12-23",
+    "diffs": {
+     "asr": -1,
+     "maghrib": -1
+    }
+   },
+   {
+    "date": "2027-01-07",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-01-08",
+    "note": "no accepted read"
+   }
+  ]
+ },
+ "p10": {
+  "rows": [
+   {
+    "date": "2027-02-08",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 377,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 464,
+      "vals": [
+       464
+      ],
+      "chosen": 464,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782
+      ],
+      "chosen": 782,
+      "n": 1
+     },
+     "asr": {
+      "pred": 959,
+      "vals": [
+       958
+      ],
+      "chosen": 958,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1104,
+      "vals": [
+       1104
+      ],
+      "chosen": 1104,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1184,
+      "vals": [
+       1184
+      ],
+      "chosen": 1184,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-09",
+    "agree": 4,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 376,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 463,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782
+      ],
+      "chosen": 782,
+      "n": 1
+     },
+     "asr": {
+      "pred": 959,
+      "vals": [
+       958
+      ],
+      "chosen": 958,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1105,
+      "vals": [
+       1104
+      ],
+      "chosen": 1104,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1185,
+      "vals": [
+       1184
+      ],
+      "chosen": 1184,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-10",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 375,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 462,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 960,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1106,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1186,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-11",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 374,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 461,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 961,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1107,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1187,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-12",
+    "agree": 1,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 373,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 460,
+      "vals": [
+       461
+      ],
+      "chosen": 461,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 962,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1108,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1187,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-13",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 372,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 459,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 963,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1109,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1188,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-14",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 371,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 458,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 963,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1110,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1189,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-15",
+    "agree": 0,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 370,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 457,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "asr": {
+      "pred": 964,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1111,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1190,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-16",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 369,
+      "vals": [
+       369
+      ],
+      "chosen": 369,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 456,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782
+      ],
+      "chosen": 782,
+      "n": 1
+     },
+     "asr": {
+      "pred": 965,
+      "vals": [
+       964
+      ],
+      "chosen": 964,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1112,
+      "vals": [
+       1112
+      ],
+      "chosen": 1112,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1191,
+      "vals": [
+       1191
+      ],
+      "chosen": 1191,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-17",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 368,
+      "vals": [
+       369
+      ],
+      "chosen": 369,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 455,
+      "vals": [
+       456
+      ],
+      "chosen": 456,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782
+      ],
+      "chosen": 782,
+      "n": 1
+     },
+     "asr": {
+      "pred": 966,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1113,
+      "vals": [
+       1112
+      ],
+      "chosen": 1112,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1192,
+      "vals": [
+       1191
+      ],
+      "chosen": 1191,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-18",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 367,
+      "vals": [
+       368,
+       367
+      ],
+      "chosen": 367,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 453,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 2
+     },
+     "asr": {
+      "pred": 967,
+      "vals": [
+       966
+      ],
+      "chosen": 966,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1114,
+      "vals": [
+       1113,
+       1114
+      ],
+      "chosen": 1113,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1193,
+      "vals": [
+       1192,
+       1193
+      ],
+      "chosen": 1192,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-19",
+    "agree": 6,
+    "accepted": {
+     "fajr": 367,
+     "sunrise": 453,
+     "dhuhr": 782,
+     "asr": 966,
+     "maghrib": 1114,
+     "isha": 1193
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 366,
+      "vals": [
+       367
+      ],
+      "chosen": 367,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 452,
+      "vals": [
+       453
+      ],
+      "chosen": 453,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 2
+     },
+     "asr": {
+      "pred": 967,
+      "vals": [
+       966
+      ],
+      "chosen": 966,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1115,
+      "vals": [
+       1114
+      ],
+      "chosen": 1114,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1194,
+      "vals": [
+       1193
+      ],
+      "chosen": 1193,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-20",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 365,
+      "vals": [
+       366,
+       365
+      ],
+      "chosen": 365,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 451,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 3
+     },
+     "asr": {
+      "pred": 968,
+      "vals": [
+       967,
+       967
+      ],
+      "chosen": 967,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1116,
+      "vals": [
+       1115,
+       1116
+      ],
+      "chosen": 1115,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1195,
+      "vals": [
+       1194,
+       1195
+      ],
+      "chosen": 1194,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-21",
+    "agree": 4,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 363,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 450,
+      "vals": [
+       451
+      ],
+      "chosen": 451,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 3
+     },
+     "asr": {
+      "pred": 969,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1117,
+      "vals": [
+       1116
+      ],
+      "chosen": 1116,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1196,
+      "vals": [
+       1195
+      ],
+      "chosen": 1195,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-22",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 362,
+      "vals": [
+       363,
+       362
+      ],
+      "chosen": 362,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 449,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 4
+     },
+     "asr": {
+      "pred": 969,
+      "vals": [
+       968,
+       969
+      ],
+      "chosen": 968,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1118,
+      "vals": [
+       1117,
+       1118
+      ],
+      "chosen": 1117,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1197,
+      "vals": [
+       1196,
+       1197
+      ],
+      "chosen": 1196,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-23",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 361,
+      "vals": [
+       362
+      ],
+      "chosen": 362,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 447,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 782,
+      "vals": [
+       782,
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 4
+     },
+     "asr": {
+      "pred": 970,
+      "vals": [
+       969
+      ],
+      "chosen": 969,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1119,
+      "vals": [
+       1118
+      ],
+      "chosen": 1118,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1198,
+      "vals": [
+       1197
+      ],
+      "chosen": 1197,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-24",
+    "agree": 4,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 360,
+      "vals": [
+       361
+      ],
+      "chosen": 361,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 446,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 4
+     },
+     "asr": {
+      "pred": 971,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1120,
+      "vals": [
+       1119
+      ],
+      "chosen": 1119,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1199,
+      "vals": [
+       1198
+      ],
+      "chosen": 1198,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-02-25",
+    "agree": 1,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 359,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 445,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       782,
+       782
+      ],
+      "chosen": 782,
+      "n": 4
+     },
+     "asr": {
+      "pred": 971,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1121,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1200,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-26",
+    "agree": 1,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 357,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 443,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       782,
+       781
+      ],
+      "chosen": 782,
+      "n": 3
+     },
+     "asr": {
+      "pred": 972,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1122,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1201,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-27",
+    "agree": 1,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 356,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 442,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       782,
+       781
+      ],
+      "chosen": 782,
+      "n": 3
+     },
+     "asr": {
+      "pred": 973,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "maghrib": {
+      "pred": 1123,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1201,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   },
+   {
+    "date": "2027-02-28",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 355,
+      "vals": [
+       354
+      ],
+      "chosen": 354,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 441,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       781,
+       781,
+       781
+      ],
+      "chosen": 781,
+      "n": 3
+     },
+     "asr": {
+      "pred": 973,
+      "vals": [
+       973
+      ],
+      "chosen": 973,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1124,
+      "vals": [
+       1125
+      ],
+      "chosen": 1125,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1202,
+      "vals": [
+       1203
+      ],
+      "chosen": 1203,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-01",
+    "agree": 6,
+    "accepted": {
+     "fajr": 354,
+     "sunrise": 439,
+     "dhuhr": 781,
+     "asr": 973,
+     "maghrib": 1125,
+     "isha": 1203
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 354,
+      "vals": [
+       354
+      ],
+      "chosen": 354,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 439,
+      "vals": [
+       439
+      ],
+      "chosen": 439,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 781,
+      "vals": [
+       782,
+       782,
+       781,
+       781,
+       781
+      ],
+      "chosen": 781,
+      "n": 3
+     },
+     "asr": {
+      "pred": 974,
+      "vals": [
+       973
+      ],
+      "chosen": 973,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1125,
+      "vals": [
+       1125
+      ],
+      "chosen": 1125,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1203,
+      "vals": [
+       1203
+      ],
+      "chosen": 1203,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-02",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 352,
+      "vals": [
+       352,
+       351
+      ],
+      "chosen": 351,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 438,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 780,
+      "vals": [
+       781,
+       781,
+       781,
+       780,
+       780
+      ],
+      "chosen": 781,
+      "n": 3
+     },
+     "asr": {
+      "pred": 974,
+      "vals": [
+       974,
+       974
+      ],
+      "chosen": 974,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1126,
+      "vals": [
+       1126,
+       1127
+      ],
+      "chosen": 1126,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1204,
+      "vals": [
+       1204,
+       1205
+      ],
+      "chosen": 1204,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-03",
+    "agree": 6,
+    "accepted": {
+     "fajr": 351,
+     "sunrise": 437,
+     "dhuhr": 781,
+     "asr": 974,
+     "maghrib": 1126,
+     "isha": 1204
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 351,
+      "vals": [
+       352,
+       351
+      ],
+      "chosen": 351,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 437,
+      "vals": [
+       438,
+       437
+      ],
+      "chosen": 437,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 780,
+      "vals": [
+       781,
+       781,
+       781,
+       780,
+       780
+      ],
+      "chosen": 781,
+      "n": 3
+     },
+     "asr": {
+      "pred": 975,
+      "vals": [
+       974,
+       974
+      ],
+      "chosen": 974,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1127,
+      "vals": [
+       1126,
+       1127
+      ],
+      "chosen": 1126,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1205,
+      "vals": [
+       1204,
+       1205
+      ],
+      "chosen": 1204,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-04",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 350,
+      "vals": [
+       351,
+       350
+      ],
+      "chosen": 350,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 435,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 780,
+      "vals": [
+       781,
+       781,
+       781,
+       780,
+       780,
+       780
+      ],
+      "chosen": 780,
+      "n": 3
+     },
+     "asr": {
+      "pred": 976,
+      "vals": [
+       975,
+       975
+      ],
+      "chosen": 975,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1128,
+      "vals": [
+       1127,
+       1128,
+       1129
+      ],
+      "chosen": 1127,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1206,
+      "vals": [
+       1205,
+       1206,
+       1207
+      ],
+      "chosen": 1205,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-05",
+    "agree": 6,
+    "accepted": {
+     "fajr": 348,
+     "sunrise": 434,
+     "dhuhr": 780,
+     "asr": 975,
+     "maghrib": 1128,
+     "isha": 1206
+    },
+    "ordered": true,
+    "votes": {
+     "fajr": {
+      "pred": 348,
+      "vals": [
+       348
+      ],
+      "chosen": 348,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 434,
+      "vals": [
+       435,
+       434
+      ],
+      "chosen": 434,
+      "n": 1
+     },
+     "dhuhr": {
+      "pred": 780,
+      "vals": [
+       781,
+       781,
+       781,
+       780,
+       780,
+       780
+      ],
+      "chosen": 780,
+      "n": 3
+     },
+     "asr": {
+      "pred": 976,
+      "vals": [
+       975,
+       975
+      ],
+      "chosen": 975,
+      "n": 2
+     },
+     "maghrib": {
+      "pred": 1129,
+      "vals": [
+       1128,
+       1129
+      ],
+      "chosen": 1128,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1207,
+      "vals": [
+       1206,
+       1207
+      ],
+      "chosen": 1206,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-06",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 347,
+      "vals": [
+       348,
+       347
+      ],
+      "chosen": 347,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 433,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 780,
+      "vals": [
+       781,
+       781,
+       780,
+       780,
+       780
+      ],
+      "chosen": 780,
+      "n": 3
+     },
+     "asr": {
+      "pred": 977,
+      "vals": [
+       976
+      ],
+      "chosen": 976,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1130,
+      "vals": [
+       1129,
+       1130
+      ],
+      "chosen": 1129,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1208,
+      "vals": [
+       1207,
+       1208
+      ],
+      "chosen": 1207,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-07",
+    "agree": 4,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 345,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 431,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 779,
+      "vals": [
+       780,
+       780,
+       780
+      ],
+      "chosen": 780,
+      "n": 3
+     },
+     "asr": {
+      "pred": 977,
+      "vals": [
+       976
+      ],
+      "chosen": 976,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1131,
+      "vals": [
+       1130
+      ],
+      "chosen": 1130,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1209,
+      "vals": [
+       1208
+      ],
+      "chosen": 1208,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-08",
+    "agree": 5,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 344,
+      "vals": [
+       345
+      ],
+      "chosen": 345,
+      "n": 1
+     },
+     "sunrise": {
+      "pred": 430,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 779,
+      "vals": [
+       780,
+       780,
+       779
+      ],
+      "chosen": 780,
+      "n": 2
+     },
+     "asr": {
+      "pred": 978,
+      "vals": [
+       977
+      ],
+      "chosen": 977,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1132,
+      "vals": [
+       1131
+      ],
+      "chosen": 1131,
+      "n": 1
+     },
+     "isha": {
+      "pred": 1210,
+      "vals": [
+       1209
+      ],
+      "chosen": 1209,
+      "n": 1
+     }
+    }
+   },
+   {
+    "date": "2027-03-09",
+    "agree": 2,
+    "accepted": null,
+    "votes": {
+     "fajr": {
+      "pred": 343,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "sunrise": {
+      "pred": 428,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "dhuhr": {
+      "pred": 779,
+      "vals": [
+       780,
+       780,
+       779
+      ],
+      "chosen": 780,
+      "n": 2
+     },
+     "asr": {
+      "pred": 978,
+      "vals": [
+       977
+      ],
+      "chosen": 977,
+      "n": 1
+     },
+     "maghrib": {
+      "pred": 1133,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     },
+     "isha": {
+      "pred": 1211,
+      "vals": [],
+      "chosen": null,
+      "n": 0
+     }
+    }
+   }
+  ],
+  "ctrlSame": 1,
+  "ctrlN": 4,
+  "ctrlOff": [
+   {
+    "date": "2027-02-08",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-09",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-12",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-13",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-14",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-15",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-16",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-17",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-18",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-19",
+    "diffs": {
+     "fajr": 1,
+     "sunrise": 1,
+     "asr": -1,
+     "maghrib": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2027-02-20",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-21",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-23",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-24",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-25",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-26",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-27",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-02-28",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-02",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-03",
+    "diffs": {
+     "dhuhr": 1,
+     "maghrib": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2027-03-04",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-05",
+    "diffs": {
+     "maghrib": -1,
+     "isha": -1
+    }
+   },
+   {
+    "date": "2027-03-06",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-07",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-08",
+    "note": "no accepted read"
+   },
+   {
+    "date": "2027-03-09",
+    "note": "no accepted read"
+   }
+  ]
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "wave": "o1n-9-year2archive",
+ "date": "2026-11-11",
+ "mission": "second recomputed year hunt outside Europe, confidence ladder A",
+ "engine": "adhan 4.4.6 at census/adhan-build/node_modules/adhan, Rounding.None, publisher civil zones",
+ "surfaces_banked_second_year": [
+  {
+   "id": "OM-MARA-86-CITYIDS",
+   "verdict": "second year banked (2027-2031 harvested by o1m-40, value-diff verified here)",
+   "evidence": "data/om-second-year-verified.json",
+   "between_year": "19172/188340 cells moved 2026 vs 2027 (10.18 pc), zero frozen areas",
+   "fit": "o1m-40 fit/om-tail-fit.json: 100 pc within-1, worst 1, six years, parameters frozen",
+   "grade_proposed": "A"
+  },
+  {
+   "id": "FAZILET-28-CITIES (new surface)",
+   "publisher": "Fazilet Nesriyat, faziletcalendar.com, /api/cms/daily with undocumented date= parameter",
+   "discovery": "Kyrgyzstan second-door hunt; React app's only data call, date= moves the 3-day window to any date (2020-2030 served)",
+   "years": ["2026", "2027"],
+   "cities": 28,
+   "sample": "January + July whole per year per city, 65-66 dated days per year",
+   "fit": "angles + per-column median margins recovered on 2026, frozen, residual-scored: 27 of 28 cities 100 pc within-1 worst 1 BOTH years; Colombo 2027 dhuhr pad moved ~2 min (83.6 pc w1); Ulaanbaatar seasonal fajr pad worst 4 (98 pc w1)",
+   "between_year": "1642/12740 same-month-day cells moved (12.89 pc) across the 28 cities",
+   "recipes": "fazr 18.25-19.75 deg, isha 16.25-17.75 deg, Shafi asr, temkin margins fajr +12..19, sunrise -1..-5, dhuhr +5..7, asr +4..5, maghrib +6..9, isha +1..8",
+   "grade_proposed": "A",
+   "files": "data/fazilet-*-rows.json, data/fazilet-fit.json, captures/fazilet-walk/"
+  }
+ ],
+ "dated_negatives": [
+  {"id": "KG-20-CITIES / KG-115-SETTLEMENTS", "route": "muftiyat.kg /ru/calendar/ HTML door == the same year-blind API (client-rendered template, captures/muftiyat-cal-*.html)"},
+  {"id": "UZ-ISLOM-6-CITIES", "route": "islom.uz month/year params ignored (o1m-10), client-computed bundle = regenerable engine, not a served second year"},
+  {"id": "AZ-NAMAZ-4-CITIES", "route": "nam.az only /{city}/{MM}/{DD}; year paths 404 (captures/namaz-probe-*); Wayback CDX: ONE snapshot total (nam.az/ganja homepage 2026-05-20)"},
+  {"id": "IQ-DIWAN-AXIS-FREE", "route": "o1m-24 measurement stands (endpoint ignores city/governorate/date/year); not re-spent"},
+  {"id": "YE-AWQAF-6-GOVERNORATES", "route": "o1m-6 measurement stands (2025/2027 answer no data); not re-spent"},
+  {"id": "JP-NAGOYA-YEAR", "route": "PDF metadata: CreationDate 2019-01-07 13:07:36 +09:00, Microsoft Print To PDF, source Prayer Time Table-1.xlsx; table a perpetual leap template (2024 and 2028 reproduce alike) - print dated, data year unpinnable"},
+  {"id": "LK-ACJU-13-ZONES earlier editions", "route": "Wayback CDX acju.lk 2018-2024: 503 Temporarily Offline, then 504 on a 40-min spaced retry; thread stopped per discipline; o1m-5 holds the 2025 edition (frozen-reprint stands)"}
+ ],
+ "roll_watches": [
+  {"id": "TAWKIT-COUNTRY-73 pool", "when": "on or after 2026-12-01", "what": "window rolls to 2026-12..2027-11; re-capture one city per priority country; diff 11 overlap months against o1m-3-platforms/data/tawkit/; appended 2027-11 is the first new month"}
+ ],
+ "second_witness_relations": {
+  "KG": "Fazilet vs muftiyat.kg Bishkek: 304/330 cells differ (independent generations)",
+  "UZ": "Fazilet vs islom.uz Tashkent Nov 2026: 174/174 differ (asr by school: Shafi vs Hanafi)",
+  "GE": "Fazilet vs Tbilisi mawaqit Diyanet block: 371/396 differ (temkin-family deltas)"
+ },
+ "first_for_country": ["SD-Khartoum: Sudan had no index entry; Fazilet Khartoum is the country's first dated publisher surface (2 years)"]
+}

@@ -1,0 +1,154 @@
+{
+ "p8": {
+  "days": [
+   {
+    "date": "2026-12-25",
+    "fajr": 386,
+    "sunrise": 479,
+    "dhuhr": 768,
+    "asr": 920,
+    "maghrib": 1061,
+    "isha": 1146
+   },
+   {
+    "date": "2026-12-26",
+    "fajr": 386,
+    "sunrise": 479,
+    "dhuhr": 769,
+    "asr": 921,
+    "maghrib": 1061,
+    "isha": 1146
+   },
+   {
+    "date": "2026-12-27",
+    "fajr": 387,
+    "sunrise": 480,
+    "dhuhr": 769,
+    "asr": 921,
+    "maghrib": 1062,
+    "isha": 1147
+   },
+   {
+    "date": "2026-12-28",
+    "fajr": 387,
+    "sunrise": 480,
+    "dhuhr": 770,
+    "asr": 922,
+    "maghrib": 1063,
+    "isha": 1147
+   },
+   {
+    "date": "2026-12-29",
+    "fajr": 387,
+    "sunrise": 480,
+    "dhuhr": 770,
+    "asr": 923,
+    "maghrib": 1063,
+    "isha": 1148
+   },
+   {
+    "date": "2026-12-30",
+    "fajr": 388,
+    "sunrise": 480,
+    "dhuhr": 771,
+    "asr": 923,
+    "maghrib": 1064,
+    "isha": 1149
+   },
+   {
+    "date": "2026-12-31",
+    "fajr": 388,
+    "sunrise": 481,
+    "dhuhr": 771,
+    "asr": 924,
+    "maghrib": 1065,
+    "isha": 1149
+   },
+   {
+    "date": "2027-01-01",
+    "fajr": 388,
+    "sunrise": 481,
+    "dhuhr": 772,
+    "asr": 925,
+    "maghrib": 1066,
+    "isha": 1150
+   },
+   {
+    "date": "2027-01-02",
+    "fajr": 389,
+    "sunrise": 481,
+    "dhuhr": 772,
+    "asr": 926,
+    "maghrib": 1066,
+    "isha": 1151
+   },
+   {
+    "date": "2027-01-03",
+    "fajr": 389,
+    "sunrise": 481,
+    "dhuhr": 773,
+    "asr": 926,
+    "maghrib": 1067,
+    "isha": 1152
+   },
+   {
+    "date": "2027-01-04",
+    "fajr": 389,
+    "sunrise": 481,
+    "dhuhr": 773,
+    "asr": 927,
+    "maghrib": 1068,
+    "isha": 1152
+   },
+   {
+    "date": "2027-01-05",
+    "fajr": 389,
+    "sunrise": 481,
+    "dhuhr": 774,
+    "asr": 928,
+    "maghrib": 1069,
+    "isha": 1153
+   },
+   {
+    "date": "2027-01-06",
+    "fajr": 389,
+    "sunrise": 481,
+    "dhuhr": 774,
+    "asr": 929,
+    "maghrib": 1070,
+    "isha": 1154
+   }
+  ]
+ },
+ "p10": {
+  "days": [
+   {
+    "date": "2027-02-10",
+    "fajr": 375,
+    "sunrise": 462,
+    "dhuhr": 782,
+    "asr": 960,
+    "maghrib": 1106,
+    "isha": 1186
+   },
+   {
+    "date": "2027-02-11",
+    "fajr": 374,
+    "sunrise": 461,
+    "dhuhr": 782,
+    "asr": 961,
+    "maghrib": 1107,
+    "isha": 1187
+   },
+   {
+    "date": "2027-02-22",
+    "fajr": 362,
+    "sunrise": 449,
+    "dhuhr": 782,
+    "asr": 969,
+    "maghrib": 1118,
+    "isha": 1197
+   }
+  ]
+ }
+}

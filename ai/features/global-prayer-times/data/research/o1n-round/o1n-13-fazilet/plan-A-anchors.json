@@ -1,0 +1,1226 @@
+[
+ {
+  "countryId": 1,
+  "country": "Türkiye",
+  "cityId": 31,
+  "adi": "İstanbul"
+ },
+ {
+  "countryId": 2,
+  "country": "Avusturya",
+  "cityId": 90,
+  "adi": "Graz"
+ },
+ {
+  "countryId": 3,
+  "country": "Afganistan",
+  "cityId": 104,
+  "adi": "Herat - هرات"
+ },
+ {
+  "countryId": 4,
+  "country": "Arnavutluk",
+  "cityId": 129,
+  "adi": "Tiranë"
+ },
+ {
+  "countryId": 5,
+  "country": "Avustralya",
+  "cityId": 139,
+  "adi": "Sydney"
+ },
+ {
+  "countryId": 6,
+  "country": "Azerbaycan",
+  "cityId": 142,
+  "adi": "Aliabad"
+ },
+ {
+  "countryId": 7,
+  "country": "Belçika",
+  "cityId": 159,
+  "adi": "Antwerpen"
+ },
+ {
+  "countryId": 8,
+  "country": "Bangladeş",
+  "cityId": 2689,
+  "adi": "Chittagong"
+ },
+ {
+  "countryId": 9,
+  "country": "Bulgaristan",
+  "cityId": 200,
+  "adi": "Sofya"
+ },
+ {
+  "countryId": 10,
+  "country": "Bosna Hersek",
+  "cityId": 208,
+  "adi": "Sarajevo"
+ },
+ {
+  "countryId": 11,
+  "country": "Kanada",
+  "cityId": 215,
+  "adi": "Toronto, ON"
+ },
+ {
+  "countryId": 12,
+  "country": "İsviçre",
+  "cityId": 3637,
+  "adi": "Cenevre (Geneva)"
+ },
+ {
+  "countryId": 13,
+  "country": "Çek Cumhuriyeti",
+  "cityId": 6179,
+  "adi": "Benešov"
+ },
+ {
+  "countryId": 14,
+  "country": "Almanya",
+  "cityId": 247,
+  "adi": "Berlin"
+ },
+ {
+  "countryId": 15,
+  "country": "Danimarka",
+  "cityId": 2917,
+  "adi": "Aabenraa"
+ },
+ {
+  "countryId": 16,
+  "country": "İspanya",
+  "cityId": 358,
+  "adi": "Madrid"
+ },
+ {
+  "countryId": 17,
+  "country": "Kenya",
+  "cityId": 361,
+  "adi": "Nairobi"
+ },
+ {
+  "countryId": 18,
+  "country": "Birleşik Krallık",
+  "cityId": 373,
+  "adi": "London"
+ },
+ {
+  "countryId": 19,
+  "country": "Etiyopya",
+  "cityId": 379,
+  "adi": "Addis Ababa"
+ },
+ {
+  "countryId": 20,
+  "country": "Fransa",
+  "cityId": 415,
+  "adi": "Paris"
+ },
+ {
+  "countryId": 21,
+  "country": "Finlandiya",
+  "cityId": 427,
+  "adi": "Helsinki"
+ },
+ {
+  "countryId": 22,
+  "country": "Lihtenştayn",
+  "cityId": 432,
+  "adi": "Vaduz"
+ },
+ {
+  "countryId": 24,
+  "country": "Gana",
+  "cityId": 452,
+  "adi": "Accra"
+ },
+ {
+  "countryId": 25,
+  "country": "Yunanistan",
+  "cityId": 458,
+  "adi": "Selanik"
+ },
+ {
+  "countryId": 26,
+  "country": "Macaristan",
+  "cityId": 461,
+  "adi": "Budapest"
+ },
+ {
+  "countryId": 27,
+  "country": "Hong Kong",
+  "cityId": 479,
+  "adi": "Hong Kong"
+ },
+ {
+  "countryId": 28,
+  "country": "Hırvatistan",
+  "cityId": 482,
+  "adi": "Zagreb"
+ },
+ {
+  "countryId": 29,
+  "country": "İtalya",
+  "cityId": 486,
+  "adi": "Milano"
+ },
+ {
+  "countryId": 31,
+  "country": "K.K.T.C",
+  "cityId": 507,
+  "adi": "Lefkoşa"
+ },
+ {
+  "countryId": 32,
+  "country": "Kırgızistan",
+  "cityId": 8404,
+  "adi": "Oy-Tal, Osh"
+ },
+ {
+  "countryId": 33,
+  "country": "Suudi Arabistan",
+  "cityId": 847,
+  "adi": "Riyad"
+ },
+ {
+  "countryId": 34,
+  "country": "Özbekistan",
+  "cityId": 810,
+  "adi": "Buhara"
+ },
+ {
+  "countryId": 35,
+  "country": "Moldova",
+  "cityId": 3705,
+  "adi": "Bender"
+ },
+ {
+  "countryId": 36,
+  "country": "Kuzey Makedonya",
+  "cityId": 542,
+  "adi": "Skopje"
+ },
+ {
+  "countryId": 37,
+  "country": "Karadağ",
+  "cityId": 7948,
+  "adi": "Bar"
+ },
+ {
+  "countryId": 38,
+  "country": "Malavi",
+  "cityId": 548,
+  "adi": "Lilongwe"
+ },
+ {
+  "countryId": 39,
+  "country": "Norveç",
+  "cityId": 552,
+  "adi": "Oslo"
+ },
+ {
+  "countryId": 40,
+  "country": "Hollanda",
+  "cityId": 557,
+  "adi": "Amsterdam"
+ },
+ {
+  "countryId": 41,
+  "country": "Yeni Zelanda",
+  "cityId": 841,
+  "adi": "Auckland"
+ },
+ {
+  "countryId": 42,
+  "country": "Polonya",
+  "cityId": 4877,
+  "adi": "Białystok"
+ },
+ {
+  "countryId": 43,
+  "country": "Endonezya",
+  "cityId": 581,
+  "adi": "Jakarta"
+ },
+ {
+  "countryId": 44,
+  "country": "Kosova",
+  "cityId": 3137,
+  "adi": "Dragaş"
+ },
+ {
+  "countryId": 45,
+  "country": "Romanya",
+  "cityId": 592,
+  "adi": "Cluj-Napoca"
+ },
+ {
+  "countryId": 47,
+  "country": "Filipinler",
+  "cityId": 610,
+  "adi": "Manila"
+ },
+ {
+  "countryId": 48,
+  "country": "Rusya",
+  "cityId": 631,
+  "adi": "Moskova (Москва)"
+ },
+ {
+  "countryId": 49,
+  "country": "Ruanda",
+  "cityId": 662,
+  "adi": "Kigali"
+ },
+ {
+  "countryId": 50,
+  "country": "İsveç",
+  "cityId": 668,
+  "adi": "Stockholm"
+ },
+ {
+  "countryId": 51,
+  "country": "Singapur",
+  "cityId": 671,
+  "adi": "Singapore"
+ },
+ {
+  "countryId": 52,
+  "country": "Slovakya",
+  "cityId": 672,
+  "adi": "Bratislava"
+ },
+ {
+  "countryId": 53,
+  "country": "Slovenya",
+  "cityId": 673,
+  "adi": "Ljubljana"
+ },
+ {
+  "countryId": 54,
+  "country": "Somali",
+  "cityId": 675,
+  "adi": "Mogadishu"
+ },
+ {
+  "countryId": 55,
+  "country": "Sırbistan",
+  "cityId": 7483,
+  "adi": "Alibunar"
+ },
+ {
+  "countryId": 56,
+  "country": "Ukrayna",
+  "cityId": 681,
+  "adi": "Kiev (Київ)"
+ },
+ {
+  "countryId": 57,
+  "country": "ABD",
+  "cityId": 698,
+  "adi": "Washington, DC"
+ },
+ {
+  "countryId": 58,
+  "country": "Zambiya",
+  "cityId": 8023,
+  "adi": "Kitwe"
+ },
+ {
+  "countryId": 59,
+  "country": "Güney Afrika",
+  "cityId": 705,
+  "adi": "Johannesburg"
+ },
+ {
+  "countryId": 60,
+  "country": "Kazakistan",
+  "cityId": 717,
+  "adi": "Astana"
+ },
+ {
+  "countryId": 61,
+  "country": "Lüksemburg",
+  "cityId": 8281,
+  "adi": "Albertirsa"
+ },
+ {
+  "countryId": 62,
+  "country": "Malezya",
+  "cityId": 735,
+  "adi": "Kuala Lumpur"
+ },
+ {
+  "countryId": 63,
+  "country": "Moğolistan",
+  "cityId": 888,
+  "adi": "Erdenet"
+ },
+ {
+  "countryId": 64,
+  "country": "Nijerya",
+  "cityId": 4840,
+  "adi": "Lagos"
+ },
+ {
+  "countryId": 65,
+  "country": "Sierra Leone",
+  "cityId": 780,
+  "adi": "Freetown"
+ },
+ {
+  "countryId": 66,
+  "country": "Tanzanya",
+  "cityId": 781,
+  "adi": "Dar es Salaam"
+ },
+ {
+  "countryId": 67,
+  "country": "Uganda",
+  "cityId": 4901,
+  "adi": "Mbarara"
+ },
+ {
+  "countryId": 68,
+  "country": "Senegal",
+  "cityId": 783,
+  "adi": "Dakar"
+ },
+ {
+  "countryId": 69,
+  "country": "Tacikistan",
+  "cityId": 4695,
+  "adi": "Kulob"
+ },
+ {
+  "countryId": 70,
+  "country": "Türkmenistan",
+  "cityId": 5459,
+  "adi": "Mary"
+ },
+ {
+  "countryId": 71,
+  "country": "Brunei",
+  "cityId": 843,
+  "adi": "Bandar Seri Begawan"
+ },
+ {
+  "countryId": 72,
+  "country": "Cezayir",
+  "cityId": 848,
+  "adi": "Cezayir"
+ },
+ {
+  "countryId": 73,
+  "country": "Lübnan",
+  "cityId": 854,
+  "adi": "Beyrut"
+ },
+ {
+  "countryId": 74,
+  "country": "Mısır",
+  "cityId": 856,
+  "adi": "Kahire"
+ },
+ {
+  "countryId": 75,
+  "country": "Sudan",
+  "cityId": 5471,
+  "adi": "Omdurman"
+ },
+ {
+  "countryId": 76,
+  "country": "Tunus",
+  "cityId": 858,
+  "adi": "Tunis"
+ },
+ {
+  "countryId": 77,
+  "country": "Ürdün",
+  "cityId": 6529,
+  "adi": "Zerka (Zarqa)"
+ },
+ {
+  "countryId": 78,
+  "country": "Irak",
+  "cityId": 2597,
+  "adi": "Basra"
+ },
+ {
+  "countryId": 79,
+  "country": "Pakistan",
+  "cityId": 883,
+  "adi": "Karachi"
+ },
+ {
+  "countryId": 81,
+  "country": "Burkina Faso",
+  "cityId": 2564,
+  "adi": "Ouagadougou"
+ },
+ {
+  "countryId": 82,
+  "country": "Kamerun",
+  "cityId": 2565,
+  "adi": "Douala"
+ },
+ {
+  "countryId": 83,
+  "country": "Burundi",
+  "cityId": 2567,
+  "adi": "Bujumbura"
+ },
+ {
+  "countryId": 84,
+  "country": "Cibuti",
+  "cityId": 2568,
+  "adi": "Djibouti"
+ },
+ {
+  "countryId": 85,
+  "country": "Çad",
+  "cityId": 6009,
+  "adi": "Abou-Deia"
+ },
+ {
+  "countryId": 86,
+  "country": "Fildişi Sahili",
+  "cityId": 2575,
+  "adi": "Abidjan"
+ },
+ {
+  "countryId": 87,
+  "country": "Gine",
+  "cityId": 2577,
+  "adi": "Conakry"
+ },
+ {
+  "countryId": 88,
+  "country": "Kongo Cumhuriyeti",
+  "cityId": 2587,
+  "adi": "Brazzaville"
+ },
+ {
+  "countryId": 89,
+  "country": "Liberya",
+  "cityId": 2579,
+  "adi": "Monrovia"
+ },
+ {
+  "countryId": 90,
+  "country": "Madagaskar",
+  "cityId": 2580,
+  "adi": "Antananarivo"
+ },
+ {
+  "countryId": 91,
+  "country": "Mali",
+  "cityId": 2581,
+  "adi": "Bamako"
+ },
+ {
+  "countryId": 92,
+  "country": "Moritanya",
+  "cityId": 2582,
+  "adi": "Nouakchott"
+ },
+ {
+  "countryId": 93,
+  "country": "Mozambik",
+  "cityId": 4034,
+  "adi": "Maputo"
+ },
+ {
+  "countryId": 94,
+  "country": "Nijer",
+  "cityId": 2584,
+  "adi": "Niamey"
+ },
+ {
+  "countryId": 95,
+  "country": "Kongo Demokratik Cumhuriyeti",
+  "cityId": 2590,
+  "adi": "Kinşasa(Kinshasa)"
+ },
+ {
+  "countryId": 96,
+  "country": "Çin",
+  "cityId": 3985,
+  "adi": "Urumqi"
+ },
+ {
+  "countryId": 97,
+  "country": "Hindistan",
+  "cityId": 2602,
+  "adi": "Delhi"
+ },
+ {
+  "countryId": 98,
+  "country": "Benin",
+  "cityId": 2622,
+  "adi": "Cotonou"
+ },
+ {
+  "countryId": 99,
+  "country": "Filistin",
+  "cityId": 2644,
+  "adi": "Kudüs"
+ },
+ {
+  "countryId": 100,
+  "country": "Birleşik Arap Emirlikleri",
+  "cityId": 2678,
+  "adi": "Dubai"
+ },
+ {
+  "countryId": 102,
+  "country": "Doğu Timor",
+  "cityId": 2690,
+  "adi": "Dili"
+ },
+ {
+  "countryId": 103,
+  "country": "Myanmar",
+  "cityId": 3734,
+  "adi": "Yangon"
+ },
+ {
+  "countryId": 105,
+  "country": "Papua Yeni Gine",
+  "cityId": 2700,
+  "adi": "Port Moresby"
+ },
+ {
+  "countryId": 106,
+  "country": "Tayland",
+  "cityId": 2701,
+  "adi": "Bangkok"
+ },
+ {
+  "countryId": 107,
+  "country": "Tayvan",
+  "cityId": 6568,
+  "adi": "New Taipei City"
+ },
+ {
+  "countryId": 108,
+  "country": "Surinam",
+  "cityId": 2954,
+  "adi": "Paramaribo"
+ },
+ {
+  "countryId": 109,
+  "country": "Güney Kıbrıs Rum Yönetimi",
+  "cityId": 2970,
+  "adi": "Limasol"
+ },
+ {
+  "countryId": 110,
+  "country": "Bahreyn",
+  "cityId": 2975,
+  "adi": "Manama"
+ },
+ {
+  "countryId": 111,
+  "country": "İran",
+  "cityId": 5553,
+  "adi": "Ahvaz"
+ },
+ {
+  "countryId": 112,
+  "country": "Katar",
+  "cityId": 2977,
+  "adi": "Doha"
+ },
+ {
+  "countryId": 113,
+  "country": "Kuveyt",
+  "cityId": 8229,
+  "adi": "Jleeb Al-Shuyoukh"
+ },
+ {
+  "countryId": 114,
+  "country": "Yemen",
+  "cityId": 2979,
+  "adi": "Aden"
+ },
+ {
+  "countryId": 115,
+  "country": "Umman",
+  "cityId": 4049,
+  "adi": "Salalah"
+ },
+ {
+  "countryId": 116,
+  "country": "Gabon",
+  "cityId": 3064,
+  "adi": "Libreville"
+ },
+ {
+  "countryId": 117,
+  "country": "Gambiya",
+  "cityId": 3065,
+  "adi": "Banjul"
+ },
+ {
+  "countryId": 118,
+  "country": "Zimbabve",
+  "cityId": 8012,
+  "adi": "Bulawayo"
+ },
+ {
+  "countryId": 119,
+  "country": "Togo",
+  "cityId": 3067,
+  "adi": "Lomé"
+ },
+ {
+  "countryId": 120,
+  "country": "Angola",
+  "cityId": 3068,
+  "adi": "Luanda"
+ },
+ {
+  "countryId": 121,
+  "country": "İzlanda",
+  "cityId": 3069,
+  "adi": "Reykjavik"
+ },
+ {
+  "countryId": 122,
+  "country": "Estonya",
+  "cityId": 3070,
+  "adi": "Tallinn"
+ },
+ {
+  "countryId": 123,
+  "country": "Portekiz",
+  "cityId": 3718,
+  "adi": "Porto"
+ },
+ {
+  "countryId": 124,
+  "country": "Vietnam",
+  "cityId": 3732,
+  "adi": "Ho Chi Minh City"
+ },
+ {
+  "countryId": 125,
+  "country": "Sri Lanka",
+  "cityId": 3829,
+  "adi": "Kandy"
+ },
+ {
+  "countryId": 126,
+  "country": "Şili",
+  "cityId": 3074,
+  "adi": "Santiago RM"
+ },
+ {
+  "countryId": 127,
+  "country": "Fas",
+  "cityId": 3083,
+  "adi": "Rabat"
+ },
+ {
+  "countryId": 128,
+  "country": "Belarus",
+  "cityId": 3088,
+  "adi": "Minsk"
+ },
+ {
+  "countryId": 129,
+  "country": "Libya",
+  "cityId": 3091,
+  "adi": "Bingazi"
+ },
+ {
+  "countryId": 130,
+  "country": "Brezilya",
+  "cityId": 3118,
+  "adi": "Rio de Janeiro"
+ },
+ {
+  "countryId": 131,
+  "country": "Venezuela",
+  "cityId": 3120,
+  "adi": "Caracas"
+ },
+ {
+  "countryId": 132,
+  "country": "Arjantin",
+  "cityId": 3121,
+  "adi": "Buenos Aires"
+ },
+ {
+  "countryId": 133,
+  "country": "Paraguay",
+  "cityId": 3122,
+  "adi": "Asunción "
+ },
+ {
+  "countryId": 134,
+  "country": "Andorra",
+  "cityId": 3164,
+  "adi": "Andorra la Vella"
+ },
+ {
+  "countryId": 135,
+  "country": "Anguilla ",
+  "cityId": 3165,
+  "adi": "The Valley"
+ },
+ {
+  "countryId": 136,
+  "country": "Antigua ve Barbuda",
+  "cityId": 3166,
+  "adi": "Saint John's"
+ },
+ {
+  "countryId": 137,
+  "country": "Aruba",
+  "cityId": 3167,
+  "adi": "Oranjestad"
+ },
+ {
+  "countryId": 138,
+  "country": "Bahamalar",
+  "cityId": 3168,
+  "adi": "Nassau"
+ },
+ {
+  "countryId": 139,
+  "country": "Barbados",
+  "cityId": 3169,
+  "adi": "Bridgetown"
+ },
+ {
+  "countryId": 140,
+  "country": "Belize",
+  "cityId": 3170,
+  "adi": "Belmopan"
+ },
+ {
+  "countryId": 141,
+  "country": "Bermuda",
+  "cityId": 3171,
+  "adi": "Hamilton"
+ },
+ {
+  "countryId": 142,
+  "country": "Bolivya",
+  "cityId": 5121,
+  "adi": "Aiquile"
+ },
+ {
+  "countryId": 143,
+  "country": "Botsvana",
+  "cityId": 3173,
+  "adi": "Gaborone"
+ },
+ {
+  "countryId": 144,
+  "country": "Butan",
+  "cityId": 3174,
+  "adi": "Thimphu"
+ },
+ {
+  "countryId": 145,
+  "country": "Dominika",
+  "cityId": 3175,
+  "adi": "Roseau"
+ },
+ {
+  "countryId": 146,
+  "country": "Dominik Cumhuriyeti",
+  "cityId": 3176,
+  "adi": "Santo Domingo"
+ },
+ {
+  "countryId": 147,
+  "country": "Ekvator",
+  "cityId": 3177,
+  "adi": "Quito"
+ },
+ {
+  "countryId": 148,
+  "country": "Ekvator Ginesi",
+  "cityId": 3178,
+  "adi": "Malabo"
+ },
+ {
+  "countryId": 149,
+  "country": "El Salvador",
+  "cityId": 3179,
+  "adi": "San Salvador"
+ },
+ {
+  "countryId": 150,
+  "country": "Eritre",
+  "cityId": 3180,
+  "adi": "Asmara"
+ },
+ {
+  "countryId": 151,
+  "country": "Ermenistan",
+  "cityId": 3181,
+  "adi": "Erivan"
+ },
+ {
+  "countryId": 152,
+  "country": "Fiji",
+  "cityId": 3182,
+  "adi": "Suva"
+ },
+ {
+  "countryId": 153,
+  "country": "Grenada",
+  "cityId": 3183,
+  "adi": "Saint Georges"
+ },
+ {
+  "countryId": 154,
+  "country": "Grönland",
+  "cityId": 3184,
+  "adi": "Nuuk "
+ },
+ {
+  "countryId": 155,
+  "country": "Guadeloupe",
+  "cityId": 3185,
+  "adi": "Basse Terre"
+ },
+ {
+  "countryId": 156,
+  "country": "Guam",
+  "cityId": 3186,
+  "adi": "Hagatna"
+ },
+ {
+  "countryId": 157,
+  "country": "Guatemala",
+  "cityId": 7684,
+  "adi": "Antigua"
+ },
+ {
+  "countryId": 158,
+  "country": "Guyana",
+  "cityId": 3188,
+  "adi": "Georgetown"
+ },
+ {
+  "countryId": 159,
+  "country": "Haiti",
+  "cityId": 3189,
+  "adi": "Port-Au-Prince "
+ },
+ {
+  "countryId": 160,
+  "country": "Hollanda Antilleri",
+  "cityId": 3190,
+  "adi": "Willemstad"
+ },
+ {
+  "countryId": 161,
+  "country": "Honduras",
+  "cityId": 3191,
+  "adi": "Tegucigalpa"
+ },
+ {
+  "countryId": 162,
+  "country": "Filistin (isgal yonetimi katmani)",
+  "cityId": 3192,
+  "adi": "Tel Aviv"
+ },
+ {
+  "countryId": 163,
+  "country": "Jamaika",
+  "cityId": 3193,
+  "adi": "Kingston"
+ },
+ {
+  "countryId": 164,
+  "country": "Kolombiya",
+  "cityId": 3194,
+  "adi": "Bogota"
+ },
+ {
+  "countryId": 165,
+  "country": "Komorlar",
+  "cityId": 3195,
+  "adi": "Moroni"
+ },
+ {
+  "countryId": 166,
+  "country": "Kosta Rika",
+  "cityId": 3196,
+  "adi": "San Jose"
+ },
+ {
+  "countryId": 167,
+  "country": "Küba",
+  "cityId": 3197,
+  "adi": "Havana"
+ },
+ {
+  "countryId": 168,
+  "country": "Kuzey Kore",
+  "cityId": 3198,
+  "adi": "Pyongyang"
+ },
+ {
+  "countryId": 169,
+  "country": "Lesotho",
+  "cityId": 3199,
+  "adi": "Maseru"
+ },
+ {
+  "countryId": 170,
+  "country": "Letonya",
+  "cityId": 3200,
+  "adi": "Riga"
+ },
+ {
+  "countryId": 171,
+  "country": "Litvanya",
+  "cityId": 3201,
+  "adi": "Vilnius"
+ },
+ {
+  "countryId": 172,
+  "country": "Macau",
+  "cityId": 3202,
+  "adi": "Macau"
+ },
+ {
+  "countryId": 173,
+  "country": "Maldivler",
+  "cityId": 3203,
+  "adi": "Male"
+ },
+ {
+  "countryId": 174,
+  "country": "Malta",
+  "cityId": 3204,
+  "adi": "Valletta"
+ },
+ {
+  "countryId": 175,
+  "country": "Martinik",
+  "cityId": 3205,
+  "adi": "Fort-de-France"
+ },
+ {
+  "countryId": 176,
+  "country": "Mauritius",
+  "cityId": 3206,
+  "adi": "Port Louis"
+ },
+ {
+  "countryId": 177,
+  "country": "Mayotte",
+  "cityId": 3207,
+  "adi": "Mamoudzou"
+ },
+ {
+  "countryId": 178,
+  "country": "Meksika",
+  "cityId": 3208,
+  "adi": "Mexico City (Ciudad de México)"
+ },
+ {
+  "countryId": 179,
+  "country": "Mikronezya",
+  "cityId": 3209,
+  "adi": "Palikir"
+ },
+ {
+  "countryId": 180,
+  "country": "Monako",
+  "cityId": 3210,
+  "adi": "Monako"
+ },
+ {
+  "countryId": 181,
+  "country": "Montserrat",
+  "cityId": 3211,
+  "adi": "Plymouth"
+ },
+ {
+  "countryId": 182,
+  "country": "Namibya",
+  "cityId": 3212,
+  "adi": "Windhoek"
+ },
+ {
+  "countryId": 183,
+  "country": "Nepal",
+  "cityId": 3799,
+  "adi": "Pokhara"
+ },
+ {
+  "countryId": 185,
+  "country": "Niue",
+  "cityId": 3215,
+  "adi": "Alofi"
+ },
+ {
+  "countryId": 186,
+  "country": "Orta Afrika Cumhuriyeti",
+  "cityId": 3216,
+  "adi": "Bangui"
+ },
+ {
+  "countryId": 187,
+  "country": "Palau",
+  "cityId": 3217,
+  "adi": "Koror"
+ },
+ {
+  "countryId": 188,
+  "country": "Panama ",
+  "cityId": 6623,
+  "adi": "Almirante"
+ },
+ {
+  "countryId": 189,
+  "country": "Peru",
+  "cityId": 3219,
+  "adi": "Lima"
+ },
+ {
+  "countryId": 190,
+  "country": "Pitcairn",
+  "cityId": 3220,
+  "adi": "Adamstown"
+ },
+ {
+  "countryId": 191,
+  "country": "Porto Riko ",
+  "cityId": 3221,
+  "adi": "San Juan"
+ },
+ {
+  "countryId": 192,
+  "country": "Réunion",
+  "cityId": 3222,
+  "adi": "Saint-Denis"
+ },
+ {
+  "countryId": 193,
+  "country": "Samoa",
+  "cityId": 3223,
+  "adi": "Apia"
+ },
+ {
+  "countryId": 194,
+  "country": "Seyşeller",
+  "cityId": 3224,
+  "adi": "Victoria"
+ },
+ {
+  "countryId": 195,
+  "country": "Suriye",
+  "cityId": 3225,
+  "adi": "Şam"
+ },
+ {
+  "countryId": 196,
+  "country": "Svalbard",
+  "cityId": 3226,
+  "adi": "Longyearbyen"
+ },
+ {
+  "countryId": 197,
+  "country": "Svaziland",
+  "cityId": 3227,
+  "adi": "Mbabane"
+ },
+ {
+  "countryId": 198,
+  "country": "Tonga",
+  "cityId": 3228,
+  "adi": "Nukualofa"
+ },
+ {
+  "countryId": 200,
+  "country": "Uruguay",
+  "cityId": 3230,
+  "adi": "Montevideo"
+ },
+ {
+  "countryId": 201,
+  "country": "Vanuatu",
+  "cityId": 3231,
+  "adi": "Port-Vila"
+ },
+ {
+  "countryId": 202,
+  "country": "Vatikan",
+  "cityId": 3232,
+  "adi": "Vatikan"
+ },
+ {
+  "countryId": 203,
+  "country": "Yeni Kaledonya",
+  "cityId": 3233,
+  "adi": "Noumea"
+ },
+ {
+  "countryId": 204,
+  "country": "Yeşil Burun ",
+  "cityId": 3234,
+  "adi": "Praia"
+ },
+ {
+  "countryId": 205,
+  "country": "Güney Sudan",
+  "cityId": 8414,
+  "adi": "Aweil"
+ },
+ {
+  "countryId": 206,
+  "country": "Gine-Bissau",
+  "cityId": 4050,
+  "adi": "Bissau"
+ },
+ {
+  "countryId": 207,
+  "country": "Fransız Guyanası",
+  "cityId": 4158,
+  "adi": "Cayenne"
+ },
+ {
+  "countryId": 208,
+  "country": "Antarktika",
+  "cityId": 6427,
+  "adi": "Inexpressible Adası"
+ },
+ {
+  "countryId": 209,
+  "country": "İrlanda",
+  "cityId": 6512,
+  "adi": "Dublin"
+ },
+ {
+  "countryId": 210,
+  "country": "Cayman Adaları",
+  "cityId": 6867,
+  "adi": "George Town"
+ },
+ {
+  "countryId": 211,
+  "country": "Tuvalu",
+  "cityId": 7400,
+  "adi": "Funafuti"
+ },
+ {
+  "countryId": 212,
+  "country": "Turks ve Caicos Adaları",
+  "cityId": 8148,
+  "adi": "Grace Bay"
+ }
+]

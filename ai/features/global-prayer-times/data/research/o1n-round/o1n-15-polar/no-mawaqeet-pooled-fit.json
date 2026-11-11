@@ -1,0 +1,9242 @@
+{
+ "alesund": {
+  "year": 2026,
+  "lat": 62.4722,
+  "lon": 6.1549,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 229,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 229,
+    "exact": 219,
+    "within1": 228,
+    "worst": 2.1,
+    "pctExact": 95.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.47,
+    "n": 229,
+    "exact": 221,
+    "within1": 229,
+    "worst": 0.6,
+    "pctExact": 96.5,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.6,
+    "n": 229,
+    "exact": 210,
+    "within1": 229,
+    "worst": 0.7,
+    "pctExact": 91.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.5,
+    "n": 229,
+    "exact": 25,
+    "within1": 55,
+    "worst": 3.8,
+    "pctExact": 10.9,
+    "pctWithin1": 24
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 229,
+    "exact": 212,
+    "within1": 229,
+    "worst": 0.6,
+    "pctExact": 92.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 229,
+    "exact": 204,
+    "within1": 229,
+    "worst": 0.8,
+    "pctExact": 89.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 136,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -73.83
+  },
+  "winterAsr": {
+   "n": 229,
+   "shafiMedian": 1.5,
+   "hanafiMedian": -32.83,
+   "shafiWorst": 3.8
+  },
+  "summer": {
+   "n": 136,
+   "fracMedian": 0.505,
+   "fracP10": 0.5011,
+   "fracP90": 0.5085,
+   "midnightWorst": 25.5,
+   "midnightWithin1": 57,
+   "sr60Worst": 214
+  },
+  "asrByMonth": [
+   -1.03,
+   -0.99,
+   -0.43,
+   -0.28,
+   null,
+   null,
+   null,
+   1.48,
+   1.88,
+   2.7,
+   4.33,
+   3.63
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-14",
+    "last": "2026-08-27",
+    "n": 136
+   }
+  ]
+ },
+ "arendal": {
+  "year": 2026,
+  "lat": 58.4615,
+  "lon": 8.7667,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 253,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 253,
+    "exact": 249,
+    "within1": 252,
+    "worst": 2.2,
+    "pctExact": 98.4,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 253,
+    "exact": 235,
+    "within1": 253,
+    "worst": 0.5,
+    "pctExact": 92.9,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 253,
+    "exact": 217,
+    "within1": 253,
+    "worst": 0.8,
+    "pctExact": 85.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.13,
+    "n": 253,
+    "exact": 36,
+    "within1": 94,
+    "worst": 2.2,
+    "pctExact": 14.2,
+    "pctWithin1": 37.2
+   },
+   "magrib": {
+    "margin": 4.45,
+    "n": 253,
+    "exact": 244,
+    "within1": 253,
+    "worst": 0.6,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 253,
+    "exact": 228,
+    "within1": 253,
+    "worst": 0.7,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 112,
+   "shafiMedian": 0.57,
+   "hanafiMedian": -73.13
+  },
+  "winterAsr": {
+   "n": 253,
+   "shafiMedian": 1.13,
+   "hanafiMedian": -38.35,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 112,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5011,
+   "fracP90": 0.506,
+   "midnightWorst": 15.5,
+   "midnightWithin1": 42,
+   "sr60Worst": 197
+  },
+  "asrByMonth": [
+   -0.25,
+   -0.58,
+   -0.33,
+   -0.08,
+   null,
+   null,
+   null,
+   1.47,
+   1.8,
+   2.02,
+   2.71,
+   2.03
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-26",
+    "last": "2026-08-15",
+    "n": 112
+   }
+  ]
+ },
+ "arnes-2": {
+  "year": 2026,
+  "lat": 60.1372,
+  "lon": 11.4556,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.57,
+    "n": 243,
+    "exact": 213,
+    "within1": 240,
+    "worst": 4.3,
+    "pctExact": 87.7,
+    "pctWithin1": 98.8
+   },
+   "sunrise": {
+    "margin": -0.57,
+    "n": 243,
+    "exact": 223,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 91.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.47,
+    "n": 243,
+    "exact": 218,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 89.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 243,
+    "exact": 43,
+    "within1": 74,
+    "worst": 2.5,
+    "pctExact": 17.7,
+    "pctWithin1": 30.5
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.42,
+    "n": 243,
+    "exact": 216,
+    "within1": 243,
+    "worst": 0.8,
+    "pctExact": 88.9,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.48,
+   "hanafiMedian": -73.15
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -36.33,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5012,
+   "fracP90": 0.5066,
+   "midnightWorst": 16.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.47,
+   -0.72,
+   -0.38,
+   -0.23,
+   null,
+   null,
+   null,
+   1.33,
+   1.59,
+   2.35,
+   3.25,
+   2.55
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "as-2": {
+  "year": 2026,
+  "lat": 59.8044,
+  "lon": 10.8028,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.8,
+    "n": 245,
+    "exact": 129,
+    "within1": 201,
+    "worst": 16.3,
+    "pctExact": 52.7,
+    "pctWithin1": 82
+   },
+   "sunrise": {
+    "margin": -0.83,
+    "n": 245,
+    "exact": 126,
+    "within1": 204,
+    "worst": 1.4,
+    "pctExact": 51.4,
+    "pctWithin1": 83.3
+   },
+   "dhuhr": {
+    "margin": 4.6,
+    "n": 245,
+    "exact": 213,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 86.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.52,
+    "n": 245,
+    "exact": 42,
+    "within1": 69,
+    "worst": 3.2,
+    "pctExact": 17.1,
+    "pctWithin1": 28.2
+   },
+   "magrib": {
+    "margin": 5.03,
+    "n": 245,
+    "exact": 100,
+    "within1": 197,
+    "worst": 1.5,
+    "pctExact": 40.8,
+    "pctWithin1": 80.4
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 245,
+    "exact": 141,
+    "within1": 213,
+    "worst": 2.3,
+    "pctExact": 57.6,
+    "pctWithin1": 86.9
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.43,
+   "hanafiMedian": -73.2
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.52,
+   "hanafiMedian": -36.3,
+   "shafiWorst": 3.2
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5012,
+   "fracP90": 0.5064,
+   "midnightWorst": 25,
+   "midnightWithin1": 49,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   0.4,
+   -0.04,
+   0.05,
+   -0.08,
+   null,
+   null,
+   null,
+   1.48,
+   1.83,
+   2.92,
+   3.86,
+   3.65
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "asker": {
+  "year": 2026,
+  "lat": 59.8333,
+  "lon": 10.4333,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 244,
+  "fit": {
+   "fajr": {
+    "margin": 0.48,
+    "n": 244,
+    "exact": 237,
+    "within1": 243,
+    "worst": 2.1,
+    "pctExact": 97.1,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.45,
+    "n": 244,
+    "exact": 229,
+    "within1": 244,
+    "worst": 0.6,
+    "pctExact": 93.9,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 244,
+    "exact": 218,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 244,
+    "exact": 34,
+    "within1": 79,
+    "worst": 2.5,
+    "pctExact": 13.9,
+    "pctWithin1": 32.4
+   },
+   "magrib": {
+    "margin": 4.51,
+    "n": 244,
+    "exact": 239,
+    "within1": 244,
+    "worst": 0.5,
+    "pctExact": 98,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 244,
+    "exact": 218,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 121,
+   "shafiMedian": 0.6,
+   "hanafiMedian": -73.38
+  },
+  "winterAsr": {
+   "n": 244,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -36.52,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 121,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 10.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.37,
+   -0.68,
+   -0.35,
+   -0.2,
+   null,
+   null,
+   null,
+   1.6,
+   1.81,
+   2.22,
+   3.15,
+   2.42
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-20",
+    "n": 121
+   }
+  ]
+ },
+ "askim": {
+  "year": 2026,
+  "lat": 59.5869,
+  "lon": 11.2247,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.22,
+    "n": 245,
+    "exact": 202,
+    "within1": 239,
+    "worst": 2.3,
+    "pctExact": 82.4,
+    "pctWithin1": 97.6
+   },
+   "sunrise": {
+    "margin": -1.07,
+    "n": 245,
+    "exact": 207,
+    "within1": 245,
+    "worst": 0.8,
+    "pctExact": 84.5,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.08,
+    "n": 245,
+    "exact": 217,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 88.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 0.93,
+    "n": 245,
+    "exact": 44,
+    "within1": 79,
+    "worst": 2.5,
+    "pctExact": 18,
+    "pctWithin1": 32.2
+   },
+   "magrib": {
+    "margin": 4.18,
+    "n": 245,
+    "exact": 206,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 84.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": -0.02,
+    "n": 245,
+    "exact": 214,
+    "within1": 245,
+    "worst": 1,
+    "pctExact": 87.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.18,
+   "hanafiMedian": -73.62
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 0.93,
+   "hanafiMedian": -37.53,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5042,
+   "fracP10": 0.5011,
+   "fracP90": 0.5064,
+   "midnightWorst": 31,
+   "midnightWithin1": 46,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.53,
+   -0.88,
+   -0.65,
+   -0.53,
+   null,
+   null,
+   null,
+   1.05,
+   1.2,
+   1.93,
+   2.85,
+   2.08
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "aurland": {
+  "year": 2026,
+  "lat": 60.908,
+  "lon": 7.1836,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 238,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 238,
+    "exact": 222,
+    "within1": 237,
+    "worst": 2,
+    "pctExact": 93.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.54,
+    "n": 238,
+    "exact": 230,
+    "within1": 238,
+    "worst": 0.5,
+    "pctExact": 96.6,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 238,
+    "exact": 214,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 89.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.37,
+    "n": 238,
+    "exact": 30,
+    "within1": 65,
+    "worst": 2.9,
+    "pctExact": 12.6,
+    "pctWithin1": 27.3
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 238,
+    "exact": 231,
+    "within1": 238,
+    "worst": 0.5,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.39,
+    "n": 238,
+    "exact": 209,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 87.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 127,
+   "shafiMedian": 0.67,
+   "hanafiMedian": -73.08
+  },
+  "winterAsr": {
+   "n": 238,
+   "shafiMedian": 1.37,
+   "hanafiMedian": -35.13,
+   "shafiWorst": 2.9
+  },
+  "summer": {
+   "n": 127,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5074,
+   "midnightWorst": 3,
+   "midnightWithin1": 54,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.55,
+   -0.59,
+   -0.48,
+   -0.1,
+   null,
+   null,
+   null,
+   1.39,
+   1.91,
+   2.45,
+   3.42,
+   2.8
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-23",
+    "n": 127
+   }
+  ]
+ },
+ "austevoll": {
+  "year": 2026,
+  "lat": 60.0783,
+  "lon": 5.3,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 2.02,
+    "n": 243,
+    "exact": 215,
+    "within1": 241,
+    "worst": 2.3,
+    "pctExact": 88.5,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": 0.87,
+    "n": 243,
+    "exact": 217,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 5.93,
+    "n": 243,
+    "exact": 218,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 89.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 2.75,
+    "n": 243,
+    "exact": 40,
+    "within1": 72,
+    "worst": 2.7,
+    "pctExact": 16.5,
+    "pctWithin1": 29.6
+   },
+   "magrib": {
+    "margin": 6,
+    "n": 243,
+    "exact": 213,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 87.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 1.88,
+    "n": 243,
+    "exact": 225,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 92.6,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 1.91,
+   "hanafiMedian": -71.64
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 2.75,
+   "hanafiMedian": -34.88,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5066,
+   "midnightWorst": 21,
+   "midnightWithin1": 50,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   1.12,
+   0.82,
+   1,
+   1.32,
+   null,
+   null,
+   null,
+   2.98,
+   3.01,
+   3.82,
+   4.79,
+   4.23
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "averoy": {
+  "year": 2026,
+  "lat": 63.05,
+  "lon": 8.1836,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 225,
+  "fit": {
+   "fajr": {
+    "margin": 2.73,
+    "n": 225,
+    "exact": 218,
+    "within1": 224,
+    "worst": 2.7,
+    "pctExact": 96.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": 1.75,
+    "n": 225,
+    "exact": 214,
+    "within1": 225,
+    "worst": 0.5,
+    "pctExact": 95.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 6.75,
+    "n": 225,
+    "exact": 207,
+    "within1": 225,
+    "worst": 0.7,
+    "pctExact": 92,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 3.78,
+    "n": 225,
+    "exact": 26,
+    "within1": 51,
+    "worst": 4.2,
+    "pctExact": 11.6,
+    "pctWithin1": 22.7
+   },
+   "magrib": {
+    "margin": 6.75,
+    "n": 225,
+    "exact": 217,
+    "within1": 225,
+    "worst": 0.5,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 2.65,
+    "n": 225,
+    "exact": 202,
+    "within1": 225,
+    "worst": 0.8,
+    "pctExact": 89.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 140,
+   "shafiMedian": 2.79,
+   "hanafiMedian": -71.38
+  },
+  "winterAsr": {
+   "n": 225,
+   "shafiMedian": 3.78,
+   "hanafiMedian": -29.83,
+   "shafiWorst": 4.2
+  },
+  "summer": {
+   "n": 140,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5,
+   "fracP90": 0.5092,
+   "midnightWorst": 34,
+   "midnightWithin1": 63,
+   "sr60Worst": 218
+  },
+  "asrByMonth": [
+   0.95,
+   1.08,
+   1.78,
+   1.93,
+   null,
+   null,
+   null,
+   3.7,
+   4.14,
+   4.93,
+   6.82,
+   6.3
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-12",
+    "last": "2026-08-29",
+    "n": 140
+   }
+  ]
+ },
+ "bergen": {
+  "year": 2026,
+  "lat": 60.3913,
+  "lon": 5.3221,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 241,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 241,
+    "exact": 232,
+    "within1": 240,
+    "worst": 1.9,
+    "pctExact": 96.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 241,
+    "exact": 234,
+    "within1": 241,
+    "worst": 0.5,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 241,
+    "exact": 219,
+    "within1": 241,
+    "worst": 0.6,
+    "pctExact": 90.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.38,
+    "n": 241,
+    "exact": 34,
+    "within1": 71,
+    "worst": 2.7,
+    "pctExact": 14.1,
+    "pctWithin1": 29.5
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 241,
+    "exact": 232,
+    "within1": 241,
+    "worst": 0.5,
+    "pctExact": 96.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 241,
+    "exact": 217,
+    "within1": 241,
+    "worst": 0.7,
+    "pctExact": 90,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 124,
+   "shafiMedian": 0.67,
+   "hanafiMedian": -73.24
+  },
+  "winterAsr": {
+   "n": 241,
+   "shafiMedian": 1.38,
+   "hanafiMedian": -36.1,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 124,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5068,
+   "midnightWorst": 21.5,
+   "midnightWithin1": 51,
+   "sr60Worst": 205
+  },
+  "asrByMonth": [
+   -0.57,
+   -0.73,
+   -0.52,
+   -0.12,
+   null,
+   null,
+   null,
+   1.54,
+   1.91,
+   2.33,
+   3.37,
+   2.72
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-20",
+    "last": "2026-08-21",
+    "n": 124
+   }
+  ]
+ },
+ "bjorkelangen": {
+  "year": 2026,
+  "lat": 59.9719,
+  "lon": 12.4536,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 4.23,
+    "n": 243,
+    "exact": 163,
+    "within1": 222,
+    "worst": 5.2,
+    "pctExact": 67.1,
+    "pctWithin1": 91.4
+   },
+   "sunrise": {
+    "margin": 2.8,
+    "n": 243,
+    "exact": 175,
+    "within1": 239,
+    "worst": 1.1,
+    "pctExact": 72,
+    "pctWithin1": 98.4
+   },
+   "dhuhr": {
+    "margin": 8.03,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 5.15,
+    "n": 243,
+    "exact": 46,
+    "within1": 73,
+    "worst": 2.7,
+    "pctExact": 18.9,
+    "pctWithin1": 30
+   },
+   "magrib": {
+    "margin": 8.33,
+    "n": 243,
+    "exact": 165,
+    "within1": 237,
+    "worst": 1.1,
+    "pctExact": 67.9,
+    "pctWithin1": 97.5
+   },
+   "isha": {
+    "margin": 3.9,
+    "n": 243,
+    "exact": 168,
+    "within1": 236,
+    "worst": 1.6,
+    "pctExact": 69.1,
+    "pctWithin1": 97.1
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 3.98,
+   "hanafiMedian": -69.75
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 5.15,
+   "hanafiMedian": -32.65,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 31.5,
+   "midnightWithin1": 46,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   3.67,
+   3.21,
+   3.4,
+   3.35,
+   null,
+   null,
+   null,
+   5.03,
+   5.38,
+   6.25,
+   7.17,
+   6.43
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "blystadlia": {
+  "year": 2026,
+  "lat": 60.0167,
+  "lon": 10.9833,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.48,
+    "n": 243,
+    "exact": 161,
+    "within1": 217,
+    "worst": 6.3,
+    "pctExact": 66.3,
+    "pctWithin1": 89.3
+   },
+   "sunrise": {
+    "margin": -1.05,
+    "n": 243,
+    "exact": 165,
+    "within1": 239,
+    "worst": 1.2,
+    "pctExact": 67.9,
+    "pctWithin1": 98.4
+   },
+   "dhuhr": {
+    "margin": 4.32,
+    "n": 243,
+    "exact": 212,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 87.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.35,
+    "n": 243,
+    "exact": 45,
+    "within1": 73,
+    "worst": 2.8,
+    "pctExact": 18.5,
+    "pctWithin1": 30
+   },
+   "magrib": {
+    "margin": 4.57,
+    "n": 243,
+    "exact": 171,
+    "within1": 240,
+    "worst": 1.1,
+    "pctExact": 70.4,
+    "pctWithin1": 98.8
+   },
+   "isha": {
+    "margin": 0.13,
+    "n": 243,
+    "exact": 166,
+    "within1": 236,
+    "worst": 1.4,
+    "pctExact": 68.3,
+    "pctWithin1": 97.1
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.3,
+   "hanafiMedian": -73.66
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.35,
+   "hanafiMedian": -36.35,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 29.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.1,
+   -0.55,
+   -0.38,
+   -0.33,
+   null,
+   null,
+   null,
+   1.17,
+   1.54,
+   2.45,
+   3.48,
+   2.85
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "drammen": {
+  "year": 2026,
+  "lat": 59.7436,
+  "lon": 10.2044,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.48,
+    "n": 245,
+    "exact": 235,
+    "within1": 244,
+    "worst": 2,
+    "pctExact": 95.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 245,
+    "exact": 236,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 96.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 245,
+    "exact": 221,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 90.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.25,
+    "n": 245,
+    "exact": 34,
+    "within1": 74,
+    "worst": 2.5,
+    "pctExact": 13.9,
+    "pctWithin1": 30.2
+   },
+   "magrib": {
+    "margin": 4.62,
+    "n": 245,
+    "exact": 228,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 93.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 245,
+    "exact": 223,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 91,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.71,
+   "hanafiMedian": -73.18
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.25,
+   "hanafiMedian": -36.97,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5012,
+   "fracP90": 0.5065,
+   "midnightWorst": 19.5,
+   "midnightWithin1": 47,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.37,
+   -0.73,
+   -0.45,
+   -0.12,
+   null,
+   null,
+   null,
+   1.41,
+   1.89,
+   2.33,
+   3.03,
+   2.42
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "eikelandsosen": {
+  "year": 2026,
+  "lat": 60.15,
+  "lon": 5.9667,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 241,
+  "fit": {
+   "fajr": {
+    "margin": 1.23,
+    "n": 241,
+    "exact": 150,
+    "within1": 216,
+    "worst": 4.5,
+    "pctExact": 62.2,
+    "pctWithin1": 89.6
+   },
+   "sunrise": {
+    "margin": 0.72,
+    "n": 241,
+    "exact": 171,
+    "within1": 238,
+    "worst": 1.1,
+    "pctExact": 71,
+    "pctWithin1": 98.8
+   },
+   "dhuhr": {
+    "margin": 5.38,
+    "n": 241,
+    "exact": 208,
+    "within1": 241,
+    "worst": 0.7,
+    "pctExact": 86.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 2.12,
+    "n": 241,
+    "exact": 37,
+    "within1": 89,
+    "worst": 3,
+    "pctExact": 15.4,
+    "pctWithin1": 36.9
+   },
+   "magrib": {
+    "margin": 5.1,
+    "n": 241,
+    "exact": 157,
+    "within1": 241,
+    "worst": 1,
+    "pctExact": 65.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 1.47,
+    "n": 241,
+    "exact": 165,
+    "within1": 226,
+    "worst": 2,
+    "pctExact": 68.5,
+    "pctWithin1": 93.8
+   }
+  },
+  "summerAsr": {
+   "n": 124,
+   "shafiMedian": 1.77,
+   "hanafiMedian": -72.06
+  },
+  "winterAsr": {
+   "n": 241,
+   "shafiMedian": 2.12,
+   "hanafiMedian": -35.58,
+   "shafiWorst": 3
+  },
+  "summer": {
+   "n": 124,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5011,
+   "fracP90": 0.5074,
+   "midnightWorst": 31,
+   "midnightWithin1": 50,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.03,
+   -0.17,
+   0.18,
+   0.72,
+   null,
+   null,
+   null,
+   2.4,
+   2.53,
+   2.87,
+   3.66,
+   2.68
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-20",
+    "last": "2026-08-21",
+    "n": 124
+   }
+  ]
+ },
+ "elverum": {
+  "year": 2026,
+  "lat": 60.8866,
+  "lon": 11.5627,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 238,
+  "fit": {
+   "fajr": {
+    "margin": 0.57,
+    "n": 238,
+    "exact": 227,
+    "within1": 237,
+    "worst": 2.4,
+    "pctExact": 95.4,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.49,
+    "n": 238,
+    "exact": 228,
+    "within1": 238,
+    "worst": 0.6,
+    "pctExact": 95.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 238,
+    "exact": 214,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 89.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.33,
+    "n": 238,
+    "exact": 30,
+    "within1": 65,
+    "worst": 2.9,
+    "pctExact": 12.6,
+    "pctWithin1": 27.3
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 238,
+    "exact": 223,
+    "within1": 238,
+    "worst": 0.6,
+    "pctExact": 93.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 238,
+    "exact": 223,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 93.7,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 127,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -73.52
+  },
+  "winterAsr": {
+   "n": 238,
+   "shafiMedian": 1.33,
+   "hanafiMedian": -35.52,
+   "shafiWorst": 2.9
+  },
+  "summer": {
+   "n": 127,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5011,
+   "fracP90": 0.507,
+   "midnightWorst": 7.5,
+   "midnightWithin1": 53,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.48,
+   -0.96,
+   -0.45,
+   -0.14,
+   null,
+   null,
+   null,
+   1.68,
+   1.62,
+   2.43,
+   3.48,
+   2.87
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-23",
+    "n": 127
+   }
+  ]
+ },
+ "fagerstrand": {
+  "year": 2026,
+  "lat": 59.7467,
+  "lon": 10.5642,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.47,
+    "n": 245,
+    "exact": 222,
+    "within1": 243,
+    "worst": 2.4,
+    "pctExact": 90.6,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -0.67,
+    "n": 245,
+    "exact": 228,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 93.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.38,
+    "n": 245,
+    "exact": 223,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 91,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.27,
+    "n": 245,
+    "exact": 44,
+    "within1": 78,
+    "worst": 2.5,
+    "pctExact": 18,
+    "pctWithin1": 31.8
+   },
+   "magrib": {
+    "margin": 4.32,
+    "n": 245,
+    "exact": 218,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.35,
+    "n": 245,
+    "exact": 217,
+    "within1": 245,
+    "worst": 0.8,
+    "pctExact": 88.6,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.53,
+   "hanafiMedian": -73.22
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.27,
+   "hanafiMedian": -37.07,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.507,
+   "midnightWorst": 20,
+   "midnightWithin1": 45,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.43,
+   -0.7,
+   -0.4,
+   -0.32,
+   null,
+   null,
+   null,
+   1.41,
+   1.6,
+   2.2,
+   3.03,
+   2.37
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "flateby": {
+  "year": 2026,
+  "lat": 59.7667,
+  "lon": 11.0833,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 244,
+  "fit": {
+   "fajr": {
+    "margin": 0.1,
+    "n": 244,
+    "exact": 175,
+    "within1": 229,
+    "worst": 13.5,
+    "pctExact": 71.7,
+    "pctWithin1": 93.9
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 244,
+    "exact": 197,
+    "within1": 244,
+    "worst": 0.9,
+    "pctExact": 80.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.3,
+    "n": 244,
+    "exact": 217,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 88.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 0.94,
+    "n": 244,
+    "exact": 31,
+    "within1": 81,
+    "worst": 2.7,
+    "pctExact": 12.7,
+    "pctWithin1": 33.2
+   },
+   "magrib": {
+    "margin": 4.1,
+    "n": 244,
+    "exact": 200,
+    "within1": 244,
+    "worst": 0.8,
+    "pctExact": 82,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.4,
+    "n": 244,
+    "exact": 172,
+    "within1": 239,
+    "worst": 1.6,
+    "pctExact": 70.5,
+    "pctWithin1": 98
+   }
+  },
+  "summerAsr": {
+   "n": 121,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -72.93
+  },
+  "winterAsr": {
+   "n": 244,
+   "shafiMedian": 0.94,
+   "hanafiMedian": -37.19,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 121,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5069,
+   "midnightWorst": 10,
+   "midnightWithin1": 47,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.93,
+   -1.2,
+   -0.73,
+   -0.32,
+   null,
+   null,
+   null,
+   1.3,
+   1.55,
+   1.92,
+   2.49,
+   1.72
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-20",
+    "n": 121
+   }
+  ]
+ },
+ "floro": {
+  "year": 2026,
+  "lat": 61.5981,
+  "lon": 5.0237,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 234,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 234,
+    "exact": 227,
+    "within1": 233,
+    "worst": 2,
+    "pctExact": 97,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 234,
+    "exact": 230,
+    "within1": 234,
+    "worst": 0.5,
+    "pctExact": 98.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 234,
+    "exact": 208,
+    "within1": 234,
+    "worst": 0.7,
+    "pctExact": 88.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.5,
+    "n": 234,
+    "exact": 37,
+    "within1": 63,
+    "worst": 3.1,
+    "pctExact": 15.8,
+    "pctWithin1": 26.9
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 234,
+    "exact": 224,
+    "within1": 234,
+    "worst": 0.5,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 234,
+    "exact": 207,
+    "within1": 234,
+    "worst": 0.8,
+    "pctExact": 88.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 131,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -73.37
+  },
+  "winterAsr": {
+   "n": 234,
+   "shafiMedian": 1.5,
+   "hanafiMedian": -34.47,
+   "shafiWorst": 3.1
+  },
+  "summer": {
+   "n": 131,
+   "fracMedian": 0.5049,
+   "fracP10": 0.5,
+   "fracP90": 0.5076,
+   "midnightWorst": 3,
+   "midnightWithin1": 54,
+   "sr60Worst": 209
+  },
+  "asrByMonth": [
+   -0.88,
+   -1.1,
+   -0.47,
+   -0.32,
+   null,
+   null,
+   null,
+   1.72,
+   1.8,
+   2.58,
+   3.82,
+   3.08
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-17",
+    "last": "2026-08-25",
+    "n": 131
+   }
+  ]
+ },
+ "forde": {
+  "year": 2026,
+  "lat": 61.4506,
+  "lon": 5.8492,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 235,
+  "fit": {
+   "fajr": {
+    "margin": 0.47,
+    "n": 235,
+    "exact": 219,
+    "within1": 234,
+    "worst": 2,
+    "pctExact": 93.2,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 235,
+    "exact": 229,
+    "within1": 235,
+    "worst": 0.5,
+    "pctExact": 97.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 235,
+    "exact": 214,
+    "within1": 235,
+    "worst": 0.6,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.58,
+    "n": 235,
+    "exact": 38,
+    "within1": 66,
+    "worst": 3.1,
+    "pctExact": 16.2,
+    "pctWithin1": 28.1
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 235,
+    "exact": 220,
+    "within1": 235,
+    "worst": 0.6,
+    "pctExact": 93.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 235,
+    "exact": 214,
+    "within1": 235,
+    "worst": 0.7,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 130,
+   "shafiMedian": 0.59,
+   "hanafiMedian": -73.75
+  },
+  "winterAsr": {
+   "n": 235,
+   "shafiMedian": 1.58,
+   "hanafiMedian": -34.43,
+   "shafiWorst": 3.1
+  },
+  "summer": {
+   "n": 130,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5,
+   "fracP90": 0.5076,
+   "midnightWorst": 21,
+   "midnightWithin1": 53,
+   "sr60Worst": 209
+  },
+  "asrByMonth": [
+   -0.7,
+   -0.54,
+   -0.47,
+   -0.17,
+   null,
+   null,
+   null,
+   1.57,
+   1.87,
+   2.57,
+   3.73,
+   3.08
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-17",
+    "last": "2026-08-24",
+    "n": 130
+   }
+  ]
+ },
+ "fredrikstad": {
+  "year": 2026,
+  "lat": 59.2181,
+  "lon": 10.9298,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.47,
+    "n": 247,
+    "exact": 237,
+    "within1": 246,
+    "worst": 2.6,
+    "pctExact": 96,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 247,
+    "exact": 240,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 247,
+    "exact": 211,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 85.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 247,
+    "exact": 45,
+    "within1": 83,
+    "worst": 2.4,
+    "pctExact": 18.2,
+    "pctWithin1": 33.6
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 247,
+    "exact": 236,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 95.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 247,
+    "exact": 228,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 92.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.6,
+   "hanafiMedian": -73.04
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -37.27,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 32,
+   "midnightWithin1": 46,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.22,
+   -0.62,
+   -0.3,
+   -0.15,
+   null,
+   null,
+   null,
+   1.42,
+   1.59,
+   2.35,
+   2.84,
+   2.32
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "geilo": {
+  "year": 2026,
+  "lat": 60.5325,
+  "lon": 8.2099,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 240,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 240,
+    "exact": 225,
+    "within1": 239,
+    "worst": 1.8,
+    "pctExact": 93.8,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.45,
+    "n": 240,
+    "exact": 234,
+    "within1": 240,
+    "worst": 0.5,
+    "pctExact": 97.5,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.58,
+    "n": 240,
+    "exact": 220,
+    "within1": 240,
+    "worst": 0.7,
+    "pctExact": 91.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.57,
+    "n": 240,
+    "exact": 41,
+    "within1": 77,
+    "worst": 2.9,
+    "pctExact": 17.1,
+    "pctWithin1": 32.1
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 240,
+    "exact": 236,
+    "within1": 240,
+    "worst": 0.5,
+    "pctExact": 98.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 240,
+    "exact": 215,
+    "within1": 240,
+    "worst": 0.8,
+    "pctExact": 89.6,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 125,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.07
+  },
+  "winterAsr": {
+   "n": 240,
+   "shafiMedian": 1.57,
+   "hanafiMedian": -35.88,
+   "shafiWorst": 2.9
+  },
+  "summer": {
+   "n": 125,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5011,
+   "fracP90": 0.5068,
+   "midnightWorst": 8,
+   "midnightWithin1": 53,
+   "sr60Worst": 205
+  },
+  "asrByMonth": [
+   -0.53,
+   -0.73,
+   -0.33,
+   -0.1,
+   null,
+   null,
+   null,
+   1.62,
+   1.83,
+   2.5,
+   3.5,
+   2.65
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-20",
+    "last": "2026-08-22",
+    "n": 125
+   }
+  ]
+ },
+ "geiranger": {
+  "year": 2026,
+  "lat": 62.1006,
+  "lon": 7.2061,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 231,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 231,
+    "exact": 227,
+    "within1": 230,
+    "worst": 2,
+    "pctExact": 98.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 231,
+    "exact": 222,
+    "within1": 231,
+    "worst": 0.5,
+    "pctExact": 96.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 231,
+    "exact": 211,
+    "within1": 231,
+    "worst": 0.7,
+    "pctExact": 91.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.57,
+    "n": 231,
+    "exact": 35,
+    "within1": 56,
+    "worst": 3.4,
+    "pctExact": 15.2,
+    "pctWithin1": 24.2
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 231,
+    "exact": 221,
+    "within1": 231,
+    "worst": 0.6,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 231,
+    "exact": 213,
+    "within1": 231,
+    "worst": 0.6,
+    "pctExact": 92.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 134,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.79
+  },
+  "winterAsr": {
+   "n": 231,
+   "shafiMedian": 1.57,
+   "hanafiMedian": -33.62,
+   "shafiWorst": 3.4
+  },
+  "summer": {
+   "n": 134,
+   "fracMedian": 0.505,
+   "fracP10": 0.501,
+   "fracP90": 0.5081,
+   "midnightWorst": 26,
+   "midnightWithin1": 55,
+   "sr60Worst": 212
+  },
+  "asrByMonth": [
+   -1,
+   -0.73,
+   -0.35,
+   -0.23,
+   null,
+   null,
+   null,
+   1.63,
+   1.8,
+   2.62,
+   4.03,
+   3.55
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-15",
+    "last": "2026-08-26",
+    "n": 134
+   }
+  ]
+ },
+ "gjovik": {
+  "year": 2026,
+  "lat": 60.7953,
+  "lon": 10.6898,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 239,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 239,
+    "exact": 234,
+    "within1": 238,
+    "worst": 2.7,
+    "pctExact": 97.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 239,
+    "exact": 230,
+    "within1": 239,
+    "worst": 0.5,
+    "pctExact": 96.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 239,
+    "exact": 217,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 90.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.42,
+    "n": 239,
+    "exact": 36,
+    "within1": 70,
+    "worst": 2.8,
+    "pctExact": 15.1,
+    "pctWithin1": 29.3
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 239,
+    "exact": 233,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 97.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 239,
+    "exact": 208,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 87,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 126,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -73.3
+  },
+  "winterAsr": {
+   "n": 239,
+   "shafiMedian": 1.42,
+   "hanafiMedian": -35.62,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 126,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5011,
+   "fracP90": 0.507,
+   "midnightWorst": 17.5,
+   "midnightWithin1": 53,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.55,
+   -0.89,
+   -0.45,
+   -0.12,
+   null,
+   null,
+   null,
+   1.43,
+   1.82,
+   2.38,
+   3.43,
+   2.98
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-22",
+    "n": 126
+   }
+  ]
+ },
+ "gol": {
+  "year": 2026,
+  "lat": 60.6995,
+  "lon": 8.9829,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 239,
+  "fit": {
+   "fajr": {
+    "margin": 0.65,
+    "n": 239,
+    "exact": 233,
+    "within1": 238,
+    "worst": 1.8,
+    "pctExact": 97.5,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.38,
+    "n": 239,
+    "exact": 228,
+    "within1": 239,
+    "worst": 0.5,
+    "pctExact": 95.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.67,
+    "n": 239,
+    "exact": 217,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 90.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.53,
+    "n": 239,
+    "exact": 38,
+    "within1": 69,
+    "worst": 2.7,
+    "pctExact": 15.9,
+    "pctWithin1": 28.9
+   },
+   "magrib": {
+    "margin": 4.67,
+    "n": 239,
+    "exact": 232,
+    "within1": 239,
+    "worst": 0.5,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.62,
+    "n": 239,
+    "exact": 211,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 88.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 126,
+   "shafiMedian": 0.83,
+   "hanafiMedian": -73.38
+  },
+  "winterAsr": {
+   "n": 239,
+   "shafiMedian": 1.53,
+   "hanafiMedian": -35.53,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 126,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5011,
+   "fracP90": 0.5073,
+   "midnightWorst": 25,
+   "midnightWithin1": 52,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.48,
+   -0.48,
+   -0.2,
+   -0.07,
+   null,
+   null,
+   null,
+   1.63,
+   1.95,
+   2.65,
+   3.68,
+   2.72
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-22",
+    "n": 126
+   }
+  ]
+ },
+ "gran-brandbu": {
+  "year": 2026,
+  "lat": 60.468,
+  "lon": 10.4849,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 241,
+  "fit": {
+   "fajr": {
+    "margin": 0.87,
+    "n": 241,
+    "exact": 197,
+    "within1": 234,
+    "worst": 5.7,
+    "pctExact": 81.7,
+    "pctWithin1": 97.1
+   },
+   "sunrise": {
+    "margin": -0.43,
+    "n": 241,
+    "exact": 210,
+    "within1": 241,
+    "worst": 0.7,
+    "pctExact": 87.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.78,
+    "n": 241,
+    "exact": 209,
+    "within1": 241,
+    "worst": 0.7,
+    "pctExact": 86.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.68,
+    "n": 241,
+    "exact": 41,
+    "within1": 71,
+    "worst": 2.8,
+    "pctExact": 17,
+    "pctWithin1": 29.5
+   },
+   "magrib": {
+    "margin": 4.83,
+    "n": 241,
+    "exact": 214,
+    "within1": 241,
+    "worst": 0.7,
+    "pctExact": 88.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.67,
+    "n": 241,
+    "exact": 198,
+    "within1": 241,
+    "worst": 0.9,
+    "pctExact": 82.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 124,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -72.87
+  },
+  "winterAsr": {
+   "n": 241,
+   "shafiMedian": 1.68,
+   "hanafiMedian": -35.78,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 124,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5011,
+   "fracP90": 0.5068,
+   "midnightWorst": 19,
+   "midnightWithin1": 50,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   0.05,
+   -0.35,
+   -0.13,
+   0.08,
+   null,
+   null,
+   null,
+   1.68,
+   1.93,
+   2.7,
+   3.67,
+   2.92
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-20",
+    "last": "2026-08-21",
+    "n": 124
+   }
+  ]
+ },
+ "grimstad": {
+  "year": 2026,
+  "lat": 58.3407,
+  "lon": 8.5939,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 253,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 253,
+    "exact": 245,
+    "within1": 252,
+    "worst": 2.5,
+    "pctExact": 96.8,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 253,
+    "exact": 245,
+    "within1": 253,
+    "worst": 0.5,
+    "pctExact": 96.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 253,
+    "exact": 227,
+    "within1": 253,
+    "worst": 0.7,
+    "pctExact": 89.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.18,
+    "n": 253,
+    "exact": 41,
+    "within1": 97,
+    "worst": 2.2,
+    "pctExact": 16.2,
+    "pctWithin1": 38.3
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 253,
+    "exact": 237,
+    "within1": 253,
+    "worst": 0.6,
+    "pctExact": 93.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 253,
+    "exact": 219,
+    "within1": 253,
+    "worst": 0.7,
+    "pctExact": 86.6,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 112,
+   "shafiMedian": 0.65,
+   "hanafiMedian": -72.88
+  },
+  "winterAsr": {
+   "n": 253,
+   "shafiMedian": 1.18,
+   "hanafiMedian": -38.5,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 112,
+   "fracMedian": 0.5042,
+   "fracP10": 0.5012,
+   "fracP90": 0.5059,
+   "midnightWorst": 25,
+   "midnightWithin1": 43,
+   "sr60Worst": 198
+  },
+  "asrByMonth": [
+   -0.2,
+   -0.51,
+   -0.25,
+   -0.08,
+   null,
+   null,
+   null,
+   1.44,
+   1.61,
+   2.05,
+   2.89,
+   2.35
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-26",
+    "last": "2026-08-15",
+    "n": 112
+   }
+  ]
+ },
+ "hakadal": {
+  "year": 2026,
+  "lat": 60.1333,
+  "lon": 10.8167,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 243,
+    "exact": 218,
+    "within1": 239,
+    "worst": 3.7,
+    "pctExact": 89.7,
+    "pctWithin1": 98.4
+   },
+   "sunrise": {
+    "margin": -0.63,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.47,
+    "n": 243,
+    "exact": 218,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 89.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 243,
+    "exact": 34,
+    "within1": 72,
+    "worst": 2.6,
+    "pctExact": 14,
+    "pctWithin1": 29.6
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 243,
+    "exact": 228,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 93.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.38,
+    "n": 243,
+    "exact": 214,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 88.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.58,
+   "hanafiMedian": -73.6
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -36.48,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5066,
+   "midnightWorst": 16.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.35,
+   -0.64,
+   -0.42,
+   -0.15,
+   null,
+   null,
+   null,
+   1.42,
+   1.82,
+   2.4,
+   3.27,
+   2.65
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "halden": {
+  "year": 2026,
+  "lat": 59.1248,
+  "lon": 11.3876,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 0.58,
+    "n": 249,
+    "exact": 232,
+    "within1": 247,
+    "worst": 2.1,
+    "pctExact": 93.2,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 249,
+    "exact": 236,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 94.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 249,
+    "exact": 222,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 89.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.23,
+    "n": 249,
+    "exact": 38,
+    "within1": 90,
+    "worst": 2.3,
+    "pctExact": 15.3,
+    "pctWithin1": 36.1
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 249,
+    "exact": 242,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 249,
+    "exact": 227,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 91.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 0.52,
+   "hanafiMedian": -73.18
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 1.23,
+   "hanafiMedian": -37.77,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5014,
+   "fracP90": 0.5062,
+   "midnightWorst": 15.5,
+   "midnightWithin1": 43,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.22,
+   -0.54,
+   -0.25,
+   -0.08,
+   null,
+   null,
+   null,
+   1.51,
+   1.58,
+   2.08,
+   2.89,
+   2.4
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "hamar": {
+  "year": 2026,
+  "lat": 60.7945,
+  "lon": 11.068,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 239,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 239,
+    "exact": 230,
+    "within1": 238,
+    "worst": 2.2,
+    "pctExact": 96.2,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.57,
+    "n": 239,
+    "exact": 223,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 93.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 239,
+    "exact": 216,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 90.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 239,
+    "exact": 33,
+    "within1": 65,
+    "worst": 2.9,
+    "pctExact": 13.8,
+    "pctWithin1": 27.2
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 239,
+    "exact": 232,
+    "within1": 239,
+    "worst": 0.5,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 239,
+    "exact": 215,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 90,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 126,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.28
+  },
+  "winterAsr": {
+   "n": 239,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -35.4,
+   "shafiWorst": 2.9
+  },
+  "summer": {
+   "n": 126,
+   "fracMedian": 0.5047,
+   "fracP10": 0.501,
+   "fracP90": 0.507,
+   "midnightWorst": 18.5,
+   "midnightWithin1": 54,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.58,
+   -0.52,
+   -0.43,
+   -0.12,
+   null,
+   null,
+   null,
+   1.68,
+   1.62,
+   2.45,
+   3.56,
+   2.72
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-22",
+    "n": 126
+   }
+  ]
+ },
+ "haugesund": {
+  "year": 2026,
+  "lat": 59.4138,
+  "lon": 5.2676,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 247,
+    "exact": 239,
+    "within1": 246,
+    "worst": 1.9,
+    "pctExact": 96.8,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 247,
+    "exact": 236,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 95.5,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 247,
+    "exact": 219,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 88.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.25,
+    "n": 247,
+    "exact": 35,
+    "within1": 75,
+    "worst": 2.5,
+    "pctExact": 14.2,
+    "pctWithin1": 30.4
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 247,
+    "exact": 237,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 96,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 247,
+    "exact": 230,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 93.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.67,
+   "hanafiMedian": -73.17
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.25,
+   "hanafiMedian": -37.17,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5012,
+   "fracP90": 0.5063,
+   "midnightWorst": 19,
+   "midnightWithin1": 47,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.37,
+   -0.59,
+   -0.32,
+   -0.13,
+   null,
+   null,
+   null,
+   1.4,
+   1.89,
+   2.42,
+   3.06,
+   2.35
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "hemsedal": {
+  "year": 2026,
+  "lat": 60.863,
+  "lon": 8.59,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 238,
+  "fit": {
+   "fajr": {
+    "margin": 0.68,
+    "n": 238,
+    "exact": 224,
+    "within1": 237,
+    "worst": 2.4,
+    "pctExact": 94.1,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.32,
+    "n": 238,
+    "exact": 228,
+    "within1": 238,
+    "worst": 0.6,
+    "pctExact": 95.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.68,
+    "n": 238,
+    "exact": 209,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 87.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.52,
+    "n": 238,
+    "exact": 34,
+    "within1": 66,
+    "worst": 2.9,
+    "pctExact": 14.3,
+    "pctWithin1": 27.7
+   },
+   "magrib": {
+    "margin": 4.73,
+    "n": 238,
+    "exact": 224,
+    "within1": 238,
+    "worst": 0.6,
+    "pctExact": 94.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.64,
+    "n": 238,
+    "exact": 222,
+    "within1": 238,
+    "worst": 0.7,
+    "pctExact": 93.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 127,
+   "shafiMedian": 0.85,
+   "hanafiMedian": -73.33
+  },
+  "winterAsr": {
+   "n": 238,
+   "shafiMedian": 1.52,
+   "hanafiMedian": -35.33,
+   "shafiWorst": 2.9
+  },
+  "summer": {
+   "n": 127,
+   "fracMedian": 0.5047,
+   "fracP10": 0.501,
+   "fracP90": 0.5071,
+   "midnightWorst": 10.5,
+   "midnightWithin1": 54,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.38,
+   -0.91,
+   -0.25,
+   -0.05,
+   null,
+   null,
+   null,
+   1.81,
+   1.77,
+   2.58,
+   3.62,
+   3.07
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-23",
+    "n": 127
+   }
+  ]
+ },
+ "hokksund": {
+  "year": 2026,
+  "lat": 59.7047,
+  "lon": 9.9,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.25,
+    "n": 245,
+    "exact": 172,
+    "within1": 230,
+    "worst": 6.2,
+    "pctExact": 70.2,
+    "pctWithin1": 93.9
+   },
+   "sunrise": {
+    "margin": -0.37,
+    "n": 245,
+    "exact": 194,
+    "within1": 245,
+    "worst": 0.9,
+    "pctExact": 79.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 245,
+    "exact": 210,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 85.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.18,
+    "n": 245,
+    "exact": 31,
+    "within1": 83,
+    "worst": 2.7,
+    "pctExact": 12.7,
+    "pctWithin1": 33.9
+   },
+   "magrib": {
+    "margin": 4.3,
+    "n": 245,
+    "exact": 199,
+    "within1": 245,
+    "worst": 0.8,
+    "pctExact": 81.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 245,
+    "exact": 178,
+    "within1": 240,
+    "worst": 1.3,
+    "pctExact": 72.7,
+    "pctWithin1": 98
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.69,
+   "hanafiMedian": -73.21
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.18,
+   "hanafiMedian": -37.35,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 17.5,
+   "midnightWithin1": 46,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.82,
+   -0.96,
+   -0.55,
+   -0.15,
+   null,
+   null,
+   null,
+   1.54,
+   1.77,
+   2.13,
+   2.57,
+   2.12
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "honefoss": {
+  "year": 2026,
+  "lat": 60.1686,
+  "lon": 10.2521,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 242,
+  "fit": {
+   "fajr": {
+    "margin": 0.56,
+    "n": 242,
+    "exact": 225,
+    "within1": 241,
+    "worst": 2.6,
+    "pctExact": 93,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.43,
+    "n": 242,
+    "exact": 221,
+    "within1": 242,
+    "worst": 0.6,
+    "pctExact": 91.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 242,
+    "exact": 211,
+    "within1": 242,
+    "worst": 0.7,
+    "pctExact": 87.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.47,
+    "n": 242,
+    "exact": 44,
+    "within1": 75,
+    "worst": 2.7,
+    "pctExact": 18.2,
+    "pctWithin1": 31
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 242,
+    "exact": 231,
+    "within1": 242,
+    "worst": 0.5,
+    "pctExact": 95.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 242,
+    "exact": 223,
+    "within1": 242,
+    "worst": 0.7,
+    "pctExact": 92.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 123,
+   "shafiMedian": 0.58,
+   "hanafiMedian": -72.97
+  },
+  "winterAsr": {
+   "n": 242,
+   "shafiMedian": 1.47,
+   "hanafiMedian": -36.5,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 123,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 11.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.43,
+   -0.69,
+   -0.27,
+   -0.17,
+   null,
+   null,
+   null,
+   1.5,
+   1.72,
+   2.42,
+   3.31,
+   2.63
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-21",
+    "n": 123
+   }
+  ]
+ },
+ "horten": {
+  "year": 2026,
+  "lat": 59.4149,
+  "lon": 10.479,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.45,
+    "n": 247,
+    "exact": 233,
+    "within1": 246,
+    "worst": 1.8,
+    "pctExact": 94.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 247,
+    "exact": 239,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 96.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.47,
+    "n": 247,
+    "exact": 223,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 90.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.27,
+    "n": 247,
+    "exact": 32,
+    "within1": 80,
+    "worst": 2.5,
+    "pctExact": 13,
+    "pctWithin1": 32.4
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 247,
+    "exact": 244,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 98.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 247,
+    "exact": 216,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 87.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.64,
+   "hanafiMedian": -73.17
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.27,
+   "hanafiMedian": -37.25,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5063,
+   "midnightWorst": 19,
+   "midnightWithin1": 46,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.32,
+   -0.64,
+   -0.42,
+   -0.23,
+   null,
+   null,
+   null,
+   1.48,
+   1.81,
+   2.32,
+   3.02,
+   2.22
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "jessheim": {
+  "year": 2026,
+  "lat": 60.1553,
+  "lon": 11.0003,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": -0.13,
+    "n": 243,
+    "exact": 217,
+    "within1": 241,
+    "worst": 8,
+    "pctExact": 89.3,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -1.2,
+    "n": 243,
+    "exact": 224,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 92.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 3.87,
+    "n": 243,
+    "exact": 208,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 85.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 0.57,
+    "n": 243,
+    "exact": 38,
+    "within1": 74,
+    "worst": 2.6,
+    "pctExact": 15.6,
+    "pctWithin1": 30.5
+   },
+   "magrib": {
+    "margin": 3.88,
+    "n": 243,
+    "exact": 226,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 93,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": -0.28,
+    "n": 243,
+    "exact": 223,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 91.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": -0.06,
+   "hanafiMedian": -74.02
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 0.57,
+   "hanafiMedian": -36.67,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 14.5,
+   "midnightWithin1": 48,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -1.02,
+   -1.35,
+   -1,
+   -0.78,
+   null,
+   null,
+   null,
+   0.85,
+   0.84,
+   1.68,
+   2.61,
+   1.85
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "jorpeland": {
+  "year": 2026,
+  "lat": 58.9893,
+  "lon": 6.0159,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 0.37,
+    "n": 249,
+    "exact": 206,
+    "within1": 244,
+    "worst": 2,
+    "pctExact": 82.7,
+    "pctWithin1": 98
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 249,
+    "exact": 229,
+    "within1": 249,
+    "worst": 0.6,
+    "pctExact": 92,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.42,
+    "n": 249,
+    "exact": 216,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 86.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.08,
+    "n": 249,
+    "exact": 31,
+    "within1": 89,
+    "worst": 2.5,
+    "pctExact": 12.4,
+    "pctWithin1": 35.7
+   },
+   "magrib": {
+    "margin": 4.32,
+    "n": 249,
+    "exact": 222,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 89.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.35,
+    "n": 249,
+    "exact": 210,
+    "within1": 246,
+    "worst": 1.2,
+    "pctExact": 84.3,
+    "pctWithin1": 98.8
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 0.6,
+   "hanafiMedian": -73.16
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 1.08,
+   "hanafiMedian": -38.13,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 23,
+   "midnightWithin1": 43,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.58,
+   -0.85,
+   -0.5,
+   -0.28,
+   null,
+   null,
+   null,
+   1.31,
+   1.63,
+   1.98,
+   2.68,
+   2.1
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "klofta": {
+  "year": 2026,
+  "lat": 60.2364,
+  "lon": 11.1313,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.75,
+    "n": 243,
+    "exact": 118,
+    "within1": 189,
+    "worst": 18.9,
+    "pctExact": 48.6,
+    "pctWithin1": 77.8
+   },
+   "sunrise": {
+    "margin": -1.02,
+    "n": 243,
+    "exact": 105,
+    "within1": 194,
+    "worst": 1.6,
+    "pctExact": 43.2,
+    "pctWithin1": 79.8
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.57,
+    "n": 243,
+    "exact": 33,
+    "within1": 70,
+    "worst": 3.3,
+    "pctExact": 13.6,
+    "pctWithin1": 28.8
+   },
+   "magrib": {
+    "margin": 5.02,
+    "n": 243,
+    "exact": 105,
+    "within1": 202,
+    "worst": 1.7,
+    "pctExact": 43.2,
+    "pctWithin1": 83.1
+   },
+   "isha": {
+    "margin": 0.3,
+    "n": 243,
+    "exact": 117,
+    "within1": 201,
+    "worst": 2.8,
+    "pctExact": 48.1,
+    "pctWithin1": 82.7
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.27,
+   "hanafiMedian": -73.7
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.57,
+   "hanafiMedian": -35.78,
+   "shafiWorst": 3.3
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5071,
+   "midnightWorst": 20,
+   "midnightWithin1": 47,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   0.45,
+   -0.07,
+   -0.13,
+   -0.09,
+   null,
+   null,
+   null,
+   1.33,
+   2.03,
+   2.87,
+   4.13,
+   3.62
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "kolbotn-2": {
+  "year": 2026,
+  "lat": 59.8719,
+  "lon": 10.6787,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.22,
+    "n": 245,
+    "exact": 175,
+    "within1": 231,
+    "worst": 7.4,
+    "pctExact": 71.4,
+    "pctWithin1": 94.3
+   },
+   "sunrise": {
+    "margin": -1.22,
+    "n": 245,
+    "exact": 176,
+    "within1": 245,
+    "worst": 1,
+    "pctExact": 71.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.03,
+    "n": 245,
+    "exact": 211,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 86.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 0.98,
+    "n": 245,
+    "exact": 48,
+    "within1": 73,
+    "worst": 2.7,
+    "pctExact": 19.6,
+    "pctWithin1": 29.8
+   },
+   "magrib": {
+    "margin": 4.23,
+    "n": 245,
+    "exact": 183,
+    "within1": 245,
+    "worst": 1,
+    "pctExact": 74.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": -0.07,
+    "n": 245,
+    "exact": 193,
+    "within1": 241,
+    "worst": 1.3,
+    "pctExact": 78.8,
+    "pctWithin1": 98.4
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": -0.09,
+   "hanafiMedian": -73.74
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 0.98,
+   "hanafiMedian": -37.12,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 14,
+   "midnightWithin1": 46,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.5,
+   -0.88,
+   -0.73,
+   -0.63,
+   null,
+   null,
+   null,
+   0.98,
+   1.23,
+   2.02,
+   3.06,
+   2.6
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "kongsberg-2": {
+  "year": 2026,
+  "lat": 59.6686,
+  "lon": 9.6492,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 245,
+    "exact": 232,
+    "within1": 244,
+    "worst": 1.7,
+    "pctExact": 94.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.47,
+    "n": 245,
+    "exact": 232,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 94.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 245,
+    "exact": 211,
+    "within1": 245,
+    "worst": 0.8,
+    "pctExact": 86.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 245,
+    "exact": 37,
+    "within1": 80,
+    "worst": 2.5,
+    "pctExact": 15.1,
+    "pctWithin1": 32.7
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 245,
+    "exact": 230,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 93.9,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 245,
+    "exact": 220,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.22
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -37.03,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5014,
+   "fracP90": 0.5069,
+   "midnightWorst": 25,
+   "midnightWithin1": 43,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.38,
+   -0.65,
+   -0.37,
+   -0.12,
+   null,
+   null,
+   null,
+   1.54,
+   1.79,
+   2.28,
+   3.09,
+   2.33
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "kongsvinger": {
+  "year": 2026,
+  "lat": 60.1905,
+  "lon": 12.4539,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 242,
+  "fit": {
+   "fajr": {
+    "margin": 2.35,
+    "n": 242,
+    "exact": 238,
+    "within1": 241,
+    "worst": 2.6,
+    "pctExact": 98.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": 1.39,
+    "n": 242,
+    "exact": 227,
+    "within1": 242,
+    "worst": 0.6,
+    "pctExact": 93.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 6.32,
+    "n": 242,
+    "exact": 210,
+    "within1": 242,
+    "worst": 0.7,
+    "pctExact": 86.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 3.26,
+    "n": 242,
+    "exact": 40,
+    "within1": 73,
+    "worst": 2.7,
+    "pctExact": 16.5,
+    "pctWithin1": 30.2
+   },
+   "magrib": {
+    "margin": 6.32,
+    "n": 242,
+    "exact": 240,
+    "within1": 242,
+    "worst": 0.5,
+    "pctExact": 99.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 2.32,
+    "n": 242,
+    "exact": 219,
+    "within1": 242,
+    "worst": 0.7,
+    "pctExact": 90.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 123,
+   "shafiMedian": 2.47,
+   "hanafiMedian": -71.23
+  },
+  "winterAsr": {
+   "n": 242,
+   "shafiMedian": 3.26,
+   "hanafiMedian": -34.61,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 123,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 7.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   1.42,
+   1.19,
+   1.42,
+   1.66,
+   null,
+   null,
+   null,
+   3.28,
+   3.52,
+   4.2,
+   4.9,
+   4.27
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-21",
+    "n": 123
+   }
+  ]
+ },
+ "kopervik": {
+  "year": 2025,
+  "lat": 59.1672,
+  "lon": 5.323,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.3,
+    "n": 247,
+    "exact": 141,
+    "within1": 215,
+    "worst": 16.1,
+    "pctExact": 57.1,
+    "pctWithin1": 87
+   },
+   "sunrise": {
+    "margin": -0.13,
+    "n": 247,
+    "exact": 144,
+    "within1": 237,
+    "worst": 1.2,
+    "pctExact": 58.3,
+    "pctWithin1": 96
+   },
+   "dhuhr": {
+    "margin": 4.6,
+    "n": 247,
+    "exact": 206,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 83.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.12,
+    "n": 247,
+    "exact": 34,
+    "within1": 96,
+    "worst": 2.8,
+    "pctExact": 13.8,
+    "pctWithin1": 38.9
+   },
+   "magrib": {
+    "margin": 4.22,
+    "n": 247,
+    "exact": 155,
+    "within1": 236,
+    "worst": 1.2,
+    "pctExact": 62.8,
+    "pctWithin1": 95.5
+   },
+   "isha": {
+    "margin": 0.67,
+    "n": 247,
+    "exact": 149,
+    "within1": 226,
+    "worst": 2.4,
+    "pctExact": 60.3,
+    "pctWithin1": 91.5
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.97,
+   "hanafiMedian": -72.82
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.12,
+   "hanafiMedian": -37.5,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 22,
+   "midnightWithin1": 46,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.95,
+   -0.98,
+   -0.48,
+   -0.16,
+   null,
+   null,
+   null,
+   1.72,
+   1.62,
+   2.17,
+   2.34,
+   1.5
+  ],
+  "nullRuns": [
+   {
+    "first": "2025-04-23",
+    "last": "2025-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "kristiansand": {
+  "year": 2026,
+  "lat": 58.1461,
+  "lon": 7.9958,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 255,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 255,
+    "exact": 247,
+    "within1": 254,
+    "worst": 1.8,
+    "pctExact": 96.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 255,
+    "exact": 244,
+    "within1": 255,
+    "worst": 0.5,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.47,
+    "n": 255,
+    "exact": 219,
+    "within1": 255,
+    "worst": 0.7,
+    "pctExact": 85.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.15,
+    "n": 255,
+    "exact": 41,
+    "within1": 99,
+    "worst": 2.2,
+    "pctExact": 16.1,
+    "pctWithin1": 38.8
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 255,
+    "exact": 249,
+    "within1": 255,
+    "worst": 0.5,
+    "pctExact": 97.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.42,
+    "n": 255,
+    "exact": 232,
+    "within1": 255,
+    "worst": 0.7,
+    "pctExact": 91,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 110,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.08
+  },
+  "winterAsr": {
+   "n": 255,
+   "shafiMedian": 1.15,
+   "hanafiMedian": -38.75,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 110,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5012,
+   "fracP90": 0.5058,
+   "midnightWorst": 15.5,
+   "midnightWithin1": 42,
+   "sr60Worst": 196
+  },
+  "asrByMonth": [
+   -0.13,
+   -0.58,
+   -0.32,
+   0.02,
+   null,
+   null,
+   null,
+   1.43,
+   1.63,
+   2.07,
+   2.76,
+   1.98
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-27",
+    "last": "2026-08-14",
+    "n": 110
+   }
+  ]
+ },
+ "kristiansund": {
+  "year": 2026,
+  "lat": 63.1112,
+  "lon": 7.7277,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 225,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 225,
+    "exact": 220,
+    "within1": 224,
+    "worst": 2.1,
+    "pctExact": 97.8,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 225,
+    "exact": 217,
+    "within1": 225,
+    "worst": 0.6,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 225,
+    "exact": 207,
+    "within1": 225,
+    "worst": 0.7,
+    "pctExact": 92,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.73,
+    "n": 225,
+    "exact": 32,
+    "within1": 55,
+    "worst": 4.1,
+    "pctExact": 14.2,
+    "pctWithin1": 24.4
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 225,
+    "exact": 217,
+    "within1": 225,
+    "worst": 0.5,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 225,
+    "exact": 198,
+    "within1": 225,
+    "worst": 0.7,
+    "pctExact": 88,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 140,
+   "shafiMedian": 0.65,
+   "hanafiMedian": -73.92
+  },
+  "winterAsr": {
+   "n": 225,
+   "shafiMedian": 1.73,
+   "hanafiMedian": -31.97,
+   "shafiWorst": 4.1
+  },
+  "summer": {
+   "n": 140,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5,
+   "fracP90": 0.5094,
+   "midnightWorst": 31,
+   "midnightWithin1": 63,
+   "sr60Worst": 218
+  },
+  "asrByMonth": [
+   -1.43,
+   -1.04,
+   -0.6,
+   -0.2,
+   null,
+   null,
+   null,
+   1.9,
+   2.01,
+   2.82,
+   4.54,
+   4.4
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-12",
+    "last": "2026-08-29",
+    "n": 140
+   }
+  ]
+ },
+ "laerdal": {
+  "year": 2026,
+  "lat": 61.0988,
+  "lon": 7.4628,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 237,
+  "fit": {
+   "fajr": {
+    "margin": 0.37,
+    "n": 237,
+    "exact": 235,
+    "within1": 236,
+    "worst": 2.3,
+    "pctExact": 99.2,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.68,
+    "n": 237,
+    "exact": 233,
+    "within1": 237,
+    "worst": 0.5,
+    "pctExact": 98.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.37,
+    "n": 237,
+    "exact": 206,
+    "within1": 237,
+    "worst": 0.6,
+    "pctExact": 86.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.12,
+    "n": 237,
+    "exact": 29,
+    "within1": 58,
+    "worst": 3,
+    "pctExact": 12.2,
+    "pctWithin1": 24.5
+   },
+   "magrib": {
+    "margin": 4.35,
+    "n": 237,
+    "exact": 233,
+    "within1": 237,
+    "worst": 0.5,
+    "pctExact": 98.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.32,
+    "n": 237,
+    "exact": 213,
+    "within1": 237,
+    "worst": 0.9,
+    "pctExact": 89.9,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 128,
+   "shafiMedian": 0.52,
+   "hanafiMedian": -73.45
+  },
+  "winterAsr": {
+   "n": 237,
+   "shafiMedian": 1.12,
+   "hanafiMedian": -35.08,
+   "shafiWorst": 3
+  },
+  "summer": {
+   "n": 128,
+   "fracMedian": 0.5046,
+   "fracP10": 0.501,
+   "fracP90": 0.5072,
+   "midnightWorst": 21,
+   "midnightWithin1": 55,
+   "sr60Worst": 207
+  },
+  "asrByMonth": [
+   -0.7,
+   -0.63,
+   -0.57,
+   -0.28,
+   null,
+   null,
+   null,
+   1.44,
+   1.49,
+   2.38,
+   3.44,
+   2.7
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-18",
+    "last": "2026-08-23",
+    "n": 128
+   }
+  ]
+ },
+ "larvik": {
+  "year": 2026,
+  "lat": 59.0519,
+  "lon": 10.0295,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 249,
+    "exact": 243,
+    "within1": 248,
+    "worst": 1.7,
+    "pctExact": 97.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 249,
+    "exact": 239,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 96,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 249,
+    "exact": 216,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 86.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 249,
+    "exact": 37,
+    "within1": 89,
+    "worst": 2.4,
+    "pctExact": 14.9,
+    "pctWithin1": 35.7
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 249,
+    "exact": 239,
+    "within1": 249,
+    "worst": 0.6,
+    "pctExact": 96,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.4,
+    "n": 249,
+    "exact": 227,
+    "within1": 249,
+    "worst": 0.8,
+    "pctExact": 91.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.26
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -37.78,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5012,
+   "fracP90": 0.5062,
+   "midnightWorst": 21,
+   "midnightWithin1": 46,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.3,
+   -0.6,
+   -0.33,
+   -0.2,
+   null,
+   null,
+   null,
+   1.43,
+   1.74,
+   2.18,
+   2.98,
+   2.15
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "levanger": {
+  "year": 2026,
+  "lat": 63.746,
+  "lon": 11.3007,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 222,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 222,
+    "exact": 219,
+    "within1": 221,
+    "worst": 2.1,
+    "pctExact": 98.6,
+    "pctWithin1": 99.5
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 222,
+    "exact": 211,
+    "within1": 222,
+    "worst": 0.6,
+    "pctExact": 95,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 222,
+    "exact": 200,
+    "within1": 222,
+    "worst": 0.6,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.7,
+    "n": 222,
+    "exact": 19,
+    "within1": 43,
+    "worst": 4.9,
+    "pctExact": 8.6,
+    "pctWithin1": 19.4
+   },
+   "magrib": {
+    "margin": 4.44,
+    "n": 222,
+    "exact": 204,
+    "within1": 222,
+    "worst": 0.6,
+    "pctExact": 91.9,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 222,
+    "exact": 194,
+    "within1": 222,
+    "worst": 0.7,
+    "pctExact": 87.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 143,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -74.15
+  },
+  "winterAsr": {
+   "n": 222,
+   "shafiMedian": 1.7,
+   "hanafiMedian": -30.87,
+   "shafiWorst": 4.9
+  },
+  "summer": {
+   "n": 143,
+   "fracMedian": 0.505,
+   "fracP10": 0.5,
+   "fracP90": 0.5108,
+   "midnightWorst": 7,
+   "midnightWithin1": 66,
+   "sr60Worst": 219
+  },
+  "asrByMonth": [
+   -1.38,
+   -1.16,
+   -0.42,
+   -0.27,
+   null,
+   null,
+   null,
+   null,
+   1.98,
+   3,
+   4.86,
+   4.98
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-11",
+    "last": "2026-08-31",
+    "n": 143
+   }
+  ]
+ },
+ "lillehammer": {
+  "year": 2026,
+  "lat": 61.1155,
+  "lon": 10.4662,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 237,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 237,
+    "exact": 230,
+    "within1": 236,
+    "worst": 2.1,
+    "pctExact": 97,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 237,
+    "exact": 231,
+    "within1": 237,
+    "worst": 0.5,
+    "pctExact": 97.5,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 237,
+    "exact": 220,
+    "within1": 237,
+    "worst": 0.7,
+    "pctExact": 92.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.48,
+    "n": 237,
+    "exact": 29,
+    "within1": 69,
+    "worst": 2.7,
+    "pctExact": 12.2,
+    "pctWithin1": 29.1
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 237,
+    "exact": 231,
+    "within1": 237,
+    "worst": 0.6,
+    "pctExact": 97.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 237,
+    "exact": 216,
+    "within1": 237,
+    "worst": 0.7,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 128,
+   "shafiMedian": 0.66,
+   "hanafiMedian": -73.48
+  },
+  "winterAsr": {
+   "n": 237,
+   "shafiMedian": 1.48,
+   "hanafiMedian": -34.68,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 128,
+   "fracMedian": 0.5045,
+   "fracP10": 0.501,
+   "fracP90": 0.5072,
+   "midnightWorst": 20.5,
+   "midnightWithin1": 55,
+   "sr60Worst": 207
+  },
+  "asrByMonth": [
+   -0.52,
+   -0.45,
+   -0.4,
+   -0.22,
+   null,
+   null,
+   null,
+   1.49,
+   2.03,
+   2.5,
+   3.56,
+   3.12
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-18",
+    "last": "2026-08-23",
+    "n": 128
+   }
+  ]
+ },
+ "lillestrom": {
+  "year": 2026,
+  "lat": 59.9566,
+  "lon": 11.0482,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 243,
+    "exact": 238,
+    "within1": 242,
+    "worst": 2.5,
+    "pctExact": 97.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.55,
+    "n": 243,
+    "exact": 235,
+    "within1": 243,
+    "worst": 0.5,
+    "pctExact": 96.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 243,
+    "exact": 211,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 86.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.42,
+    "n": 243,
+    "exact": 45,
+    "within1": 83,
+    "worst": 2.6,
+    "pctExact": 18.5,
+    "pctWithin1": 34.2
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 243,
+    "exact": 234,
+    "within1": 243,
+    "worst": 0.5,
+    "pctExact": 96.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 243,
+    "exact": 223,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 91.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.69,
+   "hanafiMedian": -73.25
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.42,
+   "hanafiMedian": -36.35,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 28.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.28,
+   -0.67,
+   -0.35,
+   -0.22,
+   null,
+   null,
+   null,
+   1.43,
+   1.71,
+   2.22,
+   3.17,
+   2.65
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "lorenskog-2": {
+  "year": 2026,
+  "lat": 59.95,
+  "lon": 10.9333,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 243,
+    "exact": 207,
+    "within1": 237,
+    "worst": 2.2,
+    "pctExact": 85.2,
+    "pctWithin1": 97.5
+   },
+   "sunrise": {
+    "margin": -0.65,
+    "n": 243,
+    "exact": 209,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 86,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.45,
+    "n": 243,
+    "exact": 218,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 89.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.15,
+    "n": 243,
+    "exact": 35,
+    "within1": 73,
+    "worst": 2.7,
+    "pctExact": 14.4,
+    "pctWithin1": 30
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 243,
+    "exact": 214,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 88.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.35,
+    "n": 243,
+    "exact": 217,
+    "within1": 243,
+    "worst": 0.9,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.53,
+   "hanafiMedian": -72.92
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.15,
+   "hanafiMedian": -36.65,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5012,
+   "fracP90": 0.5066,
+   "midnightWorst": 30.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.3,
+   -0.63,
+   -0.35,
+   -0.19,
+   null,
+   null,
+   null,
+   1.27,
+   1.55,
+   2.37,
+   3.2,
+   2.55
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "mandal": {
+  "year": 2026,
+  "lat": 58.0246,
+  "lon": 7.4548,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 255,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 255,
+    "exact": 249,
+    "within1": 254,
+    "worst": 1.7,
+    "pctExact": 97.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 255,
+    "exact": 249,
+    "within1": 255,
+    "worst": 0.5,
+    "pctExact": 97.6,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 255,
+    "exact": 227,
+    "within1": 255,
+    "worst": 0.7,
+    "pctExact": 89,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.2,
+    "n": 255,
+    "exact": 51,
+    "within1": 100,
+    "worst": 2.2,
+    "pctExact": 20,
+    "pctWithin1": 39.2
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 255,
+    "exact": 244,
+    "within1": 255,
+    "worst": 0.6,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 255,
+    "exact": 227,
+    "within1": 255,
+    "worst": 0.6,
+    "pctExact": 89,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 110,
+   "shafiMedian": 0.66,
+   "hanafiMedian": -72.94
+  },
+  "winterAsr": {
+   "n": 255,
+   "shafiMedian": 1.2,
+   "hanafiMedian": -38.98,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 110,
+   "fracMedian": 0.5042,
+   "fracP10": 0.5013,
+   "fracP90": 0.5058,
+   "midnightWorst": 24.5,
+   "midnightWithin1": 41,
+   "sr60Worst": 197
+  },
+  "asrByMonth": [
+   -0.17,
+   -0.48,
+   -0.23,
+   -0.07,
+   null,
+   null,
+   null,
+   1.52,
+   1.48,
+   2.12,
+   2.81,
+   1.98
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-27",
+    "last": "2026-08-14",
+    "n": 110
+   }
+  ]
+ },
+ "molde": {
+  "year": 2026,
+  "lat": 62.7394,
+  "lon": 7.1599,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 227,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 227,
+    "exact": 217,
+    "within1": 226,
+    "worst": 2.5,
+    "pctExact": 95.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 227,
+    "exact": 220,
+    "within1": 227,
+    "worst": 0.5,
+    "pctExact": 96.9,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.6,
+    "n": 227,
+    "exact": 198,
+    "within1": 227,
+    "worst": 0.7,
+    "pctExact": 87.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.55,
+    "n": 227,
+    "exact": 28,
+    "within1": 53,
+    "worst": 3.9,
+    "pctExact": 12.3,
+    "pctWithin1": 23.3
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 227,
+    "exact": 216,
+    "within1": 227,
+    "worst": 0.5,
+    "pctExact": 95.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 227,
+    "exact": 205,
+    "within1": 227,
+    "worst": 0.7,
+    "pctExact": 90.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 138,
+   "shafiMedian": 0.61,
+   "hanafiMedian": -73.51
+  },
+  "winterAsr": {
+   "n": 227,
+   "shafiMedian": 1.55,
+   "hanafiMedian": -32.48,
+   "shafiWorst": 3.9
+  },
+  "summer": {
+   "n": 138,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5088,
+   "midnightWorst": 31,
+   "midnightWithin1": 62,
+   "sr60Worst": 216
+  },
+  "asrByMonth": [
+   -0.98,
+   -1.07,
+   -0.43,
+   -0.31,
+   null,
+   null,
+   null,
+   1.53,
+   1.88,
+   2.75,
+   4.41,
+   3.75
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-13",
+    "last": "2026-08-28",
+    "n": 138
+   }
+  ]
+ },
+ "moss": {
+  "year": 2026,
+  "lat": 59.3733,
+  "lon": 10.6546,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.33,
+    "n": 247,
+    "exact": 168,
+    "within1": 233,
+    "worst": 5.4,
+    "pctExact": 68,
+    "pctWithin1": 94.3
+   },
+   "sunrise": {
+    "margin": -0.32,
+    "n": 247,
+    "exact": 197,
+    "within1": 247,
+    "worst": 0.9,
+    "pctExact": 79.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.57,
+    "n": 247,
+    "exact": 208,
+    "within1": 247,
+    "worst": 0.8,
+    "pctExact": 84.2,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.22,
+    "n": 247,
+    "exact": 41,
+    "within1": 93,
+    "worst": 2.7,
+    "pctExact": 16.6,
+    "pctWithin1": 37.7
+   },
+   "magrib": {
+    "margin": 4.33,
+    "n": 247,
+    "exact": 194,
+    "within1": 247,
+    "worst": 0.8,
+    "pctExact": 78.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.57,
+    "n": 247,
+    "exact": 185,
+    "within1": 242,
+    "worst": 1.4,
+    "pctExact": 74.9,
+    "pctWithin1": 98
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.77,
+   "hanafiMedian": -72.97
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.22,
+   "hanafiMedian": -37.7,
+   "shafiWorst": 2.7
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5014,
+   "fracP90": 0.5066,
+   "midnightWorst": 17.5,
+   "midnightWithin1": 44,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.67,
+   -0.93,
+   -0.47,
+   -0.18,
+   null,
+   null,
+   null,
+   1.6,
+   1.58,
+   2.05,
+   2.58,
+   2.08
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "namsos": {
+  "year": 2026,
+  "lat": 64.4662,
+  "lon": 11.4956,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 218,
+  "fit": {
+   "fajr": {
+    "margin": 0.47,
+    "n": 218,
+    "exact": 208,
+    "within1": 217,
+    "worst": 2.6,
+    "pctExact": 95.4,
+    "pctWithin1": 99.5
+   },
+   "sunrise": {
+    "margin": -0.56,
+    "n": 218,
+    "exact": 209,
+    "within1": 218,
+    "worst": 0.6,
+    "pctExact": 95.9,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 218,
+    "exact": 199,
+    "within1": 218,
+    "worst": 0.6,
+    "pctExact": 91.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.63,
+    "n": 218,
+    "exact": 19,
+    "within1": 39,
+    "worst": 6,
+    "pctExact": 8.7,
+    "pctWithin1": 17.9
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 218,
+    "exact": 204,
+    "within1": 218,
+    "worst": 0.5,
+    "pctExact": 93.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 218,
+    "exact": 202,
+    "within1": 218,
+    "worst": 0.6,
+    "pctExact": 92.7,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 147,
+   "shafiMedian": 0.73,
+   "hanafiMedian": -74.4
+  },
+  "winterAsr": {
+   "n": 218,
+   "shafiMedian": 1.63,
+   "hanafiMedian": -29.34,
+   "shafiWorst": 6
+  },
+  "summer": {
+   "n": 147,
+   "fracMedian": 0.5049,
+   "fracP10": 0.5,
+   "fracP90": 0.5126,
+   "midnightWorst": 11.5,
+   "midnightWithin1": 68,
+   "sr60Worst": 223
+  },
+  "asrByMonth": [
+   -2.03,
+   -1.33,
+   -0.5,
+   -0.38,
+   null,
+   null,
+   null,
+   null,
+   2.11,
+   2.92,
+   5.42,
+   5.67
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-09",
+    "last": "2026-09-02",
+    "n": 147
+   }
+  ]
+ },
+ "nesbyen": {
+  "year": 2026,
+  "lat": 60.5708,
+  "lon": 9.1022,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 239,
+  "fit": {
+   "fajr": {
+    "margin": 0.55,
+    "n": 239,
+    "exact": 223,
+    "within1": 238,
+    "worst": 2.3,
+    "pctExact": 93.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.47,
+    "n": 239,
+    "exact": 225,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 94.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 239,
+    "exact": 217,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 90.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 239,
+    "exact": 33,
+    "within1": 66,
+    "worst": 2.8,
+    "pctExact": 13.8,
+    "pctWithin1": 27.6
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 239,
+    "exact": 225,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 94.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 239,
+    "exact": 218,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 91.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 126,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.56
+  },
+  "winterAsr": {
+   "n": 239,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -35.87,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 126,
+   "fracMedian": 0.5047,
+   "fracP10": 0.501,
+   "fracP90": 0.5073,
+   "midnightWorst": 32.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 207
+  },
+  "asrByMonth": [
+   -0.38,
+   -0.64,
+   -0.3,
+   -0.14,
+   null,
+   null,
+   null,
+   1.62,
+   1.61,
+   2.43,
+   3.46,
+   2.82
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-22",
+    "n": 126
+   }
+  ]
+ },
+ "notodden-2": {
+  "year": 2026,
+  "lat": 59.5578,
+  "lon": 9.2592,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 245,
+    "exact": 238,
+    "within1": 244,
+    "worst": 2.1,
+    "pctExact": 97.1,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 245,
+    "exact": 237,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 96.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 245,
+    "exact": 218,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.25,
+    "n": 245,
+    "exact": 37,
+    "within1": 82,
+    "worst": 2.4,
+    "pctExact": 15.1,
+    "pctWithin1": 33.5
+   },
+   "magrib": {
+    "margin": 4.47,
+    "n": 245,
+    "exact": 238,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 245,
+    "exact": 229,
+    "within1": 245,
+    "worst": 0.8,
+    "pctExact": 93.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.66,
+   "hanafiMedian": -72.97
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.25,
+   "hanafiMedian": -37.03,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5064,
+   "midnightWorst": 30.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.32,
+   -0.63,
+   -0.4,
+   -0.1,
+   null,
+   null,
+   null,
+   1.32,
+   1.74,
+   2.25,
+   3.04,
+   2.27
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "odda": {
+  "year": 2026,
+  "lat": 60.0695,
+  "lon": 6.5477,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 243,
+    "exact": 235,
+    "within1": 242,
+    "worst": 2.6,
+    "pctExact": 96.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 243,
+    "exact": 235,
+    "within1": 243,
+    "worst": 0.5,
+    "pctExact": 96.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.52,
+    "n": 243,
+    "exact": 211,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 86.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.27,
+    "n": 243,
+    "exact": 34,
+    "within1": 73,
+    "worst": 2.6,
+    "pctExact": 14,
+    "pctWithin1": 30
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 243,
+    "exact": 227,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 93.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.42,
+    "n": 243,
+    "exact": 211,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 86.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.65,
+   "hanafiMedian": -73.49
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.27,
+   "hanafiMedian": -36.62,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5066,
+   "midnightWorst": 21,
+   "midnightWithin1": 48,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.53,
+   -0.73,
+   -0.4,
+   -0.21,
+   null,
+   null,
+   null,
+   1.45,
+   1.77,
+   2.38,
+   3.26,
+   2.45
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "orkanger": {
+  "year": 2026,
+  "lat": 63.2854,
+  "lon": 9.8473,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 224,
+  "fit": {
+   "fajr": {
+    "margin": 0.46,
+    "n": 224,
+    "exact": 209,
+    "within1": 224,
+    "worst": 0.9,
+    "pctExact": 93.3,
+    "pctWithin1": 100
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 224,
+    "exact": 216,
+    "within1": 224,
+    "worst": 0.6,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 224,
+    "exact": 208,
+    "within1": 224,
+    "worst": 0.6,
+    "pctExact": 92.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.52,
+    "n": 224,
+    "exact": 23,
+    "within1": 46,
+    "worst": 4.5,
+    "pctExact": 10.3,
+    "pctWithin1": 20.5
+   },
+   "magrib": {
+    "margin": 4.4,
+    "n": 224,
+    "exact": 211,
+    "within1": 224,
+    "worst": 0.6,
+    "pctExact": 94.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.5,
+    "n": 224,
+    "exact": 200,
+    "within1": 224,
+    "worst": 1,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 141,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -73.75
+  },
+  "winterAsr": {
+   "n": 224,
+   "shafiMedian": 1.52,
+   "hanafiMedian": -31.76,
+   "shafiWorst": 4.5
+  },
+  "summer": {
+   "n": 141,
+   "fracMedian": 0.505,
+   "fracP10": 0.5,
+   "fracP90": 0.5097,
+   "midnightWorst": 18,
+   "midnightWithin1": 64,
+   "sr60Worst": 217
+  },
+  "asrByMonth": [
+   -1.27,
+   -1.19,
+   -0.57,
+   -0.37,
+   null,
+   null,
+   null,
+   1.43,
+   1.84,
+   2.63,
+   4.63,
+   4.3
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-12",
+    "last": "2026-08-30",
+    "n": 141
+   }
+  ]
+ },
+ "oslo": {
+  "year": 2026,
+  "lat": 59.9139,
+  "lon": 10.7522,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.55,
+    "n": 243,
+    "exact": 227,
+    "within1": 242,
+    "worst": 2.3,
+    "pctExact": 93.4,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 243,
+    "exact": 222,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 91.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.6,
+    "n": 243,
+    "exact": 221,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 90.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.35,
+    "n": 243,
+    "exact": 40,
+    "within1": 76,
+    "worst": 2.6,
+    "pctExact": 16.5,
+    "pctWithin1": 31.3
+   },
+   "magrib": {
+    "margin": 4.62,
+    "n": 243,
+    "exact": 234,
+    "within1": 243,
+    "worst": 0.5,
+    "pctExact": 96.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.53,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.29
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.35,
+   "hanafiMedian": -36.65,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 30.5,
+   "midnightWithin1": 51,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.23,
+   -0.52,
+   -0.33,
+   -0.1,
+   null,
+   null,
+   null,
+   1.57,
+   1.63,
+   2.42,
+   3.18,
+   2.52
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "oslo-holmlia-2": {
+  "year": 2026,
+  "lat": 59.8586,
+  "lon": 10.8277,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 244,
+  "fit": {
+   "fajr": {
+    "margin": 0.77,
+    "n": 244,
+    "exact": 213,
+    "within1": 239,
+    "worst": 2.4,
+    "pctExact": 87.3,
+    "pctWithin1": 98
+   },
+   "sunrise": {
+    "margin": -0.45,
+    "n": 244,
+    "exact": 223,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 91.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.68,
+    "n": 244,
+    "exact": 212,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 86.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.53,
+    "n": 244,
+    "exact": 45,
+    "within1": 73,
+    "worst": 2.6,
+    "pctExact": 18.4,
+    "pctWithin1": 29.9
+   },
+   "magrib": {
+    "margin": 4.8,
+    "n": 244,
+    "exact": 210,
+    "within1": 244,
+    "worst": 0.7,
+    "pctExact": 86.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.6,
+    "n": 244,
+    "exact": 216,
+    "within1": 244,
+    "worst": 0.9,
+    "pctExact": 88.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 121,
+   "shafiMedian": 0.72,
+   "hanafiMedian": -73.05
+  },
+  "winterAsr": {
+   "n": 244,
+   "shafiMedian": 1.53,
+   "hanafiMedian": -36.51,
+   "shafiWorst": 2.6
+  },
+  "summer": {
+   "n": 121,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5065,
+   "midnightWorst": 11,
+   "midnightWithin1": 51,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.12,
+   -0.37,
+   -0.17,
+   0.05,
+   null,
+   null,
+   null,
+   1.55,
+   1.8,
+   2.57,
+   3.38,
+   2.85
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-20",
+    "n": 121
+   }
+  ]
+ },
+ "otta": {
+  "year": 2026,
+  "lat": 61.9411,
+  "lon": 9.5389,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 233,
+  "fit": {
+   "fajr": {
+    "margin": 0.75,
+    "n": 233,
+    "exact": 104,
+    "within1": 177,
+    "worst": 21.1,
+    "pctExact": 44.6,
+    "pctWithin1": 76
+   },
+   "sunrise": {
+    "margin": -1.23,
+    "n": 233,
+    "exact": 79,
+    "within1": 165,
+    "worst": 1.8,
+    "pctExact": 33.9,
+    "pctWithin1": 70.8
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 233,
+    "exact": 204,
+    "within1": 233,
+    "worst": 0.7,
+    "pctExact": 87.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.8,
+    "n": 233,
+    "exact": 32,
+    "within1": 54,
+    "worst": 4.1,
+    "pctExact": 13.7,
+    "pctWithin1": 23.2
+   },
+   "magrib": {
+    "margin": 5.18,
+    "n": 233,
+    "exact": 81,
+    "within1": 159,
+    "worst": 1.9,
+    "pctExact": 34.8,
+    "pctWithin1": 68.2
+   },
+   "isha": {
+    "margin": 0.37,
+    "n": 233,
+    "exact": 105,
+    "within1": 188,
+    "worst": 2.8,
+    "pctExact": 45.1,
+    "pctWithin1": 80.7
+   }
+  },
+  "summerAsr": {
+   "n": 132,
+   "shafiMedian": 0.18,
+   "hanafiMedian": -74.15
+  },
+  "winterAsr": {
+   "n": 233,
+   "shafiMedian": 1.8,
+   "hanafiMedian": -33.17,
+   "shafiWorst": 4.1
+  },
+  "summer": {
+   "n": 132,
+   "fracMedian": 0.5048,
+   "fracP10": 0.5,
+   "fracP90": 0.5075,
+   "midnightWorst": 23.5,
+   "midnightWithin1": 58,
+   "sr60Worst": 211
+  },
+  "asrByMonth": [
+   0.27,
+   -0.01,
+   -0.15,
+   -0.13,
+   null,
+   null,
+   null,
+   1.81,
+   2.11,
+   3.23,
+   4.9,
+   4.47
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-16",
+    "last": "2026-08-25",
+    "n": 132
+   }
+  ]
+ },
+ "rade-2": {
+  "year": 2026,
+  "lat": 59.365,
+  "lon": 10.72,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.02,
+    "n": 247,
+    "exact": 214,
+    "within1": 245,
+    "worst": 2.2,
+    "pctExact": 86.6,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -1.18,
+    "n": 247,
+    "exact": 229,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 92.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 3.9,
+    "n": 247,
+    "exact": 221,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 89.5,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 0.65,
+    "n": 247,
+    "exact": 43,
+    "within1": 80,
+    "worst": 2.3,
+    "pctExact": 17.4,
+    "pctWithin1": 32.4
+   },
+   "magrib": {
+    "margin": 3.97,
+    "n": 247,
+    "exact": 224,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 90.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": -0.18,
+    "n": 247,
+    "exact": 217,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 87.9,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.03,
+   "hanafiMedian": -73.68
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 0.65,
+   "hanafiMedian": -37.5,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5011,
+   "fracP90": 0.5064,
+   "midnightWorst": 23.5,
+   "midnightWithin1": 48,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.8,
+   -1.14,
+   -0.97,
+   -0.63,
+   null,
+   null,
+   null,
+   0.87,
+   0.97,
+   1.82,
+   2.48,
+   1.75
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "risor-2": {
+  "year": 2026,
+  "lat": 58.7206,
+  "lon": 9.2338,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 251,
+  "fit": {
+   "fajr": {
+    "margin": 0.55,
+    "n": 251,
+    "exact": 237,
+    "within1": 250,
+    "worst": 2.2,
+    "pctExact": 94.4,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 251,
+    "exact": 240,
+    "within1": 251,
+    "worst": 0.5,
+    "pctExact": 95.6,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 251,
+    "exact": 222,
+    "within1": 251,
+    "worst": 0.7,
+    "pctExact": 88.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 251,
+    "exact": 42,
+    "within1": 90,
+    "worst": 2.3,
+    "pctExact": 16.7,
+    "pctWithin1": 35.9
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 251,
+    "exact": 244,
+    "within1": 251,
+    "worst": 0.5,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 251,
+    "exact": 232,
+    "within1": 251,
+    "worst": 0.7,
+    "pctExact": 92.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 114,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -72.94
+  },
+  "winterAsr": {
+   "n": 251,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -38.12,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 114,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5063,
+   "midnightWorst": 21,
+   "midnightWithin1": 43,
+   "sr60Worst": 199
+  },
+  "asrByMonth": [
+   -0.15,
+   -0.55,
+   -0.23,
+   -0.13,
+   null,
+   null,
+   null,
+   1.47,
+   1.64,
+   2.13,
+   2.88,
+   2.25
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-25",
+    "last": "2026-08-16",
+    "n": 114
+   }
+  ]
+ },
+ "rygge": {
+  "year": 2026,
+  "lat": 59.3789,
+  "lon": 10.7167,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.38,
+    "n": 247,
+    "exact": 241,
+    "within1": 246,
+    "worst": 1.8,
+    "pctExact": 97.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.65,
+    "n": 247,
+    "exact": 239,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 96.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.33,
+    "n": 247,
+    "exact": 215,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 87,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.08,
+    "n": 247,
+    "exact": 34,
+    "within1": 80,
+    "worst": 2.4,
+    "pctExact": 13.8,
+    "pctWithin1": 32.4
+   },
+   "magrib": {
+    "margin": 4.33,
+    "n": 247,
+    "exact": 239,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 96.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.3,
+    "n": 247,
+    "exact": 225,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.51,
+   "hanafiMedian": -73.29
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.08,
+   "hanafiMedian": -37.45,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5064,
+   "midnightWorst": 22,
+   "midnightWithin1": 44,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.45,
+   -0.77,
+   -0.53,
+   -0.29,
+   null,
+   null,
+   null,
+   1.2,
+   1.72,
+   2.13,
+   2.82,
+   2.23
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "sandefjord": {
+  "year": 2026,
+  "lat": 59.1314,
+  "lon": 10.2165,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 249,
+    "exact": 242,
+    "within1": 248,
+    "worst": 2.5,
+    "pctExact": 97.2,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 249,
+    "exact": 237,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 95.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 249,
+    "exact": 226,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 90.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.18,
+    "n": 249,
+    "exact": 42,
+    "within1": 82,
+    "worst": 2.3,
+    "pctExact": 16.9,
+    "pctWithin1": 32.9
+   },
+   "magrib": {
+    "margin": 4.55,
+    "n": 249,
+    "exact": 240,
+    "within1": 249,
+    "worst": 0.6,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 249,
+    "exact": 232,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 93.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -72.95
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 1.18,
+   "hanafiMedian": -37.72,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5012,
+   "fracP90": 0.5062,
+   "midnightWorst": 15,
+   "midnightWithin1": 47,
+   "sr60Worst": 199
+  },
+  "asrByMonth": [
+   -0.3,
+   -0.58,
+   -0.28,
+   -0.15,
+   null,
+   null,
+   null,
+   1.53,
+   1.62,
+   2.25,
+   3.01,
+   2.22
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "sandnes": {
+  "year": 2026,
+  "lat": 58.8528,
+  "lon": 5.7354,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 250,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 250,
+    "exact": 236,
+    "within1": 249,
+    "worst": 2.5,
+    "pctExact": 94.4,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 250,
+    "exact": 241,
+    "within1": 250,
+    "worst": 0.5,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.49,
+    "n": 250,
+    "exact": 224,
+    "within1": 250,
+    "worst": 0.7,
+    "pctExact": 89.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 250,
+    "exact": 50,
+    "within1": 86,
+    "worst": 2.4,
+    "pctExact": 20,
+    "pctWithin1": 34.4
+   },
+   "magrib": {
+    "margin": 4.49,
+    "n": 250,
+    "exact": 244,
+    "within1": 250,
+    "worst": 0.6,
+    "pctExact": 97.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.49,
+    "n": 250,
+    "exact": 225,
+    "within1": 250,
+    "worst": 0.6,
+    "pctExact": 90,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 115,
+   "shafiMedian": 0.55,
+   "hanafiMedian": -73.18
+  },
+  "winterAsr": {
+   "n": 250,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -37.84,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 115,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 8.5,
+   "midnightWithin1": 47,
+   "sr60Worst": 199
+  },
+  "asrByMonth": [
+   -0.18,
+   -0.57,
+   -0.2,
+   -0.2,
+   null,
+   null,
+   null,
+   1.58,
+   1.52,
+   2.23,
+   2.89,
+   2.27
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-25",
+    "last": "2026-08-17",
+    "n": 115
+   }
+  ]
+ },
+ "sandvika": {
+  "year": 2026,
+  "lat": 59.8944,
+  "lon": 10.5323,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 243,
+    "exact": 233,
+    "within1": 242,
+    "worst": 2.5,
+    "pctExact": 95.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.58,
+    "n": 243,
+    "exact": 233,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 95.9,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 243,
+    "exact": 213,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 87.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.37,
+    "n": 243,
+    "exact": 45,
+    "within1": 75,
+    "worst": 2.5,
+    "pctExact": 18.5,
+    "pctWithin1": 30.9
+   },
+   "magrib": {
+    "margin": 4.58,
+    "n": 243,
+    "exact": 230,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 94.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 243,
+    "exact": 215,
+    "within1": 243,
+    "worst": 0.7,
+    "pctExact": 88.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.16
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.37,
+   "hanafiMedian": -36.7,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5012,
+   "fracP90": 0.5065,
+   "midnightWorst": 31.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.3,
+   -0.61,
+   -0.38,
+   -0.11,
+   null,
+   null,
+   null,
+   1.42,
+   1.67,
+   2.38,
+   3.15,
+   2.37
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "sarpsborg": {
+  "year": 2026,
+  "lat": 59.2841,
+  "lon": 11.1097,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.58,
+    "n": 247,
+    "exact": 227,
+    "within1": 246,
+    "worst": 2.2,
+    "pctExact": 91.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 247,
+    "exact": 240,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 247,
+    "exact": 225,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.2,
+    "n": 247,
+    "exact": 41,
+    "within1": 82,
+    "worst": 2.4,
+    "pctExact": 16.6,
+    "pctWithin1": 33.2
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 247,
+    "exact": 236,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 95.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 247,
+    "exact": 218,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 88.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.69,
+   "hanafiMedian": -72.92
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.2,
+   "hanafiMedian": -37.27,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5012,
+   "fracP90": 0.5062,
+   "midnightWorst": 28.5,
+   "midnightWithin1": 42,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.33,
+   -0.61,
+   -0.23,
+   -0.06,
+   null,
+   null,
+   null,
+   1.43,
+   1.49,
+   2.3,
+   2.88,
+   2.43
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "seljord": {
+  "year": 2026,
+  "lat": 59.486,
+  "lon": 8.6181,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 247,
+    "exact": 232,
+    "within1": 245,
+    "worst": 2.3,
+    "pctExact": 93.9,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -0.57,
+    "n": 247,
+    "exact": 235,
+    "within1": 247,
+    "worst": 0.6,
+    "pctExact": 95.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 247,
+    "exact": 221,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 89.5,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 247,
+    "exact": 43,
+    "within1": 82,
+    "worst": 2.5,
+    "pctExact": 17.4,
+    "pctWithin1": 33.2
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 247,
+    "exact": 236,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 95.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 247,
+    "exact": 228,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 92.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.56,
+   "hanafiMedian": -73.15
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -37.42,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 12,
+   "midnightWithin1": 46,
+   "sr60Worst": 201
+  },
+  "asrByMonth": [
+   -0.32,
+   -0.64,
+   -0.35,
+   -0.17,
+   null,
+   null,
+   null,
+   1.48,
+   1.62,
+   2.27,
+   3.05,
+   2.32
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "ski": {
+  "year": 2026,
+  "lat": 59.7119,
+  "lon": 10.837,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.55,
+    "n": 245,
+    "exact": 223,
+    "within1": 244,
+    "worst": 2.4,
+    "pctExact": 91,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 245,
+    "exact": 231,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 94.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 245,
+    "exact": 223,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 91,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 245,
+    "exact": 43,
+    "within1": 83,
+    "worst": 2.4,
+    "pctExact": 17.6,
+    "pctWithin1": 33.9
+   },
+   "magrib": {
+    "margin": 4.4,
+    "n": 245,
+    "exact": 218,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.53,
+    "n": 245,
+    "exact": 219,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.04
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -36.58,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5067,
+   "midnightWorst": 21,
+   "midnightWithin1": 49,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.38,
+   -0.63,
+   -0.37,
+   -0.2,
+   null,
+   null,
+   null,
+   1.5,
+   1.65,
+   2.25,
+   3.08,
+   2.23
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "skien": {
+  "year": 2026,
+  "lat": 59.2095,
+  "lon": 9.6087,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 248,
+  "fit": {
+   "fajr": {
+    "margin": 0.54,
+    "n": 248,
+    "exact": 243,
+    "within1": 247,
+    "worst": 2.2,
+    "pctExact": 98,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 248,
+    "exact": 240,
+    "within1": 248,
+    "worst": 0.5,
+    "pctExact": 96.8,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.49,
+    "n": 248,
+    "exact": 227,
+    "within1": 248,
+    "worst": 0.6,
+    "pctExact": 91.5,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.2,
+    "n": 248,
+    "exact": 38,
+    "within1": 82,
+    "worst": 2.3,
+    "pctExact": 15.3,
+    "pctWithin1": 33.1
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 248,
+    "exact": 237,
+    "within1": 248,
+    "worst": 0.5,
+    "pctExact": 95.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 248,
+    "exact": 221,
+    "within1": 248,
+    "worst": 0.7,
+    "pctExact": 89.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 117,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.12
+  },
+  "winterAsr": {
+   "n": 248,
+   "shafiMedian": 1.2,
+   "hanafiMedian": -37.54,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 117,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 3,
+   "midnightWithin1": 45,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.37,
+   -0.57,
+   -0.3,
+   -0.08,
+   null,
+   null,
+   null,
+   1.45,
+   1.64,
+   2.22,
+   3.04,
+   2.17
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-18",
+    "n": 117
+   }
+  ]
+ },
+ "slettheia-2": {
+  "year": 2026,
+  "lat": 58.1189,
+  "lon": 8.03,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 255,
+  "fit": {
+   "fajr": {
+    "margin": 0.75,
+    "n": 255,
+    "exact": 229,
+    "within1": 254,
+    "worst": 1.7,
+    "pctExact": 89.8,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.15,
+    "n": 255,
+    "exact": 248,
+    "within1": 255,
+    "worst": 0.5,
+    "pctExact": 97.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.82,
+    "n": 255,
+    "exact": 227,
+    "within1": 255,
+    "worst": 0.7,
+    "pctExact": 89,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.38,
+    "n": 255,
+    "exact": 45,
+    "within1": 94,
+    "worst": 2.2,
+    "pctExact": 17.6,
+    "pctWithin1": 36.9
+   },
+   "magrib": {
+    "margin": 4.8,
+    "n": 255,
+    "exact": 252,
+    "within1": 255,
+    "worst": 0.5,
+    "pctExact": 98.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.83,
+    "n": 255,
+    "exact": 226,
+    "within1": 255,
+    "worst": 0.8,
+    "pctExact": 88.6,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 110,
+   "shafiMedian": 0.97,
+   "hanafiMedian": -72.6
+  },
+  "winterAsr": {
+   "n": 255,
+   "shafiMedian": 1.38,
+   "hanafiMedian": -38.48,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 110,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5013,
+   "fracP90": 0.506,
+   "midnightWorst": 16.5,
+   "midnightWithin1": 42,
+   "sr60Worst": 196
+  },
+  "asrByMonth": [
+   0.05,
+   -0.22,
+   0.03,
+   0.24,
+   null,
+   null,
+   null,
+   1.78,
+   1.74,
+   2.55,
+   2.92,
+   2.18
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-27",
+    "last": "2026-08-14",
+    "n": 110
+   }
+  ]
+ },
+ "sogndal": {
+  "year": 2026,
+  "lat": 61.2312,
+  "lon": 7.0996,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 236,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 236,
+    "exact": 221,
+    "within1": 235,
+    "worst": 1.9,
+    "pctExact": 93.6,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.58,
+    "n": 236,
+    "exact": 228,
+    "within1": 236,
+    "worst": 0.6,
+    "pctExact": 96.6,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.51,
+    "n": 236,
+    "exact": 217,
+    "within1": 236,
+    "worst": 0.7,
+    "pctExact": 91.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.52,
+    "n": 236,
+    "exact": 38,
+    "within1": 66,
+    "worst": 3,
+    "pctExact": 16.1,
+    "pctWithin1": 28
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 236,
+    "exact": 227,
+    "within1": 236,
+    "worst": 0.6,
+    "pctExact": 96.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.38,
+    "n": 236,
+    "exact": 212,
+    "within1": 236,
+    "worst": 0.7,
+    "pctExact": 89.8,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 129,
+   "shafiMedian": 0.7,
+   "hanafiMedian": -73.25
+  },
+  "winterAsr": {
+   "n": 236,
+   "shafiMedian": 1.52,
+   "hanafiMedian": -34.53,
+   "shafiWorst": 3
+  },
+  "summer": {
+   "n": 129,
+   "fracMedian": 0.5048,
+   "fracP10": 0.501,
+   "fracP90": 0.5077,
+   "midnightWorst": 7,
+   "midnightWithin1": 52,
+   "sr60Worst": 207
+  },
+  "asrByMonth": [
+   -0.55,
+   -0.54,
+   -0.4,
+   -0.05,
+   null,
+   null,
+   null,
+   1.78,
+   1.82,
+   2.45,
+   3.76,
+   2.98
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-18",
+    "last": "2026-08-24",
+    "n": 129
+   }
+  ]
+ },
+ "spikkestad": {
+  "year": 2026,
+  "lat": 59.73,
+  "lon": 10.41,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.78,
+    "n": 245,
+    "exact": 226,
+    "within1": 243,
+    "worst": 2.5,
+    "pctExact": 92.2,
+    "pctWithin1": 99.2
+   },
+   "sunrise": {
+    "margin": -0.2,
+    "n": 245,
+    "exact": 237,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 96.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.78,
+    "n": 245,
+    "exact": 223,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 91,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.57,
+    "n": 245,
+    "exact": 40,
+    "within1": 77,
+    "worst": 2.5,
+    "pctExact": 16.3,
+    "pctWithin1": 31.4
+   },
+   "magrib": {
+    "margin": 4.67,
+    "n": 245,
+    "exact": 230,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 93.9,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.83,
+    "n": 245,
+    "exact": 214,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 87.3,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.98,
+   "hanafiMedian": -72.8
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.57,
+   "hanafiMedian": -36.75,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.507,
+   "midnightWorst": 20,
+   "midnightWithin1": 46,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.15,
+   -0.38,
+   -0.05,
+   0.08,
+   null,
+   null,
+   null,
+   1.8,
+   1.97,
+   2.53,
+   3.33,
+   2.65
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "stavanger": {
+  "year": 2026,
+  "lat": 58.97,
+  "lon": 5.7331,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 0.48,
+    "n": 249,
+    "exact": 239,
+    "within1": 248,
+    "worst": 2.5,
+    "pctExact": 96,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 249,
+    "exact": 242,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 249,
+    "exact": 224,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 90,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.28,
+    "n": 249,
+    "exact": 47,
+    "within1": 80,
+    "worst": 2.3,
+    "pctExact": 18.9,
+    "pctWithin1": 32.1
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 249,
+    "exact": 239,
+    "within1": 249,
+    "worst": 0.5,
+    "pctExact": 96,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 249,
+    "exact": 225,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 90.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -73.23
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 1.28,
+   "hanafiMedian": -37.43,
+   "shafiWorst": 2.3
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.5063,
+   "midnightWorst": 26,
+   "midnightWithin1": 45,
+   "sr60Worst": 200
+  },
+  "asrByMonth": [
+   -0.3,
+   -0.52,
+   -0.38,
+   -0.22,
+   null,
+   null,
+   null,
+   1.53,
+   1.6,
+   2.45,
+   3.04,
+   2.13
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "stranda": {
+  "year": 2026,
+  "lat": 62.3132,
+  "lon": 6.942,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 230,
+  "fit": {
+   "fajr": {
+    "margin": 0.56,
+    "n": 230,
+    "exact": 220,
+    "within1": 229,
+    "worst": 2.2,
+    "pctExact": 95.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.52,
+    "n": 230,
+    "exact": 217,
+    "within1": 230,
+    "worst": 0.6,
+    "pctExact": 94.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.56,
+    "n": 230,
+    "exact": 208,
+    "within1": 230,
+    "worst": 0.6,
+    "pctExact": 90.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.56,
+    "n": 230,
+    "exact": 33,
+    "within1": 58,
+    "worst": 3.7,
+    "pctExact": 14.3,
+    "pctWithin1": 25.2
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 230,
+    "exact": 218,
+    "within1": 230,
+    "worst": 0.6,
+    "pctExact": 94.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.47,
+    "n": 230,
+    "exact": 212,
+    "within1": 230,
+    "worst": 0.7,
+    "pctExact": 92.2,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 135,
+   "shafiMedian": 0.62,
+   "hanafiMedian": -73.38
+  },
+  "winterAsr": {
+   "n": 230,
+   "shafiMedian": 1.56,
+   "hanafiMedian": -33.47,
+   "shafiWorst": 3.7
+  },
+  "summer": {
+   "n": 135,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5009,
+   "fracP90": 0.5084,
+   "midnightWorst": 3,
+   "midnightWithin1": 62,
+   "sr60Worst": 213
+  },
+  "asrByMonth": [
+   -1.07,
+   -0.8,
+   -0.45,
+   -0.27,
+   null,
+   null,
+   null,
+   1.59,
+   1.87,
+   2.68,
+   4.16,
+   3.47
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-15",
+    "last": "2026-08-27",
+    "n": 135
+   }
+  ]
+ },
+ "strommen": {
+  "year": 2026,
+  "lat": 59.9483,
+  "lon": 10.9281,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 243,
+  "fit": {
+   "fajr": {
+    "margin": 0.22,
+    "n": 243,
+    "exact": 235,
+    "within1": 242,
+    "worst": 2.4,
+    "pctExact": 96.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.87,
+    "n": 243,
+    "exact": 219,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 90.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.2,
+    "n": 243,
+    "exact": 209,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 86,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.03,
+    "n": 243,
+    "exact": 40,
+    "within1": 72,
+    "worst": 2.5,
+    "pctExact": 16.5,
+    "pctWithin1": 29.6
+   },
+   "magrib": {
+    "margin": 4.2,
+    "n": 243,
+    "exact": 235,
+    "within1": 243,
+    "worst": 0.5,
+    "pctExact": 96.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.2,
+    "n": 243,
+    "exact": 220,
+    "within1": 243,
+    "worst": 0.6,
+    "pctExact": 90.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 122,
+   "shafiMedian": 0.32,
+   "hanafiMedian": -73.68
+  },
+  "winterAsr": {
+   "n": 243,
+   "shafiMedian": 1.03,
+   "hanafiMedian": -36.88,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 122,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5011,
+   "fracP90": 0.5066,
+   "midnightWorst": 28.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 204
+  },
+  "asrByMonth": [
+   -0.72,
+   -0.97,
+   -0.72,
+   -0.48,
+   null,
+   null,
+   null,
+   1.23,
+   1.32,
+   2.1,
+   2.87,
+   2.17
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-21",
+    "last": "2026-08-20",
+    "n": 122
+   }
+  ]
+ },
+ "sunndalsora": {
+  "year": 2026,
+  "lat": 62.6789,
+  "lon": 8.5714,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 228,
+  "fit": {
+   "fajr": {
+    "margin": 0.54,
+    "n": 228,
+    "exact": 216,
+    "within1": 227,
+    "worst": 2.1,
+    "pctExact": 94.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 228,
+    "exact": 224,
+    "within1": 228,
+    "worst": 0.6,
+    "pctExact": 98.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.54,
+    "n": 228,
+    "exact": 213,
+    "within1": 228,
+    "worst": 0.6,
+    "pctExact": 93.4,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.53,
+    "n": 228,
+    "exact": 21,
+    "within1": 51,
+    "worst": 3.9,
+    "pctExact": 9.2,
+    "pctWithin1": 22.4
+   },
+   "magrib": {
+    "margin": 4.56,
+    "n": 228,
+    "exact": 220,
+    "within1": 228,
+    "worst": 0.5,
+    "pctExact": 96.5,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 228,
+    "exact": 210,
+    "within1": 228,
+    "worst": 0.8,
+    "pctExact": 92.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 137,
+   "shafiMedian": 0.67,
+   "hanafiMedian": -73.57
+  },
+  "winterAsr": {
+   "n": 228,
+   "shafiMedian": 1.53,
+   "hanafiMedian": -32.89,
+   "shafiWorst": 3.9
+  },
+  "summer": {
+   "n": 137,
+   "fracMedian": 0.5049,
+   "fracP10": 0.5,
+   "fracP90": 0.5088,
+   "midnightWorst": 3,
+   "midnightWithin1": 62,
+   "sr60Worst": 214
+  },
+  "asrByMonth": [
+   -0.93,
+   -0.93,
+   -0.53,
+   -0.02,
+   null,
+   null,
+   null,
+   2.15,
+   1.98,
+   2.75,
+   4.33,
+   3.85
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-14",
+    "last": "2026-08-28",
+    "n": 137
+   }
+  ]
+ },
+ "svingvoll": {
+  "year": 2026,
+  "lat": 61.3833,
+  "lon": 10.2667,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 235,
+  "fit": {
+   "fajr": {
+    "margin": 1.1,
+    "n": 235,
+    "exact": 142,
+    "within1": 214,
+    "worst": 6.6,
+    "pctExact": 60.4,
+    "pctWithin1": 91.1
+   },
+   "sunrise": {
+    "margin": -0.55,
+    "n": 235,
+    "exact": 148,
+    "within1": 226,
+    "worst": 1.2,
+    "pctExact": 63,
+    "pctWithin1": 96.2
+   },
+   "dhuhr": {
+    "margin": 4.85,
+    "n": 235,
+    "exact": 211,
+    "within1": 235,
+    "worst": 0.6,
+    "pctExact": 89.8,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.88,
+    "n": 235,
+    "exact": 27,
+    "within1": 60,
+    "worst": 3.4,
+    "pctExact": 11.5,
+    "pctWithin1": 25.5
+   },
+   "magrib": {
+    "margin": 5.18,
+    "n": 235,
+    "exact": 142,
+    "within1": 222,
+    "worst": 1.2,
+    "pctExact": 60.4,
+    "pctWithin1": 94.5
+   },
+   "isha": {
+    "margin": 0.73,
+    "n": 235,
+    "exact": 164,
+    "within1": 227,
+    "worst": 1.6,
+    "pctExact": 69.8,
+    "pctWithin1": 96.6
+   }
+  },
+  "summerAsr": {
+   "n": 130,
+   "shafiMedian": 0.71,
+   "hanafiMedian": -72.9
+  },
+  "winterAsr": {
+   "n": 235,
+   "shafiMedian": 1.88,
+   "hanafiMedian": -34.05,
+   "shafiWorst": 3.4
+  },
+  "summer": {
+   "n": 130,
+   "fracMedian": 0.5047,
+   "fracP10": 0.501,
+   "fracP90": 0.5076,
+   "midnightWorst": 31.5,
+   "midnightWithin1": 57,
+   "sr60Worst": 210
+  },
+  "asrByMonth": [
+   0.18,
+   0.01,
+   0.08,
+   0.12,
+   null,
+   null,
+   null,
+   1.73,
+   2.39,
+   3.15,
+   4.52,
+   3.9
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-17",
+    "last": "2026-08-24",
+    "n": 130
+   }
+  ]
+ },
+ "tonsberg": {
+  "year": 2026,
+  "lat": 59.2675,
+  "lon": 10.4076,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 247,
+  "fit": {
+   "fajr": {
+    "margin": 0.57,
+    "n": 247,
+    "exact": 236,
+    "within1": 246,
+    "worst": 2.4,
+    "pctExact": 95.5,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 247,
+    "exact": 237,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 96,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.57,
+    "n": 247,
+    "exact": 209,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 84.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.33,
+    "n": 247,
+    "exact": 46,
+    "within1": 80,
+    "worst": 2.5,
+    "pctExact": 18.6,
+    "pctWithin1": 32.4
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 247,
+    "exact": 242,
+    "within1": 247,
+    "worst": 0.5,
+    "pctExact": 98,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.42,
+    "n": 247,
+    "exact": 227,
+    "within1": 247,
+    "worst": 0.7,
+    "pctExact": 91.9,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 118,
+   "shafiMedian": 0.66,
+   "hanafiMedian": -73.03
+  },
+  "winterAsr": {
+   "n": 247,
+   "shafiMedian": 1.33,
+   "hanafiMedian": -37.15,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 118,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5063,
+   "midnightWorst": 28.5,
+   "midnightWithin1": 40,
+   "sr60Worst": 202
+  },
+  "asrByMonth": [
+   -0.27,
+   -0.58,
+   -0.28,
+   -0.07,
+   null,
+   null,
+   null,
+   1.6,
+   1.59,
+   2.33,
+   2.98,
+   2.53
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-23",
+    "last": "2026-08-18",
+    "n": 118
+   }
+  ]
+ },
+ "trondheim": {
+  "year": 2026,
+  "lat": 63.4305,
+  "lon": 10.3951,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 223,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 223,
+    "exact": 217,
+    "within1": 222,
+    "worst": 2.1,
+    "pctExact": 97.3,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.55,
+    "n": 223,
+    "exact": 212,
+    "within1": 223,
+    "worst": 0.5,
+    "pctExact": 95.1,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.57,
+    "n": 223,
+    "exact": 208,
+    "within1": 223,
+    "worst": 0.7,
+    "pctExact": 93.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.72,
+    "n": 223,
+    "exact": 25,
+    "within1": 48,
+    "worst": 4.4,
+    "pctExact": 11.2,
+    "pctWithin1": 21.5
+   },
+   "magrib": {
+    "margin": 4.52,
+    "n": 223,
+    "exact": 212,
+    "within1": 223,
+    "worst": 0.6,
+    "pctExact": 95.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 223,
+    "exact": 203,
+    "within1": 223,
+    "worst": 0.8,
+    "pctExact": 91,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 142,
+   "shafiMedian": 0.58,
+   "hanafiMedian": -73.93
+  },
+  "winterAsr": {
+   "n": 223,
+   "shafiMedian": 1.72,
+   "hanafiMedian": -31.62,
+   "shafiWorst": 4.4
+  },
+  "summer": {
+   "n": 142,
+   "fracMedian": 0.5047,
+   "fracP10": 0.5,
+   "fracP90": 0.51,
+   "midnightWorst": 33.5,
+   "midnightWithin1": 62,
+   "sr60Worst": 220
+  },
+  "asrByMonth": [
+   -1.28,
+   -1.15,
+   -0.68,
+   -0.13,
+   null,
+   null,
+   null,
+   1.67,
+   1.94,
+   2.8,
+   4.84,
+   4.3
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-11",
+    "last": "2026-08-30",
+    "n": 142
+   }
+  ]
+ },
+ "trysil": {
+  "year": 2026,
+  "lat": 61.1315,
+  "lon": 12.2745,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 235,
+  "fit": {
+   "fajr": {
+    "margin": 0.25,
+    "n": 235,
+    "exact": 109,
+    "within1": 177,
+    "worst": 11.3,
+    "pctExact": 46.4,
+    "pctWithin1": 75.3
+   },
+   "sunrise": {
+    "margin": 0.2,
+    "n": 235,
+    "exact": 86,
+    "within1": 171,
+    "worst": 1.7,
+    "pctExact": 36.6,
+    "pctWithin1": 72.8
+   },
+   "dhuhr": {
+    "margin": 4.55,
+    "n": 235,
+    "exact": 209,
+    "within1": 235,
+    "worst": 0.6,
+    "pctExact": 88.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.1,
+    "n": 235,
+    "exact": 38,
+    "within1": 85,
+    "worst": 3.4,
+    "pctExact": 16.2,
+    "pctWithin1": 36.2
+   },
+   "magrib": {
+    "margin": 3.88,
+    "n": 235,
+    "exact": 78,
+    "within1": 169,
+    "worst": 1.8,
+    "pctExact": 33.2,
+    "pctWithin1": 71.9
+   },
+   "isha": {
+    "margin": 0.67,
+    "n": 235,
+    "exact": 84,
+    "within1": 179,
+    "worst": 3.3,
+    "pctExact": 35.7,
+    "pctWithin1": 76.2
+   }
+  },
+  "summerAsr": {
+   "n": 130,
+   "shafiMedian": 1.06,
+   "hanafiMedian": -73.23
+  },
+  "winterAsr": {
+   "n": 235,
+   "shafiMedian": 1.1,
+   "hanafiMedian": -35.23,
+   "shafiWorst": 3.4
+  },
+  "summer": {
+   "n": 130,
+   "fracMedian": 0.5048,
+   "fracP10": 0.501,
+   "fracP90": 0.5074,
+   "midnightWorst": 30.5,
+   "midnightWithin1": 50,
+   "sr60Worst": 210
+  },
+  "asrByMonth": [
+   -1.6,
+   -1.81,
+   -0.73,
+   -0.27,
+   null,
+   null,
+   null,
+   1.58,
+   1.42,
+   1.85,
+   2.66,
+   1.7
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-17",
+    "last": "2026-08-24",
+    "n": 130
+   }
+  ]
+ },
+ "vestby": {
+  "year": 2026,
+  "lat": 59.6032,
+  "lon": 10.732,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.38,
+    "n": 245,
+    "exact": 233,
+    "within1": 244,
+    "worst": 2.2,
+    "pctExact": 95.1,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.55,
+    "n": 245,
+    "exact": 232,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 94.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.42,
+    "n": 245,
+    "exact": 211,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 86.1,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.18,
+    "n": 245,
+    "exact": 38,
+    "within1": 82,
+    "worst": 2.4,
+    "pctExact": 15.5,
+    "pctWithin1": 33.5
+   },
+   "magrib": {
+    "margin": 4.45,
+    "n": 245,
+    "exact": 220,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 89.8,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.33,
+    "n": 245,
+    "exact": 212,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 86.5,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.57,
+   "hanafiMedian": -72.98
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.18,
+   "hanafiMedian": -37.17,
+   "shafiWorst": 2.4
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5046,
+   "fracP10": 0.5012,
+   "fracP90": 0.5066,
+   "midnightWorst": 29,
+   "midnightWithin1": 45,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.42,
+   -0.66,
+   -0.47,
+   -0.2,
+   null,
+   null,
+   null,
+   1.41,
+   1.74,
+   2.2,
+   3.01,
+   2.23
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "vestfossen": {
+  "year": 2026,
+  "lat": 59.7231,
+  "lon": 9.8697,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 245,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 245,
+    "exact": 230,
+    "within1": 244,
+    "worst": 2.6,
+    "pctExact": 93.9,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.48,
+    "n": 245,
+    "exact": 240,
+    "within1": 245,
+    "worst": 0.5,
+    "pctExact": 98,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.5,
+    "n": 245,
+    "exact": 222,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 90.6,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.32,
+    "n": 245,
+    "exact": 41,
+    "within1": 80,
+    "worst": 2.5,
+    "pctExact": 16.7,
+    "pctWithin1": 32.7
+   },
+   "magrib": {
+    "margin": 4.45,
+    "n": 245,
+    "exact": 238,
+    "within1": 245,
+    "worst": 0.6,
+    "pctExact": 97.1,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.52,
+    "n": 245,
+    "exact": 219,
+    "within1": 245,
+    "worst": 0.7,
+    "pctExact": 89.4,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 120,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -72.99
+  },
+  "winterAsr": {
+   "n": 245,
+   "shafiMedian": 1.32,
+   "hanafiMedian": -36.93,
+   "shafiWorst": 2.5
+  },
+  "summer": {
+   "n": 120,
+   "fracMedian": 0.5044,
+   "fracP10": 0.5011,
+   "fracP90": 0.507,
+   "midnightWorst": 20.5,
+   "midnightWithin1": 49,
+   "sr60Worst": 203
+  },
+  "asrByMonth": [
+   -0.37,
+   -0.63,
+   -0.42,
+   -0.08,
+   null,
+   null,
+   null,
+   1.52,
+   1.74,
+   2.28,
+   3.11,
+   2.4
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-22",
+    "last": "2026-08-19",
+    "n": 120
+   }
+  ]
+ },
+ "vossevangen": {
+  "year": 2026,
+  "lat": 60.6317,
+  "lon": 6.4167,
+  "tz": "Europe/Oslo",
+  "days": 365,
+  "angleHonest": 239,
+  "fit": {
+   "fajr": {
+    "margin": 0.53,
+    "n": 239,
+    "exact": 231,
+    "within1": 238,
+    "worst": 2.6,
+    "pctExact": 96.7,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 239,
+    "exact": 227,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 95,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.53,
+    "n": 239,
+    "exact": 203,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 84.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.42,
+    "n": 239,
+    "exact": 44,
+    "within1": 72,
+    "worst": 2.8,
+    "pctExact": 18.4,
+    "pctWithin1": 30.1
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 239,
+    "exact": 223,
+    "within1": 239,
+    "worst": 0.6,
+    "pctExact": 93.3,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.43,
+    "n": 239,
+    "exact": 215,
+    "within1": 239,
+    "worst": 0.7,
+    "pctExact": 90,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 126,
+   "shafiMedian": 0.68,
+   "hanafiMedian": -73.47
+  },
+  "winterAsr": {
+   "n": 239,
+   "shafiMedian": 1.42,
+   "hanafiMedian": -35.53,
+   "shafiWorst": 2.8
+  },
+  "summer": {
+   "n": 126,
+   "fracMedian": 0.5045,
+   "fracP10": 0.5011,
+   "fracP90": 0.5069,
+   "midnightWorst": 29,
+   "midnightWithin1": 53,
+   "sr60Worst": 206
+  },
+  "asrByMonth": [
+   -0.5,
+   -0.83,
+   -0.43,
+   -0.25,
+   null,
+   null,
+   null,
+   1.47,
+   1.76,
+   2.4,
+   3.4,
+   2.77
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-19",
+    "last": "2026-08-22",
+    "n": 126
+   }
+  ]
+ },
+ "goteborg": {
+  "year": 2026,
+  "lat": 57.7089,
+  "lon": 11.9746,
+  "tz": "Europe/Stockholm",
+  "days": 365,
+  "angleHonest": 257,
+  "fit": {
+   "fajr": {
+    "margin": 0.52,
+    "n": 257,
+    "exact": 247,
+    "within1": 256,
+    "worst": 1.5,
+    "pctExact": 96.1,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.5,
+    "n": 257,
+    "exact": 251,
+    "within1": 257,
+    "worst": 0.5,
+    "pctExact": 97.7,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.48,
+    "n": 257,
+    "exact": 228,
+    "within1": 257,
+    "worst": 0.7,
+    "pctExact": 88.7,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.15,
+    "n": 257,
+    "exact": 39,
+    "within1": 114,
+    "worst": 2.1,
+    "pctExact": 15.2,
+    "pctWithin1": 44.4
+   },
+   "magrib": {
+    "margin": 4.5,
+    "n": 257,
+    "exact": 243,
+    "within1": 257,
+    "worst": 0.5,
+    "pctExact": 94.6,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.48,
+    "n": 257,
+    "exact": 234,
+    "within1": 257,
+    "worst": 0.7,
+    "pctExact": 91.1,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 108,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -72.65
+  },
+  "winterAsr": {
+   "n": 257,
+   "shafiMedian": 1.15,
+   "hanafiMedian": -39.32,
+   "shafiWorst": 2.1
+  },
+  "summer": {
+   "n": 108,
+   "fracMedian": 0.5042,
+   "fracP10": 0.5011,
+   "fracP90": 0.506,
+   "midnightWorst": 24.5,
+   "midnightWithin1": 42,
+   "sr60Worst": 196
+  },
+  "asrByMonth": [
+   -0.17,
+   -0.49,
+   -0.2,
+   0.15,
+   null,
+   null,
+   null,
+   1.37,
+   1.8,
+   2.07,
+   2.58,
+   2.03
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-28",
+    "last": "2026-08-13",
+    "n": 108
+   }
+  ]
+ },
+ "saffle": {
+  "year": 2026,
+  "lat": 59.36,
+  "lon": 13.4455,
+  "tz": "Europe/Stockholm",
+  "days": 365,
+  "angleHonest": 249,
+  "fit": {
+   "fajr": {
+    "margin": 2.87,
+    "n": 249,
+    "exact": 78,
+    "within1": 170,
+    "worst": 14.3,
+    "pctExact": 31.3,
+    "pctWithin1": 68.3
+   },
+   "sunrise": {
+    "margin": 0.97,
+    "n": 249,
+    "exact": 72,
+    "within1": 154,
+    "worst": 1.9,
+    "pctExact": 28.9,
+    "pctWithin1": 61.8
+   },
+   "dhuhr": {
+    "margin": 6.53,
+    "n": 249,
+    "exact": 219,
+    "within1": 249,
+    "worst": 0.7,
+    "pctExact": 88,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 3.6,
+    "n": 249,
+    "exact": 46,
+    "within1": 89,
+    "worst": 3.2,
+    "pctExact": 18.5,
+    "pctWithin1": 35.7
+   },
+   "magrib": {
+    "margin": 7.18,
+    "n": 249,
+    "exact": 75,
+    "within1": 151,
+    "worst": 2,
+    "pctExact": 30.1,
+    "pctWithin1": 60.6
+   },
+   "isha": {
+    "margin": 2.32,
+    "n": 249,
+    "exact": 97,
+    "within1": 168,
+    "worst": 3.6,
+    "pctExact": 39,
+    "pctWithin1": 67.5
+   }
+  },
+  "summerAsr": {
+   "n": 116,
+   "shafiMedian": 2.15,
+   "hanafiMedian": -71.58
+  },
+  "winterAsr": {
+   "n": 249,
+   "shafiMedian": 3.6,
+   "hanafiMedian": -34.65,
+   "shafiWorst": 3.2
+  },
+  "summer": {
+   "n": 116,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5011,
+   "fracP90": 0.5062,
+   "midnightWorst": 15,
+   "midnightWithin1": 43,
+   "sr60Worst": 199
+  },
+  "asrByMonth": [
+   3,
+   2.33,
+   2.23,
+   1.95,
+   null,
+   null,
+   null,
+   3.36,
+   3.83,
+   4.95,
+   6.21,
+   5.68
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-24",
+    "last": "2026-08-17",
+    "n": 116
+   }
+  ]
+ },
+ "vanersborg": {
+  "year": 2026,
+  "lat": 58.3812,
+  "lon": 12.3207,
+  "tz": "Europe/Stockholm",
+  "days": 365,
+  "angleHonest": 253,
+  "fit": {
+   "fajr": {
+    "margin": 0.45,
+    "n": 253,
+    "exact": 243,
+    "within1": 252,
+    "worst": 2.4,
+    "pctExact": 96,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.53,
+    "n": 253,
+    "exact": 246,
+    "within1": 253,
+    "worst": 0.6,
+    "pctExact": 97.2,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.43,
+    "n": 253,
+    "exact": 230,
+    "within1": 253,
+    "worst": 0.7,
+    "pctExact": 90.9,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.15,
+    "n": 253,
+    "exact": 41,
+    "within1": 107,
+    "worst": 2.2,
+    "pctExact": 16.2,
+    "pctWithin1": 42.3
+   },
+   "magrib": {
+    "margin": 4.48,
+    "n": 253,
+    "exact": 244,
+    "within1": 253,
+    "worst": 0.6,
+    "pctExact": 96.4,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.45,
+    "n": 253,
+    "exact": 230,
+    "within1": 253,
+    "worst": 0.6,
+    "pctExact": 90.9,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 112,
+   "shafiMedian": 0.56,
+   "hanafiMedian": -73.08
+  },
+  "winterAsr": {
+   "n": 253,
+   "shafiMedian": 1.15,
+   "hanafiMedian": -38.4,
+   "shafiWorst": 2.2
+  },
+  "summer": {
+   "n": 112,
+   "fracMedian": 0.5043,
+   "fracP10": 0.5012,
+   "fracP90": 0.5059,
+   "midnightWorst": 23,
+   "midnightWithin1": 40,
+   "sr60Worst": 198
+  },
+  "asrByMonth": [
+   -0.17,
+   -0.52,
+   -0.33,
+   -0.1,
+   null,
+   null,
+   null,
+   1.34,
+   1.63,
+   1.93,
+   2.59,
+   1.95
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-04-26",
+    "last": "2026-08-15",
+    "n": 112
+   }
+  ]
+ },
+ "kobenhavn": {
+  "year": 2026,
+  "lat": 55.6761,
+  "lon": 12.5683,
+  "tz": "Europe/Copenhagen",
+  "days": 365,
+  "angleHonest": 271,
+  "fit": {
+   "fajr": {
+    "margin": 0.5,
+    "n": 271,
+    "exact": 258,
+    "within1": 270,
+    "worst": 1.6,
+    "pctExact": 95.2,
+    "pctWithin1": 99.6
+   },
+   "sunrise": {
+    "margin": -0.47,
+    "n": 271,
+    "exact": 261,
+    "within1": 271,
+    "worst": 0.6,
+    "pctExact": 96.3,
+    "pctWithin1": 100
+   },
+   "dhuhr": {
+    "margin": 4.42,
+    "n": 271,
+    "exact": 242,
+    "within1": 271,
+    "worst": 0.7,
+    "pctExact": 89.3,
+    "pctWithin1": 100
+   },
+   "asr": {
+    "margin": 1.07,
+    "n": 271,
+    "exact": 56,
+    "within1": 158,
+    "worst": 1.9,
+    "pctExact": 20.7,
+    "pctWithin1": 58.3
+   },
+   "magrib": {
+    "margin": 4.53,
+    "n": 271,
+    "exact": 266,
+    "within1": 271,
+    "worst": 0.5,
+    "pctExact": 98.2,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "margin": 0.53,
+    "n": 271,
+    "exact": 244,
+    "within1": 271,
+    "worst": 0.6,
+    "pctExact": 90,
+    "pctWithin1": 100
+   }
+  },
+  "summerAsr": {
+   "n": 94,
+   "shafiMedian": 0.63,
+   "hanafiMedian": -72.88
+  },
+  "winterAsr": {
+   "n": 271,
+   "shafiMedian": 1.07,
+   "hanafiMedian": -41.15,
+   "shafiWorst": 1.9
+  },
+  "summer": {
+   "n": 94,
+   "fracMedian": 0.5038,
+   "fracP10": 0.5011,
+   "fracP90": 0.5052,
+   "midnightWorst": 19,
+   "midnightWithin1": 30,
+   "sr60Worst": 189
+  },
+  "asrByMonth": [
+   0.05,
+   -0.38,
+   -0.17,
+   0.26,
+   0.08,
+   null,
+   null,
+   1.27,
+   1.57,
+   1.88,
+   2.2,
+   1.68
+  ],
+  "nullRuns": [
+   {
+    "first": "2026-05-05",
+    "last": "2026-08-06",
+    "n": 94
+   }
+  ]
+ }
+}

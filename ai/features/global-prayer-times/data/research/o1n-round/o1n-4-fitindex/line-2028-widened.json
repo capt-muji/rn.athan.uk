@@ -1,0 +1,4187 @@
+{
+ "units_tested": 517,
+ "zone_mismatch": [
+  {
+   "unit": "KAB. BARITO SELATAN",
+   "unit_id": "2201",
+   "dhuhr": -58
+  },
+  {
+   "unit": "KAB. BARITO TIMUR",
+   "unit_id": "2202",
+   "dhuhr": -58
+  },
+  {
+   "unit": "KAB. BARITO UTARA",
+   "unit_id": "2203",
+   "dhuhr": -57
+  },
+  {
+   "unit": "KAB. KEPULAUAN SULA",
+   "unit_id": "3205",
+   "dhuhr": 61
+  },
+  {
+   "unit": "KAB. PULAU TALIABU",
+   "unit_id": "3208",
+   "dhuhr": 63
+  }
+ ],
+ "per_unit": [
+  {
+   "unit": "KAB. LAMPUNG TENGAH",
+   "unit_id": "1001",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. LAMPUNG UTARA",
+   "unit_id": "1002",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. LAMPUNG SELATAN",
+   "unit_id": "1003",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. LAMPUNG BARAT",
+   "unit_id": "1004",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. LAMPUNG TIMUR",
+   "unit_id": "1005",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. MESUJI",
+   "unit_id": "1006",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. PESAWARAN",
+   "unit_id": "1007",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. PESISIR BARAT",
+   "unit_id": "1008",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. PRINGSEWU",
+   "unit_id": "1009",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. TULANG BAWANG",
+   "unit_id": "1010",
+   "measured": -9.5,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.45
+  },
+  {
+   "unit": "KAB. TULANG BAWANG BARAT",
+   "unit_id": "1011",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. TANGGAMUS",
+   "unit_id": "1012",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. WAY KANAN",
+   "unit_id": "1013",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KOTA BANDAR LAMPUNG",
+   "unit_id": "1014",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KOTA METRO",
+   "unit_id": "1015",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. LEBAK",
+   "unit_id": "1101",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. PANDEGLANG",
+   "unit_id": "1102",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. SERANG",
+   "unit_id": "1103",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. TANGERANG",
+   "unit_id": "1104",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KOTA CILEGON",
+   "unit_id": "1105",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KOTA SERANG",
+   "unit_id": "1106",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA TANGERANG",
+   "unit_id": "1107",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA TANGERANG SELATAN",
+   "unit_id": "1108",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. BANDUNG",
+   "unit_id": "1201",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. BANDUNG BARAT",
+   "unit_id": "1202",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. BEKASI",
+   "unit_id": "1203",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. BOGOR",
+   "unit_id": "1204",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. CIAMIS",
+   "unit_id": "1205",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. CIANJUR",
+   "unit_id": "1206",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. CIREBON",
+   "unit_id": "1207",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. GARUT",
+   "unit_id": "1208",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. INDRAMAYU",
+   "unit_id": "1209",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. KARAWANG",
+   "unit_id": "1210",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. KUNINGAN",
+   "unit_id": "1211",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. MAJALENGKA",
+   "unit_id": "1212",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. PANGANDARAN",
+   "unit_id": "1213",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. PURWAKARTA",
+   "unit_id": "1214",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. SUBANG",
+   "unit_id": "1215",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. SUKABUMI",
+   "unit_id": "1216",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. SUMEDANG",
+   "unit_id": "1217",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. TASIKMALAYA",
+   "unit_id": "1218",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA BANDUNG",
+   "unit_id": "1219",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KOTA BANJAR",
+   "unit_id": "1220",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KOTA BEKASI",
+   "unit_id": "1221",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA BOGOR",
+   "unit_id": "1222",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA CIMAHI",
+   "unit_id": "1223",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA CIREBON",
+   "unit_id": "1224",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA DEPOK",
+   "unit_id": "1225",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KOTA SUKABUMI",
+   "unit_id": "1226",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA TASIKMALAYA",
+   "unit_id": "1227",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA JAKARTA PUSAT",
+   "unit_id": "1301",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. KEPULAUAN SERIBU",
+   "unit_id": "1302",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. BANJARNEGARA",
+   "unit_id": "1401",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. BANYUMAS",
+   "unit_id": "1402",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. BATANG",
+   "unit_id": "1403",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. BLORA",
+   "unit_id": "1404",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. BOYOLALI",
+   "unit_id": "1405",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. BREBES",
+   "unit_id": "1406",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. CILACAP",
+   "unit_id": "1407",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. DEMAK",
+   "unit_id": "1408",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. GROBOGAN",
+   "unit_id": "1409",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. JEPARA",
+   "unit_id": "1410",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. KARANGANYAR",
+   "unit_id": "1411",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. KEBUMEN",
+   "unit_id": "1412",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. KENDAL",
+   "unit_id": "1413",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. KLATEN",
+   "unit_id": "1414",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. KUDUS",
+   "unit_id": "1415",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. MAGELANG",
+   "unit_id": "1416",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. PATI",
+   "unit_id": "1417",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. PEKALONGAN",
+   "unit_id": "1418",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. PEMALANG",
+   "unit_id": "1419",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. PURBALINGGA",
+   "unit_id": "1420",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. PURWOREJO",
+   "unit_id": "1421",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. REMBANG",
+   "unit_id": "1422",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. SEMARANG",
+   "unit_id": "1423",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. SRAGEN",
+   "unit_id": "1424",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. SUKOHARJO",
+   "unit_id": "1425",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. TEGAL",
+   "unit_id": "1426",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. TEMANGGUNG",
+   "unit_id": "1427",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. WONOGIRI",
+   "unit_id": "1428",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. WONOSOBO",
+   "unit_id": "1429",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA MAGELANG",
+   "unit_id": "1430",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA PEKALONGAN",
+   "unit_id": "1431",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KOTA SALATIGA",
+   "unit_id": "1432",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KOTA SEMARANG",
+   "unit_id": "1433",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA SURAKARTA",
+   "unit_id": "1434",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KOTA TEGAL",
+   "unit_id": "1435",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. BANTUL",
+   "unit_id": "1501",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. GUNUNGKIDUL",
+   "unit_id": "1502",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. KULON PROGO",
+   "unit_id": "1503",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. SLEMAN",
+   "unit_id": "1504",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA YOGYAKARTA",
+   "unit_id": "1505",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. BANGKALAN",
+   "unit_id": "1601",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. BANYUWANGI",
+   "unit_id": "1602",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. BLITAR",
+   "unit_id": "1603",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. BOJONEGORO",
+   "unit_id": "1604",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. BONDOWOSO",
+   "unit_id": "1605",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. GRESIK",
+   "unit_id": "1606",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. JEMBER",
+   "unit_id": "1607",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. JOMBANG",
+   "unit_id": "1608",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. KEDIRI",
+   "unit_id": "1609",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. LAMONGAN",
+   "unit_id": "1610",
+   "measured": -10,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": -0.92
+  },
+  {
+   "unit": "KAB. LUMAJANG",
+   "unit_id": "1611",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. MADIUN",
+   "unit_id": "1612",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. MAGETAN",
+   "unit_id": "1613",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. MALANG",
+   "unit_id": "1614",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. MOJOKERTO",
+   "unit_id": "1615",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. NGANJUK",
+   "unit_id": "1616",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. NGAWI",
+   "unit_id": "1617",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. PACITAN",
+   "unit_id": "1618",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. PAMEKASAN",
+   "unit_id": "1619",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. PASURUAN",
+   "unit_id": "1620",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. PONOROGO",
+   "unit_id": "1621",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. PROBOLINGGO",
+   "unit_id": "1622",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. SAMPANG",
+   "unit_id": "1623",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. SIDOARJO",
+   "unit_id": "1624",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KAB. SITUBONDO",
+   "unit_id": "1625",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. SUMENEP",
+   "unit_id": "1626",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. TRENGGALEK",
+   "unit_id": "1627",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. TUBAN",
+   "unit_id": "1628",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. TULUNGAGUNG",
+   "unit_id": "1629",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KOTA BATU",
+   "unit_id": "1630",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA BLITAR",
+   "unit_id": "1631",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KOTA KEDIRI",
+   "unit_id": "1632",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KOTA MADIUN",
+   "unit_id": "1633",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA MALANG",
+   "unit_id": "1634",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KOTA MOJOKERTO",
+   "unit_id": "1635",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA PASURUAN",
+   "unit_id": "1636",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KOTA PROBOLINGGO",
+   "unit_id": "1637",
+   "measured": -10,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": -0.9
+  },
+  {
+   "unit": "KOTA SURABAYA",
+   "unit_id": "1638",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. BADUNG",
+   "unit_id": "1701",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. BANGLI",
+   "unit_id": "1702",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. BULELENG",
+   "unit_id": "1703",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. GIANYAR",
+   "unit_id": "1704",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. JEMBRANA",
+   "unit_id": "1705",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. KARANGASEM",
+   "unit_id": "1706",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. KLUNGKUNG",
+   "unit_id": "1707",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. TABANAN",
+   "unit_id": "1708",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KOTA DENPASAR",
+   "unit_id": "1709",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. BIMA",
+   "unit_id": "1801",
+   "measured": -10,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": -0.87
+  },
+  {
+   "unit": "KAB. DOMPU",
+   "unit_id": "1802",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. LOMBOK BARAT",
+   "unit_id": "1803",
+   "measured": -10,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": -0.87
+  },
+  {
+   "unit": "KAB. LOMBOK TENGAH",
+   "unit_id": "1804",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. LOMBOK TIMUR",
+   "unit_id": "1805",
+   "measured": -10,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": -0.87
+  },
+  {
+   "unit": "KAB. LOMBOK UTARA",
+   "unit_id": "1806",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. SUMBAWA",
+   "unit_id": "1807",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. SUMBAWA BARAT",
+   "unit_id": "1808",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KOTA BIMA",
+   "unit_id": "1809",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KOTA MATARAM",
+   "unit_id": "1810",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. ALOR",
+   "unit_id": "1901",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. BELU",
+   "unit_id": "1902",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. ENDE",
+   "unit_id": "1903",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. FLORES TIMUR",
+   "unit_id": "1904",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. KUPANG",
+   "unit_id": "1905",
+   "measured": -9,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": 0.17
+  },
+  {
+   "unit": "KAB. LEMBATA",
+   "unit_id": "1906",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. MALAKA",
+   "unit_id": "1907",
+   "measured": -10,
+   "angle": -8.15,
+   "model": -9.15,
+   "resid": -0.85
+  },
+  {
+   "unit": "KAB. MANGGARAI",
+   "unit_id": "1908",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. MANGGARAI BARAT",
+   "unit_id": "1909",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. MANGGARAI TIMUR",
+   "unit_id": "1910",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. NGADA",
+   "unit_id": "1911",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. NAGEKEO",
+   "unit_id": "1912",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. ROTE NDAO",
+   "unit_id": "1913",
+   "measured": -9,
+   "angle": -8.18,
+   "model": -9.18,
+   "resid": 0.18
+  },
+  {
+   "unit": "KAB. SABU RAIJUA",
+   "unit_id": "1914",
+   "measured": -10,
+   "angle": -8.18,
+   "model": -9.18,
+   "resid": -0.82
+  },
+  {
+   "unit": "KAB. SIKKA",
+   "unit_id": "1915",
+   "measured": -9,
+   "angle": -8.13,
+   "model": -9.13,
+   "resid": 0.13
+  },
+  {
+   "unit": "KAB. SUMBA BARAT",
+   "unit_id": "1916",
+   "measured": -10,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": -0.83
+  },
+  {
+   "unit": "KAB. SUMBA BARAT DAYA",
+   "unit_id": "1917",
+   "measured": -10,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": -0.83
+  },
+  {
+   "unit": "KAB. SUMBA TENGAH",
+   "unit_id": "1918",
+   "measured": -9,
+   "angle": -8.15,
+   "model": -9.15,
+   "resid": 0.15
+  },
+  {
+   "unit": "KAB. SUMBA TIMUR",
+   "unit_id": "1919",
+   "measured": -9,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": 0.17
+  },
+  {
+   "unit": "KAB. TIMOR TENGAH SELATAN",
+   "unit_id": "1920",
+   "measured": -10,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": -0.83
+  },
+  {
+   "unit": "KAB. TIMOR TENGAH UTARA",
+   "unit_id": "1921",
+   "measured": -9,
+   "angle": -8.15,
+   "model": -9.15,
+   "resid": 0.15
+  },
+  {
+   "unit": "KOTA KUPANG",
+   "unit_id": "1922",
+   "measured": -9,
+   "angle": -8.17,
+   "model": -9.17,
+   "resid": 0.17
+  },
+  {
+   "unit": "KAB. BENGKAYANG",
+   "unit_id": "2001",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. KAPUAS HULU",
+   "unit_id": "2002",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KAYONG UTARA",
+   "unit_id": "2003",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KETAPANG",
+   "unit_id": "2004",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KUBU RAYA",
+   "unit_id": "2005",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LANDAK",
+   "unit_id": "2006",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MELAWI",
+   "unit_id": "2007",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MEMPAWAH",
+   "unit_id": "2008",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SAMBAS",
+   "unit_id": "2009",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. SANGGAU",
+   "unit_id": "2010",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SEKADAU",
+   "unit_id": "2011",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SINTANG",
+   "unit_id": "2012",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PONTIANAK",
+   "unit_id": "2013",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA SINGKAWANG",
+   "unit_id": "2014",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BALANGAN",
+   "unit_id": "2101",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. BANJAR",
+   "unit_id": "2102",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BARITO KUALA",
+   "unit_id": "2103",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. HULU SUNGAI SELATAN",
+   "unit_id": "2104",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. HULU SUNGAI TENGAH",
+   "unit_id": "2105",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. HULU SUNGAI UTARA",
+   "unit_id": "2106",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. KOTABARU",
+   "unit_id": "2107",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TABALONG",
+   "unit_id": "2108",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TANAH BUMBU",
+   "unit_id": "2109",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. TANAH LAUT",
+   "unit_id": "2110",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. TAPIN",
+   "unit_id": "2111",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KOTA BANJARBARU",
+   "unit_id": "2112",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KOTA BANJARMASIN",
+   "unit_id": "2113",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BARITO SELATAN",
+   "unit_id": "2201",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BARITO TIMUR",
+   "unit_id": "2202",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. BARITO UTARA",
+   "unit_id": "2203",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. GUNUNG MAS",
+   "unit_id": "2204",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KAPUAS",
+   "unit_id": "2205",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KATINGAN",
+   "unit_id": "2206",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. KOTAWARINGIN BARAT",
+   "unit_id": "2207",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. KOTAWARINGIN TIMUR",
+   "unit_id": "2208",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LAMANDAU",
+   "unit_id": "2209",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MURUNG RAYA",
+   "unit_id": "2210",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. PULANG PISAU",
+   "unit_id": "2211",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. SUKAMARA",
+   "unit_id": "2212",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. SERUYAN",
+   "unit_id": "2213",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA PALANGKARAYA",
+   "unit_id": "2214",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BERAU",
+   "unit_id": "2301",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KUTAI BARAT",
+   "unit_id": "2302",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KUTAI KARTANEGARA",
+   "unit_id": "2303",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. KUTAI TIMUR",
+   "unit_id": "2304",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MAHAKAM ULU",
+   "unit_id": "2305",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. PASER",
+   "unit_id": "2306",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. PENAJAM PASER UTARA",
+   "unit_id": "2307",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA BALIKPAPAN",
+   "unit_id": "2308",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA BONTANG",
+   "unit_id": "2309",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA SAMARINDA",
+   "unit_id": "2310",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BULUNGAN",
+   "unit_id": "2401",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. MALINAU",
+   "unit_id": "2402",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. NUNUKAN",
+   "unit_id": "2403",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TANA TIDUNG",
+   "unit_id": "2404",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA TARAKAN",
+   "unit_id": "2405",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BOALEMO",
+   "unit_id": "2501",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BONE BOLANGO",
+   "unit_id": "2502",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. GORONTALO",
+   "unit_id": "2503",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. GORONTALO UTARA",
+   "unit_id": "2504",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. POHUWATO",
+   "unit_id": "2505",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA GORONTALO",
+   "unit_id": "2506",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BANTAENG",
+   "unit_id": "2601",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. BARRU",
+   "unit_id": "2602",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. BONE",
+   "unit_id": "2603",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BULUKUMBA",
+   "unit_id": "2604",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. ENREKANG",
+   "unit_id": "2605",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. GOWA",
+   "unit_id": "2606",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. JENEPONTO",
+   "unit_id": "2607",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. KEPULAUAN SELAYAR",
+   "unit_id": "2608",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. LUWU",
+   "unit_id": "2609",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LUWU TIMUR",
+   "unit_id": "2610",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LUWU UTARA",
+   "unit_id": "2611",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MAROS",
+   "unit_id": "2612",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. PANGKAJENE KEPULAUAN",
+   "unit_id": "2613",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. PINRANG",
+   "unit_id": "2614",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. SIDENRENG RAPPANG",
+   "unit_id": "2615",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. SINJAI",
+   "unit_id": "2616",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. SOPPENG",
+   "unit_id": "2617",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. TAKALAR",
+   "unit_id": "2618",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. TANA TORAJA",
+   "unit_id": "2619",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. TORAJA UTARA",
+   "unit_id": "2620",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. WAJO",
+   "unit_id": "2621",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KOTA MAKASSAR",
+   "unit_id": "2622",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KOTA PALOPO",
+   "unit_id": "2623",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KOTA PAREPARE",
+   "unit_id": "2624",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BOMBANA",
+   "unit_id": "2701",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BUTON",
+   "unit_id": "2702",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. BUTON SELATAN",
+   "unit_id": "2703",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KAB. BUTON TENGAH",
+   "unit_id": "2704",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. BUTON UTARA",
+   "unit_id": "2705",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. KOLAKA",
+   "unit_id": "2706",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. KOLAKA TIMUR",
+   "unit_id": "2707",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. KOLAKA UTARA",
+   "unit_id": "2708",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KONAWE",
+   "unit_id": "2709",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. KONAWE KEPULAUAN",
+   "unit_id": "2710",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. KONAWE SELATAN",
+   "unit_id": "2711",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. KONAWE UTARA",
+   "unit_id": "2712",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. MUNA",
+   "unit_id": "2713",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. MUNA BARAT",
+   "unit_id": "2714",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. WAKATOBI",
+   "unit_id": "2715",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA BAU BAU",
+   "unit_id": "2716",
+   "measured": -9,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": 0.07
+  },
+  {
+   "unit": "KOTA KENDARI",
+   "unit_id": "2717",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BANGGAI",
+   "unit_id": "2801",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BANGGAI KEPULAUAN",
+   "unit_id": "2802",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BANGGAI LAUT",
+   "unit_id": "2803",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BUOL",
+   "unit_id": "2804",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. DONGGALA",
+   "unit_id": "2805",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MOROWALI",
+   "unit_id": "2806",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. MOROWALI UTARA",
+   "unit_id": "2807",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PARIGI MAUTONG",
+   "unit_id": "2808",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. POSO",
+   "unit_id": "2809",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SIGI",
+   "unit_id": "2810",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TOJO UNA UNA",
+   "unit_id": "2811",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TOLITOLI",
+   "unit_id": "2812",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KOTA PALU",
+   "unit_id": "2813",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW",
+   "unit_id": "2901",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW SELATAN",
+   "unit_id": "2902",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW TIMUR",
+   "unit_id": "2903",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. BOLAANG MONGONDOW UTARA",
+   "unit_id": "2904",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KEPULAUAN SANGIHE",
+   "unit_id": "2905",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN SIAU TAGULANDANG BIARO",
+   "unit_id": "2906",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. KEPULAUAN TALAUD",
+   "unit_id": "2907",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MINAHASA",
+   "unit_id": "2908",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. MINAHASA SELATAN",
+   "unit_id": "2909",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. MINAHASA TENGGARA",
+   "unit_id": "2910",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. MINAHASA UTARA",
+   "unit_id": "2911",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA BITUNG",
+   "unit_id": "2912",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA KOTAMOBAGU",
+   "unit_id": "2913",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA MANADO",
+   "unit_id": "2914",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA TOMOHON",
+   "unit_id": "2915",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. MAJENE",
+   "unit_id": "3001",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MAMASA",
+   "unit_id": "3002",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. MAMUJU",
+   "unit_id": "3003",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. MAMUJU TENGAH",
+   "unit_id": "3004",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PASANGKAYU",
+   "unit_id": "3005",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. POLEWALI MANDAR",
+   "unit_id": "3006",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BURU",
+   "unit_id": "3101",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. BURU SELATAN",
+   "unit_id": "3102",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. KEPULAUAN ARU",
+   "unit_id": "3103",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. MALUKU BARAT DAYA",
+   "unit_id": "3104",
+   "measured": -9,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": 0.12
+  },
+  {
+   "unit": "KAB. MALUKU TENGAH",
+   "unit_id": "3105",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MALUKU TENGGARA",
+   "unit_id": "3106",
+   "measured": -10,
+   "angle": -8.07,
+   "model": -9.07,
+   "resid": -0.93
+  },
+  {
+   "unit": "KAB. KEPULAUAN TANIMBAR",
+   "unit_id": "3107",
+   "measured": -9,
+   "angle": -8.1,
+   "model": -9.1,
+   "resid": 0.1
+  },
+  {
+   "unit": "KAB. SERAM BAGIAN BARAT",
+   "unit_id": "3108",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. SERAM BAGIAN TIMUR",
+   "unit_id": "3109",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA AMBON",
+   "unit_id": "3110",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA TUAL",
+   "unit_id": "3111",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. HALMAHERA BARAT",
+   "unit_id": "3201",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. HALMAHERA TENGAH",
+   "unit_id": "3202",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. HALMAHERA UTARA",
+   "unit_id": "3203",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. HALMAHERA SELATAN",
+   "unit_id": "3204",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN SULA",
+   "unit_id": "3205",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. HALMAHERA TIMUR",
+   "unit_id": "3206",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PULAU MOROTAI",
+   "unit_id": "3207",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. PULAU TALIABU",
+   "unit_id": "3208",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA TERNATE",
+   "unit_id": "3209",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA TIDORE KEPULAUAN",
+   "unit_id": "3210",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA SOFIFI",
+   "unit_id": "3211",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. ASMAT",
+   "unit_id": "3301",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. BIAK NUMFOR",
+   "unit_id": "3302",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BOVEN DIGOEL",
+   "unit_id": "3303",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. DEIYAI",
+   "unit_id": "3304",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. DOGIYAI",
+   "unit_id": "3305",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. INTAN JAYA",
+   "unit_id": "3306",
+   "measured": -13,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -3.98
+  },
+  {
+   "unit": "KAB. JAYAPURA",
+   "unit_id": "3307",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. JAYAWIJAYA",
+   "unit_id": "3308",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. KEEROM",
+   "unit_id": "3309",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. KEPULAUAN YAPEN",
+   "unit_id": "3310",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. LANNY JAYA",
+   "unit_id": "3311",
+   "measured": -14,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -4.97
+  },
+  {
+   "unit": "KAB. MAMBERAMO RAYA",
+   "unit_id": "3312",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. MAMBERAMO TENGAH",
+   "unit_id": "3313",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. MAPPI",
+   "unit_id": "3314",
+   "measured": -9,
+   "angle": -8.08,
+   "model": -9.08,
+   "resid": 0.08
+  },
+  {
+   "unit": "KAB. MERAUKE",
+   "unit_id": "3315",
+   "measured": -10,
+   "angle": -8.12,
+   "model": -9.12,
+   "resid": -0.88
+  },
+  {
+   "unit": "KAB. MIMIKA",
+   "unit_id": "3316",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. NABIRE",
+   "unit_id": "3317",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. NDUGA",
+   "unit_id": "3318",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. PANIAI",
+   "unit_id": "3319",
+   "measured": -14,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -4.97
+  },
+  {
+   "unit": "KAB. PEGUNUNGAN BINTANG",
+   "unit_id": "3320",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. PUNCAK",
+   "unit_id": "3321",
+   "measured": -14,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -4.97
+  },
+  {
+   "unit": "KAB. PUNCAK JAYA",
+   "unit_id": "3322",
+   "measured": -13,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -3.97
+  },
+  {
+   "unit": "KAB. SARMI",
+   "unit_id": "3323",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. SUPIORI",
+   "unit_id": "3324",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TOLIKARA",
+   "unit_id": "3325",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. WAROPEN",
+   "unit_id": "3326",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. YAHUKIMO",
+   "unit_id": "3327",
+   "measured": -10,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": -0.95
+  },
+  {
+   "unit": "KAB. YALIMO",
+   "unit_id": "3328",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA JAYAPURA",
+   "unit_id": "3329",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN YAPEN",
+   "unit_id": "3330",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. FAK FAK",
+   "unit_id": "3401",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. KAIMANA",
+   "unit_id": "3402",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. MANOKWARI",
+   "unit_id": "3403",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MANOKWARI SELATAN",
+   "unit_id": "3404",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MAYBRAT",
+   "unit_id": "3405",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PEGUNUNGAN ARFAK",
+   "unit_id": "3406",
+   "measured": -13,
+   "angle": -8,
+   "model": -9,
+   "resid": -4
+  },
+  {
+   "unit": "KAB. RAJA AMPAT",
+   "unit_id": "3407",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SORONG",
+   "unit_id": "3408",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SORONG SELATAN",
+   "unit_id": "3409",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TAMBRAUW",
+   "unit_id": "3410",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. TELUK BINTUNI",
+   "unit_id": "3411",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. TELUK WONDAMA",
+   "unit_id": "3412",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA SORONG",
+   "unit_id": "3413",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. ACEH BARAT",
+   "unit_id": "0101",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. ACEH BARAT DAYA",
+   "unit_id": "0102",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. ACEH BESAR",
+   "unit_id": "0103",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. ACEH JAYA",
+   "unit_id": "0104",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. ACEH SELATAN",
+   "unit_id": "0105",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. ACEH SINGKIL",
+   "unit_id": "0106",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. ACEH TAMIANG",
+   "unit_id": "0107",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. ACEH TENGAH",
+   "unit_id": "0108",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. ACEH TENGGARA",
+   "unit_id": "0109",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. ACEH TIMUR",
+   "unit_id": "0110",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. ACEH UTARA",
+   "unit_id": "0111",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. AGAM",
+   "unit_id": "0301",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. ASAHAN",
+   "unit_id": "0201",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. BANGKA",
+   "unit_id": "0901",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BANGKA BARAT",
+   "unit_id": "0902",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BANGKA SELATAN",
+   "unit_id": "0903",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BANGKA TENGAH",
+   "unit_id": "0904",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BANYUASIN",
+   "unit_id": "0801",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BATANGHARI",
+   "unit_id": "0601",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BATU BARA",
+   "unit_id": "0202",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BELITUNG",
+   "unit_id": "0905",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BELITUNG TIMUR",
+   "unit_id": "0906",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BENER MERIAH",
+   "unit_id": "0112",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. BENGKALIS",
+   "unit_id": "0401",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. BENGKULU SELATAN",
+   "unit_id": "0701",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BENGKULU TENGAH",
+   "unit_id": "0702",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. BENGKULU UTARA",
+   "unit_id": "0703",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. BINTAN",
+   "unit_id": "0501",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. BIREUEN",
+   "unit_id": "0113",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. BUNGO",
+   "unit_id": "0602",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. DAIRI",
+   "unit_id": "0203",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. DELI SERDANG",
+   "unit_id": "0204",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. DHARMASRAYA",
+   "unit_id": "0302",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. EMPAT LAWANG",
+   "unit_id": "0802",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. GAYO LUES",
+   "unit_id": "0114",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. HUMBANG HASUNDUTAN",
+   "unit_id": "0205",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. INDRAGIRI HILIR",
+   "unit_id": "0402",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. INDRAGIRI HULU",
+   "unit_id": "0403",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KAMPAR",
+   "unit_id": "0404",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. KARIMUN",
+   "unit_id": "0502",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KARO",
+   "unit_id": "0206",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KAUR",
+   "unit_id": "0704",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. KEPAHIANG",
+   "unit_id": "0705",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN ANAMBAS",
+   "unit_id": "0503",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN MENTAWAI",
+   "unit_id": "0303",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KEPULAUAN MERANTI",
+   "unit_id": "0405",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. KERINCI",
+   "unit_id": "0603",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. KUANTAN SINGINGI",
+   "unit_id": "0406",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. LABUHANBATU",
+   "unit_id": "0207",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. LABUHANBATU SELATAN",
+   "unit_id": "0208",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. LABUHANBATU UTARA",
+   "unit_id": "0209",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LAHAT",
+   "unit_id": "0803",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. LANGKAT",
+   "unit_id": "0210",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. LEBONG",
+   "unit_id": "0706",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. LIMA PULUH KOTA",
+   "unit_id": "0304",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. LINGGA",
+   "unit_id": "0504",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. MANDAILING NATAL",
+   "unit_id": "0211",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MERANGIN",
+   "unit_id": "0604",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MUARA ENIM",
+   "unit_id": "0804",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. MUARO JAMBI",
+   "unit_id": "0605",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. MUKO MUKO",
+   "unit_id": "0707",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MUSI BANYUASIN",
+   "unit_id": "0805",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. MUSI RAWAS",
+   "unit_id": "0806",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. MUSI RAWAS UTARA",
+   "unit_id": "0807",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. NAGAN RAYA",
+   "unit_id": "0115",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. NATUNA",
+   "unit_id": "0505",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. NIAS",
+   "unit_id": "0212",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. NIAS BARAT",
+   "unit_id": "0213",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. NIAS SELATAN",
+   "unit_id": "0214",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. NIAS UTARA",
+   "unit_id": "0215",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. OGAN ILIR",
+   "unit_id": "0808",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. OGAN KOMERING ILIR",
+   "unit_id": "0809",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. OGAN KOMERING ULU",
+   "unit_id": "0810",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KAB. OGAN KOMERING ULU SELATAN",
+   "unit_id": "0811",
+   "measured": -9,
+   "angle": -8.05,
+   "model": -9.05,
+   "resid": 0.05
+  },
+  {
+   "unit": "KAB. OGAN KOMERING ULU TIMUR",
+   "unit_id": "0812",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. PADANG LAWAS",
+   "unit_id": "0216",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. PADANG LAWAS UTARA",
+   "unit_id": "0217",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. PADANG PARIAMAN",
+   "unit_id": "0305",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. PAKPAK BHARAT",
+   "unit_id": "0218",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. PASAMAN",
+   "unit_id": "0306",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. PASAMAN BARAT",
+   "unit_id": "0307",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. PELALAWAN",
+   "unit_id": "0407",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. PENUKAL ABAB LEMATANG ILIR",
+   "unit_id": "0813",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. PESISIR SELATAN",
+   "unit_id": "0308",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PIDIE",
+   "unit_id": "0116",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. PIDIE JAYA",
+   "unit_id": "0117",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. REJANG LEBONG",
+   "unit_id": "0708",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. ROKAN HILIR",
+   "unit_id": "0408",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. ROKAN HULU",
+   "unit_id": "0409",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SAMOSIR",
+   "unit_id": "0219",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SAROLANGUN",
+   "unit_id": "0606",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. SELUMA",
+   "unit_id": "0709",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KAB. SERDANG BEDAGAI",
+   "unit_id": "0220",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SIAK",
+   "unit_id": "0410",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. SIJUNJUNG",
+   "unit_id": "0309",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SIMALUNGUN",
+   "unit_id": "0221",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. SIMEULUE",
+   "unit_id": "0118",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. SOLOK",
+   "unit_id": "0310",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. SOLOK SELATAN",
+   "unit_id": "0311",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TANAH DATAR",
+   "unit_id": "0312",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TANJUNG JABUNG BARAT",
+   "unit_id": "0607",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KAB. TANJUNG JABUNG TIMUR",
+   "unit_id": "0608",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TAPANULI SELATAN",
+   "unit_id": "0222",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KAB. TAPANULI TENGAH",
+   "unit_id": "0223",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TAPANULI UTARA",
+   "unit_id": "0224",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KAB. TEBO",
+   "unit_id": "0609",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KAB. TOBA",
+   "unit_id": "0225",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KOTA BANDA ACEH",
+   "unit_id": "0119",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA BATAM",
+   "unit_id": "0506",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA BENGKULU",
+   "unit_id": "0710",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA BINJAI",
+   "unit_id": "0226",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA BUKITTINGGI",
+   "unit_id": "0313",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA DUMAI",
+   "unit_id": "0411",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KOTA GUNUNGSITOLI",
+   "unit_id": "0227",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KOTA JAMBI",
+   "unit_id": "0610",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA LANGSA",
+   "unit_id": "0120",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA LHOKSEUMAWE",
+   "unit_id": "0121",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KOTA LUBUK LINGGAU",
+   "unit_id": "0814",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA MEDAN",
+   "unit_id": "0228",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA PADANG",
+   "unit_id": "0314",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PADANG PANJANG",
+   "unit_id": "0315",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA PADANG SIDEMPUAN",
+   "unit_id": "0229",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PAGAR ALAM",
+   "unit_id": "0815",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA PALEMBANG",
+   "unit_id": "0816",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KOTA PANGKAL PINANG",
+   "unit_id": "0907",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA PARIAMAN",
+   "unit_id": "0316",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA PAYAKUMBUH",
+   "unit_id": "0317",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PEKANBARU",
+   "unit_id": "0412",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PEMATANGSIANTAR",
+   "unit_id": "0230",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA PRABUMULIH",
+   "unit_id": "0817",
+   "measured": -9,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": 0.03
+  },
+  {
+   "unit": "KOTA SABANG",
+   "unit_id": "0122",
+   "measured": -10,
+   "angle": -8.03,
+   "model": -9.03,
+   "resid": -0.97
+  },
+  {
+   "unit": "KOTA SAWAHLUNTO",
+   "unit_id": "0318",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA SIBOLGA",
+   "unit_id": "0231",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA SOLOK",
+   "unit_id": "0319",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KOTA SUBULUSSALAM",
+   "unit_id": "0123",
+   "measured": -10,
+   "angle": -8,
+   "model": -9,
+   "resid": -1
+  },
+  {
+   "unit": "KOTA SUNGAI PENUH",
+   "unit_id": "0611",
+   "measured": -10,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": -0.98
+  },
+  {
+   "unit": "KOTA TANJUNG PINANG",
+   "unit_id": "0507",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "KOTA TANJUNG BALAI",
+   "unit_id": "0232",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "KOTA TEBING TINGGI",
+   "unit_id": "0233",
+   "measured": -9,
+   "angle": -8.02,
+   "model": -9.02,
+   "resid": 0.02
+  },
+  {
+   "unit": "PEKAJANG KAB. LINGGA",
+   "unit_id": "0509",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "PULAU LAUT KAB. NATUNA",
+   "unit_id": "0512",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "PULAU MIDAI KAB. NATUNA",
+   "unit_id": "0511",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "PULAU SERASAN KAB. NATUNA",
+   "unit_id": "0510",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  },
+  {
+   "unit": "PULAU TAMBELAN KAB. BINTAN",
+   "unit_id": "0508",
+   "measured": -9,
+   "angle": -8,
+   "model": -9,
+   "resid": 0
+  }
+ ],
+ "summary": {
+  "units": 517,
+  "measured_median": -9,
+  "measured_p5": -10,
+  "measured_p95": -9,
+  "measured_min": -14,
+  "measured_max": -9,
+  "angle_median": -8.03,
+  "angle_p5": -8.12,
+  "angle_p95": -8,
+  "model_median": -9.03,
+  "resid_median": 0,
+  "resid_p5": -1,
+  "resid_p95": 0.12,
+  "resid_min": -4.97,
+  "resid_max": 0.18,
+  "corr_measured_angle": 0.148,
+  "zone_mismatch_count": 5
+ }
+}

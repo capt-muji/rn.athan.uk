@@ -1,0 +1,62 @@
+class      v3
+  A             17
+  provisional   40
+  candidate     65
+  community     15
+  F              2
+  FALLBACK      35
+  UNNAMED        0
+  total        174
+class      after (diff as counted)
+  A             28
+  provisional   53
+  candidate     77
+  community     16
+  F              0
+  FALLBACK       3
+  UNNAMED        2
+  total        179
+identity    28 + 53 + 77 + 16 + 0 + 3 + 2 = 179 vs 179 -> CLOSES
+
+moves by pair
+  F           -> A             2
+  FALLBACK    -> UNNAMED       1
+  FALLBACK    -> candidate    23
+  FALLBACK    -> provisional   8
+  candidate   -> A             5
+  candidate   -> provisional   9
+  none        -> candidate     3
+  none        -> community     1
+  none        -> provisional   1
+  provisional -> A             4
+  provisional -> UNNAMED       1
+
+unnamed detail
+  C22/C74        Thailand               provisional -> UNNAMED-A-CANDIDATE
+  C14            India                  FALLBACK    -> UNNAMED-MEASURED-SET
+
+FALLBACK base 35
+  lifted: 32
+  still FALLBACK: ['Cyprus (south)', 'French Polynesia', 'Western Sahara']
+class      after ruling (Macau, North Korea in)
+  A             28
+  provisional   55
+  candidate     77
+  community     16
+  F              0
+  FALLBACK       3
+  UNNAMED        2
+  total        181
+identity    28 + 55 + 77 + 16 + 0 + 3 + 2 = 181 vs 181 -> CLOSES
+
+amend list (section 6.3, script-deduplicated)
+  ids named: 65  unique: 51  no object (add side): ['BH', 'DZ-MARW', 'SY-MWL-POLICY']  amendable: 48
+  reference             8  JO-AWQAF KZ-MUFTIYAT MA-HABOUS OM-MARA PK-NIZAM-E-SALAT QA-MOI SA-KACST TN-INM
+  margins               4  JO-AWQAF KW-AJIRI PK-NIZAM-E-SALAT UZ-ISLOM
+  asr                   3  GB-LONDON-INTERVAL-TABLE NO-MAWAQEET NO-RABITA
+  highLatitude          4  BE-EMB NO-MAWAQEET NO-RABITA SE-MOSQUE
+  fajrRule/ishaRule     6  BH DZ-MARW FI-PORTAL IR-NATIONAL QA-MOI SY-MWL-POLICY
+  recipeVariants        4  IQ-DIWAN IR-NATIONAL JO-AWQAF TN-INM
+  evidence             24  AT-IZW CI-COSIM CL-CIS CY-KKTC CZ-CENTRUM EG-ESA ES-CCIM EU-DIYANET-UNIFIED FI-PORTAL FJ-FML FR-GMS HK-MASJIDAL IS-FELAG KG-MUFTIYAT LK-ACJU MY-JAKIM PT-HSALAH-HUB RU-CDUM RU-DUMRF-MOSCOW RU-DUMRT SG-MUIS SN-CERFI TH-CICOT TJ-SHURO
+  notes/gaps/defects   12  BD-IFB BH CZ-CENTRUM KW-AJIRI LY-MUAZZIN MA-HABOUS MV-MUIS NZ-FIANZ PK-NIZAM-E-SALAT TT-MASJIDBOX VE-CARACAS YE-AWQAF-SANAA
+  multi-family: {'BH': 2, 'CZ-CENTRUM': 2, 'FI-PORTAL': 2, 'IR-NATIONAL': 2, 'JO-AWQAF': 3, 'KW-AJIRI': 2, 'MA-HABOUS': 2, 'NO-MAWAQEET': 2, 'NO-RABITA': 2, 'PK-NIZAM-E-SALAT': 3, 'QA-MOI': 2, 'TN-INM': 2}

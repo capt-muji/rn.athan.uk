@@ -1,0 +1,22 @@
+{"rows_total":30,"rows_usable":30,"span":["2026-02-18","2026-03-19"],"school":"shafi"}
+{
+ "best": {
+  "fajrAngle": 17.9,
+  "isha": 17.15,
+  "school": "shafi",
+  "rms_min": 0.537,
+  "joint_allWithin1": "30/30 (100.0 pc)"
+ },
+ "columns": {
+  "fajr": "27/30 exact, 30/30 within1, worst 1.0, mean 0.10",
+  "sunrise": "18/30 exact, 30/30 within1, worst 1.0, mean 0.40",
+  "dhuhr": "15/30 exact, 30/30 within1, worst 1.0, mean 0.50",
+  "asr": "29/30 exact, 30/30 within1, worst 1.0, mean 0.03",
+  "maghrib": "11/30 exact, 30/30 within1, worst 1.0, mean 0.63",
+  "isha": "28/30 exact, 30/30 within1, worst 1.0, mean 0.07"
+ },
+ "seasonal_amplitude": {
+  "jan_fajr_minutes": null,
+  "jul_fajr_minutes": null
+ }
+}

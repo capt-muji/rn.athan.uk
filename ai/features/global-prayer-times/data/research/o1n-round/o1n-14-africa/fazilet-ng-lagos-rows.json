@@ -1,0 +1,5782 @@
+{
+ "surface": "faziletcalendar.com Fazilet Takvimi (api/cms/daily, date= param)",
+ "city": "NG-Lagos",
+ "cityId": 4840,
+ "lat": 6.5244,
+ "lon": 3.3792,
+ "publisherTz": "Africa/Lagos",
+ "servedDates": {
+  "2026": 66,
+  "2027": 65
+ },
+ "rows": {
+  "2026": {
+   "2026-01-01": {
+    "imsak": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2026-01-01T04:34:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 354,
+     "hm": "05:54",
+     "utc": "2026-01-01T04:54:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 415,
+     "hm": "06:55",
+     "utc": "2026-01-01T05:55:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2026-01-01T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 977,
+     "hm": "16:17",
+     "utc": "2026-01-01T15:17:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1129,
+     "hm": "18:49",
+     "utc": "2026-01-01T17:49:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1197,
+     "hm": "19:57",
+     "utc": "2026-01-01T18:57:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-02": {
+    "imsak": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-01-02T04:35:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 355,
+     "hm": "05:55",
+     "utc": "2026-01-02T04:55:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 416,
+     "hm": "06:56",
+     "utc": "2026-01-02T05:56:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-01-02T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 978,
+     "hm": "16:18",
+     "utc": "2026-01-02T15:18:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1130,
+     "hm": "18:50",
+     "utc": "2026-01-02T17:50:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1198,
+     "hm": "19:58",
+     "utc": "2026-01-02T18:58:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-03": {
+    "imsak": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-01-03T04:35:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 355,
+     "hm": "05:55",
+     "utc": "2026-01-03T04:55:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 416,
+     "hm": "06:56",
+     "utc": "2026-01-03T05:56:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-01-03T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 978,
+     "hm": "16:18",
+     "utc": "2026-01-03T15:18:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1130,
+     "hm": "18:50",
+     "utc": "2026-01-03T17:50:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1198,
+     "hm": "19:58",
+     "utc": "2026-01-03T18:58:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-04": {
+    "imsak": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-01-04T04:35:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 355,
+     "hm": "05:55",
+     "utc": "2026-01-04T04:55:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 416,
+     "hm": "06:56",
+     "utc": "2026-01-04T05:56:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-01-04T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 978,
+     "hm": "16:18",
+     "utc": "2026-01-04T15:18:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1131,
+     "hm": "18:51",
+     "utc": "2026-01-04T17:51:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1199,
+     "hm": "19:59",
+     "utc": "2026-01-04T18:59:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-05": {
+    "imsak": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2026-01-05T04:36:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 356,
+     "hm": "05:56",
+     "utc": "2026-01-05T04:56:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 417,
+     "hm": "06:57",
+     "utc": "2026-01-05T05:57:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-01-05T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2026-01-05T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1131,
+     "hm": "18:51",
+     "utc": "2026-01-05T17:51:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1199,
+     "hm": "19:59",
+     "utc": "2026-01-05T18:59:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-06": {
+    "imsak": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2026-01-06T04:36:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 356,
+     "hm": "05:56",
+     "utc": "2026-01-06T04:56:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 417,
+     "hm": "06:57",
+     "utc": "2026-01-06T05:57:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-01-06T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2026-01-06T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1132,
+     "hm": "18:52",
+     "utc": "2026-01-06T17:52:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1200,
+     "hm": "20:00",
+     "utc": "2026-01-06T19:00:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-07": {
+    "imsak": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-01-07T04:37:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 357,
+     "hm": "05:57",
+     "utc": "2026-01-07T04:57:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 418,
+     "hm": "06:58",
+     "utc": "2026-01-07T05:58:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-01-07T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2026-01-07T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1132,
+     "hm": "18:52",
+     "utc": "2026-01-07T17:52:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1200,
+     "hm": "20:00",
+     "utc": "2026-01-07T19:00:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-08": {
+    "imsak": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-01-08T04:37:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 357,
+     "hm": "05:57",
+     "utc": "2026-01-08T04:57:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 418,
+     "hm": "06:58",
+     "utc": "2026-01-08T05:58:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-01-08T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2026-01-08T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1133,
+     "hm": "18:53",
+     "utc": "2026-01-08T17:53:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1201,
+     "hm": "20:01",
+     "utc": "2026-01-08T19:01:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-09": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-01-09T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2026-01-09T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 418,
+     "hm": "06:58",
+     "utc": "2026-01-09T05:58:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2026-01-09T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-01-09T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1133,
+     "hm": "18:53",
+     "utc": "2026-01-09T17:53:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1201,
+     "hm": "20:01",
+     "utc": "2026-01-09T19:01:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-10": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-01-10T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2026-01-10T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2026-01-10T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2026-01-10T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-01-10T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1134,
+     "hm": "18:54",
+     "utc": "2026-01-10T17:54:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1201,
+     "hm": "20:01",
+     "utc": "2026-01-10T19:01:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-11": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-01-11T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2026-01-11T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2026-01-11T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2026-01-11T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-01-11T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1134,
+     "hm": "18:54",
+     "utc": "2026-01-11T17:54:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1202,
+     "hm": "20:02",
+     "utc": "2026-01-11T19:02:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-12": {
+    "imsak": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2026-01-12T04:39:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 359,
+     "hm": "05:59",
+     "utc": "2026-01-12T04:59:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2026-01-12T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 782,
+     "hm": "13:02",
+     "utc": "2026-01-12T12:02:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-01-12T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1134,
+     "hm": "18:54",
+     "utc": "2026-01-12T17:54:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1202,
+     "hm": "20:02",
+     "utc": "2026-01-12T19:02:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-13": {
+    "imsak": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2026-01-13T04:39:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 359,
+     "hm": "05:59",
+     "utc": "2026-01-13T04:59:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2026-01-13T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 782,
+     "hm": "13:02",
+     "utc": "2026-01-13T12:02:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-01-13T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1135,
+     "hm": "18:55",
+     "utc": "2026-01-13T17:55:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1203,
+     "hm": "20:03",
+     "utc": "2026-01-13T19:03:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-14": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2026-01-14T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2026-01-14T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2026-01-14T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 783,
+     "hm": "13:03",
+     "utc": "2026-01-14T12:03:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-01-14T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1135,
+     "hm": "18:55",
+     "utc": "2026-01-14T17:55:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1203,
+     "hm": "20:03",
+     "utc": "2026-01-14T19:03:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-15": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2026-01-15T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2026-01-15T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2026-01-15T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 783,
+     "hm": "13:03",
+     "utc": "2026-01-15T12:03:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-01-15T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1136,
+     "hm": "18:56",
+     "utc": "2026-01-15T17:56:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1203,
+     "hm": "20:03",
+     "utc": "2026-01-15T19:03:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-16": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2026-01-16T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2026-01-16T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2026-01-16T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 783,
+     "hm": "13:03",
+     "utc": "2026-01-16T12:03:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-01-16T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1136,
+     "hm": "18:56",
+     "utc": "2026-01-16T17:56:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2026-01-16T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-17": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2026-01-17T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2026-01-17T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2026-01-17T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2026-01-17T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2026-01-17T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1137,
+     "hm": "18:57",
+     "utc": "2026-01-17T17:57:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2026-01-17T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-18": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2026-01-18T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2026-01-18T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2026-01-18T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2026-01-18T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2026-01-18T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1137,
+     "hm": "18:57",
+     "utc": "2026-01-18T17:57:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2026-01-18T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-19": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2026-01-19T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2026-01-19T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2026-01-19T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2026-01-19T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2026-01-19T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1138,
+     "hm": "18:58",
+     "utc": "2026-01-19T17:58:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2026-01-19T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-20": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2026-01-20T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2026-01-20T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2026-01-20T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2026-01-20T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2026-01-20T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1138,
+     "hm": "18:58",
+     "utc": "2026-01-20T17:58:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2026-01-20T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-21": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2026-01-21T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2026-01-21T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2026-01-21T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2026-01-21T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2026-01-21T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1138,
+     "hm": "18:58",
+     "utc": "2026-01-21T17:58:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2026-01-21T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-22": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2026-01-22T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2026-01-22T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-22T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2026-01-22T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2026-01-22T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2026-01-22T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2026-01-22T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-23": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2026-01-23T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2026-01-23T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-23T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2026-01-23T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2026-01-23T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2026-01-23T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2026-01-23T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-24": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2026-01-24T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2026-01-24T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-24T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2026-01-24T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2026-01-24T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2026-01-24T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2026-01-24T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-25": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2026-01-25T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2026-01-25T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-25T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2026-01-25T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2026-01-25T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2026-01-25T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2026-01-25T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-26": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2026-01-26T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2026-01-26T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-26T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2026-01-26T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2026-01-26T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2026-01-26T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2026-01-26T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-27": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2026-01-27T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2026-01-27T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-27T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2026-01-27T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2026-01-27T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2026-01-27T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2026-01-27T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-28": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2026-01-28T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2026-01-28T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-28T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2026-01-28T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2026-01-28T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2026-01-28T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2026-01-28T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-29": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2026-01-29T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2026-01-29T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-29T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2026-01-29T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2026-01-29T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2026-01-29T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2026-01-29T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-30": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2026-01-30T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2026-01-30T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-30T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2026-01-30T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2026-01-30T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2026-01-30T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2026-01-30T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-01-31": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2026-01-31T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2026-01-31T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-01-31T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2026-01-31T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2026-01-31T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1142,
+     "hm": "19:02",
+     "utc": "2026-01-31T18:02:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1208,
+     "hm": "20:08",
+     "utc": "2026-01-31T19:08:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-02-01": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2026-02-01T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2026-02-01T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2026-02-01T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2026-02-01T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2026-02-01T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1142,
+     "hm": "19:02",
+     "utc": "2026-02-01T18:02:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1208,
+     "hm": "20:08",
+     "utc": "2026-02-01T19:08:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-06-30": {
+    "imsak": {
+     "min": 310,
+     "hm": "05:10",
+     "utc": "2026-06-30T04:10:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 330,
+     "hm": "05:30",
+     "utc": "2026-06-30T04:30:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 393,
+     "hm": "06:33",
+     "utc": "2026-06-30T05:33:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2026-06-30T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-06-30T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2026-06-30T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-06-30T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-01": {
+    "imsak": {
+     "min": 310,
+     "hm": "05:10",
+     "utc": "2026-07-01T04:10:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 330,
+     "hm": "05:30",
+     "utc": "2026-07-01T04:30:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 393,
+     "hm": "06:33",
+     "utc": "2026-07-01T05:33:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2026-07-01T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-01T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-01T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-01T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-02": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2026-07-02T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2026-07-02T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2026-07-02T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-07-02T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-02T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-02T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-02T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-03": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2026-07-03T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2026-07-03T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2026-07-03T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-07-03T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-03T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-03T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-03T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-04": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2026-07-04T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2026-07-04T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2026-07-04T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-07-04T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-04T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-04T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-04T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-05": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2026-07-05T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2026-07-05T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2026-07-05T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-07-05T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-05T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-05T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-05T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-06": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2026-07-06T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2026-07-06T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2026-07-06T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2026-07-06T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-06T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-06T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-06T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-07": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2026-07-07T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2026-07-07T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2026-07-07T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-07T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-07T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-07T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-07T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-08": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2026-07-08T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2026-07-08T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2026-07-08T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-08T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-08T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-08T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-08T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-09": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2026-07-09T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2026-07-09T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2026-07-09T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-09T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-09T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-09T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-09T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-10": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2026-07-10T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2026-07-10T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2026-07-10T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-10T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-10T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-10T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-10T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-11": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2026-07-11T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2026-07-11T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2026-07-11T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-11T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-11T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-11T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-11T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-12": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2026-07-12T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2026-07-12T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2026-07-12T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-12T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-12T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-12T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-12T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-13": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2026-07-13T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2026-07-13T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2026-07-13T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-13T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-13T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-13T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-13T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-14": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2026-07-14T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2026-07-14T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2026-07-14T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2026-07-14T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-14T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-14T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-14T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-15": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2026-07-15T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-07-15T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2026-07-15T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-15T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-15T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-15T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2026-07-15T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-16": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2026-07-16T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-07-16T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-16T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-16T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-16T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-16T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-16T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-17": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2026-07-17T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-07-17T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-17T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-17T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-17T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-17T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-17T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-18": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2026-07-18T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2026-07-18T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-18T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-18T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2026-07-18T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-18T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-18T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-19": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2026-07-19T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2026-07-19T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-19T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-19T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-07-19T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-19T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-19T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-20": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2026-07-20T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2026-07-20T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-20T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-20T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-07-20T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-20T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-20T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-21": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2026-07-21T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2026-07-21T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2026-07-21T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-21T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-07-21T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2026-07-21T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-21T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-22": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2026-07-22T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-07-22T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-22T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-22T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-07-22T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-22T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2026-07-22T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-23": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2026-07-23T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-07-23T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-23T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-23T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2026-07-23T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-23T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2026-07-23T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-24": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2026-07-24T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-07-24T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-24T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-24T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-07-24T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-24T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2026-07-24T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-25": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2026-07-25T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2026-07-25T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-25T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-25T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-07-25T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-25T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2026-07-25T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-26": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2026-07-26T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-07-26T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-26T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-26T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-07-26T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-26T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2026-07-26T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-27": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2026-07-27T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-07-27T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-27T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-27T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2026-07-27T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-27T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2026-07-27T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-28": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2026-07-28T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-07-28T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-28T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-28T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2026-07-28T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-28T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2026-07-28T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-29": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2026-07-29T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-07-29T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-29T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-29T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2026-07-29T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2026-07-29T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2026-07-29T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-30": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2026-07-30T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2026-07-30T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2026-07-30T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-30T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2026-07-30T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2026-07-30T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2026-07-30T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-07-31": {
+    "imsak": {
+     "min": 319,
+     "hm": "05:19",
+     "utc": "2026-07-31T04:19:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2026-07-31T04:39:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 399,
+     "hm": "06:39",
+     "utc": "2026-07-31T05:39:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-07-31T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2026-07-31T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2026-07-31T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1218,
+     "hm": "20:18",
+     "utc": "2026-07-31T19:18:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-08-01": {
+    "imsak": {
+     "min": 319,
+     "hm": "05:19",
+     "utc": "2026-08-01T04:19:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2026-08-01T04:39:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 399,
+     "hm": "06:39",
+     "utc": "2026-08-01T05:39:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2026-08-01T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2026-08-01T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2026-08-01T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1218,
+     "hm": "20:18",
+     "utc": "2026-08-01T19:18:00Z",
+     "takdiri": false
+    }
+   },
+   "2026-12-31": {
+    "imsak": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2026-12-31T04:33:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 353,
+     "hm": "05:53",
+     "utc": "2026-12-31T04:53:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 415,
+     "hm": "06:55",
+     "utc": "2026-12-31T05:55:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2026-12-31T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 976,
+     "hm": "16:16",
+     "utc": "2026-12-31T15:16:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1128,
+     "hm": "18:48",
+     "utc": "2026-12-31T17:48:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1197,
+     "hm": "19:57",
+     "utc": "2026-12-31T18:57:00Z",
+     "takdiri": false
+    }
+   }
+  },
+  "2027": {
+   "2027-01-01": {
+    "imsak": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2027-01-01T04:34:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 354,
+     "hm": "05:54",
+     "utc": "2027-01-01T04:54:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 415,
+     "hm": "06:55",
+     "utc": "2027-01-01T05:55:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2027-01-01T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 977,
+     "hm": "16:17",
+     "utc": "2027-01-01T15:17:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1129,
+     "hm": "18:49",
+     "utc": "2027-01-01T17:49:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1197,
+     "hm": "19:57",
+     "utc": "2027-01-01T18:57:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-02": {
+    "imsak": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2027-01-02T04:34:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 354,
+     "hm": "05:54",
+     "utc": "2027-01-02T04:54:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 415,
+     "hm": "06:55",
+     "utc": "2027-01-02T05:55:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2027-01-02T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 977,
+     "hm": "16:17",
+     "utc": "2027-01-02T15:17:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1129,
+     "hm": "18:49",
+     "utc": "2027-01-02T17:49:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1198,
+     "hm": "19:58",
+     "utc": "2027-01-02T18:58:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-03": {
+    "imsak": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-01-03T04:35:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 355,
+     "hm": "05:55",
+     "utc": "2027-01-03T04:55:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 416,
+     "hm": "06:56",
+     "utc": "2027-01-03T05:56:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-01-03T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 978,
+     "hm": "16:18",
+     "utc": "2027-01-03T15:18:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1130,
+     "hm": "18:50",
+     "utc": "2027-01-03T17:50:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1198,
+     "hm": "19:58",
+     "utc": "2027-01-03T18:58:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-04": {
+    "imsak": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-01-04T04:35:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 355,
+     "hm": "05:55",
+     "utc": "2027-01-04T04:55:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 416,
+     "hm": "06:56",
+     "utc": "2027-01-04T05:56:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-01-04T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 978,
+     "hm": "16:18",
+     "utc": "2027-01-04T15:18:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1130,
+     "hm": "18:50",
+     "utc": "2027-01-04T17:50:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1199,
+     "hm": "19:59",
+     "utc": "2027-01-04T18:59:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-05": {
+    "imsak": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-01-05T04:36:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 356,
+     "hm": "05:56",
+     "utc": "2027-01-05T04:56:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 417,
+     "hm": "06:57",
+     "utc": "2027-01-05T05:57:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-01-05T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2027-01-05T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1131,
+     "hm": "18:51",
+     "utc": "2027-01-05T17:51:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1199,
+     "hm": "19:59",
+     "utc": "2027-01-05T18:59:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-06": {
+    "imsak": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-01-06T04:36:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 356,
+     "hm": "05:56",
+     "utc": "2027-01-06T04:56:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 417,
+     "hm": "06:57",
+     "utc": "2027-01-06T05:57:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-01-06T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2027-01-06T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1131,
+     "hm": "18:51",
+     "utc": "2027-01-06T17:51:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1200,
+     "hm": "20:00",
+     "utc": "2027-01-06T19:00:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-07": {
+    "imsak": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-01-07T04:37:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 357,
+     "hm": "05:57",
+     "utc": "2027-01-07T04:57:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 417,
+     "hm": "06:57",
+     "utc": "2027-01-07T05:57:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-01-07T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2027-01-07T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1132,
+     "hm": "18:52",
+     "utc": "2027-01-07T17:52:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1200,
+     "hm": "20:00",
+     "utc": "2027-01-07T19:00:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-08": {
+    "imsak": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-01-08T04:37:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 357,
+     "hm": "05:57",
+     "utc": "2027-01-08T04:57:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 418,
+     "hm": "06:58",
+     "utc": "2027-01-08T05:58:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-01-08T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2027-01-08T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1132,
+     "hm": "18:52",
+     "utc": "2027-01-08T17:52:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1200,
+     "hm": "20:00",
+     "utc": "2027-01-08T19:00:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-09": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-01-09T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2027-01-09T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 418,
+     "hm": "06:58",
+     "utc": "2027-01-09T05:58:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2027-01-09T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-01-09T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1133,
+     "hm": "18:53",
+     "utc": "2027-01-09T17:53:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1201,
+     "hm": "20:01",
+     "utc": "2027-01-09T19:01:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-10": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-01-10T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2027-01-10T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2027-01-10T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2027-01-10T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-01-10T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1133,
+     "hm": "18:53",
+     "utc": "2027-01-10T17:53:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1201,
+     "hm": "20:01",
+     "utc": "2027-01-10T19:01:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-11": {
+    "imsak": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-01-11T04:38:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 358,
+     "hm": "05:58",
+     "utc": "2027-01-11T04:58:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2027-01-11T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 781,
+     "hm": "13:01",
+     "utc": "2027-01-11T12:01:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-01-11T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1134,
+     "hm": "18:54",
+     "utc": "2027-01-11T17:54:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1202,
+     "hm": "20:02",
+     "utc": "2027-01-11T19:02:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-12": {
+    "imsak": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2027-01-12T04:39:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 359,
+     "hm": "05:59",
+     "utc": "2027-01-12T04:59:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2027-01-12T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 782,
+     "hm": "13:02",
+     "utc": "2027-01-12T12:02:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-01-12T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1134,
+     "hm": "18:54",
+     "utc": "2027-01-12T17:54:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1202,
+     "hm": "20:02",
+     "utc": "2027-01-12T19:02:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-13": {
+    "imsak": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2027-01-13T04:39:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 359,
+     "hm": "05:59",
+     "utc": "2027-01-13T04:59:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 419,
+     "hm": "06:59",
+     "utc": "2027-01-13T05:59:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 782,
+     "hm": "13:02",
+     "utc": "2027-01-13T12:02:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-01-13T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1135,
+     "hm": "18:55",
+     "utc": "2027-01-13T17:55:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1202,
+     "hm": "20:02",
+     "utc": "2027-01-13T19:02:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-14": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2027-01-14T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2027-01-14T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2027-01-14T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 782,
+     "hm": "13:02",
+     "utc": "2027-01-14T12:02:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-01-14T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1135,
+     "hm": "18:55",
+     "utc": "2027-01-14T17:55:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1203,
+     "hm": "20:03",
+     "utc": "2027-01-14T19:03:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-15": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2027-01-15T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2027-01-15T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2027-01-15T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 783,
+     "hm": "13:03",
+     "utc": "2027-01-15T12:03:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-01-15T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1136,
+     "hm": "18:56",
+     "utc": "2027-01-15T17:56:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1203,
+     "hm": "20:03",
+     "utc": "2027-01-15T19:03:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-16": {
+    "imsak": {
+     "min": 340,
+     "hm": "05:40",
+     "utc": "2027-01-16T04:40:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 360,
+     "hm": "06:00",
+     "utc": "2027-01-16T05:00:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 420,
+     "hm": "07:00",
+     "utc": "2027-01-16T06:00:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 783,
+     "hm": "13:03",
+     "utc": "2027-01-16T12:03:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-01-16T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1136,
+     "hm": "18:56",
+     "utc": "2027-01-16T17:56:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2027-01-16T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-17": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2027-01-17T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2027-01-17T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2027-01-17T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2027-01-17T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2027-01-17T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1137,
+     "hm": "18:57",
+     "utc": "2027-01-17T17:57:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2027-01-17T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-18": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2027-01-18T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2027-01-18T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2027-01-18T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2027-01-18T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2027-01-18T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1137,
+     "hm": "18:57",
+     "utc": "2027-01-18T17:57:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1204,
+     "hm": "20:04",
+     "utc": "2027-01-18T19:04:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-19": {
+    "imsak": {
+     "min": 341,
+     "hm": "05:41",
+     "utc": "2027-01-19T04:41:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 361,
+     "hm": "06:01",
+     "utc": "2027-01-19T05:01:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2027-01-19T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2027-01-19T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 984,
+     "hm": "16:24",
+     "utc": "2027-01-19T15:24:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1137,
+     "hm": "18:57",
+     "utc": "2027-01-19T17:57:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2027-01-19T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-20": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2027-01-20T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2027-01-20T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2027-01-20T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 784,
+     "hm": "13:04",
+     "utc": "2027-01-20T12:04:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2027-01-20T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1138,
+     "hm": "18:58",
+     "utc": "2027-01-20T17:58:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2027-01-20T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-21": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2027-01-21T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2027-01-21T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 421,
+     "hm": "07:01",
+     "utc": "2027-01-21T06:01:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2027-01-21T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2027-01-21T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1138,
+     "hm": "18:58",
+     "utc": "2027-01-21T17:58:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2027-01-21T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-22": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2027-01-22T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2027-01-22T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-22T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2027-01-22T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2027-01-22T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2027-01-22T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1205,
+     "hm": "20:05",
+     "utc": "2027-01-22T19:05:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-23": {
+    "imsak": {
+     "min": 342,
+     "hm": "05:42",
+     "utc": "2027-01-23T04:42:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 362,
+     "hm": "06:02",
+     "utc": "2027-01-23T05:02:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-23T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 785,
+     "hm": "13:05",
+     "utc": "2027-01-23T12:05:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 985,
+     "hm": "16:25",
+     "utc": "2027-01-23T15:25:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2027-01-23T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2027-01-23T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-24": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2027-01-24T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2027-01-24T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-24T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2027-01-24T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2027-01-24T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1139,
+     "hm": "18:59",
+     "utc": "2027-01-24T17:59:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2027-01-24T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-25": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2027-01-25T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2027-01-25T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-25T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2027-01-25T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2027-01-25T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2027-01-25T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2027-01-25T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-26": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2027-01-26T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2027-01-26T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-26T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2027-01-26T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2027-01-26T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2027-01-26T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1206,
+     "hm": "20:06",
+     "utc": "2027-01-26T19:06:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-27": {
+    "imsak": {
+     "min": 343,
+     "hm": "05:43",
+     "utc": "2027-01-27T04:43:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 363,
+     "hm": "06:03",
+     "utc": "2027-01-27T05:03:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-27T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2027-01-27T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2027-01-27T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1140,
+     "hm": "19:00",
+     "utc": "2027-01-27T18:00:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2027-01-27T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-28": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2027-01-28T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2027-01-28T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-28T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 786,
+     "hm": "13:06",
+     "utc": "2027-01-28T12:06:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 986,
+     "hm": "16:26",
+     "utc": "2027-01-28T15:26:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2027-01-28T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2027-01-28T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-29": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2027-01-29T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2027-01-29T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-29T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2027-01-29T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2027-01-29T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2027-01-29T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2027-01-29T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-30": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2027-01-30T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2027-01-30T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-30T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2027-01-30T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2027-01-30T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1141,
+     "hm": "19:01",
+     "utc": "2027-01-30T18:01:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2027-01-30T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-01-31": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2027-01-31T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2027-01-31T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-01-31T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2027-01-31T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2027-01-31T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1142,
+     "hm": "19:02",
+     "utc": "2027-01-31T18:02:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1207,
+     "hm": "20:07",
+     "utc": "2027-01-31T19:07:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-02-01": {
+    "imsak": {
+     "min": 344,
+     "hm": "05:44",
+     "utc": "2027-02-01T04:44:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 364,
+     "hm": "06:04",
+     "utc": "2027-02-01T05:04:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 422,
+     "hm": "07:02",
+     "utc": "2027-02-01T06:02:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 787,
+     "hm": "13:07",
+     "utc": "2027-02-01T12:07:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 987,
+     "hm": "16:27",
+     "utc": "2027-02-01T15:27:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1142,
+     "hm": "19:02",
+     "utc": "2027-02-01T18:02:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1208,
+     "hm": "20:08",
+     "utc": "2027-02-01T19:08:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-06-30": {
+    "imsak": {
+     "min": 310,
+     "hm": "05:10",
+     "utc": "2027-06-30T04:10:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 330,
+     "hm": "05:30",
+     "utc": "2027-06-30T04:30:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 393,
+     "hm": "06:33",
+     "utc": "2027-06-30T05:33:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2027-06-30T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-06-30T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2027-06-30T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-06-30T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-01": {
+    "imsak": {
+     "min": 310,
+     "hm": "05:10",
+     "utc": "2027-07-01T04:10:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 330,
+     "hm": "05:30",
+     "utc": "2027-07-01T04:30:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 393,
+     "hm": "06:33",
+     "utc": "2027-07-01T05:33:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 777,
+     "hm": "12:57",
+     "utc": "2027-07-01T11:57:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-01T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-01T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-01T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-02": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2027-07-02T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2027-07-02T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 393,
+     "hm": "06:33",
+     "utc": "2027-07-02T05:33:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-02T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-02T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-02T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-02T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-03": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2027-07-03T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2027-07-03T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2027-07-03T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-03T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-03T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-03T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-03T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-04": {
+    "imsak": {
+     "min": 311,
+     "hm": "05:11",
+     "utc": "2027-07-04T04:11:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 331,
+     "hm": "05:31",
+     "utc": "2027-07-04T04:31:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2027-07-04T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-04T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-04T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-04T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-04T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-05": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2027-07-05T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2027-07-05T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2027-07-05T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-05T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-05T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-05T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-05T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-06": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2027-07-06T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2027-07-06T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 394,
+     "hm": "06:34",
+     "utc": "2027-07-06T05:34:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-06T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-06T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-06T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-06T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-07": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2027-07-07T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2027-07-07T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2027-07-07T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 778,
+     "hm": "12:58",
+     "utc": "2027-07-07T11:58:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-07T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-07T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-07T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-08": {
+    "imsak": {
+     "min": 312,
+     "hm": "05:12",
+     "utc": "2027-07-08T04:12:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 332,
+     "hm": "05:32",
+     "utc": "2027-07-08T04:32:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2027-07-08T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-08T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-08T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-08T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-08T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-09": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2027-07-09T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2027-07-09T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2027-07-09T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-09T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-09T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-09T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-09T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-10": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2027-07-10T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2027-07-10T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2027-07-10T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-10T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-10T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-10T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-10T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-11": {
+    "imsak": {
+     "min": 313,
+     "hm": "05:13",
+     "utc": "2027-07-11T04:13:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 333,
+     "hm": "05:33",
+     "utc": "2027-07-11T04:33:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 395,
+     "hm": "06:35",
+     "utc": "2027-07-11T05:35:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-11T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-11T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-11T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-11T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-12": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2027-07-12T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2027-07-12T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2027-07-12T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-12T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-12T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-12T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-12T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-13": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2027-07-13T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2027-07-13T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2027-07-13T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-13T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-13T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-13T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-13T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-14": {
+    "imsak": {
+     "min": 314,
+     "hm": "05:14",
+     "utc": "2027-07-14T04:14:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 334,
+     "hm": "05:34",
+     "utc": "2027-07-14T04:34:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2027-07-14T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 779,
+     "hm": "12:59",
+     "utc": "2027-07-14T11:59:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-14T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-14T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-14T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-15": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2027-07-15T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-07-15T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2027-07-15T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-15T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-15T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-15T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1222,
+     "hm": "20:22",
+     "utc": "2027-07-15T19:22:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-16": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2027-07-16T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-07-16T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 396,
+     "hm": "06:36",
+     "utc": "2027-07-16T05:36:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-16T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-16T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-16T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-16T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-17": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2027-07-17T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-07-17T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-17T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-17T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-17T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-17T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-17T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-18": {
+    "imsak": {
+     "min": 315,
+     "hm": "05:15",
+     "utc": "2027-07-18T04:15:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 335,
+     "hm": "05:35",
+     "utc": "2027-07-18T04:35:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-18T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-18T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 983,
+     "hm": "16:23",
+     "utc": "2027-07-18T15:23:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-18T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-18T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-19": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2027-07-19T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-07-19T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-19T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-19T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-19T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-19T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-19T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-20": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2027-07-20T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-07-20T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-20T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-20T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-20T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-20T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-20T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-21": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2027-07-21T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-07-21T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-21T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-21T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-21T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-21T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-21T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-22": {
+    "imsak": {
+     "min": 316,
+     "hm": "05:16",
+     "utc": "2027-07-22T04:16:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 336,
+     "hm": "05:36",
+     "utc": "2027-07-22T04:36:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 397,
+     "hm": "06:37",
+     "utc": "2027-07-22T05:37:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-22T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-22T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1153,
+     "hm": "19:13",
+     "utc": "2027-07-22T18:13:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1221,
+     "hm": "20:21",
+     "utc": "2027-07-22T19:21:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-23": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2027-07-23T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-07-23T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-23T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-23T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 982,
+     "hm": "16:22",
+     "utc": "2027-07-23T15:22:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-23T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2027-07-23T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-24": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2027-07-24T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-07-24T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-24T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-24T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-07-24T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-24T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2027-07-24T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-25": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2027-07-25T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-07-25T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-25T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-25T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-07-25T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-25T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2027-07-25T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-26": {
+    "imsak": {
+     "min": 317,
+     "hm": "05:17",
+     "utc": "2027-07-26T04:17:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 337,
+     "hm": "05:37",
+     "utc": "2027-07-26T04:37:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-26T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-26T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-07-26T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-26T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2027-07-26T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-27": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2027-07-27T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-07-27T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-27T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-27T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 981,
+     "hm": "16:21",
+     "utc": "2027-07-27T15:21:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-27T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1220,
+     "hm": "20:20",
+     "utc": "2027-07-27T19:20:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-28": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2027-07-28T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-07-28T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-28T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-28T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2027-07-28T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-28T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2027-07-28T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-29": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2027-07-29T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-07-29T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-29T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-29T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2027-07-29T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-29T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2027-07-29T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-30": {
+    "imsak": {
+     "min": 318,
+     "hm": "05:18",
+     "utc": "2027-07-30T04:18:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 338,
+     "hm": "05:38",
+     "utc": "2027-07-30T04:38:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 398,
+     "hm": "06:38",
+     "utc": "2027-07-30T05:38:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-30T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 980,
+     "hm": "16:20",
+     "utc": "2027-07-30T15:20:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1152,
+     "hm": "19:12",
+     "utc": "2027-07-30T18:12:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1219,
+     "hm": "20:19",
+     "utc": "2027-07-30T19:19:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-07-31": {
+    "imsak": {
+     "min": 319,
+     "hm": "05:19",
+     "utc": "2027-07-31T04:19:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2027-07-31T04:39:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 399,
+     "hm": "06:39",
+     "utc": "2027-07-31T05:39:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-07-31T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2027-07-31T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2027-07-31T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1218,
+     "hm": "20:18",
+     "utc": "2027-07-31T19:18:00Z",
+     "takdiri": false
+    }
+   },
+   "2027-08-01": {
+    "imsak": {
+     "min": 319,
+     "hm": "05:19",
+     "utc": "2027-08-01T04:19:00Z",
+     "takdiri": false
+    },
+    "sabah": {
+     "min": 339,
+     "hm": "05:39",
+     "utc": "2027-08-01T04:39:00Z",
+     "takdiri": false
+    },
+    "gunes": {
+     "min": 399,
+     "hm": "06:39",
+     "utc": "2027-08-01T05:39:00Z",
+     "takdiri": false
+    },
+    "ogle": {
+     "min": 780,
+     "hm": "13:00",
+     "utc": "2027-08-01T12:00:00Z",
+     "takdiri": false
+    },
+    "ikindi": {
+     "min": 979,
+     "hm": "16:19",
+     "utc": "2027-08-01T15:19:00Z",
+     "takdiri": false
+    },
+    "aksam": {
+     "min": 1151,
+     "hm": "19:11",
+     "utc": "2027-08-01T18:11:00Z",
+     "takdiri": false
+    },
+    "yatsi": {
+     "min": 1218,
+     "hm": "20:18",
+     "utc": "2027-08-01T19:18:00Z",
+     "takdiri": false
+    }
+   }
+  }
+ }
+}

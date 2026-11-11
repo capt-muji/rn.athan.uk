@@ -1,0 +1,1086 @@
+{
+ "badJson": [
+  {
+   "rel": "o1m-12-uk/captures/dpt-bolton.json",
+   "size": 66837,
+   "err": "Unexpected token '<', \"<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dpt-carlisle.json",
+   "size": 468381,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dpt-preston.json",
+   "size": 38950,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dpt-preston2.json",
+   "size": 608094,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dpt-wigan.json",
+   "size": 4789,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Banja-Luka.json",
+   "size": 44415,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Bihac.json",
+   "size": 44403,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Bijeljina.json",
+   "size": 44399,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Brcko.json",
+   "size": 44426,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Bugojno.json",
+   "size": 44392,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Cazin.json",
+   "size": 44390,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Doboj.json",
+   "size": 44376,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Gorazde.json",
+   "size": 44519,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Gradacac.json",
+   "size": 44593,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Jajce.json",
+   "size": 44388,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Kakanj.json",
+   "size": 44382,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Konjic.json",
+   "size": 44377,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Livno.json",
+   "size": 44394,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Mostar.json",
+   "size": 44395,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Sanski-Most.json",
+   "size": 44420,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Sarajevo.json",
+   "size": 44398,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Srebrenik.json",
+   "size": 44397,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Tesanj.json",
+   "size": 44445,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Travnik.json",
+   "size": 44411,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Tuzla.json",
+   "size": 44407,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Velika-Kladusa.json",
+   "size": 44489,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Visoko.json",
+   "size": 44382,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Zenica.json",
+   "size": 44387,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/ba-vaktija-dev-Zvornik.json",
+   "size": 44394,
+   "err": "Unexpected token '%', \"%PDF-1.7\n1\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-16-seasia/captures/bn-odata-2027-probe.json",
+   "size": 466,
+   "err": "Unexpected token '<', \"<?xml vers\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-16-seasia/captures/bn-odata-maxdate.json",
+   "size": 13018,
+   "err": "Unexpected token '<', \"<?xml vers\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-17-india/captures/wb-waqf-inertia.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/cosim-calendrier-inertia.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/ahmadwp-kiribati.json",
+   "size": 323130,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/ahmadwp-majuro.json",
+   "size": 323128,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/ahmadwp-micronesia.json",
+   "size": 323132,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/ahmadwp-palau.json",
+   "size": 323127,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/ahmadwp-pohnpei.json",
+   "size": 323129,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/probe-mymasjid-api.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-2-capitals/fit/fj-alhaqq-margins.json",
+   "size": 318,
+   "err": "Unexpected non-whitespace character after JSON at position 256 (line 2 column 1)"
+  },
+  {
+   "rel": "o1m-24-levant/captures/jo/cdx-awqaf.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-24-levant/captures/masjidi/table2-20260407.json",
+   "size": 3338,
+   "err": "Unexpected token '\u001f', \"\u001f\ufffd\b\u0000\u0000\u0000\u0000\u0000\u0000\ufffd\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-25-kazakh/captures/api-probe-last.json",
+   "size": 187,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-25-kazakh/captures/kz-probe-fail.json",
+   "size": 187,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-27-gulf/captures/qa-moi-today.json",
+   "size": 2282,
+   "err": "Unexpected token '<', ...\"\r\n\r\n\r\n\r\n\r\n<html lang\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-29-kaznational/captures/probe-attempt.json",
+   "size": 187,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-30-maghreb/captures/ly-masjidi-region-12.json",
+   "size": 196,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-30-maghreb/captures/ly-masjidi-region-6.json",
+   "size": 196,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-30-maghreb/captures/wb-mo-2024-26-cdx.json",
+   "size": 160,
+   "err": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-391_638-20150101-20171231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-391_638-20180101-20201231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-391_638-20210101-20241231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-482_640-20150101-20171231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-482_640-20180101-20201231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-482_640-20210101-20241231.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/cdx-dumrt-csv-domain.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2025_1.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2025_6.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2026_1.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2026_6.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2027_1.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ctrl_2027_6.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_01.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_02.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_03.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_04.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_05.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_06.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_07.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_08.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_09.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_10.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_11.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2020_12.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_01.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_02.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_03.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_04.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_05.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_06.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_07.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_08.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_09.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_10.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_11.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2021_12.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_01.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_02.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_03.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_04.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_05.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_06.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_07.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_08.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_09.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_10.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_11.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2022_12.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_01.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_02.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_03.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_04.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_05.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_06.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_07.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_08.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_09.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_10.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_11.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2023_12.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_01.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_02.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_03.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_04.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_05.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_06.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_07.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_08.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_09.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_10.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_11.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrb/ufa_2024_12.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrt_cdx/391_638-2015.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrt_cdx/391_638-2019.json",
+   "size": 160,
+   "err": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrt_cdx/482_640-2015.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/dumrt_cdx/482_640-2016.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/kg-fullyear-test.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/kg-wtest-01-01-2026_30-04-2026.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/kg-wtest-01-01-2026_31-03-2026.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-32-caappeal/captures/uz/cdx-namozvaqti.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-44-reopen/captures/cdx-dundee-timetables.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-44-reopen/captures/cdx-wrexham.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-5-asia/captures/cdx-acju-all.json",
+   "size": 160,
+   "err": "Unexpected token '<', \"<html>\r\n<h\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_masters_emirates.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_masters_emiratesandcities.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_prayer-time_emirates-and-cities.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_prayer-times.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_prayertime.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-api-APIS_v3_prayertimes_emiratesandcities.json",
+   "size": 0,
+   "err": "Unexpected end of JSON input"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-probe-appsettings.json",
+   "size": 2595,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-probe-assets_appsettings.json",
+   "size": 2595,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-52-almanac/captures/ae-probe-assets_config.json",
+   "size": 2595,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-8-arctic/captures/irn-probe.json",
+   "size": 179,
+   "err": "Unexpected token '<', \"\n<!doctype \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-8-arctic/captures/sites/gmi-pages-search.json",
+   "size": 92203,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-01.json",
+   "size": 20481,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-02.json",
+   "size": 18634,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-03.json",
+   "size": 20497,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-04.json",
+   "size": 19974,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-05.json",
+   "size": 20706,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-06.json",
+   "size": 19990,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-07.json",
+   "size": 20499,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-08.json",
+   "size": 20601,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-09.json",
+   "size": 20149,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-10.json",
+   "size": 20775,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-11.json",
+   "size": 20258,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fj-fml-dpt-2026-12.json",
+   "size": 20575,
+   "err": "Unexpected token '<', \"<div class\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-9-oceania/captures/fml-wpjson.json",
+   "size": 2541,
+   "err": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-r4-backward/captures/cdx_dumrt_640_prefix.json",
+   "size": 11832,
+   "err": "Unexpected token '<', \"<html><hea\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/bn-mora-latest-r5.json",
+   "size": 21254,
+   "err": "Unexpected token '<', \"<?xml vers\"... is not valid JSON"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/bn-mora-lists-r5.json",
+   "size": 86957,
+   "err": "Unexpected token '<', \"<?xml vers\"... is not valid JSON"
+  }
+ ],
+ "pdfErrors": [
+  {
+   "rel": "o1m-12-uk/captures/amic-2025.pdf",
+   "bytes": 445642,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-12-uk/captures/amic-2026.pdf",
+   "bytes": 445642,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-12-uk/captures/amic-2027.pdf",
+   "bytes": 445642,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-12-uk/captures/cambridge-2026-01.pdf",
+   "bytes": 61536,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dundee-try-January-2026.pdf",
+   "bytes": 96453,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/dundee-try-June-2026.pdf",
+   "bytes": 96453,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Apr-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Dec-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Feb-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Jan-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Jul-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Jun-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Mar-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-May-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Nov-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-12-uk/captures/wrexham-Oct-2026.pdf",
+   "bytes": 155187,
+   "kind": "HTML: 404 Not Found"
+  },
+  {
+   "rel": "o1m-14-egyptimsa/captures/emsakya/eg-imsakiya-1446-4a.pdf",
+   "bytes": 620,
+   "kind": "other non-PDF: \"Your request is being bl\""
+  },
+  {
+   "rel": "o1m-14-egyptimsa/captures/emsakya/eg-imsakiya-1446-full.pdf",
+   "bytes": 620,
+   "kind": "other non-PDF: \"Your request is being bl\""
+  },
+  {
+   "rel": "o1m-15-europecities/captures/hr-rijeka-vaktije-2026.pdf",
+   "bytes": 5943,
+   "kind": "HTML: Cloudflare challenge"
+  },
+  {
+   "rel": "o1m-15-europecities/captures/pt-cip-almada-2026.pdf",
+   "bytes": 263,
+   "kind": "other non-PDF: \"<?xml version=\\\"1.0\\\" enco\""
+  },
+  {
+   "rel": "o1m-15-europecities/captures/pt-cip-faro2027-2026.pdf",
+   "bytes": 263,
+   "kind": "other non-PDF: \"<?xml version=\\\"1.0\\\" enco\""
+  },
+  {
+   "rel": "o1m-15-europecities/captures/pt-cip-porto2027-2026.pdf",
+   "bytes": 263,
+   "kind": "other non-PDF: \"<?xml version=\\\"1.0\\\" enco\""
+  },
+  {
+   "rel": "o1m-18-africa2/captures/bangui-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/brazzaville-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/freetown-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/goma-ds-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/goma-taqwa-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/koina-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/korhogo-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/libreville-b-cal-2026.pdf",
+   "bytes": 13796,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/libreville-b-cal-2027.pdf",
+   "bytes": 13796,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/libreville-b-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/libreville-b-cal-current.pdf",
+   "bytes": 13796,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/libreville-k-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/lome-alitisam-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/malabo-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/ndjamena-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/ngaoundere-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/oldyundum-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/pdf-test-lomeyear2025.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/portgentil-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-18-africa2/captures/savalou-cal-2028.pdf",
+   "bytes": 3296,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-2-capitals/captures/sc/iso-jumada-akhiraah-timetable.pdf",
+   "bytes": 239,
+   "kind": "HTML: 403 Forbidden"
+  },
+  {
+   "rel": "o1m-23-indiacomplete/captures/iaac-IndoPak_2010.pdf",
+   "bytes": 16,
+   "kind": "other non-PDF: \"File not found.\\n\""
+  },
+  {
+   "rel": "o1m-23-indiacomplete/captures/iaac-Indo_20Pak_202007.pdf",
+   "bytes": 16,
+   "kind": "other non-PDF: \"File not found.\\n\""
+  },
+  {
+   "rel": "o1m-23-indiacomplete/captures/iaac-Indo_Pak_2008.pdf",
+   "bytes": 16,
+   "kind": "other non-PDF: \"File not found.\\n\""
+  },
+  {
+   "rel": "o1m-23-indiacomplete/captures/iaac-USA_2013.pdf",
+   "bytes": 16,
+   "kind": "other non-PDF: \"File not found.\\n\""
+  },
+  {
+   "rel": "o1m-41-bahrain/captures/alayam-13474-2026-02-27.pdf",
+   "bytes": 4833,
+   "kind": "HTML: Cloudflare challenge"
+  },
+  {
+   "rel": "o1m-5-asia/captures/acju-2025/zone04-03.pdf",
+   "bytes": 620,
+   "kind": "other non-PDF: \"Your request is being bl\""
+  },
+  {
+   "rel": "o1m-5-asia/captures/acju-2025/zone12-02.pdf",
+   "bytes": 620,
+   "kind": "other non-PDF: \"Your request is being bl\""
+  },
+  {
+   "rel": "o1m-8-arctic/captures/no-jamiat-probe-1.pdf",
+   "bytes": 23489,
+   "kind": "other non-PDF: \" \\n\\n%PDF-1.3\\n%\ufffd\ufffd\ufffd\ufffd\\n\\n1 0 o\""
+  },
+  {
+   "rel": "o1m-r5-watches/captures/be-emb-2027.pdf",
+   "bytes": 35469,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/be-sanabel-2027.pdf",
+   "bytes": 219114,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/mawaqit-cal-gib-2027.pdf",
+   "bytes": 3264,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/mawaqit-cal-gib-plain.pdf",
+   "bytes": 3264,
+   "kind": "HTML: other"
+  },
+  {
+   "rel": "o1m-r5-watches/captures/no-mawaqeet-mysen-year.pdf",
+   "bytes": 196,
+   "kind": "HTML: 404 Not Found"
+  }
+ ]
+}

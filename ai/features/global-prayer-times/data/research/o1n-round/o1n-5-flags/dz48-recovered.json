@@ -1,0 +1,36 @@
+{
+  "generated": "o1n-5",
+  "task": "housekeeping 6a: the 16 withheld Algeria days (alger_1448, o1m-30), re-read and adjudicated",
+  "method": "Row-band re-read of pages 8 (Rajab, 5x) and 10 (Ramadan, 6x) from the banked Wayback scan, plus a dense per-row sweep at 5x/6x/12x for the days the bands left. Every recovered cell is gated by the 1448 recipe (17.80/17.00 ceil at 36.7538/3.0588, UTC+1) that reproduces the banked 219 days at within-1, by the printed-order audit, and by day-step continuity against the banked neighbours bracketing the block. Nothing interpolated: a day lands only when the scan itself says the values and the gate agrees.",
+  "verdict": {
+    "correctable_and_recovered": 14,
+    "genuinely_withheld": 2
+  },
+  "recovered": [
+    {"date": "2026-12-25", "fajr": 386, "sunrise": 479, "dhuhr": 769, "asr": 921, "maghrib": 1061, "isha": 1146},
+    {"date": "2026-12-26", "fajr": 387, "sunrise": 480, "dhuhr": 769, "asr": 921, "maghrib": 1062, "isha": 1147},
+    {"date": "2026-12-27", "fajr": 387, "sunrise": 480, "dhuhr": 770, "asr": 922, "maghrib": 1063, "isha": 1147},
+    {"date": "2026-12-28", "fajr": 388, "sunrise": 480, "dhuhr": 770, "asr": 922, "maghrib": 1063, "isha": 1148},
+    {"date": "2026-12-29", "fajr": 388, "sunrise": 481, "dhuhr": 771, "asr": 923, "maghrib": 1064, "isha": 1149},
+    {"date": "2026-12-30", "fajr": 388, "sunrise": 481, "dhuhr": 771, "asr": 924, "maghrib": 1065, "isha": 1149},
+    {"date": "2026-12-31", "fajr": 388, "sunrise": 481, "dhuhr": 772, "asr": 925, "maghrib": 1066, "isha": 1150},
+    {"date": "2027-01-01", "fajr": 389, "sunrise": 481, "dhuhr": 772, "asr": 925, "maghrib": 1066, "isha": 1151},
+    {"date": "2027-01-02", "fajr": 389, "sunrise": 481, "dhuhr": 773, "asr": 926, "maghrib": 1067, "isha": 1151},
+    {"date": "2027-01-03", "fajr": 389, "sunrise": 481, "dhuhr": 773, "asr": 927, "maghrib": 1068, "isha": 1152},
+    {"date": "2027-01-04", "fajr": 389, "sunrise": 481, "dhuhr": 774, "asr": 928, "maghrib": 1069, "isha": 1153},
+    {"date": "2027-02-10", "fajr": 375, "sunrise": 462, "dhuhr": 782, "asr": 960, "maghrib": 1106, "isha": 1186},
+    {"date": "2027-02-11", "fajr": 374, "sunrise": 461, "dhuhr": 783, "asr": 960, "maghrib": 1107, "isha": 1187},
+    {"date": "2027-02-22", "fajr": 362, "sunrise": 449, "dhuhr": 782, "asr": 969, "maghrib": 1118, "isha": 1197}
+  ],
+  "recovered_notes": {
+    "rajab_block": "The 13-day Rajab gap (2026-12-25..2027-01-06) reads cleanly in 6-row bands: 11 of 13 days recovered with six columns each at within-1 of the recipe, printed order valid, and the block bracketed by banked 2026-12-24 (maghrib 1060/isha 1145) and 2027-01-07 (1071/1155) with +1-per-day continuity on both sides.",
+    "ramadan_three": "2027-02-10 and 02-11 read 6/6 exact against the recipe at their own rows; 02-22 read 6/6 exact on a dense window sweep. The 02-10 isha prints 19:46 (the bank's raw stream had carried it as 586: a leading-digit OCR loss, now resolved by the scan itself)."
+  },
+  "still_withheld": [
+    {
+      "dates": ["2027-01-05", "2027-01-06"],
+      "why": "The dense sweep at 5x and 12x reads values identical to the banked 2027-01-07 and 2027-01-08 rows on all six columns. A printed table does not repeat a two-day pattern exactly between differing neighbours, so the reads are block-edge contamination, not the print. Withheld, never corrected; the candidate reads are recorded in data/dz48-p8-last-two.json."
+    }
+  ],
+  "status": "The DZ-MARW-1448-ALGER entry's withheld count moves 16 -> 2. If the owner adopts the 14 recovered days, the month-7 kept count moves 16 -> 27 of 29 and month-9 stays 30 of 30 (27 banked + 3 recovered)."
+}

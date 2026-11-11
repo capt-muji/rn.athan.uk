@@ -1,0 +1,1668 @@
+[
+{
+"date": "2026-11-06",
+"fajr_angle": 14.65,
+"fajr_err": 0,
+"isha_angle": 15.2,
+"isha_err": 0
+},
+{
+"date": "2026-11-07",
+"fajr_angle": 14.72,
+"fajr_err": 0,
+"isha_angle": 15.24,
+"isha_err": 0
+},
+{
+"date": "2026-11-08",
+"fajr_angle": 14.8,
+"fajr_err": 0,
+"isha_angle": 15.05,
+"isha_err": 0
+},
+{
+"date": "2026-11-09",
+"fajr_angle": 14.63,
+"fajr_err": 0,
+"isha_angle": 15.08,
+"isha_err": 0
+},
+{
+"date": "2026-11-10",
+"fajr_angle": 14.71,
+"fajr_err": 0,
+"isha_angle": 15.11,
+"isha_err": 0
+},
+{
+"date": "2026-11-11",
+"fajr_angle": 14.55,
+"fajr_err": 0,
+"isha_angle": 15.14,
+"isha_err": 0
+},
+{
+"date": "2026-11-12",
+"fajr_angle": 14.63,
+"fajr_err": 0,
+"isha_angle": 15.16,
+"isha_err": 0
+},
+{
+"date": "2026-11-13",
+"fajr_angle": 14.72,
+"fajr_err": 0,
+"isha_angle": 14.95,
+"isha_err": 0
+},
+{
+"date": "2026-11-14",
+"fajr_angle": 14.57,
+"fajr_err": 0,
+"isha_angle": 14.96,
+"isha_err": 0
+},
+{
+"date": "2026-11-15",
+"fajr_angle": 14.65,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2026-11-16",
+"fajr_angle": 14.51,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2026-11-17",
+"fajr_angle": 14.6,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2026-11-18",
+"fajr_angle": 14.46,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2026-11-19",
+"fajr_angle": 14.55,
+"fajr_err": 0,
+"isha_angle": 14.96,
+"isha_err": 0
+},
+{
+"date": "2026-11-20",
+"fajr_angle": 14.42,
+"fajr_err": 0,
+"isha_angle": 14.94,
+"isha_err": 0
+},
+{
+"date": "2026-11-21",
+"fajr_angle": 14.51,
+"fajr_err": 0,
+"isha_angle": 14.93,
+"isha_err": 0
+},
+{
+"date": "2026-11-22",
+"fajr_angle": 14.38,
+"fajr_err": 0,
+"isha_angle": 14.9,
+"isha_err": 0
+},
+{
+"date": "2026-11-23",
+"fajr_angle": 14.48,
+"fajr_err": 0,
+"isha_angle": 14.88,
+"isha_err": 0
+},
+{
+"date": "2026-11-24",
+"fajr_angle": 14.36,
+"fajr_err": 0,
+"isha_angle": 14.85,
+"isha_err": 0
+},
+{
+"date": "2026-11-25",
+"fajr_angle": 14.46,
+"fajr_err": 0,
+"isha_angle": 14.81,
+"isha_err": 0
+},
+{
+"date": "2026-11-26",
+"fajr_angle": 14.34,
+"fajr_err": 0,
+"isha_angle": 14.77,
+"isha_err": 0
+},
+{
+"date": "2026-11-27",
+"fajr_angle": 14.44,
+"fajr_err": 0,
+"isha_angle": 14.73,
+"isha_err": 0
+},
+{
+"date": "2026-11-28",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.68,
+"isha_err": 0
+},
+{
+"date": "2026-11-29",
+"fajr_angle": 14.43,
+"fajr_err": 0,
+"isha_angle": 14.86,
+"isha_err": 0
+},
+{
+"date": "2026-11-30",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.81,
+"isha_err": 0
+},
+{
+"date": "2026-12-01",
+"fajr_angle": 14.2,
+"fajr_err": 0,
+"isha_angle": 14.75,
+"isha_err": 0
+},
+{
+"date": "2026-12-02",
+"fajr_angle": 14.31,
+"fajr_err": 0,
+"isha_angle": 14.69,
+"isha_err": 0
+},
+{
+"date": "2026-12-03",
+"fajr_angle": 14.2,
+"fajr_err": 0,
+"isha_angle": 14.63,
+"isha_err": 0
+},
+{
+"date": "2026-12-04",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.78,
+"isha_err": 0
+},
+{
+"date": "2026-12-05",
+"fajr_angle": 14.2,
+"fajr_err": 0,
+"isha_angle": 14.71,
+"isha_err": 0
+},
+{
+"date": "2026-12-06",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.64,
+"isha_err": 0
+},
+{
+"date": "2026-12-07",
+"fajr_angle": 14.21,
+"fajr_err": 0,
+"isha_angle": 14.79,
+"isha_err": 0
+},
+{
+"date": "2026-12-08",
+"fajr_angle": 14.1,
+"fajr_err": 0,
+"isha_angle": 14.7,
+"isha_err": 0
+},
+{
+"date": "2026-12-09",
+"fajr_angle": 14.22,
+"fajr_err": 0,
+"isha_angle": 14.62,
+"isha_err": 0
+},
+{
+"date": "2026-12-10",
+"fajr_angle": 14.11,
+"fajr_err": 0,
+"isha_angle": 14.76,
+"isha_err": 0
+},
+{
+"date": "2026-12-11",
+"fajr_angle": 14.23,
+"fajr_err": 0,
+"isha_angle": 14.67,
+"isha_err": 0
+},
+{
+"date": "2026-12-12",
+"fajr_angle": 14.12,
+"fajr_err": 0,
+"isha_angle": 14.58,
+"isha_err": 0
+},
+{
+"date": "2026-12-13",
+"fajr_angle": 14.24,
+"fajr_err": 0,
+"isha_angle": 14.71,
+"isha_err": 0
+},
+{
+"date": "2026-12-14",
+"fajr_angle": 14.13,
+"fajr_err": 0,
+"isha_angle": 14.61,
+"isha_err": 0
+},
+{
+"date": "2026-12-15",
+"fajr_angle": 14.25,
+"fajr_err": 0,
+"isha_angle": 14.74,
+"isha_err": 0
+},
+{
+"date": "2026-12-16",
+"fajr_angle": 14.14,
+"fajr_err": 0,
+"isha_angle": 14.63,
+"isha_err": 0
+},
+{
+"date": "2026-12-17",
+"fajr_angle": 14.03,
+"fajr_err": 0,
+"isha_angle": 14.53,
+"isha_err": 0
+},
+{
+"date": "2026-12-18",
+"fajr_angle": 14.15,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2026-12-19",
+"fajr_angle": 14.04,
+"fajr_err": 0,
+"isha_angle": 14.54,
+"isha_err": 0
+},
+{
+"date": "2026-12-20",
+"fajr_angle": 14.15,
+"fajr_err": 0,
+"isha_angle": 14.66,
+"isha_err": 0
+},
+{
+"date": "2026-12-21",
+"fajr_angle": 14.04,
+"fajr_err": 0,
+"isha_angle": 14.55,
+"isha_err": 0
+},
+{
+"date": "2026-12-22",
+"fajr_angle": 14.16,
+"fajr_err": 0,
+"isha_angle": 14.66,
+"isha_err": 0
+},
+{
+"date": "2026-12-23",
+"fajr_angle": 14.04,
+"fajr_err": 0,
+"isha_angle": 14.54,
+"isha_err": 0
+},
+{
+"date": "2026-12-24",
+"fajr_angle": 14.15,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2026-12-25",
+"fajr_angle": 14.03,
+"fajr_err": 0,
+"isha_angle": 14.54,
+"isha_err": 0
+},
+{
+"date": "2026-12-26",
+"fajr_angle": 14.14,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2026-12-27",
+"fajr_angle": 14.24,
+"fajr_err": 0,
+"isha_angle": 14.53,
+"isha_err": 0
+},
+{
+"date": "2026-12-28",
+"fajr_angle": 14.12,
+"fajr_err": 0,
+"isha_angle": 14.63,
+"isha_err": 0
+},
+{
+"date": "2026-12-29",
+"fajr_angle": 14.22,
+"fajr_err": 0,
+"isha_angle": 14.74,
+"isha_err": 0
+},
+{
+"date": "2026-12-30",
+"fajr_angle": 14.09,
+"fajr_err": 0,
+"isha_angle": 14.62,
+"isha_err": 0
+},
+{
+"date": "2026-12-31",
+"fajr_angle": 14.19,
+"fajr_err": 0,
+"isha_angle": 14.73,
+"isha_err": 0
+},
+{
+"date": "2027-01-01",
+"fajr_angle": 14.28,
+"fajr_err": 0,
+"isha_angle": 14.6,
+"isha_err": 0
+},
+{
+"date": "2027-01-02",
+"fajr_angle": 14.15,
+"fajr_err": 0,
+"isha_angle": 14.48,
+"isha_err": 0
+},
+{
+"date": "2027-01-03",
+"fajr_angle": 14.24,
+"fajr_err": 0,
+"isha_angle": 14.59,
+"isha_err": 0
+},
+{
+"date": "2027-01-04",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.69,
+"isha_err": 0
+},
+{
+"date": "2027-01-05",
+"fajr_angle": 14.18,
+"fajr_err": 0,
+"isha_angle": 14.57,
+"isha_err": 0
+},
+{
+"date": "2027-01-06",
+"fajr_angle": 14.26,
+"fajr_err": 0,
+"isha_angle": 14.68,
+"isha_err": 0
+},
+{
+"date": "2027-01-07",
+"fajr_angle": 14.34,
+"fajr_err": 0,
+"isha_angle": 14.56,
+"isha_err": 0
+},
+{
+"date": "2027-01-08",
+"fajr_angle": 14.41,
+"fajr_err": 0,
+"isha_angle": 14.67,
+"isha_err": 0
+},
+{
+"date": "2027-01-09",
+"fajr_angle": 14.26,
+"fajr_err": 0,
+"isha_angle": 14.77,
+"isha_err": 0
+},
+{
+"date": "2027-01-10",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2027-01-11",
+"fajr_angle": 14.39,
+"fajr_err": 0,
+"isha_angle": 14.77,
+"isha_err": 0
+},
+{
+"date": "2027-01-12",
+"fajr_angle": 14.45,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2027-01-13",
+"fajr_angle": 14.28,
+"fajr_err": 0,
+"isha_angle": 14.76,
+"isha_err": 0
+},
+{
+"date": "2027-01-14",
+"fajr_angle": 14.33,
+"fajr_err": 0,
+"isha_angle": 14.64,
+"isha_err": 0
+},
+{
+"date": "2027-01-15",
+"fajr_angle": 14.38,
+"fajr_err": 0,
+"isha_angle": 14.76,
+"isha_err": 0
+},
+{
+"date": "2027-01-16",
+"fajr_angle": 14.43,
+"fajr_err": 0,
+"isha_angle": 14.88,
+"isha_err": 0
+},
+{
+"date": "2027-01-17",
+"fajr_angle": 14.47,
+"fajr_err": 0,
+"isha_angle": 14.76,
+"isha_err": 0
+},
+{
+"date": "2027-01-18",
+"fajr_angle": 14.51,
+"fajr_err": 0,
+"isha_angle": 14.88,
+"isha_err": 0
+},
+{
+"date": "2027-01-19",
+"fajr_angle": 14.54,
+"fajr_err": 0,
+"isha_angle": 14.78,
+"isha_err": 0
+},
+{
+"date": "2027-01-20",
+"fajr_angle": 14.58,
+"fajr_err": 0,
+"isha_angle": 14.9,
+"isha_err": 0
+},
+{
+"date": "2027-01-21",
+"fajr_angle": 14.6,
+"fajr_err": 0,
+"isha_angle": 14.79,
+"isha_err": 0
+},
+{
+"date": "2027-01-22",
+"fajr_angle": 14.62,
+"fajr_err": 0,
+"isha_angle": 14.92,
+"isha_err": 0
+},
+{
+"date": "2027-01-23",
+"fajr_angle": 14.64,
+"fajr_err": 0,
+"isha_angle": 14.82,
+"isha_err": 0
+},
+{
+"date": "2027-01-24",
+"fajr_angle": 14.66,
+"fajr_err": 0,
+"isha_angle": 14.95,
+"isha_err": 0
+},
+{
+"date": "2027-01-25",
+"fajr_angle": 14.67,
+"fajr_err": 0,
+"isha_angle": 14.85,
+"isha_err": 0
+},
+{
+"date": "2027-01-26",
+"fajr_angle": 14.67,
+"fajr_err": 0,
+"isha_angle": 14.98,
+"isha_err": 0
+},
+{
+"date": "2027-01-27",
+"fajr_angle": 14.67,
+"fajr_err": 0,
+"isha_angle": 14.89,
+"isha_err": 0
+},
+{
+"date": "2027-01-28",
+"fajr_angle": 14.67,
+"fajr_err": 0,
+"isha_angle": 15.03,
+"isha_err": 0
+},
+{
+"date": "2027-01-29",
+"fajr_angle": 14.66,
+"fajr_err": 0,
+"isha_angle": 14.93,
+"isha_err": 0
+},
+{
+"date": "2027-01-30",
+"fajr_angle": 14.65,
+"fajr_err": 0,
+"isha_angle": 15.08,
+"isha_err": 0
+},
+{
+"date": "2027-01-31",
+"fajr_angle": 14.64,
+"fajr_err": 0,
+"isha_angle": 14.99,
+"isha_err": 0
+},
+{
+"date": "2027-02-01",
+"fajr_angle": 14.62,
+"fajr_err": 0,
+"isha_angle": 15.14,
+"isha_err": 0
+},
+{
+"date": "2027-02-02",
+"fajr_angle": 14.83,
+"fajr_err": 0,
+"isha_angle": 15.05,
+"isha_err": 0
+},
+{
+"date": "2027-02-03",
+"fajr_angle": 14.8,
+"fajr_err": 0,
+"isha_angle": 15.2,
+"isha_err": 0
+},
+{
+"date": "2027-02-04",
+"fajr_angle": 14.76,
+"fajr_err": 0,
+"isha_angle": 15.12,
+"isha_err": 0
+},
+{
+"date": "2027-02-05",
+"fajr_angle": 14.72,
+"fajr_err": 0,
+"isha_angle": 15.28,
+"isha_err": 0
+},
+{
+"date": "2027-02-06",
+"fajr_angle": 14.68,
+"fajr_err": 0,
+"isha_angle": 15.2,
+"isha_err": 0
+},
+{
+"date": "2027-02-07",
+"fajr_angle": 14.87,
+"fajr_err": 0,
+"isha_angle": 15.13,
+"isha_err": 0
+},
+{
+"date": "2027-02-08",
+"fajr_angle": 14.82,
+"fajr_err": 0,
+"isha_angle": 15.29,
+"isha_err": 0
+},
+{
+"date": "2027-02-09",
+"fajr_angle": 14.76,
+"fajr_err": 0,
+"isha_angle": 15.22,
+"isha_err": 0
+},
+{
+"date": "2027-02-10",
+"fajr_angle": 14.94,
+"fajr_err": 0,
+"isha_angle": 15.39,
+"isha_err": 0
+},
+{
+"date": "2027-02-11",
+"fajr_angle": 14.88,
+"fajr_err": 0,
+"isha_angle": 15.32,
+"isha_err": 0
+},
+{
+"date": "2027-02-12",
+"fajr_angle": 14.81,
+"fajr_err": 0,
+"isha_angle": 15.26,
+"isha_err": 0
+},
+{
+"date": "2027-02-13",
+"fajr_angle": 14.98,
+"fajr_err": 0,
+"isha_angle": 15.43,
+"isha_err": 0
+},
+{
+"date": "2027-02-14",
+"fajr_angle": 14.9,
+"fajr_err": 0,
+"isha_angle": 15.37,
+"isha_err": 0
+},
+{
+"date": "2027-02-15",
+"fajr_angle": 15.06,
+"fajr_err": 0,
+"isha_angle": 15.31,
+"isha_err": 0
+},
+{
+"date": "2027-02-16",
+"fajr_angle": 14.97,
+"fajr_err": 0,
+"isha_angle": 15.49,
+"isha_err": 0
+},
+{
+"date": "2027-02-17",
+"fajr_angle": 14.88,
+"fajr_err": 0,
+"isha_angle": 15.43,
+"isha_err": 0
+},
+{
+"date": "2027-02-18",
+"fajr_angle": 15.03,
+"fajr_err": 0,
+"isha_angle": 15.38,
+"isha_err": 0
+},
+{
+"date": "2027-02-19",
+"fajr_angle": 14.94,
+"fajr_err": 0,
+"isha_angle": 15.56,
+"isha_err": 0
+},
+{
+"date": "2027-02-20",
+"fajr_angle": 15.07,
+"fajr_err": 0,
+"isha_angle": 15.51,
+"isha_err": 0
+},
+{
+"date": "2027-02-21",
+"fajr_angle": 14.97,
+"fajr_err": 0,
+"isha_angle": 15.46,
+"isha_err": 0
+},
+{
+"date": "2027-02-22",
+"fajr_angle": 15.1,
+"fajr_err": 0,
+"isha_angle": 15.41,
+"isha_err": 0
+},
+{
+"date": "2027-02-23",
+"fajr_angle": 14.99,
+"fajr_err": 0,
+"isha_angle": 15.6,
+"isha_err": 0
+},
+{
+"date": "2027-02-24",
+"fajr_angle": 15.12,
+"fajr_err": 0,
+"isha_angle": 15.56,
+"isha_err": 0
+},
+{
+"date": "2027-02-25",
+"fajr_angle": 15,
+"fajr_err": 0,
+"isha_angle": 15.51,
+"isha_err": 0
+},
+{
+"date": "2027-02-26",
+"fajr_angle": 15.12,
+"fajr_err": 0,
+"isha_angle": 15.47,
+"isha_err": 0
+},
+{
+"date": "2027-02-27",
+"fajr_angle": 14.99,
+"fajr_err": 0,
+"isha_angle": 15.67,
+"isha_err": 0
+},
+{
+"date": "2027-02-28",
+"fajr_angle": 15.11,
+"fajr_err": 0,
+"isha_angle": 15.63,
+"isha_err": 0
+},
+{
+"date": "2027-03-01",
+"fajr_angle": 15.22,
+"fajr_err": 0,
+"isha_angle": 15.59,
+"isha_err": 0
+},
+{
+"date": "2027-03-02",
+"fajr_angle": 15.32,
+"fajr_err": 0,
+"isha_angle": 15.55,
+"isha_err": 0
+},
+{
+"date": "2027-03-03",
+"fajr_angle": 15.19,
+"fajr_err": 0,
+"isha_angle": 15.75,
+"isha_err": 0
+},
+{
+"date": "2027-03-04",
+"fajr_angle": 15.29,
+"fajr_err": 0,
+"isha_angle": 15.71,
+"isha_err": 0
+},
+{
+"date": "2027-03-05",
+"fajr_angle": 15.38,
+"fajr_err": 0,
+"isha_angle": 15.68,
+"isha_err": 0
+},
+{
+"date": "2027-03-06",
+"fajr_angle": 15.24,
+"fajr_err": 0,
+"isha_angle": 15.64,
+"isha_err": 0
+},
+{
+"date": "2027-03-07",
+"fajr_angle": 15.33,
+"fajr_err": 0,
+"isha_angle": 15.6,
+"isha_err": 0
+},
+{
+"date": "2027-03-08",
+"fajr_angle": 15.42,
+"fajr_err": 0,
+"isha_angle": 15.81,
+"isha_err": 0
+},
+{
+"date": "2027-03-09",
+"fajr_angle": 15.27,
+"fajr_err": 0,
+"isha_angle": 15.78,
+"isha_err": 0
+},
+{
+"date": "2027-03-10",
+"fajr_angle": 15.36,
+"fajr_err": 0,
+"isha_angle": 15.74,
+"isha_err": 0
+},
+{
+"date": "2027-03-11",
+"fajr_angle": 15.44,
+"fajr_err": 0,
+"isha_angle": 15.71,
+"isha_err": 0
+},
+{
+"date": "2027-03-12",
+"fajr_angle": 15.28,
+"fajr_err": 0,
+"isha_angle": 15.68,
+"isha_err": 0
+},
+{
+"date": "2027-03-13",
+"fajr_angle": 15.36,
+"fajr_err": 0,
+"isha_angle": 15.64,
+"isha_err": 0
+},
+{
+"date": "2027-03-14",
+"fajr_angle": 15.44,
+"fajr_err": 0,
+"isha_angle": 15.61,
+"isha_err": 0
+},
+{
+"date": "2027-03-15",
+"fajr_angle": 15.27,
+"fajr_err": 0,
+"isha_angle": 15.82,
+"isha_err": 0
+},
+{
+"date": "2027-03-16",
+"fajr_angle": 15.34,
+"fajr_err": 0,
+"isha_angle": 15.79,
+"isha_err": 0
+},
+{
+"date": "2027-03-17",
+"fajr_angle": 15.41,
+"fajr_err": 0,
+"isha_angle": 15.76,
+"isha_err": 0
+},
+{
+"date": "2027-03-18",
+"fajr_angle": 15.24,
+"fajr_err": 0,
+"isha_angle": 15.72,
+"isha_err": 0
+},
+{
+"date": "2027-03-19",
+"fajr_angle": 15.31,
+"fajr_err": 0,
+"isha_angle": 15.69,
+"isha_err": 0
+},
+{
+"date": "2027-03-20",
+"fajr_angle": 15.38,
+"fajr_err": 0,
+"isha_angle": 15.66,
+"isha_err": 0
+},
+{
+"date": "2027-03-21",
+"fajr_angle": 15.45,
+"fajr_err": 0,
+"isha_angle": 15.62,
+"isha_err": 0
+},
+{
+"date": "2027-03-22",
+"fajr_angle": 15.27,
+"fajr_err": 0,
+"isha_angle": 15.59,
+"isha_err": 0
+},
+{
+"date": "2027-03-23",
+"fajr_angle": 15.33,
+"fajr_err": 0,
+"isha_angle": 15.56,
+"isha_err": 0
+},
+{
+"date": "2027-03-24",
+"fajr_angle": 15.4,
+"fajr_err": 0,
+"isha_angle": 15.76,
+"isha_err": 0
+},
+{
+"date": "2027-03-25",
+"fajr_angle": 15.22,
+"fajr_err": 0,
+"isha_angle": 15.73,
+"isha_err": 0
+},
+{
+"date": "2027-03-26",
+"fajr_angle": 15.28,
+"fajr_err": 0,
+"isha_angle": 15.69,
+"isha_err": 0
+},
+{
+"date": "2027-03-27",
+"fajr_angle": 15.34,
+"fajr_err": 0,
+"isha_angle": 15.66,
+"isha_err": 0
+},
+{
+"date": "2027-03-28",
+"fajr_angle": 15.4,
+"fajr_err": 0,
+"isha_angle": 15.62,
+"isha_err": 0
+},
+{
+"date": "2027-03-29",
+"fajr_angle": 15.22,
+"fajr_err": 0,
+"isha_angle": 15.59,
+"isha_err": 0
+},
+{
+"date": "2027-03-30",
+"fajr_angle": 15.28,
+"fajr_err": 0,
+"isha_angle": 15.55,
+"isha_err": 0
+},
+{
+"date": "2027-03-31",
+"fajr_angle": 15.33,
+"fajr_err": 0,
+"isha_angle": 15.51,
+"isha_err": 0
+},
+{
+"date": "2027-04-01",
+"fajr_angle": 15.15,
+"fajr_err": 0,
+"isha_angle": 15.47,
+"isha_err": 0
+},
+{
+"date": "2027-04-02",
+"fajr_angle": 15.21,
+"fajr_err": 0,
+"isha_angle": 15.67,
+"isha_err": 0
+},
+{
+"date": "2027-04-03",
+"fajr_angle": 15.27,
+"fajr_err": 0,
+"isha_angle": 15.63,
+"isha_err": 0
+},
+{
+"date": "2027-04-04",
+"fajr_angle": 15.33,
+"fajr_err": 0,
+"isha_angle": 15.58,
+"isha_err": 0
+},
+{
+"date": "2027-04-05",
+"fajr_angle": 15.15,
+"fajr_err": 0,
+"isha_angle": 15.54,
+"isha_err": 0
+},
+{
+"date": "2027-04-06",
+"fajr_angle": 15.21,
+"fajr_err": 0,
+"isha_angle": 15.5,
+"isha_err": 0
+},
+{
+"date": "2027-04-07",
+"fajr_angle": 15.26,
+"fajr_err": 0,
+"isha_angle": 15.45,
+"isha_err": 0
+},
+{
+"date": "2027-04-08",
+"fajr_angle": 15.09,
+"fajr_err": 0,
+"isha_angle": 15.4,
+"isha_err": 0
+},
+{
+"date": "2027-04-09",
+"fajr_angle": 15.15,
+"fajr_err": 0,
+"isha_angle": 15.35,
+"isha_err": 0
+},
+{
+"date": "2027-04-10",
+"fajr_angle": 15.21,
+"fajr_err": 0,
+"isha_angle": 15.54,
+"isha_err": 0
+},
+{
+"date": "2027-04-11",
+"fajr_angle": 15.03,
+"fajr_err": 0,
+"isha_angle": 15.49,
+"isha_err": 0
+},
+{
+"date": "2027-04-12",
+"fajr_angle": 15.09,
+"fajr_err": 0,
+"isha_angle": 15.44,
+"isha_err": 0
+},
+{
+"date": "2027-04-13",
+"fajr_angle": 15.16,
+"fajr_err": 0,
+"isha_angle": 15.39,
+"isha_err": 0
+},
+{
+"date": "2027-04-14",
+"fajr_angle": 14.98,
+"fajr_err": 0,
+"isha_angle": 15.33,
+"isha_err": 0
+},
+{
+"date": "2027-04-15",
+"fajr_angle": 15.05,
+"fajr_err": 0,
+"isha_angle": 15.28,
+"isha_err": 0
+},
+{
+"date": "2027-04-16",
+"fajr_angle": 14.88,
+"fajr_err": 0,
+"isha_angle": 15.22,
+"isha_err": 0
+},
+{
+"date": "2027-04-17",
+"fajr_angle": 14.95,
+"fajr_err": 0,
+"isha_angle": 15.39,
+"isha_err": 0
+},
+{
+"date": "2027-04-18",
+"fajr_angle": 15.02,
+"fajr_err": 0,
+"isha_angle": 15.33,
+"isha_err": 0
+},
+{
+"date": "2027-04-19",
+"fajr_angle": 14.86,
+"fajr_err": 0,
+"isha_angle": 15.27,
+"isha_err": 0
+},
+{
+"date": "2027-04-20",
+"fajr_angle": 14.93,
+"fajr_err": 0,
+"isha_angle": 15.21,
+"isha_err": 0
+},
+{
+"date": "2027-04-21",
+"fajr_angle": 14.77,
+"fajr_err": 0,
+"isha_angle": 15.15,
+"isha_err": 0
+},
+{
+"date": "2027-04-22",
+"fajr_angle": 14.84,
+"fajr_err": 0,
+"isha_angle": 15.08,
+"isha_err": 0
+},
+{
+"date": "2027-04-23",
+"fajr_angle": 14.92,
+"fajr_err": 0,
+"isha_angle": 15.25,
+"isha_err": 0
+},
+{
+"date": "2027-04-24",
+"fajr_angle": 14.77,
+"fajr_err": 0,
+"isha_angle": 15.18,
+"isha_err": 0
+},
+{
+"date": "2027-04-25",
+"fajr_angle": 14.85,
+"fajr_err": 0,
+"isha_angle": 15.11,
+"isha_err": 0
+},
+{
+"date": "2027-04-26",
+"fajr_angle": 14.7,
+"fajr_err": 0,
+"isha_angle": 15.04,
+"isha_err": 0
+},
+{
+"date": "2027-04-27",
+"fajr_angle": 14.79,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2027-04-28",
+"fajr_angle": 14.65,
+"fajr_err": 0,
+"isha_angle": 15.12,
+"isha_err": 0
+},
+{
+"date": "2027-04-29",
+"fajr_angle": 14.74,
+"fajr_err": 0,
+"isha_angle": 15.05,
+"isha_err": 0
+},
+{
+"date": "2027-04-30",
+"fajr_angle": 14.6,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2027-05-01",
+"fajr_angle": 14.7,
+"fajr_err": 0,
+"isha_angle": 14.9,
+"isha_err": 0
+},
+{
+"date": "2027-05-02",
+"fajr_angle": 14.57,
+"fajr_err": 0,
+"isha_angle": 14.82,
+"isha_err": 0
+},
+{
+"date": "2027-05-03",
+"fajr_angle": 14.67,
+"fajr_err": 0,
+"isha_angle": 14.97,
+"isha_err": 0
+},
+{
+"date": "2027-05-04",
+"fajr_angle": 14.54,
+"fajr_err": 0,
+"isha_angle": 14.89,
+"isha_err": 0
+},
+{
+"date": "2027-05-05",
+"fajr_angle": 14.42,
+"fajr_err": 0,
+"isha_angle": 14.8,
+"isha_err": 0
+},
+{
+"date": "2027-05-06",
+"fajr_angle": 14.53,
+"fajr_err": 0,
+"isha_angle": 14.72,
+"isha_err": 0
+},
+{
+"date": "2027-05-07",
+"fajr_angle": 14.42,
+"fajr_err": 0,
+"isha_angle": 14.86,
+"isha_err": 0
+},
+{
+"date": "2027-05-08",
+"fajr_angle": 14.53,
+"fajr_err": 0,
+"isha_angle": 14.78,
+"isha_err": 0
+},
+{
+"date": "2027-05-09",
+"fajr_angle": 14.42,
+"fajr_err": 0,
+"isha_angle": 14.69,
+"isha_err": 0
+},
+{
+"date": "2027-05-10",
+"fajr_angle": 14.32,
+"fajr_err": 0,
+"isha_angle": 14.83,
+"isha_err": 0
+},
+{
+"date": "2027-05-11",
+"fajr_angle": 14.44,
+"fajr_err": 0,
+"isha_angle": 14.74,
+"isha_err": 0
+},
+{
+"date": "2027-05-12",
+"fajr_angle": 14.34,
+"fajr_err": 0,
+"isha_angle": 14.66,
+"isha_err": 0
+},
+{
+"date": "2027-05-13",
+"fajr_angle": 14.25,
+"fajr_err": 0,
+"isha_angle": 14.57,
+"isha_err": 0
+},
+{
+"date": "2027-05-14",
+"fajr_angle": 14.38,
+"fajr_err": 0,
+"isha_angle": 14.7,
+"isha_err": 0
+},
+{
+"date": "2027-05-15",
+"fajr_angle": 14.3,
+"fajr_err": 0,
+"isha_angle": 14.61,
+"isha_err": 0
+},
+{
+"date": "2027-05-16",
+"fajr_angle": 14.21,
+"fajr_err": 0,
+"isha_angle": 14.52,
+"isha_err": 0
+},
+{
+"date": "2027-05-17",
+"fajr_angle": 14.14,
+"fajr_err": 0,
+"isha_angle": 14.65,
+"isha_err": 0
+},
+{
+"date": "2027-05-18",
+"fajr_angle": 14.28,
+"fajr_err": 0,
+"isha_angle": 14.56,
+"isha_err": 0
+},
+{
+"date": "2027-05-19",
+"fajr_angle": 14.21,
+"fajr_err": 0,
+"isha_angle": 14.47,
+"isha_err": 0
+},
+{
+"date": "2027-05-20",
+"fajr_angle": 14.14,
+"fajr_err": 0,
+"isha_angle": 14.38,
+"isha_err": 0
+},
+{
+"date": "2027-05-21",
+"fajr_angle": 14.08,
+"fajr_err": 0,
+"isha_angle": 14.51,
+"isha_err": 0
+},
+{
+"date": "2027-05-22",
+"fajr_angle": 14.02,
+"fajr_err": 0,
+"isha_angle": 14.42,
+"isha_err": 0
+},
+{
+"date": "2027-05-23",
+"fajr_angle": 13.96,
+"fajr_err": 0,
+"isha_angle": 14.33,
+"isha_err": 0
+},
+{
+"date": "2027-05-24",
+"fajr_angle": 14.13,
+"fajr_err": 0,
+"isha_angle": 14.46,
+"isha_err": 0
+},
+{
+"date": "2027-05-25",
+"fajr_angle": 14.08,
+"fajr_err": 0,
+"isha_angle": 14.37,
+"isha_err": 0
+},
+{
+"date": "2027-05-26",
+"fajr_angle": 14.03,
+"fajr_err": 0,
+"isha_angle": 14.28,
+"isha_err": 0
+},
+{
+"date": "2027-05-27",
+"fajr_angle": 13.99,
+"fajr_err": 0,
+"isha_angle": 14.41,
+"isha_err": 0
+},
+{
+"date": "2027-05-28",
+"fajr_angle": 13.96,
+"fajr_err": 0,
+"isha_angle": 14.32,
+"isha_err": 0
+},
+{
+"date": "2027-05-29",
+"fajr_angle": 13.92,
+"fajr_err": 0,
+"isha_angle": 14.23,
+"isha_err": 0
+},
+{
+"date": "2027-05-30",
+"fajr_angle": 13.89,
+"fajr_err": 0,
+"isha_angle": 14.36,
+"isha_err": 0
+},
+{
+"date": "2027-05-31",
+"fajr_angle": 13.87,
+"fajr_err": 0,
+"isha_angle": 14.27,
+"isha_err": 0
+},
+{
+"date": "2027-06-01",
+"fajr_angle": 13.85,
+"fajr_err": 0,
+"isha_angle": 14.19,
+"isha_err": 0
+},
+{
+"date": "2027-06-02",
+"fajr_angle": 13.83,
+"fajr_err": 0,
+"isha_angle": 14.32,
+"isha_err": 0
+},
+{
+"date": "2027-06-03",
+"fajr_angle": 13.82,
+"fajr_err": 0,
+"isha_angle": 14.23,
+"isha_err": 0
+},
+{
+"date": "2027-06-04",
+"fajr_angle": 13.8,
+"fajr_err": 0,
+"isha_angle": 14.15,
+"isha_err": 0
+},
+{
+"date": "2027-06-05",
+"fajr_angle": 13.8,
+"fajr_err": 0,
+"isha_angle": 14.28,
+"isha_err": 0
+},
+{
+"date": "2027-06-06",
+"fajr_angle": 13.79,
+"fajr_err": 0,
+"isha_angle": 14.21,
+"isha_err": 0
+},
+{
+"date": "2027-06-07",
+"fajr_angle": 13.79,
+"fajr_err": 0,
+"isha_angle": 14.13,
+"isha_err": 0
+},
+{
+"date": "2027-06-08",
+"fajr_angle": 13.8,
+"fajr_err": 0,
+"isha_angle": 14.26,
+"isha_err": 0
+},
+{
+"date": "2027-06-09",
+"fajr_angle": 13.8,
+"fajr_err": 0,
+"isha_angle": 14.19,
+"isha_err": 0
+},
+{
+"date": "2027-06-10",
+"fajr_angle": 13.82,
+"fajr_err": 0,
+"isha_angle": 14.12,
+"isha_err": 0
+},
+{
+"date": "2027-06-11",
+"fajr_angle": 13.83,
+"fajr_err": 0,
+"isha_angle": 14.05,
+"isha_err": 0
+},
+{
+"date": "2027-06-12",
+"fajr_angle": 13.63,
+"fajr_err": 0,
+"isha_angle": 14.19,
+"isha_err": 0
+},
+{
+"date": "2027-06-13",
+"fajr_angle": 13.65,
+"fajr_err": 0,
+"isha_angle": 14.13,
+"isha_err": 0
+},
+{
+"date": "2027-06-14",
+"fajr_angle": 13.68,
+"fajr_err": 0,
+"isha_angle": 14.06,
+"isha_err": 0
+},
+{
+"date": "2027-06-15",
+"fajr_angle": 13.7,
+"fajr_err": 0,
+"isha_angle": 14,
+"isha_err": 0
+},
+{
+"date": "2027-06-16",
+"fajr_angle": 13.73,
+"fajr_err": 0,
+"isha_angle": 14.15,
+"isha_err": 0
+},
+{
+"date": "2027-06-17",
+"fajr_angle": 13.77,
+"fajr_err": 0,
+"isha_angle": 14.09,
+"isha_err": 0
+},
+{
+"date": "2027-06-18",
+"fajr_angle": 13.8,
+"fajr_err": 0,
+"isha_angle": 14.04,
+"isha_err": 0
+},
+{
+"date": "2027-06-19",
+"fajr_angle": 13.63,
+"fajr_err": 0,
+"isha_angle": 13.99,
+"isha_err": 0
+},
+{
+"date": "2027-06-20",
+"fajr_angle": 13.67,
+"fajr_err": 0,
+"isha_angle": 14.15,
+"isha_err": 0
+},
+{
+"date": "2027-06-21",
+"fajr_angle": 13.71,
+"fajr_err": 0,
+"isha_angle": 14.1,
+"isha_err": 0
+},
+{
+"date": "2027-06-22",
+"fajr_angle": 13.76,
+"fajr_err": 0,
+"isha_angle": 14.06,
+"isha_err": 0
+},
+{
+"date": "2027-06-23",
+"fajr_angle": 13.6,
+"fajr_err": 0,
+"isha_angle": 14.02,
+"isha_err": 0
+},
+{
+"date": "2027-06-24",
+"fajr_angle": 13.65,
+"fajr_err": 0,
+"isha_angle": 13.98,
+"isha_err": 0
+},
+{
+"date": "2027-06-25",
+"fajr_angle": 13.7,
+"fajr_err": 0,
+"isha_angle": 14.16,
+"isha_err": 0
+},
+{
+"date": "2027-06-26",
+"fajr_angle": 13.76,
+"fajr_err": 0,
+"isha_angle": 14.13,
+"isha_err": 0
+},
+{
+"date": "2027-06-27",
+"fajr_angle": 13.61,
+"fajr_err": 0,
+"isha_angle": 14.1,
+"isha_err": 0
+},
+{
+"date": "2027-06-28",
+"fajr_angle": 13.67,
+"fajr_err": 0,
+"isha_angle": 14.07,
+"isha_err": 0
+},
+{
+"date": "2027-06-29",
+"fajr_angle": 13.73,
+"fajr_err": 0,
+"isha_angle": 14.05,
+"isha_err": 0
+},
+{
+"date": "2027-06-30",
+"fajr_angle": 13.79,
+"fajr_err": 0,
+"isha_angle": 14.03,
+"isha_err": 0
+},
+{
+"date": "2027-07-01",
+"fajr_angle": 13.65,
+"fajr_err": 0,
+"isha_angle": 14.02,
+"isha_err": 0
+}
+]

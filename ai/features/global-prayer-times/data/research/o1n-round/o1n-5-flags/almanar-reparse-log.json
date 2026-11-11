@@ -1,0 +1,1473 @@
+[
+ {
+  "file": "almanar-baalbek-2025-10.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-11.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-12.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-4.pdf",
+  "city": "baalbek",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-5.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-6.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-7.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-8.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2025-9.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-1.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-10.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-11.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-12.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-2.pdf",
+  "city": "baalbek",
+  "rows": 28,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:28"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-3.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-4.pdf",
+  "city": "baalbek",
+  "rows": 16,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:16"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-5.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-6.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-7.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-8.pdf",
+  "city": "baalbek",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-baalbek-2026-9.pdf",
+  "city": "baalbek",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-10.pdf",
+  "city": "beirut",
+  "rows": 5,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:5"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-11.pdf",
+  "city": "beirut",
+  "rows": 6,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:6"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-12.pdf",
+  "city": "beirut",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-4.pdf",
+  "city": "beirut",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-5.pdf",
+  "city": "beirut",
+  "rows": 21,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:21"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-6.pdf",
+  "city": "beirut",
+  "rows": 10,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:10",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-7.pdf",
+  "city": "beirut",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-8.pdf",
+  "city": "beirut",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2025-9.pdf",
+  "city": "beirut",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-1.pdf",
+  "city": "beirut",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-10.pdf",
+  "city": "beirut",
+  "rows": 6,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:6"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-11.pdf",
+  "city": "beirut",
+  "rows": 7,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:7"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-12.pdf",
+  "city": "beirut",
+  "rows": 22,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:22"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-2.pdf",
+  "city": "beirut",
+  "rows": 9,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:9"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-3.pdf",
+  "city": "beirut",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-4.pdf",
+  "city": "beirut",
+  "rows": 4,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:4"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-5.pdf",
+  "city": "beirut",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-6.pdf",
+  "city": "beirut",
+  "rows": 9,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:9"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-7.pdf",
+  "city": "beirut",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-8.pdf",
+  "city": "beirut",
+  "rows": 9,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:9"
+  ]
+ },
+ {
+  "file": "almanar-beirut-2026-9.pdf",
+  "city": "beirut",
+  "rows": 5,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:5"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-10.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-11.pdf",
+  "city": "hermel",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-12.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-4.pdf",
+  "city": "hermel",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-5.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-6.pdf",
+  "city": "hermel",
+  "rows": 24,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:24"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-7.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-8.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2025-9.pdf",
+  "city": "hermel",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-1.pdf",
+  "city": "hermel",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-10.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-11.pdf",
+  "city": "hermel",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-12.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-2.pdf",
+  "city": "hermel",
+  "rows": 9,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:9"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-3.pdf",
+  "city": "hermel",
+  "rows": 9,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:9"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-4.pdf",
+  "city": "hermel",
+  "rows": 7,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:7"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-5.pdf",
+  "city": "hermel",
+  "rows": 29,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:29"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-6.pdf",
+  "city": "hermel",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-7.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-8.pdf",
+  "city": "hermel",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-hermel-2026-9.pdf",
+  "city": "hermel",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-10.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-11.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-12.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-4.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-5.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-6.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 3,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:3"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-7.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-8.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2025-9.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-1.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-10.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-11.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 20,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:20"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-12.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-2.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 28,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:28"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-3.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-4.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 12,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:12"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-5.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-6.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 10,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:10"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-7.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-8.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-nabatieh-bintjbeil-2026-9.pdf",
+  "city": "nabatieh-bintjbeil",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-10.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-11.pdf",
+  "city": "saida",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-12.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-4.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-5.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-6.pdf",
+  "city": "saida",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-7.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-8.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2025-9.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-1.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-10.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-11.pdf",
+  "city": "saida",
+  "rows": 6,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:6"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-12.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-2.pdf",
+  "city": "saida",
+  "rows": 28,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:28"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-3.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-4.pdf",
+  "city": "saida",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-5.pdf",
+  "city": "saida",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-6.pdf",
+  "city": "saida",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-7.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-8.pdf",
+  "city": "saida",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-saida-2026-9.pdf",
+  "city": "saida",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-10.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-11.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-12.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-4.pdf",
+  "city": "tripoli",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-5.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-6.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-7.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-8.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2025-9.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-1.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-10.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-11.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-12.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-2.pdf",
+  "city": "tripoli",
+  "rows": 28,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:28"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-3.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-4.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-5.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-6.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-7.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-8.pdf",
+  "city": "tripoli",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tripoli-2026-9.pdf",
+  "city": "tripoli",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-10.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-11.pdf",
+  "city": "tyre",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-12.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-4.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-5.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-6.pdf",
+  "city": "tyre",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-7.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-8.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2025-9.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-1.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-10.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-11.pdf",
+  "city": "tyre",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-12.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-2.pdf",
+  "city": "tyre",
+  "rows": 28,
+  "days_in_month": 28,
+  "kinds": [
+   "unparsed:0",
+   "col:28"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-3.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-4.pdf",
+  "city": "tyre",
+  "rows": 16,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:16"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-5.pdf",
+  "city": "tyre",
+  "rows": 31,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "col:31"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-6.pdf",
+  "city": "tyre",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-7.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-8.pdf",
+  "city": "tyre",
+  "rows": 0,
+  "days_in_month": 31,
+  "kinds": [
+   "unparsed:0",
+   "unparsed:0"
+  ]
+ },
+ {
+  "file": "almanar-tyre-2026-9.pdf",
+  "city": "tyre",
+  "rows": 30,
+  "days_in_month": 30,
+  "kinds": [
+   "unparsed:0",
+   "col:30"
+  ]
+ }
+]

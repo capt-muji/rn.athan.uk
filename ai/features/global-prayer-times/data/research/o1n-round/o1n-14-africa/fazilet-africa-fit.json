@@ -1,0 +1,4248 @@
+{
+ "engine": "adhan 4.4.6, Rounding.None, MiddleOfTheNight",
+ "method": "angles + per-column median margins recovered on the base year, frozen, residual-scored on every year held",
+ "cities": {
+  "AO-Luanda": {
+   "cityId": 3068,
+   "tz": "Africa/Luanda",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 18.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 17,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": -1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 84.34,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 47,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 81.79,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 36,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.5,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 24
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 904,
+    "julSpanFajrIshaMin": 839,
+    "nextYearJanSpan": 904
+   }
+  },
+  "CD-Goma": {
+   "cityId": 2589,
+   "tz": "Africa/Lubumbashi",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 17,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 15,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 5
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 97.22,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "isha": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 95.13,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 16
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 879,
+    "julSpanFajrIshaMin": 863,
+    "nextYearJanSpan": 880
+   }
+  },
+  "CD-Kinshasa": {
+   "cityId": 2590,
+   "tz": "Africa/Kinshasa",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.5,
+    "ishaAngle": 16.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 13,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 7
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 91.67,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 88.72,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 20
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 888,
+    "julSpanFajrIshaMin": 854,
+    "nextYearJanSpan": 888
+   }
+  },
+  "CD-Lubumbashi": {
+   "cityId": 2591,
+   "tz": "Africa/Lubumbashi",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 93.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 92.82,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.4,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 15
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 917,
+    "julSpanFajrIshaMin": 834,
+    "nextYearJanSpan": 918
+   }
+  },
+  "CF-Bangui": {
+   "cityId": 3216,
+   "tz": "Africa/Bangui",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 20,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 86.87,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 46,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 87.44,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.6,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 25
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 861,
+    "julSpanFajrIshaMin": 885,
+    "nextYearJanSpan": 861
+   }
+  },
+  "CM-Douala": {
+   "cityId": 2565,
+   "tz": "Africa/Douala",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.12,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 50,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.41,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.7,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 16
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 861,
+    "julSpanFajrIshaMin": 881,
+    "nextYearJanSpan": 861
+   }
+  },
+  "CM-Yaounde": {
+   "cityId": 2566,
+   "tz": "Africa/Douala",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 16.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 6
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.88,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 45,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 88.46,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 43,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.6,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 19
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 863,
+    "julSpanFajrIshaMin": 883,
+    "nextYearJanSpan": 863
+   }
+  },
+  "ET-AddisAbaba": {
+   "cityId": 379,
+   "tz": "Africa/Addis_Ababa",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 14,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 83.33,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 42,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.62,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 43,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 25
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 848,
+    "julSpanFajrIshaMin": 903,
+    "nextYearJanSpan": 848
+   }
+  },
+  "ET-DireDawa": {
+   "cityId": 2571,
+   "tz": "Africa/Addis_Ababa",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 17,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 15,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 5
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 95.45,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 93.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.6,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 26
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 847,
+    "julSpanFajrIshaMin": 906,
+    "nextYearJanSpan": 847
+   }
+  },
+  "GH-Accra": {
+   "cityId": 452,
+   "tz": "Africa/Accra",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 16.5,
+    "ishaAngle": 15.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 5,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 12
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 84.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 43,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 85.13,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 43,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 18
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 856,
+    "julSpanFajrIshaMin": 887,
+    "nextYearJanSpan": 856
+   }
+  },
+  "GH-Tamale": {
+   "cityId": 2576,
+   "tz": "Africa/Accra",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 16.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 15,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 7
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.12,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.67,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.5,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 22
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 847,
+    "julSpanFajrIshaMin": 904,
+    "nextYearJanSpan": 847
+   }
+  },
+  "GN-Conakry": {
+   "cityId": 2577,
+   "tz": "Africa/Conakry",
+   "years": [
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.5,
+    "ishaAngle": 16.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 14,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 8
+    }
+   },
+   "baseYear": "2027",
+   "perYear": {
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 79.23,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 37,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 845,
+    "julSpanFajrIshaMin": 904,
+    "nextYearJanSpan": null
+   }
+  },
+  "GN-Kankan": {
+   "cityId": 4025,
+   "tz": "Africa/Conakry",
+   "years": [
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 18,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 26,
+     "sunrise": 5,
+     "dhuhr": 15,
+     "asr": 12,
+     "maghrib": 14,
+     "isha": 8
+    }
+   },
+   "baseYear": "2027",
+   "perYear": {
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 74.62,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 43,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 39,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 844,
+    "julSpanFajrIshaMin": 909,
+    "nextYearJanSpan": null
+   }
+  },
+  "KE-Kisumu": {
+   "cityId": 6353,
+   "tz": "Africa/Nairobi",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 18,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 0
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.88,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 88.21,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 23
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 873,
+    "julSpanFajrIshaMin": 866,
+    "nextYearJanSpan": 873
+   }
+  },
+  "KE-Mombasa": {
+   "cityId": 360,
+   "tz": "Africa/Nairobi",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 87.88,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 88.97,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 49,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 22
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 886,
+    "julSpanFajrIshaMin": 854,
+    "nextYearJanSpan": 886
+   }
+  },
+  "KE-Nairobi": {
+   "cityId": 361,
+   "tz": "Africa/Nairobi",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 15,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 94.95,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 93.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 21
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 878,
+    "julSpanFajrIshaMin": 864,
+    "nextYearJanSpan": 878
+   }
+  },
+  "KM-Moroni": {
+   "cityId": 3195,
+   "tz": "Indian/Comoro",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 86.62,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 44,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.36,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 40,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -2.3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 19
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 916,
+    "julSpanFajrIshaMin": 832,
+    "nextYearJanSpan": 916
+   }
+  },
+  "MG-Antananarivo": {
+   "cityId": 2580,
+   "tz": "Indian/Antananarivo",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 85.1,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 85.64,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.5,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 28
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 952,
+    "julSpanFajrIshaMin": 817,
+    "nextYearJanSpan": 952
+   }
+  },
+  "ML-Bamako": {
+   "cityId": 2581,
+   "tz": "Africa/Bamako",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.75,
+    "ishaAngle": 18.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 14,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": -2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 85.86,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.36,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.5,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 27
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 838,
+    "julSpanFajrIshaMin": 919,
+    "nextYearJanSpan": 838
+   }
+  },
+  "ML-Segou": {
+   "cityId": 4029,
+   "tz": "Africa/Bamako",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 16.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 22,
+     "sunrise": 4,
+     "dhuhr": 14,
+     "asr": 12,
+     "maghrib": 14,
+     "isha": 14
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 77.78,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 43,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 37,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 79.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 42,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 41,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 24
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 836,
+    "julSpanFajrIshaMin": 923,
+    "nextYearJanSpan": 836
+   }
+  },
+  "MZ-Maputo": {
+   "cityId": 4034,
+   "tz": "Africa/Maputo",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 78.03,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 42,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 34,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 78.97,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 43,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.9,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 40
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 993,
+    "julSpanFajrIshaMin": 802,
+    "nextYearJanSpan": 993
+   }
+  },
+  "MZ-Nampula": {
+   "cityId": 4035,
+   "tz": "Africa/Maputo",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.25,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 93.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 92.31,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.9,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 24
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 933,
+    "julSpanFajrIshaMin": 825,
+    "nextYearJanSpan": 933
+   }
+  },
+  "NG-Abuja": {
+   "cityId": 779,
+   "tz": "Africa/Lagos",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 18.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 8,
+     "asr": 6,
+     "maghrib": 8,
+     "isha": -2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 80.81,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 42,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 47,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 79.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 35,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 45,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 30
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 847,
+    "julSpanFajrIshaMin": 903,
+    "nextYearJanSpan": 848
+   }
+  },
+  "NG-Kano": {
+   "cityId": 4842,
+   "tz": "Africa/Lagos",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19,
+    "ishaAngle": 16.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 16,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 7
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 83.33,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 34,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.36,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 38,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 27
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 839,
+    "julSpanFajrIshaMin": 915,
+    "nextYearJanSpan": 839
+   }
+  },
+  "NG-Lagos": {
+   "cityId": 4840,
+   "tz": "Africa/Lagos",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 18,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 0
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 84.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 52,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 39,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 84.1,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 63,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 40,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.7,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 32
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 854,
+    "julSpanFajrIshaMin": 892,
+    "nextYearJanSpan": 853
+   }
+  },
+  "NG-Sokoto": {
+   "cityId": 4843,
+   "tz": "Africa/Lagos",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 84.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 43,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 85.13,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 44,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.3,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 27
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 836,
+    "julSpanFajrIshaMin": 920,
+    "nextYearJanSpan": 836
+   }
+  },
+  "SL-Bo": {
+   "cityId": 4031,
+   "tz": "Africa/Freetown",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 86.11,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 60,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 55,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 86.92,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 55,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.8,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 19
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 849,
+    "julSpanFajrIshaMin": 897,
+    "nextYearJanSpan": 849
+   }
+  },
+  "SL-Freetown": {
+   "cityId": 780,
+   "tz": "Africa/Freetown",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.25,
+    "ishaAngle": 15.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 12,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 10
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 78.79,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 34,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 40,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 77.18,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 34,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 56,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.6,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 21
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 849,
+    "julSpanFajrIshaMin": 900,
+    "nextYearJanSpan": 849
+   }
+  },
+  "TD-Abeche": {
+   "cityId": 6007,
+   "tz": "Africa/Ndjamena",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 18,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 2
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 84.34,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 41,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 65,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 54,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 83.85,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 40,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 50,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -0.5,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 27
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 834,
+    "julSpanFajrIshaMin": 924,
+    "nextYearJanSpan": 835
+   }
+  },
+  "TD-Ndjamena": {
+   "cityId": 2569,
+   "tz": "Africa/Ndjamena",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.75,
+    "ishaAngle": 16.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 14,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 6
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 89.65,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 51,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 89.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 57,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 22
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 839,
+    "julSpanFajrIshaMin": 916,
+    "nextYearJanSpan": 840
+   }
+  },
+  "TZ-DarEsSalaam": {
+   "cityId": 781,
+   "tz": "Africa/Dar_es_Salaam",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 18.25,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 12,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 4,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 73.74,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 48,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 39,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 35,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 46,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 74.87,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 40,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 33,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 46,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 1.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 20
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 896,
+    "julSpanFajrIshaMin": 846,
+    "nextYearJanSpan": 896
+   }
+  },
+  "TZ-Zanzibar": {
+   "cityId": 4004,
+   "tz": "Africa/Dar_es_Salaam",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 17,
+    "ishaAngle": 18,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 7,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 0
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 89.65,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 66,
+       "w1": 66,
+       "worst": 0
+      },
+      "asr": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 62,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 88.46,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 53,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 48,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 60,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": -1.2,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 21
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 893,
+    "julSpanFajrIshaMin": 847,
+    "nextYearJanSpan": 894
+   }
+  },
+  "UG-Entebbe": {
+   "cityId": 5512,
+   "tz": "Africa/Kampala",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 19.75,
+    "ishaAngle": 17.75,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 19,
+     "sunrise": -2,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 6,
+     "isha": 1
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 88.64,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 53,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 64,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 59,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 49,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 63,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 89.23,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 51,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 65,
+       "w1": 65,
+       "worst": 0
+      },
+      "asr": {
+       "n": 65,
+       "exact": 59,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 47,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 64,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 0.6,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 24
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 873,
+    "julSpanFajrIshaMin": 867,
+    "nextYearJanSpan": 873
+   }
+  },
+  "ZW-Bulawayo": {
+   "cityId": 8012,
+   "tz": "Africa/Harare",
+   "years": [
+    "2026",
+    "2027"
+   ],
+   "recipe": {
+    "fajrAngle": 20,
+    "ishaAngle": 17.25,
+    "asr": "Shafi",
+    "margins": {
+     "fajr": 20,
+     "sunrise": -3,
+     "dhuhr": 7,
+     "asr": 5,
+     "maghrib": 7,
+     "isha": 4
+    }
+   },
+   "baseYear": "2026",
+   "perYear": {
+    "2026": {
+     "days": 66,
+     "cells": 396,
+     "pcExact": 85.35,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 66,
+       "exact": 58,
+       "w1": 66,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 66,
+       "exact": 45,
+       "w1": 66,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 66,
+       "exact": 57,
+       "w1": 66,
+       "worst": 1
+      },
+      "asr": {
+       "n": 66,
+       "exact": 56,
+       "w1": 66,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      },
+      "isha": {
+       "n": 66,
+       "exact": 61,
+       "w1": 66,
+       "worst": 1
+      }
+     }
+    },
+    "2027": {
+     "days": 65,
+     "cells": 390,
+     "pcExact": 87.44,
+     "pcWithin1": 100,
+     "worst": 1,
+     "bycol": {
+      "fajr": {
+       "n": 65,
+       "exact": 61,
+       "w1": 65,
+       "worst": 1
+      },
+      "sunrise": {
+       "n": 65,
+       "exact": 52,
+       "w1": 65,
+       "worst": 1
+      },
+      "dhuhr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "asr": {
+       "n": 65,
+       "exact": 54,
+       "w1": 65,
+       "worst": 1
+      },
+      "maghrib": {
+       "n": 65,
+       "exact": 62,
+       "w1": 65,
+       "worst": 1
+      },
+      "isha": {
+       "n": 65,
+       "exact": 58,
+       "w1": 65,
+       "worst": 1
+      }
+     }
+    }
+   },
+   "stability": {
+    "recipeFrozen": true,
+    "pcExactChange": 2.1,
+    "pcW1Change": null
+   },
+   "betweenYearMove": {
+    "compared": 390,
+    "moved": 39
+   },
+   "seasonalAmplitude": {
+    "janSpanFajrIshaMin": 959,
+    "julSpanFajrIshaMin": 814,
+    "nextYearJanSpan": 959
+   }
+  }
+ }
+}

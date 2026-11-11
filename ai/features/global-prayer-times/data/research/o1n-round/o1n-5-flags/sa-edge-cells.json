@@ -1,0 +1,1659 @@
+{
+ "generated": "o1n-5",
+ "task": "F-SA-EDGE-CELLS",
+ "ledgerOutliers": 194,
+ "dates": [
+  "2027-09-03",
+  "2027-09-04",
+  "2027-10-03",
+  "2028-02-27",
+  "2028-03-27",
+  "2028-03-28",
+  "2028-04-22",
+  "2028-08-21",
+  "2028-08-22",
+  "2028-09-20",
+  "2028-10-19",
+  "2028-10-20",
+  "2029-03-16",
+  "2029-04-09",
+  "2029-04-14"
+ ],
+ "affectedPoints": 40,
+ "colErrHistogram": {
+  "maghrib|-2": 59,
+  "isha|-2": 59,
+  "sunrise|-2": 46,
+  "asr|-2": 28,
+  "fajr|2": 2
+ },
+ "dateSummary": [
+  {
+   "date": "2027-09-03",
+   "points": 116,
+   "badPoints": 13,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 24
+   }
+  },
+  {
+   "date": "2027-09-04",
+   "points": 116,
+   "badPoints": 13,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 21
+   }
+  },
+  {
+   "date": "2027-10-03",
+   "points": 116,
+   "badPoints": 17,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 30
+   }
+  },
+  {
+   "date": "2028-02-27",
+   "points": 0,
+   "badPoints": 0,
+   "regionsBad": [],
+   "latRange": [
+    null,
+    null
+   ],
+   "clearSouthPoints": 0,
+   "errVals": {}
+  },
+  {
+   "date": "2028-03-27",
+   "points": 0,
+   "badPoints": 0,
+   "regionsBad": [],
+   "latRange": [
+    null,
+    null
+   ],
+   "clearSouthPoints": 0,
+   "errVals": {}
+  },
+  {
+   "date": "2028-03-28",
+   "points": 0,
+   "badPoints": 0,
+   "regionsBad": [],
+   "latRange": [
+    null,
+    null
+   ],
+   "clearSouthPoints": 0,
+   "errVals": {}
+  },
+  {
+   "date": "2028-04-22",
+   "points": 0,
+   "badPoints": 0,
+   "regionsBad": [],
+   "latRange": [
+    null,
+    null
+   ],
+   "clearSouthPoints": 0,
+   "errVals": {}
+  },
+  {
+   "date": "2028-08-21",
+   "points": 116,
+   "badPoints": 5,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    30.02,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 10
+   }
+  },
+  {
+   "date": "2028-08-22",
+   "points": 116,
+   "badPoints": 3,
+   "regionsBad": [
+    "Northern Borders",
+    "Al Jawf"
+   ],
+   "latRange": [
+    29.71,
+    30.23
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 6
+   }
+  },
+  {
+   "date": "2028-09-20",
+   "points": 116,
+   "badPoints": 14,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 37
+   }
+  },
+  {
+   "date": "2028-10-19",
+   "points": 116,
+   "badPoints": 7,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    30.02,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 10
+   }
+  },
+  {
+   "date": "2028-10-20",
+   "points": 116,
+   "badPoints": 6,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.27
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 8
+   }
+  },
+  {
+   "date": "2029-03-16",
+   "points": 116,
+   "badPoints": 14,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 14
+   }
+  },
+  {
+   "date": "2029-04-09",
+   "points": 116,
+   "badPoints": 1,
+   "regionsBad": [
+    "Northern Borders"
+   ],
+   "latRange": [
+    31.79,
+    31.79
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "2": 1
+   }
+  },
+  {
+   "date": "2029-04-14",
+   "points": 116,
+   "badPoints": 6,
+   "regionsBad": [
+    "Al Jawf",
+    "Northern Borders"
+   ],
+   "latRange": [
+    29.64,
+    31.27
+   ],
+   "clearSouthPoints": 76,
+   "errVals": {
+    "-2": 6
+   }
+  }
+ ],
+ "neighbourNearestKm": {
+  "min": 12.4,
+  "median": 42.3,
+  "max": 57.8
+ },
+ "pointDayShapes": {
+  "0,0,0,0,-2,-2": 50,
+  "0,-2,0,0,0,0": 46,
+  "0,0,0,-2,0,0": 19,
+  "0,0,0,-2,-2,-2": 9,
+  "2,0,0,0,0,0": 2
+ },
+ "worstDate": "2028-09-20",
+ "worstDateCliff": [
+  {
+   "lat": 16.534,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.534,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.534,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.534,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.842,
+   "region": "Jazan",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 16.842,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.842,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 16.842,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.15,
+   "region": "Jazan",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 17.15,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.15,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.15,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.2875,
+   "region": "Najran (Sharurah basin)",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 17.2875,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.2875,
+   "region": "Najran (Sharurah basin)",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 17.2875,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.36,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.36,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.36,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.36,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.458,
+   "region": "Jazan",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 17.458,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.458,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.458,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.4625,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.4625,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.4625,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.4625,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.58,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.58,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.58,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.58,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.6375,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.6375,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.6375,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.6375,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.766,
+   "region": "Jazan",
+   "isha": 0,
+   "sunrise": 0,
+   "maghrib": 0,
+   "bad": 0
+  },
+  {
+   "lat": 17.766,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.766,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.766,
+   "region": "Jazan",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8125,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8125,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8125,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 17.8125,
+   "region": "Najran (Sharurah basin)",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.02,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.02,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.02,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.02,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.24,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.24,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.24,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 18.24,
+   "region": "Najran",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.541,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.541,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.541,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.541,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.783,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.783,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.783,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 19.783,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.025,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.025,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.025,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.025,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.267,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.267,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.267,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.267,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.509,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.509,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.509,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 20.509,
+   "region": "Al Bahah",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 29.64,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 29.64,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 29.64,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 29.64,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 2
+  },
+  {
+   "lat": 29.71,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 29.71,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 29.71,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 29.71,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.02,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.02,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.02,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 30.02,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 30.23,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.23,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.23,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 30.23,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.4,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.4,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.4,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 0,
+   "maghrib": -2,
+   "bad": 2
+  },
+  {
+   "lat": 30.4,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 30.75,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.75,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.75,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 30.75,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.78,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.78,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.78,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 30.78,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 3
+  },
+  {
+   "lat": 31.16,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.16,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.16,
+   "region": "Al Jawf",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.16,
+   "region": "Al Jawf",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 2
+  },
+  {
+   "lat": 31.27,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.27,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.27,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 2
+  },
+  {
+   "lat": 31.27,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 2
+  },
+  {
+   "lat": 31.79,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.79,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 0,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.79,
+   "region": "Northern Borders",
+   "isha": -1,
+   "sunrise": 1,
+   "maghrib": -1,
+   "bad": 0
+  },
+  {
+   "lat": 31.79,
+   "region": "Northern Borders",
+   "isha": -2,
+   "sunrise": 1,
+   "maghrib": -2,
+   "bad": 3
+  }
+ ],
+ "controls": [
+  {
+   "controlDate": "2027-10-02",
+   "nextTo": "2027-09-03",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 32,
+    "fajr": 28,
+    "sunrise": 1
+   }
+  },
+  {
+   "controlDate": "2027-10-04",
+   "nextTo": "2027-09-03",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 39,
+    "fajr": 10,
+    "sunrise": 1
+   }
+  },
+  {
+   "controlDate": "2027-10-05",
+   "nextTo": "2027-09-04",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 35,
+    "fajr": 23,
+    "sunrise": 2
+   }
+  },
+  {
+   "controlDate": "2027-11-02",
+   "nextTo": "2027-10-03",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 46,
+    "maghrib": 39,
+    "isha": 39
+   }
+  },
+  {
+   "controlDate": "2027-11-04",
+   "nextTo": "2027-10-03",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 23,
+    "asr": 18,
+    "sunrise": 6,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  {
+   "controlDate": "2028-03-26",
+   "nextTo": "2028-02-27",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "maghrib": 1,
+    "isha": 1,
+    "dhuhr": 5,
+    "sunrise": 2
+   }
+  },
+  {
+   "controlDate": "2028-04-26",
+   "nextTo": "2028-03-27",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 16,
+    "sunrise": 47,
+    "dhuhr": 10,
+    "asr": 5
+   }
+  },
+  {
+   "controlDate": "2028-04-28",
+   "nextTo": "2028-03-27",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 1,
+    "dhuhr": 8
+   }
+  },
+  {
+   "controlDate": "2028-04-27",
+   "nextTo": "2028-03-28",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "maghrib": 1,
+    "isha": 1,
+    "sunrise": 1
+   }
+  },
+  {
+   "controlDate": "2028-04-29",
+   "nextTo": "2028-03-28",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "dhuhr": 5,
+    "sunrise": 6,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  {
+   "controlDate": "2028-05-21",
+   "nextTo": "2028-04-22",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 25
+   }
+  },
+  {
+   "controlDate": "2028-05-23",
+   "nextTo": "2028-04-22",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 25,
+    "sunrise": 2
+   }
+  },
+  {
+   "controlDate": "2028-09-22",
+   "nextTo": "2028-08-21",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 42,
+    "fajr": 19,
+    "sunrise": 3
+   }
+  },
+  {
+   "controlDate": "2028-09-21",
+   "nextTo": "2028-08-22",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 40,
+    "fajr": 18,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  {
+   "controlDate": "2028-09-23",
+   "nextTo": "2028-08-22",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 29,
+    "asr": 41,
+    "maghrib": 1,
+    "isha": 1,
+    "sunrise": 5
+   }
+  },
+  {
+   "controlDate": "2028-10-21",
+   "nextTo": "2028-09-20",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 31,
+    "asr": 24,
+    "sunrise": 2,
+    "maghrib": 1,
+    "isha": 1
+   }
+  },
+  {
+   "controlDate": "2028-11-18",
+   "nextTo": "2028-10-19",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "maghrib": 11,
+    "isha": 11,
+    "asr": 15
+   }
+  },
+  {
+   "controlDate": "2028-11-20",
+   "nextTo": "2028-10-19",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 11,
+    "fajr": 21,
+    "sunrise": 4,
+    "maghrib": 2,
+    "isha": 2
+   }
+  },
+  {
+   "controlDate": "2028-11-19",
+   "nextTo": "2028-10-20",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 22,
+    "maghrib": 3,
+    "isha": 3,
+    "asr": 13,
+    "sunrise": 3
+   }
+  },
+  {
+   "controlDate": "2028-11-21",
+   "nextTo": "2028-10-20",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "fajr": 23,
+    "asr": 14,
+    "maghrib": 1,
+    "isha": 1,
+    "sunrise": 2
+   }
+  },
+  {
+   "controlDate": "2029-04-15",
+   "nextTo": "2029-03-16",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 4
+   }
+  },
+  {
+   "controlDate": "2029-04-17",
+   "nextTo": "2029-03-16",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 1
+   }
+  },
+  {
+   "controlDate": "2029-05-08",
+   "nextTo": "2029-04-09",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 1,
+    "asr": 6
+   }
+  },
+  {
+   "controlDate": "2029-05-10",
+   "nextTo": "2029-04-09",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "asr": 17
+   }
+  },
+  {
+   "controlDate": "2029-05-13",
+   "nextTo": "2029-04-14",
+   "points": 116,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 28,
+    "fajr": 6
+   }
+  },
+  {
+   "controlDate": "2029-05-15",
+   "nextTo": "2029-04-14",
+   "points": 0,
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {}
+  }
+ ],
+ "affectedDatesHijriMonths": {
+  "1449-04": 2,
+  "1449-05": 1,
+  "1449-10": 1,
+  "1449-11": 3,
+  "1450-03": 1,
+  "1450-04": 1,
+  "1450-05": 1,
+  "1450-06": 2,
+  "1450-11": 3
+ },
+ "southBackgroundOnAffectedDates": [
+  {
+   "date": "2027-09-03",
+   "minusTwoPoints": 13,
+   "southMinus1Cols": {
+    "asr": 54,
+    "maghrib": 63,
+    "isha": 63,
+    "fajr": 10,
+    "dhuhr": 10
+   }
+  },
+  {
+   "date": "2027-09-04",
+   "minusTwoPoints": 13,
+   "southMinus1Cols": {
+    "dhuhr": 28,
+    "maghrib": 64,
+    "isha": 64,
+    "asr": 58,
+    "fajr": 8
+   }
+  },
+  {
+   "date": "2027-10-03",
+   "minusTwoPoints": 17,
+   "southMinus1Cols": {
+    "dhuhr": 33,
+    "asr": 59,
+    "maghrib": 63,
+    "isha": 63,
+    "fajr": 15
+   }
+  },
+  {
+   "date": "2028-02-27",
+   "minusTwoPoints": 5,
+   "southMinus1Cols": {
+    "fajr": 13,
+    "sunrise": 51,
+    "dhuhr": 18
+   }
+  },
+  {
+   "date": "2028-03-27",
+   "minusTwoPoints": 9,
+   "southMinus1Cols": {
+    "sunrise": 67,
+    "dhuhr": 28,
+    "fajr": 22
+   }
+  },
+  {
+   "date": "2028-03-28",
+   "minusTwoPoints": 12,
+   "southMinus1Cols": {
+    "sunrise": 64,
+    "dhuhr": 38,
+    "fajr": 25,
+    "asr": 1
+   }
+  },
+  {
+   "date": "2028-04-22",
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 3
+   }
+  },
+  {
+   "date": "2028-08-21",
+   "minusTwoPoints": 5,
+   "southMinus1Cols": {
+    "asr": 37,
+    "maghrib": 54,
+    "isha": 54,
+    "dhuhr": 20,
+    "fajr": 4
+   }
+  },
+  {
+   "date": "2028-08-22",
+   "minusTwoPoints": 3,
+   "southMinus1Cols": {
+    "asr": 42,
+    "maghrib": 58,
+    "isha": 58,
+    "dhuhr": 33,
+    "fajr": 3
+   }
+  },
+  {
+   "date": "2028-09-20",
+   "minusTwoPoints": 14,
+   "southMinus1Cols": {
+    "fajr": 16,
+    "dhuhr": 18,
+    "asr": 65,
+    "maghrib": 70,
+    "isha": 70
+   }
+  },
+  {
+   "date": "2028-10-19",
+   "minusTwoPoints": 7,
+   "southMinus1Cols": {
+    "maghrib": 51,
+    "isha": 51,
+    "asr": 57,
+    "dhuhr": 28,
+    "fajr": 5
+   }
+  },
+  {
+   "date": "2028-10-20",
+   "minusTwoPoints": 6,
+   "southMinus1Cols": {
+    "asr": 58,
+    "maghrib": 50,
+    "isha": 50,
+    "dhuhr": 10,
+    "fajr": 2
+   }
+  },
+  {
+   "date": "2029-03-16",
+   "minusTwoPoints": 14,
+   "southMinus1Cols": {
+    "sunrise": 62,
+    "fajr": 27,
+    "dhuhr": 5
+   }
+  },
+  {
+   "date": "2029-04-09",
+   "minusTwoPoints": 0,
+   "southMinus1Cols": {
+    "sunrise": 1
+   }
+  },
+  {
+   "date": "2029-04-14",
+   "minusTwoPoints": 6,
+   "southMinus1Cols": {
+    "sunrise": 58,
+    "dhuhr": 23,
+    "fajr": 21,
+    "asr": 6
+   }
+  }
+ ]
+}

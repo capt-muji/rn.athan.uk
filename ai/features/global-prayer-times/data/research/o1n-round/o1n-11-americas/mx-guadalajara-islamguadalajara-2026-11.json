@@ -1,0 +1,252 @@
+{
+ "surface": "MX-GUADALAJARA-MEZQUITA-NOV2026",
+ "publisher": "Mezquita de Guadalajara (Centauro 2912, La Calma, Zapopan) via islamguadalajara.com",
+ "point": [
+  20.6597,
+  -103.3496
+ ],
+ "tz": "America/Mexico_City",
+ "recipe": "MWL 18/17 Shafi zero margin (self-declared), adhan 4.4.6 Rounding.None",
+ "rows": {
+  "2026-11-01": {
+   "fajr": "5:41a",
+   "sunrise": "6:56a",
+   "dhuhr": "12:37p",
+   "asr": "3:53p",
+   "maghrib": "6:18p",
+   "isha": "7:29p"
+  },
+  "2026-11-02": {
+   "fajr": "5:41a",
+   "sunrise": "6:56a",
+   "dhuhr": "12:37p",
+   "asr": "3:53p",
+   "maghrib": "6:18p",
+   "isha": "7:28p"
+  },
+  "2026-11-03": {
+   "fajr": "5:42a",
+   "sunrise": "6:57a",
+   "dhuhr": "12:37p",
+   "asr": "3:52p",
+   "maghrib": "6:17p",
+   "isha": "7:28p"
+  },
+  "2026-11-04": {
+   "fajr": "5:42a",
+   "sunrise": "6:57a",
+   "dhuhr": "12:37p",
+   "asr": "3:52p",
+   "maghrib": "6:17p",
+   "isha": "7:28p"
+  },
+  "2026-11-05": {
+   "fajr": "5:42a",
+   "sunrise": "6:58a",
+   "dhuhr": "12:37p",
+   "asr": "3:52p",
+   "maghrib": "6:16p",
+   "isha": "7:27p"
+  },
+  "2026-11-06": {
+   "fajr": "5:43a",
+   "sunrise": "6:58a",
+   "dhuhr": "12:37p",
+   "asr": "3:51p",
+   "maghrib": "6:16p",
+   "isha": "7:27p"
+  },
+  "2026-11-07": {
+   "fajr": "5:43a",
+   "sunrise": "6:59a",
+   "dhuhr": "12:37p",
+   "asr": "3:51p",
+   "maghrib": "6:15p",
+   "isha": "7:27p"
+  },
+  "2026-11-08": {
+   "fajr": "5:44a",
+   "sunrise": "6:59a",
+   "dhuhr": "12:37p",
+   "asr": "3:51p",
+   "maghrib": "6:15p",
+   "isha": "7:26p"
+  },
+  "2026-11-09": {
+   "fajr": "5:44a",
+   "sunrise": "7:00a",
+   "dhuhr": "12:37p",
+   "asr": "3:51p",
+   "maghrib": "6:14p",
+   "isha": "7:26p"
+  },
+  "2026-11-10": {
+   "fajr": "5:45a",
+   "sunrise": "7:01a",
+   "dhuhr": "12:37p",
+   "asr": "3:50p",
+   "maghrib": "6:14p",
+   "isha": "7:26p"
+  },
+  "2026-11-11": {
+   "fajr": "5:45a",
+   "sunrise": "7:01a",
+   "dhuhr": "12:37p",
+   "asr": "3:50p",
+   "maghrib": "6:14p",
+   "isha": "7:26p"
+  },
+  "2026-11-12": {
+   "fajr": "5:45a",
+   "sunrise": "7:02a",
+   "dhuhr": "12:38p",
+   "asr": "3:50p",
+   "maghrib": "6:13p",
+   "isha": "7:25p"
+  },
+  "2026-11-13": {
+   "fajr": "5:46a",
+   "sunrise": "7:02a",
+   "dhuhr": "12:38p",
+   "asr": "3:50p",
+   "maghrib": "6:13p",
+   "isha": "7:25p"
+  },
+  "2026-11-14": {
+   "fajr": "5:46a",
+   "sunrise": "7:03a",
+   "dhuhr": "12:38p",
+   "asr": "3:50p",
+   "maghrib": "6:13p",
+   "isha": "7:25p"
+  },
+  "2026-11-15": {
+   "fajr": "5:47a",
+   "sunrise": "7:03a",
+   "dhuhr": "12:38p",
+   "asr": "3:50p",
+   "maghrib": "6:13p",
+   "isha": "7:25p"
+  },
+  "2026-11-16": {
+   "fajr": "5:47a",
+   "sunrise": "7:04a",
+   "dhuhr": "12:38p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:25p"
+  },
+  "2026-11-17": {
+   "fajr": "5:48a",
+   "sunrise": "7:05a",
+   "dhuhr": "12:38p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:25p"
+  },
+  "2026-11-18": {
+   "fajr": "5:48a",
+   "sunrise": "7:05a",
+   "dhuhr": "12:39p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:24p"
+  },
+  "2026-11-19": {
+   "fajr": "5:49a",
+   "sunrise": "7:06a",
+   "dhuhr": "12:39p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:24p"
+  },
+  "2026-11-20": {
+   "fajr": "5:49a",
+   "sunrise": "7:06a",
+   "dhuhr": "12:39p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:24p"
+  },
+  "2026-11-21": {
+   "fajr": "5:50a",
+   "sunrise": "7:07a",
+   "dhuhr": "12:39p",
+   "asr": "3:49p",
+   "maghrib": "6:12p",
+   "isha": "7:24p"
+  },
+  "2026-11-22": {
+   "fajr": "5:50a",
+   "sunrise": "7:08a",
+   "dhuhr": "12:40p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:24p"
+  },
+  "2026-11-23": {
+   "fajr": "5:51a",
+   "sunrise": "7:08a",
+   "dhuhr": "12:40p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:24p"
+  },
+  "2026-11-24": {
+   "fajr": "5:51a",
+   "sunrise": "7:09a",
+   "dhuhr": "12:40p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:24p"
+  },
+  "2026-11-25": {
+   "fajr": "5:52a",
+   "sunrise": "7:10a",
+   "dhuhr": "12:40p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:24p"
+  },
+  "2026-11-26": {
+   "fajr": "5:53a",
+   "sunrise": "7:10a",
+   "dhuhr": "12:41p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:25p"
+  },
+  "2026-11-27": {
+   "fajr": "5:53a",
+   "sunrise": "7:11a",
+   "dhuhr": "12:41p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:25p"
+  },
+  "2026-11-28": {
+   "fajr": "5:54a",
+   "sunrise": "7:12a",
+   "dhuhr": "12:41p",
+   "asr": "3:49p",
+   "maghrib": "6:11p",
+   "isha": "7:25p"
+  },
+  "2026-11-29": {
+   "fajr": "5:54a",
+   "sunrise": "7:12a",
+   "dhuhr": "12:42p",
+   "asr": "3:50p",
+   "maghrib": "6:11p",
+   "isha": "7:25p"
+  },
+  "2026-11-30": {
+   "fajr": "5:55a",
+   "sunrise": "7:13a",
+   "dhuhr": "12:42p",
+   "asr": "3:50p",
+   "maghrib": "6:11p",
+   "isha": "7:25p"
+  }
+ }
+}

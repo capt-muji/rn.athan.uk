@@ -1,0 +1,33 @@
+{
+  "generated": "o1n-5",
+  "task": "Oman's three open-country names, attempted by spelling variants against the ministry's own mosque workbook (18,214 rows) and the Mara gazetteer (63 wilayats, 3,822 villages)",
+  "inputs": [
+    "o1m-40-oman/data/masajid-coords.tsv (18,214 mosque rows: MosqueNumber, MosqueName, MosqueType, Governorate, Willayat, Village, Longitude, Latitude)",
+    "o1m-40-oman/data/mara-gazetteer.json (wilayat + villages layers)",
+    "o1m-40-oman/data/om-areas-86.json (the calendar's own names: cityid 10 الحمرة, 31 جدة الحراسيس, 40 رمال الوهيبة)"
+  ],
+  "variantsSwept": {
+    "al-hamra-10": ["الحمرة", "الحمراء", "حمرة", "حمراء", "حمرا", "هيمر"],
+    "harasis-31": ["الحراسيس", "حراسيس", "حراسي", "الحريسي", "هريسي", "حريصي", "حراصيس", "جدة الحراسيس", "الحراسيات"],
+    "wahiba-40": ["الوهيبة", "وهيبة", "وهيبي", "الوهيبي", "وهبة", "وهيب", "رمال الوهيبة"]
+  },
+  "verdicts": [
+    {
+      "area": "الحمرة Al-Hamra", "cityid": 10,
+      "found": "The name family exists at exactly three places in the ministry's own survey and gazetteer: wilayat الحمراء of ad-Dakhiliyah (the famous town, refuted by fit at 34.9 pc exact against the area's own table), village حمراء الدروع of wilayat عبري (22.7 N, 56.6-56.9 E, 90 km from the solved point), and رأس الحمراء in Muscat governorate (مطرح 23.6259/58.5043, بوشر 23.6/58.4209). Nothing in wilayat السويق or anywhere on the Batinah.",
+      "publicSearch": "Arabic web search for الحمرة + السويق: Google served a robot challenge (recorded); DuckDuckGo answered and returned no settlement - only the word's generic uses (redness, twilight, medicine).",
+      "verdict": "OPEN, negative dated 2026-11-11: no settlement of this name under these terms (Arabic variants, ministry workbook, ministry gazetteer, Arabic public search). The name stays doubtful and the published point (23.806, 57.286, wilayat السويق by fit) stays the locator."
+    },
+    {
+      "area": "جدة الحراسيس Jiddat al-Harasis", "cityid": 31,
+      "found": "Zero hits in the workbook and zero in the gazetteer under all eight variants.",
+      "verdict": "OPEN, negative dated 2026-11-11: the Jiddat al-Harasis carries no surveyed mosque and no gazetteer entry under these terms. It is an open-desert area name; nearest surveyed mosque 33.9 km (o1m-40). Point stands."
+    },
+    {
+      "area": "رمال الوهيبة Wahiba sands", "cityid": 40,
+      "found": "The name family lives in the survey only as the tribe: آل وهيبة (مصيرة island, 20.659/58.878), حلة آل وهيبة (المضيبي, 23.0718/58.2204, the sands' northern fringe, 91 km from the solved point), plus dozens of الوهيبي mosque patrons across the country. No settlement inside the sands near the solved point 22.254/58.786.",
+      "verdict": "OPEN, negative dated 2026-11-11: an area name (the sands and their tribe), not a settlement. The workbook corroborates the reading rather than resolving it. Point stands."
+    }
+  ],
+  "summary": "All three remain open country after the variant sweep. Nothing guessed; the solved points carry them. The sweep strengthens the record: the ministry's survey and gazetteer, swept in Arabic variants, cannot name these three prayer areas."
+}

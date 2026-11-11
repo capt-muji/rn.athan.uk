@@ -1,0 +1,56 @@
+### bs-nassau (Etc/GMT+5)
+best {"fajrAngle":18.1,"isha":16.95,"school":"shafi","rms_min":2.448,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+sunrise: 0/20 exact, 0/20 within1, worst 5.0, mean 4.45
+dhuhr: 0/20 exact, 11/20 within1, worst 2.0, mean 1.45
+asr: 14/20 exact, 20/20 within1, worst 1.0, mean 0.30
+maghrib: 0/20 exact, 0/20 within1, worst 4.0, mean 3.60
+isha: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+### bz-belize (America/Belize)
+best {"fajrAngle":18.1,"isha":16.9,"school":"shafi","rms_min":2.679,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+sunrise: 0/20 exact, 0/20 within1, worst 5.0, mean 5.00
+dhuhr: 0/20 exact, 12/20 within1, worst 2.0, mean 1.40
+asr: 17/20 exact, 20/20 within1, worst 1.0, mean 0.15
+maghrib: 0/20 exact, 0/20 within1, worst 4.0, mean 3.95
+isha: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+### cu-havana (America/Havana)
+best {"fajrAngle":18.1,"isha":16.95,"school":"shafi","rms_min":2.625,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 18/20 exact, 20/20 within1, worst 1.0, mean 0.10
+sunrise: 0/20 exact, 0/20 within1, worst 5.0, mean 4.85
+dhuhr: 0/20 exact, 10/20 within1, worst 2.0, mean 1.50
+asr: 17/20 exact, 20/20 within1, worst 1.0, mean 0.15
+maghrib: 0/20 exact, 0/20 within1, worst 4.0, mean 3.85
+isha: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+### do-santo-domingo (America/Santo_Domingo)
+best {"fajrAngle":18.1,"isha":16.9,"school":"shafi","rms_min":2.671,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 17/20 exact, 20/20 within1, worst 1.0, mean 0.15
+sunrise: 0/20 exact, 0/20 within1, worst 5.0, mean 4.95
+dhuhr: 0/20 exact, 11/20 within1, worst 2.0, mean 1.45
+asr: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+maghrib: 0/20 exact, 0/20 within1, worst 4.0, mean 3.95
+isha: 18/20 exact, 20/20 within1, worst 1.0, mean 0.10
+### gy-georgetown (America/Guyana)
+best {"fajrAngle":18.1,"isha":16.85,"school":"shafi","rms_min":2.012,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+sunrise: 0/20 exact, 0/20 within1, worst 4.0, mean 3.80
+dhuhr: 0/20 exact, 9/20 within1, worst 2.0, mean 1.55
+asr: 15/20 exact, 20/20 within1, worst 1.0, mean 0.25
+maghrib: 0/20 exact, 0/20 within1, worst 3.0, mean 2.55
+isha: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+### ht-port-au-prince (America/Port-au-Prince)
+best {"fajrAngle":18.1,"isha":16.9,"school":"shafi","rms_min":2.764,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+sunrise: 0/20 exact, 0/20 within1, worst 6.0, mean 5.15
+dhuhr: 0/20 exact, 10/20 within1, worst 2.0, mean 1.50
+asr: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+maghrib: 0/20 exact, 0/20 within1, worst 5.0, mean 4.05
+isha: 17/20 exact, 20/20 within1, worst 1.0, mean 0.15
+### ht2-cap-haitien (America/Port-au-Prince)
+best {"fajrAngle":18.1,"isha":16.9,"school":"shafi","rms_min":2.286,"joint_allWithin1":"0/20 (0.0 pc)"}
+fajr: 20/20 exact, 20/20 within1, worst 0.0, mean 0.00
+sunrise: 0/20 exact, 0/20 within1, worst 5.0, mean 4.15
+dhuhr: 0/20 exact, 9/20 within1, worst 2.0, mean 1.55
+asr: 19/20 exact, 20/20 within1, worst 1.0, mean 0.05
+maghrib: 0/20 exact, 0/20 within1, worst 4.0, mean 3.30
+isha: 16/20 exact, 20/20 within1, worst 1.0, mean 0.20

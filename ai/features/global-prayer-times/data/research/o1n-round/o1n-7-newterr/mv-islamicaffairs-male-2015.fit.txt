@@ -1,0 +1,10 @@
+mv-islamicaffairs-male-2015 — Ministry of Islamic Affairs (Maldives) annual prayer calendar 2015, Male
+fit: adhan 4.4.6, Rounding.None, adhan MWL base, Shafi asr, Male 4.1755/73.5093, Indian/Maldives
+convention: fixed margins sunrise -2, dhuhr +3, asr +1, maghrib +2 (ministry ihtiyat), then
+angles fajr 18.90 / isha 19.05
+result: 365/365 days all six columns within 1 minute, rms 0.431 min
+columns: fajr 313/365 exact mean 0.14 | sunrise 207/365 mean 0.43 | dhuhr 336/365 mean 0.08 |
+asr 269/365 mean 0.26 | maghrib 330/365 mean 0.10 | isha 328/365 mean 0.10 (worst 1.0 all)
+verdict: authority tier, PASS. Two-stage sweep without margins gave joint 0/365 (dhuhr +3
+unmatchable by angles); margin removal is measured, not assumed (signed means -1.57/+3.03/
++0.94/+1.92 vs 0 for fajr/isha). Pure-angle columns exact on 85-90 pc of days.
