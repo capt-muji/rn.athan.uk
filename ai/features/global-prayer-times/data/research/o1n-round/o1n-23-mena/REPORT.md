@@ -144,6 +144,49 @@ the refusal of both neighbouring years proven live** (`captures/ye/test-*.json`)
 Yemeni authorities' lines stay apart. Bonus capture: the page states Aden's own position
 (12.85 N, 44.983 E, qibla 330.00°) — the publisher's own coordinates, banked.
 
+## 8. The Maghreb year-2 probes — both fronts already carry their second years; fresh probes add dated negatives
+
+- **Algeria**: the Wayback CDX for `marw.gov.dz/media/calendrier*` re-run today returns
+  **exactly the same four books** o1m-30 swept — 1447 (Adrar, Alger, Djelfa) and 1448 (Alger,
+  the banked dz48 layer, 235 transcribed days). No 1449 book, no new scans since 2026-07-30
+  (`captures/dz-cdx-calendrier.txt`). The 01-05/01-06 withheld days were not reopened, per the
+  order. Algeria's year-2 exists and is banked; no third year is archived.
+- **Tunisia**: meteo.tn's `horaire_gouvernorat` API probed live: 2026 dates serve their tables
+  (2026-06-21, 2026-11-12 and the future 2026-12-15 all return full delegation JSON), **2027
+  returns `{"data":null}`** (probes banked under `captures/tn/`). The API's coverage stays
+  2025+2026 — both already swept and fitted by o1m-30 — so no third year exists yet.
+
+## Honest negatives — "not proven" list, in my own words
+
+1. **The Kuwait ministry ruznama's cells are not extracted.** Every honest local route was
+   run (preprocess, deskew-measured, upscale, adaptive binarize, OCR at page/row/cell/glyph
+   scale in two reader configurations, plus a rendered ground-truth control and a labeled
+   structural decode). The day column and page geometry decode; the six numeric columns
+   remain semantically unidentified - they match none of the five prayer-time transforms of
+   the held mirror and are not tide times on the measured drift. The print stays raw-only.
+2. **A higher-resolution copy of the same ministry print is not found** under the Arabic
+   terms searched (the ministry's publications catalog names the ruznama as a print; the
+   print itself does not surface on awqaf.gov.kw or the open web).
+3. **The Diyanet summer clamp's exact formula is not derived.** The clamp's existence,
+   window (~24 Apr to 3-11 Sep), direction (pulls yatsi earlier), and depth (implied angle
+   floor 8.4 deg / interval floor 75-77 min at solstice) are measured; the formula that
+   generates it is not identified under these terms.
+4. **Maan's tawkit page stays displaced** (+40 min, durable across a fresh full-window
+   fetch); the cause is not published anywhere reachable.
+5. **Jordan's awqaf.gov.jo grid remains unreachable** from this host (four connection
+   timeouts across two waves today and yesterday's stop).
+6. **The families' (fajr 18.0/18.05 +6, Amman +7) second year is not available yet** -
+   tawkit's window has not rolled; nothing else serves the ten-city layer.
+7. **The Dar al-Ifta API has no archive and no year parameter** (probed again with new
+   parameter shapes); its rolling window cannot produce a second year by any parameter.
+8. **Syria's ministry calendar post is unreachable** (archive.sana.sy does not resolve;
+   Wayback replay empty), and the ministry's imsakiyya structure is attributed only to its
+   page geometry (day-per-row grid measured), not to confident cells.
+9. **yemenawqaf.org refuses both neighbouring years** despite listing them in the selector;
+   a genuinely dated second year for its six cities is not served.
+10. **Algeria's third Hijri year and Tunisia's 2027 do not exist** in the archive/API under
+    these terms (CDX unchanged; meteo.tn data:null on 2027 dates).
+
 ## Discipline statement
 
 Public pages only, no login, forms, email or challenge. Arabic searched beside English,
