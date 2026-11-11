@@ -24,6 +24,9 @@ prior round) and extends it with that round's own territory list.
   again: different phrasings, different terms, transliterations and place-name variants, more
   languages, alternative search engines and site-direct navigation where search fails. The
   record's honest negatives are always "not found under these terms", never "does not exist".
+- Owner order 2026-11-11 (round o1n): Taiwan is out of scope until the owner says otherwise.
+  No wave targets it, bulk publisher walks skip its pages, and already-banked rows stay in the
+  archive untouched.
 - THE OWNER ALONE STOPS THE RESEARCH. An agent never concludes the programme, never declares
   the work finished. A round ends only at the owner's word or the round's named deadline — a
   mechanical commit point, never a conclusion — and the queue row re-arms the next round the
