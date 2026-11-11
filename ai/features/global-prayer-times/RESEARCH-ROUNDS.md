@@ -42,11 +42,12 @@ prior round) and extends it with that round's own territory list.
   reconcile the board at the round's close. The 10 research agents (5+5) are the exception mode
   and are separate from any board lanes running alongside.
 
-## Fleet (the /athan-next exception, owner order 2026-11-11)
+## Fleet (the /athan-next exception; owner order 2026-11-11, amended the same day)
 
-- Exactly 10 subagents at all times: 5 on `cpa-glm/GLM: GLM-5.3-Flash` and 5 on
-  `cpa-opencode-go/OpenCode Go: DeepSeek V4.1 Flash 1017`. A replacement dispatches the moment
-  a slot frees. The plans-queue no-subagent rule does not apply to research rounds.
+- Exactly 5 subagents at all times, all on `cpa-glm/GLM: GLM-5.3-Flash` (the 10-agent split and
+  the DeepSeek leg were stood down by owner order on 2026-11-11 after the o1m close). A
+  replacement dispatches the moment a slot frees. The plans-queue no-subagent rule does not
+  apply to research rounds.
 - MODEL IDS DRIFT: providers rename models (DeepSeek became "...Flash 1017" mid-round on
   2026-11-11). Before a dispatch, resolve the exact id with the models tool; if a dispatch
   returns "unknown provider for model", re-resolve and redispatch — never retry the stale id.
