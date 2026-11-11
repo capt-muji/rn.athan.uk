@@ -262,6 +262,7 @@ or whether only recomputation does. The precedent on record says recomputation.
 | NO-THREE-LINES | fit4 vs fit8 | consistent | IRN, mawaqeet and the Jamiat table are three publishers, not one conflict |
 | CA-INTERVALS | fit5 vs usmap | consistent | both read the Toronto mosques as a 15-deg fajr plus an 80/90-minute isha |
 | MY-CAPTURE-GAP | sea2 vs fit10 | recorded | the zon1/zon2 images were described but never saved |
+| MY-JAKIM-MARGINS | census MY-JAKIM row vs my2027 (T-674 re-derivation) | superseded | the +2 fajr/asr/isha and -1 syuruk margins reproduce neither baseline (2026: 0.2/0.5/0.1/12.0 pc exact of 20,805 rows; 2027: 0/0/0 of 4,015); margins collapse to zohor +1.5 round alone, maghrib 0 ceil confirmed; syuruk is the per-zone eastern point, not a margin |
 | BF-FAJR-SHIFT | fit10 | recorded | the 1447 edition prints fajr five minutes later on every day |
 | KZ-DHUHR-BIAS | deep1 | recorded | a constant +1 minute model bias all century |
 | RU-SALEKHARD | centralasia (wave) | recorded | C23's "Surgut" row is Salekhard data; real Surgut is absent |
