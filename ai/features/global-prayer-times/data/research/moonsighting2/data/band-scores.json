@@ -1,0 +1,2554 @@
+{
+ "generatedBy": "run-all.mjs (TZ=<zone> node mc-score.mjs <id> per surface)",
+ "surfaces": [
+  {
+   "id": "GB-LONDON-TRUTH",
+   "place": "London, published minutes 2027-2038",
+   "lat": 51.5072,
+   "band": "control",
+   "tier": "truth",
+   "source": "o1g-decade",
+   "rows": 4383,
+   "fajr": {
+    "days": 4383,
+    "mean": 2.95,
+    "worst": 8,
+    "within2": 43.4,
+    "jan": 1.02,
+    "jul": 0.92
+   },
+   "isha": {
+    "days": 4383,
+    "mean": 4.37,
+    "worst": 11,
+    "within2": 24.1,
+    "jan": 7.01,
+    "jul": 2.47
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ELM-2026",
+   "place": "East London Mosque (LUPT-exact)",
+   "lat": 51.5072,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 2.84,
+    "worst": 7,
+    "within2": 45.5,
+    "jan": 0.81,
+    "jul": 0.77
+   },
+   "isha": {
+    "days": 365,
+    "mean": 4.62,
+    "worst": 11,
+    "within2": 25.2,
+    "jan": 7.48,
+    "jul": 2.81
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ICC-NOV",
+   "place": "London Central Mosque ICC",
+   "lat": 51.5274,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 61,
+   "fajr": {
+    "days": 61,
+    "mean": 3.97,
+    "worst": 7,
+    "within2": 24.6,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 61,
+    "mean": 4.66,
+    "worst": 7,
+    "within2": 16.4,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-MWH-NOV",
+   "place": "Muslim Welfare House London",
+   "lat": 51.559,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 4.97,
+    "worst": 7,
+    "within2": 10,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 6.2,
+    "worst": 7,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-GLASGOW-2026",
+   "place": "Glasgow Central Mosque",
+   "lat": 55.8609,
+   "band": "55-60",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 65.27,
+    "worst": 169,
+    "within2": 0,
+    "jan": 28.35,
+    "jul": 141.39
+   },
+   "isha": {
+    "days": 365,
+    "mean": 27.28,
+    "worst": 96,
+    "within2": 20.3,
+    "jan": 40.52,
+    "jul": 3.61
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-DUNDEE-2026",
+   "place": "Al Maktoum Mosque Dundee",
+   "lat": 56.462,
+   "band": "55-60",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 50.67,
+    "worst": 93,
+    "within2": 0,
+    "jan": 36,
+    "jul": 69.13
+   },
+   "isha": {
+    "days": 365,
+    "mean": 16.91,
+    "worst": 30,
+    "within2": 12.3,
+    "jan": 22.87,
+    "jul": 6.45
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ABERDEEN-AMIC-2026",
+   "place": "Aberdeen AMIC Central",
+   "lat": 57.1497,
+   "band": "55-60",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 333,
+   "fajr": {
+    "days": 333,
+    "mean": 79.74,
+    "worst": 183,
+    "within2": 0,
+    "jan": 38.84,
+    "jul": 146.84
+   },
+   "isha": {
+    "days": 333,
+    "mean": 14.36,
+    "worst": 26,
+    "within2": 26.4,
+    "jan": 23.68,
+    "jul": 0.03
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ABERDEEN-SPITAL-2026",
+   "place": "Aberdeen AMIC Spital",
+   "lat": 57.1497,
+   "band": "55-60",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 333,
+   "fajr": {
+    "days": 333,
+    "mean": 79.74,
+    "worst": 183,
+    "within2": 0,
+    "jan": 38.84,
+    "jul": 146.84
+   },
+   "isha": {
+    "days": 333,
+    "mean": 14.36,
+    "worst": 26,
+    "within2": 26.4,
+    "jan": 23.68,
+    "jul": 0.03
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-EDINBURGH-NOV",
+   "place": "Edinburgh Central Mosque",
+   "lat": 55.9533,
+   "band": "55-60",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 31.77,
+    "worst": 36,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 33.27,
+    "worst": 35,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BIRMINGHAM-NOV",
+   "place": "Birmingham Central Mosque",
+   "lat": 52.4862,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 10.5,
+    "worst": 12,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 5.13,
+    "worst": 6,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-HULL-2026",
+   "place": "Hull Mosque",
+   "lat": 53.7676,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 62,
+   "fajr": {
+    "days": 62,
+    "mean": 0.85,
+    "worst": 2,
+    "within2": 100,
+    "jan": 0.94,
+    "jul": null
+   },
+   "isha": {
+    "days": 62,
+    "mean": 12.68,
+    "worst": 17,
+    "within2": 0,
+    "jan": 13,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BRADFORD-JAMIA-2026",
+   "place": "Jamia Masjid Hanfia Bradford",
+   "lat": 53.795,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 12.02,
+    "worst": 59,
+    "within2": 18.9,
+    "jan": 6.58,
+    "jul": 25.03
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.87,
+    "worst": 34,
+    "within2": 10.1,
+    "jan": 30,
+    "jul": 3.9
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BRADFORD-VICTOR-NOV",
+   "place": "Victor Street Mosque Bradford",
+   "lat": 53.795,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 5,
+    "worst": 8,
+    "within2": 6.7,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 29.23,
+    "worst": 30,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-LEICESTER-NOV",
+   "place": "Masjid Umar Leicester",
+   "lat": 52.636,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 21.73,
+    "worst": 25,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 30,
+    "worst": 31,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-CARDIFF-SWICC-NOV",
+   "place": "SWICC Cardiff",
+   "lat": 51.4816,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 5.53,
+    "worst": 7,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 6.9,
+    "worst": 11,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IE-GALWAY-2026",
+   "place": "Galway ICC (4 dated rows)",
+   "lat": 53.2707,
+   "band": "45-55",
+   "tier": "community",
+   "source": "ukscotland",
+   "rows": 4,
+   "fajr": {
+    "days": 4,
+    "mean": 25.5,
+    "worst": 29,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 4,
+    "mean": 11,
+    "worst": 11,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BOLTON-2026",
+   "place": "Bolton Zakariyya",
+   "lat": 53.5769,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 354,
+   "fajr": {
+    "days": 354,
+    "mean": 2.81,
+    "worst": 7,
+    "within2": 46.6,
+    "jan": 0.77,
+    "jul": 1.6
+   },
+   "isha": {
+    "days": 354,
+    "mean": 10.33,
+    "worst": 17,
+    "within2": 4.2,
+    "jan": 13.52,
+    "jul": 7.93
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BLACKPOOL-NOV",
+   "place": "Blackpool Central",
+   "lat": 53.8175,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 4.27,
+    "worst": 7,
+    "within2": 23.3,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 12.77,
+    "worst": 14,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-BRIGHTON-NOV",
+   "place": "Brighton Al Medinah",
+   "lat": 50.8225,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 1.6,
+    "worst": 2,
+    "within2": 100,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 3.33,
+    "worst": 4,
+    "within2": 10,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-CAMBRIDGE-NOV",
+   "place": "Cambridge Central Mosque",
+   "lat": 52.2053,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 32,
+   "fajr": {
+    "days": 32,
+    "mean": 0.25,
+    "worst": 1,
+    "within2": 100,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 32,
+    "mean": 0.22,
+    "worst": 1,
+    "within2": 100,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-COVENTRY-2026",
+   "place": "Coventry Zeenatul Islam",
+   "lat": 52.4068,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 3.08,
+    "worst": 60,
+    "within2": 52.3,
+    "jan": 0.74,
+    "jul": 1.03
+   },
+   "isha": {
+    "days": 365,
+    "mean": 7.88,
+    "worst": 53,
+    "within2": 3,
+    "jan": 8.77,
+    "jul": 11.29
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-DUDLEY-NOV",
+   "place": "Dudley MCC",
+   "lat": 52.512,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 1.83,
+    "worst": 3,
+    "within2": 96.7,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 6.7,
+    "worst": 8,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ILFORD-NOV",
+   "place": "Ilford Islamic Centre",
+   "lat": 51.559,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 0.13,
+    "worst": 1,
+    "within2": 100,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 4.73,
+    "worst": 6,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-LUTON-NOV",
+   "place": "Luton Central Mosque",
+   "lat": 51.879,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 1.5,
+    "worst": 3,
+    "within2": 93.3,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 5.67,
+    "worst": 7,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-MIDDLESBROUGH-NOV",
+   "place": "Middlesbrough Central",
+   "lat": 54.5742,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 1.87,
+    "worst": 3,
+    "within2": 66.7,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 4.93,
+    "worst": 6,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-NOTTINGHAM-2026",
+   "place": "Nottingham Islamic Centre",
+   "lat": 52.9548,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 47.41,
+    "worst": 135,
+    "within2": 0,
+    "jan": 25.29,
+    "jul": 113.03
+   },
+   "isha": {
+    "days": 365,
+    "mean": 34.47,
+    "worst": 70,
+    "within2": 2.5,
+    "jan": 31.1,
+    "jul": 16.87
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-OLDHAM-OCMIC-2026",
+   "place": "Oldham OCMIC",
+   "lat": 53.5409,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 3.85,
+    "worst": 6,
+    "within2": 18.9,
+    "jan": 2.55,
+    "jul": 5.06
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.77,
+    "worst": 13,
+    "within2": 24.4,
+    "jan": 2.42,
+    "jul": 4.74
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-OLDHAM-WESTWOOD-2026",
+   "place": "Oldham Westwood",
+   "lat": 53.5409,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 345,
+   "fajr": {
+    "days": 345,
+    "mean": 3.63,
+    "worst": 7,
+    "within2": 21.7,
+    "jan": 3.41,
+    "jul": 3.48
+   },
+   "isha": {
+    "days": 345,
+    "mean": 3.84,
+    "worst": 13,
+    "within2": 31.6,
+    "jan": 3.83,
+    "jul": 5.72
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-OXFORD-2026",
+   "place": "Oxford COMS",
+   "lat": 51.752,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 43.61,
+    "worst": 315,
+    "within2": 0,
+    "jan": 21.71,
+    "jul": 106.74
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.05,
+    "worst": 40,
+    "within2": 10.1,
+    "jan": 28.58,
+    "jul": 18.06
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-PRESTON-NOV",
+   "place": "Preston Jamea",
+   "lat": 53.7632,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 0.67,
+    "worst": 1,
+    "within2": 100,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 0,
+    "mean": null,
+    "worst": null,
+    "within2": null,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 30,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-READING-2026",
+   "place": "Reading AMIC",
+   "lat": 51.4543,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.19,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.16,
+    "jul": 0.06
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.17,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.13,
+    "jul": 0.06
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-ROCHDALE-2026",
+   "place": "Rochdale Golden Mosque",
+   "lat": 53.6096,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.33,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.16,
+    "jul": 0.42
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.37,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.58,
+    "jul": 0.06
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-STOCKPORT-NOV",
+   "place": "Stockport Islamic Centre",
+   "lat": 53.4106,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 3.47,
+    "worst": 6,
+    "within2": 36.7,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 11.8,
+    "worst": 13,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "GB-WATFORD-NOV",
+   "place": "Watford Jamia",
+   "lat": 51.6565,
+   "band": "45-55",
+   "tier": "community",
+   "source": "uktowns2",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 18.7,
+    "worst": 22,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 28.87,
+    "worst": 30,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-OSLO-2026",
+   "place": "Jamiat Ulama Norway, Oslo",
+   "lat": 59.9139,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit8 thirdLineMC)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.31,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.26,
+    "jul": 0.32
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within2": 11,
+    "jan": 2.87,
+    "jul": 2.55
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-BERGEN-2026",
+   "place": "Jamiat Ulama Norway, Bergen",
+   "lat": 60.3913,
+   "band": ">60",
+   "tier": "community",
+   "source": "europe (fit8 thirdLineMC)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.32,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.03,
+    "jul": 0.52
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.06,
+    "worst": 10,
+    "within2": 19.7,
+    "jan": 2.97,
+    "jul": 2.42
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-DRAMMEN-2026",
+   "place": "Jamiat Ulama Norway, Drammen",
+   "lat": 59.7439,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit4 interval fit)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.31,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.29,
+    "jul": 0.45
+   },
+   "isha": {
+    "days": 365,
+    "mean": 2.89,
+    "worst": 4,
+    "within2": 25.2,
+    "jan": 2.81,
+    "jul": 2.19
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-KRISTIANSAND-2026",
+   "place": "Jamiat Ulama Norway, Kristiansand",
+   "lat": 58.1467,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit4 interval fit)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.32,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.1,
+    "jul": 0.52
+   },
+   "isha": {
+    "days": 365,
+    "mean": 2.97,
+    "worst": 4,
+    "within2": 17,
+    "jan": 2.94,
+    "jul": 2.26
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-SANDNES-2026",
+   "place": "Jamiat Ulama Norway, Sandnes",
+   "lat": 58.8525,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit4 interval fit)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.27,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.16,
+    "jul": 0.26
+   },
+   "isha": {
+    "days": 365,
+    "mean": 2.7,
+    "worst": 4,
+    "within2": 36.7,
+    "jan": 2.52,
+    "jul": 2.06
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-SKIEN-2026",
+   "place": "Jamiat Ulama Norway, Skien",
+   "lat": 59.2092,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit4 interval fit)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.35,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.19,
+    "jul": 0.48
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.06,
+    "worst": 4,
+    "within2": 17,
+    "jan": 3,
+    "jul": 2.23
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-ISLAMWEB-STAVANGER-2026",
+   "place": "Jamiat Ulama Norway, Stavanger",
+   "lat": 58.97,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit4 interval fit)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 0.32,
+    "worst": 1,
+    "within2": 100,
+    "jan": 0.1,
+    "jul": 0.39
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.02,
+    "worst": 4,
+    "within2": 17.5,
+    "jan": 3,
+    "jul": 2.29
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-IRN-BERGEN-2026",
+   "place": "IRN Bergen",
+   "lat": 60.3913,
+   "band": ">60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 33.52,
+    "worst": 79,
+    "within2": 0,
+    "jan": 38.97,
+    "jul": 15.42
+   },
+   "isha": {
+    "days": 365,
+    "mean": 24.3,
+    "worst": 47,
+    "within2": 12.9,
+    "jan": 37.23,
+    "jul": 6.26
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-IRN-TRONDHEIM-2026",
+   "place": "IRN Trondheim",
+   "lat": 63.4305,
+   "band": ">60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 40.08,
+    "worst": 78,
+    "within2": 2.2,
+    "jan": 58.97,
+    "jul": 17.16
+   },
+   "isha": {
+    "days": 365,
+    "mean": 37.25,
+    "worst": 66,
+    "within2": 3.3,
+    "jan": 56.42,
+    "jul": 4.71
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-IRN-TROMSO-2026",
+   "place": "IRN Tromsoe (polar substitutions)",
+   "lat": 69.6489,
+   "band": ">60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 249,
+    "mean": 99.96,
+    "worst": 353,
+    "within2": 1.2,
+    "jan": 193.82,
+    "jul": 210.17
+   },
+   "isha": {
+    "days": 249,
+    "mean": 105.88,
+    "worst": 378,
+    "within2": 0.8,
+    "jan": 198.47,
+    "jul": 193.33
+   },
+   "syntheticDays": 235,
+   "honestFajr": {
+    "days": 130,
+    "mean": 60.49,
+    "worst": 90,
+    "within2": 2.3
+   },
+   "honestIsha": {
+    "days": 130,
+    "mean": 70.05,
+    "worst": 101,
+    "within2": 1.5
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 116,
+   "undefinedIsha": 116
+  },
+  {
+   "id": "NO-RABITA-OSLO-NOVDEC",
+   "place": "Rabita Oslo (IRN render)",
+   "lat": 59.9139,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (fit8)",
+   "rows": 61,
+   "fajr": {
+    "days": 61,
+    "mean": 37.34,
+    "worst": 44,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 61,
+    "mean": 34.95,
+    "worst": 38,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-OSLO-2026",
+   "place": "mawaqeet.no Oslo (PDF year)",
+   "lat": 59.9139,
+   "band": "55-60",
+   "tier": "platform-render",
+   "source": "europe (fit8)",
+   "rows": 243,
+   "fajr": {
+    "days": 243,
+    "mean": 56.96,
+    "worst": 188,
+    "within2": 0,
+    "jan": 51.71,
+    "jul": null
+   },
+   "isha": {
+    "days": 243,
+    "mean": 41.21,
+    "worst": 90,
+    "within2": 0,
+    "jan": 36,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-BERGEN-2026",
+   "place": "mawaqeet.no Bergen (PDF year)",
+   "lat": 60.3913,
+   "band": ">60",
+   "tier": "platform-render",
+   "source": "europe (fit8)",
+   "rows": 241,
+   "fajr": {
+    "days": 241,
+    "mean": 59.46,
+    "worst": 189,
+    "within2": 0,
+    "jan": 54.29,
+    "jul": null
+   },
+   "isha": {
+    "days": 241,
+    "mean": 43.04,
+    "worst": 93,
+    "within2": 0,
+    "jan": 38.29,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-STAVANGER-2026",
+   "place": "mawaqeet.no Stavanger (PDF year)",
+   "lat": 58.97,
+   "band": "55-60",
+   "tier": "platform-render",
+   "source": "europe (fit8)",
+   "rows": 249,
+   "fajr": {
+    "days": 249,
+    "mean": 53.41,
+    "worst": 185,
+    "within2": 0,
+    "jan": 46.74,
+    "jul": null
+   },
+   "isha": {
+    "days": 249,
+    "mean": 37.98,
+    "worst": 89,
+    "within2": 0,
+    "jan": 31.45,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-TRONDHEIM-2026",
+   "place": "mawaqeet.no Trondheim (API year)",
+   "lat": 63.4305,
+   "band": ">60",
+   "tier": "platform-render",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 95.07,
+    "worst": 201,
+    "within2": 0,
+    "jan": 75.87,
+    "jul": 100.81
+   },
+   "isha": {
+    "days": 223,
+    "mean": 56.99,
+    "worst": 98,
+    "within2": 0,
+    "jan": 57.58,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 142,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-KRISTIANSAND-2026",
+   "place": "mawaqeet.no Kristiansand (API year)",
+   "lat": 58.1467,
+   "band": "55-60",
+   "tier": "platform-render",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 79.5,
+    "worst": 184,
+    "within2": 0,
+    "jan": 42.71,
+    "jul": 139.71
+   },
+   "isha": {
+    "days": 255,
+    "mean": 35.62,
+    "worst": 90,
+    "within2": 0,
+    "jan": 28,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 110,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NO-MAWAQEET-AALESUND-2026",
+   "place": "mawaqeet.no Aalesund (API year)",
+   "lat": 62.4722,
+   "band": ">60",
+   "tier": "platform-render",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 92.44,
+    "worst": 197,
+    "within2": 0,
+    "jan": 68.16,
+    "jul": 110.1
+   },
+   "isha": {
+    "days": 229,
+    "mean": 52.07,
+    "worst": 97,
+    "within2": 0,
+    "jan": 50.55,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 136,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "DK-MAWAQEET-KOBENHAVN-2026",
+   "place": "mawaqeet.no Copenhagen (API year)",
+   "lat": 55.6761,
+   "band": "55-60",
+   "tier": "platform-render",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 71.5,
+    "worst": 179,
+    "within2": 0,
+    "jan": 32.74,
+    "jul": 151.94
+   },
+   "isha": {
+    "days": 271,
+    "mean": 29.35,
+    "worst": 86,
+    "within2": 0,
+    "jan": 19.1,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 94,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "DK-IMAMALI-2026",
+   "place": "Imam Ali Copenhagen (Jafari, no isha)",
+   "lat": 55.6761,
+   "band": "55-60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 91,
+   "fajr": {
+    "days": 91,
+    "mean": 66.44,
+    "worst": 147,
+    "within2": 0,
+    "jan": 31,
+    "jul": null
+   },
+   "isha": {
+    "days": 0,
+    "mean": null,
+    "worst": null,
+    "within2": null,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 91,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "SE-IFIS-STOCKHOLM-2026",
+   "place": "IF Stockholm national",
+   "lat": 59.3293,
+   "band": "55-60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 40.75,
+    "worst": 64,
+    "within2": 0,
+    "jan": 48.71,
+    "jul": 27.61
+   },
+   "isha": {
+    "days": 365,
+    "mean": 35.81,
+    "worst": 65,
+    "within2": 0,
+    "jan": 39.94,
+    "jul": 20.71
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "SE-IFIS-UPPSALA-2026",
+   "place": "IF Uppsala national",
+   "lat": 59.8586,
+   "band": "55-60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 38.82,
+    "worst": 61,
+    "within2": 0,
+    "jan": 51.77,
+    "jul": 21.32
+   },
+   "isha": {
+    "days": 365,
+    "mean": 34.26,
+    "worst": 64,
+    "within2": 0,
+    "jan": 42.45,
+    "jul": 15.39
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "SE-IFIS-GOTEBORG-2026",
+   "place": "IF Goeteborg national",
+   "lat": 57.7089,
+   "band": "55-60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 37.67,
+    "worst": 61,
+    "within2": 0,
+    "jan": 41.1,
+    "jul": 29.48
+   },
+   "isha": {
+    "days": 365,
+    "mean": 32.6,
+    "worst": 62,
+    "within2": 0,
+    "jan": 32.35,
+    "jul": 21.29
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "SE-ANGERED-2026",
+   "place": "Angered mosque (byte-equal IF Goeteborg)",
+   "lat": 57.7746,
+   "band": "55-60",
+   "tier": "community",
+   "source": "nordics2 (fit8)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 37.21,
+    "worst": 61,
+    "within2": 0,
+    "jan": 41,
+    "jul": 28.61
+   },
+   "isha": {
+    "days": 365,
+    "mean": 33.08,
+    "worst": 62,
+    "within2": 0,
+    "jan": 33.29,
+    "jul": 21.45
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "EE-EIC-TALLINN-2026",
+   "place": "EIC Tallinn",
+   "lat": 59.437,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 31.7,
+    "worst": 61,
+    "within2": 0,
+    "jan": 25.42,
+    "jul": 39.45
+   },
+   "isha": {
+    "days": 365,
+    "mean": 36.24,
+    "worst": 94,
+    "within2": 0,
+    "jan": 33.81,
+    "jul": 36.9
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "EE-EIC-TALLINN-2027",
+   "place": "EIC Tallinn 2027",
+   "lat": 59.437,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 31.66,
+    "worst": 61,
+    "within2": 0,
+    "jan": 25.45,
+    "jul": 39.35
+   },
+   "isha": {
+    "days": 365,
+    "mean": 36.41,
+    "worst": 97,
+    "within2": 0,
+    "jan": 33.77,
+    "jul": 36.97
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "EE-EIC-TARTU-2026",
+   "place": "EIC Tartu",
+   "lat": 58.3806,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 29.49,
+    "worst": 61,
+    "within2": 0,
+    "jan": 20.87,
+    "jul": 41.23
+   },
+   "isha": {
+    "days": 365,
+    "mean": 33.02,
+    "worst": 88,
+    "within2": 0,
+    "jan": 28.97,
+    "jul": 34.23
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "EE-EIC-TARTU-2027",
+   "place": "EIC Tartu 2027",
+   "lat": 58.3806,
+   "band": "55-60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 29.45,
+    "worst": 60,
+    "within2": 0,
+    "jan": 20.94,
+    "jul": 41.26
+   },
+   "isha": {
+    "days": 365,
+    "mean": 33.02,
+    "worst": 87,
+    "within2": 0,
+    "jan": 29.13,
+    "jul": 34.48
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "FI-HELSINKI-2026",
+   "place": "Helsinki rukousaika (stated MWL 18/17)",
+   "lat": 60.1699,
+   "band": ">60",
+   "tier": "authority",
+   "source": "europe",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 72.18,
+    "worst": 141,
+    "within2": 0,
+    "jan": 53.58,
+    "jul": 93.97
+   },
+   "isha": {
+    "days": 365,
+    "mean": 52.38,
+    "worst": 144,
+    "within2": 0,
+    "jan": 53.52,
+    "jul": 36.81
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IS-FELAG-REYKJAVIK-2025",
+   "place": "Felag Muslima Reykjavik 2025",
+   "lat": 64.1466,
+   "band": ">60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 36.47,
+    "worst": 63,
+    "within2": 0,
+    "jan": 46.42,
+    "jul": 24.23
+   },
+   "isha": {
+    "days": 365,
+    "mean": 42.87,
+    "worst": 69,
+    "within2": 0,
+    "jan": 53.19,
+    "jul": 24.23
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IS-FELAG-REYKJAVIK-2027",
+   "place": "Felag Muslima Reykjavik 2027",
+   "lat": 64.1466,
+   "band": ">60",
+   "tier": "community",
+   "source": "nordics2 (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 36.5,
+    "worst": 63,
+    "within2": 0,
+    "jan": 47.03,
+    "jul": 23.87
+   },
+   "isha": {
+    "days": 365,
+    "mean": 42.85,
+    "worst": 69,
+    "within2": 0,
+    "jan": 53.45,
+    "jul": 23.81
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IS-FELAG-AKUREYRI-2025",
+   "place": "Felag Muslima Akureyri 2025",
+   "lat": 65.6853,
+   "band": ">60",
+   "tier": "community",
+   "source": "europe (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 40.94,
+    "worst": 87,
+    "within2": 0.5,
+    "jan": 61.16,
+    "jul": 18.19
+   },
+   "isha": {
+    "days": 365,
+    "mean": 47.47,
+    "worst": 90,
+    "within2": 0,
+    "jan": 67.9,
+    "jul": 18.97
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IS-FELAG-AKUREYRI-2027",
+   "place": "Felag Muslima Akureyri 2027",
+   "lat": 65.6853,
+   "band": ">60",
+   "tier": "community",
+   "source": "nordics2 (deep3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 40.96,
+    "worst": 87,
+    "within2": 0.3,
+    "jan": 61.65,
+    "jul": 17.74
+   },
+   "isha": {
+    "days": 365,
+    "mean": 47.47,
+    "worst": 89,
+    "within2": 0,
+    "jan": 68.68,
+    "jul": 18.61
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "BY-MINSK-2025",
+   "place": "Islambel Minsk (clock-cap table)",
+   "lat": 53.9006,
+   "band": "45-55",
+   "tier": "community",
+   "source": "nordics2 (fit6)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 23.55,
+    "worst": 39,
+    "within2": 2.5,
+    "jan": 26.97,
+    "jul": 17
+   },
+   "isha": {
+    "days": 365,
+    "mean": 24.24,
+    "worst": 56,
+    "within2": 4.4,
+    "jan": 19.42,
+    "jul": 14.84
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "LT-VILNIUS-NOV",
+   "place": "Lithuanian Muftiate Vilnius (month)",
+   "lat": 54.6872,
+   "band": "45-55",
+   "tier": "community",
+   "source": "nordics2 (fit6)",
+   "rows": 7,
+   "fajr": {
+    "days": 7,
+    "mean": 26.71,
+    "worst": 28,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 7,
+    "mean": 22.57,
+    "worst": 23,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "RU-CDUM-SPB-2026",
+   "place": "CDUM St Petersburg",
+   "lat": 59.9343,
+   "band": "55-60",
+   "tier": "authority",
+   "source": "centralasia",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 53.5,
+    "worst": 165,
+    "within2": 0,
+    "jan": 54.06,
+    "jul": 45.48
+   },
+   "isha": {
+    "days": 365,
+    "mean": 55.11,
+    "worst": 179,
+    "within2": 0,
+    "jan": 54,
+    "jul": 37.39
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "RU-CDUM-MOSCOW-2026",
+   "place": "CDUM Moscow",
+   "lat": 55.7558,
+   "band": "55-60",
+   "tier": "authority",
+   "source": "centralasia",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 48.28,
+    "worst": 175,
+    "within2": 0,
+    "jan": 35.52,
+    "jul": 53.74
+   },
+   "isha": {
+    "days": 365,
+    "mean": 49.65,
+    "worst": 170,
+    "within2": 0,
+    "jan": 35.61,
+    "jul": 43.74
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "RU-CDUM-SALEKHARD-2026",
+   "place": "CDUM Salekhard (as served)",
+   "lat": 66.5299,
+   "band": ">60",
+   "tier": "authority",
+   "source": "centralasia",
+   "rows": 365,
+   "fajr": {
+    "days": 335,
+    "mean": 79.64,
+    "worst": 425,
+    "within2": 0,
+    "jan": 114.26,
+    "jul": 69.48
+   },
+   "isha": {
+    "days": 335,
+    "mean": 80.38,
+    "worst": 393,
+    "within2": 0,
+    "jan": 112.74,
+    "jul": 63.12
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 30,
+   "undefinedIsha": 30
+  },
+  {
+   "id": "DE-DIYANET-KOELN-2026",
+   "place": "Diyanet portal Koeln",
+   "lat": 50.9375,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "europe (fit8 control)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 17.54,
+    "worst": 32,
+    "within2": 2.7,
+    "jan": 18.65,
+    "jul": 10.29
+   },
+   "isha": {
+    "days": 365,
+    "mean": 20.86,
+    "worst": 51,
+    "within2": 0,
+    "jan": 12.03,
+    "jul": 19.39
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "DE-DIYANET-BERLIN-2026",
+   "place": "Diyanet portal Berlin",
+   "lat": 52.52,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "europe (fit4)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 20.59,
+    "worst": 36,
+    "within2": 2.2,
+    "jan": 22.9,
+    "jul": 13.29
+   },
+   "isha": {
+    "days": 365,
+    "mean": 22.84,
+    "worst": 53,
+    "within2": 0,
+    "jan": 15.94,
+    "jul": 17.45
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "DE-DIYANET-FRANKFURT-2026",
+   "place": "Diyanet portal Frankfurt",
+   "lat": 50.1109,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "europe",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 16.08,
+    "worst": 30,
+    "within2": 2.7,
+    "jan": 17,
+    "jul": 9.03
+   },
+   "isha": {
+    "days": 365,
+    "mean": 19.85,
+    "worst": 50,
+    "within2": 0,
+    "jan": 10.06,
+    "jul": 20.03
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NL-VIN-AMSTERDAM-2026",
+   "place": "VIN Amsterdam 2026",
+   "lat": 52.3702,
+   "band": "45-55",
+   "tier": "community",
+   "source": "benelux2 (fit9)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 23.18,
+    "worst": 56,
+    "within2": 2.2,
+    "jan": 22.68,
+    "jul": 16.58
+   },
+   "isha": {
+    "days": 365,
+    "mean": 31.76,
+    "worst": 76,
+    "within2": 0,
+    "jan": 23,
+    "jul": 23.87
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NL-VIN-UTRECHT-2026",
+   "place": "VIN Utrecht 2026",
+   "lat": 52.0907,
+   "band": "45-55",
+   "tier": "community",
+   "source": "benelux2 (fit9)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 22.56,
+    "worst": 55,
+    "within2": 2.7,
+    "jan": 21.97,
+    "jul": 16.97
+   },
+   "isha": {
+    "days": 365,
+    "mean": 31.75,
+    "worst": 76,
+    "within2": 0,
+    "jan": 22.23,
+    "jul": 26.23
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "NL-ESSALAM-ROTTERDAM-2026",
+   "place": "Essalam Rotterdam (03:30/23:30 caps)",
+   "lat": 51.9225,
+   "band": "45-55",
+   "tier": "community",
+   "source": "europe (fit9)",
+   "rows": 29,
+   "fajr": {
+    "days": 29,
+    "mean": 21.69,
+    "worst": 24,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 29,
+    "mean": 15.69,
+    "worst": 16,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "BE-EMB-BRUXELLES-2026",
+   "place": "EMB Brussels windows 2026",
+   "lat": 50.8503,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "benelux2 (fit9)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 23.58,
+    "worst": 58,
+    "within2": 0,
+    "jan": 18.74,
+    "jul": 33.84
+   },
+   "isha": {
+    "days": 365,
+    "mean": 39.21,
+    "worst": 76,
+    "within2": 0,
+    "jan": 25.55,
+    "jul": 47.45
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "BE-SANABEL-BRUXELLES-2026",
+   "place": "Sanabel Brussels (byte-identical EMB)",
+   "lat": 50.8503,
+   "band": "45-55",
+   "tier": "community",
+   "source": "benelux2 (fit9)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 23.58,
+    "worst": 58,
+    "within2": 0,
+    "jan": 18.74,
+    "jul": 33.84
+   },
+   "isha": {
+    "days": 365,
+    "mean": 39.21,
+    "worst": 76,
+    "within2": 0,
+    "jan": 25.55,
+    "jul": 47.45
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "LU-SHOURA-2026",
+   "place": "Shoura Luxembourg City",
+   "lat": 49.6117,
+   "band": "45-55",
+   "tier": "community",
+   "source": "benelux2 (fit3)",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 14.23,
+    "worst": 80,
+    "within2": 13.4,
+    "jan": 17.03,
+    "jul": 3.71
+   },
+   "isha": {
+    "days": 365,
+    "mean": 15.66,
+    "worst": 40,
+    "within2": 6.6,
+    "jan": 11.06,
+    "jul": 34.52
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "FR-GMS-STRASBOURG-NOV",
+   "place": "GMS Strasbourg November",
+   "lat": 48.5734,
+   "band": "45-55",
+   "tier": "community",
+   "source": "europe",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 12.93,
+    "worst": 15,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 8.87,
+    "worst": 10,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "FR-CTIR-LYON-2020",
+   "place": "CTIR Lyon 2020 (13.5/14.5 printed swapped)",
+   "lat": 45.764,
+   "band": "45-55",
+   "tier": "community",
+   "source": "benelux2",
+   "rows": 366,
+   "fajr": {
+    "days": 366,
+    "mean": 10,
+    "worst": 16,
+    "within2": 15.8,
+    "jan": 11.61,
+    "jul": 2.16
+   },
+   "isha": {
+    "days": 366,
+    "mean": 12.78,
+    "worst": 27,
+    "within2": 8.7,
+    "jan": 11.16,
+    "jul": 25.35
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "AT-IZW-WIEN-2025",
+   "place": "IZW Vienna permanent calendar 2025",
+   "lat": 48.2082,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "europe",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 5.56,
+    "worst": 64,
+    "within2": 17.5,
+    "jan": 2.52,
+    "jul": 5.32
+   },
+   "isha": {
+    "days": 365,
+    "mean": 18.51,
+    "worst": 78,
+    "within2": 0,
+    "jan": 6.23,
+    "jul": 22
+   },
+   "syntheticDays": 1,
+   "honestFajr": {
+    "days": 364,
+    "mean": 5.4,
+    "worst": 51,
+    "within2": 17.6
+   },
+   "honestIsha": {
+    "days": 364,
+    "mean": 18.35,
+    "worst": 50,
+    "within2": 0
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "CH-IZRS-ZUERICH-RAMADAN",
+   "place": "IZRS Zuerich Ramadan 2026",
+   "lat": 47.3769,
+   "band": "45-55",
+   "tier": "community",
+   "source": "europe",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 21.07,
+    "worst": 22,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 6.8,
+    "worst": 10,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "IT-UCOII-MILANO-NOV",
+   "place": "UCOII Milano (AlAdhan proxy, community)",
+   "lat": 45.4642,
+   "band": "45-55",
+   "tier": "platform-render",
+   "source": "europe",
+   "rows": 30,
+   "fajr": {
+    "days": 30,
+    "mean": 7.37,
+    "worst": 9,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "isha": {
+    "days": 30,
+    "mean": 8.9,
+    "worst": 10,
+    "within2": 0,
+    "jan": null,
+    "jul": null
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "KZ-MUFTIYAT-ASTANA-2026",
+   "place": "KZ Muftiyat Astana (48N margin block)",
+   "lat": 51.1282,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "deep1",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 4.5,
+    "worst": 20,
+    "within2": 44.1,
+    "jan": 1.03,
+    "jul": 8.26
+   },
+   "isha": {
+    "days": 365,
+    "mean": 22.93,
+    "worst": 60,
+    "within2": 0,
+    "jan": 6.71,
+    "jul": 46.06
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  },
+  {
+   "id": "KZ-MUFTIYAT-PETROPAVL-2026",
+   "place": "KZ Muftiyat Petropavl (above the 48N line)",
+   "lat": 54.8687,
+   "band": "45-55",
+   "tier": "authority",
+   "source": "deep1",
+   "rows": 365,
+   "fajr": {
+    "days": 365,
+    "mean": 9.91,
+    "worst": 27,
+    "within2": 6.3,
+    "jan": 8.97,
+    "jul": 8.9
+   },
+   "isha": {
+    "days": 365,
+    "mean": 28.48,
+    "worst": 66,
+    "within2": 0,
+    "jan": 16.23,
+    "jul": 36.52
+   },
+   "missingFajr": 0,
+   "missingIsha": 0,
+   "undefinedFajr": 0,
+   "undefinedIsha": 0
+  }
+ ]
+}
