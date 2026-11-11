@@ -34,8 +34,9 @@ prior round) and extends it with that round's own territory list.
 - THE 100 GB CAP IS SOFT. When the raw archive crosses it, the parent SAYS SO in the next report
   to the owner and keeps going. Crossing the cap changes nothing; only the owner's word stops
   anything.
-- Duration: the owner names it per round (o1l runs to 2026-11-16 ~02:50Z); default one session
-  of continuous operation.
+- Duration: the owner names it per round; o1n runs CONTINUOUSLY to 2026-11-16 by owner order
+  2026-11-11 (a one-week run: never stop, never conclude, redeploy every freed slot until the
+  owner stops the round personally); default one session of continuous operation.
 - The board (owner order 2026-11-11: use it MINIMALLY, like a git history — record exactly
   where things are, nothing more): one Research ticket per round (labels: number, Research,
   research, prayer-times), moved In progress at start with Lane set, updated with one short
@@ -47,17 +48,16 @@ prior round) and extends it with that round's own territory list.
 
 ## Fleet (the /athan-next exception; owner order 2026-11-11, amended the same day)
 
-- Exactly 5 subagents at all times, in a fixed mix (owner order, 2026-11-11, the day's final
-  amendment): THREE on `cpa-glm/GLM: GLM-5.3-Flash` and TWO on
-  `opencode/minimax-m3.1-flash-free`. The 10-agent split and the DeepSeek leg were stood down by
-  owner order on 2026-11-11 after the o1m close. The fleet runs CONTINUOUSLY: a replacement
-  dispatches the moment a slot frees, on the model the freed slot's role carries. The
+- Exactly 3 subagents at all times, ALL on `cpa-glm/GLM: GLM-5.3-Flash` (owner order,
+  2026-11-11, the day's standing amendment). The DeepSeek, opencode-free and opencode-go legs,
+  and every free-tier model, are stood down for good: the GLM flash model is the only worker.
+  The fleet runs CONTINUOUSLY: a replacement dispatches the moment a slot frees. The
   plans-queue no-subagent rule does not apply to research rounds.
 - NO GRANDCHILDREN (owner order 2026-11-11, reaffirmed at every fleet change since): the round's
   coordinator is the only agent that dispatches. A wave never deploys a subagent of its own;
   every wave works its mission in its own session, and any child found running under a wave is
-  brought down (bank and end) the moment the order reaches it. The worker models are the two
-  named above only.
+  brought down (bank and end) the moment the order reaches it. The worker model is the GLM flash
+  model above only.
 - MODEL IDS DRIFT: providers rename models (DeepSeek became "...Flash 1017" mid-round on
   2026-11-11). Before a dispatch, resolve the exact id with the models tool; if a dispatch
   returns "unknown provider for model", re-resolve and redispatch — never retry the stale id.
