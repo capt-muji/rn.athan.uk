@@ -1,5 +1,9 @@
 # O1k fit-phase amendment (owner order, 2026-11-10 ~23:00)
 
+Placement note (D15 item 2, T-675 #7092): the path two agents were given for this file was missing
+at fit time. The file lives here, at
+`ai/features/global-prayer-times/data/research/o1k-wide/FIT-RULES.md`, and this is its only copy.
+
 Binding on every fit agent from now on; the two in-flight fits already comply.
 
 1. FIT ALL YEARS HELD. Every fitting job uses the FULL span of dated data in hand, not one year.

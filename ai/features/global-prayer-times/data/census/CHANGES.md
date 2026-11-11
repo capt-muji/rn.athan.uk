@@ -1,4 +1,44 @@
-# CHANGES — world-table v2 against T-667's 75-row country table
+# CHANGES — world-table version movements
+
+## v3 against v2 (T-675, 2026-11-11)
+
+The o1k-wide policydraft pack applied under the agent-ruled rulings (T-675 #7092): D14's adoption of
+the night, D3's Niger consequence, D15's record repairs, A1's fallback bands, D5/D7/D1 recorded.
+
+- Rows: 166 -> **174**. Added: Guatemala, Honduras, Venezuela, Luxembourg, Belarus (new
+  countries), Norway Jamiat line, Italy Rome line, Switzerland Geneva line (second lines). Nine
+  FALLBACK stubs rewritten to data rows, with their ids renamed to the object they now carry:
+  LV-NONE -> LV-LIKC, LT-NONE -> LT-MUFTIATE, SO-NONE -> SO-MWAQIT, SN-DAKAR -> SN-CERFI,
+  ML-NONE -> ML-ALMADINA, GN-NONE -> GN-NONO, PK-NIZAM-WATCH -> PK-NIZAM-E-SALAT,
+  DK-NONE -> DK-COPENHAGEN, BJ-COTONOU -> BJ-NONE. The pack names seven row-slots; the three
+  second lines are additions beyond it, each a new policy object that earns its own row the way
+  Norway, Italy and Switzerland already carry one row per line.
+- Classes: **A 17, provisional 40, candidate 65, community 15, F 2, FALLBACK 35** (from
+  A 15, provisional 38, candidate 65, community 4, F 3, FALLBACK 41).
+- Grade movements, 17: Pakistan FALLBACK -> provisional (the federal chart fitted); Tunisia and
+  Iceland -> A; EU-Diyanet-UNIFIED F -> provisional (the standing series exists); Netherlands ->
+  A (contested, flagged for the owner); Djibouti, Senegal, Mali, Guinea, Somalia, Mauritius ->
+  community; Latvia and Lithuania FALLBACK -> candidate (the stubs rewritten as scheme and
+  rolling-week data rows); Denmark FALLBACK -> candidate (the 15-degree reading corrected to the
+  outlier's provenance); Niger A -> provisional (the D3 consequence: the span is frozen-recomputed);
+  Benin candidate withdrawn -> FALLBACK (the capture is Kandi, no publisher, D15); Hong Kong's
+  stale row A aligned to the object's provisional withdrawal.
+- Nigeria's row carries the D6 reversal (T-675 #7103): MWL 18/17 is the mosque-level recipe,
+  fitted at Osogbo, Ile-Ife and Suleja, and the Egyptian 19.5/17.5 line is masjidway's platform
+  default, uniform across five regions, never Nigerian regional practice.
+- Rule edits: the blanket Moonsighting fallback amends to the A1 bands (18/18 Shafi below 45
+  degrees, Moonsighting 45-55, its own 1/7 above 55; badged computed, no body claimed), with
+  the A2 promise-wording rider recorded for the badge.
+- Where the fit index and the wtdiff disagree on a grade (SN/ML/GN/SO/GT/HN/VE/LU/MU/DJ
+  community-vs-candidate/provisional, NL-VIN A-vs-provisional), the fit index governs and the
+  conflict rides the row.
+- The policy layer folds with it: v2.4 -> v2.5 (69 -> 87 objects, A 19, provisional 35,
+  candidate 18, community 15, F 0). The checklist's projection reads A 20, provisional 34; the
+  fold lands one A lower because the D3 consequence ruling (T-675 #7092, arbiter item 3) reads
+  Niger's served years as one frozen-recomputed generation and withdraws its A. No other
+  projection field moves.
+
+## v2 against T-667's 75-row country table
 
 C41, 2026-11-10. The T-667 table (#6914) was built on T-665's 100-country survey (ALGORITHM 5 /
 FEED 42 / NONE 53) and T-666's 16 published-parameter countries. The literal artifact did not

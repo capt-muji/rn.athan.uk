@@ -1,14 +1,15 @@
 {
  "schema": "athan-prayer-policy-layer",
- "schemaVersion": "2.4.0",
- "generated": "2026-11-10",
- "generatedBy": "C49, ticket T-668, policy-layer v2.3 (the final fold: C39's Moscow fit, C43's four adversarial corrections, C42's Masjidal two-layer caveat)",
- "note": "v2.3 is the fold of the three returns that landed after C44 closed its read: C39's Moscow fit (the last fitPending, now a partial object with a documented summer exception), C43's adversarial verification (HK fajr wording, Oman's five-of-six ceil and +5.3 band, Kosovo's isha pair, Chile's crossover) and C42's correction that the Masjidal athan span is generated rather than archived (which withdraws HK's grade A). v2.2's file is untouched; v2.3 is built beside it from a pinned sha256. Research only; nothing in the repository was touched. null means the record is silent, never zero. | PRACTICE MAP (C47): 151-mosque masjidal corpus fitted - US community default 15/15 (77pc), 18-degree family 13pc (Chicago/Hanafi pattern), Hanafi asr 33pc; asr school is the best predictor of the fajr angle; config drift 2025-2026 nil; platform-default caveat (no method field). Supersedes C4 conservative-skew verdict.",
+ "schemaVersion": "2.5.0",
+ "generated": "2026-11-11",
+ "generatedBy": "T-675 fold (T-675#7092), policy-layer v2.5: the o1k-wide policydraft pack applied under the 2026-11-11 agent-ruled rulings (D3/D5/D7/D14/D15 as ruled, A1/A2 recorded, R1-R5 standing)",
+ "note": "v2.3 is the fold of the three returns that landed after C44 closed its read: C39's Moscow fit (the last fitPending, now a partial object with a documented summer exception), C43's adversarial verification (HK fajr wording, Oman's five-of-six ceil and +5.3 band, Kosovo's isha pair, Chile's crossover) and C42's correction that the Masjidal athan span is generated rather than archived (which withdraws HK's grade A). v2.2's file is untouched; v2.3 is built beside it from a pinned sha256. Research only; nothing in the repository was touched. null means the record is silent, never zero. | PRACTICE MAP (C47): 151-mosque masjidal corpus fitted - US community default 15/15 (77pc), 18-degree family 13pc (Chicago/Hanafi pattern), Hanafi asr 33pc; asr school is the best predictor of the fajr angle; config drift 2025-2026 nil; platform-default caveat (no method field). Supersedes C4 conservative-skew verdict. v2.5 folds the o1k-wide policydraft pack (18 new objects, 14 amendments) under the 2026-11-11 rulings on T-675; the projected counts shift by the D3 Niger consequence (A 19, provisional 35 against the checklist's A 20, provisional 34 - Niger's frozen-recomputed span is one generation, so its A is withdrawn).",
  "provenanceContract": {
   "unit": "every object cites ticket and comment id in evidence.commentRefs, and every margin, rounding, clock and rule group carries a provenance string naming its comment",
   "tickets": {
    "T-667": "the verification programme: Wave I through P5, N1-N2, S1, O1f, AB1",
-   "T-668": "the worldwide mosque timetable census, waves C1-C47, the v2 policy refresh (C27), v2.1 (C33), v2.2 (C44), and this v2.3 final fold (C49)"
+   "T-668": "the worldwide mosque timetable census, waves C1-C47, the v2 policy refresh (C27), v2.1 (C33), v2.2 (C44), and this v2.3 final fold (C49)",
+   "T-675": "the o1k-wide apply: policy-layer v2.5 and world-table v3 under the recorded rulings (T-675 #7092; D6 reversed at #7103); D3's Niger consequence, D5's unconditional Morocco A, D7's Ramadan-display ruling, D14's adoption of the night, D15's five record repairs, A1's fallback bands"
   },
   "nullRule": "null is \"the record does not say\". No value was inferred from a neighbouring country or a library preset",
   "supersedeRule": "where two comments measure the same field, the later or wider measurement wins and the loser is named in the field provenance or in changelog.corrected"
@@ -46,12 +47,199 @@
    ],
    "unnamed": 9,
    "gap": "The other nine I4 objects were never named on the board. T-667 #6945 closed the London one with a full derivation; the remaining eight still have to be recovered from the I4 session or rebuilt."
+  },
+  "v25Additions": {
+   "status": "applied at v2.5 with the fold, atomically with the new objects that use them",
+   "ruleForms": [
+    "clockSchedule (PK-NIZAM-E-SALAT dhuhr window pair + isha quarter grid; degenerate single-window: GN-NONO 13:45, BY-ISLAMBEL cap pair)",
+    "windowTable interval pairs, left bound the instant (grammar lands for TJ-SHURO and window-class consumers)",
+    "fajrRule.dawnPair two-dawn intervals (SN-CERFI)",
+    "highLatitude.parameters.windows flat plateaus and arcs (BE-EMB measured, BY-ISLAMBEL, NL-VIN caps)",
+    "offsetGroups three-group offsets (Serbia at its next fit)",
+    "reference.elevationExceptionSet 21/19 six-regency set (D8 ruled a; no ID object yet)",
+    "editionId edition-named surfaces (D1 ruled a; FJ-FML carried, NZ-FIANZ not needed - D7 answered a)"
+   ],
+   "builderRule": "engine: PrayTimes-v2 family in emulation on platform recipes (GT-ALDAWA, HN-CENTRO-ISLAMICO)",
+   "provenance": "T-675#7092",
+   "shapes": [
+    {
+     "field": "fajrRule.clockSchedule | ishaRule.clockSchedule | dhuhrRule.clockSchedule",
+     "shape": {
+      "kind": "clockSchedule",
+      "gridMinutes": 15,
+      "baseRule": {
+       "kind": "angle",
+       "angle": 18
+      },
+      "snapRule": "ceil(isha@18deg + 12.5) to the grid",
+      "schedule": [
+       {
+        "from": "01-01",
+        "to": "04-14",
+        "value": "13:00"
+       }
+      ],
+      "switchDates": [
+       "2026-10-01",
+       "2026-12-20"
+      ],
+      "provenance": "..."
+     },
+     "users": [
+      "PK-NIZAM-E-SALAT (dhuhr window pair 13:00/13:15 switching 15 Apr/15 Oct; isha quarter grid, 19 switch dates, one 30-minute drop)",
+      "GN-NONO's dhuhr 13:45 pin and BY-ISLAMBEL's cap pair are the degenerate single-window form"
+     ]
+    },
+    {
+     "field": "windowTable",
+     "shape": {
+      "class": "intervalPairs",
+      "instantBound": "left",
+      "columns": {
+       "isha": {
+        "leftBase": "maghrib",
+        "leftOffsetMinutes": 90
+       },
+       "dhuhr": {
+        "leftConstant": "13:00",
+        "eras": [
+         {
+          "until": "2019-06-30",
+          "value": "13:00"
+         }
+        ]
+       }
+      },
+      "entries": 366
+     },
+     "users": [
+      "TJ-SHURO at its next fit; the grammar lands for any window-class consumer, and the existing window-class path converts unchanged"
+     ]
+    },
+    {
+     "field": "fajrRule.dawnPair",
+     "shape": {
+      "primary": {
+       "base": "sunrise",
+       "offsetMinutes": -75.5
+      },
+      "secondary": {
+       "base": "sunrise",
+       "offsetMinutes": -60.5
+      },
+      "sunriseColumnIsDawn": true
+     },
+     "users": [
+      "SN-CERFI (Fajar/Suba; the printed sunrise column is Suba, missing astronomical sunrise by up to 51 minutes)"
+     ]
+    },
+    {
+     "field": "highLatitude.parameters.windows",
+     "shape": [
+      {
+       "prayer": "isha",
+       "window": "05-01..05-21",
+       "kind": "flat",
+       "value": "23:26"
+      },
+      {
+       "prayer": "isha",
+       "window": "05-22..07-25",
+       "kind": "arc",
+       "latitude": 45,
+       "angle": 18
+      },
+      {
+       "prayer": "fajr",
+       "window": "05-31..07-09",
+       "kind": "arc",
+       "latitude": 44.75,
+       "angle": 19.1,
+       "floorClock": "03:24"
+      }
+     ],
+     "users": [
+      "BE-EMB (measured boundaries, kind seasonalWindows)",
+      "BY-ISLAMBEL (cap pair, unfitted)",
+      "NL-VIN's clock caps as the flat value type"
+     ]
+    },
+    {
+     "field": "offsetGroups",
+     "shape": [
+      {
+       "members": [
+        "fajr",
+        "sunrise"
+       ],
+       "minutes": "-x"
+      },
+      {
+       "members": [
+        "dhuhr"
+       ],
+       "minutes": "y"
+      },
+      {
+       "members": [
+        "asr",
+        "maghrib",
+        "isha"
+       ],
+       "minutes": "z"
+      }
+     ],
+     "users": [
+      "Serbia at its next fit (the Devridaim design); read per prayer the table looks like render damage, which is how the record filed it once"
+     ],
+     "note": "x, y and z are the source's own constants, unmeasured at v2.5 (Serbia is not in this pack)"
+    },
+    {
+     "field": "reference.elevationExceptionSet",
+     "shape": {
+      "publisher": "Kemenag",
+      "keyField": "regency",
+      "thresholdMeters": 1786,
+      "deltaDegrees": 1.0,
+      "twilights": [
+       "fajr",
+       "isha"
+      ],
+      "members": "the six regencies at or above 1,786 m in fit10's banked 516-regency table (incl. Paniai); Deiyai at 1,718 m is untouched and is the negative bound",
+      "rule": "publisher policy, never an elevation formula"
+     },
+     "users": [
+      "ships on D8 ruled a with the schema; no ID object exists in v2.4 or in this pack, so the future ID object carries it"
+     ]
+    },
+    {
+     "field": "editionId | editions",
+     "shape": {
+      "editionId": "fiji-widget-2026-12",
+      "editions": [
+       {
+        "editionId": "fiji-widget-2026-12",
+        "surface": "the date-generating widget",
+        "span": "2025-12..2026-12"
+       },
+       {
+        "editionId": "fiji-sheet-2025",
+        "surface": "the printed sheet",
+        "span": "year-agnostic months"
+       }
+      ]
+     },
+     "users": [
+      "FJ-FML (D1 ruled a: the widget is the timetable, the sheet rides as the second edition); NZ-FIANZ needs none, D7 answered a"
+     ]
+    }
+   ]
   }
  },
  "fieldGlossary": {
   "margins": "Minutes added to the computed instant per row, after rounding policy is applied as the source applies it. Polymorphic: a flat object of six rows, or a banded object with switch/sets when the authority switches margins by latitude.",
   "rounding": "Per-row direction applied to the computed instant: nearest | up | down | none. Provenance per group, with perField overrides.",
-  "fajrRule.kind": "angle | fixed | monthlyOverride | seasonalSweep | intervalTable",
+  "fajrRule.kind": "angle | fixed | monthlyOverride | seasonalSweep | intervalTable | interval | notPublished | clockSchedule",
   "ishaRule.kind": "angle | interval | ramadanInterval | twilightRatio | notPublished | intervalTable",
   "notPublished": "The authority prints no such row at all; the app must render nothing rather than substitute.",
   "reference.scheme": "point | zoneTable | cityDeltas | elevationLadder",
@@ -86,7 +274,16 @@
   "feedExceptions.year": "v2.2 pins feed-exception months to their year (HK-MASJIDAL: 2026-04, 2026-06, 2024-01)",
   "fajrRule.summerSubstitute": "an angle rule's calendar-windowed night-portion substitute (v2.3, RU-DUMRF-MOSCOW: fajr = min(18 deg, sunrise - 0.2955 N) over 23 April to 21 August, 120 days against the 94 the astronomy requires)",
   "ishaRule.servedNotModelled": "an angle rule's summer window in which the publisher's values are observed but no rule reproduces them (v2.3, RU-DUMRF-MOSCOW: sunset+111 to +129, 23 April to 17 August); a bake carries the captured values and invents none for an uncaptured year",
-  "platform athan vs iqamah span": "the Masjidal layer's two spans are different objects (v2.3, T-668 #6989): the athan span is generated from the tenant's current config, so a past-year athan is the platform's present calculation and never a preserved record; the iqamah span is bounded by each tenant's own config. Name which of the two a claim quotes"
+  "platform athan vs iqamah span": "the Masjidal layer's two spans are different objects (v2.3, T-668 #6989): the athan span is generated from the tenant's current config, so a past-year athan is the platform's present calculation and never a preserved record; the iqamah span is bounded by each tenant's own config. Name which of the two a claim quotes",
+  "fajrRule.clockSchedule | ishaRule.clockSchedule | dhuhrRule.clockSchedule": "v2.5: a dated value schedule with a grid and named switch dates, beside the angle and never as a margin (PK-NIZAM-E-SALAT: isha 11 quarter-grid values through ~19 switch dates, one 30-minute drop; the two-phase federal dhuhr window 13:00/13:15 switching 15 Apr/15 Oct folds into the same form; GN-NONO's 13:45 pin and BY-ISLAMBEL's cap pair are the degenerate single-window form)",
+  "windowTable": "v2.5: interval pairs, the LEFT BOUND IS THE INSTANT (TJ-SHURO at its next fit; any window-class consumer). The existing window-class path converts unchanged",
+  "fajrRule.dawnPair": "v2.5: two dawn fields plus sunriseColumnIsDawn - the printed sunrise column is the second dawn gate, not sunrise (SN-CERFI: Fajar sunrise-75.5, Suba sunrise-60.5, both 365/365; the printed column misses astronomical sunrise by up to 51 minutes)",
+  "highLatitude.parameters.windows": "v2.5: per-prayer seasonal windows with measured boundaries beside the stated ones, plus a plateau value type - flat clock values and latitude/angle arcs with an optional floorClock (BE-EMB's measured boundaries; BY-ISLAMBEL's cap pair unfitted; NL-VIN's clock caps as the flat value type)",
+  "highLatitude.kind: seasonalWindows": "v2.5: the kind carried by a window policy expressed through parameters.windows - plateaus and arcs with measured boundaries, replacing the refuted frozenLatitude45 reading on BE-EMB",
+  "offsetGroups": "v2.5: an offset group binding several prayers to one constant (Serbia's Devridaim design at its next fit: fajr with sunrise, dhuhr alone, asr with maghrib and isha; read per prayer it looks like render damage, which is how the record once filed it)",
+  "reference.elevationExceptionSet": "v2.5 (D8 ruled a): a named exception set keyed to a publisher, never an elevation formula - Kemenag's six regencies at or above 1,786 m deepen both twilights 1.0 degree to 21/19; Deiyai at 1,718 m is untouched and is the negative bound; no seventh member in the banked 516-regency table; Muhammadiyah prints plain 18/18 at Puncak Jaya's own 3,396 m - policy, not physics. Lands with the schema so the future ID object carries it",
+  "editionId": "v2.5 (D1 ruled a): an edition-named surface so two standing authority editions coexist (FJ-FML: fiji-widget-2026-12 is the timetable, the sheet rides as fiji-sheet-2025; NZ-FIANZ would use it only had D7 answered c)",
+  "emulation.engine": "v2.5 builder rule, not schema: the publisher's engine is part of the recipe - record 'engine: PrayTimes-v2 family' in emulation on platform recipes (GT-ALDAWA, HN-CENTRO-ISLAMICO and future ones); a fit anchored on adhan over-specifies every platform recipe it touches (phantom -1 dhuhr margin, +/-1.2 minute asr skew on the same rows)"
  },
  "highLatitudeKinds": [
   {
@@ -143,6 +340,11 @@
    "kind": "displaySuppress",
    "definition": "Pure angle where it exists; where it does not, the row is displayed with a rule offset or suppressed (--:--).",
    "adhan": "Post-processing; PolarCircleResolution.Unresolved plus a display rule."
+  },
+  {
+   "kind": "seasonalWindows",
+   "definition": "Per-prayer seasonal windows with measured boundaries, each window a flat clock plateau or a latitude/angle arc with an optional floor: the substitution is a measured policy, never a formula (BE-EMB, T-675 #7092).",
+   "adhan": "No native support; per-date policy table over the window dates, flat values carried as literals."
   }
  ],
  "adhanEmulation": {
@@ -838,6 +1040,187 @@
     "C47 practice-map note",
     "QA-MOI object ADDED (was absent under the F verdict): grade A on 7 archive years"
    ]
+  },
+  "v2_5": {
+   "from": "2.4.0",
+   "to": "2.5.0",
+   "ticket": "T-675#7092",
+   "counts": "objects 87: A 19, provisional 35, candidate 18, community 15, F 0 (the checklist projected A 20, provisional 34; the D3 Niger consequence withdraws Niger's A - one delta, explained)",
+   "added": [
+    "PK-NIZAM-E-SALAT (Pakistan, provisional, authority)",
+    "SN-CERFI (Senegal, community, community)",
+    "ML-ALMADINA (Mali, community, community)",
+    "GN-NONO (Guinea, community, community)",
+    "SO-MWAQIT (Somalia and Somaliland, community, community)",
+    "GT-ALDAWA (Guatemala, community, community)",
+    "HN-CENTRO-ISLAMICO (Honduras, community, community)",
+    "VE-CARACAS (Venezuela, community, community)",
+    "LU-SHOURA (Luxembourg, community, community)",
+    "BY-ISLAMBEL (Belarus, candidate, authority)",
+    "LV-LIKC (Latvia, candidate, community)",
+    "LT-MUFTIATE (Lithuania, candidate, authority)",
+    "NC-NOUMEA (New Caledonia, candidate, community)",
+    "MU-JUMMAH (Mauritius, community, community)",
+    "IT-ROMA (Italy, candidate, community)",
+    "CH-GENEVA (Switzerland, A, community)",
+    "NL-VIN (Netherlands, A, community)",
+    "NO-JAMIAT (Norway, community, community)"
+   ],
+   "amended": [
+    {
+     "id": "JO-AWQAF",
+     "what": "evidence fields written up to the gradeBasis (fitYears 8, 579 Wayback days, 2021-2026); ungated",
+     "provenance": "T-675#7092 (O1k-8 mideast)"
+    },
+    {
+     "id": "MA-HABOUS",
+     "what": "conditional A resolved unconditional on the ministry's rebuilt portal (D5 ruled a)",
+     "provenance": "T-675#7092 (O1k-8 mideast)"
+    },
+    {
+     "id": "TN-INM",
+     "what": "provisional -> A (7 years, 2,557 days, one frozen recipe); per-column rounding corrected; the verify3 storage bug recorded",
+     "provenance": "T-675#7092 (O1k-D2 deep2, O1k-V3 verify3)"
+    },
+    {
+     "id": "OM-MARA",
+     "what": "span doubled to 8 years (2,920 days, every column within one every day); 51 repaired dhuhr cells and the CityID=2-is-Adam trap recorded (D15 item 5)",
+     "provenance": "T-675#7092 (O1k-D2 deep2, O1k-8 mideast)"
+    },
+    {
+     "id": "IS-FELAG",
+     "what": "provisional -> A (3 years, 2 cities, 2,190 rows, 100 pc within one); the December +90 display rule dropped (fires on zero days)",
+     "provenance": "T-675#7092 (O1k-D3 deep3)"
+    },
+    {
+     "id": "EU-DIYANET-UNIFIED",
+     "what": "F -> provisional (Koeln/Berlin/Frankfurt full years, 1,095 rows); published-scheme -> fitted; the domestic temkin measured",
+     "provenance": "T-675#7092 (O1k-F4 fit4)"
+    },
+    {
+     "id": "BE-EMB",
+     "what": "the 17-degree isha refuted (18 outside the window); measured window encoded as plateaus plus a lat-45 middle arc; year-2 closes nominal frozen (D3 ruled a)",
+     "provenance": "T-675#7092 (O1k-F9 fit9)"
+    },
+    {
+     "id": "HK-MASJIDAL",
+     "what": "withdrawal hardened: the Trustees' print is three constructions on one sheet; per-column provenance mandatory",
+     "provenance": "T-675#7092 (O1k-D3 deep3, china)"
+    },
+    {
+     "id": "MY-JAKIM",
+     "what": "the Kelantan split repaired (both zones 18/17 at different points) and the margins set to the T-674 verdict: zohor +1.5 round alone, maghrib 0 ceil, syuruk floor at the per-zone eastern point, isha 0 ceil at 18 with 17 in both Kelantan zones (D15 item 3)",
+     "provenance": "T-675#7092 (O1k-K2 kel2; T-674 arbitration, commit d1c11740)"
+    },
+    {
+     "id": "SE-MOSQUE",
+     "what": "mechanism corrected: one Diyanet-engine recipe on the IF 18/16 line across three cities; the January-freeze reading corrected to a smooth V with a solstice plateau; surface-only -> fitted",
+     "provenance": "T-675#7092 (O1k-F8 fit8, nordics2)"
+    },
+    {
+     "id": "NZ-FIANZ",
+     "what": "surface restored on fianz.com; per-city pairs fitted (AKL 18/18, WLG/CHC 16/15); the Ramadan-start contradiction recorded under D7 ruled a (announced date governs, the table's own times stand); surface-only -> fitted",
+     "provenance": "T-675#7092 (O1k-W15 oceania2, O1k-F13 fit13)"
+    },
+    {
+     "id": "DJ-COMMUNITY",
+     "what": "candidate -> community (five of six mosques on MWL 18/17 zero margins); surface-only -> fitted; the wtdiff's provisional is recorded as a conflict, the fit index governs",
+     "provenance": "T-675#7092 (O1k-F5 fit5)"
+    },
+    {
+     "id": "KG-MUFTIYAT",
+     "what": "twilightRatio formula sign repair: the magnitude 7/9 is the rule, the census wording flipped the sign (D15 item 1)",
+     "provenance": "T-675#7092"
+    },
+    {
+     "id": "NE-BUTIN",
+     "what": "A -> provisional: the D3 consequence rules the seven served years one frozen-recomputed generation; the declared recipe stands confirmed (the projected fold's one delta)",
+     "provenance": "T-675#7092 (D3 ruling; deep2 Niger)"
+    },
+    {
+     "id": "FJ-FML",
+     "what": "editionId applied: the widget is the timetable, the sheet rides behind an editionId (D1 ruled a)",
+     "provenance": "T-675#7092"
+    }
+   ],
+   "gradeMoves": [
+    {
+     "id": "TN-INM",
+     "from": "provisional",
+     "to": "A",
+     "why": "seven years 2020-2026, 2,557 days, one frozen recipe, 94.2 pc of days with every column within 1"
+    },
+    {
+     "id": "IS-FELAG",
+     "from": "provisional",
+     "to": "A",
+     "why": "three years, two cities, 2,190 rows, 100 pc within 1, computed-not-copied years"
+    },
+    {
+     "id": "EU-DIYANET-UNIFIED",
+     "from": "F",
+     "to": "provisional",
+     "why": "the named gap closes: Koeln/Berlin/Frankfurt full years, one year"
+    },
+    {
+     "id": "DJ-COMMUNITY",
+     "from": "candidate",
+     "to": "community",
+     "why": "fitted cluster recipe, MWL 18/17 zero margins, five of six mosques; contested (wtdiff writes provisional) - fit index governs"
+    },
+    {
+     "id": "NE-BUTIN",
+     "from": "A",
+     "to": "provisional",
+     "why": "the D3 Niger consequence: only separately issued years are fitted evidence years; the span label corrects to frozen-recomputed"
+    }
+   ],
+   "statusMoves": [
+    {
+     "id": "EU-DIYANET-UNIFIED",
+     "from": "published-scheme",
+     "to": "fitted",
+     "why": "served tables measured, not sampled"
+    },
+    {
+     "id": "NZ-FIANZ",
+     "from": "surface-only",
+     "to": "fitted",
+     "why": "fit13's three-city fit"
+    },
+    {
+     "id": "DJ-COMMUNITY",
+     "from": "surface-only",
+     "to": "fitted",
+     "why": "fit5's cluster fit"
+    },
+    {
+     "id": "SE-MOSQUE",
+     "from": "surface-only",
+     "to": "fitted",
+     "why": "fit8's one-recipe finding across three cities"
+    }
+   ],
+   "schemaAdditions": [
+    "fajrRule/ishaRule/dhuhrRule.clockSchedule - the clock ladder and the two-phase federal clock inside it",
+    "windowTable - interval pairs whose left bound is the instant",
+    "fajrRule.dawnPair - two-dawn intervals with sunriseColumnIsDawn",
+    "highLatitude.parameters.windows (kind seasonalWindows) - flat plateaus and substitution windows with measured boundaries",
+    "offsetGroups - three-group offsets",
+    "reference.elevationExceptionSet - the Kemenag 21/19 six-regency set, publisher policy never an elevation formula (D8 ruled a)",
+    "editionId - edition-named surfaces (D1 ruled a; applied on FJ-FML)",
+    "emulation.engine - the builder rule: the publisher's engine is part of the recipe"
+   ],
+   "hygiene": [
+    "draftProvenance stripped from all 32 pack entries at the fold",
+    "commentRefs minted to T-675#7092, one per O1k workspace citation, on all 18 new objects",
+    "grade conflicts (community-vs-provisional on SN/ML/GN/SO/GT/HN/VE/LU/MU/DJ, A-vs-provisional on NL-VIN) recorded per entry; the fit index governs",
+    "FIT-RULES.md placement note (D15 item 2): the path two agents were given was missing; the note now sits in the file itself and in this fold's record",
+    "the checklist's projected fold (A 20, provisional 34) shifts by exactly the D3 Niger consequence: A 19, provisional 35",
+    "schema section 3 applied atomically with the new objects that use its fields (PK-NIZAM-E-SALAT, SN-CERFI, BE-EMB, NC-NOUMEA, NO-JAMIAT), one write",
+    "QA-MOI hygiene repair (a v2.4 defect found at the fold): the evidence block named its refs only in gradeBasis prose - comments/commentRefs/fitYears/multiYearProven written up, years left null per the nullRule (the seven archive years are never enumerated)",
+    "D6 reversed 2026-11-11 (#7103): the Nigeria world-table row carries MWL 18/17 as the mosque-level and national recipe, with masjidway's Egyptian 19.5/17.5 line recorded as a platform default - Nigeria has no policy object, so the movement lives on the row and in remainingGaps"
+   ]
   }
  },
  "objects": [
@@ -1088,7 +1471,7 @@
      "T-667#6927",
      "T-668#6983"
     ],
-    "gradeBasis": "T-668 #6983: three distinct years (2024, 2025, 2026); recipe, clock and anchor frozen across them. CONDITIONAL A: the grade holds only if the half-minute margin shift between the pre-rebuild sheets and the current table is ruled a surface difference rather than a between-year tweak - unresolved on the record",
+    "gradeBasis": "Grade A unconditional (D5 ruled a, T-675#7092): the condition asked for the ministry's own data and it now exists on the publisher's own domain - data/horaires-2026-MM.js, 190 cities, fuseau:GMT, October and November 2026 live; Rabat's November rows reproduce the census recipe 100 pc within 1 minute (O1k-8 mideast). The record already holds three distinct years (2024, 2025, 2026 Wayback months) on a frozen recipe (T-668 #6983)",
     "fitYears": 3,
     "multiYearProven": true,
     "years": [
@@ -1098,13 +1481,13 @@
     ]
    },
    "gaps": [
-    "CONDITIONAL A (T-668 #6983): grade A holds only if the half-minute margin shift between the pre-rebuild Wayback sheets and the current table is ruled a rebuild surface difference, not a between-year tweak. If ruled a tweak, the object drops to provisional under #6943.",
     "Rounding provenance is a 12-authority percentile sweep, not a published rule; 93 pc is the measured share, so 7 pc of days take a different direction.",
     "The 117-day current-table fit covers one year; the second and third years are Wayback month tables (150 days across 2024/2025), not full years (T-668 #6983)."
    ],
    "notes": [
     "The sheets follow the civil UTC+1 clock and ignore the Ramadan change back to UTC+0 (T-668 #6983): one of the census's fixed-clock users, now at +1 civil rather than the schema's 'fuseau:GMT' +0 (#6927 M5 is the ministry's own field, still on record).",
-    "Catalog said fajr rounding 'up'; the measured record says floor. Ticket wins."
+    "Catalog said fajr rounding 'up'; the measured record says floor. Ticket wins.",
+    "The rebuilt portal (data/horaires-2026-MM.js, 190 cities, fuseau:GMT) is the new authority surface: Casablanca and Laayoune parsed to disk alongside Rabat (O1k-8 mideast)."
    ],
    "tier": "authority",
    "recipeStatus": "fitted",
@@ -2220,24 +2603,32 @@
     "kind": "angle",
     "angle": 18,
     "windowOverride": {
-     "kind": "frozenLatitude45",
-     "appliesDuring": "the authority's declared summer window",
-     "windowDates": null
+     "kind": "seasonalWindows",
+     "appliesDuring": "the measured summer window, 2026-05-10..2026-08-01 (84 days)",
+     "windowDates": {
+      "from": "05-10",
+      "to": "08-01"
+     },
+     "provenance": "O1k-F9 fit9 (T-675#7092): 05-10..05-30 and 07-10..08-01 flat 03:24; 05-31..07-09 an arc at latitude 44.75, angle 19.1, floored at the 03:24 plateau (RMS 1.0, bias -1.66)"
     },
     "provenance": "#6911 I2 (latitude-45 rule verified literally true: 18-degree times computed at latitude 45 in Brussels's longitude during the window, full-year MAE under 0.8)"
    },
    "ishaRule": {
     "kind": "angle",
-    "angle": 17,
+    "angle": 18,
     "windowOverride": {
-     "kind": "frozenLatitude45",
-     "appliesDuring": "the same window",
-     "windowDates": null
+     "kind": "seasonalWindows",
+     "appliesDuring": "the measured summer window, 2026-05-01..2026-08-11 (103 days)",
+     "windowDates": {
+      "from": "05-01",
+      "to": "08-11"
+     },
+     "provenance": "O1k-F9 fit9 (T-675#7092): measured boundaries; the substitution is NOT latitude-45 alone - 21 days flat at 23:26 (05-01..05-21), 17 at 23:33 (07-26..08-11), only the middle 65 tracking latitude-45 18 deg at Brussels longitude (RMS 1.8)"
     },
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "#6911 I2; isha 17 is the brief's pair and the window value. Outside the window the catalog measured 18.0 - a real conflict, recorded in notes."
+    "provenance": "#6911 I2 superseded: the 17-degree object is refuted - outside the window isha is 18.0 (RMS 0.52); 17 deg misses by 7.0 minutes (O1k-F9 fit9, T-675#7092, D3 ruled a)"
    },
    "margins": {
     "fajr": 0,
@@ -2267,15 +2658,51 @@
     "perField": {}
    },
    "highLatitude": {
-    "kind": "frozenLatitude45",
+    "kind": "seasonalWindows",
     "parameters": {
-     "latitude": 45,
-     "longitude": "city longitude",
-     "appliesDuring": "declared summer window",
-     "windowDates": null,
-     "maghribIshaCombined": true
+     "windows": [
+      {
+       "prayer": "isha",
+       "window": "05-01..05-21",
+       "kind": "flat",
+       "value": "23:26"
+      },
+      {
+       "prayer": "isha",
+       "window": "05-22..07-25",
+       "kind": "arc",
+       "latitude": 45,
+       "angle": 18
+      },
+      {
+       "prayer": "isha",
+       "window": "07-26..08-11",
+       "kind": "flat",
+       "value": "23:33"
+      },
+      {
+       "prayer": "fajr",
+       "window": "05-10..05-30",
+       "kind": "flat",
+       "value": "03:24"
+      },
+      {
+       "prayer": "fajr",
+       "window": "05-31..07-09",
+       "kind": "arc",
+       "latitude": 44.75,
+       "angle": 19.1,
+       "floorClock": "03:24"
+      },
+      {
+       "prayer": "fajr",
+       "window": "07-10..08-01",
+       "kind": "flat",
+       "value": "03:24"
+      }
+     ]
     },
-    "provenance": "#6911 I2 (260 days of declared window behaviour), SOURCE-CATALOG be-emb-brussels (frozen-clock-time; standing permission to combine Maghrib and Isha)"
+    "provenance": "O1k-F9 fit9 (T-675#7092, D3 ruled a): measured boundaries replace the refuted frozenLatitude45 mechanism; any build must carry the plateaus, not a lat-45 formula"
    },
    "derivedTimes": {
     "imsak": null,
@@ -2302,7 +2729,7 @@
      "T-667#6911",
      "T-667#6912"
     ],
-    "gradeBasis": "Full-year MAE under 0.8 (#6911 I2). Single year, capped by #6943",
+    "gradeBasis": "Full-year MAE under 0.8 (#6911 I2); two editions held, 363/365 month-day rows identical outside the two baked DST days (O1k-F9 fit9): year-2 is NOMINAL - the frozen-generation precedent (D3 ruled a, T-675#7092) caps the object at provisional",
     "fitYears": 1,
     "multiYearProven": false,
     "years": [
@@ -2310,12 +2737,13 @@
     ]
    },
    "gaps": [
-    "Window start and end dates are not on the board, and 25 days inside the window print Isha after midnight: the window boundary is load-bearing and unmeasured here.",
-    "Isha angle outside the window is a live conflict: 18.0 measured in the catalog, 17 in the brief's pair. Ticket-pair wins for the object, conflict recorded.",
-    "Rounding null for every row; sunrise/dhuhr/asr margins null."
+    "Rounding null for every row; sunrise/dhuhr/asr margins null.",
+    "Any build must carry the plateaus, not a lat-45 formula: 21 isha days flat at 23:26, 17 at 23:33, only the middle 65 tracking lat-45.",
+    "Sanabel's 2026 is byte-identical to EMB: two publishers, one table."
    ],
    "notes": [
-    "The authority publishes its own high-latitude rule on the same page as the times, in three languages, and the rule does NOT reproduce its printed table (catalog)."
+    "The authority publishes its own high-latitude rule on the same page as the times, in three languages, and the rule does NOT reproduce its printed table (catalog).",
+    "City deltas confirmed verbatim including +Luxembourg City -6 (which is NOT the LU-SHOURA recipe)."
    ],
    "tier": "authority",
    "recipeStatus": "fitted",
@@ -2356,16 +2784,16 @@
    },
    "fajrRule": {
     "kind": "angle",
-    "angle": 18,
-    "provenance": "#6909 H3 (18 held, 17 rejected), SOURCE-CATALOG tn-inm-tunis (18.06 one day)"
+    "angle": 18.1,
+    "provenance": "#6909 H3 (18 held, 17 rejected), SOURCE-CATALOG tn-inm-tunis (18.06 one day); v2.5 T-675#7092: 18.1 per the seven-year fit (deep2), the held 18.0 was the single-year reading"
    },
    "ishaRule": {
     "kind": "angle",
-    "angle": 18,
+    "angle": 18.1,
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "#6909 H3 (18/18), SOURCE-CATALOG tn-inm-tunis (18.1)"
+    "provenance": "#6909 H3 (18/18), SOURCE-CATALOG tn-inm-tunis (18.1); v2.5 T-675#7092: 18.1 per the seven-year fit (deep2)"
    },
    "margins": {
     "fajr": 0,
@@ -2383,19 +2811,17 @@
     }
    },
    "rounding": {
-    "fajr": "down",
+    "fajr": "nearest",
     "sunrise": null,
-    "dhuhr": null,
-    "asr": null,
-    "maghrib": null,
-    "isha": "up",
+    "dhuhr": "nearest",
+    "asr": "floor",
+    "maghrib": "up",
+    "isha": "nearest",
     "sunset": null
    },
    "roundingProvenance": {
-    "default": "silent: #6911 I3 states 'fajr floor, evening ceil' and names no other row",
+    "default": "v2.5 T-675#7092 (O1k-D2 deep2, verify3): the printed bounds are per-column roundings - fajr/isha/dhuhr nearest, maghrib rounded up, asr floor; the held dhuhr-floor reading was the object's largest single error",
     "perField": {
-     "fajr": "#6911 I3 (fajr floor)",
-     "isha": "#6911 I3 (evening ceil)",
      "sunrise": "row not published"
     }
    },
@@ -2426,19 +2852,25 @@
      "#6911",
      "#6912"
     ],
-    "measuredDays": null,
+    "measuredDays": 2557,
     "fullYear": true,
-    "fullYearBasis": "#6912 names Tunisia among the full-year fits; #6909 H3 does not restate the day count",
-    "grade": "provisional",
+    "fullYearBasis": "O1k-D2 deep2 (T-675#7092): 1,826 fresh requests, zero null days, plus the two banked years",
+    "grade": "A",
     "commentRefs": [
      "T-667#6909",
      "T-667#6911",
      "T-667#6912"
     ],
-    "gradeBasis": "Fitted with no day count restated (#6909 H3, #6911 I3). Owner ledger #6944 names Tunisia provisional",
-    "fitYears": 1,
-    "multiYearProven": false,
+    "gradeBasis": "Seven distinct years 2020-2026, one authority recipe, 94.2 pc of days with every column inside one minute, never below 93.2 pc in any year (O1k-D2 deep2, T-675#7092); 2025 is a recomputation (133/365 rows repeat 2024), so the span is not a reprint",
+    "fitYears": 7,
+    "multiYearProven": true,
     "years": [
+     2020,
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
      2026
     ]
    },
@@ -2446,7 +2878,8 @@
     "Day count unstated (#6909 H3).",
     "Dhuhr, asr and maghrib rounding null; sunrise does not exist as a row.",
     "The authority is a meteorological service, not a religious body; the object must be labelled by the product, not by the ministry.",
-    "C40: first dated days (6 days, 4 years) show dhuhr/asr/maghrib/isha one minute later than the policy margins - four margins a minute low or a ceiling convention; six days cannot separate them."
+    "C40: first dated days (6 days, 4 years) show dhuhr/asr/maghrib/isha one minute later than the policy margins - four margins a minute low or a ceiling convention; six days cannot separate them.",
+    "STORAGE BUG (O1k-V3 verify3): the frozen recipe scores 94.21 pc (2,409/2,557) with the corrected modes; the deliverable's stored asr floor mode yields 81.8 pc. Fix the stored mode before any build reads this object."
    ],
    "notes": [
     "Canonical missing-field case: no sunrise row. Derive nothing for display; the app's sunrise row must come from the computation and be labelled as computed."
@@ -2673,7 +3106,7 @@
       3.2,
       3.5
      ],
-     "formula": "isha = displayed maghrib + round(r x (fajr - sunrise) + c)",
+     "formula": "isha = displayed maghrib + round(r x (sunrise - fajr) + c)",
      "fallbackAngle": 15.89,
      "provenance": "#6926 M2 (Osh 365 days; joint fit r=0.776, per-city MAE 0.487/0.484; 3/4 refuted at 0/365), #6921 L1 (Bishkek 359/365 within 1)"
     },
@@ -3046,7 +3479,7 @@
        "overrides": {
         "ishaAngle": 17
        },
-       "provenance": "#6919 L4 (KTN01 isha is 17 degrees, not 17.5: 17.5 rejected at mean -1.61), SOURCE-CATALOG my-jakim-ktn01 (the 17.5 reading is superseded)"
+       "provenance": "#6919 L4 + O1k-K2 kel2 (T-675#7092): the Zulkaedah 1441 capture proves ZON 1 is the JAKIM rule at fajr 18 / isha 17 (isha 18 misses by 5.3 minutes on all 59 days; every column within 0.7-1.8 of the JAKIM emulation, floor rounding); the flagged +1 vs KTN01 sits on subuh and syuruk together - a column or clock convention, not a recipe difference"
       },
       {
        "code": "PLS01",
@@ -3066,6 +3499,19 @@
        "point": null,
        "overrides": {},
        "provenance": "#6919 L4 (named in the multipoint-blend test; the zone point is not on the board)"
+      },
+      {
+       "code": "KTN02",
+       "place": "Jeli, Gua Musang (Daerah Galas dan Bertam), Lojing",
+       "point": {
+        "lat": 4.65,
+        "lon": 101.75,
+        "place": "solved reference point ~4.4-4.9 N / 101.6-101.9 E (the same rule at a different point)"
+       },
+       "overrides": {
+        "ishaAngle": 17
+       },
+       "provenance": "O1k-K2 kel2 (T-675#7092): ZON 2 solves to ~4.4-4.9 N / 101.6-101.9 E and reproduces to 0.1 min at the JAKIM 18/17 rule"
       }
      ],
      "zonesSwept": 5,
@@ -3091,27 +3537,29 @@
     "kind": "angle",
     "angle": 18,
     "zoneOverrides": {
-     "KTN01": 17
+     "KTN01": 17,
+     "KTN02": 17
     },
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "#6919 L4 (KTN01 exception at 17), SOURCE-CATALOG my-jakim-wly01"
+    "provenance": "#6919 L4 + v2.5 T-675#7092 (O1k-K2 kel2 + the T-674 arbitration, commit d1c11740): the 'KTN01 isha 18 / KTN02 isha 17' split does not exist - both Kelantan zones are 18/17 at different reference points"
    },
    "margins": {
-    "fajr": 2,
-    "sunrise": -1,
+    "fajr": 0,
+    "sunrise": 0,
     "dhuhr": 1.5,
-    "asr": 2,
+    "asr": 0,
     "maghrib": 0,
-    "isha": 2
+    "isha": 0
    },
    "marginsProvenance": {
-    "default": "SOURCE-CATALOG my-jakim-wly01 (national 2-minute ihtiyati) for fajr/asr/isha",
+    "default": "T-674 arbitration (T-675#7092, commit d1c11740, arb674): the census +2 ihtiyati margins are dead on both baselines - 57-zone 2026 scores fajr/asr/isha 0.2/0.5/0.1 pc exact of 20,805 rows at the census margins against 84.3/78.6/85.7 pc at zero; eleven 2027 tables score 0/0/0 of 4,015 against 95.7/86.3/94.8 at zero",
     "perField": {
-     "dhuhr": "#6919 L4 (+1.5, not +2: 337-344/365 against 200-223)",
-     "maghrib": "#6919 L4 (no additive ihtiyati; pure ceil of sunset)",
-     "sunrise": "SOURCE-CATALOG my-jakim-wly01 (-1); KTN01 carries +1 and PLS01 0 in the catalog, not restated by #6919 L4"
+     "dhuhr": "zohor +1.5 round alone (94.9 pc 2026, 98.4 pc 2027); the census ceil mode is superseded by round",
+     "maghrib": "maghrib 0 ceil - pure ceil of sunset, no additive ihtiyati",
+     "sunrise": "no additive margin: syuruk is floor of the sunrise solved at the per-zone eastern reference point (Lampiran B), not the -1 census margin",
+     "isha": "isha 0 ceil at 18, with 17 in both Kelantan zones"
     }
    },
    "rounding": {
@@ -3124,7 +3572,7 @@
     "sunset": "up"
    },
    "roundingProvenance": {
-    "default": "#6919 L4 (prayers ceil, syuruk floor, dhuhr round, maghrib pure ceil(sunset))",
+    "default": "#6919 L4 + T-674 (T-675#7092): prayers ceil, syuruk floor at the per-zone eastern point, dhuhr round (94.9 pc vs 51.8 pc at ceil), maghrib pure ceil of sunset",
     "perField": {
      "sunset": "#6919 L4 (maghrib is ceil of the sunset instant, with no margin added)"
     }
@@ -3145,7 +3593,7 @@
     },
     "syuruk": {
      "kind": "equalsSunrise",
-     "provenance": "#6919 L4 (syuruk floor)"
+     "provenance": "T-674 (T-675#7092): syuruk = floor of sunrise at the per-zone eastern reference point (Lampiran B), not an additive margin"
     },
     "duha": null,
     "haraj": null,
@@ -3188,7 +3636,10 @@
    ],
    "notes": [
     "SGR01 and WLY01 differ on 199/365 days: multipoint blend jitter, not separate rules (#6919 L4). A zone table with one point per zone cannot reproduce that jitter.",
-    "The dhuhr +1.5 is fractional; adhan adjustments accept fractional minutes."
+    "The dhuhr +1.5 is fractional; adhan adjustments accept fractional minutes.",
+    "Record repair under D15 item 3, owner call a (T-675#7092).",
+    "The mufti's own monthly zon posters (Jabatan Mufti Kelantan, Facebook) are a new authority-by-publisher surface; Zulkaedah 1441 (Jun-Jul 2020) is the captured edition.",
+    "T-674 margin arbitration (T-675#7092, commit d1c11740): the derived set is zohor +1.5 round alone, maghrib 0 ceil, syuruk floor at the per-zone eastern point, isha 0 ceil at 18 with 17 in both Kelantan zones; the 2027 fajr column is a +0.24 deg peninsula subuh reference move (uniform -1 at the zohor point, Lampiran B east entries, Labuan immobile), not a margin."
    ],
    "tier": "authority",
    "recipeStatus": "fitted",
@@ -3347,11 +3798,15 @@
    },
    "reference": {
     "scheme": "point",
-    "point": null,
+    "point": {
+     "lat": 50.9375,
+     "lon": 6.96,
+     "place": "Koeln (Berlin and Frankfurt complete the series)"
+    },
     "zoneTable": null,
     "cityDeltas": null,
     "elevationLadder": null,
-    "provenance": "#6911 I2 (DITIB tables), #6918 L5 (IFiS Stockholm). Per-city coordinates; no national point exists"
+    "provenance": "#6911 I2 (DITIB tables), #6918 L5 (IFiS Stockholm). Per-city coordinates; no national point exists; v2.5 T-675#7092 (O1k-F4 fit4 germany-fit.json): the portal serves the three cities whole"
    },
    "asr": {
     "primary": "shafi",
@@ -3362,7 +3817,7 @@
    "fajrRule": {
     "kind": "angle",
     "angle": 18,
-    "provenance": "#6911 I2 (DITIB's actual tables run 18/16, not the stated 18/17), #6918 L5 (IFiS 18/16 exact, thirds refuted)"
+    "provenance": "#6911 I2 (DITIB's actual tables run 18/16, not the stated 18/17), #6918 L5 (IFiS 18/16 exact, thirds refuted); v2.5 T-675#7092: the 2023 European scheme confirmed at served-table level - the published 18/17 prose is refuted"
    },
    "ishaRule": {
     "kind": "angle",
@@ -3370,18 +3825,18 @@
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "#6925 M1 (16 entered at the July 2022 European adoption, effective January 2023, European calendars only), #6918 L5 (Sweden 18/16 exact; the published 18/17 is the pre-2023 position)"
+    "provenance": "#6925 M1 (16 entered at the July 2022 European adoption, effective January 2023, European calendars only), #6918 L5 (Sweden 18/16 exact; the published 18/17 is the pre-2023 position); v2.5 T-675#7092: 16 confirmed on the served tables; fajr at about night/5 (0.199-0.205) and isha on an 80-minute plateau (0.178-0.182 x night) in the high-latitude window"
    },
    "margins": {
     "fajr": null,
-    "sunrise": null,
-    "dhuhr": null,
-    "asr": null,
-    "maghrib": null,
+    "sunrise": -6.5,
+    "dhuhr": 5.5,
+    "asr": 3,
+    "maghrib": 6.5,
     "isha": null
    },
    "marginsProvenance": {
-    "default": "silent for this scheme: neither I2 nor L5 states a European temkin set. The domestic mapping (sunrise -7, dhuhr +5, asr +4, maghrib +7, no temkin on imsak/yatsi) is #6925 M1's Turkey finding and must not be transplanted without a measurement",
+    "default": "O1k-F4 fit4 (T-675#7092): the DOMESTIC temkin measured, never transplanted on assumption - sunrise -6.5, dhuhr +5.5, asr +3 (shadow 1), maghrib +6.5; fajr at about night/5 (0.199-0.205) and isha on an 80-minute plateau (0.178-0.182 x night) in the high-latitude window",
     "perField": {}
    },
    "rounding": {
@@ -3428,30 +3883,33 @@
      "#6918",
      "#6925"
     ],
-    "measuredDays": null,
-    "fullYear": false,
-    "fullYearBasis": "DITIB tables sampled (I2) and IFiS Stockholm December validated (L5); no full-year European series is measured on the board",
-    "grade": "F",
+    "measuredDays": 1095,
+    "fullYear": true,
+    "fullYearBasis": "O1k-F4 fit4 (T-675#7092): Koeln, Berlin and Frankfurt full years served by the portal (1,095 rows)",
+    "grade": "provisional",
     "commentRefs": [
      "T-667#6911",
      "T-667#6918",
      "T-667#6925"
     ],
-    "gradeBasis": "No European series exists on the board: DITIB tables sampled and IFiS Stockholm December validated, one month at a time (#6911 I2, #6918 L5). A scheme without a series cannot reach any grade, and the domestic temkin must not be transplanted",
-    "fitYears": 0,
+    "gradeBasis": "The named gap closes: a standing Diyanet European series exists (O1k-F4 fit4, T-675#7092), one year; year-2 is the only remaining lift",
+    "fitYears": 1,
     "multiYearProven": false,
-    "years": null
+    "years": [
+     2026
+    ]
    },
    "gaps": [
-    "No margin set measured for the scheme; the domestic temkin is not transferable without evidence.",
-    "No full-year fit. The brief lists this as a filled object; the record supports the angles and the 45th-parallel rule, not the margins.",
-    "Rounding inherits the domestic measurement and is flagged as an assumption."
+    "Rounding inherits the domestic measurement and is flagged as an assumption.",
+    "Year-2 is the only remaining lift (the portal serves further years; one re-read after it rolls).",
+    "Rounding (floor) is now measured with the temkin set."
    ],
    "notes": [
-    "Two Diyanet-family recipes ship from one lineage: domestic 18/17 and European 18/16 (#6925 M1). The catalog's single row is wrong for both when read as one."
+    "Two Diyanet-family recipes ship from one lineage: domestic 18/17 and European 18/16 (#6925 M1). The catalog's single row is wrong for both when read as one.",
+    "The publisher's engine is part of the recipe: fit8's Sweden control confirms the same sunrise -6.5 / dhuhr +5.5 / maghrib +6 shape as the Koeln control."
    ],
    "tier": "authority",
-   "recipeStatus": "published-scheme",
+   "recipeStatus": "fitted",
    "roundingFormulation": null
   },
   {
@@ -3623,7 +4081,7 @@
    "fajrRule": {
     "kind": "angle",
     "angle": 14.2,
-    "provenance": "#6920 L2 (stable window, 182/182 within a minute)"
+    "provenance": "#6920 L2 (stable window, 182/182 within a minute); v2.5 T-675#7092 (deep3): the high-latitude portion is taken from the angle itself - max(angle crossing, sunrise - (14.2/60) x night); the substitution window opens 17 days before the angle crossing fails, which is why the max/min rule is needed rather than a fallback"
    },
    "ishaRule": {
     "kind": "angle",
@@ -3631,7 +4089,7 @@
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "#6920 L2 (182/182 within a minute; December is pure angle)"
+    "provenance": "#6920 L2 (182/182 within a minute; December is pure angle); v2.5 T-675#7092 (deep3): min(angle crossing, sunset + (14.0/60) x night) - the min-rule carries the summer; the December +90 display rule is DROPPED, it fires on zero days in any year"
    },
    "margins": {
     "fajr": null,
@@ -3662,9 +4120,9 @@
     "kind": "displaySuppress",
     "parameters": {
      "windowPerYear": "the stable window (182 days)",
-     "outsideWindow": "at latitude 64 N the sun does not reach 14 degrees; December prints a pure-angle value and the +90 display rule sidesteps deep-night isha entirely"
+     "outsideWindow": "the angle-derived portion, not a clamp; the Akureyri asr defect never reaches Reykjavik, 0 days (deep3, T-675#7092)"
     },
-    "provenance": "#6920 L2"
+    "provenance": "#6920 L2; v2.5 T-675#7092 (deep3)"
    },
    "derivedTimes": {
     "imsak": null,
@@ -3682,28 +4140,28 @@
     "comments": [
      "#6920"
     ],
-    "measuredDays": 242,
-    "fullYear": false,
-    "fullYearBasis": "#6920 L2: 242 days captured, 182 of them inside the stable window; December validated separately",
-    "grade": "provisional",
+    "measuredDays": 2190,
+    "fullYear": true,
+    "fullYearBasis": "O1k-D3 deep3 (T-675#7092): two cities x three years, 365 rows each, every row within one minute",
+    "grade": "A",
     "commentRefs": [
      "T-667#6920"
     ],
-    "gradeBasis": "242 days captured, 182 of them inside the stable window, December validated separately (#6920 L2). Owner ledger #6944 names Iceland provisional",
-    "fitYears": 1,
-    "multiYearProven": false,
+    "gradeBasis": "Three distinct years (2025-2027), two cities, one rule, every row within one minute; the years are computed, not copied (fajr identical on only 82/365 days between 2025 and 2027) - a genuine multi-year test (O1k-D3 deep3, T-675#7092)",
+    "fitYears": 3,
+    "multiYearProven": true,
     "years": [
-     2026
+     2025,
+     2026,
+     2027
     ]
    },
    "gaps": [
-    "242 days, not a year; the polar months are covered by a display rule, not by a fit.",
     "Asr has no shadow factor: the column is a generator artefact.",
-    "Margins and rounding null for every row."
+    "Margins and rounding null for every row.",
+    "Asr is a generator sweep whose declination lags the date by about two days; it reaches the capital only as a 12-minute early winter reading, never as asr at or before dhuhr (deep3)."
    ],
-   "notes": [
-    "The +90 display rule is the authority's own answer to a prayer that does not exist; it is a display policy and must not enter the computation."
-   ],
+   "notes": [],
    "tier": "authority",
    "recipeStatus": "fitted",
    "roundingFormulation": null
@@ -4318,18 +4776,22 @@
      "T-667#6944",
      "T-668#6991"
     ],
-    "measuredDays": 1460,
+    "measuredDays": 2920,
     "fullYear": true,
-    "fullYearBasis": "T-667 #6944: Muscat complete for 2021, 2023, 2025 and 2026, four distinct years, 1,460 days",
+    "fullYearBasis": "O1k-D2 deep2 (T-675#7092): 2021-2028 whole, the same recipe in every year; per-year refit returns dhuhr +5 ceil, asr +5 ceil, maghrib +5 ceil in all eight",
     "grade": "A",
-    "gradeBasis": "T-667 #6944 and the owner ruling #6943: one recipe reproduces four distinct years, every prayer 100 pc within 1 minute, exact 76.2-78.2 pc, MAE 0.218-0.238, no between-year tweak and no drift trend. Independently reproduced by C43 (T-668 #6991): 6,763/8,760 exact = 77.20 pc, 8,760/8,760 within-1, MAE 0.23 min, and 0 of 1,460 days carrying any cell more than a minute from the sheet; margins identical to 0.1 min in all four years",
-    "fitYears": 4,
+    "gradeBasis": "T-667 #6944 and the owner ruling #6943: one recipe reproduces four distinct years, every prayer 100 pc within 1 minute, exact 76.2-78.2 pc, MAE 0.218-0.238, no between-year tweak and no drift trend. Independently reproduced by C43 (T-668 #6991): 6,763/8,760 exact = 77.20 pc, 8,760/8,760 within-1, MAE 0.23 min, and 0 of 1,460 days carrying any cell more than a minute from the sheet; margins identical to 0.1 min in all four years; v2.5 T-675#7092: span doubled to eight years, every column within one on every day (deep2)",
+    "fitYears": 8,
     "multiYearProven": true,
     "years": [
      2021,
+     2022,
      2023,
+     2024,
      2025,
-     2026
+     2026,
+     2027,
+     2028
     ]
    },
    "gaps": [
@@ -4341,7 +4803,10 @@
    "notes": [
     "The first grade A under the multi-year ruling (#6944).",
     "The endpoint serves 2021-2031, which makes Oman the only Gulf authority whose recipe can be re-proved on demand.",
-    "The (mode, margin) pair is ONE effective offset: ceil(x+5) = round(x+5.5). Fajr fits equally well as 17.93 deg with nearest, so the (18, ceil) convention reproduces the sheet without being a separately measured property (T-668 #6991)."
+    "The (mode, margin) pair is ONE effective offset: ceil(x+5) = round(x+5.5). Fajr fits equally well as 17.93 deg with nearest, so the (18, ceil) convention reproduces the sheet without being a separately measured property (T-668 #6991).",
+    "Parse trap (O1k-D2 deep2): dhuhr prints 11:59 in October inside a 12-hour group; the banked 2028 file's 51 '23:59' dhuhr cells are an 11:59-print artefact and are repaired in the fit's data, not in the record.",
+    "CityID trap (O1k-8 mideast, D15 item 5): CityID=2 is Adam, not Muscat, and the runbook example used it. Mechanical repair under D15.",
+    "Asr school: the fit index's 'held object read asr as Hanafi' conflict is already settled in the object (asr.primary shafi, shadowFactor 1); deep2's eight-year span re-proves Shafi +5 ceil (Hanafi 56 min out on average)."
    ]
   },
   {
@@ -5047,13 +5512,16 @@
     "THREE YEARS, ONE GENERATION (T-668 #6989, C42): the Masjidal range endpoint COMPUTES athan on demand from the tenant's current config, so a 2024 pull is today's arithmetic stamped 2024, not a 2024 record. Before a bake or a grade rests on this layer, say which of the platform's two spans it quotes - the athan span (generated, so past years are cheap but not evidence) or the iqamah span (bounded by each tenant's own config, and it collapses onto athan before that tenant's start date)",
     "Three months of three years are feed exceptions, not recipe output (2026-04, 2026-06, 2024-01): a bake carries them as per-month overrides or accepts a 4-minute fajr error in April 2026, a 9-minute isha error in June 2026, and the undescribed January 2024 deviation.",
     "Isha's within-1 rate is 83.6 pc for that reason; the recipe's own months are exact.",
-    "One mosque's feed is a city table, not a territory-wide authority."
+    "One mosque's feed is a city table, not a territory-wide authority.",
+    "Per-column provenance is now mandatory on this object: athan layer = Masjidal generation, printed layers = the Trustees' two pages; the three constructions are never merged into one table.",
+    "Page 2's dhuhr 13:00 clock and Hanafi asr are a jama'ah sheet, not an athan policy."
    ],
    "notes": [
     "The range API serves past dates directly, which makes Hong Kong the cheapest year-2 path in the census: a second year is one request away.",
     "Year-2 landed through the Masjidal range API serving past years whole - the cheapest year-2 path v2.1 named is banked (T-668 #6983).",
     "C43's adversarial pass confirmed the dhuhr +5 correction from the other direction (T-668 #6991): 99.54 pc against 0.18 pc for +6, and +6 is never the best option in any of 36 months under any rounding.",
-    "The 27-second fajr bias is a wording result, not a timing one: floor@18.4 and nearest@18.50 render the same minute on all but 4 of 1,096 days (T-668 #6991)."
+    "The 27-second fajr bias is a wording result, not a timing one: floor@18.4 and nearest@18.50 render the same minute on all but 4 of 1,096 days (T-668 #6991).",
+    "v2.5 T-675#7092 (O1k-D3 deep3 + china/REPORT.md): the Trustees' own print carries page 1 as an angle table (fajr 18.5, isha 21.3) and page 2 as fixed intervals (fajr sunrise-80, isha maghrib+80, dhuhr a 13:00 clock, Hanafi asr); the Masjidal feed takes page 1's fajr and page 2's isha and matches NEITHER page's dhuhr or maghrib (worst column 49 minutes). The one durable cross-era result is fajr at 18.4 deg, 26 years apart. The row states per-column provenance; the three constructions are never merged into one table"
    ]
   },
   {
@@ -5404,14 +5872,19 @@
     "commentRefs": [
      "T-667#6940"
     ],
-    "measuredDays": 10,
+    "measuredDays": 579,
     "fullYear": false,
     "fullYearBasis": "T-667 #6940: 10 official days banked (the grid binds today+9); the 365-day target is structurally closed, proven not assumed",
     "grade": "A",
-    "gradeBasis": "C40 Wayback sweep: 579 distinct days across 8 years, 2021-2026 100pc within-1 on all six prayers; December Fajr-16 refuted on four Decembers (18deg 100pc within-1, 16deg misses 9-11 min); pre-rebuild era carries its own solar model (sunrise -5/maghrib +6); fitYears 8; commentRef T-668 C40.",
-    "fitYears": 0,
-    "multiYearProven": false,
+    "gradeBasis": "C40 Wayback sweep: 579 distinct days across 8 years, 2021-2026 100pc within-1 on all six prayers; December Fajr-16 refuted on four Decembers (18deg 100pc within-1, 16deg misses 9-11 min); pre-rebuild era carries its own solar model (sunrise -5/maghrib +6); fitYears 8; commentRef T-668 C40. v2.5 T-675#7092: the fields written up to match the gradeBasis (fitYears 8, 579 Wayback days, 2021-2026).",
+    "fitYears": 8,
+    "multiYearProven": true,
     "years": [
+     2021,
+     2022,
+     2023,
+     2024,
+     2025,
      2026
     ]
    },
@@ -5422,7 +5895,8 @@
     "The window slides with today from 21 November, so a daily fetch is the only accumulation path."
    ],
    "notes": [
-    "The revised margins supersede the 38-day fit: maghrib +6 became +7 and isha +0 became +1."
+    "The revised margins supersede the 38-day fit: maghrib +6 became +7 and isha +0 became +1.",
+    "Fresh confirmation (O1k-8 mideast): the 10-day grid 2026-11-10..19 replays 60/60 within one including the revised maghrib +7 cliff."
    ]
   },
   {
@@ -7935,7 +8409,7 @@
    "authority": "Angereds Islamiska Forsamling (Angered Mosque, Goteborg); Goteborg mosque full-year PDF",
    "scope": "Goteborg: Angered (30 dated rows) and the Goteborg mosque full-year PDF (18.1/15.9, January fajr frozen 06:25)",
    "tier": "community",
-   "recipeStatus": "surface-only",
+   "recipeStatus": "fitted",
    "bakeTier": "BAKE-ANNUAL",
    "timezone": {
     "iana": "Europe/Stockholm",
@@ -7961,16 +8435,16 @@
    },
    "fajrRule": {
     "kind": "angle",
-    "angle": 18.1,
-    "provenance": "T-668 #6953 (Angered 18.1/16.2 and the Goteborg mosque full-year PDF 18.1/15.9 - 18/16 confirmed at mosque level); wave measurement, not a completed fit"
+    "angle": 18,
+    "provenance": "v2.5 T-675#7092 (O1k-F8 fit8): 18/16 confirmed; ONE recipe across three cities (Stockholm, Uppsala, Goeteborg plus Angered byte-equal Goeteborg) and it is Diyanet's engine - identical to the Koeln control; frozenLatitude45 fits 0/118 days"
    },
    "ishaRule": {
     "kind": "angle",
-    "angle": 16.2,
+    "angle": 16,
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "T-668 #6953 (Angered 16.2; the Goteborg mosque's own PDF reads 15.9 with January fajr frozen 06:25 - a display clamp convention whose composition is unstated)"
+    "provenance": "v2.5 T-675#7092 (O1k-F8 fit8): 16 on the IF 18/16 line, Diyanet engine (sunrise -6.5, dhuhr +5.5, maghrib +6)"
    },
    "margins": {
     "fajr": null,
@@ -8029,7 +8503,7 @@
     "fullYear": false,
     "fullYearBasis": "T-668 #6953: Angered captured for November 2026 (30 rows); the Goteborg mosque publishes a full-year PDF (goteborg2026.pdf in the C6 archive) which is not yet parsed",
     "grade": "candidate",
-    "gradeBasis": "18/16 confirmed at mosque level by the wave record (T-668 #6953); no completed recipe fit",
+    "gradeBasis": "18/16 fitted on one recipe across three cities, Diyanet's engine on the IF line (O1k-F8 fit8, T-675#7092); the mosque layer follows the IF national table (nordics2: Angered equals IF Goeteborg on all 365 days, cell for cell)",
     "fitYears": 0,
     "multiYearProven": false,
     "years": [
@@ -8037,14 +8511,14 @@
     ]
    },
    "gaps": [
-    "The 18.1/16.2 is C6's wave measurement, not a completed recipe fit.",
-    "January fajr frozen at 06:25 in the Goteborg mosque PDF - a display clamp convention, composition unstated.",
-    "The full-year Goteborg mosque PDF (goteborg2026.pdf) is unparsed.",
-    "Coordinates absent from the capture."
+    "Coordinates absent from the capture.",
+    "The IF national table serves 111 cities and Angered equals IF Goeteborg on all 365 days, cell for cell: the mosque layer follows the IF 18/16 line (nordics2).",
+    "Sunni Centret diverges (+7 sunrise, +8 isha on the same base): one plus one, not three positions."
    ],
    "notes": [
     "The two Goteborg surfaces differ on isha: Angered 16.2, the mosque's own PDF 15.9 (T-668 #6953).",
-    "jamaahRules is a v2.1 schema addition carrying congregation conventions beside the athan policy."
+    "jamaahRules is a v2.1 schema addition carrying congregation conventions beside the athan policy.",
+    "The 'three positions' tension is reduced to one plus one (nordics2 Sweden)."
    ]
   },
   {
@@ -8426,7 +8900,7 @@
    "authority": "six Mawaqit-hosted mosques: Djaffar Gabode, Tayib Nagad, al-Salam FYART, Abd ar-Rahman bin Awf, Ihsaan, Nashr Aldine",
    "scope": "6 mosques, full-year 366-entry payloads with coordinates, athan+iqama",
    "tier": "community",
-   "recipeStatus": "surface-only",
+   "recipeStatus": "fitted",
    "bakeTier": "BAKE-ANNUAL",
    "timezone": {
     "iana": "Africa/Djibouti",
@@ -8493,39 +8967,41 @@
    },
    "fajrRule": {
     "kind": "angle",
-    "angle": null,
-    "provenance": "T-668 #6955: platform-computed from coordinates; no parameters published or fitted"
+    "angle": 18,
+    "provenance": "O1k-F5 fit5 (T-675#7092): MWL 18, zero margins - Djaffar Gabode 2,196/2,196 within one; Tayib Nagad 2,196; Nashr Aldine 2,195; Ihsaan 2,190"
    },
    "ishaRule": {
     "kind": "angle",
-    "angle": null,
+    "angle": 17,
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "T-668 #6955: platform-computed; not fitted"
+    "provenance": "O1k-F5 fit5 (T-675#7092): MWL 17, zero margins (platform default across the cluster)"
    },
    "margins": {
-    "fajr": null,
-    "sunrise": null,
-    "dhuhr": null,
-    "asr": null,
-    "maghrib": null,
-    "isha": null
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
    },
    "marginsProvenance": {
-    "default": "T-668 #6955: no margin decomposition published"
+    "default": "O1k-F5 fit5 (T-675#7092): zero on every column (the platform's own defaults are the recipe)",
+    "perField": {}
    },
    "rounding": {
-    "fajr": null,
-    "sunrise": null,
-    "dhuhr": null,
-    "asr": null,
-    "maghrib": null,
-    "isha": null,
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
     "sunset": null
    },
    "roundingProvenance": {
-    "default": "T-668 #6955: not fitted"
+    "default": "O1k-F5 fit5 (T-675#7092): nearest on every column",
+    "perField": {}
    },
    "roundingFormulation": null,
    "highLatitude": {
@@ -8555,8 +9031,8 @@
     "measuredDays": 2196,
     "fullYear": true,
     "fullYearBasis": "T-668 #6955: six full-year 366-entry payloads captured (6 x 366 dated rows), November verified against the live pages",
-    "grade": "candidate",
-    "gradeBasis": "the census find of the East Africa wave: Djibouti moves from fallback to a community tier with dated machine-readable data (T-668 #6955); no recipe fitted from the payloads",
+    "grade": "community",
+    "gradeBasis": "Fitted cluster recipe, MWL 18/17 zero margins, five of six mosques (O1k-F5 fit5, T-675#7092). FIT-INDEX EA-HORN-CLUSTER grade_candidate is community; WORLD-TABLE-DIFF 3.1 writes 'candidate -> provisional' - the fit index governs, the conflict is recorded for the owner",
     "fitYears": 0,
     "multiYearProven": false,
     "years": [
@@ -8567,7 +9043,9 @@
     "Platform-computed from coordinates: a passing record is mosque-endorsed calculation, not a scanned sheet (T-668 #6969's caveat applies to the whole platform layer).",
     "The city-code enumeration lead (71100/77101/9999 + the mosquee-proche mirror) likely yields more mosques (T-668 #6955).",
     "mawaqit iqama encodings mix MINUTE OFFSETS and ABSOLUTE CLOCK TIMES across mosques - a fixed reader silently mis-computes iqama (T-668 #6963's format trap applies at ingest).",
-    "Three of six mosques' coordinates are not transcribed in the manifest."
+    "Three of six mosques' coordinates are not transcribed in the manifest.",
+    "Al-Salam FYART is arithmetically inconsistent on asr (-14..+16) and is excluded from the recipe (five of six carry it).",
+    "The platform index claims 12 mosques; the unindexed half is beyond public pages. The ministry is a negative."
    ],
    "notes": [
     "Platform-tier object: one country group on the mawaqit platform, not the platform family itself (that family is still unpolicied, T-668 #6974 gap 8)."
@@ -8937,9 +9415,9 @@
    "country": "New Zealand",
    "iso2": "NZ",
    "authority": "FIANZ (Federation of Islamic Associations of New Zealand)",
-   "scope": "national Ramadan timetable 1447, Auckland sheet transcribed; the year-round page is a calculator",
+   "scope": "Ramadan 1447H sheets for 33 cities on fianz.com (the successor to the suspended fianz.co.nz), stated offsets printed verbatim; Auckland, Wellington and Christchurch transcribed (90 rows)",
    "tier": "community",
-   "recipeStatus": "surface-only",
+   "recipeStatus": "fitted",
    "bakeTier": null,
    "timezone": {
     "iana": "Pacific/Auckland",
@@ -8966,7 +9444,7 @@
    "fajrRule": {
     "kind": "angle",
     "angle": null,
-    "provenance": "T-668 #6954: the sheets state their OFFSETS in print, not angles"
+    "provenance": "O1k-F13 fit13 (T-675#7092): NOT one pair - Auckland 18/18, Wellington 16/15, Christchurch 16/15 (sd ~0.05 deg); the printed offsets hold everywhere (suhoorEnds = fajr - 5 exactly, sd 0 across all 90 rows; maghrib = sunset + 5; single-shadow asr, shadow-2 residual ~-55 min); the federation's sheets aggregate city methods, not a federation method"
    },
    "ishaRule": {
     "kind": "angle",
@@ -8974,7 +9452,7 @@
     "ramadanInterval": null,
     "twilightRatio": null,
     "notPublished": false,
-    "provenance": "T-668 #6954: no angles stated"
+    "provenance": "O1k-F13 fit13 (T-675#7092): per-city pairs as fajrRule; no federation-wide isha angle"
    },
    "margins": {
     "fajr": null,
@@ -9034,9 +9512,9 @@
     "commentRefs": [
      "T-668#6954"
     ],
-    "measuredDays": 30,
+    "measuredDays": 90,
     "fullYear": false,
-    "fullYearBasis": "T-668 #6954: Ramadan sheets only (1447, 30 days transcribed for Auckland); the year-round page is a calculator",
+    "fullYearBasis": "O1k-W15 oceania2 + O1k-F13 fit13 (T-675#7092): 33-city Ramadan sheets, three cities transcribed (90 rows)",
     "grade": "candidate",
     "gradeBasis": "a stated community method (the sheet prints its own offsets) with a transcribed Ramadan month; no angles fitted and no year-round table",
     "fitYears": 0,
@@ -9048,10 +9526,14 @@
    "gaps": [
     "Ramadan sheets only; the year-round page is a calculator (T-668 #6954).",
     "Auckland transcribed; the other centres' sheets are not pulled.",
-    "bakeTier is null: a Ramadan sheet with stated offsets is not an annual bake."
+    "bakeTier is null: a Ramadan sheet with stated offsets is not an annual bake.",
+    "Ramadan-start contradiction (D7 ruled a, T-675#7092): the sheets start Ramadan 1 on Thursday 19 February 2026 while the federation's own Hilal Committee announces Friday 20 February - the announced date governs Ramadan 1 and the table's own times stand; recorded as the table-versus-announcer split inside one federation",
+    "Wellington's solar columns sit early vs the census coordinates (sunrise -4.3 min, dhuhr -1.5): its sheet was likely computed at a shifted point (fit13).",
+    "Wayback CDX enumerated for the dead domain; the live successor domain supersedes the archive for sheet evidence."
    ],
    "notes": [
-    "A stated community method, not an inferred one: the offsets are printed on the sheet (T-668 #6954)."
+    "A stated community method, not an inferred one: the offsets are printed on the sheet (T-668 #6954).",
+    "Surface restored on fianz.com (O1k-W15 oceania2, T-675#7092); D7 ruled a: the announced date governs, the table's own times stand - the object stays candidate"
    ]
   },
   {
@@ -9188,7 +9670,23 @@
    "notes": [
     "The town ladder is 4 min/degree of longitude from Suva, EXCEPT Lakeba (T-668 #6987).",
     "'Navuda' was a mis-transcription of NAVUA - C9's record corrected (T-668 #6987).",
-    "The +1 (Navua) to -11 (Lakeba) town ladder is the reference structure (T-668 #6954)."
+    "The +1 (Navua) to -11 (Lakeba) town ladder is the reference structure (T-668 #6954).",
+    "D1 ruled a (T-675#7092): the widget is the timetable, the sheet rides behind an editionId; a fit names its edition"
+   ],
+   "editionId": "fiji-widget-2026-12",
+   "editions": [
+    {
+     "editionId": "fiji-widget-2026-12",
+     "surface": "the date-generating widget",
+     "span": "2025-12..2026-12",
+     "note": "D1 ruled a (T-675#7092): the widget is the timetable - the only surface posting dated Decembers"
+    },
+    {
+     "editionId": "fiji-sheet-2025",
+     "surface": "the printed sheet",
+     "span": "year-agnostic months",
+     "note": "rides as the second edition; the sheet's maghrib equals the widget's iqamah column daily"
+    }
    ]
   },
   {
@@ -9858,10 +10356,10 @@
     "measuredDays": 20448,
     "fullYear": true,
     "fullYearBasis": "T-668 #6985: 8 regions x 7 served years (2025-2031) x 12 months = 672 monthly tables, 20,448 dated rows, zero integrity failures; November 2026 reproduces C26's independent capture with zero mismatches on 240 cells",
-    "grade": "A",
-    "gradeBasis": "T-668 #6985: frozen three independent ways - (1) source: one calculation function with literal constants, no year branch anywhere; (2) fit: free per-region-year fits return 17.99-18.01 and isha is exactly 75 on every row; (3) drift: no calendar date moves more than 1 minute between any two served years (bimodal 0/1 histogram - solar drift plus rounding, nothing else). 100 pc within-1 on all six columns at bias 0.00. The owner's ruling asks 2-3 distinct years; seven were verified",
-    "fitYears": 7,
-    "multiYearProven": true,
+    "grade": "provisional",
+    "gradeBasis": "D3 consequence, agent-ruled 2026-11-11 (T-675#7092): only separately issued years are fitted evidence years, and the portal renders a year parameter from one frozen generator (no year term in the page source) - a test that cannot fail is not year-2 evidence, so the span label corrects to frozen-recomputed and the object caps at provisional under the frozen-generation precedent (T-668 #6986). The declared recipe stands confirmed exactly (T-668 #6985: 100 pc within-1 at bias 0.00, isha exactly 75, free fits 17.99-18.01); Algeria issued distinct books, Niger's portal did not",
+    "fitYears": 1,
+    "multiYearProven": false,
     "years": [
      2025,
      2026,
@@ -9880,7 +10378,8 @@
    "notes": [
     "Lineage: Umm al-Qura (Makkah) calendar via the software 'Prayer Times 4', declared verbatim on the page - the 18-deg fajr angle and the fixed 75-min isha interval are the Umm al-Qura fingerprints, precisely the pair the neighbouring West African image calendars do NOT use (T-668 #6985).",
     "First Umm al-Qura lineage found in Africa by the census; the country C20 called unreachable moved from fallback to a grade-A national table (T-668 #6977, #6985).",
-    "Each sheet also prints the qibla direction beside the coordinates."
+    "Each sheet also prints the qibla direction beside the coordinates.",
+    "v2.5 T-675#7092: the A of v2.4 is withdrawn under the D3 ruling's Niger consequence; the seven served years (2025-2031) are one frozen-recomputed generation"
    ]
   },
   {
@@ -10122,9 +10621,17 @@
    },
    "evidence": {
     "grade": "A",
-    "gradeBasis": "C40 Wayback: 28 distinct days across 7 years (2017-2026) + N1f 5 live/Wayback days; 163/168 cells within-1; fitYears 7; single-day caveats 2017/2018/2021; commentRef T-668 C40, N1f",
+    "gradeBasis": "C40 Wayback: 28 distinct days across 7 years (2017-2026) + N1f 5 live/Wayback days; 163/168 cells within-1; fitYears 7; single-day caveats 2017/2018/2021; commentRef T-668 C40, N1f. v2.5 T-675#7092 hygiene repair: comments/commentRefs/fitYears written up from this basis (a v2.4 defect - the block named its refs only in prose)",
     "measuredDays": 33,
-    "fullYear": false
+    "fullYear": false,
+    "comments": [
+     "#6940"
+    ],
+    "commentRefs": [
+     "T-667#6940 (N1f; the C40 citation rides the gradeBasis, no board number exists for it)"
+    ],
+    "fitYears": 7,
+    "multiYearProven": true
    },
    "gaps": [
     "Asr drifts 0 to -2 min across the year (all five archive misses are asr at exactly +2 in an Aug 23-Nov 18 window) - seasonal convention or margin, unresolved",
@@ -10133,16 +10640,2311 @@
    "notes": [
     "Structural-closure verdict OVERTURNED by C40: the archive held seven years where the live portal serves one day"
    ]
+  },
+  {
+   "id": "PK-NIZAM-E-SALAT",
+   "country": "Pakistan",
+   "iso2": "PK",
+   "authority": "Ministry of Religious Affairs, Government of Pakistan (mora.gov.pk), Nizam-e-Salat Chart '2016 and Onward'",
+   "scope": "national register; the chart serves the Islamabad district grid; Karachi's de facto 18/18 Hanafi practice is a separate community line",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Asia/Karachi",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "PK has no civil DST; chart prints local clock throughout"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 33.6844,
+     "lon": 73.0479,
+     "place": "Islamabad"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit1 pk-fit.json; the chart carries no city selector"
+   },
+   "asr": {
+    "primary": "hanafi",
+    "shadowFactor": 2,
+    "alternate": null,
+    "provenance": "O1k fit1 + southasia2 (MWL Shafi asr refuted by 58 minutes median; shadow 2.06 measured)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "O1k fit1 (canonical 18.00/0/floor; 17.95 with margin -0.5 refines to 315/366 exact; pinned only to the 18-degree family within print resolution +/-0.1 deg)"
+   },
+   "ishaRule": {
+    "kind": "clockSchedule",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit1: quarter-hour snap of isha@18deg + 12.5 min onto the 15-minute grid through ~20 hand-set switch dates, 11 printed values 18:45..21:15, one 30-minute drop on 1 October and one upward step on 20 December while the sun still falls; verify3 confirmed all 11 values and 19 switch dates from the print. Best single angle 21.1 at 10.9 min rms is a lossy approximation (233/366) - the schedule is the recipe"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": -0.5,
+    "dhuhr": 0,
+    "asr": 2,
+    "maghrib": 6,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit1 per-column margins on a 0.5-minute grid; maghrib sunset+6 nearest (+6.5 floor identical); asr Hanafi +2 nearest (+2.5 floor identical)",
+    "perField": {
+     "dhuhr": "not a margin: a two-phase wall-clock window (see notes)",
+     "isha": "not a margin: the clock schedule above"
+    }
+   },
+   "rounding": {
+    "fajr": "down",
+    "sunrise": "down",
+    "dhuhr": "none",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "none",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit1 per-prayer floor/ceil/nearest as the print shows",
+    "perField": {
+     "isha": "values are printed on the quarter grid; no rounding applies",
+     "dhuhr": "printed clock value 13:00 or 13:15; no rounding applies"
+    }
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "34 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.per-prayer",
+    "fajrRule/ishaRule clock schedules (dhuhr two-phase window, isha quarter-grid ladder)"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W17 southasia2)",
+     "#7092 (O1k-F1 fit1)",
+     "#7092 (O1k-V3 verify3)"
+    ],
+    "measuredDays": 366,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit1: the 366-row template transcribed and validated (24h ordering, zero violations); Feb-29 slot assigned 2028-02-29",
+    "grade": "provisional",
+    "commentRefs": [
+     "T-675#7092 (O1k-W17 southasia2/REPORT.md)",
+     "T-675#7092 (O1k-F1 fit1/REPORT.md)",
+     "T-675#7092 (O1k-V3 verify3)"
+    ],
+    "gradeBasis": "First authority dated table ever for Pakistan (FALLBACK leaves the row). One year of fitted evidence under the T-667 #6943 ruling; year-2 cannot be produced by re-reading the same chart because the chart is recomputed for the current year (anchor test fajr@18 exact: 2024 260, 2026 306, 2028 258). The twin-city 2026 unified edition is the second artifact the year-2 lift waits on (watch D13)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "The chart is computed for the current year despite its '2016 and Onward' title: the title is a system name, not a computation epoch (O1k fit1 honesty finding).",
+    "Isha angle unidentifiable by design: every angle 19.45-20.25 scores 345-346; the printed ladder is the only faithful encoding.",
+    "The 133 isha non-exact days are the publisher's editorial switch dates, not fit error.",
+    "FIT-INDEX conflict to arbitrate at apply: southasia2's anchor reading (leap-basis 2028, fajr 18.00/18.12) against fit1's (current-year 2026, 17.95 -0.5); fit1's grid test is the stronger instrument.",
+    "Year-2 waits on the 2026 unified twin-city calendar, unpublished on both ministry registers (watch D13: recheck each January)."
+   ],
+   "notes": [
+    "The row's FALLBACK-to-provisional move is one of the night's three biggest changes (O1k-X1).",
+    "Both clock columns are editorial schedules, not margins: the schema's clock-ladder and two-phase-federal-clock additions land with this object (apply-checklist schema section).",
+    "MWL 18/17 refuted on asr by 58 minutes; the Karachi 18/18 Hanafi community practice is the nearest named method, not the publisher's."
+   ],
+   "tier": "authority",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "SN-CERFI",
+   "country": "Senegal",
+   "iso2": "SN",
+   "authority": "CERFI (cerfi.sn), crediting the Seminaire des Imams; institutional community publisher",
+   "scope": "national publisher (152-city weekly tables and monthly PDFs); this object carries the Dakar artifact",
+   "bakeTier": "BAKE-MULTIYEAR",
+   "timezone": {
+    "iana": "Africa/Dakar",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "no civil DST; printed clock is UTC+0 year-round"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 14.7167,
+     "lon": -17.4677,
+     "place": "Dakar"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit3 sn.json coords"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit3 (Shafi +2, floor; Takusan 211/364 exact)"
+   },
+   "fajrRule": {
+    "kind": "interval",
+    "angle": null,
+    "provenance": "O1k fit3: Fajar = sunrise - 75.5, floor, 365/365 within one; single angles refuted at 66/365. Two-dawn convention (see notes)"
+   },
+   "ishaRule": {
+    "kind": "interval",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit3: Guewe = maghrib + 60 exactly, 365/365 exact on the 2011 edition and 26/30 within one on the 2026-11 sheet"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 2,
+    "asr": 2,
+    "maghrib": 1.5,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit3: fixed intervals from sunrise and sunset; dhuhr transit +2, maghrib sunset +1.5, both floor",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "down",
+    "sunrise": "down",
+    "dhuhr": "down",
+    "asr": "down",
+    "maghrib": "down",
+    "isha": "down",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit3: floor on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "14.7 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": "the printed 'sunrise' column: Suba = astronomical sunrise - 60.5, floor (a second dawn gate, not sunrise)",
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.floor",
+    "fajrRule/ishaRule intervals",
+    "two-dawn columns (fajrRule dawn pair + syuruk mislabel; schema addition two-dawn intervals)"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-9 africa)",
+     "#7092 (O1k-W6 sahel2)",
+     "#7092 (O1k-F3 fit3)"
+    ],
+    "measuredDays": 395,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit3: 365 rows of the 2011 edition ('Entree en vigueur le 27 Rajab 1432') plus 30 rows of the November 2026 sheet",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-9 africa/REPORT.md)",
+     "T-675#7092 (O1k-W6 sahel2/REPORT.md)",
+     "T-675#7092 (O1k-F3 fit3/REPORT.md)"
+    ],
+    "gradeBasis": "The country's first real surface: institutional community publisher, one fitted year plus an edition-stable cross-check fifteen years apart (2011 -> 2026), one rule set. Two editions, not two continuous years: the between-year continuity a strict A needs is not what the span holds (FIT-INDEX span_note)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2011,
+     2026
+    ]
+   },
+   "gaps": [
+    "The 2011 capture's columns_note ('Suba = sunrise') is wrong; the 2026 reading is right (O1k fit3).",
+    "Dawn-1 sits in the ~18-degree class and dawn-2 in the ~15-degree class; the publisher computes one dawn and prints the other at +15.",
+    "The span is two editions, not two continuous years; a third edition would test continuity.",
+    "152-city weekly tables exist; only Dakar is carried."
+   ],
+   "notes": [
+    "Senegal joins the interval-rule family (UA/QA/SD/TW/PH) and is the family's first two-dawn member: the printed sunrise column is not sunrise.",
+    "The row's candidate-to-promoted move rides this object's creation (world-table row amendment)."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "ML-ALMADINA",
+   "country": "Mali",
+   "iso2": "ML",
+   "authority": "Al Madina Al Mounawara mosque, Bamako (Mawaqit-hosted)",
+   "scope": "one mosque payload; the cleanest of the four-mosque Bamako cluster (AR-RAHMAN and Oumar Ibn Kattab print fixed jama'ah columns and are not athan)",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Africa/Bamako",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC+0, no civil DST"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 12.608605403242,
+     "lon": -7.9542249441147,
+     "place": "Bamako, Al Madina Al Mounawara"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit3 ml.json coords (the platform's own coordinate pair)"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit3 (Shafi +8 floor, 137/365 exact with worst 2; Hanafi refuted at worst 58)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 19,
+    "provenance": "O1k fit3 (19.0 deg +7.5 floor; 363/365 exact)"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit3 (17.0 deg +5.5 floor; 359/365 exact)"
+   },
+   "margins": {
+    "fajr": 7.5,
+    "sunrise": 0.5,
+    "dhuhr": 29,
+    "asr": 8,
+    "maghrib": 3.5,
+    "isha": 5.5
+   },
+   "marginsProvenance": {
+    "default": "O1k fit3 fixed minutes per column; dhuhr transit +29 is a site constant of the payload, not a noon-offset doctrine",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "down",
+    "sunrise": "down",
+    "dhuhr": "down",
+    "asr": "down",
+    "maghrib": "down",
+    "isha": "down",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit3: floor on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "12.6 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.floor"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-9 africa)",
+     "#7092 (O1k-W6 sahel2)",
+     "#7092 (O1k-F3 fit3)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit3: one 365-row payload, the full year served by the page",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-9 africa/REPORT.md)",
+     "T-675#7092 (O1k-W6 sahel2/REPORT.md)",
+     "T-675#7092 (O1k-F3 fit3/REPORT.md)"
+    ],
+    "gradeBasis": "Community platform surface, full year, no second year; the cleanest of the Bamako cluster. The FALLBACK verdict breaks on this surface but a country grade needs a second year (FIT-INDEX grade_reason)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "Asr carries a +6.6..+9.6 seasonal drift band (FIT-INDEX open_caveats).",
+    "One mosque of the four-mosque cluster; the other three are either jama'ah boards or unfitted.",
+    "Year-2 is one page load (mawaqit serves the year whole)."
+   ],
+   "notes": [
+    "First Mali data ever; the row's FALLBACK-to-candidate move rides this object's creation."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "GN-NONO",
+   "country": "Guinea",
+   "iso2": "GN",
+   "authority": "Grande Mosquee de Nono (Mawaqit-hosted)",
+   "scope": "one mosque payload; Conakry still has no passing table (three broken configurations)",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Africa/Conakry",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC+0, no civil DST"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 10.876038673068,
+     "lon": -10.495964683475,
+     "place": "Nono (the payload's own coordinate pair)"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit3 gn.json coords"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit3 (Shafi, 0, floor; 170/331 exact)"
+   },
+   "fajrRule": {
+    "kind": "seasonalSweep",
+    "angle": null,
+    "provenance": "O1k fit3: best single angle 18 deg +0.5 floor holds only 240/365 exact (worst 19); fajr rides a smooth seasonal dawn curve, implied interval 58-76 minutes before sunrise, depression ~13.4 winter to ~17.5 summer. No fixed angle or interval convention reproduces it"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit3 (17.0 deg +0.5 floor; 356/365 exact)"
+   },
+   "margins": {
+    "fajr": 0.5,
+    "sunrise": 0.5,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0.5,
+    "isha": 0.5
+   },
+   "marginsProvenance": {
+    "default": "O1k fit3 fixed minutes; dhuhr takes none because the column is config-fixed (see notes)",
+    "perField": {
+     "maghrib": "sunset +0.5 holds 1 Jan-15 Oct; then a drift hump peaking +9.7 in late November, recovering 19 December"
+    }
+   },
+   "rounding": {
+    "fajr": "down",
+    "sunrise": "down",
+    "dhuhr": "none",
+    "asr": "down",
+    "maghrib": "down",
+    "isha": "down",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit3: floor on every column",
+    "perField": {
+     "dhuhr": "pinned clock value 13:45; no rounding applies"
+    }
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "10.9 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.floor",
+    "fajrRule seasonal sweep",
+    "dhuhr fixed clock 13:45"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W6 sahel2)",
+     "#7092 (O1k-F3 fit3)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit3: one 365-row payload",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W6 sahel2/REPORT.md)",
+     "T-675#7092 (O1k-F3 fit3/REPORT.md)"
+    ],
+    "gradeBasis": "Community platform surface, full year; the fajr column cannot be reproduced by any standard recipe, so the recipe is partial even though the year is whole. The weakest promotion of the night (WORLD-TABLE-DIFF 3.1)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "Fajr is a sweep, not a recipe: the draft's seasonalSweep carries the measured curve, not a fitted parameterisation.",
+    "The maghrib drift hump 2026-10-16..12-19 peaks at +9.7 minutes and then recovers; cause unknown, carried as a feed exception window.",
+    "The '2-29 extra' parse artefact was dropped by the wave parser.",
+    "Conakry: no passing table (three broken configurations)."
+   ],
+   "notes": [
+    "First Guinea data ever; dhuhr pinned 13:45 on all 365 rows is config-fixed, not computed.",
+    "The row's FALLBACK-to-candidate move rides this object's creation."
+   ],
+   "tier": "community",
+   "recipeStatus": "partial",
+   "roundingFormulation": null
+  },
+  {
+   "id": "SO-MWAQIT",
+   "country": "Somalia and Somaliland",
+   "iso2": "SO",
+   "authority": "five Mawaqit-hosted mosques: Hargeisa x3 (Marwa, Nuurul Huda, Cali Jimcaale), Mogadishu x2 (Rabbul Caalamiin, Abd ar-Rahman bin Awf)",
+   "scope": "platform-default recipe across five payloads; Ina Weerar (Hargeisa) runs its own angles and is excluded; the ministry publishes Eid and Ramadan announcements only",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Africa/Mogadishu",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "EAT UTC+3, no civil DST"
+    }
+   },
+   "reference": {
+    "scheme": "zoneTable",
+    "point": null,
+    "zoneTable": {
+     "zones": [
+      {
+       "code": "HARGEISA-CLUSTER",
+       "place": "Hargeisa (Marwa, Nuurul Huda, Cali Jimcaale)",
+       "point": {
+        "lat": 9.56,
+        "lon": 44.065,
+        "place": "Hargeisa"
+       },
+       "overrides": {},
+       "provenance": "O1k fit5 ea.json coords; two of three mosques share one configuration"
+      },
+      {
+       "code": "MOGADISHU-CLUSTER",
+       "place": "Mogadishu (Rabbul Caalamiin, Abd ar-Rahman bin Awf)",
+       "point": {
+        "lat": 2.0469,
+        "lon": 45.3184,
+        "place": "Mogadishu"
+       },
+       "overrides": {},
+       "provenance": "O1k fit5 ea.json coords"
+      }
+     ]
+    },
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit5 (ea-fit.json, ea.json, ea-detail.mjs)"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit5 (platform default; the cluster's soft column: 72-166 exact of 366 per payload, residual split evenly either side of the minute)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "O1k fit5: MWL 18/17 with zero margins is the platform's own default and fits the cluster; seven payloads land on 18.0 at zero margin on the nose"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit5 (MWL 17, zero margin)"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit5: none - the platform's own defaults are the recipe",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit5: nearest on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "2-10 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "rounding.nearest"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W7 horneast2)",
+     "#7092 (O1k-F5 fit5)"
+    ],
+    "measuredDays": 1830,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit5: five payloads x 366 rows",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W7 horneast2/REPORT.md)",
+     "T-675#7092 (O1k-F5 fit5/REPORT.md)"
+    ],
+    "gradeBasis": "First dated data ever for Somalia and Somaliland: one cluster recipe at platform tier. The platform default is not a mosque-authored statement and one year per payload is held (FIT-INDEX grade_reason)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "Ina Weerar (Hargeisa) runs its own angles (~17 deg fajr) and is excluded from the cluster recipe.",
+    "Asr is the platform's soft column: within-one rate is the cluster's lowest.",
+    "No authority surface exists; the ministry publishes announcements only."
+   ],
+   "notes": [
+    "The row's FALLBACK-to-candidate move rides this object's creation; Djibouti's row moves separately under the DJ-COMMUNITY amendment."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "GT-ALDAWA",
+   "country": "Guatemala",
+   "iso2": "GT",
+   "authority": "Mezquita Aldaawa Islamica de Guatemala, Zona 9 (Mawaqit-hosted)",
+   "scope": "one mosque payload; the country's first dated data and the cleanest single surface in the Americas sweep",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "America/Guatemala",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC-6, no civil DST since 2006; the payload prints local clock"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 14.610256,
+     "lon": -90.515533,
+     "place": "Guatemala City, Mezquita Aldaawa (coordinates published by the mosque)"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "americas2/REPORT.md 4; the brief's city pair sits 0.025 deg away and costs 24 fajr exacts - the source pair is the recipe's anchor"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit7 (Shafi, zero margin, 365/365 at the source pair)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "O1k fit7 (MWL 18, no margin, 365/365 at the source pair)"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit7 (MWL 17, no margin, 365/365 at the source pair)"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit7: zero on every column",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit7: nearest on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "14.6 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "rounding.nearest",
+    "engine: PrayTimes-v2 family reproduces the platform table at zero margins (fit7 cross-cutting; adhan reports a phantom -1 dhuhr margin and a +/-1.2 min asr skew on the same rows)"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W14 americas2)",
+     "#7092 (O1k-F7 fit7)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit7: one 365-row payload plus 365 iqamah rows, jumua 13:00",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W14 americas2/REPORT.md)",
+     "T-675#7092 (O1k-F7 fit7/REPORT.md)"
+    ],
+    "gradeBasis": "One mosque, one year, confirmed exactly at the mosque's own coordinates on five columns 365/365 (FIT-INDEX grade_reason)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "The residue is the engine, not the mosque: adhan's transit sits about a minute after this table's dhuhr (FIT-INDEX open_caveats).",
+    "Iqamah offsets are five fixed athan-plus values (+10/+10/+10/+5/+10).",
+    "The mosque states no method in text: the recipe is fitted, never stated.",
+    "Second year is one page load (FIT-INDEX span_note)."
+   ],
+   "notes": [
+    "The Americas wave's 'MAE 0.01/0.04' is not reproducible on either engine; the floor is 0.25 min for a minute-printed table (FIT-INDEX conflicts).",
+    "New row for the record: Guatemala had no row at all."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "HN-CENTRO-ISLAMICO",
+   "country": "Honduras",
+   "iso2": "HN",
+   "authority": "Centro Islamico de Honduras, San Pedro Sula (Mawaqit-hosted)",
+   "scope": "one mosque payload",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "America/Tegucigalpa",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC-6, no civil DST; no DST transition falls inside the held span"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 15.49021,
+     "lon": -88.032334,
+     "place": "San Pedro Sula, Centro Islamico de Honduras (coordinates published)"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "americas2/REPORT.md 4"
+   },
+   "asr": {
+    "primary": "hanafi",
+    "shadowFactor": 2,
+    "alternate": null,
+    "provenance": "O1k fit7: Hanafi, no margin, 365/365 at the source pair; Shafi sits 61.5 minutes away and is exact on no day, so the school is unambiguous - the largest single-column spread in the Americas sweep"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "O1k fit7 (18, no margin; free fit 17.98)"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 18,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit7 (18 deg plus a 5-minute caution; the interval model is far worse at 74.5 min MAE 2.49, so the isha is an angle plus a fixed caution, not an interval)"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 5,
+    "isha": 5
+   },
+   "marginsProvenance": {
+    "default": "O1k fit7: two five-minute cautions (maghrib sunset+5, isha +5); mosque-authored, not a calculation method",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit7: nearest on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "15.5 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.nearest",
+    "engine: PrayTimes-v2 family at zero margins (fit7 cross-cutting)"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W14 americas2)",
+     "#7092 (O1k-F7 fit7)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit7: one 365-row payload plus 365 iqamah rows, jumua 13:25",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W14 americas2/REPORT.md)",
+     "T-675#7092 (O1k-F7 fit7/REPORT.md)"
+    ],
+    "gradeBasis": "One mosque, one year, confirmed exactly with two mosque-authored cautions (FIT-INDEX grade_reason)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "A test is owed on whether the platform's per-column offset model can express a five-minute caution on two columns with none on fajr (WORLD-TABLE-DIFF 1.1).",
+    "Second year is one page load."
+   ],
+   "notes": [
+    "New row for the record: Honduras had no row at all."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "VE-CARACAS",
+   "country": "Venezuela",
+   "iso2": "VE",
+   "authority": "Mezquita de Caracas (monthly PDF, mezquitadecaracas.com/horario-salat.pdf)",
+   "scope": "one Hijri month, dated by its own weekday sequence; six columns plus an iqamah block plus a ten-city offset ladder",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "America/Caracas",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC-4, no civil DST since 2016; the span crosses no DST transition"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 10.4806,
+     "lon": -66.9036,
+     "place": "Caracas, Mezquita de Caracas"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit7 ve-mezquita-de-caracas.json coords; the PDF prints a ten-city ladder (Maracaibo +19, Bolivar -12) that the web page contradicts (+09, +10): the PDF governs (resolved at apply per the checklist, T-675#7092) - Maracaibo +19, Bolivar -12; never both"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit7 (Shafi +0.5)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18.5,
+    "provenance": "O1k fit7: Umm al-Qura family ranks first at zero margins (1.04 min mean against 4.24 for 18/18 and 4.93 for MWL); fajr 18.5 with a +0.75-minute caution, free fit 18.48 with the caution held and 18.3 without"
+   },
+   "ishaRule": {
+    "kind": "interval",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit7: isha = maghrib + 89 on all 30 rows, zero exceptions; the web page says MWL, the PDF stamps Umm al-Qura, and the numbers side with the PDF"
+   },
+   "margins": {
+    "fajr": 0.75,
+    "sunrise": -0.5,
+    "dhuhr": 2,
+    "asr": 0.5,
+    "maghrib": 2,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit7 measured on all six columns (about +1.9 maghrib, +1.7 dhuhr, +0.7 asr, +0.75 fajr, -0.6 sunrise); isha needs none, the interval is exact",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit7: nearest on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "10.5 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.nearest",
+    "ishaRule interval"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W14 americas2)",
+     "#7092 (O1k-F7 fit7)"
+    ],
+    "measuredDays": 30,
+    "fullYear": false,
+    "fullYearBasis": "O1k fit7: 30 dated rows, 2026-10-12 to 2026-11-10, one Hijri month; a monthly fetch series is the path to a year",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W14 americas2/REPORT.md)",
+     "T-675#7092 (O1k-F7 fit7/REPORT.md)"
+    ],
+    "gradeBasis": "One month, a printed method (the PDF stamps Umm al-Qura) and an exact interval are strong evidence for the family and the shape; the margins are one month's reading (FIT-INDEX grade_reason)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "The angle-caution split on fajr is unmeasured (+0.75 held: free fit 18.48; none: 18.3).",
+    "The ten-city ladder carries a PDF-versus-web contradiction (Maracaibo +19 and Bolivar -12 in the PDF, +09 and +10 on the web page): resolved at apply (T-675#7092): the PDF governs.",
+    "No seasonal amplitude is measurable on one Hijri month."
+   ],
+   "notes": [
+    "New row for the record: Venezuela had no row at all."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "LU-SHOURA",
+   "country": "Luxembourg",
+   "iso2": "LU",
+   "authority": "Assemblee de la Communaute Musulmane du Grand-Duche (Shoura/ACM), shoura.lu 2026 calendar",
+   "scope": "national calendar, Luxembourg City; the EMB delta table carries Luxembourg City at Brussels -6, which is not this recipe",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Europe/Luxembourg",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "CET/CEST; the calendar's own DST defects are carried in gaps as feed exceptions"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 49.6116,
+     "lon": 6.1319,
+     "place": "Luxembourg City"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "O1k fit3 lu.json coords"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "O1k fit3 (Shafi +1.5 floor, winter drift to +3.5; 112/365 exact)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 13,
+    "provenance": "O1k fit3: the stated 13.0 pair holds (306/365 exact, 364/365 within one); MWL and ISNA refuted at 429/2190 each, UOIF 12/12 at 806/2190 - a genuine 13/13 pair, neither the Belgian 18/18 next door nor the French fixed-interval table"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 12.9,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "O1k fit3 (12.9, nearest; 136/365 exact, worst 3; carries a seasonal wobble +1..+3 Jan-Jun that no single angle absorbs)"
+   },
+   "margins": {
+    "fajr": 0.5,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 1.5,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "O1k fit3 per-column; maghrib +1 floor with a March defect of +6 for the whole month (feed exception)",
+    "perField": {
+     "asr": "winter drift to +3.5: the +1.5 holds the summer half"
+    }
+   },
+   "rounding": {
+    "fajr": "down",
+    "sunrise": "down",
+    "dhuhr": "down",
+    "asr": "down",
+    "maghrib": "down",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "O1k fit3: floor except isha nearest",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "49.6 N; the stated 13/13 pair binds all year without a high-latitude rule in the held edition"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.per-prayer"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W9 benelux2)",
+     "#7092 (O1k-F3 fit3)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "O1k fit3: the 2026 calendar whole (365 dated rows, French, Hijri day and Jumou'a marks)",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W9 benelux2/REPORT.md)",
+     "T-675#7092 (O1k-F3 fit3/REPORT.md)"
+    ],
+    "gradeBasis": "One year, stated pair confirmed at 306/365 fajr exact; 2025 and 2027 editions are both 404 and no second publisher exists (FIT-INDEX span_note)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "Printed defects to carry as feed exceptions: March maghrib +6 for the whole month; 2026-03-29 maghrib and asr left on CET (55/58 minutes off); 2026-10-25 fajr unshifted (61 minutes); 2026-10-02 dhuhr typo 13:34; 11-18 and 11-19 printed with October-stamped keys.",
+    "Isha's seasonal wobble (+1..+3 Jan-Jun) is not absorbed by any single angle.",
+    "A 2025 or 2027 edition (both 404) and a second publisher are the year-2 path."
+   ],
+   "notes": [
+    "New row for the record: Luxembourg had no row at all.",
+    "The EMB delta table's Luxembourg City -6 is a different recipe and must never be merged with this object."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "BY-ISLAMBEL",
+   "country": "Belarus",
+   "iso2": "BY",
+   "authority": "Muslim Religious Association of Belarus (islambel.by/vremya-namazov), authority-tier national association",
+   "scope": "one 365-row table for Minsk; no city selector; the page has not rolled to 2026",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Europe/Minsk",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC+3 fixed civil zone"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": null,
+     "lon": null,
+     "place": "Minsk"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "nordics2/REPORT.md Belarus; coordinates not served by the page and not yet fitted"
+   },
+   "asr": {
+    "primary": null,
+    "shadowFactor": null,
+    "alternate": null,
+    "provenance": "unfitted: the asr column is uncharacterised"
+   },
+   "fajrRule": {
+    "kind": "notPublished",
+    "angle": null,
+    "provenance": "nordics2/REPORT.md: no method statement exists; fajr stops rising at 07:16 for ten days across the two year-ends while sunrise keeps moving - a capped table a fit needs a cap pair for, not angles alone"
+   },
+   "ishaRule": {
+    "kind": "notPublished",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "nordics2/REPORT.md: isha stops rising at 23:06 for thirteen midsummer days (06-21..07-03); fit6's first reading (18/~16 with fixed-clock caps, fajr 03:08 x14 days, isha 23:06 x13) makes Belarus another clock-ladder country"
+   },
+   "margins": {
+    "fajr": null,
+    "sunrise": null,
+    "dhuhr": null,
+    "asr": null,
+    "maghrib": null,
+    "isha": null
+   },
+   "marginsProvenance": {
+    "default": "unfitted: no margins measured",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": null,
+    "sunrise": null,
+    "dhuhr": null,
+    "asr": null,
+    "maghrib": null,
+    "isha": null,
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "unfitted",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "displaySuppress",
+    "parameters": {
+     "note": "candidate reading only: the twilight ends clamp rather than freeze (fajr 07:16 x10 year-end days, isha 23:06 x13 midsummer days)"
+    },
+    "provenance": "nordics2/REPORT.md; a cap-pair fit is the named lift, the mechanism is not yet identified"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W12 nordics2)",
+     "#7092 (O1k-F6 fit6)"
+    ],
+    "measuredDays": 365,
+    "fullYear": false,
+    "fullYearBasis": "nordics2: the 2025 table whole, banked (data/by-islambel-minsk-2025.json); 2025 only, the page not rolled to 2026 - a single-year snapshot, not a live series",
+    "grade": "candidate",
+    "commentRefs": [
+     "T-675#7092 (O1k-W12 nordics2/REPORT.md)",
+     "T-675#7092 (O1k-F6 fit6/REPORT.md)"
+    ],
+    "gradeBasis": "Surface found and dated data available, recipe not yet fitted: candidate by the grading scale. No method statement exists and the year is stale",
+    "fitYears": 0,
+    "multiYearProven": false,
+    "years": [
+     2025
+    ]
+   },
+   "gaps": [
+    "Unfitted: the named lift is a cap-pair fit, not angles alone.",
+    "A current-year read is needed (the page still serves 2025).",
+    "No method statement exists anywhere."
+   ],
+   "notes": [
+    "New row for the record: Belarus had no row at all.",
+    "fit6's fixed-clock caps reading (fajr 03:08 x14, isha 23:06 x13) and nordics2's cap reading (07:16 x10, 23:06 x13) describe the same table; the fit resolves which cap pair is real."
+   ],
+   "tier": "authority",
+   "recipeStatus": "surface-only",
+   "roundingFormulation": null
+  },
+  {
+   "id": "LV-LIKC",
+   "country": "Latvia",
+   "iso2": "LV",
+   "authority": "Latvijas Islama Kulturas Centrs (likc.lv/prayer-times/), community national centre",
+   "scope": "published seasonal scheme, no dated table: UOIF 12/12 summer, ISNA 15/15 winter, Shafi; IslamicFinder embeds serve today only",
+   "bakeTier": "ALGORITHM-PUBLISHED",
+   "timezone": {
+    "iana": "Europe/Riga",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "EET/EEST"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": null,
+    "zoneTable": {
+     "zones": [
+      {
+       "code": "RIGA",
+       "place": "Riga",
+       "point": null,
+       "overrides": {
+        "summerPair": "12/12",
+        "winterPair": "15/15"
+       },
+       "provenance": "nordics2/REPORT.md Latvia (data/lv-likc-islamicfinder-2026-11-10.json)"
+      },
+      {
+       "code": "DAUGAVPILS",
+       "place": "Daugavpils",
+       "point": null,
+       "overrides": {
+        "summerPair": "12/12",
+        "winterPair": "15/15"
+       },
+       "provenance": "nordics2/REPORT.md Latvia"
+      },
+      {
+       "code": "VENTSPILS",
+       "place": "Ventspils",
+       "point": null,
+       "overrides": {
+        "summerPair": "12/12",
+        "winterPair": "15/15"
+       },
+       "provenance": "nordics2/REPORT.md Latvia"
+      }
+     ]
+    },
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "nordics2/REPORT.md: three cities x two published angle pairs (6 rows), both settings visible on the same day via the centre's own embeds"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "nordics2/REPORT.md (the embeds carry shafi in their path)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": null,
+    "provenance": "seasonal scheme swap, not a frozen angle: UOIF 12 deg in summer, ISNA 15 deg in winter (nordics2/REPORT.md). A single frozen parameter set cannot express this publisher"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "seasonal scheme swap: 12 deg summer, 15 deg winter, per the centre's own embeds"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "the embeds compute bare; no margins stated or measured",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "platform embed rendering; unstated",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "56.9 N: the seasonal swap IS the high-latitude policy; whether a window rule also binds at the solstice ends is unmeasured"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W12 nordics2)",
+     "#7092 (O1k-F6 fit6)"
+    ],
+    "measuredDays": 6,
+    "fullYear": false,
+    "fullYearBasis": "nordics2: 6 rows (three cities x two published pairs) at 2026-11-10; no Latvian mosque publishes an annual file",
+    "grade": "candidate",
+    "commentRefs": [
+     "T-675#7092 (O1k-W12 nordics2/REPORT.md)",
+     "T-675#7092 (O1k-F6 fit6/REPORT.md)"
+    ],
+    "gradeBasis": "The scheme is stated and one dated row per city per method is held; the scheme is a seasonal swap of exactly the kind a frozen parameter set cannot express (WORLD-TABLE-DIFF 1.2). No dated table exists to fit",
+    "fitYears": 0,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "No dated table: any annual file would be the country's first.",
+    "The seasonal swap's boundary dates are unstated by the publisher.",
+    "fit6 reads 15/15 as the operative pair at the November capture (the seasonal pair renders as a delta)."
+   ],
+   "notes": [
+    "Row rewritten from the FALLBACK stub ('no surface, C6 negative') to a stated-scheme row.",
+    "Seasonal scheme swap is one of the night's four supporting schema forms."
+   ],
+   "tier": "community",
+   "recipeStatus": "published-scheme",
+   "roundingFormulation": null
+  },
+  {
+   "id": "LT-MUFTIATE",
+   "country": "Lithuania",
+   "iso2": "LT",
+   "authority": "Lietuvos musulmonu muftiatas (muftiate.lt/maldu-laikai/), authority-tier muftiate",
+   "scope": "rolling week for Vilnius (2026-11-09..11-15), rendered client-side; the Kaunas mosque's own page points to Diyanet's 'Prayer Time for Kaunas'",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Europe/Vilnius",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "EET/EEST"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": null,
+     "lon": null,
+     "place": "Vilnius"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "nordics2/REPORT.md Lithuania; coordinates not served by the page"
+   },
+   "asr": {
+    "primary": null,
+    "shadowFactor": null,
+    "alternate": null,
+    "provenance": "unfitted; fit6's Diyanet-family margins reading (-7/+5/+6/+8) covers sunrise/dhuhr/asr/maghrib only"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "nordics2/REPORT.md: the published pair is an 18/16 shape; fit6 reads Diyanet-family margins (sunrise -7) on the same week; the Turkish Hijri labels and the Kaunas Diyanet link put the line on Diyanet, not on a Nordic reading or a 15/15 family"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 16,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "nordics2/REPORT.md: 16 deg shape on the rolling week"
+   },
+   "margins": {
+    "fajr": null,
+    "sunrise": -7,
+    "dhuhr": 5,
+    "asr": 6,
+    "maghrib": 8,
+    "isha": null
+   },
+   "marginsProvenance": {
+    "default": "fit6's Diyanet-family reading (-7/+5/+6/+8) on one rolling week: a candidate reading, not a fit",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": null,
+    "sunrise": null,
+    "dhuhr": null,
+    "asr": null,
+    "maghrib": null,
+    "isha": null,
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "unfitted",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "54.7 N; whether the Diyanet window rule binds here is unmeasured"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W12 nordics2)",
+     "#7092 (O1k-F6 fit6)"
+    ],
+    "measuredDays": 7,
+    "fullYear": false,
+    "fullYearBasis": "nordics2: 7 rolling rows (data/lt-muftiate-vilnius-2026-11.json); a year comes by weekly re-read or from the Diyanet Kaunas/Vilnius page, which this pass did not open",
+    "grade": "candidate",
+    "commentRefs": [
+     "T-675#7092 (O1k-W12 nordics2/REPORT.md)",
+     "T-675#7092 (O1k-F6 fit6/REPORT.md)"
+    ],
+    "gradeBasis": "Authority-tier surface with a rolling week and an 18/16 shape reading; nothing fitted (WORLD-TABLE-DIFF 1.2)",
+    "fitYears": 0,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "Unfitted: one rolling week is all the record holds.",
+    "The Diyanet-family margins reading is one week deep.",
+    "The Diyanet Kaunas/Vilnius page is the named year path."
+   ],
+   "notes": [
+    "Row rewritten from the FALLBACK stub ('no surface, C6 negative') to an authority data row."
+   ],
+   "tier": "authority",
+   "recipeStatus": "surface-only",
+   "roundingFormulation": null
+  },
+  {
+   "id": "NC-NOUMEA",
+   "country": "New Caledonia",
+   "iso2": "NC",
+   "authority": "Centre Islamique de Noumea (Mawaqit-hosted)",
+   "scope": "one mosque year; a hand-maintained board whose 5-grid columns are hand blocks, not computation",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Pacific/Noumea",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC+11 fixed, no civil DST"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": null,
+     "lon": null,
+     "place": "Noumea, mosquee-de-noumea (mawaqit.net payload coordinates)"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "oceania2/REPORT.md Pacific retries; the payload carries the mosque's coordinates"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "fit13: asr 13 hand runs around shadow-1 + 2 min (envelope -8..+16); shadow-2 is 55 minutes off"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "fit13: fajr 18 raw nearest (implied 18.10, sd 0.065; exact 188/365, within-1 365/365)"
+   },
+   "ishaRule": {
+    "kind": "interval",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "fit13: a 19:45 floor 2026-04-01..11-29 (243 days, the winter floor; computed sunset+85 falls to ~18:55-19:20 far below it), then graded 19:50 -> 20:05 in 7-day blocks tracking sunset+85 (~17.7 deg), Jan blocks 20:15/20:05/20:00/19:55 (implied ~17.6 deg), and 20:15 exactly 2026-02-18..03-18 = Ramadan 1447H, a taraweeh override sitting 20-35 minutes later than any twilight angle (implied 26.6 deg). THE RECORD'S 'ISHA PINNED 19:45 ALL YEAR' IS REFUTED: it holds 243/365"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 30,
+    "asr": 2,
+    "maghrib": 5,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "fit13 hand-block envelopes: dhuhr 19 runs tracking transit + 30 (block envelope transit+24..+36; round5(transit+30) exact 252/365); asr shadow-1 + 2; maghrib floor(sunset)+5 exact 313/365",
+    "perField": {
+     "isha": "not a margin: the floor-and-graded blocks above"
+    }
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "down",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "fit13: fajr/sunrise/maghrib on the 1-minute grid (maghrib floor), the three other columns on exact 5-minute marks 365/365 (hand blocks, not daily rounding)",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "22.3 S; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "rounding.per-prayer",
+    "ishaRule floor-and-graded blocks (flat plateau + graded season + Ramadan override)"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W15 oceania2)",
+     "#7092 (O1k-F13 fit13)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "oceania2: the full year captured gated live (data/nc-2026-noumea-mawaqit-year.json, a stray platform 2026-02-29 row dropped on normalisation)",
+    "grade": "candidate",
+    "commentRefs": [
+     "T-675#7092 (O1k-W15 oceania2/REPORT.md)",
+     "T-675#7092 (O1k-F13 fit13/REPORT.md)"
+    ],
+    "gradeBasis": "Fully characterised but hand-maintained: the 5-grid columns are hand blocks and single year held, between-year stability untestable (fit13). The record's row keeps candidate while the board's construction is now documented",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "The isha correction must reach the world-table row at apply: 'isha pinned 19:45 all year' holds only 243/365 days; 19:50, 19:55, 20:00, 20:05 and 20:15 cover the rest.",
+    "The dhuhr/asr 5-minute marks are hand blocks, so between-year stability is untestable from one year.",
+    "Iqamah offsets are constant (+10, +10, +10, +5 asr, +10)."
+   ],
+   "notes": [
+    "This object CREATES the policy-layer entry whose isha reading corrects the record: the brief's 'New Caledonia isha correction' amendment lands here.",
+    "The Ramadan override (20:15, exactly 2026-02-18..03-18) is the board's taraweeh convention, not a twilight computation."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "MU-JUMMAH",
+   "country": "Mauritius",
+   "iso2": "MU",
+   "authority": "Jummah Masjid Port Louis (PWA bundle; the publisher's own llms.txt states the regional tiers)",
+   "scope": "Port Louis base table plus six publisher-stated regional adjustments in three symmetric minute tiers",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Indian/Mauritius",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "UTC+4 fixed, no civil DST"
+    }
+   },
+   "reference": {
+    "scheme": "cityDeltas",
+    "point": {
+     "lat": -20.1667,
+     "lon": 58.5,
+     "place": "Port Louis"
+    },
+    "zoneTable": null,
+    "cityDeltas": [
+     {
+      "tier": 1,
+      "towns": 7,
+      "maghribPlus": 2,
+      "sehriMinus": 2,
+      "provenance": "fit3 mu.json: fixed symmetric minutes per tier, publisher-stated (maghrib +n, sehri -n)"
+     },
+     {
+      "tier": 2,
+      "towns": 8,
+      "maghribPlus": 3,
+      "sehriMinus": 3,
+      "provenance": "fit3 mu.json"
+     },
+     {
+      "tier": 3,
+      "towns": 8,
+      "maghribPlus": 4,
+      "sehriMinus": 4,
+      "provenance": "fit3 mu.json"
+     }
+    ],
+    "elevationLadder": null,
+    "provenance": "fit3 mu.json (job: the six regional adjustments are three symmetric minute tiers 2/3/4, stated by the publisher's llms.txt)"
+   },
+   "asr": {
+    "primary": "hanafi",
+    "shadowFactor": 2,
+    "alternate": null,
+    "provenance": "fit3 (Hanafi +4.5 floor; asr.begin 260/363 exact)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 17.89,
+    "provenance": "fit3 (17.89 deg +10 ceil; fajr.begin 300/361 exact)"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17.29,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "fit3 (17.29 deg +5.5 floor; esha.begin 282/365 exact). NOT a fixed maghrib interval: the spread runs 68-80 minutes"
+   },
+   "margins": {
+    "fajr": 10,
+    "sunrise": 4.5,
+    "dhuhr": 9.5,
+    "asr": 4.5,
+    "maghrib": 6,
+    "isha": 5.5
+   },
+   "marginsProvenance": {
+    "default": "fit3: fixed minutes per column; maghrib sunsetStart +6 on 336 days and +7 on 29; dhuhr zawaal noon -0.5 floor then +9.5 (window); sunrise -0.833 +4.5 floor",
+    "perField": {
+     "fajr": "the +10 is the bundle's fajr.begin convention; sehri = fajr.begin - 10"
+    }
+   },
+   "rounding": {
+    "fajr": "up",
+    "sunrise": "down",
+    "dhuhr": "down",
+    "asr": "down",
+    "maghrib": "down",
+    "isha": "down",
+    "sunset": "down"
+   },
+   "roundingProvenance": {
+    "default": "fit3: floor except fajr.begin ceil",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "20.2 S; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": "sunrise window 14 minutes, fixed",
+    "duha": null,
+    "haraj": null,
+    "suhoor": "sehri = fajr.begin - 10; sehri 296/360 exact",
+    "iftar": "sunset window 5 minutes, fixed; zawaal window 10 minutes; zohr azaan 12:45, jamaat 13:00 (13:10 on the 52 Fridays)"
+   },
+   "emulation": [
+    "margins",
+    "rounding.per-prayer",
+    "derivedTimes windows (sunrise 14 min, sunset 5 min, zawaal 10 min, all fixed)",
+    "regional tiers as cityDeltas"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W8 southernafrica2)",
+     "#7092 (O1k-F3 fit3)"
+    ],
+    "measuredDays": 365,
+    "fullYear": true,
+    "fullYearBasis": "southernafrica2: full 2026 year (365 dated rows, 15 fields) from the PWA bundle",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-W8 southernafrica2/REPORT.md)",
+     "T-675#7092 (O1k-F3 fit3/REPORT.md)"
+    ],
+    "gradeBasis": "Community platform bundle, full year, per-column fit, regional tiers encoded as fixed minutes; year-2 is negative because the bundle ships exactly 365 rows per year (FIT-INDEX span_note)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "The trailing-zero minute encoding of the bundle had to be decoded ('4.2' = 04:20); any parser must carry the decoding.",
+    "The bundle's date mislabel defect does not touch the data layer.",
+    "Year-2 is structurally negative: the same 365 rows re-ship per year (frozen-generation caution if a second edition is ever claimed)."
+   ],
+   "notes": [
+    "First policy object for Mauritius; the record's row gains the fitted recipe and the regional tiers as data.",
+    "The six regional adjustments ride the publisher's own llms.txt, not a fit."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "IT-ROMA",
+   "country": "Italy",
+   "iso2": "IT",
+   "authority": "Grande Moschea di Roma / Centro Islamico Culturale d'Italia (grandemoscheadiroma.org prayer page, monthly PNG)",
+   "scope": "Rome; one hijri-month poster live at capture (2026-11..12); separate from IT-UCOII, which is an AlAdhan method-3 wrapper and community tier",
+   "bakeTier": "BAKE-ANNUAL",
+   "timezone": {
+    "iana": "Europe/Rome",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "the poster prints 'in base all'ora solare e al fuso orario di Roma'; the November capture lands on clean integers under CET. Whether the poster follows DST in summer is unmeasured: only November is live (2026/10, /12, /09, /08 and four naming variants all 404)"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 41.9028,
+     "lon": 12.4964,
+     "place": "Rome"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "fit9 job5_roma.json coords; the mosque's own coordinates (41.9353/12.4547) sit 3-4 km from the city centroid and every column lands within the same minute at both"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "iberia2/REPORT.md Italy (asr Shafi + 0)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 19.1,
+    "provenance": "fit9 job5_roma.json (fajr 19.1, rms 0.3, bias 0; one month cannot separate angle from bias)"
+   },
+   "ishaRule": {
+    "kind": "interval",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "iberia2 + fit9: isha = maghrib + 90 exact every day, sd 0.00, all_90 true on 30/30 rows"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": -1,
+    "dhuhr": 1,
+    "asr": 0,
+    "maghrib": 1,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "fit9 margins_vs_plain_model measured on the 30 rows (sunrise mean -0.75, dhuhr mean +0.97, printed as -1/+1); shuruq -1, dhuhr noon +1 per iberia2",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "clean integer minutes under CET; exact landing confirms nearest",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "41.9 N; rule never binds"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": "shuruq = sunrise - 1",
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "margins",
+    "ishaRule interval"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W10 iberia2)",
+     "#7092 (O1k-F9 fit9)"
+    ],
+    "measuredDays": 30,
+    "fullYear": false,
+    "fullYearBasis": "iberia2: one monthly PNG (2026-11-11..12-10), 30 rows transcribed; only November is live and no second year exists",
+    "grade": "candidate",
+    "commentRefs": [
+     "T-675#7092 (O1k-W10 iberia2/REPORT.md)",
+     "T-675#7092 (O1k-F9 fit9/REPORT.md)"
+    ],
+    "gradeBasis": "The 'publishes nothing' defect closes: the Grand Mosque does publish Roman times, with a stated publisher and a determined recipe (19 deg + fixed 90-minute isha), unlike the UCOII proxy. One month and Ramadan-independent; candidate holds (WORLD-TABLE-DIFF 2.1 row 13)",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2026
+    ]
+   },
+   "gaps": [
+    "A summer month would settle whether the poster follows DST or freezes at CET; unanswerable from a November capture.",
+    "One month is held; the archive naming variants 404.",
+    "The PNG is the only surface: no table, iframe or PDF (iberia2 negatives)."
+   ],
+   "notes": [
+    "Rome's own scheme (19 deg, fixed 90-minute isha) is nothing like the UCOII surface (MWL 18/17 via AlAdhan); the two Italian objects must never be read as one line.",
+    "IT-UCOII's community-tier identification (AlAdhan wrapper) is recorded on the existing object, not here."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "CH-GENEVA",
+   "country": "Switzerland",
+   "iso2": "CH",
+   "authority": "Fondation Culturelle Islamique de Geneve (fcigeneve.org, one PDF per hijri month)",
+   "scope": "Geneva; a second Swiss organisation and a second Swiss method beside IZRS's 12.5/13 - 'the Swiss method' is now two methods",
+   "bakeTier": "BAKE-MULTIYEAR",
+   "timezone": {
+    "iana": "Europe/Zurich",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "CET/CEST civil clock"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 46.2044,
+     "lon": 6.1432,
+     "place": "Geneva"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "fit6 job1-geneva.json coords"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "fit6 (Shafi, 0; Hanafi asr is 72 minutes out)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 15,
+    "provenance": "fit6: the free fit returns exactly 15.0 with a zero margin, in each of the three Hijri years independently"
+   },
+   "ishaRule": {
+    "kind": "interval",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "fit6: isha = maghrib + 90 on 1,022 of 1,022 rows - an interval on every row, no angle"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "fit6: zero on every column",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "fit6: nearest on every column",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "none",
+    "parameters": {},
+    "provenance": "46.2 N; the 15-degree pair plus the 90-minute interval binds the held years without a window rule"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "rounding.nearest",
+    "ishaRule interval"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W10 iberia2)",
+     "#7092 (O1k-F6 fit6)"
+    ],
+    "measuredDays": 1022,
+    "fullYear": false,
+    "fullYearBasis": "fit6: 1,022 scored rows across Hijri 1446 (323), 1447 (350), 1448 (349), the hijri-month archive whole (1445 also served, unfitted)",
+    "grade": "A",
+    "commentRefs": [
+     "T-675#7092 (O1k-W10 iberia2/REPORT.md)",
+     "T-675#7092 (O1k-F6 fit6/REPORT.md)"
+    ],
+    "gradeBasis": "Three distinct Hijri years, one parameter set: 1447 1,954/2,100 exact (93.0 pc), 1448 1,924/2,094 (91.9 pc), 1446 323-row year at the same constants; 100 pc within one in every year once the one defective month is excluded (FIT-INDEX grade_reason). The per-year independent fajr fit returns 15.0 in all three",
+    "fitYears": 3,
+    "multiYearProven": true,
+    "years": [
+     2024,
+     2025,
+     2026
+    ]
+   },
+   "gaps": [
+    "The 1446 February poster is faulty (morning columns early by ~49, evening late by ~40): no date shift repairs it; scoped to one month and excluded (worst 55).",
+    "The full calendar is login-gated; only the hijri-month archive is public.",
+    "Recomputation between 1447 and 1448 is not proven by a cell diff (fit6 open_caveats): the A rests on three scored years, not on a recomputation proof."
+   ],
+   "notes": [
+    "A different scheme from IZRS's 12.5/13: the Swiss row now carries two methods and this object is the fitted one.",
+    "The hijri-month archive is enumerable whole through the WP media API (iberia2)."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "NL-VIN",
+   "country": "Netherlands",
+   "iso2": "NL",
+   "authority": "VIN (Vereniging Islamitische Nederlanden), declared scheme of 2 December 2023: 18/17 with 03:30 and 23:30 caps",
+   "scope": "national stated method; eight city-years across Amsterdam, Rotterdam, Utrecht, Ypenburg (2025 + 2026) reproduce it",
+   "bakeTier": "BAKE-MULTIYEAR",
+   "timezone": {
+    "iana": "Europe/Amsterdam",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "CET/CEST civil clock"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": null,
+     "lon": null,
+     "place": "Rotterdam (Essalam) / Amsterdam / Utrecht / Ypenburg"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "benelux2/REPORT.md Netherlands; the wave's city captures carry their own coordinates"
+   },
+   "asr": {
+    "primary": "shafi",
+    "shadowFactor": 1,
+    "alternate": null,
+    "provenance": "fit9 (Shafi; the declaration is silent on asr and the city-years fit Shafi)"
+   },
+   "fajrRule": {
+    "kind": "angle",
+    "angle": 18,
+    "provenance": "fit9: 18 deg rising, floored at 03:30 local; the free angle fit returns 18.0 exactly"
+   },
+   "ishaRule": {
+    "kind": "angle",
+    "angle": 17,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "fit9: 17 deg setting, capped at 23:30 local; the free fit returns 16.96-16.98, so 17 holds within print noise. The 03:30 floor and 23:30 cap are the declaration's own words (2 Dec 2023)"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "fit9: none - the caps are bounds, not margins",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "fit9: nearest (RMS 0.64-0.78 across the eight city-years)",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "displaySuppress",
+    "parameters": {
+     "fajrFloorClock": "03:30",
+     "ishaCapClock": "23:30",
+     "bindDays": {
+      "fajr": "189-197 per city-year",
+      "isha": "205-208 per city-year",
+      "note": "wider than the declaration's 'end of May, June, July' implies"
+     }
+    },
+    "provenance": "fit9: the caps bind 95-104 printed days per prayer, a summer cap pair, not an angle substitute. frozenLatitude45 fits 0/118 days in the Sweden control (fit8) and is not this object's mechanism either"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "highLatitude cap pair",
+    "rounding.nearest"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-W9 benelux2)",
+     "#7092 (O1k-F9 fit9)"
+    ],
+    "measuredDays": 2190,
+    "fullYear": true,
+    "fullYearBasis": "fit9: three fitted city-years x two years (730 rows each) plus the wave's Ypenburg city-years; parameters frozen 2025-2026",
+    "grade": "A",
+    "commentRefs": [
+     "T-675#7092 (O1k-W9 benelux2/REPORT.md)",
+     "T-675#7092 (O1k-F9 fit9/REPORT.md)"
+    ],
+    "gradeBasis": "Two distinct years, three cities, one declared recipe at RMS 0.64-0.78 (FIT-INDEX grade_reason): the published-declaration class the record's candidate could not reach on measurement alone. Year-2 is real, not a reprint - the editions differ cell-wise",
+    "fitYears": 2,
+    "multiYearProven": true,
+    "years": [
+     2025,
+     2026
+    ]
+   },
+   "gaps": [
+    "The free isha fit returns 16.96-16.98: 17 deg is within print noise, not exactly 17 (fit9 open_caveats).",
+    "fit9's file covers three cities; the Ypenburg city-years were fitted in the wave pass, not in the fit.",
+    "The asr column rests on the engine's Shafi default; the declaration states none."
+   ],
+   "notes": [
+    "Closes the record's candidate ('nothing on the record fitted against the consensus'): the consensus is now fitted, and it is VIN's declaration the tables reproduce.",
+    "Summer caps are one of the night's four supporting schema forms (a bound with a date range, not an angle)."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
+  },
+  {
+   "id": "NO-JAMIAT",
+   "country": "Norway",
+   "iso2": "NO",
+   "authority": "Jamiat Ulama Norway / islamweb.no",
+   "scope": "Norway's third line beside NO-RABITA (IRN 16/15) and NO-MAWAQEET (18/15); seven city-years, city-independent curve; fit8 identifies the line as the Moonsighting Committee Worldwide recipe",
+   "bakeTier": "BAKE-MULTIYEAR",
+   "timezone": {
+    "iana": "Europe/Oslo",
+    "clock": {
+     "dstMode": "iana",
+     "fixedOffsetMinutes": null,
+     "provenance": "CET/CEST civil clock"
+    }
+   },
+   "reference": {
+    "scheme": "point",
+    "point": {
+     "lat": 59.9139,
+     "lon": null,
+     "place": "Oslo (the curve is city-independent across the seven city-years)"
+    },
+    "zoneTable": null,
+    "cityDeltas": null,
+    "elevationLadder": null,
+    "provenance": "fit4 norway-fit.json (Oslo control); the same F/I offsets serve all seven cities"
+   },
+   "asr": {
+    "primary": "hanafi",
+    "shadowFactor": 2,
+    "alternate": null,
+    "provenance": "fit8: Hanafi asr (MCW line); fit4 notes Skien alone fits Shafi - a one-city anomaly"
+   },
+   "fajrRule": {
+    "kind": "intervalTable",
+    "angle": null,
+    "provenance": "fit4: fajr = sunrise - F[day], F spans 43-106 minutes over 64 integer values, capped at 1/7 of night through summer (lead/night 0.138-0.144 in May-Aug); fit8: the line IS the Moonsighting Committee Worldwide recipe - fajr 253/365 exact at Oslo under MC angles"
+   },
+   "ishaRule": {
+    "kind": "intervalTable",
+    "angle": null,
+    "ramadanInterval": null,
+    "twilightRatio": null,
+    "notPublished": false,
+    "provenance": "fit4: isha = maghrib + I[day], I spans 42-101 minutes over 60 values, capped at 1/7 of night; fit8: isha MC + 3.5 at Oslo"
+   },
+   "margins": {
+    "fajr": 0,
+    "sunrise": 0,
+    "dhuhr": 5.5,
+    "asr": 0,
+    "maghrib": 5.5,
+    "isha": 0
+   },
+   "marginsProvenance": {
+    "default": "fit4: the solar columns match mawaqeet within +/-1 (dhuhr +5.5, maghrib +5.5); the F/I twilight offsets are 730/730 integer minutes",
+    "perField": {}
+   },
+   "rounding": {
+    "fajr": "nearest",
+    "sunrise": "nearest",
+    "dhuhr": "nearest",
+    "asr": "nearest",
+    "maghrib": "nearest",
+    "isha": "nearest",
+    "sunset": null
+   },
+   "roundingProvenance": {
+    "default": "integer minutes served",
+    "perField": {}
+   },
+   "highLatitude": {
+    "kind": "seventhOfTheNight",
+    "parameters": {
+     "fajrPortion": "1/7",
+     "ishaPortion": "1/7",
+     "note": "binds through the summer on both prayers (fit4)"
+    },
+    "provenance": "fit4: 1/7-of-night summer caps on both twilights, recovered by the free portion scan without being told"
+   },
+   "derivedTimes": {
+    "imsak": null,
+    "syuruk": null,
+    "duha": null,
+    "haraj": null,
+    "suhoor": null,
+    "iftar": null
+   },
+   "emulation": [
+    "intervalTable (366-entry F and I arrays)",
+    "highLatitude.seventhOfTheNight"
+   ],
+   "evidence": {
+    "comments": [
+     "#7092 (O1k-7 europe)",
+     "#7092 (O1k-F4 fit4)",
+     "#7092 (O1k-F8 fit8)"
+    ],
+    "measuredDays": 2555,
+    "fullYear": true,
+    "fullYearBasis": "fit4: seven city-years (2025, 2026, 2027), 365 rows each, the curve identical across all of them",
+    "grade": "community",
+    "commentRefs": [
+     "T-675#7092 (O1k-7 europe/REPORT.md)",
+     "T-675#7092 (O1k-F4 fit4/REPORT.md)",
+     "T-675#7092 (O1k-F8 fit8/REPORT.md)"
+    ],
+    "gradeBasis": "A third independent Norwegian line, same class as London's table form: bare angles exact 0, capped variants reach fajr 140-163/365, and the interval curve is the faithful encoding (FIT-INDEX grade_reason). fit8's MCW identification names the recipe's lineage - the first proven real-world MCW publisher",
+    "fitYears": 1,
+    "multiYearProven": false,
+    "years": [
+     2025,
+     2026,
+     2027
+    ]
+   },
+   "gaps": [
+    "The F/I curve fits no single angle (best 11.9 deg, rmse 5.9 min) and no fixed fraction (fit4 open_caveats).",
+    "Skien's Shafi asr is a one-city anomaly.",
+    "Same-day separation against the mawaqeet line: fajr +53..+59 minutes, isha -35..-40.",
+    "The MCW identification (fit8) postdates the fit-index entry (fit4): the two readings are complementary, the MCW recipe and the served interval arrays."
+   ],
+   "notes": [
+    "The brief's 'Norway third line = MCW' amendment lands as this new object: v2.4 carries no third-line object.",
+    "Norway's row becomes a three-publisher mosaic; the country-level mosaic note in FIT-INDEX conflicts applies."
+   ],
+   "tier": "community",
+   "recipeStatus": "fitted",
+   "roundingFormulation": null
   }
  ],
  "remainingGaps": [
-  "Provisional debt: 34 objects are provisional, each needing a second DISTINCT year (#6943). v2.3 adds RU-DUMRF-MOSCOW (one published cycle) and returns HK-MASJIDAL (its A withdrawn on the generated-athan correction, T-668 #6989). Frozen-edition surfaces (SI-VAKTIJA, XK-BIK, BA-RIJASET, JAMIAT-KZN) need a DIFFERENTLY-computed edition, not another identical year - byte-identity cannot clear them.",
+  "Provisional debt: 35 objects are provisional, each needing a second DISTINCT year (#6943). v2.5 adds Niger to the class (T-675#7092: the D3 consequence reads its seven served years as one frozen-recomputed generation) and lifts Tunisia and Iceland out. Frozen-edition surfaces (SI-VAKTIJA, XK-BIK, BA-RIJASET, JAMIAT-KZN, NE-BUTIN) need a DIFFERENTLY-computed edition, not another identical year - byte-identity cannot clear them.",
   "fitPending: NONE. RU-DUMRF-MOSCOW, the last one, is fitted by C39 (T-668 #6990). The outstanding question is not a pending fit but C47's configured-practice map (151 Masjidal mosques, 302 mosque-years of generated athan): it lands as a practice map of what mosques configure, not as a policy object, and it is not returned at this freeze.",
   "HK-MASJIDAL's grade A is WITHDRAWN at v2.3: the Masjidal athan span is generated on demand, so three years served by that endpoint are one config evaluated at three date sets (the Kosovo shape). Restore A on a preserved dated capture - PDF, screenshot or third-party archive - of a year whose values differ from today's render. The recipe itself is unaffected (T-668 #6989, #6991).",
   "CY-KKTC bakes carry a PER-EDITION CONSTANT: 2025 sits -2.42 min behind 2026 (one additive term). Its archive silently serves the current month for pre-2023 requests and mixes two engine generations - a bake must re-fit the constant and never trust pre-2023 pulls.",
-  "MA-HABOUS grade A is conditional on the half-minute pre-rebuild margin shift being ruled a surface difference; if ruled a tweak, it drops to provisional. Owner call.",
+  "MA-HABOUS grade A is unconditional since D5 ruled a (T-675#7092): the ministry's rebuilt portal serves the tables on the publisher's own domain and reproduces the census recipe 100 pc within 1 minute (O1k-8 mideast). Rounding remains a 93 pc share, not a rule.",
   "UAE: the 60 area coordinate anchors are still absent, and 2027 is a rolling 207-day horizon.",
-  "JAKIM's fifth zone and SGR01 point; Belgium's window dates; Kazakhstan's 48-degree comparison direction; Kyrgyzstan's asr margin.",
+  "JAKIM's fifth zone and SGR01 point; Kazakhstan's 48-degree comparison direction; Kyrgyzstan's asr margin. v2.5 closes Belgium's window dates (T-675#7092: measured, encoded as plateaus plus a lat-45 middle arc) and repairs Kyrgyzstan's twilightRatio sign wording (D15 item 1).",
   "Jordan's December Fajr-16 switch; Bangladesh's print-only second witness; Chile's ten missing months and absent multi-year path; Sudan's year-round table and 8-minute reference offset; Iran's asr shadow and sunrise depression.",
   "Czechia's engine gap: 84-85 pc within-1 needs their solar algorithm, not our recipe, to close (the asr margin is measured -0.5..-0.7 and no margin closes it).",
   "Morocco's rounding is a 93 pc share, not a rule.",
@@ -10150,6 +12952,8 @@
   "Thin-sample debts carried: BR-IIB single-city 7-day; NO both lines and SE/FI unstated-method captures awaiting fits; PT-HSALAH-HUB 13 of 21 cities unfitted; ES-CCIM misses December both years; KE-JAMIA Ramadan-only; FJ-FML one month per edition, isha margin a band.",
   "RU-CDUM: the summer substitute (~94-98 excluded days per city) is uncharacterised; CDUM serves no second year anywhere.",
   "The platform layer is still unpolicied as a family: mawaqit's embedded annual JSON, Masjidbox's 7-day JSON, Amanahly's keyless API and the WordPress dpt plugin each serve a full year per mosque. DJ-COMMUNITY and TT-MASJIDBOX are per-country groups on those platforms, not the family. The Masjidal layer's two spans are now on the register separately (T-668 #6989).",
-  "The mawaqit robots divergence across census agents is recorded and remains the owner's call."
+  "The mawaqit robots divergence across census agents is recorded and remains the owner's call.",
+  "Nigeria is a world-table-only country (no policy object): D6 was reversed 2026-11-11 (T-675 #7103) - MWL 18/17 Shafi is the mosque-level and national recipe (Osogbo 365/365 2026 plus 34/34 2027, Ile-Ife exact in UTC modulo a 60-minute zone bug, Suleja 98 pc), and the Egyptian 19.5/17.5 line is masjidway's platform default, uniform across five regions and never Nigerian regional practice (FG-04: a platform label is never provenance).",
+  "Rulings taken 2026-11-11 with no pack entry to land (recorded, not applied at v2.5): D2 Yemen's two rows wait on a fit; D4 Burkina's 1447 refit has no drafted recipe; D9 Taiwan's 1447 offset table was never transcribed, so the row stays FALLBACK pending the bake; D10 Libya (b) and D11 Iran (b) keep the recorded state; D12's two Nigeria leads stay closed; D13's Pakistan watch rechecks each January."
  ]
 }
