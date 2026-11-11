@@ -1365,7 +1365,7 @@ Draft. The London and implementations strands may add to these.
    dependency on one of these acceptable? Or should v2.0 ask Khalid Shaukat or Ahmed Bu-khamsin
    for a supported endpoint, as the Hizbul Ulama tables once did by email?
 2. **The day-early clock change (section 2.12).** In Sydney, Auckland and Beirut, and probably
-   Egypt, Israel and Palestine, the endpoint's times are an hour off on two days a year. The
+   Egypt, Palestine and Palestine, the endpoint's times are an hour off on two days a year. The
    standing rule is that the app edits nothing the API returns. What should the app do on those
    days?
    - show them as given;
