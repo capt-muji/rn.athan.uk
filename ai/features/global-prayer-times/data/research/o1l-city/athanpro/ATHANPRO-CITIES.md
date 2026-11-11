@@ -1,6 +1,6 @@
 # athanpro.com — the platform's city universe
 
-Enumeration of every city page `https://athanpro.com/sitemap.xml` serves, from the sitemap (2935 URLs) and from the `cities` array each country page embeds. The two agree exactly: **2690 city pages in 233 countries**.
+Enumeration of every city page `https://athanpro.com/sitemap.xml` serves, from the sitemap (2935 URLs) and from the `cities` array each country page embeds. The two agree exactly: **2690 city pages in 232 countries**.
 
 Five country pages carry no city page at all: French Guiana, Honduras, Hungary, Iceland, Saint Pierre and Miquelon. Their directories exist in the sitemap and render an empty city list, so they contribute nothing to the universe.
 
@@ -191,7 +191,7 @@ Every city page was captured raw under `captures/cities/<country>/<city>.html` a
 | Fiji | 5 | 5 | 5 |
 | Gabon | 5 | 5 | 5 |
 | Gambia | 5 | 5 | 5 |
-| Greenland | 5 | 5 | 0 |
+| Greenland | 5 | 5 | 3 |
 | Isle of Man | 5 | 5 | 5 |
 | Jersey | 5 | 5 | 5 |
 | Kiribati | 5 | 5 | 5 |
@@ -268,5 +268,5 @@ Every city page was captured raw under `captures/cities/<country>/<city>.html` a
 | 2 | 5 |
 | 1 | 15 |
 
-The long tail is the platform's own footprint: Turkey alone carries 510 city pages and Malaysia 192, while 100 countries carry fewer than ten. The directory is a product surface, not a national network.
+The long tail is the platform's own footprint: Turkey alone carries 510 city pages and Malaysia 192, while 93 countries carry fewer than ten. The directory is a product surface, not a national network.
 

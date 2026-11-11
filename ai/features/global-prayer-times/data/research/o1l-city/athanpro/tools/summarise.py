@@ -24,7 +24,8 @@ def main():
         if re.fullmatch(r"fits-\d+\.json", f):
             fits.extend(json.load(open(os.path.join(DATA, f))))
     # The second stage re-fits every page that fell short of 99pc, adding the platform's own
-    # per-prayer minute adjustments. Where a record exists there, it wins.
+    # per-prayer minute adjustments. Where a record exists there, it wins. The third stage
+    # re-tests the high-latitude rule on the pages whose twilight adjustment stayed large.
     second = {}
     for f in sorted(os.listdir(DATA)):
         if re.fullmatch(r"fits2-\d+\.json", f):
@@ -33,6 +34,14 @@ def main():
     if second:
         fits = [second.get((r["cc"], r["city"]), r) for r in fits]
         print(f"second stage applied to {len(second)} records")
+    third = {}
+    for f in sorted(os.listdir(DATA)):
+        if re.fullmatch(r"fits3-\d+\.json", f):
+            for r in json.load(open(os.path.join(DATA, f))):
+                third[(r["cc"], r["city"])] = r
+    if third:
+        fits = [third.get((r["cc"], r["city"]), r) for r in fits]
+        print(f"third stage applied to {len(third)} records")
     capitals = [l.rstrip("\n").split("\t") for l in open(os.path.join(DATA, "capitals.tsv"))]
     cap_by_country = {}
     for _, country, capital in capitals:

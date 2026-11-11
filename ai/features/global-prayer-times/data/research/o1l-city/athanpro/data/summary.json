@@ -1,14 +1,14 @@
 {
  "summary": {
   "cities": 2690,
-  "countries": 233,
+  "countries": 232,
   "tables": 2690,
   "rows": 80700,
   "gate_fail": 913,
   "errs": 0,
-  "pct100": 2309,
-  "pct99": 2368,
-  "pct90": 2524,
+  "pct100": 2311,
+  "pct99": 2371,
+  "pct90": 2530,
   "methods": [
    [
     "Muslim World League",
@@ -154,7 +154,7 @@
   "recipes": [
    [
     "MWL 18/17",
-    1314
+    1301
    ],
    [
     "stated: Diyanet leri Bakanl (Turkey) AI",
@@ -162,39 +162,39 @@
    ],
    [
     "Kuwait 18/17.5",
-    157
+    155
    ],
    [
     "UAE 18.2/18.2",
-    139
+    135
    ],
    [
     "Karachi 18/18",
-    115
-   ],
-   [
-    "ISNA 15/15",
     111
    ],
    [
+    "ISNA 15/15",
+    107
+   ],
+   [
     "UMAM 14/14",
-    82
+    70
    ],
    [
     "Qatar 18/17",
-    73
-   ],
-   [
-    "Libya 18.5/18.5",
-    59
+    64
    ],
    [
     "Habous 19/17",
     58
    ],
    [
+    "Libya 18.5/18.5",
+    56
+   ],
+   [
     "JAKIM 20/18",
-    48
+    45
    ],
    [
     "stated: JAKIM - Jabatan Kemajuan Islam (Malaysia) AI",

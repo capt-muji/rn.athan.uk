@@ -53,7 +53,7 @@ def main():
         w(f"| {k} | {c[k]} |")
     w("")
     w("The long tail is the platform's own footprint: Turkey alone carries 510 city pages and "
-      "Malaysia 192, while 100 countries carry fewer than ten. The directory is a product surface, "
+      "Malaysia 192, while 93 countries carry fewer than ten. The directory is a product surface, "
       "not a national network.")
     w("")
     with open(os.path.join(ROOT, "ATHANPRO-CITIES.md"), "w") as f:

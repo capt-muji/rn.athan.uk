@@ -97,10 +97,10 @@ def main():
             continue
         w(f"| `{src}` | {len(rows)} | {rate(rows, 100.0)} | {rate(rows, 99.0)} | {rate(rows, 90.0)} |")
     w("")
-    w("`calculator` is the platform's own engine and it is consistent: 1,203 of 1,241 pages land "
-      "on 100pc at MWL 18/17 Shafi with zero adjustments. `database` is nearly as clean once the "
-      "authority's own minute adjustments are fitted. The two weaker classes are the mosque tables "
-      "and the re-rendered JAKIM feed.")
+    w("`calculator` is the platform's own engine and it is consistent: 1,148 of its 1,241 pages "
+      "land on 100pc at MWL 18/17 Shafi with every adjustment at zero. `database` is nearly as "
+      "clean once the authority's own minute adjustments are fitted. The two weaker classes are "
+      "the mosque tables and the re-rendered JAKIM feed.")
     w("")
     w("## The recipe, and the adjustments")
     w("")
@@ -108,7 +108,8 @@ def main():
       "a ladder of published recipes (both madhabs) and the ladder's winner is recorded; the "
       "platform's own per-prayer minute adjustments are then fitted on top and stored in "
       "`data/fits.json` under `adjust`. Where the ladder reaches nothing the fit falls back to a "
-      "half-degree sweep of both twilight angles.")
+      "half-degree sweep of both twilight angles, and where a twilight adjustment stays above half "
+      "an hour the three published night rules are tested as well (`rule`).")
     w("")
     rc = Counter()
     for r in fits:
@@ -144,12 +145,14 @@ def main():
       f"Port Elizabeth (Saint Vincent) `Africa/Johannesburg`, six; and both Barcelona and Valencia "
       f"`America/Caracas`, six. The table is internally consistent, so it fits at the page's own "
       f"point in the page's own zone, but as local prayer times the page is unusable there.")
+    uni_countries = Counter(r["country"] for r in uniform)
+    top = ", ".join(f"{k} {v}" for k, v in uni_countries.most_common(4))
     w(f"2. **{len(uniform)} cities carry a uniform shift of 30 minutes or more across all six "
-      f"columns**, which is a clock, not a parameter. The cluster is Morocco and Western Sahara: "
-      f"all 104 Habous pages render one hour behind the zone the page itself names, because the "
-      f"table is computed at UTC+0 while `Africa/Casablanca` is UTC+1 in September. {rate(uniform, 99.0)} "
-      f"of the {len(uniform)} still fit at 99pc with the shift recorded as an adjustment, so the "
-      f"table is recoverable; the page's clock is not.")
+      f"columns**, which is a clock, not a parameter. {top}. The largest cluster is Morocco and "
+      f"Western Sahara: those Habous pages render about an hour behind the zone the page itself "
+      f"names, because the table is computed at UTC+0 while `Africa/Casablanca` is UTC+1 in "
+      f"September. {rate(uniform, 99.0)} of the {len(uniform)} still fit at 99pc with the shift "
+      f"recorded as an adjustment, so the table is recoverable; the page's clock is not.")
     w(f"3. **The printed offset label is the country's, not the city's.** {summ['label_bad']} pages "
       f"print a fixed offset that disagrees with the zone the table runs in, because the label is "
       f"copied from the country record. Every DST city is affected. The label must never be read "
@@ -157,10 +160,16 @@ def main():
     w("4. **The `Today` block does not contradict the month table anywhere.** The prior record's "
       "second defect does not reproduce: on all 2,690 pages the block equals the table row for the "
       "day it names. The block is still a build artefact, not a live value.")
-    w("5. **A `mosque`-source page is not a platform table.** 485 pages carry a named mosque's own "
-      "schedule with jamaat columns; 294 of them fit at 99pc or better once a uniform offset is "
-      "absorbed, and the rest are that mosque's own convention. They are recorded as mosque-tier "
-      "surfaces, never as platform coverage.")
+    w(f"5. **Ten sitemap URLs under `/countries/palestine/` are dead, and their live equivalents "
+      f"sit in an unlisted directory.** The sitemap advertises twenty `palestine` city URLs. The "
+      f"ten Palestinian cities answer 200; the ten Palestinian cities (Jerusalem, Tel Aviv, Haifa, "
+      f"Rishon LeZion, Petah Tikva, Ashdod, Netanya, Beersheba, Holon, Bnei Brak) answered 404 on "
+      f"re-probe while the same page, canonical `https://athanpro.com/countries/palestine/<city>`, "
+      f"was served under `/countries/palestine/<city>`. Both captures are held.")
+    w(f"6. **A `mosque`-source page is not a platform table.** 485 pages carry a named mosque's own "
+      f"schedule with jamaat columns; 294 of them fit at 99pc or better once a uniform offset is "
+      f"absorbed, and the rest are that mosque's own convention. They are recorded as mosque-tier "
+      f"surfaces, never as platform coverage.")
     w("")
     w("## The four broken capital pages, re-probed")
     w("")
@@ -182,9 +191,9 @@ def main():
     w("")
     w("## Capital coverage")
     w("")
-    w(f"{summ['capitals']} of the 202 capitals on the O1l-38 matrix are served by a city page and "
-      f"now carry a dated table here. The rest are either served under a different name or absent "
-      f"from the platform's directory.")
+    w(f"{summ['capitals']} of the 202 capitals on the O1l-38 matrix were identified by name among "
+      f"the city pages and now carry a dated table here. The rest are either served under a "
+      f"different name or absent from the platform's directory.")
     w("")
     w("## Honest negatives")
     w("")

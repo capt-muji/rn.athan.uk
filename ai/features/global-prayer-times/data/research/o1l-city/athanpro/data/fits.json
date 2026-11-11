@@ -1343,7 +1343,7 @@
    "isha": null
   },
   "solar": 72,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 80,
   "within1": 99,
   "n": 150,
@@ -1393,7 +1393,8 @@
    "asr": 95,
    "maghrib": 0,
    "isha": 55
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "belarus",
@@ -4917,17 +4918,17 @@
    "isha": null
   },
   "solar": 5,
-  "recipe": "Qatar 18/17",
-  "exact": 71,
-  "within1": 101,
+  "recipe": "Qatar 18/17 Shafi Angle",
+  "exact": 72,
+  "within1": 103,
   "n": 150,
-  "pct": 67.3,
-  "worst": 89,
+  "pct": 68.7,
+  "worst": 19,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 1,
-    "worst": 89
+    "exact": 2,
+    "within1": 3,
+    "worst": 19
    },
    "sunrise": {
     "exact": 27,
@@ -4961,13 +4962,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 97,
+   "fajr": 82,
    "sunrise": 0,
    "dhuhr": 5,
    "asr": 1,
    "maghrib": 4,
    "isha": -10
-  }
+  },
+  "rule": "Angle"
  },
  {
   "cc": "france",
@@ -11065,17 +11067,17 @@
    "isha": null
   },
   "solar": 2,
-  "recipe": "UMAM 14/14",
-  "exact": 89,
+  "recipe": "JAKIM 20/18 Shafi Seventh",
+  "exact": 109,
   "within1": 144,
   "n": 150,
   "pct": 96,
-  "worst": 7,
+  "worst": 4,
   "per": {
    "fajr": {
-    "exact": 9,
+    "exact": 19,
     "within1": 24,
-    "worst": 7
+    "worst": 4
    },
    "sunrise": {
     "exact": 26,
@@ -11098,7 +11100,7 @@
     "worst": 1
    },
    "isha": {
-    "exact": 17,
+    "exact": 27,
     "within1": 30,
     "worst": 1
    }
@@ -11109,13 +11111,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 40,
+   "fajr": 70,
    "sunrise": -1,
    "dhuhr": 1,
    "asr": 2,
    "maghrib": 3,
-   "isha": 17
-  }
+   "isha": -3
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "malta",
@@ -15359,17 +15362,17 @@
    "isha": null
   },
   "solar": 78,
-  "recipe": "ISNA 15/15 Hanafi",
-  "exact": 26,
-  "within1": 55,
+  "recipe": "Egypt 19.5/17.5 Hanafi Seventh",
+  "exact": 27,
+  "within1": 56,
   "n": 150,
-  "pct": 36.7,
+  "pct": 37.3,
   "worst": 15,
   "per": {
    "fajr": {
-    "exact": 2,
-    "within1": 6,
-    "worst": 8
+    "exact": 3,
+    "within1": 8,
+    "worst": 10
    },
    "sunrise": {
     "exact": 28,
@@ -15393,8 +15396,8 @@
    },
    "isha": {
     "exact": 2,
-    "within1": 6,
-    "worst": 10
+    "within1": 5,
+    "worst": 11
    }
   },
   "amp": {
@@ -15403,13 +15406,14 @@
   },
   "capital": true,
   "adjust": {
-   "fajr": 19,
+   "fajr": 42,
    "sunrise": 0,
    "dhuhr": 73,
    "asr": 6,
    "maghrib": 3,
-   "isha": -104
-  }
+   "isha": -117
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "portugal",
@@ -27105,7 +27109,7 @@
    "isha": null
   },
   "solar": 55,
-  "recipe": "Karachi 18/18",
+  "recipe": "Karachi 18/18 Shafi MidNight",
   "exact": 126,
   "within1": 150,
   "n": 150,
@@ -27155,7 +27159,8 @@
    "asr": -55,
    "maghrib": -52,
    "isha": -64
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "aruba",
@@ -27721,7 +27726,7 @@
    "isha": null
   },
   "solar": 72,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 80,
   "within1": 99,
   "n": 150,
@@ -27771,7 +27776,8 @@
    "asr": 95,
    "maghrib": 0,
    "isha": 55
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "belarus",
@@ -32297,7 +32303,7 @@
    "isha": null
   },
   "solar": 53,
-  "recipe": "Qatar 18/17",
+  "recipe": "Qatar 18/17 Shafi MidNight",
   "exact": 107,
   "within1": 129,
   "n": 150,
@@ -32347,7 +32353,8 @@
    "asr": 18,
    "maghrib": -4,
    "isha": -34
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "haiti",
@@ -33077,7 +33084,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 93,
   "within1": 122,
   "n": 150,
@@ -33127,7 +33134,8 @@
    "asr": 1,
    "maghrib": 0,
    "isha": 0
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "ivory-coast",
@@ -33751,17 +33759,17 @@
    "isha": null
   },
   "solar": 36,
-  "recipe": "UMAM 14/14",
-  "exact": 56,
-  "within1": 115,
+  "recipe": "MWL 18/17 Shafi Seventh",
+  "exact": 68,
+  "within1": 120,
   "n": 150,
-  "pct": 76.7,
+  "pct": 80,
   "worst": 5,
   "per": {
    "fajr": {
-    "exact": 5,
-    "within1": 20,
-    "worst": 3
+    "exact": 6,
+    "within1": 23,
+    "worst": 2
    },
    "sunrise": {
     "exact": 21,
@@ -33784,8 +33792,8 @@
     "worst": 1
    },
    "isha": {
-    "exact": 11,
-    "within1": 27,
+    "exact": 22,
+    "within1": 29,
     "worst": 2
    }
   },
@@ -33795,13 +33803,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 21,
+   "fajr": 43,
    "sunrise": -7,
    "dhuhr": 31,
    "asr": 8,
    "maghrib": 10,
-   "isha": 31
-  }
+   "isha": 13
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "kuwait",
@@ -37411,17 +37420,17 @@
    "isha": null
   },
   "solar": 2,
-  "recipe": "UMAM 14/14",
-  "exact": 89,
+  "recipe": "JAKIM 20/18 Shafi Seventh",
+  "exact": 109,
   "within1": 144,
   "n": 150,
   "pct": 96,
-  "worst": 7,
+  "worst": 4,
   "per": {
    "fajr": {
-    "exact": 9,
+    "exact": 19,
     "within1": 24,
-    "worst": 7
+    "worst": 4
    },
    "sunrise": {
     "exact": 26,
@@ -37444,7 +37453,7 @@
     "worst": 1
    },
    "isha": {
-    "exact": 17,
+    "exact": 27,
     "within1": 30,
     "worst": 1
    }
@@ -37455,13 +37464,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 40,
+   "fajr": 70,
    "sunrise": -1,
    "dhuhr": 1,
    "asr": 2,
    "maghrib": 3,
-   "isha": 17
-  }
+   "isha": -3
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "marshall-islands",
@@ -37567,7 +37577,7 @@
    "isha": null
   },
   "solar": 474,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 0,
   "within1": 0,
   "n": 150,
@@ -37617,7 +37627,8 @@
    "asr": -120,
    "maghrib": -120,
    "isha": -120
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "mauritania",
@@ -37649,7 +37660,7 @@
    "isha": null
   },
   "solar": 56,
-  "recipe": "JAKIM 20/18",
+  "recipe": "JAKIM 20/18 Shafi MidNight",
   "exact": 122,
   "within1": 150,
   "n": 150,
@@ -37699,7 +37710,8 @@
    "asr": -60,
    "maghrib": -57,
    "isha": -64
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "mauritania",
@@ -40523,17 +40535,17 @@
    "isha": null
   },
   "solar": 75,
-  "recipe": "UMAM 14/14",
-  "exact": 11,
-  "within1": 37,
+  "recipe": "UAE 18.2/18.2 Shafi Seventh",
+  "exact": 16,
+  "within1": 43,
   "n": 150,
-  "pct": 24.7,
-  "worst": 25,
+  "pct": 28.7,
+  "worst": 26,
   "per": {
    "fajr": {
-    "exact": 5,
-    "within1": 22,
-    "worst": 5
+    "exact": 10,
+    "within1": 29,
+    "worst": 2
    },
    "sunrise": {
     "exact": 24,
@@ -40557,8 +40569,8 @@
    },
    "isha": {
     "exact": 1,
-    "within1": 2,
-    "worst": 25
+    "within1": 1,
+    "worst": 26
    }
   },
   "amp": {
@@ -40567,13 +40579,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 36,
+   "fajr": 59,
    "sunrise": -7,
    "dhuhr": 70,
    "asr": 75,
    "maghrib": 83,
-   "isha": 98
-  }
+   "isha": 74
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "northern-mariana-islands",
@@ -41689,7 +41702,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "UmmAlQura",
+  "recipe": "UmmAlQura Shafi MidNight",
   "exact": 86,
   "within1": 123,
   "n": 150,
@@ -41739,7 +41752,8 @@
    "asr": 1,
    "maghrib": 0,
    "isha": 0
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "portugal",
@@ -42987,17 +43001,17 @@
    "isha": null
   },
   "solar": 7,
-  "recipe": "Qatar 18/17 Hanafi",
-  "exact": 69,
-  "within1": 96,
+  "recipe": "MWL 18/17 Hanafi Seventh",
+  "exact": 99,
+  "within1": 142,
   "n": 150,
-  "pct": 64,
-  "worst": 15,
+  "pct": 94.7,
+  "worst": 14,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 15
+    "exact": 17,
+    "within1": 23,
+    "worst": 14
    },
    "sunrise": {
     "exact": 30,
@@ -43020,9 +43034,9 @@
     "worst": 1
    },
    "isha": {
-    "exact": 2,
-    "within1": 4,
-    "worst": 11
+    "exact": 16,
+    "within1": 29,
+    "worst": 2
    }
   },
   "amp": {
@@ -43031,13 +43045,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 35,
+   "fajr": -1,
    "sunrise": -3,
    "dhuhr": 7,
    "asr": 11,
    "maghrib": 9,
-   "isha": 15
-  }
+   "isha": 7
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "senegal",
@@ -44055,7 +44070,7 @@
    "isha": null
   },
   "solar": 360,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 0,
   "within1": 0,
   "n": 150,
@@ -44105,7 +44120,8 @@
    "asr": 120,
    "maghrib": 120,
    "isha": 120
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "sri-lanka",
@@ -53369,7 +53385,7 @@
    "isha": null
   },
   "solar": 20,
-  "recipe": "UAE 18.2/18.2",
+  "recipe": "UAE 18.2/18.2 Shafi MidNight",
   "exact": 57,
   "within1": 81,
   "n": 150,
@@ -53419,7 +53435,8 @@
    "asr": 38,
    "maghrib": 0,
    "isha": 115
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "armenia",
@@ -53673,7 +53690,7 @@
    "isha": null
   },
   "solar": 11,
-  "recipe": "Kuwait 18/17.5",
+  "recipe": "Kuwait 18/17.5 Shafi MidNight",
   "exact": 108,
   "within1": 150,
   "n": 150,
@@ -53723,7 +53740,8 @@
    "asr": 0,
    "maghrib": 4,
    "isha": -80
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "azerbaijan",
@@ -54051,7 +54069,7 @@
    "isha": null
   },
   "solar": 72,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 80,
   "within1": 99,
   "n": 150,
@@ -54101,7 +54119,8 @@
    "asr": 95,
    "maghrib": 0,
    "isha": 55
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "belarus",
@@ -58767,7 +58786,7 @@
    "isha": null
   },
   "solar": 78,
-  "recipe": "UAE 18.2/18.2",
+  "recipe": "UAE 18.2/18.2 Shafi MidNight",
   "exact": 37,
   "within1": 50,
   "n": 150,
@@ -58817,7 +58836,8 @@
    "asr": 98,
    "maghrib": 66,
    "isha": 80
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "indonesia",
@@ -63741,17 +63761,17 @@
    "isha": null
   },
   "solar": 2,
-  "recipe": "UMAM 14/14",
-  "exact": 89,
+  "recipe": "JAKIM 20/18 Shafi Seventh",
+  "exact": 109,
   "within1": 144,
   "n": 150,
   "pct": 96,
-  "worst": 7,
+  "worst": 4,
   "per": {
    "fajr": {
-    "exact": 9,
+    "exact": 19,
     "within1": 24,
-    "worst": 7
+    "worst": 4
    },
    "sunrise": {
     "exact": 26,
@@ -63774,7 +63794,7 @@
     "worst": 1
    },
    "isha": {
-    "exact": 17,
+    "exact": 27,
     "within1": 30,
     "worst": 1
    }
@@ -63785,13 +63805,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 40,
+   "fajr": 70,
    "sunrise": -1,
    "dhuhr": 1,
    "asr": 2,
    "maghrib": 3,
-   "isha": 17
-  }
+   "isha": -3
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "marshall-islands",
@@ -67017,17 +67038,17 @@
    "isha": null
   },
   "solar": 11,
-  "recipe": "Qatar 18/17",
-  "exact": 70,
-  "within1": 100,
+  "recipe": "Qatar 18/17 Shafi Seventh",
+  "exact": 71,
+  "within1": 104,
   "n": 150,
-  "pct": 66.7,
-  "worst": 105,
+  "pct": 69.3,
+  "worst": 11,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 105
+    "exact": 2,
+    "within1": 6,
+    "worst": 11
    },
    "sunrise": {
     "exact": 18,
@@ -67061,13 +67082,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 34,
+   "fajr": -45,
    "sunrise": -1,
    "dhuhr": 11,
    "asr": 15,
    "maghrib": 0,
    "isha": 0
-  }
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "oman",
@@ -67485,7 +67507,7 @@
    "isha": null
   },
   "solar": 51,
-  "recipe": "UAE 18.2/18.2 Hanafi",
+  "recipe": "UAE 18.2/18.2 Hanafi MidNight",
   "exact": 59,
   "within1": 102,
   "n": 150,
@@ -67535,7 +67557,8 @@
    "asr": 1,
    "maghrib": 0,
    "isha": 66
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "papua-new-guinea",
@@ -68019,7 +68042,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "UmmAlQura",
+  "recipe": "UmmAlQura Shafi MidNight",
   "exact": 86,
   "within1": 123,
   "n": 150,
@@ -68069,7 +68092,8 @@
    "asr": 1,
    "maghrib": 0,
    "isha": 0
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "puerto-rico",
@@ -70959,7 +70983,7 @@
    "isha": null
   },
   "solar": 5,
-  "recipe": "JAKIM 20/18",
+  "recipe": "JAKIM 20/18 Shafi MidNight",
   "exact": 93,
   "within1": 120,
   "n": 150,
@@ -71009,7 +71033,8 @@
    "asr": 5,
    "maghrib": 7,
    "isha": -11
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "syria",
@@ -79673,7 +79698,7 @@
    "isha": null
   },
   "solar": 31,
-  "recipe": "Libya 18.5/18.5",
+  "recipe": "Libya 18.5/18.5 Shafi MidNight",
   "exact": 62,
   "within1": 84,
   "n": 150,
@@ -79723,7 +79748,8 @@
    "asr": 33,
    "maghrib": 0,
    "isha": 94
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "armenia",
@@ -80363,7 +80389,7 @@
    "isha": null
   },
   "solar": 72,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 80,
   "within1": 99,
   "n": 150,
@@ -80413,7 +80439,8 @@
    "asr": 95,
    "maghrib": 0,
    "isha": 55
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "belarus",
@@ -80897,7 +80924,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "UMAM 14/14",
+  "recipe": "UMAM 14/14 Shafi MidNight",
   "exact": 73,
   "within1": 123,
   "n": 150,
@@ -80947,7 +80974,8 @@
    "asr": 1,
    "maghrib": 6,
    "isha": 12
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "bosnia-and-herzegovina",
@@ -81209,7 +81237,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "stated: Brunei Accurate Prayer Times",
+  "recipe": "JAKIM 20/18 Shafi MidNight",
   "exact": 55,
   "within1": 60,
   "n": 150,
@@ -81259,7 +81287,8 @@
    "asr": 120,
    "maghrib": 120,
    "isha": 120
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "bulgaria",
@@ -86457,17 +86486,17 @@
    "isha": null
   },
   "solar": 36,
-  "recipe": "UMAM 14/14",
-  "exact": 56,
-  "within1": 115,
+  "recipe": "MWL 18/17 Shafi Seventh",
+  "exact": 68,
+  "within1": 120,
   "n": 150,
-  "pct": 76.7,
+  "pct": 80,
   "worst": 5,
   "per": {
    "fajr": {
-    "exact": 5,
-    "within1": 20,
-    "worst": 3
+    "exact": 6,
+    "within1": 23,
+    "worst": 2
    },
    "sunrise": {
     "exact": 21,
@@ -86490,8 +86519,8 @@
     "worst": 1
    },
    "isha": {
-    "exact": 11,
-    "within1": 27,
+    "exact": 22,
+    "within1": 29,
     "worst": 2
    }
   },
@@ -86501,13 +86530,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 21,
+   "fajr": 43,
    "sunrise": -7,
    "dhuhr": 31,
    "asr": 8,
    "maghrib": 10,
-   "isha": 31
-  }
+   "isha": 13
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "kuwait",
@@ -90873,7 +90903,7 @@
    "isha": null
   },
   "solar": 27,
-  "recipe": "UAE 18.2/18.2 Hanafi",
+  "recipe": "UAE 18.2/18.2 Hanafi MidNight",
   "exact": 27,
   "within1": 92,
   "n": 150,
@@ -90923,7 +90953,8 @@
    "asr": -42,
    "maghrib": 10,
    "isha": -2
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "montserrat",
@@ -93213,16 +93244,16 @@
    "isha": null
   },
   "solar": 35,
-  "recipe": "UMAM 14/14",
-  "exact": 74,
-  "within1": 124,
+  "recipe": "MWL 18/17 Shafi Seventh",
+  "exact": 71,
+  "within1": 125,
   "n": 150,
-  "pct": 82.7,
+  "pct": 83.3,
   "worst": 5,
   "per": {
    "fajr": {
-    "exact": 11,
-    "within1": 25,
+    "exact": 7,
+    "within1": 26,
     "worst": 2
    },
    "sunrise": {
@@ -93246,7 +93277,7 @@
     "worst": 1
    },
    "isha": {
-    "exact": 16,
+    "exact": 17,
     "within1": 30,
     "worst": 1
    }
@@ -93257,13 +93288,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 36,
+   "fajr": 58,
    "sunrise": -6,
    "dhuhr": 30,
    "asr": 5,
    "maghrib": 8,
-   "isha": 22
-  }
+   "isha": 4
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "northern-mariana-islands",
@@ -93369,17 +93401,17 @@
    "isha": null
   },
   "solar": 56,
-  "recipe": "Qatar 18/17 Hanafi",
-  "exact": 59,
-  "within1": 104,
+  "recipe": "Qatar 18/17 Hanafi Seventh",
+  "exact": 64,
+  "within1": 122,
   "n": 150,
-  "pct": 69.3,
-  "worst": 36,
+  "pct": 81.3,
+  "worst": 8,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 36
+    "exact": 6,
+    "within1": 20,
+    "worst": 8
    },
    "sunrise": {
     "exact": 18,
@@ -93413,13 +93445,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": -3,
+   "fajr": -59,
    "sunrise": -61,
    "dhuhr": -55,
    "asr": -60,
    "maghrib": -55,
    "isha": -70
-  }
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "oman",
@@ -105911,7 +105944,7 @@
    "isha": null
   },
   "solar": 31,
-  "recipe": "Libya 18.5/18.5",
+  "recipe": "Libya 18.5/18.5 Shafi MidNight",
   "exact": 62,
   "within1": 84,
   "n": 150,
@@ -105961,7 +105994,8 @@
    "asr": 33,
    "maghrib": 0,
    "isha": 94
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "argentina",
@@ -107505,7 +107539,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "stated: Brunei Accurate Prayer Times",
+  "recipe": "JAKIM 20/18 Shafi MidNight",
   "exact": 55,
   "within1": 60,
   "n": 150,
@@ -107555,7 +107589,8 @@
    "asr": 120,
    "maghrib": 120,
    "isha": 120
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "bulgaria",
@@ -110175,7 +110210,7 @@
    "isha": null
   },
   "solar": 5,
-  "recipe": "Qatar 18/17",
+  "recipe": "Qatar 18/17 Shafi MidNight",
   "exact": 75,
   "within1": 108,
   "n": 150,
@@ -110225,7 +110260,8 @@
    "asr": -1,
    "maghrib": 0,
    "isha": -14
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "finland",
@@ -110569,7 +110605,7 @@
    "isha": null
   },
   "solar": 55,
-  "recipe": "Karachi 18/18",
+  "recipe": "Karachi 18/18 Shafi MidNight",
   "exact": 118,
   "within1": 150,
   "n": 150,
@@ -110619,7 +110655,8 @@
    "asr": -54,
    "maghrib": -52,
    "isha": -64
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "georgia",
@@ -110725,7 +110762,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "Kuwait 18/17.5",
+  "recipe": "Kuwait 18/17.5 Shafi MidNight",
   "exact": 110,
   "within1": 150,
   "n": 150,
@@ -110775,7 +110812,8 @@
    "asr": 4,
    "maghrib": 3,
    "isha": -12
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "ghana",
@@ -110955,17 +110993,17 @@
    "isha": 0
   },
   "solar": 0,
-  "recipe": "Qatar 18/17",
-  "exact": 74,
-  "within1": 94,
+  "recipe": "Kuwait 18/17.5 Shafi Angle",
+  "exact": 110,
+  "within1": 150,
   "n": 150,
-  "pct": 62.7,
-  "worst": 90,
+  "pct": 100,
+  "worst": 1,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 1,
-    "worst": 90
+    "exact": 21,
+    "within1": 30,
+    "worst": 1
    },
    "sunrise": {
     "exact": 26,
@@ -110988,9 +111026,9 @@
     "worst": 1
    },
    "isha": {
-    "exact": 1,
-    "within1": 3,
-    "worst": 23
+    "exact": 17,
+    "within1": 30,
+    "worst": 1
    }
   },
   "amp": {
@@ -110999,13 +111037,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 33,
+   "fajr": 1,
    "sunrise": 0,
    "dhuhr": 0,
    "asr": 3,
    "maghrib": 0,
-   "isha": 88
-  }
+   "isha": -6
+  },
+  "rule": "Angle"
  },
  {
   "cc": "guadeloupe",
@@ -116349,17 +116388,17 @@
    "isha": null
   },
   "solar": 2,
-  "recipe": "UMAM 14/14",
-  "exact": 89,
+  "recipe": "JAKIM 20/18 Shafi Seventh",
+  "exact": 109,
   "within1": 144,
   "n": 150,
   "pct": 96,
-  "worst": 7,
+  "worst": 4,
   "per": {
    "fajr": {
-    "exact": 9,
+    "exact": 19,
     "within1": 24,
-    "worst": 7
+    "worst": 4
    },
    "sunrise": {
     "exact": 26,
@@ -116382,7 +116421,7 @@
     "worst": 1
    },
    "isha": {
-    "exact": 17,
+    "exact": 27,
     "within1": 30,
     "worst": 1
    }
@@ -116393,13 +116432,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 40,
+   "fajr": 70,
    "sunrise": -1,
    "dhuhr": 1,
    "asr": 2,
    "maghrib": 3,
-   "isha": 17
-  }
+   "isha": -3
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "marshall-islands",
@@ -123009,7 +123049,7 @@
    "isha": null
   },
   "solar": 360,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 0,
   "within1": 0,
   "n": 150,
@@ -123059,7 +123099,8 @@
    "asr": 120,
    "maghrib": 120,
    "isha": 120
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "sri-lanka",
@@ -132143,7 +132184,7 @@
    "isha": null
   },
   "solar": 4,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 33,
   "within1": 35,
   "n": 150,
@@ -132193,7 +132234,8 @@
    "asr": 10,
    "maghrib": 79,
    "isha": -33
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "argentina",
@@ -132299,7 +132341,7 @@
    "isha": null
   },
   "solar": 55,
-  "recipe": "Karachi 18/18",
+  "recipe": "Karachi 18/18 Shafi MidNight",
   "exact": 134,
   "within1": 150,
   "n": 150,
@@ -132349,7 +132391,8 @@
    "asr": -55,
    "maghrib": -52,
    "isha": -64
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "australia",
@@ -133761,7 +133804,7 @@
    "isha": null
   },
   "solar": 6,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 109,
   "within1": 123,
   "n": 150,
@@ -133811,7 +133854,8 @@
    "asr": 5,
    "maghrib": 8,
    "isha": 1
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "bulgaria",
@@ -136899,7 +136943,7 @@
    "isha": null
   },
   "solar": 19,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 62,
   "within1": 102,
   "n": 150,
@@ -136949,7 +136993,8 @@
    "asr": 6,
    "maghrib": 9,
    "isha": -4
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "germany",
@@ -137211,17 +137256,17 @@
    "isha": 0
   },
   "solar": 0,
-  "recipe": "sweep 19/18.5 Shafi",
-  "exact": 79,
-  "within1": 95,
+  "recipe": "Kuwait 18/17.5 Shafi Angle",
+  "exact": 110,
+  "within1": 149,
   "n": 150,
-  "pct": 63.3,
-  "worst": 95,
+  "pct": 99.3,
+  "worst": 2,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 3,
-    "worst": 95
+    "exact": 19,
+    "within1": 30,
+    "worst": 1
    },
    "sunrise": {
     "exact": 25,
@@ -137244,9 +137289,9 @@
     "worst": 1
    },
    "isha": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 95
+    "exact": 14,
+    "within1": 29,
+    "worst": 2
    }
   },
   "amp": {
@@ -137255,13 +137300,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 112,
+   "fajr": 1,
    "sunrise": 0,
    "dhuhr": 0,
    "asr": 3,
    "maghrib": 0,
-   "isha": -117
-  }
+   "isha": -6
+  },
+  "rule": "Angle"
  },
  {
   "cc": "guadeloupe",
@@ -138615,7 +138661,7 @@
    "isha": null
   },
   "solar": 79,
-  "recipe": "MWL 18/17 Hanafi",
+  "recipe": "MWL 18/17 Hanafi MidNight",
   "exact": 43,
   "within1": 74,
   "n": 150,
@@ -138665,7 +138711,8 @@
    "asr": 1,
    "maghrib": 2,
    "isha": 72
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "jordan",
@@ -146777,7 +146824,7 @@
    "isha": null
   },
   "solar": 5,
-  "recipe": "UMAM 14/14",
+  "recipe": "UMAM 14/14 Shafi MidNight",
   "exact": 92,
   "within1": 138,
   "n": 150,
@@ -146827,7 +146874,8 @@
    "asr": 1,
    "maghrib": 2,
    "isha": -35
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "portugal",
@@ -155845,17 +155893,17 @@
    "isha": null
   },
   "solar": 86,
-  "recipe": "Qatar 18/17",
-  "exact": 31,
-  "within1": 66,
+  "recipe": "Egypt 19.5/17.5 Shafi Seventh",
+  "exact": 38,
+  "within1": 79,
   "n": 150,
-  "pct": 44,
+  "pct": 52.7,
   "worst": 7,
   "per": {
    "fajr": {
-    "exact": 2,
-    "within1": 8,
-    "worst": 7
+    "exact": 10,
+    "within1": 25,
+    "worst": 2
    },
    "sunrise": {
     "exact": 3,
@@ -155878,9 +155926,9 @@
     "worst": 6
    },
    "isha": {
-    "exact": 4,
-    "within1": 11,
-    "worst": 4
+    "exact": 3,
+    "within1": 7,
+    "worst": 7
    }
   },
   "amp": {
@@ -155889,13 +155937,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": -70,
+   "fajr": -66,
    "sunrise": -83,
-   "dhuhr": -85,
+   "dhuhr": -86,
    "asr": -85,
    "maghrib": -82,
    "isha": -96
-  }
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "turkey",
@@ -159745,7 +159794,7 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "ISNA 15/15",
+  "recipe": "ISNA 15/15 Shafi MidNight",
   "exact": 100,
   "within1": 135,
   "n": 150,
@@ -159795,7 +159844,8 @@
    "asr": 1,
    "maghrib": 0,
    "isha": 0
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "botswana",
@@ -169697,7 +169747,7 @@
    "isha": null
   },
   "solar": 406,
-  "recipe": "JAKIM 20/18",
+  "recipe": "JAKIM 20/18 Shafi MidNight",
   "exact": 18,
   "within1": 51,
   "n": 150,
@@ -169747,7 +169797,8 @@
    "asr": -120,
    "maghrib": -120,
    "isha": -85
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "morocco",
@@ -171363,7 +171414,7 @@
    "isha": null
   },
   "solar": 6,
-  "recipe": "ISNA 15/15",
+  "recipe": "ISNA 15/15 Shafi MidNight",
   "exact": 85,
   "within1": 131,
   "n": 150,
@@ -171413,7 +171464,8 @@
    "asr": 5,
    "maghrib": 8,
    "isha": 9
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "new-caledonia",
@@ -172209,17 +172261,17 @@
    "isha": 0
   },
   "solar": 1,
-  "recipe": "sweep 19.5/18.5 Shafi",
-  "exact": 78,
-  "within1": 95,
+  "recipe": "Kuwait 18/17.5 Shafi Angle",
+  "exact": 110,
+  "within1": 148,
   "n": 150,
-  "pct": 63.3,
-  "worst": 94,
+  "pct": 98.7,
+  "worst": 2,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 3,
-    "worst": 88
+    "exact": 22,
+    "within1": 30,
+    "worst": 1
    },
    "sunrise": {
     "exact": 24,
@@ -172242,9 +172294,9 @@
     "worst": 1
    },
    "isha": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 94
+    "exact": 12,
+    "within1": 28,
+    "worst": 2
    }
   },
   "amp": {
@@ -172253,13 +172305,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 116,
+   "fajr": 1,
    "sunrise": 0,
    "dhuhr": 0,
    "asr": 2,
    "maghrib": 0,
-   "isha": -117
-  }
+   "isha": -6
+  },
+  "rule": "Angle"
  },
  {
   "cc": "oman",
@@ -175857,17 +175910,17 @@
    "isha": 0
   },
   "solar": 0,
-  "recipe": "UMAM 14/14",
-  "exact": 54,
-  "within1": 81,
+  "recipe": "MWL 18/17 Shafi Angle",
+  "exact": 81,
+  "within1": 138,
   "n": 150,
-  "pct": 54,
-  "worst": 50,
+  "pct": 92,
+  "worst": 2,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 1,
-    "worst": 47
+    "exact": 10,
+    "within1": 29,
+    "worst": 2
    },
    "sunrise": {
     "exact": 20,
@@ -175890,9 +175943,9 @@
     "worst": 2
    },
    "isha": {
-    "exact": 0,
-    "within1": 1,
-    "worst": 50
+    "exact": 18,
+    "within1": 30,
+    "worst": 1
    }
   },
   "amp": {
@@ -175901,13 +175954,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 118,
+   "fajr": 3,
    "sunrise": 0,
    "dhuhr": 0,
    "asr": 5,
    "maghrib": 0,
-   "isha": -120
-  }
+   "isha": -2
+  },
+  "rule": "Angle"
  },
  {
   "cc": "sweden",
@@ -183947,7 +184001,7 @@
    "isha": null
   },
   "solar": 63,
-  "recipe": "UMAM 14/14 Hanafi",
+  "recipe": "UMAM 14/14 Hanafi MidNight",
   "exact": 59,
   "within1": 122,
   "n": 150,
@@ -183997,7 +184051,8 @@
    "asr": 23,
    "maghrib": 28,
    "isha": 53
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "zambia",
@@ -184251,7 +184306,7 @@
    "isha": null
   },
   "solar": 7,
-  "recipe": "Libya 18.5/18.5",
+  "recipe": "Libya 18.5/18.5 Shafi MidNight",
   "exact": 118,
   "within1": 150,
   "n": 150,
@@ -184301,7 +184356,8 @@
    "asr": 6,
    "maghrib": 7,
    "isha": -7
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "albania",
@@ -184793,7 +184849,7 @@
    "isha": null
   },
   "solar": 55,
-  "recipe": "Karachi 18/18",
+  "recipe": "Karachi 18/18 Shafi MidNight",
   "exact": 130,
   "within1": 150,
   "n": 150,
@@ -184843,7 +184899,8 @@
    "asr": -55,
    "maghrib": -52,
    "isha": -64
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "armenia",
@@ -185409,7 +185466,7 @@
    "isha": null
   },
   "solar": 72,
-  "recipe": "MWL 18/17",
+  "recipe": "MWL 18/17 Shafi MidNight",
   "exact": 80,
   "within1": 99,
   "n": 150,
@@ -185459,7 +185516,8 @@
    "asr": 95,
    "maghrib": 0,
    "isha": 55
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "belarus",
@@ -188029,17 +188087,17 @@
    "isha": null
   },
   "solar": 1,
-  "recipe": "Qatar 18/17",
-  "exact": 93,
+  "recipe": "Qatar 18/17 Shafi Seventh",
+  "exact": 94,
   "within1": 125,
   "n": 150,
   "pct": 83.3,
-  "worst": 10,
+  "worst": 12,
   "per": {
    "fajr": {
-    "exact": 2,
+    "exact": 3,
     "within1": 5,
-    "worst": 10
+    "worst": 12
    },
    "sunrise": {
     "exact": 25,
@@ -188073,13 +188131,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 32,
+   "fajr": -2,
    "sunrise": -2,
    "dhuhr": 1,
    "asr": 2,
    "maghrib": 3,
    "isha": 5
-  }
+  },
+  "rule": "Seventh"
  },
  {
   "cc": "djibouti",
@@ -189843,17 +189902,17 @@
    "isha": 0
   },
   "solar": 0,
-  "recipe": "sweep 18.5/19 Shafi",
-  "exact": 78,
-  "within1": 94,
+  "recipe": "Kuwait 18/17.5 Shafi Angle",
+  "exact": 112,
+  "within1": 150,
   "n": 150,
-  "pct": 62.7,
-  "worst": 100,
+  "pct": 100,
+  "worst": 1,
   "per": {
    "fajr": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 100
+    "exact": 22,
+    "within1": 30,
+    "worst": 1
    },
    "sunrise": {
     "exact": 26,
@@ -189876,9 +189935,9 @@
     "worst": 1
    },
    "isha": {
-    "exact": 1,
-    "within1": 2,
-    "worst": 89
+    "exact": 14,
+    "within1": 30,
+    "worst": 1
    }
   },
   "amp": {
@@ -189887,13 +189946,14 @@
   },
   "capital": false,
   "adjust": {
-   "fajr": 108,
+   "fajr": 1,
    "sunrise": 0,
    "dhuhr": 0,
    "asr": 3,
    "maghrib": 0,
-   "isha": -118
-  }
+   "isha": -6
+  },
+  "rule": "Angle"
  },
  {
   "cc": "guam",
@@ -192815,7 +192875,7 @@
    "isha": null
   },
   "solar": 5,
-  "recipe": "ISNA 15/15",
+  "recipe": "ISNA 15/15 Shafi MidNight",
   "exact": 81,
   "within1": 120,
   "n": 150,
@@ -192865,7 +192925,8 @@
    "asr": 6,
    "maghrib": 8,
    "isha": 8
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "madagascar",
@@ -209271,7 +209332,7 @@
    "isha": null
   },
   "solar": 32,
-  "recipe": "stated: UAE General Authority of Islamic Affairs And Endowments",
+  "recipe": "UAE 18.2/18.2 Shafi MidNight",
   "exact": 119,
   "within1": 150,
   "n": 150,
@@ -209321,7 +209382,8 @@
    "asr": 30,
    "maghrib": 32,
    "isha": 29
-  }
+  },
+  "rule": "MidNight"
  },
  {
   "cc": "united-arab-emirates",
