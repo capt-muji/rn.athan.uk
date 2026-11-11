@@ -1,0 +1,586 @@
+{
+ "leapAnalysis": {
+  "2028": {
+   "fajr": {
+    "prev": "05:09",
+    "next": "05:04",
+    "truth": "05:06",
+    "truthMinusPrev": -3,
+    "truthMinusNext": 2,
+    "meanRounded": "05:07",
+    "matches": [
+     "meanFloor"
+    ],
+    "recipe": "05:06",
+    "recipeErr": 0,
+    "truthImpliedOffset": -97
+   },
+   "sunrise": {
+    "prev": "06:46",
+    "next": "06:41",
+    "truth": "06:43",
+    "truthMinusPrev": -3,
+    "truthMinusNext": 2,
+    "meanRounded": "06:44",
+    "matches": [
+     "meanFloor"
+    ],
+    "recipe": "06:43",
+    "recipeErr": 0
+   },
+   "dhuhr": {
+    "prev": "12:18",
+    "next": "12:18",
+    "truth": "12:18",
+    "truthMinusPrev": 0,
+    "truthMinusNext": 0,
+    "meanRounded": "12:18",
+    "matches": [
+     "prev",
+     "next",
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "12:18",
+    "recipeErr": 0
+   },
+   "asr": {
+    "prev": "15:04",
+    "next": "15:06",
+    "truth": "15:05",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -1,
+    "meanRounded": "15:05",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "15:05",
+    "recipeErr": 0
+   },
+   "magrib": {
+    "prev": "17:41",
+    "next": "17:44",
+    "truth": "17:42",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -2,
+    "meanRounded": "17:43",
+    "matches": [
+     "meanFloor"
+    ],
+    "recipe": "17:42",
+    "recipeErr": 0
+   },
+   "isha": {
+    "prev": "19:08",
+    "next": "19:10",
+    "truth": "19:08",
+    "truthMinusPrev": 0,
+    "truthMinusNext": -2,
+    "meanRounded": "19:09",
+    "matches": [
+     "prev"
+    ],
+    "recipe": "19:09",
+    "recipeErr": 1,
+    "truthImpliedOffset": 86
+   }
+  },
+  "2032": {
+   "fajr": {
+    "prev": "05:08",
+    "next": "05:04",
+    "truth": "05:06",
+    "truthMinusPrev": -2,
+    "truthMinusNext": 2,
+    "meanRounded": "05:06",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "05:06",
+    "recipeErr": 0,
+    "truthImpliedOffset": -97
+   },
+   "sunrise": {
+    "prev": "06:45",
+    "next": "06:41",
+    "truth": "06:43",
+    "truthMinusPrev": -2,
+    "truthMinusNext": 2,
+    "meanRounded": "06:43",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "06:43",
+    "recipeErr": 0
+   },
+   "dhuhr": {
+    "prev": "12:18",
+    "next": "12:18",
+    "truth": "12:18",
+    "truthMinusPrev": 0,
+    "truthMinusNext": 0,
+    "meanRounded": "12:18",
+    "matches": [
+     "prev",
+     "next",
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "12:18",
+    "recipeErr": 0
+   },
+   "asr": {
+    "prev": "15:04",
+    "next": "15:06",
+    "truth": "15:05",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -1,
+    "meanRounded": "15:05",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "15:05",
+    "recipeErr": 0
+   },
+   "magrib": {
+    "prev": "17:41",
+    "next": "17:44",
+    "truth": "17:43",
+    "truthMinusPrev": 2,
+    "truthMinusNext": -1,
+    "meanRounded": "17:43",
+    "matches": [
+     "meanHalfUp"
+    ],
+    "recipe": "17:43",
+    "recipeErr": 0
+   },
+   "isha": {
+    "prev": "19:08",
+    "next": "19:10",
+    "truth": "19:09",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -1,
+    "meanRounded": "19:09",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "19:10",
+    "recipeErr": 1,
+    "truthImpliedOffset": 86
+   }
+  },
+  "2036": {
+   "fajr": {
+    "prev": "05:08",
+    "next": "05:04",
+    "truth": "05:06",
+    "truthMinusPrev": -2,
+    "truthMinusNext": 2,
+    "meanRounded": "05:06",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "05:06",
+    "recipeErr": 0,
+    "truthImpliedOffset": -97
+   },
+   "sunrise": {
+    "prev": "06:45",
+    "next": "06:41",
+    "truth": "06:43",
+    "truthMinusPrev": -2,
+    "truthMinusNext": 2,
+    "meanRounded": "06:43",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "06:43",
+    "recipeErr": 0
+   },
+   "dhuhr": {
+    "prev": "12:18",
+    "next": "12:18",
+    "truth": "12:18",
+    "truthMinusPrev": 0,
+    "truthMinusNext": 0,
+    "meanRounded": "12:18",
+    "matches": [
+     "prev",
+     "next",
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "12:18",
+    "recipeErr": 0
+   },
+   "asr": {
+    "prev": "15:04",
+    "next": "15:06",
+    "truth": "15:05",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -1,
+    "meanRounded": "15:05",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "15:05",
+    "recipeErr": 0
+   },
+   "magrib": {
+    "prev": "17:41",
+    "next": "17:44",
+    "truth": "17:43",
+    "truthMinusPrev": 2,
+    "truthMinusNext": -1,
+    "meanRounded": "17:43",
+    "matches": [
+     "meanHalfUp"
+    ],
+    "recipe": "17:43",
+    "recipeErr": 0
+   },
+   "isha": {
+    "prev": "19:08",
+    "next": "19:10",
+    "truth": "19:09",
+    "truthMinusPrev": 1,
+    "truthMinusNext": -1,
+    "meanRounded": "19:09",
+    "matches": [
+     "meanHalfUp",
+     "meanFloor"
+    ],
+    "recipe": "19:10",
+    "recipeErr": 1,
+    "truthImpliedOffset": 86
+   }
+  }
+ },
+ "leapVariantScores": {
+  "recipeMean": {
+   "exact": 15,
+   "within1": 18,
+   "total": 18,
+   "worst": 1,
+   "rows": {
+    "2028": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:42",
+      "truth": "17:42",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:09",
+      "truth": "19:08",
+      "err": 1
+     }
+    },
+    "2032": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:10",
+      "truth": "19:09",
+      "err": 1
+     }
+    },
+    "2036": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:10",
+      "truth": "19:09",
+      "err": 1
+     }
+    }
+   }
+  },
+  "prev": {
+   "exact": 15,
+   "within1": 18,
+   "total": 18,
+   "worst": 1,
+   "rows": {
+    "2028": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:42",
+      "truth": "17:42",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:09",
+      "truth": "19:08",
+      "err": 1
+     }
+    },
+    "2032": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:10",
+      "truth": "19:09",
+      "err": 1
+     }
+    },
+    "2036": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:10",
+      "truth": "19:09",
+      "err": 1
+     }
+    }
+   }
+  },
+  "next": {
+   "exact": 18,
+   "within1": 18,
+   "total": 18,
+   "worst": 0,
+   "rows": {
+    "2028": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:42",
+      "truth": "17:42",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:08",
+      "truth": "19:08",
+      "err": 0
+     }
+    },
+    "2032": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:09",
+      "truth": "19:09",
+      "err": 0
+     }
+    },
+    "2036": {
+     "fajr": {
+      "generated": "05:06",
+      "truth": "05:06",
+      "err": 0
+     },
+     "sunrise": {
+      "generated": "06:43",
+      "truth": "06:43",
+      "err": 0
+     },
+     "dhuhr": {
+      "generated": "12:18",
+      "truth": "12:18",
+      "err": 0
+     },
+     "asr": {
+      "generated": "15:05",
+      "truth": "15:05",
+      "err": 0
+     },
+     "magrib": {
+      "generated": "17:43",
+      "truth": "17:43",
+      "err": 0
+     },
+     "isha": {
+      "generated": "19:09",
+      "truth": "19:09",
+      "err": 0
+     }
+    }
+   }
+  }
+ },
+ "recipeTable0229": {
+  "fajr": 97,
+  "isha": 87
+ }
+}

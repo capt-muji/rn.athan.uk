@@ -1,0 +1,144 @@
+{
+ "job": "Kelantan zon 1 (KTN01) recipe from the banked JAKIM annual and the +1 min flag",
+ "coordinate": {
+  "lat": 6.12,
+  "lng": 102.24,
+  "tz": "Asia/Kuala_Lumpur"
+ },
+ "source": "sea2/captures/msia-ktn01-tahunan-2026.html (waktusolatmalaysia.org mirror of JAKIM zon KTN01, 2026 annual)",
+ "rows_parsed": 365,
+ "first": {
+  "date": "2026-01-01",
+  "hijri": "11 Rejab",
+  "imsak": 358,
+  "subuh": 368,
+  "syuruk": 442,
+  "zohor": 797,
+  "asar": 998,
+  "maghrib": 1149,
+  "isyak": 1220
+ },
+ "last": {
+  "date": "2026-12-31",
+  "hijri": "21 Rejab",
+  "imsak": 357,
+  "subuh": 367,
+  "syuruk": 441,
+  "zohor": 796,
+  "asar": 998,
+  "maghrib": 1149,
+  "isyak": 1219
+ },
+ "fit": {
+  "fajr": {
+   "margin": -1,
+   "mode": "floor",
+   "exact": 345,
+   "within1": 365,
+   "worst": 1,
+   "n": 365,
+   "angle": 17.4
+  },
+  "isha": {
+   "margin": 6,
+   "mode": "floor",
+   "exact": 334,
+   "within1": 365,
+   "worst": 1,
+   "n": 365,
+   "angle": 15.95
+  },
+  "sunrise": {
+   "margin": 1,
+   "mode": "floor",
+   "exact": 203,
+   "within1": 365,
+   "worst": 1,
+   "n": 365,
+   "angle": 0.5
+  },
+  "asrShafi": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 189,
+   "within1": 365,
+   "worst": 1,
+   "n": 365
+  },
+  "asrHanafi": {
+   "margin": -6,
+   "mode": "floor",
+   "exact": 0,
+   "within1": 0,
+   "worst": 67,
+   "n": 365
+  },
+  "maghrib": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 201,
+   "within1": 365,
+   "worst": 1,
+   "n": 365
+  }
+ },
+ "sample_2026_03_18": {
+  "date": "2026-03-18",
+  "hijri": "28 Ramadan",
+  "imsak": 359,
+  "subuh": 369,
+  "syuruk": 437,
+  "zohor": 802,
+  "asar": 992,
+  "maghrib": 1164,
+  "isyak": 1229
+ },
+ "implied": {
+  "fajr": {
+   "n": 365,
+   "min": 17.486627522614743,
+   "max": 17.798267178038508,
+   "med": 17.63597544351206
+  },
+  "isha": {
+   "n": 365,
+   "min": 17.17837943524291,
+   "max": 17.509947836472207,
+   "med": 17.358136903522702
+  },
+  "dhuhrOffset": {
+   "n": 365,
+   "min": 2.096350214065069,
+   "max": 3.094576779539011,
+   "med": 2.5671854364660476
+  },
+  "imsakGap": {
+   "n": 365,
+   "min": 10,
+   "max": 10,
+   "med": 10
+  }
+ },
+ "transcription_status": {
+  "result": "BLOCKED: no verbatim Kelantan table could be transcribed",
+  "searched": "sea2/captures (18 files, no image of any kind), thmsg/captures (Malaysia pass), and a filename scan of the whole o1k-wide tree for kelantan/zon1/zon2/jabatan",
+  "found": "only text notes recording that the Jabatan Mufti posts monthly zon1/zon2 images on facebook.com/MUFTIKELANTAN; the poster images themselves were never banked",
+  "consequence": "zon 1 and zon 2 rows of the mufti table remain unread; the recipe question is answered only for the JAKIM comparator"
+ },
+ "ktn01_recipe": {
+  "statement": "at 6.1200 N / 102.2400 E the printed KTN01 columns sit at a fixed convention on all 365 days: subuh at sun depth 17.64 deg (17.49-17.80), isyak at 17.36 deg (17.18-17.51), zohor at true noon +2.6 min, asar at Shafi +2 min, maghrib at sunset +2 min, imsak = subuh - 10 min exactly",
+  "angles_read": "the twilight pair is 18/18 minus 2-3 minutes, or 17.6/17.4 with no margin; angle and margin are not separable at one-minute print resolution",
+  "refuted": "isha 17 (the KTN02 exception value) is outside the measurement by about 1 deg, i.e. 4 minutes",
+  "asr": "Shafi confirmed (Hanafi worst 67 min)"
+ },
+ "flag_plus_one_minute": {
+  "sample": "mufti-attributed 2026-03-18 subuh 06:10, syuruk 07:18",
+  "comparator": "KTN01 2026-03-18 imsak 05:59, subuh 06:09, syuruk 07:17, zohor 13:22, asar 16:32, maghrib 19:24, isyak 20:29 (this file, row 2026-03-18)",
+  "finding": "the +1 falls on subuh and syuruk together; a twilight angle cannot move syuruk, so the delta is a column or clock convention, not a recipe difference",
+  "unresolved": "one sample from a third-hand mirror cannot separate a one-minute whole-table offset (0.25 deg of longitude) from a morning-pair convention; the mufti table itself would settle it"
+ },
+ "verdict": {
+  "zon1_zon2_against_jakim": "unanswerable without the mufti tables: not evidence either way",
+  "plus_one_flag": "resolved as a non-angular one-minute convention, not a different recipe"
+ }
+}

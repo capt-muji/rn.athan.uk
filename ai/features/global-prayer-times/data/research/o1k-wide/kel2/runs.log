@@ -1,0 +1,74 @@
+
+== zulkaedah/zon1 (n=29)
+  fajr   17.7 deg margin 0 floor: 28/29 exact, 29/29 within 1, MAE 0.03 | implied {"n":29,"min":17.6,"max":17.82,"med":17.71}
+  isha   17.05 deg margin 1 floor: 28/29 exact, 29/29 within 1, MAE 0.03 | implied {"n":29,"min":17.18,"max":17.38,"med":17.24}
+  syuruk   margin 1 floor: 21/29 exact, 29/29 within 1, MAE 0.28
+  zohor    margin 3 floor: 19/29 exact, 29/29 within 1, MAE 0.34
+  asar     margin 1 floor: 16/29 exact, 29/29 within 1, MAE 0.45
+  maghrib  margin 1 floor: 25/29 exact, 29/29 within 1, MAE 0.14
+  dhuha-syuruk {"n":29,"min":27,"max":28,"med":28} isyak-maghrib {"n":29,"min":71,"max":72,"med":71}
+
+== zulkaedah/zon2 (n=29)
+  fajr   15.9 deg margin -4 floor: 29/29 exact, 29/29 within 1, MAE 0 | implied {"n":29,"min":16.71,"max":16.92,"med":16.82}
+  isha   17.05 deg margin 1 floor: 27/29 exact, 29/29 within 1, MAE 0.07 | implied {"n":29,"min":17.16,"max":17.38,"med":17.23}
+  syuruk   margin 3 floor: 0/29 exact, 15/29 within 1, MAE 1.48
+  zohor    margin 3 floor: 0/29 exact, 13/29 within 1, MAE 1.55
+  asar     margin 3 floor: 18/29 exact, 29/29 within 1, MAE 0.38
+  maghrib  margin 2 floor: 18/29 exact, 29/29 within 1, MAE 0.38
+  dhuha-syuruk {"n":29,"min":28,"max":28,"med":28} isyak-maghrib {"n":29,"min":70,"max":72,"med":71}
+
+== syawal/zon1 (n=30)
+  fajr   17.05 deg margin -3 floor: 29/30 exact, 30/30 within 1, MAE 0.03 | implied {"n":30,"min":17.6,"max":17.84,"med":17.75}
+  isha   17.05 deg margin 1 floor: 30/30 exact, 30/30 within 1, MAE 0 | implied {"n":30,"min":17.2,"max":17.42,"med":17.31}
+  syuruk   margin 1 floor: 24/30 exact, 30/30 within 1, MAE 0.2
+  zohor    margin 3 floor: 20/30 exact, 30/30 within 1, MAE 0.33
+  asar     margin 2 floor: 17/30 exact, 30/30 within 1, MAE 0.43
+  maghrib  margin 1 floor: 21/30 exact, 30/30 within 1, MAE 0.3
+  dhuha-syuruk {"n":30,"min":28,"max":28,"med":28} isyak-maghrib {"n":30,"min":70,"max":72,"med":71}
+
+== syawal/zon2 (n=30)
+  fajr   15.7 deg margin -5 floor: 30/30 exact, 30/30 within 1, MAE 0 | implied {"n":30,"min":16.73,"max":16.93,"med":16.85}
+  isha   18.35 deg margin -5 floor: 27/30 exact, 30/30 within 1, MAE 0.1 | implied {"n":30,"min":17.15,"max":17.42,"med":17.27}
+  syuruk   margin 3 floor: 0/30 exact, 18/30 within 1, MAE 1.4
+  zohor    margin 3 floor: 0/30 exact, 14/30 within 1, MAE 1.53
+  asar     margin 3 floor: 16/30 exact, 30/30 within 1, MAE 0.47
+  maghrib  margin 1 floor: 17/30 exact, 30/30 within 1, MAE 0.43
+  dhuha-syuruk {"n":30,"min":28,"max":28,"med":28} isyak-maghrib {"n":30,"min":70,"max":72,"med":71}
+
+== JAKIM recipe residual (Zulkaedah zon1)
+  jakim_zon1_isha17_at_kb subuh:10/29 MAE0.66 syuruk:0/29 MAE1.72 zohor:10/29 MAE1.16 asar:13/29 MAE0.55 maghrib:0/29 MAE1.14 isyak:5/29 MAE0.83
+  jakim_zon1_isha18_at_kb subuh:10/29 MAE0.66 syuruk:0/29 MAE1.72 zohor:10/29 MAE1.16 asar:13/29 MAE0.55 maghrib:0/29 MAE1.14 isyak:0/29 MAE5.38
+  jakim_zon1_isha17_at_jakim_point subuh:10/29 MAE0.66 syuruk:0/29 MAE1.72 zohor:10/29 MAE1.16 asar:12/29 MAE0.59 maghrib:0/29 MAE1.14 isyak:5/29 MAE0.83
+  zon2_same_recipe_at_kb subuh:0/29 MAE3.34 syuruk:0/29 MAE5.48 zohor:0/29 MAE3.05 asar:0/29 MAE1.38 maghrib:0/29 MAE1.62 isyak:4/29 MAE0.86
+
+== point solve (sunrise+sunset, both margins free)
+ zulkaedah/zon1 lat 5.95 lng 101.88 score 0.13 sunrise -1f MAE0.03 maghrib 0f MAE0.1
+ zulkaedah/zon2 lat 4.35 lng 101.62 score 0 sunrise -1f MAE0 maghrib 2f MAE0
+ syawal/zon1 lat 5.4 lng 102.36 score 0 sunrise 0f MAE0 maghrib 3f MAE0
+ syawal/zon2 lat 4.9 lng 101.88 score 0.06 sunrise 1f MAE0.03 maghrib 2f MAE0.03
+
+== implied depth at each zone's own solved point
+ zulkaedah/zon1 fajr {"n":29,"min":17.99,"max":18.22,"med":18.11} isha {"n":29,"min":16.93,"max":17.14,"med":16.99}
+ zulkaedah/zon2 fajr {"n":29,"min":18.03,"max":18.24,"med":18.14} isha {"n":29,"min":17.37,"max":17.59,"med":17.43}
+ syawal/zon1 fajr {"n":30,"min":17.79,"max":18.06,"med":17.96} isha {"n":30,"min":17.61,"max":17.83,"med":17.73}
+ syawal/zon2 fajr {"n":30,"min":17.59,"max":17.79,"med":17.7} isha {"n":30,"min":17.38,"max":17.59,"med":17.49}
+
+== signed delta, mufti minus emulated JAKIM at KTN01 point
+ zulkaedah zon1_isha17 subuh:-0.66[-1,0] syuruk:+1.72[1,2] zohor:+1.16[0.5,1.5] asar:-0.59[-1,0] maghrib:+1.14[1,2] isyak:-0.83[-1,0]
+ zulkaedah zon1_isha18 subuh:-0.66[-1,0] syuruk:+1.72[1,2] zohor:+1.16[0.5,1.5] asar:-0.59[-1,0] maghrib:+1.14[1,2] isyak:-5.38[-6,-5]
+ syawal zon1_isha17 subuh:-0.8[-1,0] syuruk:+1.8[1,2] zohor:+1.17[0.5,1.5] asar:-0.43[-1,0] maghrib:+1.3[1,2] isyak:-0.73[-1,0]
+ syawal zon1_isha18 subuh:-0.8[-1,0] syuruk:+1.8[1,2] zohor:+1.17[0.5,1.5] asar:-0.43[-1,0] maghrib:+1.3[1,2] isyak:-5.27[-6,-5]
+
+== day length (maghrib - syuruk)
+ zulkaedah {"zon1":{"n":29,"min":746,"max":750,"med":748},"zon2":{"n":29,"min":743,"max":746,"med":745},"delta_zon1_minus_zon2":{"n":29,"min":2,"max":4,"med":3}}
+ syawal {"zon1":{"n":30,"min":746,"max":750,"med":749},"zon2":{"n":30,"min":744,"max":746,"med":745},"delta_zon1_minus_zon2":{"n":30,"min":2,"max":4,"med":4}}
+
+== zon2 free fit at its own solved point
+ zulkaedah {"lat":4.35,"lng":101.62} fajr 17.45 deg margin -3 floor: 29/29 exact, 29/29 within 1, MAE 0 | isha 17.25 deg margin 1 floor: 29/29 exact, 29/29 within 1, MAE 0
+   solar syuruk:-1f 29/29 MAE0 maghrib:2f 29/29 MAE0 zohor:2f 28/29 MAE0.03 asar:1f 28/29 MAE0.03
+   implied {"fajr":{"n":29,"min":18.03,"max":18.24,"med":18.14},"isha":{"n":29,"min":17.37,"max":17.59,"med":17.43}}
+ syawal {"lat":4.9,"lng":101.88} fajr 16.55 deg margin -5 floor: 30/30 exact, 30/30 within 1, MAE 0 | isha 17.45 deg margin 0 floor: 29/30 exact, 30/30 within 1, MAE 0.03
+   solar syuruk:1f 29/30 MAE0.03 maghrib:2f 29/30 MAE0.03 zohor:3f 28/30 MAE0.07 asar:2f 29/30 MAE0.03
+   implied {"fajr":{"n":30,"min":17.59,"max":17.79,"med":17.7},"isha":{"n":30,"min":17.38,"max":17.59,"med":17.49}}
+
+verdicts {"zon1_is_jakim_recipe":true,"zon2_breaks_single_point_geometry":true,"zone_deltas":{"subuh":[-5,-4,-3],"syuruk":[-4,-3],"dhuha":[-5,-4,-3],"zohor":[-2,-1],"asar":[-3,-2,-1],"maghrib":[-1,0],"isyak":[0,1]}}

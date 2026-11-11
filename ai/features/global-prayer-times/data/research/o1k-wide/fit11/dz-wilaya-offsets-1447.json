@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "source": "dz-marw-calendrier-1447-alger.pdf page 6, footer table",
+    "caption": "الفروق الزمنية لمدينة الجزائر والولايات المرتبطة بها زيادة ونقصانا لشهر جمادى الأولى 1447هـ / 2025م",
+    "reading": "printed minutes to ADD to the ALGIERS column for each wilaya; Algiers is the base and has no column",
+    "scope": "northern wilayas only, 25 columns; Adrar, Djelfa and the other southern/plateau wilayas are absent",
+    "order": "printed right to left, east to west",
+    "check": "the register is pure longitude at 4 min/degree: Tarf (8.31 E) -21, Oran (0.64 W) +15"
+  },
+  "rows": ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"],
+  "wilayas": [
+    { "wilaya": "الطارف", "minutes": [-21, -21, -21, -21, -21, -21] },
+    { "wilaya": "سوق أهراس", "minutes": [-19, -20, -19, -18, -18, -19] },
+    { "wilaya": "عنابة", "minutes": [-18, -18, -18, -19, -18, -18] },
+    { "wilaya": "قالمة", "minutes": [-17, -17, -17, -16, -16, -17] },
+    { "wilaya": "أم البواقي", "minutes": [-16, -17, -16, -14, -14, -15] },
+    { "wilaya": "سكيكدة", "minutes": [-15, -15, -15, -15, -15, -15] },
+    { "wilaya": "قسنطينة", "minutes": [-14, -14, -14, -13, -13, -13] },
+    { "wilaya": "ميلة", "minutes": [-12, -13, -12, -12, -12, -12] },
+    { "wilaya": "جيجل", "minutes": [-10, -10, -10, -10, -10, -10] },
+    { "wilaya": "سطيف", "minutes": [-9, -10, -9, -8, -8, -8] },
+    { "wilaya": "بجاية", "minutes": [-8, -8, -8, -8, -8, -8] },
+    { "wilaya": "برج بوعريريج", "minutes": [-6, -7, -6, -5, -5, -6] },
+    { "wilaya": "المسيلة", "minutes": [-6, -7, -5, -3, -3, -4] },
+    { "wilaya": "تيزي وزو", "minutes": [-4, -4, -4, -3, -3, -3] },
+    { "wilaya": "دلس", "minutes": [-3, -3, -3, -3, -3, -3] },
+    { "wilaya": "البويرة", "minutes": [-3, -3, -3, -2, -2, -2] },
+    { "wilaya": "بومرداس", "minutes": [-1, -1, -1, -1, -1, -1] },
+    { "wilaya": "البليدة", "minutes": [1, 1, 1, 2, 2, 2] },
+    { "wilaya": "المدية", "minutes": [2, 1, 2, 3, 3, 2] },
+    { "wilaya": "تيارت", "minutes": [3, 3, 3, 3, 3, 3] },
+    { "wilaya": "عين الدفلى", "minutes": [5, 4, 5, 6, 6, 5] },
+    { "wilaya": "الشلف", "minutes": [7, 7, 7, 9, 9, 8] },
+    { "wilaya": "غليزان", "minutes": [10, 9, 10, 13, 13, 12] },
+    { "wilaya": "مستغانم", "minutes": [12, 11, 12, 14, 14, 13] },
+    { "wilaya": "وهران", "minutes": [15, 14, 15, 18, 18, 16] }
+  ]
+}

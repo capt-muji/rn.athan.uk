@@ -1,0 +1,44 @@
+{
+ "fajr": {
+  "exact": 360,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.63,
+  "pctWithin1": 100
+ },
+ "sunrise": {
+  "exact": 360,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.63,
+  "pctWithin1": 100
+ },
+ "dhuhr": {
+  "exact": 361,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.9,
+  "pctWithin1": 100
+ },
+ "asr": {
+  "exact": 360,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.63,
+  "pctWithin1": 100
+ },
+ "magrib": {
+  "exact": 361,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.9,
+  "pctWithin1": 100
+ },
+ "isha": {
+  "exact": 361,
+  "within1": 365,
+  "worst": 1,
+  "pctExact": 98.9,
+  "pctWithin1": 100
+ }
+}

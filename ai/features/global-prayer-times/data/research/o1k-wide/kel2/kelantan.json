@@ -1,0 +1,2849 @@
+{
+ "coordinate_fit": {
+  "lat": 6.12,
+  "lng": 102.24,
+  "tz": "Asia/Kuala_Lumpur"
+ },
+ "ktn01_jakim_point": {
+  "lat": 6.1254,
+  "lng": 102.2381
+ },
+ "months": {
+  "zulkaedah": {
+   "zon1": {
+    "n": 29,
+    "first": "2020-06-23",
+    "last": "2020-07-21",
+    "point": {
+     "lat": 6.12,
+     "lng": 102.24
+    },
+    "fajr": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 29,
+     "angle": 17.7
+    },
+    "isha": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 29,
+     "angle": 17.05
+    },
+    "implied": {
+     "fajr": {
+      "n": 29,
+      "min": 17.6,
+      "max": 17.82,
+      "med": 17.71
+     },
+     "isha": {
+      "n": 29,
+      "min": 17.18,
+      "max": 17.38,
+      "med": 17.24
+     }
+    },
+    "solar": {
+     "syuruk": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 21,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.28,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.34,
+      "n": 29
+     },
+     "asar": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 16,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.45,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 25,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.14,
+      "n": 29
+     }
+    },
+    "dhuha_gap": {
+     "n": 29,
+     "min": 27,
+     "max": 28,
+     "med": 28
+    },
+    "isha_gap": {
+     "n": 29,
+     "min": 71,
+     "max": 72,
+     "med": 71
+    }
+   },
+   "zon2": {
+    "n": 29,
+    "first": "2020-06-23",
+    "last": "2020-07-21",
+    "point": {
+     "lat": 6.12,
+     "lng": 102.24
+    },
+    "fajr": {
+     "margin": -4,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "mae": 0,
+     "n": 29,
+     "angle": 15.9
+    },
+    "isha": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 27,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.07,
+     "n": 29,
+     "angle": 17.05
+    },
+    "implied": {
+     "fajr": {
+      "n": 29,
+      "min": 16.71,
+      "max": 16.92,
+      "med": 16.82
+     },
+     "isha": {
+      "n": 29,
+      "min": 17.16,
+      "max": 17.38,
+      "med": 17.23
+     }
+    },
+    "solar": {
+     "syuruk": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 15,
+      "worst": 2,
+      "mae": 1.48,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 13,
+      "worst": 2,
+      "mae": 1.55,
+      "n": 29
+     },
+     "asar": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.38,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 2,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.38,
+      "n": 29
+     }
+    },
+    "dhuha_gap": {
+     "n": 29,
+     "min": 28,
+     "max": 28,
+     "med": 28
+    },
+    "isha_gap": {
+     "n": 29,
+     "min": 70,
+     "max": 72,
+     "med": 71
+    }
+   },
+   "recipe": {
+    "jakim_zon1_isha17_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.66,
+      "n": 29
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 8,
+      "worst": 2,
+      "mae": 1.72,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 1.16,
+      "n": 29
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 13,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.55,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 25,
+      "worst": 2,
+      "mae": 1.14,
+      "n": 29
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 5,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.83,
+      "n": 29
+     }
+    },
+    "jakim_zon1_isha18_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.66,
+      "n": 29
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 8,
+      "worst": 2,
+      "mae": 1.72,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 1.16,
+      "n": 29
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 13,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.55,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 25,
+      "worst": 2,
+      "mae": 1.14,
+      "n": 29
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 6,
+      "mae": 5.38,
+      "n": 29
+     }
+    },
+    "jakim_zon1_isha17_at_jakim_point": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.66,
+      "n": 29
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 8,
+      "worst": 2,
+      "mae": 1.72,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 29,
+      "worst": 1,
+      "mae": 1.16,
+      "n": 29
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 12,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.59,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 25,
+      "worst": 2,
+      "mae": 1.14,
+      "n": 29
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 5,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.83,
+      "n": 29
+     }
+    },
+    "zon2_same_recipe_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 4,
+      "mae": 3.34,
+      "n": 29
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 6,
+      "mae": 5.48,
+      "n": 29
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 3,
+      "mae": 3.05,
+      "n": 29
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 18,
+      "worst": 2,
+      "mae": 1.38,
+      "n": 29
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 11,
+      "worst": 2,
+      "mae": 1.62,
+      "n": 29
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 4,
+      "within1": 29,
+      "worst": 1,
+      "mae": 0.86,
+      "n": 29
+     }
+    }
+   }
+  },
+  "syawal": {
+   "zon1": {
+    "n": 30,
+    "first": "2020-05-24",
+    "last": "2020-06-22",
+    "point": {
+     "lat": 6.12,
+     "lng": 102.24
+    },
+    "fajr": {
+     "margin": -3,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30,
+     "angle": 17.05
+    },
+    "isha": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "mae": 0,
+     "n": 30,
+     "angle": 17.05
+    },
+    "implied": {
+     "fajr": {
+      "n": 30,
+      "min": 17.6,
+      "max": 17.84,
+      "med": 17.75
+     },
+     "isha": {
+      "n": 30,
+      "min": 17.2,
+      "max": 17.42,
+      "med": 17.31
+     }
+    },
+    "solar": {
+     "syuruk": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 24,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.2,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.33,
+      "n": 30
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "floor",
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.43,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 21,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.3,
+      "n": 30
+     }
+    },
+    "dhuha_gap": {
+     "n": 30,
+     "min": 28,
+     "max": 28,
+     "med": 28
+    },
+    "isha_gap": {
+     "n": 30,
+     "min": 70,
+     "max": 72,
+     "med": 71
+    }
+   },
+   "zon2": {
+    "n": 30,
+    "first": "2020-05-24",
+    "last": "2020-06-22",
+    "point": {
+     "lat": 6.12,
+     "lng": 102.24
+    },
+    "fajr": {
+     "margin": -5,
+     "mode": "floor",
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "mae": 0,
+     "n": 30,
+     "angle": 15.7
+    },
+    "isha": {
+     "margin": -5,
+     "mode": "floor",
+     "exact": 27,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.1,
+     "n": 30,
+     "angle": 18.35
+    },
+    "implied": {
+     "fajr": {
+      "n": 30,
+      "min": 16.73,
+      "max": 16.93,
+      "med": 16.85
+     },
+     "isha": {
+      "n": 30,
+      "min": 17.15,
+      "max": 17.42,
+      "med": 17.27
+     }
+    },
+    "solar": {
+     "syuruk": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 18,
+      "worst": 2,
+      "mae": 1.4,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 14,
+      "worst": 2,
+      "mae": 1.53,
+      "n": 30
+     },
+     "asar": {
+      "margin": 3,
+      "mode": "floor",
+      "exact": 16,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.47,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.43,
+      "n": 30
+     }
+    },
+    "dhuha_gap": {
+     "n": 30,
+     "min": 28,
+     "max": 28,
+     "med": 28
+    },
+    "isha_gap": {
+     "n": 30,
+     "min": 70,
+     "max": 72,
+     "med": 71
+    }
+   },
+   "recipe": {
+    "jakim_zon1_isha17_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 6,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.8,
+      "n": 30
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 6,
+      "worst": 2,
+      "mae": 1.8,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 30,
+      "worst": 1,
+      "mae": 1.17,
+      "n": 30
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.43,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 21,
+      "worst": 2,
+      "mae": 1.3,
+      "n": 30
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 8,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.73,
+      "n": 30
+     }
+    },
+    "jakim_zon1_isha18_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 6,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.8,
+      "n": 30
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 6,
+      "worst": 2,
+      "mae": 1.8,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 30,
+      "worst": 1,
+      "mae": 1.17,
+      "n": 30
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.43,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 21,
+      "worst": 2,
+      "mae": 1.3,
+      "n": 30
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 6,
+      "mae": 5.27,
+      "n": 30
+     }
+    },
+    "jakim_zon1_isha17_at_jakim_point": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 6,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.8,
+      "n": 30
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 6,
+      "worst": 2,
+      "mae": 1.8,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 30,
+      "worst": 1,
+      "mae": 1.17,
+      "n": 30
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 17,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.43,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 21,
+      "worst": 2,
+      "mae": 1.3,
+      "n": 30
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 8,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.73,
+      "n": 30
+     }
+    },
+    "zon2_same_recipe_at_kb": {
+     "subuh": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 4,
+      "mae": 3.23,
+      "n": 30
+     },
+     "syuruk": {
+      "margin": -1,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 6,
+      "mae": 5.4,
+      "n": 30
+     },
+     "zohor": {
+      "margin": 1.5,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 3,
+      "mae": 3.03,
+      "n": 30
+     },
+     "asar": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 16,
+      "worst": 2,
+      "mae": 1.47,
+      "n": 30
+     },
+     "maghrib": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 17,
+      "worst": 2,
+      "mae": 1.43,
+      "n": 30
+     },
+     "isyak": {
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 4,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.87,
+      "n": 30
+     }
+    }
+   }
+  }
+ },
+ "verdicts": {
+  "zon1_is_jakim_recipe": true,
+  "zon2_breaks_single_point_geometry": true,
+  "zone_deltas": {
+   "subuh": [
+    -5,
+    -4,
+    -3
+   ],
+   "syuruk": [
+    -4,
+    -3
+   ],
+   "dhuha": [
+    -5,
+    -4,
+    -3
+   ],
+   "zohor": [
+    -2,
+    -1
+   ],
+   "asar": [
+    -3,
+    -2,
+    -1
+   ],
+   "maghrib": [
+    -1,
+    0
+   ],
+   "isyak": [
+    0,
+    1
+   ]
+  }
+ },
+ "point_solve": {
+  "zulkaedah": {
+   "zon1": {
+    "lat": 5.95,
+    "lng": 101.88,
+    "score": 0.13,
+    "sunrise": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 29
+    },
+    "maghrib": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 26,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.1,
+     "n": 29
+    }
+   },
+   "zon2": {
+    "lat": 4.35,
+    "lng": 101.62,
+    "score": 0,
+    "sunrise": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "mae": 0,
+     "n": 29
+    },
+    "maghrib": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "mae": 0,
+     "n": 29
+    }
+   }
+  },
+  "syawal": {
+   "zon1": {
+    "lat": 5.4,
+    "lng": 102.36,
+    "score": 0,
+    "sunrise": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "mae": 0,
+     "n": 30
+    },
+    "maghrib": {
+     "margin": 3,
+     "mode": "floor",
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "mae": 0,
+     "n": 30
+    }
+   },
+   "zon2": {
+    "lat": 4.9,
+    "lng": 101.88,
+    "score": 0.06,
+    "sunrise": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30
+    },
+    "maghrib": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30
+    }
+   }
+  }
+ },
+ "implied_at_solved_point": {
+  "zulkaedah": {
+   "zon1": {
+    "fajr": {
+     "n": 29,
+     "min": 17.99,
+     "max": 18.22,
+     "med": 18.11
+    },
+    "isha": {
+     "n": 29,
+     "min": 16.93,
+     "max": 17.14,
+     "med": 16.99
+    }
+   },
+   "zon2": {
+    "fajr": {
+     "n": 29,
+     "min": 18.03,
+     "max": 18.24,
+     "med": 18.14
+    },
+    "isha": {
+     "n": 29,
+     "min": 17.37,
+     "max": 17.59,
+     "med": 17.43
+    }
+   }
+  },
+  "syawal": {
+   "zon1": {
+    "fajr": {
+     "n": 30,
+     "min": 17.79,
+     "max": 18.06,
+     "med": 17.96
+    },
+    "isha": {
+     "n": 30,
+     "min": 17.61,
+     "max": 17.83,
+     "med": 17.73
+    }
+   },
+   "zon2": {
+    "fajr": {
+     "n": 30,
+     "min": 17.59,
+     "max": 17.79,
+     "med": 17.7
+    },
+    "isha": {
+     "n": 30,
+     "min": 17.38,
+     "max": 17.59,
+     "med": 17.49
+    }
+   }
+  }
+ },
+ "jakim_signed_delta": {
+  "zulkaedah": {
+   "zon1_isha17": {
+    "subuh": {
+     "mean": -0.66,
+     "min": -1,
+     "max": 0
+    },
+    "syuruk": {
+     "mean": 1.72,
+     "min": 1,
+     "max": 2
+    },
+    "zohor": {
+     "mean": 1.16,
+     "min": 0.5,
+     "max": 1.5
+    },
+    "asar": {
+     "mean": -0.59,
+     "min": -1,
+     "max": 0
+    },
+    "maghrib": {
+     "mean": 1.14,
+     "min": 1,
+     "max": 2
+    },
+    "isyak": {
+     "mean": -0.83,
+     "min": -1,
+     "max": 0
+    }
+   },
+   "zon1_isha18": {
+    "subuh": {
+     "mean": -0.66,
+     "min": -1,
+     "max": 0
+    },
+    "syuruk": {
+     "mean": 1.72,
+     "min": 1,
+     "max": 2
+    },
+    "zohor": {
+     "mean": 1.16,
+     "min": 0.5,
+     "max": 1.5
+    },
+    "asar": {
+     "mean": -0.59,
+     "min": -1,
+     "max": 0
+    },
+    "maghrib": {
+     "mean": 1.14,
+     "min": 1,
+     "max": 2
+    },
+    "isyak": {
+     "mean": -5.38,
+     "min": -6,
+     "max": -5
+    }
+   }
+  },
+  "syawal": {
+   "zon1_isha17": {
+    "subuh": {
+     "mean": -0.8,
+     "min": -1,
+     "max": 0
+    },
+    "syuruk": {
+     "mean": 1.8,
+     "min": 1,
+     "max": 2
+    },
+    "zohor": {
+     "mean": 1.17,
+     "min": 0.5,
+     "max": 1.5
+    },
+    "asar": {
+     "mean": -0.43,
+     "min": -1,
+     "max": 0
+    },
+    "maghrib": {
+     "mean": 1.3,
+     "min": 1,
+     "max": 2
+    },
+    "isyak": {
+     "mean": -0.73,
+     "min": -1,
+     "max": 0
+    }
+   },
+   "zon1_isha18": {
+    "subuh": {
+     "mean": -0.8,
+     "min": -1,
+     "max": 0
+    },
+    "syuruk": {
+     "mean": 1.8,
+     "min": 1,
+     "max": 2
+    },
+    "zohor": {
+     "mean": 1.17,
+     "min": 0.5,
+     "max": 1.5
+    },
+    "asar": {
+     "mean": -0.43,
+     "min": -1,
+     "max": 0
+    },
+    "maghrib": {
+     "mean": 1.3,
+     "min": 1,
+     "max": 2
+    },
+    "isyak": {
+     "mean": -5.27,
+     "min": -6,
+     "max": -5
+    }
+   }
+  }
+ },
+ "day_length": {
+  "zulkaedah": {
+   "zon1": {
+    "n": 29,
+    "min": 746,
+    "max": 750,
+    "med": 748
+   },
+   "zon2": {
+    "n": 29,
+    "min": 743,
+    "max": 746,
+    "med": 745
+   },
+   "delta_zon1_minus_zon2": {
+    "n": 29,
+    "min": 2,
+    "max": 4,
+    "med": 3
+   }
+  },
+  "syawal": {
+   "zon1": {
+    "n": 30,
+    "min": 746,
+    "max": 750,
+    "med": 749
+   },
+   "zon2": {
+    "n": 30,
+    "min": 744,
+    "max": 746,
+    "med": 745
+   },
+   "delta_zon1_minus_zon2": {
+    "n": 30,
+    "min": 2,
+    "max": 4,
+    "med": 4
+   }
+  }
+ },
+ "zon2_free_at_solved": {
+  "zulkaedah": {
+   "point": {
+    "lat": 4.35,
+    "lng": 101.62
+   },
+   "fajr": {
+    "margin": -3,
+    "mode": "floor",
+    "exact": 29,
+    "within1": 29,
+    "worst": 0,
+    "mae": 0,
+    "n": 29,
+    "angle": 17.45
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 29,
+    "within1": 29,
+    "worst": 0,
+    "mae": 0,
+    "n": 29,
+    "angle": 17.25
+   },
+   "solar": {
+    "syuruk": {
+     "margin": -1,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "mae": 0,
+     "n": 29
+    },
+    "maghrib": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "mae": 0,
+     "n": 29
+    },
+    "zohor": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 29
+    },
+    "asar": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 29
+    }
+   },
+   "implied": {
+    "fajr": {
+     "n": 29,
+     "min": 18.03,
+     "max": 18.24,
+     "med": 18.14
+    },
+    "isha": {
+     "n": 29,
+     "min": 17.37,
+     "max": 17.59,
+     "med": 17.43
+    }
+   }
+  },
+  "syawal": {
+   "point": {
+    "lat": 4.9,
+    "lng": 101.88
+   },
+   "fajr": {
+    "margin": -5,
+    "mode": "floor",
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30,
+    "angle": 16.55
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 29,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.03,
+    "n": 30,
+    "angle": 17.45
+   },
+   "solar": {
+    "syuruk": {
+     "margin": 1,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30
+    },
+    "maghrib": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30
+    },
+    "zohor": {
+     "margin": 3,
+     "mode": "floor",
+     "exact": 28,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.07,
+     "n": 30
+    },
+    "asar": {
+     "margin": 2,
+     "mode": "floor",
+     "exact": 29,
+     "within1": 30,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 30
+    }
+   },
+   "implied": {
+    "fajr": {
+     "n": 30,
+     "min": 17.59,
+     "max": 17.79,
+     "med": 17.7
+    },
+    "isha": {
+     "n": 30,
+     "min": 17.38,
+     "max": 17.59,
+     "med": 17.49
+    }
+   }
+  }
+ },
+ "transcription": {
+  "source": {
+   "publisher": "Jabatan Mufti Negeri Kelantan (JMNK), Bahagian Falak, Unit Takwim & Arah Kiblat",
+   "tier": "authority by publisher (state mufti department)",
+   "surface": "public Facebook page facebook.com/MUFTIKELANTAN, monthly poster image, Zon 1 and Zon 2 side by side",
+   "poster_footer": "Jabatan Mufti Negeri Kelantan / http://www.muftikelantan.gov.my/ / Tel: 09 748 2023 Fax: 09 7478170 / jabmufti@kelantan.gov.my",
+   "zones": {
+    "zon1": "Jajahan Kota Bharu, Bachok, Pasir Puteh, Tumpat, Pasir Mas, Tanah Merah, Machang, Kuala Krai dan Gua Musang (Daerah Chiku)",
+    "zon2": "Jajahan Jeli, Gua Musang (Daerah Galas dan Bertam) dan Jajahan Kecil Lojing"
+   },
+   "columns": [
+    "hijri_day",
+    "date",
+    "weekday",
+    "subuh",
+    "syuruk",
+    "dhuha",
+    "zohor",
+    "asar",
+    "maghrib",
+    "isyak"
+   ],
+   "no_imsak_column": true
+  },
+  "captures": {
+   "zulkaedah": {
+    "post": "https://www.facebook.com/MUFTIKELANTAN/posts/1549876565218391/",
+    "title": "JADUAL WAKTU SOLAT NEGERI KELANTAN BAGI BULAN ZULKAEDAH (JUN-JULAI) TAHUN 1441H/2020M",
+    "image": "captures/my-ktn-1441-zulkaedah-media1549876541885060.jpg",
+    "pixels": [
+     1381,
+     2048
+    ],
+    "bytes": 1059081
+   },
+   "syawal": {
+    "post": "https://www.facebook.com/MUFTIKELANTAN/posts/1520979401441441/",
+    "title": "JADUAL WAKTU SOLAT NEGERI KELANTAN BAGI BULAN SYAWAL (MEI-JUN) TAHUN 1441H/2020M",
+    "image": "captures/my-ktn-1441-syawal-media1520979371441444.jpg",
+    "pixels": [
+     1381,
+     2048
+    ],
+    "bytes": 1082678
+   }
+  },
+  "readings": {
+   "zulkaedah": {
+    "zon1": [
+     [
+      "1",
+      "23 JUN",
+      "SELASA",
+      "5.44",
+      "7.00",
+      "7.28",
+      "1.16",
+      "4.42",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "2",
+      "24 JUN",
+      "RABU",
+      "5.44",
+      "7.00",
+      "7.28",
+      "1.16",
+      "4.42",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "3",
+      "25 JUN",
+      "KHAMIS",
+      "5.44",
+      "7.00",
+      "7.28",
+      "1.16",
+      "4.43",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "4",
+      "26 JUN",
+      "JUMAAT",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.17",
+      "4.43",
+      "7.30",
+      "8.41"
+     ],
+     [
+      "5",
+      "27 JUN",
+      "SABTU",
+      "5.45",
+      "7.01",
+      "7.29",
+      "1.17",
+      "4.43",
+      "7.30",
+      "8.41"
+     ],
+     [
+      "6",
+      "28 JUN",
+      "AHAD",
+      "5.45",
+      "7.01",
+      "7.29",
+      "1.17",
+      "4.43",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "7",
+      "29 JUN",
+      "ISNIN",
+      "5.45",
+      "7.01",
+      "7.29",
+      "1.17",
+      "4.43",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "8",
+      "30 JUN",
+      "SELASA",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.17",
+      "4.43",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "9",
+      "1 JULAI",
+      "RABU",
+      "5.46",
+      "7.02",
+      "7.30",
+      "1.18",
+      "4.43",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "10",
+      "2 JULAI",
+      "KHAMIS",
+      "5.46",
+      "7.02",
+      "7.30",
+      "1.18",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "11",
+      "3 JULAI",
+      "JUMAAT",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.18",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "12",
+      "4 JULAI",
+      "SABTU",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.18",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "13",
+      "5 JULAI",
+      "AHAD",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.18",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "14",
+      "6 JULAI",
+      "ISNIN",
+      "5.47",
+      "7.03",
+      "7.31",
+      "1.18",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "15",
+      "7 JULAI",
+      "SELASA",
+      "5.48",
+      "7.03",
+      "7.31",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "16",
+      "8 JULAI",
+      "RABU",
+      "5.48",
+      "7.03",
+      "7.31",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "17",
+      "9 JULAI",
+      "KHAMIS",
+      "5.48",
+      "7.03",
+      "7.31",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "18",
+      "10 JULAI",
+      "JUMAAT",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "19",
+      "11 JULAI",
+      "SABTU",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "20",
+      "12 JULAI",
+      "AHAD",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "21",
+      "13 JULAI",
+      "ISNIN",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.19",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "22",
+      "14 JULAI",
+      "SELASA",
+      "5.50",
+      "7.04",
+      "7.32",
+      "1.20",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "23",
+      "15 JULAI",
+      "RABU",
+      "5.50",
+      "7.04",
+      "7.32",
+      "1.20",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "24",
+      "16 JULAI",
+      "KHAMIS",
+      "5.50",
+      "7.05",
+      "7.33",
+      "1.20",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "25",
+      "17 JULAI",
+      "JUMAAT",
+      "5.51",
+      "7.05",
+      "7.32",
+      "1.20",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "26",
+      "18 JULAI",
+      "SABTU",
+      "5.51",
+      "7.05",
+      "7.32",
+      "1.20",
+      "4.44",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "27",
+      "19 JULAI",
+      "AHAD",
+      "5.51",
+      "7.05",
+      "7.32",
+      "1.20",
+      "4.43",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "28",
+      "20 JULAI",
+      "ISNIN",
+      "5.51",
+      "7.05",
+      "7.32",
+      "1.20",
+      "4.43",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "29",
+      "21 JULAI",
+      "SELASA",
+      "5.52",
+      "7.05",
+      "7.32",
+      "1.20",
+      "4.43",
+      "7.31",
+      "8.42"
+     ]
+    ],
+    "zon2": [
+     [
+      "1",
+      "23 JUN",
+      "SELASA",
+      "5.48",
+      "7.04",
+      "7.32",
+      "1.18",
+      "4.44",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "2",
+      "24 JUN",
+      "RABU",
+      "5.48",
+      "7.04",
+      "7.32",
+      "1.18",
+      "4.44",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "3",
+      "25 JUN",
+      "KHAMIS",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.18",
+      "4.44",
+      "7.29",
+      "8.41"
+     ],
+     [
+      "4",
+      "26 JUN",
+      "JUMAAT",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.18",
+      "4.44",
+      "7.30",
+      "8.41"
+     ],
+     [
+      "5",
+      "27 JUN",
+      "SABTU",
+      "5.49",
+      "7.04",
+      "7.32",
+      "1.19",
+      "4.45",
+      "7.30",
+      "8.41"
+     ],
+     [
+      "6",
+      "28 JUN",
+      "AHAD",
+      "5.49",
+      "7.05",
+      "7.33",
+      "1.19",
+      "4.45",
+      "7.30",
+      "8.41"
+     ],
+     [
+      "7",
+      "29 JUN",
+      "ISNIN",
+      "5.50",
+      "7.05",
+      "7.33",
+      "1.19",
+      "4.45",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "8",
+      "30 JUN",
+      "SELASA",
+      "5.50",
+      "7.05",
+      "7.33",
+      "1.19",
+      "4.45",
+      "7.30",
+      "8.42"
+     ],
+     [
+      "9",
+      "1 JULAI",
+      "RABU",
+      "5.50",
+      "7.05",
+      "7.33",
+      "1.19",
+      "4.45",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "10",
+      "2 JULAI",
+      "KHAMIS",
+      "5.50",
+      "7.06",
+      "7.34",
+      "1.20",
+      "4.45",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "11",
+      "3 JULAI",
+      "JUMAAT",
+      "5.51",
+      "7.06",
+      "7.34",
+      "1.20",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "12",
+      "4 JULAI",
+      "SABTU",
+      "5.51",
+      "7.06",
+      "7.34",
+      "1.20",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "13",
+      "5 JULAI",
+      "AHAD",
+      "5.51",
+      "7.06",
+      "7.34",
+      "1.20",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "14",
+      "6 JULAI",
+      "ISNIN",
+      "5.51",
+      "7.06",
+      "7.34",
+      "1.20",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "15",
+      "7 JULAI",
+      "SELASA",
+      "5.52",
+      "7.07",
+      "7.35",
+      "1.21",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "16",
+      "8 JULAI",
+      "RABU",
+      "5.52",
+      "7.07",
+      "7.35",
+      "1.21",
+      "4.46",
+      "7.31",
+      "8.42"
+     ],
+     [
+      "17",
+      "9 JULAI",
+      "KHAMIS",
+      "5.52",
+      "7.07",
+      "7.35",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "18",
+      "10 JULAI",
+      "JUMAAT",
+      "5.53",
+      "7.07",
+      "7.35",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "19",
+      "11 JULAI",
+      "SABTU",
+      "5.53",
+      "7.07",
+      "7.35",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "20",
+      "12 JULAI",
+      "AHAD",
+      "5.53",
+      "7.08",
+      "7.36",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "21",
+      "13 JULAI",
+      "ISNIN",
+      "5.53",
+      "7.08",
+      "7.36",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "22",
+      "14 JULAI",
+      "SELASA",
+      "5.54",
+      "7.08",
+      "7.36",
+      "1.21",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "23",
+      "15 JULAI",
+      "RABU",
+      "5.54",
+      "7.08",
+      "7.36",
+      "1.22",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "24",
+      "16 JULAI",
+      "KHAMIS",
+      "5.54",
+      "7.08",
+      "7.36",
+      "1.22",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "25",
+      "17 JULAI",
+      "JUMAAT",
+      "5.54",
+      "7.08",
+      "7.36",
+      "1.22",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "26",
+      "18 JULAI",
+      "SABTU",
+      "5.55",
+      "7.09",
+      "7.37",
+      "1.22",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "27",
+      "19 JULAI",
+      "AHAD",
+      "5.55",
+      "7.09",
+      "7.37",
+      "1.22",
+      "4.46",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "28",
+      "20 JULAI",
+      "ISNIN",
+      "5.55",
+      "7.09",
+      "7.37",
+      "1.22",
+      "4.45",
+      "7.32",
+      "8.42"
+     ],
+     [
+      "29",
+      "21 JULAI",
+      "SELASA",
+      "5.55",
+      "7.09",
+      "7.37",
+      "1.22",
+      "4.45",
+      "7.32",
+      "8.42"
+     ]
+    ]
+   },
+   "syawal": {
+    "zon1": [
+     [
+      "1",
+      "24 Mei",
+      "Ahad",
+      "5.42",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.34",
+      "7.22",
+      "8.33"
+     ],
+     [
+      "2",
+      "25 Mei",
+      "Isnin",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.34",
+      "7.22",
+      "8.33"
+     ],
+     [
+      "3",
+      "26 Mei",
+      "Selasa",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.35",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "4",
+      "27 Mei",
+      "Rabu",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.35",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "5",
+      "28 Mei",
+      "Khamis",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.35",
+      "7.23",
+      "8.34"
+     ],
+     [
+      "6",
+      "29 Mei",
+      "Jumaat",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.36",
+      "7.23",
+      "8.34"
+     ],
+     [
+      "7",
+      "30 Mei",
+      "Sabtu",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.36",
+      "7.23",
+      "8.34"
+     ],
+     [
+      "8",
+      "31 Mei",
+      "Ahad",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.11",
+      "4.36",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "9",
+      "1 Jun",
+      "Isnin",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.12",
+      "4.36",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "10",
+      "2 Jun",
+      "Selasa",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.12",
+      "4.37",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "11",
+      "3 Jun",
+      "Rabu",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.12",
+      "4.37",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "12",
+      "4 Jun",
+      "Khamis",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.12",
+      "4.37",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "13",
+      "5 Jun",
+      "Jumaat",
+      "5.41",
+      "6.56",
+      "7.24",
+      "1.12",
+      "4.38",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "14",
+      "6 Jun",
+      "Sabtu",
+      "5.41",
+      "6.57",
+      "7.25",
+      "1.12",
+      "4.38",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "15",
+      "7 Jun",
+      "Ahad",
+      "5.41",
+      "6.57",
+      "7.25",
+      "1.13",
+      "4.38",
+      "7.25",
+      "8.37"
+     ],
+     [
+      "16",
+      "8 Jun",
+      "Isnin",
+      "5.41",
+      "6.57",
+      "7.25",
+      "1.13",
+      "4.38",
+      "7.26",
+      "8.37"
+     ],
+     [
+      "17",
+      "9 Jun",
+      "Selasa",
+      "5.42",
+      "6.57",
+      "7.25",
+      "1.13",
+      "4.39",
+      "7.26",
+      "8.37"
+     ],
+     [
+      "18",
+      "10 Jun",
+      "Rabu",
+      "5.42",
+      "6.57",
+      "7.25",
+      "1.13",
+      "4.39",
+      "7.26",
+      "8.38"
+     ],
+     [
+      "19",
+      "11 Jun",
+      "Khamis",
+      "5.42",
+      "6.57",
+      "7.25",
+      "1.13",
+      "4.39",
+      "7.26",
+      "8.38"
+     ],
+     [
+      "20",
+      "12 Jun",
+      "Jumaat",
+      "5.42",
+      "6.57",
+      "7.25",
+      "1.14",
+      "4.40",
+      "7.26",
+      "8.38"
+     ],
+     [
+      "21",
+      "13 Jun",
+      "Sabtu",
+      "5.42",
+      "6.58",
+      "7.26",
+      "1.14",
+      "4.40",
+      "7.27",
+      "8.38"
+     ],
+     [
+      "22",
+      "14 Jun",
+      "Ahad",
+      "5.42",
+      "6.58",
+      "7.26",
+      "1.14",
+      "4.40",
+      "7.27",
+      "8.39"
+     ],
+     [
+      "23",
+      "15 Jun",
+      "Isnin",
+      "5.42",
+      "6.58",
+      "7.26",
+      "1.14",
+      "4.40",
+      "7.27",
+      "8.39"
+     ],
+     [
+      "24",
+      "16 Jun",
+      "Selasa",
+      "5.42",
+      "6.58",
+      "7.26",
+      "1.14",
+      "4.41",
+      "7.27",
+      "8.39"
+     ],
+     [
+      "25",
+      "17 Jun",
+      "Rabu",
+      "5.43",
+      "6.58",
+      "7.26",
+      "1.15",
+      "4.41",
+      "7.28",
+      "8.39"
+     ],
+     [
+      "26",
+      "18 Jun",
+      "Khamis",
+      "5.43",
+      "6.59",
+      "7.27",
+      "1.15",
+      "4.41",
+      "7.28",
+      "8.40"
+     ],
+     [
+      "27",
+      "19 Jun",
+      "Jumaat",
+      "5.43",
+      "6.59",
+      "7.27",
+      "1.15",
+      "4.41",
+      "7.28",
+      "8.40"
+     ],
+     [
+      "28",
+      "20 Jun",
+      "Sabtu",
+      "5.43",
+      "6.59",
+      "7.27",
+      "1.15",
+      "4.41",
+      "7.28",
+      "8.40"
+     ],
+     [
+      "29",
+      "21 Jun",
+      "Ahad",
+      "5.43",
+      "6.59",
+      "7.27",
+      "1.15",
+      "4.42",
+      "7.29",
+      "8.40"
+     ],
+     [
+      "30",
+      "22 Jun",
+      "Isnin",
+      "5.44",
+      "7.00",
+      "7.28",
+      "1.16",
+      "4.42",
+      "7.29",
+      "8.41"
+     ]
+    ],
+    "zon2": [
+     [
+      "1",
+      "24 Mei",
+      "Ahad",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.12",
+      "4.36",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "2",
+      "25 Mei",
+      "Isnin",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.13",
+      "4.36",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "3",
+      "26 Mei",
+      "Selasa",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.13",
+      "4.37",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "4",
+      "27 Mei",
+      "Rabu",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.13",
+      "4.37",
+      "7.23",
+      "8.33"
+     ],
+     [
+      "5",
+      "28 Mei",
+      "Khamis",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.13",
+      "4.37",
+      "7.23",
+      "8.34"
+     ],
+     [
+      "6",
+      "29 Mei",
+      "Jumaat",
+      "5.45",
+      "6.59",
+      "7.27",
+      "1.13",
+      "4.38",
+      "7.23",
+      "8.34"
+     ],
+     [
+      "7",
+      "30 Mei",
+      "Sabtu",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.13",
+      "4.38",
+      "7.24",
+      "8.34"
+     ],
+     [
+      "8",
+      "31 Mei",
+      "Ahad",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.13",
+      "4.38",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "9",
+      "1 Jun",
+      "Isnin",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.13",
+      "4.38",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "10",
+      "2 Jun",
+      "Selasa",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.39",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "11",
+      "3 Jun",
+      "Rabu",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.39",
+      "7.24",
+      "8.35"
+     ],
+     [
+      "12",
+      "4 Jun",
+      "Khamis",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.39",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "13",
+      "5 Jun",
+      "Jumaat",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.39",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "14",
+      "6 Jun",
+      "Sabtu",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.40",
+      "7.25",
+      "8.36"
+     ],
+     [
+      "15",
+      "7 Jun",
+      "Ahad",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.14",
+      "4.40",
+      "7.25",
+      "8.37"
+     ],
+     [
+      "16",
+      "8 Jun",
+      "Isnin",
+      "5.45",
+      "7.00",
+      "7.28",
+      "1.15",
+      "4.40",
+      "7.26",
+      "8.37"
+     ],
+     [
+      "17",
+      "9 Jun",
+      "Selasa",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.15",
+      "4.41",
+      "7.26",
+      "8.37"
+     ],
+     [
+      "18",
+      "10 Jun",
+      "Rabu",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.15",
+      "4.41",
+      "7.26",
+      "8.37"
+     ],
+     [
+      "19",
+      "11 Jun",
+      "Khamis",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.15",
+      "4.41",
+      "7.26",
+      "8.38"
+     ],
+     [
+      "20",
+      "12 Jun",
+      "Jumaat",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.15",
+      "4.41",
+      "7.27",
+      "8.38"
+     ],
+     [
+      "21",
+      "13 Jun",
+      "Sabtu",
+      "5.46",
+      "7.01",
+      "7.29",
+      "1.16",
+      "4.42",
+      "7.27",
+      "8.38"
+     ],
+     [
+      "22",
+      "14 Jun",
+      "Ahad",
+      "5.46",
+      "7.02",
+      "7.30",
+      "1.16",
+      "4.42",
+      "7.27",
+      "8.38"
+     ],
+     [
+      "23",
+      "15 Jun",
+      "Isnin",
+      "5.46",
+      "7.02",
+      "7.30",
+      "1.16",
+      "4.42",
+      "7.27",
+      "8.39"
+     ],
+     [
+      "24",
+      "16 Jun",
+      "Selasa",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.16",
+      "4.42",
+      "7.27",
+      "8.39"
+     ],
+     [
+      "25",
+      "17 Jun",
+      "Rabu",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.17",
+      "4.43",
+      "7.28",
+      "8.39"
+     ],
+     [
+      "26",
+      "18 Jun",
+      "Khamis",
+      "5.47",
+      "7.02",
+      "7.30",
+      "1.17",
+      "4.43",
+      "7.28",
+      "8.39"
+     ],
+     [
+      "27",
+      "19 Jun",
+      "Jumaat",
+      "5.47",
+      "7.03",
+      "7.31",
+      "1.17",
+      "4.43",
+      "7.28",
+      "8.40"
+     ],
+     [
+      "28",
+      "20 Jun",
+      "Sabtu",
+      "5.47",
+      "7.03",
+      "7.31",
+      "1.17",
+      "4.43",
+      "7.28",
+      "8.40"
+     ],
+     [
+      "29",
+      "21 Jun",
+      "Ahad",
+      "5.48",
+      "7.03",
+      "7.31",
+      "1.17",
+      "4.44",
+      "7.29",
+      "8.40"
+     ],
+     [
+      "30",
+      "22 Jun",
+      "Isnin",
+      "5.48",
+      "7.03",
+      "7.31",
+      "1.18",
+      "4.44",
+      "7.29",
+      "8.40"
+     ]
+    ]
+   }
+  }
+ }
+}

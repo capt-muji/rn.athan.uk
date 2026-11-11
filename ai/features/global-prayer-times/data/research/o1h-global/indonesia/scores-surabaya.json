@@ -1,0 +1,830 @@
+{
+ "key": "surabaya",
+ "name": "Surabaya",
+ "region": "Java (east)",
+ "tz": "Asia/Jakarta",
+ "offset": 7,
+ "lat": -7.2575,
+ "lon": 112.7521,
+ "kLat": -7.274322986602783,
+ "kLon": 112.72358703613281,
+ "kemenagFajrAngle": 19.55,
+ "kemenagIshaAngle": 18.43,
+ "days": 365,
+ "printedRecipeReplay": {
+  "fajr": {
+   "n": 365,
+   "mean": 0.011,
+   "worst": 1,
+   "within2": 100
+  },
+  "isha": {
+   "n": 365,
+   "mean": 0,
+   "worst": 0,
+   "within2": 100
+  },
+  "exactFajr": 98.9,
+  "exactIsha": 100
+ },
+ "cells": {
+  "mwl": {
+   "label": "Muslim World League",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 4.238,
+     "worst": 5,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 8.449,
+     "worst": 10,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 6.216,
+     "worst": 7,
+     "within2": 0
+    }
+   }
+  },
+  "isna15": {
+   "label": "ISNA / FCNA (15/15, 2017 onward)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 21.148,
+     "worst": 23,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 12.734,
+     "worst": 14,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 16.945,
+     "worst": 19,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 19.186,
+     "worst": 21,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 14.679,
+     "worst": 16,
+     "within2": 0
+    }
+   }
+  },
+  "isna2010": {
+   "label": "ISNA-2010 (18/18 claim to ICOP)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.211,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "ummalqura": {
+   "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.356,
+     "worst": 7,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 20.019,
+     "worst": 51,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 15.808,
+     "worst": 47,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 4.332,
+     "worst": 5,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 18.025,
+     "worst": 49,
+     "within2": 0
+    }
+   }
+  },
+  "egyptian": {
+   "label": "Egyptian General Authority (19.5/17.5)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 2.126,
+     "worst": 3,
+     "within2": 87.4
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2.121,
+     "worst": 3,
+     "within2": 87.9
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 6.332,
+     "worst": 7,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.132,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 4.11,
+     "worst": 5,
+     "within2": 0
+    }
+   }
+  },
+  "karachi": {
+   "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+   "asrMatch": false,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.211,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "moonsighting": {
+   "label": "Moonsighting Committee Worldwide",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.137,
+     "worst": 2,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.348,
+     "worst": 6,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2.14,
+     "worst": 4,
+     "within2": 86.3
+    }
+   }
+  },
+  "diyanet-tr": {
+   "label": "Diyanet domestic (18/17, temkin)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 4.238,
+     "worst": 5,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 8.449,
+     "worst": 10,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 6.216,
+     "worst": 7,
+     "within2": 0
+    }
+   }
+  },
+  "diyanet-eu": {
+   "label": "Diyanet European unified (18/16)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 8.521,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 12.732,
+     "worst": 14,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 10.455,
+     "worst": 12,
+     "within2": 0
+    }
+   }
+  },
+  "jakim": {
+   "label": "JAKIM e-Solat (18/18)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.211,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "kuwait": {
+   "label": "Kuwait Awqaf (18/17.5)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2.121,
+     "worst": 3,
+     "within2": 87.9
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 6.332,
+     "worst": 7,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 4.11,
+     "worst": 5,
+     "within2": 0
+    }
+   }
+  },
+  "qatar": {
+   "label": "Qatar MOI (18, isha +90)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 17.553,
+     "worst": 21,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 13.342,
+     "worst": 17,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 15.559,
+     "worst": 19,
+     "within2": 0
+    }
+   }
+  },
+  "singapore": {
+   "label": "MUIS Singapore (20/18, ceil)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.496,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.43,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 3.781,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 1.515,
+     "worst": 2,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 1.515,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "dubai": {
+   "label": "Dubai / UAE AWQAF (18.2/18.2)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 7.597,
+     "worst": 9,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.833,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 3.378,
+     "worst": 4,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 5.608,
+     "worst": 7,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 1.123,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "tehran": {
+   "label": "Tehran Geophysics (17.7 / 14 software default)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 9.734,
+     "worst": 11,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 16.97,
+     "worst": 19,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 21.181,
+     "worst": 23,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 7.748,
+     "worst": 9,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 18.896,
+     "worst": 21,
+     "within2": 0
+    }
+   }
+  },
+  "fazilet-a": {
+   "label": "Fazilet Profile A (19.8/17.8 effective)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.849,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.888,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 5.099,
+     "worst": 6,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 1.148,
+     "worst": 2,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2.874,
+     "worst": 3,
+     "within2": 12.6
+    }
+   }
+  },
+  "fazilet-b": {
+   "label": "Fazilet Profile B (20.8/18.7 effective)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 3.403,
+     "worst": 4,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2.951,
+     "worst": 4,
+     "within2": 7.7
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 1.26,
+     "worst": 2,
+     "within2": 100
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 5.405,
+     "worst": 6,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.967,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "ecfr": {
+   "label": "ECFR (18/17, Fiqh Academy resolution)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 8.447,
+     "worst": 10,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 4.238,
+     "worst": 5,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 8.449,
+     "worst": 10,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 6.444,
+     "worst": 8,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 6.216,
+     "worst": 7,
+     "within2": 0
+    }
+   }
+  },
+  "russia": {
+   "label": "Spiritual Administration of Russia (16/15)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 16.923,
+     "worst": 19,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 12.734,
+     "worst": 14,
+     "within2": 0
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 16.945,
+     "worst": 19,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 14.942,
+     "worst": 17,
+     "within2": 0
+    },
+    "isha": {
+     "n": 365,
+     "mean": 14.679,
+     "worst": 16,
+     "within2": 0
+    }
+   }
+  },
+  "mabims": {
+   "label": "MABIMS (20/18)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.211,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 1.995,
+     "worst": 3,
+     "within2": 99.7
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  },
+  "kemenag": {
+   "label": "Kemenag RI (20/18)",
+   "asrMatch": true,
+   "vsParam": {
+    "fajr": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha19": {
+     "n": 365,
+     "mean": 4.211,
+     "worst": 5,
+     "within2": 0
+    }
+   },
+   "vsPrinted": {
+    "fajr": {
+     "n": 365,
+     "mean": 1.995,
+     "worst": 3,
+     "within2": 99.7
+    },
+    "isha": {
+     "n": 365,
+     "mean": 2,
+     "worst": 2,
+     "within2": 100
+    }
+   }
+  }
+ }
+}

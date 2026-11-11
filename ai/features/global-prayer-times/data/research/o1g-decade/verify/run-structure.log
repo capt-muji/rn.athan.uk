@@ -1,0 +1,50 @@
+{
+ "mmdd": {
+  "distinctKeys": 366,
+  "inconsistentLead": [],
+  "inconsistentLag": [],
+  "verdict": "lead and lag are single-valued per MM-DD across all 11 years"
+ },
+ "doyKeying": {
+  "cellsCompared": 24108,
+  "mmddExact": 24105,
+  "doyExact": 23616,
+  "offsetCellsWhereKeysDiffer": 495,
+  "leapYearPostFebOffsetCells": 1842,
+  "leapMmddExact": 1839,
+  "leapDoyExact": 1350
+ },
+ "tableVsTruthMismatches": [
+  {
+   "key": "02-29",
+   "col": "isha",
+   "table": 87,
+   "truth": 86
+  }
+ ],
+ "recipeTableVs2027Table": {
+  "days": 365,
+  "mismatches": []
+ },
+ "dst": {
+  "checked": 69476,
+  "mismatches": 0,
+  "sample": [],
+  "eventMismatches": 0
+ },
+ "missCount": 418,
+ "missesByMonth": {
+  "10": 67,
+  "11": 65,
+  "12": 25,
+  "01": 20,
+  "02": 26,
+  "03": 57,
+  "04": 40,
+  "05": 22,
+  "06": 26,
+  "07": 36,
+  "08": 18,
+  "09": 16
+ }
+}

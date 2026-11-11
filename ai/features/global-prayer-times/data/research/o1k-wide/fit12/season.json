@@ -1,0 +1,352 @@
+{
+ "Aberdeen": {
+  "recipe": {
+   "fa": 18,
+   "is": 15,
+   "portions": {
+    "fajr": 0.5,
+    "isha": 0.14285714285714285
+   }
+  },
+  "days": 333,
+  "months": {
+   "2026-01": {
+    "days": 31,
+    "fajr": {
+     "exact": 17,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 16,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-02": {
+    "days": 28,
+    "fajr": {
+     "exact": 15,
+     "within1": 28,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 13,
+     "within1": 28,
+     "worst": 1
+    }
+   },
+   "2026-03": {
+    "days": 30,
+    "fajr": {
+     "exact": 17,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 15,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-04": {
+    "days": 30,
+    "fajr": {
+     "exact": 21,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 14,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-05": {
+    "days": 31,
+    "fajr": {
+     "exact": 16,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 11,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-06": {
+    "days": 29,
+    "fajr": {
+     "exact": 14,
+     "within1": 29,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 10,
+     "within1": 29,
+     "worst": 1
+    }
+   },
+   "2026-07": {
+    "days": 31,
+    "fajr": {
+     "exact": 21,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 15,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-08": {
+    "days": 31,
+    "fajr": {
+     "exact": 18,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 11,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-09": {
+    "days": 1,
+    "fajr": {
+     "exact": 1,
+     "within1": 1,
+     "worst": 0
+    },
+    "isha": {
+     "exact": 1,
+     "within1": 1,
+     "worst": 0
+    }
+   },
+   "2026-10": {
+    "days": 30,
+    "fajr": {
+     "exact": 20,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 12,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-11": {
+    "days": 30,
+    "fajr": {
+     "exact": 15,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 17,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-12": {
+    "days": 31,
+    "fajr": {
+     "exact": 17,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 14,
+     "within1": 31,
+     "worst": 1
+    }
+   }
+  },
+  "amplitude": {
+   "fajrJanMin": "05:56",
+   "fajrJulMin": "01:12",
+   "fajrJanMean": 371.9,
+   "fajrJulMean": 72.7,
+   "ishaJanMean": 1081.3,
+   "ishaJulMean": 1367.7
+  }
+ },
+ "Nottingham": {
+  "recipe": {
+   "fa": 18,
+   "is": 18
+  },
+  "days": 365,
+  "months": {
+   "2026-01": {
+    "days": 31,
+    "fajr": {
+     "exact": 17,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 21,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-02": {
+    "days": 28,
+    "fajr": {
+     "exact": 11,
+     "within1": 28,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 20,
+     "within1": 28,
+     "worst": 1
+    }
+   },
+   "2026-03": {
+    "days": 31,
+    "fajr": {
+     "exact": 17,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 18,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-04": {
+    "days": 30,
+    "fajr": {
+     "exact": 1,
+     "within1": 1,
+     "worst": 4
+    },
+    "isha": {
+     "exact": 1,
+     "within1": 1,
+     "worst": 36
+    }
+   },
+   "2026-05": {
+    "days": 31,
+    "fajr": {
+     "exact": 7,
+     "within1": 14,
+     "worst": 4
+    },
+    "isha": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 1353
+    }
+   },
+   "2026-06": {
+    "days": 30,
+    "fajr": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 0
+    },
+    "isha": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 0
+    }
+   },
+   "2026-07": {
+    "days": 31,
+    "fajr": {
+     "exact": 0,
+     "within1": 1,
+     "worst": 5
+    },
+    "isha": {
+     "exact": 0,
+     "within1": 0,
+     "worst": 1354
+    }
+   },
+   "2026-08": {
+    "days": 31,
+    "fajr": {
+     "exact": 8,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 0,
+     "within1": 9,
+     "worst": 1359
+    }
+   },
+   "2026-09": {
+    "days": 30,
+    "fajr": {
+     "exact": 7,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 4,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-10": {
+    "days": 31,
+    "fajr": {
+     "exact": 13,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 15,
+     "within1": 31,
+     "worst": 1
+    }
+   },
+   "2026-11": {
+    "days": 30,
+    "fajr": {
+     "exact": 15,
+     "within1": 30,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 10,
+     "within1": 30,
+     "worst": 1
+    }
+   },
+   "2026-12": {
+    "days": 31,
+    "fajr": {
+     "exact": 15,
+     "within1": 31,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 15,
+     "within1": 31,
+     "worst": 1
+    }
+   }
+  },
+  "amplitude": {
+   "fajrJanMin": "05:49",
+   "fajrJulMin": "01:08",
+   "fajrJanMean": 361.8,
+   "fajrJulMean": 73.4,
+   "ishaJanMean": 1105.5,
+   "ishaJulMean": 1369.5
+  }
+ }
+}

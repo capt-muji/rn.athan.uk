@@ -1,0 +1,25 @@
+{
+  "_title": "Fiji two-authority-editions split, resolved by paired capture 2026-11-10",
+  "_widget": "fml.com.fj daily-prayer-time-for-mosques (dpt) widget, public admin-ajax action=get_monthly_timetable, month=11 and month=12 -> 30+31 = 61 dated rows for Nov+Dec 2026, each with Suhoor End / Fajr Iqamah / Sunrise / per-prayer Begins+Iqamah",
+  "_sheet": "the league's printed monthly sheet images (site uploads + the identical image posted on public Facebook 2025-11-29 for December), year-agnostic headers",
+  "_files": [
+    "data/fj-2026-11-dpt-widget.json",
+    "data/fj-2026-12-dpt-widget.json",
+    "data/fj-2026-11-sheet.json",
+    "data/fj-2025-12.json",
+    "data/fj-2025-12-asr-hanafi.json"
+  ],
+  "deltas_sheet_minus_widgetBegins": {
+    "november_2026": { "fajr": "0", "sunrise": "0/+1", "dhuhr": "+5 constant", "asr": "-1/+1", "magrib": "+2/+3", "isha": "+6..+10 (max +10 on Nov 13; +9 on Nov 1)" },
+    "december_2026": { "fajr": "0/+1", "sunrise": "0", "dhuhr": "+5 constant", "asr": "-1/+1", "magrib": "+3 constant", "isha": "+6/+7" }
+  },
+  "verdict": {
+    "split_confirmed": "Two standing editions of the same league's times are in the wild, not a one-month typo: the pattern is stable across November and December and across the 2025 sheet edition.",
+    "direction": "The printed sheet runs LATER than the widget everywhere except asr; the largest and most variable divergence is isha (6-10 min).",
+    "column_identity": "The sheet's maghrib equals the widget's Maghrib Iqamah column exactly every day (both sunset+3); the sheet's dhuhr is a constant +5 over the widget's Dhuhr Begins; the sheet's isha sits beyond even the widget's Iqamah column (widget isha Iqamah = Begins+3, sheet = Begins+6..10).",
+    "banked_9_reproduced": "Yes - the banked 'up to 9 min' reproduces on November isha (+9 on Nov 1, +10 max Nov 13); December alone shows max +7.",
+    "owner_question": "belongs-to-version: the dpt widget carries the recipe-shaped dhuhr (+3 class) and maghrib=sunset+3 with isha Begins ~sunset+76; the sheet carries dhuhr=Begins+5 and isha beyond iqamah. A fit must pick one edition and name it."
+  },
+  "capture_fidelity_note": "The dpt Hijri column misprints the 31/12/2026 row ('17 Sha'ban -5499') - a plugin calendar bug, prayer-time cells unaffected.",
+  "year_evidence_2025": "December 2025 sheet posted on the league's public Facebook on Saturday 29 November 2025 (post 1239994874821937), image captured; identical content is served today as the site's December month image (uploads/2024/06/December-2024.jpg, year-agnostic header)."
+}

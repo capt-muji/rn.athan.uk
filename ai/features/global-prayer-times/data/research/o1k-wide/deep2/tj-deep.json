@@ -1,0 +1,1616 @@
+{
+ "meta": {
+  "city": "Dushanbe",
+  "lat": 38.5598,
+  "lng": 68.787,
+  "tz": "Asia/Dushanbe",
+  "rows": 743,
+  "first": "2015-01-01",
+  "last": "2026-07-31",
+  "years": [
+   "2015",
+   "2016",
+   "2017",
+   "2018",
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025",
+   "2026"
+  ],
+  "months": "every January and July, 2015-2026"
+ },
+ "bounds": {
+  "fajrAngle": {
+   "rule": "angle",
+   "theta": 18.9,
+   "pad": -3,
+   "mode": "floor",
+   "score": {
+    "n": 743,
+    "exact": 110,
+    "w1": 200,
+    "mae": 11.248990578734858,
+    "maxAbs": 31,
+    "meanSigned": 10.6164199192463,
+    "worstPrinted": 207
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 10.03225806451613,
+     "maxAbs": 14,
+     "meanSigned": 10.03225806451613,
+     "worstPrinted": 190
+    },
+    "2016": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 10.67741935483871,
+     "maxAbs": 18,
+     "meanSigned": 5.580645161290323,
+     "worstPrinted": 194
+    },
+    "2017": {
+     "n": 62,
+     "exact": 18,
+     "w1": 26,
+     "mae": 8.564516129032258,
+     "maxAbs": 18,
+     "meanSigned": 8.564516129032258,
+     "worstPrinted": 196
+    },
+    "2018": {
+     "n": 62,
+     "exact": 10,
+     "w1": 26,
+     "mae": 11.774193548387096,
+     "maxAbs": 24,
+     "meanSigned": 11,
+     "worstPrinted": 201
+    },
+    "2019": {
+     "n": 62,
+     "exact": 20,
+     "w1": 28,
+     "mae": 9.82258064516129,
+     "maxAbs": 23,
+     "meanSigned": 9.790322580645162,
+     "worstPrinted": 199
+    },
+    "2020": {
+     "n": 62,
+     "exact": 15,
+     "w1": 31,
+     "mae": 12.596774193548388,
+     "maxAbs": 27,
+     "meanSigned": 12.241935483870968,
+     "worstPrinted": 207
+    },
+    "2021": {
+     "n": 62,
+     "exact": 23,
+     "w1": 29,
+     "mae": 8.983870967741936,
+     "maxAbs": 22,
+     "meanSigned": 8.887096774193548,
+     "worstPrinted": 198
+    },
+    "2022": {
+     "n": 62,
+     "exact": 12,
+     "w1": 29,
+     "mae": 10.67741935483871,
+     "maxAbs": 25,
+     "meanSigned": 10.064516129032258,
+     "worstPrinted": 201
+    },
+    "2023": {
+     "n": 62,
+     "exact": 0,
+     "w1": 2,
+     "mae": 12.32258064516129,
+     "maxAbs": 26,
+     "meanSigned": 12.32258064516129,
+     "worstPrinted": 202
+    },
+    "2024": {
+     "n": 61,
+     "exact": 0,
+     "w1": 0,
+     "mae": 13.180327868852459,
+     "maxAbs": 25,
+     "meanSigned": 13.180327868852459,
+     "worstPrinted": 201
+    },
+    "2025": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 12.596774193548388,
+     "maxAbs": 23,
+     "meanSigned": 12.596774193548388,
+     "worstPrinted": 199
+    },
+    "2026": {
+     "n": 62,
+     "exact": 12,
+     "w1": 29,
+     "mae": 13.790322580645162,
+     "maxAbs": 31,
+     "meanSigned": 13.17741935483871,
+     "worstPrinted": 207
+    }
+   },
+   "amplitude": {
+    "peakToPeak": 33,
+    "months": {
+     "2015-01": 10,
+     "2015-07": 10,
+     "2016-01": -5,
+     "2016-07": 17,
+     "2017-01": 0,
+     "2017-07": 17,
+     "2018-01": -1,
+     "2018-07": 23,
+     "2019-01": 0,
+     "2019-07": 20,
+     "2020-01": 0,
+     "2020-07": 26,
+     "2021-01": 0,
+     "2021-07": 18,
+     "2022-01": -1,
+     "2022-07": 22,
+     "2023-01": 2,
+     "2023-07": 23,
+     "2024-01": 6,
+     "2024-07": 21,
+     "2025-01": 6,
+     "2025-07": 20,
+     "2026-01": -1,
+     "2026-07": 28
+    }
+   }
+  },
+  "fajrInterval": {
+   "rule": "sunrise-N",
+   "n": 96,
+   "score": {
+    "n": 743,
+    "exact": 90,
+    "w1": 155,
+    "mae": 5.172274562584119,
+    "maxAbs": 21,
+    "meanSigned": -0.5235531628532974,
+    "worstPrinted": 200
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 0,
+     "w1": 31,
+     "mae": 10,
+     "maxAbs": 21,
+     "meanSigned": -9,
+     "worstPrinted": 200
+    },
+    "2016": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 13.903225806451612,
+     "maxAbs": 19,
+     "meanSigned": -13.903225806451612,
+     "worstPrinted": 194
+    },
+    "2017": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 6,
+     "maxAbs": 7,
+     "meanSigned": 1,
+     "worstPrinted": 360
+    },
+    "2018": {
+     "n": 62,
+     "exact": 15,
+     "w1": 17,
+     "mae": 2.2903225806451615,
+     "maxAbs": 4,
+     "meanSigned": 2.2903225806451615,
+     "worstPrinted": 222
+    },
+    "2019": {
+     "n": 62,
+     "exact": 31,
+     "w1": 31,
+     "mae": 2,
+     "maxAbs": 4,
+     "meanSigned": 2,
+     "worstPrinted": 360
+    },
+    "2020": {
+     "n": 62,
+     "exact": 31,
+     "w1": 31,
+     "mae": 3.5,
+     "maxAbs": 7,
+     "meanSigned": 3.5,
+     "worstPrinted": 360
+    },
+    "2021": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 7,
+     "maxAbs": 9,
+     "meanSigned": 2,
+     "worstPrinted": 359
+    },
+    "2022": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 2.9516129032258065,
+     "maxAbs": 5,
+     "meanSigned": -0.9516129032258065,
+     "worstPrinted": 220
+    },
+    "2023": {
+     "n": 62,
+     "exact": 13,
+     "w1": 31,
+     "mae": 2.2903225806451615,
+     "maxAbs": 4,
+     "meanSigned": 1.8387096774193548,
+     "worstPrinted": 363
+    },
+    "2024": {
+     "n": 61,
+     "exact": 0,
+     "w1": 4,
+     "mae": 5.229508196721311,
+     "maxAbs": 8,
+     "meanSigned": 2.7704918032786887,
+     "worstPrinted": 367
+    },
+    "2025": {
+     "n": 62,
+     "exact": 0,
+     "w1": 8,
+     "mae": 3.5806451612903225,
+     "maxAbs": 7,
+     "meanSigned": 1.6774193548387097,
+     "worstPrinted": 359
+    },
+    "2026": {
+     "n": 62,
+     "exact": 0,
+     "w1": 2,
+     "mae": 3.3225806451612905,
+     "maxAbs": 6,
+     "meanSigned": 0.5483870967741935,
+     "worstPrinted": 230
+    }
+   }
+  },
+  "sunrise": {
+   "rule": "sunrise+pad",
+   "pad": -4,
+   "mode": "ceil",
+   "score": {
+    "n": 743,
+    "exact": 111,
+    "w1": 235,
+    "mae": 4.005383580080753,
+    "maxAbs": 13,
+    "meanSigned": -1.2812920592193808,
+    "worstPrinted": 446
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 0,
+     "w1": 2,
+     "mae": 6.516129032258065,
+     "maxAbs": 10,
+     "meanSigned": 6.516129032258065,
+     "worstPrinted": 459
+    },
+    "2016": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 7.112903225806452,
+     "maxAbs": 10,
+     "meanSigned": 7.112903225806452,
+     "worstPrinted": 459
+    },
+    "2017": {
+     "n": 62,
+     "exact": 5,
+     "w1": 15,
+     "mae": 5.193548387096774,
+     "maxAbs": 10,
+     "meanSigned": -4.806451612903226,
+     "worstPrinted": 449
+    },
+    "2018": {
+     "n": 62,
+     "exact": 3,
+     "w1": 17,
+     "mae": 3.7580645161290325,
+     "maxAbs": 7,
+     "meanSigned": -3.7580645161290325,
+     "worstPrinted": 452
+    },
+    "2019": {
+     "n": 62,
+     "exact": 0,
+     "w1": 1,
+     "mae": 4.661290322580645,
+     "maxAbs": 7,
+     "meanSigned": -4.661290322580645,
+     "worstPrinted": 452
+    },
+    "2020": {
+     "n": 62,
+     "exact": 3,
+     "w1": 8,
+     "mae": 5.790322580645161,
+     "maxAbs": 10,
+     "meanSigned": -3.629032258064516,
+     "worstPrinted": 449
+    },
+    "2021": {
+     "n": 62,
+     "exact": 13,
+     "w1": 26,
+     "mae": 5.725806451612903,
+     "maxAbs": 13,
+     "meanSigned": -5.467741935483871,
+     "worstPrinted": 446
+    },
+    "2022": {
+     "n": 62,
+     "exact": 5,
+     "w1": 13,
+     "mae": 3.0483870967741935,
+     "maxAbs": 6,
+     "meanSigned": -1.435483870967742,
+     "worstPrinted": 453
+    },
+    "2023": {
+     "n": 62,
+     "exact": 12,
+     "w1": 24,
+     "mae": 2.2580645161290325,
+     "maxAbs": 5,
+     "meanSigned": -1.967741935483871,
+     "worstPrinted": 454
+    },
+    "2024": {
+     "n": 61,
+     "exact": 15,
+     "w1": 28,
+     "mae": 2.2295081967213113,
+     "maxAbs": 8,
+     "meanSigned": -2.098360655737705,
+     "worstPrinted": 293
+    },
+    "2025": {
+     "n": 62,
+     "exact": 9,
+     "w1": 41,
+     "mae": 1.4516129032258065,
+     "maxAbs": 4,
+     "meanSigned": -1.4193548387096775,
+     "worstPrinted": 297
+    },
+    "2026": {
+     "n": 62,
+     "exact": 46,
+     "w1": 60,
+     "mae": 0.2903225806451613,
+     "maxAbs": 2,
+     "meanSigned": 0.22580645161290322,
+     "worstPrinted": 453
+    }
+   },
+   "amplitude": {
+    "peakToPeak": 18,
+    "months": {
+     "2015-01": 6,
+     "2015-07": 6,
+     "2016-01": 6,
+     "2016-07": 7,
+     "2017-01": -9,
+     "2017-07": -1,
+     "2018-01": -6,
+     "2018-07": -1,
+     "2019-01": -6,
+     "2019-07": -4,
+     "2020-01": -10,
+     "2020-07": 3,
+     "2021-01": -11,
+     "2021-07": 0,
+     "2022-01": -5,
+     "2022-07": 2,
+     "2023-01": -4,
+     "2023-07": 0,
+     "2024-01": -4,
+     "2024-07": 0,
+     "2025-01": -1,
+     "2025-07": -2,
+     "2026-01": 0,
+     "2026-07": 0
+    }
+   }
+  },
+  "dhuhr": {
+   "rule": "wall-clock constant",
+   "perMonthUnique": {
+    "2015-01": [
+     780
+    ],
+    "2015-07": [
+     780
+    ],
+    "2016-01": [
+     780
+    ],
+    "2016-07": [
+     780
+    ],
+    "2017-01": [
+     780
+    ],
+    "2017-07": [
+     780
+    ],
+    "2018-01": [
+     780
+    ],
+    "2018-07": [
+     780
+    ],
+    "2019-01": [
+     780
+    ],
+    "2019-07": [
+     760
+    ],
+    "2020-01": [
+     760
+    ],
+    "2020-07": [
+     0,
+     760
+    ],
+    "2021-01": [
+     760
+    ],
+    "2021-07": [
+     760
+    ],
+    "2022-01": [
+     760
+    ],
+    "2022-07": [
+     760
+    ],
+    "2023-01": [
+     760
+    ],
+    "2023-07": [
+     760
+    ],
+    "2024-01": [
+     760
+    ],
+    "2024-07": [
+     760
+    ],
+    "2025-01": [
+     760
+    ],
+    "2025-07": [
+     760
+    ],
+    "2026-01": [
+     760
+    ],
+    "2026-07": [
+     760
+    ]
+   },
+   "last780": "2019-01-31",
+   "first760": "2019-07-01",
+   "score": {
+    "n": 740,
+    "exact": 740,
+    "w1": 740,
+    "mae": 0,
+    "maxAbs": 0,
+    "meanSigned": 0,
+    "worstPrinted": null
+   }
+  },
+  "asr_hanafi": {
+   "rule": "shadow factor",
+   "pad": -6,
+   "mode": "floor",
+   "score": {
+    "n": 743,
+    "exact": 0,
+    "w1": 0,
+    "mae": 19.337819650067296,
+    "maxAbs": 916,
+    "meanSigned": 6.885598923283984,
+    "worstPrinted": 15
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 16.048387096774192,
+     "maxAbs": 29,
+     "meanSigned": 10.17741935483871,
+     "worstPrinted": 1081
+    },
+    "2016": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 17.387096774193548,
+     "maxAbs": 32,
+     "meanSigned": 12.03225806451613,
+     "worstPrinted": 1084
+    },
+    "2017": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 21.774193548387096,
+     "maxAbs": 34,
+     "meanSigned": 6.129032258064516,
+     "worstPrinted": 1086
+    },
+    "2018": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 17.741935483870968,
+     "maxAbs": 32,
+     "meanSigned": 5.193548387096774,
+     "worstPrinted": 1020
+    },
+    "2019": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 17.258064516129032,
+     "maxAbs": 29,
+     "meanSigned": 8.67741935483871,
+     "worstPrinted": 1081
+    },
+    "2020": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 35.61290322580645,
+     "maxAbs": 916,
+     "meanSigned": -12.67741935483871,
+     "worstPrinted": 15
+    },
+    "2021": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 22.177419354838708,
+     "maxAbs": 29,
+     "meanSigned": 3.9516129032258065,
+     "worstPrinted": 1081
+    },
+    "2022": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 16.112903225806452,
+     "maxAbs": 30,
+     "meanSigned": 9.306451612903226,
+     "worstPrinted": 1082
+    },
+    "2023": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 16.596774193548388,
+     "maxAbs": 31,
+     "meanSigned": 10.016129032258064,
+     "worstPrinted": 1083
+    },
+    "2024": {
+     "n": 61,
+     "exact": 0,
+     "w1": 0,
+     "mae": 16.62295081967213,
+     "maxAbs": 30,
+     "meanSigned": 10.327868852459016,
+     "worstPrinted": 1082
+    },
+    "2025": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 17.693548387096776,
+     "maxAbs": 30,
+     "meanSigned": 9.435483870967742,
+     "worstPrinted": 1082
+    },
+    "2026": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 16.983870967741936,
+     "maxAbs": 31,
+     "meanSigned": 10.112903225806452,
+     "worstPrinted": 1083
+    }
+   }
+  },
+  "asr_shafi": {
+   "rule": "shadow factor",
+   "pad": 6,
+   "mode": "ceil",
+   "score": {
+    "n": 743,
+    "exact": 0,
+    "w1": 0,
+    "mae": 51.85868102288021,
+    "maxAbs": 891,
+    "meanSigned": 49.46029609690444,
+    "worstPrinted": 15
+   }
+  },
+  "sunsetBracket": {
+   "rule": "true sunset +/- w",
+   "centerPad": -3,
+   "centerMode": "round",
+   "centerScore": {
+    "n": 743,
+    "exact": 68,
+    "w1": 246,
+    "mae": 2.4535666218034993,
+    "maxAbs": 12,
+    "meanSigned": 0.34320323014804843,
+    "worstPrinted": 1049
+   },
+   "widthMin": 12,
+   "widthMax": 48,
+   "widthByYear": {
+    "2015": 24,
+    "2016": 21,
+    "2017": 19,
+    "2018": 23,
+    "2019": 21,
+    "2020": 33,
+    "2021": 20,
+    "2022": 20,
+    "2023": 21,
+    "2024": 16,
+    "2025": 16,
+    "2026": 21
+   },
+   "centreVsSunsetByMonth": {
+    "peakToPeak": 14.5,
+    "months": {
+     "2015-01": -2.5,
+     "2015-07": -3,
+     "2016-01": 0.5,
+     "2016-07": 1.5,
+     "2017-01": -2.5,
+     "2017-07": 6,
+     "2018-01": -1.5,
+     "2018-07": 1.5,
+     "2019-01": 0,
+     "2019-07": 0.5,
+     "2020-01": -8.5,
+     "2020-07": 6,
+     "2021-01": -3,
+     "2021-07": 4,
+     "2022-01": 0,
+     "2022-07": 5.5,
+     "2023-01": 0.5,
+     "2023-07": 1.5,
+     "2024-01": 0,
+     "2024-07": 2.5,
+     "2025-01": -2,
+     "2025-07": 3,
+     "2026-01": 0,
+     "2026-07": 1.5
+    }
+   }
+  },
+  "maghrib": {
+   "rule": "sunset+pad",
+   "pad": 9,
+   "mode": "floor",
+   "score": {
+    "n": 743,
+    "exact": 203,
+    "w1": 432,
+    "mae": 2.983849259757739,
+    "maxAbs": 1027,
+    "meanSigned": -1.82907133243607,
+    "worstPrinted": 17
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 28,
+     "w1": 58,
+     "mae": 0.6129032258064516,
+     "maxAbs": 2,
+     "meanSigned": -0.6129032258064516,
+     "worstPrinted": 1072
+    },
+    "2016": {
+     "n": 62,
+     "exact": 28,
+     "w1": 59,
+     "mae": 0.5967741935483871,
+     "maxAbs": 2,
+     "meanSigned": -0.3064516129032258,
+     "worstPrinted": 1200
+    },
+    "2017": {
+     "n": 62,
+     "exact": 13,
+     "w1": 27,
+     "mae": 2.2903225806451615,
+     "maxAbs": 5,
+     "meanSigned": -1.4838709677419355,
+     "worstPrinted": 1065
+    },
+    "2018": {
+     "n": 62,
+     "exact": 15,
+     "w1": 37,
+     "mae": 1.2903225806451613,
+     "maxAbs": 4,
+     "meanSigned": 0.5161290322580645,
+     "worstPrinted": 1039
+    },
+    "2019": {
+     "n": 62,
+     "exact": 36,
+     "w1": 61,
+     "mae": 0.43548387096774194,
+     "maxAbs": 2,
+     "meanSigned": 0.08064516129032258,
+     "worstPrinted": 1072
+    },
+    "2020": {
+     "n": 62,
+     "exact": 3,
+     "w1": 15,
+     "mae": 2.338709677419355,
+     "maxAbs": 4,
+     "meanSigned": 0.7580645161290323,
+     "worstPrinted": 1205
+    },
+    "2021": {
+     "n": 62,
+     "exact": 0,
+     "w1": 6,
+     "mae": 2.870967741935484,
+     "maxAbs": 5,
+     "meanSigned": -0.8387096774193549,
+     "worstPrinted": 1065
+    },
+    "2022": {
+     "n": 62,
+     "exact": 21,
+     "w1": 38,
+     "mae": 1.2580645161290323,
+     "maxAbs": 4,
+     "meanSigned": 0.1935483870967742,
+     "worstPrinted": 1205
+    },
+    "2023": {
+     "n": 62,
+     "exact": 8,
+     "w1": 34,
+     "mae": 18.370967741935484,
+     "maxAbs": 1027,
+     "meanSigned": -17.693548387096776,
+     "worstPrinted": 17
+    },
+    "2024": {
+     "n": 61,
+     "exact": 24,
+     "w1": 31,
+     "mae": 1.5737704918032787,
+     "maxAbs": 4,
+     "meanSigned": -1.5081967213114753,
+     "worstPrinted": 1064
+    },
+    "2025": {
+     "n": 62,
+     "exact": 9,
+     "w1": 27,
+     "mae": 3.064516129032258,
+     "maxAbs": 21,
+     "meanSigned": -1.6129032258064515,
+     "worstPrinted": 1222
+    },
+    "2026": {
+     "n": 62,
+     "exact": 18,
+     "w1": 39,
+     "mae": 1.0806451612903225,
+     "maxAbs": 2,
+     "meanSigned": 0.5645161290322581,
+     "worstPrinted": 1070
+    }
+   },
+   "amplitude": {
+    "peakToPeak": 8,
+    "months": {
+     "2015-01": 0,
+     "2015-07": -1,
+     "2016-01": 0,
+     "2016-07": -1,
+     "2017-01": -4,
+     "2017-07": 1,
+     "2018-01": 0,
+     "2018-07": 1,
+     "2019-01": 0,
+     "2019-07": 1,
+     "2020-01": -2,
+     "2020-07": 3,
+     "2021-01": -4,
+     "2021-07": 2,
+     "2022-01": 0,
+     "2022-07": 1,
+     "2023-01": 1,
+     "2023-07": -2,
+     "2024-01": -3,
+     "2024-07": 0,
+     "2025-01": -5,
+     "2025-07": 1,
+     "2026-01": 0,
+     "2026-07": 2
+    }
+   }
+  },
+  "ishaInterval": {
+   "rule": "printed maghrib + N",
+   "n": 90,
+   "score": {
+    "n": 743,
+    "exact": 671,
+    "w1": 697,
+    "mae": 4.767160161507403,
+    "maxAbs": 1028,
+    "meanSigned": -1.943472409152086,
+    "worstPrinted": 1135
+   },
+   "printedMinusPrintedMaghrib": {
+    "29": 2,
+    "30": 39,
+    "70": 1,
+    "89": 11,
+    "90": 671,
+    "91": 15,
+    "92": 3,
+    "1118": 1
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 52,
+     "w1": 52,
+     "mae": 9.709677419354838,
+     "maxAbs": 61,
+     "meanSigned": -9.709677419354838,
+     "worstPrinted": 1227
+    },
+    "2016": {
+     "n": 62,
+     "exact": 56,
+     "w1": 62,
+     "mae": 0.0967741935483871,
+     "maxAbs": 1,
+     "meanSigned": -0.0967741935483871,
+     "worstPrinted": 1288
+    },
+    "2017": {
+     "n": 62,
+     "exact": 46,
+     "w1": 59,
+     "mae": 0.3064516129032258,
+     "maxAbs": 2,
+     "meanSigned": 0.3064516129032258,
+     "worstPrinted": 1287
+    },
+    "2018": {
+     "n": 62,
+     "exact": 31,
+     "w1": 31,
+     "mae": 30,
+     "maxAbs": 60,
+     "meanSigned": -30,
+     "worstPrinted": 1232
+    },
+    "2019": {
+     "n": 62,
+     "exact": 58,
+     "w1": 62,
+     "mae": 0.06451612903225806,
+     "maxAbs": 1,
+     "meanSigned": -0.06451612903225806,
+     "worstPrinted": 1290
+    },
+    "2020": {
+     "n": 62,
+     "exact": 62,
+     "w1": 62,
+     "mae": 0,
+     "maxAbs": 0,
+     "meanSigned": 0,
+     "worstPrinted": null
+    },
+    "2021": {
+     "n": 62,
+     "exact": 60,
+     "w1": 62,
+     "mae": 0.03225806451612903,
+     "maxAbs": 1,
+     "meanSigned": 0.03225806451612903,
+     "worstPrinted": 1130
+    },
+    "2022": {
+     "n": 62,
+     "exact": 62,
+     "w1": 62,
+     "mae": 0,
+     "maxAbs": 0,
+     "meanSigned": 0,
+     "worstPrinted": null
+    },
+    "2023": {
+     "n": 62,
+     "exact": 61,
+     "w1": 61,
+     "mae": 16.580645161290324,
+     "maxAbs": 1028,
+     "meanSigned": 16.580645161290324,
+     "worstPrinted": 1135
+    },
+    "2024": {
+     "n": 61,
+     "exact": 61,
+     "w1": 61,
+     "mae": 0,
+     "maxAbs": 0,
+     "meanSigned": 0,
+     "worstPrinted": null
+    },
+    "2025": {
+     "n": 62,
+     "exact": 61,
+     "w1": 61,
+     "mae": 0.3225806451612903,
+     "maxAbs": 20,
+     "meanSigned": -0.3225806451612903,
+     "worstPrinted": 1292
+    },
+    "2026": {
+     "n": 62,
+     "exact": 61,
+     "w1": 62,
+     "mae": 0.016129032258064516,
+     "maxAbs": 1,
+     "meanSigned": -0.016129032258064516,
+     "worstPrinted": 1290
+    }
+   }
+  },
+  "ishaAngle": {
+   "rule": "angle",
+   "theta": 18.15,
+   "pad": 4,
+   "mode": "ceil",
+   "score": {
+    "n": 743,
+    "exact": 100,
+    "w1": 178,
+    "mae": 13.340511440107672,
+    "maxAbs": 84,
+    "meanSigned": -13.133243606998654,
+    "worstPrinted": 1232
+   },
+   "perYear": {
+    "2015": {
+     "n": 62,
+     "exact": 18,
+     "w1": 26,
+     "mae": 19.887096774193548,
+     "maxAbs": 82,
+     "meanSigned": -19.822580645161292,
+     "worstPrinted": 1228
+    },
+    "2016": {
+     "n": 62,
+     "exact": 11,
+     "w1": 27,
+     "mae": 10.048387096774194,
+     "maxAbs": 25,
+     "meanSigned": -9.693548387096774,
+     "worstPrinted": 1290
+    },
+    "2017": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 10.419354838709678,
+     "maxAbs": 21,
+     "meanSigned": -10.419354838709678,
+     "worstPrinted": 1294
+    },
+    "2018": {
+     "n": 62,
+     "exact": 5,
+     "w1": 12,
+     "mae": 39.67741935483871,
+     "maxAbs": 84,
+     "meanSigned": -38.83870967741935,
+     "worstPrinted": 1232
+    },
+    "2019": {
+     "n": 62,
+     "exact": 20,
+     "w1": 26,
+     "mae": 9.5,
+     "maxAbs": 24,
+     "meanSigned": -9.5,
+     "worstPrinted": 1292
+    },
+    "2020": {
+     "n": 62,
+     "exact": 4,
+     "w1": 6,
+     "mae": 9.112903225806452,
+     "maxAbs": 21,
+     "meanSigned": -8.53225806451613,
+     "worstPrinted": 1294
+    },
+    "2021": {
+     "n": 62,
+     "exact": 0,
+     "w1": 0,
+     "mae": 10.064516129032258,
+     "maxAbs": 23,
+     "meanSigned": -10.064516129032258,
+     "worstPrinted": 1293
+    },
+    "2022": {
+     "n": 62,
+     "exact": 18,
+     "w1": 25,
+     "mae": 9.161290322580646,
+     "maxAbs": 21,
+     "meanSigned": -9.161290322580646,
+     "worstPrinted": 1295
+    },
+    "2023": {
+     "n": 62,
+     "exact": 6,
+     "w1": 30,
+     "mae": 11.274193548387096,
+     "maxAbs": 26,
+     "meanSigned": -10.629032258064516,
+     "worstPrinted": 1290
+    },
+    "2024": {
+     "n": 61,
+     "exact": 0,
+     "w1": 0,
+     "mae": 10.918032786885245,
+     "maxAbs": 24,
+     "meanSigned": -10.918032786885245,
+     "worstPrinted": 1291
+    },
+    "2025": {
+     "n": 62,
+     "exact": 0,
+     "w1": 1,
+     "mae": 11.17741935483871,
+     "maxAbs": 23,
+     "meanSigned": -11.17741935483871,
+     "worstPrinted": 1293
+    },
+    "2026": {
+     "n": 62,
+     "exact": 18,
+     "w1": 25,
+     "mae": 8.806451612903226,
+     "maxAbs": 22,
+     "meanSigned": -8.806451612903226,
+     "worstPrinted": 1294
+    }
+   },
+   "amplitude": {
+    "peakToPeak": 79,
+    "months": {
+     "2015-01": 0,
+     "2015-07": -24,
+     "2016-01": 0,
+     "2016-07": -20,
+     "2017-01": -3,
+     "2017-07": -17,
+     "2018-01": 0,
+     "2018-07": -78,
+     "2019-01": 0,
+     "2019-07": -19,
+     "2020-01": -2,
+     "2020-07": -15,
+     "2021-01": -3,
+     "2021-07": -16,
+     "2022-01": 0,
+     "2022-07": -18,
+     "2023-01": 1,
+     "2023-07": -21,
+     "2024-01": -3,
+     "2024-07": -19,
+     "2025-01": -5,
+     "2025-07": -18,
+     "2026-01": 0,
+     "2026-07": -17
+    }
+   }
+  },
+  "chain": {
+   "violations": {
+    "dhuhrEndVsAsr": 45,
+    "asrEndVsSunset": 9,
+    "sunsetEndVsMaghrib": 29,
+    "ishaEndVsNextFajr": 406
+   },
+   "examples": {
+    "dhuhrEndVsAsr": [
+     "2015-01-01",
+     921,
+     912
+    ],
+    "asrEndVsSunset": [
+     "2015-01-01",
+     1005,
+     1016
+    ],
+    "ishaEndVsNextFajr": [
+     "2015-01-01",
+     361,
+     370
+    ],
+    "sunsetEndVsMaghrib": [
+     "2015-07-13",
+     1196,
+     1198
+    ]
+   },
+   "maghribWindowDurationMinutes": {
+    "20": 1,
+    "39": 4,
+    "40": 568,
+    "41": 75,
+    "44": 30,
+    "45": 16,
+    "46": 44,
+    "47": 3,
+    "1068": 1,
+    "-1171": 1
+   },
+   "ishaCrossesMidnight": 743,
+   "fajrWindowEndVsSunrise": 743
+  },
+  "fajrStability": {
+   "2015-01": {
+    "theta": 18,
+    "pad": 2,
+    "mode": "round",
+    "interval": 95,
+    "exact": 23,
+    "n": 31
+   },
+   "2015-07": {
+    "theta": 17.95,
+    "pad": -2,
+    "mode": "round",
+    "interval": 116,
+    "exact": 6,
+    "n": 31
+   },
+   "2016-01": {
+    "theta": 20.35,
+    "pad": -1,
+    "mode": "round",
+    "interval": 110,
+    "exact": 22,
+    "n": 31
+   },
+   "2016-07": {
+    "theta": 16.85,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 106,
+    "exact": 19,
+    "n": 31
+   },
+   "2017-01": {
+    "theta": 19,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 89,
+    "exact": 21,
+    "n": 31
+   },
+   "2017-07": {
+    "theta": 16.95,
+    "pad": -1,
+    "mode": "floor",
+    "interval": 101,
+    "exact": 18,
+    "n": 31
+   },
+   "2018-01": {
+    "theta": 19.85,
+    "pad": 1,
+    "mode": "floor",
+    "interval": 93,
+    "exact": 14,
+    "n": 31
+   },
+   "2018-07": {
+    "theta": 16.05,
+    "pad": -2,
+    "mode": "round",
+    "interval": 96,
+    "exact": 18,
+    "n": 31
+   },
+   "2019-01": {
+    "theta": 19,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 92,
+    "exact": 20,
+    "n": 31
+   },
+   "2019-07": {
+    "theta": 16.25,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 96,
+    "exact": 11,
+    "n": 31
+   },
+   "2020-01": {
+    "theta": 19.15,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 89,
+    "exact": 18,
+    "n": 31
+   },
+   "2020-07": {
+    "theta": 15.65,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 96,
+    "exact": 16,
+    "n": 31
+   },
+   "2021-01": {
+    "theta": 19.5,
+    "pad": 0,
+    "mode": "floor",
+    "interval": 87,
+    "exact": 25,
+    "n": 31
+   },
+   "2021-07": {
+    "theta": 16.45,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 101,
+    "exact": 12,
+    "n": 31
+   },
+   "2022-01": {
+    "theta": 19.65,
+    "pad": 0,
+    "mode": "round",
+    "interval": 94,
+    "exact": 15,
+    "n": 31
+   },
+   "2022-07": {
+    "theta": 16.05,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 100,
+    "exact": 14,
+    "n": 31
+   },
+   "2023-01": {
+    "theta": 19,
+    "pad": -1,
+    "mode": "round",
+    "interval": 92,
+    "exact": 19,
+    "n": 31
+   },
+   "2023-07": {
+    "theta": 15.9,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 97,
+    "exact": 14,
+    "n": 31
+   },
+   "2024-01": {
+    "theta": 17.95,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 88,
+    "exact": 16,
+    "n": 30
+   },
+   "2024-07": {
+    "theta": 16,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 98,
+    "exact": 11,
+    "n": 31
+   },
+   "2025-01": {
+    "theta": 18.1,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 91,
+    "exact": 14,
+    "n": 31
+   },
+   "2025-07": {
+    "theta": 16.3,
+    "pad": -2,
+    "mode": "floor",
+    "interval": 98,
+    "exact": 14,
+    "n": 31
+   },
+   "2026-01": {
+    "theta": 19.65,
+    "pad": 0,
+    "mode": "round",
+    "interval": 99,
+    "exact": 16,
+    "n": 31
+   },
+   "2026-07": {
+    "theta": 15.3,
+    "pad": -2,
+    "mode": "round",
+    "interval": 92,
+    "exact": 12,
+    "n": 31
+   }
+  }
+ },
+ "inversion": {
+  "2015-01": {
+   "fajrDep": -17.61,
+   "sunriseDep": -0.05,
+   "asrShadow": 1.63,
+   "maghribDep": -2.39,
+   "ishaDep": -19.04,
+   "noonMin": 754
+  },
+  "2015-07": {
+   "fajrDep": -18.04,
+   "sunriseDep": -0.03,
+   "asrShadow": 2.54,
+   "maghribDep": -2.28,
+   "ishaDep": -16.02,
+   "noonMin": 750
+  },
+  "2016-01": {
+   "fajrDep": -20.68,
+   "sunriseDep": -0.22,
+   "asrShadow": 1.6,
+   "maghribDep": -2.23,
+   "ishaDep": -18.84,
+   "noonMin": 755
+  },
+  "2016-07": {
+   "fajrDep": -17.48,
+   "sunriseDep": -0.33,
+   "asrShadow": 2.57,
+   "maghribDep": -1.95,
+   "ishaDep": -15.87,
+   "noonMin": 752
+  },
+  "2017-01": {
+   "fajrDep": -17.93,
+   "sunriseDep": -1.42,
+   "asrShadow": 1.58,
+   "maghribDep": -3.27,
+   "ishaDep": -19.94,
+   "noonMin": 746
+  },
+  "2017-07": {
+   "fajrDep": -17.06,
+   "sunriseDep": -1.32,
+   "asrShadow": 2.55,
+   "maghribDep": -2.36,
+   "ishaDep": -16.4,
+   "noonMin": 751
+  },
+  "2018-01": {
+   "fajrDep": -18.53,
+   "sunriseDep": -1.19,
+   "asrShadow": 1.72,
+   "maghribDep": -3.48,
+   "ishaDep": -20.24,
+   "noonMin": 748
+  },
+  "2018-07": {
+   "fajrDep": -15.96,
+   "sunriseDep": -1.05,
+   "asrShadow": 2.58,
+   "maghribDep": -3.04,
+   "ishaDep": -7.92,
+   "noonMin": 748
+  },
+  "2019-01": {
+   "fajrDep": -18.46,
+   "sunriseDep": -1.36,
+   "asrShadow": 1.7,
+   "maghribDep": -3.31,
+   "ishaDep": -20,
+   "noonMin": 749
+  },
+  "2019-07": {
+   "fajrDep": -16.28,
+   "sunriseDep": -1.22,
+   "asrShadow": 2.64,
+   "maghribDep": -3.15,
+   "ishaDep": -16.83,
+   "noonMin": 746
+  },
+  "2020-01": {
+   "fajrDep": -17.42,
+   "sunriseDep": -0.87,
+   "asrShadow": 1.56,
+   "maghribDep": -4.08,
+   "ishaDep": -20.86,
+   "noonMin": 743
+  },
+  "2020-07": {
+   "fajrDep": -16.32,
+   "sunriseDep": -1.09,
+   "asrShadow": 2.38,
+   "maghribDep": -2.63,
+   "ishaDep": -16.58,
+   "noonMin": 752
+  },
+  "2021-01": {
+   "fajrDep": -17.71,
+   "sunriseDep": -1.58,
+   "asrShadow": 1.56,
+   "maghribDep": -3.52,
+   "ishaDep": -20.22,
+   "noonMin": 745
+  },
+  "2021-07": {
+   "fajrDep": -16.86,
+   "sunriseDep": -1.08,
+   "asrShadow": 2.54,
+   "maghribDep": -2.77,
+   "ishaDep": -16.59,
+   "noonMin": 750
+  },
+  "2022-01": {
+   "fajrDep": -18.79,
+   "sunriseDep": -1.27,
+   "asrShadow": 1.74,
+   "maghribDep": -3.2,
+   "ishaDep": -19.95,
+   "noonMin": 750
+  },
+  "2022-07": {
+   "fajrDep": -16.63,
+   "sunriseDep": -1.07,
+   "asrShadow": 2.45,
+   "maghribDep": -2.35,
+   "ishaDep": -16.22,
+   "noonMin": 751
+  },
+  "2023-01": {
+   "fajrDep": -18.36,
+   "sunriseDep": -1.22,
+   "asrShadow": 1.71,
+   "maghribDep": -3.23,
+   "ishaDep": -19.99,
+   "noonMin": 750
+  },
+  "2023-07": {
+   "fajrDep": -16.03,
+   "sunriseDep": -0.87,
+   "asrShadow": 2.58,
+   "maghribDep": -2.28,
+   "ishaDep": -16.21,
+   "noonMin": 748
+  },
+  "2024-01": {
+   "fajrDep": -17.44,
+   "sunriseDep": -1.09,
+   "asrShadow": 1.74,
+   "maghribDep": -2.68,
+   "ishaDep": -19.37,
+   "noonMin": 750
+  },
+  "2024-07": {
+   "fajrDep": -16.52,
+   "sunriseDep": -1.09,
+   "asrShadow": 2.57,
+   "maghribDep": -2.61,
+   "ishaDep": -16.4,
+   "noonMin": 749
+  },
+  "2025-01": {
+   "fajrDep": -17.69,
+   "sunriseDep": -0.74,
+   "asrShadow": 1.69,
+   "maghribDep": -2.33,
+   "ishaDep": -19.02,
+   "noonMin": 751
+  },
+  "2025-07": {
+   "fajrDep": -16.52,
+   "sunriseDep": -1.16,
+   "asrShadow": 2.59,
+   "maghribDep": -2.81,
+   "ishaDep": -16.38,
+   "noonMin": 749
+  },
+  "2026-01": {
+   "fajrDep": -19.23,
+   "sunriseDep": -0.83,
+   "asrShadow": 1.66,
+   "maghribDep": -2.77,
+   "ishaDep": -19.5,
+   "noonMin": 752
+  },
+  "2026-07": {
+   "fajrDep": -15.53,
+   "sunriseDep": -0.91,
+   "asrShadow": 2.6,
+   "maghribDep": -2.88,
+   "ishaDep": -16.69,
+   "noonMin": 749
+  }
+ }
+}

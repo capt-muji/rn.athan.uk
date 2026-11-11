@@ -1,0 +1,75 @@
+
+### reading-aisha-ics  (365/365 rows, 51.4543,-0.9781, TZ Europe/London)
+solar (angle-independent, best margin+mode):
+  dhuhr      exact 298  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  64  (margin +10 ceil)
+  asrHanafi  exact 163  within1 316  worst   2  (margin +1 floor)
+  maghrib    exact 308  within1 365  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  858  fajr 0/365  isha 89/365  worst f119 i25
+  Wifaqul 18/15 bare                   18/  15             total  855  fajr 0/307  isha 86/365  worst f117 i1360
+  MWL 18/17 bare                       18/  17             total  769  fajr 0/307  isha 0/317  worst f117 i1325
+  Diyanet-Europe 18/16 bare            18/  16             total  769  fajr 0/307  isha 0/333  worst f117 i1353
+  Karachi 18/18 bare                   18/  18             total  769  fajr 0/307  isha 0/307  worst f117 i1316
+free fit: bare best 14.1/15.45 sum 143 cov 345 | cap1/7 14.1/15.45 sum 153 | cap1/2+1/7 14.1/15.45 sum 150
+  portion scan best: 1/4/1/7 on 14.1/15.45 sum 154 (fajr 59, isha 95)
+diag: fajr 205 distinct, longest run 6 @06:28; isha 236 distinct, longest run 9 @17:31
+
+### coventry-zeenatul  (365/365 rows, 52.4068,-1.5197, TZ Europe/London)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 143  within1 302  worst  62  (margin -0.5 floor)
+  dhuhr      exact 312  within1 363  worst  60  (margin +3.5 floor)
+  asrShafi   exact   2  within1   2  worst  84  (margin -8 floor)
+  asrHanafi  exact 106  within1 185  worst  62  (margin +2 floor)
+  maghrib    exact 317  within1 364  worst  12  (margin +2.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  916  fajr 0/365  isha 38/365  worst f123 i71
+  Diyanet-Europe 18/16 bare            18/  16             total  907  fajr 0/297  isha 29/319  worst f108 i1343
+  Wifaqul 18/15 bare                   18/  15             total  906  fajr 0/297  isha 28/333  worst f108 i1340
+  MWL 18/17 bare                       18/  17             total  881  fajr 0/297  isha 3/307  worst f108 i1335
+  Karachi 18/18 bare                   18/  18             total  878  fajr 0/297  isha 0/297  worst f108 i1306
+free fit: bare best 16.4/13.65 sum 65 cov 313 | cap1/7 16.1/14.75 sum 83 | cap1/2+1/7 16.4/14.75 sum 80
+  portion scan best: 1/7/1/7 on 16.1/14.75 sum 83 (fajr 36, isha 47)
+diag: fajr 205 distinct, longest run 5 @02:38; isha 224 distinct, longest run 7 @17:34
+
+### rochdale-golden  (365/365 rows, 53.6097,-2.1561, TZ Europe/London)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 219  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 348  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  65  (margin +10 ceil)
+  asrHanafi  exact 257  within1 365  worst   1  (margin +0.5 floor)
+  maghrib    exact 248  within1 365  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total 1086  fajr 0/365  isha 14/365  worst f127 i32
+  Wifaqul 18/15 bare                   18/  15             total 1078  fajr 0/287  isha 6/315  worst f114 i1358
+  MWL 18/17 bare                       18/  17             total 1072  fajr 0/287  isha 0/295  worst f114 i1318
+  Diyanet-Europe 18/16 bare            18/  16             total 1072  fajr 0/287  isha 0/305  worst f114 i1327
+  Karachi 18/18 bare                   18/  18             total 1072  fajr 0/287  isha 0/287  worst f114 i1310
+free fit: bare best 13.1/14.65 sum 114 cov 320 | cap1/7 13.4/14.65 sum 123 | cap1/2+1/7 13.1/14.65 sum 122
+  portion scan best: 1/6/1/7 on 13.4/14.65 sum 124 (fajr 43, isha 81)
+diag: fajr 217 distinct, longest run 5 @06:43; isha 240 distinct, longest run 5 @23:03
+
+### bolton-zakariyya  (354/354 rows, 53.5769,-2.4282, TZ Europe/London)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 339  within1 354  worst   1  (margin +0.5 floor)
+  dhuhr      exact 348  within1 354  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  65  (margin +10 ceil)
+  asrHanafi  exact 213  within1 354  worst   1  (margin +1 floor)
+  maghrib    exact 338  within1 354  worst   1  (margin +5.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total 1274  fajr 0/354  isha 36/354  worst f131 i11
+  Diyanet-Europe 18/16 bare            18/  16             total 1263  fajr 0/278  isha 25/296  worst f112 i1341
+  Wifaqul 18/15 bare                   18/  15             total 1262  fajr 0/278  isha 24/307  worst f112 i1343
+  MWL 18/17 bare                       18/  17             total 1249  fajr 0/278  isha 11/286  worst f112 i1333
+  Karachi 18/18 bare                   18/  18             total 1238  fajr 0/278  isha 0/278  worst f112 i1310
+free fit: bare best 12.8/14.35 sum 56 cov 315 | cap1/7 12.8/15.1 sum 73 | cap1/2+1/7 12.8/15.1 sum 70
+  portion scan best: 1/7/1/7 on 12.8/15.1 sum 73 (fajr 31, isha 42)
+diag: fajr 197 distinct, longest run 4 @06:46; isha 224 distinct, longest run 11 @17:37
+
+== LUPT reference (2027 pages, same MM-DD) ==
+reading-aisha-ics  days 181  fajr mean +4.5 w1 25/181 worst 10  dhuhr mean +3.2 w1 0/181 worst 4  asr mean +46.1 w1 0/181 worst 76  maghrib mean +3.5 w1 0/181 worst 5  isha mean -1 w1 32/181 worst 7
+coventry-zeenatul  days 181  fajr mean +6.5 w1 31/181 worst 10  sunrise mean +9.5 w1 0/181 worst 13  dhuhr mean +3.5 w1 0/181 worst 4  asr mean +45.9 w1 0/181 worst 81  maghrib mean +3.3 w1 81/181 worst 10  isha mean +4.6 w1 13/181 worst 11
+rochdale-golden  days 181  fajr mean +11.4 w1 7/181 worst 23  sunrise mean +14.1 w1 23/181 worst 23  dhuhr mean +8.2 w1 0/181 worst 9  asr mean +45.3 w1 0/181 worst 86  maghrib mean +5.3 w1 38/181 worst 20  isha mean +1.3 w1 8/181 worst 23
+bolton-zakariyya  days 176  fajr mean +12.3 w1 15/176 worst 21  sunrise mean +15.3 w1 15/176 worst 24  dhuhr mean +9.2 w1 0/176 worst 10  asr mean +46.8 w1 0/176 worst 87  maghrib mean +8.4 w1 41/176 worst 23  isha mean +11.1 w1 0/176 worst 23
+
+wrote uktowns-fit.json

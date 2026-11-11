@@ -1,0 +1,1367 @@
+{
+ "Indonesia": {
+  "millions": 250.7,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 249.8,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 239.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 87.1 pc share against its own 2026 total of 287.9M, which returns the published 249.8M; the row is already on a current denominator"
+ },
+ "Pakistan": {
+  "millions": 250.2,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 233.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 226.8,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 96.5 pc share against its own 2026 total of 259.3M, not its published 233.0M, because that figure assumes a population of 241.5M, 7 pc short of today's"
+ },
+ "India": {
+  "millions": 215.6,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 200.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 213.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 14.6 pc share against its own 2026 total of 1476.6M, not its published 200.0M, because that figure assumes a population of 1369.9M, 7 pc short of today's"
+ },
+ "Bangladesh": {
+  "millions": 161.8,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 150.8,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 151.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 91.0 pc share against its own 2026 total of 177.8M, not its published 150.8M, because that figure assumes a population of 165.7M, 7 pc short of today's"
+ },
+ "Nigeria": {
+  "millions": 118.8,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 96.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 120.1,
+    "year": 2020
+   },
+   {
+    "name": "CIA World Factbook 2018, via Wikipedia Islam in Nigeria",
+    "figure": 129.7,
+    "year": 2018
+   }
+  ],
+  "reason": "Median of the 5 published shares (47.0 to 56.1 pc) applied to WPR's 2026 total of 242.4M, because the sources dispute the share, not the population, and the WPR row is 18 pc behind today's"
+ },
+ "Egypt": {
+  "millions": 110.9,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 87.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 104.1,
+    "year": 2020
+   },
+   {
+    "name": "Arab Barometer wave V 2018, via Wikipedia Islam in Egypt",
+    "figure": 108.6,
+    "year": 2018
+   }
+  ],
+  "reason": "Median of the 5 published shares (90.0 to 95.2 pc) applied to WPR's 2026 total of 120.1M, because the sources dispute the share, not the population, and the WPR row is 21 pc behind today's"
+ },
+ "Iran": {
+  "millions": 93.0,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 85.7,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 87.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 99.8 pc share against its own 2026 total of 93.2M, not its published 85.7M, because that figure assumes a population of 85.9M, 8 pc short of today's"
+ },
+ "Turkey": {
+  "millions": 83.1,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 81.2,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 83.6,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 94.5 pc share against its own 2026 total of 87.9M, not its published 81.2M, because that figure assumes a population of 85.9M, 2 pc short of today's"
+ },
+ "Algeria": {
+  "millions": 47.5,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 43.7,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 43.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 99.0 pc share against its own 2026 total of 48.0M, not its published 43.7M, because that figure assumes a population of 44.1M, 8 pc short of today's"
+ },
+ "Iraq": {
+  "millions": 46.3,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 39.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 41.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 96.5 pc share against its own 2026 total of 48.0M, not its published 39.0M, because that figure assumes a population of 40.4M, 16 pc short of today's"
+ },
+ "Sudan": {
+  "millions": 51.7,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 38.6,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 46.3,
+    "year": 2020
+   },
+   {
+    "name": "UNDP Sudan, via Wikipedia Islam in Sudan",
+    "figure": 51.7,
+    "year": 2024
+   }
+  ],
+  "reason": "Median of the 3 published shares (96.0 to 98.9 pc) applied to WPR's 2026 total of 53.3M, because the sources dispute the share, not the population, and the WPR row is 25 pc behind today's"
+ },
+ "Afghanistan": {
+  "millions": 44.9,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 37.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 39.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 99.7 pc share against its own 2026 total of 45.0M, not its published 37.0M, because that figure assumes a population of 37.1M, 18 pc short of today's"
+ },
+ "Morocco": {
+  "millions": 38.4,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 36.4,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 36.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 99.0 pc share against its own 2026 total of 38.8M, not its published 36.4M, because that figure assumes a population of 36.8M, 5 pc short of today's"
+ },
+ "Saudi Arabia": {
+  "millions": 33.8,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 31.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 28.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 96.2 pc share against its own 2026 total of 35.2M, not its published 31.5M, because that figure assumes a population of 32.7M, 7 pc short of today's"
+ },
+ "Uzbekistan": {
+  "millions": 33.5,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 29.9,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 32.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 88.7 pc share against its own 2026 total of 37.7M, not its published 29.9M, because that figure assumes a population of 33.7M, 11 pc short of today's"
+ },
+ "Yemen": {
+  "millions": 42.5,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 26.8,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 36.1,
+    "year": 2020
+   },
+   {
+    "name": "Wikipedia, Islam in Yemen: over 99 pc",
+    "figure": 42.5,
+    "year": 2024
+   }
+  ],
+  "reason": "Median of the 3 published shares (97.2 to 99.9 pc) applied to WPR's 2026 total of 43.0M, because the sources dispute the share, not the population, and the WPR row is 36 pc behind today's"
+ },
+ "Niger": {
+  "millions": 28.3,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 21.1,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 23.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 98.3 pc share against its own 2026 total of 28.8M, not its published 21.1M, because that figure assumes a population of 21.5M, 26 pc short of today's"
+ },
+ "Malaysia": {
+  "millions": 23.1,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 20.1,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 21.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 63.5 pc share against its own 2026 total of 36.4M, not its published 20.1M, because that figure assumes a population of 31.7M, 13 pc short of today's"
+ },
+ "Tanzania": {
+  "millions": 25.5,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 19.4,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 18.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 35.2 pc share against its own 2026 total of 72.6M, not its published 19.4M, because that figure assumes a population of 55.1M, 24 pc short of today's"
+ },
+ "Syria": {
+  "millions": 23.0,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 15.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 19.8,
+    "year": 2020
+   },
+   {
+    "name": "Wikipedia, Islam in Syria: 87 pc",
+    "figure": 23.0,
+    "year": 2024
+   }
+  ],
+  "reason": "Median of the 3 published shares (87.0 to 94.2 pc) applied to WPR's 2026 total of 26.5M, because the sources dispute the share, not the population, and the WPR row is 35 pc behind today's"
+ },
+ "Russia": {
+  "millions": 15.8,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 15.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 12.0,
+    "year": 2020
+   },
+   {
+    "name": "Mufti Council via TASS 2015, via Wikipedia Islam in Russia",
+    "figure": 19.6,
+    "year": 2015
+   }
+  ],
+  "reason": "Median of the 5 published shares (8.2 to 13.7 pc) applied to WPR's 2026 total of 143.4M, because the sources dispute the share, not the population, and the WPR row is 5 pc behind today's"
+ },
+ "Kazakhstan": {
+  "millions": 14.8,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 13.2,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 15.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 70.2 pc share against its own 2026 total of 21.1M, not its published 13.2M, because that figure assumes a population of 18.8M, 11 pc short of today's"
+ },
+ "Cote d'Ivoire": {
+  "millions": 14.4,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 11.3,
+    "year": 2026
+   }
+  ],
+  "reason": "WPR's 42.9 pc share against its own 2026 total of 33.5M, not its published 11.3M, because that figure assumes a population of 26.3M, 21 pc short of today's"
+ },
+ "Tunisia": {
+  "millions": 12.1,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 10.2,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 11.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 97.8 pc share against its own 2026 total of 12.4M, not its published 10.2M, because that figure assumes a population of 10.4M, 16 pc short of today's"
+ },
+ "Jordan": {
+  "millions": 11.3,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 10.2,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 10.6,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 97.2 pc share against its own 2026 total of 11.6M, not its published 10.2M, because that figure assumes a population of 10.5M, 9 pc short of today's"
+ },
+ "Tajikistan": {
+  "millions": 10.7,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 9.3,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 9.6,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 97.9 pc share against its own 2026 total of 11.0M, not its published 9.3M, because that figure assumes a population of 9.5M, 13 pc short of today's"
+ },
+ "France": {
+  "millions": 6.93,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 6.9,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 6.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 10.38 pc share against its own 2026 total of 66.7M, which returns the published 6.9M; the row is already on a current denominator"
+ },
+ "Libya": {
+  "millions": 7.31,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 6.6,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 7.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 97.0 pc share against its own 2026 total of 7.5M, not its published 6.6M, because that figure assumes a population of 6.8M, 10 pc short of today's"
+ },
+ "United Arab Emirates": {
+  "millions": 8.33,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 6.3,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 6.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 72.0 pc share against its own 2026 total of 11.6M, not its published 6.3M, because that figure assumes a population of 8.8M, 24 pc short of today's"
+ },
+ "Mozambique": {
+  "millions": 6.92,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 5.8,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 6.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 18.9 pc share against its own 2026 total of 36.6M, not its published 5.8M, because that figure assumes a population of 30.7M, 16 pc short of today's"
+ },
+ "Germany": {
+  "millions": 5.6,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 5.6,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 5.4,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 6.7 pc share against its own 2026 total of 83.6M, which returns the published 5.6M; the row is already on a current denominator"
+ },
+ "Kyrgyzstan": {
+  "millions": 6.66,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 5.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 6.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 90.0 pc share against its own 2026 total of 7.4M, not its published 5.5M, because that figure assumes a population of 6.1M, 17 pc short of today's"
+ },
+ "Kenya": {
+  "millions": 6.57,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 5.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 5.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 11.2 pc share against its own 2026 total of 58.6M, not its published 5.5M, because that figure assumes a population of 49.1M, 16 pc short of today's"
+ },
+ "Philippines": {
+  "millions": 5.89,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 5.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 7.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.0 pc share against its own 2026 total of 117.7M, not its published 5.5M, because that figure assumes a population of 110.0M, 7 pc short of today's"
+ },
+ "Palestine": {
+  "millions": 5.55,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 4.3,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 5.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 97.5 pc share against its own 2026 total of 5.7M, not its published 4.3M, because that figure assumes a population of 4.4M, 23 pc short of today's"
+ },
+ "United Kingdom": {
+  "millions": 4.2,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 4.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 4.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 6.0 pc share against its own 2026 total of 69.9M, not its published 4.0M, because that figure assumes a population of 66.7M, 5 pc short of today's"
+ },
+ "Malawi": {
+  "millions": 4.56,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 4.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 2.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 20.0 pc share against its own 2026 total of 22.8M, not its published 4.0M, because that figure assumes a population of 20.0M, 12 pc short of today's"
+ },
+ "Thailand": {
+  "millions": 3.86,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 3.6,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 3.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.4 pc share against its own 2026 total of 71.6M, not its published 3.6M, because that figure assumes a population of 66.7M, 7 pc short of today's"
+ },
+ "Italy": {
+  "millions": 2.83,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 3.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 2.6,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 4.8 pc share against its own 2026 total of 58.9M, which returns the published 3.0M; the row is already on a current denominator"
+ },
+ "Spain": {
+  "millions": 2.39,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 2.5,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.0 pc share against its own 2026 total of 47.9M, which returns the published 2.5M; the row is already on a current denominator"
+ },
+ "Oman": {
+  "millions": 4.88,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 2.4,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 3.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 86.0 pc share against its own 2026 total of 5.7M, not its published 2.4M, because that figure assumes a population of 2.8M, 51 pc short of today's"
+ },
+ "Kuwait": {
+  "millions": 3.81,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 2.2,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 3.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 74.6 pc share against its own 2026 total of 5.1M, not its published 2.2M, because that figure assumes a population of 2.9M, 42 pc short of today's"
+ },
+ "Sri Lanka": {
+  "millions": 2.26,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 2.1,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 2.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 9.7 pc share against its own 2026 total of 23.3M, not its published 2.1M, because that figure assumes a population of 21.6M, 7 pc short of today's"
+ },
+ "Bosnia and Herzegovina": {
+  "millions": 1.58,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 2.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.8,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 50.7 pc share against its own 2026 total of 3.1M, which returns the published 2.0M; the row is already on a current denominator"
+ },
+ "Canada": {
+  "millions": 1.98,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 1.8,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 4.9 pc share against its own 2026 total of 40.5M, not its published 1.8M, because that figure assumes a population of 36.7M, 9 pc short of today's"
+ },
+ "Kosovo": {
+  "millions": 1.7,
+  "sources": [
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.7,
+    "year": 2020
+   }
+  ],
+  "reason": "Pew 1.7M stands as the only listed figure: WPR omits the row, and the primary derives it as Pew's share of a Pew total"
+ },
+ "Qatar": {
+  "millions": 2.46,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 1.6,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 2.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 77.5 pc share against its own 2026 total of 3.2M, not its published 1.6M, because that figure assumes a population of 2.1M, 35 pc short of today's"
+ },
+ "South Africa": {
+  "millions": 1.24,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 1.1,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 1.9 pc share against its own 2026 total of 65.5M, not its published 1.1M, because that figure assumes a population of 57.9M, 12 pc short of today's"
+ },
+ "Djibouti": {
+  "millions": 1.19,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 1.0,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 99.4 pc share against its own 2026 total of 1.2M, not its published 1.0M, because that figure assumes a population of 1.0M, 16 pc short of today's"
+ },
+ "Singapore": {
+  "millions": 0.921,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.9151,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 15.6 pc share against its own 2026 total of 5.9M, which returns the published 0.9151M; the row is already on a current denominator"
+ },
+ "Belgium": {
+  "millions": 0.895,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.8794,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.8,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 7.6 pc share against its own 2026 total of 11.8M, not its published 0.8794M, because that figure assumes a population of 11.6M, 2 pc short of today's"
+ },
+ "Bulgaria": {
+  "millions": 0.893,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.861,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 13.4 pc share against its own 2026 total of 6.7M, not its published 0.861M, because that figure assumes a population of 6.4M, 4 pc short of today's"
+ },
+ "Australia": {
+  "millions": 0.871,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.8134,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.9,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 3.2 pc share against its own 2026 total of 27.2M, not its published 0.8134M, because that figure assumes a population of 25.4M, 7 pc short of today's"
+ },
+ "Brazil": {
+  "millions": 0.769,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.7676000000000001,
+    "year": 2026
+   }
+  ],
+  "reason": "WPR's 0.36 pc share against its own 2026 total of 213.6M, which returns the published 0.7676000000000001M; the row is already on a current denominator"
+ },
+ "Austria": {
+  "millions": 0.756,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.7456,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.7,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 8.3 pc share against its own 2026 total of 9.1M, not its published 0.7456M, because that figure assumes a population of 9.0M, 1 pc short of today's"
+ },
+ "Sweden": {
+  "millions": 0.76,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.7,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.8,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 7.1 pc share against its own 2026 total of 10.7M, not its published 0.7M, because that figure assumes a population of 9.9M, 8 pc short of today's"
+ },
+ "North Macedonia": {
+  "millions": 0.581,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.5909,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.6,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 32.2 pc share against its own 2026 total of 1.8M, which returns the published 0.5909M; the row is already on a current denominator"
+ },
+ "Switzerland": {
+  "millions": 0.531,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.44,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.9 pc share against its own 2026 total of 9.0M, not its published 0.44M, because that figure assumes a population of 7.5M, 17 pc short of today's"
+ },
+ "Ukraine": {
+  "millions": 0.415,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.4,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 1.05 pc share against its own 2026 total of 39.5M, not its published 0.4M, because that figure assumes a population of 38.1M, 4 pc short of today's"
+ },
+ "Netherlands": {
+  "millions": 0.922,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.387,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 1.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.0 pc share against its own 2026 total of 18.4M, not its published 0.387M, because that figure assumes a population of 7.7M, 58 pc short of today's"
+ },
+ "Brunei": {
+  "millions": 0.386,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.37989999999999996,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.4,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 82.1 pc share against its own 2026 total of 0.5M, not its published 0.37989999999999996M, because that figure assumes a population of 0.5M, 1 pc short of today's"
+ },
+ "Maldives": {
+  "millions": 0.532,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.3748,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 100.0 pc share against its own 2026 total of 0.5M, not its published 0.3748M, because that figure assumes a population of 0.4M, 29 pc short of today's"
+ },
+ "Denmark": {
+  "millions": 0.325,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.3137,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.4 pc share against its own 2026 total of 6.0M, not its published 0.3137M, because that figure assumes a population of 5.8M, 4 pc short of today's"
+ },
+ "Greece": {
+  "millions": 0.366,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.31339999999999996,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.5,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 3.7 pc share against its own 2026 total of 9.9M, not its published 0.31339999999999996M, because that figure assumes a population of 8.5M, 14 pc short of today's"
+ },
+ "Hong Kong": {
+  "millions": 0.303,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.29569999999999996,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.0,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 4.1 pc share against its own 2026 total of 7.4M, not its published 0.29569999999999996M, because that figure assumes a population of 7.2M, 2 pc short of today's"
+ },
+ "Serbia": {
+  "millions": 0.279,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.2782,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 4.2 pc share against its own 2026 total of 6.6M, which returns the published 0.2782M; the row is already on a current denominator"
+ },
+ "Cyprus": {
+  "millions": 0.35,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.275,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.3,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 25.3 pc share against its own 2026 total of 1.4M, not its published 0.275M, because that figure assumes a population of 1.1M, 21 pc short of today's"
+ },
+ "Norway": {
+  "millions": 0.181,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.1755,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.2,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 3.2 pc share against its own 2026 total of 5.7M, not its published 0.1755M, because that figure assumes a population of 5.5M, 3 pc short of today's"
+ },
+ "Zambia": {
+  "millions": 0.225,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.1689,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 1.0 pc share against its own 2026 total of 22.5M, not its published 0.1689M, because that figure assumes a population of 16.9M, 25 pc short of today's"
+ },
+ "Finland": {
+  "millions": 0.141,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.14,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 2.5 pc share against its own 2026 total of 5.6M, which returns the published 0.14M; the row is already on a current denominator"
+ },
+ "Romania": {
+  "millions": 0.122,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.1365,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.65 pc share against its own 2026 total of 18.8M, which returns the published 0.1365M; the row is already on a current denominator"
+ },
+ "Montenegro": {
+  "millions": 0.12,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.12279999999999999,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 19.1 pc share against its own 2026 total of 0.6M, which returns the published 0.12279999999999999M; the row is already on a current denominator"
+ },
+ "Zimbabwe": {
+  "millions": 0.121,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.1,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.7 pc share against its own 2026 total of 17.3M, not its published 0.1M, because that figure assumes a population of 14.3M, 17 pc short of today's"
+ },
+ "New Zealand": {
+  "millions": 0.079,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.0751,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 1.5 pc share against its own 2026 total of 5.3M, not its published 0.0751M, because that figure assumes a population of 5.0M, 5 pc short of today's"
+ },
+ "Slovenia": {
+  "millions": 0.076,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.0736,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.05,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 3.6 pc share against its own 2026 total of 2.1M, not its published 0.0736M, because that figure assumes a population of 2.0M, 3 pc short of today's"
+ },
+ "Trinidad and Tobago": {
+  "millions": 0.076,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.06570000000000001,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 5.0 pc share against its own 2026 total of 1.5M, not its published 0.06570000000000001M, because that figure assumes a population of 1.3M, 13 pc short of today's"
+ },
+ "Fiji": {
+  "millions": 0.059,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.0584,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.1,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 6.3 pc share against its own 2026 total of 0.9M, not its published 0.0584M, because that figure assumes a population of 0.9M, 1 pc short of today's"
+ },
+ "Portugal": {
+  "millions": 0.042,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.0365,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.02,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.4 pc share against its own 2026 total of 10.4M, not its published 0.0365M, because that figure assumes a population of 9.1M, 12 pc short of today's"
+ },
+ "Czechia": {
+  "millions": 0.03,
+  "sources": [
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.03,
+    "year": 2020
+   }
+  ],
+  "reason": "Pew 0.03M stands as the only listed figure: WPR omits the row, and the primary derives it as Pew's share of a Pew total"
+ },
+ "Botswana": {
+  "millions": 0.01,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.009,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.007,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.4 pc share against its own 2026 total of 2.6M, not its published 0.009M, because that figure assumes a population of 2.2M, 14 pc short of today's"
+ },
+ "Eswatini": {
+  "millions": 0.025,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.006,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.001,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 2.0 pc share against its own 2026 total of 1.3M, not its published 0.006M, because that figure assumes a population of 0.3M, 76 pc short of today's"
+ },
+ "Chile": {
+  "millions": 0.02,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.004,
+    "year": 2026
+   }
+  ],
+  "reason": "WPR's 0.1 pc share against its own 2026 total of 19.9M, not its published 0.004M, because that figure assumes a population of 4.0M, 80 pc short of today's"
+ },
+ "Lesotho": {
+  "millions": 0.0024,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.003,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.004,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.1 pc share against its own 2026 total of 2.4M, which returns the published 0.003M; the row is already on a current denominator"
+ },
+ "Estonia": {
+  "millions": 0.0013,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.0015,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.008,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.1 pc share against its own 2026 total of 1.3M, which returns the published 0.0015M; the row is already on a current denominator"
+ },
+ "Iceland": {
+  "millions": 0.0004,
+  "sources": [
+   {
+    "name": "World Population Review, Muslim Population by Country 2026",
+    "figure": 0.001,
+    "year": 2026
+   },
+   {
+    "name": "Pew Research Center, Appendix B religious composition table (2020 column)",
+    "figure": 0.004,
+    "year": 2020
+   }
+  ],
+  "reason": "WPR's 0.1 pc share against its own 2026 total of 0.4M, which returns the published 0.001M; the row is already on a current denominator"
+ }
+}

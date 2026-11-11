@@ -1,0 +1,117 @@
+
+ifis-stockholm  rows 365
+  solar sunrise m-6.5 floor exact 221/365 w1 365
+  solar dhuhr m5.5 floor exact 316/365 w1 365
+  solar asrShafi m7 floor exact 84/365 w1 145
+  solar asrHanafi m-15 floor exact 19/365 w1 29
+  solar maghrib m6 floor exact 138/365 w1 188
+  bare               fajr 138/247 m0.5 floor w128  isha 50/259 m-1 floor w1336
+  portion 1/2+1/7    fajr 138/365 m0.5 floor w152  isha 43/365 m-0.5 floor w49
+  portion 1/7+1/7    fajr 46/365 m-6.5 floor w57  isha 43/365 m-0.5 floor w49
+  frozen45           fajr 11/365 m-7 floor w60  isha 4/365 m-9 floor w76
+  frozen45IfNaN      fajr 138/365 m0.5 floor w128  isha 50/365 m-1 floor w1336
+  cap 80/80          fajr 10/365 m9.5 floor w91  isha 10/365 m-15 floor w81
+  cap 90/90          fajr 5/365 m14.5 floor w86  isha 4/365 m-13 ceil w68
+  cap 120/90         fajr 16/365 m-15 floor w66  isha 4/365 m-13 ceil w68
+  cap 120/70         fajr 16/365 m-15 floor w66  isha 14/365 m-5.5 floor w81
+  free bare fajr 17.75:140 18:138 17.5:135 18.25:132 17.25:121 | isha 10:0 10.25:0 10.5:0 10.75:0 11:0
+  free portion fajr undefined 0.5:0 | isha undefined 0.5:0
+  free cap fajr 160:124 | isha 160:63
+  diag fajr {"distinct":189,"longestRun":9,"longestRunValue":"02:20","runs":[{"len":9,"val":140},{"len":5,"val":141},{"len":5,"val":364},{"len":4,"val":364},{"len":3,"val":363},{"len":3,"val":141}]}
+  diag isha {"distinct":231,"longestRun":12,"longestRunValue":"23:12","runs":[{"len":12,"val":1392},{"len":5,"val":1031},{"len":4,"val":1032},{"len":4,"val":1032},{"len":3,"val":1391}]}
+  months {"2026-01":{"fajr":{"e":20,"w1":31,"t":31},"isha":{"e":14,"w1":31,"t":31}},"2026-02":{"fajr":{"e":9,"w1":28,"t":28},"isha":{"e":25,"w1":28,"t":28}},"2026-03":{"fajr":{"e":10,"w1":31,"t":31},"isha":{"e":10,"w1":30,"t":31}},"2026-04":{"fajr":{"e":1,"w1":2,"t":23},"isha":{"e":0,"w1":1,"t":29}},"2026-08":{"fajr":{"e":0,"w1":0,"t":12},"isha":{"e":0,"w1":0,"t":18}},"2026-09":{"fajr":{"e":16,"w1":17,"t":30},"isha":{"e":1,"w1":1,"t":30}},"2026-10":{"fajr":{"e":27,"w1":31,"t":31},"isha":{"e":0,"w1":0,"t":31}},"2026-11":{"fajr":{"e":27,"w1":30,"t":30},"isha":{"e":0,"w1":0,"t":30}},"2026-12":{"fajr":{"e":28,"w1":31,"t":31},"isha":{"e":0,"w1":16,"t":31}}}
+  amplitude {"jan":{"date":"2026-01-15","computedGapMin":-152.9,"chartGapMin":-146},"jul":{"date":"2026-07-15","computedGapMin":null,"chartGapMin":-73}}
+
+ifis-uppsala  rows 365
+  solar sunrise m-6.5 floor exact 179/365 w1 344
+  solar dhuhr m5.5 floor exact 327/365 w1 365
+  solar asrShafi m7 floor exact 80/365 w1 137
+  solar asrHanafi m-14.5 floor exact 20/365 w1 33
+  solar maghrib m6 floor exact 126/365 w1 185
+  bare               fajr 142/244 m0.5 floor w148  isha 52/257 m-1 floor w1331
+  portion 1/2+1/7    fajr 142/365 m0.5 floor w161  isha 40/365 m-0.5 floor w47
+  portion 1/7+1/7    fajr 41/365 m-8.5 floor w52  isha 40/365 m-0.5 floor w47
+  frozen45           fajr 9/365 m-1 floor w65  isha 4/365 m12 floor w52
+  frozen45IfNaN      fajr 142/365 m0.5 floor w148  isha 52/365 m-1 floor w1331
+  cap 80/80          fajr 5/365 m12.5 floor w98  isha 5/365 m-7 floor w76
+  cap 90/90          fajr 4/365 m10.5 floor w86  isha 5/365 m-11.5 floor w71
+  cap 120/90         fajr 2/365 m14.5 ceil w61  isha 5/365 m-11.5 floor w71
+  cap 120/70         fajr 2/365 m14.5 ceil w61  isha 18/365 m-11 floor w90
+  free bare fajr 18:142 17.75:139 18.25:135 17.5:132 18.5:128 | isha 10:0 10.25:0 10.5:0 10.75:0 11:0
+  free portion fajr undefined 0.5:0 | isha undefined 0.5:0
+  free cap fajr 160:117 | isha 160:60
+  diag fajr {"distinct":185,"longestRun":8,"longestRunValue":"02:29","runs":[{"len":8,"val":149},{"len":6,"val":367},{"len":4,"val":367},{"len":4,"val":145},{"len":4,"val":147},{"len":4,"val":148}]}
+  diag isha {"distinct":240,"longestRun":10,"longestRunValue":"23:14","runs":[{"len":10,"val":1394},{"len":5,"val":1032},{"len":5,"val":1032},{"len":3,"val":1393}]}
+  months {"2026-01":{"fajr":{"e":28,"w1":31,"t":31},"isha":{"e":20,"w1":31,"t":31}},"2026-02":{"fajr":{"e":16,"w1":28,"t":28},"isha":{"e":23,"w1":28,"t":28}},"2026-03":{"fajr":{"e":19,"w1":30,"t":31},"isha":{"e":7,"w1":27,"t":31}},"2026-04":{"fajr":{"e":0,"w1":0,"t":22},"isha":{"e":0,"w1":0,"t":28}},"2026-08":{"fajr":{"e":0,"w1":0,"t":10},"isha":{"e":0,"w1":0,"t":17}},"2026-09":{"fajr":{"e":11,"w1":14,"t":30},"isha":{"e":0,"w1":1,"t":30}},"2026-10":{"fajr":{"e":19,"w1":31,"t":31},"isha":{"e":0,"w1":0,"t":31}},"2026-11":{"fajr":{"e":23,"w1":30,"t":30},"isha":{"e":0,"w1":0,"t":30}},"2026-12":{"fajr":{"e":26,"w1":31,"t":31},"isha":{"e":2,"w1":18,"t":31}}}
+  amplitude {"jan":{"date":"2026-01-15","computedGapMin":-156,"chartGapMin":-150},"jul":{"date":"2026-07-15","computedGapMin":null,"chartGapMin":-65}}
+
+ifis-goteborg  rows 365
+  solar sunrise m-6.5 floor exact 216/365 w1 365
+  solar dhuhr m5.5 floor exact 317/365 w1 365
+  solar asrShafi m6.5 floor exact 94/365 w1 151
+  solar asrHanafi m-15 floor exact 0/365 w1 0
+  solar maghrib m6 floor exact 129/365 w1 190
+  bare               fajr 140/257 m0.5 floor w123  isha 62/271 m-1.5 floor w1360
+  portion 1/2+1/7    fajr 140/365 m0.5 floor w149  isha 49/365 m-1 floor w48
+  portion 1/7+1/7    fajr 57/365 m-1 floor w60  isha 49/365 m-1 floor w48
+  frozen45           fajr 13/365 m1.5 floor w64  isha 14/365 m15 ceil w46
+  frozen45IfNaN      fajr 145/365 m0.5 floor w123  isha 62/365 m-1.5 floor w1360
+  cap 80/80          fajr 14/365 m2.5 floor w74  isha 12/365 m-10 floor w66
+  cap 90/90          fajr 14/365 m12.5 floor w74  isha 5/365 m-14 floor w60
+  cap 120/90         fajr 25/365 m-10 floor w53  isha 5/365 m-14 floor w60
+  cap 120/70         fajr 25/365 m-10 floor w53  isha 12/365 m0 floor w66
+  free bare fajr 18:140 17.75:135 18.25:133 17.25:130 17.5:124 | isha 10:0 10.25:0 10.5:0 10.75:0 11:0
+  free portion fajr undefined 0.5:0 | isha undefined 0.5:0
+  free cap fajr 155:140 | isha 140:62
+  diag fajr {"distinct":180,"longestRun":8,"longestRunValue":"02:53","runs":[{"len":8,"val":173},{"len":6,"val":385},{"len":6,"val":385},{"len":4,"val":174},{"len":4,"val":174},{"len":3,"val":384}]}
+  diag isha {"distinct":228,"longestRun":12,"longestRunValue":"17:40","runs":[{"len":12,"val":1060},{"len":5,"val":1406},{"len":5,"val":1406},{"len":3,"val":1405},{"len":3,"val":1407},{"len":3,"val":1405}]}
+  months {"2026-01":{"fajr":{"e":28,"w1":31,"t":31},"isha":{"e":7,"w1":31,"t":31}},"2026-02":{"fajr":{"e":21,"w1":28,"t":28},"isha":{"e":24,"w1":28,"t":28}},"2026-03":{"fajr":{"e":19,"w1":31,"t":31},"isha":{"e":27,"w1":31,"t":31}},"2026-04":{"fajr":{"e":6,"w1":6,"t":28},"isha":{"e":4,"w1":6,"t":30}},"2026-08":{"fajr":{"e":0,"w1":0,"t":17},"isha":{"e":0,"w1":0,"t":24}},"2026-09":{"fajr":{"e":10,"w1":21,"t":30},"isha":{"e":0,"w1":1,"t":30}},"2026-10":{"fajr":{"e":15,"w1":31,"t":31},"isha":{"e":0,"w1":0,"t":31}},"2026-11":{"fajr":{"e":15,"w1":30,"t":30},"isha":{"e":0,"w1":0,"t":30}},"2026-12":{"fajr":{"e":26,"w1":31,"t":31},"isha":{"e":0,"w1":8,"t":31}},"2026-05":{"fajr":{"e":0,"w1":0,"t":0},"isha":{"e":0,"w1":0,"t":5}}}
+  amplitude {"jan":{"date":"2026-01-15","computedGapMin":-144.3,"chartGapMin":-138},"jul":{"date":"2026-07-15","computedGapMin":null,"chartGapMin":-78}}
+
+angered-goteborg  rows 365
+  solar sunrise m-6.5 floor exact 216/365 w1 365
+  solar dhuhr m5.5 floor exact 317/365 w1 365
+  solar asrShafi m6.5 floor exact 94/365 w1 151
+  solar asrHanafi m-15 floor exact 0/365 w1 0
+  solar maghrib m6 floor exact 129/365 w1 190
+  bare               fajr 140/257 m0.5 floor w123  isha 62/271 m-1.5 floor w1360
+  portion 1/2+1/7    fajr 140/365 m0.5 floor w149  isha 49/365 m-1 floor w48
+  portion 1/7+1/7    fajr 57/365 m-1 floor w60  isha 49/365 m-1 floor w48
+  frozen45           fajr 13/365 m1.5 floor w64  isha 14/365 m15 ceil w46
+  frozen45IfNaN      fajr 145/365 m0.5 floor w123  isha 62/365 m-1.5 floor w1360
+  cap 80/80          fajr 14/365 m2.5 floor w74  isha 12/365 m-10 floor w66
+  cap 90/90          fajr 14/365 m12.5 floor w74  isha 5/365 m-14 floor w60
+  cap 120/90         fajr 25/365 m-10 floor w53  isha 5/365 m-14 floor w60
+  cap 120/70         fajr 25/365 m-10 floor w53  isha 12/365 m0 floor w66
+  free bare fajr 18:140 17.75:135 18.25:133 17.25:130 17.5:124 | isha 10:0 10.25:0 10.5:0 10.75:0 11:0
+  free portion fajr undefined 0.5:0 | isha undefined 0.5:0
+  free cap fajr 155:140 | isha 140:62
+  diag fajr {"distinct":180,"longestRun":8,"longestRunValue":"02:53","runs":[{"len":8,"val":173},{"len":6,"val":385},{"len":6,"val":385},{"len":4,"val":174},{"len":4,"val":174},{"len":3,"val":384}]}
+  diag isha {"distinct":228,"longestRun":12,"longestRunValue":"17:40","runs":[{"len":12,"val":1060},{"len":5,"val":1406},{"len":5,"val":1406},{"len":3,"val":1405},{"len":3,"val":1407},{"len":3,"val":1405}]}
+  months {"2026-01":{"fajr":{"e":28,"w1":31,"t":31},"isha":{"e":7,"w1":31,"t":31}},"2026-02":{"fajr":{"e":21,"w1":28,"t":28},"isha":{"e":24,"w1":28,"t":28}},"2026-03":{"fajr":{"e":19,"w1":31,"t":31},"isha":{"e":27,"w1":31,"t":31}},"2026-04":{"fajr":{"e":6,"w1":6,"t":28},"isha":{"e":4,"w1":6,"t":30}},"2026-08":{"fajr":{"e":0,"w1":0,"t":17},"isha":{"e":0,"w1":0,"t":24}},"2026-09":{"fajr":{"e":10,"w1":21,"t":30},"isha":{"e":0,"w1":1,"t":30}},"2026-10":{"fajr":{"e":15,"w1":31,"t":31},"isha":{"e":0,"w1":0,"t":31}},"2026-11":{"fajr":{"e":15,"w1":30,"t":30},"isha":{"e":0,"w1":0,"t":30}},"2026-12":{"fajr":{"e":26,"w1":31,"t":31},"isha":{"e":0,"w1":8,"t":31}},"2026-05":{"fajr":{"e":0,"w1":0,"t":0},"isha":{"e":0,"w1":0,"t":5}}}
+  amplitude {"jan":{"date":"2026-01-15","computedGapMin":-144.3,"chartGapMin":-138},"jul":{"date":"2026-07-15","computedGapMin":null,"chartGapMin":-78}}
+
+diyanet-koeln-control  rows 365
+  solar sunrise m-6.5 floor exact 233/365 w1 365
+  solar dhuhr m5.5 floor exact 316/365 w1 365
+  solar asrShafi m3 floor exact 108/365 w1 182
+  solar asrHanafi m-15 floor exact 0/365 w1 0
+  solar maghrib m6.5 floor exact 147/365 w1 218
+  bare               fajr 164/311 m0.5 floor w120  isha 77/343 m-0.5 floor w1386
+  portion 1/2+1/7    fajr 164/365 m0.5 floor w139  isha 68/365 m-0.5 floor w39
+  portion 1/7+1/7    fajr 105/365 m0.5 floor w51  isha 68/365 m-0.5 floor w39
+  frozen45           fajr 25/365 m10 floor w44  isha 28/365 m-10.5 floor w46
+  frozen45IfNaN      fajr 164/365 m0.5 floor w120  isha 77/365 m-0.5 floor w1386
+  cap 80/80          fajr 17/365 m-15 floor w38  isha 14/365 m6.5 floor w34
+  cap 90/90          fajr 17/365 m-5 floor w38  isha 29/365 m9 floor w21
+  cap 120/90         fajr 122/365 m0.5 floor w25  isha 29/365 m9 floor w21
+  cap 120/70         fajr 122/365 m0.5 floor w25  isha 14/365 m15 ceil w34
+  free bare fajr 17.75:177 18:164 17.5:157 18.25:155 17.25:148 | isha 10:12 10.25:12 10.5:12 10.75:12 11:12
+  free portion fajr undefined 0.5:0 | isha undefined 0.5:0
+  free cap fajr 130:166 | isha 110:85
+  diag fajr {"distinct":158,"longestRun":15,"longestRunValue":"03:42","runs":[{"len":15,"val":222},{"len":5,"val":393},{"len":5,"val":393},{"len":4,"val":394},{"len":4,"val":223},{"len":3,"val":392}]}
+  diag isha {"distinct":214,"longestRun":6,"longestRunValue":"23:16","runs":[{"len":6,"val":1396},{"len":6,"val":1396},{"len":6,"val":1095},{"len":5,"val":1397},{"len":5,"val":1095},{"len":3,"val":1393}]}
+  months {"2026-01":{"fajr":{"e":20,"w1":31,"t":31},"isha":{"e":25,"w1":31,"t":31}},"2026-02":{"fajr":{"e":10,"w1":28,"t":28},"isha":{"e":26,"w1":28,"t":28}},"2026-03":{"fajr":{"e":11,"w1":31,"t":31},"isha":{"e":20,"w1":31,"t":31}},"2026-04":{"fajr":{"e":6,"w1":23,"t":30},"isha":{"e":2,"w1":25,"t":30}},"2026-05":{"fajr":{"e":0,"w1":0,"t":25},"isha":{"e":0,"w1":0,"t":31}},"2026-07":{"fajr":{"e":0,"w1":0,"t":13},"isha":{"e":0,"w1":0,"t":29}},"2026-08":{"fajr":{"e":9,"w1":11,"t":31},"isha":{"e":1,"w1":1,"t":31}},"2026-09":{"fajr":{"e":30,"w1":30,"t":30},"isha":{"e":0,"w1":0,"t":30}},"2026-10":{"fajr":{"e":27,"w1":31,"t":31},"isha":{"e":0,"w1":0,"t":31}},"2026-11":{"fajr":{"e":23,"w1":30,"t":30},"isha":{"e":0,"w1":4,"t":30}},"2026-12":{"fajr":{"e":28,"w1":31,"t":31},"isha":{"e":3,"w1":25,"t":31}},"2026-06":{"fajr":{"e":0,"w1":0,"t":0},"isha":{"e":0,"w1":0,"t":10}}}
+  amplitude {"jan":{"date":"2026-01-15","computedGapMin":-118.7,"chartGapMin":-112},"jul":{"date":"2026-07-15","computedGapMin":null,"chartGapMin":-94}}
+
+wrote se-fit.json

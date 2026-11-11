@@ -1,0 +1,346 @@
+{
+  "inSample2027": {
+    "fajr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.0137,
+      "pctExact": 98.63
+    },
+    "sunrise": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.0137,
+      "pctExact": 98.63
+    },
+    "dhuhr": {
+      "n": 365,
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.011,
+      "pctExact": 98.9
+    },
+    "asr": {
+      "n": 365,
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.0137,
+      "pctExact": 98.63
+    },
+    "magrib": {
+      "n": 365,
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.011,
+      "pctExact": 98.9
+    },
+    "isha": {
+      "n": 365,
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.011,
+      "pctExact": 98.9
+    },
+    "overall": {
+      "n": 2190,
+      "exact": 2163,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0123,
+      "pctExact": 98.77
+    }
+  },
+  "recipeClaimed2027": {
+    "fajr": {
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.63,
+      "pctWithin1": 100
+    },
+    "sunrise": {
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.63,
+      "pctWithin1": 100
+    },
+    "dhuhr": {
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.9,
+      "pctWithin1": 100
+    },
+    "asr": {
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.63,
+      "pctWithin1": 100
+    },
+    "magrib": {
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.9,
+      "pctWithin1": 100
+    },
+    "isha": {
+      "exact": 361,
+      "within1": 365,
+      "worst": 1,
+      "pctExact": 98.9,
+      "pctWithin1": 100
+    }
+  },
+  "decade": {
+    "baseline": {
+      "overall": {
+        "n": 24108,
+        "exact": 23690,
+        "within1": 24108,
+        "worst": 1,
+        "mae": 0.0173,
+        "pctExact": 98.27
+      },
+      "byPrayer": {
+        "fajr": {
+          "n": 4018,
+          "exact": 3959,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0147,
+          "pctExact": 98.53
+        },
+        "sunrise": {
+          "n": 4018,
+          "exact": 3959,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0147,
+          "pctExact": 98.53
+        },
+        "dhuhr": {
+          "n": 4018,
+          "exact": 3964,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0134,
+          "pctExact": 98.66
+        },
+        "asr": {
+          "n": 4018,
+          "exact": 3953,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0162,
+          "pctExact": 98.38
+        },
+        "magrib": {
+          "n": 4018,
+          "exact": 3929,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0222,
+          "pctExact": 97.78
+        },
+        "isha": {
+          "n": 4018,
+          "exact": 3926,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0229,
+          "pctExact": 97.71
+        }
+      }
+    },
+    "noMargins": {
+      "overall": {
+        "n": 24108,
+        "exact": 0,
+        "within1": 47,
+        "worst": 6,
+        "mae": 3.1631,
+        "pctExact": 0
+      },
+      "byPrayer": {
+        "fajr": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 0,
+          "worst": 4,
+          "mae": 3.0122,
+          "pctExact": 0
+        },
+        "sunrise": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 0,
+          "worst": 4,
+          "mae": 3.0122,
+          "pctExact": 0
+        },
+        "dhuhr": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 0,
+          "worst": 6,
+          "mae": 4.9915,
+          "pctExact": 0
+        },
+        "asr": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 47,
+          "worst": 3,
+          "mae": 1.9928,
+          "pctExact": 0
+        },
+        "magrib": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 0,
+          "worst": 4,
+          "mae": 2.9853,
+          "pctExact": 0
+        },
+        "isha": {
+          "n": 4018,
+          "exact": 0,
+          "within1": 0,
+          "worst": 4,
+          "mae": 2.9846,
+          "pctExact": 0
+        }
+      }
+    },
+    "lat525": {
+      "overall": {
+        "n": 24108,
+        "exact": 5663,
+        "within1": 9159,
+        "worst": 6,
+        "mae": 2.4759,
+        "pctExact": 23.49
+      },
+      "byPrayer": {
+        "fajr": {
+          "n": 4018,
+          "exact": 311,
+          "within1": 919,
+          "worst": 6,
+          "mae": 3.1648,
+          "pctExact": 7.74
+        },
+        "sunrise": {
+          "n": 4018,
+          "exact": 311,
+          "within1": 919,
+          "worst": 6,
+          "mae": 3.1648,
+          "pctExact": 7.74
+        },
+        "dhuhr": {
+          "n": 4018,
+          "exact": 3964,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.0134,
+          "pctExact": 98.66
+        },
+        "asr": {
+          "n": 4018,
+          "exact": 460,
+          "within1": 1467,
+          "worst": 5,
+          "mae": 2.1779,
+          "pctExact": 11.45
+        },
+        "magrib": {
+          "n": 4018,
+          "exact": 308,
+          "within1": 917,
+          "worst": 6,
+          "mae": 3.1677,
+          "pctExact": 7.67
+        },
+        "isha": {
+          "n": 4018,
+          "exact": 309,
+          "within1": 919,
+          "worst": 6,
+          "mae": 3.167,
+          "pctExact": 7.69
+        }
+      }
+    },
+    "lonMinus035": {
+      "overall": {
+        "n": 24108,
+        "exact": 2624,
+        "within1": 24107,
+        "worst": 2,
+        "mae": 0.8912,
+        "pctExact": 10.88
+      },
+      "byPrayer": {
+        "fajr": {
+          "n": 4018,
+          "exact": 437,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.8912,
+          "pctExact": 10.88
+        },
+        "sunrise": {
+          "n": 4018,
+          "exact": 437,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.8912,
+          "pctExact": 10.88
+        },
+        "dhuhr": {
+          "n": 4018,
+          "exact": 421,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.8952,
+          "pctExact": 10.48
+        },
+        "asr": {
+          "n": 4018,
+          "exact": 437,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.8912,
+          "pctExact": 10.88
+        },
+        "magrib": {
+          "n": 4018,
+          "exact": 447,
+          "within1": 4018,
+          "worst": 1,
+          "mae": 0.8888,
+          "pctExact": 11.12
+        },
+        "isha": {
+          "n": 4018,
+          "exact": 445,
+          "within1": 4017,
+          "worst": 2,
+          "mae": 0.8895,
+          "pctExact": 11.08
+        }
+      }
+    }
+  }
+}

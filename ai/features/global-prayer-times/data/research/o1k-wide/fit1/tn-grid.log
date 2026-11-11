@@ -1,0 +1,18 @@
+identical printed rows on shared MM-DD: 133/366 (2024 rows vs 2025 rows); first diffs: 01-01 01-02 01-03 01-04 01-05 01-06 01-07 01-08
+
+== angle-independent prayers: per-year best, then frozen-across-years best ==
+dhuhr: 2024 [dhuhr                  exact 323  within1 366  worst   1  (margin +7.5 floor)]
+         2025 [dhuhr                  exact 338  within1 365  worst   1  (margin +7.5 floor)]
+         frozen [exact 661/731 within1 731 worst 1 margin 7.5 floor]
+magrib: 2024 [magrib                 exact 349  within1 366  worst   1  (margin +3 floor)]
+         2025 [magrib                 exact 343  within1 365  worst   1  (margin +3 floor)]
+         frozen [exact 692/731 within1 731 worst 1 margin 3 floor]
+asrShafi: 2024 [exact 150/366 w1 303 worst 2 m 0 floor]  2025 [exact 145/365 w1 298 worst 2 m 0 floor]  frozen [exact 295/731 w1 601 worst 2 m 0 floor]
+asrHanafi: 2024 [exact 0/366 w1 0 worst 65 m -10 floor]  2025 [exact 0/365 w1 0 worst 65 m -10 floor]  frozen [exact 0/731 w1 0 worst 65 m -10 floor]
+
+grids done 15.1s
+per-year 2024: fajr 18.1 [exact 353 w1 366 worst 1 m 0.5 floor] isha 18.1 [exact 354 w1 366 worst 1 m 0.5 floor] sum 707
+per-year 2025: fajr 18.1 [exact 356 w1 365 worst 1 m 0.5 floor] isha 18.1 [exact 352 w1 365 worst 1 m 0.5 floor] sum 708
+joint frozen: fajr 18.1 [exact 709/731 w1 731 worst 1 m 0.5 floor] isha 18.1 [exact 706/731 w1 731 worst 1 m 0.5 floor] sum 1415
+top joint pairs: 18.1/18.1 sum 1415  18.1/18 sum 1378  18/18.1 sum 1377  18.2/18.1 sum 1369  18.1/18.2 sum 1359  18/18 sum 1340
+wrote tn-grid.json

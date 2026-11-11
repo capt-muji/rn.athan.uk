@@ -1,0 +1,253 @@
+{
+ "country": "Mali",
+ "publisher": "Mosqu\u00e9e AR-RAHMAN Badalabougou, Bamako \u2014 mawaqit-hosted page (mosque-endorsed)",
+ "publisher_tier": "platform/community (mosque-endorsed calculation)",
+ "source_url": "https://mawaqit.net/fr/m/ar-rahma-bamako",
+ "page_capture": "captures/mali-mawaqit-ar-rahma-bamako.html (calendar JSON embedded)",
+ "raw_payload": "captures/mali-arrahma-bamako-calendar-raw.json (12 months, 366 day-slots)",
+ "captured": "2026-11-10",
+ "year_note": "Payload carries no year label; mawaqit serves the current year's calendar (366-slot template; 2026 has 365 days). November banked as 2026-11 (served today).",
+ "convention_note": "shuruq and maghrib are clean solar gates (Nov 10: served 06:28/18:05 vs astronomical 06:28/18:04). dhuhr FIXED 12:45-12:46 all year (jamaah, +29 min after true noon on Nov 10); asr near-fixed 15:45-15:55; isha 19:15-20:01 moves; fajr coarse 05:15-05:45. Partial jama'ah class - same pattern as Ghana's Al-Firdaws per the census.",
+ "rows": {
+  "2026-11-01": {
+   "fajr": "05:15",
+   "sunrise": "06:25",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-02": {
+   "fajr": "05:15",
+   "sunrise": "06:26",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-03": {
+   "fajr": "05:15",
+   "sunrise": "06:26",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-04": {
+   "fajr": "05:15",
+   "sunrise": "06:26",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-05": {
+   "fajr": "05:15",
+   "sunrise": "06:26",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-06": {
+   "fajr": "05:15",
+   "sunrise": "06:27",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-07": {
+   "fajr": "05:15",
+   "sunrise": "06:27",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-08": {
+   "fajr": "05:15",
+   "sunrise": "06:27",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-09": {
+   "fajr": "05:15",
+   "sunrise": "06:28",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-10": {
+   "fajr": "05:15",
+   "sunrise": "06:28",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-11": {
+   "fajr": "05:15",
+   "sunrise": "06:29",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-12": {
+   "fajr": "05:16",
+   "sunrise": "06:29",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-13": {
+   "fajr": "05:16",
+   "sunrise": "06:29",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-14": {
+   "fajr": "05:16",
+   "sunrise": "06:30",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-15": {
+   "fajr": "05:17",
+   "sunrise": "06:30",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-16": {
+   "fajr": "05:17",
+   "sunrise": "06:31",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-17": {
+   "fajr": "05:17",
+   "sunrise": "06:31",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-18": {
+   "fajr": "05:17",
+   "sunrise": "06:31",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-19": {
+   "fajr": "05:18",
+   "sunrise": "06:32",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-20": {
+   "fajr": "05:18",
+   "sunrise": "06:32",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-21": {
+   "fajr": "05:19",
+   "sunrise": "06:33",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-22": {
+   "fajr": "05:19",
+   "sunrise": "06:33",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-23": {
+   "fajr": "05:19",
+   "sunrise": "06:34",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-24": {
+   "fajr": "05:20",
+   "sunrise": "06:34",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-25": {
+   "fajr": "05:20",
+   "sunrise": "06:35",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-26": {
+   "fajr": "05:21",
+   "sunrise": "06:35",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-27": {
+   "fajr": "05:21",
+   "sunrise": "06:36",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-28": {
+   "fajr": "05:21",
+   "sunrise": "06:36",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-29": {
+   "fajr": "05:22",
+   "sunrise": "06:37",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  },
+  "2026-11-30": {
+   "fajr": "05:22",
+   "sunrise": "06:37",
+   "dhuhr": "12:45",
+   "asr": "15:45",
+   "magrib": "18:05",
+   "isha": "19:15"
+  }
+ }
+}

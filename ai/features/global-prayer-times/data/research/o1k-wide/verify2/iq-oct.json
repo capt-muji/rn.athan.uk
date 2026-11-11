@@ -1,0 +1,485 @@
+{
+ "job": "iraq-october",
+ "source": "mideast/data/iq-diwan-october-2026.json (Diwan app API)",
+ "coordinate": {
+  "lat": 33.3152,
+  "lng": 44.3661
+ },
+ "rows": 31,
+ "span": "2026-10-01..2026-10-31",
+ "inSample": "the 365-day fit in n2f-topup/out/iq-report.json covers all of 2026, October included",
+ "fittedRecipe": {
+  "fajr": {
+   "angle": 18.1,
+   "margin": 1,
+   "rounding": "floor"
+  },
+  "dhuhr": {
+   "margin": 5,
+   "rounding": "nearest"
+  },
+  "asr": {
+   "margin": 4,
+   "rounding": "nearest"
+  },
+  "maghrib": {
+   "margin": 3,
+   "rounding": "nearest"
+  },
+  "isha": {
+   "angle": 16.9,
+   "margin": 1,
+   "rounding": "nearest"
+  }
+ },
+ "variants": {
+  "unifiedFloor": {
+   "fajr": {
+    "n": 31,
+    "exact": 31,
+    "exactPct": 100,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0,
+    "worst": 0,
+    "late": 0,
+    "early": 0
+   },
+   "sunrise": {
+    "n": 31,
+    "exact": 21,
+    "exactPct": 67.7,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.323,
+    "worst": 1,
+    "late": 10,
+    "early": 0
+   },
+   "dhuhr": {
+    "n": 31,
+    "exact": 22,
+    "exactPct": 71,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.29,
+    "worst": 1,
+    "late": 0,
+    "early": 9
+   },
+   "asr": {
+    "n": 31,
+    "exact": 24,
+    "exactPct": 77.4,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.226,
+    "worst": 1,
+    "late": 7,
+    "early": 0
+   },
+   "maghrib": {
+    "n": 31,
+    "exact": 30,
+    "exactPct": 96.8,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.032,
+    "worst": 1,
+    "late": 1,
+    "early": 0
+   },
+   "isha": {
+    "n": 31,
+    "exact": 12,
+    "exactPct": 38.7,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.613,
+    "worst": 1,
+    "late": 0,
+    "early": 19
+   }
+  },
+  "fitted": {
+   "fajr": {
+    "n": 31,
+    "exact": 31,
+    "exactPct": 100,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0,
+    "worst": 0,
+    "late": 0,
+    "early": 0
+   },
+   "sunrise": {
+    "n": 31,
+    "exact": 21,
+    "exactPct": 67.7,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.323,
+    "worst": 1,
+    "late": 10,
+    "early": 0
+   },
+   "dhuhr": {
+    "n": 31,
+    "exact": 25,
+    "exactPct": 80.6,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.194,
+    "worst": 1,
+    "late": 6,
+    "early": 0
+   },
+   "asr": {
+    "n": 31,
+    "exact": 10,
+    "exactPct": 32.3,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.677,
+    "worst": 1,
+    "late": 21,
+    "early": 0
+   },
+   "maghrib": {
+    "n": 31,
+    "exact": 13,
+    "exactPct": 41.9,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.581,
+    "worst": 1,
+    "late": 18,
+    "early": 0
+   },
+   "isha": {
+    "n": 31,
+    "exact": 2,
+    "exactPct": 6.5,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.935,
+    "worst": 1,
+    "late": 29,
+    "early": 0
+   }
+  },
+  "standing18_17": {
+   "fajr": {
+    "n": 31,
+    "exact": 15,
+    "exactPct": 48.4,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.516,
+    "worst": 1,
+    "late": 0,
+    "early": 16
+   },
+   "isha": {
+    "n": 31,
+    "exact": 21,
+    "exactPct": 67.7,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.323,
+    "worst": 1,
+    "late": 10,
+    "early": 0
+   },
+   "note": "twilights only differ from the fitted pair; dhuhr/asr/maghrib/sunrise carry the fitted offsets"
+  },
+  "fittedAsr3": {
+   "asr": {
+    "n": 31,
+    "exact": 21,
+    "exactPct": 67.7,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.323,
+    "worst": 1,
+    "late": 0,
+    "early": 10
+   },
+   "note": "mideast prose records asr +3 where the year fit record holds +4"
+  }
+ },
+ "unifiedRecipe": {
+  "fajr": {
+   "angle": 18.1,
+   "margin": 1,
+   "rounding": "floor"
+  },
+  "dhuhr": {
+   "margin": 5,
+   "rounding": "floor"
+  },
+  "asr": {
+   "margin": 4,
+   "rounding": "floor"
+  },
+  "maghrib": {
+   "margin": 3,
+   "rounding": "floor"
+  },
+  "isha": {
+   "angle": 16.9,
+   "margin": 0,
+   "rounding": "floor"
+  }
+ },
+ "monthVersusYear": {
+  "fajr": {
+   "october": {
+    "n": 31,
+    "exact": 31,
+    "exactPct": 100,
+    "within1Pct": 100,
+    "mae": 0,
+    "worst": 0
+   },
+   "year365": {
+    "n": 365,
+    "exact": 310,
+    "exactPct": 84.9,
+    "within1Pct": 100,
+    "mae": 0.151
+   },
+   "pExactOrFewer": 1
+  },
+  "dhuhr": {
+   "october": {
+    "n": 31,
+    "exact": 25,
+    "exactPct": 80.6,
+    "within1Pct": 100,
+    "mae": 0.194,
+    "worst": 1
+   },
+   "year365": {
+    "n": 365,
+    "exact": 226,
+    "exactPct": 61.9,
+    "within1Pct": 100,
+    "mae": 0.381
+   },
+   "pExactOrFewer": 0.9928
+  },
+  "asr": {
+   "october": {
+    "n": 31,
+    "exact": 10,
+    "exactPct": 32.3,
+    "within1Pct": 100,
+    "mae": 0.677,
+    "worst": 1
+   },
+   "year365": {
+    "n": 365,
+    "exact": 204,
+    "exactPct": 55.9,
+    "within1Pct": 100,
+    "mae": 0.441
+   },
+   "pExactOrFewer": 0.0068
+  },
+  "maghrib": {
+   "october": {
+    "n": 31,
+    "exact": 13,
+    "exactPct": 41.9,
+    "within1Pct": 100,
+    "mae": 0.581,
+    "worst": 1
+   },
+   "year365": {
+    "n": 365,
+    "exact": 248,
+    "exactPct": 67.9,
+    "within1Pct": 100,
+    "mae": 0.321
+   },
+   "pExactOrFewer": 0.0025
+  },
+  "isha": {
+   "october": {
+    "n": 31,
+    "exact": 2,
+    "exactPct": 6.5,
+    "within1Pct": 100,
+    "mae": 0.935,
+    "worst": 1
+   },
+   "year365": {
+    "n": 365,
+    "exact": 308,
+    "exactPct": 84.4,
+    "within1Pct": 100,
+    "mae": 0.156
+   },
+   "pExactOrFewer": 0
+  }
+ },
+ "octoberFreeFit": {
+  "fajr": {
+   "fittedAngle": 18.1,
+   "fittedAngleScore": {
+    "n": 31,
+    "exact": 31,
+    "exactPct": 100,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0,
+    "worst": 0,
+    "late": 0,
+    "early": 0
+   },
+   "bestAngle": [
+    18.1
+   ],
+   "within1Band": [
+    17.9,
+    18.3
+   ]
+  },
+  "isha": {
+   "fittedAngle": 16.9,
+   "fittedAngleScore": {
+    "n": 31,
+    "exact": 2,
+    "exactPct": 6.5,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.935,
+    "worst": 1,
+    "late": 29,
+    "early": 0
+   },
+   "bestAngle": [
+    16.7
+   ],
+   "within1Band": [
+    16.55,
+    16.9
+   ]
+  }
+ },
+ "residualHistogram": {
+  "fajr": {
+   "0": 31
+  },
+  "dhuhr": {
+   "0": 25,
+   "1": 6
+  },
+  "asr": {
+   "0": 10,
+   "1": 21
+  },
+  "maghrib": {
+   "0": 13,
+   "1": 18
+  },
+  "isha": {
+   "0": 2,
+   "1": 29
+  }
+ },
+ "octoberBestCells": {
+  "fajr": {
+   "rounding": "floor",
+   "margin": 1,
+   "score": {
+    "n": 31,
+    "exact": 31,
+    "exactPct": 100,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0,
+    "worst": 0,
+    "late": 0,
+    "early": 0
+   }
+  },
+  "sunrise": {
+   "rounding": "floor",
+   "margin": -0.5,
+   "score": {
+    "n": 31,
+    "exact": 25,
+    "exactPct": 80.6,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.194,
+    "worst": 1,
+    "late": 0,
+    "early": 6
+   }
+  },
+  "dhuhr": {
+   "rounding": "ceil",
+   "margin": 4.5,
+   "score": {
+    "n": 31,
+    "exact": 26,
+    "exactPct": 83.9,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.161,
+    "worst": 1,
+    "late": 5,
+    "early": 0
+   }
+  },
+  "asr": {
+   "rounding": "floor",
+   "margin": 4,
+   "score": {
+    "n": 31,
+    "exact": 24,
+    "exactPct": 77.4,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.226,
+    "worst": 1,
+    "late": 7,
+    "early": 0
+   }
+  },
+  "maghrib": {
+   "rounding": "floor",
+   "margin": 3,
+   "score": {
+    "n": 31,
+    "exact": 30,
+    "exactPct": 96.8,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.032,
+    "worst": 1,
+    "late": 1,
+    "early": 0
+   }
+  },
+  "isha": {
+   "rounding": "floor",
+   "margin": 0.5,
+   "score": {
+    "n": 31,
+    "exact": 29,
+    "exactPct": 93.5,
+    "within1": 31,
+    "within1Pct": 100,
+    "mae": 0.065,
+    "worst": 1,
+    "late": 0,
+    "early": 2
+   }
+  }
+ }
+}

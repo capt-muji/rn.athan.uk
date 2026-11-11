@@ -1,0 +1,29 @@
+domain	verdict	detail
+toledomcc.org	miss	HTTP 200   
+berlinmosque.org	miss	HTTP 200   
+micgh.org	miss	HTTP 404   
+icntn.org	miss	HTTP 200   
+islamiccenteroftennessee.org	miss	HTTP 200 masjid_id=rdRvm3dG  
+isgoc.com	miss	HTTP 200   
+i-sos.org	miss	HTTP 200   
+isgponline.com	miss	HTTP 404   
+salamcenter.org	miss	HTTP 404   
+massacramento.org	miss	HTTP 404   
+icsaonline.org	miss	HTTP 403   
+nicsatx.org	miss	HTTP 404   
+mcsamasjid.com	HIT_Dpt	rows=1 size=129213
+masjidalnoor.org	miss	HTTP 404 masjid_id=XEdoEvL7  
+masjidannur.org	miss	HTTP 200   
+islamiccenteroftennessee.com	miss	HTTP 000   
+alfarooqnashville.org	miss	HTTP 000   
+memphisislamiccenter.org	miss	HTTP 200 masjid_id=1QL0gbKZ  
+mcmilwaukee.org	miss	HTTP 000   
+islamicfoundation.org	miss	HTTP 200   
+mccchicago.org	miss	HTTP 404   
+icnyu.org	miss	HTTP 000   
+mcceastbay.org	miss	HTTP 404   
+sbia.org	miss	HTTP 404   
+ca-muslims.org	miss	HTTP 000   
+islamic-relief.org	miss	HTTP 403   
+masjidibrahim.org	miss	HTTP 404   
+iccuk.org	miss	HTTP 200   

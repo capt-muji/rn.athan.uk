@@ -1,0 +1,416 @@
+{
+ "id": "hn-centro-islamico-san-pedro-sula",
+ "country": "Honduras",
+ "place": "Centro Islamico de Honduras, San Pedro Sula",
+ "source_file": "americas2/data/hn_sps_centro_islamico_2026.json (mawaqit athan table, 365 rows + 365 iqamah)",
+ "coords": {
+  "lat": 15.5041,
+  "lon": -88.025
+ },
+ "source_published_coords": {
+  "lat": 15.490209545985,
+  "lon": -88.032333927474
+ },
+ "tz": "America/Tegucigalpa",
+ "span": {
+  "first": "2026-01-01",
+  "last": "2026-12-31",
+  "days": 365,
+  "years_held": [
+   "2026"
+  ]
+ },
+ "rows": 365,
+ "fitting_engine": "adhan 4.4.6 (TZ per job, no real clock)",
+ "verified_recipe": {
+  "fajr_angle": 18,
+  "isha_rule": "angle+5",
+  "isha_angle": 18,
+  "asr_school": "Hanafi",
+  "rounding": "nearest minute",
+  "margins_minutes": {}
+ },
+ "verdict": "CONFIRMED exactly",
+ "publisher_engine": {
+  "note": "PrayTimes v2-family solar engine, which is what these tables are computed from. Zero margins reproduce the table exactly where the angles are the holding.",
+  "scores": {
+   "fajr": {
+    "exact": 351,
+    "mae": 0.254,
+    "worst": 1,
+    "bias": 0.026
+   },
+   "sunrise": {
+    "exact": 354,
+    "mae": 0.259,
+    "worst": 1,
+    "bias": 0.021
+   },
+   "dhuhr": {
+    "exact": 356,
+    "mae": 0.257,
+    "worst": 1,
+    "bias": 0.036
+   },
+   "asr": {
+    "exact": 307,
+    "mae": 0.286,
+    "worst": 1,
+    "bias": 0.039
+   },
+   "maghrib": {
+    "exact": 359,
+    "mae": 0.25,
+    "worst": 1,
+    "bias": 0.02
+   },
+   "isha": {
+    "exact": 356,
+    "mae": 0.255,
+    "worst": 1,
+    "bias": 0.024
+   }
+  },
+  "days_all_six_exact": 265
+ },
+ "adhan_side": {
+  "scores": {
+   "fajr": {
+    "exact": 352,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.255
+   },
+   "sunrise": {
+    "exact": 350,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.26
+   },
+   "dhuhr": {
+    "exact": 356,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.257
+   },
+   "asr": {
+    "exact": 215,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.425
+   },
+   "maghrib": {
+    "exact": 361,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.252
+   },
+   "isha": {
+    "exact": 347,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.258
+   }
+  },
+  "joint": {
+   "exact": 179,
+   "within1": 365,
+   "worst": 1,
+   "of": 2190
+  },
+  "offsets_measured_minutes": {
+   "fajr": 0.026,
+   "sunrise": 0.021,
+   "dhuhr": 0.036,
+   "asr": 0.039,
+   "maghrib": 0.02,
+   "isha": 0.024
+  },
+  "note": "adhan carries its own meridian-transit offset against this engine, about +1.0 min on dhuhr and a +/-1.2 min seasonal skew on asr, so its margins are engine artefacts and not publisher margins"
+ },
+ "cross_check_at_source_coords": {
+  "coords": {
+   "lat": 15.490209545985,
+   "lon": -88.032333927474
+  },
+  "publisher_scores": {
+   "fajr": {
+    "exact": 365,
+    "mae": 0.254,
+    "worst": 0,
+    "bias": -0.01
+   },
+   "sunrise": {
+    "exact": 365,
+    "mae": 0.257,
+    "worst": 0,
+    "bias": -0.009
+   },
+   "dhuhr": {
+    "exact": 365,
+    "mae": 0.256,
+    "worst": 0,
+    "bias": 0.006
+   },
+   "asr": {
+    "exact": 308,
+    "mae": 0.284,
+    "worst": 1,
+    "bias": 0.008
+   },
+   "maghrib": {
+    "exact": 365,
+    "mae": 0.249,
+    "worst": 0,
+    "bias": -0.008
+   },
+   "isha": {
+    "exact": 365,
+    "mae": 0.253,
+    "worst": 0,
+    "bias": 0.001
+   }
+  },
+  "publisher_days_all_six_exact": 308,
+  "adhan_scores": {
+   "fajr": {
+    "exact": 363,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.254
+   },
+   "sunrise": {
+    "exact": 362,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.258
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0.256
+   },
+   "asr": {
+    "exact": 216,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.425
+   },
+   "maghrib": {
+    "exact": 365,
+    "within1": 365,
+    "worst": 0,
+    "mae": 0.249
+   },
+   "isha": {
+    "exact": 343,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.256
+   }
+  },
+  "adhan_joint": {
+   "exact": 202,
+   "within1": 365,
+   "worst": 1,
+   "of": 2190
+  }
+ },
+ "free_fit": {
+  "fajr": {
+   "best_angle": 17.98,
+   "best_mae": 0.254,
+   "mae_at_recipe_angle": 0.255
+  },
+  "isha": {
+   "angle_model": {
+    "best": 18,
+    "mae": 0.258
+   },
+   "interval_model": {
+    "best_from_sunset_minutes": 74.5,
+    "mae": 2.488
+   },
+   "better": "angle"
+  }
+ },
+ "asr_school_gap_minutes": 61.5,
+ "family_screen": {
+  "mwl_18_17": {
+   "mean_mae": 12.912,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.255,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 61.543,
+    "maghrib": 5.026,
+    "isha": 9.428
+   },
+   "per_column_exact": {
+    "fajr": 352,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "isna_15_15": {
+   "mean_mae": 16.523,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 13.143,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 61.543,
+    "maghrib": 5.026,
+    "isha": 18.207
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "mml_18_18": {
+   "mean_mae": 12.179,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.255,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 61.543,
+    "maghrib": 5.026,
+    "isha": 5.031
+   },
+   "per_column_exact": {
+    "fajr": 352,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "umm_al_qura_18_5_90": {
+   "mean_mae": 13.341,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 2.234,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 61.543,
+    "maghrib": 5.026,
+    "isha": 10.026
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "egypt_19_5_17_5": {
+   "mean_mae": 13.61,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 6.642,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 61.543,
+    "maghrib": 5.026,
+    "isha": 7.23
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "karachi_18_18_hanafi": {
+   "mean_mae": 1.992,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.255,
+    "sunrise": 0.26,
+    "dhuhr": 0.957,
+    "asr": 0.425,
+    "maghrib": 5.026,
+    "isha": 5.031
+   },
+   "per_column_exact": {
+    "fajr": 352,
+    "sunrise": 350,
+    "dhuhr": 9,
+    "asr": 215,
+    "maghrib": 0,
+    "isha": 0
+   }
+  }
+ },
+ "family_ranking": [
+  {
+   "family": "karachi_18_18_hanafi",
+   "mean_mae": 1.992,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mml_18_18",
+   "mean_mae": 12.179,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mwl_18_17",
+   "mean_mae": 12.912,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "umm_al_qura_18_5_90",
+   "mean_mae": 13.341,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "egypt_19_5_17_5",
+   "mean_mae": 13.61,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "isna_15_15",
+   "mean_mae": 16.523,
+   "days_all_six_exact": 0
+  }
+ ],
+ "seasonal_amplitude_fajr": {
+  "jan": 306.2279569892472,
+  "jul": 250.66397849462368,
+  "span": -55.56397849462354
+ },
+ "asr_monthly_bias_adhan_vs_table": {
+  "2026-01": -0.32,
+  "2026-02": -0.43,
+  "2026-03": -0.56,
+  "2026-04": -0.38,
+  "2026-05": 0.28,
+  "2026-06": 0.04,
+  "2026-07": -0.12,
+  "2026-08": 0.28,
+  "2026-09": 0.6,
+  "2026-10": 0.59,
+  "2026-11": 0.47,
+  "2026-12": 0.07
+ },
+ "limits": [
+  "one calendar year only (2026)",
+  "Honduras keeps UTC-6 all year, so no offset transition falls inside the span and none needs modelling"
+ ]
+}

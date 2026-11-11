@@ -1,0 +1,392 @@
+{
+ "id": "RU-DUMRF-MOSCOW",
+ "lat": 55.7558,
+ "lon": 37.6173,
+ "tz": "Europe/Moscow",
+ "years": [
+  "2026"
+ ],
+ "publishedTarget": false,
+ "asrSchoolTarget": "shafi",
+ "asrSchoolMethod": "shafi",
+ "methods": {
+  "mwl": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 15.9032,
+    "worst": 26,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "isna": {
+   "fajr": {
+    "mean": 39.1233,
+    "worst": 97,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "umm-al-qura": {
+   "fajr": {
+    "mean": 27.0849,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 20.4315,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "egyptian": {
+   "fajr": {
+    "mean": 34.3507,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 19.9516,
+    "worst": 33,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "karachi": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.0121,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "moonsighting": {
+   "fajr": {
+    "mean": 48.9507,
+    "worst": 170,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 25.1048,
+    "worst": 62,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "diyanet-domestic": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 15.9032,
+    "worst": 26,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "diyanet-europe": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 7.8669,
+    "worst": 12,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "mabims": {
+   "fajr": {
+    "mean": 37.9233,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.0121,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "jakim": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.0121,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "kemenag": {
+   "fajr": {
+    "mean": 37.9233,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.0121,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "kuwait": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 19.9516,
+    "worst": 33,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "qatar": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 19.7056,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "singapore-muis": {
+   "fajr": {
+    "mean": 37.4027,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.4839,
+    "worst": 41,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "dubai": {
+   "fajr": {
+    "mean": 24.8411,
+    "worst": 106,
+    "within2Pct": 64.11,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 25.6532,
+    "worst": 44,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "tehran": {
+   "fajr": {
+    "mean": 25.4274,
+    "worst": 105,
+    "within2Pct": 43.29,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 7.7944,
+    "worst": 12,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "fazilet-a": {
+   "fajr": {
+    "mean": 36.4959,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 22.3629,
+    "worst": 37,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "fazilet-b": {
+   "fajr": {
+    "mean": 43.5288,
+    "worst": 106,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 29.7944,
+    "worst": 52,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "ecfr": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 15.9032,
+    "worst": 26,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "russia-sam": {
+   "fajr": {
+    "mean": 34.7589,
+    "worst": 101,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  },
+  "isna-2010": {
+   "fajr": {
+    "mean": 23.3315,
+    "worst": 106,
+    "within2Pct": 74.25,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 24.0121,
+    "worst": 40,
+    "within2Pct": 0,
+    "scoredDays": 248,
+    "skips": {
+     "summer isha served-not-modelled (published values, no rule)": 117
+    }
+   }
+  }
+ }
+}

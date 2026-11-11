@@ -1,0 +1,752 @@
+{
+ "coords": [
+  38.7223,
+  -9.1393
+ ],
+ "tz": "Europe/Lisbon",
+ "years": [
+  2023,
+  2026,
+  2027
+ ],
+ "absolute_margins": {
+  "fajr_18": {
+   "n": 1095,
+   "mean": 0.5,
+   "rms": 0.61,
+   "min": -0.69,
+   "max": 1.67
+  },
+  "sunrise": {
+   "n": 1095,
+   "mean": -0.51,
+   "rms": 0.38,
+   "min": -2.09,
+   "max": 1.73
+  },
+  "dhuhr_noon": {
+   "n": 1095,
+   "mean": 5.49,
+   "rms": 0.3,
+   "min": 4.91,
+   "max": 6.01
+  },
+  "asr_shafi": {
+   "n": 1095,
+   "mean": 0.48,
+   "rms": 0.39,
+   "min": -0.39,
+   "max": 1.38
+  },
+  "asr_hanafi": {
+   "n": 1095,
+   "mean": -53.72,
+   "rms": 12.52,
+   "min": -74.32,
+   "max": -36.85
+  },
+  "magrib_sunset": {
+   "n": 1095,
+   "mean": 3.49,
+   "rms": 0.41,
+   "min": 2.26,
+   "max": 4.47
+  },
+  "isha12_plus3": {
+   "n": 730,
+   "mean": 0.49,
+   "rms": 0.56,
+   "min": -0.64,
+   "max": 1.64
+  },
+  "interval_plus77": {
+   "n": 730,
+   "mean": 3.49,
+   "rms": 0.41,
+   "min": 2.26,
+   "max": 4.47
+  },
+  "isha2023_as_interval": {
+   "n": 365,
+   "mean": 3.49,
+   "rms": 0.41,
+   "min": 2.55,
+   "max": 4.27
+  }
+ },
+ "isha_free_angle_abs": {
+  "angle": 12.0,
+  "rms": 0.56,
+  "bias": 3.49
+ },
+ "fajr_free_angle_abs": {
+  "angle": 17.94,
+  "rms": 0.61,
+  "bias": 0.13
+ },
+ "anchored_margins": {
+  "2023": {
+   "zawal_vs_noon": {
+    "n": 365,
+    "median": 0.0,
+    "mean": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "dhuhr_m_zawal": {
+    "n": 365,
+    "median": 5,
+    "mean": 5.0,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "sunrise": {
+    "n": 365,
+    "median": -1.02,
+    "mean": -1.0,
+    "sd": 0.46,
+    "min": -2.12,
+    "max": 0.12
+   },
+   "magrib": {
+    "n": 365,
+    "median": 3.0,
+    "mean": 3.0,
+    "sd": 0.5,
+    "min": 1.8,
+    "max": 4.16
+   },
+   "asr_shafi": {
+    "n": 365,
+    "median": 0.03,
+    "mean": -0.0,
+    "sd": 0.5,
+    "min": -1.22,
+    "max": 1.21
+   },
+   "fajr18": {
+    "n": 365,
+    "median": 0.01,
+    "mean": -0.02,
+    "sd": 0.69,
+    "min": -1.65,
+    "max": 1.44
+   },
+   "interval": {
+    "n": 365,
+    "median": 77,
+    "mean": 77.0,
+    "sd": 0.0,
+    "min": 77,
+    "max": 77
+   },
+   "fitted_lat": 38.7
+  },
+  "2026": {
+   "zawal_vs_noon": {
+    "n": 365,
+    "median": 0.0,
+    "mean": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "dhuhr_m_zawal": {
+    "n": 365,
+    "median": 5,
+    "mean": 5.0,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "sunrise": {
+    "n": 365,
+    "median": -1.05,
+    "mean": -1.0,
+    "sd": 0.5,
+    "min": -2.51,
+    "max": 1.0
+   },
+   "magrib": {
+    "n": 365,
+    "median": 3.04,
+    "mean": 3.0,
+    "sd": 0.52,
+    "min": 1.78,
+    "max": 4.25
+   },
+   "asr_shafi": {
+    "n": 365,
+    "median": -0.06,
+    "mean": -0.04,
+    "sd": 0.5,
+    "min": -1.11,
+    "max": 1.32
+   },
+   "fajr18": {
+    "n": 365,
+    "median": -0.03,
+    "mean": -0.07,
+    "sd": 0.65,
+    "min": -1.65,
+    "max": 1.47
+   },
+   "isha12p3": {
+    "n": 365,
+    "median": -0.03,
+    "mean": 0.03,
+    "sd": 0.64,
+    "min": -1.35,
+    "max": 1.51
+   },
+   "interval": {
+    "n": 365,
+    "median": 77,
+    "mean": 77.0,
+    "sd": 0.0,
+    "min": 77,
+    "max": 77
+   },
+   "fitted_lat": 38.7
+  },
+  "2027": {
+   "zawal_vs_noon": {
+    "n": 365,
+    "median": 0.0,
+    "mean": 0.0,
+    "sd": 0.0,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "dhuhr_m_zawal": {
+    "n": 365,
+    "median": 5,
+    "mean": 5.0,
+    "sd": 0.0,
+    "min": 5,
+    "max": 5
+   },
+   "sunrise": {
+    "n": 365,
+    "median": -1.03,
+    "mean": -0.99,
+    "sd": 0.49,
+    "min": -2.14,
+    "max": 0.64
+   },
+   "magrib": {
+    "n": 365,
+    "median": 3.01,
+    "mean": 3.01,
+    "sd": 0.5,
+    "min": 1.36,
+    "max": 4.14
+   },
+   "asr_shafi": {
+    "n": 365,
+    "median": 0.02,
+    "mean": -0.01,
+    "sd": 0.49,
+    "min": -1.27,
+    "max": 1.19
+   },
+   "fajr18": {
+    "n": 365,
+    "median": 0.05,
+    "mean": 0.02,
+    "sd": 0.67,
+    "min": -1.52,
+    "max": 1.43
+   },
+   "isha12p3": {
+    "n": 365,
+    "median": -0.01,
+    "mean": 0.0,
+    "sd": 0.65,
+    "min": -1.45,
+    "max": 1.56
+   },
+   "interval": {
+    "n": 365,
+    "median": 77,
+    "mean": 77.0,
+    "sd": 0.0,
+    "min": 77,
+    "max": 77
+   },
+   "fitted_lat": 38.72
+  }
+ },
+ "stability_2023_to_2027": {
+  "zawal_vs_noon": {
+   "median_by_year": {
+    "2023": 0.0,
+    "2026": 0.0,
+    "2027": 0.0
+   },
+   "max_delta_2023_to_2027": 0.0
+  },
+  "dhuhr_m_zawal": {
+   "median_by_year": {
+    "2023": 5,
+    "2026": 5,
+    "2027": 5
+   },
+   "max_delta_2023_to_2027": 0
+  },
+  "sunrise": {
+   "median_by_year": {
+    "2023": -1.02,
+    "2026": -1.05,
+    "2027": -1.03
+   },
+   "max_delta_2023_to_2027": 0.03
+  },
+  "magrib": {
+   "median_by_year": {
+    "2023": 3.0,
+    "2026": 3.04,
+    "2027": 3.01
+   },
+   "max_delta_2023_to_2027": 0.04
+  },
+  "asr_shafi": {
+   "median_by_year": {
+    "2023": 0.03,
+    "2026": -0.06,
+    "2027": 0.02
+   },
+   "max_delta_2023_to_2027": 0.09
+  },
+  "fajr18": {
+   "median_by_year": {
+    "2023": 0.01,
+    "2026": -0.03,
+    "2027": 0.05
+   },
+   "max_delta_2023_to_2027": 0.08
+  },
+  "isha12p3": {
+   "median_by_year": {
+    "2026": -0.03,
+    "2027": -0.01
+   },
+   "max_delta_2023_to_2027": 0.02
+  },
+  "interval": {
+   "median_by_year": {
+    "2023": 77,
+    "2026": 77,
+    "2027": 77
+   },
+   "max_delta_2023_to_2027": 0
+  }
+ },
+ "per_edition_scores_absolute": {
+  "2023": {
+   "fajr": {
+    "n": 365,
+    "exact": 156,
+    "within1": 351,
+    "worst": 2,
+    "rms": 0.83,
+    "bias": 0.51,
+    "float_min": -0.69,
+    "float_max": 1.67,
+    "hist": {
+     "-1": 24,
+     "0": 156,
+     "1": 171,
+     "2": 14
+    }
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 185,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.7,
+    "bias": -0.51,
+    "float_min": -1.22,
+    "float_max": 0.35,
+    "hist": {
+     "-1": 180,
+     "0": 185
+    }
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 184,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.7,
+    "bias": 0.49,
+    "float_min": -0.04,
+    "float_max": 1.01,
+    "hist": {
+     "0": 184,
+     "1": 181
+    }
+   },
+   "asr": {
+    "n": 365,
+    "exact": 177,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.72,
+    "bias": 0.49,
+    "float_min": -0.35,
+    "float_max": 1.37,
+    "hist": {
+     "0": 177,
+     "1": 188
+    }
+   },
+   "magrib": {
+    "n": 365,
+    "exact": 190,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.49,
+    "float_min": -0.45,
+    "float_max": 1.27,
+    "hist": {
+     "0": 190,
+     "1": 175
+    }
+   },
+   "isha_alt": {
+    "n": 365,
+    "exact": 190,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.49,
+    "float_min": -0.45,
+    "float_max": 1.27,
+    "hist": {
+     "0": 190,
+     "1": 175
+    }
+   }
+  },
+  "2026": {
+   "fajr": {
+    "n": 365,
+    "exact": 163,
+    "within1": 354,
+    "worst": 2,
+    "rms": 0.8,
+    "bias": 0.47,
+    "float_min": -0.67,
+    "float_max": 1.64,
+    "hist": {
+     "-1": 18,
+     "0": 163,
+     "1": 173,
+     "2": 11
+    }
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 182,
+    "within1": 361,
+    "worst": 2,
+    "rms": 0.73,
+    "bias": -0.5,
+    "float_min": -1.73,
+    "float_max": 1.73,
+    "hist": {
+     "-2": 3,
+     "-1": 177,
+     "0": 182,
+     "1": 2,
+     "2": 1
+    }
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 190,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.49,
+    "float_min": -0.03,
+    "float_max": 1.01,
+    "hist": {
+     "0": 190,
+     "1": 175
+    }
+   },
+   "asr": {
+    "n": 365,
+    "exact": 200,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.67,
+    "bias": 0.46,
+    "float_min": -0.39,
+    "float_max": 1.34,
+    "hist": {
+     "0": 200,
+     "1": 165
+    }
+   },
+   "magrib": {
+    "n": 365,
+    "exact": 183,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.71,
+    "bias": 0.49,
+    "float_min": -0.67,
+    "float_max": 1.47,
+    "hist": {
+     "-1": 2,
+     "0": 183,
+     "1": 180
+    }
+   },
+   "isha": {
+    "n": 365,
+    "exact": 188,
+    "within1": 361,
+    "worst": 2,
+    "rms": 0.72,
+    "bias": 0.49,
+    "float_min": -0.64,
+    "float_max": 1.53,
+    "hist": {
+     "-1": 12,
+     "0": 188,
+     "1": 161,
+     "2": 4
+    }
+   },
+   "isha_alt": {
+    "n": 365,
+    "exact": 183,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.71,
+    "bias": 0.49,
+    "float_min": -0.67,
+    "float_max": 1.47,
+    "hist": {
+     "-1": 2,
+     "0": 183,
+     "1": 180
+    }
+   }
+  },
+  "2027": {
+   "fajr": {
+    "n": 365,
+    "exact": 159,
+    "within1": 359,
+    "worst": 2,
+    "rms": 0.78,
+    "bias": 0.5,
+    "float_min": -0.67,
+    "float_max": 1.66,
+    "hist": {
+     "-1": 18,
+     "0": 159,
+     "1": 182,
+     "2": 6
+    }
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 177,
+    "within1": 362,
+    "worst": 2,
+    "rms": 0.73,
+    "bias": -0.51,
+    "float_min": -2.09,
+    "float_max": 1.53,
+    "hist": {
+     "-2": 2,
+     "-1": 184,
+     "0": 177,
+     "1": 1,
+     "2": 1
+    }
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 189,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.48,
+    "float_min": -0.09,
+    "float_max": 0.99,
+    "hist": {
+     "0": 189,
+     "1": 176
+    }
+   },
+   "asr": {
+    "n": 365,
+    "exact": 185,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.7,
+    "bias": 0.48,
+    "float_min": -0.39,
+    "float_max": 1.38,
+    "hist": {
+     "0": 185,
+     "1": 180
+    }
+   },
+   "magrib": {
+    "n": 365,
+    "exact": 190,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.49,
+    "float_min": -0.74,
+    "float_max": 1.29,
+    "hist": {
+     "-1": 1,
+     "0": 190,
+     "1": 174
+    }
+   },
+   "isha": {
+    "n": 365,
+    "exact": 172,
+    "within1": 351,
+    "worst": 2,
+    "rms": 0.8,
+    "bias": 0.48,
+    "float_min": -0.64,
+    "float_max": 1.64,
+    "hist": {
+     "-1": 10,
+     "0": 172,
+     "1": 169,
+     "2": 14
+    }
+   },
+   "isha_alt": {
+    "n": 365,
+    "exact": 190,
+    "within1": 365,
+    "worst": 1,
+    "rms": 0.69,
+    "bias": 0.49,
+    "float_min": -0.74,
+    "float_max": 1.29,
+    "hist": {
+     "-1": 1,
+     "0": 190,
+     "1": 174
+    }
+   }
+  }
+ },
+ "span_scores_absolute": {
+  "fajr": {
+   "n": 1095,
+   "exact": 478,
+   "within1": 1064,
+   "worst": 2,
+   "rms": 0.81,
+   "bias": 0.5,
+   "float_min": -0.69,
+   "float_max": 1.67,
+   "hist": {
+    "-1": 60,
+    "0": 478,
+    "1": 526,
+    "2": 31
+   }
+  },
+  "sunrise": {
+   "n": 1095,
+   "exact": 544,
+   "within1": 1088,
+   "worst": 2,
+   "rms": 0.72,
+   "bias": -0.51,
+   "float_min": -2.09,
+   "float_max": 1.73,
+   "hist": {
+    "-2": 5,
+    "-1": 541,
+    "0": 544,
+    "1": 3,
+    "2": 2
+   }
+  },
+  "dhuhr": {
+   "n": 1095,
+   "exact": 563,
+   "within1": 1095,
+   "worst": 1,
+   "rms": 0.7,
+   "bias": 0.49,
+   "float_min": -0.09,
+   "float_max": 1.01,
+   "hist": {
+    "0": 563,
+    "1": 532
+   }
+  },
+  "asr": {
+   "n": 1095,
+   "exact": 562,
+   "within1": 1095,
+   "worst": 1,
+   "rms": 0.7,
+   "bias": 0.48,
+   "float_min": -0.39,
+   "float_max": 1.38,
+   "hist": {
+    "0": 562,
+    "1": 533
+   }
+  },
+  "magrib": {
+   "n": 1095,
+   "exact": 563,
+   "within1": 1095,
+   "worst": 1,
+   "rms": 0.7,
+   "bias": 0.49,
+   "float_min": -0.74,
+   "float_max": 1.47,
+   "hist": {
+    "-1": 3,
+    "0": 563,
+    "1": 529
+   }
+  }
+ },
+ "amplitude": {
+  "fajr": {
+   "exists_days": 730,
+   "jan15": 379.4,
+   "jul_min": 258.1,
+   "year_min": 253.1,
+   "year_max": 391.5,
+   "amplitude": 138.4
+  },
+  "isha": {
+   "exists_days": 730,
+   "jan15": 1120.6,
+   "jul_min": 1314.8,
+   "year_min": 1097.5,
+   "year_max": 1337.5,
+   "amplitude": 240.0
+  }
+ },
+ "span_days": 1095
+}

@@ -1,0 +1,106 @@
+{
+ "method": "MuslimWorldLeague 18/17 Shafi, nearest, zero margins",
+ "cities": {
+  "Manaus": {
+   "coords": [
+    -3.119,
+    -60.0217
+   ],
+   "days": 58,
+   "worst": 0,
+   "exact": 348,
+   "within1": 348,
+   "n": 348,
+   "mae": 0,
+   "per": {
+    "fajr": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    },
+    "sunrise": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    },
+    "dhuhr": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    },
+    "asr": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    },
+    "maghrib": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    },
+    "isha": {
+     "worst": 0,
+     "within1": 58,
+     "exact": 58,
+     "mae": 0
+    }
+   }
+  }
+ },
+ "national": {
+  "Manaus": {
+   "days": 58,
+   "worst": 0,
+   "within1": 348,
+   "exact": 348,
+   "n": 348,
+   "mae": 0
+  },
+  "Cuiaba": {
+   "days": 58,
+   "worst": 0,
+   "within1": 348,
+   "exact": 348,
+   "n": 348,
+   "mae": 0
+  },
+  "Campo_Grande": {
+   "days": 58,
+   "worst": 0,
+   "within1": 348,
+   "exact": 348,
+   "n": 348,
+   "mae": 0
+  },
+  "Porto_Velho": {
+   "days": 58,
+   "worst": 1,
+   "within1": 348,
+   "exact": 345,
+   "n": 348,
+   "mae": 0.009
+  }
+ },
+ "summary": {
+  "cities": 25,
+  "rows": 232,
+  "worst": 1,
+  "within1": 1392,
+  "exact": 1389,
+  "n": 1392,
+  "mae": 0.002
+ },
+ "five": {
+  "Manaus": {
+   "worst": 0,
+   "within1": 348,
+   "n": 348,
+   "exact": 348
+  }
+ }
+}

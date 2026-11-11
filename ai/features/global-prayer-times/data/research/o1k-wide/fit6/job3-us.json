@@ -1,0 +1,2384 @@
+{
+ "dar-al-hijrah-2026": {
+  "mosque": "Dar Al-Hijrah",
+  "city": "Falls Church VA",
+  "source": "hijrah.org dpt year feed",
+  "coords": {
+   "lat": 38.8823,
+   "lon": -77.1711
+  },
+  "tz": "America/New_York",
+  "file": "americas/data/us_daralhijrah_falls_church_va_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15.2,
+  "fajrPlateau": {
+   "min": 15.2,
+   "max": 15.2
+  },
+  "fajrMargin": 1.5,
+  "ishaAngle": 14.7,
+  "ishaPlateau": {
+   "min": 14.7,
+   "max": 14.7
+  },
+  "ishaMargin": 1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0,
+    "mode": "ceil",
+    "exact": 229,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "ceil",
+    "exact": 144,
+    "of": 365,
+    "worst": 2
+   },
+   "bestFajrExact": 242,
+   "bestIshaExact": 147,
+   "fajrWiggle15": 1.56,
+   "fajrMonthlyMeansAt15": [
+    -0.55,
+    -0.93,
+    0.16,
+    0.43,
+    0.39,
+    0,
+    -0.1,
+    0.13,
+    0.47,
+    0,
+    0.63,
+    0.1
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 74,
+   "margin": -1
+  },
+  "solarMargins": {
+   "sunrise": -1.5,
+   "dhuhr": 0,
+   "maghrib": 0
+  },
+  "joint": {
+   "exact": 1207,
+   "within1": 2010,
+   "worst": 3,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 242,
+    "within1": 352,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact": 218,
+    "within1": 309,
+    "worst": 2
+   },
+   "dhuhr": {
+    "exact": 312,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 140,
+    "within1": 291,
+    "worst": 3
+   },
+   "maghrib": {
+    "exact": 148,
+    "within1": 351,
+    "worst": 2
+   },
+   "isha": {
+    "exact": 147,
+    "within1": 342,
+    "worst": 2
+   }
+  }
+ },
+ "memphis-1QL0gbKZ-2026": {
+  "mosque": "Memphis Islamic Center",
+  "city": "Cordova TN",
+  "masjidalId": "1QL0gbKZ",
+  "coords": {
+   "lat": 35.158,
+   "lon": -89.782
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_1QL0gbKZ_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15.2,
+  "fajrPlateau": {
+   "min": 15.2,
+   "max": 15.2
+  },
+  "fajrMargin": 1.5,
+  "ishaAngle": 14.8,
+  "ishaPlateau": {
+   "min": 14.8,
+   "max": 14.8
+  },
+  "ishaMargin": 1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0.5,
+    "mode": "ceil",
+    "exact": 297,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "ceil",
+    "exact": 274,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 310,
+   "bestIshaExact": 297,
+   "fajrWiggle15": 0.35,
+   "fajrMonthlyMeansAt15": [
+    0.29,
+    0.14,
+    0.42,
+    0.43,
+    0.42,
+    0.27,
+    0.48,
+    0.19,
+    0.33,
+    0.26,
+    0.2,
+    0.13
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 75,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": -0.5,
+   "dhuhr": 0.5,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 1596,
+   "within1": 2096,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 310,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 292,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 274,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 148,
+    "within1": 271,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 275,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 297,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "memphis-1QL0gbKZ-2025": {
+  "mosque": "Memphis Islamic Center",
+  "city": "Cordova TN",
+  "masjidalId": "1QL0gbKZ",
+  "coords": {
+   "lat": 35.158,
+   "lon": -89.782
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_1QL0gbKZ_2025.json",
+  "rows": 365,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.8,
+  "fajrPlateau": {
+   "min": 14.8,
+   "max": 14.8
+  },
+  "fajrMargin": 0,
+  "ishaAngle": 15.1,
+  "ishaPlateau": {
+   "min": 15.1,
+   "max": 15.1
+  },
+  "ishaMargin": 0.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1.5,
+    "mode": "floor",
+    "exact": 288,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 287,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 310,
+   "bestIshaExact": 296,
+   "fajrWiggle15": 0.2,
+   "fajrMonthlyMeansAt15": [
+    1.19,
+    1.25,
+    1.16,
+    1.23,
+    1.26,
+    1.3,
+    1.26,
+    1.1,
+    1.3,
+    1.29,
+    1.2,
+    1.23
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 74,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 1,
+   "maghrib": 1.5
+  },
+  "joint": {
+   "exact": 1588,
+   "within1": 2105,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 310,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 275,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 276,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 150,
+    "within1": 280,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 281,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 296,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "memphis-1QL0gbKZ-2024": {
+  "mosque": "Memphis Islamic Center",
+  "city": "Cordova TN",
+  "masjidalId": "1QL0gbKZ",
+  "coords": {
+   "lat": 35.158,
+   "lon": -89.782
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_1QL0gbKZ_2024.json",
+  "rows": 366,
+  "span": [
+   "2024-01-01",
+   "2024-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.8,
+  "fajrPlateau": {
+   "min": 14.8,
+   "max": 14.8
+  },
+  "fajrMargin": 0,
+  "ishaAngle": 15.1,
+  "ishaPlateau": {
+   "min": 15.1,
+   "max": 15.1
+  },
+  "ishaMargin": 0.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 277,
+    "of": 366,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 277,
+    "of": 366,
+    "worst": 1
+   },
+   "bestFajrExact": 301,
+   "bestIshaExact": 285,
+   "fajrWiggle15": 0.22,
+   "fajrMonthlyMeansAt15": [
+    1.16,
+    1.24,
+    1.35,
+    1.13,
+    1.23,
+    1.33,
+    1.26,
+    1.26,
+    1.3,
+    1.26,
+    1.2,
+    1.19
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 366,
+   "worst": 74,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": 0,
+   "dhuhr": 1,
+   "maghrib": 1.5
+  },
+  "joint": {
+   "exact": 1577,
+   "within1": 2117,
+   "worst": 2,
+   "of": 2196
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 301,
+    "within1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 279,
+    "within1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 282,
+    "within1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 147,
+    "within1": 287,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 283,
+    "within1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 285,
+    "within1": 366,
+    "worst": 1
+   }
+  }
+ },
+ "richmond-keLQn7AM-2026": {
+  "mosque": "Richmond Islamic Community Center",
+  "city": "Richmond TX",
+  "masjidalId": "keLQn7AM",
+  "coords": {
+   "lat": 29.59,
+   "lon": -95.73
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_keLQn7AM_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 15.2,
+  "fajrPlateau": {
+   "min": 15.2,
+   "max": 15.3
+  },
+  "fajrMargin": 0.5,
+  "ishaAngle": 15.4,
+  "ishaPlateau": {
+   "min": 15.4,
+   "max": 15.4
+  },
+  "ishaMargin": -1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "floor",
+    "exact": 317,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 300,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 339,
+   "bestIshaExact": 308,
+   "fajrWiggle15": 0.39,
+   "fajrMonthlyMeansAt15": [
+    -0.32,
+    -0.36,
+    -0.39,
+    -0.57,
+    -0.58,
+    -0.57,
+    -0.68,
+    -0.55,
+    -0.47,
+    -0.42,
+    -0.4,
+    -0.29
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 225,
+   "of": 365,
+   "worst": 1,
+   "margin": 0.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 1.5
+  },
+  "joint": {
+   "exact": 1836,
+   "within1": 2190,
+   "worst": 1,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 339,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 323,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 326,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 225,
+    "within1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 315,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 308,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "richmond-keLQn7AM-2025": {
+  "mosque": "Richmond Islamic Community Center",
+  "city": "Richmond TX",
+  "masjidalId": "keLQn7AM",
+  "coords": {
+   "lat": 29.59,
+   "lon": -95.73
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_keLQn7AM_2025.json",
+  "rows": 365,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "nearest",
+  "fajrAngle": 15.3,
+  "fajrPlateau": {
+   "min": 15.3,
+   "max": 15.3
+  },
+  "fajrMargin": 0.5,
+  "ishaAngle": 15.3,
+  "ishaPlateau": {
+   "min": 15.3,
+   "max": 15.3
+  },
+  "ishaMargin": -1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -1,
+    "mode": "nearest",
+    "exact": 260,
+    "of": 365,
+    "worst": 2
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 301,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 280,
+   "bestIshaExact": 304,
+   "fajrWiggle15": 1.43,
+   "fajrMonthlyMeansAt15": [
+    -0.74,
+    0.11,
+    0.03,
+    -1.03,
+    -1.32,
+    -1.13,
+    -1.23,
+    -1.1,
+    -1,
+    -0.94,
+    -0.8,
+    -0.84
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 220,
+   "of": 365,
+   "worst": 1,
+   "margin": 0
+  },
+  "solarMargins": {
+   "sunrise": 0,
+   "dhuhr": 0,
+   "maghrib": 1
+  },
+  "joint": {
+   "exact": 1735,
+   "within1": 2189,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 280,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 313,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 327,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 220,
+    "within1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 291,
+    "within1": 364,
+    "worst": 2
+   },
+   "isha": {
+    "exact": 304,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "richmond-keLQn7AM-2024": {
+  "mosque": "Richmond Islamic Community Center",
+  "city": "Richmond TX",
+  "masjidalId": "keLQn7AM",
+  "coords": {
+   "lat": 29.59,
+   "lon": -95.73
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_keLQn7AM_2024.json",
+  "rows": 366,
+  "span": [
+   "2024-01-01",
+   "2024-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 15.2,
+  "fajrPlateau": {
+   "min": 15.2,
+   "max": 15.2
+  },
+  "fajrMargin": 0.5,
+  "ishaAngle": 15.4,
+  "ishaPlateau": {
+   "min": 15.4,
+   "max": 15.4
+  },
+  "ishaMargin": -1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "floor",
+    "exact": 241,
+    "of": 366,
+    "worst": 2
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 296,
+    "of": 366,
+    "worst": 1
+   },
+   "bestFajrExact": 251,
+   "bestIshaExact": 305,
+   "fajrWiggle15": 1.4,
+   "fajrMonthlyMeansAt15": [
+    -0.32,
+    0.66,
+    0.55,
+    0.5,
+    -0.74,
+    -0.6,
+    -0.65,
+    -0.55,
+    -0.57,
+    -0.42,
+    -0.3,
+    -0.32
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 233,
+   "of": 366,
+   "worst": 1,
+   "margin": 0.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 1.5
+  },
+  "joint": {
+   "exact": 1702,
+   "within1": 2187,
+   "worst": 2,
+   "of": 2196
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 251,
+    "within1": 365,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact": 324,
+    "within1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 328,
+    "within1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 233,
+    "within1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 261,
+    "within1": 358,
+    "worst": 2
+   },
+   "isha": {
+    "exact": 305,
+    "within1": 366,
+    "worst": 1
+   }
+  }
+ },
+ "southbay-XEdoEvL7-2026": {
+  "mosque": "Islamic Center of South Bay",
+  "city": "Lomita CA",
+  "masjidalId": "XEdoEvL7",
+  "coords": {
+   "lat": 33.788,
+   "lon": -118.316
+  },
+  "tz": "America/Los_Angeles",
+  "file": "americas2/captures/masjidal_XEdoEvL7_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": -0.5,
+  "ishaAngle": 15.1,
+  "ishaPlateau": {
+   "min": 15,
+   "max": 15.4
+  },
+  "ishaMargin": 0,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "ceil",
+    "exact": 355,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "ceil",
+    "exact": 309,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 355,
+   "bestIshaExact": 309,
+   "fajrWiggle15": 0.23,
+   "fajrMonthlyMeansAt15": [
+    -0.55,
+    -0.57,
+    -0.42,
+    -0.53,
+    -0.39,
+    -0.53,
+    -0.52,
+    -0.45,
+    -0.53,
+    -0.58,
+    -0.5,
+    -0.61
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 74,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": -1.5,
+   "dhuhr": 0.5,
+   "maghrib": -0.5
+  },
+  "joint": {
+   "exact": 1847,
+   "within1": 2104,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 355,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 359,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 363,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 133,
+    "within1": 309,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 328,
+    "within1": 335,
+    "worst": 2
+   },
+   "isha": {
+    "exact": 309,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "southbay-XEdoEvL7-2025": {
+  "mosque": "Islamic Center of South Bay",
+  "city": "Lomita CA",
+  "masjidalId": "XEdoEvL7",
+  "coords": {
+   "lat": 33.788,
+   "lon": -118.316
+  },
+  "tz": "America/Los_Angeles",
+  "file": "americas2/captures/masjidal_XEdoEvL7_2025.json",
+  "rows": 365,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": -0.5,
+  "ishaAngle": 15,
+  "ishaPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "ishaMargin": 0.5,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "ceil",
+    "exact": 354,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "ceil",
+    "exact": 314,
+    "of": 365,
+    "worst": 2
+   },
+   "bestFajrExact": 354,
+   "bestIshaExact": 314,
+   "fajrWiggle15": 0.24,
+   "fajrMonthlyMeansAt15": [
+    -0.58,
+    -0.36,
+    -0.48,
+    -0.5,
+    -0.45,
+    -0.6,
+    -0.52,
+    -0.39,
+    -0.53,
+    -0.55,
+    -0.5,
+    -0.52
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 74,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": -1.5,
+   "dhuhr": 0.5,
+   "maghrib": -0.5
+  },
+  "joint": {
+   "exact": 1827,
+   "within1": 2069,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 354,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 361,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 363,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 138,
+    "within1": 312,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 297,
+    "within1": 305,
+    "worst": 2
+   },
+   "isha": {
+    "exact": 314,
+    "within1": 357,
+    "worst": 2
+   }
+  }
+ },
+ "southbay-XEdoEvL7-2024": {
+  "mosque": "Islamic Center of South Bay",
+  "city": "Lomita CA",
+  "masjidalId": "XEdoEvL7",
+  "coords": {
+   "lat": 33.788,
+   "lon": -118.316
+  },
+  "tz": "America/Los_Angeles",
+  "file": "americas2/captures/masjidal_XEdoEvL7_2024.json",
+  "rows": 366,
+  "span": [
+   "2024-01-01",
+   "2024-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": -0.5,
+  "ishaAngle": 14.9,
+  "ishaPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "ishaMargin": 1,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "ceil",
+    "exact": 356,
+    "of": 366,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "ceil",
+    "exact": 334,
+    "of": 366,
+    "worst": 1
+   },
+   "bestFajrExact": 356,
+   "bestIshaExact": 335,
+   "fajrWiggle15": 0.3,
+   "fajrMonthlyMeansAt15": [
+    -0.61,
+    -0.38,
+    -0.45,
+    -0.53,
+    -0.68,
+    -0.53,
+    -0.48,
+    -0.55,
+    -0.53,
+    -0.48,
+    -0.5,
+    -0.55
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 366,
+   "worst": 74,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": -1.5,
+   "dhuhr": 0.5,
+   "maghrib": -0.5
+  },
+  "joint": {
+   "exact": 1914,
+   "within1": 2140,
+   "worst": 2,
+   "of": 2196
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 356,
+    "within1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 365,
+    "within1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 139,
+    "within1": 310,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 335,
+    "within1": 366,
+    "worst": 1
+   }
+  }
+ },
+ "livonia-nL1JggAa-2026": {
+  "mosque": "MAS Tarbiyah Center",
+  "city": "Livonia MI",
+  "masjidalId": "nL1JggAa",
+  "coords": {
+   "lat": 42.37,
+   "lon": -83.36
+  },
+  "tz": "America/Detroit",
+  "file": "americas2/captures/masjidal_nL1JggAa_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.9,
+  "fajrPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "fajrMargin": 0,
+  "ishaAngle": 15.1,
+  "ishaPlateau": {
+   "min": 15.1,
+   "max": 15.1
+  },
+  "ishaMargin": 0,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 280,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 294,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 327,
+   "bestIshaExact": 303,
+   "fajrWiggle15": 0.16,
+   "fajrMonthlyMeansAt15": [
+    0.81,
+    0.64,
+    0.74,
+    0.7,
+    0.71,
+    0.73,
+    0.74,
+    0.77,
+    0.73,
+    0.68,
+    0.77,
+    0.68
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 72,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 1647,
+   "within1": 2089,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 327,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 293,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 298,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 141,
+    "within1": 264,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 285,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 303,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "livonia-nL1JggAa-2025": {
+  "mosque": "MAS Tarbiyah Center",
+  "city": "Livonia MI",
+  "masjidalId": "nL1JggAa",
+  "coords": {
+   "lat": 42.37,
+   "lon": -83.36
+  },
+  "tz": "America/Detroit",
+  "file": "americas2/captures/masjidal_nL1JggAa_2025.json",
+  "rows": 365,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.9,
+  "fajrPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "fajrMargin": 0,
+  "ishaAngle": 15.1,
+  "ishaPlateau": {
+   "min": 15.1,
+   "max": 15.1
+  },
+  "ishaMargin": 0,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 295,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 291,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 327,
+   "bestIshaExact": 293,
+   "fajrWiggle15": 0.34,
+   "fajrMonthlyMeansAt15": [
+    0.74,
+    0.82,
+    0.77,
+    0.63,
+    0.52,
+    0.77,
+    0.84,
+    0.77,
+    0.73,
+    0.61,
+    0.5,
+    0.65
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 72,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 1643,
+   "within1": 2098,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 327,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 287,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 302,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 137,
+    "within1": 273,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 297,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 293,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "livonia-nL1JggAa-2024": {
+  "mosque": "MAS Tarbiyah Center",
+  "city": "Livonia MI",
+  "masjidalId": "nL1JggAa",
+  "coords": {
+   "lat": 42.37,
+   "lon": -83.36
+  },
+  "tz": "America/Detroit",
+  "file": "americas2/captures/masjidal_nL1JggAa_2024.json",
+  "rows": 366,
+  "span": [
+   "2024-01-01",
+   "2024-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.9,
+  "fajrPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "fajrMargin": 0,
+  "ishaAngle": 14.9,
+  "ishaPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "ishaMargin": 1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 289,
+    "of": 366,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 283,
+    "of": 366,
+    "worst": 1
+   },
+   "bestFajrExact": 319,
+   "bestIshaExact": 298,
+   "fajrWiggle15": 0.26,
+   "fajrMonthlyMeansAt15": [
+    0.77,
+    0.76,
+    0.74,
+    0.67,
+    0.68,
+    0.83,
+    0.84,
+    0.84,
+    0.77,
+    0.61,
+    0.6,
+    0.58
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 366,
+   "worst": 72,
+   "margin": -1.5
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 1626,
+   "within1": 2095,
+   "worst": 2,
+   "of": 2196
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 319,
+    "within1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 292,
+    "within1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 297,
+    "within1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 124,
+    "within1": 265,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 296,
+    "within1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 298,
+    "within1": 366,
+    "worst": 1
+   }
+  }
+ },
+ "queens-z0AW66Lj-2026": {
+  "mosque": "Jamaica Muslim Center",
+  "city": "Queens NY",
+  "masjidalId": "z0AW66Lj",
+  "coords": {
+   "lat": 40.7,
+   "lon": -73.79
+  },
+  "tz": "America/New_York",
+  "file": "americas2/captures/masjidal_z0AW66Lj_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "nearest",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": 1,
+  "ishaAngle": 15,
+  "ishaPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "ishaMargin": 1,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 358,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 333,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 358,
+   "bestIshaExact": 333,
+   "fajrWiggle15": 0.1,
+   "fajrMonthlyMeansAt15": [
+    1.03,
+    1.04,
+    1.03,
+    0.97,
+    1,
+    1,
+    1.06,
+    1,
+    1,
+    1,
+    1,
+    0.97
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 203,
+   "of": 365,
+   "worst": 1,
+   "margin": 0
+  },
+  "solarMargins": {
+   "sunrise": 1,
+   "dhuhr": 1,
+   "maghrib": 1
+  },
+  "joint": {
+   "exact": 1961,
+   "within1": 2190,
+   "worst": 1,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 358,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 355,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 360,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 203,
+    "within1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 352,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 333,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "queens-z0AW66Lj-2025": {
+  "mosque": "Jamaica Muslim Center",
+  "city": "Queens NY",
+  "masjidalId": "z0AW66Lj",
+  "coords": {
+   "lat": 40.7,
+   "lon": -73.79
+  },
+  "tz": "America/New_York",
+  "file": "americas2/captures/masjidal_z0AW66Lj_2025.json",
+  "rows": 365,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "nearest",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": 1,
+  "ishaAngle": 15,
+  "ishaPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "ishaMargin": 1,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 350,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 325,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 350,
+   "bestIshaExact": 325,
+   "fajrWiggle15": 0.28,
+   "fajrMonthlyMeansAt15": [
+    1.06,
+    1.14,
+    1,
+    1,
+    0.9,
+    0.87,
+    1,
+    1.03,
+    1,
+    1,
+    0.97,
+    1
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 221,
+   "of": 365,
+   "worst": 1,
+   "margin": 0
+  },
+  "solarMargins": {
+   "sunrise": 1,
+   "dhuhr": 1,
+   "maghrib": 1
+  },
+  "joint": {
+   "exact": 1952,
+   "within1": 2190,
+   "worst": 1,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 350,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 354,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 356,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 221,
+    "within1": 365,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 346,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 325,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "queens-z0AW66Lj-2024": {
+  "mosque": "Jamaica Muslim Center",
+  "city": "Queens NY",
+  "masjidalId": "z0AW66Lj",
+  "coords": {
+   "lat": 40.7,
+   "lon": -73.79
+  },
+  "tz": "America/New_York",
+  "file": "americas2/captures/masjidal_z0AW66Lj_2024.json",
+  "rows": 366,
+  "span": [
+   "2024-01-01",
+   "2024-12-31"
+  ],
+  "rounding": "nearest",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": 1,
+  "ishaAngle": 15,
+  "ishaPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "ishaMargin": 1,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 352,
+    "of": 366,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "nearest",
+    "exact": 313,
+    "of": 366,
+    "worst": 1
+   },
+   "bestFajrExact": 352,
+   "bestIshaExact": 313,
+   "fajrWiggle15": 0.19,
+   "fajrMonthlyMeansAt15": [
+    1.06,
+    1,
+    1.03,
+    0.9,
+    0.87,
+    1,
+    1.03,
+    1.06,
+    1.03,
+    1,
+    1,
+    1
+   ]
+  },
+  "asrSchool": "Hanafi",
+  "asrHanafiBest": {
+   "exact": 222,
+   "of": 366,
+   "worst": 1,
+   "margin": 0
+  },
+  "solarMargins": {
+   "sunrise": 1,
+   "dhuhr": 1,
+   "maghrib": 1
+  },
+  "joint": {
+   "exact": 1957,
+   "within1": 2196,
+   "worst": 1,
+   "of": 2196
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 352,
+    "within1": 366,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 357,
+    "within1": 366,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 362,
+    "within1": 366,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 222,
+    "within1": 366,
+    "worst": 1
+   },
+   "maghrib": {
+    "exact": 351,
+    "within1": 366,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 313,
+    "within1": 366,
+    "worst": 1
+   }
+  }
+ },
+ "antioch-rdRvm3dG-2026": {
+  "mosque": "Islamic Center of Tennessee",
+  "city": "Antioch TN",
+  "masjidalId": "rdRvm3dG",
+  "coords": {
+   "lat": 36.066,
+   "lon": -86.663
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/captures/masjidal_rdRvm3dG_2026.json",
+  "rows": 365,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "ceil",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": -0.5,
+  "ishaAngle": 14.9,
+  "ishaPlateau": {
+   "min": 14.9,
+   "max": 15
+  },
+  "ishaMargin": 0,
+  "is15_15": true,
+  "is15_15_strict": true,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": -0.5,
+    "mode": "ceil",
+    "exact": 352,
+    "of": 365,
+    "worst": 1
+   },
+   "isha": {
+    "margin": -0.5,
+    "mode": "ceil",
+    "exact": 320,
+    "of": 365,
+    "worst": 1
+   },
+   "bestFajrExact": 352,
+   "bestIshaExact": 320,
+   "fajrWiggle15": 0.35,
+   "fajrMonthlyMeansAt15": [
+    -0.61,
+    -0.46,
+    -0.58,
+    -0.53,
+    -0.52,
+    -0.6,
+    -0.39,
+    -0.74,
+    -0.53,
+    -0.55,
+    -0.6,
+    -0.65
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 365,
+   "worst": 75,
+   "margin": -1
+  },
+  "solarMargins": {
+   "sunrise": -0.5,
+   "dhuhr": -0.5,
+   "maghrib": -0.5
+  },
+  "joint": {
+   "exact": 1854,
+   "within1": 2138,
+   "worst": 2,
+   "of": 2190
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 352,
+    "within1": 365,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 346,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 351,
+    "within1": 365,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 146,
+    "within1": 313,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 339,
+    "within1": 365,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 320,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "toledo-icgt-2025-clean": {
+  "mosque": "Islamic Center of Greater Toledo",
+  "city": "Toledo OH",
+  "source": "icgt.org dpt year feed (2025)",
+  "coords": {
+   "lat": 41.677,
+   "lon": -83.699
+  },
+  "tz": "America/New_York",
+  "file": "americas2/data/us_icgt_toledo.json",
+  "rows": 127,
+  "span": [
+   "2025-01-01",
+   "2025-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.9,
+  "fajrPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "fajrMargin": -0.5,
+  "ishaAngle": 14.9,
+  "ishaPlateau": {
+   "min": 14.9,
+   "max": 14.9
+  },
+  "ishaMargin": 1,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 110,
+    "of": 127,
+    "worst": 1
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 108,
+    "of": 127,
+    "worst": 1
+   },
+   "bestFajrExact": 113,
+   "bestIshaExact": 115,
+   "fajrWiggle15": 0.5,
+   "fajrMonthlyMeansAt15": [
+    0.13,
+    0.29,
+    0.5,
+    0.03,
+    0
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 127,
+   "worst": 47,
+   "margin": -1
+  },
+  "solarMargins": {
+   "sunrise": 0,
+   "dhuhr": 0,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 590,
+   "within1": 745,
+   "worst": 2,
+   "of": 762
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 113,
+    "within1": 127,
+    "worst": 1
+   },
+   "sunrise": {
+    "exact": 113,
+    "within1": 127,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 92,
+    "within1": 127,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 50,
+    "within1": 110,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 107,
+    "within1": 127,
+    "worst": 1
+   },
+   "isha": {
+    "exact": 115,
+    "within1": 127,
+    "worst": 1
+   }
+  },
+  "dstBlock": {
+   "window": "2025-03-09..2025-11-01",
+   "rows": 238,
+   "of": 365,
+   "meanBiasMin": {
+    "fajr": {
+     "mean": -51.1,
+     "min": -61,
+     "max": 1
+    },
+    "sunrise": {
+     "mean": -0.8,
+     "min": -60,
+     "max": 1
+    },
+    "dhuhr": {
+     "mean": -60,
+     "min": -61,
+     "max": 0
+    },
+    "asr": {
+     "mean": -59.9,
+     "min": -62,
+     "max": 1
+    },
+    "maghrib": {
+     "mean": -60.5,
+     "min": -61,
+     "max": -60
+    },
+    "isha": {
+     "mean": -60.7,
+     "min": -62,
+     "max": -60
+    }
+   },
+   "fiveColsRepairedByShift60": {
+    "fajr": "132/238 worst 61",
+    "dhuhr": "183/238 worst 60",
+    "asr": "53/238 worst 61",
+    "maghrib": "130/238 worst 1",
+    "isha": "87/238 worst 2"
+   },
+   "sunriseUnshifted": "185/238 worst 60",
+   "fajrUnshiftedDays": {
+    "count": 34,
+    "dates": [
+     "2025-05-01",
+     "2025-05-02",
+     "2025-05-03",
+     "2025-05-04",
+     "2025-05-05",
+     "2025-05-06",
+     "2025-05-07",
+     "2025-05-08",
+     "2025-05-09",
+     "2025-05-10",
+     "2025-05-11",
+     "2025-05-12",
+     "2025-05-13",
+     "2025-05-14",
+     "2025-05-15",
+     "2025-05-16",
+     "2025-05-17",
+     "2025-05-18",
+     "2025-05-19",
+     "2025-05-20",
+     "2025-05-21",
+     "2025-05-22",
+     "2025-05-23",
+     "2025-05-24",
+     "2025-05-25",
+     "2025-05-26",
+     "2025-05-27",
+     "2025-05-28",
+     "2025-05-29",
+     "2025-05-30",
+     "2025-05-31",
+     "2025-07-01",
+     "2025-10-03",
+     "2025-10-04"
+    ]
+   },
+   "sunriseShiftedDays": {
+    "count": 3,
+    "dates": [
+     "2025-08-31",
+     "2025-10-01",
+     "2025-11-01"
+    ]
+   },
+   "reading": "the prayer columns print on standard time through the DST window (repair +60 on the print); fajr alone flips to wall time for May 2025 plus 2025-07-01/10-03/10-04, and sunrise alone prints standard time on 2025-11-01"
+  }
+ },
+ "toledo-icgt-2025-dst-block": {
+  "window": "2025-03-09..2025-11-01",
+  "rows": 238,
+  "of": 365,
+  "meanBiasMin": {
+   "fajr": {
+    "mean": -51.1,
+    "min": -61,
+    "max": 1
+   },
+   "sunrise": {
+    "mean": -0.8,
+    "min": -60,
+    "max": 1
+   },
+   "dhuhr": {
+    "mean": -60,
+    "min": -61,
+    "max": 0
+   },
+   "asr": {
+    "mean": -59.9,
+    "min": -62,
+    "max": 1
+   },
+   "maghrib": {
+    "mean": -60.5,
+    "min": -61,
+    "max": -60
+   },
+   "isha": {
+    "mean": -60.7,
+    "min": -62,
+    "max": -60
+   }
+  },
+  "fiveColsRepairedByShift60": {
+   "fajr": "132/238 worst 61",
+   "dhuhr": "183/238 worst 60",
+   "asr": "53/238 worst 61",
+   "maghrib": "130/238 worst 1",
+   "isha": "87/238 worst 2"
+  },
+  "sunriseUnshifted": "185/238 worst 60",
+  "fajrUnshiftedDays": {
+   "count": 34,
+   "dates": [
+    "2025-05-01",
+    "2025-05-02",
+    "2025-05-03",
+    "2025-05-04",
+    "2025-05-05",
+    "2025-05-06",
+    "2025-05-07",
+    "2025-05-08",
+    "2025-05-09",
+    "2025-05-10",
+    "2025-05-11",
+    "2025-05-12",
+    "2025-05-13",
+    "2025-05-14",
+    "2025-05-15",
+    "2025-05-16",
+    "2025-05-17",
+    "2025-05-18",
+    "2025-05-19",
+    "2025-05-20",
+    "2025-05-21",
+    "2025-05-22",
+    "2025-05-23",
+    "2025-05-24",
+    "2025-05-25",
+    "2025-05-26",
+    "2025-05-27",
+    "2025-05-28",
+    "2025-05-29",
+    "2025-05-30",
+    "2025-05-31",
+    "2025-07-01",
+    "2025-10-03",
+    "2025-10-04"
+   ]
+  },
+  "sunriseShiftedDays": {
+   "count": 3,
+   "dates": [
+    "2025-08-31",
+    "2025-10-01",
+    "2025-11-01"
+   ]
+  },
+  "reading": "the prayer columns print on standard time through the DST window (repair +60 on the print); fajr alone flips to wall time for May 2025 plus 2025-07-01/10-03/10-04, and sunrise alone prints standard time on 2025-11-01"
+ },
+ "san-antonio-mcsa-2026-clean": {
+  "mosque": "Muslim Center of San Antonio",
+  "city": "San Antonio TX",
+  "source": "mcsamasjid.com dpt year feed",
+  "coords": {
+   "lat": 29.443,
+   "lon": -98.486
+  },
+  "tz": "America/Chicago",
+  "file": "americas2/data/us_mcsamasjid_san_antonio.json",
+  "rows": 361,
+  "span": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "rounding": "floor",
+  "fajrAngle": 14.6,
+  "fajrPlateau": {
+   "min": 14.6,
+   "max": 14.6
+  },
+  "fajrMargin": -1,
+  "ishaAngle": 15.4,
+  "ishaPlateau": {
+   "min": 15.4,
+   "max": 15.4
+  },
+  "ishaMargin": -1.5,
+  "is15_15": true,
+  "is15_15_strict": false,
+  "is15_15Rule": "is15_15: best angles within 0.4 deg of 15 AND exact@15 >= 85% of best exact on both columns; is15_15_strict: the exact-max plateau contains 15.0 on both columns",
+  "at15_15": {
+   "fajr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 187,
+    "of": 361,
+    "worst": 2
+   },
+   "isha": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 233,
+    "of": 361,
+    "worst": 2
+   },
+   "bestFajrExact": 200,
+   "bestIshaExact": 241,
+   "fajrWiggle15": 2.47,
+   "fajrMonthlyMeansAt15": [
+    0.42,
+    0.39,
+    1.28,
+    -0.93,
+    -0.39,
+    1.53,
+    1.42,
+    1.16,
+    1.33,
+    1.23,
+    1.36,
+    1.13
+   ]
+  },
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "exact": 0,
+   "of": 361,
+   "worst": 76,
+   "margin": -1
+  },
+  "solarMargins": {
+   "sunrise": 0.5,
+   "dhuhr": 0.5,
+   "maghrib": 0.5
+  },
+  "joint": {
+   "exact": 1366,
+   "within1": 2066,
+   "worst": 3,
+   "of": 2166
+  },
+  "perCol": {
+   "fajr": {
+    "exact": 200,
+    "within1": 316,
+    "worst": 2
+   },
+   "sunrise": {
+    "exact": 248,
+    "within1": 361,
+    "worst": 1
+   },
+   "dhuhr": {
+    "exact": 297,
+    "within1": 361,
+    "worst": 1
+   },
+   "asr": {
+    "exact": 183,
+    "within1": 326,
+    "worst": 2
+   },
+   "maghrib": {
+    "exact": 197,
+    "within1": 341,
+    "worst": 3
+   },
+   "isha": {
+    "exact": 241,
+    "within1": 361,
+    "worst": 1
+   }
+  },
+  "defectDays": {
+   "dates": [
+    "2026-03-08",
+    "2026-03-09",
+    "2026-11-01",
+    "2026-11-02"
+   ],
+   "reading": "the asr cell on the two DST-transition weekends carries the wrong-side value (16:07 on Mar 8-9 = pre-shift, 16:24 on Nov 1-2 = post-shift); excluded here, 4 of 365 rows"
+  }
+ },
+ "san-antonio-mcsa-2026-asr-defect": {
+  "dates": [
+   "2026-03-08",
+   "2026-03-09",
+   "2026-11-01",
+   "2026-11-02"
+  ],
+  "reading": "the asr cell on the two DST-transition weekends carries the wrong-side value (16:07 on Mar 8-9 = pre-shift, 16:24 on Nov 1-2 = post-shift); excluded here, 4 of 365 rows"
+ }
+}

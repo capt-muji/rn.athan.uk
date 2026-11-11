@@ -1,0 +1,284 @@
+{
+ "_job": "Job 2: FIANZ Ramadhan Calendar 1447H (fianz.com successor sheets) — angle pair behind the stated-offset sheet",
+ "_engine": "adhan 4.4.6, second resolution, explicit nearest-minute rounding, no real clock",
+ "window": {
+  "from": "2026-02-19",
+  "to": "2026-03-20",
+  "rows": 30,
+  "note": "Ramadan window only — the pair is fitted inside it and extrapolation outside it is not tested by this surface"
+ },
+ "statedOffsetsVerbatim": {
+  "suhoor": "5 minutes allowed between end of Suhur and Fajr",
+  "iftar": "5 minutes allowed between sunset and Iftar/Maghrib",
+  "asr": "single shadow primary; double shadow +40 min"
+ },
+ "statedOffsetsCheck": {
+  "suhoorEnds_equals_fajr_minus_5": "EXACT in all 90 rows across the three cities (sd 0)",
+  "magrib_equals_sunset_plus_5": "holds to minute rounding at Auckland and Christchurch (median +5.3/+5.6, sd 0.29); Wellington reads +4.0 — see coordinate note",
+  "asr_single_shadow": "confirmed: shadow-1 residuals ~0 (+0.2..+0.7), shadow-2 residual ~ -55 min"
+ },
+ "cities": {
+  "Auckland": {
+   "lat": -36.8485,
+   "lon": 174.7633,
+   "rows": 30,
+   "span": [
+    "2026-02-19",
+    "2026-03-20"
+   ],
+   "recipe": {
+    "fajr": 18,
+    "isha": 18,
+    "asr": "shadow 1",
+    "maghrib": "sunset +5",
+    "suhoorEnds": "fajr -5"
+   },
+   "fajrImpliedAngle": {
+    "median": 18.09,
+    "sd": 0.06,
+    "min": 17.98,
+    "max": 18.17
+   },
+   "ishaImpliedAngle": {
+    "median": 17.96,
+    "sd": 0.053,
+    "min": 17.88,
+    "max": 18.05
+   },
+   "solarColumnShift_vs_censusCoords": {
+    "sunrise": {
+     "median": 0.27,
+     "sd": 0.282
+    },
+    "dhuhr": {
+     "median": 0.2,
+     "sd": 0.287
+    }
+   },
+   "exactScore": {
+    "fajr": {
+     "total": 30,
+     "exact": 28,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-03-16"
+    },
+    "sunrise": {
+     "total": 30,
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "worstRow": null
+    },
+    "dhuhr": {
+     "total": 30,
+     "exact": 27,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-22"
+    },
+    "asr": {
+     "total": 30,
+     "exact": 23,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-24"
+    },
+    "maghrib": {
+     "total": 30,
+     "exact": 21,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-19"
+    },
+    "isha": {
+     "total": 30,
+     "exact": 19,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-22"
+    }
+   }
+  },
+  "Wellington": {
+   "lat": -41.2866,
+   "lon": 174.7756,
+   "rows": 30,
+   "span": [
+    "2026-02-19",
+    "2026-03-20"
+   ],
+   "recipe": {
+    "fajr": 16,
+    "isha": 15,
+    "asr": "shadow 1",
+    "maghrib": "sunset +5",
+    "suhoorEnds": "fajr -5"
+   },
+   "fajrImpliedAngle": {
+    "median": 16.14,
+    "sd": 0.061,
+    "min": 16.03,
+    "max": 16.27
+   },
+   "ishaImpliedAngle": {
+    "median": 15.08,
+    "sd": 0.05,
+    "min": 15,
+    "max": 15.16
+   },
+   "solarColumnShift_vs_censusCoords": {
+    "sunrise": {
+     "median": -4.26,
+     "sd": 0.315
+    },
+    "dhuhr": {
+     "median": -1.48,
+     "sd": 0.279
+    }
+   },
+   "exactScore": {
+    "fajr": {
+     "total": 30,
+     "exact": 21,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-03-03"
+    },
+    "sunrise": {
+     "total": 30,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstRow": "2026-02-25"
+    },
+    "dhuhr": {
+     "total": 30,
+     "exact": 0,
+     "within1": 16,
+     "worst": 2,
+     "worstRow": "2026-02-19"
+    },
+    "asr": {
+     "total": 30,
+     "exact": 10,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-20"
+    },
+    "maghrib": {
+     "total": 30,
+     "exact": 1,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-19"
+    },
+    "isha": {
+     "total": 30,
+     "exact": 0,
+     "within1": 26,
+     "worst": 2,
+     "worstRow": "2026-02-19"
+    }
+   }
+  },
+  "Christchurch": {
+   "lat": -43.5321,
+   "lon": 172.6362,
+   "rows": 30,
+   "span": [
+    "2026-02-19",
+    "2026-03-20"
+   ],
+   "recipe": {
+    "fajr": 16,
+    "isha": 15,
+    "asr": "shadow 1",
+    "maghrib": "sunset +5",
+    "suhoorEnds": "fajr -5"
+   },
+   "fajrImpliedAngle": {
+    "median": 16.08,
+    "sd": 0.046,
+    "min": 16,
+    "max": 16.14
+   },
+   "ishaImpliedAngle": {
+    "median": 14.99,
+    "sd": 0.05,
+    "min": 14.9,
+    "max": 15.08
+   },
+   "solarColumnShift_vs_censusCoords": {
+    "sunrise": {
+     "median": 0.1,
+     "sd": 0.286
+    },
+    "dhuhr": {
+     "median": 0.33,
+     "sd": 0.301
+    }
+   },
+   "exactScore": {
+    "fajr": {
+     "total": 30,
+     "exact": 30,
+     "within1": 30,
+     "worst": 0,
+     "worstRow": null
+    },
+    "sunrise": {
+     "total": 30,
+     "exact": 27,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-03-01"
+    },
+    "dhuhr": {
+     "total": 30,
+     "exact": 20,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-19"
+    },
+    "asr": {
+     "total": 30,
+     "exact": 13,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-21"
+    },
+    "maghrib": {
+     "total": 30,
+     "exact": 13,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-20"
+    },
+    "isha": {
+     "total": 30,
+     "exact": 12,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2026-02-19"
+    }
+   }
+  }
+ },
+ "verdict": {
+  "singleSharedPair": false,
+  "pairs": {
+   "Auckland": "18/18",
+   "Wellington": "16/15",
+   "Christchurch": "16/15"
+  },
+  "detail": "Implied-angle clusters are tight (sd ~0.05-0.06 deg): Auckland fajr 18.08 / isha 17.96 -> 18/18; Wellington fajr 16.14 / isha 15.08 -> 16/15; Christchurch fajr 16.07 / isha 14.99 -> 16/15. The federation sheet is per-city calculated, and the North Island city runs the standard 18/18 while the two southern sheets run 16/15.",
+  "wellingtonCoordinateNote": "Wellington solar columns sit early vs the census coordinates (sunrise -4.3 min, dhuhr -1.5 min) while Auckland/Christchurch sit on ~0 — the Wellington sheet was likely computed for a slightly different grid point; the angle clusters are insensitive to this (~0.02 deg).",
+  "stability": "Single Ramadan window on the surface; between-year stability not testable. Within-window residuals are flat (no drift across the 30 days).",
+  "limits": [
+   "Ramadan 1447H window only (30 rows/city): fajr and isha angles are fitted inside a late-summer New Zealand window; high-latitude extrapolation outside it (especially winter twilight behaviour) is not vouched for.",
+   "Sheet Ramadan 1 = 2026-02-19 while FIANZ Hilal confirmation printed 2026-02-20 (two-editions pattern, recorded at capture time).",
+   "Wellington grid-point uncertainty noted above."
+  ]
+ }
+}

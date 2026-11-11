@@ -1,0 +1,106 @@
+{
+  "generated": "2026-11-10",
+  "harness": {
+    "engine": "adhan 4.4.6",
+    "path": "$HOME/athan-gitree/census/adhan-build/node_modules/adhan",
+    "discipline": "own scripts; TZ=UTC with date at 12:00 UTC and Intl zone rendering; no clock read; Rounding.None then explicit floor/ceil/nearest; raw captures read from disk; no network",
+    "scripts": ["lib.mjs", "pk.mjs", "khgt.mjs", "tn.mjs", "dz.mjs", "dz2.mjs", "uk.mjs", "uk2.mjs"],
+    "outputs": ["pk.json", "khgt.json", "tn.json", "dz.json", "dz2.json", "uk.json", "uk2.json"]
+  },
+  "claims": [
+    {
+      "id": 1,
+      "subject": "Pakistan federal Nizam-e-Salat chart",
+      "claim": "Karachi 18/18 Hanafi angles + two-phase dhuhr clock (13:00/13:15, switching 15 Apr/15 Oct) + a 19-step quarter-hour isha ladder",
+      "verdict": "CONFIRMED",
+      "headline": {
+        "rows": 366,
+        "column_mapping": "c1 fajr adhan, c2 fajr jamaat, c3 sunrise, c4 dhuhr adhan, c5 dhuhr jamaat, c6 asr adhan, c7 asr jamaat, c8 sunset, c9 maghrib adhan, c10 isha adhan, c11 isha jamaat; mapping re-derived from solar geometry and jamaat deltas (-0.87 min sunrise, +0.95 sunset, +5.95 maghrib, jamaat +15)",
+        "dhuhr_values": { "13:00": 183, "13:15": 183 },
+        "dhuhr_switches": ["2026-04-15 13:00->13:15", "2026-10-15 13:15->13:00"],
+        "dhuhr_switch_source": "read from the printed April and October rows at 3x render",
+        "isha_distinct_values": 11,
+        "isha_switch_dates": 19,
+        "isha_grid": "all values multiples of 15; steps -30, -15, +15",
+        "isha_best_single_angle": { "exact": 31, "n": 366, "worst": 26 },
+        "isha_snap_claim": { "rule": "ceil(isha18+12.5) snapped to 15", "exact": 233, "misses": 133, "worst": 30 },
+        "fajr": { "rule": "18.00 floor 0", "exact": 306, "within1": 366, "worst": 1, "grid_optimum": "17.93 floor -0.5, 324 exact" },
+        "asr": { "rule": "Hanafi +2 nearest", "exact": 233, "within1": 366, "worst": 1, "shafi_best": { "exact": 0, "worst": 72 } },
+        "maghrib": { "rule": "sunset +6", "exact": 303, "within1": 364, "worst": 2 },
+        "sunrise": { "rule": "floor -0.5", "exact": 301 },
+        "mwl_18_17_asr": { "median": -55, "worst": 78, "note": "refuted" }
+      },
+      "counterexample": null,
+      "notes": "The 19-step claim is exact as 19 switch dates; the ladder prints 11 distinct values. The sheet carries a twelfth cell under maghrib jamaat that prints a weekday note, not a time."
+    },
+    {
+      "id": 2,
+      "subject": "Muhammadiyah KHGT Indonesia",
+      "claim": "18/18 + 1 minute, holding 2025-2035, 7.8 minutes after Kemenag every year",
+      "verdict": "CONFIRMED",
+      "headline": {
+        "rows_scored": 1116,
+        "cells": "3 cities x 6 years (2025, 2027, 2029, 2031, 2033, 2035) x Jan+Jul",
+        "rule": "18/18, ceil, +1 min",
+        "within1": "62/62 in each of 18 city-year cells; 0 worse than 1 min",
+        "exact_with_plus1": "58 to 62 of 62 per cell (93.5% to 100%)",
+        "feasible_margin": "about 0.92 to 1.08 per city-year; decade intersection empty by 0.033 min (2 s)",
+        "fajr_gap_to_kemenag_2026": { "jakarta": 7.99, "surabaya": 7.87, "medan": 7.9, "makassar": 8.08, "jayapura": 8.48 },
+        "per_year_gap": { "jakarta": "8.11-8.21", "jayapura": "8.68-8.84", "drift": "none" }
+      },
+      "counterexample": null,
+      "notes": "The decade and the 1-minute tolerance hold. The headline 7.8 min is low by 0.1 to 0.7 min depending on the city; the constant-gap finding stands."
+    },
+    {
+      "id": 3,
+      "subject": "Tunisia INM",
+      "claim": "One frozen recipe 2020-2026",
+      "verdict": "CONFIRMED",
+      "headline": {
+        "rows": 2557,
+        "years": [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+        "recipe": "fajr 18.1 round, isha 18.1 round, dhuhr transit +7 round, maghrib sunset +2 ceil, asr Shafi 0 nearest",
+        "joint_within1": { "exact": 2409, "n": 2557, "pct": 94.21 },
+        "per_year_joint_pct": { "2020": 95.1, "2021": 94.0, "2022": 93.7, "2023": 93.2, "2024": 95.4, "2025": 94.5, "2026": 93.7 },
+        "per_column_exact": { "fajr": 2471, "isha": 2471, "dhuhr": 2308, "maghrib": 2429, "asr": 764 },
+        "asr_within1": 2409,
+        "raw_check": { "year_2024": "1830 cells, 0 mismatches", "year_2025": "1825 cells, 0 mismatches" },
+        "recomputed_not_reprinted": "133/365 printed rows identical 2024 vs 2025",
+        "free_fit_per_year": "fajr 18.09-18.10, isha 18.10, dhuhr +7 round or +6.5 ceil, maghrib +2 ceil or +2.5 round, asr nearest 0"
+      },
+      "counterexample": null,
+      "notes": "Reproducibility defect: deep2/tn-deep.json records asr as floor 0, which gives 2091/2557 (81.8%) joint, not the 94.2% headline. Nearest 0 reproduces 94.21%."
+    },
+    {
+      "id": 4,
+      "subject": "Algeria ministry calendar",
+      "claim": "Algeria is frozen 1447->1448 and 1448 is recomputed, not reprinted",
+      "verdict": "CONFIRMED",
+      "headline": {
+        "calibration": "Rajab 1448, PDF page 8, 29 rows transcribed independently; 174 cells match fit2's transcription exactly",
+        "rajab_only_fit": { "fajr": "17.39 floor -2, 29/29", "isha": "15.73 floor +7.5, 29/29", "dhuhr": "+1, 28/29", "asr": "Shafi +1, 29/29 within 1", "maghrib": "+4, 28/29", "sunrise": "+1, 25/29" },
+        "transfer": "the Rajab-only recipe is within 1 on every column of all seven other months (208 days)",
+        "joint_two_year_fit": { "fajr": "17.4 floor -2, 229/237 exact, 237/237 within 1", "isha": "16.6 ceil +2, 227/237, 237/237", "dhuhr": "+1, 229/237", "asr": "Shafi ceil 0, 122 exact, 237/237 within 1", "maghrib": "+4, 223/237", "sunrise": "+1, 222/237" },
+        "frozen_constants": "1447 and 1448 joint fits return the same constants",
+        "published_pair_also_holds": "17.80 floor 0 and 16.10 nearest +5: 237/237 within 1 on all six columns",
+        "reprint_test": { "cells": 174, "identical": 11, "identical_pct": 6.3, "mean_abs_diff_min": 5.54, "max_abs_diff_min": 10 }
+      },
+      "counterexample": null,
+      "notes": "The specific constants are not identifiable to 0.1 degree from minute-printed data: 17.4/-2 and 17.8/0, 15.73/+7.5 and 16.1/+5, are equivalent families. The printed times, and therefore the frozen verdict, are identifiable."
+    },
+    {
+      "id": 5,
+      "subject": "England town tables",
+      "claim": "England's towns are interval tables in the LUPT construction, not angle tables",
+      "verdict": "REFUTED",
+      "counterexample": "Nottingham Islamic Centre 2026: Karachi 18/18 reproduces fajr 220/273 exact and 244/273 within 1 (worst 4) on its 273 defect-free rows; F swings 114 to 243 min across the year. Watford November: 18/18 30/30 within 1, 29/30 exact, F 111-119. Oxford 2026: 18/18 332/365 within 1.",
+      "headline": {
+        "luton_nov": { "F": "98-102, 5 values", "I": "89-96, 8 values", "lupt_elm_nov": "F 97-102, I 88-97", "18_18_within1": "8/30", "class": "interval table" },
+        "coventry_2026": { "F": "90-157, plateaus at 100 and 60", "I": "20-100, plateaus", "18_18_within1": "72/365", "worst": 119, "class": "seasonal table" },
+        "nottingham_2026": { "F": "114-243", "I": "68-139", "18_18": "220/273 exact, 244/273 within 1, worst 4 on 273 defect-free rows; 332/365 within 1 over all rows", "class": "angle 18/18" },
+        "scan_of_18_surfaces": { "angle_18": 3, "table_interval": 14, "table_seasonal": 1, "caveat": "one-month surfaces cannot separate a 15-degree angle from a table; the three angle surfaces are decisive, the exact table count is soft" }
+      },
+      "notes": "The modal English form is the LUPT interval construction (Luton's F and I arrays are nearly cell-identical to ELM/LUPT); the unqualified 'not angle tables' is false. The night's own fit12 records the same Karachi trio."
+    }
+  ]
+}

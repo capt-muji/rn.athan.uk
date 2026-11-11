@@ -1,0 +1,71 @@
+# adhan 4.4.6 verification
+package : $HOME/athan-gitree/census/adhan-build/node_modules/adhan
+host tz : Europe/London
+probe   : 51.5074 N, 0.1278 W, Date(2026, 5, 1, 12:00) -> local day 2026-06-01
+
+## 1. Parameter diff: JSON vs CalculationMethod source
+  ok   13 factories exist
+  ok   factory names match the JSON exactly
+  ok   MuslimWorldLeague: angles 18/17 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Egyptian: angles 19.5/17.5 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Karachi: angles 18/18 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   UmmAlQura: angles 18.5/0 interval 90 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Dubai: angles 18.2/18.2 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   MoonsightingCommittee: angles 18/18 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   NorthAmerica: angles 15/15 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Kuwait: angles 18/17.5 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Qatar: angles 18/0 interval 90 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Singapore: angles 20/18 interval 0 maghribAngle 0 rounding up madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Tehran: angles 17.7/14 interval 0 maghribAngle 4.5 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Turkey: angles 18/17 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Other: angles 0/0 interval 0 maghribAngle 0 rounding nearest madhab shafi hlr middleofthenight nightPortions {"fajr":0.5,"isha":0.5}
+  ok   Rounding enum is nearest/up/none
+  ok   Madhab enum is shafi/hanafi
+  ok   HighLatitudeRule enum is middleofthenight/seventhofthenight/twilightangle
+
+## 2. Six times per method: London 51.5074 N, 0.1278 W, 2026-06-01
+method                    fajr      sunrise   dhuhr     asr       maghrib   isha
+MuslimWorldLeague         00:59:00  04:49:00  12:59:00  17:19:00  21:08:00  00:58:00
+Egyptian                  00:59:00  04:49:00  12:59:00  17:19:00  21:08:00  00:58:00
+Karachi                   00:59:00  04:49:00  12:59:00  17:19:00  21:08:00  00:58:00
+UmmAlQura                 00:59:00  04:49:00  12:58:00  17:19:00  21:08:00  22:38:00
+Dubai                     00:59:00  04:46:00  13:01:00  17:22:00  21:11:00  00:58:00
+MoonsightingCommittee     02:56:00  04:49:00  13:03:00  17:19:00  21:11:00  22:22:00
+NorthAmerica              02:05:00  04:49:00  12:59:00  17:19:00  21:08:00  23:54:00
+Kuwait                    00:59:00  04:49:00  12:58:00  17:19:00  21:08:00  00:58:00
+Qatar                     00:59:00  04:49:00  12:58:00  17:19:00  21:08:00  22:38:00
+Singapore                 01:00:00  04:50:00  13:00:00  17:19:00  21:09:00  00:59:00
+Tehran                    00:59:00  04:49:00  12:58:00  17:19:00  21:40:00  23:33:00
+Turkey                    00:59:00  04:42:00  13:03:00  17:23:00  21:15:00  00:58:00
+Other                     04:56:00  04:49:00  12:58:00  17:19:00  21:08:00  21:02:00
+
+## 3. Behaviour probes
+  ok   Madhab must be set by the caller: Shafi asr 17:19:00, Hanafi asr 18:31:00, later by 72 min
+  ok   highLatitudeRule default is MiddleOfTheNight, caller override moves fajr 00:59:00 -> 03:43:00, isha 00:58:00 -> 22:14:00
+  ok   HighLatitudeRule.recommended(51.5074) = seventhofthenight, and no method applies it internally
+  ok   UmmAlQura isha is sunset + 90 min: sunset 21:08:00 isha 22:38:00 (90 min)
+  ok   maghrib adjustment does not move an interval-based isha: maghrib +10 min, isha delta 0.0 min
+  ok   isha adjustment does move an interval-based isha: +30 min applied on top of the 90-minute interval
+  ok   Rounding.None keeps sub-minute seconds: fajr 00:59:04
+  ok   Singapore Rounding.Up still lands every output on a whole minute
+  ok   Rounding.Up outputs are whole minutes including sunset 21:09:00
+  ok   Tehran maghrib comes from the 4.5 degree angle: sunset 21:08:00 maghrib 21:40:00 isha 23:33:00
+  ok   zero angle is the 0-degree crossing, not the horizon: isha lands 6 min BEFORE sunset and the night clamp cannot rescue it
+  ok   CalculationMethod.Other() is degenerate as delivered: fajr 04:56:00 is after sunrise 04:49:00, isha 21:02:00 is before sunset 21:08:00
+  ok   London midsummer: MiddleOfTheNight binds, isha 00:58:00 lands 1 min from the next Fajr, so the night is consumed end to end and Fajr 00:59:00 sits just after the previous midnight
+  ok   params.method is load-bearing: identical numbers under method 'Other' give fajr 00:59:00 instead of 02:56:00
+  ok   MoonsightingCommittee 55-degree branch is live at 59.9139 N: fajr 02:18:00 vs MWL fajr 00:16:00
+  ok   SunnahTimes middle 23:04:00 sits half way from maghrib to next fajr
+  info Makkah 2026-06-01 (Asia/Riyadh): fajr 04:11:00 sunrise 05:38:00 dhuhr 12:19:00 asr 15:35:00 maghrib 18:59:00 isha 20:29:00
+
+## 4. Upstream fixtures replayed as an independent oracle
+  ok   Ankara-Turkey.json: method Turkey, madhab Shafi, rule MiddleOfTheNight, 24 days, worst delta 2 min (fixture variance 2)
+  ok   Doha-Qatar.json: method Qatar, madhab Shafi, rule MiddleOfTheNight, 12 days, worst delta 0 min (fixture variance 0)
+  ok   Dubai-Gulf.json: method Dubai, madhab Shafi, rule MiddleOfTheNight, 12 days, worst delta 1 min (fixture variance 1)
+  ok   Kuwait City-Kuwait.json: method Kuwait, madhab Shafi, rule MiddleOfTheNight, 12 days, worst delta 2 min (fixture variance 2)
+  ok   London-MoonsightingCommittee.json: method MoonsightingCommittee, madhab Hanafi, rule MiddleOfTheNight, 12 days, worst delta 0 min (fixture variance 0)
+  ok   Makkah-UmmAlQura.json: method UmmAlQura, madhab Shafi, rule MiddleOfTheNight, 12 days, worst delta 0 min (fixture variance 0)
+  ok   Singapore-Singapore.json: method Singapore, madhab Shafi, rule MiddleOfTheNight, 366 days, worst delta 2 min (fixture variance 2)
+  ok   Tehran-Tehran.json: method Tehran, madhab Shafi, rule MiddleOfTheNight, 12 days, worst delta 1 min (fixture variance 1)
+
+## Result: no failures; 13 methods documented, 2772 fixture prayer values replayed

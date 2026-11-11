@@ -1,0 +1,429 @@
+{
+ "rows": 85,
+ "totalCovered": 1912.6,
+ "primaryTotalCovered": 1707.7,
+ "changePct": 12.0,
+ "top30": 1831.2,
+ "primaryTop30": 1637.3,
+ "top30SharePct": 95.74,
+ "primaryTop30SharePct": 95.88,
+ "top10": [
+  [
+   "Indonesia",
+   250.7
+  ],
+  [
+   "Pakistan",
+   250.2
+  ],
+  [
+   "India",
+   215.6
+  ],
+  [
+   "Bangladesh",
+   161.8
+  ],
+  [
+   "Nigeria",
+   118.8
+  ],
+  [
+   "Egypt",
+   110.9
+  ],
+  [
+   "Iran",
+   93.0
+  ],
+  [
+   "Turkey",
+   83.1
+  ],
+  [
+   "Sudan",
+   51.7
+  ],
+  [
+   "Algeria",
+   47.5
+  ]
+ ],
+ "primaryTop10": [
+  [
+   "Indonesia",
+   249.8
+  ],
+  [
+   "Pakistan",
+   233.0
+  ],
+  [
+   "India",
+   200.0
+  ],
+  [
+   "Bangladesh",
+   150.8
+  ],
+  [
+   "Nigeria",
+   96.0
+  ],
+  [
+   "Egypt",
+   87.5
+  ],
+  [
+   "Iran",
+   85.7
+  ],
+  [
+   "Turkey",
+   81.2
+  ],
+  [
+   "Algeria",
+   43.7
+  ],
+  [
+   "Iraq",
+   39.0
+  ]
+ ],
+ "staleness": {
+  "rowsTested": 83,
+  "median": 8.1,
+  "mean": 10.4,
+  "p25": 2.3,
+  "p75": 17.4,
+  "top30Median": 11.9,
+  "worst": [
+   [
+    79.9,
+    "Chile"
+   ],
+   [
+    76.4,
+    "Eswatini"
+   ],
+   [
+    58.0,
+    "Netherlands"
+   ],
+   [
+    50.8,
+    "Oman"
+   ],
+   [
+    42.2,
+    "Kuwait"
+   ],
+   [
+    35.8,
+    "Yemen"
+   ]
+  ]
+ },
+ "disputed": {
+  "Nigeria": {
+   "primary": 96.0,
+   "chosen": 118.8,
+   "low": 113.9,
+   "high": 136.0,
+   "impliedPopulation": 200.0,
+   "wprPopulation2026": 242.431832
+  },
+  "Egypt": {
+   "primary": 87.5,
+   "chosen": 110.9,
+   "low": 108.1,
+   "high": 114.3,
+   "impliedPopulation": 94.7,
+   "wprPopulation2026": 120.101175
+  },
+  "Sudan": {
+   "primary": 38.6,
+   "chosen": 51.7,
+   "low": 51.2,
+   "high": 52.7,
+   "impliedPopulation": 40.2,
+   "wprPopulation2026": 53.282719
+  },
+  "Yemen": {
+   "primary": 26.8,
+   "chosen": 42.5,
+   "low": 41.8,
+   "high": 42.9,
+   "impliedPopulation": 27.6,
+   "wprPopulation2026": 42.961653
+  },
+  "Syria": {
+   "primary": 15.0,
+   "chosen": 23.0,
+   "low": 23.0,
+   "high": 24.9,
+   "impliedPopulation": 17.2,
+   "wprPopulation2026": 26.472497
+  },
+  "Russia": {
+   "primary": 15.0,
+   "chosen": 15.8,
+   "low": 11.8,
+   "high": 19.6,
+   "impliedPopulation": 136.4,
+   "wprPopulation2026": 143.394458
+  }
+ },
+ "sensitivity": {
+  "scoredTargets": 49,
+  "disputedScored": {
+   "Egypt": "EG-ESA",
+   "Yemen": "YE-AWQAF-SANAA",
+   "Sudan": "SD-MINISTRY",
+   "Russia": "RU-DUMRT",
+   "Nigeria": "NG-SPA"
+  },
+  "weightSpanPctOfTotal": {
+   "Nigeria": 1.16,
+   "Egypt": 0.32,
+   "Sudan": 0.08,
+   "Yemen": 0.06,
+   "Russia": 0.41
+  },
+  "maxWeightedMeanSwing": 0.228,
+  "maxPrimaryToAudited": 0.077,
+  "perMethod": {
+   "diyanet-eu": {
+    "min": 6.036,
+    "max": 6.112,
+    "span": 0.076,
+    "primary": 6.118,
+    "audited": 6.087,
+    "primaryToAudited": -0.032
+   },
+   "diyanet-tr": {
+    "min": 4.156,
+    "max": 4.254,
+    "span": 0.098,
+    "primary": 4.223,
+    "audited": 4.22,
+    "primaryToAudited": -0.003
+   },
+   "dubai": {
+    "min": 3.928,
+    "max": 4.011,
+    "span": 0.083,
+    "primary": 3.911,
+    "audited": 3.973,
+    "primaryToAudited": 0.062
+   },
+   "ecfr": {
+    "min": 4.156,
+    "max": 4.254,
+    "span": 0.098,
+    "primary": 4.223,
+    "audited": 4.22,
+    "primaryToAudited": -0.003
+   },
+   "egyptian": {
+    "min": 5.748,
+    "max": 5.862,
+    "span": 0.114,
+    "primary": 5.872,
+    "audited": 5.812,
+    "primaryToAudited": -0.06
+   },
+   "fazilet-a": {
+    "min": 6.179,
+    "max": 6.289,
+    "span": 0.109,
+    "primary": 6.262,
+    "audited": 6.238,
+    "primaryToAudited": -0.024
+   },
+   "fazilet-b": {
+    "min": 9.799,
+    "max": 9.921,
+    "span": 0.122,
+    "primary": 9.881,
+    "audited": 9.862,
+    "primaryToAudited": -0.019
+   },
+   "isna15": {
+    "min": 14.904,
+    "max": 14.991,
+    "span": 0.087,
+    "primary": 14.981,
+    "audited": 14.961,
+    "primaryToAudited": -0.02
+   },
+   "isna2010": {
+    "min": 3.403,
+    "max": 3.488,
+    "span": 0.085,
+    "primary": 3.377,
+    "audited": 3.45,
+    "primaryToAudited": 0.073
+   },
+   "jakim": {
+    "min": 3.403,
+    "max": 3.488,
+    "span": 0.085,
+    "primary": 3.377,
+    "audited": 3.45,
+    "primaryToAudited": 0.073
+   },
+   "karachi": {
+    "min": 3.403,
+    "max": 3.488,
+    "span": 0.085,
+    "primary": 3.377,
+    "audited": 3.45,
+    "primaryToAudited": 0.073
+   },
+   "kuwait": {
+    "min": 3.683,
+    "max": 3.769,
+    "span": 0.086,
+    "primary": 3.716,
+    "audited": 3.736,
+    "primaryToAudited": 0.02
+   },
+   "mabims": {
+    "min": 6.47,
+    "max": 6.577,
+    "span": 0.107,
+    "primary": 6.525,
+    "audited": 6.525,
+    "primaryToAudited": 0.0
+   },
+   "moonsighting": {
+    "min": 4.964,
+    "max": 5.192,
+    "span": 0.228,
+    "primary": 5.054,
+    "audited": 5.09,
+    "primaryToAudited": 0.036
+   },
+   "mwl": {
+    "min": 4.156,
+    "max": 4.254,
+    "span": 0.098,
+    "primary": 4.223,
+    "audited": 4.22,
+    "primaryToAudited": -0.003
+   },
+   "qatar": {
+    "min": 7.014,
+    "max": 7.109,
+    "span": 0.095,
+    "primary": 6.973,
+    "audited": 7.049,
+    "primaryToAudited": 0.077
+   },
+   "russia": {
+    "min": 12.47,
+    "max": 12.561,
+    "span": 0.091,
+    "primary": 12.541,
+    "audited": 12.528,
+    "primaryToAudited": -0.013
+   },
+   "singapore": {
+    "min": 6.419,
+    "max": 6.524,
+    "span": 0.106,
+    "primary": 6.475,
+    "audited": 6.473,
+    "primaryToAudited": -0.002
+   },
+   "tehran": {
+    "min": 10.739,
+    "max": 10.833,
+    "span": 0.093,
+    "primary": 10.805,
+    "audited": 10.797,
+    "primaryToAudited": -0.008
+   },
+   "ummalqura": {
+    "min": 8.721,
+    "max": 8.83,
+    "span": 0.109,
+    "primary": 8.71,
+    "audited": 8.762,
+    "primaryToAudited": 0.051
+   }
+  },
+  "rankSwing": {},
+  "rankChangesPrimaryToAudited": {},
+  "replayCheck": [
+   {
+    "method": "mwl",
+    "replay": 4.223,
+    "study": 4.223
+   },
+   {
+    "method": "egyptian",
+    "replay": 5.872,
+    "study": 5.872
+   },
+   {
+    "method": "karachi",
+    "replay": 3.377,
+    "study": 3.377
+   },
+   {
+    "method": "jakim",
+    "replay": 3.377,
+    "study": 3.377
+   },
+   {
+    "method": "dubai",
+    "replay": 3.911,
+    "study": 3.911
+   },
+   {
+    "method": "tehran",
+    "replay": 10.805,
+    "study": 10.805
+   },
+   {
+    "method": "ecfr",
+    "replay": 4.223,
+    "study": 4.223
+   },
+   {
+    "method": "mabims",
+    "replay": 6.525,
+    "study": 6.525
+   },
+   {
+    "method": "qatar",
+    "replay": 6.973,
+    "study": 6.973
+   },
+   {
+    "method": "kuwait",
+    "replay": 3.716,
+    "study": 3.716
+   },
+   {
+    "method": "fazilet-a",
+    "replay": 6.262,
+    "study": 6.262
+   },
+   {
+    "method": "fazilet-b",
+    "replay": 9.881,
+    "study": 9.881
+   },
+   {
+    "method": "moonsighting",
+    "replay": 5.054,
+    "study": 5.054
+   }
+  ],
+  "maxReplayError": 0.0
+ }
+}

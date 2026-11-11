@@ -1,0 +1,78 @@
+{
+ "country": "gn",
+ "publisher": "Grande Mosquee de Nono, Nono (Guinea) via Mawaqit (community tier)",
+ "source": "sahel2/data/guinea-nono-grande-mosquee-mawaqit-2026.json",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "tz": "Africa/Conakry",
+ "coords": {
+  "lat": 10.876038673068,
+  "lon": -10.495964683475
+ },
+ "problems": [
+  "2-29 extra"
+ ],
+ "fajr": {
+  "angle": 18,
+  "r": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 240,
+   "within1": 247,
+   "worst": 19
+  }
+ },
+ "isha": {
+  "angle": 17,
+  "r": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 356,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "solar": {
+  "sunrise": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 364,
+   "within1": 365,
+   "worst": 1
+  },
+  "magrib": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 296,
+   "within1": 302,
+   "worst": 10
+  },
+  "asr_shafi": {
+   "margin": 0,
+   "mode": "floor",
+   "exact": 170,
+   "within1": 331,
+   "worst": 2
+  },
+  "asr_hanafi": {
+   "margin": -10,
+   "mode": "floor",
+   "exact": 0,
+   "within1": 0,
+   "worst": 65
+  },
+  "dhuhr": {
+   "fixed_clock": "13:45",
+   "exact": 365,
+   "n": 365
+  }
+ },
+ "anomalies": {
+  "dhuhr": "fixed clock 13:45 on all 365 rows while every other column is computed: the mosque config pins dhuhr",
+  "maghrib": "sunset floor fits Jan 1 - Oct 15 (exact), then a smooth drift hump 2026-10-16..2026-12-19 (+1.1 rising to +9.7 around late Nov, back to +1.2): a second convention active for that stretch, cause not resolvable from the table alone",
+  "fajr": "smooth seasonal dawn curve, implied interval 75.6 min before sunrise (Dec) shrinking to 58.2 (May-Jun) and back: implied depression ~13.4 deg (winter) to ~17.5 (summer), i.e. roughly dep = 15.5 + 0.09*declination. No single angle (best 18 deg +0.5 floor, 240/365 exact, worst 19) and no fixed interval reproduces it; the winter-longer direction rules out a fixed-angle convention at this latitude. Everything else in the column sits within +-1 of the curve"
+ }
+}

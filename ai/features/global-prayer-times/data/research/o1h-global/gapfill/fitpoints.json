@@ -1,0 +1,133 @@
+{
+ "schema": "o1h-global-gapfill-fitpoints/1",
+ "generated": "2026-11-10",
+ "scope": "The 21 targets in countries.json whose lat/lon are null. Each entry carries the sentence in the census record that documents its fit point.",
+ "coordinateBasis": {
+  "recorded": "The record carries the coordinates verbatim (MY-JAKIM WLY01).",
+  "documented-city": "The record names the fitted place but does not carry its coordinates; the city-centre point is adopted, exactly as countries.json already does for the targets whose record names a city (TR-DIYANET-DOMESTIC Istanbul, KZ-MUFTIYAT Astana). These cells carry the flag in results.json.",
+  "brief-assigned": "The shared brief assigns the point for this target by name and number."
+ },
+ "points": {
+  "MY-JAKIM": {
+   "lat": 3.139,
+   "lon": 101.6869,
+   "place": "Kuala Lumpur and Putrajaya (JAKIM zone WLY01)",
+   "basis": "recorded",
+   "citation": "policy-layer.v2.4.json MY-JAKIM reference.zoneTable.zones[WLY01].point = 3.139 / 101.6869, provenance \"SOURCE-CATALOG my-jakim-wly01, #6905 E4 (Lampiran B westernmost-point reference)\"; world-table-v2.md, Malaysia: \"zone reference points are WESTERNMOST-POINT computations with a 2-minute span cap (Lampiran B coordinates verified by fit)\"."
+  },
+  "EU-DIYANET-UNIFIED": {
+   "lat": 50.1109,
+   "lon": 8.6821,
+   "place": "Frankfurt am Main (DITIB Germany installation point)",
+   "basis": "brief-assigned",
+   "tz": "Europe/Berlin",
+   "citation": "policy-layer.v2.4.json EU-DIYANET-UNIFIED reference.provenance: \"#6911 I2 (DITIB tables), #6918 L5 (IFiS Stockholm). Per-city coordinates; no national point exists\"; SHARED-BRIEF.md line 21: \"EU-DIYANET-UNIFIED = Frankfurt 50.1109, 8.6821\"."
+  },
+  "JAMIAT-KZN": {
+   "lat": 29.8587,
+   "lon": 31.0218,
+   "place": "Durban (Jamiatul Ulama KZN federation town point)",
+   "basis": "brief-assigned",
+   "tz": "Africa/Johannesburg",
+   "citation": "policy-layer.v2.4.json JAMIAT-KZN reference.provenance: \"T-668 #6965: the margin set is town-invariant, so one object plus the town table is the whole reference\"; SHARED-BRIEF.md line 21: \"JAMIAT-KZN = Durban 29.8587, 31.0218\"."
+  },
+  "NO-RABITA": {
+   "lat": 59.9139,
+   "lon": 10.7522,
+   "place": "Oslo",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json NO-RABITA scope: \"Oslo (30 dated rows archived); the 16/15 line of Norway's two rival networks\"; reference.provenance: \"T-668 #6953; coordinates are not carried in the capture (census/c6-neurope/data/no_rabita_oslo.json)\"."
+  },
+  "NO-MAWAQEET": {
+   "lat": 59.9139,
+   "lon": 10.7522,
+   "place": "Oslo",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json NO-MAWAQEET reference.zoneTable.archivedCities: [\"oslo\",\"bergen\",\"stavanger\",\"trondheim\"], provenance: \"T-668 #6953; coordinates are not carried in the captures\"."
+  },
+  "EE-EIC": {
+   "lat": 59.437,
+   "lon": 24.7536,
+   "place": "Tallinn",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json EE-EIC scope: \"Tallinn, monthly tables\"; reference.provenance: \"T-668 #6953; coordinates are not carried in the capture (census/c6-neurope/data/ee_eic_tallinn.json)\"."
+  },
+  "SE-MOSQUE": {
+   "lat": 57.7089,
+   "lon": 11.9746,
+   "place": "Goteborg (Angered)",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json SE-MOSQUE scope: \"Goteborg: Angered (30 dated rows) and the Goteborg mosque full-year PDF (18.1/15.9, January fajr frozen 06:25)\"; reference.provenance: \"T-668 #6953; coordinates are not carried in the capture (census/c6-neurope/data/se_angeredsmoske_goteborg.json)\"."
+  },
+  "FI-PORTAL": {
+   "lat": 60.1699,
+   "lon": 24.9384,
+   "place": "Helsinki",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json FI-PORTAL scope: \"Helsinki: the portal's monthly table (18/17) plus the mosque's isha override\"; reference.provenance: \"T-668 #6953; coordinates are not carried in the captures (census/c6-neurope/data/fi_rukousajat_helsinki.json)\"."
+  },
+  "BR-IIB": {
+   "lat": -23.5505,
+   "lon": -46.6333,
+   "place": "Sao Paulo",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json BR-IIB scope: \"25-city tables; Sao Paulo fitted (7 days, 4-10 October 2026)\"; reference.provenance: \"T-667 #6935; the fit used Sao Paulo but the record does not carry its coordinates\"; world-table-v2.md, Brazil: \"18/17 Shafi fitted on Sao Paulo to 0-1 min\"."
+  },
+  "KE-JAMIA": {
+   "lat": -1.2864,
+   "lon": 36.8172,
+   "place": "Nairobi",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json KE-JAMIA scope: \"47 cities, one nationwide Ramadan 1447 table (one computed table serving all cities); Nairobi originally fitted\"; reference.provenance: \"T-667 #6935 (7 cities named in the table; the record does not carry coordinates)\"."
+  },
+  "FJ-FML": {
+   "lat": -18.1416,
+   "lon": 178.4419,
+   "place": "Suva (FML national table base)",
+   "basis": "documented-city",
+   "citation": "policy-layer.v2.4.json FJ-FML reference.zoneTable.base: \"Suva\" with townOffsets, provenance: \"T-668 #6954; the base is Suva with town offsets carried in zoneTable.townOffsets\"."
+  }
+ },
+ "skipped": {
+  "FAZILET-WORLD": {
+   "reason": "method-side entry, never a target (SHARED-BRIEF.md line 22); no target recipe exists to score against.",
+   "pointDocumented": false
+  },
+  "FAZILET-OTTOMAN": {
+   "reason": "method-side entry, never a target (SHARED-BRIEF.md line 22); no target recipe exists to score against.",
+   "pointDocumented": false
+  },
+  "RU-CDUM": {
+   "reason": "zoneTable of 21 unnamed cities; reference.provenance says \"T-668 #6963 (21-city plain-HTML year tables, 10 captured); coordinates not carried in the record\", so no single documented fit point exists. The fit also excluded \"the ~94-98 days per city on which the angle is unreachable\".",
+   "pointDocumented": false
+  },
+  "SI-VAKTIJA": {
+   "reason": "non-angle form: fajr and isha are a seasonalSweep with no angle pair behind them (world table: \"fajr 18.91+0.25cos(doy-94); isha 16.62+1.32cos(doy-346)\"), so there is no angle cell to score and no fit point to adopt.",
+   "pointDocumented": false
+  },
+  "DJ-COMMUNITY": {
+   "reason": "no fitted rule: countries.json and policy-layer carry fajr angle null and isha angle null with no interval or ratio, so the cell is undefined.",
+   "pointDocumented": false
+  },
+  "PH-NCMF": {
+   "reason": "no fitted rule: fajr and isha angles are null (candidate, unfitted).",
+   "pointDocumented": false
+  },
+  "AU-UMA": {
+   "reason": "no fitted rule: fajr and isha angles are null (candidate, unfitted).",
+   "pointDocumented": false
+  },
+  "NZ-FIANZ": {
+   "reason": "no fitted rule: fajr and isha angles are null (candidate, unfitted).",
+   "pointDocumented": false
+  },
+  "TJ-SHURO": {
+   "reason": "no fitted rule: fajr and isha angles are null (candidate, unfitted).",
+   "pointDocumented": false
+  },
+  "TT-MASJIDBOX": {
+   "reason": "no fitted rule: fajr and isha angles are null (candidate, unfitted).",
+   "pointDocumented": false
+  }
+ }
+}

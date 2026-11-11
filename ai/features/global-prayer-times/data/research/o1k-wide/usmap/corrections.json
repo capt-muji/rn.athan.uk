@@ -1,0 +1,96 @@
+[
+ {
+  "mosque": "Islamic Center of Greater Toledo (2025)",
+  "applied": [
+   {
+    "dropWindow": "2025-03-09..2025-11-01",
+    "rows": 238
+   }
+  ]
+ },
+ {
+  "mosque": "Muslim Center of San Antonio",
+  "applied": [
+   {
+    "dropDates": [
+     "2026-03-09",
+     "2026-11-01",
+     "2026-11-02"
+    ],
+    "rows": 3
+   }
+  ]
+ },
+ {
+  "mosque": "Bilal Centre (Winnipeg)",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 30
+   }
+  ]
+ },
+ {
+  "mosque": "Manitoba Islamic Association (Winnipeg)",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 30
+   }
+  ]
+ },
+ {
+  "mosque": "Brandon Islamic Centre",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 30
+   }
+  ]
+ },
+ {
+  "mosque": "Markaz Ul Islam (Edmonton)",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 61
+   }
+  ]
+ },
+ {
+  "mosque": "Masjid Al-Fatima (Edmonton)",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-12-31",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 61
+   }
+  ]
+ },
+ {
+  "mosque": "Masjid At-Taqwa (Edmonton)",
+  "applied": [
+   {
+    "shift": -60,
+    "from": "2026-11-01",
+    "to": "2026-11-30",
+    "cols": "fajr,sunrise,dhuhr,asr,maghrib,isha",
+    "rows": 30
+   }
+  ]
+ }
+]

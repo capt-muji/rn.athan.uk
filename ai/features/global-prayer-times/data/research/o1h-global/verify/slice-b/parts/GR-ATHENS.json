@@ -1,0 +1,350 @@
+{
+ "id": "GR-ATHENS",
+ "lat": 37.9838,
+ "lon": 23.7275,
+ "tz": "Europe/Athens",
+ "years": [
+  "2026"
+ ],
+ "publishedTarget": false,
+ "asrSchoolTarget": "shafi",
+ "asrSchoolMethod": "shafi",
+ "methods": {
+  "mwl": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "isna": {
+   "fajr": {
+    "mean": 17.4986,
+    "worst": 24,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 11.611,
+    "worst": 16,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "umm-al-qura": {
+   "fajr": {
+    "mean": 2.9507,
+    "worst": 5,
+    "within2Pct": 26.03,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 8.9726,
+    "worst": 37,
+    "within2Pct": 22.47,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "egyptian": {
+   "fajr": {
+    "mean": 8.9781,
+    "worst": 13,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 2.9123,
+    "worst": 4,
+    "within2Pct": 25.21,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "karachi": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8548,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "moonsighting": {
+   "fajr": {
+    "mean": 2.0548,
+    "worst": 9,
+    "within2Pct": 71.51,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 12.0027,
+    "worst": 31,
+    "within2Pct": 36.44,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "diyanet-domestic": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "diyanet-europe": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8192,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "mabims": {
+   "fajr": {
+    "mean": 11.9945,
+    "worst": 18,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8548,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "jakim": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8548,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "kemenag": {
+   "fajr": {
+    "mean": 11.9945,
+    "worst": 18,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8548,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "kuwait": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 2.9123,
+    "worst": 4,
+    "within2Pct": 25.21,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "qatar": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 6.5068,
+    "worst": 18,
+    "within2Pct": 22.47,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "singapore-muis": {
+   "fajr": {
+    "mean": 11.526,
+    "worst": 17,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 6.3589,
+    "worst": 9,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "dubai": {
+   "fajr": {
+    "mean": 1.2082,
+    "worst": 2,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 7.0603,
+    "worst": 10,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "tehran": {
+   "fajr": {
+    "mean": 1.789,
+    "worst": 3,
+    "within2Pct": 93.15,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 17.3397,
+    "worst": 23,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "fazilet-a": {
+   "fajr": {
+    "mean": 10.7973,
+    "worst": 16,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 4.6904,
+    "worst": 7,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "fazilet-b": {
+   "fajr": {
+    "mean": 16.8959,
+    "worst": 25,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 10.0411,
+    "worst": 14,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "ecfr": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "russia-sam": {
+   "fajr": {
+    "mean": 11.7178,
+    "worst": 16,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 11.611,
+    "worst": 16,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  },
+  "isna-2010": {
+   "fajr": {
+    "mean": 0,
+    "worst": 0,
+    "within2Pct": 100,
+    "scoredDays": 365,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 5.8548,
+    "worst": 8,
+    "within2Pct": 0,
+    "scoredDays": 365,
+    "skips": {}
+   }
+  }
+ }
+}

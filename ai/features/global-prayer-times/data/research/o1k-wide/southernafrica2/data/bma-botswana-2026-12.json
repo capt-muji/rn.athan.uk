@@ -1,0 +1,1283 @@
+{
+ "publisher": "Botswana Muslim Association",
+ "month": "2026-12",
+ "source_url": "https://bma.org.bw/prayer-times/ (all town/month tables in page DOM; month dropdown is client-side only)",
+ "captured": "2026-11-10",
+ "note": "tables carry no year label; December assigned 2026 as the season following the November-2026 capture. Table set verified PERPETUAL: 146/151 tables byte-identical between 2021-11-30 Wayback snapshot and the 2026-11-10 live page (5 diffs are typo fixes only); December 2025 not archived anywhere.",
+ "towns": {
+  "Bobonong": {
+   "2026-12-01": {
+    "sehri_ends_fajr": "3:50",
+    "sunrise": "5:14",
+    "zawwal": "11:56",
+    "asr_shafi": "3:11",
+    "asr_hanafi": "4:33",
+    "sunset": "6:38",
+    "maghrib": "6:41",
+    "isha": "7:57"
+   },
+   "2026-12-02": {
+    "sehri_ends_fajr": "3:50",
+    "sunrise": "5:14",
+    "zawwal": "11:57",
+    "asr_shafi": "3:12",
+    "asr_hanafi": "4:33",
+    "sunset": "6:38",
+    "maghrib": "6:41",
+    "isha": "7:58"
+   },
+   "2026-12-03": {
+    "sehri_ends_fajr": "3:50",
+    "sunrise": "5:14",
+    "zawwal": "11:57",
+    "asr_shafi": "3:13",
+    "asr_hanafi": "4:34",
+    "sunset": "6:39",
+    "maghrib": "6:42",
+    "isha": "7:59"
+   },
+   "2026-12-04": {
+    "sehri_ends_fajr": "3:50",
+    "sunrise": "5:14",
+    "zawwal": "11:57",
+    "asr_shafi": "3:13",
+    "asr_hanafi": "4:34",
+    "sunset": "6:39",
+    "maghrib": "6:42",
+    "isha": "7:59"
+   },
+   "2026-12-05": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:15",
+    "zawwal": "11:58",
+    "asr_shafi": "3:14",
+    "asr_hanafi": "4:35",
+    "sunset": "6:40",
+    "maghrib": "6:43",
+    "isha": "8:00"
+   },
+   "2026-12-06": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:15",
+    "zawwal": "11:58",
+    "asr_shafi": "3:15",
+    "asr_hanafi": "4:36",
+    "sunset": "6:41",
+    "maghrib": "6:44",
+    "isha": "8:01"
+   },
+   "2026-12-07": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:15",
+    "zawwal": "11:59",
+    "asr_shafi": "3:16",
+    "asr_hanafi": "4:37",
+    "sunset": "6:42",
+    "maghrib": "6:45",
+    "isha": "8:02"
+   },
+   "2026-12-08": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:15",
+    "zawwal": "11:59",
+    "asr_shafi": "3:17",
+    "asr_hanafi": "4:37",
+    "sunset": "6:42",
+    "maghrib": "6:45",
+    "isha": "8:02"
+   },
+   "2026-12-09": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:15",
+    "zawwal": "12:00",
+    "asr_shafi": "3:17",
+    "asr_hanafi": "4:38",
+    "sunset": "6:43",
+    "maghrib": "6:46",
+    "isha": "8:03"
+   },
+   "2026-12-10": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:16",
+    "zawwal": "12:00",
+    "asr_shafi": "3:18",
+    "asr_hanafi": "4:38",
+    "sunset": "6:44",
+    "maghrib": "6:47",
+    "isha": "8:04"
+   },
+   "2026-12-11": {
+    "sehri_ends_fajr": "3:51",
+    "sunrise": "5:16",
+    "zawwal": "12:01",
+    "asr_shafi": "3:19",
+    "asr_hanafi": "4:39",
+    "sunset": "6:44",
+    "maghrib": "6:47",
+    "isha": "8:04"
+   },
+   "2026-12-12": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:16",
+    "zawwal": "12:01",
+    "asr_shafi": "3:19",
+    "asr_hanafi": "4:40",
+    "sunset": "6:45",
+    "maghrib": "6:48",
+    "isha": "8:05"
+   },
+   "2026-12-13": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:17",
+    "zawwal": "12:02",
+    "asr_shafi": "3:20",
+    "asr_hanafi": "4:40",
+    "sunset": "6:45",
+    "maghrib": "6:48",
+    "isha": "8:06"
+   },
+   "2026-12-14": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:17",
+    "zawwal": "12:02",
+    "asr_shafi": "3:21",
+    "asr_hanafi": "4:41",
+    "sunset": "6:46",
+    "maghrib": "6:49",
+    "isha": "8:06"
+   },
+   "2026-12-15": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:17",
+    "zawwal": "12:02",
+    "asr_shafi": "3:21",
+    "asr_hanafi": "4:41",
+    "sunset": "6:47",
+    "maghrib": "6:50",
+    "isha": "8:07"
+   },
+   "2026-12-16": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:18",
+    "zawwal": "12:03",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:42",
+    "sunset": "6:47",
+    "maghrib": "6:50",
+    "isha": "8:08"
+   },
+   "2026-12-17": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:18",
+    "zawwal": "12:03",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:43",
+    "sunset": "6:48",
+    "maghrib": "6:51",
+    "isha": "8:08"
+   },
+   "2026-12-18": {
+    "sehri_ends_fajr": "3:54",
+    "sunrise": "5:19",
+    "zawwal": "12:04",
+    "asr_shafi": "3:23",
+    "asr_hanafi": "4:43",
+    "sunset": "6:48",
+    "maghrib": "6:5140",
+    "isha": "8:09"
+   },
+   "2026-12-19": {
+    "sehri_ends_fajr": "3:54",
+    "sunrise": "5:19",
+    "zawwal": "12:04",
+    "asr_shafi": "3:24",
+    "asr_hanafi": "4:44",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:09"
+   },
+   "2026-12-20": {
+    "sehri_ends_fajr": "3:55",
+    "sunrise": "5:20",
+    "zawwal": "12:05",
+    "asr_shafi": "3:24",
+    "asr_hanafi": "4:44",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:10"
+   },
+   "2026-12-21": {
+    "sehri_ends_fajr": "3:55",
+    "sunrise": "5:20",
+    "zawwal": "12:05",
+    "asr_shafi": "3:25",
+    "asr_hanafi": "4:45",
+    "sunset": "6:50",
+    "maghrib": "6:53",
+    "isha": "8:10"
+   },
+   "2026-12-22": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:21",
+    "zawwal": "12:06",
+    "asr_shafi": "3:25",
+    "asr_hanafi": "4:45",
+    "sunset": "6:50",
+    "maghrib": "6:53",
+    "isha": "8:11"
+   },
+   "2026-12-23": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:21",
+    "zawwal": "12:06",
+    "asr_shafi": "3:26",
+    "asr_hanafi": "4:46",
+    "sunset": "6:51",
+    "maghrib": "6:54",
+    "isha": "8:11"
+   },
+   "2026-12-24": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:22",
+    "zawwal": "12:07",
+    "asr_shafi": "3:26",
+    "asr_hanafi": "4:46",
+    "sunset": "6:51",
+    "maghrib": "6:54",
+    "isha": "8:12"
+   },
+   "2026-12-25": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:22",
+    "zawwal": "12:07",
+    "asr_shafi": "3:26",
+    "asr_hanafi": "4:46",
+    "sunset": "6:52",
+    "maghrib": "6:55",
+    "isha": "8:12"
+   },
+   "2026-12-26": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:23",
+    "zawwal": "12:08",
+    "asr_shafi": "3:27",
+    "asr_hanafi": "4:47",
+    "sunset": "6:52",
+    "maghrib": "6:55",
+    "isha": "8:12"
+   },
+   "2026-12-27": {
+    "sehri_ends_fajr": "3:59",
+    "sunrise": "5:23",
+    "zawwal": "12:08",
+    "asr_shafi": "3:27",
+    "asr_hanafi": "4:47",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:13"
+   },
+   "2026-12-28": {
+    "sehri_ends_fajr": "3:59",
+    "sunrise": "5:24",
+    "zawwal": "12:09",
+    "asr_shafi": "3:27",
+    "asr_hanafi": "4:48",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:13"
+   },
+   "2026-12-29": {
+    "sehri_ends_fajr": "4:00",
+    "sunrise": "5:24",
+    "zawwal": "12:09",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:48",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:13"
+   },
+   "2026-12-30": {
+    "sehri_ends_fajr": "4:01",
+    "sunrise": "5:25",
+    "zawwal": "12:10",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:48",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:14"
+   },
+   "2026-12-31": {
+    "sehri_ends_fajr": "4:01",
+    "sunrise": "5:26",
+    "zawwal": "12:10",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:49",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:14"
+   }
+  },
+  "Dukwe": {
+   "2026-12-01": {
+    "sehri_ends_fajr": "4:02",
+    "sunrise": "5:24",
+    "zawwal": "12:04",
+    "asr_shafi": "3:21",
+    "asr_hanafi": "4:40",
+    "sunset": "6:43",
+    "maghrib": "6:46",
+    "isha": "8:01"
+   },
+   "2026-12-02": {
+    "sehri_ends_fajr": "4:02",
+    "sunrise": "5:24",
+    "zawwal": "12:04",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:41",
+    "sunset": "6:43",
+    "maghrib": "6:46",
+    "isha": "8:02"
+   },
+   "2026-12-03": {
+    "sehri_ends_fajr": "4:02",
+    "sunrise": "5:25",
+    "zawwal": "12:05",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:41",
+    "sunset": "6:44",
+    "maghrib": "6:47",
+    "isha": "8:02"
+   },
+   "2026-12-04": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:30",
+    "zawwal": "12:10",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:46",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:07"
+   },
+   "2026-12-05": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:30",
+    "zawwal": "12:10",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:47",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:08"
+   },
+   "2026-12-06": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:31",
+    "zawwal": "12:11",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:48",
+    "sunset": "6:50",
+    "maghrib": "6:53",
+    "isha": "8:08"
+   },
+   "2026-12-07": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:31",
+    "zawwal": "12:11",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:48",
+    "sunset": "6:51",
+    "maghrib": "6:54",
+    "isha": "7:09"
+   },
+   "2026-12-08": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:31",
+    "zawwal": "12:12",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:49",
+    "sunset": "6:51",
+    "maghrib": "5:54",
+    "isha": "8:10"
+   },
+   "2026-12-09": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:31",
+    "zawwal": "12:12",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:50",
+    "sunset": "6:52",
+    "maghrib": "5:55",
+    "isha": "8:10"
+   },
+   "2026-12-10": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:32",
+    "zawwal": "12:13",
+    "asr_shafi": "3:33",
+    "asr_hanafi": "4:50",
+    "sunset": "6:52",
+    "maghrib": "5:55",
+    "isha": "8:11"
+   },
+   "2026-12-11": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:32",
+    "zawwal": "12:13",
+    "asr_shafi": "3:33",
+    "asr_hanafi": "4:51",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:12"
+   },
+   "2026-12-12": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:32",
+    "zawwal": "12:13",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:51",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:12"
+   },
+   "2026-12-13": {
+    "sehri_ends_fajr": "4:10",
+    "sunrise": "5:33",
+    "zawwal": "12:14",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:52",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:13"
+   },
+   "2026-12-14": {
+    "sehri_ends_fajr": "4:10",
+    "sunrise": "5:33",
+    "zawwal": "12:14",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:53",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-15": {
+    "sehri_ends_fajr": "4:10",
+    "sunrise": "5:33",
+    "zawwal": "12:15",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:53",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-16": {
+    "sehri_ends_fajr": "4:11",
+    "sunrise": "5:34",
+    "zawwal": "12:15",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:54",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:15"
+   },
+   "2026-12-17": {
+    "sehri_ends_fajr": "4:11",
+    "sunrise": "5:34",
+    "zawwal": "12:16",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:54",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:15"
+   },
+   "2026-12-18": {
+    "sehri_ends_fajr": "4:12",
+    "sunrise": "5:35",
+    "zawwal": "12:16",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:55",
+    "sunset": "6:57",
+    "maghrib": "7:00",
+    "isha": "8:16"
+   },
+   "2026-12-19": {
+    "sehri_ends_fajr": "4:12",
+    "sunrise": "5:35",
+    "zawwal": "12:17",
+    "asr_shafi": "3:38",
+    "asr_hanafi": "4:55",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:16"
+   },
+   "2026-12-20": {
+    "sehri_ends_fajr": "4:07",
+    "sunrise": "5:30",
+    "zawwal": "12:13",
+    "asr_shafi": "3:33",
+    "asr_hanafi": "4:51",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:13"
+   },
+   "2026-12-21": {
+    "sehri_ends_fajr": "4:07",
+    "sunrise": "5:31",
+    "zawwal": "12:13",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:52",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-22": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:31",
+    "zawwal": "12:14",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:52",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-23": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:32",
+    "zawwal": "12:14",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:53",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:15"
+   },
+   "2026-12-24": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:32",
+    "zawwal": "12:15",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:53",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:15"
+   },
+   "2026-12-25": {
+    "sehri_ends_fajr": "4:09",
+    "sunrise": "5:33",
+    "zawwal": "12:15",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:54",
+    "sunset": "6:57",
+    "maghrib": "7:00",
+    "isha": "8:16"
+   },
+   "2026-12-26": {
+    "sehri_ends_fajr": "4:10",
+    "sunrise": "5:33",
+    "zawwal": "12:16",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:54",
+    "sunset": "6:57",
+    "maghrib": "7:00",
+    "isha": "8:16"
+   },
+   "2026-12-27": {
+    "sehri_ends_fajr": "4:10",
+    "sunrise": "5:34",
+    "zawwal": "12:16",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:54",
+    "sunset": "6:57",
+    "maghrib": "7:00",
+    "isha": "8:16"
+   },
+   "2026-12-28": {
+    "sehri_ends_fajr": "4:11",
+    "sunrise": "5:34",
+    "zawwal": "12:17",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:55",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:17"
+   },
+   "2026-12-29": {
+    "sehri_ends_fajr": "4:12",
+    "sunrise": "5:35",
+    "zawwal": "12:17",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:55",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:17"
+   },
+   "2026-12-30": {
+    "sehri_ends_fajr": "4:12",
+    "sunrise": "5:36",
+    "zawwal": "12:18",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:56",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:17"
+   },
+   "2026-12-31": {
+    "sehri_ends_fajr": "4:13",
+    "sunrise": "5:36",
+    "zawwal": "12:18",
+    "asr_shafi": "3:38",
+    "asr_hanafi": "4:56",
+    "sunset": "6:59",
+    "maghrib": "7:02",
+    "isha": "8:18"
+   }
+  },
+  "Francistown": {
+   "2026-12-01": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:19",
+    "zawwal": "12:00",
+    "asr_shafi": "3:16",
+    "asr_hanafi": "4:36",
+    "sunset": "6:39",
+    "maghrib": "6:42",
+    "isha": "7:58"
+   },
+   "2026-12-02": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:19",
+    "zawwal": "12:00",
+    "asr_shafi": "3:16",
+    "asr_hanafi": "4:36",
+    "sunset": "6:40",
+    "maghrib": "6:43",
+    "isha": "7:59"
+   },
+   "2026-12-03": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:19",
+    "zawwal": "12:00",
+    "asr_shafi": "3:17",
+    "asr_hanafi": "4:37",
+    "sunset": "6:41",
+    "maghrib": "6:44",
+    "isha": "8:00"
+   },
+   "2026-12-04": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:19",
+    "zawwal": "12:01",
+    "asr_shafi": "3:18",
+    "asr_hanafi": "4:38",
+    "sunset": "6:41",
+    "maghrib": "6:44",
+    "isha": "8:00"
+   },
+   "2026-12-05": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:19",
+    "zawwal": "12:01",
+    "asr_shafi": "3:19",
+    "asr_hanafi": "4:34",
+    "sunset": "6:42",
+    "maghrib": "6:45",
+    "isha": "8:01"
+   },
+   "2026-12-06": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:20",
+    "zawwal": "12:02",
+    "asr_shafi": "3:19",
+    "asr_hanafi": "4:39",
+    "sunset": "6:43",
+    "maghrib": "6:46",
+    "isha": "8:02"
+   },
+   "2026-12-07": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:20",
+    "zawwal": "12:02",
+    "asr_shafi": "3:20",
+    "asr_hanafi": "4:40",
+    "sunset": "6:43",
+    "maghrib": "6:46",
+    "isha": "8:03"
+   },
+   "2026-12-08": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:20",
+    "zawwal": "12:02",
+    "asr_shafi": "3:21",
+    "asr_hanafi": "4:40",
+    "sunset": "6:44",
+    "maghrib": "6:47",
+    "isha": "8:03"
+   },
+   "2026-12-09": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:20",
+    "zawwal": "12:03",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:41",
+    "sunset": "6:45",
+    "maghrib": "6:46",
+    "isha": "8:04"
+   },
+   "2026-12-10": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:21",
+    "zawwal": "12:03",
+    "asr_shafi": "3:22",
+    "asr_hanafi": "4:41",
+    "sunset": "6:45",
+    "maghrib": "6:48",
+    "isha": "8:05"
+   },
+   "2026-12-11": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:21",
+    "zawwal": "12:04",
+    "asr_shafi": "3:23",
+    "asr_hanafi": "4:42",
+    "sunset": "6:46",
+    "maghrib": "6:49",
+    "isha": "8:05"
+   },
+   "2026-12-12": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:21",
+    "zawwal": "12:04",
+    "asr_shafi": "3:24",
+    "asr_hanafi": "4:43",
+    "sunset": "6:46",
+    "maghrib": "6:49",
+    "isha": "8:06"
+   },
+   "2026-12-13": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:22",
+    "zawwal": "12:05",
+    "asr_shafi": "3:24",
+    "asr_hanafi": "4:43",
+    "sunset": "6:47",
+    "maghrib": "6:50",
+    "isha": "8:07"
+   },
+   "2026-12-14": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:22",
+    "zawwal": "12:05",
+    "asr_shafi": "3:25",
+    "asr_hanafi": "4:44",
+    "sunset": "6:48",
+    "maghrib": "6:51",
+    "isha": "8:07"
+   },
+   "2026-12-15": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:22",
+    "zawwal": "12:06",
+    "asr_shafi": "3:26",
+    "asr_hanafi": "4:44",
+    "sunset": "6:48",
+    "maghrib": "6:51",
+    "isha": "8:08"
+   },
+   "2026-12-16": {
+    "sehri_ends_fajr": "3:59",
+    "sunrise": "5:23",
+    "zawwal": "12:06",
+    "asr_shafi": "3:26",
+    "asr_hanafi": "4:45",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:09"
+   },
+   "2026-12-17": {
+    "sehri_ends_fajr": "3:59",
+    "sunrise": "5:23",
+    "zawwal": "12:07",
+    "asr_shafi": "3:27",
+    "asr_hanafi": "4:45",
+    "sunset": "6:49",
+    "maghrib": "6:52",
+    "isha": "8:09"
+   },
+   "2026-12-18": {
+    "sehri_ends_fajr": "4:00",
+    "sunrise": "5:24",
+    "zawwal": "12:07",
+    "asr_shafi": "3:27",
+    "asr_hanafi": "4:46",
+    "sunset": "6:50",
+    "maghrib": "6:53",
+    "isha": "8:10"
+   },
+   "2026-12-19": {
+    "sehri_ends_fajr": "4:0020",
+    "sunrise": "5:24",
+    "zawwal": "12:08",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:47",
+    "sunset": "6:50",
+    "maghrib": "6:53",
+    "isha": "8:10"
+   },
+   "2026-12-20": {
+    "sehri_ends_fajr": "4:00",
+    "sunrise": "5:24",
+    "zawwal": "12:08",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:47",
+    "sunset": "6:51",
+    "maghrib": "6:54",
+    "isha": "8:11"
+   },
+   "2026-12-21": {
+    "sehri_ends_fajr": "4:01",
+    "sunrise": "5:25",
+    "zawwal": "12:09",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:48",
+    "sunset": "6:51",
+    "maghrib": "6:54",
+    "isha": "8:11"
+   },
+   "2026-12-22": {
+    "sehri_ends_fajr": "4:01",
+    "sunrise": "5:25",
+    "zawwal": "12:09",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:48",
+    "sunset": "6:52",
+    "maghrib": "6:55",
+    "isha": "8:12"
+   },
+   "2026-12-23": {
+    "sehri_ends_fajr": "4:02",
+    "sunrise": "5:26",
+    "zawwal": "12:10",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:49",
+    "sunset": "6:52",
+    "maghrib": "6:55",
+    "isha": "8:12"
+   },
+   "2026-12-24": {
+    "sehri_ends_fajr": "4:03",
+    "sunrise": "5:26",
+    "zawwal": "12:10",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:49",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:13"
+   },
+   "2026-12-25": {
+    "sehri_ends_fajr": "4:03",
+    "sunrise": "5:27",
+    "zawwal": "12:11",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:49",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:18"
+   },
+   "2026-12-26": {
+    "sehri_ends_fajr": "4:04",
+    "sunrise": "5:28",
+    "zawwal": "12:11",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:50",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:13"
+   },
+   "2026-12-27": {
+    "sehri_ends_fajr": "4:04",
+    "sunrise": "5:28",
+    "zawwal": "12:12",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:50",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:14"
+   },
+   "2026-12-28": {
+    "sehri_ends_fajr": "4:05",
+    "sunrise": "5:29",
+    "zawwal": "12:12",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:51",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-29": {
+    "sehri_ends_fajr": "4:06",
+    "sunrise": "5:29",
+    "zawwal": "12:13",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:51",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:14"
+   },
+   "2026-12-30": {
+    "sehri_ends_fajr": "4:06",
+    "sunrise": "5:30",
+    "zawwal": "12:13",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:51",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:15"
+   },
+   "2026-12-31": {
+    "sehri_ends_fajr": "4:08",
+    "sunrise": "5:29",
+    "zawwal": "12:00",
+    "asr_shafi": "3:28",
+    "asr_hanafi": "4:37",
+    "sunset": "6:31",
+    "maghrib": "6:34",
+    "isha": "7:48"
+   }
+  },
+  "gabarone": {
+   "2026-12-01": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:18",
+    "zawwal": "12:06",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:48",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:15"
+   },
+   "2026-12-02": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:06",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:48",
+    "sunset": "6:53",
+    "maghrib": "6:56",
+    "isha": "8:15"
+   },
+   "2026-12-03": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:07",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:48",
+    "sunset": "6:54",
+    "maghrib": "6:57",
+    "isha": "8:16"
+   },
+   "2026-12-04": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:07",
+    "asr_shafi": "3:29",
+    "asr_hanafi": "4:49",
+    "sunset": "6:55",
+    "maghrib": "6:58",
+    "isha": "8:17"
+   },
+   "2026-12-05": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:08",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:49",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:18"
+   },
+   "2026-12-06": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:08",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:50",
+    "sunset": "6:56",
+    "maghrib": "6:59",
+    "isha": "8:19"
+   },
+   "2026-12-07": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:08",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:50",
+    "sunset": "6:57",
+    "maghrib": "7:00",
+    "isha": "8:19"
+   },
+   "2026-12-08": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:19",
+    "zawwal": "12:09",
+    "asr_shafi": "3:30",
+    "asr_hanafi": "4:51",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:20"
+   },
+   "2026-12-09": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:20",
+    "zawwal": "12:09",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:51",
+    "sunset": "6:58",
+    "maghrib": "7:01",
+    "isha": "8:21"
+   },
+   "2026-12-10": {
+    "sehri_ends_fajr": "3:52",
+    "sunrise": "5:20",
+    "zawwal": "12:10",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:52",
+    "sunset": "6:59",
+    "maghrib": "7:02",
+    "isha": "8:22"
+   },
+   "2026-12-11": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:20",
+    "zawwal": "12:10",
+    "asr_shafi": "3:31",
+    "asr_hanafi": "4:52",
+    "sunset": "7:00",
+    "maghrib": "7:03",
+    "isha": "8:22"
+   },
+   "2026-12-12": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:20",
+    "zawwal": "12:11",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:53",
+    "sunset": "7:00",
+    "maghrib": "7:03",
+    "isha": "8:23"
+   },
+   "2026-12-13": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:21",
+    "zawwal": "12:11",
+    "asr_shafi": "3:32",
+    "asr_hanafi": "4:53",
+    "sunset": "7:01",
+    "maghrib": "7:04",
+    "isha": "8:24"
+   },
+   "2026-12-14": {
+    "sehri_ends_fajr": "3:53",
+    "sunrise": "5:21",
+    "zawwal": "12:12",
+    "asr_shafi": "3:33",
+    "asr_hanafi": "4:54",
+    "sunset": "7:01",
+    "maghrib": "7:04",
+    "isha": "8:24"
+   },
+   "2026-12-15": {
+    "sehri_ends_fajr": "3:54",
+    "sunrise": "5:21",
+    "zawwal": "12:12",
+    "asr_shafi": "3:33",
+    "asr_hanafi": "4:54",
+    "sunset": "7:02",
+    "maghrib": "7:05",
+    "isha": "8:25"
+   },
+   "2026-12-16": {
+    "sehri_ends_fajr": "3:54",
+    "sunrise": "5:22",
+    "zawwal": "12:13",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:55",
+    "sunset": "7:03",
+    "maghrib": "7:06",
+    "isha": "8:26"
+   },
+   "2026-12-17": {
+    "sehri_ends_fajr": "3:54",
+    "sunrise": "5:22",
+    "zawwal": "12:13",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:55",
+    "sunset": "7:03",
+    "maghrib": "7:06",
+    "isha": "8:26"
+   },
+   "2026-12-18": {
+    "sehri_ends_fajr": "3:55",
+    "sunrise": "5:23",
+    "zawwal": "12:14",
+    "asr_shafi": "3:34",
+    "asr_hanafi": "4:56",
+    "sunset": "7:04",
+    "maghrib": "7:07",
+    "isha": "8:27"
+   },
+   "2026-12-19": {
+    "sehri_ends_fajr": "3:55",
+    "sunrise": "5:23",
+    "zawwal": "12:14",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:56",
+    "sunset": "7:04",
+    "maghrib": "7:07",
+    "isha": "8:27"
+   },
+   "2026-12-20": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:24",
+    "zawwal": "12:15",
+    "asr_shafi": "3:35",
+    "asr_hanafi": "4:57",
+    "sunset": "7:05",
+    "maghrib": "7:08",
+    "isha": "8:28"
+   },
+   "2026-12-21": {
+    "sehri_ends_fajr": "3:56",
+    "sunrise": "5:24",
+    "zawwal": "12:15",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:57",
+    "sunset": "7:05",
+    "maghrib": "7:08",
+    "isha": "8:28"
+   },
+   "2026-12-22": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:24",
+    "zawwal": "12:16",
+    "asr_shafi": "3:36",
+    "asr_hanafi": "4:58",
+    "sunset": "7:06",
+    "maghrib": "7:09",
+    "isha": "8:29"
+   },
+   "2026-12-23": {
+    "sehri_ends_fajr": "3:57",
+    "sunrise": "5:25",
+    "zawwal": "12:16",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:58",
+    "sunset": "7:06",
+    "maghrib": "7:09",
+    "isha": "8:29"
+   },
+   "2026-12-24": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:26",
+    "zawwal": "12:17",
+    "asr_shafi": "3:37",
+    "asr_hanafi": "4:59",
+    "sunset": "7:07",
+    "maghrib": "7:10",
+    "isha": "8:30"
+   },
+   "2026-12-25": {
+    "sehri_ends_fajr": "3:58",
+    "sunrise": "5:26",
+    "zawwal": "12:17",
+    "asr_shafi": "3:38",
+    "asr_hanafi": "4:59",
+    "sunset": "7:07",
+    "maghrib": "7:10",
+    "isha": "8:30"
+   },
+   "2026-12-26": {
+    "sehri_ends_fajr": "3:59",
+    "sunrise": "5:27",
+    "zawwal": "12:18",
+    "asr_shafi": "3:39",
+    "asr_hanafi": "5:00",
+    "sunset": "7:07",
+    "maghrib": "7:10",
+    "isha": "8:31"
+   },
+   "2026-12-27": {
+    "sehri_ends_fajr": "4:00",
+    "sunrise": "5:27",
+    "zawwal": "12:18",
+    "asr_shafi": "3:39",
+    "asr_hanafi": "5:00",
+    "sunset": "7:08",
+    "maghrib": "7:11",
+    "isha": "8:31"
+   },
+   "2026-12-28": {
+    "sehri_ends_fajr": "4:00",
+    "sunrise": "5:28",
+    "zawwal": "12:19",
+    "asr_shafi": "3:40",
+    "asr_hanafi": "5:01",
+    "sunset": "7:08",
+    "maghrib": "7:11",
+    "isha": "8:31"
+   },
+   "2026-12-29": {
+    "sehri_ends_fajr": "4:01",
+    "sunrise": "5:28",
+    "zawwal": "12:19",
+    "asr_shafi": "3:40",
+    "asr_hanafi": "5:01",
+    "sunset": "7:09",
+    "maghrib": "7:12",
+    "isha": "8:31"
+   },
+   "2026-12-30": {
+    "sehri_ends_fajr": "4:02",
+    "sunrise": "5:29",
+    "zawwal": "12:20",
+    "asr_shafi": "3:41",
+    "asr_hanafi": "5:02",
+    "sunset": "7:09",
+    "maghrib": "7:12",
+    "isha": "8:32"
+   },
+   "2026-12-31": {
+    "sehri_ends_fajr": "4:03",
+    "sunrise": "5:30",
+    "zawwal": "12:20",
+    "asr_shafi": "3:41",
+    "asr_hanafi": "5:02",
+    "sunset": "7:09",
+    "maghrib": "7:12",
+    "isha": "8:32"
+   }
+  },
+  "Jwaneng": {},
+  "Kang": {},
+  "Kanye": {},
+  "Kasane": {},
+  "Letlhakane": {},
+  "Letlhakeng": {},
+  "Lobatse": {},
+  "Mahalapye": {},
+  "Maun": {},
+  "Mochudi": {},
+  "Molepolole": {},
+  "Moshupa": {},
+  "Nata": {},
+  "Orapa": {},
+  "Palapye": {},
+  "Ramotswa": {},
+  "Sehithwa": {},
+  "Selebi": {},
+  "Serowe": {},
+  "Shakawe": {},
+  "Shashe": {},
+  "Shoshong": {},
+  "Thamaga": {},
+  "Tshabong": {},
+  "Tshane": {},
+  "Werda": {}
+ }
+}

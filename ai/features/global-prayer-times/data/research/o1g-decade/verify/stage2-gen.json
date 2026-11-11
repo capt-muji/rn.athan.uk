@@ -1,0 +1,3775 @@
+{
+  "byPrayer": {
+    "fajr": {
+      "n": 4018,
+      "exact": 3959,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0147,
+      "pctExact": 98.53,
+      "pctWithin1": 100
+    },
+    "sunrise": {
+      "n": 4018,
+      "exact": 3959,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0147,
+      "pctExact": 98.53,
+      "pctWithin1": 100
+    },
+    "dhuhr": {
+      "n": 4018,
+      "exact": 3964,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0134,
+      "pctExact": 98.66,
+      "pctWithin1": 100
+    },
+    "asr": {
+      "n": 4018,
+      "exact": 3953,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0162,
+      "pctExact": 98.38,
+      "pctWithin1": 100
+    },
+    "magrib": {
+      "n": 4018,
+      "exact": 3929,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0222,
+      "pctExact": 97.78,
+      "pctWithin1": 100
+    },
+    "isha": {
+      "n": 4018,
+      "exact": 3926,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0229,
+      "pctExact": 97.71,
+      "pctWithin1": 100
+    }
+  },
+  "byYear": {
+    "2028": {
+      "n": 2196,
+      "exact": 2153,
+      "within1": 2196,
+      "worst": 1,
+      "mae": 0.0196,
+      "pctExact": 98.04,
+      "pctWithin1": 100
+    },
+    "2029": {
+      "n": 2190,
+      "exact": 2159,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0142,
+      "pctExact": 98.58,
+      "pctWithin1": 100
+    },
+    "2030": {
+      "n": 2190,
+      "exact": 2155,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.016,
+      "pctExact": 98.4,
+      "pctWithin1": 100
+    },
+    "2031": {
+      "n": 2190,
+      "exact": 2167,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0105,
+      "pctExact": 98.95,
+      "pctWithin1": 100
+    },
+    "2032": {
+      "n": 2196,
+      "exact": 2154,
+      "within1": 2196,
+      "worst": 1,
+      "mae": 0.0191,
+      "pctExact": 98.09,
+      "pctWithin1": 100
+    },
+    "2033": {
+      "n": 2190,
+      "exact": 2150,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0183,
+      "pctExact": 98.17,
+      "pctWithin1": 100
+    },
+    "2034": {
+      "n": 2190,
+      "exact": 2143,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0215,
+      "pctExact": 97.85,
+      "pctWithin1": 100
+    },
+    "2035": {
+      "n": 2190,
+      "exact": 2148,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0192,
+      "pctExact": 98.08,
+      "pctWithin1": 100
+    },
+    "2036": {
+      "n": 2196,
+      "exact": 2159,
+      "within1": 2196,
+      "worst": 1,
+      "mae": 0.0168,
+      "pctExact": 98.32,
+      "pctWithin1": 100
+    },
+    "2037": {
+      "n": 2190,
+      "exact": 2149,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0187,
+      "pctExact": 98.13,
+      "pctWithin1": 100
+    },
+    "2038": {
+      "n": 2190,
+      "exact": 2153,
+      "within1": 2190,
+      "worst": 1,
+      "mae": 0.0169,
+      "pctExact": 98.31,
+      "pctWithin1": 100
+    }
+  },
+  "byYearPrayer": {
+    "2028": {
+      "fajr": {
+        "n": 366,
+        "exact": 357,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0246,
+        "pctExact": 97.54,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 366,
+        "exact": 357,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0246,
+        "pctExact": 97.54,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 366,
+        "exact": 361,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 366,
+        "exact": 359,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0191,
+        "pctExact": 98.09,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 366,
+        "exact": 359,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0191,
+        "pctExact": 98.09,
+        "pctWithin1": 100
+      }
+    },
+    "2029": {
+      "fajr": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 363,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0055,
+        "pctExact": 99.45,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 364,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0027,
+        "pctExact": 99.73,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      }
+    },
+    "2030": {
+      "fajr": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 353,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0329,
+        "pctExact": 96.71,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 361,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.011,
+        "pctExact": 98.9,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 361,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.011,
+        "pctExact": 98.9,
+        "pctWithin1": 100
+      }
+    },
+    "2031": {
+      "fajr": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 363,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0055,
+        "pctExact": 99.45,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      }
+    },
+    "2032": {
+      "fajr": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 366,
+        "exact": 359,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0191,
+        "pctExact": 98.09,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 366,
+        "exact": 358,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 366,
+        "exact": 357,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0246,
+        "pctExact": 97.54,
+        "pctWithin1": 100
+      }
+    },
+    "2033": {
+      "fajr": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 361,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.011,
+        "pctExact": 98.9,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 363,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0055,
+        "pctExact": 99.45,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 357,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 357,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      }
+    },
+    "2034": {
+      "fajr": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 359,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 354,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0301,
+        "pctExact": 96.99,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 353,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0329,
+        "pctExact": 96.71,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 353,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0329,
+        "pctExact": 96.71,
+        "pctWithin1": 100
+      }
+    },
+    "2035": {
+      "fajr": {
+        "n": 365,
+        "exact": 361,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.011,
+        "pctExact": 98.9,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 361,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.011,
+        "pctExact": 98.9,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 362,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0082,
+        "pctExact": 99.18,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 352,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0356,
+        "pctExact": 96.44,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 352,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0356,
+        "pctExact": 96.44,
+        "pctWithin1": 100
+      }
+    },
+    "2036": {
+      "fajr": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 366,
+        "exact": 360,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 366,
+        "exact": 361,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 366,
+        "exact": 361,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 366,
+        "exact": 359,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0191,
+        "pctExact": 98.09,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 366,
+        "exact": 358,
+        "within1": 366,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      }
+    },
+    "2037": {
+      "fajr": {
+        "n": 365,
+        "exact": 359,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 359,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 359,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0164,
+        "pctExact": 98.36,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      }
+    },
+    "2038": {
+      "fajr": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "sunrise": {
+        "n": 365,
+        "exact": 360,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0137,
+        "pctExact": 98.63,
+        "pctWithin1": 100
+      },
+      "dhuhr": {
+        "n": 365,
+        "exact": 363,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0055,
+        "pctExact": 99.45,
+        "pctWithin1": 100
+      },
+      "asr": {
+        "n": 365,
+        "exact": 356,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0247,
+        "pctExact": 97.53,
+        "pctWithin1": 100
+      },
+      "magrib": {
+        "n": 365,
+        "exact": 357,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      },
+      "isha": {
+        "n": 365,
+        "exact": 357,
+        "within1": 365,
+        "worst": 1,
+        "mae": 0.0219,
+        "pctExact": 97.81,
+        "pctWithin1": 100
+      }
+    }
+  },
+  "worstCells": [
+    {
+      "date": "2028-01-14",
+      "prayer": "fajr",
+      "pred": "06:21",
+      "truth": "06:20",
+      "delta": 1
+    },
+    {
+      "date": "2028-01-14",
+      "prayer": "sunrise",
+      "pred": "07:58",
+      "truth": "07:57",
+      "delta": 1
+    },
+    {
+      "date": "2028-02-06",
+      "prayer": "asr",
+      "pred": "14:33",
+      "truth": "14:34",
+      "delta": -1
+    },
+    {
+      "date": "2028-02-29",
+      "prayer": "isha",
+      "pred": "19:09",
+      "truth": "19:08",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-17",
+      "prayer": "fajr",
+      "pred": "04:29",
+      "truth": "04:28",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-17",
+      "prayer": "sunrise",
+      "pred": "06:06",
+      "truth": "06:05",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-21",
+      "prayer": "dhuhr",
+      "pred": "12:13",
+      "truth": "12:12",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-24",
+      "prayer": "fajr",
+      "pred": "04:15",
+      "truth": "04:14",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-24",
+      "prayer": "sunrise",
+      "pred": "05:50",
+      "truth": "05:49",
+      "delta": 1
+    },
+    {
+      "date": "2028-03-31",
+      "prayer": "dhuhr",
+      "pred": "13:10",
+      "truth": "13:09",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-03",
+      "prayer": "magrib",
+      "pred": "19:41",
+      "truth": "19:40",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-03",
+      "prayer": "isha",
+      "pred": "20:57",
+      "truth": "20:56",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-04",
+      "prayer": "fajr",
+      "pred": "04:53",
+      "truth": "04:52",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-04",
+      "prayer": "sunrise",
+      "pred": "06:25",
+      "truth": "06:24",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-07",
+      "prayer": "dhuhr",
+      "pred": "13:08",
+      "truth": "13:07",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-30",
+      "prayer": "magrib",
+      "pred": "20:26",
+      "truth": "20:25",
+      "delta": 1
+    },
+    {
+      "date": "2028-04-30",
+      "prayer": "isha",
+      "pred": "21:37",
+      "truth": "21:36",
+      "delta": 1
+    },
+    {
+      "date": "2028-05-20",
+      "prayer": "magrib",
+      "pred": "20:57",
+      "truth": "20:56",
+      "delta": 1
+    },
+    {
+      "date": "2028-05-20",
+      "prayer": "isha",
+      "pred": "22:09",
+      "truth": "22:08",
+      "delta": 1
+    },
+    {
+      "date": "2028-05-26",
+      "prayer": "magrib",
+      "pred": "21:05",
+      "truth": "21:04",
+      "delta": 1
+    },
+    {
+      "date": "2028-05-26",
+      "prayer": "isha",
+      "pred": "22:19",
+      "truth": "22:18",
+      "delta": 1
+    },
+    {
+      "date": "2028-06-05",
+      "prayer": "magrib",
+      "pred": "21:16",
+      "truth": "21:15",
+      "delta": 1
+    },
+    {
+      "date": "2028-06-05",
+      "prayer": "isha",
+      "pred": "22:34",
+      "truth": "22:33",
+      "delta": 1
+    },
+    {
+      "date": "2028-06-30",
+      "prayer": "fajr",
+      "pred": "02:48",
+      "truth": "02:47",
+      "delta": 1
+    },
+    {
+      "date": "2028-06-30",
+      "prayer": "sunrise",
+      "pred": "04:45",
+      "truth": "04:44",
+      "delta": 1
+    },
+    {
+      "date": "2028-07-02",
+      "prayer": "magrib",
+      "pred": "21:24",
+      "truth": "21:23",
+      "delta": 1
+    },
+    {
+      "date": "2028-07-02",
+      "prayer": "isha",
+      "pred": "22:36",
+      "truth": "22:35",
+      "delta": 1
+    },
+    {
+      "date": "2028-07-21",
+      "prayer": "asr",
+      "pred": "17:25",
+      "truth": "17:24",
+      "delta": 1
+    },
+    {
+      "date": "2028-08-07",
+      "prayer": "asr",
+      "pred": "17:14",
+      "truth": "17:13",
+      "delta": 1
+    },
+    {
+      "date": "2028-08-19",
+      "prayer": "asr",
+      "pred": "17:02",
+      "truth": "17:01",
+      "delta": 1
+    },
+    {
+      "date": "2028-10-19",
+      "prayer": "fajr",
+      "pred": "05:57",
+      "truth": "05:56",
+      "delta": 1
+    },
+    {
+      "date": "2028-10-19",
+      "prayer": "sunrise",
+      "pred": "07:30",
+      "truth": "07:29",
+      "delta": 1
+    },
+    {
+      "date": "2028-10-22",
+      "prayer": "asr",
+      "pred": "15:23",
+      "truth": "15:22",
+      "delta": 1
+    },
+    {
+      "date": "2028-10-25",
+      "prayer": "dhuhr",
+      "pred": "12:50",
+      "truth": "12:49",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-04",
+      "prayer": "fajr",
+      "pred": "05:20",
+      "truth": "05:19",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-04",
+      "prayer": "sunrise",
+      "pred": "06:58",
+      "truth": "06:57",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-08",
+      "prayer": "fajr",
+      "pred": "05:26",
+      "truth": "05:25",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-08",
+      "prayer": "sunrise",
+      "pred": "07:05",
+      "truth": "07:04",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-11",
+      "prayer": "asr",
+      "pred": "13:55",
+      "truth": "13:54",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-12",
+      "prayer": "fajr",
+      "pred": "05:32",
+      "truth": "05:31",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-12",
+      "prayer": "sunrise",
+      "pred": "07:12",
+      "truth": "07:11",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-21",
+      "prayer": "dhuhr",
+      "pred": "11:52",
+      "truth": "11:51",
+      "delta": 1
+    },
+    {
+      "date": "2028-11-29",
+      "prayer": "asr",
+      "pred": "13:39",
+      "truth": "13:40",
+      "delta": -1
+    },
+    {
+      "date": "2029-02-08",
+      "prayer": "fajr",
+      "pred": "05:46",
+      "truth": "05:47",
+      "delta": -1
+    },
+    {
+      "date": "2029-02-08",
+      "prayer": "sunrise",
+      "pred": "07:23",
+      "truth": "07:24",
+      "delta": -1
+    },
+    {
+      "date": "2029-02-10",
+      "prayer": "magrib",
+      "pred": "17:09",
+      "truth": "17:10",
+      "delta": -1
+    },
+    {
+      "date": "2029-02-10",
+      "prayer": "isha",
+      "pred": "18:40",
+      "truth": "18:41",
+      "delta": -1
+    },
+    {
+      "date": "2029-03-29",
+      "prayer": "asr",
+      "pred": "16:37",
+      "truth": "16:36",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-14",
+      "prayer": "magrib",
+      "pred": "19:59",
+      "truth": "19:58",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-14",
+      "prayer": "isha",
+      "pred": "21:14",
+      "truth": "21:13",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-17",
+      "prayer": "magrib",
+      "pred": "20:04",
+      "truth": "20:03",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-17",
+      "prayer": "isha",
+      "pred": "21:18",
+      "truth": "21:17",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-26",
+      "prayer": "magrib",
+      "pred": "20:19",
+      "truth": "20:18",
+      "delta": 1
+    },
+    {
+      "date": "2029-04-26",
+      "prayer": "isha",
+      "pred": "21:31",
+      "truth": "21:30",
+      "delta": 1
+    },
+    {
+      "date": "2029-06-15",
+      "prayer": "magrib",
+      "pred": "21:23",
+      "truth": "21:22",
+      "delta": 1
+    },
+    {
+      "date": "2029-06-15",
+      "prayer": "isha",
+      "pred": "22:44",
+      "truth": "22:43",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-14",
+      "prayer": "magrib",
+      "pred": "21:16",
+      "truth": "21:15",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-14",
+      "prayer": "isha",
+      "pred": "22:24",
+      "truth": "22:23",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-15",
+      "prayer": "magrib",
+      "pred": "21:15",
+      "truth": "21:14",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-15",
+      "prayer": "isha",
+      "pred": "22:23",
+      "truth": "22:22",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-16",
+      "prayer": "magrib",
+      "pred": "21:14",
+      "truth": "21:13",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-16",
+      "prayer": "isha",
+      "pred": "22:21",
+      "truth": "22:20",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-27",
+      "prayer": "magrib",
+      "pred": "21:00",
+      "truth": "20:59",
+      "delta": 1
+    },
+    {
+      "date": "2029-07-27",
+      "prayer": "isha",
+      "pred": "22:04",
+      "truth": "22:03",
+      "delta": 1
+    },
+    {
+      "date": "2029-09-21",
+      "prayer": "dhuhr",
+      "pred": "12:58",
+      "truth": "12:59",
+      "delta": -1
+    },
+    {
+      "date": "2029-10-21",
+      "prayer": "fajr",
+      "pred": "05:59",
+      "truth": "05:58",
+      "delta": 1
+    },
+    {
+      "date": "2029-10-21",
+      "prayer": "sunrise",
+      "pred": "07:33",
+      "truth": "07:32",
+      "delta": 1
+    },
+    {
+      "date": "2029-10-29",
+      "prayer": "fajr",
+      "pred": "05:10",
+      "truth": "05:09",
+      "delta": 1
+    },
+    {
+      "date": "2029-10-29",
+      "prayer": "sunrise",
+      "pred": "06:47",
+      "truth": "06:46",
+      "delta": 1
+    },
+    {
+      "date": "2029-11-02",
+      "prayer": "fajr",
+      "pred": "05:17",
+      "truth": "05:16",
+      "delta": 1
+    },
+    {
+      "date": "2029-11-02",
+      "prayer": "sunrise",
+      "pred": "06:54",
+      "truth": "06:53",
+      "delta": 1
+    },
+    {
+      "date": "2029-11-14",
+      "prayer": "fajr",
+      "pred": "05:34",
+      "truth": "05:33",
+      "delta": 1
+    },
+    {
+      "date": "2029-11-14",
+      "prayer": "sunrise",
+      "pred": "07:15",
+      "truth": "07:14",
+      "delta": 1
+    },
+    {
+      "date": "2029-11-17",
+      "prayer": "dhuhr",
+      "pred": "11:51",
+      "truth": "11:50",
+      "delta": 1
+    },
+    {
+      "date": "2030-01-06",
+      "prayer": "asr",
+      "pred": "13:53",
+      "truth": "13:52",
+      "delta": 1
+    },
+    {
+      "date": "2030-01-18",
+      "prayer": "fajr",
+      "pred": "06:17",
+      "truth": "06:16",
+      "delta": 1
+    },
+    {
+      "date": "2030-01-18",
+      "prayer": "sunrise",
+      "pred": "07:54",
+      "truth": "07:53",
+      "delta": 1
+    },
+    {
+      "date": "2030-02-05",
+      "prayer": "dhuhr",
+      "pred": "12:19",
+      "truth": "12:20",
+      "delta": -1
+    },
+    {
+      "date": "2030-02-16",
+      "prayer": "asr",
+      "pred": "14:48",
+      "truth": "14:49",
+      "delta": -1
+    },
+    {
+      "date": "2030-02-28",
+      "prayer": "asr",
+      "pred": "15:04",
+      "truth": "15:05",
+      "delta": -1
+    },
+    {
+      "date": "2030-03-07",
+      "prayer": "dhuhr",
+      "pred": "12:17",
+      "truth": "12:16",
+      "delta": 1
+    },
+    {
+      "date": "2030-03-21",
+      "prayer": "asr",
+      "pred": "15:29",
+      "truth": "15:28",
+      "delta": 1
+    },
+    {
+      "date": "2030-03-22",
+      "prayer": "asr",
+      "pred": "15:30",
+      "truth": "15:29",
+      "delta": 1
+    },
+    {
+      "date": "2030-03-23",
+      "prayer": "asr",
+      "pred": "15:31",
+      "truth": "15:30",
+      "delta": 1
+    },
+    {
+      "date": "2030-03-24",
+      "prayer": "asr",
+      "pred": "15:32",
+      "truth": "15:31",
+      "delta": 1
+    },
+    {
+      "date": "2030-04-20",
+      "prayer": "asr",
+      "pred": "16:55",
+      "truth": "16:54",
+      "delta": 1
+    },
+    {
+      "date": "2030-05-15",
+      "prayer": "magrib",
+      "pred": "20:49",
+      "truth": "20:48",
+      "delta": 1
+    },
+    {
+      "date": "2030-05-15",
+      "prayer": "isha",
+      "pred": "21:59",
+      "truth": "21:58",
+      "delta": 1
+    },
+    {
+      "date": "2030-06-09",
+      "prayer": "magrib",
+      "pred": "21:19",
+      "truth": "21:18",
+      "delta": 1
+    },
+    {
+      "date": "2030-06-09",
+      "prayer": "isha",
+      "pred": "22:38",
+      "truth": "22:37",
+      "delta": 1
+    },
+    {
+      "date": "2030-07-07",
+      "prayer": "dhuhr",
+      "pred": "13:11",
+      "truth": "13:10",
+      "delta": 1
+    },
+    {
+      "date": "2030-07-16",
+      "prayer": "asr",
+      "pred": "17:27",
+      "truth": "17:26",
+      "delta": 1
+    },
+    {
+      "date": "2030-07-19",
+      "prayer": "asr",
+      "pred": "17:26",
+      "truth": "17:25",
+      "delta": 1
+    },
+    {
+      "date": "2030-09-10",
+      "prayer": "dhuhr",
+      "pred": "13:02",
+      "truth": "13:03",
+      "delta": -1
+    },
+    {
+      "date": "2030-09-27",
+      "prayer": "dhuhr",
+      "pred": "12:56",
+      "truth": "12:57",
+      "delta": -1
+    },
+    {
+      "date": "2030-10-10",
+      "prayer": "dhuhr",
+      "pred": "12:53",
+      "truth": "12:52",
+      "delta": 1
+    },
+    {
+      "date": "2030-10-14",
+      "prayer": "dhuhr",
+      "pred": "12:52",
+      "truth": "12:51",
+      "delta": 1
+    },
+    {
+      "date": "2030-10-16",
+      "prayer": "fajr",
+      "pred": "05:52",
+      "truth": "05:51",
+      "delta": 1
+    },
+    {
+      "date": "2030-10-16",
+      "prayer": "sunrise",
+      "pred": "07:24",
+      "truth": "07:23",
+      "delta": 1
+    },
+    {
+      "date": "2030-10-30",
+      "prayer": "magrib",
+      "pred": "16:41",
+      "truth": "16:40",
+      "delta": 1
+    },
+    {
+      "date": "2030-10-30",
+      "prayer": "isha",
+      "pred": "18:08",
+      "truth": "18:07",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-04",
+      "prayer": "magrib",
+      "pred": "16:32",
+      "truth": "16:31",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-04",
+      "prayer": "isha",
+      "pred": "18:01",
+      "truth": "18:00",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-09",
+      "prayer": "asr",
+      "pred": "13:58",
+      "truth": "13:57",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-11",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-16",
+      "prayer": "fajr",
+      "pred": "05:36",
+      "truth": "05:35",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-16",
+      "prayer": "sunrise",
+      "pred": "07:18",
+      "truth": "07:17",
+      "delta": 1
+    },
+    {
+      "date": "2030-11-23",
+      "prayer": "asr",
+      "pred": "13:44",
+      "truth": "13:43",
+      "delta": 1
+    },
+    {
+      "date": "2030-12-31",
+      "prayer": "dhuhr",
+      "pred": "12:09",
+      "truth": "12:08",
+      "delta": 1
+    },
+    {
+      "date": "2031-01-26",
+      "prayer": "magrib",
+      "pred": "16:41",
+      "truth": "16:42",
+      "delta": -1
+    },
+    {
+      "date": "2031-01-26",
+      "prayer": "isha",
+      "pred": "18:18",
+      "truth": "18:19",
+      "delta": -1
+    },
+    {
+      "date": "2031-02-17",
+      "prayer": "dhuhr",
+      "pred": "12:19",
+      "truth": "12:20",
+      "delta": -1
+    },
+    {
+      "date": "2031-03-24",
+      "prayer": "magrib",
+      "pred": "18:23",
+      "truth": "18:22",
+      "delta": 1
+    },
+    {
+      "date": "2031-03-24",
+      "prayer": "isha",
+      "pred": "19:42",
+      "truth": "19:41",
+      "delta": 1
+    },
+    {
+      "date": "2031-06-08",
+      "prayer": "magrib",
+      "pred": "21:18",
+      "truth": "21:17",
+      "delta": 1
+    },
+    {
+      "date": "2031-06-08",
+      "prayer": "isha",
+      "pred": "22:36",
+      "truth": "22:35",
+      "delta": 1
+    },
+    {
+      "date": "2031-07-10",
+      "prayer": "fajr",
+      "pred": "03:01",
+      "truth": "03:00",
+      "delta": 1
+    },
+    {
+      "date": "2031-07-10",
+      "prayer": "sunrise",
+      "pred": "04:53",
+      "truth": "04:52",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-18",
+      "prayer": "fajr",
+      "pred": "05:54",
+      "truth": "05:53",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-18",
+      "prayer": "sunrise",
+      "pred": "07:27",
+      "truth": "07:26",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-19",
+      "prayer": "dhuhr",
+      "pred": "12:51",
+      "truth": "12:50",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-19",
+      "prayer": "asr",
+      "pred": "15:29",
+      "truth": "15:28",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-24",
+      "prayer": "asr",
+      "pred": "15:21",
+      "truth": "15:20",
+      "delta": 1
+    },
+    {
+      "date": "2031-10-26",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-06",
+      "prayer": "magrib",
+      "pred": "16:29",
+      "truth": "16:28",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-06",
+      "prayer": "isha",
+      "pred": "17:59",
+      "truth": "17:58",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-11",
+      "prayer": "fajr",
+      "pred": "05:29",
+      "truth": "05:28",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-11",
+      "prayer": "sunrise",
+      "pred": "07:09",
+      "truth": "07:08",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-11",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-11",
+      "prayer": "magrib",
+      "pred": "16:21",
+      "truth": "16:20",
+      "delta": 1
+    },
+    {
+      "date": "2031-11-11",
+      "prayer": "isha",
+      "pred": "17:53",
+      "truth": "17:52",
+      "delta": 1
+    },
+    {
+      "date": "2031-12-17",
+      "prayer": "dhuhr",
+      "pred": "12:01",
+      "truth": "12:02",
+      "delta": -1
+    },
+    {
+      "date": "2032-02-14",
+      "prayer": "magrib",
+      "pred": "17:15",
+      "truth": "17:16",
+      "delta": -1
+    },
+    {
+      "date": "2032-02-14",
+      "prayer": "isha",
+      "pred": "18:45",
+      "truth": "18:46",
+      "delta": -1
+    },
+    {
+      "date": "2032-02-29",
+      "prayer": "isha",
+      "pred": "19:10",
+      "truth": "19:09",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-02",
+      "prayer": "dhuhr",
+      "pred": "12:18",
+      "truth": "12:17",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-08",
+      "prayer": "magrib",
+      "pred": "17:57",
+      "truth": "17:56",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-08",
+      "prayer": "isha",
+      "pred": "19:20",
+      "truth": "19:19",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-09",
+      "prayer": "fajr",
+      "pred": "04:47",
+      "truth": "04:46",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-09",
+      "prayer": "sunrise",
+      "pred": "06:24",
+      "truth": "06:23",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-13",
+      "prayer": "fajr",
+      "pred": "04:38",
+      "truth": "04:37",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-13",
+      "prayer": "sunrise",
+      "pred": "06:15",
+      "truth": "06:14",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-21",
+      "prayer": "dhuhr",
+      "pred": "12:13",
+      "truth": "12:12",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-28",
+      "prayer": "magrib",
+      "pred": "19:31",
+      "truth": "19:30",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-28",
+      "prayer": "isha",
+      "pred": "20:49",
+      "truth": "20:48",
+      "delta": 1
+    },
+    {
+      "date": "2032-03-31",
+      "prayer": "dhuhr",
+      "pred": "13:10",
+      "truth": "13:09",
+      "delta": 1
+    },
+    {
+      "date": "2032-04-08",
+      "prayer": "fajr",
+      "pred": "04:44",
+      "truth": "04:43",
+      "delta": 1
+    },
+    {
+      "date": "2032-04-08",
+      "prayer": "sunrise",
+      "pred": "06:16",
+      "truth": "06:15",
+      "delta": 1
+    },
+    {
+      "date": "2032-04-08",
+      "prayer": "asr",
+      "pred": "16:46",
+      "truth": "16:45",
+      "delta": 1
+    },
+    {
+      "date": "2032-05-07",
+      "prayer": "asr",
+      "pred": "17:07",
+      "truth": "17:06",
+      "delta": 1
+    },
+    {
+      "date": "2032-07-06",
+      "prayer": "magrib",
+      "pred": "21:22",
+      "truth": "21:21",
+      "delta": 1
+    },
+    {
+      "date": "2032-07-06",
+      "prayer": "isha",
+      "pred": "22:33",
+      "truth": "22:32",
+      "delta": 1
+    },
+    {
+      "date": "2032-07-09",
+      "prayer": "magrib",
+      "pred": "21:20",
+      "truth": "21:19",
+      "delta": 1
+    },
+    {
+      "date": "2032-07-09",
+      "prayer": "isha",
+      "pred": "22:30",
+      "truth": "22:29",
+      "delta": 1
+    },
+    {
+      "date": "2032-07-14",
+      "prayer": "dhuhr",
+      "pred": "13:12",
+      "truth": "13:11",
+      "delta": 1
+    },
+    {
+      "date": "2032-08-18",
+      "prayer": "magrib",
+      "pred": "20:20",
+      "truth": "20:19",
+      "delta": 1
+    },
+    {
+      "date": "2032-08-18",
+      "prayer": "isha",
+      "pred": "21:27",
+      "truth": "21:26",
+      "delta": 1
+    },
+    {
+      "date": "2032-09-03",
+      "prayer": "fajr",
+      "pred": "04:42",
+      "truth": "04:43",
+      "delta": -1
+    },
+    {
+      "date": "2032-09-03",
+      "prayer": "sunrise",
+      "pred": "06:14",
+      "truth": "06:15",
+      "delta": -1
+    },
+    {
+      "date": "2032-09-15",
+      "prayer": "magrib",
+      "pred": "19:17",
+      "truth": "19:18",
+      "delta": -1
+    },
+    {
+      "date": "2032-09-15",
+      "prayer": "isha",
+      "pred": "20:32",
+      "truth": "20:33",
+      "delta": -1
+    },
+    {
+      "date": "2032-10-01",
+      "prayer": "asr",
+      "pred": "15:57",
+      "truth": "15:58",
+      "delta": -1
+    },
+    {
+      "date": "2032-10-14",
+      "prayer": "asr",
+      "pred": "15:36",
+      "truth": "15:35",
+      "delta": 1
+    },
+    {
+      "date": "2032-10-16",
+      "prayer": "magrib",
+      "pred": "18:08",
+      "truth": "18:07",
+      "delta": 1
+    },
+    {
+      "date": "2032-10-16",
+      "prayer": "isha",
+      "pred": "19:31",
+      "truth": "19:30",
+      "delta": 1
+    },
+    {
+      "date": "2032-10-25",
+      "prayer": "dhuhr",
+      "pred": "12:50",
+      "truth": "12:49",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-04",
+      "prayer": "fajr",
+      "pred": "05:20",
+      "truth": "05:19",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-04",
+      "prayer": "sunrise",
+      "pred": "06:58",
+      "truth": "06:57",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-11",
+      "prayer": "asr",
+      "pred": "13:55",
+      "truth": "13:54",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-12",
+      "prayer": "fajr",
+      "pred": "05:32",
+      "truth": "05:31",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-12",
+      "prayer": "sunrise",
+      "pred": "07:12",
+      "truth": "07:11",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-21",
+      "prayer": "dhuhr",
+      "pred": "11:52",
+      "truth": "11:51",
+      "delta": 1
+    },
+    {
+      "date": "2032-11-29",
+      "prayer": "asr",
+      "pred": "13:39",
+      "truth": "13:40",
+      "delta": -1
+    },
+    {
+      "date": "2032-12-24",
+      "prayer": "asr",
+      "pred": "13:41",
+      "truth": "13:42",
+      "delta": -1
+    },
+    {
+      "date": "2033-02-02",
+      "prayer": "fajr",
+      "pred": "05:56",
+      "truth": "05:57",
+      "delta": -1
+    },
+    {
+      "date": "2033-02-02",
+      "prayer": "sunrise",
+      "pred": "07:33",
+      "truth": "07:34",
+      "delta": -1
+    },
+    {
+      "date": "2033-02-05",
+      "prayer": "dhuhr",
+      "pred": "12:19",
+      "truth": "12:20",
+      "delta": -1
+    },
+    {
+      "date": "2033-03-02",
+      "prayer": "fajr",
+      "pred": "05:03",
+      "truth": "05:02",
+      "delta": 1
+    },
+    {
+      "date": "2033-03-02",
+      "prayer": "sunrise",
+      "pred": "06:40",
+      "truth": "06:39",
+      "delta": 1
+    },
+    {
+      "date": "2033-03-07",
+      "prayer": "fajr",
+      "pred": "04:52",
+      "truth": "04:51",
+      "delta": 1
+    },
+    {
+      "date": "2033-03-07",
+      "prayer": "sunrise",
+      "pred": "06:29",
+      "truth": "06:28",
+      "delta": 1
+    },
+    {
+      "date": "2033-03-29",
+      "prayer": "asr",
+      "pred": "16:37",
+      "truth": "16:36",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-02",
+      "prayer": "fajr",
+      "pred": "04:58",
+      "truth": "04:57",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-02",
+      "prayer": "sunrise",
+      "pred": "06:30",
+      "truth": "06:29",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-05",
+      "prayer": "magrib",
+      "pred": "19:44",
+      "truth": "19:43",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-05",
+      "prayer": "isha",
+      "pred": "21:00",
+      "truth": "20:59",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-06",
+      "prayer": "fajr",
+      "pred": "04:49",
+      "truth": "04:48",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-06",
+      "prayer": "sunrise",
+      "pred": "06:21",
+      "truth": "06:20",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-08",
+      "prayer": "magrib",
+      "pred": "19:49",
+      "truth": "19:48",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-08",
+      "prayer": "isha",
+      "pred": "21:05",
+      "truth": "21:04",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-29",
+      "prayer": "magrib",
+      "pred": "20:24",
+      "truth": "20:23",
+      "delta": 1
+    },
+    {
+      "date": "2033-04-29",
+      "prayer": "isha",
+      "pred": "21:35",
+      "truth": "21:34",
+      "delta": 1
+    },
+    {
+      "date": "2033-06-15",
+      "prayer": "magrib",
+      "pred": "21:23",
+      "truth": "21:22",
+      "delta": 1
+    },
+    {
+      "date": "2033-06-15",
+      "prayer": "isha",
+      "pred": "22:44",
+      "truth": "22:43",
+      "delta": 1
+    },
+    {
+      "date": "2033-06-26",
+      "prayer": "dhuhr",
+      "pred": "13:09",
+      "truth": "13:08",
+      "delta": 1
+    },
+    {
+      "date": "2033-07-01",
+      "prayer": "dhuhr",
+      "pred": "13:10",
+      "truth": "13:09",
+      "delta": 1
+    },
+    {
+      "date": "2033-09-30",
+      "prayer": "magrib",
+      "pred": "18:43",
+      "truth": "18:44",
+      "delta": -1
+    },
+    {
+      "date": "2033-09-30",
+      "prayer": "isha",
+      "pred": "20:00",
+      "truth": "20:01",
+      "delta": -1
+    },
+    {
+      "date": "2033-10-11",
+      "prayer": "fajr",
+      "pred": "05:45",
+      "truth": "05:44",
+      "delta": 1
+    },
+    {
+      "date": "2033-10-11",
+      "prayer": "sunrise",
+      "pred": "07:16",
+      "truth": "07:15",
+      "delta": 1
+    },
+    {
+      "date": "2033-10-25",
+      "prayer": "fajr",
+      "pred": "06:05",
+      "truth": "06:04",
+      "delta": 1
+    },
+    {
+      "date": "2033-10-25",
+      "prayer": "sunrise",
+      "pred": "07:40",
+      "truth": "07:39",
+      "delta": 1
+    },
+    {
+      "date": "2033-10-29",
+      "prayer": "fajr",
+      "pred": "06:10",
+      "truth": "06:09",
+      "delta": 1
+    },
+    {
+      "date": "2033-10-29",
+      "prayer": "sunrise",
+      "pred": "07:47",
+      "truth": "07:46",
+      "delta": 1
+    },
+    {
+      "date": "2033-11-17",
+      "prayer": "dhuhr",
+      "pred": "11:51",
+      "truth": "11:50",
+      "delta": 1
+    },
+    {
+      "date": "2033-11-23",
+      "prayer": "magrib",
+      "pred": "16:05",
+      "truth": "16:04",
+      "delta": 1
+    },
+    {
+      "date": "2033-11-23",
+      "prayer": "isha",
+      "pred": "17:40",
+      "truth": "17:39",
+      "delta": 1
+    },
+    {
+      "date": "2033-12-10",
+      "prayer": "magrib",
+      "pred": "15:54",
+      "truth": "15:55",
+      "delta": -1
+    },
+    {
+      "date": "2033-12-10",
+      "prayer": "isha",
+      "pred": "17:31",
+      "truth": "17:32",
+      "delta": -1
+    },
+    {
+      "date": "2033-12-15",
+      "prayer": "asr",
+      "pred": "13:37",
+      "truth": "13:38",
+      "delta": -1
+    },
+    {
+      "date": "2033-12-21",
+      "prayer": "magrib",
+      "pred": "15:56",
+      "truth": "15:57",
+      "delta": -1
+    },
+    {
+      "date": "2033-12-21",
+      "prayer": "isha",
+      "pred": "17:33",
+      "truth": "17:34",
+      "delta": -1
+    },
+    {
+      "date": "2033-12-25",
+      "prayer": "fajr",
+      "pred": "06:23",
+      "truth": "06:22",
+      "delta": 1
+    },
+    {
+      "date": "2033-12-25",
+      "prayer": "sunrise",
+      "pred": "08:03",
+      "truth": "08:02",
+      "delta": 1
+    },
+    {
+      "date": "2034-01-04",
+      "prayer": "fajr",
+      "pred": "06:26",
+      "truth": "06:25",
+      "delta": 1
+    },
+    {
+      "date": "2034-01-04",
+      "prayer": "sunrise",
+      "pred": "08:03",
+      "truth": "08:02",
+      "delta": 1
+    },
+    {
+      "date": "2034-01-24",
+      "prayer": "asr",
+      "pred": "14:15",
+      "truth": "14:16",
+      "delta": -1
+    },
+    {
+      "date": "2034-02-02",
+      "prayer": "magrib",
+      "pred": "16:54",
+      "truth": "16:55",
+      "delta": -1
+    },
+    {
+      "date": "2034-02-02",
+      "prayer": "isha",
+      "pred": "18:29",
+      "truth": "18:30",
+      "delta": -1
+    },
+    {
+      "date": "2034-03-19",
+      "prayer": "magrib",
+      "pred": "18:15",
+      "truth": "18:14",
+      "delta": 1
+    },
+    {
+      "date": "2034-03-19",
+      "prayer": "isha",
+      "pred": "19:35",
+      "truth": "19:34",
+      "delta": 1
+    },
+    {
+      "date": "2034-03-20",
+      "prayer": "asr",
+      "pred": "15:28",
+      "truth": "15:27",
+      "delta": 1
+    },
+    {
+      "date": "2034-03-21",
+      "prayer": "asr",
+      "pred": "15:29",
+      "truth": "15:28",
+      "delta": 1
+    },
+    {
+      "date": "2034-03-24",
+      "prayer": "asr",
+      "pred": "15:32",
+      "truth": "15:31",
+      "delta": 1
+    },
+    {
+      "date": "2034-03-25",
+      "prayer": "asr",
+      "pred": "15:33",
+      "truth": "15:32",
+      "delta": 1
+    },
+    {
+      "date": "2034-04-16",
+      "prayer": "asr",
+      "pred": "16:52",
+      "truth": "16:51",
+      "delta": 1
+    },
+    {
+      "date": "2034-04-26",
+      "prayer": "fajr",
+      "pred": "04:04",
+      "truth": "04:03",
+      "delta": 1
+    },
+    {
+      "date": "2034-04-26",
+      "prayer": "sunrise",
+      "pred": "05:39",
+      "truth": "05:38",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-06",
+      "prayer": "magrib",
+      "pred": "20:35",
+      "truth": "20:34",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-06",
+      "prayer": "isha",
+      "pred": "21:46",
+      "truth": "21:45",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-13",
+      "prayer": "magrib",
+      "pred": "20:46",
+      "truth": "20:45",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-13",
+      "prayer": "isha",
+      "pred": "21:56",
+      "truth": "21:55",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-17",
+      "prayer": "magrib",
+      "pred": "20:52",
+      "truth": "20:51",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-17",
+      "prayer": "isha",
+      "pred": "22:03",
+      "truth": "22:02",
+      "delta": 1
+    },
+    {
+      "date": "2034-05-25",
+      "prayer": "dhuhr",
+      "pred": "13:03",
+      "truth": "13:02",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-04",
+      "prayer": "asr",
+      "pred": "17:22",
+      "truth": "17:21",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-09",
+      "prayer": "magrib",
+      "pred": "21:19",
+      "truth": "21:18",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-09",
+      "prayer": "isha",
+      "pred": "22:38",
+      "truth": "22:37",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-17",
+      "prayer": "dhuhr",
+      "pred": "13:07",
+      "truth": "13:06",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-21",
+      "prayer": "magrib",
+      "pred": "21:25",
+      "truth": "21:24",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-21",
+      "prayer": "isha",
+      "pred": "22:43",
+      "truth": "22:42",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-29",
+      "prayer": "magrib",
+      "pred": "21:25",
+      "truth": "21:24",
+      "delta": 1
+    },
+    {
+      "date": "2034-06-29",
+      "prayer": "isha",
+      "pred": "22:39",
+      "truth": "22:38",
+      "delta": 1
+    },
+    {
+      "date": "2034-07-12",
+      "prayer": "magrib",
+      "pred": "21:18",
+      "truth": "21:17",
+      "delta": 1
+    },
+    {
+      "date": "2034-07-12",
+      "prayer": "isha",
+      "pred": "22:27",
+      "truth": "22:26",
+      "delta": 1
+    },
+    {
+      "date": "2034-07-16",
+      "prayer": "asr",
+      "pred": "17:27",
+      "truth": "17:26",
+      "delta": 1
+    },
+    {
+      "date": "2034-07-29",
+      "prayer": "asr",
+      "pred": "17:21",
+      "truth": "17:20",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-06",
+      "prayer": "magrib",
+      "pred": "20:44",
+      "truth": "20:43",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-06",
+      "prayer": "isha",
+      "pred": "21:49",
+      "truth": "21:48",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-14",
+      "prayer": "magrib",
+      "pred": "20:29",
+      "truth": "20:28",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-14",
+      "prayer": "isha",
+      "pred": "21:35",
+      "truth": "21:34",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-18",
+      "prayer": "magrib",
+      "pred": "20:21",
+      "truth": "20:20",
+      "delta": 1
+    },
+    {
+      "date": "2034-08-18",
+      "prayer": "isha",
+      "pred": "21:28",
+      "truth": "21:27",
+      "delta": 1
+    },
+    {
+      "date": "2034-09-06",
+      "prayer": "fajr",
+      "pred": "04:46",
+      "truth": "04:47",
+      "delta": -1
+    },
+    {
+      "date": "2034-09-06",
+      "prayer": "sunrise",
+      "pred": "06:18",
+      "truth": "06:19",
+      "delta": -1
+    },
+    {
+      "date": "2034-10-10",
+      "prayer": "dhuhr",
+      "pred": "12:53",
+      "truth": "12:52",
+      "delta": 1
+    },
+    {
+      "date": "2034-10-14",
+      "prayer": "dhuhr",
+      "pred": "12:52",
+      "truth": "12:51",
+      "delta": 1
+    },
+    {
+      "date": "2034-10-25",
+      "prayer": "asr",
+      "pred": "15:19",
+      "truth": "15:18",
+      "delta": 1
+    },
+    {
+      "date": "2034-10-31",
+      "prayer": "asr",
+      "pred": "14:10",
+      "truth": "14:09",
+      "delta": 1
+    },
+    {
+      "date": "2034-11-11",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2034-12-31",
+      "prayer": "dhuhr",
+      "pred": "12:09",
+      "truth": "12:08",
+      "delta": 1
+    },
+    {
+      "date": "2035-01-09",
+      "prayer": "magrib",
+      "pred": "16:15",
+      "truth": "16:14",
+      "delta": 1
+    },
+    {
+      "date": "2035-01-09",
+      "prayer": "isha",
+      "pred": "17:52",
+      "truth": "17:51",
+      "delta": 1
+    },
+    {
+      "date": "2035-02-11",
+      "prayer": "magrib",
+      "pred": "17:10",
+      "truth": "17:11",
+      "delta": -1
+    },
+    {
+      "date": "2035-02-11",
+      "prayer": "isha",
+      "pred": "18:41",
+      "truth": "18:42",
+      "delta": -1
+    },
+    {
+      "date": "2035-03-25",
+      "prayer": "dhuhr",
+      "pred": "13:12",
+      "truth": "13:11",
+      "delta": 1
+    },
+    {
+      "date": "2035-04-11",
+      "prayer": "fajr",
+      "pred": "04:39",
+      "truth": "04:38",
+      "delta": 1
+    },
+    {
+      "date": "2035-04-11",
+      "prayer": "sunrise",
+      "pred": "06:11",
+      "truth": "06:10",
+      "delta": 1
+    },
+    {
+      "date": "2035-05-05",
+      "prayer": "magrib",
+      "pred": "20:33",
+      "truth": "20:32",
+      "delta": 1
+    },
+    {
+      "date": "2035-05-05",
+      "prayer": "isha",
+      "pred": "21:44",
+      "truth": "21:43",
+      "delta": 1
+    },
+    {
+      "date": "2035-05-20",
+      "prayer": "magrib",
+      "pred": "20:56",
+      "truth": "20:55",
+      "delta": 1
+    },
+    {
+      "date": "2035-05-20",
+      "prayer": "isha",
+      "pred": "22:08",
+      "truth": "22:07",
+      "delta": 1
+    },
+    {
+      "date": "2035-06-02",
+      "prayer": "asr",
+      "pred": "17:21",
+      "truth": "17:20",
+      "delta": 1
+    },
+    {
+      "date": "2035-07-20",
+      "prayer": "magrib",
+      "pred": "21:10",
+      "truth": "21:09",
+      "delta": 1
+    },
+    {
+      "date": "2035-07-20",
+      "prayer": "isha",
+      "pred": "22:16",
+      "truth": "22:15",
+      "delta": 1
+    },
+    {
+      "date": "2035-08-04",
+      "prayer": "asr",
+      "pred": "17:17",
+      "truth": "17:16",
+      "delta": 1
+    },
+    {
+      "date": "2035-08-09",
+      "prayer": "magrib",
+      "pred": "20:39",
+      "truth": "20:38",
+      "delta": 1
+    },
+    {
+      "date": "2035-08-09",
+      "prayer": "isha",
+      "pred": "21:44",
+      "truth": "21:43",
+      "delta": 1
+    },
+    {
+      "date": "2035-09-14",
+      "prayer": "magrib",
+      "pred": "19:21",
+      "truth": "19:22",
+      "delta": -1
+    },
+    {
+      "date": "2035-09-14",
+      "prayer": "isha",
+      "pred": "20:35",
+      "truth": "20:36",
+      "delta": -1
+    },
+    {
+      "date": "2035-09-27",
+      "prayer": "asr",
+      "pred": "16:05",
+      "truth": "16:06",
+      "delta": -1
+    },
+    {
+      "date": "2035-10-19",
+      "prayer": "dhuhr",
+      "pred": "12:51",
+      "truth": "12:50",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-23",
+      "prayer": "magrib",
+      "pred": "17:55",
+      "truth": "17:54",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-23",
+      "prayer": "isha",
+      "pred": "19:20",
+      "truth": "19:19",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-24",
+      "prayer": "magrib",
+      "pred": "17:53",
+      "truth": "17:52",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-24",
+      "prayer": "isha",
+      "pred": "19:18",
+      "truth": "19:17",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-25",
+      "prayer": "magrib",
+      "pred": "17:51",
+      "truth": "17:50",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-25",
+      "prayer": "isha",
+      "pred": "19:18",
+      "truth": "19:17",
+      "delta": 1
+    },
+    {
+      "date": "2035-10-26",
+      "prayer": "dhuhr",
+      "pred": "12:50",
+      "truth": "12:49",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-07",
+      "prayer": "fajr",
+      "pred": "05:23",
+      "truth": "05:22",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-07",
+      "prayer": "sunrise",
+      "pred": "07:02",
+      "truth": "07:01",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-11",
+      "prayer": "fajr",
+      "pred": "05:29",
+      "truth": "05:28",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-11",
+      "prayer": "sunrise",
+      "pred": "07:09",
+      "truth": "07:08",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-11",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-13",
+      "prayer": "magrib",
+      "pred": "16:18",
+      "truth": "16:17",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-13",
+      "prayer": "isha",
+      "pred": "17:51",
+      "truth": "17:50",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-18",
+      "prayer": "fajr",
+      "pred": "05:39",
+      "truth": "05:38",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-18",
+      "prayer": "sunrise",
+      "pred": "07:21",
+      "truth": "07:20",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-19",
+      "prayer": "magrib",
+      "pred": "16:10",
+      "truth": "16:09",
+      "delta": 1
+    },
+    {
+      "date": "2035-11-19",
+      "prayer": "isha",
+      "pred": "17:44",
+      "truth": "17:43",
+      "delta": 1
+    },
+    {
+      "date": "2035-12-04",
+      "prayer": "magrib",
+      "pred": "15:56",
+      "truth": "15:57",
+      "delta": -1
+    },
+    {
+      "date": "2035-12-04",
+      "prayer": "isha",
+      "pred": "17:33",
+      "truth": "17:34",
+      "delta": -1
+    },
+    {
+      "date": "2035-12-17",
+      "prayer": "dhuhr",
+      "pred": "12:01",
+      "truth": "12:02",
+      "delta": -1
+    },
+    {
+      "date": "2036-01-23",
+      "prayer": "fajr",
+      "pred": "06:12",
+      "truth": "06:11",
+      "delta": 1
+    },
+    {
+      "date": "2036-01-23",
+      "prayer": "sunrise",
+      "pred": "07:49",
+      "truth": "07:48",
+      "delta": 1
+    },
+    {
+      "date": "2036-02-17",
+      "prayer": "dhuhr",
+      "pred": "12:19",
+      "truth": "12:20",
+      "delta": -1
+    },
+    {
+      "date": "2036-02-29",
+      "prayer": "isha",
+      "pred": "19:10",
+      "truth": "19:09",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-20",
+      "prayer": "fajr",
+      "pred": "04:23",
+      "truth": "04:22",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-20",
+      "prayer": "sunrise",
+      "pred": "05:59",
+      "truth": "05:58",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-21",
+      "prayer": "dhuhr",
+      "pred": "12:13",
+      "truth": "12:12",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-25",
+      "prayer": "magrib",
+      "pred": "18:26",
+      "truth": "18:25",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-25",
+      "prayer": "isha",
+      "pred": "19:44",
+      "truth": "19:43",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-27",
+      "prayer": "fajr",
+      "pred": "04:09",
+      "truth": "04:08",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-27",
+      "prayer": "sunrise",
+      "pred": "05:43",
+      "truth": "05:42",
+      "delta": 1
+    },
+    {
+      "date": "2036-03-31",
+      "prayer": "dhuhr",
+      "pred": "13:10",
+      "truth": "13:09",
+      "delta": 1
+    },
+    {
+      "date": "2036-04-01",
+      "prayer": "asr",
+      "pred": "16:40",
+      "truth": "16:39",
+      "delta": 1
+    },
+    {
+      "date": "2036-04-25",
+      "prayer": "asr",
+      "pred": "16:59",
+      "truth": "16:58",
+      "delta": 1
+    },
+    {
+      "date": "2036-05-08",
+      "prayer": "magrib",
+      "pred": "20:39",
+      "truth": "20:38",
+      "delta": 1
+    },
+    {
+      "date": "2036-05-08",
+      "prayer": "isha",
+      "pred": "21:50",
+      "truth": "21:49",
+      "delta": 1
+    },
+    {
+      "date": "2036-06-17",
+      "prayer": "magrib",
+      "pred": "21:24",
+      "truth": "21:23",
+      "delta": 1
+    },
+    {
+      "date": "2036-06-17",
+      "prayer": "isha",
+      "pred": "22:44",
+      "truth": "22:43",
+      "delta": 1
+    },
+    {
+      "date": "2036-07-06",
+      "prayer": "magrib",
+      "pred": "21:22",
+      "truth": "21:21",
+      "delta": 1
+    },
+    {
+      "date": "2036-07-06",
+      "prayer": "isha",
+      "pred": "22:33",
+      "truth": "22:32",
+      "delta": 1
+    },
+    {
+      "date": "2036-07-09",
+      "prayer": "magrib",
+      "pred": "21:20",
+      "truth": "21:19",
+      "delta": 1
+    },
+    {
+      "date": "2036-07-09",
+      "prayer": "isha",
+      "pred": "22:30",
+      "truth": "22:29",
+      "delta": 1
+    },
+    {
+      "date": "2036-08-14",
+      "prayer": "magrib",
+      "pred": "20:28",
+      "truth": "20:27",
+      "delta": 1
+    },
+    {
+      "date": "2036-08-14",
+      "prayer": "isha",
+      "pred": "21:34",
+      "truth": "21:33",
+      "delta": 1
+    },
+    {
+      "date": "2036-09-19",
+      "prayer": "asr",
+      "pred": "16:17",
+      "truth": "16:18",
+      "delta": -1
+    },
+    {
+      "date": "2036-10-17",
+      "prayer": "asr",
+      "pred": "15:31",
+      "truth": "15:30",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-23",
+      "prayer": "fajr",
+      "pred": "06:02",
+      "truth": "06:01",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-23",
+      "prayer": "sunrise",
+      "pred": "07:37",
+      "truth": "07:36",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-25",
+      "prayer": "dhuhr",
+      "pred": "12:50",
+      "truth": "12:49",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-27",
+      "prayer": "fajr",
+      "pred": "05:08",
+      "truth": "05:07",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-27",
+      "prayer": "sunrise",
+      "pred": "06:44",
+      "truth": "06:43",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-30",
+      "prayer": "magrib",
+      "pred": "16:40",
+      "truth": "16:39",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-30",
+      "prayer": "isha",
+      "pred": "18:07",
+      "truth": "18:06",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-31",
+      "prayer": "fajr",
+      "pred": "05:14",
+      "truth": "05:13",
+      "delta": 1
+    },
+    {
+      "date": "2036-10-31",
+      "prayer": "sunrise",
+      "pred": "06:51",
+      "truth": "06:50",
+      "delta": 1
+    },
+    {
+      "date": "2036-11-21",
+      "prayer": "dhuhr",
+      "pred": "11:52",
+      "truth": "11:51",
+      "delta": 1
+    },
+    {
+      "date": "2036-12-24",
+      "prayer": "asr",
+      "pred": "13:41",
+      "truth": "13:42",
+      "delta": -1
+    },
+    {
+      "date": "2037-01-22",
+      "prayer": "magrib",
+      "pred": "16:35",
+      "truth": "16:36",
+      "delta": -1
+    },
+    {
+      "date": "2037-01-22",
+      "prayer": "isha",
+      "pred": "18:12",
+      "truth": "18:13",
+      "delta": -1
+    },
+    {
+      "date": "2037-02-05",
+      "prayer": "dhuhr",
+      "pred": "12:19",
+      "truth": "12:20",
+      "delta": -1
+    },
+    {
+      "date": "2037-02-15",
+      "prayer": "asr",
+      "pred": "14:47",
+      "truth": "14:48",
+      "delta": -1
+    },
+    {
+      "date": "2037-03-11",
+      "prayer": "fajr",
+      "pred": "04:43",
+      "truth": "04:42",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-11",
+      "prayer": "sunrise",
+      "pred": "06:20",
+      "truth": "06:19",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-15",
+      "prayer": "asr",
+      "pred": "15:23",
+      "truth": "15:22",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-22",
+      "prayer": "fajr",
+      "pred": "04:20",
+      "truth": "04:19",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-22",
+      "prayer": "sunrise",
+      "pred": "05:55",
+      "truth": "05:54",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-29",
+      "prayer": "fajr",
+      "pred": "05:06",
+      "truth": "05:05",
+      "delta": 1
+    },
+    {
+      "date": "2037-03-29",
+      "prayer": "sunrise",
+      "pred": "06:39",
+      "truth": "06:38",
+      "delta": 1
+    },
+    {
+      "date": "2037-04-02",
+      "prayer": "magrib",
+      "pred": "19:39",
+      "truth": "19:38",
+      "delta": 1
+    },
+    {
+      "date": "2037-04-02",
+      "prayer": "isha",
+      "pred": "20:56",
+      "truth": "20:55",
+      "delta": 1
+    },
+    {
+      "date": "2037-05-22",
+      "prayer": "fajr",
+      "pred": "03:07",
+      "truth": "03:08",
+      "delta": -1
+    },
+    {
+      "date": "2037-05-22",
+      "prayer": "sunrise",
+      "pred": "04:55",
+      "truth": "04:56",
+      "delta": -1
+    },
+    {
+      "date": "2037-06-07",
+      "prayer": "dhuhr",
+      "pred": "13:05",
+      "truth": "13:04",
+      "delta": 1
+    },
+    {
+      "date": "2037-06-12",
+      "prayer": "dhuhr",
+      "pred": "13:06",
+      "truth": "13:05",
+      "delta": 1
+    },
+    {
+      "date": "2037-08-06",
+      "prayer": "asr",
+      "pred": "17:15",
+      "truth": "17:14",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-22",
+      "prayer": "magrib",
+      "pred": "17:56",
+      "truth": "17:55",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-22",
+      "prayer": "isha",
+      "pred": "19:21",
+      "truth": "19:20",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-23",
+      "prayer": "magrib",
+      "pred": "17:54",
+      "truth": "17:53",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-23",
+      "prayer": "isha",
+      "pred": "19:19",
+      "truth": "19:18",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-24",
+      "prayer": "magrib",
+      "pred": "17:52",
+      "truth": "17:51",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-24",
+      "prayer": "isha",
+      "pred": "19:17",
+      "truth": "19:16",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-25",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-25",
+      "prayer": "magrib",
+      "pred": "16:50",
+      "truth": "16:49",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-25",
+      "prayer": "isha",
+      "pred": "18:17",
+      "truth": "18:16",
+      "delta": 1
+    },
+    {
+      "date": "2037-10-28",
+      "prayer": "asr",
+      "pred": "14:14",
+      "truth": "14:13",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-02",
+      "prayer": "magrib",
+      "pred": "16:35",
+      "truth": "16:34",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-02",
+      "prayer": "isha",
+      "pred": "18:03",
+      "truth": "18:02",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-13",
+      "prayer": "asr",
+      "pred": "13:53",
+      "truth": "13:52",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-17",
+      "prayer": "dhuhr",
+      "pred": "11:51",
+      "truth": "11:50",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-22",
+      "prayer": "magrib",
+      "pred": "16:06",
+      "truth": "16:05",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-22",
+      "prayer": "isha",
+      "pred": "17:41",
+      "truth": "17:40",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-23",
+      "prayer": "fajr",
+      "pred": "05:48",
+      "truth": "05:47",
+      "delta": 1
+    },
+    {
+      "date": "2037-11-23",
+      "prayer": "sunrise",
+      "pred": "07:30",
+      "truth": "07:29",
+      "delta": 1
+    },
+    {
+      "date": "2037-12-15",
+      "prayer": "asr",
+      "pred": "13:37",
+      "truth": "13:38",
+      "delta": -1
+    },
+    {
+      "date": "2037-12-21",
+      "prayer": "magrib",
+      "pred": "15:56",
+      "truth": "15:57",
+      "delta": -1
+    },
+    {
+      "date": "2037-12-21",
+      "prayer": "isha",
+      "pred": "17:33",
+      "truth": "17:34",
+      "delta": -1
+    },
+    {
+      "date": "2037-12-25",
+      "prayer": "fajr",
+      "pred": "06:23",
+      "truth": "06:22",
+      "delta": 1
+    },
+    {
+      "date": "2037-12-25",
+      "prayer": "sunrise",
+      "pred": "08:03",
+      "truth": "08:02",
+      "delta": 1
+    },
+    {
+      "date": "2038-01-04",
+      "prayer": "fajr",
+      "pred": "06:26",
+      "truth": "06:25",
+      "delta": 1
+    },
+    {
+      "date": "2038-01-04",
+      "prayer": "sunrise",
+      "pred": "08:03",
+      "truth": "08:02",
+      "delta": 1
+    },
+    {
+      "date": "2038-01-08",
+      "prayer": "magrib",
+      "pred": "16:14",
+      "truth": "16:13",
+      "delta": 1
+    },
+    {
+      "date": "2038-01-08",
+      "prayer": "isha",
+      "pred": "17:51",
+      "truth": "17:50",
+      "delta": 1
+    },
+    {
+      "date": "2038-02-02",
+      "prayer": "asr",
+      "pred": "14:28",
+      "truth": "14:29",
+      "delta": -1
+    },
+    {
+      "date": "2038-02-11",
+      "prayer": "asr",
+      "pred": "14:41",
+      "truth": "14:42",
+      "delta": -1
+    },
+    {
+      "date": "2038-03-18",
+      "prayer": "dhuhr",
+      "pred": "12:14",
+      "truth": "12:13",
+      "delta": 1
+    },
+    {
+      "date": "2038-03-20",
+      "prayer": "asr",
+      "pred": "15:28",
+      "truth": "15:27",
+      "delta": 1
+    },
+    {
+      "date": "2038-03-25",
+      "prayer": "asr",
+      "pred": "15:33",
+      "truth": "15:32",
+      "delta": 1
+    },
+    {
+      "date": "2038-03-31",
+      "prayer": "fajr",
+      "pred": "05:03",
+      "truth": "05:02",
+      "delta": 1
+    },
+    {
+      "date": "2038-03-31",
+      "prayer": "sunrise",
+      "pred": "06:35",
+      "truth": "06:34",
+      "delta": 1
+    },
+    {
+      "date": "2038-04-13",
+      "prayer": "magrib",
+      "pred": "19:57",
+      "truth": "19:56",
+      "delta": 1
+    },
+    {
+      "date": "2038-04-13",
+      "prayer": "isha",
+      "pred": "21:12",
+      "truth": "21:11",
+      "delta": 1
+    },
+    {
+      "date": "2038-04-28",
+      "prayer": "magrib",
+      "pred": "20:22",
+      "truth": "20:21",
+      "delta": 1
+    },
+    {
+      "date": "2038-04-28",
+      "prayer": "isha",
+      "pred": "21:34",
+      "truth": "21:33",
+      "delta": 1
+    },
+    {
+      "date": "2038-07-12",
+      "prayer": "magrib",
+      "pred": "21:18",
+      "truth": "21:17",
+      "delta": 1
+    },
+    {
+      "date": "2038-07-12",
+      "prayer": "isha",
+      "pred": "22:27",
+      "truth": "22:26",
+      "delta": 1
+    },
+    {
+      "date": "2038-07-16",
+      "prayer": "asr",
+      "pred": "17:27",
+      "truth": "17:26",
+      "delta": 1
+    },
+    {
+      "date": "2038-07-29",
+      "prayer": "asr",
+      "pred": "17:21",
+      "truth": "17:20",
+      "delta": 1
+    },
+    {
+      "date": "2038-08-16",
+      "prayer": "magrib",
+      "pred": "20:25",
+      "truth": "20:24",
+      "delta": 1
+    },
+    {
+      "date": "2038-08-16",
+      "prayer": "isha",
+      "pred": "21:32",
+      "truth": "21:31",
+      "delta": 1
+    },
+    {
+      "date": "2038-09-10",
+      "prayer": "asr",
+      "pred": "16:32",
+      "truth": "16:33",
+      "delta": -1
+    },
+    {
+      "date": "2038-10-10",
+      "prayer": "magrib",
+      "pred": "18:22",
+      "truth": "18:21",
+      "delta": 1
+    },
+    {
+      "date": "2038-10-10",
+      "prayer": "isha",
+      "pred": "19:43",
+      "truth": "19:42",
+      "delta": 1
+    },
+    {
+      "date": "2038-10-13",
+      "prayer": "fajr",
+      "pred": "05:48",
+      "truth": "05:47",
+      "delta": 1
+    },
+    {
+      "date": "2038-10-13",
+      "prayer": "sunrise",
+      "pred": "07:19",
+      "truth": "07:18",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-05",
+      "prayer": "asr",
+      "pred": "14:03",
+      "truth": "14:02",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-09",
+      "prayer": "fajr",
+      "pred": "05:27",
+      "truth": "05:26",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-09",
+      "prayer": "sunrise",
+      "pred": "07:06",
+      "truth": "07:05",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-11",
+      "prayer": "dhuhr",
+      "pred": "11:50",
+      "truth": "11:49",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-22",
+      "prayer": "fajr",
+      "pred": "05:46",
+      "truth": "05:45",
+      "delta": 1
+    },
+    {
+      "date": "2038-11-22",
+      "prayer": "sunrise",
+      "pred": "07:28",
+      "truth": "07:27",
+      "delta": 1
+    },
+    {
+      "date": "2038-12-05",
+      "prayer": "asr",
+      "pred": "13:37",
+      "truth": "13:38",
+      "delta": -1
+    },
+    {
+      "date": "2038-12-10",
+      "prayer": "magrib",
+      "pred": "15:54",
+      "truth": "15:55",
+      "delta": -1
+    },
+    {
+      "date": "2038-12-10",
+      "prayer": "isha",
+      "pred": "17:31",
+      "truth": "17:32",
+      "delta": -1
+    },
+    {
+      "date": "2038-12-15",
+      "prayer": "magrib",
+      "pred": "15:54",
+      "truth": "15:55",
+      "delta": -1
+    },
+    {
+      "date": "2038-12-15",
+      "prayer": "isha",
+      "pred": "17:31",
+      "truth": "17:32",
+      "delta": -1
+    }
+  ],
+  "overall": {
+    "n": 24108,
+    "exact": 23690,
+    "within1": 24108,
+    "worst": 1,
+    "mae": 0.0173,
+    "pctExact": 98.27,
+    "pctWithin1": 100
+  },
+  "errorDistribution": {
+    "0": 23690,
+    "1": 350,
+    "-1": 68
+  },
+  "worstByPrayer": {
+    "fajr": {
+      "n": 4018,
+      "exact": 3959,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0147,
+      "pctExact": 98.53,
+      "pctWithin1": 100
+    },
+    "sunrise": {
+      "n": 4018,
+      "exact": 3959,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0147,
+      "pctExact": 98.53,
+      "pctWithin1": 100
+    },
+    "dhuhr": {
+      "n": 4018,
+      "exact": 3964,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0134,
+      "pctExact": 98.66,
+      "pctWithin1": 100
+    },
+    "asr": {
+      "n": 4018,
+      "exact": 3953,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0162,
+      "pctExact": 98.38,
+      "pctWithin1": 100
+    },
+    "magrib": {
+      "n": 4018,
+      "exact": 3929,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0222,
+      "pctExact": 97.78,
+      "pctWithin1": 100
+    },
+    "isha": {
+      "n": 4018,
+      "exact": 3926,
+      "within1": 4018,
+      "worst": 1,
+      "mae": 0.0229,
+      "pctExact": 97.71,
+      "pctWithin1": 100
+    }
+  }
+}

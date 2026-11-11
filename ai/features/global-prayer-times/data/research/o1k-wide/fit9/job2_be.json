@@ -1,0 +1,392 @@
+{
+ "middle_fajr_fit": {
+  "rms": 1.01,
+  "lat": 44.75,
+  "angle": 19.100000000000044,
+  "bias": -1.66,
+  "days": 40
+ },
+ "middle_fajr_fit_lat45": {
+  "rms": 1.01,
+  "angle": 18.88,
+  "bias": -1.5
+ },
+ "middle_fajr_at_lat45_18": {
+  "rms": 4.69,
+  "bias": -9.8
+ },
+ "recipe": {
+  "isha": "outside 05-01..08-11: 18 deg at Brussels; 05-01..05-21 flat 23:26; 07-26..08-11 flat 23:33; 05-22..07-25 lat-45 18 deg at Brussels lon",
+  "fajr": "outside 05-10..08-01: 18 deg at Brussels; 05-10..05-30 and 07-10..08-01 flat 03:24; 05-31..07-09 arc at lat 44.75 angle 19.1, floored at the 03:24 plateau (free fit, see middle_fajr_fit)"
+ },
+ "2025": {
+  "fajr": {
+   "n": 365,
+   "exact": 90,
+   "within1": 240,
+   "worst": 5,
+   "rms": 1.54,
+   "bias": -0.16,
+   "float_min": -4.66,
+   "float_max": 3.2,
+   "hist": {
+    "-5": 1,
+    "-4": 3,
+    "-3": 15,
+    "-2": 42,
+    "-1": 105,
+    "0": 90,
+    "1": 45,
+    "2": 48,
+    "3": 16
+   },
+   "outside": {
+    "n": 281,
+    "exact": 41,
+    "within1": 174,
+    "worst": 3,
+    "rms": 1.57,
+    "bias": 0.03,
+    "float_min": -3.32,
+    "float_max": 3.2
+   },
+   "inside": {
+    "n": 84,
+    "exact": 49,
+    "within1": 66,
+    "worst": 5,
+    "rms": 1.43,
+    "bias": -0.79,
+    "float_min": -4.66,
+    "float_max": 0.25
+   },
+   "inside_plateau": {
+    "n": 44,
+    "exact": 44,
+    "within1": 44,
+    "worst": 0,
+    "rms": 0.0,
+    "bias": 0.0,
+    "float_min": 0,
+    "float_max": 0
+   },
+   "inside_middle": {
+    "n": 40,
+    "exact": 5,
+    "within1": 22,
+    "worst": 5,
+    "rms": 2.07,
+    "bias": -1.65,
+    "float_min": -4.66,
+    "float_max": 0.25
+   }
+  },
+  "isha": {
+   "n": 365,
+   "exact": 295,
+   "within1": 341,
+   "worst": 6,
+   "rms": 1.07,
+   "bias": 0.23,
+   "float_min": -1.44,
+   "float_max": 6.19,
+   "hist": {
+    "-1": 27,
+    "0": 295,
+    "1": 19,
+    "2": 4,
+    "3": 7,
+    "4": 6,
+    "5": 5,
+    "6": 2
+   },
+   "outside": {
+    "n": 262,
+    "exact": 240,
+    "within1": 262,
+    "worst": 1,
+    "rms": 0.29,
+    "bias": -0.03,
+    "float_min": -0.61,
+    "float_max": 0.64
+   },
+   "inside": {
+    "n": 103,
+    "exact": 55,
+    "within1": 79,
+    "worst": 6,
+    "rms": 1.96,
+    "bias": 0.88,
+    "float_min": -1.44,
+    "float_max": 6.19
+   },
+   "inside_plateau": {
+    "n": 38,
+    "exact": 38,
+    "within1": 38,
+    "worst": 0,
+    "rms": 0.0,
+    "bias": 0.0,
+    "float_min": 0,
+    "float_max": 0
+   },
+   "inside_middle": {
+    "n": 65,
+    "exact": 17,
+    "within1": 41,
+    "worst": 6,
+    "rms": 2.47,
+    "bias": 1.39,
+    "float_min": -1.44,
+    "float_max": 6.19
+   }
+  }
+ },
+ "2026": {
+  "fajr": {
+   "n": 365,
+   "exact": 129,
+   "within1": 292,
+   "worst": 4,
+   "rms": 1.19,
+   "bias": -0.17,
+   "float_min": -4.34,
+   "float_max": 2.32,
+   "hist": {
+    "-4": 3,
+    "-3": 6,
+    "-2": 28,
+    "-1": 102,
+    "0": 129,
+    "1": 61,
+    "2": 36
+   },
+   "outside": {
+    "n": 281,
+    "exact": 81,
+    "within1": 227,
+    "worst": 2,
+    "rms": 1.14,
+    "bias": 0.02,
+    "float_min": -2.46,
+    "float_max": 2.32
+   },
+   "inside": {
+    "n": 84,
+    "exact": 48,
+    "within1": 65,
+    "worst": 4,
+    "rms": 1.38,
+    "bias": -0.79,
+    "float_min": -4.34,
+    "float_max": 0
+   },
+   "inside_plateau": {
+    "n": 44,
+    "exact": 44,
+    "within1": 44,
+    "worst": 0,
+    "rms": 0.0,
+    "bias": 0.0,
+    "float_min": 0,
+    "float_max": 0
+   },
+   "inside_middle": {
+    "n": 40,
+    "exact": 4,
+    "within1": 21,
+    "worst": 4,
+    "rms": 1.99,
+    "bias": -1.66,
+    "float_min": -4.34,
+    "float_max": -0.01
+   }
+  },
+  "isha": {
+   "n": 365,
+   "exact": 228,
+   "within1": 340,
+   "worst": 6,
+   "rms": 1.1,
+   "bias": 0.22,
+   "float_min": -1.33,
+   "float_max": 5.73,
+   "hist": {
+    "-1": 55,
+    "0": 228,
+    "1": 57,
+    "2": 6,
+    "3": 9,
+    "4": 4,
+    "5": 5,
+    "6": 1
+   },
+   "outside": {
+    "n": 262,
+    "exact": 169,
+    "within1": 262,
+    "worst": 1,
+    "rms": 0.6,
+    "bias": -0.04,
+    "float_min": -1.33,
+    "float_max": 1.02
+   },
+   "inside": {
+    "n": 103,
+    "exact": 59,
+    "within1": 78,
+    "worst": 6,
+    "rms": 1.84,
+    "bias": 0.88,
+    "float_min": -1.33,
+    "float_max": 5.73
+   },
+   "inside_plateau": {
+    "n": 38,
+    "exact": 38,
+    "within1": 38,
+    "worst": 0,
+    "rms": 0.0,
+    "bias": 0.0,
+    "float_min": 0,
+    "float_max": 0
+   },
+   "inside_middle": {
+    "n": 65,
+    "exact": 21,
+    "within1": 40,
+    "worst": 6,
+    "rms": 2.32,
+    "bias": 1.4,
+    "float_min": -1.33,
+    "float_max": 5.73
+   }
+  }
+ },
+ "year_identical": {
+  "fajr": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  },
+  "sunrise": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  },
+  "dhuhr": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  },
+  "asr": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  },
+  "magrib": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  },
+  "isha": {
+   "same": 363,
+   "of": 365,
+   "differ_on": [
+    "2025-03-29",
+    "2025-10-25"
+   ]
+  }
+ },
+ "frozen_table_drift_vs_true_dates": {
+  "2025": {
+   "fajr": {
+    "1": 0.4,
+    "2": 0.99,
+    "3": 1.76,
+    "4": 2.32,
+    "5": 2.83,
+    "8": -2.21,
+    "9": -1.41,
+    "10": -1.07,
+    "11": -0.85,
+    "12": -0.49
+   },
+   "isha": {
+    "1": -0.04,
+    "2": -0.15,
+    "3": -0.13,
+    "4": -0.06,
+    "8": -0.2,
+    "9": 0.02,
+    "10": 0.17,
+    "11": 0.11,
+    "12": -0.06
+   }
+  },
+  "2026": {
+   "fajr": {
+    "1": 0.26,
+    "2": 0.59,
+    "3": 1.18,
+    "4": 1.6,
+    "5": 1.98,
+    "8": -1.53,
+    "9": -0.94,
+    "10": -0.68,
+    "11": -0.52,
+    "12": -0.32
+   },
+   "isha": {
+    "1": 0.27,
+    "2": 0.23,
+    "3": 0.32,
+    "4": 0.56,
+    "8": -0.94,
+    "9": -0.62,
+    "10": -0.31,
+    "11": -0.13,
+    "12": 0.01
+   }
+  }
+ },
+ "amplitude_real18": {
+  "fajr": {
+   "exists_days": 313,
+   "jan15": 400.2,
+   "jul_extremes": [
+    113.9,
+    202.1
+   ],
+   "year_span_min": 113.9,
+   "year_span_max": 403.7,
+   "amplitude": 289.9
+  },
+  "isha": {
+   "exists_days": 313,
+   "jan15": 1143.8,
+   "jul_extremes": [
+    16.0,
+    103.7
+   ],
+   "year_span_min": 0.9,
+   "year_span_max": 1438.7,
+   "amplitude": 1437.8
+  }
+ }
+}

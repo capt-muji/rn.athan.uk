@@ -1,0 +1,3491 @@
+[
+ {
+  "capture": "aberdeen-amic-central-2026",
+  "town": "Aberdeen (Central)",
+  "region": "Scotland (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 333,
+  "F": {
+   "class": "own-table",
+   "offset": null,
+   "tol1": 0.63,
+   "tol1AllDays": 0.153,
+   "strict": 0.06,
+   "range": 129,
+   "envelope": [
+    30,
+    159
+   ],
+   "smooth": 0.825,
+   "n": 333,
+   "shortWindow": false,
+   "dipDays": 82,
+   "blipDays": 1,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-28",
+     "depth": [
+      39,
+      50
+     ],
+     "center": 48,
+     "n": 28
+    },
+    {
+     "from": "2026-02-19",
+     "to": "2026-03-08",
+     "depth": [
+      30,
+      31
+     ],
+     "center": 31,
+     "n": 17
+    },
+    {
+     "from": "2026-11-25",
+     "to": "2026-12-31",
+     "depth": [
+      39,
+      50
+     ],
+     "center": 49,
+     "n": 37
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 333,
+   "bytesDeltaRle": 696,
+   "monthMeans": {
+    "01": 44.0,
+    "02": 32.8,
+    "03": 36.0,
+    "04": 76.7,
+    "05": 116.6,
+    "06": 66.5,
+    "07": 96.1,
+    "08": 110.5,
+    "09": 63.0,
+    "10": 36.4,
+    "11": 36.4,
+    "12": 46.5
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.504,
+   "tol1AllDays": 0.171,
+   "strict": 0.066,
+   "range": 57,
+   "envelope": [
+    -34,
+    23
+   ],
+   "smooth": 0.997,
+   "n": 333,
+   "shortWindow": false,
+   "dipDays": 50,
+   "blipDays": 8,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-08",
+     "depth": [
+      20,
+      22
+     ],
+     "center": 21,
+     "n": 8
+    },
+    {
+     "from": "2026-01-25",
+     "to": "2026-02-06",
+     "depth": [
+      10,
+      12
+     ],
+     "center": 11,
+     "n": 13
+    },
+    {
+     "from": "2026-12-03",
+     "to": "2026-12-31",
+     "depth": [
+      20,
+      23
+     ],
+     "center": 22,
+     "n": 29
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 333,
+   "bytesDeltaRle": 483,
+   "monthMeans": {
+    "01": 16.3,
+    "02": 12.5,
+    "03": 16.0,
+    "04": 3.1,
+    "05": -13.6,
+    "06": -29.9,
+    "07": -13.7,
+    "08": 4.4,
+    "09": 11.0,
+    "10": 17.8,
+    "11": 16.2,
+    "12": 22.0
+   }
+  },
+  "classF": "own-table",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 666,
+  "flags": [
+   "F-dst-blips:1",
+   "I-dst-blips:8"
+  ]
+ },
+ {
+  "capture": "aberdeen-amic-spital-2026",
+  "town": "Aberdeen (Spital)",
+  "region": "Scotland (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 333,
+  "F": {
+   "class": "own-table",
+   "offset": null,
+   "tol1": 0.63,
+   "tol1AllDays": 0.153,
+   "strict": 0.06,
+   "range": 129,
+   "envelope": [
+    30,
+    159
+   ],
+   "smooth": 0.825,
+   "n": 333,
+   "shortWindow": false,
+   "dipDays": 82,
+   "blipDays": 1,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-28",
+     "depth": [
+      39,
+      50
+     ],
+     "center": 48,
+     "n": 28
+    },
+    {
+     "from": "2026-02-19",
+     "to": "2026-03-08",
+     "depth": [
+      30,
+      31
+     ],
+     "center": 31,
+     "n": 17
+    },
+    {
+     "from": "2026-11-25",
+     "to": "2026-12-31",
+     "depth": [
+      39,
+      50
+     ],
+     "center": 49,
+     "n": 37
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 333,
+   "bytesDeltaRle": 696,
+   "monthMeans": {
+    "01": 44.0,
+    "02": 32.8,
+    "03": 36.0,
+    "04": 76.7,
+    "05": 116.6,
+    "06": 66.5,
+    "07": 96.1,
+    "08": 110.5,
+    "09": 63.0,
+    "10": 36.4,
+    "11": 36.4,
+    "12": 46.5
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.504,
+   "tol1AllDays": 0.171,
+   "strict": 0.066,
+   "range": 57,
+   "envelope": [
+    -34,
+    23
+   ],
+   "smooth": 0.997,
+   "n": 333,
+   "shortWindow": false,
+   "dipDays": 50,
+   "blipDays": 8,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-08",
+     "depth": [
+      20,
+      22
+     ],
+     "center": 21,
+     "n": 8
+    },
+    {
+     "from": "2026-01-25",
+     "to": "2026-02-06",
+     "depth": [
+      10,
+      12
+     ],
+     "center": 11,
+     "n": 13
+    },
+    {
+     "from": "2026-12-03",
+     "to": "2026-12-31",
+     "depth": [
+      20,
+      23
+     ],
+     "center": 22,
+     "n": 29
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 333,
+   "bytesDeltaRle": 483,
+   "monthMeans": {
+    "01": 16.3,
+    "02": 12.5,
+    "03": 16.0,
+    "04": 3.1,
+    "05": -13.6,
+    "06": -29.9,
+    "07": -13.7,
+    "08": 4.4,
+    "09": 11.0,
+    "10": 17.8,
+    "11": 16.2,
+    "12": 22.0
+   }
+  },
+  "classF": "own-table",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 666,
+  "flags": [
+   "F-dst-blips:1",
+   "I-dst-blips:8"
+  ]
+ },
+ {
+  "capture": "birmingham-central-mosque-2026-11",
+  "town": "Birmingham",
+  "region": "West Midlands",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.8,
+   "tol1AllDays": 0.8,
+   "strict": 0.333,
+   "range": 4,
+   "envelope": [
+    -14,
+    -10
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 42,
+   "monthMeans": {
+    "11": -12.3
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": -1,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.067,
+   "range": 2,
+   "envelope": [
+    -2,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 12,
+   "monthMeans": {
+    "11": -0.1
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=-1",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "blackpool-central-2026-11",
+  "town": "Blackpool",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.733,
+   "tol1AllDays": 0.733,
+   "strict": 0.333,
+   "range": 5,
+   "envelope": [
+    1,
+    6
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 54,
+   "monthMeans": {
+    "11": 3.2
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 10,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.433,
+   "range": 2,
+   "envelope": [
+    9,
+    11
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 51,
+   "monthMeans": {
+    "11": 10.5
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=10",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "bolton-zakariyya-2026",
+  "town": "Bolton",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 354,
+  "F": {
+   "class": "offset",
+   "offset": 3,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.986,
+   "range": 1,
+   "envelope": [
+    2,
+    3
+   ],
+   "smooth": 1.0,
+   "n": 354,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 354,
+   "bytesDeltaRle": 27,
+   "monthMeans": {
+    "01": 3.0,
+    "02": 3.0,
+    "03": 3.0,
+    "04": 3.0,
+    "05": 3.0,
+    "06": 3.0,
+    "07": 3.0,
+    "08": 3.0,
+    "09": 3.0,
+    "10": 3.0,
+    "11": 2.9,
+    "12": 3.0
+   }
+  },
+  "I": {
+   "class": "offset+dip",
+   "offset": 5,
+   "tol1": 0.988,
+   "tol1AllDays": 0.695,
+   "strict": 0.664,
+   "range": 27,
+   "envelope": [
+    -21,
+    6
+   ],
+   "smooth": 0.997,
+   "n": 354,
+   "shortWindow": false,
+   "dipDays": 105,
+   "blipDays": 0,
+   "dips": [
+    {
+     "from": "2026-04-25",
+     "to": "2026-08-11",
+     "depth": [
+      -21,
+      1
+     ],
+     "center": -11,
+     "n": 105
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 354,
+   "bytesDeltaRle": 204,
+   "monthMeans": {
+    "01": 5.0,
+    "02": 5.0,
+    "03": 5.0,
+    "04": 3.7,
+    "05": -11.7,
+    "06": -17.9,
+    "07": -7.2,
+    "08": 2.4,
+    "09": 5.0,
+    "10": 5.0,
+    "11": 4.9,
+    "12": 5.0
+   }
+  },
+  "classF": "offset",
+  "classI": "offset+dip",
+  "class": "LUPT+offset",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 8,
+  "bytesPerTownOwnArrays": 708,
+  "flags": []
+ },
+ {
+  "capture": "brighton-almedinah-2026-11",
+  "town": "Brighton",
+  "region": "South Coast",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.333,
+   "range": 5,
+   "envelope": [
+    -6,
+    -1
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 48,
+   "monthMeans": {
+    "11": -4.1
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.533,
+   "range": 5,
+   "envelope": [
+    -5,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 36,
+   "monthMeans": {
+    "11": -2.7
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "cambridge-central-2026-11",
+  "town": "Cambridge",
+  "region": "East",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 32,
+  "F": {
+   "class": "offset",
+   "offset": -2,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.469,
+   "range": 2,
+   "envelope": [
+    -3,
+    -1
+   ],
+   "smooth": 1.0,
+   "n": 32,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 32,
+   "bytesDeltaRle": 36,
+   "monthMeans": {
+    "11": -2.4,
+    "12": -1.4
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": -5,
+   "tol1": 0.906,
+   "tol1AllDays": 0.906,
+   "strict": 0.25,
+   "range": 3,
+   "envelope": [
+    -7,
+    -4
+   ],
+   "smooth": 1.0,
+   "n": 32,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 32,
+   "bytesDeltaRle": 45,
+   "monthMeans": {
+    "11": -6.0,
+    "12": -4.8
+   }
+  },
+  "classF": "offset",
+  "classI": "offset",
+  "class": "LUPT+offset",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 2,
+  "bytesPerTownOwnArrays": 64,
+  "flags": []
+ },
+ {
+  "capture": "coventry-zeenatul-islam-2026",
+  "town": "Coventry",
+  "region": "West Midlands",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "offset+step",
+   "offset": 3,
+   "tol1": 1.0,
+   "tol1AllDays": 0.986,
+   "strict": 0.973,
+   "range": 61,
+   "envelope": [
+    2,
+    63
+   ],
+   "smooth": 0.995,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [
+    {
+     "from": "2026-03-26",
+     "to": "2026-03-30",
+     "value": 63,
+     "n": 5
+    }
+   ],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 39,
+   "monthMeans": {
+    "01": 3.0,
+    "02": 3.0,
+    "03": 12.7,
+    "04": 3.0,
+    "05": 3.0,
+    "06": 3.0,
+    "07": 3.0,
+    "08": 3.0,
+    "09": 3.0,
+    "10": 3.0,
+    "11": 3.0,
+    "12": 3.0
+   }
+  },
+  "I": {
+   "class": "offset+dip",
+   "offset": 2,
+   "tol1": 0.971,
+   "tol1AllDays": 0.726,
+   "strict": 0.016,
+   "range": 60,
+   "envelope": [
+    -57,
+    3
+   ],
+   "smooth": 0.984,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 89,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2026-05-05",
+     "to": "2026-05-23",
+     "depth": [
+      -13,
+      -2
+     ],
+     "center": -12,
+     "n": 19
+    },
+    {
+     "from": "2026-05-25",
+     "to": "2026-08-02",
+     "depth": [
+      -21,
+      -2
+     ],
+     "center": -16,
+     "n": 70
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 174,
+   "monthMeans": {
+    "01": 3.0,
+    "02": 3.0,
+    "03": -0.9,
+    "04": 2.9,
+    "05": -8.3,
+    "06": -17.8,
+    "07": -7.4,
+    "08": 2.1,
+    "09": 2.6,
+    "10": 3.0,
+    "11": 3.0,
+    "12": 3.0
+   }
+  },
+  "classF": "offset+step",
+  "classI": "offset+dip",
+  "class": "LUPT+offset",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 20,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "I-dst-blips:3"
+  ]
+ },
+ {
+  "capture": "dudley-mcc-2026-11",
+  "town": "Dudley",
+  "region": "West Midlands",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.433,
+   "range": 4,
+   "envelope": [
+    -2,
+    2
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 39,
+   "monthMeans": {
+    "11": 0.0
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.9,
+   "tol1AllDays": 0.9,
+   "strict": 0.667,
+   "range": 4,
+   "envelope": [
+    0,
+    4
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 27,
+   "monthMeans": {
+    "11": 1.2
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "dundee-almaktoum-mosque-2026",
+  "town": "Dundee",
+  "region": "Scotland (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 365,
+  "F": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.568,
+   "tol1AllDays": 0.148,
+   "strict": 0.049,
+   "range": 85,
+   "envelope": [
+    -6,
+    79
+   ],
+   "smooth": 0.937,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 70,
+   "blipDays": 7,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-28",
+     "depth": [
+      36,
+      46
+     ],
+     "center": 43,
+     "n": 28
+    },
+    {
+     "from": "2026-02-25",
+     "to": "2026-03-01",
+     "depth": [
+      28,
+      28
+     ],
+     "center": 28,
+     "n": 5
+    },
+    {
+     "from": "2026-11-25",
+     "to": "2026-12-31",
+     "depth": [
+      36,
+      47
+     ],
+     "center": 44,
+     "n": 37
+    }
+   ],
+   "steps": [
+    {
+     "from": "2026-03-22",
+     "to": "2026-05-15",
+     "value": 37,
+     "n": 55
+    }
+   ],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 726,
+   "monthMeans": {
+    "01": 40.8,
+    "02": 30.3,
+    "03": 33.1,
+    "04": 64.4,
+    "05": 35.1,
+    "06": -1.2,
+    "07": 18.7,
+    "08": 61.6,
+    "09": 45.4,
+    "10": 34.0,
+    "11": 33.6,
+    "12": 43.0
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.536,
+   "tol1AllDays": 0.225,
+   "strict": 0.058,
+   "range": 56,
+   "envelope": [
+    -26,
+    30
+   ],
+   "smooth": 0.953,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 70,
+   "blipDays": 7,
+   "dips": [
+    {
+     "from": "2026-01-21",
+     "to": "2026-02-01",
+     "depth": [
+      11,
+      16
+     ],
+     "center": 15,
+     "n": 12
+    },
+    {
+     "from": "2026-02-03",
+     "to": "2026-02-20",
+     "depth": [
+      13,
+      16
+     ],
+     "center": 15,
+     "n": 18
+    },
+    {
+     "from": "2026-03-18",
+     "to": "2026-03-21",
+     "depth": [
+      24,
+      24
+     ],
+     "center": 24,
+     "n": 4
+    },
+    {
+     "from": "2026-09-16",
+     "to": "2026-10-08",
+     "depth": [
+      24,
+      30
+     ],
+     "center": 26,
+     "n": 23
+    },
+    {
+     "from": "2026-12-12",
+     "to": "2026-12-24",
+     "depth": [
+      8,
+      16
+     ],
+     "center": 15,
+     "n": 13
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 708,
+   "monthMeans": {
+    "01": 18.2,
+    "02": 15.8,
+    "03": 20.4,
+    "04": 13.4,
+    "05": -9.7,
+    "06": -22.7,
+    "07": -13.9,
+    "08": 11.7,
+    "09": 24.3,
+    "10": 22.3,
+    "11": 19.9,
+    "12": 17.1
+   }
+  },
+  "classF": "angle-like",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:7",
+   "I-dst-blips:7"
+  ]
+ },
+ {
+  "capture": "east-london-mosque-2026",
+  "town": "London (East London Mosque)",
+  "region": "London",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 365,
+  "F": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 1.0,
+   "range": 0,
+   "envelope": [
+    0,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 3,
+   "monthMeans": {
+    "01": 0.0,
+    "02": 0.0,
+    "03": 0.0,
+    "04": 0.0,
+    "05": 0.0,
+    "06": 0.0,
+    "07": 0.0,
+    "08": 0.0,
+    "09": 0.0,
+    "10": 0.0,
+    "11": 0.0,
+    "12": 0.0
+   }
+  },
+  "I": {
+   "class": "offset+dip",
+   "offset": -7,
+   "tol1": 1.0,
+   "tol1AllDays": 0.918,
+   "strict": 0.907,
+   "range": 9,
+   "envelope": [
+    -15,
+    -6
+   ],
+   "smooth": 0.995,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 30,
+   "blipDays": 0,
+   "dips": [
+    {
+     "from": "2026-02-18",
+     "to": "2026-03-19",
+     "depth": [
+      -15,
+      -15
+     ],
+     "center": -15,
+     "n": 30
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 21,
+   "monthMeans": {
+    "01": -7.0,
+    "02": -10.1,
+    "03": -11.9,
+    "04": -7.0,
+    "05": -7.0,
+    "06": -6.9,
+    "07": -7.0,
+    "08": -7.0,
+    "09": -7.0,
+    "10": -7.0,
+    "11": -7.0,
+    "12": -7.0
+   }
+  },
+  "classF": "exact",
+  "classI": "offset+dip",
+  "class": "LUPT+offset",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 8,
+  "bytesPerTownOwnArrays": 730,
+  "flags": []
+ },
+ {
+  "capture": "edinburgh-central-mosque-2026-11",
+  "town": "Edinburgh",
+  "region": "Scotland (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": null,
+  "I": {
+   "class": "offset",
+   "offset": 30,
+   "tol1": 0.867,
+   "tol1AllDays": 0.867,
+   "strict": 0.3,
+   "range": 3,
+   "envelope": [
+    28,
+    31
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 45,
+   "monthMeans": {
+    "11": 29.6
+   }
+  },
+  "classF": null,
+  "classI": "offset",
+  "class": "LUPT+offset",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 2,
+  "bytesPerTownOwnArrays": 30,
+  "flags": []
+ },
+ {
+  "capture": "elm-london-2026",
+  "town": "London (Elm)",
+  "region": "London",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 1.0,
+   "range": 0,
+   "envelope": [
+    0,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 3,
+   "monthMeans": {
+    "01": 0.0,
+    "02": 0.0,
+    "03": 0.0,
+    "04": 0.0,
+    "05": 0.0,
+    "06": 0.0,
+    "07": 0.0,
+    "08": 0.0,
+    "09": 0.0,
+    "10": 0.0,
+    "11": 0.0,
+    "12": 0.0
+   }
+  },
+  "I": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.989,
+   "range": 2,
+   "envelope": [
+    -1,
+    1
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 15,
+   "monthMeans": {
+    "01": 0.0,
+    "02": 0.0,
+    "03": 0.0,
+    "04": 0.0,
+    "05": 0.0,
+    "06": 0.1,
+    "07": 0.0,
+    "08": 0.0,
+    "09": 0.0,
+    "10": 0.0,
+    "11": -0.0,
+    "12": 0.0
+   }
+  },
+  "classF": "exact",
+  "classI": "exact",
+  "class": "LUPT-exact",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 0,
+  "bytesPerTownOwnArrays": 730,
+  "flags": []
+ },
+ {
+  "capture": "glasgow-central-mosque-2026",
+  "town": "Glasgow",
+  "region": "Scotland (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 365,
+  "F": {
+   "class": "own-table",
+   "offset": null,
+   "tol1": 0.554,
+   "tol1AllDays": 0.126,
+   "strict": 0.066,
+   "range": 122,
+   "envelope": [
+    16,
+    138
+   ],
+   "smooth": 0.879,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 75,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-27",
+     "depth": [
+      24,
+      33
+     ],
+     "center": 32,
+     "n": 27
+    },
+    {
+     "from": "2026-02-28",
+     "to": "2026-03-10",
+     "depth": [
+      16,
+      16
+     ],
+     "center": 16,
+     "n": 11
+    },
+    {
+     "from": "2026-11-25",
+     "to": "2026-12-31",
+     "depth": [
+      24,
+      34
+     ],
+     "center": 28,
+     "n": 37
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 726,
+   "monthMeans": {
+    "01": 28.3,
+    "02": 18.3,
+    "03": 20.2,
+    "04": 52.0,
+    "05": 96.8,
+    "06": 56.9,
+    "07": 87.5,
+    "08": 87.5,
+    "09": 34.8,
+    "10": 23.3,
+    "11": 21.4,
+    "12": 29.8
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.542,
+   "tol1AllDays": 0.159,
+   "strict": 0.052,
+   "range": 83,
+   "envelope": [
+    -32,
+    51
+   ],
+   "smooth": 0.986,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 89,
+   "blipDays": 6,
+   "dips": [
+    {
+     "from": "2026-01-23",
+     "to": "2026-02-08",
+     "depth": [
+      25,
+      28
+     ],
+     "center": 27,
+     "n": 17
+    },
+    {
+     "from": "2026-02-10",
+     "to": "2026-02-16",
+     "depth": [
+      27,
+      28
+     ],
+     "center": 28,
+     "n": 7
+    },
+    {
+     "from": "2026-03-10",
+     "to": "2026-03-15",
+     "depth": [
+      36,
+      38
+     ],
+     "center": 37,
+     "n": 6
+    },
+    {
+     "from": "2026-09-08",
+     "to": "2026-10-12",
+     "depth": [
+      36,
+      51
+     ],
+     "center": 40,
+     "n": 35
+    },
+    {
+     "from": "2026-12-08",
+     "to": "2026-12-31",
+     "depth": [
+      36,
+      38
+     ],
+     "center": 37,
+     "n": 24
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 657,
+   "monthMeans": {
+    "01": 31.0,
+    "02": 28.2,
+    "03": 31.8,
+    "04": 4.3,
+    "05": -13.0,
+    "06": -26.9,
+    "07": -17.1,
+    "08": 1.5,
+    "09": 41.5,
+    "10": 35.4,
+    "11": 31.9,
+    "12": 36.4
+   }
+  },
+  "classF": "own-table",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:3",
+   "I-dst-blips:6"
+  ]
+ },
+ {
+  "capture": "hull-mosque-2026",
+  "town": "Hull",
+  "region": "Yorkshire",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 62,
+  "F": {
+   "class": "offset+dip",
+   "offset": -3,
+   "tol1": 0.854,
+   "tol1AllDays": 0.565,
+   "strict": 0.016,
+   "range": 5,
+   "envelope": [
+    -7,
+    -2
+   ],
+   "smooth": 1.0,
+   "n": 62,
+   "shortWindow": true,
+   "dipDays": 21,
+   "blipDays": 0,
+   "dips": [
+    {
+     "from": "2026-11-16",
+     "to": "2026-12-06",
+     "depth": [
+      -7,
+      -7
+     ],
+     "center": -7,
+     "n": 21
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 62,
+   "bytesDeltaRle": 18,
+   "monthMeans": {
+    "01": -2.0,
+    "11": -6.1,
+    "12": -7.0
+   }
+  },
+  "I": {
+   "class": "offset+dip",
+   "offset": -21,
+   "tol1": 0.855,
+   "tol1AllDays": 0.758,
+   "strict": 0.065,
+   "range": 7,
+   "envelope": [
+    -22,
+    -15
+   ],
+   "smooth": 0.984,
+   "n": 62,
+   "shortWindow": true,
+   "dipDays": 7,
+   "blipDays": 0,
+   "dips": [
+    {
+     "from": "2026-11-06",
+     "to": "2026-11-12",
+     "depth": [
+      -17,
+      -15
+     ],
+     "center": -16,
+     "n": 7
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 62,
+   "bytesDeltaRle": 27,
+   "monthMeans": {
+    "01": -22.0,
+    "11": -18.8,
+    "12": -22.0
+   }
+  },
+  "classF": "offset+dip",
+  "classI": "offset+dip",
+  "class": "LUPT+offset",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 14,
+  "bytesPerTownOwnArrays": 124,
+  "flags": []
+ },
+ {
+  "capture": "ilford-2026-11",
+  "town": "London (Ilford)",
+  "region": "London",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.8,
+   "tol1AllDays": 0.8,
+   "strict": 0.367,
+   "range": 4,
+   "envelope": [
+    -4,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 63,
+   "monthMeans": {
+    "11": -2.3
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.4,
+   "range": 5,
+   "envelope": [
+    -3,
+    2
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 51,
+   "monthMeans": {
+    "11": -1.0
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "jamia-masjid-hanfia-bradford-2026",
+  "town": "Bradford (Hanfia)",
+  "region": "Yorkshire",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 365,
+  "F": null,
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.698,
+   "tol1AllDays": 0.241,
+   "strict": 0.063,
+   "range": 48,
+   "envelope": [
+    -42,
+    6
+   ],
+   "smooth": 0.984,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 16,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2026-01-22",
+     "to": "2026-02-02",
+     "depth": [
+      -42,
+      -40
+     ],
+     "center": -41,
+     "n": 12
+    },
+    {
+     "from": "2026-10-17",
+     "to": "2026-10-20",
+     "depth": [
+      -32,
+      -31
+     ],
+     "center": -32,
+     "n": 4
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 531,
+   "monthMeans": {
+    "01": -37.8,
+    "02": -37.5,
+    "03": -29.7,
+    "04": -17.8,
+    "05": -4.2,
+    "06": -8.9,
+    "07": 1.2,
+    "08": -6.3,
+    "09": -22.8,
+    "10": -30.9,
+    "11": -36.8,
+    "12": -36.3
+   }
+  },
+  "classF": null,
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "half-coverage",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 365,
+  "flags": [
+   "I-dst-blips:3"
+  ]
+ },
+ {
+  "capture": "leicester-masjid-umar-2026-11",
+  "town": "Leicester",
+  "region": "East Midlands",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.3,
+   "range": 4,
+   "envelope": [
+    19,
+    23
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 45,
+   "monthMeans": {
+    "11": 20.2
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 24,
+   "tol1": 0.967,
+   "tol1AllDays": 0.967,
+   "strict": 0.467,
+   "range": 3,
+   "envelope": [
+    23,
+    26
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 45,
+   "monthMeans": {
+    "11": 24.4
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=24",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "london-central-mosque-icc-2026-11-12",
+  "town": "London (ICC)",
+  "region": "London",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 61,
+  "F": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 1.0,
+   "range": 0,
+   "envelope": [
+    0,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 61,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 61,
+   "bytesDeltaRle": 3,
+   "monthMeans": {
+    "11": 0.0,
+    "12": 0.0
+   }
+  },
+  "I": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.984,
+   "range": 1,
+   "envelope": [
+    -1,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 61,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 61,
+   "bytesDeltaRle": 9,
+   "monthMeans": {
+    "11": -0.0,
+    "12": 0.0
+   }
+  },
+  "classF": "exact",
+  "classI": "exact",
+  "class": "LUPT-exact",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 0,
+  "bytesPerTownOwnArrays": 122,
+  "flags": []
+ },
+ {
+  "capture": "luton-central-mosque-2026-11",
+  "town": "Luton",
+  "region": "Home Counties",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.833,
+   "tol1AllDays": 0.833,
+   "strict": 0.2,
+   "range": 4,
+   "envelope": [
+    -2,
+    2
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 57,
+   "monthMeans": {
+    "11": -0.3
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 0,
+   "tol1": 0.967,
+   "tol1AllDays": 0.967,
+   "strict": 0.467,
+   "range": 3,
+   "envelope": [
+    -1,
+    2
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 51,
+   "monthMeans": {
+    "11": 0.1
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=0",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "middlesbrough-central-2026-11",
+  "town": "Middlesbrough",
+  "region": "North East",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 1.0,
+   "range": 0,
+   "envelope": [
+    0,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 3,
+   "monthMeans": {
+    "11": 0.0
+   }
+  },
+  "I": {
+   "class": "exact",
+   "offset": 0,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 1.0,
+   "range": 0,
+   "envelope": [
+    0,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 3,
+   "monthMeans": {
+    "11": 0.0
+   }
+  },
+  "classF": "exact",
+  "classI": "exact",
+  "class": "LUPT-exact",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 0,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "mwh-north-london-2026-11",
+  "town": "London (MWH)",
+  "region": "London",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": {
+   "class": "offset",
+   "offset": -1,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.0,
+   "range": 2,
+   "envelope": [
+    -2,
+    0
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 9,
+   "monthMeans": {
+    "11": -0.1
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": -7,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.933,
+   "range": 2,
+   "envelope": [
+    -8,
+    -6
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 15,
+   "monthMeans": {
+    "11": -7.0
+   }
+  },
+  "classF": "offset",
+  "classI": "offset",
+  "class": "LUPT+offset",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": 2,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "nottingham-ic-2026",
+  "town": "Nottingham",
+  "region": "East Midlands",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.582,
+   "tol1AllDays": 0.156,
+   "strict": 0.066,
+   "range": 121,
+   "envelope": [
+    17,
+    138
+   ],
+   "smooth": 0.915,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 60,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-27",
+     "depth": [
+      24,
+      32
+     ],
+     "center": 30,
+     "n": 27
+    },
+    {
+     "from": "2026-11-29",
+     "to": "2026-12-31",
+     "depth": [
+      24,
+      32
+     ],
+     "center": 26,
+     "n": 33
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 732,
+   "monthMeans": {
+    "01": 27.5,
+    "02": 19.5,
+    "03": 21.3,
+    "04": 43.0,
+    "05": 102.9,
+    "06": 95.8,
+    "07": 116.0,
+    "08": 59.7,
+    "09": 31.6,
+    "10": 23.3,
+    "11": 21.1,
+    "12": 28.1
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.504,
+   "tol1AllDays": 0.184,
+   "strict": 0.071,
+   "range": 81,
+   "envelope": [
+    -12,
+    69
+   ],
+   "smooth": 0.962,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 14,
+   "blipDays": 7,
+   "dips": [
+    {
+     "from": "2026-01-24",
+     "to": "2026-02-06",
+     "depth": [
+      20,
+      22
+     ],
+     "center": 21,
+     "n": 14
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 702,
+   "monthMeans": {
+    "01": 24.5,
+    "02": 23.3,
+    "03": 33.8,
+    "04": 54.5,
+    "05": 28.9,
+    "06": -5.9,
+    "07": 19.0,
+    "08": 54.8,
+    "09": 44.0,
+    "10": 29.2,
+    "11": 25.5,
+    "12": 28.7
+   }
+  },
+  "classF": "angle-like",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:3",
+   "F-unclamped-summer",
+   "I-dst-blips:7"
+  ]
+ },
+ {
+  "capture": "oldham-ocmic-2026",
+  "town": "Oldham (OCMIC)",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.614,
+   "tol1AllDays": 0.244,
+   "strict": 0.107,
+   "range": 19,
+   "envelope": [
+    -4,
+    15
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 91,
+   "blipDays": 6,
+   "dips": [
+    {
+     "from": "2026-01-05",
+     "to": "2026-01-08",
+     "depth": [
+      7,
+      7
+     ],
+     "center": 7,
+     "n": 4
+    },
+    {
+     "from": "2026-02-16",
+     "to": "2026-03-25",
+     "depth": [
+      -4,
+      -1
+     ],
+     "center": -2,
+     "n": 38
+    },
+    {
+     "from": "2026-04-06",
+     "to": "2026-05-18",
+     "depth": [
+      7,
+      10
+     ],
+     "center": 8,
+     "n": 43
+    },
+    {
+     "from": "2026-12-26",
+     "to": "2026-12-31",
+     "depth": [
+      7,
+      8
+     ],
+     "center": 7,
+     "n": 6
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 495,
+   "monthMeans": {
+    "01": 4.5,
+    "02": -0.1,
+    "03": -1.8,
+    "04": 8.4,
+    "05": 6.3,
+    "06": 3.9,
+    "07": 10.3,
+    "08": 14.5,
+    "09": 11.7,
+    "10": 9.8,
+    "11": 3.4,
+    "12": 4.7
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.566,
+   "tol1AllDays": 0.293,
+   "strict": 0.088,
+   "range": 21,
+   "envelope": [
+    -16,
+    5
+   ],
+   "smooth": 0.995,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 144,
+   "blipDays": 7,
+   "dips": [
+    {
+     "from": "2026-01-30",
+     "to": "2026-02-02",
+     "depth": [
+      -9,
+      -8
+     ],
+     "center": -8,
+     "n": 4
+    },
+    {
+     "from": "2026-06-05",
+     "to": "2026-06-30",
+     "depth": [
+      -16,
+      -8
+     ],
+     "center": -10,
+     "n": 26
+    },
+    {
+     "from": "2026-07-18",
+     "to": "2026-11-08",
+     "depth": [
+      0,
+      5
+     ],
+     "center": 3,
+     "n": 114
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 519,
+   "monthMeans": {
+    "01": -4.8,
+    "02": -5.5,
+    "03": -3.0,
+    "04": -4.0,
+    "05": -3.3,
+    "06": -11.1,
+    "07": -1.0,
+    "08": 4.1,
+    "09": 3.7,
+    "10": 2.8,
+    "11": -0.4,
+    "12": 0.7
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:6",
+   "I-dst-blips:7"
+  ]
+ },
+ {
+  "capture": "oldham-westwood-2026",
+  "town": "Oldham (Westwood)",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 345,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.508,
+   "tol1AllDays": 0.281,
+   "strict": 0.104,
+   "range": 19,
+   "envelope": [
+    -6,
+    13
+   ],
+   "smooth": 0.994,
+   "n": 345,
+   "shortWindow": false,
+   "dipDays": 104,
+   "blipDays": 12,
+   "dips": [
+    {
+     "from": "2026-02-06",
+     "to": "2026-03-30",
+     "depth": [
+      -6,
+      4
+     ],
+     "center": -5,
+     "n": 49
+    },
+    {
+     "from": "2026-05-25",
+     "to": "2026-06-19",
+     "depth": [
+      2,
+      4
+     ],
+     "center": 3,
+     "n": 24
+    },
+    {
+     "from": "2026-08-03",
+     "to": "2026-08-15",
+     "depth": [
+      12,
+      13
+     ],
+     "center": 12,
+     "n": 13
+    },
+    {
+     "from": "2026-08-17",
+     "to": "2026-09-03",
+     "depth": [
+      12,
+      13
+     ],
+     "center": 12,
+     "n": 18
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 345,
+   "bytesDeltaRle": 537,
+   "monthMeans": {
+    "01": 6.1,
+    "02": 2.1,
+    "03": -3.4,
+    "04": 8.8,
+    "05": 6.6,
+    "06": 4.2,
+    "07": 8.8,
+    "08": 12.2,
+    "09": 9.7,
+    "10": 7.9,
+    "11": 1.8,
+    "12": 4.6
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.586,
+   "tol1AllDays": 0.365,
+   "strict": 0.154,
+   "range": 22,
+   "envelope": [
+    -16,
+    6
+   ],
+   "smooth": 0.994,
+   "n": 345,
+   "shortWindow": false,
+   "dipDays": 125,
+   "blipDays": 5,
+   "dips": [
+    {
+     "from": "2026-01-14",
+     "to": "2026-03-02",
+     "depth": [
+      -9,
+      -3
+     ],
+     "center": -4,
+     "n": 46
+    },
+    {
+     "from": "2026-03-21",
+     "to": "2026-03-24",
+     "depth": [
+      -4,
+      -3
+     ],
+     "center": -3,
+     "n": 4
+    },
+    {
+     "from": "2026-03-26",
+     "to": "2026-04-16",
+     "depth": [
+      -5,
+      -3
+     ],
+     "center": -4,
+     "n": 20
+    },
+    {
+     "from": "2026-04-19",
+     "to": "2026-04-28",
+     "depth": [
+      -4,
+      -3
+     ],
+     "center": -3,
+     "n": 10
+    },
+    {
+     "from": "2026-05-02",
+     "to": "2026-05-10",
+     "depth": [
+      -4,
+      -3
+     ],
+     "center": -3,
+     "n": 7
+    },
+    {
+     "from": "2026-06-02",
+     "to": "2026-07-13",
+     "depth": [
+      -16,
+      -3
+     ],
+     "center": -5,
+     "n": 38
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 345,
+   "bytesDeltaRle": 510,
+   "monthMeans": {
+    "01": -5.0,
+    "02": -3.8,
+    "03": -2.2,
+    "04": -3.3,
+    "05": -1.5,
+    "06": -10.9,
+    "07": -1.2,
+    "08": 2.1,
+    "09": 1.4,
+    "10": 0.7,
+    "11": -1.6,
+    "12": 0.8
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 690,
+  "flags": [
+   "F-dst-blips:12",
+   "I-dst-blips:5"
+  ]
+ },
+ {
+  "capture": "oxford-coms-2026",
+  "town": "Oxford",
+  "region": "Home Counties",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.514,
+   "tol1AllDays": 0.148,
+   "strict": 0.047,
+   "range": 302,
+   "envelope": [
+    13,
+    315
+   ],
+   "smooth": 0.926,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 56,
+   "blipDays": 5,
+   "dips": [
+    {
+     "from": "2026-01-01",
+     "to": "2026-01-22",
+     "depth": [
+      21,
+      27
+     ],
+     "center": 26,
+     "n": 22
+    },
+    {
+     "from": "2026-02-22",
+     "to": "2026-02-26",
+     "depth": [
+      13,
+      13
+     ],
+     "center": 13,
+     "n": 5
+    },
+    {
+     "from": "2026-12-03",
+     "to": "2026-12-31",
+     "depth": [
+      21,
+      26
+     ],
+     "center": 22,
+     "n": 29
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 693,
+   "monthMeans": {
+    "01": 22.8,
+    "02": 15.1,
+    "03": 16.9,
+    "04": 38.3,
+    "05": 86.6,
+    "06": 103.0,
+    "07": 109.4,
+    "08": 49.4,
+    "09": 27.1,
+    "10": 29.1,
+    "11": 16.9,
+    "12": 22.9
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.517,
+   "tol1AllDays": 0.17,
+   "strict": 0.074,
+   "range": 57,
+   "envelope": [
+    -13,
+    44
+   ],
+   "smooth": 0.975,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 42,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2026-05-02",
+     "to": "2026-05-18",
+     "depth": [
+      29,
+      38
+     ],
+     "center": 31,
+     "n": 17
+    },
+    {
+     "from": "2026-07-21",
+     "to": "2026-08-14",
+     "depth": [
+      29,
+      44
+     ],
+     "center": 41,
+     "n": 25
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 684,
+   "monthMeans": {
+    "01": 25.4,
+    "02": -7.6,
+    "03": 0.9,
+    "04": 15.6,
+    "05": 26.1,
+    "06": -6.8,
+    "07": 22.5,
+    "08": 27.9,
+    "09": 6.6,
+    "10": 3.0,
+    "11": 24.5,
+    "12": 27.4
+   }
+  },
+  "classF": "angle-like",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:5",
+   "F-unclamped-summer",
+   "I-dst-blips:3"
+  ]
+ },
+ {
+  "capture": "preston-jamea-2026-11",
+  "town": "Preston",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.8,
+   "tol1AllDays": 0.8,
+   "strict": 0.4,
+   "range": 4,
+   "envelope": [
+    -2,
+    2
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 27,
+   "monthMeans": {
+    "11": -0.5
+   }
+  },
+  "I": null,
+  "classF": "drift",
+  "classI": null,
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 30,
+  "flags": []
+ },
+ {
+  "capture": "reading-amic-2026",
+  "town": "Reading",
+  "region": "Home Counties",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": null,
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.674,
+   "tol1AllDays": 0.43,
+   "strict": 0.162,
+   "range": 15,
+   "envelope": [
+    -11,
+    4
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 123,
+   "blipDays": 9,
+   "dips": [
+    {
+     "from": "2026-01-25",
+     "to": "2026-02-01",
+     "depth": [
+      -11,
+      -10
+     ],
+     "center": -10,
+     "n": 8
+    },
+    {
+     "from": "2026-06-19",
+     "to": "2026-09-06",
+     "depth": [
+      -2,
+      4
+     ],
+     "center": -1,
+     "n": 80
+    },
+    {
+     "from": "2026-09-12",
+     "to": "2026-09-20",
+     "depth": [
+      -2,
+      -2
+     ],
+     "center": -2,
+     "n": 9
+    },
+    {
+     "from": "2026-09-22",
+     "to": "2026-10-06",
+     "depth": [
+      -2,
+      -1
+     ],
+     "center": -2,
+     "n": 15
+    },
+    {
+     "from": "2026-12-16",
+     "to": "2026-12-26",
+     "depth": [
+      -2,
+      -1
+     ],
+     "center": -2,
+     "n": 11
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 510,
+   "monthMeans": {
+    "01": -7.3,
+    "02": -7.8,
+    "03": -5.5,
+    "04": -6.1,
+    "05": -5.4,
+    "06": -3.0,
+    "07": 2.9,
+    "08": -0.9,
+    "09": -2.0,
+    "10": -3.0,
+    "11": -5.9,
+    "12": -3.3
+   }
+  },
+  "classF": null,
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "half-coverage",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 365,
+  "flags": [
+   "I-dst-blips:9"
+  ]
+ },
+ {
+  "capture": "rochdale-golden-2026",
+  "town": "Rochdale",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.495,
+   "tol1AllDays": 0.293,
+   "strict": 0.11,
+   "range": 14,
+   "envelope": [
+    -4,
+    10
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 136,
+   "blipDays": 13,
+   "dips": [
+    {
+     "from": "2026-02-11",
+     "to": "2026-03-25",
+     "depth": [
+      -4,
+      0
+     ],
+     "center": -1,
+     "n": 43
+    },
+    {
+     "from": "2026-04-12",
+     "to": "2026-04-30",
+     "depth": [
+      8,
+      10
+     ],
+     "center": 9,
+     "n": 19
+    },
+    {
+     "from": "2026-06-04",
+     "to": "2026-06-19",
+     "depth": [
+      -2,
+      0
+     ],
+     "center": -1,
+     "n": 16
+    },
+    {
+     "from": "2026-08-11",
+     "to": "2026-08-15",
+     "depth": [
+      8,
+      8
+     ],
+     "center": 8,
+     "n": 5
+    },
+    {
+     "from": "2026-08-23",
+     "to": "2026-09-02",
+     "depth": [
+      8,
+      9
+     ],
+     "center": 8,
+     "n": 11
+    },
+    {
+     "from": "2026-11-04",
+     "to": "2026-12-15",
+     "depth": [
+      -3,
+      0
+     ],
+     "center": -1,
+     "n": 42
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 492,
+   "monthMeans": {
+    "01": 3.4,
+    "02": 0.4,
+    "03": -1.2,
+    "04": 7.6,
+    "05": 4.3,
+    "06": 0.5,
+    "07": 4.5,
+    "08": 7.7,
+    "09": 5.8,
+    "10": 4.0,
+    "11": -1.2,
+    "12": 1.5
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.681,
+   "tol1AllDays": 0.427,
+   "strict": 0.126,
+   "range": 15,
+   "envelope": [
+    -11,
+    4
+   ],
+   "smooth": 0.997,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 124,
+   "blipDays": 12,
+   "dips": [
+    {
+     "from": "2026-01-27",
+     "to": "2026-01-31",
+     "depth": [
+      -11,
+      -10
+     ],
+     "center": -10,
+     "n": 5
+    },
+    {
+     "from": "2026-06-19",
+     "to": "2026-09-04",
+     "depth": [
+      -2,
+      4
+     ],
+     "center": 2,
+     "n": 78
+    },
+    {
+     "from": "2026-09-17",
+     "to": "2026-10-06",
+     "depth": [
+      -2,
+      -1
+     ],
+     "center": -2,
+     "n": 20
+    },
+    {
+     "from": "2026-12-11",
+     "to": "2026-12-31",
+     "depth": [
+      -2,
+      0
+     ],
+     "center": -1,
+     "n": 21
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 531,
+   "monthMeans": {
+    "01": -6.7,
+    "02": -7.0,
+    "03": -5.1,
+    "04": -6.2,
+    "05": -5.8,
+    "06": -2.7,
+    "07": 2.9,
+    "08": -1.2,
+    "09": -2.0,
+    "10": -2.9,
+    "11": -5.1,
+    "12": -2.3
+   }
+  },
+  "classF": "drift",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:13",
+   "I-dst-blips:12"
+  ]
+ },
+ {
+  "capture": "slough-jmic-2022",
+  "town": "Slough",
+  "region": "Home Counties",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 365,
+  "F": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.553,
+   "tol1AllDays": 0.186,
+   "strict": 0.068,
+   "range": 48,
+   "envelope": [
+    16,
+    64
+   ],
+   "smooth": 0.992,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 58,
+   "blipDays": 3,
+   "dips": [
+    {
+     "from": "2022-01-01",
+     "to": "2022-01-28",
+     "depth": [
+      23,
+      30
+     ],
+     "center": 27,
+     "n": 28
+    },
+    {
+     "from": "2022-12-02",
+     "to": "2022-12-31",
+     "depth": [
+      23,
+      30
+     ],
+     "center": 24,
+     "n": 30
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 690,
+   "monthMeans": {
+    "01": 26.1,
+    "02": 18.9,
+    "03": 20.6,
+    "04": 41.9,
+    "05": 48.0,
+    "06": 19.3,
+    "07": 36.7,
+    "08": 51.5,
+    "09": 30.4,
+    "10": 22.6,
+    "11": 19.9,
+    "12": 26.2
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.86,
+   "tol1AllDays": 0.203,
+   "strict": 0.014,
+   "range": 34,
+   "envelope": [
+    -7,
+    27
+   ],
+   "smooth": 1.0,
+   "n": 365,
+   "shortWindow": false,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 365,
+   "bytesDeltaRle": 261,
+   "monthMeans": {
+    "01": -7.0,
+    "02": -0.3,
+    "03": 9.1,
+    "04": 15.6,
+    "05": 18.0,
+    "06": 12.2,
+    "07": 22.6,
+    "08": 23.3,
+    "09": 15.6,
+    "10": 7.1,
+    "11": -3.0,
+    "12": -7.0
+   }
+  },
+  "classF": "angle-like",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 730,
+  "flags": [
+   "F-dst-blips:3"
+  ]
+ },
+ {
+  "capture": "stockport-islamic-centre-2026-11",
+  "town": "Stockport",
+  "region": "North West",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.767,
+   "tol1AllDays": 0.767,
+   "strict": 0.333,
+   "range": 5,
+   "envelope": [
+    0,
+    5
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 51,
+   "monthMeans": {
+    "11": 2.0
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 7,
+   "tol1": 0.967,
+   "tol1AllDays": 0.967,
+   "strict": 0.4,
+   "range": 3,
+   "envelope": [
+    5,
+    8
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 51,
+   "monthMeans": {
+    "11": 6.6
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=7",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "stoke-citycentral-month",
+  "town": "Stoke",
+  "region": "West Midlands",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.778,
+   "tol1AllDays": 0.7,
+   "strict": 0.1,
+   "range": 5,
+   "envelope": [
+    8,
+    13
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 3,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 18,
+   "monthMeans": {
+    "11": 9.5
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 2,
+   "tol1": 0.967,
+   "tol1AllDays": 0.967,
+   "strict": 0.3,
+   "range": 3,
+   "envelope": [
+    0,
+    3
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 36,
+   "monthMeans": {
+    "11": 1.5
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=2",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": [
+   "F-dst-blips:3"
+  ]
+ },
+ {
+  "capture": "swicc-cardiff-2026-11",
+  "town": "Cardiff",
+  "region": "Wales (contrast)",
+  "english": false,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": {
+   "class": "offset",
+   "offset": 3,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.867,
+   "range": 1,
+   "envelope": [
+    2,
+    3
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 27,
+   "monthMeans": {
+    "11": 2.9
+   }
+  },
+  "I": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.5,
+   "tol1AllDays": 0.4,
+   "strict": 0.133,
+   "range": 9,
+   "envelope": [
+    -17,
+    -8
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 4,
+   "blipDays": 2,
+   "dips": [
+    {
+     "from": "2026-11-01",
+     "to": "2026-11-04",
+     "depth": [
+      -9,
+      -8
+     ],
+     "center": -8,
+     "n": 4
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 30,
+   "monthMeans": {
+    "11": -13.0
+   }
+  },
+  "classF": "offset",
+  "classI": "drift",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "F=3",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": [
+   "I-dst-blips:2"
+  ]
+ },
+ {
+  "capture": "victor-street-bradford-2026-11",
+  "town": "Bradford (Victor St)",
+  "region": "Yorkshire",
+  "english": true,
+  "src": "ukscotland",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.6,
+   "tol1AllDays": 0.6,
+   "strict": 0.3,
+   "range": 5,
+   "envelope": [
+    -1,
+    4
+   ],
+   "smooth": 0.931,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 60,
+   "monthMeans": {
+    "11": 1.9
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": -36,
+   "tol1": 0.9,
+   "tol1AllDays": 0.9,
+   "strict": 0.1,
+   "range": 3,
+   "envelope": [
+    -38,
+    -35
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 36,
+   "monthMeans": {
+    "11": -36.7
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=-36",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ },
+ {
+  "capture": "walsall-wjmg-2020",
+  "town": "Walsall",
+  "region": "West Midlands",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 366,
+  "F": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.553,
+   "tol1AllDays": 0.172,
+   "strict": 0.079,
+   "range": 55,
+   "envelope": [
+    8,
+    63
+   ],
+   "smooth": 0.984,
+   "n": 366,
+   "shortWindow": false,
+   "dipDays": 86,
+   "blipDays": 1,
+   "dips": [
+    {
+     "from": "2020-01-01",
+     "to": "2020-01-29",
+     "depth": [
+      23,
+      30
+     ],
+     "center": 29,
+     "n": 29
+    },
+    {
+     "from": "2020-06-06",
+     "to": "2020-07-01",
+     "depth": [
+      8,
+      15
+     ],
+     "center": 9,
+     "n": 26
+    },
+    {
+     "from": "2020-12-01",
+     "to": "2020-12-31",
+     "depth": [
+      23,
+      30
+     ],
+     "center": 24,
+     "n": 31
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 366,
+   "bytesDeltaRle": 666,
+   "monthMeans": {
+    "01": 26.5,
+    "02": 18.6,
+    "03": 20.4,
+    "04": 43.1,
+    "05": 41.8,
+    "06": 11.7,
+    "07": 29.9,
+    "08": 50.2,
+    "09": 30.1,
+    "10": 22.1,
+    "11": 20.0,
+    "12": 26.6
+   }
+  },
+  "I": {
+   "class": "angle-like",
+   "offset": null,
+   "tol1": 0.477,
+   "tol1AllDays": 0.172,
+   "strict": 0.068,
+   "range": 74,
+   "envelope": [
+    22,
+    96
+   ],
+   "smooth": 0.978,
+   "n": 366,
+   "shortWindow": false,
+   "dipDays": 12,
+   "blipDays": 4,
+   "dips": [
+    {
+     "from": "2020-01-24",
+     "to": "2020-02-04",
+     "depth": [
+      22,
+      24
+     ],
+     "center": 23,
+     "n": 12
+    }
+   ],
+   "steps": [],
+   "bytesRawArrays": 366,
+   "bytesDeltaRle": 642,
+   "monthMeans": {
+    "01": 26.4,
+    "02": 25.3,
+    "03": 35.8,
+    "04": 62.6,
+    "05": 75.3,
+    "06": 52.4,
+    "07": 72.1,
+    "08": 79.7,
+    "09": 45.7,
+    "10": 31.5,
+    "11": 27.6,
+    "12": 30.5
+   }
+  },
+  "classF": "angle-like",
+  "classI": "angle-like",
+  "class": "own-table-not-LUPT",
+  "evidence": "full-year",
+  "offsetNote": null,
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 732,
+  "flags": [
+   "F-dst-blips:1",
+   "I-dst-blips:4"
+  ]
+ },
+ {
+  "capture": "watford-jamia-2026-11",
+  "town": "Watford",
+  "region": "Home Counties",
+  "english": true,
+  "src": "uktowns2",
+  "rows": 30,
+  "F": {
+   "class": "drift",
+   "offset": null,
+   "tol1": 0.8,
+   "tol1AllDays": 0.8,
+   "strict": 0.367,
+   "range": 5,
+   "envelope": [
+    12,
+    17
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 66,
+   "monthMeans": {
+    "11": 14.2
+   }
+  },
+  "I": {
+   "class": "offset",
+   "offset": 23,
+   "tol1": 1.0,
+   "tol1AllDays": 1.0,
+   "strict": 0.5,
+   "range": 2,
+   "envelope": [
+    22,
+    24
+   ],
+   "smooth": 1.0,
+   "n": 30,
+   "shortWindow": true,
+   "dipDays": 0,
+   "blipDays": 0,
+   "dips": [],
+   "steps": [],
+   "bytesRawArrays": 30,
+   "bytesDeltaRle": 42,
+   "monthMeans": {
+    "11": 22.6
+   }
+  },
+  "classF": "drift",
+  "classI": "offset",
+  "class": "LUPT-family-drift",
+  "evidence": "short-window",
+  "offsetNote": "I=23",
+  "bytesPerTownLuptOffsetEncoding": null,
+  "bytesPerTownOwnArrays": 60,
+  "flags": []
+ }
+]

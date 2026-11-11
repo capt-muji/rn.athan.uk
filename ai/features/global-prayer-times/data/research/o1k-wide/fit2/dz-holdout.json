@@ -1,0 +1,102 @@
+{
+ "fajr": {
+  "fittedOnAutumn": {
+   "angle": 17.8,
+   "mode": "floor",
+   "margin": 0,
+   "exact": 46,
+   "worst": 1,
+   "n": 50
+  },
+  "fittedOnSpring": {
+   "angle": 17.8,
+   "mode": "floor",
+   "margin": 0,
+   "exact": 30,
+   "worst": 0,
+   "n": 30
+  },
+  "fittedOnAll": {
+   "angle": 17.8,
+   "mode": "floor",
+   "margin": 0,
+   "exact": 111,
+   "worst": 1,
+   "n": 119
+  },
+  "autumnRecipeAppliedToSpring": {
+   "exact": 30,
+   "within1": 30,
+   "worst": 0,
+   "n": 30
+  },
+  "springRecipeAppliedToAutumn": {
+   "exact": 46,
+   "within1": 50,
+   "worst": 1,
+   "n": 50
+  },
+  "allRecipeAppliedToAutumn": {
+   "exact": 46,
+   "within1": 50,
+   "worst": 1,
+   "n": 50
+  },
+  "allRecipeAppliedToSpring": {
+   "exact": 30,
+   "within1": 30,
+   "worst": 0,
+   "n": 30
+  }
+ },
+ "isha": {
+  "fittedOnAutumn": {
+   "angle": 16,
+   "mode": "ceil",
+   "margin": 5,
+   "exact": 48,
+   "worst": 1,
+   "n": 50
+  },
+  "fittedOnSpring": {
+   "angle": 16.1,
+   "mode": "nearest",
+   "margin": 5,
+   "exact": 29,
+   "worst": 1,
+   "n": 30
+  },
+  "fittedOnAll": {
+   "angle": 16.1,
+   "mode": "nearest",
+   "margin": 5,
+   "exact": 115,
+   "worst": 1,
+   "n": 119
+  },
+  "autumnRecipeAppliedToSpring": {
+   "exact": 28,
+   "within1": 30,
+   "worst": 1,
+   "n": 30
+  },
+  "springRecipeAppliedToAutumn": {
+   "exact": 48,
+   "within1": 50,
+   "worst": 1,
+   "n": 50
+  },
+  "allRecipeAppliedToAutumn": {
+   "exact": 48,
+   "within1": 50,
+   "worst": 1,
+   "n": 50
+  },
+  "allRecipeAppliedToSpring": {
+   "exact": 29,
+   "within1": 30,
+   "worst": 1,
+   "n": 30
+  }
+ }
+}

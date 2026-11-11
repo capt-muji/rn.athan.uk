@@ -1,0 +1,197 @@
+{
+ "masjid-toronto": {
+  "rows": 365,
+  "mode": "nearest",
+  "fajrAngle": 14.9,
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 228,
+   "within1": 363,
+   "worst": 2
+  },
+  "ishaIntervalPrinted": {
+   "mode": "80",
+   "values": {
+    "80": 365
+   }
+  },
+  "ishaIntervalFit": 81,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 126,
+   "within1": 297,
+   "worst": 2
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 145,
+   "within1": 253,
+   "worst": 3
+  },
+  "asrHanafiWorst": 72,
+  "sunriseScore": {
+   "exact": 137,
+   "within1": 301,
+   "worst": 2
+  },
+  "maghribScore": {
+   "exact": 126,
+   "within1": 297,
+   "worst": 2
+  },
+  "dhuhrScore": {
+   "exact": 301,
+   "within1": 365,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1063,
+   "within1": 1876,
+   "of": 2190
+  },
+  "defect": null,
+  "clean": {
+   "worst": 3,
+   "exact": 1063,
+   "within1": 1876,
+   "of": 2190
+  },
+  "impliedIshaAngleByMonth": {
+   "2026-01": 14.5,
+   "2026-02": 15.1,
+   "2026-03": 15.1,
+   "2026-04": 14,
+   "2026-05": 12.5,
+   "2026-06": 11.7,
+   "2026-07": 12.3,
+   "2026-08": 14,
+   "2026-09": 15.4,
+   "2026-10": 15.7,
+   "2026-11": 14.6,
+   "2026-12": 14
+  },
+  "fcna13": {
+   "min": -12.5,
+   "max": 15.5,
+   "mean": 5.4
+  },
+  "fcna15": {
+   "min": -30.5,
+   "max": 4.5,
+   "mean": -7.7
+  }
+ },
+ "islamic-institute-toronto": {
+  "rows": 365,
+  "mode": "nearest",
+  "fajrAngle": 15.2,
+  "fajrMargin": 0.5,
+  "fajrScore": {
+   "exact": 225,
+   "within1": 356,
+   "worst": 2
+  },
+  "ishaIntervalPrinted": {
+   "mode": "89",
+   "values": {
+    "89": 20,
+    "90": 345
+   }
+  },
+  "ishaIntervalFit": 90,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 157,
+   "within1": 268,
+   "worst": 3
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 138,
+   "within1": 273,
+   "worst": 60
+  },
+  "asrHanafiWorst": 105,
+  "sunriseScore": {
+   "exact": 117,
+   "within1": 244,
+   "worst": 3
+  },
+  "maghribScore": {
+   "exact": 177,
+   "within1": 268,
+   "worst": 3
+  },
+  "dhuhrScore": {
+   "exact": 251,
+   "within1": 365,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 60,
+   "exact": 1065,
+   "within1": 1774,
+   "of": 2190
+  },
+  "defect": "2026-03-08",
+  "clean": {
+   "worst": 3,
+   "exact": 1065,
+   "within1": 1769,
+   "of": 2184
+  },
+  "impliedIshaAngleByMonth": {
+   "2026-01": 15.9,
+   "2026-02": 16.8,
+   "2026-03": 16.7,
+   "2026-04": 15.6,
+   "2026-05": 13.8,
+   "2026-06": 12.9,
+   "2026-07": 13.5,
+   "2026-08": 15.4,
+   "2026-09": 17.1,
+   "2026-10": 17.3,
+   "2026-11": 16.2,
+   "2026-12": 15.5
+  },
+  "fcna13": {
+   "min": -2.5,
+   "max": 24.5,
+   "mean": 14.8
+  },
+  "fcna15": {
+   "min": -21.5,
+   "max": 13.5,
+   "mean": 1.7
+  }
+ },
+ "agreement": {
+  "fajr": [
+   -2,
+   0
+  ],
+  "sunrise": [
+   -2,
+   0
+  ],
+  "dhuhr": [
+   -1,
+   0
+  ],
+  "asr": [
+   -59,
+   1
+  ],
+  "maghrib": [
+   -2,
+   1
+  ],
+  "isha": [
+   8,
+   10
+  ]
+ }
+}

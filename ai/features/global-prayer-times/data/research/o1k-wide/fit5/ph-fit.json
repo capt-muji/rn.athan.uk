@@ -1,0 +1,414 @@
+{
+ "davao": {
+  "coords": {
+   "lat": 7.0711,
+   "lon": 125.6125
+  },
+  "rows": 90,
+  "first": "2025-09-22",
+  "last": "2026-12-09",
+  "mode": "nearest",
+  "fajr": {
+   "angle": 18.1,
+   "margin": 0.5,
+   "exact": 79,
+   "within1": 90,
+   "worst": 1,
+   "plateau": [
+    18.1,
+    18.1
+   ]
+  },
+  "sunrise": {
+   "margin": -1,
+   "exact": 46,
+   "within1": 90,
+   "worst": 1
+  },
+  "dhuhr": {
+   "margin": 0.5,
+   "exact": 50,
+   "within1": 90,
+   "worst": 1
+  },
+  "asr": {
+   "school": "Shafi",
+   "margin": 0.5,
+   "exact": 64,
+   "within1": 90,
+   "worst": 1,
+   "hanafiWorst": 64
+  },
+  "maghrib": {
+   "margin": 0.5,
+   "exact": 49,
+   "within1": 90,
+   "worst": 1
+  },
+  "fajrBand": [
+   17.3,
+   18.5
+  ],
+  "ishaAngleBand": [
+   16.5,
+   17.6
+  ],
+  "ishaIntervalBand": null,
+  "isha": {
+   "model": "angle",
+   "angle": 16.7,
+   "angleScore": {
+    "exact": 66,
+    "within1": 90,
+    "worst": 1,
+    "margin": 1.5,
+    "plateau": [
+     16.7,
+     16.7
+    ]
+   },
+   "interval": 67,
+   "intervalScore": {
+    "exact": 30,
+    "within1": 56,
+    "worst": 4,
+    "margin": 0,
+    "plateau": [
+     65,
+     69
+    ]
+   },
+   "printedIntervalRange": [
+    64,
+    69
+   ],
+   "margin": 1.5
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 354,
+   "within1": 540,
+   "of": 540
+  },
+  "byMode": {
+   "nearest": {
+    "worst": 1,
+    "within1": 540,
+    "exact": 354
+   },
+   "floor": {
+    "worst": 1,
+    "within1": 540,
+    "exact": 354
+   },
+   "ceil": {
+    "worst": 1,
+    "within1": 540,
+    "exact": 354
+   }
+  },
+  "perYear": {
+   "2025": {
+    "n": 30,
+    "exact": 138,
+    "within1": 180,
+    "worst": 1
+   },
+   "2026": {
+    "n": 60,
+    "exact": 216,
+    "within1": 360,
+    "worst": 1
+   }
+  },
+  "fit2025": {
+   "fajrAngle": 17.6,
+   "fajrMargin": -1,
+   "fajrWorst": 1,
+   "ishaAngle": 17,
+   "ishaMargin": 0.5,
+   "ishaWorst": 1
+  },
+  "fit2026": {
+   "fajrAngle": 18.4,
+   "fajrMargin": 1.5,
+   "fajrWorst": 1,
+   "ishaAngle": 16.7,
+   "ishaMargin": 1.5,
+   "ishaWorst": 1
+  }
+ },
+ "cotabato": {
+  "coords": {
+   "lat": 7.2047,
+   "lon": 124.231
+  },
+  "rows": 29,
+  "first": "2026-06-16",
+  "last": "2026-07-14",
+  "mode": "nearest",
+  "fajr": {
+   "angle": 17.5,
+   "margin": -2,
+   "exact": 29,
+   "within1": 29,
+   "worst": 0,
+   "plateau": [
+    17.5,
+    17.5
+   ]
+  },
+  "sunrise": {
+   "margin": -1,
+   "exact": 24,
+   "within1": 29,
+   "worst": 1
+  },
+  "dhuhr": {
+   "margin": 0,
+   "exact": 26,
+   "within1": 29,
+   "worst": 1
+  },
+  "asr": {
+   "school": "Shafi",
+   "margin": 0,
+   "exact": 29,
+   "within1": 29,
+   "worst": 0,
+   "hanafiWorst": 61
+  },
+  "maghrib": {
+   "margin": 0.5,
+   "exact": 15,
+   "within1": 29,
+   "worst": 1
+  },
+  "fajrBand": [
+   17.3,
+   18.6
+  ],
+  "ishaAngleBand": [
+   17.3,
+   18.5
+  ],
+  "ishaIntervalBand": [
+   74,
+   78
+  ],
+  "isha": {
+   "model": "angle",
+   "angle": 18.1,
+   "angleScore": {
+    "exact": 28,
+    "within1": 29,
+    "worst": 1,
+    "margin": -1,
+    "plateau": [
+     18.1,
+     18.3
+    ]
+   },
+   "interval": 76,
+   "intervalScore": {
+    "exact": 17,
+    "within1": 29,
+    "worst": 1,
+    "margin": 0,
+    "plateau": [
+     74,
+     78
+    ]
+   },
+   "printedIntervalRange": [
+    73,
+    75
+   ],
+   "margin": -1
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 151,
+   "within1": 174,
+   "of": 174
+  },
+  "byMode": {
+   "nearest": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 151
+   },
+   "floor": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 151
+   },
+   "ceil": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 151
+   }
+  },
+  "perYear": {
+   "2026": {
+    "n": 29,
+    "exact": 151,
+    "within1": 174,
+    "worst": 1
+   }
+  }
+ },
+ "marawi": {
+  "coords": {
+   "lat": 7.9997,
+   "lon": 124.2864
+  },
+  "rows": 29,
+  "first": "2026-06-16",
+  "last": "2026-07-14",
+  "mode": "nearest",
+  "fajr": {
+   "angle": 17.7,
+   "margin": -1,
+   "exact": 28,
+   "within1": 29,
+   "worst": 1,
+   "plateau": [
+    17.7,
+    17.7
+   ]
+  },
+  "sunrise": {
+   "margin": -1,
+   "exact": 20,
+   "within1": 29,
+   "worst": 1
+  },
+  "dhuhr": {
+   "margin": 0,
+   "exact": 20,
+   "within1": 29,
+   "worst": 1
+  },
+  "asr": {
+   "school": "Shafi",
+   "margin": 0,
+   "exact": 20,
+   "within1": 29,
+   "worst": 1,
+   "hanafiWorst": 62
+  },
+  "maghrib": {
+   "margin": 0.5,
+   "exact": 16,
+   "within1": 29,
+   "worst": 1
+  },
+  "fajrBand": [
+   17.3,
+   18.5
+  ],
+  "ishaAngleBand": [
+   17.3,
+   18.5
+  ],
+  "ishaIntervalBand": [
+   74,
+   78
+  ],
+  "isha": {
+   "model": "angle",
+   "angle": 18.1,
+   "angleScore": {
+    "exact": 29,
+    "within1": 29,
+    "worst": 0,
+    "margin": -1,
+    "plateau": [
+     18.1,
+     18.1
+    ]
+   },
+   "interval": 76,
+   "intervalScore": {
+    "exact": 23,
+    "within1": 29,
+    "worst": 1,
+    "margin": 0,
+    "plateau": [
+     74,
+     78
+    ]
+   },
+   "printedIntervalRange": [
+    73,
+    75
+   ],
+   "margin": -1
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 133,
+   "within1": 174,
+   "of": 174
+  },
+  "byMode": {
+   "nearest": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 133
+   },
+   "floor": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 133
+   },
+   "ceil": {
+    "worst": 1,
+    "within1": 174,
+    "exact": 133
+   }
+  },
+  "perYear": {
+   "2026": {
+    "n": 29,
+    "exact": 133,
+    "within1": 174,
+    "worst": 1
+   }
+  }
+ },
+ "shared": {
+  "fajrAngle": 18.1,
+  "ishaAngle": 17.4,
+  "fajrWorst": 1,
+  "ishaWorst": 1,
+  "fajrExact": 124,
+  "ishaExact": 102,
+  "of": 148
+ },
+ "davao->cotabato": {
+  "fajr": 1,
+  "isha": 4
+ },
+ "davao->marawi": {
+  "fajr": 1,
+  "isha": 4
+ },
+ "cotabato->davao": {
+  "fajr": 1,
+  "isha": 4
+ },
+ "cotabato->marawi": {
+  "fajr": 1,
+  "isha": 0
+ },
+ "marawi->davao": {
+  "fajr": 1,
+  "isha": 4
+ },
+ "marawi->cotabato": {
+  "fajr": 1,
+  "isha": 1
+ }
+}

@@ -1,0 +1,610 @@
+{
+ "likcLatvia": {
+  "date": "2026-11-10",
+  "tz": "Europe/Riga",
+  "asr": "Shafi",
+  "verdict": {
+   "riga": {
+    "12/12": {
+     "coords": {
+      "lat": 56.9496,
+      "lon": 24.1052
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 385,
+       "computed": 385,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 471,
+       "computed": 474,
+       "diff": 3
+      },
+      "dhuhr": {
+       "printed": 729,
+       "computed": 727,
+       "diff": 2
+      },
+      "asr": {
+       "printed": 837,
+       "computed": 834,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 984,
+       "computed": 981,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1071,
+       "computed": 1069,
+       "diff": 2
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    },
+    "15/15": {
+     "coords": {
+      "lat": 56.9496,
+      "lon": 24.1052
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 362,
+       "computed": 362,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 471,
+       "computed": 474,
+       "diff": 3
+      },
+      "dhuhr": {
+       "printed": 729,
+       "computed": 727,
+       "diff": 2
+      },
+      "asr": {
+       "printed": 837,
+       "computed": 834,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 984,
+       "computed": 981,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1094,
+       "computed": 1092,
+       "diff": 2
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    }
+   },
+   "daugavpils": {
+    "12/12": {
+     "coords": {
+      "lat": 55.8746,
+      "lon": 26.5195
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 373,
+       "computed": 373,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 457,
+       "computed": 459,
+       "diff": 2
+      },
+      "dhuhr": {
+       "printed": 719,
+       "computed": 718,
+       "diff": 1
+      },
+      "asr": {
+       "printed": 832,
+       "computed": 829,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 979,
+       "computed": 976,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1063,
+       "computed": 1062,
+       "diff": 1
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    },
+    "15/15": {
+     "coords": {
+      "lat": 55.8746,
+      "lon": 26.5195
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 351,
+       "computed": 351,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 457,
+       "computed": 459,
+       "diff": 2
+      },
+      "dhuhr": {
+       "printed": 719,
+       "computed": 718,
+       "diff": 1
+      },
+      "asr": {
+       "printed": 832,
+       "computed": 829,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 979,
+       "computed": 976,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1085,
+       "computed": 1083,
+       "diff": 2
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    }
+   },
+   "ventspils": {
+    "12/12": {
+     "coords": {
+      "lat": 57.3926,
+      "lon": 21.5579
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 396,
+       "computed": 396,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 483,
+       "computed": 486,
+       "diff": 3
+      },
+      "dhuhr": {
+       "printed": 739,
+       "computed": 738,
+       "diff": 1
+      },
+      "asr": {
+       "printed": 845,
+       "computed": 842,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 992,
+       "computed": 989,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1081,
+       "computed": 1079,
+       "diff": 2
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    },
+    "15/15": {
+     "coords": {
+      "lat": 57.3926,
+      "lon": 21.5579
+     },
+     "perCol": {
+      "fajr": {
+       "printed": 373,
+       "computed": 373,
+       "diff": 0
+      },
+      "sunrise": {
+       "printed": 483,
+       "computed": 486,
+       "diff": 3
+      },
+      "dhuhr": {
+       "printed": 739,
+       "computed": 738,
+       "diff": 1
+      },
+      "asr": {
+       "printed": 845,
+       "computed": 842,
+       "diff": 3
+      },
+      "maghrib": {
+       "printed": 992,
+       "computed": 989,
+       "diff": 3
+      },
+      "isha": {
+       "printed": 1103,
+       "computed": 1102,
+       "diff": 1
+      }
+     },
+     "exact": "1/6",
+     "worst": 3
+    }
+   }
+  },
+  "pairDelta": {
+   "riga": {
+    "fajr": {
+     "printedDelta": -23,
+     "computedDelta": -23,
+     "match": true
+    },
+    "sunrise": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "dhuhr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "asr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "maghrib": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "isha": {
+     "printedDelta": 23,
+     "computedDelta": 23,
+     "match": true
+    }
+   },
+   "daugavpils": {
+    "fajr": {
+     "printedDelta": -22,
+     "computedDelta": -22,
+     "match": true
+    },
+    "sunrise": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "dhuhr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "asr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "maghrib": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "isha": {
+     "printedDelta": 22,
+     "computedDelta": 21,
+     "match": false
+    }
+   },
+   "ventspils": {
+    "fajr": {
+     "printedDelta": -23,
+     "computedDelta": -23,
+     "match": true
+    },
+    "sunrise": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "dhuhr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "asr": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "maghrib": {
+     "printedDelta": 0,
+     "computedDelta": 0,
+     "match": true
+    },
+    "isha": {
+     "printedDelta": 22,
+     "computedDelta": 23,
+     "match": false
+    }
+   }
+  }
+ },
+ "lithuaniaVilnius": {
+  "coords": {
+   "lat": 54.6872,
+   "lon": 25.2797
+  },
+  "tz": "Europe/Vilnius",
+  "rows": 7,
+  "span": [
+   "2026-11-09",
+   "2026-11-10",
+   "2026-11-11",
+   "2026-11-12",
+   "2026-11-13",
+   "2026-11-14",
+   "2026-11-15"
+  ],
+  "asrSchool": "Shafi",
+  "rounding": "nearest",
+  "freeFit": {
+   "fajrAngle": 18.1,
+   "fajrPlateau": {
+    "min": 17.9,
+    "max": 18.1
+   },
+   "fajrMargin": 0.5,
+   "ishaAngle": 16.2,
+   "ishaPlateau": {
+    "min": 16,
+    "max": 16.2
+   },
+   "ishaMargin": -0.5,
+   "sunriseMargin": -7,
+   "dhuhrMargin": 5,
+   "maghribMargin": 8,
+   "asrMargin": 6
+  },
+  "stated18_16": {
+   "perCol": {
+    "fajr": {
+     "exact": 5,
+     "of": 7,
+     "worst": 1,
+     "mae": 0.29,
+     "bias": 0.29
+    },
+    "sunrise": {
+     "exact": 0,
+     "of": 7,
+     "worst": 7,
+     "mae": 7,
+     "bias": 7
+    },
+    "dhuhr": {
+     "exact": 0,
+     "of": 7,
+     "worst": 5,
+     "mae": 5,
+     "bias": -5
+    },
+    "asr": {
+     "exact": 0,
+     "of": 7,
+     "worst": 6,
+     "mae": 5.86,
+     "bias": -5.86
+    },
+    "maghrib": {
+     "exact": 0,
+     "of": 7,
+     "worst": 9,
+     "mae": 8.14,
+     "bias": -8.14
+    },
+    "isha": {
+     "exact": 0,
+     "of": 7,
+     "worst": 1,
+     "mae": 1,
+     "bias": -1
+    }
+   },
+   "joint": {
+    "exact": 5,
+    "of": 42,
+    "worst": 9
+   }
+  }
+ },
+ "minsk": {
+  "coords": {
+   "lat": 53.9006,
+   "lon": 27.559
+  },
+  "tz": "Europe/Minsk",
+  "rows": 365,
+  "year": 2025,
+  "pins": {
+   "fajr03_08": [
+    [
+     "2025-06-08",
+     "2025-06-21",
+     14
+    ]
+   ],
+   "isha23_06": [
+    [
+     "2025-06-21",
+     "2025-07-03",
+     13
+    ]
+   ]
+  },
+  "recipe": {
+   "fajr": "18 deg (nearest); exact 151/182 on the robust season (Oct-Mar), worst 1, MAE 0.17; the 07:16 plateau is the NATURAL 18-deg plateau, not a cap",
+   "isha": "16 deg family (16 deg nearest, per-month bias -2..+2.4); the 23:06 hold is a fixed clock cap through the midsummer non-existence window",
+   "sunrise": "astro sunrise - 7",
+   "dhuhr": "transit + 5",
+   "maghrib": "sunset + ~7 (drift +6.0 winter to +8.5 late summer; depression scan prefers 1.63 deg)",
+   "asr": "Shafi family with a seasonal +2..+6 drift; best single shadow factor 1.04",
+   "rounding": "nearest",
+   "modelNoise": "the publisher solar model sits up to ~±2 min from adhan seasonally"
+  },
+  "columns": {
+   "fajr": {
+    "exact": 178,
+    "of": 212,
+    "worst": 1,
+    "margin": 0
+   },
+   "sunrise": {
+    "exact": 240,
+    "of": 339,
+    "worst": 1,
+    "margin": -7
+   },
+   "dhuhr": {
+    "exact": 300,
+    "of": 339,
+    "worst": 1,
+    "margin": 5
+   },
+   "asrShafi": {
+    "exact": 97,
+    "of": 339,
+    "worst": 4,
+    "margin": 2.5,
+    "shadowBest": [
+     {
+      "shadow": 1.04,
+      "exact": 106,
+      "of": 365,
+      "worst": 4
+     },
+     {
+      "shadow": 1.03,
+      "exact": 101,
+      "of": 365,
+      "worst": 5
+     },
+     {
+      "shadow": 1.05,
+      "exact": 52,
+      "of": 365,
+      "worst": 4
+     }
+    ]
+   },
+   "maghrib": {
+    "exact": 137,
+    "of": 339,
+    "worst": 3,
+    "margin": 6
+   },
+   "isha": {
+    "exact": 66,
+    "of": 212,
+    "worst": 4,
+    "margin": -1
+   }
+  },
+  "winterNaturalCheck": [
+   {
+    "date": "2024-12-26",
+    "printed": null,
+    "natural18": 435
+   },
+   {
+    "date": "2024-12-28",
+    "printed": null,
+    "natural18": 436
+   },
+   {
+    "date": "2024-12-30",
+    "printed": null,
+    "natural18": 436
+   },
+   {
+    "date": "2025-01-01",
+    "printed": "7:16",
+    "natural18": 436
+   },
+   {
+    "date": "2025-01-03",
+    "printed": "7:16",
+    "natural18": 436
+   },
+   {
+    "date": "2025-01-05",
+    "printed": "7:16",
+    "natural18": 436
+   },
+   {
+    "date": "2025-01-07",
+    "printed": "7:15",
+    "natural18": 435
+   }
+  ],
+  "nightFractions": {
+   "fajrPin": [
+    0.202,
+    0.202,
+    0.201,
+    0.201,
+    0.199,
+    0.2,
+    0.2,
+    0.2,
+    0.201,
+    0.201,
+    0.201,
+    0.201,
+    0.201,
+    0.201
+   ],
+   "ishaPin": [
+    0.179,
+    0.179,
+    0.177,
+    0.177,
+    0.176,
+    0.176,
+    0.176,
+    0.178,
+    0.177,
+    0.177,
+    0.176,
+    0.178,
+    0.178
+   ],
+   "winterFajr": [
+    0.12,
+    0.121
+   ]
+  },
+  "capVerdict": "FIXED CLOCK CAPS, not night fractions: fajr pins at exactly 03:08 for 14 days (2025-06-08..21) and isha at exactly 23:06 for 13 days (2025-06-21..07-03), while the night length moves day by day, so the pin is a clock; the deep-winter 07:16 run (2025-01-01..06, 2025-12-28..31) is NOT a cap - the computed 18-deg fajr reads 07:16 on exactly those dates",
+  "midsummerNote": "through roughly May 20..Jul 25 neither 15 nor 18 deg twilight exists at 53.9N; the fajr column still moves smoothly (sunrise-83..-101 min) under the clamp, so the publisher clamps a smooth internal curve, not the angle crossing itself"
+ }
+}

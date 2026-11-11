@@ -1,0 +1,114 @@
+# O1k Americas: US + Canada big-metro candidate domains for the dpt year probe.
+# One per line, grouped by metro (20 largest US metros + the 5 Canadian cities).
+# NYC
+iccny.org
+masjidmalcolmshabazz.com
+bayridgemasjid.org
+masjidarrahman.org
+# Los Angeles
+islamiccenter.com
+kingfahadmosque.org
+masjidomar.org
+icc-la.org
+# Chicago
+downtownislamiccenter.org
+masjidalhuda.org
+iccelgin.com
+masjidihsan.org
+# Dallas-Fort Worth
+iant.com
+epicmasjid.org
+valleyranchmasjid.org
+dentonmasjid.com
+# Houston
+adamscenter.org
+alnoormasjid.org
+isgh.org
+masjidsalamhouston.org
+# Washington DC
+theislamiccenter.org
+hijrah.org
+daralhijrah.org
+masdc.org
+# Philadelphia
+masjidullah.org
+neicphila.org
+masjidmuhammad.org
+msdvpa.org
+# Miami
+miamimosque.org
+masjidannoor.org
+masjidmiami.org
+# Atlanta
+alfarooqmasjid.org
+atlantamasjid.org
+suwaneemasjid.org
+masjidibraaheem.com
+# Boston
+isbcc.org
+masjidsboston.org
+islamicsocietyframingham.org
+# Phoenix
+iccpaz.org
+tempeislamiccenter.org
+masjidalsalaamaz.org
+# San Francisco Bay
+issf.org
+mcabayarea.org
+masjidsf.org
+sabamasjid.org
+# Riverside-San Bernardino
+icsr.org
+coronamasjid.org
+masjidalnoor.org
+# Detroit
+iccmd.org
+masjidmuadh.org
+mcws.org
+iagd.net
+# Seattle
+mapswedmond.org
+idrismosque.com
+ihseattle.org
+annoorpdx.org
+# Minneapolis
+masmn.org
+daralfarooq.org
+masjidalisraa.org
+# San Diego
+icsd.org
+masjidhamzasandiego.com
+masjidalnoor-sd.org
+# Tampa
+istaba.org
+masjidtampabay.org
+# Denver
+coloradomuslimsociety.org
+denverislamiccenter.org
+ndic.org
+# Baltimore
+isb.org
+masjidulhaqq.org
+ricbaltimore.org
+# extra state coverage
+isgh.org
+icna.org
+whyislam.org
+# CANADA - Toronto
+islamicinstitute.ca
+masjidtoronto.com
+isnacanada.com
+jamicentre.ca
+# CANADA - Vancouver
+bcmasjid.com
+masjidal-salaam.ca
+richmondmasjid.ca
+# CANADA - Montreal
+islamiccentre.ca
+masjidaloumah.ca
+# CANADA - Calgary
+calgaryislamiccentre.com
+akramjomaa.com
+# CANADA - Ottawa
+snmc.ca
+ottawamosque.ca

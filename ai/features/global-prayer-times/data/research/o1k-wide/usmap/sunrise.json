@@ -1,0 +1,102 @@
+[
+ {
+  "mosque": "Dar al-Hijrah (Falls Church VA)",
+  "fajrAngle": 14.84,
+  "sunriseOff": -0.46
+ },
+ {
+  "mosque": "Muslim Center of San Antonio",
+  "fajrAngle": 14.95,
+  "sunriseOff": -0.15
+ },
+ {
+  "mosque": "Islamic Association of North Texas (widget)",
+  "fajrAngle": 15,
+  "sunriseOff": -0.07
+ },
+ {
+  "mosque": "Memphis Islamic Center",
+  "fajrAngle": 14.82,
+  "sunriseOff": -0.55
+ },
+ {
+  "mosque": "Richmond Islamic Community Center TX",
+  "fajrAngle": 15.19,
+  "sunriseOff": -0.54
+ },
+ {
+  "mosque": "MAS Tarbiyah Center (Livonia MI)",
+  "fajrAngle": 14.99,
+  "sunriseOff": -0.08
+ },
+ {
+  "mosque": "Ethiopian Muslim Association (SeaTac WA)",
+  "fajrAngle": 15,
+  "sunriseOff": -0.06
+ },
+ {
+  "mosque": "Islamic Center of Tennessee",
+  "fajrAngle": 15,
+  "sunriseOff": -0.12
+ },
+ {
+  "mosque": "Islamic Center of South Bay (Lomita)",
+  "fajrAngle": 14.81,
+  "sunriseOff": -0.58
+ },
+ {
+  "mosque": "Jamaica Muslim Center (NY)",
+  "fajrAngle": 15.01,
+  "sunriseOff": -0.1
+ },
+ {
+  "mosque": "Ummah Masjid (Halifax, 2025)",
+  "fajrAngle": 15,
+  "sunriseOff": 0.11
+ },
+ {
+  "mosque": "Centre Culturel Islamique de Quebec",
+  "fajrAngle": 14.99,
+  "sunriseOff": -0.03
+ },
+ {
+  "mosque": "Mosquee de la Capitale (Quebec)",
+  "fajrAngle": 15,
+  "sunriseOff": -0.05
+ },
+ {
+  "mosque": "Kitchener Masjid (MAC)",
+  "fajrAngle": 14.86,
+  "sunriseOff": -0.54
+ },
+ {
+  "mosque": "Bilal Centre (Winnipeg)",
+  "fajrAngle": 14.76,
+  "sunriseOff": -1.69
+ },
+ {
+  "mosque": "Manitoba Islamic Association (Winnipeg)",
+  "fajrAngle": 14.74,
+  "sunriseOff": -1.83
+ },
+ {
+  "mosque": "Brandon Islamic Centre",
+  "fajrAngle": 14.73,
+  "sunriseOff": -0.4
+ },
+ {
+  "mosque": "Saskatoon Mosque",
+  "fajrAngle": 14.74,
+  "sunriseOff": -3
+ },
+ {
+  "mosque": "Islamic Institute of Toronto",
+  "fajrAngle": 14.86,
+  "sunriseOff": -0.68
+ },
+ {
+  "mosque": "Masjid Toronto (MAC)",
+  "fajrAngle": 14.87,
+  "sunriseOff": -0.66
+ }
+]

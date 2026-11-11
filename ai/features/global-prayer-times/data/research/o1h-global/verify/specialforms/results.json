@@ -1,0 +1,1078 @@
+{
+  "generated": "2026-11-10T16:49:02.670Z",
+  "study": "O1h special forms: SI-VAKTIJA, UA-DUMU implemented; AT-IZW, FR-GMS skipped",
+  "harness": {
+    "library": "adhan-js 4.4.6",
+    "roundingPolicy": "Rounding.None at second resolution, explicit per-body rounding",
+    "days": 365,
+    "ramadan1447": {
+      "start": [
+        2,
+        18
+      ],
+      "end": [
+        3,
+        19
+      ],
+      "monthLengthDays": 30
+    }
+  },
+  "skipped": [
+    {
+      "id": "AT-IZW",
+      "reason": "seasonal sweeps documented only as verbal implied ranges (fajr \"15.0-15.7 Oct-Apr, trough ~12.5 mid-May..early Aug\"; isha \"15.8-15.9 ... trough ~11.3-11.5 ... autumn plateau ~16.2-16.3\") with no formula or per-day values in policy-layer; the per-day anchors (c16-fits/data/izw_final_quant.json) sit outside the brief's allowed input list, so no day-by-day value is recoverable without inventing one."
+    },
+    {
+      "id": "FR-GMS",
+      "reason": "conventions-only object by its own verdict (\"no frozen object buildable\", recipeStatus partial): fajr/isha sweeps carried as endpoint ranges only (18 -> 12 deg, 16 -> 11.5 deg) with no formula, no per-day values, and null fajr/isha margins - daily values are not recoverable from the record."
+    }
+  ],
+  "methodsScored": [
+    "mwl",
+    "isna",
+    "umm-al-qura",
+    "egyptian",
+    "karachi",
+    "moonsighting",
+    "diyanet-domestic",
+    "diyanet-europe",
+    "mabims",
+    "jakim",
+    "kemenag",
+    "kuwait",
+    "qatar",
+    "singapore-muis",
+    "dubai",
+    "tehran",
+    "fazilet-a",
+    "fazilet-b",
+    "ecfr",
+    "russia-sam",
+    "isna-2010"
+  ],
+  "results": [
+    {
+      "targetId": "SI-VAKTIJA",
+      "tz": "Europe/Ljubljana",
+      "city": "Ljubljana",
+      "perMethod": {
+        "mwl": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 7.49,
+            "meanSignedDevMin": 4.47,
+            "worstAbsDevMin": 23,
+            "worstAbsDevDay": "2026-06-23",
+            "within2MinPct": 21.6,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "isna": {
+          "fajr": {
+            "meanAbsDevMin": 30.35,
+            "meanSignedDevMin": 30.35,
+            "worstAbsDevMin": 60,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 10.39,
+            "meanSignedDevMin": -10.39,
+            "worstAbsDevMin": 18,
+            "worstAbsDevDay": "2026-01-03",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "umm-al-qura": {
+          "fajr": {
+            "meanAbsDevMin": 4.07,
+            "meanSignedDevMin": 4.07,
+            "worstAbsDevMin": 10,
+            "worstAbsDevDay": "2026-06-06",
+            "within2MinPct": 31.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 15.54,
+            "meanSignedDevMin": -11.09,
+            "worstAbsDevMin": 36,
+            "worstAbsDevDay": "2026-06-15",
+            "within2MinPct": 3,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "egyptian": {
+          "fajr": {
+            "meanAbsDevMin": 5.04,
+            "meanSignedDevMin": -5.04,
+            "worstAbsDevMin": 13,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 15.3,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 9.33,
+            "meanSignedDevMin": 8.36,
+            "worstAbsDevMin": 30,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 33.7,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "karachi": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.32,
+            "meanSignedDevMin": 12.32,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 25.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "moonsighting": {
+          "fajr": {
+            "meanAbsDevMin": 25.03,
+            "meanSignedDevMin": 25.03,
+            "worstAbsDevMin": 68,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 24.42,
+            "meanSignedDevMin": -24.42,
+            "worstAbsDevMin": 48,
+            "worstAbsDevDay": "2026-06-07",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "diyanet-domestic": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 7.49,
+            "meanSignedDevMin": 4.47,
+            "worstAbsDevMin": 23,
+            "worstAbsDevDay": "2026-06-23",
+            "within2MinPct": 21.6,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "diyanet-europe": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 6.37,
+            "meanSignedDevMin": -3.06,
+            "worstAbsDevMin": 12,
+            "worstAbsDevDay": "2026-01-04",
+            "within2MinPct": 18.6,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "mabims": {
+          "fajr": {
+            "meanAbsDevMin": 9.77,
+            "meanSignedDevMin": -9.77,
+            "worstAbsDevMin": 28,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.32,
+            "meanSignedDevMin": 12.32,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 25.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "jakim": {
+          "fajr": {
+            "meanAbsDevMin": 8.14,
+            "meanSignedDevMin": 8.14,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-14",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.82,
+            "meanSignedDevMin": 12.82,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-12",
+            "within2MinPct": 22.2,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "kemenag": {
+          "fajr": {
+            "meanAbsDevMin": 10.25,
+            "meanSignedDevMin": -10.25,
+            "worstAbsDevMin": 29,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 11.86,
+            "meanSignedDevMin": 11.83,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-22",
+            "within2MinPct": 28.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "kuwait": {
+          "fajr": {
+            "meanAbsDevMin": 7.15,
+            "meanSignedDevMin": 7.15,
+            "worstAbsDevMin": 18,
+            "worstAbsDevDay": "2026-06-14",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 9.33,
+            "meanSignedDevMin": 8.36,
+            "worstAbsDevMin": 30,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 33.7,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "qatar": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 14.05,
+            "meanSignedDevMin": -14.05,
+            "worstAbsDevMin": 37,
+            "worstAbsDevDay": "2026-06-19",
+            "within2MinPct": 3,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "singapore-muis": {
+          "fajr": {
+            "meanAbsDevMin": 9.27,
+            "meanSignedDevMin": -9.27,
+            "worstAbsDevMin": 28,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.82,
+            "meanSignedDevMin": 12.82,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-12",
+            "within2MinPct": 22.2,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "dubai": {
+          "fajr": {
+            "meanAbsDevMin": 6.06,
+            "meanSignedDevMin": 6.06,
+            "worstAbsDevMin": 15,
+            "worstAbsDevDay": "2026-06-14",
+            "within2MinPct": 2.7,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 13.93,
+            "meanSignedDevMin": 13.93,
+            "worstAbsDevMin": 41,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 17,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "tehran": {
+          "fajr": {
+            "meanAbsDevMin": 10.05,
+            "meanSignedDevMin": 10.05,
+            "worstAbsDevMin": 24,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 17.5,
+            "meanSignedDevMin": -17.5,
+            "worstAbsDevMin": 24,
+            "worstAbsDevDay": "2026-01-03",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "fazilet-a": {
+          "fajr": {
+            "meanAbsDevMin": 7.86,
+            "meanSignedDevMin": -7.86,
+            "worstAbsDevMin": 22,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 10.94,
+            "meanSignedDevMin": 10.78,
+            "worstAbsDevMin": 35,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 31.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "fazilet-b": {
+          "fajr": {
+            "meanAbsDevMin": 18.83,
+            "meanSignedDevMin": -18.83,
+            "worstAbsDevMin": 71,
+            "worstAbsDevDay": "2026-06-30",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 18.07,
+            "meanSignedDevMin": 18.07,
+            "worstAbsDevMin": 51,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "ecfr": {
+          "fajr": {
+            "meanAbsDevMin": 5.66,
+            "meanSignedDevMin": 5.66,
+            "worstAbsDevMin": 17,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 19.2,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 8.01,
+            "meanSignedDevMin": 6.47,
+            "worstAbsDevMin": 25,
+            "worstAbsDevDay": "2026-06-23",
+            "within2MinPct": 27.1,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "russia-sam": {
+          "fajr": {
+            "meanAbsDevMin": 23.06,
+            "meanSignedDevMin": 23.06,
+            "worstAbsDevMin": 48,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 10.39,
+            "meanSignedDevMin": -10.39,
+            "worstAbsDevMin": 18,
+            "worstAbsDevDay": "2026-01-03",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "isna-2010": {
+          "fajr": {
+            "meanAbsDevMin": 7.66,
+            "meanSignedDevMin": 7.66,
+            "worstAbsDevMin": 19,
+            "worstAbsDevDay": "2026-06-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.32,
+            "meanSignedDevMin": 12.32,
+            "worstAbsDevMin": 38,
+            "worstAbsDevDay": "2026-06-16",
+            "within2MinPct": 25.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        }
+      },
+      "targetSamples": {
+        "2026-01-01": {
+          "fajr": "05:50",
+          "isha": "18:15",
+          "fajrDeg": 18.897,
+          "ishaDeg": 17.895
+        },
+        "2026-03-01": {
+          "fajr": "04:55",
+          "isha": "19:22",
+          "fajrDeg": 19.117,
+          "ishaDeg": 16.984
+        },
+        "2026-04-04": {
+          "fajr": "04:44",
+          "isha": "21:08",
+          "fajrDeg": 19.16,
+          "ishaDeg": 16.212
+        },
+        "2026-05-22": {
+          "fajr": "02:48",
+          "isha": "22:30",
+          "fajrDeg": 19.077,
+          "ishaDeg": 15.414
+        },
+        "2026-05-31": {
+          "fajr": "02:30",
+          "isha": "22:44",
+          "fajrDeg": 19.046,
+          "ishaDeg": 15.345
+        },
+        "2026-06-15": {
+          "fajr": "02:10",
+          "isha": "23:01",
+          "fajrDeg": 18.987,
+          "ishaDeg": 15.3
+        },
+        "2026-06-21": {
+          "fajr": "02:09",
+          "isha": "23:03",
+          "fajrDeg": 18.962,
+          "ishaDeg": 15.307
+        },
+        "2026-09-01": {
+          "fajr": "04:29",
+          "isha": "21:17",
+          "fajrDeg": 18.693,
+          "ishaDeg": 16.346
+        },
+        "2026-09-11": {
+          "fajr": "04:46",
+          "isha": "20:56",
+          "fajrDeg": 18.675,
+          "ishaDeg": 16.574
+        },
+        "2026-10-25": {
+          "fajr": "04:48",
+          "isha": "18:36",
+          "fajrDeg": 18.682,
+          "ishaDeg": 17.503
+        },
+        "2026-12-12": {
+          "fajr": "05:41",
+          "isha": "18:05",
+          "fajrDeg": 18.833,
+          "ishaDeg": 17.94
+        }
+      },
+      "errors": []
+    },
+    {
+      "targetId": "UA-DUMU",
+      "tz": "Europe/Kyiv",
+      "city": "Kyiv",
+      "perMethod": {
+        "mwl": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 196.3,
+            "meanSignedDevMin": -168.81,
+            "worstAbsDevMin": 1371,
+            "worstAbsDevDay": "2026-07-16",
+            "within2MinPct": 0,
+            "midnightCrossings": 50,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "isna": {
+          "fajr": {
+            "meanAbsDevMin": 18.37,
+            "meanSignedDevMin": 0.58,
+            "worstAbsDevMin": 58,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 3.8,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 45.99,
+            "meanSignedDevMin": -28.94,
+            "worstAbsDevMin": 1384,
+            "worstAbsDevDay": "2026-06-26",
+            "within2MinPct": 19.7,
+            "midnightCrossings": 9,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "umm-al-qura": {
+          "fajr": {
+            "meanAbsDevMin": 34.39,
+            "meanSignedDevMin": -34.39,
+            "worstAbsDevMin": 133,
+            "worstAbsDevDay": "2026-07-18",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 12.63,
+            "meanSignedDevMin": -8.96,
+            "worstAbsDevMin": 23,
+            "worstAbsDevDay": "2026-02-19",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "egyptian": {
+          "fajr": {
+            "meanAbsDevMin": 43.01,
+            "meanSignedDevMin": -43.01,
+            "worstAbsDevMin": 140,
+            "worstAbsDevDay": "2026-07-23",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 219.9,
+            "meanSignedDevMin": -187.75,
+            "worstAbsDevMin": 1369,
+            "worstAbsDevDay": "2026-07-19",
+            "within2MinPct": 0,
+            "midnightCrossings": 56,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "karachi": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.39,
+            "meanSignedDevMin": -198.98,
+            "worstAbsDevMin": 1363,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "moonsighting": {
+          "fajr": {
+            "meanAbsDevMin": 9.12,
+            "meanSignedDevMin": 7.74,
+            "worstAbsDevMin": 16,
+            "worstAbsDevDay": "2026-09-23",
+            "within2MinPct": 9.9,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 21.87,
+            "meanSignedDevMin": -21.87,
+            "worstAbsDevMin": 43,
+            "worstAbsDevDay": "2026-08-08",
+            "within2MinPct": 1.9,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "diyanet-domestic": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 196.3,
+            "meanSignedDevMin": -168.81,
+            "worstAbsDevMin": 1371,
+            "worstAbsDevDay": "2026-07-16",
+            "within2MinPct": 0,
+            "midnightCrossings": 50,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "diyanet-europe": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 143.76,
+            "meanSignedDevMin": -124.94,
+            "worstAbsDevMin": 1378,
+            "worstAbsDevDay": "2026-07-09",
+            "within2MinPct": 35.3,
+            "midnightCrossings": 36,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "mabims": {
+          "fajr": {
+            "meanAbsDevMin": 46.94,
+            "meanSignedDevMin": -46.94,
+            "worstAbsDevMin": 143,
+            "worstAbsDevDay": "2026-07-25",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.39,
+            "meanSignedDevMin": -198.98,
+            "worstAbsDevMin": 1363,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "jakim": {
+          "fajr": {
+            "meanAbsDevMin": 30.1,
+            "meanSignedDevMin": -30.1,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 24.1,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.67,
+            "meanSignedDevMin": -198.53,
+            "worstAbsDevMin": 1362,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "kemenag": {
+          "fajr": {
+            "meanAbsDevMin": 47.41,
+            "meanSignedDevMin": -47.41,
+            "worstAbsDevMin": 143,
+            "worstAbsDevDay": "2026-07-25",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.01,
+            "meanSignedDevMin": -199.52,
+            "worstAbsDevMin": 1363,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "kuwait": {
+          "fajr": {
+            "meanAbsDevMin": 31.09,
+            "meanSignedDevMin": -31.09,
+            "worstAbsDevMin": 131,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 19.7,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 219.9,
+            "meanSignedDevMin": -187.75,
+            "worstAbsDevMin": 1369,
+            "worstAbsDevDay": "2026-07-19",
+            "within2MinPct": 0,
+            "midnightCrossings": 56,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "qatar": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 11.9,
+            "meanSignedDevMin": -11.9,
+            "worstAbsDevMin": 21,
+            "worstAbsDevDay": "2026-05-31",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "singapore-muis": {
+          "fajr": {
+            "meanAbsDevMin": 46.42,
+            "meanSignedDevMin": -46.42,
+            "worstAbsDevMin": 142,
+            "worstAbsDevDay": "2026-07-25",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.67,
+            "meanSignedDevMin": -198.53,
+            "worstAbsDevMin": 1362,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "dubai": {
+          "fajr": {
+            "meanAbsDevMin": 32.3,
+            "meanSignedDevMin": -32.3,
+            "worstAbsDevMin": 131,
+            "worstAbsDevDay": "2026-07-16",
+            "within2MinPct": 13.4,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 244.37,
+            "meanSignedDevMin": -205.16,
+            "worstAbsDevMin": 1362,
+            "worstAbsDevDay": "2026-07-22",
+            "within2MinPct": 0,
+            "midnightCrossings": 62,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "tehran": {
+          "fajr": {
+            "meanAbsDevMin": 28.33,
+            "meanSignedDevMin": -27.92,
+            "worstAbsDevMin": 128,
+            "worstAbsDevDay": "2026-07-13",
+            "within2MinPct": 30.1,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 13.38,
+            "meanSignedDevMin": -2.59,
+            "worstAbsDevMin": 36,
+            "worstAbsDevDay": "2026-06-19",
+            "within2MinPct": 3.8,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "fazilet-a": {
+          "fajr": {
+            "meanAbsDevMin": 45.38,
+            "meanSignedDevMin": -45.38,
+            "worstAbsDevMin": 142,
+            "worstAbsDevDay": "2026-07-24",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 228.41,
+            "meanSignedDevMin": -192.93,
+            "worstAbsDevMin": 1365,
+            "worstAbsDevDay": "2026-07-20",
+            "within2MinPct": 0,
+            "midnightCrossings": 58,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "fazilet-b": {
+          "fajr": {
+            "meanAbsDevMin": 53.03,
+            "meanSignedDevMin": -53.03,
+            "worstAbsDevMin": 149,
+            "worstAbsDevDay": "2026-07-29",
+            "within2MinPct": 0,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 267.68,
+            "meanSignedDevMin": -224.6,
+            "worstAbsDevMin": 1361,
+            "worstAbsDevDay": "2026-07-25",
+            "within2MinPct": 0,
+            "midnightCrossings": 68,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "ecfr": {
+          "fajr": {
+            "meanAbsDevMin": 32.56,
+            "meanSignedDevMin": -32.56,
+            "worstAbsDevMin": 132,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 5.8,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 197.76,
+            "meanSignedDevMin": -166.81,
+            "worstAbsDevMin": 1369,
+            "worstAbsDevDay": "2026-07-16",
+            "within2MinPct": 0,
+            "midnightCrossings": 50,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "russia-sam": {
+          "fajr": {
+            "meanAbsDevMin": 19.9,
+            "meanSignedDevMin": -10,
+            "worstAbsDevMin": 98,
+            "worstAbsDevDay": "2026-06-21",
+            "within2MinPct": 9.6,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 45.99,
+            "meanSignedDevMin": -28.94,
+            "worstAbsDevMin": 1384,
+            "worstAbsDevDay": "2026-06-26",
+            "within2MinPct": 19.7,
+            "midnightCrossings": 9,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        },
+        "isna-2010": {
+          "fajr": {
+            "meanAbsDevMin": 30.56,
+            "meanSignedDevMin": -30.56,
+            "worstAbsDevMin": 130,
+            "worstAbsDevDay": "2026-07-15",
+            "within2MinPct": 22.5,
+            "midnightCrossings": 0,
+            "days": 365
+          },
+          "isha": {
+            "meanAbsDevMin": 236.39,
+            "meanSignedDevMin": -198.98,
+            "worstAbsDevMin": 1363,
+            "worstAbsDevDay": "2026-07-21",
+            "within2MinPct": 0,
+            "midnightCrossings": 60,
+            "days": 365
+          },
+          "asrSchoolMatch": true
+        }
+      },
+      "targetSamples": {
+        "2026-01-01": {
+          "fajr": "06:09",
+          "isha": "17:44",
+          "ishaIntervalMin": 90
+        },
+        "2026-03-01": {
+          "fajr": "04:54",
+          "isha": "19:17",
+          "ishaIntervalMin": 90
+        },
+        "2026-04-04": {
+          "fajr": "04:40",
+          "isha": "21:13",
+          "ishaIntervalMin": 90
+        },
+        "2026-05-22": {
+          "fajr": "03:12",
+          "isha": "22:30",
+          "ishaIntervalMin": 92
+        },
+        "2026-05-31": {
+          "fajr": "03:02",
+          "isha": "22:50",
+          "ishaIntervalMin": 100
+        },
+        "2026-06-15": {
+          "fajr": "02:55",
+          "isha": "23:02",
+          "ishaIntervalMin": 100
+        },
+        "2026-06-21": {
+          "fajr": "02:56",
+          "isha": "23:04",
+          "ishaIntervalMin": 100
+        },
+        "2026-09-01": {
+          "fajr": "04:24",
+          "isha": "21:31",
+          "ishaIntervalMin": 100
+        },
+        "2026-09-11": {
+          "fajr": "04:39",
+          "isha": "20:59",
+          "ishaIntervalMin": 90
+        },
+        "2026-10-25": {
+          "fajr": "04:48",
+          "isha": "18:25",
+          "ishaIntervalMin": 90
+        },
+        "2026-12-12": {
+          "fajr": "05:59",
+          "isha": "17:34",
+          "ishaIntervalMin": 90
+        }
+      },
+      "errors": []
+    }
+  ]
+}

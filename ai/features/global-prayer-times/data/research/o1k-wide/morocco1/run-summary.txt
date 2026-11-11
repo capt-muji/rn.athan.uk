@@ -1,0 +1,199 @@
+=== ENUMERATION ===
+cities: 190 | identity mismatches across months: 0 | ids: 1 - 322
+=== MONOTONICITY (61-day joined window, 190 cities) ===
+violations: 1176 (of which at the Oct/Nov boundary: 0 ) | worst reversal(min): 1
+=== SAMPLE (10 cities, known coords) ===
+c=1 الرباط lat34.0209 lon-6.8416: 295/366 within1min, 160 exact, worst 1.97min @ 2026-10-04 fajr -> DEVIATE
+   months: 2026-10 122/186, 2026-11 173/180 | prayers: fajr 33/61 sunrise 48/61 dhuhr 45/61 asr 57/61 magrib 56/61 isha 56/61
+c=58 الدار البيضاء lat33.5731 lon-7.5898: 243/366 within1min, 113 exact, worst 2.2min @ 2026-10-10 fajr -> DEVIATE
+   months: 2026-10 84/186, 2026-11 159/180 | prayers: fajr 25/61 sunrise 51/61 dhuhr 36/61 asr 59/61 magrib 24/61 isha 48/61
+c=14 طنجة lat35.7595 lon-5.834: 242/366 within1min, 130 exact, worst 2.18min @ 2026-11-29 sunrise -> DEVIATE
+   months: 2026-10 115/186, 2026-11 127/180 | prayers: fajr 40/61 sunrise 27/61 dhuhr 48/61 asr 51/61 magrib 18/61 isha 58/61
+c=81 فاس lat34.0331 lon-5.0078: 214/366 within1min, 104 exact, worst 2.53min @ 2026-10-04 magrib -> DEVIATE
+   months: 2026-10 101/186, 2026-11 113/180 | prayers: fajr 34/61 sunrise 27/61 dhuhr 46/61 asr 53/61 magrib 0/61 isha 54/61
+c=104 مراكش lat31.6295 lon-7.9811: 193/366 within1min, 87 exact, worst 3.16min @ 2026-10-02 magrib -> DEVIATE
+   months: 2026-10 85/186, 2026-11 108/180 | prayers: fajr 26/61 sunrise 19/61 dhuhr 38/61 asr 59/61 magrib 0/61 isha 51/61
+c=117 أكادير lat30.4278 lon-9.5981: 263/366 within1min, 140 exact, worst 1.96min @ 2026-11-30 sunrise -> DEVIATE
+   months: 2026-10 122/186, 2026-11 141/180 | prayers: fajr 38/61 sunrise 39/61 dhuhr 50/61 asr 52/61 magrib 26/61 isha 58/61
+c=31 وجدة lat34.6867 lon-1.9114: 190/366 within1min, 104 exact, worst 3.43min @ 2026-10-02 magrib -> DEVIATE
+   months: 2026-10 77/186, 2026-11 113/180 | prayers: fajr 35/61 sunrise 1/61 dhuhr 43/61 asr 56/61 magrib 0/61 isha 55/61
+c=39 الناظور lat35.1681 lon-2.9287: 277/366 within1min, 154 exact, worst 1.95min @ 2026-10-07 fajr -> DEVIATE
+   months: 2026-10 117/186, 2026-11 160/180 | prayers: fajr 34/61 sunrise 52/61 dhuhr 44/61 asr 53/61 magrib 39/61 isha 55/61
+c=156 العيون lat27.1536 lon-13.2033: 269/366 within1min, 145 exact, worst 2.04min @ 2026-10-04 fajr -> DEVIATE
+   months: 2026-10 101/186, 2026-11 168/180 | prayers: fajr 27/61 sunrise 36/61 dhuhr 38/61 asr 57/61 magrib 59/61 isha 52/61
+c=165 الداخلة lat23.6848 lon-15.9579: 276/366 within1min, 149 exact, worst 2.14min @ 2026-10-06 fajr -> DEVIATE
+   months: 2026-10 106/186, 2026-11 170/180 | prayers: fajr 27/61 sunrise 45/61 dhuhr 39/61 asr 59/61 magrib 57/61 isha 49/61
+=== NATIONAL (190 cities, per-city fit) ===
+ANGLE hold-rate (fitted margins, angles 19/Shafi/17): 39/190 cities | cells 69168/69540
+RECORDED-recipe hold-rate (margins -1/+5/+1/0): 0/190 cities fully within 1 min | cells 23155/34770
+fitted margins medians (min): fajr -0.58 sunrise -4.81 maghrib 5.2 asr -0.42 isha -0.37
+recorded-margin mean deltas (printed - recipe-computed) medians: fajr 0.42 asr -1.42 isha -0.37
+fit deviating cities (angles fail):
+  c=2 الخميسات lat33.5: fit 364/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=4 الرماني lat33.23: fit 364/366 worst 1.08 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=5 والماس lat33.02: fit 363/366 worst 1.14 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=8 سيدي قاسم lat33.92: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=9 سيدي يحيى الغرب lat34.1: fit 364/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=10 سيدي سليمان lat34.11: fit 363/366 worst 1.03 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/59","isha":"61/61"}
+  c=11 سوق أربعاء الغرب lat34.13: fit 364/366 worst 1.03 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=12 عرباوة lat34.7: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=13 مولاي بوسلهام lat34.67: fit 365/366 worst 1.03 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=15 تطوان lat35.33: fit 365/366 worst 1.04 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=17 أصيلة lat35.24: fit 363/366 worst 1.15 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=18 شفشاون lat34.75: fit 363/366 worst 1.08 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=20 المضيق lat35.5: fit 364/366 worst 1.04 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=22 القصر الصغير lat35.66: fit 364/366 worst 1.06 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=23 الحسيمة lat35.02: fit 365/366 worst 1.15 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=24 سبتة lat35.49: fit 365/366 worst 1.09 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=25 الفنيدق lat35.65: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=28 باب برد lat34.61: fit 361/366 worst 1.21 | perPrayer {"fajr":"61/57","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=29 وزان lat34.48: fit 365/366 worst 1.08 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=31 وجدة lat34.32: fit 363/366 worst 1.06 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=32 بركان lat34.69: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=33 فكيك lat31.75: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=34 بوعرفة lat32.21: fit 364/366 worst 1.01 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=36 جرادة lat33.91: fit 364/366 worst 1.09 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/61"}
+  c=37 عين الشعير lat31.85: fit 364/366 worst 1.07 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=38 تاوريرت lat34.01: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/61","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=40 مليلية lat35.13: fit 364/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=41 دبدو lat33.62: fit 365/366 worst 1 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=42 سلوان lat34.85: fit 364/366 worst 1.03 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/59","isha":"61/61"}
+  c=44 فرخانة lat35.03: fit 364/366 worst 1.06 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=45 تالسينت lat32.14: fit 365/366 worst 1.18 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=46 تندرارة lat32.6: fit 362/366 worst 1.24 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/59"}
+  c=47 العيون الشرقية lat34.28: fit 363/366 worst 1.14 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=48 بني ادرار lat34.49: fit 362/366 worst 1.12 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=50 رأس الماء lat34.96: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=51 تافوغالت lat34.43: fit 365/366 worst 1.24 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=52 فزوان lat34.58: fit 363/366 worst 1.23 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=54 زايو lat34.61: fit 364/366 worst 1.16 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=55 دريوش lat34.67: fit 363/366 worst 1.17 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=57 بوعنان lat31.75: fit 364/366 worst 1.15 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=58 الدار البيضاء lat33.32: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=59 المحمدية lat33.52: fit 365/366 worst 1.07 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=60 بن سليمان lat33.36: fit 363/366 worst 1.1 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=61 سطات lat32.73: fit 365/366 worst 1.11 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=62 الكارة lat33.01: fit 363/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=64 ابن أحمد lat32.76: fit 364/366 worst 1.14 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=65 برشيد lat32.98: fit 363/366 worst 1.09 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=67 أزمور lat33.13: fit 364/366 worst 1.12 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=68 سيدي بنور lat32.45: fit 365/366 worst 1.1 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=70 خنيفرة lat32.54: fit 365/366 worst 1.11 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=71 مولاي بوعزة lat32.88: fit 363/366 worst 1.3 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=72 زاوية أحنصال lat31.29: fit 360/366 worst 1.23 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/58"}
+  c=73 بني ملال lat31.92: fit 364/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=74 أزيلال lat31.5: fit 361/366 worst 1.18 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/61"}
+  c=76 دمنات lat31.29: fit 364/366 worst 1.12 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=77 القصيبة lat32.19: fit 365/366 worst 1.04 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=78 قصبة تادلة lat32.28: fit 364/366 worst 1.13 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=80 وادي زم lat32.49: fit 364/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=82 صفرو lat33.46: fit 365/366 worst 1.03 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=83 مولاي يعقوب lat33.81: fit 362/366 worst 1.04 | perPrayer {"fajr":"61/60","sunrise":"61/59","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=84 بولمان lat32.87: fit 361/366 worst 1.26 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=85 ميسور lat32.69: fit 362/366 worst 1.13 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=86 رباط الخير lat33.43: fit 362/366 worst 1.08 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=87 المنزل بني يازغة lat33.45: fit 364/366 worst 1.22 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=88 إموزار كندر lat33.32: fit 358/366 worst 1.13 | perPrayer {"fajr":"61/55","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=89 تازة lat33.84: fit 364/366 worst 1.06 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=91 أكنول lat34.29: fit 363/366 worst 1.35 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=92 تيزي وسلي lat34.33: fit 361/366 worst 1.21 | perPrayer {"fajr":"61/58","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=93 بورد lat34.35: fit 363/366 worst 1.18 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=94 تاهلة lat33.8: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=95 تيسة lat34.05: fit 363/366 worst 1.07 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=96 قرية با محمد lat34.14: fit 365/366 worst 1.21 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=97 كتامة lat34.44: fit 365/366 worst 1.26 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=98 واد أمليل lat33.94: fit 365/366 worst 1 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=99 مكناس lat33.55: fit 364/366 worst 1.04 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=100 يفرن lat33.02: fit 360/366 worst 1.31 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=101 الحاجب lat33.31: fit 361/366 worst 1.18 | perPrayer {"fajr":"61/56","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=102 زرهون lat33.68: fit 363/366 worst 1.19 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/60"}
+  c=103 آزرو lat33.02: fit 362/366 worst 1.17 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=104 مراكش lat31.31: fit 365/366 worst 1.11 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=105 قلعة السراغنة lat31.76: fit 365/366 worst 1.03 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=106 الصويرة lat31.32: fit 365/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=107 شيشاوة lat31.26: fit 365/366 worst 1.07 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=108 بنجرير lat31.89: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=110 تمنار lat30.71: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=111 آسفي lat32.05: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=112 الوليدية lat32.55: fit 365/366 worst 1.04 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=113 اليوسفية lat31.93: fit 363/366 worst 1.2 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=114 تسلطانت lat31.27: fit 364/366 worst 1.2 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=115 تامصلوحت lat31.21: fit 365/366 worst 1.14 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=116 قطارة lat31.5: fit 363/366 worst 1.19 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=118 تارودانت lat30.22: fit 363/366 worst 1.12 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=119 تزنيت lat29.45: fit 365/366 worst 1.08 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=120 إغرم lat29.62: fit 361/366 worst 1.26 | perPrayer {"fajr":"61/57","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=121 تالوين lat30.14: fit 363/366 worst 1.08 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=122 تافراوت lat29.33: fit 362/366 worst 1.16 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=123 طاطا lat29.38: fit 363/366 worst 1.16 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=124 أقا lat28.98: fit 365/366 worst 1.05 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=125 فم لحصن lat28.65: fit 364/366 worst 1.05 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/61"}
+  c=127 أولاد تايمة lat30.14: fit 364/366 worst 1.1 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=128 الرشيدية lat31.51: fit 362/366 worst 1.17 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=129 الريصاني lat30.89: fit 362/366 worst 1.13 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=130 أرفود lat31.03: fit 363/366 worst 1.05 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=131 تنديت lat33.33: fit 361/366 worst 1.12 | perPrayer {"fajr":"61/56","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=132 كلميمة lat31.37: fit 362/366 worst 1.19 | perPrayer {"fajr":"61/58","sunrise":"61/60","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=133 إملشيل lat31.66: fit 361/366 worst 1.14 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=134 تنجداد lat31.11: fit 363/366 worst 1.24 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=135 الريش lat31.84: fit 365/366 worst 1.03 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=136 ميدلت lat32.28: fit 362/366 worst 1.18 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=137 زاكورة lat29.98: fit 364/366 worst 1.09 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=138 ورزازات lat30.55: fit 364/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=139 تنغير lat31.02: fit 362/366 worst 1.31 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=140 هسكورة lat30.65: fit 363/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=141 قلعة مكونة lat30.78: fit 363/366 worst 1.07 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=142 أكدز lat30.31: fit 363/366 worst 1.07 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=143 بومالن دادس lat30.92: fit 361/366 worst 1.13 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/60"}
+  c=144 النيف lat30.77: fit 361/366 worst 1.07 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=145 أسول lat31.39: fit 361/366 worst 1.17 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=146 أمسمرير lat31.25: fit 363/366 worst 1.04 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=147 تازارين lat30.49: fit 365/366 worst 1.09 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=148 سيدي إفني lat29.12: fit 365/366 worst 1 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=153 بويزكارن lat28.86: fit 365/366 worst 1 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=155 لمسيد lat27.64: fit 363/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/59","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=156 العيون lat27.01: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=158 بوجدور lat25.89: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=159 طرفاية lat27.69: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=160 تفاريتي lat25.8: fit 362/366 worst 1.13 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=162 كلتة زمور lat24.9: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=163 أمكالة lat25.88: fit 365/366 worst 1.05 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=166 الكويرة lat20.57: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/61","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=168 بئر كندوز lat21.31: fit 363/366 worst 1.12 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+  c=169 بئر أنزاران lat23.61: fit 365/366 worst 1.02 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=301 خميس سيدي عبد الجليل lat33.82: fit 364/366 worst 1.03 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=304 مطماطة lat33.91: fit 365/366 worst 1.04 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=305 إيمنتانوت lat30.86: fit 365/366 worst 1.06 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=306 سيدي غانم lat30.89: fit 362/366 worst 1.2 | perPrayer {"fajr":"61/60","sunrise":"61/60","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/60"}
+  c=307 تفنتان lat31.07: fit 364/366 worst 1.01 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=308 آيت القاق lat30.7: fit 360/366 worst 1.32 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/58"}
+  c=309 أكدال أملشيل lat31.58: fit 361/366 worst 1.14 | perPrayer {"fajr":"61/59","sunrise":"61/60","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/61"}
+  c=310 اكودال املشيل ميدلت lat31.62: fit 362/366 worst 1.1 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/61"}
+  c=311 أكايوار lat30.86: fit 362/366 worst 1.06 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=312 عين العودة lat33.62: fit 365/366 worst 1.07 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=313 أسكين lat30.96: fit 363/366 worst 1.08 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=314 آيت ورير lat31.25: fit 365/366 worst 1.12 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=316 تولكولت lat30.8: fit 362/366 worst 1.12 | perPrayer {"fajr":"61/58","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=317 إيكس lat30.44: fit 362/366 worst 1.23 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/59","magrib":"61/61","isha":"61/60"}
+  c=318 كرس lat31.07: fit 363/366 worst 1.23 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/60","isha":"61/61"}
+  c=319 تيسنت lat29.54: fit 365/366 worst 1.01 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/61"}
+  c=320 فم زكيد lat29.64: fit 363/366 worst 1.03 | perPrayer {"fajr":"61/59","sunrise":"61/61","dhuhr":"61/61","asr":"61/61","magrib":"61/61","isha":"61/60"}
+  c=321 قصر إيش lat32.16: fit 363/366 worst 1.15 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/60","isha":"61/61"}
+  c=322 إيمين ثلاث lat31.27: fit 364/366 worst 1.14 | perPrayer {"fajr":"61/60","sunrise":"61/61","dhuhr":"61/61","asr":"61/60","magrib":"61/61","isha":"61/61"}
+recorded-margin deviating cities (first 10 by recWorst):
+  c=84 بولمان lat32.87: rec 108/183 worst 2.84 deltas {"fajr":0.42,"asr":-1.76,"isha":-0.46}
+  c=120 إغرم lat29.62: rec 108/183 worst 2.74 deltas {"fajr":0.55,"asr":-1.54,"isha":-0.48}
+  c=93 بورد lat34.35: rec 114/183 worst 2.69 deltas {"fajr":0.4,"asr":-1.6,"isha":-0.36}
+  c=103 آزرو lat33.02: rec 114/183 worst 2.68 deltas {"fajr":0.37,"asr":-1.63,"isha":-0.4}
+  c=100 يفرن lat33.02: rec 110/183 worst 2.67 deltas {"fajr":0.48,"asr":-1.68,"isha":-0.46}
+  c=317 إيكس lat30.44: rec 114/183 worst 2.65 deltas {"fajr":0.49,"asr":-1.65,"isha":-0.36}
+  c=24 سبتة lat35.49: rec 108/183 worst 2.64 deltas {"fajr":0.39,"asr":-1.69,"isha":-0.45}
+  c=133 إملشيل lat31.66: rec 108/183 worst 2.63 deltas {"fajr":0.5,"asr":-1.61,"isha":-0.41}
+  c=74 أزيلال lat31.5: rec 114/183 worst 2.61 deltas {"fajr":0.45,"asr":-1.56,"isha":-0.42}
+  c=128 الرشيدية lat31.51: rec 113/183 worst 2.61 deltas {"fajr":0.51,"asr":-1.54,"isha":-0.37}
+=== ANGLE DISCRIMINATION (real coords, fitted margins, days within 1 min of 61) ===
+c=1 الرباط: recipe 19/17 Shafi: f61 a61 i61 | fajr 18: f61 a61 i61 | fajr 20: f61 a61 i61 | isha 16: f61 a61 i61 | isha 18: f61 a61 i61 | asr Hanafi (s2): f61 a61 i61
+c=81 فاس: recipe 19/17 Shafi: f61 a61 i61 | fajr 18: f61 a61 i61 | fajr 20: f61 a61 i61 | isha 16: f61 a61 i61 | isha 18: f61 a61 i61 | asr Hanafi (s2): f61 a61 i61
+c=117 أكادير: recipe 19/17 Shafi: f61 a61 i61 | fajr 18: f61 a61 i61 | fajr 20: f61 a61 i61 | isha 16: f61 a61 i61 | isha 18: f61 a61 i61 | asr Hanafi (s2): f61 a61 i61
+c=156 العيون: recipe 19/17 Shafi: f61 a61 i61 | fajr 18: f61 a61 i61 | fajr 20: f61 a61 i61 | isha 16: f61 a61 i61 | isha 18: f61 a61 i61 | asr Hanafi (s2): f61 a61 i61
+c=165 الداخلة: recipe 19/17 Shafi: f61 a61 i61 | fajr 18: f61 a61 i61 | fajr 20: f61 a61 i61 | isha 16: f61 a61 i61 | isha 18: f61 a61 i61 | asr Hanafi (s2): f61 a61 i61

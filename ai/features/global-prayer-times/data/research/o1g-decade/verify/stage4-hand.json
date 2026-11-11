@@ -1,0 +1,232 @@
+[
+  {
+    "date": "2028-12-21",
+    "steps": {
+      "jd0": 2462126.5,
+      "utcTransitFraction": 0.49919358,
+      "utcTransitClock": "11:58:50 UT",
+      "londonOffsetMin": 0,
+      "transitMinWall": 718.8387,
+      "transitHHMM": "11:59",
+      "declinationDeg": -23.436086,
+      "hourAngleHorizonMin": 234.753,
+      "asrAltitudeDeg": 11.966846,
+      "hourAngleAsrMin": 98.9317,
+      "sunriseRawMin": 481.0857,
+      "magribRawMin": 956.5918,
+      "dhuhrRawMin": 723.8387,
+      "asrRawMin": 819.7704,
+      "fajrLead": 100,
+      "ishaLag": 97
+    },
+    "computed": {
+      "fajr": "06:21",
+      "sunrise": "08:01",
+      "dhuhr": "12:04",
+      "asr": "13:40",
+      "magrib": "15:57",
+      "isha": "17:34"
+    },
+    "computedMinutes": {
+      "sunrise": 481,
+      "magrib": 957,
+      "dhuhr": 724,
+      "asr": 820,
+      "fajr": 381,
+      "isha": 1054
+    },
+    "truth": {
+      "fajr": "06:21",
+      "sunrise": "08:01",
+      "dhuhr": "12:04",
+      "asr": "13:40",
+      "magrib": "15:57",
+      "isha": "17:34"
+    },
+    "match": true
+  },
+  {
+    "date": "2038-06-21",
+    "steps": {
+      "jd0": 2465595.5,
+      "utcTransitFraction": 0.5016613,
+      "utcTransitClock": "12:02:23 UT",
+      "londonOffsetMin": 60,
+      "transitMinWall": 782.3923,
+      "transitHHMM": "13:02",
+      "declinationDeg": 23.433593,
+      "hourAngleHorizonMin": 499.1587,
+      "asrAltitudeDeg": 33.109839,
+      "hourAngleAsrMin": 262.8101,
+      "sunriseRawMin": 280.2336,
+      "magribRawMin": 1284.5509,
+      "dhuhrRawMin": 787.3923,
+      "asrRawMin": 1047.2024,
+      "fajrLead": 120,
+      "ishaLag": 78
+    },
+    "computed": {
+      "fajr": "02:40",
+      "sunrise": "04:40",
+      "dhuhr": "13:07",
+      "asr": "17:27",
+      "magrib": "21:25",
+      "isha": "22:43"
+    },
+    "computedMinutes": {
+      "sunrise": 280,
+      "magrib": 1285,
+      "dhuhr": 787,
+      "asr": 1047,
+      "fajr": 160,
+      "isha": 1363
+    },
+    "truth": {
+      "fajr": "02:40",
+      "sunrise": "04:40",
+      "dhuhr": "13:07",
+      "asr": "17:27",
+      "magrib": "21:25",
+      "isha": "22:43"
+    },
+    "match": true
+  },
+  {
+    "date": "2028-03-26",
+    "steps": {
+      "jd0": 2461856.5,
+      "utcTransitFraction": 0.50418161,
+      "utcTransitClock": "12:06:01 UT",
+      "londonOffsetMin": 60,
+      "transitMinWall": 786.0215,
+      "transitHHMM": "13:06",
+      "declinationDeg": 2.523789,
+      "hourAngleHorizonMin": 378.0835,
+      "asrAltitudeDeg": 24.945847,
+      "hourAngleAsrMin": 205.8909,
+      "sunriseRawMin": 404.9381,
+      "magribRawMin": 1167.105,
+      "dhuhrRawMin": 791.0215,
+      "asrRawMin": 993.9124,
+      "fajrLead": 94,
+      "ishaLag": 78
+    },
+    "computed": {
+      "fajr": "05:11",
+      "sunrise": "06:45",
+      "dhuhr": "13:11",
+      "asr": "16:34",
+      "magrib": "19:27",
+      "isha": "20:45"
+    },
+    "computedMinutes": {
+      "sunrise": 405,
+      "magrib": 1167,
+      "dhuhr": 791,
+      "asr": 994,
+      "fajr": 311,
+      "isha": 1245
+    },
+    "truth": {
+      "fajr": "05:11",
+      "sunrise": "06:45",
+      "dhuhr": "13:11",
+      "asr": "16:34",
+      "magrib": "19:27",
+      "isha": "20:45"
+    },
+    "match": true
+  },
+  {
+    "date": "2033-10-30",
+    "steps": {
+      "jd0": 2463900.5,
+      "utcTransitFraction": 0.48900086,
+      "utcTransitClock": "11:44:09 UT",
+      "londonOffsetMin": 0,
+      "transitMinWall": 704.1612,
+      "transitHHMM": "11:44",
+      "declinationDeg": -13.97049,
+      "hourAngleHorizonMin": 292.8571,
+      "asrAltitudeDeg": 17.393253,
+      "hourAngleAsrMin": 144.4687,
+      "sunriseRawMin": 408.3041,
+      "magribRawMin": 1000.0184,
+      "dhuhrRawMin": 709.1612,
+      "asrRawMin": 850.6299,
+      "fajrLead": 97,
+      "ishaLag": 87
+    },
+    "computed": {
+      "fajr": "05:11",
+      "sunrise": "06:48",
+      "dhuhr": "11:49",
+      "asr": "14:11",
+      "magrib": "16:40",
+      "isha": "18:07"
+    },
+    "computedMinutes": {
+      "sunrise": 408,
+      "magrib": 1000,
+      "dhuhr": 709,
+      "asr": 851,
+      "fajr": 311,
+      "isha": 1087
+    },
+    "truth": {
+      "fajr": "05:11",
+      "sunrise": "06:48",
+      "dhuhr": "11:49",
+      "asr": "14:11",
+      "magrib": "16:40",
+      "isha": "18:07"
+    },
+    "match": true
+  },
+  {
+    "date": "2032-02-29",
+    "steps": {
+      "jd0": 2463291.5,
+      "utcTransitFraction": 0.50896086,
+      "utcTransitClock": "12:12:54 UT",
+      "londonOffsetMin": 0,
+      "transitMinWall": 732.9036,
+      "transitHHMM": "12:13",
+      "declinationDeg": -7.644862,
+      "hourAngleHorizonMin": 326.598,
+      "asrAltitudeDeg": 20.50075,
+      "hourAngleAsrMin": 170.242,
+      "sunriseRawMin": 403.3056,
+      "magribRawMin": 1062.5017,
+      "dhuhrRawMin": 737.9036,
+      "asrRawMin": 905.1456,
+      "fajrLead": 97,
+      "ishaLag": 87
+    },
+    "computed": {
+      "fajr": "05:06",
+      "sunrise": "06:43",
+      "dhuhr": "12:18",
+      "asr": "15:05",
+      "magrib": "17:43",
+      "isha": "19:10"
+    },
+    "computedMinutes": {
+      "sunrise": 403,
+      "magrib": 1063,
+      "dhuhr": 738,
+      "asr": 905,
+      "fajr": 306,
+      "isha": 1150
+    },
+    "truth": {
+      "fajr": "05:06",
+      "sunrise": "06:43",
+      "dhuhr": "12:18",
+      "asr": "15:05",
+      "magrib": "17:43",
+      "isha": "19:09"
+    },
+    "match": false
+  }
+]

@@ -1,0 +1,212 @@
+[
+ {
+  "id": 1,
+  "name": "Masjid usSaabireen",
+  "area": "Mossel Bay",
+  "addr": "146 Mossel Street, Mossel Bay",
+  "board": "https://www.salaahboard.co.za/mosselbay/",
+  "dir": "https://goo.gl/maps/t681isMCtMhxLHeFA",
+  "region": "Garden Route",
+  "province": "Cape Town"
+ },
+ {
+  "id": 2,
+  "name": "Jaamea Masjid",
+  "area": "Gordon's Bay",
+  "addr": "Corner Roos Street and Lancaster Road, Gordon's Bay",
+  "board": "https://masjidboardlive.com/boards?MBL11226CRM",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.154500,18.870000",
+  "region": "Helderberg",
+  "province": "Cape Town"
+ },
+ {
+  "id": 3,
+  "name": "Nurul-Islam Masjid",
+  "area": "Strand",
+  "addr": "Faure Street, Strand",
+  "board": "https://masjidboardlive.com/boards?MBL11622CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.114580,18.827190",
+  "region": "Helderberg",
+  "province": "Cape Town"
+ },
+ {
+  "id": 4,
+  "name": "Masjidus Sauligheen",
+  "area": "Bayview",
+  "addr": "Seafarer Drive, Bayview",
+  "board": "https://masjidboardlive.com/boards?MBL11507PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.071968,18.585179",
+  "region": "Mitchell's Plain & South",
+  "province": "Cape Town"
+ },
+ {
+  "id": 5,
+  "name": "Masjid Al-Khairaat",
+  "area": "Diepwater",
+  "addr": "48 Wydgelee Crescent, Diepwater",
+  "board": "https://masjidboardlive.com/boards?MBL11667CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.970118,18.658502",
+  "region": "Mitchell's Plain & South",
+  "province": "Cape Town"
+ },
+ {
+  "id": 6,
+  "name": "Masjied Tul Dawah",
+  "area": "Mitchell's Plain",
+  "addr": "130 Korfbal Crescent, Beacon Valley, Mitchell's Plain",
+  "board": "http://www.salaahboard.co.za/mitchellsplain",
+  "dir": "https://goo.gl/maps/vAxke1sStLLokNek6",
+  "region": "Mitchell's Plain & South",
+  "province": "Cape Town"
+ },
+ {
+  "id": 7,
+  "name": "Masjid Maahir",
+  "area": "Schaapkraal",
+  "addr": "38 Schaap Road, Schaapkraal",
+  "board": "https://masjidboardlive.com/boards?MBL11550CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.037476,18.530237",
+  "region": "Mitchell's Plain & South",
+  "province": "Cape Town"
+ },
+ {
+  "id": 8,
+  "name": "Masjiedul-Hudaa",
+  "area": "Vrygrond",
+  "addr": "5 Thys Witbooi Road, Vrygrond",
+  "board": "https://masjidboardlive.com/boards?MBL11659CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.086066,18.490395",
+  "region": "Mitchell's Plain & South",
+  "province": "Cape Town"
+ },
+ {
+  "id": 9,
+  "name": "Masjidus Sunnah",
+  "area": "Bellville",
+  "addr": "15 Durban Road, Bellville",
+  "board": "https://masjidboardlive.com/boards?MBL11472PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.904085,18.627482",
+  "region": "Northern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 10,
+  "name": "Aljaamia Uthmania Masjid",
+  "area": "Bonteheuwel",
+  "addr": "141 Jakkalsvlei Avenue, Bonteheuwel",
+  "board": "https://masjidboardlive.com/boards?MBL11679CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.947349,18.551924",
+  "region": "Northern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 11,
+  "name": "Husami Masjid",
+  "area": "Cravenby Estate",
+  "addr": "York Road, Cravenby Estate",
+  "board": "https://masjidboardlive.com/boards?MBL11577PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.923370,18.587150",
+  "region": "Northern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 12,
+  "name": "Musalla Sa'id ibn Zaid",
+  "area": "Maitland Garden Village",
+  "addr": "Alexandra Road, Maitland Garden Village",
+  "board": "https://masjidboardlive.com/boards?MBL11562CRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.933885,18.488028",
+  "region": "Northern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 13,
+  "name": "Masjid Al-Tuba",
+  "area": "Panorama",
+  "addr": "1 Wendy Way, Panorama",
+  "board": "https://masjidboardlive.com/boards?MBL11396PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.884169,18.583217",
+  "region": "Northern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 14,
+  "name": "Masjid-ur-Raghmah",
+  "area": "Athlone",
+  "addr": "15 Athlone Street, Garlandale",
+  "board": "https://mawaqit.net/en/m/masjid-ur-raghmah-cape-town-7760-south-africa",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.9646859,18.5000484",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 15,
+  "name": "Waterloo Road Masjid",
+  "area": "Kenwyn",
+  "addr": "42 Waterloo Road, Kenwyn",
+  "board": "http://salaahboard.co.za/waterloo/",
+  "dir": "https://goo.gl/maps/F1YN6L7XhFNTMmf47",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 16,
+  "name": "Musjid Zakariyya",
+  "area": "Lansdowne",
+  "addr": "Garnet Road, Lansdowne",
+  "board": "https://masjidboardlive.com/boards/?id=MBL11202CRP",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.986118,18.502922",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 17,
+  "name": "Shukrul Mubeen",
+  "area": "Lansdowne",
+  "addr": "7-9 York Road, Lansdowne",
+  "board": "https://salaahboard.co.za/landsdowne/",
+  "dir": "https://maps.app.goo.gl/BsKThiCQy9x692756",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 18,
+  "name": "Masjidul Mansur",
+  "area": "Mountview",
+  "addr": "Warden Crescent, Mountview",
+  "board": "https://masjidboardlive.com/boards?MBL11500PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-33.988646,18.523583",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 19,
+  "name": "Anwaarul Islam Institute",
+  "area": "Rondebosch East",
+  "addr": "115 2nd Ave, Rondebosch East",
+  "board": "http://salaahboard.co.za/anwaarulislam/",
+  "dir": "https://goo.gl/maps/bcaxBzDJHHmD7PBd7",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 20,
+  "name": "Darul Karaar Masjid",
+  "area": "Wynberg",
+  "addr": "66 Park Road, Wynberg",
+  "board": "https://masjidboardlive.com/boards?MBL11578PRS",
+  "dir": "https://www.google.com/maps/search/?api=1&query=-34.012261,18.473094",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ },
+ {
+  "id": 21,
+  "name": "Piers Road Mosque",
+  "area": "Wynberg",
+  "addr": "7 Piers Road, Wynberg",
+  "board": "https://salaahboard.co.za/piers/",
+  "dir": "https://maps.app.goo.gl/kyvKNERyt5A31cVf7",
+  "region": "Cape Flats & Southern Suburbs",
+  "province": "Cape Town"
+ }
+]

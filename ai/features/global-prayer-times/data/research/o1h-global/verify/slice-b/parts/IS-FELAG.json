@@ -1,0 +1,434 @@
+{
+ "id": "IS-FELAG",
+ "lat": 64.1466,
+ "lon": -21.9426,
+ "tz": "Atlantic/Reykjavik",
+ "years": [
+  "2026"
+ ],
+ "publishedTarget": false,
+ "asrSchoolTarget": null,
+ "asrSchoolMethod": "shafi",
+ "methods": {
+  "mwl": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 36.0741,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "isna": {
+   "fajr": {
+    "mean": 9.7718,
+    "worst": 49,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 12.5226,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "umm-al-qura": {
+   "fajr": {
+    "mean": 50.2407,
+    "worst": 133,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 49.214,
+    "worst": 189,
+    "within2Pct": 3.7,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "egyptian": {
+   "fajr": {
+    "mean": 61.2075,
+    "worst": 150,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 41.5556,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "karachi": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.3498,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "moonsighting": {
+   "fajr": {
+    "mean": 46.1037,
+    "worst": 153,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 56.4527,
+    "worst": 210,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "diyanet-domestic": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 36.0741,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "diyanet-europe": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 24.4691,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "mabims": {
+   "fajr": {
+    "mean": 66.5187,
+    "worst": 156,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.3498,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "jakim": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.3498,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "kemenag": {
+   "fajr": {
+    "mean": 66.5187,
+    "worst": 156,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.3498,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "kuwait": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 41.5556,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "qatar": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 52.9177,
+    "worst": 189,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "singapore-muis": {
+   "fajr": {
+    "mean": 66.0456,
+    "worst": 155,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.8395,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "dubai": {
+   "fajr": {
+    "mean": 46.9129,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 49.3169,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "tehran": {
+   "fajr": {
+    "mean": 41.3734,
+    "worst": 121,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 0.1358,
+    "worst": 33,
+    "within2Pct": 99.59,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "fazilet-a": {
+   "fajr": {
+    "mean": 64.473,
+    "worst": 156,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 44.9753,
+    "worst": 128,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "fazilet-b": {
+   "fajr": {
+    "mean": 74.9834,
+    "worst": 165,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 55.0864,
+    "worst": 145,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "ecfr": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 36.0741,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "russia-sam": {
+   "fajr": {
+    "mean": 21.7427,
+    "worst": 83,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 12.5226,
+    "worst": 122,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  },
+  "isna-2010": {
+   "fajr": {
+    "mean": 44.7427,
+    "worst": 127,
+    "within2Pct": 0,
+    "scoredDays": 241,
+    "skips": {
+     "polar day: sun never reaches 14.2 deg depression": 124
+    }
+   },
+   "isha": {
+    "mean": 47.3498,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 243,
+    "skips": {
+     "polar day: sun never reaches 14 deg depression": 122
+    }
+   }
+  }
+ }
+}

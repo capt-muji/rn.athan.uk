@@ -1,0 +1,407 @@
+{
+ "site": "Fondation Culturelle Islamique de Genève",
+ "coords": {
+  "lat": 46.2044,
+  "lon": 6.1432
+ },
+ "tz": "Europe/Zurich",
+ "span": {
+  "from": "2024-07-07",
+  "to": "2027-06-05",
+  "days": 1022,
+  "rows": 1022
+ },
+ "perFileRows": {
+  "hijri1446": 323,
+  "hijri1447": 350,
+  "hijri1448": 349
+ },
+ "printedIshaMinusMaghrib": {
+  "at90": 1022,
+  "other": 0,
+  "distribution": {
+   "90": 1022
+  }
+ },
+ "statedReading": {
+  "fajr": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 928,
+   "within1": 994,
+   "worst": 55,
+   "n": 1022
+  },
+  "sunrise": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 923,
+   "within1": 994,
+   "worst": 53,
+   "n": 1022
+  },
+  "dhuhr": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 916,
+   "within1": 996,
+   "worst": 8,
+   "n": 1022
+  },
+  "asr": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 911,
+   "within1": 994,
+   "worst": 32,
+   "n": 1022
+  },
+  "magrib": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 921,
+   "within1": 994,
+   "worst": 42,
+   "n": 1022
+  },
+  "isha": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 921,
+   "within1": 994,
+   "worst": 42,
+   "n": 1022
+  }
+ },
+ "freeFit": {
+  "rounding": "nearest",
+  "fajrAngle": 15,
+  "fajrPlateau": {
+   "min": 15,
+   "max": 15
+  },
+  "fajrMargin": 0,
+  "ishaModel": "interval",
+  "ishaInterval": 90,
+  "ishaIntervalPlateau": {
+   "min": 88,
+   "max": 92
+  },
+  "ishaAngle": null,
+  "asrSchool": "Shafi",
+  "asrHanafiBest": {
+   "margin": -2,
+   "mode": "nearest",
+   "exact": 0,
+   "worst": 72
+  },
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "magrib": 0,
+   "isha": 0
+  },
+  "colScores": {
+   "fajr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 928,
+    "within1": 994,
+    "worst": 55,
+    "mae": 1.3913894324853229,
+    "bias": 1.2974559686888454,
+    "n": 1022
+   },
+   "sunrise": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 923,
+    "within1": 994,
+    "worst": 53,
+    "mae": 1.423679060665362,
+    "bias": 1.2847358121330723,
+    "n": 1022
+   },
+   "dhuhr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 916,
+    "within1": 996,
+    "worst": 8,
+    "mae": 0.20939334637964774,
+    "bias": 0.05675146771037182,
+    "n": 1022
+   },
+   "asr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 911,
+    "within1": 994,
+    "worst": 32,
+    "mae": 0.8405088062622309,
+    "bias": -0.8405088062622309,
+    "n": 1022
+   },
+   "magrib": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 921,
+    "within1": 994,
+    "worst": 42,
+    "mae": 1.1731898238747553,
+    "bias": -1.1731898238747553,
+    "n": 1022
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 921,
+    "within1": 994,
+    "worst": 42,
+    "mae": 1.1731898238747553,
+    "bias": -1.1731898238747553,
+    "n": 1022
+   }
+  },
+  "joint": {
+   "exact": 5520,
+   "within1": 5966,
+   "worst": 55,
+   "of": 6132
+  }
+ },
+ "perYear": {
+  "hijri1446": {
+   "exact": 1642,
+   "within1": 1772,
+   "worst": 55,
+   "of": 1938,
+   "perCol": {
+    "fajr": {
+     "exact": 278,
+     "worst": 55
+    },
+    "sunrise": {
+     "exact": 275,
+     "worst": 53
+    },
+    "dhuhr": {
+     "exact": 282,
+     "worst": 8
+    },
+    "asr": {
+     "exact": 269,
+     "worst": 32
+    },
+    "magrib": {
+     "exact": 269,
+     "worst": 42
+    },
+    "isha": {
+     "exact": 269,
+     "worst": 42
+    }
+   }
+  },
+  "hijri1447": {
+   "exact": 1954,
+   "within1": 2100,
+   "worst": 1,
+   "of": 2100,
+   "perCol": {
+    "fajr": {
+     "exact": 332,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 329,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 321,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 318,
+     "worst": 1
+    },
+    "magrib": {
+     "exact": 327,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 327,
+     "worst": 1
+    }
+   }
+  },
+  "hijri1448": {
+   "exact": 1924,
+   "within1": 2094,
+   "worst": 1,
+   "of": 2094,
+   "perCol": {
+    "fajr": {
+     "exact": 318,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 319,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 313,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 324,
+     "worst": 1
+    },
+    "magrib": {
+     "exact": 325,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 325,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "hijri1446ExclFeb": {
+  "exact": 5520,
+  "within1": 5964,
+  "worst": 1,
+  "of": 5964
+ },
+ "feb1446Defect": {
+  "rows": 28,
+  "dates": "2025-02-01..2025-02-28",
+  "perColBiasMin": {
+   "fajr": {
+    "exact": 0,
+    "worst": 55,
+    "mae": 48.43,
+    "bias": 48.43
+   },
+   "sunrise": {
+    "exact": 0,
+    "worst": 53,
+    "mae": 49.43,
+    "bias": 49.43
+   },
+   "dhuhr": {
+    "exact": 0,
+    "worst": 8,
+    "mae": 4.86,
+    "bias": 4.86
+   },
+   "asr": {
+    "exact": 0,
+    "worst": 32,
+    "mae": 27.71,
+    "bias": -27.71
+   },
+   "magrib": {
+    "exact": 0,
+    "worst": 42,
+    "mae": 40.21,
+    "bias": -40.21
+   },
+   "isha": {
+    "exact": 0,
+    "worst": 42,
+    "mae": 40.21,
+    "bias": -40.21
+   }
+  },
+  "bestDateShiftRepair": {
+   "shift": -14,
+   "exact": 4
+  },
+  "reading": "the poster itself is faulty: morning columns run early, evening columns late, no date shift repairs it; scoped to one month"
+ },
+ "perYearIndependentFajrFit": {
+  "hijri1446": {
+   "best": 15,
+   "plateau": {
+    "min": 15,
+    "max": 15
+   },
+   "exact": 278,
+   "n": 295
+  },
+  "hijri1447": {
+   "best": 15,
+   "plateau": {
+    "min": 15,
+    "max": 15
+   },
+   "exact": 332,
+   "n": 350
+  },
+  "hijri1448": {
+   "best": 15,
+   "plateau": {
+    "min": 15,
+    "max": 15
+   },
+   "exact": 318,
+   "n": 349
+  }
+ },
+ "seasonalAmplitudeFajr": {
+  "Jan 2025": {
+   "printed": [
+    394,
+    408
+   ],
+   "computed": [
+    394,
+    407
+   ]
+  },
+  "Jul 2025": {
+   "printed": [
+    226,
+    272
+   ],
+   "computed": [
+    226,
+    272
+   ]
+  },
+  "Jan 2026": {
+   "printed": [
+    394,
+    408
+   ],
+   "computed": [
+    394,
+    407
+   ]
+  },
+  "Jul 2026": {
+   "printed": [
+    226,
+    271
+   ],
+   "computed": [
+    226,
+    271
+   ]
+  },
+  "Jan 2027": {
+   "printed": [
+    394,
+    408
+   ],
+   "computed": [
+    394,
+    407
+   ]
+  }
+ }
+}

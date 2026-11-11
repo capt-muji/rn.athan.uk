@@ -1,0 +1,1673 @@
+{
+ "generated": "2026-11-10",
+ "feeds": {
+  "sanaa": {
+   "publisher": "Awqaf authority, Sanaa (awqaf.gov.ye)",
+   "endpoint": "/api/method/blue_theme.blue_theme.page.tebyan_prayer_panel.tebyan_prayer_panel.get_page_data?fetch_date=",
+   "locations": 31,
+   "dates_held": [
+    "2026-11-01",
+    "2026-11-10",
+    9
+   ],
+   "note": "rolling window; 2026-11-08 and every date after 2026-11-10 returned an empty document"
+  },
+  "aden": {
+   "publisher": "Ministry of Awqaf and Guidance, Aden (yemenawqaf.org)",
+   "endpoint": "/prayer-times (Livewire POST; URL params ignored)",
+   "cities": 6,
+   "years_selectable": [
+    2025,
+    2026,
+    2027
+   ],
+   "dates_held": [
+    "2026-11-01",
+    "2026-11-30",
+    30
+   ]
+  }
+ },
+ "overlap_dates": [
+  "2026-11-01",
+  "2026-11-02",
+  "2026-11-03",
+  "2026-11-04",
+  "2026-11-05",
+  "2026-11-06",
+  "2026-11-07",
+  "2026-11-09",
+  "2026-11-10"
+ ],
+ "exact_pairs": [
+  {
+   "label": "Aden",
+   "sanaa_location": "عدن",
+   "aden_location": "عدن",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:41",
+      "sunrise": "05:53",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 1,
+      "magrib": -5,
+      "isha": 5
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:41",
+      "sunrise": "05:54",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:41",
+      "sunrise": "05:54",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:54",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:54",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 1,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -5,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 5
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:53",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -7,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 5
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:37",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -5,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:37",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 7,
+      "sunrise": 0,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -5,
+      "isha": 4
+     }
+    }
+   ]
+  },
+  {
+   "label": "Mukalla",
+   "sanaa_location": "حضرموت - المكلا",
+   "aden_location": "المكلا",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:26",
+      "sunrise": "05:39",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:21",
+      "isha": "18:20"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 18,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:26",
+      "sunrise": "05:39",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:21",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 15,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 12,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:27",
+      "sunrise": "05:39",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 21,
+      "sunrise": 15,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:27",
+      "sunrise": "05:40",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 21,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:27",
+      "sunrise": "05:40",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 15,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:27",
+      "sunrise": "05:41",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:20",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 12,
+      "isha": 23
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:28",
+      "sunrise": "05:41",
+      "dhuhr": "11:37",
+      "asr": "14:46",
+      "magrib": "17:19",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 21,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 23
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:28",
+      "sunrise": "05:42",
+      "dhuhr": "11:37",
+      "asr": "14:45",
+      "magrib": "17:19",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 18,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:28",
+      "sunrise": "05:42",
+      "dhuhr": "11:37",
+      "asr": "14:45",
+      "magrib": "17:19",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 22,
+      "sunrise": 14,
+      "dhuhr": 9,
+      "asr": 18,
+      "magrib": 13,
+      "isha": 22
+     }
+    }
+   ]
+  },
+  {
+   "label": "Seiyun",
+   "sanaa_location": "حضرموت - سيئون",
+   "aden_location": "سيئون",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:29",
+      "sunrise": "05:42",
+      "dhuhr": "11:38",
+      "asr": "14:47",
+      "magrib": "17:21",
+      "isha": "18:20"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 8,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:29",
+      "sunrise": "05:42",
+      "dhuhr": "11:38",
+      "asr": "14:47",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 12,
+      "dhuhr": 8,
+      "asr": 16,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:29",
+      "sunrise": "05:43",
+      "dhuhr": "11:38",
+      "asr": "14:47",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 8,
+      "asr": 16,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:29",
+      "sunrise": "05:43",
+      "dhuhr": "11:38",
+      "asr": "14:46",
+      "magrib": "17:20",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 8,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:30",
+      "sunrise": "05:43",
+      "dhuhr": "11:38",
+      "asr": "14:46",
+      "magrib": "17:19",
+      "isha": "18:19"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 12,
+      "dhuhr": 8,
+      "asr": 17,
+      "magrib": 14,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:30",
+      "sunrise": "05:44",
+      "dhuhr": "11:38",
+      "asr": "14:46",
+      "magrib": "17:19",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 8,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 23
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:30",
+      "sunrise": "05:44",
+      "dhuhr": "11:38",
+      "asr": "14:46",
+      "magrib": "17:19",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 8,
+      "asr": 17,
+      "magrib": 13,
+      "isha": 23
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:31",
+      "sunrise": "05:45",
+      "dhuhr": "11:39",
+      "asr": "14:46",
+      "magrib": "17:18",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 7,
+      "asr": 17,
+      "magrib": 14,
+      "isha": 22
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:31",
+      "sunrise": "05:45",
+      "dhuhr": "11:39",
+      "asr": "14:46",
+      "magrib": "17:18",
+      "isha": "18:18"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 19,
+      "sunrise": 11,
+      "dhuhr": 7,
+      "asr": 17,
+      "magrib": 14,
+      "isha": 22
+     }
+    }
+   ]
+  },
+  {
+   "label": "Marib",
+   "sanaa_location": "مأرب",
+   "aden_location": "مارب",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:52",
+      "asr": "15:01",
+      "magrib": "17:39",
+      "isha": "18:34"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 3,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:56",
+      "dhuhr": "11:52",
+      "asr": "15:01",
+      "magrib": "17:39",
+      "isha": "18:34"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 2,
+      "magrib": -6,
+      "isha": 7
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:52",
+      "asr": "15:01",
+      "magrib": "17:38",
+      "isha": "18:33"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 5,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 2,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:52",
+      "asr": "15:01",
+      "magrib": "17:38",
+      "isha": "18:33"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 5,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 2,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:57",
+      "dhuhr": "11:52",
+      "asr": "15:00",
+      "magrib": "17:38",
+      "isha": "18:33"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 3,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:57",
+      "dhuhr": "11:52",
+      "asr": "15:00",
+      "magrib": "17:37",
+      "isha": "18:33"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 3,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:44",
+      "sunrise": "05:58",
+      "dhuhr": "11:52",
+      "asr": "15:00",
+      "magrib": "17:37",
+      "isha": "18:32"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 5,
+      "sunrise": -3,
+      "dhuhr": -6,
+      "asr": 3,
+      "magrib": -5,
+      "isha": 9
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:44",
+      "sunrise": "05:58",
+      "dhuhr": "11:52",
+      "asr": "15:00",
+      "magrib": "17:37",
+      "isha": "18:32"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -2,
+      "dhuhr": -6,
+      "asr": 3,
+      "magrib": -5,
+      "isha": 8
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:45",
+      "sunrise": "05:59",
+      "dhuhr": "11:53",
+      "asr": "15:00",
+      "magrib": "17:36",
+      "isha": "18:32"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 5,
+      "sunrise": -3,
+      "dhuhr": -7,
+      "asr": 3,
+      "magrib": -4,
+      "isha": 8
+     }
+    }
+   ]
+  }
+ ],
+ "near_pairs": [
+  {
+   "label": "Mahra governorate vs Ghaydah (its capital)",
+   "sanaa_location": "المهرة",
+   "aden_location": "الغيضة",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:15",
+      "sunrise": "05:28",
+      "dhuhr": "11:25",
+      "asr": "14:33",
+      "magrib": "17:07",
+      "isha": "18:06"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 33,
+      "sunrise": 25,
+      "dhuhr": 21,
+      "asr": 31,
+      "magrib": 27,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:15",
+      "sunrise": "05:29",
+      "dhuhr": "11:25",
+      "asr": "14:33",
+      "magrib": "17:07",
+      "isha": "18:06"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 33,
+      "sunrise": 25,
+      "dhuhr": 21,
+      "asr": 30,
+      "magrib": 26,
+      "isha": 35
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:16",
+      "sunrise": "05:29",
+      "dhuhr": "11:25",
+      "asr": "14:33",
+      "magrib": "17:06",
+      "isha": "18:05"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 25,
+      "dhuhr": 21,
+      "asr": 30,
+      "magrib": 27,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:16",
+      "sunrise": "05:30",
+      "dhuhr": "11:25",
+      "asr": "14:33",
+      "magrib": "17:06",
+      "isha": "18:05"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 24,
+      "dhuhr": 21,
+      "asr": 30,
+      "magrib": 27,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:16",
+      "sunrise": "05:30",
+      "dhuhr": "11:25",
+      "asr": "14:33",
+      "magrib": "17:06",
+      "isha": "18:05"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 33,
+      "sunrise": 25,
+      "dhuhr": 21,
+      "asr": 30,
+      "magrib": 27,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:17",
+      "sunrise": "05:30",
+      "dhuhr": "11:25",
+      "asr": "14:32",
+      "magrib": "17:05",
+      "isha": "18:05"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 25,
+      "dhuhr": 21,
+      "asr": 31,
+      "magrib": 27,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:17",
+      "sunrise": "05:31",
+      "dhuhr": "11:25",
+      "asr": "14:32",
+      "magrib": "17:05",
+      "isha": "18:04"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 24,
+      "dhuhr": 21,
+      "asr": 31,
+      "magrib": 27,
+      "isha": 37
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:18",
+      "sunrise": "05:32",
+      "dhuhr": "11:25",
+      "asr": "14:32",
+      "magrib": "17:04",
+      "isha": "18:04"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 24,
+      "dhuhr": 21,
+      "asr": 31,
+      "magrib": 28,
+      "isha": 36
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:18",
+      "sunrise": "05:32",
+      "dhuhr": "11:25",
+      "asr": "14:32",
+      "magrib": "17:04",
+      "isha": "18:04"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 32,
+      "sunrise": 24,
+      "dhuhr": 21,
+      "asr": 31,
+      "magrib": 28,
+      "isha": 36
+     }
+    }
+   ]
+  },
+  {
+   "label": "Lahj governorate vs Al Hawtah (its capital)",
+   "sanaa_location": "لحج",
+   "aden_location": "الحوطة",
+   "rows": [
+    {
+     "date": "2026-11-01",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:54",
+      "dhuhr": "11:54",
+      "asr": "15:04",
+      "magrib": "17:40",
+      "isha": "18:38"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:53",
+      "dhuhr": "11:46",
+      "asr": "15:04",
+      "magrib": "17:34",
+      "isha": "18:42"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-02",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:54",
+      "asr": "15:04",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": -1,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-03",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:54",
+      "asr": "15:04",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": -1,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-04",
+     "sanaa": {
+      "fajr": "04:42",
+      "sunrise": "05:55",
+      "dhuhr": "11:54",
+      "asr": "15:04",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:48",
+      "sunrise": "05:54",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": -1,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-05",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:55",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:39",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:33",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": 0,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-06",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-07",
+     "sanaa": {
+      "fajr": "04:43",
+      "sunrise": "05:56",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:37"
+     },
+     "aden": {
+      "fajr": "04:49",
+      "sunrise": "05:55",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:41"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-09",
+     "sanaa": {
+      "fajr": "04:44",
+      "sunrise": "05:57",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:38",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -6,
+      "isha": 4
+     }
+    },
+    {
+     "date": "2026-11-10",
+     "sanaa": {
+      "fajr": "04:44",
+      "sunrise": "05:57",
+      "dhuhr": "11:54",
+      "asr": "15:03",
+      "magrib": "17:37",
+      "isha": "18:36"
+     },
+     "aden": {
+      "fajr": "04:50",
+      "sunrise": "05:56",
+      "dhuhr": "11:46",
+      "asr": "15:03",
+      "magrib": "17:32",
+      "isha": "18:40"
+     },
+     "delta_aden_minus_sanaa_min": {
+      "fajr": 6,
+      "sunrise": -1,
+      "dhuhr": -8,
+      "asr": 0,
+      "magrib": -5,
+      "isha": 4
+     }
+    }
+   ]
+  }
+ ],
+ "per_prayer_delta": {
+  "fajr": {
+   "n": 36,
+   "mean": 13.28,
+   "min": 5,
+   "max": 22,
+   "histogram": {
+    "5": 4,
+    "6": 6,
+    "7": 8,
+    "19": 9,
+    "21": 3,
+    "22": 6
+   }
+  },
+  "sunrise": {
+   "n": 36,
+   "mean": 5.86,
+   "min": -3,
+   "max": 15,
+   "histogram": {
+    "-3": 2,
+    "-2": 7,
+    "0": 8,
+    "1": 1,
+    "11": 7,
+    "12": 2,
+    "14": 6,
+    "15": 3
+   }
+  },
+  "dhuhr": {
+   "n": 36,
+   "mean": 0.86,
+   "min": -8,
+   "max": 9,
+   "histogram": {
+    "-8": 2,
+    "-7": 8,
+    "-6": 8,
+    "7": 2,
+    "8": 7,
+    "9": 9
+   }
+  },
+  "asr": {
+   "n": 36,
+   "mean": 9.22,
+   "min": 0,
+   "max": 18,
+   "histogram": {
+    "0": 8,
+    "1": 1,
+    "2": 3,
+    "3": 6,
+    "16": 2,
+    "17": 13,
+    "18": 3
+   }
+  },
+  "magrib": {
+   "n": 36,
+   "mean": 3.89,
+   "min": -6,
+   "max": 14,
+   "histogram": {
+    "-6": 6,
+    "-5": 11,
+    "-4": 1,
+    "12": 2,
+    "13": 13,
+    "14": 3
+   }
+  },
+  "isha": {
+   "n": 36,
+   "mean": 14.19,
+   "min": 4,
+   "max": 23,
+   "histogram": {
+    "4": 6,
+    "5": 3,
+    "7": 1,
+    "8": 7,
+    "9": 1,
+    "22": 14,
+    "23": 4
+   }
+  }
+ },
+ "coverage": {
+  "sanaa_only": [
+   "أبين - جعار",
+   "أبين - زنجبار",
+   "إب - المدينة",
+   "إب - ذي السفال",
+   "البيضاء - المدينة",
+   "البيضاء - رداع",
+   "الجوف",
+   "الحديدة - المدينة",
+   "الحديدة - المراوعة",
+   "الحديدة - باجل",
+   "الحديدة - بيت الفقية",
+   "الحديدة - زبيد",
+   "الضالع",
+   "المحويت",
+   "تعز",
+   "حجة - المدينة",
+   "حجة - عبس",
+   "حضرموت - تريم",
+   "ذمار",
+   "ريمة",
+   "سقطرى",
+   "شبوة",
+   "صعدة",
+   "صنعاء",
+   "عمران"
+  ],
+  "aden_only": [
+   "الحوطة",
+   "الغيضة",
+   "المكلا",
+   "سيئون",
+   "عدن",
+   "مارب"
+  ]
+ }
+}

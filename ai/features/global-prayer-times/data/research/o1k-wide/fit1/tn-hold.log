@@ -1,0 +1,28 @@
+== held recipe on 2024 (Tunis 36.8/10.18), total exact 1273/1830 ==
+  fajr                   exact 331  within1 366  worst   1  (margin +0 floor)
+  dhuhr                  exact 323  within1 366  worst   1  (margin +7 nearest)
+  asr                    exact 107  within1 350  worst   2  (margin +0 nearest)
+  magrib                 exact 176  within1 366  worst   1  (margin +2 nearest)
+  isha                   exact 336  within1 366  worst   1  (margin +0 ceil)
+== held recipe on 2025 (Tunis 36.8/10.18), total exact 1327/1825 ==
+  fajr                   exact 340  within1 365  worst   1  (margin +0 floor)
+  dhuhr                  exact 338  within1 365  worst   1  (margin +7 nearest)
+  asr                    exact 114  within1 345  worst   2  (margin +0 nearest)
+  magrib                 exact 207  within1 365  worst   1  (margin +2 nearest)
+  isha                   exact 328  within1 365  worst   1  (margin +0 ceil)
+
+== rounding sensitivity at frozen margins (fajr floor, isha ceil held fixed) ==
+2024 dhuhr margin 7: floor 182/w1 366/worst 1   ceil 192/w1 366/worst 1   nearest 323/w1 366/worst 1
+2024 asr margin 0: floor 150/w1 303/worst 2   ceil 103/w1 318/worst 2   nearest 107/w1 350/worst 2
+2024 magrib margin 2: floor 11/w1 360/worst 2   ceil 345/w1 366/worst 1   nearest 176/w1 366/worst 1
+2025 dhuhr margin 7: floor 177/w1 365/worst 1   ceil 193/w1 365/worst 1   nearest 338/w1 365/worst 1
+2025 asr margin 0: floor 145/w1 298/worst 2   ceil 100/w1 314/worst 2   nearest 114/w1 345/worst 2
+2025 magrib margin 2: floor 15/w1 358/worst 2   ceil 345/w1 365/worst 1   nearest 207/w1 365/worst 1
+
+== held recipe vs 4-city today rows (2026-11-10) ==
+tunis     (36.8, 10.183): fajr exact  dhuhr exact  asr +/-1  magrib exact  isha exact
+kairouan  (35.677, 10.097): fajr +/-1  dhuhr +/-1  asr exact  magrib off 2  isha exact
+gafsa     (34.421, 8.787): fajr off 3  dhuhr exact  asr +/-1  magrib off 3  isha off 2
+sfax      (34.733, 10.75): fajr exact  dhuhr exact  asr +/-1  magrib +/-1  isha +/-1
+
+wrote tn-hold.json

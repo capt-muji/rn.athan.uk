@@ -1,0 +1,12 @@
+{
+  "source": "https://muftiyat.kg/ru/api/v1/calendar/{1=Bishkek,2=Osh}/",
+  "publisher": "Духовное управление мусульман Кыргызстана (muftiyat.kg), documented public JSON API",
+  "api_doc": "https://muftiyat.kg/ru/calendar/api/",
+  "captured_utc_date": "2026-11-10",
+  "window_rule": "range limited to 2 calendar months; a wider range 302-redirects to start..start+2months. The UI calendar shows a 21-day slice (10-11-2026 - 30-11-2026) over the same API.",
+  "windows_fetched": ["10-11-2026..30-11-2026 (UI slice, via page)", "01-01-2027..01-03-2027", "02-03-2027..30-04-2027", "03-03-2027..02-05-2027", "03-05-2027..02-07-2027", "03-07-2027..01-09-2027", "02-09-2027..01-11-2027", "02-11-2027..31-12-2027"],
+  "rows": {"bishkek": 365, "osh": 365},
+  "fields": ["fajr","sunrise","dhuhr","asr","sunset","maghrib","isha","tahajjud"],
+  "future_years_served": "2028 probed 01-01-2028..29-02-2028 returned 60 rows",
+  "confirmation": "maghrib = sunset + 7 min on 365/365 days for both cities in 2027"
+}

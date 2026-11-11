@@ -1,0 +1,363 @@
+{
+ "alger": {
+  "site": {
+   "lat": 36.7538,
+   "lon": 3.0588,
+   "file": "dz-alger-1447-jumada1.json"
+  },
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.1,
+   "madhab": "shafi"
+  },
+  "per": {
+   "fajr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30
+   },
+   "sunrise": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 30
+   },
+   "dhuhr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30
+   },
+   "asr": {
+    "exact": 15,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.5,
+    "n": 30
+   },
+   "magrib": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.03,
+    "n": 30
+   },
+   "isha": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30
+   }
+  },
+  "totals": {
+   "exact": 162,
+   "within1": 180,
+   "n": 180,
+   "worst": 1
+  }
+ },
+ "djelfa": {
+  "site": {
+   "lat": 34.6703,
+   "lon": 3.263,
+   "file": "dz-djelfa-1447-jumada1.json"
+  },
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.1,
+   "madhab": "shafi"
+  },
+  "per": {
+   "fajr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 30
+   },
+   "sunrise": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 30
+   },
+   "dhuhr": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30
+   },
+   "asr": {
+    "exact": 14,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.53,
+    "n": 30
+   },
+   "magrib": {
+    "exact": 30,
+    "within1": 30,
+    "worst": 0,
+    "mae": 0,
+    "n": 30
+   },
+   "isha": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.1,
+    "n": 30
+   }
+  },
+  "totals": {
+   "exact": 157,
+   "within1": 180,
+   "n": 180,
+   "worst": 1
+  }
+ },
+ "adrar": {
+  "site": {
+   "lat": 27.8743,
+   "lon": -0.2939,
+   "file": "dz-adrar-1447-jumada1.json"
+  },
+  "recipe": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.1,
+   "madhab": "shafi"
+  },
+  "per": {
+   "fajr": {
+    "exact": 29,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.03,
+    "n": 30
+   },
+   "sunrise": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 30
+   },
+   "dhuhr": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.07,
+    "n": 30
+   },
+   "asr": {
+    "exact": 18,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.4,
+    "n": 30
+   },
+   "magrib": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.1,
+    "n": 30
+   },
+   "isha": {
+    "exact": 14,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.53,
+    "n": 30
+   }
+  },
+  "totals": {
+   "exact": 144,
+   "within1": 180,
+   "n": 180,
+   "worst": 1
+  }
+ },
+ "registerColumns": [
+  "الطارف",
+  "سوق أهراس",
+  "عنابة",
+  "قالمة",
+  "أم البواقي",
+  "سكيكدة",
+  "قسنطينة",
+  "ميلة",
+  "جيجل",
+  "سطيف",
+  "بجاية",
+  "برج بوعريريج",
+  "المسيلة",
+  "تيزي وزو",
+  "دلس",
+  "البويرة",
+  "بومرداس",
+  "البليدة",
+  "المدية",
+  "تيارت",
+  "عين الدفلى",
+  "الشلف",
+  "غليزان",
+  "مستغانم",
+  "وهران"
+ ],
+ "regionalVsAlger": {
+  "djelfa": {
+   "fajr": {
+    "printedMean": -2.1,
+    "printedMin": -3,
+    "printedMax": -1,
+    "adhanMean": -2.13,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 0.93,
+    "residualVsLongitude": 3.8
+   },
+   "sunrise": {
+    "printedMean": -4.4,
+    "printedMin": -6,
+    "printedMax": -3,
+    "adhanMean": -4.42,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 0.8,
+    "residualVsLongitude": 6.8
+   },
+   "dhuhr": {
+    "printedMean": -0.9,
+    "printedMin": -1,
+    "printedMax": 0,
+    "adhanMean": -0.82,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 0.83,
+    "residualVsLongitude": 1.8
+   },
+   "asr": {
+    "printedMean": 3.03,
+    "printedMin": 2,
+    "printedMax": 4,
+    "adhanMean": 2.99,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 0.95,
+    "residualVsLongitude": 3.2
+   },
+   "magrib": {
+    "printedMean": 3.03,
+    "printedMin": 2,
+    "printedMax": 4,
+    "adhanMean": 2.82,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 0.88,
+    "residualVsLongitude": 3.2
+   },
+   "isha": {
+    "printedMean": 0.63,
+    "printedMin": -1,
+    "printedMax": 2,
+    "adhanMean": 0.74,
+    "longitudeRule": 0.8,
+    "residualVsAdhan": 1.02,
+    "residualVsLongitude": 1.8
+   }
+  },
+  "adrar": {
+   "fajr": {
+    "printedMean": 7.43,
+    "printedMin": 4,
+    "printedMax": 12,
+    "adhanMean": 7.45,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 0.75,
+    "residualVsLongitude": 25.4
+   },
+   "sunrise": {
+    "printedMean": -0.8,
+    "printedMin": -5,
+    "printedMax": 4,
+    "adhanMean": -0.8,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 0.97,
+    "residualVsLongitude": 17.4
+   },
+   "dhuhr": {
+    "printedMean": 13.3,
+    "printedMin": 13,
+    "printedMax": 14,
+    "adhanMean": 13.41,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 0.6,
+    "residualVsLongitude": 27.4
+   },
+   "asr": {
+    "printedMean": 27.47,
+    "printedMin": 23,
+    "printedMax": 31,
+    "adhanMean": 27.56,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 0.8,
+    "residualVsLongitude": 44.4
+   },
+   "magrib": {
+    "printedMean": 27.77,
+    "printedMin": 24,
+    "printedMax": 32,
+    "adhanMean": 27.73,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 0.85,
+    "residualVsLongitude": 45.4
+   },
+   "isha": {
+    "printedMean": 19.7,
+    "printedMin": 16,
+    "printedMax": 23,
+    "adhanMean": 20.28,
+    "longitudeRule": -13.4,
+    "residualVsAdhan": 1.33,
+    "residualVsLongitude": 36.4
+   }
+  }
+ },
+ "djelfaInRegister": false,
+ "adrarInRegister": false,
+ "adrarVsOranEntry": {
+  "fajr": {
+   "printedMean": 7.43,
+   "oranEntry": 15,
+   "miss": -7.57
+  },
+  "sunrise": {
+   "printedMean": -0.8,
+   "oranEntry": 14,
+   "miss": -14.8
+  },
+  "dhuhr": {
+   "printedMean": 13.3,
+   "oranEntry": 15,
+   "miss": -1.7
+  },
+  "asr": {
+   "printedMean": 27.47,
+   "oranEntry": 18,
+   "miss": 9.47
+  },
+  "magrib": {
+   "printedMean": 27.77,
+   "oranEntry": 18,
+   "miss": 9.77
+  },
+  "isha": {
+   "printedMean": 19.7,
+   "oranEntry": 16,
+   "miss": 3.7
+  }
+ }
+}

@@ -1,0 +1,8507 @@
+{
+ "constrained1447_fajr": [
+  {
+   "angle": 17.8,
+   "margin": 0,
+   "mode": "floor",
+   "exact": 112,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.051
+  },
+  {
+   "angle": 17.9,
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  },
+  {
+   "angle": 18,
+   "margin": 1,
+   "mode": "floor",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  },
+  {
+   "angle": 18.1,
+   "margin": 1,
+   "mode": "nearest",
+   "exact": 109,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.076
+  },
+  {
+   "angle": 18.2,
+   "margin": 2,
+   "mode": "floor",
+   "exact": 107,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.093
+  },
+  {
+   "angle": 18.3,
+   "margin": 2,
+   "mode": "nearest",
+   "exact": 107,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.093
+  },
+  {
+   "angle": 18.4,
+   "margin": 3,
+   "mode": "floor",
+   "exact": 105,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.11
+  },
+  {
+   "angle": 18.5,
+   "margin": 3,
+   "mode": "nearest",
+   "exact": 105,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.11
+  },
+  {
+   "angle": 18.6,
+   "margin": 4,
+   "mode": "floor",
+   "exact": 104,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.119
+  },
+  {
+   "angle": 18.35,
+   "margin": 2,
+   "mode": "ceil",
+   "exact": 103,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.127
+  },
+  {
+   "angle": 18.45,
+   "margin": 3,
+   "mode": "nearest",
+   "exact": 103,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.127
+  },
+  {
+   "angle": 18.55,
+   "margin": 4,
+   "mode": "floor",
+   "exact": 103,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.127
+  }
+ ],
+ "ridge1447_fajr": [
+  {
+   "angle": 17.8,
+   "exact": 112,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.2,
+   "exact": 107,
+   "margin": 2,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.6,
+   "exact": 104,
+   "margin": 4,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.7,
+   "exact": 103,
+   "margin": 4,
+   "mode": "nearest"
+  },
+  {
+   "angle": 18.8,
+   "exact": 101,
+   "margin": 5,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.05,
+   "exact": 101,
+   "margin": 6,
+   "mode": "nearest"
+  },
+  {
+   "angle": 19.2,
+   "exact": 100,
+   "margin": 7,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.55,
+   "exact": 100,
+   "margin": 9,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.4,
+   "exact": 97,
+   "margin": 8,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.05,
+   "exact": 96,
+   "margin": 11,
+   "mode": "nearest"
+  },
+  {
+   "angle": 20.35,
+   "exact": 95,
+   "margin": 12,
+   "mode": "ceil"
+  },
+  {
+   "angle": 20.55,
+   "exact": 94,
+   "margin": 13,
+   "mode": "ceil"
+  },
+  {
+   "angle": 20.65,
+   "exact": 93,
+   "margin": 14,
+   "mode": "nearest"
+  },
+  {
+   "angle": 20.95,
+   "exact": 91,
+   "margin": 15,
+   "mode": "ceil"
+  },
+  {
+   "angle": 20.5,
+   "exact": 90,
+   "margin": 14,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.4,
+   "exact": 89,
+   "margin": 13,
+   "mode": "nearest"
+  },
+  {
+   "angle": 20.9,
+   "exact": 87,
+   "margin": 15,
+   "mode": "ceil"
+  },
+  {
+   "angle": 17.6,
+   "exact": 4,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 15.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 15.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 15.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 15.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 15,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  }
+ ],
+ "constrained1447_isha": [
+  {
+   "angle": 16.3,
+   "margin": 4,
+   "mode": "nearest",
+   "exact": 115,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.025
+  },
+  {
+   "angle": 16.4,
+   "margin": 4,
+   "mode": "floor",
+   "exact": 115,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.025
+  },
+  {
+   "angle": 16.5,
+   "margin": 3,
+   "mode": "nearest",
+   "exact": 114,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.034
+  },
+  {
+   "angle": 16,
+   "margin": 6,
+   "mode": "floor",
+   "exact": 113,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.042
+  },
+  {
+   "angle": 16.1,
+   "margin": 5,
+   "mode": "nearest",
+   "exact": 113,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.042
+  },
+  {
+   "angle": 16.2,
+   "margin": 5,
+   "mode": "floor",
+   "exact": 113,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.042
+  },
+  {
+   "angle": 16.6,
+   "margin": 2,
+   "mode": "ceil",
+   "exact": 113,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.042
+  },
+  {
+   "angle": 15.05,
+   "margin": 11,
+   "mode": "floor",
+   "exact": 111,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.059
+  },
+  {
+   "angle": 14.95,
+   "margin": 11,
+   "mode": "nearest",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  },
+  {
+   "angle": 15.25,
+   "margin": 9,
+   "mode": "ceil",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  },
+  {
+   "angle": 15.35,
+   "margin": 9,
+   "mode": "nearest",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  },
+  {
+   "angle": 15.9,
+   "margin": 6,
+   "mode": "nearest",
+   "exact": 110,
+   "within1": 118,
+   "worst": 1,
+   "mae": 0.068
+  }
+ ],
+ "ridge1447_isha": [
+  {
+   "angle": 16.3,
+   "exact": 115,
+   "margin": 4,
+   "mode": "nearest"
+  },
+  {
+   "angle": 16.1,
+   "exact": 113,
+   "margin": 5,
+   "mode": "nearest"
+  },
+  {
+   "angle": 14.95,
+   "exact": 110,
+   "margin": 11,
+   "mode": "nearest"
+  },
+  {
+   "angle": 16.7,
+   "exact": 110,
+   "margin": 2,
+   "mode": "nearest"
+  },
+  {
+   "angle": 15.15,
+   "exact": 109,
+   "margin": 10,
+   "mode": "nearest"
+  },
+  {
+   "angle": 15.7,
+   "exact": 107,
+   "margin": 7,
+   "mode": "nearest"
+  },
+  {
+   "angle": 17.1,
+   "exact": 106,
+   "margin": 0,
+   "mode": "nearest"
+  },
+  {
+   "angle": 15.55,
+   "exact": 103,
+   "margin": 8,
+   "mode": "nearest"
+  },
+  {
+   "angle": 15.4,
+   "exact": 102,
+   "margin": 9,
+   "mode": "floor"
+  },
+  {
+   "angle": 15.2,
+   "exact": 100,
+   "margin": 10,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.05,
+   "exact": 99,
+   "margin": 5,
+   "mode": "ceil"
+  },
+  {
+   "angle": 16.25,
+   "exact": 98,
+   "margin": 4,
+   "mode": "ceil"
+  },
+  {
+   "angle": 15.1,
+   "exact": 97,
+   "margin": 10,
+   "mode": "nearest"
+  },
+  {
+   "angle": 17.15,
+   "exact": 95,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 16.65,
+   "exact": 93,
+   "margin": 2,
+   "mode": "ceil"
+  },
+  {
+   "angle": 14.8,
+   "exact": 90,
+   "margin": 12,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.25,
+   "exact": 87,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.4,
+   "exact": 1,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 17.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 18.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 19,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 19.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 20,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.2,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.4,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.6,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 20.8,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  },
+  {
+   "angle": 21,
+   "exact": 0,
+   "margin": 0,
+   "mode": "floor"
+  }
+ ],
+ "frozenMarginRidge_fajr": [
+  {
+   "angle": 15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 15.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 15.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 15.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 15.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 15.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 15.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 15.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 15.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 15.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 15.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 15.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 15.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 15.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 15.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 15.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 15.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 15.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 15.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 15.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 15.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 15.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 15.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 15.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 15.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 15.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 15.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 15.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 15.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 15.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 15.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 15.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 15.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 15.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 15.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 15.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 15.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 15.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 15.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 16,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 16,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 16.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 16.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 16.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 16.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 16.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 16.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 16.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 16.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 16.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 16.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 16.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 16.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 16.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 16.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 16.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 16.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 16.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 16.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 16.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 16.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 16.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 16.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 16.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 16.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 16.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 16.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 16.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 16.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 16.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 16.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 16.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 16.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 16.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 16.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 16.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 16.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 16.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 16.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 17,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 17,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 17.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 17.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 17.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 17.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 17.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 17.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 17.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 17.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 17.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 17.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 17.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 17.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 17.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 17.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 17.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 2,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 17.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 4,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 17.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 27,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 17.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 30,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 17.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 55,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 17.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 63,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 17.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 87,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 17.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 92,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 17.6,
+   "year": "1447",
+   "exact": 4,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.6,
+   "year": "1448",
+   "exact": 5,
+   "within1": 117,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 17.65,
+   "year": "1447",
+   "exact": 28,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.65,
+   "year": "1448",
+   "exact": 31,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.7,
+   "year": "1447",
+   "exact": 57,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.7,
+   "year": "1448",
+   "exact": 63,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.75,
+   "year": "1447",
+   "exact": 89,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.75,
+   "year": "1448",
+   "exact": 95,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.8,
+   "year": "1447",
+   "exact": 112,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.8,
+   "year": "1448",
+   "exact": 111,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.85,
+   "year": "1447",
+   "exact": 87,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.85,
+   "year": "1448",
+   "exact": 86,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.9,
+   "year": "1447",
+   "exact": 59,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.9,
+   "year": "1448",
+   "exact": 52,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 17.95,
+   "year": "1447",
+   "exact": 26,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 17.95,
+   "year": "1448",
+   "exact": 21,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 18,
+   "year": "1447",
+   "exact": 0,
+   "within1": 110,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 18,
+   "year": "1448",
+   "exact": 2,
+   "within1": 112,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 18.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 84,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 18.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 85,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 18.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 55,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 18.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 48,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 18.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 22,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 18.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 19,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 18.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 18.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 2,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 18.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 18.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 18.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 18.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 18.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 18.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 18.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 18.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 18.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 18.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 18.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 18.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 18.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 18.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 18.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 18.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 18.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 18.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 18.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 18.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 18.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 18.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 18.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 18.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 18.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 18.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 18.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 18.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 18.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 18.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 19,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 19,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 19.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 19.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 19.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 19.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 19.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 19.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 19.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 19.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 19.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 19.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 19.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 19.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 19.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 19.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 19.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 19.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 19.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 19.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 19.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 19.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 19.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 19.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 19.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 19.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 19.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 19.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 19.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 19.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 19.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 19.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 19.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 19.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 19.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 19.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 19.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 19.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 19.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 19.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 20,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 20,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 20.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 20.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 20.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 20.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 20.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 20.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 20.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 20.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 20.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 20.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 20.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 20.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 20.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 20.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 20.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 20.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 20.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 20.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 20.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 20.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 20.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 20.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 20.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 20.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 20.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 20.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 20.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 20.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 20.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 20.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 20.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 20.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 20.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 20.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 20.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 20.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 20.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 20.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 21,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 21,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  }
+ ],
+ "frozenMarginRidge_isha": [
+  {
+   "angle": 14,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 14,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 14.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 14.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 14.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 14.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 14.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 14.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 14.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 14.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 14.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 14.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 14.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 14.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 14.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 14.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 14.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 14.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 14.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 14.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 14.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 14.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 14.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 14.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 14.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 14.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 14.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 14.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 14.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 14.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 14.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 14.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 14.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 14.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 14.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 14.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 14.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 14.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 14.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 14.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 15.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 15.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 15.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 15.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 15.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 15.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 15.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 15.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 15.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 15.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 15.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 15.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 15.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 15.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 15.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 15.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 15.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 15.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 15.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 15.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 15.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 15.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 15.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 15.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 15.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 15.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 15.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 15.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 15.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 20,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 15.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 15,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 15.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 41,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 15.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 44,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 15.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 72,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 15.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 80,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 15.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 110,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 15.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 114,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 15.95,
+   "year": "1447",
+   "exact": 20,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 15.95,
+   "year": "1448",
+   "exact": 19,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16,
+   "year": "1447",
+   "exact": 44,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16,
+   "year": "1448",
+   "exact": 46,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.05,
+   "year": "1447",
+   "exact": 75,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.05,
+   "year": "1448",
+   "exact": 81,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.1,
+   "year": "1447",
+   "exact": 113,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.1,
+   "year": "1448",
+   "exact": 115,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.15,
+   "year": "1447",
+   "exact": 97,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.15,
+   "year": "1448",
+   "exact": 98,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.2,
+   "year": "1447",
+   "exact": 72,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.2,
+   "year": "1448",
+   "exact": 72,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.25,
+   "year": "1447",
+   "exact": 39,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.25,
+   "year": "1448",
+   "exact": 33,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.3,
+   "year": "1447",
+   "exact": 3,
+   "within1": 118,
+   "worst": 1,
+   "n": 118
+  },
+  {
+   "angle": 16.3,
+   "year": "1448",
+   "exact": 4,
+   "within1": 119,
+   "worst": 1,
+   "n": 119
+  },
+  {
+   "angle": 16.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 96,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 16.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 95,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 16.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 70,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 16.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 67,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 16.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 36,
+   "worst": 2,
+   "n": 118
+  },
+  {
+   "angle": 16.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 29,
+   "worst": 2,
+   "n": 119
+  },
+  {
+   "angle": 16.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 2,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 16.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 3,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 16.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 16.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 16.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 16.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 16.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 118
+  },
+  {
+   "angle": 16.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 3,
+   "n": 119
+  },
+  {
+   "angle": 16.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 16.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 16.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 16.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 16.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 16.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 16.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 118
+  },
+  {
+   "angle": 16.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 4,
+   "n": 119
+  },
+  {
+   "angle": 16.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 16.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 16.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 16.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 17,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 17,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 17.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 118
+  },
+  {
+   "angle": 17.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 5,
+   "n": 119
+  },
+  {
+   "angle": 17.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 17.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 17.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 17.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 17.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 17.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 17.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 118
+  },
+  {
+   "angle": 17.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 6,
+   "n": 119
+  },
+  {
+   "angle": 17.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 17.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 17.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 17.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 17.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 17.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 17.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 118
+  },
+  {
+   "angle": 17.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 7,
+   "n": 119
+  },
+  {
+   "angle": 17.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 17.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 17.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 17.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 17.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 118
+  },
+  {
+   "angle": 17.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 17.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 17.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 8,
+   "n": 119
+  },
+  {
+   "angle": 17.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 17.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 17.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 17.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 17.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 118
+  },
+  {
+   "angle": 17.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "n": 119
+  },
+  {
+   "angle": 17.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 17.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 17.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 17.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 17.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 17.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 18,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 118
+  },
+  {
+   "angle": 18,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 10,
+   "n": 119
+  },
+  {
+   "angle": 18.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 18.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 18.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 18.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 18.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 18.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 18.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 118
+  },
+  {
+   "angle": 18.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 11,
+   "n": 119
+  },
+  {
+   "angle": 18.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 18.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 18.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 18.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 18.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 18.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 18.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 118
+  },
+  {
+   "angle": 18.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 12,
+   "n": 119
+  },
+  {
+   "angle": 18.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 18.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 18.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 18.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 18.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 18.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 18.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 118
+  },
+  {
+   "angle": 18.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 13,
+   "n": 119
+  },
+  {
+   "angle": 18.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 18.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 18.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 18.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 18.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 18.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 18.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 118
+  },
+  {
+   "angle": 18.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 14,
+   "n": 119
+  },
+  {
+   "angle": 18.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 18.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 18.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 18.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 18.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 118
+  },
+  {
+   "angle": 18.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 15,
+   "n": 119
+  },
+  {
+   "angle": 19,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 19,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 19.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 19.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 19.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 19.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 19.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 118
+  },
+  {
+   "angle": 19.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 16,
+   "n": 119
+  },
+  {
+   "angle": 19.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 19.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 19.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 19.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 19.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 19.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 19.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 118
+  },
+  {
+   "angle": 19.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 17,
+   "n": 119
+  },
+  {
+   "angle": 19.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 118
+  },
+  {
+   "angle": 19.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 119
+  },
+  {
+   "angle": 19.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 118
+  },
+  {
+   "angle": 19.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 119
+  },
+  {
+   "angle": 19.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 118
+  },
+  {
+   "angle": 19.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 119
+  },
+  {
+   "angle": 19.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 118
+  },
+  {
+   "angle": 19.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 18,
+   "n": 119
+  },
+  {
+   "angle": 19.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 118
+  },
+  {
+   "angle": 19.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 119
+  },
+  {
+   "angle": 19.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 118
+  },
+  {
+   "angle": 19.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 119
+  },
+  {
+   "angle": 19.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 118
+  },
+  {
+   "angle": 19.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 119
+  },
+  {
+   "angle": 19.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 118
+  },
+  {
+   "angle": 19.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 19,
+   "n": 119
+  },
+  {
+   "angle": 19.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 118
+  },
+  {
+   "angle": 19.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 119
+  },
+  {
+   "angle": 19.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 118
+  },
+  {
+   "angle": 19.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 119
+  },
+  {
+   "angle": 19.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 118
+  },
+  {
+   "angle": 19.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 119
+  },
+  {
+   "angle": 19.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 118
+  },
+  {
+   "angle": 19.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 20,
+   "n": 119
+  },
+  {
+   "angle": 20,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 118
+  },
+  {
+   "angle": 20,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 119
+  },
+  {
+   "angle": 20.05,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 118
+  },
+  {
+   "angle": 20.05,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 119
+  },
+  {
+   "angle": 20.1,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 118
+  },
+  {
+   "angle": 20.1,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 119
+  },
+  {
+   "angle": 20.15,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 118
+  },
+  {
+   "angle": 20.15,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 21,
+   "n": 119
+  },
+  {
+   "angle": 20.2,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 118
+  },
+  {
+   "angle": 20.2,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 119
+  },
+  {
+   "angle": 20.25,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 118
+  },
+  {
+   "angle": 20.25,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 119
+  },
+  {
+   "angle": 20.3,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 118
+  },
+  {
+   "angle": 20.3,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 119
+  },
+  {
+   "angle": 20.35,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 118
+  },
+  {
+   "angle": 20.35,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 22,
+   "n": 119
+  },
+  {
+   "angle": 20.4,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 118
+  },
+  {
+   "angle": 20.4,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 119
+  },
+  {
+   "angle": 20.45,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 118
+  },
+  {
+   "angle": 20.45,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 119
+  },
+  {
+   "angle": 20.5,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 118
+  },
+  {
+   "angle": 20.5,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 23,
+   "n": 119
+  },
+  {
+   "angle": 20.55,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 118
+  },
+  {
+   "angle": 20.55,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 119
+  },
+  {
+   "angle": 20.6,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 118
+  },
+  {
+   "angle": 20.6,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 119
+  },
+  {
+   "angle": 20.65,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 118
+  },
+  {
+   "angle": 20.65,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 119
+  },
+  {
+   "angle": 20.7,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 118
+  },
+  {
+   "angle": 20.7,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 24,
+   "n": 119
+  },
+  {
+   "angle": 20.75,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 118
+  },
+  {
+   "angle": 20.75,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 119
+  },
+  {
+   "angle": 20.8,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 118
+  },
+  {
+   "angle": 20.8,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 119
+  },
+  {
+   "angle": 20.85,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 118
+  },
+  {
+   "angle": 20.85,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 119
+  },
+  {
+   "angle": 20.9,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 118
+  },
+  {
+   "angle": 20.9,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 25,
+   "n": 119
+  },
+  {
+   "angle": 20.95,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 26,
+   "n": 118
+  },
+  {
+   "angle": 20.95,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 26,
+   "n": 119
+  },
+  {
+   "angle": 21,
+   "year": "1447",
+   "exact": 0,
+   "within1": 0,
+   "worst": 26,
+   "n": 118
+  },
+  {
+   "angle": 21,
+   "year": "1448",
+   "exact": 0,
+   "within1": 0,
+   "worst": 26,
+   "n": 119
+  }
+ ],
+ "copyTest": {
+  "jumada1": [
+   {
+    "hijriDay": 1,
+    "d47": "2025-10-23",
+    "d48": "2026-10-12",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.72
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -10.38
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.18
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 11.13
+    },
+    "magrib": {
+     "printed": 15,
+     "predicted": 14.7
+    },
+    "isha": {
+     "printed": 14,
+     "predicted": 14
+    }
+   },
+   {
+    "hijriDay": 2,
+    "d47": "2025-10-24",
+    "d48": "2026-10-13",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.72
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -10.43
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.08
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 11.03
+    },
+    "magrib": {
+     "printed": 15,
+     "predicted": 14.53
+    },
+    "isha": {
+     "printed": 14,
+     "predicted": 13.77
+    }
+   },
+   {
+    "hijriDay": 3,
+    "d47": "2025-10-25",
+    "d48": "2026-10-14",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.73
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -10.5
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.97
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 10.93
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 14.37
+    },
+    "isha": {
+     "printed": 13,
+     "predicted": 13.55
+    }
+   },
+   {
+    "hijriDay": 4,
+    "d47": "2025-10-26",
+    "d48": "2026-10-15",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.73
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -10.57
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.83
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 10.83
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 14.18
+    },
+    "isha": {
+     "printed": 13,
+     "predicted": 13.33
+    }
+   },
+   {
+    "hijriDay": 5,
+    "d47": "2025-10-27",
+    "d48": "2026-10-16",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.75
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.63
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.72
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 10.72
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 14.02
+    },
+    "isha": {
+     "printed": 13,
+     "predicted": 13.08
+    }
+   },
+   {
+    "hijriDay": 6,
+    "d47": "2025-10-28",
+    "d48": "2026-10-17",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.75
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.68
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.58
+    },
+    "asr": {
+     "printed": 11,
+     "predicted": 10.6
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 13.82
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 12.85
+    }
+   },
+   {
+    "hijriDay": 7,
+    "d47": "2025-10-29",
+    "d48": "2026-10-18",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.78
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.77
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.47
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 10.47
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 13.62
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 12.62
+    }
+   },
+   {
+    "hijriDay": 8,
+    "d47": "2025-10-30",
+    "d48": "2026-10-19",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.78
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.82
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.32
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 10.33
+    },
+    "magrib": {
+     "printed": 14,
+     "predicted": 13.42
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 12.37
+    }
+   },
+   {
+    "hijriDay": 9,
+    "d47": "2025-10-31",
+    "d48": "2026-10-20",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.8
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.88
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.18
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 10.2
+    },
+    "magrib": {
+     "printed": 13,
+     "predicted": 13.2
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 12.12
+    }
+   },
+   {
+    "hijriDay": 10,
+    "d47": "2025-11-01",
+    "d48": "2026-10-21",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.82
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.95
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.05
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 10.05
+    },
+    "magrib": {
+     "printed": 13,
+     "predicted": 12.98
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 11.87
+    }
+   },
+   {
+    "hijriDay": 11,
+    "d47": "2025-11-02",
+    "d48": "2026-10-22",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.83
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.92
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 9.9
+    },
+    "magrib": {
+     "printed": 13,
+     "predicted": 12.77
+    },
+    "isha": {
+     "printed": 12,
+     "predicted": 11.6
+    }
+   },
+   {
+    "hijriDay": 12,
+    "d47": "2025-11-03",
+    "d48": "2026-10-23",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.85
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.07
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.77
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 9.73
+    },
+    "magrib": {
+     "printed": 13,
+     "predicted": 12.53
+    },
+    "isha": {
+     "printed": 11,
+     "predicted": 11.33
+    }
+   },
+   {
+    "hijriDay": 13,
+    "d47": "2025-11-04",
+    "d48": "2026-10-24",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.87
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.12
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.62
+    },
+    "asr": {
+     "printed": 9,
+     "predicted": 9.57
+    },
+    "magrib": {
+     "printed": 12,
+     "predicted": 12.3
+    },
+    "isha": {
+     "printed": 11,
+     "predicted": 11.08
+    }
+   },
+   {
+    "hijriDay": 14,
+    "d47": "2025-11-05",
+    "d48": "2026-10-25",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.88
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.17
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.48
+    },
+    "asr": {
+     "printed": 9,
+     "predicted": 9.38
+    },
+    "magrib": {
+     "printed": 12,
+     "predicted": 12.07
+    },
+    "isha": {
+     "printed": 11,
+     "predicted": 10.8
+    }
+   },
+   {
+    "hijriDay": 15,
+    "d47": "2025-11-06",
+    "d48": "2026-10-26",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.88
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.23
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.32
+    },
+    "asr": {
+     "printed": 9,
+     "predicted": 9.22
+    },
+    "magrib": {
+     "printed": 12,
+     "predicted": 11.83
+    },
+    "isha": {
+     "printed": 11,
+     "predicted": 10.52
+    }
+   },
+   {
+    "hijriDay": 16,
+    "d47": "2025-11-07",
+    "d48": "2026-10-27",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.9
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.28
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.18
+    },
+    "asr": {
+     "printed": 10,
+     "predicted": 9.02
+    },
+    "magrib": {
+     "printed": 12,
+     "predicted": 11.58
+    },
+    "isha": {
+     "printed": 10,
+     "predicted": 10.25
+    }
+   },
+   {
+    "hijriDay": 17,
+    "d47": "2025-11-08",
+    "d48": "2026-10-28",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.92
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.32
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.03
+    },
+    "asr": {
+     "printed": 8,
+     "predicted": 8.82
+    },
+    "magrib": {
+     "printed": 11,
+     "predicted": 11.32
+    },
+    "isha": {
+     "printed": 10,
+     "predicted": 9.97
+    }
+   },
+   {
+    "hijriDay": 18,
+    "d47": "2025-11-09",
+    "d48": "2026-10-29",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.93
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.37
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": -0.13
+    },
+    "asr": {
+     "printed": 9,
+     "predicted": 8.62
+    },
+    "magrib": {
+     "printed": 10,
+     "predicted": 11.05
+    },
+    "isha": {
+     "printed": 10,
+     "predicted": 9.67
+    }
+   },
+   {
+    "hijriDay": 19,
+    "d47": "2025-11-10",
+    "d48": "2026-10-30",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.93
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.4
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": -0.27
+    },
+    "asr": {
+     "printed": 9,
+     "predicted": 8.4
+    },
+    "magrib": {
+     "printed": 10,
+     "predicted": 10.78
+    },
+    "isha": {
+     "printed": 10,
+     "predicted": 9.37
+    }
+   },
+   {
+    "hijriDay": 20,
+    "d47": "2025-11-11",
+    "d48": "2026-10-31",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.95
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.45
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": -0.43
+    },
+    "asr": {
+     "printed": 8,
+     "predicted": 8.18
+    },
+    "magrib": {
+     "printed": 10,
+     "predicted": 10.5
+    },
+    "isha": {
+     "printed": 9,
+     "predicted": 9.07
+    }
+   },
+   {
+    "hijriDay": 21,
+    "d47": "2025-11-12",
+    "d48": "2026-11-01",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.48
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": -0.6
+    },
+    "asr": {
+     "printed": 8,
+     "predicted": 7.97
+    },
+    "magrib": {
+     "printed": 10,
+     "predicted": 10.23
+    },
+    "isha": {
+     "printed": 9,
+     "predicted": 8.77
+    }
+   },
+   {
+    "hijriDay": 22,
+    "d47": "2025-11-13",
+    "d48": "2026-11-02",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.52
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -0.75
+    },
+    "asr": {
+     "printed": 7,
+     "predicted": 7.72
+    },
+    "magrib": {
+     "printed": 10,
+     "predicted": 9.95
+    },
+    "isha": {
+     "printed": 9,
+     "predicted": 8.47
+    }
+   },
+   {
+    "hijriDay": 23,
+    "d47": "2025-11-14",
+    "d48": "2026-11-03",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.52
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -0.9
+    },
+    "asr": {
+     "printed": 8,
+     "predicted": 7.5
+    },
+    "magrib": {
+     "printed": 9,
+     "predicted": 9.65
+    },
+    "isha": {
+     "printed": 8,
+     "predicted": 8.17
+    }
+   },
+   {
+    "hijriDay": 24,
+    "d47": "2025-11-15",
+    "d48": "2026-11-04",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.53
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -1.07
+    },
+    "asr": {
+     "printed": 7,
+     "predicted": 7.25
+    },
+    "magrib": {
+     "printed": 9,
+     "predicted": 9.35
+    },
+    "isha": {
+     "printed": 8,
+     "predicted": 7.85
+    }
+   },
+   {
+    "hijriDay": 25,
+    "d47": "2025-11-16",
+    "d48": "2026-11-05",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.55
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -1.22
+    },
+    "asr": {
+     "printed": 7,
+     "predicted": 7
+    },
+    "magrib": {
+     "printed": 9,
+     "predicted": 9.05
+    },
+    "isha": {
+     "printed": 7,
+     "predicted": 7.52
+    }
+   },
+   {
+    "hijriDay": 26,
+    "d47": "2025-11-17",
+    "d48": "2026-11-06",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.97
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.57
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -1.37
+    },
+    "asr": {
+     "printed": 6,
+     "predicted": 6.75
+    },
+    "magrib": {
+     "printed": 8,
+     "predicted": 8.73
+    },
+    "isha": {
+     "printed": 8,
+     "predicted": 7.22
+    }
+   },
+   {
+    "hijriDay": 27,
+    "d47": "2025-11-18",
+    "d48": "2026-11-07",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.95
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.57
+    },
+    "dhuhr": {
+     "printed": -1,
+     "predicted": -1.53
+    },
+    "asr": {
+     "printed": 6,
+     "predicted": 6.48
+    },
+    "magrib": {
+     "printed": 8,
+     "predicted": 8.43
+    },
+    "isha": {
+     "printed": 7,
+     "predicted": 6.88
+    }
+   },
+   {
+    "hijriDay": 28,
+    "d47": "2025-11-19",
+    "d48": "2026-11-08",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.95
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.57
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -1.68
+    },
+    "asr": {
+     "printed": 6,
+     "predicted": 6.2
+    },
+    "magrib": {
+     "printed": 8,
+     "predicted": 8.1
+    },
+    "isha": {
+     "printed": 7,
+     "predicted": 6.55
+    }
+   },
+   {
+    "hijriDay": 29,
+    "d47": "2025-11-20",
+    "d48": "2026-11-09",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.93
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.57
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -1.85
+    },
+    "asr": {
+     "printed": 6,
+     "predicted": 5.93
+    },
+    "magrib": {
+     "printed": 7,
+     "predicted": 7.77
+    },
+    "isha": {
+     "printed": 6,
+     "predicted": 6.23
+    }
+   },
+   {
+    "hijriDay": 30,
+    "d47": "2025-11-21",
+    "d48": "2026-11-10",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.93
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.55
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -2
+    },
+    "asr": {
+     "printed": 6,
+     "predicted": 5.67
+    },
+    "magrib": {
+     "printed": 8,
+     "predicted": 7.45
+    },
+    "isha": {
+     "printed": 6,
+     "predicted": 5.9
+    }
+   }
+  ],
+  "jumada2": [
+   {
+    "hijriDay": 1,
+    "d47": "2025-11-22",
+    "d48": "2026-11-11",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.9
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.52
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -2.17
+    },
+    "asr": {
+     "printed": 5,
+     "predicted": 5.37
+    },
+    "magrib": {
+     "printed": 7,
+     "predicted": 7.12
+    },
+    "isha": {
+     "printed": 6,
+     "predicted": 5.57
+    }
+   },
+   {
+    "hijriDay": 2,
+    "d47": "2025-11-23",
+    "d48": "2026-11-12",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.88
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.5
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -2.32
+    },
+    "asr": {
+     "printed": 5,
+     "predicted": 5.08
+    },
+    "magrib": {
+     "printed": 7,
+     "predicted": 6.77
+    },
+    "isha": {
+     "printed": 5,
+     "predicted": 5.23
+    }
+   },
+   {
+    "hijriDay": 3,
+    "d47": "2025-11-24",
+    "d48": "2026-11-13",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.85
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.45
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -2.47
+    },
+    "asr": {
+     "printed": 5,
+     "predicted": 4.78
+    },
+    "magrib": {
+     "printed": 7,
+     "predicted": 6.43
+    },
+    "isha": {
+     "printed": 5,
+     "predicted": 4.9
+    }
+   },
+   {
+    "hijriDay": 4,
+    "d47": "2025-11-25",
+    "d48": "2026-11-14",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.83
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.43
+    },
+    "dhuhr": {
+     "printed": -2,
+     "predicted": -2.62
+    },
+    "asr": {
+     "printed": 4,
+     "predicted": 4.47
+    },
+    "magrib": {
+     "printed": 6,
+     "predicted": 6.08
+    },
+    "isha": {
+     "printed": 4,
+     "predicted": 4.57
+    }
+   },
+   {
+    "hijriDay": 5,
+    "d47": "2025-11-26",
+    "d48": "2026-11-15",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.8
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.38
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -2.78
+    },
+    "asr": {
+     "printed": 5,
+     "predicted": 4.17
+    },
+    "magrib": {
+     "printed": 6,
+     "predicted": 5.73
+    },
+    "isha": {
+     "printed": 4,
+     "predicted": 4.22
+    }
+   },
+   {
+    "hijriDay": 6,
+    "d47": "2025-11-27",
+    "d48": "2026-11-16",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.73
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.32
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -2.92
+    },
+    "asr": {
+     "printed": 4,
+     "predicted": 3.87
+    },
+    "magrib": {
+     "printed": 5,
+     "predicted": 5.37
+    },
+    "isha": {
+     "printed": 4,
+     "predicted": 3.88
+    }
+   },
+   {
+    "hijriDay": 7,
+    "d47": "2025-11-28",
+    "d48": "2026-11-17",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.7
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.25
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -3.07
+    },
+    "asr": {
+     "printed": 4,
+     "predicted": 3.55
+    },
+    "magrib": {
+     "printed": 5,
+     "predicted": 5.02
+    },
+    "isha": {
+     "printed": 3,
+     "predicted": 3.53
+    }
+   },
+   {
+    "hijriDay": 8,
+    "d47": "2025-11-29",
+    "d48": "2026-11-18",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.65
+    },
+    "sunrise": {
+     "printed": -12,
+     "predicted": -11.18
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.22
+    },
+    "asr": {
+     "printed": 3,
+     "predicted": 3.22
+    },
+    "magrib": {
+     "printed": 4,
+     "predicted": 4.65
+    },
+    "isha": {
+     "printed": 3,
+     "predicted": 3.2
+    }
+   },
+   {
+    "hijriDay": 9,
+    "d47": "2025-11-30",
+    "d48": "2026-11-19",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.58
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.1
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -3.35
+    },
+    "asr": {
+     "printed": 3,
+     "predicted": 2.92
+    },
+    "magrib": {
+     "printed": 5,
+     "predicted": 4.28
+    },
+    "isha": {
+     "printed": 3,
+     "predicted": 2.87
+    }
+   },
+   {
+    "hijriDay": 10,
+    "d47": "2025-12-01",
+    "d48": "2026-11-20",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.52
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -11.02
+    },
+    "dhuhr": {
+     "printed": -3,
+     "predicted": -3.5
+    },
+    "asr": {
+     "printed": 2,
+     "predicted": 2.58
+    },
+    "magrib": {
+     "printed": 4,
+     "predicted": 3.92
+    },
+    "isha": {
+     "printed": 2,
+     "predicted": 2.52
+    }
+   },
+   {
+    "hijriDay": 11,
+    "d47": "2025-12-02",
+    "d48": "2026-11-21",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.47
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.92
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.63
+    },
+    "asr": {
+     "printed": 2,
+     "predicted": 2.25
+    },
+    "magrib": {
+     "printed": 4,
+     "predicted": 3.53
+    },
+    "isha": {
+     "printed": 2,
+     "predicted": 2.17
+    }
+   },
+   {
+    "hijriDay": 12,
+    "d47": "2025-12-03",
+    "d48": "2026-11-22",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.38
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.8
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.77
+    },
+    "asr": {
+     "printed": 2,
+     "predicted": 1.93
+    },
+    "magrib": {
+     "printed": 3,
+     "predicted": 3.17
+    },
+    "isha": {
+     "printed": 1,
+     "predicted": 1.82
+    }
+   },
+   {
+    "hijriDay": 13,
+    "d47": "2025-12-04",
+    "d48": "2026-11-23",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.3
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.68
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.88
+    },
+    "asr": {
+     "printed": 1,
+     "predicted": 1.6
+    },
+    "magrib": {
+     "printed": 3,
+     "predicted": 2.78
+    },
+    "isha": {
+     "printed": 1,
+     "predicted": 1.48
+    }
+   },
+   {
+    "hijriDay": 14,
+    "d47": "2025-12-05",
+    "d48": "2026-11-24",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.22
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.57
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.02
+    },
+    "asr": {
+     "printed": 1,
+     "predicted": 1.25
+    },
+    "magrib": {
+     "printed": 2,
+     "predicted": 2.42
+    },
+    "isha": {
+     "printed": 1,
+     "predicted": 1.13
+    }
+   },
+   {
+    "hijriDay": 15,
+    "d47": "2025-12-06",
+    "d48": "2026-11-25",
+    "fajr": {
+     "printed": -10,
+     "predicted": -9.13
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.43
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.13
+    },
+    "asr": {
+     "printed": 1,
+     "predicted": 0.92
+    },
+    "magrib": {
+     "printed": 2,
+     "predicted": 2.03
+    },
+    "isha": {
+     "printed": 1,
+     "predicted": 0.78
+    }
+   },
+   {
+    "hijriDay": 16,
+    "d47": "2025-12-07",
+    "d48": "2026-11-26",
+    "fajr": {
+     "printed": -9,
+     "predicted": -9.03
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.28
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.27
+    },
+    "asr": {
+     "printed": 0,
+     "predicted": 0.58
+    },
+    "magrib": {
+     "printed": 1,
+     "predicted": 1.65
+    },
+    "isha": {
+     "printed": 0,
+     "predicted": 0.47
+    }
+   },
+   {
+    "hijriDay": 17,
+    "d47": "2025-12-08",
+    "d48": "2026-11-27",
+    "fajr": {
+     "printed": -9,
+     "predicted": -8.92
+    },
+    "sunrise": {
+     "printed": -11,
+     "predicted": -10.13
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.37
+    },
+    "asr": {
+     "printed": 0,
+     "predicted": 0.23
+    },
+    "magrib": {
+     "printed": 1,
+     "predicted": 1.27
+    },
+    "isha": {
+     "printed": 0,
+     "predicted": 0.12
+    }
+   },
+   {
+    "hijriDay": 18,
+    "d47": "2025-12-09",
+    "d48": "2026-11-28",
+    "fajr": {
+     "printed": -9,
+     "predicted": -8.82
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -9.98
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.48
+    },
+    "asr": {
+     "printed": 0,
+     "predicted": -0.1
+    },
+    "magrib": {
+     "printed": 1,
+     "predicted": 0.88
+    },
+    "isha": {
+     "printed": 0,
+     "predicted": -0.22
+    }
+   },
+   {
+    "hijriDay": 19,
+    "d47": "2025-12-10",
+    "d48": "2026-11-29",
+    "fajr": {
+     "printed": -9,
+     "predicted": -8.68
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -9.82
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.58
+    },
+    "asr": {
+     "printed": 0,
+     "predicted": -0.45
+    },
+    "magrib": {
+     "printed": 1,
+     "predicted": 0.5
+    },
+    "isha": {
+     "printed": 0,
+     "predicted": -0.55
+    }
+   },
+   {
+    "hijriDay": 20,
+    "d47": "2025-12-11",
+    "d48": "2026-11-30",
+    "fajr": {
+     "printed": -8,
+     "predicted": -8.57
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -9.63
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.7
+    },
+    "asr": {
+     "printed": 0,
+     "predicted": -0.78
+    },
+    "magrib": {
+     "printed": 0,
+     "predicted": 0.12
+    },
+    "isha": {
+     "printed": -1,
+     "predicted": -0.88
+    }
+   },
+   {
+    "hijriDay": 21,
+    "d47": "2025-12-12",
+    "d48": "2026-12-01",
+    "fajr": {
+     "printed": -8,
+     "predicted": -8.43
+    },
+    "sunrise": {
+     "printed": -10,
+     "predicted": -9.43
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.8
+    },
+    "asr": {
+     "printed": -1,
+     "predicted": -1.13
+    },
+    "magrib": {
+     "printed": 0,
+     "predicted": -0.27
+    },
+    "isha": {
+     "printed": -1,
+     "predicted": -1.23
+    }
+   },
+   {
+    "hijriDay": 22,
+    "d47": "2025-12-13",
+    "d48": "2026-12-02",
+    "fajr": {
+     "printed": -9,
+     "predicted": -8.28
+    },
+    "sunrise": {
+     "printed": -9,
+     "predicted": -9.25
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.88
+    },
+    "asr": {
+     "printed": -1,
+     "predicted": -1.47
+    },
+    "magrib": {
+     "printed": -1,
+     "predicted": -0.65
+    },
+    "isha": {
+     "printed": -1,
+     "predicted": -1.55
+    }
+   },
+   {
+    "hijriDay": 23,
+    "d47": "2025-12-14",
+    "d48": "2026-12-03",
+    "fajr": {
+     "printed": -8,
+     "predicted": -8.13
+    },
+    "sunrise": {
+     "printed": -9,
+     "predicted": -9.03
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.98
+    },
+    "asr": {
+     "printed": -1,
+     "predicted": -1.8
+    },
+    "magrib": {
+     "printed": -1,
+     "predicted": -1.02
+    },
+    "isha": {
+     "printed": -2,
+     "predicted": -1.87
+    }
+   },
+   {
+    "hijriDay": 24,
+    "d47": "2025-12-15",
+    "d48": "2026-12-04",
+    "fajr": {
+     "printed": -8,
+     "predicted": -7.98
+    },
+    "sunrise": {
+     "printed": -9,
+     "predicted": -8.82
+    },
+    "dhuhr": {
+     "printed": -6,
+     "predicted": -5.05
+    },
+    "asr": {
+     "printed": -1,
+     "predicted": -2.13
+    },
+    "magrib": {
+     "printed": -1,
+     "predicted": -1.4
+    },
+    "isha": {
+     "printed": -2,
+     "predicted": -2.2
+    }
+   },
+   {
+    "hijriDay": 25,
+    "d47": "2025-12-16",
+    "d48": "2026-12-05",
+    "fajr": {
+     "printed": -8,
+     "predicted": -7.82
+    },
+    "sunrise": {
+     "printed": -8,
+     "predicted": -8.58
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.12
+    },
+    "asr": {
+     "printed": -2,
+     "predicted": -2.47
+    },
+    "magrib": {
+     "printed": -2,
+     "predicted": -1.78
+    },
+    "isha": {
+     "printed": -2,
+     "predicted": -2.5
+    }
+   },
+   {
+    "hijriDay": 26,
+    "d47": "2025-12-17",
+    "d48": "2026-12-06",
+    "fajr": {
+     "printed": -8,
+     "predicted": -7.65
+    },
+    "sunrise": {
+     "printed": -8,
+     "predicted": -8.35
+    },
+    "dhuhr": {
+     "printed": -6,
+     "predicted": -5.2
+    },
+    "asr": {
+     "printed": -2,
+     "predicted": -2.8
+    },
+    "magrib": {
+     "printed": -2,
+     "predicted": -2.17
+    },
+    "isha": {
+     "printed": -3,
+     "predicted": -2.83
+    }
+   },
+   {
+    "hijriDay": 27,
+    "d47": "2025-12-18",
+    "d48": "2026-12-07",
+    "fajr": {
+     "printed": -8,
+     "predicted": -7.47
+    },
+    "sunrise": {
+     "printed": -8,
+     "predicted": -8.1
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.25
+    },
+    "asr": {
+     "printed": -3,
+     "predicted": -3.13
+    },
+    "magrib": {
+     "printed": -2,
+     "predicted": -2.53
+    },
+    "isha": {
+     "printed": -3,
+     "predicted": -3.13
+    }
+   },
+   {
+    "hijriDay": 28,
+    "d47": "2025-12-19",
+    "d48": "2026-12-08",
+    "fajr": {
+     "printed": -7,
+     "predicted": -7.3
+    },
+    "sunrise": {
+     "printed": -8,
+     "predicted": -7.87
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.32
+    },
+    "asr": {
+     "printed": -3,
+     "predicted": -3.47
+    },
+    "magrib": {
+     "printed": -3,
+     "predicted": -2.92
+    },
+    "isha": {
+     "printed": -3,
+     "predicted": -3.43
+    }
+   },
+   {
+    "hijriDay": 29,
+    "d47": "2025-12-20",
+    "d48": "2026-12-09",
+    "fajr": {
+     "printed": -7,
+     "predicted": -7.1
+    },
+    "sunrise": {
+     "printed": -8,
+     "predicted": -7.6
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.37
+    },
+    "asr": {
+     "printed": -3,
+     "predicted": -3.77
+    },
+    "magrib": {
+     "printed": -3,
+     "predicted": -3.27
+    },
+    "isha": {
+     "printed": -4,
+     "predicted": -3.73
+    }
+   }
+  ],
+  "rajab": [
+   {
+    "hijriDay": 1,
+    "d47": "2025-12-21",
+    "d48": "2026-12-11",
+    "fajr": {
+     "printed": -6,
+     "predicted": -6.2
+    },
+    "sunrise": {
+     "printed": -6,
+     "predicted": -6.55
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.95
+    },
+    "asr": {
+     "printed": -4,
+     "predicted": -3.88
+    },
+    "magrib": {
+     "printed": -4,
+     "predicted": -3.48
+    },
+    "isha": {
+     "printed": -3,
+     "predicted": -3.82
+    }
+   },
+   {
+    "hijriDay": 2,
+    "d47": "2025-12-22",
+    "d48": "2026-12-12",
+    "fajr": {
+     "printed": -6,
+     "predicted": -6.02
+    },
+    "sunrise": {
+     "printed": -7,
+     "predicted": -6.3
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.98
+    },
+    "asr": {
+     "printed": -3,
+     "predicted": -4.15
+    },
+    "magrib": {
+     "printed": -4,
+     "predicted": -3.8
+    },
+    "isha": {
+     "printed": -4,
+     "predicted": -4.07
+    }
+   },
+   {
+    "hijriDay": 3,
+    "d47": "2025-12-23",
+    "d48": "2026-12-13",
+    "fajr": {
+     "printed": -6,
+     "predicted": -5.82
+    },
+    "sunrise": {
+     "printed": -6,
+     "predicted": -6.03
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.02
+    },
+    "asr": {
+     "printed": -4,
+     "predicted": -4.43
+    },
+    "magrib": {
+     "printed": -4,
+     "predicted": -4.12
+    },
+    "isha": {
+     "printed": -4,
+     "predicted": -4.33
+    }
+   },
+   {
+    "hijriDay": 4,
+    "d47": "2025-12-24",
+    "d48": "2026-12-14",
+    "fajr": {
+     "printed": -6,
+     "predicted": -5.62
+    },
+    "sunrise": {
+     "printed": -6,
+     "predicted": -5.77
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.05
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -4.7
+    },
+    "magrib": {
+     "printed": -4,
+     "predicted": -4.45
+    },
+    "isha": {
+     "printed": -5,
+     "predicted": -4.58
+    }
+   },
+   {
+    "hijriDay": 5,
+    "d47": "2025-12-25",
+    "d48": "2026-12-15",
+    "fajr": {
+     "printed": -5,
+     "predicted": -5.4
+    },
+    "sunrise": {
+     "printed": -5,
+     "predicted": -5.5
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.07
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -4.98
+    },
+    "magrib": {
+     "printed": -5,
+     "predicted": -4.75
+    },
+    "isha": {
+     "printed": -5,
+     "predicted": -4.83
+    }
+   },
+   {
+    "hijriDay": 6,
+    "d47": "2025-12-26",
+    "d48": "2026-12-16",
+    "fajr": {
+     "printed": -6,
+     "predicted": -5.18
+    },
+    "sunrise": {
+     "printed": -5,
+     "predicted": -5.2
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.07
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -5.23
+    },
+    "magrib": {
+     "printed": -5,
+     "predicted": -5.05
+    },
+    "isha": {
+     "printed": -5,
+     "predicted": -5.08
+    }
+   },
+   {
+    "hijriDay": 7,
+    "d47": "2025-12-27",
+    "d48": "2026-12-17",
+    "fajr": {
+     "printed": -5,
+     "predicted": -4.95
+    },
+    "sunrise": {
+     "printed": -5,
+     "predicted": -4.92
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.07
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -5.5
+    },
+    "magrib": {
+     "printed": -5,
+     "predicted": -5.35
+    },
+    "isha": {
+     "printed": -5,
+     "predicted": -5.32
+    }
+   },
+   {
+    "hijriDay": 8,
+    "d47": "2025-12-28",
+    "d48": "2026-12-18",
+    "fajr": {
+     "printed": -4,
+     "predicted": -4.73
+    },
+    "sunrise": {
+     "printed": -5,
+     "predicted": -4.62
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.07
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.75
+    },
+    "magrib": {
+     "printed": -6,
+     "predicted": -5.65
+    },
+    "isha": {
+     "printed": -5,
+     "predicted": -5.53
+    }
+   },
+   {
+    "hijriDay": 9,
+    "d47": "2025-12-29",
+    "d48": "2026-12-19",
+    "fajr": {
+     "printed": -5,
+     "predicted": -4.5
+    },
+    "sunrise": {
+     "printed": -4,
+     "predicted": -4.32
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.05
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.98
+    },
+    "magrib": {
+     "printed": -6,
+     "predicted": -5.93
+    },
+    "isha": {
+     "printed": -6,
+     "predicted": -5.77
+    }
+   },
+   {
+    "hijriDay": 10,
+    "d47": "2025-12-30",
+    "d48": "2026-12-20",
+    "fajr": {
+     "printed": -4,
+     "predicted": -4.27
+    },
+    "sunrise": {
+     "printed": -4,
+     "predicted": -4
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.05
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -6.23
+    },
+    "magrib": {
+     "printed": -6,
+     "predicted": -6.22
+    },
+    "isha": {
+     "printed": -6,
+     "predicted": -5.98
+    }
+   },
+   {
+    "hijriDay": 11,
+    "d47": "2025-12-31",
+    "d48": "2026-12-21",
+    "fajr": {
+     "printed": -4,
+     "predicted": -4.02
+    },
+    "sunrise": {
+     "printed": -4,
+     "predicted": -3.7
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5.03
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -6.47
+    },
+    "magrib": {
+     "printed": -6,
+     "predicted": -6.48
+    },
+    "isha": {
+     "printed": -6,
+     "predicted": -6.2
+    }
+   },
+   {
+    "hijriDay": 12,
+    "d47": "2026-01-01",
+    "d48": "2026-12-22",
+    "fajr": {
+     "printed": -3,
+     "predicted": -3.77
+    },
+    "sunrise": {
+     "printed": -3,
+     "predicted": -3.38
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -5
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.67
+    },
+    "magrib": {
+     "printed": -7,
+     "predicted": -6.75
+    },
+    "isha": {
+     "printed": -6,
+     "predicted": -6.4
+    }
+   },
+   {
+    "hijriDay": 13,
+    "d47": "2026-01-02",
+    "d48": "2026-12-23",
+    "fajr": {
+     "printed": -4,
+     "predicted": -3.52
+    },
+    "sunrise": {
+     "printed": -3,
+     "predicted": -3.07
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.98
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.88
+    },
+    "magrib": {
+     "printed": -7,
+     "predicted": -7.02
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -6.58
+    }
+   },
+   {
+    "hijriDay": 14,
+    "d47": "2026-01-03",
+    "d48": "2026-12-24",
+    "fajr": {
+     "printed": -3,
+     "predicted": -3.27
+    },
+    "sunrise": {
+     "printed": -2,
+     "predicted": -2.73
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.93
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.1
+    },
+    "magrib": {
+     "printed": -7,
+     "predicted": -7.27
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -6.78
+    }
+   },
+   {
+    "hijriDay": 15,
+    "d47": "2026-01-04",
+    "d48": "2026-12-25",
+    "fajr": {
+     "printed": -3,
+     "predicted": -3
+    },
+    "sunrise": {
+     "printed": -2,
+     "predicted": -2.4
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.92
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.3
+    },
+    "magrib": {
+     "printed": -7,
+     "predicted": -7.5
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -6.98
+    }
+   },
+   {
+    "hijriDay": 16,
+    "d47": "2026-01-05",
+    "d48": "2026-12-26",
+    "fajr": {
+     "printed": -3,
+     "predicted": -2.72
+    },
+    "sunrise": {
+     "printed": -2,
+     "predicted": -2.1
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.85
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.48
+    },
+    "magrib": {
+     "printed": -8,
+     "predicted": -7.73
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -7.15
+    }
+   },
+   {
+    "hijriDay": 17,
+    "d47": "2026-01-06",
+    "d48": "2026-12-27",
+    "fajr": {
+     "printed": -2,
+     "predicted": -2.45
+    },
+    "sunrise": {
+     "printed": -1,
+     "predicted": -1.75
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.8
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -7.68
+    },
+    "magrib": {
+     "printed": -8,
+     "predicted": -7.97
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -7.32
+    }
+   },
+   {
+    "hijriDay": 18,
+    "d47": "2026-01-07",
+    "d48": "2026-12-28",
+    "fajr": {
+     "printed": -2,
+     "predicted": -2.17
+    },
+    "sunrise": {
+     "printed": -1,
+     "predicted": -1.42
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.75
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.85
+    },
+    "magrib": {
+     "printed": -8,
+     "predicted": -8.18
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -7.48
+    }
+   },
+   {
+    "hijriDay": 19,
+    "d47": "2026-01-08",
+    "d48": "2026-12-29",
+    "fajr": {
+     "printed": -1,
+     "predicted": -1.88
+    },
+    "sunrise": {
+     "printed": -1,
+     "predicted": -1.08
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.68
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.02
+    },
+    "magrib": {
+     "printed": -9,
+     "predicted": -8.4
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -7.65
+    }
+   },
+   {
+    "hijriDay": 20,
+    "d47": "2026-01-09",
+    "d48": "2026-12-30",
+    "fajr": {
+     "printed": -1,
+     "predicted": -1.62
+    },
+    "sunrise": {
+     "printed": 0,
+     "predicted": -0.75
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.62
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.18
+    },
+    "magrib": {
+     "printed": -9,
+     "predicted": -8.6
+    },
+    "isha": {
+     "printed": -7,
+     "predicted": -7.8
+    }
+   },
+   {
+    "hijriDay": 21,
+    "d47": "2026-01-10",
+    "d48": "2026-12-31",
+    "fajr": {
+     "printed": -1,
+     "predicted": -1.33
+    },
+    "sunrise": {
+     "printed": 0,
+     "predicted": -0.4
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.55
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.32
+    },
+    "magrib": {
+     "printed": -9,
+     "predicted": -8.8
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -7.95
+    }
+   },
+   {
+    "hijriDay": 22,
+    "d47": "2026-01-11",
+    "d48": "2027-01-01",
+    "fajr": {
+     "printed": -1,
+     "predicted": -1.03
+    },
+    "sunrise": {
+     "printed": 0,
+     "predicted": -0.07
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.47
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.47
+    },
+    "magrib": {
+     "printed": -9,
+     "predicted": -8.98
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -8.08
+    }
+   },
+   {
+    "hijriDay": 23,
+    "d47": "2026-01-12",
+    "d48": "2027-01-02",
+    "fajr": {
+     "printed": 0,
+     "predicted": -0.73
+    },
+    "sunrise": {
+     "printed": 0,
+     "predicted": 0.28
+    },
+    "dhuhr": {
+     "printed": -5,
+     "predicted": -4.38
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.6
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.17
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -8.22
+    }
+   },
+   {
+    "hijriDay": 24,
+    "d47": "2026-01-13",
+    "d48": "2027-01-03",
+    "fajr": {
+     "printed": 0,
+     "predicted": -0.45
+    },
+    "sunrise": {
+     "printed": 0,
+     "predicted": 0.63
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.32
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.72
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.33
+    },
+    "isha": {
+     "printed": -9,
+     "predicted": -8.35
+    }
+   },
+   {
+    "hijriDay": 25,
+    "d47": "2026-01-14",
+    "d48": "2027-01-04",
+    "fajr": {
+     "printed": 0,
+     "predicted": -0.15
+    },
+    "sunrise": {
+     "printed": 1,
+     "predicted": 0.97
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.22
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.83
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.5
+    },
+    "isha": {
+     "printed": -9,
+     "predicted": -8.47
+    }
+   },
+   {
+    "hijriDay": 26,
+    "d47": "2026-01-15",
+    "d48": "2027-01-05",
+    "fajr": {
+     "printed": 0,
+     "predicted": 0.15
+    },
+    "sunrise": {
+     "printed": 1,
+     "predicted": 1.32
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.12
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.95
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.65
+    },
+    "isha": {
+     "printed": -9,
+     "predicted": -8.57
+    }
+   },
+   {
+    "hijriDay": 27,
+    "d47": "2026-01-16",
+    "d48": "2027-01-06",
+    "fajr": {
+     "printed": 0,
+     "predicted": 0.45
+    },
+    "sunrise": {
+     "printed": 1,
+     "predicted": 1.65
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -4.03
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -9.03
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.8
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -8.67
+    }
+   },
+   {
+    "hijriDay": 28,
+    "d47": "2026-01-17",
+    "d48": "2027-01-07",
+    "fajr": {
+     "printed": 0,
+     "predicted": 0.75
+    },
+    "sunrise": {
+     "printed": 2,
+     "predicted": 2
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.92
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -9.12
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -9.93
+    },
+    "isha": {
+     "printed": -8,
+     "predicted": -8.78
+    }
+   },
+   {
+    "hijriDay": 29,
+    "d47": "2026-01-18",
+    "d48": "2027-01-08",
+    "fajr": {
+     "printed": 1,
+     "predicted": 1.07
+    },
+    "sunrise": {
+     "printed": 2,
+     "predicted": 2.35
+    },
+    "dhuhr": {
+     "printed": -4,
+     "predicted": -3.82
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -9.18
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -10.05
+    },
+    "isha": {
+     "printed": -9,
+     "predicted": -8.87
+    }
+   }
+  ],
+  "ramadan": [
+   {
+    "hijriDay": 1,
+    "d47": "2026-02-19",
+    "d48": "2027-02-08",
+    "fajr": {
+     "printed": 12,
+     "predicted": 11.12
+    },
+    "sunrise": {
+     "printed": 12,
+     "predicted": 12.33
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.33
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.83
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.72
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.57
+    }
+   },
+   {
+    "hijriDay": 2,
+    "d47": "2026-02-20",
+    "d48": "2027-02-09",
+    "fajr": {
+     "printed": 12,
+     "predicted": 11.38
+    },
+    "sunrise": {
+     "printed": 12,
+     "predicted": 12.57
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.47
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.7
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.67
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.55
+    }
+   },
+   {
+    "hijriDay": 3,
+    "d47": "2026-02-21",
+    "d48": "2027-02-10",
+    "fajr": {
+     "printed": 12,
+     "predicted": 11.63
+    },
+    "sunrise": {
+     "printed": 12,
+     "predicted": 12.77
+    },
+    "dhuhr": {
+     "printed": 0,
+     "predicted": 0.62
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.57
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.6
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.55
+    }
+   },
+   {
+    "hijriDay": 4,
+    "d47": "2026-02-22",
+    "d48": "2027-02-11",
+    "fajr": {
+     "printed": 12,
+     "predicted": 11.9
+    },
+    "sunrise": {
+     "printed": 13,
+     "predicted": 12.98
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 0.73
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.45
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.57
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.53
+    }
+   },
+   {
+    "hijriDay": 5,
+    "d47": "2026-02-23",
+    "d48": "2027-02-12",
+    "fajr": {
+     "printed": 12,
+     "predicted": 12.15
+    },
+    "sunrise": {
+     "printed": 13,
+     "predicted": 13.2
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 0.87
+    },
+    "asr": {
+     "printed": -9,
+     "predicted": -8.32
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.5
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.52
+    }
+   },
+   {
+    "hijriDay": 6,
+    "d47": "2026-02-24",
+    "d48": "2027-02-13",
+    "fajr": {
+     "printed": 12,
+     "predicted": 12.4
+    },
+    "sunrise": {
+     "printed": 13,
+     "predicted": 13.38
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.18
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.45
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.52
+    }
+   },
+   {
+    "hijriDay": 7,
+    "d47": "2026-02-25",
+    "d48": "2027-02-14",
+    "fajr": {
+     "printed": 13,
+     "predicted": 12.65
+    },
+    "sunrise": {
+     "printed": 14,
+     "predicted": 13.58
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.12
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -8.03
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.38
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.5
+    }
+   },
+   {
+    "hijriDay": 8,
+    "d47": "2026-02-26",
+    "d48": "2027-02-15",
+    "fajr": {
+     "printed": 13,
+     "predicted": 12.88
+    },
+    "sunrise": {
+     "printed": 14,
+     "predicted": 13.77
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.23
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.92
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.33
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.48
+    }
+   },
+   {
+    "hijriDay": 9,
+    "d47": "2026-02-27",
+    "d48": "2027-02-16",
+    "fajr": {
+     "printed": 13,
+     "predicted": 13.12
+    },
+    "sunrise": {
+     "printed": 14,
+     "predicted": 13.95
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.37
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -7.77
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.27
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.48
+    }
+   },
+   {
+    "hijriDay": 10,
+    "d47": "2026-02-28",
+    "d48": "2027-02-17",
+    "fajr": {
+     "printed": 13,
+     "predicted": 13.35
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 14.12
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.48
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -7.62
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.2
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.47
+    }
+   },
+   {
+    "hijriDay": 11,
+    "d47": "2026-03-01",
+    "d48": "2027-02-18",
+    "fajr": {
+     "printed": 14,
+     "predicted": 13.58
+    },
+    "sunrise": {
+     "printed": 14,
+     "predicted": 14.28
+    },
+    "dhuhr": {
+     "printed": 1,
+     "predicted": 1.6
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.48
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.15
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.47
+    }
+   },
+   {
+    "hijriDay": 12,
+    "d47": "2026-03-02",
+    "d48": "2027-02-19",
+    "fajr": {
+     "printed": 14,
+     "predicted": 13.8
+    },
+    "sunrise": {
+     "printed": 14,
+     "predicted": 14.43
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.7
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.33
+    },
+    "magrib": {
+     "printed": -12,
+     "predicted": -11.07
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 13,
+    "d47": "2026-03-03",
+    "d48": "2027-02-20",
+    "fajr": {
+     "printed": 14,
+     "predicted": 14.02
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 14.6
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.82
+    },
+    "asr": {
+     "printed": -8,
+     "predicted": -7.2
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -11.03
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 14,
+    "d47": "2026-03-04",
+    "d48": "2027-02-21",
+    "fajr": {
+     "printed": 14,
+     "predicted": 14.23
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 14.75
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 1.92
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -7.07
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.95
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 15,
+    "d47": "2026-03-05",
+    "d48": "2027-02-22",
+    "fajr": {
+     "printed": 14,
+     "predicted": 14.45
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 14.9
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.02
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.92
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.9
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 16,
+    "d47": "2026-03-06",
+    "d48": "2027-02-23",
+    "fajr": {
+     "printed": 15,
+     "predicted": 14.63
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 15.03
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.12
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.77
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.83
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 17,
+    "d47": "2026-03-07",
+    "d48": "2027-02-24",
+    "fajr": {
+     "printed": 15,
+     "predicted": 14.85
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 15.17
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.22
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.62
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.78
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 18,
+    "d47": "2026-03-08",
+    "d48": "2027-02-25",
+    "fajr": {
+     "printed": 15,
+     "predicted": 15.03
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 15.28
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.3
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -6.48
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.72
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 19,
+    "d47": "2026-03-09",
+    "d48": "2027-02-26",
+    "fajr": {
+     "printed": 15,
+     "predicted": 15.22
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 15.42
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.38
+    },
+    "asr": {
+     "printed": -7,
+     "predicted": -6.33
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.68
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.45
+    }
+   },
+   {
+    "hijriDay": 20,
+    "d47": "2026-03-10",
+    "d48": "2027-02-27",
+    "fajr": {
+     "printed": 15,
+     "predicted": 15.4
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 15.52
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.48
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -6.2
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.62
+    },
+    "isha": {
+     "printed": -10,
+     "predicted": -10.47
+    }
+   },
+   {
+    "hijriDay": 21,
+    "d47": "2026-03-11",
+    "d48": "2027-02-28",
+    "fajr": {
+     "printed": 16,
+     "predicted": 15.57
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 15.62
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.55
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -6.07
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.57
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.47
+    }
+   },
+   {
+    "hijriDay": 22,
+    "d47": "2026-03-12",
+    "d48": "2027-03-01",
+    "fajr": {
+     "printed": 16,
+     "predicted": 15.75
+    },
+    "sunrise": {
+     "printed": 15,
+     "predicted": 15.73
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.63
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.9
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.5
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.47
+    }
+   },
+   {
+    "hijriDay": 23,
+    "d47": "2026-03-13",
+    "d48": "2027-03-02",
+    "fajr": {
+     "printed": 16,
+     "predicted": 15.92
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 15.83
+    },
+    "dhuhr": {
+     "printed": 2,
+     "predicted": 2.7
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.77
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.47
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.5
+    }
+   },
+   {
+    "hijriDay": 24,
+    "d47": "2026-03-14",
+    "d48": "2027-03-03",
+    "fajr": {
+     "printed": 16,
+     "predicted": 16.08
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 15.92
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.77
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.63
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.4
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.5
+    }
+   },
+   {
+    "hijriDay": 25,
+    "d47": "2026-03-15",
+    "d48": "2027-03-04",
+    "fajr": {
+     "printed": 17,
+     "predicted": 16.23
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 16
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.83
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -5.48
+    },
+    "magrib": {
+     "printed": -11,
+     "predicted": -10.35
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.52
+    }
+   },
+   {
+    "hijriDay": 26,
+    "d47": "2026-03-16",
+    "d48": "2027-03-05",
+    "fajr": {
+     "printed": 16,
+     "predicted": 16.38
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 16.08
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.88
+    },
+    "asr": {
+     "printed": -6,
+     "predicted": -5.35
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -10.32
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.53
+    }
+   },
+   {
+    "hijriDay": 27,
+    "d47": "2026-03-17",
+    "d48": "2027-03-06",
+    "fajr": {
+     "printed": 17,
+     "predicted": 16.53
+    },
+    "sunrise": {
+     "printed": 17,
+     "predicted": 16.17
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 2.97
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -5.23
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -10.27
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.57
+    }
+   },
+   {
+    "hijriDay": 28,
+    "d47": "2026-03-18",
+    "d48": "2027-03-07",
+    "fajr": {
+     "printed": 16,
+     "predicted": 16.68
+    },
+    "sunrise": {
+     "printed": 16,
+     "predicted": 16.23
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 3.02
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -5.08
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -10.22
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.6
+    }
+   },
+   {
+    "hijriDay": 29,
+    "d47": "2026-03-19",
+    "d48": "2027-03-08",
+    "fajr": {
+     "printed": 17,
+     "predicted": 16.82
+    },
+    "sunrise": {
+     "printed": 17,
+     "predicted": 16.28
+    },
+    "dhuhr": {
+     "printed": 3,
+     "predicted": 3.05
+    },
+    "asr": {
+     "printed": -5,
+     "predicted": -4.95
+    },
+    "magrib": {
+     "printed": -10,
+     "predicted": -10.18
+    },
+    "isha": {
+     "printed": -11,
+     "predicted": -10.62
+    }
+   }
+  ]
+ },
+ "copyTestSummary": {
+  "jumada1": {
+   "n": 30,
+   "stat": {
+    "fajr": {
+     "printedMean": -9.83,
+     "printedMin": -10,
+     "printedMax": -9,
+     "predictedMean": -9.87,
+     "residMean": 0.04,
+     "residMaxAbs": 0.95,
+     "identicalCells": 0
+    },
+    "sunrise": {
+     "printedMean": -11.03,
+     "printedMin": -12,
+     "printedMax": -10,
+     "predictedMean": -11.15,
+     "residMean": 0.12,
+     "residMaxAbs": 0.57,
+     "identicalCells": 0
+    },
+    "dhuhr": {
+     "printedMean": 0.17,
+     "printedMin": -2,
+     "printedMax": 3,
+     "predictedMean": 0.2,
+     "residMean": -0.03,
+     "residMaxAbs": 0.92,
+     "identicalCells": 11
+    },
+    "asr": {
+     "printedMean": 8.8,
+     "printedMin": 6,
+     "printedMax": 11,
+     "predictedMean": 8.85,
+     "residMean": -0.05,
+     "residMaxAbs": 0.98,
+     "identicalCells": 0
+    },
+    "magrib": {
+     "printedMean": 11.37,
+     "printedMin": 7,
+     "printedMax": 15,
+     "predictedMean": 11.48,
+     "residMean": -0.11,
+     "residMaxAbs": 1.05,
+     "identicalCells": 0
+    },
+    "isha": {
+     "printedMean": 10.23,
+     "printedMin": 6,
+     "printedMax": 14,
+     "predictedMean": 10.23,
+     "residMean": 0.01,
+     "residMaxAbs": 0.85,
+     "identicalCells": 0
+    }
+   }
+  },
+  "jumada2": {
+   "n": 29,
+   "stat": {
+    "fajr": {
+     "printedMean": -9,
+     "printedMin": -10,
+     "printedMax": -7,
+     "predictedMean": -8.9,
+     "residMean": -0.1,
+     "residMaxAbs": 0.87,
+     "identicalCells": 0
+    },
+    "sunrise": {
+     "printedMean": -10.41,
+     "printedMin": -12,
+     "printedMax": -8,
+     "predictedMean": -10.12,
+     "residMean": -0.3,
+     "residMaxAbs": 0.87,
+     "identicalCells": 0
+    },
+    "dhuhr": {
+     "printedMean": -4.03,
+     "printedMin": -6,
+     "printedMax": -2,
+     "predictedMean": -4.01,
+     "residMean": -0.03,
+     "residMaxAbs": 0.95,
+     "identicalCells": 0
+    },
+    "asr": {
+     "printedMean": 1.03,
+     "printedMin": -3,
+     "printedMax": 5,
+     "predictedMean": 0.87,
+     "residMean": 0.16,
+     "residMaxAbs": 1.13,
+     "identicalCells": 5
+    },
+    "magrib": {
+     "printedMean": 2.03,
+     "printedMin": -3,
+     "printedMax": 7,
+     "predictedMean": 1.99,
+     "residMean": 0.04,
+     "residMaxAbs": 0.72,
+     "identicalCells": 2
+    },
+    "isha": {
+     "printedMean": 0.79,
+     "printedMin": -4,
+     "printedMax": 6,
+     "predictedMean": 0.84,
+     "residMean": -0.05,
+     "residMaxAbs": 0.82,
+     "identicalCells": 4
+    }
+   }
+  },
+  "rajab": {
+   "n": 29,
+   "stat": {
+    "fajr": {
+     "printedMean": -2.76,
+     "printedMin": -6,
+     "printedMax": 1,
+     "predictedMean": -2.84,
+     "residMean": 0.08,
+     "residMaxAbs": 0.88,
+     "identicalCells": 6
+    },
+    "sunrise": {
+     "printedMean": -2.24,
+     "printedMin": -7,
+     "printedMax": 2,
+     "predictedMean": -2.31,
+     "residMean": 0.06,
+     "residMaxAbs": 0.75,
+     "identicalCells": 5
+    },
+    "dhuhr": {
+     "printedMean": -4.69,
+     "printedMin": -5,
+     "printedMax": -4,
+     "predictedMean": -4.72,
+     "residMean": 0.03,
+     "residMaxAbs": 0.95,
+     "identicalCells": 0
+    },
+    "asr": {
+     "printedMean": -6.86,
+     "printedMin": -9,
+     "printedMax": -3,
+     "predictedMean": -7.02,
+     "residMean": 0.16,
+     "residMaxAbs": 1.15,
+     "identicalCells": 0
+    },
+    "magrib": {
+     "printedMean": -7.34,
+     "printedMin": -10,
+     "printedMax": -4,
+     "predictedMean": -7.24,
+     "residMean": -0.11,
+     "residMaxAbs": 0.83,
+     "identicalCells": 0
+    },
+    "isha": {
+     "printedMean": -6.69,
+     "printedMin": -9,
+     "printedMax": -3,
+     "predictedMean": -6.75,
+     "residMean": 0.06,
+     "residMaxAbs": 0.82,
+     "identicalCells": 0
+    }
+   }
+  },
+  "ramadan": {
+   "n": 29,
+   "stat": {
+    "fajr": {
+     "printedMean": 14.34,
+     "printedMin": 12,
+     "printedMax": 17,
+     "predictedMean": 14.27,
+     "residMean": 0.08,
+     "residMaxAbs": 0.88,
+     "identicalCells": 0
+    },
+    "sunrise": {
+     "printedMean": 14.69,
+     "printedMin": 12,
+     "printedMax": 17,
+     "predictedMean": 14.69,
+     "residMean": 0,
+     "residMaxAbs": 0.88,
+     "identicalCells": 0
+    },
+    "dhuhr": {
+     "printedMean": 1.79,
+     "printedMin": 0,
+     "printedMax": 3,
+     "predictedMean": 1.9,
+     "residMean": -0.11,
+     "residMaxAbs": 0.7,
+     "identicalCells": 3
+    },
+    "asr": {
+     "printedMean": -6.93,
+     "printedMin": -9,
+     "printedMax": -5,
+     "predictedMean": -6.91,
+     "residMean": -0.03,
+     "residMaxAbs": 0.92,
+     "identicalCells": 0
+    },
+    "magrib": {
+     "printedMean": -11.28,
+     "printedMin": -12,
+     "printedMax": -10,
+     "predictedMean": -10.92,
+     "residMean": -0.36,
+     "residMaxAbs": 0.93,
+     "identicalCells": 0
+    },
+    "isha": {
+     "printedMean": -10.59,
+     "printedMin": -11,
+     "printedMax": -10,
+     "predictedMean": -10.5,
+     "residMean": -0.09,
+     "residMaxAbs": 0.57,
+     "identicalCells": 0
+    }
+   }
+  }
+ },
+ "recipe1447": {
+  "fajrAngle": 17.8,
+  "ishaAngle": 16.3,
+  "per": {
+   "fajr": {
+    "margin": 0,
+    "mode": "floor"
+   },
+   "isha": {
+    "margin": 4,
+    "mode": "nearest"
+   },
+   "sunrise": {
+    "margin": 1,
+    "mode": "floor"
+   },
+   "dhuhr": {
+    "margin": 1,
+    "mode": "floor"
+   },
+   "asr": {
+    "margin": 0,
+    "mode": "ceil"
+   },
+   "magrib": {
+    "margin": 4,
+    "mode": "floor"
+   }
+  }
+ },
+ "transfer1447to1448": {
+  "exact": 626,
+  "within1": 714,
+  "worst": 1,
+  "n": 714
+ },
+ "transfer1448to1447": {
+  "exact": 620,
+  "within1": 708,
+  "worst": 1,
+  "n": 708
+ }
+}

@@ -1,0 +1,685 @@
+{
+ "country": "lu",
+ "publisher": "Shoura (Luxembourg Muslim council) calendar 2026",
+ "source": "benelux2/data/lu-shoura-luxembourg-2026.json",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "tz": "Europe/Luxembourg",
+ "coords": {
+  "lat": 49.6116,
+  "lon": 6.1319
+ },
+ "stated_hypothesis": {
+  "fajr_angle": 13,
+  "isha_angle": 12.9,
+  "per_prayer_margin0": {
+   "fajr": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 0,
+     "within1": 173,
+     "worst": 62
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 36,
+     "within1": 310,
+     "worst": 61
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 169,
+     "within1": 346,
+     "worst": 61
+    }
+   },
+   "sunrise": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 277,
+     "within1": 365,
+     "worst": 1
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 245,
+     "within1": 365,
+     "worst": 1
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 95,
+     "within1": 365,
+     "worst": 1
+    }
+   },
+   "dhuhr": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 293,
+     "within1": 364,
+     "worst": 10
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 255,
+     "within1": 364,
+     "worst": 9
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 78,
+     "within1": 364,
+     "worst": 9
+    }
+   },
+   "asr": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 69,
+     "within1": 266,
+     "worst": 57
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 68,
+     "within1": 271,
+     "worst": 57
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 84,
+     "within1": 223,
+     "worst": 58
+    }
+   },
+   "magrib": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 98,
+     "within1": 329,
+     "worst": 54
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 116,
+     "within1": 316,
+     "worst": 54
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 152,
+     "within1": 260,
+     "worst": 55
+    }
+   },
+   "isha": {
+    "floor": {
+     "margin": 0,
+     "mode": "floor",
+     "exact": 73,
+     "within1": 283,
+     "worst": 2
+    },
+    "nearest": {
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 125,
+     "within1": 233,
+     "worst": 3
+    },
+    "ceil": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 124,
+     "within1": 204,
+     "worst": 3
+    }
+   }
+  }
+ },
+ "named_candidates_margin0": {
+  "MWL": {
+   "per": {
+    "fajr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 124
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 124
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 124
+     }
+    },
+    "sunrise": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "dhuhr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     }
+    },
+    "asr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     }
+    },
+    "magrib": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     }
+    },
+    "isha": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1390
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1390
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1390
+     }
+    }
+   },
+   "total_best_exact": 429
+  },
+  "ISNA": {
+   "per": {
+    "fajr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 73
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 73
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 73
+     }
+    },
+    "sunrise": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "dhuhr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 255,
+      "worst": 8
+     }
+    },
+    "asr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     }
+    },
+    "magrib": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     }
+    },
+    "isha": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1412
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1412
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 1412
+     }
+    }
+   },
+   "total_best_exact": 429
+  },
+  "UOIF_12_12": {
+   "per": {
+    "fajr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 55
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 55
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 54
+     }
+    },
+    "sunrise": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 277,
+      "within1": 365,
+      "worst": 1
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 245,
+      "within1": 365,
+      "worst": 1
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 95,
+      "within1": 365,
+      "worst": 1
+     }
+    },
+    "dhuhr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 293,
+      "within1": 364,
+      "worst": 10
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 255,
+      "within1": 364,
+      "worst": 9
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 78,
+      "within1": 364,
+      "worst": 9
+     }
+    },
+    "asr": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 69,
+      "within1": 266,
+      "worst": 57
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 68,
+      "within1": 271,
+      "worst": 57
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 84,
+      "within1": 223,
+      "worst": 58
+     }
+    },
+    "magrib": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 98,
+      "within1": 329,
+      "worst": 54
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 116,
+      "within1": 316,
+      "worst": 54
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 152,
+      "within1": 260,
+      "worst": 55
+     }
+    },
+    "isha": {
+     "floor": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 12
+     },
+     "nearest": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 12
+     },
+     "ceil": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 0,
+      "within1": 0,
+      "worst": 11
+     }
+    }
+   },
+   "total_best_exact": 806
+  }
+ },
+ "free_fit": {
+  "fajr": {
+   "angle": 12.87,
+   "r": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 306,
+    "within1": 364,
+    "worst": 60
+   }
+  },
+  "isha": {
+   "angle": 12.94,
+   "r": {
+    "margin": 0.5,
+    "mode": "floor",
+    "exact": 136,
+    "within1": 213,
+    "worst": 3
+   }
+  },
+  "solar": {
+   "sunrise": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 277,
+    "within1": 365,
+    "worst": 1
+   },
+   "dhuhr": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 293,
+    "within1": 364,
+    "worst": 10
+   },
+   "magrib": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 153,
+    "within1": 256,
+    "worst": 55
+   },
+   "asr_shafi": {
+    "margin": 1.5,
+    "mode": "floor",
+    "exact": 112,
+    "within1": 199,
+    "worst": 58
+   },
+   "asr_hanafi": {
+    "margin": -10,
+    "mode": "floor",
+    "exact": 0,
+    "within1": 0,
+    "worst": 99
+   }
+  }
+ },
+ "seasonal_wobble": {
+  "fajr": "13.0 ceil is within 1 min all year except June-July (computed runs 1-2 min earlier than printed on 18 days) and the 2026-10-25 defect",
+  "isha": "12.9 nearest is exact Jul-Dec; Jan-Jun computed runs +1..+3 min later than printed (peak Apr-May): a seasonal angle wobble roughly 12.9 winter -> 12.4 spring that no single angle absorbs"
+ },
+ "defects": [
+  {
+   "days": "2026-03-01..03-31",
+   "col": "magrib",
+   "what": "printed = sunset + ~6 min for the whole month (baseline +1)"
+  },
+  {
+   "days": "2026-03-29",
+   "col": "magrib,asr",
+   "what": "DST-change day: both columns left on CET arithmetic, 55 resp 58 min off the shifted zone"
+  },
+  {
+   "days": "2026-10-25",
+   "col": "fajr",
+   "what": "DST-change day: fajr not shifted, printed 06:57 where the zone says 05:56 (61 min); other five columns correct"
+  },
+  {
+   "days": "2026-10-02",
+   "col": "dhuhr",
+   "what": "typo 13:34 where neighbours are 13:25/13:24"
+  },
+  {
+   "days": "2026-11-18/19",
+   "col": "date stamps",
+   "what": "source page prints 18.10./19.10.; parsed under the correct November dates"
+  }
+ ],
+ "verdict": {
+  "stated_held": "yes in family: fajr 13.0 / isha 12.9 confirmed as the pair; isha carries a seasonal wobble the single angle absorbs only within 3 min",
+  "best_single_recipe": "fajr 12.87-13.0 (+0.5 min floor bias), isha 12.9-12.94 (nearest), sunrise floor +0, dhuhr floor +0, maghrib sunset floor +1, asr Shafi floor +1.5 with winter drift to +3.5",
+  "candidates": "MWL and ISNA refuted (429/2190 each at best rounding); UOIF 12/12 weak (806/2190)"
+ }
+}

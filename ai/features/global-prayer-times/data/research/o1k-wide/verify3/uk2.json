@@ -1,0 +1,392 @@
+{
+ "counts": {
+  "table-interval": 14,
+  "angle-18": 3,
+  "table-seasonal": 1
+ },
+ "result": [
+  {
+   "town": "Luton",
+   "file": "luton-central-mosque-2026-11",
+   "rows": 30,
+   "Fmin": 98,
+   "Fmax": 102,
+   "Frange": 4,
+   "Imin": 89,
+   "Imax": 96,
+   "Irange": 7,
+   "s18": {
+    "exact": 1,
+    "w1": 8,
+    "n": 30,
+    "worst": 6,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 20,
+   "class": "table-interval"
+  },
+  {
+   "town": "Brighton",
+   "file": "brighton-almedinah-2026-11",
+   "rows": 30,
+   "Fmin": 95,
+   "Fmax": 98,
+   "Frange": 3,
+   "Imin": 87,
+   "Imax": 93,
+   "Irange": 6,
+   "s18": {
+    "exact": 0,
+    "w1": 2,
+    "n": 30,
+    "worst": 6,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 21,
+   "class": "table-interval"
+  },
+  {
+   "town": "Dudley",
+   "file": "dudley-mcc-2026-11",
+   "rows": 30,
+   "Fmin": 99,
+   "Fmax": 103,
+   "Frange": 4,
+   "Imin": 91,
+   "Imax": 97,
+   "Irange": 6,
+   "s18": {
+    "exact": 0,
+    "w1": 1,
+    "n": 30,
+    "worst": 7,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 21,
+   "class": "table-interval"
+  },
+  {
+   "town": "Preston",
+   "file": "preston-jamea-2026-11",
+   "rows": 30,
+   "Fmin": 98,
+   "Fmax": 102,
+   "Frange": 4,
+   "Imin": null,
+   "Imax": null,
+   "Irange": null,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 30,
+    "worst": 12,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 16,
+   "class": "table-interval"
+  },
+  {
+   "town": "Blackpool",
+   "file": "blackpool-central-2026-11",
+   "rows": 30,
+   "Fmin": 99,
+   "Fmax": 108,
+   "Frange": 9,
+   "Imin": 98,
+   "Imax": 108,
+   "Irange": 10,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 30,
+    "worst": 6,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 30,
+   "class": "table-interval"
+  },
+  {
+   "town": "Middlesbrough",
+   "file": "middlesbrough-central-2026-11",
+   "rows": 30,
+   "Fmin": 97,
+   "Fmax": 102,
+   "Frange": 5,
+   "Imin": 88,
+   "Imax": 97,
+   "Irange": 9,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 30,
+    "worst": 14,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 24,
+   "class": "table-interval"
+  },
+  {
+   "town": "Stockport",
+   "file": "stockport-islamic-centre-2026-11",
+   "rows": 30,
+   "Fmin": 98,
+   "Fmax": 107,
+   "Frange": 9,
+   "Imin": 96,
+   "Imax": 104,
+   "Irange": 8,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 30,
+    "worst": 6,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 30,
+   "class": "table-interval"
+  },
+  {
+   "town": "Watford",
+   "file": "watford-jamia-2026-11",
+   "rows": 30,
+   "Fmin": 111,
+   "Fmax": 119,
+   "Frange": 8,
+   "Imin": 111,
+   "Imax": 120,
+   "Irange": 9,
+   "s18": {
+    "exact": 29,
+    "w1": 30,
+    "n": 30,
+    "worst": 1,
+    "margin": 1,
+    "mode": "floor"
+   },
+   "s15w1": 0,
+   "class": "angle-18"
+  },
+  {
+   "town": "Ilford",
+   "file": "ilford-2026-11",
+   "rows": 30,
+   "Fmin": 96,
+   "Fmax": 100,
+   "Frange": 4,
+   "Imin": 89,
+   "Imax": 95,
+   "Irange": 6,
+   "s18": {
+    "exact": 0,
+    "w1": 2,
+    "n": 30,
+    "worst": 6,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 21,
+   "class": "table-interval"
+  },
+  {
+   "town": "Cambridge",
+   "file": "cambridge-central-2026-11",
+   "rows": 32,
+   "Fmin": 98,
+   "Fmax": 101,
+   "Frange": 3,
+   "Imin": 86,
+   "Imax": 93,
+   "Irange": 7,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 32,
+    "worst": 9,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 20,
+   "class": "table-interval"
+  },
+  {
+   "town": "Stoke",
+   "file": "stoke-citycentral-month",
+   "rows": 30,
+   "Fmin": 110,
+   "Fmax": 110,
+   "Frange": 0,
+   "Imin": 91,
+   "Imax": 99,
+   "Irange": 8,
+   "s18": {
+    "exact": 3,
+    "w1": 11,
+    "n": 30,
+    "worst": 7,
+    "margin": 7,
+    "mode": "floor"
+   },
+   "s15w1": 12,
+   "class": "table-interval"
+  },
+  {
+   "town": "Nottingham",
+   "file": "nottingham-ic-2026",
+   "rows": 365,
+   "Fmin": 114,
+   "Fmax": 243,
+   "Frange": 129,
+   "Imin": 68,
+   "Imax": 139,
+   "Irange": 71,
+   "s18": {
+    "exact": 149,
+    "w1": 332,
+    "n": 365,
+    "worst": 5,
+    "margin": -1,
+    "mode": "ceil"
+   },
+   "s15w1": 40,
+   "class": "angle-18"
+  },
+  {
+   "town": "Coventry",
+   "file": "coventry-zeenatul-islam-2026",
+   "rows": 365,
+   "Fmin": 90,
+   "Fmax": 157,
+   "Frange": 67,
+   "Imin": 20,
+   "Imax": 100,
+   "Irange": 80,
+   "s18": {
+    "exact": 25,
+    "w1": 72,
+    "n": 365,
+    "worst": 119,
+    "margin": 15,
+    "mode": "nearest"
+   },
+   "s15w1": 73,
+   "class": "table-seasonal"
+  },
+  {
+   "town": "Reading",
+   "file": "reading-amic-2026",
+   "skipped": "no printed sunrise"
+  },
+  {
+   "town": "Oldham OCMIC",
+   "file": "oldham-ocmic-2026",
+   "rows": 365,
+   "Fmin": 93,
+   "Fmax": 126,
+   "Frange": 33,
+   "Imin": 65,
+   "Imax": 99,
+   "Irange": 34,
+   "s18": {
+    "exact": 15,
+    "w1": 27,
+    "n": 365,
+    "worst": 116,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 80,
+   "class": "table-interval"
+  },
+  {
+   "town": "Oldham Westwood",
+   "file": "oldham-westwood-2026",
+   "rows": 345,
+   "Fmin": 90,
+   "Fmax": 126,
+   "Frange": 36,
+   "Imin": 65,
+   "Imax": 99,
+   "Irange": 34,
+   "s18": {
+    "exact": 0,
+    "w1": 8,
+    "n": 345,
+    "worst": 118,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 87,
+   "class": "table-interval"
+  },
+  {
+   "town": "Oxford",
+   "file": "oxford-coms-2026",
+   "rows": 365,
+   "Fmin": 110,
+   "Fmax": 411,
+   "Frange": 301,
+   "Imin": 67,
+   "Imax": 126,
+   "Irange": 59,
+   "s18": {
+    "exact": 99,
+    "w1": 332,
+    "n": 365,
+    "worst": 299,
+    "margin": 0,
+    "mode": "ceil"
+   },
+   "s15w1": 15,
+   "class": "angle-18"
+  },
+  {
+   "town": "Rochdale",
+   "file": "rochdale-golden-2026",
+   "rows": 365,
+   "Fmin": 93,
+   "Fmax": 122,
+   "Frange": 29,
+   "Imin": 63,
+   "Imax": 97,
+   "Irange": 34,
+   "s18": {
+    "exact": 0,
+    "w1": 0,
+    "n": 365,
+    "worst": 122,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 77,
+   "class": "table-interval"
+  },
+  {
+   "town": "Bolton",
+   "file": "bolton-zakariyya-2026",
+   "rows": 354,
+   "Fmin": 90,
+   "Fmax": 124,
+   "Frange": 34,
+   "Imin": 60,
+   "Imax": 102,
+   "Irange": 42,
+   "s18": {
+    "exact": 1,
+    "w1": 18,
+    "n": 354,
+    "worst": 126,
+    "margin": 15,
+    "mode": "ceil"
+   },
+   "s15w1": 58,
+   "class": "table-interval"
+  }
+ ]
+}

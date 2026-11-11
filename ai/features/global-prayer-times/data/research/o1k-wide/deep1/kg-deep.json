@@ -1,0 +1,724 @@
+{
+ "job": "KG 2027-2035",
+ "recipe": {
+  "source": "muftiyat.kg documented JSON API, Bishkek (city 1)",
+  "coordinates": {
+   "lat": 42.87,
+   "lng": 74.59
+  },
+  "clock": "UTC+6",
+  "fajr": "18 deg, floor",
+  "sunrise": "floor",
+  "dhuhr": "round",
+  "asr": "Hanafi, ceil(raw) + 1; the published column sits 1.25 min after adhan raw (range -0.3..+3.0)",
+  "maghrib": "sunset + 7 min, displayed",
+  "isha": "displayed maghrib + round(k * (sunrise - fajr) + c)",
+  "heldConstant": {
+   "k": 0.7778,
+   "c": 3.5
+  },
+  "windows": "January (01-01..28-02) and July (01-07..31-08) of each year",
+  "engine": "adhan-js 4.4.6 (Other 18/18, Hanafi, TwilightAngle)"
+ },
+ "years": {
+  "2027": {
+   "year": 2027,
+   "rows": 121,
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 66.9,
+      "w1Pct": 100,
+      "mae": 0.331,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 67.8,
+      "w1Pct": 100,
+      "mae": 0.322,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 69.4,
+      "w1Pct": 100,
+      "mae": 0.306,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 59.5,
+      "w1Pct": 98.3,
+      "mae": 0.421,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 541,
+     "w1": 724,
+     "sum": 187,
+     "max": 2,
+     "exactPct": 74.5,
+     "w1Pct": 99.7,
+     "mae": 0.258
+    }
+   },
+   "bestC": {
+    "c": 3.35,
+    "exact": 77,
+    "w1": 121,
+    "mae": 0.364
+   },
+   "tuned": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 66.9,
+      "w1Pct": 100,
+      "mae": 0.331,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 67.8,
+      "w1Pct": 100,
+      "mae": 0.322,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 69.4,
+      "w1Pct": 100,
+      "mae": 0.306,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 546,
+     "w1": 726,
+     "sum": 180,
+     "max": 1,
+     "exactPct": 75.2,
+     "w1Pct": 100,
+     "mae": 0.248
+    }
+   },
+   "ratio": {
+    "kEffMean": 0.77657,
+    "kEffSd": 0.0057,
+    "cMeanAtHeldK": 3.34,
+    "cSd": 0.616,
+    "offsetMin": 76,
+    "offsetMax": 109
+   },
+   "amplitude": {
+    "twilightRangeMin": 42.3,
+    "ishaOffsetRangeMin": 33,
+    "maghribPublishedMinusSunsetSet": [
+     7
+    ]
+   }
+  },
+  "2029": {
+   "year": 2029,
+   "rows": 121,
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 76.9,
+      "w1Pct": 100,
+      "mae": 0.231,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 74.4,
+      "w1Pct": 100,
+      "mae": 0.256,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 91.7,
+      "w1Pct": 100,
+      "mae": 0.083,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 27.3,
+      "w1Pct": 90.9,
+      "mae": 0.818,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 20.7,
+      "w1Pct": 93.4,
+      "mae": 0.86,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 35.5,
+      "w1Pct": 90.1,
+      "mae": 0.744,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 395,
+     "w1": 695,
+     "sum": 362,
+     "max": 2,
+     "exactPct": 54.4,
+     "w1Pct": 95.7,
+     "mae": 0.499
+    }
+   },
+   "bestC": {
+    "c": 3.6,
+    "exact": 43,
+    "w1": 112,
+    "mae": 0.719
+   },
+   "tuned": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 76.9,
+      "w1Pct": 100,
+      "mae": 0.231,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 74.4,
+      "w1Pct": 100,
+      "mae": 0.256,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 91.7,
+      "w1Pct": 100,
+      "mae": 0.083,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 27.3,
+      "w1Pct": 90.9,
+      "mae": 0.818,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 20.7,
+      "w1Pct": 93.4,
+      "mae": 0.86,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 35.5,
+      "w1Pct": 92.6,
+      "mae": 0.719,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 395,
+     "w1": 698,
+     "sum": 359,
+     "max": 2,
+     "exactPct": 54.4,
+     "w1Pct": 96.1,
+     "mae": 0.494
+    }
+   },
+   "ratio": {
+    "kEffMean": 0.77784,
+    "kEffSd": 0.00541,
+    "cMeanAtHeldK": 3.485,
+    "cSd": 0.576,
+    "offsetMin": 76,
+    "offsetMax": 109
+   },
+   "amplitude": {
+    "twilightRangeMin": 42.1,
+    "ishaOffsetRangeMin": 33,
+    "maghribPublishedMinusSunsetSet": [
+     7
+    ]
+   }
+  },
+  "2031": {
+   "year": 2031,
+   "rows": 121,
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 74.4,
+      "w1Pct": 100,
+      "mae": 0.256,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 65.3,
+      "w1Pct": 100,
+      "mae": 0.347,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 59.5,
+      "w1Pct": 99.2,
+      "mae": 0.413,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 540,
+     "w1": 725,
+     "sum": 187,
+     "max": 2,
+     "exactPct": 74.4,
+     "w1Pct": 99.9,
+     "mae": 0.258
+    }
+   },
+   "bestC": {
+    "c": 3.3,
+    "exact": 75,
+    "w1": 121,
+    "mae": 0.38
+   },
+   "tuned": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 74.4,
+      "w1Pct": 100,
+      "mae": 0.256,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 86.8,
+      "w1Pct": 100,
+      "mae": 0.132,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 65.3,
+      "w1Pct": 100,
+      "mae": 0.347,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 62,
+      "w1Pct": 100,
+      "mae": 0.38,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 543,
+     "w1": 726,
+     "sum": 183,
+     "max": 1,
+     "exactPct": 74.8,
+     "w1Pct": 100,
+     "mae": 0.252
+    }
+   },
+   "ratio": {
+    "kEffMean": 0.77668,
+    "kEffSd": 0.00566,
+    "cMeanAtHeldK": 3.353,
+    "cSd": 0.61,
+    "offsetMin": 76,
+    "offsetMax": 109
+   },
+   "amplitude": {
+    "twilightRangeMin": 42.3,
+    "ishaOffsetRangeMin": 33,
+    "maghribPublishedMinusSunsetSet": [
+     7
+    ]
+   }
+  },
+  "2033": {
+   "year": 2033,
+   "rows": 121,
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 72.7,
+      "w1Pct": 100,
+      "mae": 0.273,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 71.9,
+      "w1Pct": 100,
+      "mae": 0.281,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 91.7,
+      "w1Pct": 100,
+      "mae": 0.083,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 25.6,
+      "w1Pct": 88.4,
+      "mae": 0.86,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 19,
+      "w1Pct": 90.9,
+      "mae": 0.901,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 33.1,
+      "w1Pct": 88.4,
+      "mae": 0.785,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 380,
+     "w1": 687,
+     "sum": 385,
+     "max": 2,
+     "exactPct": 52.3,
+     "w1Pct": 94.6,
+     "mae": 0.53
+    }
+   },
+   "bestC": {
+    "c": 3.7,
+    "exact": 42,
+    "w1": 109,
+    "mae": 0.752
+   },
+   "tuned": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 72.7,
+      "w1Pct": 100,
+      "mae": 0.273,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 71.9,
+      "w1Pct": 100,
+      "mae": 0.281,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 91.7,
+      "w1Pct": 100,
+      "mae": 0.083,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 25.6,
+      "w1Pct": 88.4,
+      "mae": 0.86,
+      "max": 2
+     },
+     "maghrib": {
+      "exactPct": 19,
+      "w1Pct": 90.9,
+      "mae": 0.901,
+      "max": 2
+     },
+     "isha": {
+      "exactPct": 34.7,
+      "w1Pct": 90.1,
+      "mae": 0.752,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 382,
+     "w1": 689,
+     "sum": 381,
+     "max": 2,
+     "exactPct": 52.6,
+     "w1Pct": 94.9,
+     "mae": 0.525
+    }
+   },
+   "ratio": {
+    "kEffMean": 0.77795,
+    "kEffSd": 0.00538,
+    "cMeanAtHeldK": 3.497,
+    "cSd": 0.572,
+    "offsetMin": 76,
+    "offsetMax": 109
+   },
+   "amplitude": {
+    "twilightRangeMin": 42.1,
+    "ishaOffsetRangeMin": 33,
+    "maghribPublishedMinusSunsetSet": [
+     7
+    ]
+   }
+  },
+  "2035": {
+   "year": 2035,
+   "rows": 121,
+   "held": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 77.7,
+      "w1Pct": 100,
+      "mae": 0.223,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 89.3,
+      "w1Pct": 100,
+      "mae": 0.107,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 62.8,
+      "w1Pct": 100,
+      "mae": 0.372,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 60.3,
+      "w1Pct": 99.2,
+      "mae": 0.405,
+      "max": 2
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 545,
+     "w1": 725,
+     "sum": 182,
+     "max": 2,
+     "exactPct": 75.1,
+     "w1Pct": 99.9,
+     "mae": 0.251
+    }
+   },
+   "bestC": {
+    "c": 3.35,
+    "exact": 74,
+    "w1": 121,
+    "mae": 0.388
+   },
+   "tuned": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 77.7,
+      "w1Pct": 100,
+      "mae": 0.223,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 89.3,
+      "w1Pct": 100,
+      "mae": 0.107,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.7,
+      "w1Pct": 100,
+      "mae": 0.033,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 62.8,
+      "w1Pct": 100,
+      "mae": 0.372,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 61.2,
+      "w1Pct": 100,
+      "mae": 0.388,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 726,
+     "exact": 546,
+     "w1": 726,
+     "sum": 180,
+     "max": 1,
+     "exactPct": 75.2,
+     "w1Pct": 100,
+     "mae": 0.248
+    }
+   },
+   "ratio": {
+    "kEffMean": 0.77676,
+    "kEffSd": 0.00565,
+    "cMeanAtHeldK": 3.362,
+    "cSd": 0.609,
+    "offsetMin": 76,
+    "offsetMax": 109
+   },
+   "amplitude": {
+    "twilightRangeMin": 42.3,
+    "ishaOffsetRangeMin": 33,
+    "maghribPublishedMinusSunsetSet": [
+     7
+    ]
+   }
+  }
+ },
+ "span": {
+  "fullYear2027Control": {
+   "rows": 365,
+   "held": {
+    "exact": 69.5,
+    "w1": 99.6,
+    "mae": 0.308,
+    "max": 2,
+    "isha": {
+     "exactPct": 47.4,
+     "w1Pct": 97.8,
+     "mae": 0.548,
+     "max": 2
+    }
+   },
+   "bestC": {
+    "c": 3.25,
+    "exact": 196,
+    "w1": 363,
+    "mae": 0.468
+   },
+   "tunedIsha": {
+    "exactPct": 53.7,
+    "w1Pct": 99.5,
+    "mae": 0.468,
+    "max": 2
+   },
+   "ratio": {
+    "kEffMean": 0.77607,
+    "kEffSd": 0.00586,
+    "cMeanAtHeldK": 3.31
+   },
+   "annualTwilightRangeMin": 43.9,
+   "annualIshaOffsetRangeMin": 34
+  },
+  "estimates": [
+   {
+    "year": 2027,
+    "kEffMean": 0.77657,
+    "cMean": 3.34
+   },
+   {
+    "year": 2029,
+    "kEffMean": 0.77784,
+    "cMean": 3.485
+   },
+   {
+    "year": 2031,
+    "kEffMean": 0.77668,
+    "cMean": 3.353
+   },
+   {
+    "year": 2033,
+    "kEffMean": 0.77795,
+    "cMean": 3.497
+   },
+   {
+    "year": 2035,
+    "kEffMean": 0.77676,
+    "cMean": 3.362
+   }
+  ],
+  "k": {
+   "min": 0.77657,
+   "max": 0.77795,
+   "spread": 0.00138
+  },
+  "c": {
+   "min": 3.34,
+   "max": 3.497,
+   "spread": 0.157
+  },
+  "verdict": "holds"
+ }
+}

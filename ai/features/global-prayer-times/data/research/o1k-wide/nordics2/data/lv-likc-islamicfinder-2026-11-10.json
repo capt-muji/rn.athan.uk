@@ -1,0 +1,52 @@
+{
+ "2026-11-10": {
+  "daugavpils|12/12": {
+   "asr": "01:52 PM",
+   "dhuhr": "11:59 AM",
+   "fajr": "06:13 AM",
+   "isha": "05:43 PM",
+   "maghrib": "04:19 PM",
+   "sunrise": "07:37 AM"
+  },
+  "daugavpils|15/15": {
+   "asr": "01:52 PM",
+   "dhuhr": "11:59 AM",
+   "fajr": "05:51 AM",
+   "isha": "06:05 PM",
+   "maghrib": "04:19 PM",
+   "sunrise": "07:37 AM"
+  },
+  "riga|12/12": {
+   "asr": "01:57 PM",
+   "dhuhr": "12:09 PM",
+   "fajr": "06:25 AM",
+   "isha": "05:51 PM",
+   "maghrib": "04:24 PM",
+   "sunrise": "07:51 AM"
+  },
+  "riga|15/15": {
+   "asr": "01:57 PM",
+   "dhuhr": "12:09 PM",
+   "fajr": "06:02 AM",
+   "isha": "06:14 PM",
+   "maghrib": "04:24 PM",
+   "sunrise": "07:51 AM"
+  },
+  "ventspils|12/12": {
+   "asr": "02:05 PM",
+   "dhuhr": "12:19 PM",
+   "fajr": "06:36 AM",
+   "isha": "06:01 PM",
+   "maghrib": "04:32 PM",
+   "sunrise": "08:03 AM"
+  },
+  "ventspils|15/15": {
+   "asr": "02:05 PM",
+   "dhuhr": "12:19 PM",
+   "fajr": "06:13 AM",
+   "isha": "06:23 PM",
+   "maghrib": "04:32 PM",
+   "sunrise": "08:03 AM"
+  }
+ }
+}

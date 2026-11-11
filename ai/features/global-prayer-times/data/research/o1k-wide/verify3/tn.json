@@ -1,0 +1,427 @@
+{
+ "source": "deep2/data + northafrica2/data tn-inm-tunis-YYYY.json",
+ "rawCheck": {
+  "2024": {
+   "rows": 366,
+   "cells": 1830,
+   "mismatches": 0,
+   "sample": [],
+   "rawDays": 366
+  },
+  "2025": {
+   "rows": 365,
+   "cells": 1825,
+   "mismatches": 0,
+   "sample": [],
+   "rawDays": 365
+  }
+ },
+ "recipe": {
+  "params": {
+   "fajr": [
+    "round",
+    0
+   ],
+   "isha": [
+    "round",
+    0
+   ],
+   "dhuhr": [
+    "round",
+    7
+   ],
+   "asr": [
+    "nearest",
+    0
+   ],
+   "maghrib": [
+    "ceil",
+    2
+   ]
+  },
+  "overall": {
+   "fajr": {
+    "n": 2557,
+    "exact": 2471,
+    "w1": 2557,
+    "worst": 1,
+    "mae": 0.03363316386390301
+   },
+   "isha": {
+    "n": 2557,
+    "exact": 2471,
+    "w1": 2557,
+    "worst": 1,
+    "mae": 0.03363316386390301
+   },
+   "dhuhr": {
+    "n": 2557,
+    "exact": 2308,
+    "w1": 2557,
+    "worst": 1,
+    "mae": 0.0973797418850215
+   },
+   "asr": {
+    "n": 2557,
+    "exact": 764,
+    "w1": 2409,
+    "worst": 2,
+    "mae": 0.7590926867422761
+   },
+   "maghrib": {
+    "n": 2557,
+    "exact": 2429,
+    "w1": 2557,
+    "worst": 1,
+    "mae": 0.050058662495111456
+   },
+   "joint": {
+    "n": 2557,
+    "allFiveWithin1": 2409,
+    "pct": 94.21196714900273
+   }
+  }
+ },
+ "perYear": {
+  "2020": {
+   "rows": 366,
+   "file": "$HOME/athan-gitree/census/o1k-wide/deep2/data/tn-inm-tunis-2020.json",
+   "first": "2020-01-01",
+   "last": "2020-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 366,
+     "exact": 354,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.03278688524590164
+    },
+    "isha": {
+     "n": 366,
+     "exact": 357,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.02459016393442623
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact": 324,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.11475409836065574
+    },
+    "asr": {
+     "n": 366,
+     "exact": 110,
+     "w1": 348,
+     "worst": 2,
+     "mae": 0.7486338797814208
+    },
+    "maghrib": {
+     "n": 366,
+     "exact": 341,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.06830601092896176
+    },
+    "joint": {
+     "n": 366,
+     "allFiveWithin1": 348,
+     "pct": 95.08196721311475
+    }
+   }
+  },
+  "2021": {
+   "rows": 365,
+   "file": "$HOME/athan-gitree/census/o1k-wide/deep2/data/tn-inm-tunis-2021.json",
+   "first": "2021-01-01",
+   "last": "2021-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 365,
+     "exact": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.043835616438356165
+    },
+    "isha": {
+     "n": 365,
+     "exact": 351,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.038356164383561646
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 337,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.07671232876712329
+    },
+    "asr": {
+     "n": 365,
+     "exact": 116,
+     "w1": 343,
+     "worst": 2,
+     "mae": 0.7424657534246575
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 348,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04657534246575343
+    },
+    "joint": {
+     "n": 365,
+     "allFiveWithin1": 343,
+     "pct": 93.97260273972603
+    }
+   }
+  },
+  "2022": {
+   "rows": 365,
+   "file": "$HOME/athan-gitree/census/o1k-wide/deep2/data/tn-inm-tunis-2022.json",
+   "first": "2022-01-01",
+   "last": "2022-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 365,
+     "exact": 355,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.0273972602739726
+    },
+    "isha": {
+     "n": 365,
+     "exact": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03561643835616438
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 331,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.09315068493150686
+    },
+    "asr": {
+     "n": 365,
+     "exact": 103,
+     "w1": 342,
+     "worst": 2,
+     "mae": 0.7808219178082192
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.043835616438356165
+    },
+    "joint": {
+     "n": 365,
+     "allFiveWithin1": 342,
+     "pct": 93.6986301369863
+    }
+   }
+  },
+  "2023": {
+   "rows": 365,
+   "file": "$HOME/athan-gitree/census/o1k-wide/deep2/data/tn-inm-tunis-2023.json",
+   "first": "2023-01-01",
+   "last": "2023-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 365,
+     "exact": 350,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.0410958904109589
+    },
+    "isha": {
+     "n": 365,
+     "exact": 351,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.038356164383561646
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 319,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.12602739726027398
+    },
+    "asr": {
+     "n": 365,
+     "exact": 106,
+     "w1": 340,
+     "worst": 2,
+     "mae": 0.7780821917808219
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 351,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.038356164383561646
+    },
+    "joint": {
+     "n": 365,
+     "allFiveWithin1": 340,
+     "pct": 93.15068493150685
+    }
+   }
+  },
+  "2024": {
+   "rows": 366,
+   "file": "$HOME/athan-gitree/census/o1k-wide/northafrica2/data/tn-inm-tunis-2024.json",
+   "first": "2024-01-01",
+   "last": "2024-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 366,
+     "exact": 353,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.03551912568306011
+    },
+    "isha": {
+     "n": 366,
+     "exact": 354,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.03278688524590164
+    },
+    "dhuhr": {
+     "n": 366,
+     "exact": 325,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.11202185792349727
+    },
+    "asr": {
+     "n": 366,
+     "exact": 109,
+     "w1": 349,
+     "worst": 2,
+     "mae": 0.7486338797814208
+    },
+    "maghrib": {
+     "n": 366,
+     "exact": 343,
+     "w1": 366,
+     "worst": 1,
+     "mae": 0.06284153005464481
+    },
+    "joint": {
+     "n": 366,
+     "allFiveWithin1": 349,
+     "pct": 95.35519125683061
+    }
+   }
+  },
+  "2025": {
+   "rows": 365,
+   "file": "$HOME/athan-gitree/census/o1k-wide/northafrica2/data/tn-inm-tunis-2025.json",
+   "first": "2025-01-01",
+   "last": "2025-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 365,
+     "exact": 353,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03287671232876712
+    },
+    "isha": {
+     "n": 365,
+     "exact": 352,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.03561643835616438
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 339,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.07123287671232877
+    },
+    "asr": {
+     "n": 365,
+     "exact": 114,
+     "w1": 345,
+     "worst": 2,
+     "mae": 0.7424657534246575
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 348,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.04657534246575343
+    },
+    "joint": {
+     "n": 365,
+     "allFiveWithin1": 345,
+     "pct": 94.52054794520548
+    }
+   }
+  },
+  "2026": {
+   "rows": 365,
+   "file": "$HOME/athan-gitree/census/o1k-wide/deep2/data/tn-inm-tunis-2026.json",
+   "first": "2026-01-01",
+   "last": "2026-12-31",
+   "frozen": {
+    "fajr": {
+     "n": 365,
+     "exact": 357,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.021917808219178082
+    },
+    "isha": {
+     "n": 365,
+     "exact": 354,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.030136986301369864
+    },
+    "dhuhr": {
+     "n": 365,
+     "exact": 333,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.08767123287671233
+    },
+    "asr": {
+     "n": 365,
+     "exact": 106,
+     "w1": 342,
+     "worst": 2,
+     "mae": 0.7726027397260274
+    },
+    "maghrib": {
+     "n": 365,
+     "exact": 349,
+     "w1": 365,
+     "worst": 1,
+     "mae": 0.043835616438356165
+    },
+    "joint": {
+     "n": 365,
+     "allFiveWithin1": 342,
+     "pct": 93.6986301369863
+    }
+   }
+  }
+ },
+ "rowOverlap2024v2025": {
+  "matchedMonthDays": 365,
+  "stringIdentical": 133
+ }
+}

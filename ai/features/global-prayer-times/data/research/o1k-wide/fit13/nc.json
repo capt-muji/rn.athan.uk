@@ -1,0 +1,35 @@
+{
+ "_job": "Job 3: Centre Islamique de Noumea (Mawaqit iqamaCalendar) — the mosque-board recipe, full 2026",
+ "lat": -22.2758,
+ "lon": 166.458,
+ "zone": "Pacific/Noumea",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "gridShape": "dhuhr, asr, isha land on exact 5-minute marks 365/365; fajr, sunrise, maghrib sit on the 1-minute grid",
+ "recipe": {
+  "fajr": "18 deg, raw (no offset), rounded nearest minute — implied 18.10 deg (sd 0.065); exact 188/365, within-1 365/365",
+  "sunrise": "solar sunrise rounded nearest — median -0.4 min (sd 0.30)",
+  "maghrib": "floor-to-minute(sunset) + 5 min (identical to ceil+4) — exact 313/365, within-1 365/365",
+  "dhuhr": "transit + 30 min rounded to the 5-grid, but entered in hand blocks: only 19 runs across the year (2-6 weeks each); the daily-computed target round5(transit+30) agrees exactly 252/365; block envelope runs transit+24.4 .. +36.4",
+  "asr": "shadow-1 asr rounded to the 5-grid, hand-blocked: 13 runs; round5(asr1) exact 134/365; block median +2.0 min over asr1, envelope -8 .. +16 (shadow-2 is 55 min off — single shadow confirmed)",
+  "isha": "NO single angle: 19:45 floor 2026-04-01..2026-11-29 (243 days); the 122 free days are hand blocks (see ishaShape)"
+ },
+ "ishaShape": {
+  "floor": "19:45 for 243 days (Apr 1 - Nov 29)",
+  "gradedSeason": "Nov 30 - Dec 31 rises 19:50 -> 20:05 in 7-day blocks, tracking sunset + 85 min (implied twilight angle 17.67 deg, sd 0.36; sunset+85 round5 exact 24/32)",
+  "handBlocks": "Jan 1-4 20:15; Jan 5-Feb 1 20:05 (implied 17.59 deg); Feb 2-15 20:00; Feb 16-17 19:55; Feb 18-Mar 18 20:15 — the Ramadan 1447H window, a taraweeh override sitting 20-35 min later than any standard twilight (implied 26.6 deg, sd 1.9); Mar 19-31 20:00; floor resumes Apr 1",
+  "verdict": "outside 19:45 the isha column is board-hand-maintained: only the Nov-Dec tail behaves like a computed ~17.5-18 deg twilight (sunset+85); the Jan-Mar blocks and the Ramadan 20:15 block are static entries"
+ },
+ "amplitude": {
+  "seasonal": "Jan vs Jul: fajr 03:47-04:12 (Jan) vs 05:10-05:15 (Jul), a ~73-minute seasonal swing; sunset 18:45-18:48 (Jan) vs 17:26-17:38 (Jul). The 19:45 isha floor holds 243 days precisely because computed winter isha (sunset+85) falls to ~18:55-19:20, well below the floor.",
+  "stability": "single year held (2026); between-year shift not testable; within-year the hand blocks quantise the solar curve in 2-6 week steps"
+ },
+ "limits": [
+  "One year (2026) only; no second year on the surface.",
+  "The three 5-grid prayers are board-maintained blocks, not engine output: sub-block day-level agreement with a solar engine is not achievable beyond the ~5-minute block quantisation.",
+  "Ramadan 1447H override (Feb 18-Mar 18) means the isha column mixes two regimes in Jan-Mar."
+ ]
+}

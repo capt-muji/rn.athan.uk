@@ -1,0 +1,26 @@
+domain	verdict	detail
+mcemosque.com	miss	HTTP 200  masjidbox.com/prayer-times/mce-mosque 
+masjidtaqwa.ca	miss	HTTP 404 masjid_id=pVdwyVLe  
+masjidalfarooq.ca	miss	HTTP 200   
+masjidquba.ca	miss	HTTP 403   
+markaz.ca	miss	HTTP 200 masjid_id=VrdRkwKG  
+masjidalfatima.com	miss	HTTP 404 masjid_id=M0dYkvL6  
+rahmamosque.ca	miss	HTTP 000   
+islamicedmonton.ca	miss	HTTP 000   
+alrashidmosque.ca	miss	HTTP 200   
+winnipegmosque.ca	miss	HTTP 000   
+winnipegmosque.org	miss	HTTP 200   
+miaonline.org	HIT_Dpt	rows=1 size=118239
+bilalcentre.ca	HIT_Dpt	rows=1 size=129723
+manitobadawahcentre.ca	miss	HTTP 000   
+cciq.org	miss	HTTP 404   
+mosqueedelacapitale.com	miss	HTTP 404   
+mahcanada.com	miss	HTTP 200   
+downtownmosque.com	miss	HTTP 404   
+ibrahimjame.com	miss	HTTP 000   
+bosnianislamiccenter.ca	miss	HTTP 000   
+waterloomasjid.com	miss	HTTP 200   
+kitchenermasjid.com	HIT_Dpt	rows=1 size=129213
+wilmotmuslimcentre.ca	miss	HTTP 200   
+islamnovascotia.ca	miss	HTTP 200   
+ummahmasjid.ca	HIT_Dpt	rows=1 size=129213

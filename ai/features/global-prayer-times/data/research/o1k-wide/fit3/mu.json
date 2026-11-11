@@ -1,0 +1,313 @@
+{
+ "country": "mu",
+ "publisher": "Jummah Masjid, Port Louis, Mauritius",
+ "source": "https://namaztimes.jummahmasjid.org/ (timetable embedded in app bundle /assets/index--pbmFNlE.js as const M7; llms.txt documents the app)",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "tz": "Indian/Mauritius (UTC+4, no DST)",
+ "coords": {
+  "lat": -20.1667,
+  "lon": 58.5
+ },
+ "fajr_begin": {
+  "angle": 17.89,
+  "r": {
+   "margin": 10,
+   "mode": "ceil",
+   "exact": 300,
+   "within1": 361,
+   "worst": 2
+  }
+ },
+ "esha_begin_angle": {
+  "angle": 17.29,
+  "r": {
+   "margin": 5.5,
+   "mode": "floor",
+   "exact": 282,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "sehri_angle": {
+  "angle": 17.89,
+  "r": {
+   "margin": 1,
+   "mode": "floor",
+   "exact": 296,
+   "within1": 360,
+   "worst": 2
+  }
+ },
+ "solar_fits": {
+  "sunriseStart": {
+   "margin": 4.5,
+   "mode": "floor",
+   "exact": 262,
+   "within1": 359,
+   "worst": 2
+  },
+  "sunsetStart": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 292,
+   "within1": 363,
+   "worst": 2
+  },
+  "sunsetEnd": {
+   "margin": 5.5,
+   "mode": "floor",
+   "exact": 292,
+   "within1": 363,
+   "worst": 2
+  },
+  "maghrib": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 292,
+   "within1": 363,
+   "worst": 2
+  },
+  "asr_shafi": {
+   "margin": 10,
+   "mode": "ceil",
+   "exact": 0,
+   "within1": 0,
+   "worst": 74
+  },
+  "asr_hanafi": {
+   "margin": 4.5,
+   "mode": "floor",
+   "exact": 260,
+   "within1": 363,
+   "worst": 2
+  },
+  "zawaalStart": {
+   "margin": -0.5,
+   "mode": "floor",
+   "exact": 321,
+   "within1": 365,
+   "worst": 1
+  },
+  "zawaalEnd": {
+   "margin": 9.5,
+   "mode": "floor",
+   "exact": 321,
+   "within1": 365,
+   "worst": 1
+  },
+  "zohrBegin": {
+   "margin": 10,
+   "mode": "nearest",
+   "exact": 320,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "intervals": {
+  "sehri_minus_fajrBegin": {
+   "-10": 361,
+   "-9": 3,
+   "-11": 1
+  },
+  "fajrAzaan_minus_begin": {
+   "0": 17,
+   "1": 24,
+   "2": 33,
+   "3": 36,
+   "4": 43,
+   "5": 47,
+   "6": 36,
+   "7": 21,
+   "8": 20,
+   "9": 10,
+   "10": 9,
+   "11": 11,
+   "12": 14,
+   "13": 19,
+   "14": 16,
+   "15": 7,
+   "16": 2
+  },
+  "fajrJamaat_minus_begin": {
+   "25": 17,
+   "26": 12,
+   "27": 8,
+   "28": 7,
+   "29": 7,
+   "30": 6,
+   "31": 18,
+   "32": 30,
+   "33": 31,
+   "34": 36,
+   "35": 41,
+   "36": 30,
+   "37": 16,
+   "38": 18,
+   "39": 10,
+   "40": 9,
+   "41": 11,
+   "42": 14,
+   "43": 19,
+   "44": 16,
+   "45": 7,
+   "46": 2
+  },
+  "sunriseEnd_minus_start": {
+   "14": 365
+  },
+  "sunsetEnd_minus_start": {
+   "5": 365
+  },
+  "maghrib_minus_sunsetEnd": {
+   "1": 336,
+   "2": 29
+  },
+  "maghrib_minus_sunsetStart": {
+   "6": 336,
+   "7": 29
+  },
+  "zawaalEnd_minus_start": {
+   "10": 365
+  },
+  "zohrBegin_minus_zawaalEnd": {
+   "1": 364,
+   "2": 1
+  },
+  "asrAzaan_minus_begin": {
+   "1": 1,
+   "2": 12,
+   "3": 12,
+   "4": 27,
+   "5": 61,
+   "6": 60,
+   "7": 24,
+   "8": 21,
+   "9": 17,
+   "10": 22,
+   "11": 22,
+   "12": 23,
+   "13": 28,
+   "14": 10,
+   "15": 13,
+   "16": 11,
+   "17": 1
+  },
+  "asrJamaat_minus_azaan": {
+   "15": 365
+  },
+  "eshaAzaan_minus_begin": {
+   "2": 6,
+   "3": 8,
+   "4": 16,
+   "5": 15,
+   "6": 15,
+   "7": 7,
+   "8": 6,
+   "9": 9,
+   "10": 12,
+   "11": 17,
+   "12": 18,
+   "13": 17,
+   "14": 20,
+   "15": 20,
+   "16": 19,
+   "17": 21,
+   "18": 20,
+   "19": 20,
+   "20": 21,
+   "21": 26,
+   "22": 24,
+   "23": 12,
+   "24": 7,
+   "25": 8,
+   "26": 1
+  },
+  "eshaJamaat_minus_azaan": {
+   "10": 28,
+   "15": 337
+  },
+  "eshaBegin_minus_maghrib": {
+   "68": 2,
+   "69": 61,
+   "70": 50,
+   "71": 40,
+   "72": 33,
+   "73": 39,
+   "74": 45,
+   "75": 19,
+   "76": 13,
+   "77": 13,
+   "78": 12,
+   "79": 24,
+   "80": 14
+  },
+  "fajrJamaat_minus_azaan": {
+   "25": 70,
+   "30": 295
+  },
+  "esha_begin_as_maghrib_plus": {
+   "interval": 69,
+   "exact": 61,
+   "within1": 113,
+   "worst": 11,
+   "n": 365,
+   "bad": [
+    "2026-01-01:11",
+    "2026-01-02:10",
+    "2026-01-03:10",
+    "2026-01-04:10",
+    "2026-01-05:10",
+    "2026-01-06:10",
+    "2026-01-07:10",
+    "2026-01-08:10",
+    "2026-01-09:10",
+    "2026-01-10:10"
+   ]
+  }
+ },
+ "fixed_columns": {
+  "zohr_azaan": "12:45 fixed (365/365 per publisher note, verified in rows)",
+  "zohr_jamaat": "13:00 (313 days), 13:10 on Fridays (52 days)",
+  "asr_jamaat_minus_azaan": 15,
+  "esha_jamaat_minus_azaan": "15 (337 days), 10 (28 days)",
+  "fajr_jamaat_minus_azaan": "30 (295 days), 25 (70 days)"
+ },
+ "regional_adjustments": {
+  "base": "Port Louis",
+  "+2min maghrib/-2min sehri": [
+   "Coromandel",
+   "Pailles",
+   "Pamplemousses",
+   "Riviere du Rempart",
+   "Flacq",
+   "Plaine Magnien",
+   "LEscalier"
+  ],
+  "+3min maghrib/-3min sehri": [
+   "Beau Bassin",
+   "Rose Hill",
+   "Quatre Bornes",
+   "Montagne Blanche",
+   "Brisee Verdiere",
+   "Riviere des Anguilles",
+   "Chemin Grenier",
+   "Rose Belle"
+  ],
+  "+4min maghrib/-4min sehri": [
+   "Curepipe",
+   "Vacoas",
+   "Phoenix",
+   "Forest Side",
+   "Moka",
+   "Quartier Militaire",
+   "Nouvelle France",
+   "Bois Cheri"
+  ],
+  "encoding": "publisher-stated, not per-town data in the bundle: each region tier carries TWO fixed minute adjustments, maghrib +n and sehri -n, symmetric; 3 tiers x 2 directions = 6 adjustments"
+ },
+ "note": "Zohr azaan 12:45 and jamaat 13:00 (13:10 Fridays) are fixed in the app code, not per-day data. | sehri column = fajr.begin - 10 (see intervals); sunrise.start/sunset.end bracket the -0.833 sunrise and sunset events (interval histograms)"
+}

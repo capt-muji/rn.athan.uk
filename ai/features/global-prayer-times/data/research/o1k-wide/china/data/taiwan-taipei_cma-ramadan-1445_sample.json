@@ -1,0 +1,83 @@
+{
+ "_source": "Chinese Muslim Association ROC 1445AH (2024) Ramadan timetable, cmainroc.org.tw hot_486022.html",
+ "_publisher_tier": "authority (national Muslim association of Taiwan; both state review by the imams' council)",
+ "_sampling": "SAMPLED, not full transcription: anchor dates only, chosen to expose year-over-year drift. The full 2026 table is in taiwan-taipei_cma-ramadan-1447.json",
+ "_columns": "fajr, sunrise, dhuhr, asr, magrib, isha; suhoor = fasting cut-off printed 20 min before fajr",
+ "_city_offsets_minutes": {
+  "suhoor": {
+   "Hsinchu": 2,
+   "Taichung": 3,
+   "Tainan": 5,
+   "Kaohsiung": 3,
+   "Hualien": -1,
+   "Taitung": 0,
+   "Hengchun": 3,
+   "Penghu": 7
+  },
+  "iftar": {
+   "Hsinchu": 2,
+   "Taichung": 4,
+   "Tainan": 7,
+   "Kaohsiung": 7,
+   "Hualien": 1,
+   "Taitung": 3,
+   "Hengchun": 6,
+   "Penghu": 9
+  }
+ },
+ "_of_note": "Every city offset moved between the three editions except Hsinchu and Penghu's suhoor. Hualien iftar went +1 (2024) to -1 (2025) to +1 (2026). Hengchun went +3/+6, +4/+3, +2/+6. The 2025 table's 2025-03-30 maghrib (18:14) undercuts 2025-03-29 (18:16) by two minutes; the 2024 table prints Taitung suhoor as 'minus 0 minutes'. Both carried as printed.",
+ "2024-03-11": {
+  "fajr": "04:57",
+  "sunrise": "06:07",
+  "dhuhr": "12:24",
+  "asr": "16:07",
+  "magrib": "18:06",
+  "isha": "19:36",
+  "suhoor": "04:37"
+ },
+ "2024-03-12": {
+  "fajr": "04:56",
+  "sunrise": "06:06",
+  "dhuhr": "12:23",
+  "asr": "16:07",
+  "magrib": "18:06",
+  "isha": "19:36",
+  "suhoor": "04:36"
+ },
+ "2024-03-20": {
+  "fajr": "04:48",
+  "sunrise": "05:58",
+  "dhuhr": "12:21",
+  "asr": "16:07",
+  "magrib": "18:10",
+  "isha": "19:40",
+  "suhoor": "04:28"
+ },
+ "2024-03-25": {
+  "fajr": "04:44",
+  "sunrise": "05:54",
+  "dhuhr": "12:20",
+  "asr": "16:07",
+  "magrib": "18:12",
+  "isha": "19:42",
+  "suhoor": "04:24"
+ },
+ "2024-03-26": {
+  "fajr": "04:43",
+  "sunrise": "05:53",
+  "dhuhr": "12:19",
+  "asr": "16:07",
+  "magrib": "18:13",
+  "isha": "19:43",
+  "suhoor": "04:23"
+ },
+ "2024-04-09": {
+  "fajr": "04:27",
+  "sunrise": "05:37",
+  "dhuhr": "12:15",
+  "asr": "16:04",
+  "magrib": "18:19",
+  "isha": "19:49",
+  "suhoor": "04:07"
+ }
+}

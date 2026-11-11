@@ -1,0 +1,62 @@
+{
+ "2026-11-10": {
+  "fajr": "05:51",
+  "fajr_jamah": "06:40",
+  "sunrise": "07:52",
+  "zuhr": "12:25",
+  "zuhr_jamah": "13:00",
+  "asr_mithl1": "14:24",
+  "asr_mithl2": "14:59",
+  "asr_jamah": "15:45",
+  "magrib": "16:51",
+  "isha": "18:28",
+  "isha_jamah": "20:00",
+  "source": "Official GICC timetable",
+  "type": "monthly"
+ },
+ "2026-11-11": {
+  "fajr": "05:52",
+  "fajr_jamah": "06:40",
+  "sunrise": "07:53",
+  "zuhr": "12:25",
+  "zuhr_jamah": "13:00",
+  "asr_mithl1": "14:22",
+  "asr_mithl2": "14:57",
+  "asr_jamah": "15:45",
+  "magrib": "16:49",
+  "isha": "18:27",
+  "isha_jamah": "20:00",
+  "source": "Official GICC timetable",
+  "type": "monthly"
+ },
+ "2026-12-25": {
+  "fajr": "06:40",
+  "fajr_jamah": "06:50",
+  "sunrise": "08:51",
+  "zuhr": "12:41",
+  "zuhr_jamah": "13:00",
+  "asr_mithl1": "14:08",
+  "asr_mithl2": "14:36",
+  "asr_jamah": "15:15",
+  "magrib": "16:25",
+  "isha": "18:12",
+  "isha_jamah": "20:00",
+  "source": "Provisional Master timetable",
+  "type": "master"
+ },
+ "2026-12-26": {
+  "fajr": "06:40",
+  "fajr_jamah": "06:50",
+  "sunrise": "08:51",
+  "zuhr": "12:42",
+  "zuhr_jamah": "13:00",
+  "asr_mithl1": "14:08",
+  "asr_mithl2": "14:37",
+  "asr_jamah": "15:15",
+  "magrib": "16:26",
+  "isha": "18:12",
+  "isha_jamah": "20:00",
+  "source": "Provisional Master timetable",
+  "type": "master"
+ }
+}

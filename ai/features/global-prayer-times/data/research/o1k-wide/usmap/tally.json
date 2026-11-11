@@ -1,0 +1,212 @@
+{
+ "base": {
+  "US": 126,
+  "CA": 16
+ },
+ "added": {
+  "US": [
+   {
+    "mosque": "Dar al-Hijrah (Falls Church VA)",
+    "fajr": 15,
+    "fajrAngle": 14.84,
+    "isha": "15",
+    "ishaAngle": 15.01,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.79
+   },
+   {
+    "mosque": "Islamic Center of Greater Toledo (2025)",
+    "fajr": 15,
+    "fajrAngle": 14.91,
+    "isha": "15",
+    "ishaAngle": 14.92,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.39
+   },
+   {
+    "mosque": "Muslim Center of San Antonio",
+    "fajr": 15,
+    "fajrAngle": 14.95,
+    "isha": "15",
+    "ishaAngle": 14.97,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.55
+   },
+   {
+    "mosque": "Memphis Islamic Center",
+    "fajr": 15,
+    "fajrAngle": 14.82,
+    "isha": "15",
+    "ishaAngle": 15,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.42
+   },
+   {
+    "mosque": "Richmond Islamic Community Center TX",
+    "fajr": 15,
+    "fajrAngle": 15.19,
+    "isha": "15",
+    "ishaAngle": 14.81,
+    "ishaKind": "angle",
+    "asr": "Hanafi",
+    "darkRms": 0.43
+   },
+   {
+    "mosque": "MAS Tarbiyah Center (Livonia MI)",
+    "fajr": 15,
+    "fajrAngle": 14.99,
+    "isha": "15",
+    "ishaAngle": 15,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.41
+   },
+   {
+    "mosque": "Ethiopian Muslim Association (SeaTac WA)",
+    "fajr": 15,
+    "fajrAngle": 15,
+    "isha": "15",
+    "ishaAngle": 14.99,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.42
+   },
+   {
+    "mosque": "Islamic Center of Tennessee",
+    "fajr": 15,
+    "fajrAngle": 15,
+    "isha": "15",
+    "ishaAngle": 15,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.36
+   }
+  ],
+  "CA": [
+   {
+    "mosque": "Islamic Institute of Toronto",
+    "fajr": 15,
+    "fajrAngle": 14.86,
+    "isha": "+90min",
+    "ishaAngle": 15.84,
+    "ishaKind": "interval",
+    "asr": "Shafi",
+    "darkRms": 0.67
+   },
+   {
+    "mosque": "Masjid Toronto (MAC)",
+    "fajr": 15,
+    "fajrAngle": 14.87,
+    "isha": "+80min",
+    "ishaAngle": 14.21,
+    "ishaKind": "interval",
+    "asr": "Shafi",
+    "darkRms": 0.68
+   },
+   {
+    "mosque": "Kitchener Masjid (MAC)",
+    "fajr": 15,
+    "fajrAngle": 14.86,
+    "isha": "15",
+    "ishaAngle": 15.03,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.6
+   },
+   {
+    "mosque": "Ummah Masjid (Halifax, 2025)",
+    "fajr": 15,
+    "fajrAngle": 15,
+    "isha": "15",
+    "ishaAngle": 15,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.49
+   },
+   {
+    "mosque": "Bilal Centre (Winnipeg)",
+    "fajr": 15,
+    "fajrAngle": 14.76,
+    "isha": "15",
+    "ishaAngle": 14.61,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.77
+   },
+   {
+    "mosque": "Manitoba Islamic Association (Winnipeg)",
+    "fajr": 15,
+    "fajrAngle": 14.74,
+    "isha": "15",
+    "ishaAngle": 14.61,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.88
+   },
+   {
+    "mosque": "Centre Culturel Islamique de Quebec",
+    "fajr": 15,
+    "fajrAngle": 14.99,
+    "isha": "15",
+    "ishaAngle": 14.99,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.42
+   },
+   {
+    "mosque": "Mosquee de la Capitale (Quebec)",
+    "fajr": 15,
+    "fajrAngle": 15,
+    "isha": "15",
+    "ishaAngle": 14.99,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.44
+   },
+   {
+    "mosque": "Saskatoon Mosque",
+    "fajr": 15,
+    "fajrAngle": 14.74,
+    "isha": "+85min",
+    "ishaAngle": 12.47,
+    "ishaKind": "interval",
+    "asr": "Hanafi",
+    "darkRms": 1.18
+   },
+   {
+    "mosque": "Brandon Islamic Centre",
+    "fajr": 15,
+    "fajrAngle": 14.73,
+    "isha": "15",
+    "ishaAngle": 14.81,
+    "ishaKind": "angle",
+    "asr": "Shafi",
+    "darkRms": 0.72
+   }
+  ]
+ },
+ "overlaps": [
+  "Islamic Association of North Texas (widget)",
+  "Islamic Center of South Bay (Lomita)",
+  "Jamaica Muslim Center (NY)",
+  "Markaz Ul Islam (Edmonton)",
+  "Masjid Al-Fatima (Edmonton)",
+  "Masjid At-Taqwa (Edmonton)"
+ ],
+ "us": {
+  "is1515": 105,
+  "f15": 111,
+  "f18": 17,
+  "han": 40
+ },
+ "ca": {
+  "is1515": 14,
+  "f15": 20,
+  "f18": 5,
+  "han": 8
+ }
+}

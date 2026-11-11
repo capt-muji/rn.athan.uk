@@ -1,0 +1,317 @@
+{
+ "id": "ve-mezquita-de-caracas",
+ "country": "Venezuela",
+ "place": "Mezquita de Caracas",
+ "source_file": "americas2/data/ve_caracas_mezquita_2026-10-12_2026-11-10.json (monthly PDF, 30 rows)",
+ "coords": {
+  "lat": 10.4806,
+  "lon": -66.9036
+ },
+ "source_published_coords": null,
+ "tz": "America/Caracas",
+ "span": {
+  "first": "2026-10-12",
+  "last": "2026-11-10",
+  "days": 30,
+  "years_held": [
+   "2026"
+  ]
+ },
+ "rows": 30,
+ "fitting_engine": "adhan 4.4.6 (TZ per job, no real clock)",
+ "verified_recipe": {
+  "fajr_angle": 18.5,
+  "isha_rule": "maghrib+89",
+  "isha_angle": 18.5,
+  "asr_school": "Shafi",
+  "rounding": "nearest minute",
+  "margins_minutes": {
+   "fajr": 0.75,
+   "sunrise": -0.5,
+   "dhuhr": 2,
+   "asr": 0.5,
+   "maghrib": 2
+  }
+ },
+ "verdict": "CONFIRMED on family and interval, one month only",
+ "publisher_engine": {
+  "note": "PrayTimes v2-family solar engine, which is what these tables are computed from. Zero margins reproduce the table exactly where the angles are the holding.",
+  "scores": {
+   "fajr": {
+    "exact": 28,
+    "mae": 0.251,
+    "worst": 1,
+    "bias": 0.004
+   },
+   "sunrise": {
+    "exact": 27,
+    "mae": 0.247,
+    "worst": 1,
+    "bias": -0.085
+   },
+   "dhuhr": {
+    "exact": 24,
+    "mae": 0.309,
+    "worst": 1,
+    "bias": -0.265
+   },
+   "asr": {
+    "exact": 23,
+    "mae": 0.369,
+    "worst": 1,
+    "bias": 0.218
+   },
+   "maghrib": {
+    "exact": 28,
+    "mae": 0.26,
+    "worst": 1,
+    "bias": -0.086
+   },
+   "isha": {
+    "exact": 28,
+    "mae": 0.26,
+    "worst": 1,
+    "bias": -0.086
+   }
+  },
+  "days_all_six_exact": 15
+ },
+ "adhan_side": {
+  "scores": {
+   "fajr": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.251
+   },
+   "sunrise": {
+    "exact": 27,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.247
+   },
+   "dhuhr": {
+    "exact": 4,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.765
+   },
+   "asr": {
+    "exact": 17,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.443
+   },
+   "maghrib": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.261
+   },
+   "isha": {
+    "exact": 28,
+    "within1": 30,
+    "worst": 1,
+    "mae": 0.261
+   }
+  },
+  "joint": {
+   "exact": 2,
+   "within1": 30,
+   "worst": 1,
+   "of": 180
+  },
+  "offsets_measured_minutes": {
+   "fajr": 0.004,
+   "sunrise": -0.085,
+   "dhuhr": -0.265,
+   "asr": 0.218,
+   "maghrib": -0.086,
+   "isha": -0.086
+  },
+  "note": "adhan carries its own meridian-transit offset against this engine, about +1.0 min on dhuhr and a +/-1.2 min seasonal skew on asr, so its margins are engine artefacts and not publisher margins"
+ },
+ "cross_check_at_source_coords": null,
+ "free_fit": {
+  "fajr": {
+   "best_angle": 18.48,
+   "best_mae": 0.242,
+   "mae_at_recipe_angle": 0.251
+  },
+  "isha": {
+   "angle_model": {
+    "best": 21,
+    "mae": 7.194
+   },
+   "interval_model": {
+    "best_from_sunset_minutes": 91,
+    "mae": 0.261
+   },
+   "better": "interval"
+  }
+ },
+ "asr_school_gap_minutes": 55.4,
+ "family_screen": {
+  "mwl_18_17": {
+   "mean_mae": 4.933,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 1.316,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 1.319,
+    "maghrib": 1.912,
+    "isha": 23.734
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "isna_15_15": {
+   "mean_mae": 8.382,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 13.73,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 1.319,
+    "maghrib": 1.912,
+    "isha": 32.014
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "mml_18_18": {
+   "mean_mae": 4.244,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 1.316,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 1.319,
+    "maghrib": 1.912,
+    "isha": 19.598
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "umm_al_qura_18_5_90": {
+   "mean_mae": 1.036,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.754,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 1.319,
+    "maghrib": 1.912,
+    "isha": 0.912
+   },
+   "per_column_exact": {
+    "fajr": 7,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 2
+   }
+  },
+  "egypt_19_5_17_5": {
+   "mean_mae": 5.184,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 4.886,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 1.319,
+    "maghrib": 1.912,
+    "isha": 21.666
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 1,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "karachi_18_18_hanafi": {
+   "mean_mae": 13.038,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 1.316,
+    "sunrise": 0.583,
+    "dhuhr": 0.735,
+    "asr": 54.081,
+    "maghrib": 1.912,
+    "isha": 19.598
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 13,
+    "dhuhr": 6,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  }
+ },
+ "family_ranking": [
+  {
+   "family": "umm_al_qura_18_5_90",
+   "mean_mae": 1.036,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mml_18_18",
+   "mean_mae": 4.244,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mwl_18_17",
+   "mean_mae": 4.933,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "egypt_19_5_17_5",
+   "mean_mae": 5.184,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "isna_15_15",
+   "mean_mae": 8.382,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "karachi_18_18_hanafi",
+   "mean_mae": 13.038,
+   "days_all_six_exact": 0
+  }
+ ],
+ "seasonal_amplitude_fajr": null,
+ "asr_monthly_bias_adhan_vs_table": {
+  "2026-10": 0.41,
+  "2026-11": 0.14
+ },
+ "limits": [
+  "one Hijri month (2026-10-12 to 2026-11-10) of 30 days: one season, and it cannot separate the fajr angle from the fajr caution",
+  "Venezuela keeps UTC-4 all year, so the span crosses no offset transition"
+ ]
+}

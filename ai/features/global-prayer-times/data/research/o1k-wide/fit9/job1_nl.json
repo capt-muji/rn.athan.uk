@@ -1,0 +1,582 @@
+{
+ "recipe": {
+  "fajr": "18 deg rising, floored at 03:30 local",
+  "isha": "17 deg setting, capped at 23:30 local"
+ },
+ "amsterdam": {
+  "years": {
+   "2025": {
+    "fajr": {
+     "n": 365,
+     "exact": 207,
+     "within1": 352,
+     "worst": 2,
+     "rms": 0.73,
+     "bias": 0.03,
+     "float_min": -1.81,
+     "float_max": 2.18,
+     "hist": {
+      "-2": 3,
+      "-1": 76,
+      "0": 207,
+      "1": 69,
+      "2": 10
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 220,
+     "within1": 358,
+     "worst": 2,
+     "rms": 0.67,
+     "bias": 0.05,
+     "float_min": -1.7,
+     "float_max": 1.78,
+     "hist": {
+      "-2": 5,
+      "-1": 57,
+      "0": 220,
+      "1": 81,
+      "2": 2
+     }
+    }
+   },
+   "2026": {
+    "fajr": {
+     "n": 365,
+     "exact": 212,
+     "within1": 348,
+     "worst": 2,
+     "rms": 0.75,
+     "bias": 0.04,
+     "float_min": -1.9,
+     "float_max": 2.16,
+     "hist": {
+      "-2": 7,
+      "-1": 64,
+      "0": 212,
+      "1": 72,
+      "2": 10
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 215,
+     "within1": 355,
+     "worst": 2,
+     "rms": 0.7,
+     "bias": 0.05,
+     "float_min": -1.7,
+     "float_max": 1.72,
+     "hist": {
+      "-2": 3,
+      "-1": 67,
+      "0": 215,
+      "1": 73,
+      "2": 7
+     }
+    }
+   }
+  },
+  "span": {
+   "fajr": {
+    "n": 730,
+    "exact": 419,
+    "within1": 700,
+    "worst": 2,
+    "rms": 0.74,
+    "bias": 0.03,
+    "float_min": -1.9,
+    "float_max": 2.18,
+    "hist": {
+     "-2": 10,
+     "-1": 140,
+     "0": 419,
+     "1": 141,
+     "2": 20
+    }
+   },
+   "isha": {
+    "n": 730,
+    "exact": 435,
+    "within1": 713,
+    "worst": 2,
+    "rms": 0.69,
+    "bias": 0.05,
+    "float_min": -1.7,
+    "float_max": 1.78,
+    "hist": {
+     "-2": 8,
+     "-1": 124,
+     "0": 435,
+     "1": 154,
+     "2": 9
+    }
+   }
+  },
+  "caps": {
+   "fajr": {
+    "printed_at_cap": 197,
+    "printed_span": [
+     "2025-05-02",
+     "2026-08-08"
+    ],
+    "computed_bind": 197,
+    "computed_span": [
+     "2025-05-02",
+     "2026-08-08"
+    ]
+   },
+   "isha": {
+    "printed_at_cap": 208,
+    "printed_span": [
+     "2025-05-01",
+     "2026-08-12"
+    ],
+    "computed_bind": 149,
+    "computed_span": [
+     "2025-05-01",
+     "2026-08-13"
+    ]
+   }
+  },
+  "free_angle_fit": {
+   "fajr": {
+    "angle": 18.0,
+    "rms": 0.83,
+    "bias": 0.05,
+    "days": 533
+   },
+   "isha": {
+    "angle": 16.98,
+    "rms": 0.74,
+    "bias": 0.22,
+    "days": 522
+   }
+  },
+  "amplitude": {
+   "fajr": {
+    "jan15": 399.89564813810244,
+    "jul_min": 118.85767740614313,
+    "jul_max": 174.1363982399257,
+    "year_min": 102.95200427491886,
+    "year_max": 404.04909678525064,
+    "amplitude": 301.1
+   },
+   "isha": {
+    "jan15": 1133.2338871205657,
+    "jul_min": 19.629312623378155,
+    "jul_max": 97.22684016118592,
+    "year_min": 0.03933594187424205,
+    "year_max": 1439.5205847709426,
+    "amplitude": 1439.5
+   }
+  },
+  "rounding_convention": {
+   "fajr": {
+    "nearest": 223,
+    "floor": 220
+   },
+   "sunrise": {
+    "nearest": 5,
+    "floor": 84
+   },
+   "dhuhr": {
+    "nearest": 694,
+    "floor": 306
+   },
+   "asr": {
+    "nearest": 452,
+    "floor": 155
+   },
+   "isha": {
+    "nearest": 228,
+    "floor": 174
+   }
+  }
+ },
+ "rotterdam": {
+  "years": {
+   "2025": {
+    "fajr": {
+     "n": 365,
+     "exact": 205,
+     "within1": 350,
+     "worst": 2,
+     "rms": 0.75,
+     "bias": 0.02,
+     "float_min": -1.85,
+     "float_max": 2.15,
+     "hist": {
+      "-2": 6,
+      "-1": 73,
+      "0": 205,
+      "1": 72,
+      "2": 9
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 221,
+     "within1": 361,
+     "worst": 2,
+     "rms": 0.65,
+     "bias": 0.01,
+     "float_min": -1.8,
+     "float_max": 1.62,
+     "hist": {
+      "-2": 3,
+      "-1": 66,
+      "0": 221,
+      "1": 74,
+      "2": 1
+     }
+    }
+   },
+   "2026": {
+    "fajr": {
+     "n": 365,
+     "exact": 212,
+     "within1": 352,
+     "worst": 2,
+     "rms": 0.73,
+     "bias": 0.04,
+     "float_min": -1.97,
+     "float_max": 2.07,
+     "hist": {
+      "-2": 4,
+      "-1": 70,
+      "0": 212,
+      "1": 70,
+      "2": 9
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 230,
+     "within1": 360,
+     "worst": 2,
+     "rms": 0.64,
+     "bias": 0.02,
+     "float_min": -1.68,
+     "float_max": 1.69,
+     "hist": {
+      "-2": 3,
+      "-1": 60,
+      "0": 230,
+      "1": 70,
+      "2": 2
+     }
+    }
+   }
+  },
+  "span": {
+   "fajr": {
+    "n": 730,
+    "exact": 417,
+    "within1": 702,
+    "worst": 2,
+    "rms": 0.74,
+    "bias": 0.03,
+    "float_min": -1.97,
+    "float_max": 2.15,
+    "hist": {
+     "-2": 10,
+     "-1": 143,
+     "0": 417,
+     "1": 142,
+     "2": 18
+    }
+   },
+   "isha": {
+    "n": 730,
+    "exact": 451,
+    "within1": 721,
+    "worst": 2,
+    "rms": 0.65,
+    "bias": 0.02,
+    "float_min": -1.8,
+    "float_max": 1.69,
+    "hist": {
+     "-2": 6,
+     "-1": 126,
+     "0": 451,
+     "1": 144,
+     "2": 3
+    }
+   }
+  },
+  "caps": {
+   "fajr": {
+    "printed_at_cap": 190,
+    "printed_span": [
+     "2025-05-04",
+     "2026-08-06"
+    ],
+    "computed_bind": 189,
+    "computed_span": [
+     "2025-05-04",
+     "2026-08-06"
+    ]
+   },
+   "isha": {
+    "printed_at_cap": 205,
+    "printed_span": [
+     "2025-05-02",
+     "2026-08-12"
+    ],
+    "computed_bind": 141,
+    "computed_span": [
+     "2025-05-02",
+     "2026-08-12"
+    ]
+   }
+  },
+  "free_angle_fit": {
+   "fajr": {
+    "angle": 18.0,
+    "rms": 0.81,
+    "bias": 0.04,
+    "days": 540
+   },
+   "isha": {
+    "angle": 16.96,
+    "rms": 0.71,
+    "bias": 0.32,
+    "days": 525
+   }
+  },
+  "amplitude": {
+   "fajr": {
+    "jan15": 400.98290290859546,
+    "jul_min": 123.02560580518355,
+    "jul_max": 184.78269962575155,
+    "year_min": 108.61064893408604,
+    "year_max": 404.9731633877341,
+    "amplitude": 296.4
+   },
+   "isha": {
+    "jan15": 1135.5528067996593,
+    "jul_min": 14.293320337056457,
+    "jul_max": 90.13739537259153,
+    "year_min": 1.670728435122328,
+    "year_max": 1439.7935024056928,
+    "amplitude": 1438.1
+   }
+  },
+  "rounding_convention": {
+   "fajr": {
+    "nearest": 227,
+    "floor": 240
+   },
+   "sunrise": {
+    "nearest": 4,
+    "floor": 76
+   },
+   "dhuhr": {
+    "nearest": 710,
+    "floor": 343
+   },
+   "asr": {
+    "nearest": 476,
+    "floor": 168
+   },
+   "isha": {
+    "nearest": 246,
+    "floor": 177
+   }
+  }
+ },
+ "utrecht": {
+  "years": {
+   "2025": {
+    "fajr": {
+     "n": 365,
+     "exact": 208,
+     "within1": 346,
+     "worst": 2,
+     "rms": 0.77,
+     "bias": 0.03,
+     "float_min": -1.9,
+     "float_max": 1.99,
+     "hist": {
+      "-2": 6,
+      "-1": 74,
+      "0": 208,
+      "1": 64,
+      "2": 13
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 217,
+     "within1": 358,
+     "worst": 2,
+     "rms": 0.68,
+     "bias": 0.05,
+     "float_min": -1.71,
+     "float_max": 1.78,
+     "hist": {
+      "-2": 5,
+      "-1": 60,
+      "0": 217,
+      "1": 81,
+      "2": 2
+     }
+    }
+   },
+   "2026": {
+    "fajr": {
+     "n": 365,
+     "exact": 204,
+     "within1": 344,
+     "worst": 2,
+     "rms": 0.78,
+     "bias": 0.03,
+     "float_min": -2.03,
+     "float_max": 2.08,
+     "hist": {
+      "-2": 4,
+      "-1": 75,
+      "0": 204,
+      "1": 65,
+      "2": 17
+     }
+    },
+    "isha": {
+     "n": 365,
+     "exact": 214,
+     "within1": 360,
+     "worst": 2,
+     "rms": 0.67,
+     "bias": -0.0,
+     "float_min": -1.64,
+     "float_max": 1.72,
+     "hist": {
+      "-2": 3,
+      "-1": 69,
+      "0": 214,
+      "1": 77,
+      "2": 2
+     }
+    }
+   }
+  },
+  "span": {
+   "fajr": {
+    "n": 730,
+    "exact": 412,
+    "within1": 690,
+    "worst": 2,
+    "rms": 0.77,
+    "bias": 0.03,
+    "float_min": -2.03,
+    "float_max": 2.08,
+    "hist": {
+     "-2": 10,
+     "-1": 149,
+     "0": 412,
+     "1": 129,
+     "2": 30
+    }
+   },
+   "isha": {
+    "n": 730,
+    "exact": 431,
+    "within1": 718,
+    "worst": 2,
+    "rms": 0.68,
+    "bias": 0.02,
+    "float_min": -1.71,
+    "float_max": 1.78,
+    "hist": {
+     "-2": 8,
+     "-1": 129,
+     "0": 431,
+     "1": 158,
+     "2": 4
+    }
+   }
+  },
+  "caps": {
+   "fajr": {
+    "printed_at_cap": 194,
+    "printed_span": [
+     "2025-05-03",
+     "2026-08-07"
+    ],
+    "computed_bind": 194,
+    "computed_span": [
+     "2025-05-03",
+     "2026-08-07"
+    ]
+   },
+   "isha": {
+    "printed_at_cap": 204,
+    "printed_span": [
+     "2025-05-02",
+     "2026-08-11"
+    ],
+    "computed_bind": 143,
+    "computed_span": [
+     "2025-05-03",
+     "2026-08-12"
+    ]
+   }
+  },
+  "free_angle_fit": {
+   "fajr": {
+    "angle": 17.98,
+    "rms": 0.84,
+    "bias": -0.11,
+    "days": 536
+   },
+   "isha": {
+    "angle": 16.98,
+    "rms": 0.73,
+    "bias": 0.18,
+    "days": 526
+   }
+  },
+  "amplitude": {
+   "fajr": {
+    "jan15": 398.6250090393816,
+    "jul_min": 124.41429747854158,
+    "jul_max": 179.007592858061,
+    "year_min": 104.74491905192019,
+    "year_max": 402.6747005788563,
+    "amplitude": 297.9
+   },
+   "isha": {
+    "jan15": 1132.7366220927302,
+    "jul_min": 14.254369052926677,
+    "jul_max": 86.46149098242472,
+    "year_min": 1.55049024526852,
+    "year_max": 1439.3567012296298,
+    "amplitude": 1437.8
+   }
+  },
+  "rounding_convention": {
+   "fajr": {
+    "nearest": 218,
+    "floor": 233
+   },
+   "sunrise": {
+    "nearest": 3,
+    "floor": 84
+   },
+   "dhuhr": {
+    "nearest": 711,
+    "floor": 349
+   },
+   "asr": {
+    "nearest": 443,
+    "floor": 161
+   },
+   "isha": {
+    "nearest": 228,
+    "floor": 189
+   }
+  }
+ }
+}

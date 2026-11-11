@@ -1,0 +1,26 @@
+{
+  "header": {
+    "magic": "LUPT",
+    "fmt": 1,
+    "epochDay": 20454,
+    "dayCount": 18628,
+    "cols": 6
+  },
+  "artifactRange": {
+    "first": "2026-01-01",
+    "last": "2076-12-31"
+  },
+  "extractedDays": 4018,
+  "truthDays": 4018,
+  "truthCells": 24108,
+  "cellMismatches": 0,
+  "mismatchesSample": [],
+  "missingFromTruth": 0,
+  "extraInTruth": 0,
+  "badDateField": 0,
+  "artifactVs2027Table": {
+    "cells": 2190,
+    "mismatches": 0,
+    "sample": []
+  }
+}

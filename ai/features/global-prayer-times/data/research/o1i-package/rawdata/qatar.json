@@ -1,0 +1,268 @@
+{
+ "meta": {
+  "country": "Qatar",
+  "authority": "Ministry of Interior (portal.moi.gov.qa prayertimings/today API), via Wayback Machine captures",
+  "source_files": [
+   "$HOME/athan-gitree/census/c40-wayback/qa_rows.json"
+  ],
+  "capture_agent": "c40-wayback (wb.py CDX sweep of MoiPortalRestServices payloads; 32 captures, 25 EN + 7 AR, 1 AR stub dropped)",
+  "city": "Doha",
+  "city_coords": "25.25, 51.60 (payload states Latitude 25:15, Longitude 51:36)",
+  "years": [
+   "2017",
+   "2018",
+   "2019",
+   "2021",
+   "2022",
+   "2025",
+   "2026"
+  ],
+  "per_year_days": {
+   "2017": 1,
+   "2018": 1,
+   "2019": 8,
+   "2021": 1,
+   "2022": 9,
+   "2025": 5,
+   "2026": 3
+  },
+  "day_count": 28,
+  "coverage": {
+   "first": "2017-03-13",
+   "last": "2026-07-17"
+  },
+  "notes": [
+   "Single-day captures: every payload serves exactly one dated day, so the series is scattered (28 days across 7 years), never a continuous year.",
+   "Source times are 12-hour without markers; conversion: fajr/sunrise/dhuhr kept as printed (dhuhr hours 11 only), asr/maghrib/isha +12h. All rows pass dawn-to-dark ordering.",
+   "Duplicate captures deduplicated: 2022-06-19: 2 captures, values identical; 2022-08-04: 2 captures, values identical; 2022-08-08: 2 captures, values identical.",
+   "Each payload self-declares its base: Latitude 25:15, Longitude 51:36, Qibla 252:52:15, Time Difference 3 hours.",
+   "All 28 days recipe-verified in c40-wayback REPORT.md: 163 of 168 cells within one minute; the five beyond are asr at exactly 2 minutes."
+  ]
+ },
+ "days": {
+  "2017-03-13": {
+   "fajr": "04:30",
+   "sunrise": "05:46",
+   "dhuhr": "11:43",
+   "asr": "15:08",
+   "magrib": "17:43",
+   "isha": "19:13"
+  },
+  "2018-12-30": {
+   "fajr": "04:58",
+   "sunrise": "06:19",
+   "dhuhr": "11:36",
+   "asr": "14:35",
+   "magrib": "16:55",
+   "isha": "18:25"
+  },
+  "2019-03-24": {
+   "fajr": "04:19",
+   "sunrise": "05:35",
+   "dhuhr": "11:40",
+   "asr": "15:08",
+   "magrib": "17:47",
+   "isha": "19:17"
+  },
+  "2019-04-19": {
+   "fajr": "03:50",
+   "sunrise": "05:09",
+   "dhuhr": "11:33",
+   "asr": "15:03",
+   "magrib": "17:59",
+   "isha": "19:29"
+  },
+  "2019-07-18": {
+   "fajr": "03:28",
+   "sunrise": "04:55",
+   "dhuhr": "11:40",
+   "asr": "15:06",
+   "magrib": "18:26",
+   "isha": "19:56"
+  },
+  "2019-08-23": {
+   "fajr": "03:52",
+   "sunrise": "05:12",
+   "dhuhr": "11:36",
+   "asr": "15:07",
+   "magrib": "18:03",
+   "isha": "19:33"
+  },
+  "2019-09-18": {
+   "fajr": "04:05",
+   "sunrise": "05:21",
+   "dhuhr": "11:28",
+   "asr": "14:56",
+   "magrib": "17:36",
+   "isha": "19:06"
+  },
+  "2019-10-14": {
+   "fajr": "04:16",
+   "sunrise": "05:32",
+   "dhuhr": "11:20",
+   "asr": "14:40",
+   "magrib": "17:09",
+   "isha": "18:39"
+  },
+  "2019-11-17": {
+   "fajr": "04:33",
+   "sunrise": "05:52",
+   "dhuhr": "11:18",
+   "asr": "14:25",
+   "magrib": "16:46",
+   "isha": "18:16"
+  },
+  "2019-12-06": {
+   "fajr": "04:45",
+   "sunrise": "06:06",
+   "dhuhr": "11:24",
+   "asr": "14:25",
+   "magrib": "16:45",
+   "isha": "18:15"
+  },
+  "2021-12-29": {
+   "fajr": "04:57",
+   "sunrise": "06:19",
+   "dhuhr": "11:36",
+   "asr": "14:35",
+   "magrib": "16:54",
+   "isha": "18:24"
+  },
+  "2022-03-02": {
+   "fajr": "04:41",
+   "sunrise": "05:57",
+   "dhuhr": "11:46",
+   "asr": "15:07",
+   "magrib": "17:37",
+   "isha": "19:07"
+  },
+  "2022-06-15": {
+   "fajr": "03:15",
+   "sunrise": "04:44",
+   "dhuhr": "11:34",
+   "asr": "14:57",
+   "magrib": "18:26",
+   "isha": "19:56"
+  },
+  "2022-06-19": {
+   "fajr": "03:15",
+   "sunrise": "04:45",
+   "dhuhr": "11:35",
+   "asr": "14:58",
+   "magrib": "18:27",
+   "isha": "19:57"
+  },
+  "2022-06-20": {
+   "fajr": "03:16",
+   "sunrise": "04:45",
+   "dhuhr": "11:35",
+   "asr": "14:58",
+   "magrib": "18:27",
+   "isha": "19:57"
+  },
+  "2022-08-02": {
+   "fajr": "03:38",
+   "sunrise": "05:02",
+   "dhuhr": "11:40",
+   "asr": "15:08",
+   "magrib": "18:19",
+   "isha": "19:49"
+  },
+  "2022-08-04": {
+   "fajr": "03:40",
+   "sunrise": "05:03",
+   "dhuhr": "11:40",
+   "asr": "15:08",
+   "magrib": "18:18",
+   "isha": "19:48"
+  },
+  "2022-08-05": {
+   "fajr": "03:40",
+   "sunrise": "05:04",
+   "dhuhr": "11:40",
+   "asr": "15:08",
+   "magrib": "18:17",
+   "isha": "19:47"
+  },
+  "2022-08-08": {
+   "fajr": "03:43",
+   "sunrise": "05:05",
+   "dhuhr": "11:39",
+   "asr": "15:08",
+   "magrib": "18:15",
+   "isha": "19:45"
+  },
+  "2022-11-28": {
+   "fajr": "04:40",
+   "sunrise": "06:01",
+   "dhuhr": "11:21",
+   "asr": "14:24",
+   "magrib": "16:44",
+   "isha": "18:14"
+  },
+  "2025-09-10": {
+   "fajr": "04:02",
+   "sunrise": "05:19",
+   "dhuhr": "11:31",
+   "asr": "15:00",
+   "magrib": "17:44",
+   "isha": "19:14"
+  },
+  "2025-10-18": {
+   "fajr": "04:18",
+   "sunrise": "05:34",
+   "dhuhr": "11:19",
+   "asr": "14:38",
+   "magrib": "17:05",
+   "isha": "18:35"
+  },
+  "2025-10-23": {
+   "fajr": "04:20",
+   "sunrise": "05:37",
+   "dhuhr": "11:18",
+   "asr": "14:35",
+   "magrib": "17:00",
+   "isha": "18:30"
+  },
+  "2025-11-18": {
+   "fajr": "04:34",
+   "sunrise": "05:54",
+   "dhuhr": "11:19",
+   "asr": "14:25",
+   "magrib": "16:46",
+   "isha": "18:16"
+  },
+  "2025-11-23": {
+   "fajr": "04:37",
+   "sunrise": "05:57",
+   "dhuhr": "11:20",
+   "asr": "14:24",
+   "magrib": "16:45",
+   "isha": "18:15"
+  },
+  "2026-03-17": {
+   "fajr": "04:26",
+   "sunrise": "05:42",
+   "dhuhr": "11:42",
+   "asr": "15:08",
+   "magrib": "17:44",
+   "isha": "19:14"
+  },
+  "2026-06-12": {
+   "fajr": "03:15",
+   "sunrise": "04:44",
+   "dhuhr": "11:33",
+   "asr": "14:57",
+   "magrib": "18:25",
+   "isha": "19:55"
+  },
+  "2026-07-17": {
+   "fajr": "03:28",
+   "sunrise": "04:55",
+   "dhuhr": "11:40",
+   "asr": "15:05",
+   "magrib": "18:27",
+   "isha": "19:57"
+  }
+ }
+}

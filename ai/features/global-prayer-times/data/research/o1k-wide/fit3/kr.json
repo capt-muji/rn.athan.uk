@@ -1,0 +1,267 @@
+{
+ "country": "kr",
+ "publisher": "KMF (Korean Muslim Federation), Seoul",
+ "source": "koreajapan/data/kmf-seoul-2026-2027.json",
+ "rows": 365,
+ "span": [
+  "2026-02-01",
+  "2027-01-31"
+ ],
+ "tz": "Asia/Seoul",
+ "city_coords": {
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "stated": {
+  "method": "MWL (fajr 18 / isha 17)",
+  "coords": {
+   "lat": 37.6,
+   "lon": 127
+  },
+  "rounding": "ceil (up)"
+ },
+ "slip_day": {
+  "iso": "2027-01-27",
+  "printed": {
+   "iso": "2027-01-27",
+   "fajr": "6:19",
+   "sunrise": "7:40",
+   "dhuhr": "12:45",
+   "asr": "15:30",
+   "magrib": "17:50",
+   "isha": "19:16"
+  },
+  "note": "fajr prints 6:19 where the sequence and astronomy give 6:09 (publisher typesetting slip, flagged by wave-4 capture); excluded from fit stats"
+ },
+ "stated_verification": {
+  "stated_37_6_127": {
+   "per": {
+    "fajr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 105,
+     "within1": 349,
+     "worst": 2
+    },
+    "sunrise": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 31,
+     "within1": 355,
+     "worst": 2
+    },
+    "dhuhr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 17,
+     "within1": 363,
+     "worst": 2
+    },
+    "asr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 318,
+     "within1": 364,
+     "worst": 1
+    },
+    "magrib": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 324,
+     "within1": 361,
+     "worst": 2
+    },
+    "isha": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 294,
+     "within1": 361,
+     "worst": 2
+    }
+   },
+   "total_exact": 1089,
+   "total_within1": 2153,
+   "n_values": 2184
+  },
+  "city": {
+   "per": {
+    "fajr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 105,
+     "within1": 343,
+     "worst": 2
+    },
+    "sunrise": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 10,
+     "within1": 347,
+     "worst": 2
+    },
+    "dhuhr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 4,
+     "within1": 355,
+     "worst": 2
+    },
+    "asr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 319,
+     "within1": 364,
+     "worst": 1
+    },
+    "magrib": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 333,
+     "within1": 362,
+     "worst": 2
+    },
+    "isha": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 297,
+     "within1": 361,
+     "worst": 2
+    }
+   },
+   "total_exact": 1068,
+   "total_within1": 2132,
+   "n_values": 2184
+  },
+  "masjid": {
+   "per": {
+    "fajr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 110,
+     "within1": 336,
+     "worst": 2
+    },
+    "sunrise": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 12,
+     "within1": 340,
+     "worst": 2
+    },
+    "dhuhr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 3,
+     "within1": 355,
+     "worst": 2
+    },
+    "asr": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 316,
+     "within1": 364,
+     "worst": 1
+    },
+    "magrib": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 329,
+     "within1": 362,
+     "worst": 2
+    },
+    "isha": {
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 284,
+     "within1": 361,
+     "worst": 2
+    }
+   },
+   "total_exact": 1054,
+   "total_within1": 2118,
+   "n_values": 2184
+  }
+ },
+ "rounding_crosscheck_fajr": {
+  "floor": {
+   "margin": 0,
+   "mode": "floor",
+   "exact": 105,
+   "within1": 223,
+   "worst": 3
+  },
+  "nearest": {
+   "margin": 0,
+   "mode": "nearest",
+   "exact": 114,
+   "within1": 301,
+   "worst": 2
+  },
+  "ceil": {
+   "margin": 0,
+   "mode": "ceil",
+   "exact": 105,
+   "within1": 349,
+   "worst": 2
+  }
+ },
+ "free_fit": {
+  "fajr": {
+   "angle": 18.07,
+   "r": {
+    "margin": 2,
+    "mode": "floor",
+    "exact": 152,
+    "within1": 276,
+    "worst": 2
+   }
+  },
+  "isha": {
+   "angle": 17.01,
+   "r": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 306,
+    "within1": 361,
+    "worst": 2
+   }
+  },
+  "solar": {
+   "sunrise": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 332,
+    "within1": 362,
+    "worst": 2
+   },
+   "dhuhr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 346,
+    "within1": 364,
+    "worst": 1
+   },
+   "magrib": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 329,
+    "within1": 362,
+    "worst": 2
+   },
+   "asr_shafi": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 315,
+    "within1": 364,
+    "worst": 1
+   },
+   "asr_hanafi": {
+    "margin": -10,
+    "mode": "floor",
+    "exact": 0,
+    "within1": 0,
+    "worst": 64
+   }
+  }
+ }
+}

@@ -1,0 +1,128 @@
+{
+  "leapDays": [
+    {
+      "year": 2028,
+      "truth": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1062,
+        "isha": 1148
+      },
+      "shipped": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1062,
+        "isha": 1149
+      },
+      "copy0301": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1062,
+        "isha": 1148
+      }
+    },
+    {
+      "year": 2032,
+      "truth": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1149
+      },
+      "shipped": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1150
+      },
+      "copy0301": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1149
+      }
+    },
+    {
+      "year": 2036,
+      "truth": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1149
+      },
+      "shipped": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1150
+      },
+      "copy0301": {
+        "fajr": 306,
+        "sunrise": 403,
+        "dhuhr": 738,
+        "asr": 905,
+        "magrib": 1063,
+        "isha": 1149
+      }
+    }
+  ],
+  "offsetRows": [
+    {
+      "year": 2028,
+      "truthOffsets": {
+        "fajrLead_0228": 97,
+        "fajrLead_0229": 97,
+        "fajrLead_0301": 97,
+        "ishaLag_0228": 87,
+        "ishaLag_0229": 86,
+        "ishaLag_0301": 86
+      }
+    },
+    {
+      "year": 2032,
+      "truthOffsets": {
+        "fajrLead_0228": 97,
+        "fajrLead_0229": 97,
+        "fajrLead_0301": 97,
+        "ishaLag_0228": 87,
+        "ishaLag_0229": 86,
+        "ishaLag_0301": 86
+      }
+    },
+    {
+      "year": 2036,
+      "truthOffsets": {
+        "fajrLead_0228": 97,
+        "fajrLead_0229": 97,
+        "fajrLead_0301": 97,
+        "ishaLag_0228": 87,
+        "ishaLag_0229": 86,
+        "ishaLag_0301": 86
+      }
+    }
+  ],
+  "shipped": {
+    "exact": 15,
+    "cells": 18
+  },
+  "copy0301": {
+    "exact": 18,
+    "cells": 18
+  }
+}

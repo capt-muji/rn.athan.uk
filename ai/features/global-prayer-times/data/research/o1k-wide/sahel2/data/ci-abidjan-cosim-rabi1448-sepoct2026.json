@@ -1,0 +1,251 @@
+{
+ "surface": "COSIM (Conseil Supérieur des Imams, des Mosquées et des Affaires Islamiques de Côte d'Ivoire) — official monthly calendar, Rabihoul Al-Thany 1448",
+ "source_url": "https://cosim-ci.org/storage/calendrier/calendrier_1789167205.jpeg (linked from https://cosim-ci.org/ressources/calendrier)",
+ "source_type": "AUTHORITY publisher: national Islamic council's own website calendar image",
+ "coverage": "2026-09-12 .. 2026-10-11 (hijri 1-30 Rabi al-Thani 1448; Gregorian dates printed)",
+ "conventions": "ZOUHR column prints \"13 Heures conventionnelle en Côte d'Ivoire\" (fixed 13:00); ASSR prints \"16 Heures conventionnelle\" (fixed 16:00); SOUBH = dawn fajr (~57-58 min before sunrise, small-angle convention); ICHA = maghrib + ~60 min",
+ "captured": "2026-11-10",
+ "problems": [],
+ "rows": {
+  "2026-09-12": {
+   "fajr": "05:10",
+   "sunrise": "06:08",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:17",
+   "isha": "19:14"
+  },
+  "2026-09-13": {
+   "fajr": "05:10",
+   "sunrise": "06:07",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:17",
+   "isha": "19:14"
+  },
+  "2026-09-14": {
+   "fajr": "05:10",
+   "sunrise": "06:07",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:16",
+   "isha": "19:13"
+  },
+  "2026-09-15": {
+   "fajr": "05:10",
+   "sunrise": "06:07",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:16",
+   "isha": "19:13"
+  },
+  "2026-09-16": {
+   "fajr": "05:10",
+   "sunrise": "06:07",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:15",
+   "isha": "19:12"
+  },
+  "2026-09-17": {
+   "fajr": "05:09",
+   "sunrise": "06:06",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:15",
+   "isha": "19:12"
+  },
+  "2026-09-18": {
+   "fajr": "05:09",
+   "sunrise": "06:06",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:14",
+   "isha": "19:11"
+  },
+  "2026-09-19": {
+   "fajr": "05:09",
+   "sunrise": "06:06",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:14",
+   "isha": "19:10"
+  },
+  "2026-09-20": {
+   "fajr": "05:09",
+   "sunrise": "06:06",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:13",
+   "isha": "19:10"
+  },
+  "2026-09-21": {
+   "fajr": "05:09",
+   "sunrise": "06:06",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:13",
+   "isha": "19:09"
+  },
+  "2026-09-22": {
+   "fajr": "05:08",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:12",
+   "isha": "19:09"
+  },
+  "2026-09-23": {
+   "fajr": "05:08",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:12",
+   "isha": "19:08"
+  },
+  "2026-09-24": {
+   "fajr": "05:08",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:12",
+   "isha": "19:08"
+  },
+  "2026-09-25": {
+   "fajr": "05:08",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:11",
+   "isha": "19:07"
+  },
+  "2026-09-26": {
+   "fajr": "05:08",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:10",
+   "isha": "19:07"
+  },
+  "2026-09-27": {
+   "fajr": "05:07",
+   "sunrise": "06:05",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:10",
+   "isha": "19:07"
+  },
+  "2026-09-28": {
+   "fajr": "05:07",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:10",
+   "isha": "19:06"
+  },
+  "2026-09-29": {
+   "fajr": "05:07",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:09",
+   "isha": "19:06"
+  },
+  "2026-09-30": {
+   "fajr": "05:07",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:09",
+   "isha": "19:05"
+  },
+  "2026-10-01": {
+   "fajr": "05:07",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:08",
+   "isha": "19:05"
+  },
+  "2026-10-02": {
+   "fajr": "05:06",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:08",
+   "isha": "19:04"
+  },
+  "2026-10-03": {
+   "fajr": "05:06",
+   "sunrise": "06:04",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:07",
+   "isha": "19:04"
+  },
+  "2026-10-04": {
+   "fajr": "05:06",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:07",
+   "isha": "19:03"
+  },
+  "2026-10-05": {
+   "fajr": "05:06",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:06",
+   "isha": "19:03"
+  },
+  "2026-10-06": {
+   "fajr": "05:06",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:06",
+   "isha": "19:02"
+  },
+  "2026-10-07": {
+   "fajr": "05:06",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:05",
+   "isha": "19:02"
+  },
+  "2026-10-08": {
+   "fajr": "05:05",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:05",
+   "isha": "19:01"
+  },
+  "2026-10-09": {
+   "fajr": "05:05",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:04",
+   "isha": "19:01"
+  },
+  "2026-10-10": {
+   "fajr": "05:05",
+   "sunrise": "06:03",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:04",
+   "isha": "19:01"
+  },
+  "2026-10-11": {
+   "fajr": "05:05",
+   "sunrise": "06:02",
+   "dhuhr": "13:00",
+   "asr": "16:00",
+   "magrib": "18:03",
+   "isha": "19:01"
+  }
+ }
+}

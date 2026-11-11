@@ -1,0 +1,1683 @@
+{
+ "job": "East Africa: the Hargeisa, Mogadishu and Djibouti mawaqit clusters",
+ "zones": {
+  "Somalia": "Africa/Mogadishu",
+  "Djibouti": "Africa/Djibouti",
+  "note": "both UTC+3 with no DST in 2026; verified identical offsets all year, so one process zone is exact"
+ },
+ "platformClass": {
+  "method": "Muslim World League 18/17",
+  "asr": "Shafi",
+  "rounding": "nearest",
+  "margins": 0,
+  "grade": "community (platform default on a mosque page, no authority parameter statement)"
+ },
+ "payloads": {
+  "hargeisa-marwa": {
+   "city": "Hargeisa",
+   "coords": {
+    "lat": 9.56,
+    "lon": 44.065
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 66,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 361,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 353,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 139,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 363,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 365,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 360,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1941,
+     "within1": 2063,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1887,
+    "within1": 2169,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 361,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0.01
+     },
+     "sunrise": {
+      "exact": 363,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0.01
+     },
+     "dhuhr": {
+      "exact": 365,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0,
+      "bias": 0
+     },
+     "asr": {
+      "exact": 85,
+      "within1": 339,
+      "worst": 2,
+      "mae": 0.84,
+      "bias": 0.02
+     },
+     "maghrib": {
+      "exact": 360,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0.02
+     },
+     "isha": {
+      "exact": 353,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.04,
+      "bias": 0.02
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:26",
+      "max": "05:13",
+      "amplitude": 47
+     },
+     "sunrise": {
+      "min": "05:42",
+      "max": "06:26",
+      "amplitude": 44
+     },
+     "dhuhr": {
+      "min": "11:47",
+      "max": "12:18",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:07",
+      "max": "15:38",
+      "amplitude": 31
+     },
+     "maghrib": {
+      "min": "17:39",
+      "max": "18:29",
+      "amplitude": 50
+     },
+     "isha": {
+      "min": "18:47",
+      "max": "19:41",
+      "amplitude": 54
+     }
+    }
+   }
+  },
+  "hargeisa-nuurul-huda": {
+   "city": "Hargeisa",
+   "coords": {
+    "lat": 9.56,
+    "lon": 44.065
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 66,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 364,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 132,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 363,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 364,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 363,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1942,
+     "within1": 2055,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1882,
+    "within1": 2150,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 364,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": -0.01
+     },
+     "sunrise": {
+      "exact": 363,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": -0.01
+     },
+     "dhuhr": {
+      "exact": 364,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": -0.01
+     },
+     "asr": {
+      "exact": 72,
+      "within1": 320,
+      "worst": 2,
+      "mae": 0.93,
+      "bias": 0.02
+     },
+     "maghrib": {
+      "exact": 363,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0
+     },
+     "isha": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": 0
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:26",
+      "max": "05:13",
+      "amplitude": 47
+     },
+     "sunrise": {
+      "min": "05:42",
+      "max": "06:26",
+      "amplitude": 44
+     },
+     "dhuhr": {
+      "min": "11:47",
+      "max": "12:18",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:07",
+      "max": "15:38",
+      "amplitude": 31
+     },
+     "maghrib": {
+      "min": "17:39",
+      "max": "18:29",
+      "amplitude": 50
+     },
+     "isha": {
+      "min": "18:48",
+      "max": "19:41",
+      "amplitude": 53
+     }
+    }
+   }
+  },
+  "hargeisa-ina-weerar": {
+   "city": "Hargeisa",
+   "coords": {
+    "lat": 9.56,
+    "lon": 44.065
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 17.1,
+    "fajrMargin": -2,
+    "ishaModel": "angle",
+    "ishaAngle": 16.9,
+    "ishaInterval": 68,
+    "ishaMargin": 1.5,
+    "asrSchool": "Shafi",
+    "asrMargin": 0
+   },
+   "bands": {
+    "fajr": [
+     17,
+     18
+    ],
+    "ishaAngle": [
+     16.8,
+     17.8
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 261,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 280,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 166,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 363,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 365,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 360,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 1,
+     "exact": 1795,
+     "within1": 2196,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 3,
+    "exact": 1260,
+    "within1": 1789,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 0,
+      "within1": 139,
+      "worst": 3,
+      "mae": 1.72,
+      "bias": -1.72
+     },
+     "sunrise": {
+      "exact": 363,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0.01
+     },
+     "dhuhr": {
+      "exact": 365,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0,
+      "bias": 0
+     },
+     "asr": {
+      "exact": 166,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.55,
+      "bias": -0.02
+     },
+     "maghrib": {
+      "exact": 360,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0.02
+     },
+     "isha": {
+      "exact": 6,
+      "within1": 186,
+      "worst": 2,
+      "mae": 1.48,
+      "bias": -1.48
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:28",
+      "max": "05:15",
+      "amplitude": 47
+     },
+     "sunrise": {
+      "min": "05:42",
+      "max": "06:26",
+      "amplitude": 44
+     },
+     "dhuhr": {
+      "min": "11:47",
+      "max": "12:18",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:07",
+      "max": "15:39",
+      "amplitude": 32
+     },
+     "maghrib": {
+      "min": "17:39",
+      "max": "18:29",
+      "amplitude": 50
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:42",
+      "amplitude": 53
+     }
+    }
+   }
+  },
+  "mogadishu-rabbul-caalamiin": {
+   "city": "Mogadishu",
+   "coords": {
+    "lat": 2.0469,
+    "lon": 45.3184
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18.2,
+    "fajrMargin": 0.5,
+    "ishaModel": "angle",
+    "ishaAngle": 16.8,
+    "ishaInterval": 65,
+    "ishaMargin": 0.5,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.3,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.7
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 350,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 357,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 124,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 317,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 315,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 305,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1768,
+     "within1": 2042,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1650,
+    "within1": 2147,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 319,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.13,
+      "bias": -0.13
+     },
+     "sunrise": {
+      "exact": 317,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.13,
+      "bias": -0.13
+     },
+     "dhuhr": {
+      "exact": 315,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.14,
+      "bias": -0.14
+     },
+     "asr": {
+      "exact": 82,
+      "within1": 317,
+      "worst": 2,
+      "mae": 0.91,
+      "bias": -0.17
+     },
+     "maghrib": {
+      "exact": 305,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.17,
+      "bias": -0.17
+     },
+     "isha": {
+      "exact": 312,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.15,
+      "bias": -0.15
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:30",
+      "max": "05:01",
+      "amplitude": 31
+     },
+     "sunrise": {
+      "min": "05:41",
+      "max": "06:12",
+      "amplitude": 31
+     },
+     "dhuhr": {
+      "min": "11:42",
+      "max": "12:13",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "14:54",
+      "max": "15:34",
+      "amplitude": 40
+     },
+     "maghrib": {
+      "min": "17:44",
+      "max": "18:15",
+      "amplitude": 31
+     },
+     "isha": {
+      "min": "18:51",
+      "max": "19:22",
+      "amplitude": 31
+     }
+    }
+   }
+  },
+  "mogadishu-cali-jimcaale": {
+   "city": "Mogadishu",
+   "coords": {
+    "lat": 2.0469,
+    "lon": 45.3184
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 65,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 135,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 354,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 366,
+     "worst": 0
+    },
+    "maghrib": {
+     "exact": 357,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1928,
+     "within1": 2065,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1891,
+    "within1": 2181,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": -0.01
+     },
+     "sunrise": {
+      "exact": 354,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": 0.01
+     },
+     "dhuhr": {
+      "exact": 366,
+      "within1": 366,
+      "worst": 0,
+      "mae": 0,
+      "bias": 0
+     },
+     "asr": {
+      "exact": 98,
+      "within1": 351,
+      "worst": 2,
+      "mae": 0.77,
+      "bias": -0.01
+     },
+     "maghrib": {
+      "exact": 357,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0
+     },
+     "isha": {
+      "exact": 360,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0.01
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:30",
+      "max": "05:01",
+      "amplitude": 31
+     },
+     "sunrise": {
+      "min": "05:41",
+      "max": "06:12",
+      "amplitude": 31
+     },
+     "dhuhr": {
+      "min": "11:42",
+      "max": "12:13",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "14:54",
+      "max": "15:34",
+      "amplitude": 40
+     },
+     "maghrib": {
+      "min": "17:43",
+      "max": "18:14",
+      "amplitude": 31
+     },
+     "isha": {
+      "min": "18:50",
+      "max": "19:21",
+      "amplitude": 31
+     }
+    }
+   }
+  },
+  "djibouti-djaffar-gabode4": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 66,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 358,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 130,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 364,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 362,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 359,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 1,
+     "exact": 1936,
+     "within1": 2196,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 1,
+    "exact": 1936,
+    "within1": 2196,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 363,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0
+     },
+     "sunrise": {
+      "exact": 364,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0
+     },
+     "dhuhr": {
+      "exact": 362,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.01,
+      "bias": 0.01
+     },
+     "asr": {
+      "exact": 130,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.64,
+      "bias": 0.03
+     },
+     "maghrib": {
+      "exact": 359,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0.01
+     },
+     "isha": {
+      "exact": 358,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": 0.02
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:43",
+      "max": "06:32",
+      "amplitude": 49
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:10",
+      "max": "15:42",
+      "amplitude": 32
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  },
+  "djibouti-abd-ar-rahman": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18.2,
+    "fajrMargin": 0.5,
+    "ishaModel": "angle",
+    "ishaAngle": 16.8,
+    "ishaInterval": 67,
+    "ishaMargin": 0.5,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 340,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 349,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 116,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 326,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 319,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 324,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1774,
+     "within1": 2049,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1709,
+    "within1": 2131,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 322,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.12,
+      "bias": -0.12
+     },
+     "sunrise": {
+      "exact": 326,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.11,
+      "bias": -0.11
+     },
+     "dhuhr": {
+      "exact": 319,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.13,
+      "bias": -0.13
+     },
+     "asr": {
+      "exact": 81,
+      "within1": 301,
+      "worst": 2,
+      "mae": 0.96,
+      "bias": -0.08
+     },
+     "maghrib": {
+      "exact": 324,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.11,
+      "bias": -0.11
+     },
+     "isha": {
+      "exact": 337,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.08,
+      "bias": -0.08
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:43",
+      "max": "06:32",
+      "amplitude": 49
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:11",
+      "max": "15:42",
+      "amplitude": 31
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  },
+  "djibouti-al-salam-fyart": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 17.9,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17.1,
+    "ishaInterval": 71,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0.5
+   },
+   "bands": {
+    "fajr": null,
+    "ishaAngle": null,
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 221,
+     "within1": 354,
+     "worst": 2
+    },
+    "isha": {
+     "exact": 226,
+     "within1": 332,
+     "worst": 6
+    },
+    "asr": {
+     "exact": 159,
+     "worst": 16
+    },
+    "sunrise": {
+     "exact": 182,
+     "worst": 7
+    },
+    "dhuhr": {
+     "exact": 181,
+     "worst": 4
+    },
+    "maghrib": {
+     "exact": 156,
+     "worst": 13
+    },
+    "joint": {
+     "worst": 16,
+     "exact": 1125,
+     "within1": 1987,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 15,
+    "exact": 919,
+    "within1": 1970,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 128,
+      "within1": 337,
+      "worst": 3,
+      "mae": 0.73,
+      "bias": -0.63
+     },
+     "sunrise": {
+      "exact": 182,
+      "within1": 327,
+      "worst": 7,
+      "mae": 0.75,
+      "bias": 0.16
+     },
+     "dhuhr": {
+      "exact": 160,
+      "within1": 341,
+      "worst": 5,
+      "mae": 0.66,
+      "bias": -0.66
+     },
+     "asr": {
+      "exact": 136,
+      "within1": 322,
+      "worst": 15,
+      "mae": 1.36,
+      "bias": -0.22
+     },
+     "maghrib": {
+      "exact": 156,
+      "within1": 314,
+      "worst": 13,
+      "mae": 1.29,
+      "bias": -1.2
+     },
+     "isha": {
+      "exact": 157,
+      "within1": 329,
+      "worst": 6,
+      "mae": 0.78,
+      "bias": -0.63
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:42",
+      "max": "06:32",
+      "amplitude": 50
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:06",
+      "max": "15:43",
+      "amplitude": 37
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  },
+  "djibouti-tayib-nagad": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 66,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 344,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 350,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 132,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 344,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 357,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 336,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 1,
+     "exact": 1863,
+     "within1": 2196,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 1,
+    "exact": 1863,
+    "within1": 2196,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 344,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.06,
+      "bias": -0.04
+     },
+     "sunrise": {
+      "exact": 344,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.06,
+      "bias": -0.02
+     },
+     "dhuhr": {
+      "exact": 357,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": -0.02
+     },
+     "asr": {
+      "exact": 132,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.64,
+      "bias": -0.03
+     },
+     "maghrib": {
+      "exact": 336,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.08,
+      "bias": -0.03
+     },
+     "isha": {
+      "exact": 350,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.04,
+      "bias": 0.01
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:43",
+      "max": "06:32",
+      "amplitude": 49
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:10",
+      "max": "15:42",
+      "amplitude": 32
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  },
+  "djibouti-nashr-aldine": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 66,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 352,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 127,
+     "worst": 2
+    },
+    "sunrise": {
+     "exact": 352,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 356,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 356,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 2,
+     "exact": 1899,
+     "within1": 2195,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1899,
+    "within1": 2195,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": 0.03
+     },
+     "sunrise": {
+      "exact": 352,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.04,
+      "bias": 0.03
+     },
+     "dhuhr": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": 0.03
+     },
+     "asr": {
+      "exact": 127,
+      "within1": 365,
+      "worst": 2,
+      "mae": 0.66,
+      "bias": 0.04
+     },
+     "maghrib": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": 0.02
+     },
+     "isha": {
+      "exact": 352,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.04,
+      "bias": 0.03
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:42",
+      "max": "06:32",
+      "amplitude": 50
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:11",
+      "max": "15:42",
+      "amplitude": 31
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  },
+  "djibouti-ihsaan": {
+   "city": "Djibouti",
+   "coords": {
+    "lat": 11.5721,
+    "lon": 43.1456
+   },
+   "rows": 366,
+   "mode": "nearest",
+   "fitted": {
+    "fajrAngle": 18,
+    "fajrMargin": 0,
+    "ishaModel": "angle",
+    "ishaAngle": 17,
+    "ishaInterval": 67,
+    "ishaMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": -1
+   },
+   "bands": {
+    "fajr": [
+     17.4,
+     18.6
+    ],
+    "ishaAngle": [
+     16.4,
+     17.6
+    ],
+    "ishaInterval": null
+   },
+   "fittedScores": {
+    "fajr": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1
+    },
+    "isha": {
+     "exact": 352,
+     "within1": 366,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 128,
+     "worst": 3
+    },
+    "sunrise": {
+     "exact": 358,
+     "worst": 1
+    },
+    "dhuhr": {
+     "exact": 356,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 357,
+     "worst": 1
+    },
+    "joint": {
+     "worst": 3,
+     "exact": 1911,
+     "within1": 2070,
+     "of": 2196
+    }
+   },
+   "platformClassScores": {
+    "worst": 2,
+    "exact": 1895,
+    "within1": 2190,
+    "n": 2196,
+    "per": {
+     "fajr": {
+      "exact": 360,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": -0.02
+     },
+     "sunrise": {
+      "exact": 358,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": -0.02
+     },
+     "dhuhr": {
+      "exact": 356,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.03,
+      "bias": -0.03
+     },
+     "asr": {
+      "exact": 112,
+      "within1": 360,
+      "worst": 2,
+      "mae": 0.71,
+      "bias": -0.01
+     },
+     "maghrib": {
+      "exact": 357,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.02,
+      "bias": -0.02
+     },
+     "isha": {
+      "exact": 352,
+      "within1": 366,
+      "worst": 1,
+      "mae": 0.04,
+      "bias": -0.02
+     }
+    }
+   },
+   "printedSpan": {
+    "days": 366,
+    "first": "2026-01-01",
+    "last": "2026-12-31",
+    "cols": {
+     "fajr": {
+      "min": "04:25",
+      "max": "05:19",
+      "amplitude": 54
+     },
+     "sunrise": {
+      "min": "05:43",
+      "max": "06:32",
+      "amplitude": 49
+     },
+     "dhuhr": {
+      "min": "11:51",
+      "max": "12:22",
+      "amplitude": 31
+     },
+     "asr": {
+      "min": "15:10",
+      "max": "15:42",
+      "amplitude": 32
+     },
+     "maghrib": {
+      "min": "17:40",
+      "max": "18:36",
+      "amplitude": 56
+     },
+     "isha": {
+      "min": "18:49",
+      "max": "19:49",
+      "amplitude": 60
+     }
+    }
+   }
+  }
+ },
+ "clusters": {
+  "Hargeisa": "two of the three share one configuration (every column within 1 min); ina-weerar prints fajr up to 3 min later and isha up to 2 min earlier, i.e. lower fajr and isha angles",
+  "Mogadishu": "the pair shares one configuration: every column within 1 min, one table a minute earlier across the board",
+  "Djibouti": "five of six share one configuration within 1 min; al-Salam FYART is defective (asr -14..+16, sunrise -7..+6)"
+ },
+ "verdict": {
+  "perCity": "one community recipe per city, and it is the same recipe in all three: MWL 18/17, Shafi, nearest, zero margins",
+  "hargeisa": "yes with one exception (ina-weerar)",
+  "mogadishu": "yes",
+  "djibouti": "yes for five of six, FYART excluded"
+ }
+}

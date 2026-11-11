@@ -1,0 +1,466 @@
+{
+ "country": "tw",
+ "publisher": "Chinese Muslim Association ROC (CMA)",
+ "coords": {
+  "lat": 25.033,
+  "lon": 121.5654
+ },
+ "tz": "Asia/Taipei",
+ "editions": {
+  "1445": {
+   "source": "Chinese Muslim Association ROC 1445AH (2024) Ramadan timetable, cmainroc.org.tw hot_486022.html",
+   "rows": 6
+  },
+  "1446": {
+   "source": "Chinese Muslim Association ROC 1446AH (2025) revised Ramadan timetable, cmainroc.org.tw hot_511195.html",
+   "rows": 6
+  },
+  "1447": {
+   "source": "Chinese Muslim Association ROC (中國回教協會) 2026年度齋月時刻表, hot_530318.html, image editor_images/131ee067d9c5cac9571138863ef06fbc.jpg",
+   "rows": 32
+  }
+ },
+ "n_rows": 44,
+ "rule_tests": {
+  "fajr_from_printed_sunrise_70": {
+   "exact": 43,
+   "within1": 44,
+   "worst": 1,
+   "n": 44,
+   "bad": []
+  },
+  "fajr_from_computed_sunrise_minus70_floor": {
+   "exact": 13,
+   "within1": 42,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-25:04:44 vs 04:42",
+    "2024-03-26:04:43 vs 04:41"
+   ]
+  },
+  "fajr_from_computed_sunrise_minus70_ceil": {
+   "exact": 29,
+   "within1": 44,
+   "worst": 1,
+   "n": 44,
+   "bad": []
+  },
+  "fajr_from_computed_sunrise_minus70_nearest": {
+   "exact": 30,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-26:04:43 vs 04:41"
+   ]
+  },
+  "isha_from_printed_maghrib_90": {
+   "exact": 43,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2025-03-29:19:44 vs 19:46"
+   ]
+  },
+  "maghrib_from_computed_sunset_plus6.7_floor": {
+   "exact": 31,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-12:18:06 vs 18:08"
+   ]
+  },
+  "maghrib_from_computed_sunset_plus6.7_ceil": {
+   "exact": 1,
+   "within1": 34,
+   "worst": 3,
+   "n": 44,
+   "bad": [
+    "2024-03-11:18:06 vs 18:08",
+    "2024-03-12:18:06 vs 18:09",
+    "2024-03-20:18:10 vs 18:12",
+    "2024-03-25:18:12 vs 18:14",
+    "2024-03-26:18:13 vs 18:15",
+    "2024-04-09:18:19 vs 18:21",
+    "2025-03-01:18:01 vs 18:03",
+    "2025-03-16:18:08 vs 18:10"
+   ]
+  },
+  "maghrib_from_computed_sunset_plus6.7_nearest": {
+   "exact": 15,
+   "within1": 37,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-11:18:06 vs 18:08",
+    "2024-03-12:18:06 vs 18:08",
+    "2024-03-20:18:10 vs 18:12",
+    "2024-03-25:18:12 vs 18:14",
+    "2025-03-16:18:08 vs 18:10",
+    "2025-03-25:18:12 vs 18:14",
+    "2025-03-30:18:14 vs 18:16"
+   ]
+  },
+  "dhuhr_from_computed_noon_19_floor": {
+   "exact": 0,
+   "within1": 28,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-11:12:24 vs 12:22",
+    "2024-03-25:12:20 vs 12:18",
+    "2025-03-02:12:26 vs 12:24",
+    "2025-03-25:12:20 vs 12:18",
+    "2026-02-17:12:28 vs 12:26",
+    "2026-02-18:12:28 vs 12:26",
+    "2026-02-19:12:28 vs 12:26",
+    "2026-02-20:12:28 vs 12:26"
+   ]
+  },
+  "dhuhr_from_computed_noon_19_ceil": {
+   "exact": 26,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2026-03-04:12:23 vs 12:25"
+   ]
+  },
+  "dhuhr_from_computed_noon_19_nearest": {
+   "exact": 5,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2026-02-20:12:28 vs 12:26"
+   ]
+  },
+  "asr_fixed_1606": {
+   "exact": 8,
+   "within1": 43,
+   "worst": 2,
+   "n": 44,
+   "bad": [
+    "2024-03-11:16:07",
+    "2024-03-12:16:07",
+    "2024-03-20:16:07",
+    "2024-03-25:16:07",
+    "2024-03-26:16:07",
+    "2024-04-09:16:04",
+    "2025-03-01:16:07",
+    "2025-03-02:16:07",
+    "2025-03-16:16:07",
+    "2025-03-25:16:07",
+    "2025-03-29:16:07",
+    "2025-03-30:16:07",
+    "2026-02-17:16:05",
+    "2026-02-18:16:05",
+    "2026-02-19:16:05",
+    "2026-02-20:16:07",
+    "2026-03-01:16:07",
+    "2026-03-02:16:07",
+    "2026-03-03:16:07",
+    "2026-03-04:16:07",
+    "2026-03-05:16:07",
+    "2026-03-06:16:07",
+    "2026-03-07:16:07",
+    "2026-03-08:16:07",
+    "2026-03-09:16:07",
+    "2026-03-10:16:07",
+    "2026-03-11:16:07",
+    "2026-03-12:16:07",
+    "2026-03-13:16:07",
+    "2026-03-14:16:07",
+    "2026-03-15:16:07",
+    "2026-03-16:16:07",
+    "2026-03-17:16:07",
+    "2026-03-18:16:07",
+    "2026-03-19:16:07",
+    "2026-03-20:16:07"
+   ]
+  }
+ },
+ "per_edition_stability": {
+  "fajr_printed_sunrise_minus70": {
+   "1445": {
+    "exact": 6,
+    "n": 6,
+    "worst": 0
+   },
+   "1446": {
+    "exact": 6,
+    "n": 6,
+    "worst": 0
+   },
+   "1447": {
+    "exact": 31,
+    "n": 32,
+    "worst": 1
+   }
+  },
+  "isha_printed_maghrib_90": {
+   "1445": {
+    "exact": 6,
+    "n": 6,
+    "worst": 0
+   },
+   "1446": {
+    "exact": 5,
+    "n": 6,
+    "worst": 2
+   },
+   "1447": {
+    "exact": 32,
+    "n": 32,
+    "worst": 0
+   }
+  },
+  "maghrib_sunset_6.7_nearest": {
+   "1445": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1446": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1447": {
+    "exact": 15,
+    "n": 32,
+    "worst": 1
+   }
+  },
+  "maghrib_sunset_6.7_floor": {
+   "1445": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1446": {
+    "exact": 0,
+    "n": 6,
+    "worst": 1
+   },
+   "1447": {
+    "exact": 31,
+    "n": 32,
+    "worst": 1
+   }
+  },
+  "dhuhr_noon_19_nearest": {
+   "1445": {
+    "exact": 0,
+    "n": 6,
+    "worst": 1
+   },
+   "1446": {
+    "exact": 1,
+    "n": 6,
+    "worst": 1
+   },
+   "1447": {
+    "exact": 4,
+    "n": 32,
+    "worst": 2
+   }
+  },
+  "dhuhr_noon_19_floor": {
+   "1445": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1446": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1447": {
+    "exact": 0,
+    "n": 32,
+    "worst": 2
+   }
+  },
+  "fajr_computed_sunrise_minus70_nearest": {
+   "1445": {
+    "exact": 4,
+    "n": 6,
+    "worst": 2
+   },
+   "1446": {
+    "exact": 6,
+    "n": 6,
+    "worst": 0
+   },
+   "1447": {
+    "exact": 20,
+    "n": 32,
+    "worst": 1
+   }
+  },
+  "asr_fixed": {
+   "1445": {
+    "exact": 0,
+    "n": 6,
+    "worst": 2
+   },
+   "1446": {
+    "exact": 0,
+    "n": 6,
+    "worst": 1
+   },
+   "1447": {
+    "exact": 8,
+    "n": 32,
+    "worst": 1
+   }
+  }
+ },
+ "asr_analysis": {
+  "vs_computed_shafi_within1": "0/44",
+  "histogram_per_edition": {
+   "1445": {
+    "16:07": 5,
+    "16:04": 1
+   },
+   "1446": {
+    "16:07": 6
+   },
+   "1447": {
+    "16:05": 3,
+    "16:07": 21,
+    "16:06": 8
+   }
+  },
+  "reading": "asr is quasi-fixed, stepping 16:05 -> 16:06 -> 16:07 across the Ramadan window; NOT astronomical (computed Shafi is ~40 min earlier); the stated fixed 16:06 holds within +-1 for 43/44"
+ },
+ "maghrib_drift_per_edition": {
+  "1445": [
+   {
+    "offset": 4.5,
+    "mode": "ceil",
+    "exact": 6,
+    "n": 6
+   },
+   {
+    "offset": 5,
+    "mode": "nearest",
+    "exact": 6,
+    "n": 6
+   }
+  ],
+  "1446": [
+   {
+    "offset": 4.5,
+    "mode": "ceil",
+    "exact": 4,
+    "n": 6
+   },
+   {
+    "offset": 5,
+    "mode": "nearest",
+    "exact": 4,
+    "n": 6
+   }
+  ],
+  "1447": [
+   {
+    "offset": 6,
+    "mode": "nearest",
+    "exact": 29,
+    "n": 32
+   },
+   {
+    "offset": 6.5,
+    "mode": "floor",
+    "exact": 29,
+    "n": 32
+   }
+  ]
+ },
+ "maghrib_drift_reading": "maghrib allowance over astronomical sunset (-0.833 deg) moved from ~+4.5/+5 (1445, 1446) to ~+6/+6.5 (1447): the +6.7 rule describes 1447 only and is NOT edition-stable",
+ "anomalies": {
+  "2026-03-04": "dhuhr printed 12:23 (3 min step in the publisher column); fajr printed 05:04 both 03-04 and 03-05 so fajr vs sunrise -70 misses by 1 on 03-05",
+  "2026-02-20": "asr printed 16:07 inside the 16:06 block",
+  "2025-03-29": "maghrib prints +8 over sunset and isha = maghrib + 88, not +90",
+  "2024-04-09": "asr printed 16:04, 2 min under the quasi-fixed value"
+ },
+ "suhoor_relation": {
+  "m20": 31,
+  "m21": 0,
+  "other": {}
+ },
+ "city_offsets_minutes": {
+  "1445": {
+   "suhoor": {
+    "Hsinchu": 2,
+    "Taichung": 3,
+    "Tainan": 5,
+    "Kaohsiung": 3,
+    "Hualien": -1,
+    "Taitung": 0,
+    "Hengchun": 3,
+    "Penghu": 7
+   },
+   "iftar": {
+    "Hsinchu": 2,
+    "Taichung": 4,
+    "Tainan": 7,
+    "Kaohsiung": 7,
+    "Hualien": 1,
+    "Taitung": 3,
+    "Hengchun": 6,
+    "Penghu": 9
+   }
+  },
+  "1446": {
+   "suhoor": {
+    "Hsinchu": 2,
+    "Taichung": 3,
+    "Tainan": 5,
+    "Kaohsiung": 4,
+    "Hualien": 0,
+    "Taitung": 2,
+    "Hengchun": 4,
+    "Penghu": 8
+   },
+   "iftar": {
+    "Hsinchu": 2,
+    "Taichung": 3,
+    "Tainan": 5,
+    "Kaohsiung": 4,
+    "Hualien": -1,
+    "Taitung": 1,
+    "Hengchun": 3,
+    "Penghu": 8
+   }
+  },
+  "1447": {
+   "suhoor": {
+    "Hsinchu": 2,
+    "Taichung": 3,
+    "Tainan": 5,
+    "Kaohsiung": 4,
+    "Hualien": -1,
+    "Taitung": 1,
+    "Hengchun": 2,
+    "Penghu": 8
+   },
+   "iftar": {
+    "Hsinchu": 2,
+    "Taichung": 4,
+    "Tainan": 7,
+    "Kaohsiung": 7,
+    "Hualien": 1,
+    "Taitung": 3,
+    "Hengchun": 6,
+    "Penghu": 9
+   }
+  }
+ }
+}

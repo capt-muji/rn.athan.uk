@@ -1,0 +1,352 @@
+[
+ {
+  "tag": "luton-central",
+  "town": "Luton",
+  "region": "Home Counties",
+  "src": "uktowns2/data/luton-central-mosque-2026-11.json",
+  "lat": 51.8787,
+  "lng": -0.42,
+  "span": "2026-11 (30d)",
+  "townKey": "Luton"
+ },
+ {
+  "tag": "brighton-almedinah",
+  "town": "Brighton",
+  "region": "South Coast",
+  "src": "uktowns2/data/brighton-almedinah-2026-11.json",
+  "lat": 50.8225,
+  "lng": -0.1372,
+  "span": "2026-11 (30d)",
+  "townKey": "Brighton"
+ },
+ {
+  "tag": "dudley-mcc",
+  "town": "Dudley",
+  "region": "West Midlands",
+  "src": "uktowns2/data/dudley-mcc-2026-11.json",
+  "lat": 52.512,
+  "lng": -2.081,
+  "span": "2026-11 (30d)",
+  "townKey": "Dudley"
+ },
+ {
+  "tag": "preston-jamea",
+  "town": "Preston",
+  "region": "North West",
+  "src": "uktowns2/data/preston-jamea-2026-11.json",
+  "lat": 53.7632,
+  "lng": -2.7031,
+  "span": "2026-11 (30d)",
+  "townKey": "Preston"
+ },
+ {
+  "tag": "blackpool-central",
+  "town": "Blackpool",
+  "region": "North West",
+  "src": "uktowns2/data/blackpool-central-2026-11.json",
+  "lat": 53.8175,
+  "lng": -3.0357,
+  "span": "2026-11 (30d)",
+  "townKey": "Blackpool"
+ },
+ {
+  "tag": "middlesbrough-central",
+  "town": "Middlesbrough",
+  "region": "North East",
+  "src": "uktowns2/data/middlesbrough-central-2026-11.json",
+  "lat": 54.5742,
+  "lng": -1.235,
+  "span": "2026-11 (30d)",
+  "townKey": "Middlesbrough"
+ },
+ {
+  "tag": "stockport-ic",
+  "town": "Stockport",
+  "region": "North West",
+  "src": "uktowns2/data/stockport-islamic-centre-2026-11.json",
+  "lat": 53.4106,
+  "lng": -2.1575,
+  "span": "2026-11 (30d)",
+  "townKey": "Stockport"
+ },
+ {
+  "tag": "watford-jamia",
+  "town": "Watford",
+  "region": "Home Counties",
+  "src": "uktowns2/data/watford-jamia-2026-11.json",
+  "lat": 51.6565,
+  "lng": -0.3903,
+  "span": "2026-11 (30d)",
+  "townKey": "Watford"
+ },
+ {
+  "tag": "ilford-mosque",
+  "town": "Ilford",
+  "region": "London",
+  "src": "uktowns2/data/ilford-2026-11.json",
+  "lat": 51.559,
+  "lng": 0.0741,
+  "span": "2026-11 (30d)",
+  "townKey": "Ilford"
+ },
+ {
+  "tag": "cambridge-central",
+  "town": "Cambridge",
+  "region": "East",
+  "src": "uktowns2/data/cambridge-central-2026-11.json",
+  "lat": 52.2053,
+  "lng": 0.1218,
+  "span": "2026-11-10..12-11 (32d)",
+  "townKey": "Cambridge"
+ },
+ {
+  "tag": "stoke-citycentral",
+  "town": "Stoke",
+  "region": "West Midlands",
+  "src": "uktowns2/data/stoke-citycentral-month.json",
+  "lat": 53.0027,
+  "lng": -2.1794,
+  "span": "2026-11 (30d)",
+  "townKey": "Stoke"
+ },
+ {
+  "tag": "birmingham-central",
+  "town": "Birmingham",
+  "region": "West Midlands",
+  "src": "ukscotland/data/birmingham-central-mosque-2026-11.json",
+  "lat": 52.4862,
+  "lng": -1.8904,
+  "span": "2026-11 (30d)",
+  "townKey": "Birmingham"
+ },
+ {
+  "tag": "leicester-umar",
+  "town": "Leicester",
+  "region": "East Midlands",
+  "src": "ukscotland/data/leicester-masjid-umar-2026-11.json",
+  "lat": 52.6369,
+  "lng": -1.1398,
+  "span": "2026-11 (30d)",
+  "townKey": "Leicester"
+ },
+ {
+  "tag": "nottingham-ic",
+  "town": "Nottingham",
+  "region": "East Midlands",
+  "src": "uktowns2/data/nottingham-ic-2026.json",
+  "lat": 52.9548,
+  "lng": -1.1581,
+  "span": "2026 full year (365d)",
+  "townKey": "Nottingham"
+ },
+ {
+  "tag": "reading-amic",
+  "town": "Reading",
+  "region": "Home Counties",
+  "src": "uktowns2/data/reading-amic-2026.json",
+  "lat": 51.4543,
+  "lng": -0.9781,
+  "span": "2026 full year (365d)",
+  "townKey": "Reading"
+ },
+ {
+  "tag": "coventry-zeenatul",
+  "town": "Coventry",
+  "region": "West Midlands",
+  "src": "uktowns2/data/coventry-zeenatul-islam-2026.json",
+  "lat": 52.4068,
+  "lng": -1.5197,
+  "span": "2026 full year (365d)",
+  "townKey": "Coventry"
+ },
+ {
+  "tag": "rochdale-golden",
+  "town": "Rochdale",
+  "region": "North West",
+  "src": "uktowns2/data/rochdale-golden-2026.json",
+  "lat": 53.6097,
+  "lng": -2.1561,
+  "span": "2026 full year (365d)",
+  "townKey": "Rochdale"
+ },
+ {
+  "tag": "bolton-zakariyya",
+  "town": "Bolton",
+  "region": "North West",
+  "src": "uktowns2/data/bolton-zakariyya-2026.json",
+  "lat": 53.5769,
+  "lng": -2.4282,
+  "span": "2026 (354d, 12h columns)",
+  "townKey": "Bolton"
+ },
+ {
+  "tag": "oldham-ocmic",
+  "town": "Oldham (OCMIC)",
+  "region": "North West",
+  "src": "uktowns2/data/oldham-ocmic-2026.json",
+  "lat": 53.5409,
+  "lng": -2.1114,
+  "span": "2026 full year (365d)",
+  "townKey": "Oldham"
+ },
+ {
+  "tag": "oldham-westwood",
+  "town": "Oldham (Westwood)",
+  "region": "North West",
+  "src": "uktowns2/data/oldham-westwood-2026.json",
+  "lat": 53.5409,
+  "lng": -2.1114,
+  "span": "2026 (345d)",
+  "townKey": "Oldham"
+ },
+ {
+  "tag": "oxford-coms",
+  "town": "Oxford",
+  "region": "Home Counties",
+  "src": "uktowns2/data/oxford-coms-2026.json",
+  "lat": 51.752,
+  "lng": -1.2577,
+  "span": "2026 full year (365d)",
+  "townKey": "Oxford"
+ },
+ {
+  "tag": "slough-jmic",
+  "town": "Slough",
+  "region": "Home Counties",
+  "src": "uktowns2/data/slough-jmic-2022.json",
+  "lat": 51.5103,
+  "lng": -0.595,
+  "span": "2022 full year (365d)",
+  "townKey": "Slough"
+ },
+ {
+  "tag": "walsall-wjmg",
+  "town": "Walsall",
+  "region": "West Midlands",
+  "src": "uktowns2/data/walsall-wjmg-2020.json",
+  "lat": 52.5862,
+  "lng": -1.9829,
+  "span": "2020 full year (366d)",
+  "townKey": "Walsall"
+ },
+ {
+  "tag": "cardiff-swicc",
+  "town": "Cardiff",
+  "region": "Wales",
+  "src": "ukscotland/data/swicc-cardiff-2026-11.json",
+  "lat": 51.4816,
+  "lng": -3.1791,
+  "span": "2026-11 (30d)",
+  "townKey": "Cardiff"
+ },
+ {
+  "tag": "hull-mosque",
+  "town": "Hull",
+  "region": "Yorkshire",
+  "src": "ukscotland/data/hull-mosque-2026.json",
+  "lat": 53.7443,
+  "lng": -0.3325,
+  "span": "2026-01 + 2026-11..12 (62d)",
+  "townKey": "Hull"
+ },
+ {
+  "tag": "bradford-hanfia",
+  "town": "Bradford (Hanfia)",
+  "region": "Yorkshire",
+  "src": "ukscotland/data/jamia-masjid-hanfia-bradford-2026.json",
+  "lat": 53.796,
+  "lng": -1.7594,
+  "span": "2026 full year (365d)",
+  "townKey": "Bradford"
+ },
+ {
+  "tag": "bradford-victor",
+  "town": "Bradford (Victor St)",
+  "region": "Yorkshire",
+  "src": "ukscotland/data/victor-street-bradford-2026-11.json",
+  "lat": 53.796,
+  "lng": -1.7594,
+  "span": "2026-11 (30d)",
+  "townKey": "Bradford"
+ },
+ {
+  "tag": "elm-london",
+  "town": "London (East London Mosque)",
+  "region": "London",
+  "src": "uktowns2/data/elm-london-2026.json",
+  "lat": 51.5171,
+  "lng": -0.0544,
+  "span": "2026 full year (365d, 12h)",
+  "townKey": "London"
+ },
+ {
+  "tag": "london-icc",
+  "town": "London (Central Mosque ICC)",
+  "region": "London",
+  "src": "ukscotland/data/london-central-mosque-icc-2026-11-12.json",
+  "lat": 51.5325,
+  "lng": -0.165,
+  "span": "2026-11..12 (61d)",
+  "townKey": "London"
+ },
+ {
+  "tag": "mwh-north-london",
+  "town": "London (MWH North)",
+  "region": "London",
+  "src": "ukscotland/data/mwh-north-london-2026-11.json",
+  "lat": 51.597,
+  "lng": -0.068,
+  "span": "2026-11 (30d)",
+  "townKey": "London"
+ },
+ {
+  "tag": "glasgow-central",
+  "town": "Glasgow",
+  "region": "Scotland",
+  "src": "ukscotland/data/glasgow-central-mosque-2026.json",
+  "lat": 55.8642,
+  "lng": -4.2518,
+  "span": "2026 full year (365d)",
+  "townKey": "Glasgow"
+ },
+ {
+  "tag": "dundee-almaktoum",
+  "town": "Dundee",
+  "region": "Scotland",
+  "src": "ukscotland/data/dundee-almaktoum-mosque-2026.json",
+  "lat": 56.462,
+  "lng": -2.9707,
+  "span": "2026 full year (365d)",
+  "townKey": "Dundee"
+ },
+ {
+  "tag": "edinburgh-central",
+  "town": "Edinburgh",
+  "region": "Scotland",
+  "src": "ukscotland/data/edinburgh-central-mosque-2026-11.json",
+  "lat": 55.9533,
+  "lng": -3.1883,
+  "span": "2026-11 (30d)",
+  "townKey": "Edinburgh"
+ },
+ {
+  "tag": "aberdeen-central",
+  "town": "Aberdeen (AMIC Central)",
+  "region": "Scotland",
+  "src": "ukscotland/data/aberdeen-amic-central-2026.json",
+  "lat": 57.1497,
+  "lng": -2.0943,
+  "span": "2026 (333d)",
+  "townKey": "Aberdeen"
+ },
+ {
+  "tag": "aberdeen-spital",
+  "town": "Aberdeen (AMIC Spital)",
+  "region": "Scotland",
+  "src": "ukscotland/data/aberdeen-amic-spital-2026.json",
+  "lat": 57.1497,
+  "lng": -2.0943,
+  "span": "2026 (333d)",
+  "townKey": "Aberdeen"
+ }
+]

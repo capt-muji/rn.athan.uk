@@ -1,0 +1,3272 @@
+{
+ "2028": {
+  "mmdd": {
+   "fajr": {
+    "exact": 357,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0246,
+    "exactPct": 97.54,
+    "within1Pct": 100
+   },
+   "sunrise": {
+    "exact": 357,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0246,
+    "exactPct": 97.54,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0219,
+    "exactPct": 97.81,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   }
+  },
+  "doy": {
+   "fajr": {
+    "exact": 273,
+    "within1": 364,
+    "worst": 2,
+    "mae": 0.2596,
+    "exactPct": 74.59,
+    "within1Pct": 99.45
+   },
+   "sunrise": {
+    "exact": 357,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0246,
+    "exactPct": 97.54,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0219,
+    "exactPct": 97.81,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 285,
+    "within1": 362,
+    "worst": 2,
+    "mae": 0.2322,
+    "exactPct": 77.87,
+    "within1Pct": 98.91
+   }
+  },
+  "differingDays": 143,
+  "disagreements": [
+   {
+    "date": "2028-02-29",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2028-03-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-03-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-17",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-22",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-25",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-04-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-14",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-05-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-01",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-05",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-17",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-23",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-26",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-29",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-06-30",
+    "prayer": "fajr",
+    "mmddErr": 1,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-06-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-09",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-31",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-07-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-05",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-08-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-14",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-09-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-10-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-10-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-10-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-10-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-10-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-12",
+    "prayer": "fajr",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2028-11-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-11-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-12-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-12-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2028-12-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2028-12-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   }
+  ],
+  "disagreementTally": {
+   "mmddCloser": 161,
+   "doyCloser": 2,
+   "mmddExactDoyNot": 160,
+   "doyExactMmddNot": 2
+  },
+  "verdict": "mmdd"
+ },
+ "2032": {
+  "mmdd": {
+   "fajr": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "sunrise": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0219,
+    "exactPct": 97.81,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 357,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0246,
+    "exactPct": 97.54,
+    "within1Pct": 100
+   }
+  },
+  "doy": {
+   "fajr": {
+    "exact": 274,
+    "within1": 365,
+    "worst": 2,
+    "mae": 0.2541,
+    "exactPct": 74.86,
+    "within1Pct": 99.73
+   },
+   "sunrise": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0219,
+    "exactPct": 97.81,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 291,
+    "within1": 362,
+    "worst": 2,
+    "mae": 0.2158,
+    "exactPct": 79.51,
+    "within1Pct": 98.91
+   }
+  },
+  "differingDays": 143,
+  "disagreements": [
+   {
+    "date": "2032-02-29",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-03-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-08",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-03-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-03-28",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-03-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-17",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-22",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-25",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-04-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-14",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-05-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-01",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-05",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-17",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-23",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-26",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-29",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-06-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-06",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-07-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-09",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-07-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-31",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-07-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-05",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-08-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-14",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-09-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2032-10-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2032-10-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2032-10-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2032-10-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-10-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-12",
+    "prayer": "fajr",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2032-11-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-11-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-12-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-12-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2032-12-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2032-12-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   }
+  ],
+  "disagreementTally": {
+   "mmddCloser": 157,
+   "doyCloser": 6,
+   "mmddExactDoyNot": 157,
+   "doyExactMmddNot": 6
+  },
+  "verdict": "mmdd"
+ },
+ "2036": {
+  "mmdd": {
+   "fajr": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "sunrise": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 358,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0219,
+    "exactPct": 97.81,
+    "within1Pct": 100
+   }
+  },
+  "doy": {
+   "fajr": {
+    "exact": 274,
+    "within1": 364,
+    "worst": 2,
+    "mae": 0.2568,
+    "exactPct": 74.86,
+    "within1Pct": 99.45
+   },
+   "sunrise": {
+    "exact": 360,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0164,
+    "exactPct": 98.36,
+    "within1Pct": 100
+   },
+   "dhuhr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "asr": {
+    "exact": 361,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0137,
+    "exactPct": 98.63,
+    "within1Pct": 100
+   },
+   "magrib": {
+    "exact": 359,
+    "within1": 366,
+    "worst": 1,
+    "mae": 0.0191,
+    "exactPct": 98.09,
+    "within1Pct": 100
+   },
+   "isha": {
+    "exact": 290,
+    "within1": 362,
+    "worst": 2,
+    "mae": 0.2186,
+    "exactPct": 79.23,
+    "within1Pct": 98.91
+   }
+  },
+  "differingDays": 143,
+  "disagreements": [
+   {
+    "date": "2036-02-29",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2036-03-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-27",
+    "prayer": "fajr",
+    "mmddErr": 1,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-03-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-03-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-17",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-22",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-25",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-04-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-14",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-26",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-05-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-01",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-05",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-17",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2036-06-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-23",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-26",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-29",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-06-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-01",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-06",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2036-07-08",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-09",
+    "prayer": "isha",
+    "mmddErr": 1,
+    "doyErr": 0
+   },
+   {
+    "date": "2036-07-11",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-18",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-21",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-23",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-27",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-29",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-31",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-07-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-02",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-05",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-15",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-08-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-03",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-10",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-14",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-18",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-21",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-24",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-27",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-30",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-09-30",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-04",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-10-07",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-10",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-10-13",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-16",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-20",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-10-22",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-10-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-10-31",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-02",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-03",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-04",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-06",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-06",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-08",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-09",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-12",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-12",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-16",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-20",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-24",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-11-28",
+    "prayer": "isha",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-12-15",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-12-19",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   },
+   {
+    "date": "2036-12-25",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 2
+   },
+   {
+    "date": "2036-12-28",
+    "prayer": "fajr",
+    "mmddErr": 0,
+    "doyErr": 1
+   }
+  ],
+  "disagreementTally": {
+   "mmddCloser": 159,
+   "doyCloser": 4,
+   "mmddExactDoyNot": 158,
+   "doyExactMmddNot": 4
+  },
+  "verdict": "mmdd"
+ }
+}

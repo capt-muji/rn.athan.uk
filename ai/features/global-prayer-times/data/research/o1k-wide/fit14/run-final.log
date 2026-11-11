@@ -1,0 +1,75 @@
+Aberdeen (Central)             333r full-year     own-table-not-LUPT   F: own-table tol1=0.63 env=[30, 159] dip(82d)
+                                                                   I: angle-like tol1=0.504 env=[-34, 23] dip(50d)
+Aberdeen (Spital)              333r full-year     own-table-not-LUPT   F: own-table tol1=0.63 env=[30, 159] dip(82d)
+                                                                   I: angle-like tol1=0.504 env=[-34, 23] dip(50d)
+Birmingham                      30r short-window  LUPT-family-drift    F: drift tol1=0.8 env=[-14, -10]
+                                                                   I: offset off=-1 tol1=1.0 env=[-2, 0]
+Blackpool                       30r short-window  LUPT-family-drift    F: drift tol1=0.733 env=[1, 6]
+                                                                   I: offset off=10 tol1=1.0 env=[9, 11]
+Bolton                         354r full-year     LUPT+offset          F: offset off=3 tol1=1.0 env=[2, 3]
+                                                                   I: offset+dip off=5 tol1=0.988 env=[-21, 6] dip(105d)
+Brighton                        30r short-window  LUPT-family-drift    F: drift tol1=0.833 env=[-6, -1]
+                                                                   I: drift tol1=0.833 env=[-5, 0]
+Cambridge                       32r short-window  LUPT+offset          F: offset off=-2 tol1=1.0 env=[-3, -1]
+                                                                   I: offset off=-5 tol1=0.906 env=[-7, -4]
+Coventry                       365r full-year     LUPT+offset          F: offset+step off=3 tol1=1.0 env=[2, 63] step=[('2026-03-26', '2026-03-30', 63, 5)]
+                                                                   I: offset+dip off=2 tol1=0.971 env=[-57, 3] dip(89d)
+Dudley                          30r short-window  LUPT-family-drift    F: drift tol1=0.833 env=[-2, 2]
+                                                                   I: drift tol1=0.9 env=[0, 4]
+Dundee                         365r full-year     own-table-not-LUPT   F: angle-like tol1=0.568 env=[-6, 79] dip(70d) step=[('2026-03-22', '2026-05-15', 37, 55)]
+                                                                   I: angle-like tol1=0.536 env=[-26, 30] dip(70d)
+London (East London Mosque)    365r full-year     LUPT+offset          F: exact off=0 tol1=1.0 env=[0, 0]
+                                                                   I: offset+dip off=-7 tol1=1.0 env=[-15, -6] dip(30d)
+Edinburgh                       30r short-window  LUPT+offset          F: n/a
+                                                                   I: offset off=30 tol1=0.867 env=[28, 31]
+London (Elm)                   365r full-year     LUPT-exact           F: exact off=0 tol1=1.0 env=[0, 0]
+                                                                   I: exact off=0 tol1=1.0 env=[-1, 1]
+Glasgow                        365r full-year     own-table-not-LUPT   F: own-table tol1=0.554 env=[16, 138] dip(75d)
+                                                                   I: angle-like tol1=0.542 env=[-32, 51] dip(89d)
+Hull                            62r short-window  LUPT+offset          F: offset+dip off=-3 tol1=0.854 env=[-7, -2] dip(21d)
+                                                                   I: offset+dip off=-21 tol1=0.855 env=[-22, -15] dip(7d)
+London (Ilford)                 30r short-window  LUPT-family-drift    F: drift tol1=0.8 env=[-4, 0]
+                                                                   I: drift tol1=0.833 env=[-3, 2]
+Bradford (Hanfia)              365r half-coverage own-table-not-LUPT   F: n/a
+                                                                   I: angle-like tol1=0.698 env=[-42, 6] dip(16d)
+Leicester                       30r short-window  LUPT-family-drift    F: drift tol1=0.833 env=[19, 23]
+                                                                   I: offset off=24 tol1=0.967 env=[23, 26]
+London (ICC)                    61r short-window  LUPT-exact           F: exact off=0 tol1=1.0 env=[0, 0]
+                                                                   I: exact off=0 tol1=1.0 env=[-1, 0]
+Luton                           30r short-window  LUPT-family-drift    F: drift tol1=0.833 env=[-2, 2]
+                                                                   I: offset off=0 tol1=0.967 env=[-1, 2]
+Middlesbrough                   30r short-window  LUPT-exact           F: exact off=0 tol1=1.0 env=[0, 0]
+                                                                   I: exact off=0 tol1=1.0 env=[0, 0]
+London (MWH)                    30r short-window  LUPT+offset          F: offset off=-1 tol1=1.0 env=[-2, 0]
+                                                                   I: offset off=-7 tol1=1.0 env=[-8, -6]
+Nottingham                     365r full-year     own-table-not-LUPT   F: angle-like tol1=0.582 env=[17, 138] dip(60d)
+                                                                   I: angle-like tol1=0.504 env=[-12, 69] dip(14d)
+Oldham (OCMIC)                 365r full-year     LUPT-family-drift    F: drift tol1=0.614 env=[-4, 15] dip(91d)
+                                                                   I: drift tol1=0.566 env=[-16, 5] dip(144d)
+Oldham (Westwood)              345r full-year     LUPT-family-drift    F: drift tol1=0.508 env=[-6, 13] dip(104d)
+                                                                   I: drift tol1=0.586 env=[-16, 6] dip(125d)
+Oxford                         365r full-year     own-table-not-LUPT   F: angle-like tol1=0.514 env=[13, 315] dip(56d)
+                                                                   I: angle-like tol1=0.517 env=[-13, 44] dip(42d)
+Preston                         30r short-window  LUPT-family-drift    F: drift tol1=0.8 env=[-2, 2]
+                                                                   I: n/a
+Reading                        365r half-coverage LUPT-family-drift    F: n/a
+                                                                   I: drift tol1=0.674 env=[-11, 4] dip(123d)
+Rochdale                       365r full-year     LUPT-family-drift    F: drift tol1=0.495 env=[-4, 10] dip(136d)
+                                                                   I: drift tol1=0.681 env=[-11, 4] dip(124d)
+Slough                         365r full-year     own-table-not-LUPT   F: angle-like tol1=0.553 env=[16, 64] dip(58d)
+                                                                   I: angle-like tol1=0.86 env=[-7, 27]
+Stockport                       30r short-window  LUPT-family-drift    F: drift tol1=0.767 env=[0, 5]
+                                                                   I: offset off=7 tol1=0.967 env=[5, 8]
+Stoke                           30r short-window  LUPT-family-drift    F: drift tol1=0.778 env=[8, 13]
+                                                                   I: offset off=2 tol1=0.967 env=[0, 3]
+Cardiff                         30r short-window  LUPT-family-drift    F: offset off=3 tol1=1.0 env=[2, 3]
+                                                                   I: drift tol1=0.5 env=[-17, -8] dip(4d)
+Bradford (Victor St)            30r short-window  LUPT-family-drift    F: drift tol1=0.6 env=[-1, 4]
+                                                                   I: offset off=-36 tol1=0.9 env=[-38, -35]
+Walsall                        366r full-year     own-table-not-LUPT   F: angle-like tol1=0.553 env=[8, 63] dip(86d)
+                                                                   I: angle-like tol1=0.477 env=[22, 96] dip(12d)
+Watford                         30r short-window  LUPT-family-drift    F: drift tol1=0.8 env=[12, 17]
+                                                                   I: offset off=23 tol1=1.0 env=[22, 24]
+
+== England counts (>=25 rows): Counter({'LUPT-family-drift': 16, 'LUPT+offset': 6, 'own-table-not-LUPT': 5, 'LUPT-exact': 3})
+== All captures: Counter({'LUPT-family-drift': 17, 'own-table-not-LUPT': 9, 'LUPT+offset': 7, 'LUPT-exact': 3})

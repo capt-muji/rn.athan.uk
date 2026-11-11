@@ -1,0 +1,255 @@
+{
+ "schema": "o1h-indonesia-isha-sensitivity/1",
+ "note": "Each cell is the same method scored against an isha reference of 18 degrees and of 19 degrees. The cost column is the penalty a method pays when the reference moves one degree away from the pair it was built on.",
+ "meanCostMinutes": 3.77,
+ "minCost": 2.49,
+ "maxCost": 4.22,
+ "perCity": [
+  {
+   "city": "jakarta",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.203,
+     "cost": 4.2
+    },
+    {
+     "id": "singapore",
+     "at18": 0.452,
+     "at19": 3.751,
+     "cost": 3.3
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.841,
+     "at19": 5.044,
+     "cost": 4.2
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.099,
+     "at19": 6.301,
+     "cost": 4.2
+    },
+    {
+     "id": "dubai",
+     "at18": 0.858,
+     "at19": 3.345,
+     "cost": 2.49
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.088,
+     "at19": 4.29,
+     "cost": 4.2
+    }
+   ]
+  },
+  {
+   "city": "medan",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.205,
+     "cost": 4.21
+    },
+    {
+     "id": "singapore",
+     "at18": 0.521,
+     "at19": 3.685,
+     "cost": 3.16
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.86,
+     "at19": 5.066,
+     "cost": 4.21
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.09,
+     "at19": 6.296,
+     "cost": 4.21
+    },
+    {
+     "id": "dubai",
+     "at18": 0.86,
+     "at19": 3.345,
+     "cost": 2.49
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.03,
+     "at19": 4.236,
+     "cost": 4.21
+    }
+   ]
+  },
+  {
+   "city": "pontianak",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.225,
+     "cost": 4.22
+    },
+    {
+     "id": "singapore",
+     "at18": 0.501,
+     "at19": 3.723,
+     "cost": 3.22
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.795,
+     "at19": 5.019,
+     "cost": 4.22
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.096,
+     "at19": 6.321,
+     "cost": 4.22
+    },
+    {
+     "id": "dubai",
+     "at18": 0.822,
+     "at19": 3.403,
+     "cost": 2.58
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.003,
+     "at19": 4.227,
+     "cost": 4.22
+    }
+   ]
+  },
+  {
+   "city": "surabaya",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.211,
+     "cost": 4.21
+    },
+    {
+     "id": "singapore",
+     "at18": 0.43,
+     "at19": 3.781,
+     "cost": 3.35
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.888,
+     "at19": 5.099,
+     "cost": 4.21
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.121,
+     "at19": 6.332,
+     "cost": 4.21
+    },
+    {
+     "id": "dubai",
+     "at18": 0.833,
+     "at19": 3.378,
+     "cost": 2.54
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.137,
+     "at19": 4.348,
+     "cost": 4.21
+    }
+   ]
+  },
+  {
+   "city": "makassar",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.216,
+     "cost": 4.22
+    },
+    {
+     "id": "singapore",
+     "at18": 0.449,
+     "at19": 3.767,
+     "cost": 3.32
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.849,
+     "at19": 5.066,
+     "cost": 4.22
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.115,
+     "at19": 6.332,
+     "cost": 4.22
+    },
+    {
+     "id": "dubai",
+     "at18": 0.841,
+     "at19": 3.375,
+     "cost": 2.53
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.044,
+     "at19": 4.26,
+     "cost": 4.22
+    }
+   ]
+  },
+  {
+   "city": "jayapura",
+   "costMinutes": [
+    {
+     "id": "mabims",
+     "at18": 0,
+     "at19": 4.195,
+     "cost": 4.2
+    },
+    {
+     "id": "singapore",
+     "at18": 0.493,
+     "at19": 3.701,
+     "cost": 3.21
+    },
+    {
+     "id": "fazilet-a",
+     "at18": 0.847,
+     "at19": 5.041,
+     "cost": 4.19
+    },
+    {
+     "id": "egyptian",
+     "at18": 2.118,
+     "at19": 6.312,
+     "cost": 4.19
+    },
+    {
+     "id": "dubai",
+     "at18": 0.827,
+     "at19": 3.367,
+     "cost": 2.54
+    },
+    {
+     "id": "moonsighting",
+     "at18": 0.022,
+     "at19": 4.216,
+     "cost": 4.19
+    }
+   ]
+  }
+ ]
+}

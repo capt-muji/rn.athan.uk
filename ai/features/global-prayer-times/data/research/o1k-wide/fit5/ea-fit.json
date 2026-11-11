@@ -1,0 +1,1228 @@
+{
+ "hargeisa-marwa": {
+  "city": "Hargeisa",
+  "coords": {
+   "lat": 9.56,
+   "lon": 44.065
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 361,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 66,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 353,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 139,
+   "worst": 3
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 363,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 365,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 360,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1941,
+   "within1": 2063,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1887,
+   "within1": 2169,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 361,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0.01
+    },
+    "sunrise": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0.01
+    },
+    "dhuhr": {
+     "exact": 365,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0,
+     "bias": 0
+    },
+    "asr": {
+     "exact": 85,
+     "within1": 339,
+     "worst": 2,
+     "mae": 0.84,
+     "bias": 0.02
+    },
+    "maghrib": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0.02
+    },
+    "isha": {
+     "exact": 353,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.04,
+     "bias": 0.02
+    }
+   }
+  }
+ },
+ "hargeisa-nuurul-huda": {
+  "city": "Hargeisa",
+  "coords": {
+   "lat": 9.56,
+   "lon": 44.065
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 364,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 66,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 356,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 132,
+   "worst": 3
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 363,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 364,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 363,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1942,
+   "within1": 2055,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1882,
+   "within1": 2150,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 364,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": -0.01
+    },
+    "sunrise": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": -0.01
+    },
+    "dhuhr": {
+     "exact": 364,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": -0.01
+    },
+    "asr": {
+     "exact": 72,
+     "within1": 320,
+     "worst": 2,
+     "mae": 0.93,
+     "bias": 0.02
+    },
+    "maghrib": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0
+    },
+    "isha": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0
+    }
+   }
+  }
+ },
+ "hargeisa-ina-weerar": {
+  "city": "Hargeisa",
+  "coords": {
+   "lat": 9.56,
+   "lon": 44.065
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 17.1,
+  "fajrBand": [
+   17,
+   18
+  ],
+  "fajrMargin": -2,
+  "fajrScore": {
+   "exact": 261,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 16.9,
+  "ishaAngleBand": [
+   16.8,
+   17.8
+  ],
+  "ishaInterval": 68,
+  "ishaIntervalBand": null,
+  "ishaMargin": 1.5,
+  "ishaScore": {
+   "exact": 280,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 166,
+   "worst": 1
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 363,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 365,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 360,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 1795,
+   "within1": 2196,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 3,
+   "exact": 1260,
+   "within1": 1789,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 0,
+     "within1": 139,
+     "worst": 3,
+     "mae": 1.72,
+     "bias": -1.72
+    },
+    "sunrise": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0.01
+    },
+    "dhuhr": {
+     "exact": 365,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0,
+     "bias": 0
+    },
+    "asr": {
+     "exact": 166,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.55,
+     "bias": -0.02
+    },
+    "maghrib": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0.02
+    },
+    "isha": {
+     "exact": 6,
+     "within1": 186,
+     "worst": 2,
+     "mae": 1.48,
+     "bias": -1.48
+    }
+   }
+  }
+ },
+ "mogadishu-rabbul-caalamiin": {
+  "city": "Mogadishu",
+  "coords": {
+   "lat": 2.0469,
+   "lon": 45.3184
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18.2,
+  "fajrBand": [
+   17.3,
+   18.6
+  ],
+  "fajrMargin": 0.5,
+  "fajrScore": {
+   "exact": 350,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 16.8,
+  "ishaAngleBand": [
+   16.4,
+   17.7
+  ],
+  "ishaInterval": 65,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0.5,
+  "ishaScore": {
+   "exact": 357,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 124,
+   "worst": 3
+  },
+  "asrHanafiWorst": 72,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 317,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 315,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 305,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1768,
+   "within1": 2042,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1650,
+   "within1": 2147,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 319,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13
+    },
+    "sunrise": {
+     "exact": 317,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13
+    },
+    "dhuhr": {
+     "exact": 315,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.14,
+     "bias": -0.14
+    },
+    "asr": {
+     "exact": 82,
+     "within1": 317,
+     "worst": 2,
+     "mae": 0.91,
+     "bias": -0.17
+    },
+    "maghrib": {
+     "exact": 305,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.17,
+     "bias": -0.17
+    },
+    "isha": {
+     "exact": 312,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.15,
+     "bias": -0.15
+    }
+   }
+  }
+ },
+ "mogadishu-cali-jimcaale": {
+  "city": "Mogadishu",
+  "coords": {
+   "lat": 2.0469,
+   "lon": 45.3184
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 356,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 65,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 360,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 135,
+   "worst": 3
+  },
+  "asrHanafiWorst": 72,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 354,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 366,
+   "worst": 0
+  },
+  "maghribScore": {
+   "exact": 357,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1928,
+   "within1": 2065,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1891,
+   "within1": 2181,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.01
+    },
+    "sunrise": {
+     "exact": 354,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.01
+    },
+    "dhuhr": {
+     "exact": 366,
+     "within1": 366,
+     "worst": 0,
+     "mae": 0,
+     "bias": 0
+    },
+    "asr": {
+     "exact": 98,
+     "within1": 351,
+     "worst": 2,
+     "mae": 0.77,
+     "bias": -0.01
+    },
+    "maghrib": {
+     "exact": 357,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0
+    },
+    "isha": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0.01
+    }
+   }
+  }
+ },
+ "djibouti-djaffar-gabode4": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 363,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 66,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 358,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 130,
+   "worst": 1
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 364,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 362,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 359,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 1936,
+   "within1": 2196,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 1,
+   "exact": 1936,
+   "within1": 2196,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 363,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0
+    },
+    "sunrise": {
+     "exact": 364,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0
+    },
+    "dhuhr": {
+     "exact": 362,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.01,
+     "bias": 0.01
+    },
+    "asr": {
+     "exact": 130,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.64,
+     "bias": 0.03
+    },
+    "maghrib": {
+     "exact": 359,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0.01
+    },
+    "isha": {
+     "exact": 358,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": 0.02
+    }
+   }
+  }
+ },
+ "djibouti-abd-ar-rahman": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18.2,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0.5,
+  "fajrScore": {
+   "exact": 340,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 16.8,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 67,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0.5,
+  "ishaScore": {
+   "exact": 349,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 116,
+   "worst": 3
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 326,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 319,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 324,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1774,
+   "within1": 2049,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1709,
+   "within1": 2131,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 322,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.12,
+     "bias": -0.12
+    },
+    "sunrise": {
+     "exact": 326,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.11,
+     "bias": -0.11
+    },
+    "dhuhr": {
+     "exact": 319,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13
+    },
+    "asr": {
+     "exact": 81,
+     "within1": 301,
+     "worst": 2,
+     "mae": 0.96,
+     "bias": -0.08
+    },
+    "maghrib": {
+     "exact": 324,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.11,
+     "bias": -0.11
+    },
+    "isha": {
+     "exact": 337,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.08,
+     "bias": -0.08
+    }
+   }
+  }
+ },
+ "djibouti-al-salam-fyart": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 17.9,
+  "fajrBand": null,
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 221,
+   "within1": 354,
+   "worst": 2
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17.1,
+  "ishaAngleBand": null,
+  "ishaInterval": 71,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 226,
+   "within1": 332,
+   "worst": 6
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0.5,
+  "asrScore": {
+   "exact": 159,
+   "worst": 16
+  },
+  "asrHanafiWorst": 80,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0.5,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 182,
+   "worst": 7
+  },
+  "dhuhrScore": {
+   "exact": 181,
+   "worst": 4
+  },
+  "maghribScore": {
+   "exact": 156,
+   "worst": 13
+  },
+  "joint": {
+   "worst": 16,
+   "exact": 1125,
+   "within1": 1987,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 15,
+   "exact": 919,
+   "within1": 1970,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 128,
+     "within1": 337,
+     "worst": 3,
+     "mae": 0.73,
+     "bias": -0.63
+    },
+    "sunrise": {
+     "exact": 182,
+     "within1": 327,
+     "worst": 7,
+     "mae": 0.75,
+     "bias": 0.16
+    },
+    "dhuhr": {
+     "exact": 160,
+     "within1": 341,
+     "worst": 5,
+     "mae": 0.66,
+     "bias": -0.66
+    },
+    "asr": {
+     "exact": 136,
+     "within1": 322,
+     "worst": 15,
+     "mae": 1.36,
+     "bias": -0.22
+    },
+    "maghrib": {
+     "exact": 156,
+     "within1": 314,
+     "worst": 13,
+     "mae": 1.29,
+     "bias": -1.2
+    },
+    "isha": {
+     "exact": 157,
+     "within1": 329,
+     "worst": 6,
+     "mae": 0.78,
+     "bias": -0.63
+    }
+   }
+  }
+ },
+ "djibouti-tayib-nagad": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 344,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 66,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 350,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 132,
+   "worst": 1
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 344,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 357,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 336,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 1,
+   "exact": 1863,
+   "within1": 2196,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 1,
+   "exact": 1863,
+   "within1": 2196,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 344,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.04
+    },
+    "sunrise": {
+     "exact": 344,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.02
+    },
+    "dhuhr": {
+     "exact": 357,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": -0.02
+    },
+    "asr": {
+     "exact": 132,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.64,
+     "bias": -0.03
+    },
+    "maghrib": {
+     "exact": 336,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.08,
+     "bias": -0.03
+    },
+    "isha": {
+     "exact": 350,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.04,
+     "bias": 0.01
+    }
+   }
+  }
+ },
+ "djibouti-nashr-aldine": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 356,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 66,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 352,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": 0,
+  "asrScore": {
+   "exact": 127,
+   "worst": 2
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 352,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 356,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 356,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 2,
+   "exact": 1899,
+   "within1": 2195,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1899,
+   "within1": 2195,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03
+    },
+    "sunrise": {
+     "exact": 352,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.04,
+     "bias": 0.03
+    },
+    "dhuhr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03
+    },
+    "asr": {
+     "exact": 127,
+     "within1": 365,
+     "worst": 2,
+     "mae": 0.66,
+     "bias": 0.04
+    },
+    "maghrib": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.02
+    },
+    "isha": {
+     "exact": 352,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.04,
+     "bias": 0.03
+    }
+   }
+  }
+ },
+ "djibouti-ihsaan": {
+  "city": "Djibouti",
+  "coords": {
+   "lat": 11.5721,
+   "lon": 43.1456
+  },
+  "rows": 366,
+  "mode": "nearest",
+  "fajrAngle": 18,
+  "fajrBand": [
+   17.4,
+   18.6
+  ],
+  "fajrMargin": 0,
+  "fajrScore": {
+   "exact": 360,
+   "within1": 366,
+   "worst": 1
+  },
+  "ishaModel": "angle",
+  "ishaAngle": 17,
+  "ishaAngleBand": [
+   16.4,
+   17.6
+  ],
+  "ishaInterval": 67,
+  "ishaIntervalBand": null,
+  "ishaMargin": 0,
+  "ishaScore": {
+   "exact": 352,
+   "within1": 366,
+   "worst": 1
+  },
+  "asrSchool": "Shafi",
+  "asrMargin": -1,
+  "asrScore": {
+   "exact": 128,
+   "worst": 3
+  },
+  "asrHanafiWorst": 74,
+  "sunriseMargin": 0,
+  "dhuhrMargin": 0,
+  "maghribMargin": 0,
+  "sunriseScore": {
+   "exact": 358,
+   "worst": 1
+  },
+  "dhuhrScore": {
+   "exact": 356,
+   "worst": 1
+  },
+  "maghribScore": {
+   "exact": 357,
+   "worst": 1
+  },
+  "joint": {
+   "worst": 3,
+   "exact": 1911,
+   "within1": 2070,
+   "of": 2196
+  },
+  "fixed": {
+   "worst": 2,
+   "exact": 1895,
+   "within1": 2190,
+   "n": 2196,
+   "per": {
+    "fajr": {
+     "exact": 360,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": -0.02
+    },
+    "sunrise": {
+     "exact": 358,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": -0.02
+    },
+    "dhuhr": {
+     "exact": 356,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03
+    },
+    "asr": {
+     "exact": 112,
+     "within1": 360,
+     "worst": 2,
+     "mae": 0.71,
+     "bias": -0.01
+    },
+    "maghrib": {
+     "exact": 357,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.02,
+     "bias": -0.02
+    },
+    "isha": {
+     "exact": 352,
+     "within1": 366,
+     "worst": 1,
+     "mae": 0.04,
+     "bias": -0.02
+    }
+   }
+  }
+ }
+}

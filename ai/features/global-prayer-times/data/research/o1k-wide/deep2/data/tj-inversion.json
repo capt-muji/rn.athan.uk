@@ -1,0 +1,194 @@
+{
+ "2015-01": {
+  "fajrDep": -17.61,
+  "sunriseDep": -0.05,
+  "asrShadow": 1.63,
+  "maghribDep": -2.39,
+  "ishaDep": -19.04,
+  "noonMin": 754
+ },
+ "2015-07": {
+  "fajrDep": -18.04,
+  "sunriseDep": -0.03,
+  "asrShadow": 2.54,
+  "maghribDep": -2.28,
+  "ishaDep": -16.02,
+  "noonMin": 750
+ },
+ "2016-01": {
+  "fajrDep": -20.68,
+  "sunriseDep": -0.22,
+  "asrShadow": 1.6,
+  "maghribDep": -2.23,
+  "ishaDep": -18.84,
+  "noonMin": 755
+ },
+ "2016-07": {
+  "fajrDep": -17.48,
+  "sunriseDep": -0.33,
+  "asrShadow": 2.57,
+  "maghribDep": -1.95,
+  "ishaDep": -15.87,
+  "noonMin": 752
+ },
+ "2017-01": {
+  "fajrDep": -17.93,
+  "sunriseDep": -1.42,
+  "asrShadow": 1.58,
+  "maghribDep": -3.27,
+  "ishaDep": -19.94,
+  "noonMin": 746
+ },
+ "2017-07": {
+  "fajrDep": -17.06,
+  "sunriseDep": -1.32,
+  "asrShadow": 2.55,
+  "maghribDep": -2.36,
+  "ishaDep": -16.4,
+  "noonMin": 751
+ },
+ "2018-01": {
+  "fajrDep": -18.53,
+  "sunriseDep": -1.19,
+  "asrShadow": 1.72,
+  "maghribDep": -3.48,
+  "ishaDep": -20.24,
+  "noonMin": 748
+ },
+ "2018-07": {
+  "fajrDep": -15.96,
+  "sunriseDep": -1.05,
+  "asrShadow": 2.58,
+  "maghribDep": -3.04,
+  "ishaDep": -7.92,
+  "noonMin": 748
+ },
+ "2019-01": {
+  "fajrDep": -18.46,
+  "sunriseDep": -1.36,
+  "asrShadow": 1.7,
+  "maghribDep": -3.31,
+  "ishaDep": -20,
+  "noonMin": 749
+ },
+ "2019-07": {
+  "fajrDep": -16.28,
+  "sunriseDep": -1.22,
+  "asrShadow": 2.64,
+  "maghribDep": -3.15,
+  "ishaDep": -16.83,
+  "noonMin": 746
+ },
+ "2020-01": {
+  "fajrDep": -17.42,
+  "sunriseDep": -0.87,
+  "asrShadow": 1.56,
+  "maghribDep": -4.08,
+  "ishaDep": -20.86,
+  "noonMin": 743
+ },
+ "2020-07": {
+  "fajrDep": -16.32,
+  "sunriseDep": -1.09,
+  "asrShadow": 2.38,
+  "maghribDep": -2.63,
+  "ishaDep": -16.58,
+  "noonMin": 752
+ },
+ "2021-01": {
+  "fajrDep": -17.71,
+  "sunriseDep": -1.58,
+  "asrShadow": 1.56,
+  "maghribDep": -3.52,
+  "ishaDep": -20.22,
+  "noonMin": 745
+ },
+ "2021-07": {
+  "fajrDep": -16.86,
+  "sunriseDep": -1.08,
+  "asrShadow": 2.54,
+  "maghribDep": -2.77,
+  "ishaDep": -16.59,
+  "noonMin": 750
+ },
+ "2022-01": {
+  "fajrDep": -18.79,
+  "sunriseDep": -1.27,
+  "asrShadow": 1.74,
+  "maghribDep": -3.2,
+  "ishaDep": -19.95,
+  "noonMin": 750
+ },
+ "2022-07": {
+  "fajrDep": -16.63,
+  "sunriseDep": -1.07,
+  "asrShadow": 2.45,
+  "maghribDep": -2.35,
+  "ishaDep": -16.22,
+  "noonMin": 751
+ },
+ "2023-01": {
+  "fajrDep": -18.36,
+  "sunriseDep": -1.22,
+  "asrShadow": 1.71,
+  "maghribDep": -3.23,
+  "ishaDep": -19.99,
+  "noonMin": 750
+ },
+ "2023-07": {
+  "fajrDep": -16.03,
+  "sunriseDep": -0.87,
+  "asrShadow": 2.58,
+  "maghribDep": -2.28,
+  "ishaDep": -16.21,
+  "noonMin": 748
+ },
+ "2024-01": {
+  "fajrDep": -17.44,
+  "sunriseDep": -1.09,
+  "asrShadow": 1.74,
+  "maghribDep": -2.68,
+  "ishaDep": -19.37,
+  "noonMin": 750
+ },
+ "2024-07": {
+  "fajrDep": -16.52,
+  "sunriseDep": -1.09,
+  "asrShadow": 2.57,
+  "maghribDep": -2.61,
+  "ishaDep": -16.4,
+  "noonMin": 749
+ },
+ "2025-01": {
+  "fajrDep": -17.69,
+  "sunriseDep": -0.74,
+  "asrShadow": 1.69,
+  "maghribDep": -2.33,
+  "ishaDep": -19.02,
+  "noonMin": 751
+ },
+ "2025-07": {
+  "fajrDep": -16.52,
+  "sunriseDep": -1.16,
+  "asrShadow": 2.59,
+  "maghribDep": -2.81,
+  "ishaDep": -16.38,
+  "noonMin": 749
+ },
+ "2026-01": {
+  "fajrDep": -19.23,
+  "sunriseDep": -0.83,
+  "asrShadow": 1.66,
+  "maghribDep": -2.77,
+  "ishaDep": -19.5,
+  "noonMin": 752
+ },
+ "2026-07": {
+  "fajrDep": -15.53,
+  "sunriseDep": -0.91,
+  "asrShadow": 2.6,
+  "maghribDep": -2.88,
+  "ishaDep": -16.69,
+  "noonMin": 749
+ }
+}

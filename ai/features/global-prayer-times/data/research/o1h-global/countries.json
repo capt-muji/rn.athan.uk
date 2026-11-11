@@ -1,0 +1,2898 @@
+[
+ {
+  "id": "EG-ESA",
+  "country": "Egypt",
+  "iso2": "EG",
+  "lat": 30.0444,
+  "lon": 31.2357,
+  "place": "Cairo",
+  "tz": "Africa/Cairo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19.5
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.5,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "MA-HABOUS",
+  "country": "Morocco",
+  "iso2": "MA",
+  "lat": 34.0209,
+  "lon": -6.8416,
+  "place": "Rabat",
+  "tz": "Africa/Casablanca",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": -3,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 4,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "LK-ACJU",
+  "country": "Sri Lanka",
+  "iso2": "LK",
+  "lat": 6.9271,
+  "lon": 79.8612,
+  "place": "Colombo",
+  "tz": "Asia/Colombo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19.75
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.2,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": 2,
+   "asr": 2,
+   "maghrib": 2,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "TH-CICOT",
+  "country": "Thailand",
+  "iso2": "TH",
+  "lat": 13.7563,
+  "lon": 100.5018,
+  "place": "Bangkok",
+  "tz": "Asia/Bangkok",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19.8
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.1,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "KW-AJIRI",
+  "country": "Kuwait",
+  "iso2": "KW",
+  "lat": 29.3759,
+  "lon": 47.9774,
+  "place": "Kuwait City",
+  "tz": "Asia/Kuwait",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.5,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "ALGORITHM-SECONDARY"
+ },
+ {
+  "id": "ME-IZMR",
+  "country": "Montenegro",
+  "iso2": "ME",
+  "lat": 42.4304,
+  "lon": 19.2594,
+  "place": "Podgorica",
+  "tz": "Europe/Podgorica",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19.4
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.8,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "YE-AWQAF-SANAA",
+  "country": "Yemen",
+  "iso2": "YE",
+  "lat": 15.3694,
+  "lon": 44.191,
+  "place": "Sanaa",
+  "tz": "Asia/Aden",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 16,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 10,
+   "asr": 0,
+   "maghrib": 10,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "JERUSALEM-AWQAF",
+  "country": "Jerusalem (Awqaf)",
+  "iso2": null,
+  "lat": 31.7683,
+  "lon": 35.2137,
+  "place": "Jerusalem",
+  "tz": "Asia/Jerusalem",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -3.5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": "down",
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "AE-AWQAF",
+  "country": "United Arab Emirates",
+  "iso2": "AE",
+  "lat": 25.2048,
+  "lon": 55.2708,
+  "place": "Dubai",
+  "tz": "Asia/Dubai",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.2
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.2,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": -1
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "down",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "BA-RIJASET",
+  "country": "Bosnia and Herzegovina",
+  "iso2": "BA",
+  "lat": 43.8563,
+  "lon": 18.4131,
+  "place": "Sarajevo",
+  "tz": "Europe/Sarajevo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 16,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 1,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "BE-EMB",
+  "country": "Belgium",
+  "iso2": "BE",
+  "lat": 50.8503,
+  "lon": 4.3517,
+  "place": "Brussels",
+  "tz": "Europe/Brussels",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": 2,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "TN-INM",
+  "country": "Tunisia",
+  "iso2": "TN",
+  "lat": 36.8065,
+  "lon": 10.1815,
+  "place": "Tunis",
+  "tz": "Africa/Tunis",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": 7,
+   "asr": 0,
+   "maghrib": 2,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": "up",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "KZ-MUFTIYAT",
+  "country": "Kazakhstan",
+  "iso2": "KZ",
+  "lat": 51.1605,
+  "lon": 71.4704,
+  "place": "Astana",
+  "tz": "Asia/Almaty",
+  "fajr": {
+   "kind": "angle",
+   "angle": 15
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "switch": {
+    "field": "latitude",
+    "thresholdDeg": 48,
+    "below": "A",
+    "atOrAbove": "B"
+   },
+   "sets": {
+    "A": {
+     "fajr": 0,
+     "sunrise": -3,
+     "dhuhr": 3,
+     "asr": 3,
+     "maghrib": 3,
+     "isha": 0
+    },
+    "B": {
+     "fajr": 0,
+     "sunrise": -5,
+     "dhuhr": 5,
+     "asr": 5,
+     "maghrib": 5,
+     "isha": 0
+    }
+   }
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "KG-MUFTIYAT",
+  "country": "Kyrgyzstan",
+  "iso2": "KG",
+  "lat": 42.8746,
+  "lon": 74.5698,
+  "place": "Bishkek",
+  "tz": "Asia/Bishkek",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "twilightRatio",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": {
+    "ratio": 0.7778,
+    "ratioFraction": "7/9",
+    "ratioBand": [
+     0.775,
+     0.7778
+    ],
+    "constantMinutes": 3.5,
+    "constantBand": [
+     3.2,
+     3.5
+    ],
+    "formula": "isha = displayed maghrib + round(r x (fajr - sunrise) + c)",
+    "fallbackAngle": 15.89,
+    "provenance": "#6926 M2 (Osh 365 days; joint fit r=0.776, per-city MAE 0.487/0.484; 3/4 refuted at 0/365), #6921 L1 (Bishkek 359/365 within 1)"
+   },
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "MV-MUIS",
+  "country": "Maldives",
+  "iso2": "MV",
+  "lat": 4.1755,
+  "lon": 73.5093,
+  "place": "Male",
+  "tz": "Indian/Maldives",
+  "fajr": {
+   "kind": "angle",
+   "angle": 20
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 5,
+   "sunrise": -1,
+   "dhuhr": 4,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": 4
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "SG-MUIS",
+  "country": "Singapore",
+  "iso2": "SG",
+  "lat": 1.3521,
+  "lon": 103.8198,
+  "place": "Singapore",
+  "tz": "Asia/Singapore",
+  "fajr": {
+   "kind": "angle",
+   "angle": 20
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 2,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "up",
+   "sunrise": "up",
+   "dhuhr": "up",
+   "asr": "up",
+   "maghrib": "up",
+   "isha": "up",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "MY-JAKIM",
+  "country": "Malaysia",
+  "iso2": "MY",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Asia/Kuala_Lumpur",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 2,
+   "sunrise": -1,
+   "dhuhr": 1.5,
+   "asr": 2,
+   "maghrib": 0,
+   "isha": 2
+  },
+  "rounding": {
+   "fajr": "up",
+   "sunrise": "down",
+   "dhuhr": "nearest",
+   "asr": "up",
+   "maghrib": "up",
+   "isha": "up",
+   "sunset": "up"
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "TR-DIYANET-DOMESTIC",
+  "country": "Turkey",
+  "iso2": "TR",
+  "lat": 41.0082,
+  "lon": 28.9784,
+  "place": "Istanbul",
+  "tz": "Europe/Istanbul",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 7,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "EU-DIYANET-UNIFIED",
+  "country": "Diyanet European unified scheme (DITIB Germany, IFiS Sweden, unified European calendars)",
+  "iso2": null,
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": null,
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 16,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "F",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "GB-WIFAQUL-ULAMA",
+  "country": "United Kingdom",
+  "iso2": "GB",
+  "lat": 53.7485,
+  "lon": -2.4825,
+  "place": "Blackburn",
+  "tz": "Europe/London",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 4,
+   "asr": 0,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "IS-FELAG",
+  "country": "Iceland",
+  "iso2": "IS",
+  "lat": 64.1466,
+  "lon": -21.9426,
+  "place": "Reykjavik",
+  "tz": "Atlantic/Reykjavik",
+  "fajr": {
+   "kind": "angle",
+   "angle": 14.2
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 14,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "GR-ATHENS",
+  "country": "Greece (Athens)",
+  "iso2": "GR",
+  "lat": 37.9838,
+  "lon": 23.7275,
+  "place": "Athens",
+  "tz": "Europe/Athens",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "GR-KOMOTINI",
+  "country": "Greece (Komotini)",
+  "iso2": "GR",
+  "lat": 41.1194,
+  "lon": 25.4036,
+  "place": "Komotini",
+  "tz": "Europe/Athens",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": null,
+   "maghrib": 6,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "BG-SOFIA",
+  "country": "Bulgaria (Sofia)",
+  "iso2": "BG",
+  "lat": 42.6977,
+  "lon": 23.3219,
+  "place": "Sofia",
+  "tz": "Europe/Sofia",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.25
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.25,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -8,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 8,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "GB-LONDON-INTERVAL-TABLE",
+  "country": "United Kingdom (London)",
+  "iso2": "GB",
+  "lat": 51.5074,
+  "lon": -0.1278,
+  "place": "London",
+  "tz": "Europe/London",
+  "fajr": {
+   "kind": "intervalTable",
+   "angle": null
+  },
+  "isha": {
+   "kind": "intervalTable",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": 5,
+   "asr": 2,
+   "maghrib": null,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "OM-MARA",
+  "country": "Oman",
+  "iso2": "OM",
+  "lat": 23.588,
+  "lon": 58.3829,
+  "place": "Muscat",
+  "tz": "Asia/Muscat",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "up",
+   "sunrise": "up",
+   "dhuhr": "up",
+   "asr": "up",
+   "maghrib": "up",
+   "isha": "up",
+   "sunset": "up"
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "CZ-CENTRUM",
+  "country": "Czechia",
+  "iso2": "CZ",
+  "lat": 50.08,
+  "lon": 14.42,
+  "place": "Praha",
+  "tz": "Europe/Prague",
+  "fajr": {
+   "kind": "angle",
+   "angle": 12
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 12,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -3.5,
+   "dhuhr": 4.5,
+   "asr": 0,
+   "maghrib": 2.5,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "CL-CIS",
+  "country": "Chile",
+  "iso2": "CL",
+  "lat": -33.4489,
+  "lon": -70.6693,
+  "place": "Santiago",
+  "tz": "America/Santiago",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 6,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 6
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "SA-KACST",
+  "country": "Saudi Arabia",
+  "iso2": "SA",
+  "lat": 21.4225,
+  "lon": 39.8262,
+  "place": "Makkah (fit point)",
+  "tz": "Asia/Riyadh",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.5
+  },
+  "isha": {
+   "kind": "ramadanInterval",
+   "angle": null,
+   "ramadanInterval": 120,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "IQ-DIWAN",
+  "country": "Iraq",
+  "iso2": "IQ",
+  "lat": 33.3152,
+  "lon": 44.3661,
+  "place": "Baghdad",
+  "tz": "Asia/Baghdad",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.1
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 16.9,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 4,
+   "maghrib": 3,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "HK-MASJIDAL",
+  "country": "Hong Kong",
+  "iso2": "HK",
+  "lat": 22.2988,
+  "lon": 114.1722,
+  "place": "Kowloon",
+  "tz": "Asia/Hong_Kong",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.4
+  },
+  "isha": {
+   "kind": "interval",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 1,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "BD-IFB",
+  "country": "Bangladesh",
+  "iso2": "BD",
+  "lat": 23.8103,
+  "lon": 90.4125,
+  "place": "Dhaka",
+  "tz": "Asia/Dhaka",
+  "fajr": {
+   "kind": "angle",
+   "angle": 19.25
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.65,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "fajr": 8,
+   "sunrise": 0,
+   "dhuhr": 4,
+   "asr": 0,
+   "maghrib": 4,
+   "isha": -1
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "LY-MUAZZIN",
+  "country": "Libya",
+  "iso2": "LY",
+  "lat": 32.8872,
+  "lon": 13.1913,
+  "place": "Tripoli",
+  "tz": "Africa/Tripoli",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.15
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.1,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": 0,
+   "dhuhr": 4,
+   "asr": 0,
+   "maghrib": 4,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "JO-AWQAF",
+  "country": "Jordan",
+  "iso2": "JO",
+  "lat": 31.9539,
+  "lon": 35.9106,
+  "place": "Amman",
+  "tz": "Asia/Amman",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -6,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 7,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": "down"
+  },
+  "grade": "A",
+  "bakeTier": "ALGORITHM-SECONDARY"
+ },
+ {
+  "id": "IR-NATIONAL",
+  "country": "Iran",
+  "iso2": "IR",
+  "lat": 35.6892,
+  "lon": 51.389,
+  "place": "Tehran",
+  "tz": "Asia/Tehran",
+  "fajr": {
+   "kind": "angle",
+   "angle": 17.71
+  },
+  "isha": {
+   "kind": "notPublished",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": true
+  },
+  "asr": null,
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": 0,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "SD-MINISTRY",
+  "country": "Sudan",
+  "iso2": "SD",
+  "lat": 15.5007,
+  "lon": 32.5599,
+  "place": "Khartoum",
+  "tz": "Africa/Khartoum",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.87
+  },
+  "isha": {
+   "kind": "interval",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "ALGORITHM-SECONDARY"
+ },
+ {
+  "id": "IT-UCOII",
+  "country": "Italy",
+  "iso2": "IT",
+  "lat": 41.9028,
+  "lon": 12.4964,
+  "place": "Rome",
+  "tz": "Europe/Rome",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": 0,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "CI-COSIM",
+  "country": "Cote d'Ivoire",
+  "iso2": "CI",
+  "lat": 5.3599,
+  "lon": -4.0083,
+  "place": "Abidjan",
+  "tz": "Africa/Abidjan",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "JAMIAT-KZN",
+  "country": "Southern Africa federation (South Africa, Zambia, Malawi, Botswana, Tanzania, Eswatini, Lesotho, Zimbabwe, Mozambique, plus outriders)",
+  "iso2": "ZA",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "per town",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": "down"
+  },
+  "grade": "community",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "FAZILET-WORLD",
+  "country": "Fazilet Profile A (World)",
+  "iso2": null,
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(110 cities)",
+  "tz": "per city",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -3,
+   "dhuhr": 7,
+   "asr": 5,
+   "maghrib": 8,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": "up",
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "community",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "FAZILET-OTTOMAN",
+  "country": "Fazilet Profile B (Ottoman sphere: TR GR BG RS BA AL MK XK)",
+  "iso2": null,
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(19 cities)",
+  "tz": "per city",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -7,
+   "dhuhr": 10,
+   "asr": 10,
+   "maghrib": 8,
+   "isha": 4
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": "up",
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "community",
+  "bakeTier": "ALGORITHM-PUBLISHED"
+ },
+ {
+  "id": "RU-DUMRT",
+  "country": "Russia (Tatarstan)",
+  "iso2": "RU",
+  "lat": 55.7963,
+  "lon": 49.1088,
+  "place": "Kazan",
+  "tz": "Europe/Moscow",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "up",
+   "dhuhr": "up",
+   "asr": "up",
+   "maghrib": "up",
+   "isha": "up",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "SI-VAKTIJA",
+  "country": "Slovenia",
+  "iso2": "SI",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(6 cities)",
+  "tz": "Europe/Ljubljana",
+  "fajr": {
+   "kind": "seasonalSweep",
+   "angle": null
+  },
+  "isha": {
+   "kind": "seasonalSweep",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -6,
+   "dhuhr": 2,
+   "asr": 0,
+   "maghrib": 6,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "CY-KKTC",
+  "country": "Northern Cyprus (KKTC)",
+  "iso2": "CY",
+  "lat": 35.1856,
+  "lon": 33.3823,
+  "place": "Lefkosa",
+  "tz": "Asia/Nicosia",
+  "fajr": {
+   "kind": "angle",
+   "angle": 17.5
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.3,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": -1,
+   "sunrise": -5,
+   "dhuhr": 7,
+   "asr": 6,
+   "maghrib": 9,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "UA-DUMU",
+  "country": "Ukraine",
+  "iso2": "UA",
+  "lat": 50.4501,
+  "lon": 30.5233,
+  "place": "Kyiv",
+  "tz": "Europe/Kyiv",
+  "fajr": {
+   "kind": "intervalTable",
+   "angle": null
+  },
+  "isha": {
+   "kind": "intervalTable",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 5,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "AT-IZW",
+  "country": "Austria",
+  "iso2": "AT",
+  "lat": 48.2082,
+  "lon": 16.3738,
+  "place": "Vienna",
+  "tz": "Europe/Vienna",
+  "fajr": {
+   "kind": "seasonalSweep",
+   "angle": null
+  },
+  "isha": {
+   "kind": "seasonalSweep",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 2.5,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "PT-HSALAH-HUB",
+  "country": "Portugal",
+  "iso2": "PT",
+  "lat": 38.7223,
+  "lon": -9.1393,
+  "place": "Lisboa",
+  "tz": "Europe/Lisbon",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 12.5,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 4,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": "down"
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "ES-CCIM",
+  "country": "Spain",
+  "iso2": "ES",
+  "lat": 40.4168,
+  "lon": -3.7038,
+  "place": "Madrid",
+  "tz": "Europe/Madrid",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.25
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": -2,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 2,
+   "isha": 1
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": "down"
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "FR-GMS",
+  "country": "France",
+  "iso2": "FR",
+  "lat": 48.5734,
+  "lon": 7.7521,
+  "place": "Strasbourg",
+  "tz": "Europe/Paris",
+  "fajr": {
+   "kind": "seasonalSweep",
+   "angle": null
+  },
+  "isha": {
+   "kind": "seasonalSweep",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": -7,
+   "dhuhr": 5,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": null
+ },
+ {
+  "id": "NO-RABITA",
+  "country": "Norway",
+  "iso2": "NO",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Europe/Oslo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 16
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "NO-MAWAQEET",
+  "country": "Norway",
+  "iso2": "NO",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(4 cities)",
+  "tz": "Europe/Oslo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "EE-EIC",
+  "country": "Estonia",
+  "iso2": "EE",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Europe/Tallinn",
+  "fajr": {
+   "kind": "angle",
+   "angle": 15
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "SE-MOSQUE",
+  "country": "Sweden",
+  "iso2": "SE",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Europe/Stockholm",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.1
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 16.2,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "FI-PORTAL",
+  "country": "Finland",
+  "iso2": "FI",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Europe/Helsinki",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "UZ-ISLOM",
+  "country": "Uzbekistan",
+  "iso2": "UZ",
+  "lat": 41.300872,
+  "lon": 69.241813,
+  "place": "Toshkent (Tashkent)",
+  "tz": "Asia/Tashkent",
+  "fajr": {
+   "kind": "angle",
+   "angle": 15.5
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15.5,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "ALGORITHM-SECONDARY"
+ },
+ {
+  "id": "BR-IIB",
+  "country": "Brazil",
+  "iso2": "BR",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "America/Sao_Paulo",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "DJ-COMMUNITY",
+  "country": "Djibouti",
+  "iso2": "DJ",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(6 cities)",
+  "tz": "Africa/Djibouti",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "KE-JAMIA",
+  "country": "Kenya",
+  "iso2": "KE",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Africa/Nairobi",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.2
+  },
+  "isha": {
+   "kind": "notPublished",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": true
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": 0,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "PH-NCMF",
+  "country": "Philippines",
+  "iso2": "PH",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Asia/Manila",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": null
+ },
+ {
+  "id": "AU-UMA",
+  "country": "Australia",
+  "iso2": "AU",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Australia/Sydney",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "NZ-FIANZ",
+  "country": "New Zealand",
+  "iso2": "NZ",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Pacific/Auckland",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": null
+ },
+ {
+  "id": "FJ-FML",
+  "country": "Fiji",
+  "iso2": "FJ",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Pacific/Fiji",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": 3,
+   "asr": null,
+   "maghrib": 3,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "community",
+  "bakeTier": null
+ },
+ {
+  "id": "TJ-SHURO",
+  "country": "Tajikistan",
+  "iso2": "TJ",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(None cities)",
+  "tz": "Asia/Dushanbe",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": null
+ },
+ {
+  "id": "TT-MASJIDBOX",
+  "country": "Trinidad and Tobago",
+  "iso2": "TT",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(4 cities)",
+  "tz": "America/Port_of_Spain",
+  "fajr": {
+   "kind": "angle",
+   "angle": null
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": null,
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "grade": "candidate",
+  "bakeTier": null
+ },
+ {
+  "id": "RU-CDUM",
+  "country": "Russia",
+  "iso2": "RU",
+  "lat": null,
+  "lon": null,
+  "place": "zoneTable(21 cities)",
+  "tz": "Europe/Moscow",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": {
+   "fajr": -2.6,
+   "sunrise": -2.6,
+   "dhuhr": 1.4,
+   "asr": 1.4,
+   "maghrib": 1.4,
+   "isha": 1.4
+  },
+  "rounding": {
+   "fajr": "down",
+   "sunrise": "down",
+   "dhuhr": "down",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-ANNUAL"
+ },
+ {
+  "id": "XK-BIK",
+  "country": "Kosovo",
+  "iso2": "XK",
+  "lat": 42.6629,
+  "lon": 21.1655,
+  "place": "Pristina",
+  "tz": "Europe/Belgrade",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.9
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 21,
+   "sunrise": -6,
+   "dhuhr": 4,
+   "asr": 6,
+   "maghrib": 8,
+   "isha": 10
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "grade": "provisional",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "NE-BUTIN",
+  "country": "Niger",
+  "iso2": "NE",
+  "lat": 13.85,
+  "lon": 2.18,
+  "place": "Niamey",
+  "tz": "Africa/Niamey",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "interval",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "A",
+  "bakeTier": "BAKE-MULTIYEAR"
+ },
+ {
+  "id": "RU-DUMRF-MOSCOW",
+  "country": "Russia (Moscow)",
+  "iso2": "RU",
+  "lat": 55.7558,
+  "lon": 37.6173,
+  "place": "Moscow",
+  "tz": "Europe/Moscow",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 15,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 0,
+   "sunrise": -5,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 5,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "grade": "provisional",
+  "bakeTier": null
+ },
+ {
+  "id": "QA-MOI",
+  "country": "Qatar",
+  "iso2": "QA",
+  "lat": 25.25,
+  "lon": 51.6,
+  "place": "Doha (the portal's own printed coordinates)",
+  "tz": "Asia/Qatar",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18
+  },
+  "isha": {
+   "kind": "intervalAfterRounding",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": null
+  },
+  "asr": "shafi",
+  "margins": {
+   "fajr": 1,
+   "sunrise": 1,
+   "dhuhr": 0,
+   "asr": 0.5,
+   "maghrib": 1,
+   "isha": 0
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest"
+  },
+  "grade": "A",
+  "bakeTier": "RECIPE (daily-class surface; year evidence lives in the Web Archive)"
+ },
+ {
+  "id": "ID-KEMENAG",
+  "country": "Indonesia",
+  "iso2": "ID",
+  "lat": -6.2088,
+  "lon": 106.8456,
+  "place": "Jakarta",
+  "tz": "Asia/Jakarta",
+  "fajr": {
+   "kind": "angle",
+   "angle": 20.0
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.0,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": null,
+  "rounding": null,
+  "grade": "candidate (published parameters, MABIMS family)",
+  "bakeTier": "BAKE-ANNUAL",
+  "note": "Subuh 20 / Isya 18 central per Kemenag; world-table row"
+ },
+ {
+  "id": "PK-DEFACTO",
+  "country": "Pakistan (community de facto)",
+  "iso2": "PK",
+  "lat": 24.86,
+  "lon": 67.01,
+  "place": "Karachi",
+  "tz": "Asia/Karachi",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.0
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.0,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": null,
+  "rounding": null,
+  "grade": "community de facto (Karachi method)",
+  "bakeTier": null,
+  "note": "No state timetable; Karachi university fatwas read 18/18"
+ },
+ {
+  "id": "IN-DEFACTO",
+  "country": "India (community de facto)",
+  "iso2": "IN",
+  "lat": 28.61,
+  "lon": 77.21,
+  "place": "Delhi",
+  "tz": "Asia/Kolkata",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.0
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 18.0,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "hanafi",
+  "margins": null,
+  "rounding": null,
+  "grade": "community de facto (Karachi method)",
+  "bakeTier": null,
+  "note": "Deoband 18/18 Hanafi; world-table row"
+ },
+ {
+  "id": "NG-SPA",
+  "country": "Nigeria (community reference)",
+  "iso2": "NG",
+  "lat": 9.06,
+  "lon": 7.49,
+  "place": "Abuja",
+  "tz": "Africa/Lagos",
+  "fajr": {
+   "kind": "angle",
+   "angle": 18.0
+  },
+  "isha": {
+   "kind": "angle",
+   "angle": 17.0,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false
+  },
+  "asr": "shafi",
+  "margins": null,
+  "rounding": null,
+  "grade": "community (national SPA reads MWL 18/17)",
+  "bakeTier": null,
+  "note": "C35 bundle constants verbatim"
+ }
+]

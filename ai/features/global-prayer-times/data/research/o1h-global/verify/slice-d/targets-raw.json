@@ -1,0 +1,1521 @@
+{
+ "CL-CIS": {
+  "id": "CL-CIS",
+  "country": "Chile",
+  "iso2": "CL",
+  "authority": "Centro Islamico de Chile (Mezquita As-Salam, Santiago), one monthly athan PDF per city",
+  "scope": "national, 18 cities from 18.5 S to 53.2 S",
+  "tier": "authority",
+  "recipeStatus": "fitted",
+  "bakeTier": "BAKE-ANNUAL",
+  "timezone": {
+   "iana": "America/Santiago",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6966 (sheets carry the civil clock; the +6 min workbook shift is separate from DST)"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": {
+    "lat": -33.4489,
+    "lon": -70.6693,
+    "place": "Santiago"
+   },
+   "zoneTable": {
+    "cities": 18,
+    "latitudeSpanDeg": 34.7,
+    "cityTable": null,
+    "provenance": "T-668 #6966 (18 city-centre coordinates, 18.5 S to 53.2 S)"
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6952 (one monthly PDF per city for eighteen cities, Arica to Punta Arenas)"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": null,
+   "provenance": "T-668 #6966 (Shafi; Hanafi is 54 to 64 min away, median -63.8 in November and -53.9 in October)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18,
+   "provenance": "T-668 #6966 (per-city fits 17.85-18.06, rms 0.31-0.55)"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6966 (per-city fits 16.94-17.06)"
+  },
+  "margins": {
+   "fajr": 6,
+   "sunrise": 6,
+   "dhuhr": 6,
+   "asr": 6,
+   "maghrib": 6,
+   "isha": 6
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6966 (a constant +6.18 min on all six columns, city- and month-invariant; the workbook's own clock offset, not a safety margin: it delays shuruq too, and without it the source will not merge with an unshifted 18/17 feed)",
+   "perField": {}
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": "nearest"
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6966 (to the minute, best modelled as nearest)",
+   "perField": {}
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "nightPortionSplit",
+   "parameters": {
+    "appliesAt": "|lat| >= about 45 S in the summer months",
+    "fajrPortion": 0.3063,
+    "ishaPortion": 0.2779,
+    "fajrFormula": "fajr = sunrise - 0.3063 N, for the whole month",
+    "ishaFormula": "isha = min(17 deg, sunset + 0.2779 N)",
+    "nightDefinition": "N = sunrise(d) - sunset(d-1), the previous night",
+    "portionMeaning": "18.38/60 and 16.68/60 of the night, NOT adhan's angle/60",
+    "handover": "the two columns switch on different days: fajr month-wide, isha hands over over 3-4 November - the angle branch is the only fit on 1-2 November (it is later than the portion by 4.8 and 1.8 min), 3 November is inside a minute on both (0.87 angle, 0.42 portion) and is not separable, and the portion wins on every day from 4 November",
+    "seasonality": "the branch is seasonal: July 2025 and the Octobers are pure angle, and the seam sits at the workbook boundary"
+   },
+   "provenance": "T-668 #6966 (Punta Arenas at 53 S fully characterised; the publisher runs the fajr branch on every day of the month, including days where the 18 degree angle still exists) and #6991 (C43: both constants reproduce to 0.0002/0.0003, the every-day test passes 30/30 with the portion residual never over 0.79 min while the angle residual runs to +93.41 min on the sixteen days the 18 degree fajr still exists - so the branch is measurable from 1 November, not only after the angle fails. The corrected claim is the crossover, one day wide and sub-minute)"
+  },
+  "rollover": {
+   "rule": "a 00:xx isha belongs to the previous civil date",
+   "belongsToDate": "the prayer's own astronomical date, not the civil date printed",
+   "notTruncation": "the November 23:59 values are the last month the isha fits inside its own date, not a clip",
+   "provenance": "T-668 #6966 (archived Decembers print post-midnight isha as 00:xx on its own date's row)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "margins",
+   "rounding.nearest",
+   "highLatitude.nightPortionSplit",
+   "rollover.belongsToDate",
+   "reference.zoneTable"
+  ],
+  "evidence": {
+   "comments": [
+    "#6952",
+    "#6966",
+    "#6991"
+   ],
+   "commentRefs": [
+    "T-668#6952",
+    "T-668#6966",
+    "T-668#6991"
+   ],
+   "measuredDays": 61,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6966: November and October for all 18 cities (a 30/31-day pair), validated 0 mismatches against C7's independent captures. No full year exists on the publisher's site",
+   "grade": "provisional",
+   "gradeBasis": "Recipe-tier with a polar branch: one recipe reproduces 540 November and 558 October rows across 34.7 degrees of latitude, seventeen cities within 2 min. Single published cycle only, so it cannot reach grade A (#6943)",
+   "fitYears": 1,
+   "multiYearProven": false,
+   "years": [
+    2025,
+    2026
+   ]
+  },
+  "gaps": [
+   "No multi-year path from the publisher: uploads are purged and year slugs 404. Wayback holds 190 PDFs across five years in three naming eras, but no contiguous run, so the series must be built forward month by month.",
+   "Ten months of the annual cycle are unmeasured: only October and November are captured.",
+   "The polar branch's seam dates are known only for the captured months; where it switches in a different year is unverified.",
+   "The 18 city coordinates are in the C17 archive, not in this object."
+  ],
+  "notes": [
+   "Publishing defects on record: the Vina del Mar button links October's sheet while November exists unlinked, and December publishes around 29 November.",
+   "This is the census's only publisher spanning 34.7 degrees of latitude with a stated branch, so it is the practical test case for the app's high-latitude display policy."
+  ]
+ },
+ "CI-COSIM": {
+  "id": "CI-COSIM",
+  "country": "Cote d'Ivoire",
+  "iso2": "CI",
+  "authority": "COSIM (Conseil Superieur des Imams et des Affaires Islamiques), national athan JSON API",
+  "scope": "national community feed, per city",
+  "tier": "community",
+  "recipeStatus": "surface-only",
+  "bakeTier": "ALGORITHM-PUBLISHED",
+  "timezone": {
+   "iana": "Africa/Abidjan",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6958 (UTC+0 year-round; the API returns clock times)"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": {
+    "lat": 5.3599,
+    "lon": -4.0083,
+    "place": "Abidjan"
+   },
+   "zoneTable": {
+    "cities": null,
+    "cityTable": null,
+    "provenance": "T-668 #6958 (per-city today-only endpoint; the Vue city picker needs a browser render to enumerate)"
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6958"
+  },
+  "asr": {
+   "primary": null,
+   "shadowFactor": null,
+   "alternate": null,
+   "provenance": "T-668 #6958 does not characterise the asr row"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": null,
+   "provenance": "T-668 #6958: not fitted (today-only API, one day's Abidjan dhuhr gated against solar noon)"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6958: not fitted"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6958: no margin is measured. The one verification performed is that Abidjan's dhuhr passes the solar gate, so the feed is computed athan rather than a congregation schedule",
+   "perField": {}
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "silent",
+   "perField": {}
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6958 (5.4 N)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "reference.zoneTable"
+  ],
+  "evidence": {
+   "comments": [
+    "#6958"
+   ],
+   "commentRefs": [
+    "T-668#6958"
+   ],
+   "measuredDays": 1,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6958: one day's Abidjan dhuhr",
+   "grade": "candidate",
+   "gradeBasis": "The first West African federation API in the census: a public national athan JSON endpoint, today-only per city. Surface confirmed, recipe not fitted",
+   "fitYears": 0,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "Today-only per city, so a recipe needs a daily poll across a year or a browser render of the city picker plus dated queries.",
+   "No angle, margin or rounding is measured.",
+   "The other 21 West African tables in the wave are mawaqit mosque pages, not federation data; only COSIM is a national surface."
+  ],
+  "notes": [
+   "Most of the West African mosque layer is congregation-only: of 24 dated tables in C20, 14 fail the solar gate on dhuhr alone (fixed clock times 27 to 89 minutes after noon). COSIM is the exception because its feed is computed."
+  ]
+ },
+ "JAMIAT-KZN": {
+  "id": "JAMIAT-KZN",
+  "country": "Southern Africa federation (South Africa, Zambia, Malawi, Botswana, Tanzania, Eswatini, Lesotho, Zimbabwe, Mozambique, plus outriders)",
+  "iso2": "ZA",
+  "authority": "Jamiatul Ulama KZN perpetual timetable generator",
+  "scope": "federation, 494 towns across 23 countries",
+  "tier": "community",
+  "recipeStatus": "fitted",
+  "bakeTier": "ALGORITHM-PUBLISHED",
+  "timezone": {
+   "iana": "per town",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6957, #6965 (each town row carries its own UTC offset)"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": null,
+   "zoneTable": {
+    "towns": 494,
+    "countries": 23,
+    "coordinates": true,
+    "timezonePerTown": true,
+    "townTable": null,
+    "countryCounts": {
+     "South Africa": 365,
+     "Zambia": 34,
+     "Malawi": 29,
+     "Botswana": 13,
+     "Tanzania": 11,
+     "Eswatini": 11,
+     "Lesotho": 8,
+     "Zimbabwe": 5,
+     "Saudi Arabia": 3,
+     "Mozambique": 2,
+     "outriders": 13
+    },
+    "provenance": "T-668 #6965 (all 494 towns captured, November 2026, 30 rows each; country resolved from a 1:50m boundary file)"
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6965: the margin set is town-invariant, so one object plus the town table is the whole reference. Per-country objects would duplicate the same recipe 23 times"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": "hanafi",
+   "provenance": "T-668 #6965 (both Asr schools printed bare)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18,
+   "provenance": "T-668 #6965 (fajr bare 18 degrees, margin 0)"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": 15,
+   "alternateAngles": {
+    "hanafi": 18
+   },
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6965 (CORRECTED against C5's reading: isha Shafi is a SEPARATE 15-deg angle, not an interval; isha Hanafi is a clean 18 deg with no margin)"
+  },
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 5,
+   "asr": 0,
+   "maghrib": 3,
+   "isha": 0
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6965 (zuhr = transit + 5, maghrib = astro + 3, fajr and isha bare, town-invariant across 493 of 494 towns)",
+   "perField": {
+    "sunrise": "T-668 #6965 (sunrise bare; the printed sunset row is astro - 3 and the printed maghrib is astro + 3, so the two are not the same column)"
+   }
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "down",
+   "maghrib": "down",
+   "isha": "down",
+   "sunset": "down"
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6965 (the seven morning and noon columns round to nearest, the six afternoon and evening columns truncate; applying the split lifts exact from 74.8 to 89.4 pc)",
+   "perField": {}
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6965 (no town reaches a latitude where the angles fail)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": {
+    "kind": "sunrisePlus",
+    "minutes": 15,
+    "label": "ishraaq",
+    "provenance": "T-668 #6965"
+   },
+   "duha": {
+    "kind": "sunrisePlusNightPortion",
+    "portion": 0.25,
+    "extraMinutes": 1,
+    "provenance": "T-668 #6965, C15 report (salaatud dhuha = sunrise + 0.25 x (sunset - sunrise) + 1 min)"
+   },
+   "haraj": null,
+   "suhoor": {
+    "kind": "fajrMinus",
+    "minutes": 5,
+    "provenance": "T-668 #6965"
+   },
+   "iftar": null
+  },
+  "emulation": [
+   "margins",
+   "ishaRule.alternateAngles",
+   "derivedTimes",
+   "mixed rounding within one object",
+   "reference.zoneTable"
+  ],
+  "evidence": {
+   "comments": [
+    "#6957",
+    "#6965"
+   ],
+   "commentRefs": [
+    "T-668#6957",
+    "T-668#6965"
+   ],
+   "measuredDays": 30,
+   "fullYear": true,
+   "fullYearBasis": "T-668 #6965: 494 towns x 30 November days = 192,660 cells, all captured; the served table is byte-identical across 2022/2024/2026/2028",
+   "grade": "community",
+   "gradeBasis": "89.38 pc exact and 99.79 pc within-1 over 192,660 cells under the corrected basis. Community tier: a federation generator, never an authority. The multi-year test is met only nominally, because the years are relabelled copies of one table",
+   "fitYears": 1,
+   "multiYearProven": false,
+   "years": [
+    2022,
+    2024,
+    2026,
+    2028
+   ]
+  },
+  "gaps": [
+   "The served table is FROZEN: the year parameter relabels dates and recomputes weekdays, changing nothing else, so all 13 columns are byte-identical across years. Against adhan per year the non-leap years score ~79 pc exact and leap years ~68 pc, within-1 staying 96.7-98.5 pc.",
+   "The table is locked to one leap phase and emits a phantom 29-Feb row dated 1 March in non-leap years, which the site's JavaScript deletes client-side.",
+   "Local variants exist: Isipingo Beach carries ishraaq +20, Phuthaditjhaba and Witsieshoek carry a Drakensberg elevation horizon correction, and Blantyre's anchor offset is unexplained.",
+   "Country assignment came from a boundary file with the label suffix first, so the 23-country count includes three Saudi towns and outriders in twelve further countries.",
+   "The zawaal row (transit - 5) is a seventh derived column the schema has no key for; zuhr = zawaal + 10 follows from it."
+  ],
+  "notes": [
+   "One federation object with the town table, not one object per country: the margins are town-invariant and the country is a property of the town row. This is the judgement the brief asked to be documented.",
+   "A related keyless API (Salaah Times, 486 towns, 20 countries) transcribes Jamiat towns verbatim plus BMA, which makes it a mirror rather than a second authority."
+  ]
+ },
+ "BR-IIB": {
+  "id": "BR-IIB",
+  "country": "Brazil",
+  "iso2": "BR",
+  "authority": "Instituto Islamico Brasileiro (IIB), daily and month tables for 25 cities",
+  "scope": "25-city tables; Sao Paulo fitted (7 days, 4-10 October 2026)",
+  "tier": "community",
+  "recipeStatus": "fitted",
+  "bakeTier": "BAKE-ANNUAL",
+  "timezone": {
+   "iana": "America/Sao_Paulo",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-667 #6935 (Sao Paulo tables, local clock time)"
+   }
+  },
+  "reference": {
+   "scheme": "point",
+   "point": null,
+   "zoneTable": null,
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-667 #6935; the fit used Sao Paulo but the record does not carry its coordinates"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": null,
+   "provenance": "T-667 #6935 (Asr err 0.08 min Shafi vs 57.0 min Hanafi - Shafi is decisive)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18,
+   "provenance": "T-667 #6935 (Sao Paulo fits 18.0/17.0 Shafi to 0-1 min)"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-667 #6935"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-667 #6935: no margin decomposition published; the fit residuals run 0-1.4 min (maghrib 1.42)"
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-667 #6935: rounding not characterised at the 7-day sample"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-667 #6935 (-23.5 S; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "fajrRule.angle",
+   "ishaRule.angle",
+   "asr.shafi"
+  ],
+  "evidence": {
+   "comments": [
+    "#6935"
+   ],
+   "commentRefs": [
+    "T-667#6935"
+   ],
+   "measuredDays": 7,
+   "fullYear": false,
+   "fullYearBasis": "T-667 #6935: 7 dated days (4-10 October 2026) fitted; 5 September rows excluded as fitting no solution",
+   "grade": "provisional",
+   "gradeBasis": "single-city provenance (Sao Paulo), 7-day sample, clean 0-1 min fit; far short of the T-667 #6943 multi-year bar and of any full year",
+   "fitYears": 1,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "SINGLE-CITY PROVENANCE: the 18/17 Shafi set is fitted on Sao Paulo only; the 24 other cities' tables exist unfitted (T-667 #6935).",
+   "5 September rows excluded as fitting no solution (T-667 #6935).",
+   "Third-pass leads: ask IIB directly for its parameters (a note, not a contact), or fit a second IIB city to confirm the set holds outside Sao Paulo (T-667 #6935)."
+  ],
+  "notes": [
+   "Moves Brazil out of Moonsighting fallback to a measured secondary (T-667 #6935).",
+   "The census also logged a wrong-city widget defect: FAMBRAS embeds Sao Paulo times on a Brasilia page (T-668 #6952)."
+  ]
+ },
+ "DJ-COMMUNITY": {
+  "id": "DJ-COMMUNITY",
+  "country": "Djibouti",
+  "iso2": "DJ",
+  "authority": "six Mawaqit-hosted mosques: Djaffar Gabode, Tayib Nagad, al-Salam FYART, Abd ar-Rahman bin Awf, Ihsaan, Nashr Aldine",
+  "scope": "6 mosques, full-year 366-entry payloads with coordinates, athan+iqama",
+  "tier": "community",
+  "recipeStatus": "surface-only",
+  "bakeTier": "BAKE-ANNUAL",
+  "timezone": {
+   "iana": "Africa/Djibouti",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6955 (the captures declare Africa/Djibouti, UTC+3 without DST)"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": null,
+   "zoneTable": {
+    "cities": 6,
+    "mosques": [
+     {
+      "name": "Masjid Djaffar - Gabode 4",
+      "slug": "djafar-gabode4-djibouti",
+      "lat": 11.567316583206,
+      "lon": 43.146335707888
+     },
+     {
+      "name": "Mosquee TAYIB Nagad",
+      "slug": "mosquee-tayib-nagad-djibouti-77101",
+      "lat": 11.520095780006,
+      "lon": 43.14000963697
+     },
+     {
+      "name": "Masjid al-Salam (FYART)",
+      "slug": "masjid-lsalam-fyart-djibouti-77101",
+      "lat": 11.5213125,
+      "lon": 42.8377344
+     },
+     {
+      "name": "Masjid Abd ar-Rahman bin Awf",
+      "slug": "abdrrahman-djibouti",
+      "lat": 11.55112507006,
+      "lon": 43.118155299953
+     },
+     {
+      "name": "Mosquee IHSAAN",
+      "slug": "mosquee-ihsaan-msjd-hsn-djibouti-9999",
+      "lat": 11.586544679097,
+      "lon": 43.13934436888
+     },
+     {
+      "name": "Mosquee Nashr Aldine",
+      "slug": "nashr-aldine-djibouti-71100",
+      "lat": 11.60326561185,
+      "lon": 43.151557573622
+     }
+    ],
+    "artifact": "census/c2-eafrica/data/ + manifest.json"
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6955 (all six captured, 366-entry payloads, November verified against the live pages); all six coordinates from the capture files"
+  },
+  "asr": {
+   "primary": null,
+   "shadowFactor": null,
+   "alternate": null,
+   "provenance": "T-668 #6955: platform-computed columns; not characterised"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": null,
+   "provenance": "T-668 #6955: platform-computed from coordinates; no parameters published or fitted"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6955: platform-computed; not fitted"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6955: no margin decomposition published"
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6955: not fitted"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6955 (11.5 N; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "reference.zoneTable",
+   "platform.mawaqit"
+  ],
+  "evidence": {
+   "comments": [
+    "#6955"
+   ],
+   "commentRefs": [
+    "T-668#6955"
+   ],
+   "measuredDays": 2196,
+   "fullYear": true,
+   "fullYearBasis": "T-668 #6955: six full-year 366-entry payloads captured (6 x 366 dated rows), November verified against the live pages",
+   "grade": "candidate",
+   "gradeBasis": "the census find of the East Africa wave: Djibouti moves from fallback to a community tier with dated machine-readable data (T-668 #6955); no recipe fitted from the payloads",
+   "fitYears": 0,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "Platform-computed from coordinates: a passing record is mosque-endorsed calculation, not a scanned sheet (T-668 #6969's caveat applies to the whole platform layer).",
+   "The city-code enumeration lead (71100/77101/9999 + the mosquee-proche mirror) likely yields more mosques (T-668 #6955).",
+   "mawaqit iqama encodings mix MINUTE OFFSETS and ABSOLUTE CLOCK TIMES across mosques - a fixed reader silently mis-computes iqama (T-668 #6963's format trap applies at ingest).",
+   "Three of six mosques' coordinates are not transcribed in the manifest."
+  ],
+  "notes": [
+   "Platform-tier object: one country group on the mawaqit platform, not the platform family itself (that family is still unpolicied, T-668 #6974 gap 8)."
+  ]
+ },
+ "KE-JAMIA": {
+  "id": "KE-JAMIA",
+  "country": "Kenya",
+  "iso2": "KE",
+  "authority": "Jamia Mosque Committee Nairobi with the Kenya Meteorological Department (KMD co-prepared Ramadan table)",
+  "scope": "47 cities, one nationwide Ramadan 1447 table (one computed table serving all cities); Nairobi originally fitted",
+  "tier": "community",
+  "recipeStatus": "partial",
+  "bakeTier": null,
+  "timezone": {
+   "iana": "Africa/Nairobi",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-667 #6935 (East Africa Time, UTC+3 without DST)"
+   }
+  },
+  "reference": {
+   "scheme": "point",
+   "point": null,
+   "zoneTable": null,
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-667 #6935 (7 cities named in the table; the record does not carry coordinates)"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": null,
+   "provenance": "T-667 #6935 (Shafi, no ihtiyat)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18.2,
+   "provenance": "T-667 #6935 (Nairobi's 30 Suhoor-Ends fit Fajr 18.2, MAE 0.20) and T-668 #6987: ONE angle (Suhoor-End 18.2) serves ALL 47 cities, rmse 0.18-0.52, with a plateau 18.0-18.4 on 39/47; the KMD co-preparation shows as pure solar gates"
+  },
+  "ishaRule": {
+   "kind": "notPublished",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": true,
+   "provenance": "T-667 #6935: the Ramadan artifact carries Suhoor-Ends and Iftar columns only; no isha is published"
+  },
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": 0,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-667 #6935 (no ihtiyat: the fajr fit carries no margin; maghrib equals astronomical sunset within 1 min on all 30 days)",
+   "perField": {
+    "fajr": "the 18.2 angle IS the fit result; no margin on top",
+    "maghrib": "plain astronomical sunset"
+   }
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-667 #6935: not characterised at the 30-day sample"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-667 #6935 (-1.3 N; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": {
+    "kind": "published",
+    "label": "the printed Suhoor-Ends column is the fajr fit target",
+    "provenance": "T-667 #6935"
+   },
+   "iftar": {
+    "kind": "published",
+    "label": "the printed Iftar column equals plain astronomical sunset in 46 cities; MANDERA carries a constant +4.2-min iftar guard (zero variance, no coordinate explains it - a named-city safety convention)",
+    "provenance": "T-667 #6935 and T-668 #6987"
+   }
+  },
+  "emulation": [
+   "fajrRule.angle",
+   "ishaRule.notPublished",
+   "derivedTimes.published"
+  ],
+  "evidence": {
+   "comments": [
+    "#6935",
+    "#6955",
+    "#6987"
+   ],
+   "commentRefs": [
+    "T-667#6935",
+    "T-668#6955",
+    "T-668#6987"
+   ],
+   "measuredDays": 1410,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6955: the year-round block is a Muslim Pro widget (cityid 184745); the Ramadan PDF (KMD co-prepared) is the only owned artifact; T-668 #6987: all 47 cities of the Ramadan table verified (47 x 30 rows)",
+   "grade": "provisional",
+   "gradeBasis": "T-668 #6987: 47 cities x 30 Ramadan days at one shared angle (rmse 0.18-0.52, one typo found: Lodwar day 30); Ramadan-only scope and one edition cap the object at provisional",
+   "fitYears": 1,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "Ramadan-only: the year-round block is a third-party widget, not an owned table (T-668 #6955).",
+   "Whether the Kenya Meteorological Department republishes the table on its own site is open (T-667 #6935).",
+   "bakeTier is null: a Ramadan-only artifact is not an annual bake.",
+   "One print defect on record: Lodwar day 30 is a typo in the source table (T-668 #6987).",
+   "Ramadan-only: the year-round block is a third-party widget, not an owned table (T-668 #6955)."
+  ],
+  "notes": [
+   "Kenya moves out of Moonsighting fallback to a secondary government-co-prepared surface (T-667 #6935).",
+   "Kenya's community default for Ramadan is a NATIONWIDE COMPUTED TABLE (T-668 #6987) - the upgrade from 7 named cities to all 47."
+  ]
+ },
+ "AU-UMA": {
+  "id": "AU-UMA",
+  "country": "Australia",
+  "iso2": "AU",
+  "authority": "UMA Centre (United Muslims of Australia), Sydney (Punchbowl)",
+  "scope": "whole-year JSON calendar (370 days captured); numbers independently confirmed against Lakemba's AthanPlus widget",
+  "tier": "community",
+  "recipeStatus": "surface-only",
+  "bakeTier": "BAKE-ANNUAL",
+  "timezone": {
+   "iana": "Australia/Sydney",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6954 (the capture declares Australia/Sydney, DST observed)"
+   }
+  },
+  "reference": {
+   "scheme": "point",
+   "point": null,
+   "zoneTable": null,
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6954; coordinates are not carried in the capture (census/c9-oceania/data/uma-sydney.json)"
+  },
+  "asr": {
+   "primary": null,
+   "shadowFactor": null,
+   "alternate": null,
+   "provenance": "T-668 #6954: an athan JSON calendar; asr basis not published"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": null,
+   "provenance": "T-668 #6954: the JSON is served computed; no parameters published"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6954: no parameters published"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6954: no margin decomposition published"
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6954: not characterised"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6954 (-33.9 S; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "jamaahRules": {
+   "iqamah": "Fajr 05:00 fixed; Dhuhr +10; Asr +10; Maghrib +5; Isha +10 min",
+   "provenance": "census/c9-oceania/data/uma-sydney.json (iqamah_rules field, T-668 #6954)"
+  },
+  "emulation": [
+   "jamaahRules",
+   "platform.wholeYearJson"
+  ],
+  "evidence": {
+   "comments": [
+    "#6954"
+   ],
+   "commentRefs": [
+    "T-668#6954"
+   ],
+   "measuredDays": 370,
+   "fullYear": true,
+   "fullYearBasis": "T-668 #6954: a WHOLE-YEAR JSON calendar file captured (370 dated rows)",
+   "grade": "candidate",
+   "gradeBasis": "the mosque layer's real exception in Australia: a whole-year machine-readable calendar with independent confirmation (Lakemba's AthanPlus widget agrees); no calculation parameters published and no fit run",
+   "fitYears": 0,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "No calculation parameters published with the JSON; fitting the 370 rows against adhan would characterise the recipe.",
+   "QLD/WA/TAS/NT are today-only or absent; Victoria's Hilaal calendar is an image PDF; MIA Liverpool runs a 30-day Amanahly API (T-668 #6954).",
+   "Coordinates absent from the capture."
+  ],
+  "notes": [
+   "Two mosques share one calculation (UMA and Lakemba), differing only in iqamah (T-668 #6954).",
+   "jamaahRules is a v2.1 schema addition carrying congregation configuration beside the athan policy."
+  ]
+ },
+ "NZ-FIANZ": {
+  "id": "NZ-FIANZ",
+  "country": "New Zealand",
+  "iso2": "NZ",
+  "authority": "FIANZ (Federation of Islamic Associations of New Zealand)",
+  "scope": "national Ramadan timetable 1447, Auckland sheet transcribed; the year-round page is a calculator",
+  "tier": "community",
+  "recipeStatus": "surface-only",
+  "bakeTier": null,
+  "timezone": {
+   "iana": "Pacific/Auckland",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6954 (the capture declares Pacific/Auckland)"
+   }
+  },
+  "reference": {
+   "scheme": "point",
+   "point": null,
+   "zoneTable": null,
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6954 (Auckland sheet; other centres' sheets exist; coordinates not carried)"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": "hanafi",
+   "provenance": "T-668 #6954 (single-shadow asr with double shadow 40 min later, stated in print)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": null,
+   "provenance": "T-668 #6954: the sheets state their OFFSETS in print, not angles"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6954: no angles stated"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6954: the stated offsets live in derivedTimes (suhoor-fajr 5, sunset-maghrib 5), not in a margin set"
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6954: not characterised"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6954 (-36.8 S; no extreme-season policy stated)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": {
+    "kind": "fajrMinus",
+    "minutes": 5,
+    "label": "suhoor ends 5 min before Fajr, stated in print",
+    "provenance": "T-668 #6954"
+   },
+   "iftar": {
+    "kind": "sunsetPlus",
+    "minutes": 5,
+    "label": "Maghrib 5 min after sunset, stated in print",
+    "provenance": "T-668 #6954"
+   }
+  },
+  "emulation": [
+   "derivedTimes.statedOffsets",
+   "asr.dual"
+  ],
+  "evidence": {
+   "comments": [
+    "#6954"
+   ],
+   "commentRefs": [
+    "T-668#6954"
+   ],
+   "measuredDays": 30,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6954: Ramadan sheets only (1447, 30 days transcribed for Auckland); the year-round page is a calculator",
+   "grade": "candidate",
+   "gradeBasis": "a stated community method (the sheet prints its own offsets) with a transcribed Ramadan month; no angles fitted and no year-round table",
+   "fitYears": 0,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "Ramadan sheets only; the year-round page is a calculator (T-668 #6954).",
+   "Auckland transcribed; the other centres' sheets are not pulled.",
+   "bakeTier is null: a Ramadan sheet with stated offsets is not an annual bake."
+  ],
+  "notes": [
+   "A stated community method, not an inferred one: the offsets are printed on the sheet (T-668 #6954)."
+  ]
+ },
+ "FJ-FML": {
+  "id": "FJ-FML",
+  "country": "Fiji",
+  "iso2": "FJ",
+  "authority": "Fiji Muslim League (FML), national monthly timetable",
+  "scope": "national table (Suva-based) with a town-offset ladder; the live site still serves the 2024 image set",
+  "tier": "community",
+  "recipeStatus": "fitted",
+  "bakeTier": null,
+  "timezone": {
+   "iana": "Pacific/Fiji",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6954 (the capture declares Pacific/Fiji)"
+   }
+  },
+  "reference": {
+   "scheme": "point",
+   "point": null,
+   "zoneTable": {
+    "base": "Suva",
+    "townOffsets": {
+     "Rakiraki, Dobuilevu, Navua": "+1 min",
+     "Tavua": "+2 min",
+     "Ba, Varavu, Rarawai": "+3 min",
+     "Lautoka, Sabeto, Nadi, Maro, Sigatoka": "+4 min",
+     "Levuka": "-1 min",
+     "Savusavu, Labasa": "-4 min",
+     "Taveuni, Rabi, Moala": "-6 min",
+     "Lakeba": "-11 min",
+     "provenance": "census/c9-oceania/data/fiji-fml-nov2024.json (town_offsets, printed on the sheet)"
+    }
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6954; the base is Suva with town offsets carried in zoneTable.townOffsets"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": "hanafi",
+   "provenance": "census/c9-oceania/data/fiji-fml-nov2024.json (both schools printed as separate columns)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18,
+   "provenance": "T-668 #6987 (the recipe quantified: fajr is EXACTLY 18.0)"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": 17,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6987 (isha sits 5-9 min past a 17-degree computation - a seasonal margin band, not a fixed interval)"
+  },
+  "margins": {
+   "fajr": 0,
+   "sunrise": null,
+   "dhuhr": 3,
+   "asr": null,
+   "maghrib": 3,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6987 (recipe quantified: dhuhr +3, maghrib +3, fajr margin-free at exactly 18.0)",
+   "perField": {
+    "isha": "T-668 #6987: isha lands 5-9 min past the 17-degree computation - the record gives a band, not one number",
+    "asr": "T-668 #6987: dual asr columns, both exact in their madhabs; no margin stated",
+    "sunrise": "T-668 #6987: sunrise not quantified on the record"
+   }
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6954: not characterised"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6954 (-18 S; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "townOffsets.ladder",
+   "asr.dual"
+  ],
+  "evidence": {
+   "comments": [
+    "#6954",
+    "#6987"
+   ],
+   "commentRefs": [
+    "T-668#6954",
+    "T-668#6987"
+   ],
+   "measuredDays": 61,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6987: November 2026 transcribed (30 rows, recipe fitted) plus December 2025 (31 rows, verified against the same recipe); the served image set is the 2024 edition",
+   "grade": "community",
+   "gradeBasis": "T-668 #6987: a federation table with the recipe quantified and verified on a second year's month - a fitted community recipe, never an authority (the JAMIAT-KZN precedent); one month per edition sampled keeps multiYearProven false",
+   "fitYears": 1,
+   "multiYearProven": false,
+   "years": [
+    2024,
+    2025,
+    2026
+   ]
+  },
+  "gaps": [
+   "STALE-2024 CAVEAT OVERTURNED (T-668 #6987): the 2024=2026 identity is a GENUINE minute-granularity solar coincidence, proven by December 2025 fitting the same recipe - the served 2024 image set is CORRECT for 2026 by coincidence and will not be for other years. Never treat the live set as a live computation.",
+   "The isha margin is a band (+5..+9 past 17 deg), not pinned to one number.",
+   "LAKEBA: the printed -11 offset is a fixed legacy convention riding inside the table - geometric longitude puts Lakeba at about -1.3 (the ladder is 4 min/degree from Suva everywhere else) (T-668 #6987).",
+   "bakeTier is null: an image set cannot bake."
+  ],
+  "notes": [
+   "The town ladder is 4 min/degree of longitude from Suva, EXCEPT Lakeba (T-668 #6987).",
+   "'Navuda' was a mis-transcription of NAVUA - C9's record corrected (T-668 #6987).",
+   "The +1 (Navua) to -11 (Lakeba) town ladder is the reference structure (T-668 #6954)."
+  ]
+ },
+ "TT-MASJIDBOX": {
+  "id": "TT-MASJIDBOX",
+  "country": "Trinidad and Tobago",
+  "iso2": "TT",
+  "authority": "four Masjidbox-hosted masjids: Chaguanas Masjid, Guaico Masjid ul Mu'mineen, San Fernando Jama Masjid, Crown Point Masjid Abdullah Ibn Abbaas",
+  "scope": "athan+iqama via Masjidbox 7-day embedded JSON per load",
+  "tier": "community",
+  "recipeStatus": "surface-only",
+  "bakeTier": null,
+  "timezone": {
+   "iana": "America/Port_of_Spain",
+   "clock": {
+    "dstMode": "iana",
+    "fixedOffsetMinutes": null,
+    "provenance": "T-668 #6952 (Trinidad is UTC-4 without DST); the Chaguanas profile defect is carried in reference.zoneTable.platformDefect"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": null,
+   "zoneTable": {
+    "cities": 4,
+    "mosques": [
+     {
+      "name": "Chaguanas Masjid",
+      "slug": "masjid-chaguanas-tt"
+     },
+     {
+      "name": "Masjid ul Mu'mineen",
+      "slug": "masjid-ul-mu'mineen",
+      "place": "Guaico"
+     },
+     {
+      "name": "San Fernando Jama Masjid",
+      "slug": "san-fernando-jama-masjid"
+     },
+     {
+      "name": "Masjid Abdullah Ibn Abbaas",
+      "slug": "masjid-abdullah-ibn-abbaas",
+      "place": "Crown Point, Tobago"
+     }
+    ],
+    "platformDefect": {
+     "which": "Chaguanas Masjid",
+     "defect": "profile timezone published as -05:00 against Trinidad's -04:00; its whole page sits an hour early against its three neighbours",
+     "treatment": "a known-artifact candidate for the platform family; do not mix its rows with the other three",
+     "provenance": "T-668 #6952 + census/c7-latam/data/tt-chaguanas-masjid.json"
+    }
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6952; coordinates are not published on the captured pages"
+  },
+  "asr": {
+   "primary": null,
+   "shadowFactor": null,
+   "alternate": null,
+   "provenance": "T-668 #6952: platform athan columns; not characterised"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": null,
+   "provenance": "T-668 #6952: platform-computed; no parameters published"
+  },
+  "ishaRule": {
+   "kind": "angle",
+   "angle": null,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6952: platform-computed; no parameters published"
+  },
+  "margins": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6952: no margin decomposition published"
+  },
+  "rounding": {
+   "fajr": null,
+   "sunrise": null,
+   "dhuhr": null,
+   "asr": null,
+   "maghrib": null,
+   "isha": null,
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6952: not characterised"
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6952 (10.5 N; no extreme-season policy)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "reference.zoneTable",
+   "platform.masjidbox"
+  ],
+  "evidence": {
+   "comments": [
+    "#6952"
+   ],
+   "commentRefs": [
+    "T-668#6952"
+   ],
+   "measuredDays": 28,
+   "fullYear": false,
+   "fullYearBasis": "T-668 #6952: 4 mosques x 7 days captured (Masjidbox serves a 7-day embedded JSON per load)",
+   "grade": "candidate",
+   "gradeBasis": "four dated mosque surfaces with athan+iqama; platform-computed, nothing fitted, and one profile defect",
+   "fitYears": 0,
+   "multiYearProven": false,
+   "years": [
+    2026
+   ]
+  },
+  "gaps": [
+   "Platform 7-day JSON per load: accumulation needs daily polls.",
+   "The Chaguanas -05:00 profile defect is a known-artifact candidate for the platform family (T-668 #6952).",
+   "bakeTier is null: a rolling 7-day window cannot bake a year without accumulation."
+  ],
+  "notes": [
+   "Masjidbox = 7-day embedded JSON per load, crawlable (T-668 #6952).",
+   "Platform-tier object: one country group on the Masjidbox platform, not the platform family itself."
+  ]
+ },
+ "NE-BUTIN": {
+  "id": "NE-BUTIN",
+  "country": "Niger",
+  "iso2": "NE",
+  "authority": "Bureau des Traductions Islamiques au Niger (BUTIN), compiler Cheikh Boureima Abdou Daouda - the standing national compiler since 1996 (not the Conseil Islamique du Niger)",
+  "scope": "national, 8 regions each with coordinates printed on the sheet; rolling currentYear-1 .. currentYear+6 window",
+  "tier": "authority",
+  "recipeStatus": "fitted",
+  "bakeTier": "BAKE-MULTIYEAR",
+  "timezone": {
+   "iana": "Africa/Niamey",
+   "clock": {
+    "dstMode": "fixed",
+    "fixedOffsetMinutes": 60,
+    "provenance": "T-668 #6985 (fixed UTC+1, no DST, declared and verified)"
+   }
+  },
+  "reference": {
+   "scheme": "zoneTable",
+   "point": {
+    "lat": 13.85,
+    "lon": 2.18,
+    "place": "Niamey"
+   },
+   "zoneTable": {
+    "regions": 8,
+    "regionTable": {
+     "Niamey": [
+      13.85,
+      2.18
+     ],
+     "Agadez": [
+      16.97,
+      7.98
+     ],
+     "Diffa": [
+      13.32,
+      12.62
+     ],
+     "Dosso": [
+      13.05,
+      3.2
+     ],
+     "Maradi": [
+      13.5,
+      7.1
+     ],
+     "Tahoua": [
+      14.88,
+      5.27
+     ],
+     "Tillaberi": [
+      14.2,
+      1.45
+     ],
+     "Zinder": [
+      13.8,
+      8.98
+     ]
+    },
+    "coordinatesArePrinted": true,
+    "artifact": "census/c34-niger/data/ (56 region-year raw captures)",
+    "provenance": "T-668 #6985 (coordinates printed on every sheet and used verbatim in the verification)"
+   },
+   "cityDeltas": null,
+   "elevationLadder": null,
+   "provenance": "T-668 #6985"
+  },
+  "asr": {
+   "primary": "shafi",
+   "shadowFactor": 1,
+   "alternate": null,
+   "provenance": "T-668 #6985 (shadow factor 1, declared and verified; asr 68.9 pc exact at MAE 0.31 with bias 0.00)"
+  },
+  "fajrRule": {
+   "kind": "angle",
+   "angle": 18,
+   "provenance": "T-668 #6985 (DECLARED 18 deg and verified: free fits return 17.99-18.01 in all 56 region-years; the page source passes literal 18 at capture lines 925-927)"
+  },
+  "ishaRule": {
+   "kind": "interval",
+   "angle": null,
+   "interval": 75,
+   "ramadanInterval": null,
+   "twilightRatio": null,
+   "notPublished": false,
+   "provenance": "T-668 #6985 (DECLARED ecart 75 min and verified exact on 20,448 of 20,448 rows; the page source passes literal 75)"
+  },
+  "margins": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 0
+  },
+  "marginsProvenance": {
+   "default": "T-668 #6985 (measured bias exactly 0.00 on every column across 20,448 rows: no safety margin, no rounding cushion, no observation correction, in either direction)",
+   "perField": {}
+  },
+  "rounding": {
+   "fajr": "nearest",
+   "sunrise": "nearest",
+   "dhuhr": "nearest",
+   "asr": "nearest",
+   "maghrib": "nearest",
+   "isha": "nearest",
+   "sunset": null
+  },
+  "roundingProvenance": {
+   "default": "T-668 #6985 (nearest minute, ties up - half-up, the standard nearest; the residual is pure print rounding at the minute boundary, bimodal 0/1 min)",
+   "perField": {}
+  },
+  "roundingFormulation": null,
+  "highLatitude": {
+   "kind": "none",
+   "parameters": {},
+   "provenance": "T-668 #6985 (13-17 N; no extreme-season policy applies or is published)"
+  },
+  "derivedTimes": {
+   "imsak": null,
+   "syuruk": null,
+   "duha": null,
+   "haraj": null,
+   "suhoor": null,
+   "iftar": null
+  },
+  "emulation": [
+   "margins",
+   "rounding.nearest"
+  ],
+  "evidence": {
+   "comments": [
+    "#6977",
+    "#6985"
+   ],
+   "commentRefs": [
+    "T-668#6977",
+    "T-668#6985"
+   ],
+   "measuredDays": 20448,
+   "fullYear": true,
+   "fullYearBasis": "T-668 #6985: 8 regions x 7 served years (2025-2031) x 12 months = 672 monthly tables, 20,448 dated rows, zero integrity failures; November 2026 reproduces C26's independent capture with zero mismatches on 240 cells",
+   "grade": "A",
+   "gradeBasis": "T-668 #6985: frozen three independent ways - (1) source: one calculation function with literal constants, no year branch anywhere; (2) fit: free per-region-year fits return 17.99-18.01 and isha is exactly 75 on every row; (3) drift: no calendar date moves more than 1 minute between any two served years (bimodal 0/1 histogram - solar drift plus rounding, nothing else). 100 pc within-1 on all six columns at bias 0.00. The owner's ruling asks 2-3 distinct years; seven were verified",
+   "fitYears": 7,
+   "multiYearProven": true,
+   "years": [
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ]
+  },
+  "gaps": [
+   "Provenance must travel with the data: the compiler is a CLERICAL authority (BUTIN, since 1996), not the Conseil Islamique du Niger.",
+   "The gate proves arithmetic, not ground practice: the table is a pure computation with no sighting input.",
+   "The served window rolls with the visitor's clock (currentYear-1 .. +6, built at load): a citation must name its capture date - a 2027 capture serves 2026-2032."
+  ],
+  "notes": [
+   "Lineage: Umm al-Qura (Makkah) calendar via the software 'Prayer Times 4', declared verbatim on the page - the 18-deg fajr angle and the fixed 75-min isha interval are the Umm al-Qura fingerprints, precisely the pair the neighbouring West African image calendars do NOT use (T-668 #6985).",
+   "First Umm al-Qura lineage found in Africa by the census; the country C20 called unreachable moved from fallback to a grade-A national table (T-668 #6977, #6985).",
+   "Each sheet also prints the qibla direction beside the coordinates."
+  ]
+ }
+}

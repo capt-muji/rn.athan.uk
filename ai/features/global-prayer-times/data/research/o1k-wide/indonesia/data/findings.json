@@ -1,0 +1,57 @@
+{
+  "country": "Indonesia",
+  "tag": "indonesia",
+  "captured_utc": "2026-11-10",
+  "year2_available_from_official_publisher": false,
+  "kemenag": {
+    "api": "https://bimasislam.kemenag.go.id/api/v1/public/prayer-times?city_id=&date=",
+    "coverage": "2026-01-01..2026-12-31 only",
+    "row_source_field": "precompute:v1",
+    "precompute_calculated_at": "2026-06-03",
+    "regencies": 516,
+    "provinces": 35,
+    "timezones": ["Asia/Jakarta", "Asia/Makassar", "Asia/Jayapura"],
+    "pair": {"fajr_deg": 20, "isha_deg": 18},
+    "published_offset_minutes": {"jakarta_pusat": 2.0, "surabaya": 2.1, "medan": 2.0, "makassar": 1.9, "jayapura": 1.5},
+    "highland_exception": {
+      "rule": "regencies above about 1750 m run fajr 21 deg and isha 19 deg, both twilights one degree deeper",
+      "regencies": [
+        {"name": "KAB. PUNCAK JAYA", "province": "PAPUA", "elevation_m": 2422},
+        {"name": "KAB. PUNCAK", "province": "PAPUA", "elevation_m": 2346},
+        {"name": "KAB. INTAN JAYA", "province": "PAPUA", "elevation_m": 2168},
+        {"name": "KAB. LANNY JAYA", "province": "PAPUA", "elevation_m": 2001},
+        {"name": "KAB. PEGUNUNGAN ARFAK", "province": "PAPUA BARAT", "elevation_m": 1960},
+        {"name": "KAB. PANIAI", "province": "PAPUA", "elevation_m": 1786}
+      ],
+      "no_effect_just_below": [{"name": "KAB. DEIYAI", "elevation_m": 1718}, {"name": "KAB. JAYAWIJAYA", "elevation_m": 1668}]
+    }
+  },
+  "muhammadiyah_khgt": {
+    "api": "POST https://api-khgt.muhammadiyah.or.id/api/sholat/schedule {lat,lng,date,mode=monthly_masehi|monthly_hijri|daily}",
+    "auth": "none",
+    "years_served": [2025, 2026, 2027, 2028, 2030, 2035],
+    "columns": ["imsak", "subuh", "terbit", "dhuha", "dzuhur", "ashar", "maghrib", "isya"],
+    "elevation": "auto-detected from coordinate",
+    "pair": {"fajr_deg": 18, "isha_deg": 18},
+    "published_offset_minutes": 1.5,
+    "delta_vs_kemenag_minutes_median": {"fajr": 8, "sunrise": 2, "dhuhr": -1, "asr": 0, "maghrib": "-1 to 0", "isha": "-1 to 0"}
+  },
+  "masjid_istiqlal": {
+    "surface": "https://www.istiqlal.or.id/ homepage widget",
+    "upstream": "https://api.aladhan.com/v1/timings?method=2",
+    "method": "ISNA, fajr 15 deg, isha 15 deg",
+    "jakarta_2026_11_10": {"fajr": "04:25", "isha": "18:48"},
+    "kemenag_jakarta_2026_11_10": {"fajr": "04:06", "isha": "19:03"},
+    "divergence_minutes": {"fajr": 19, "isha": -15}
+  },
+  "blocked": [
+    {"surface": "jadwalsholat.nu.or.id", "reason": "Vercel Security Checkpoint, Code 21, curl and browser"},
+    {"surface": "*.kemenag.go.id provincial and kabupaten hosts", "reason": "103.7.13.251 refuses 443 and returns 504 on 80"}
+  ],
+  "derivative_not_evidence": ["https://equran.id/api/v2/shalat (517 regencies, answers 2027, within 1 minute of SIHAT on every column over June 2026)"],
+  "data_files": {
+    "sihat_full_year": "data/sihat-2026-<city>.json and data/normalized/sihat-2026-<city>.json",
+    "khgt_full_year": "data/khgt-<year>-<city>.json and data/normalized/khgt-<year>-<city>.json",
+    "all_516_regencies_two_dates": "data/sihat-2026-all-cities-2dates.json"
+  }
+}

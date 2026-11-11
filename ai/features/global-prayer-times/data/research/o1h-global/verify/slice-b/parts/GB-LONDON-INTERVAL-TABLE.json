@@ -1,0 +1,361 @@
+{
+ "id": "GB-LONDON-INTERVAL-TABLE",
+ "lat": 51.5074,
+ "lon": -0.1278,
+ "tz": "Europe/London",
+ "years": [
+  "2027",
+  "2028",
+  "2029",
+  "2030",
+  "2031",
+  "2032",
+  "2033",
+  "2034",
+  "2035",
+  "2036",
+  "2037",
+  "2038"
+ ],
+ "publishedTarget": true,
+ "asrSchoolTarget": "shafi",
+ "asrSchoolMethod": "shafi",
+ "methods": {
+  "mwl": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 51.3149,
+    "worst": 165,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "isna": {
+   "fajr": {
+    "mean": 15.9076,
+    "worst": 86,
+    "within2Pct": 22.95,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 30.7433,
+    "worst": 127,
+    "within2Pct": 22.34,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "umm-al-qura": {
+   "fajr": {
+    "mean": 45.3087,
+    "worst": 136,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 10.744,
+    "worst": 24,
+    "within2Pct": 8.42,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "egyptian": {
+   "fajr": {
+    "mean": 53.1604,
+    "worst": 146,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 55.6457,
+    "worst": 169,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "karachi": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 59.8462,
+    "worst": 173,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "moonsighting": {
+   "fajr": {
+    "mean": 2.9528,
+    "worst": 8,
+    "within2Pct": 43.39,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 4.3669,
+    "worst": 11,
+    "within2Pct": 24.12,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "diyanet-domestic": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 51.3149,
+    "worst": 165,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "diyanet-europe": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 41.9795,
+    "worst": 155,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "mabims": {
+   "fajr": {
+    "mean": 56.9541,
+    "worst": 150,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 59.8462,
+    "worst": 173,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "jakim": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 59.8462,
+    "worst": 173,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "kemenag": {
+   "fajr": {
+    "mean": 56.9541,
+    "worst": 150,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 59.8462,
+    "worst": 173,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "kuwait": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 55.6457,
+    "worst": 169,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "qatar": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 10.744,
+    "worst": 24,
+    "within2Pct": 8.42,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "singapore-muis": {
+   "fajr": {
+    "mean": 56.4689,
+    "worst": 150,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 60.3438,
+    "worst": 174,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "dubai": {
+   "fajr": {
+    "mean": 42.8697,
+    "worst": 134,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 61.4702,
+    "worst": 175,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "tehran": {
+   "fajr": {
+    "mean": 38.702,
+    "worst": 130,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 23.4257,
+    "worst": 84,
+    "within2Pct": 9.86,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "fazilet-a": {
+   "fajr": {
+    "mean": 55.4403,
+    "worst": 148,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 58.1903,
+    "worst": 172,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "fazilet-b": {
+   "fajr": {
+    "mean": 62.8642,
+    "worst": 156,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 65.5702,
+    "worst": 253,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "ecfr": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 51.3149,
+    "worst": 165,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "russia-sam": {
+   "fajr": {
+    "mean": 23.7324,
+    "worst": 113,
+    "within2Pct": 21.99,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 30.7433,
+    "worst": 127,
+    "within2Pct": 22.34,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  },
+  "isna-2010": {
+   "fajr": {
+    "mean": 41.2106,
+    "worst": 132,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   },
+   "isha": {
+    "mean": 59.8462,
+    "worst": 173,
+    "within2Pct": 0,
+    "scoredDays": 4383,
+    "skips": {}
+   }
+  }
+ }
+}

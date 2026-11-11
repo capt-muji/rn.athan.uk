@@ -1,0 +1,434 @@
+{
+ "job": "Philippines: the two year-round official surfaces",
+ "zone": "Asia/Manila",
+ "method": "adhan 4.4.6, second resolution then explicit minute rounding",
+ "surfaces": {
+  "davao": {
+   "coords": {
+    "lat": 7.0711,
+    "lon": 125.6125
+   },
+   "rows": 90,
+   "first": "2025-09-22",
+   "last": "2026-12-09",
+   "mode": "nearest",
+   "recipe": {
+    "fajrAngle": 18.1,
+    "fajrMargin": 0.5,
+    "sunriseMargin": -1,
+    "dhuhrMargin": 0.5,
+    "asrSchool": "Shafi",
+    "asrMargin": 0.5,
+    "maghribMargin": 0.5,
+    "isha": {
+     "model": "angle",
+     "angle": 16.7,
+     "margin": 1.5
+    }
+   },
+   "scores": {
+    "joint": {
+     "worst": 1,
+     "exact": 354,
+     "within1": 540,
+     "of": 540
+    },
+    "fajr": {
+     "exact": 79,
+     "within1": 90,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 64,
+     "within1": 90,
+     "worst": 1,
+     "hanafiWorst": 64
+    },
+    "ishaAngle": {
+     "exact": 66,
+     "within1": 90,
+     "worst": 1,
+     "margin": 1.5,
+     "plateau": [
+      16.7,
+      16.7
+     ]
+    },
+    "ishaInterval": {
+     "exact": 30,
+     "within1": 56,
+     "worst": 4,
+     "margin": 0,
+     "plateau": [
+      65,
+      69
+     ]
+    },
+    "printedIshaInterval": [
+     64,
+     69
+    ]
+   },
+   "identifiability": {
+    "fajrBand": [
+     17.3,
+     18.5
+    ],
+    "ishaAngleBand": [
+     16.5,
+     17.6
+    ],
+    "ishaIntervalBand": null,
+    "note": "range of the parameter that still reproduces every row within 1 min with a margin bounded to +-2 min"
+   },
+   "perYear": {
+    "2025": {
+     "n": 30,
+     "exact": 138,
+     "within1": 180,
+     "worst": 1
+    },
+    "2026": {
+     "n": 60,
+     "exact": 216,
+     "within1": 360,
+     "worst": 1
+    }
+   }
+  },
+  "cotabato": {
+   "coords": {
+    "lat": 7.2047,
+    "lon": 124.231
+   },
+   "rows": 29,
+   "first": "2026-06-16",
+   "last": "2026-07-14",
+   "mode": "nearest",
+   "recipe": {
+    "fajrAngle": 17.5,
+    "fajrMargin": -2,
+    "sunriseMargin": -1,
+    "dhuhrMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0,
+    "maghribMargin": 0.5,
+    "isha": {
+     "model": "angle",
+     "angle": 18.1,
+     "margin": -1
+    }
+   },
+   "scores": {
+    "joint": {
+     "worst": 1,
+     "exact": 151,
+     "within1": 174,
+     "of": 174
+    },
+    "fajr": {
+     "exact": 29,
+     "within1": 29,
+     "worst": 0
+    },
+    "asr": {
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "hanafiWorst": 61
+    },
+    "ishaAngle": {
+     "exact": 28,
+     "within1": 29,
+     "worst": 1,
+     "margin": -1,
+     "plateau": [
+      18.1,
+      18.3
+     ]
+    },
+    "ishaInterval": {
+     "exact": 17,
+     "within1": 29,
+     "worst": 1,
+     "margin": 0,
+     "plateau": [
+      74,
+      78
+     ]
+    },
+    "printedIshaInterval": [
+     73,
+     75
+    ]
+   },
+   "identifiability": {
+    "fajrBand": [
+     17.3,
+     18.6
+    ],
+    "ishaAngleBand": [
+     17.3,
+     18.5
+    ],
+    "ishaIntervalBand": [
+     74,
+     78
+    ],
+    "note": "range of the parameter that still reproduces every row within 1 min with a margin bounded to +-2 min"
+   },
+   "perYear": {
+    "2026": {
+     "n": 29,
+     "exact": 151,
+     "within1": 174,
+     "worst": 1
+    }
+   }
+  },
+  "marawi": {
+   "coords": {
+    "lat": 7.9997,
+    "lon": 124.2864
+   },
+   "rows": 29,
+   "first": "2026-06-16",
+   "last": "2026-07-14",
+   "mode": "nearest",
+   "recipe": {
+    "fajrAngle": 17.7,
+    "fajrMargin": -1,
+    "sunriseMargin": -1,
+    "dhuhrMargin": 0,
+    "asrSchool": "Shafi",
+    "asrMargin": 0,
+    "maghribMargin": 0.5,
+    "isha": {
+     "model": "angle",
+     "angle": 18.1,
+     "margin": -1
+    }
+   },
+   "scores": {
+    "joint": {
+     "worst": 1,
+     "exact": 133,
+     "within1": 174,
+     "of": 174
+    },
+    "fajr": {
+     "exact": 28,
+     "within1": 29,
+     "worst": 1
+    },
+    "asr": {
+     "exact": 20,
+     "within1": 29,
+     "worst": 1,
+     "hanafiWorst": 62
+    },
+    "ishaAngle": {
+     "exact": 29,
+     "within1": 29,
+     "worst": 0,
+     "margin": -1,
+     "plateau": [
+      18.1,
+      18.1
+     ]
+    },
+    "ishaInterval": {
+     "exact": 23,
+     "within1": 29,
+     "worst": 1,
+     "margin": 0,
+     "plateau": [
+      74,
+      78
+     ]
+    },
+    "printedIshaInterval": [
+     73,
+     75
+    ]
+   },
+   "identifiability": {
+    "fajrBand": [
+     17.3,
+     18.5
+    ],
+    "ishaAngleBand": [
+     17.3,
+     18.5
+    ],
+    "ishaIntervalBand": [
+     74,
+     78
+    ],
+    "note": "range of the parameter that still reproduces every row within 1 min with a margin bounded to +-2 min"
+   },
+   "perYear": {
+    "2026": {
+     "n": 29,
+     "exact": 133,
+     "within1": 174,
+     "worst": 1
+    }
+   }
+  }
+ },
+ "shared": {
+  "fajrAngle": 18.1,
+  "ishaAngle": 17.4,
+  "fajrWorst": 1,
+  "ishaWorst": 1,
+  "fajrExact": 124,
+  "ishaExact": 102,
+  "of": 148
+ },
+ "crossApplication": {
+  "davao->cotabato": {
+   "fajr": 1,
+   "isha": 4
+  },
+  "davao->marawi": {
+   "fajr": 1,
+   "isha": 4
+  },
+  "cotabato->davao": {
+   "fajr": 1,
+   "isha": 4
+  },
+  "cotabato->marawi": {
+   "fajr": 1,
+   "isha": 0
+  },
+  "marawi->davao": {
+   "fajr": 1,
+   "isha": 4
+  },
+  "marawi->cotabato": {
+   "fajr": 1,
+   "isha": 1
+  }
+ },
+ "verdict": {
+  "sameMethod": "fajr angle, asr school (Shafi), rounding and the sunrise/dhuhr/maghrib convention are shared; the isha rule is not",
+  "fajr": "one 18.1 deg angle with a +0.5 min margin reproduces all 148 rows within 1 min (124/148 exact)",
+  "isha": "Davao is an angle (16.7 deg, printed interval drifts 64..69 min); BARMM is an isha angle of 18.1 deg whose printed interval is 73..75 min. One region's isha applied to the other misses by 4 min on every row.",
+  "intervalRefuted": "a fixed interval on Davao scores worst 4 (30/90 exact): the printed 64..69 min drift is the angle signature"
+ },
+ "printedSpans": {
+  "Davao": {
+   "days": 90,
+   "first": "2025-09-22",
+   "last": "2026-12-09",
+   "cols": {
+    "fajr": {
+     "min": "04:14",
+     "max": "04:23",
+     "amplitude": 9
+    },
+    "sunrise": {
+     "min": "05:24",
+     "max": "05:37",
+     "amplitude": 13
+    },
+    "dhuhr": {
+     "min": "11:23",
+     "max": "11:31",
+     "amplitude": 8
+    },
+    "asr": {
+     "min": "14:42",
+     "max": "14:51",
+     "amplitude": 9
+    },
+    "maghrib": {
+     "min": "17:18",
+     "max": "17:35",
+     "amplitude": 17
+    },
+    "isha": {
+     "min": "18:25",
+     "max": "18:40",
+     "amplitude": 15
+    }
+   }
+  },
+  "Cotabato": {
+   "days": 29,
+   "first": "2026-06-16",
+   "last": "2026-07-14",
+   "cols": {
+    "fajr": {
+     "min": "04:11",
+     "max": "04:18",
+     "amplitude": 7
+    },
+    "sunrise": {
+     "min": "05:27",
+     "max": "05:33",
+     "amplitude": 6
+    },
+    "dhuhr": {
+     "min": "11:44",
+     "max": "11:49",
+     "amplitude": 5
+    },
+    "asr": {
+     "min": "15:11",
+     "max": "15:15",
+     "amplitude": 4
+    },
+    "maghrib": {
+     "min": "18:01",
+     "max": "18:06",
+     "amplitude": 5
+    },
+    "isha": {
+     "min": "19:16",
+     "max": "19:19",
+     "amplitude": 3
+    }
+   }
+  },
+  "Marawi": {
+   "days": 29,
+   "first": "2026-06-16",
+   "last": "2026-07-14",
+   "cols": {
+    "fajr": {
+     "min": "04:09",
+     "max": "04:17",
+     "amplitude": 8
+    },
+    "sunrise": {
+     "min": "05:25",
+     "max": "05:32",
+     "amplitude": 7
+    },
+    "dhuhr": {
+     "min": "11:44",
+     "max": "11:49",
+     "amplitude": 5
+    },
+    "asr": {
+     "min": "15:11",
+     "max": "15:15",
+     "amplitude": 4
+    },
+    "maghrib": {
+     "min": "18:03",
+     "max": "18:07",
+     "amplitude": 4
+    },
+    "isha": {
+     "min": "19:18",
+     "max": "19:21",
+     "amplitude": 3
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,1921 @@
+{
+ "meta": {
+  "job": "Algeria between-year test on the ministry annual calendars: Hijri 1447 against 1448",
+  "engine": "adhan-js 4.4.6",
+  "site": "Alger 36.7538 N / 3.0588 E, Africa/Algiers",
+  "method": "Rounding.None then an explicit integer margin per column; angles scanned 15-21 (fajr) and 14-21 (isha); asr both schools; no clock read",
+  "tz": "Africa/Algiers"
+ },
+ "transcription": {
+  "source": "dz-marw-calendrier-1447-{alger,adrar,djelfa}.pdf via Wayback; page images only, no text layer",
+  "alger": [
+   {
+    "file": "dz-alger-1447-jumada1.json",
+    "hijri": "Jumada I",
+    "page": 6,
+    "days": 30,
+    "window": [
+     "2025-10-23",
+     "2025-11-21"
+    ]
+   },
+   {
+    "file": "dz-alger-1447-jumada2.json",
+    "hijri": "Jumada II",
+    "page": 7,
+    "days": 29,
+    "window": [
+     "2025-11-22",
+     "2025-12-20"
+    ]
+   },
+   {
+    "file": "dz-alger-1447-rajab.json",
+    "hijri": "Rajab",
+    "page": 8,
+    "days": 30,
+    "window": [
+     "2025-12-21",
+     "2026-01-19"
+    ]
+   },
+   {
+    "file": "dz-alger-1447-ramadan.json",
+    "hijri": "Ramadan",
+    "page": 10,
+    "days": 29,
+    "window": [
+     "2026-02-19",
+     "2026-03-19"
+    ]
+   }
+  ],
+  "regional": [
+   {
+    "file": "dz-adrar-1447-jumada1.json",
+    "city": "Adrar",
+    "days": 30,
+    "window": [
+     "2025-10-23",
+     "2025-11-21"
+    ]
+   },
+   {
+    "file": "dz-djelfa-1447-jumada1.json",
+    "city": "Djelfa",
+    "days": 30,
+    "window": [
+     "2025-10-23",
+     "2025-11-21"
+    ]
+   }
+  ],
+  "algerDays": 118,
+  "continuity": "month boundaries abut with no gap; rows run day for day; the 1447 book ends 2026-06-15 and the 1448 book begins 2026-06-16, so the two annual books share no Gregorian cell",
+  "readAudit": "every column checked for a jump against the mean of its neighbours; no cell flagged at 2 minutes; the flat fajr run 06:29 over thirteen January days re-read at 12x and confirmed"
+ },
+ "recipes": {
+  "r1448": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.1,
+   "madhab": "shafi",
+   "per": {
+    "fajr": "0/floor",
+    "sunrise": "+1/floor",
+    "dhuhr": "+1/floor",
+    "asr": "+1/floor",
+    "magrib": "+4/floor",
+    "isha": "+5/nearest"
+   },
+   "note": "fit2, 119 days of 1448, 626/714 exact"
+  },
+  "r1447": {
+   "fajrAngle": 17.8,
+   "ishaAngle": 16.3,
+   "per": {
+    "fajr": {
+     "margin": 0,
+     "mode": "floor"
+    },
+    "isha": {
+     "margin": 4,
+     "mode": "nearest"
+    },
+    "sunrise": {
+     "margin": 1,
+     "mode": "floor"
+    },
+    "dhuhr": {
+     "margin": 1,
+     "mode": "floor"
+    },
+    "asr": {
+     "margin": 0,
+     "mode": "ceil"
+    },
+    "magrib": {
+     "margin": 4,
+     "mode": "floor"
+    }
+   }
+  }
+ },
+ "frozenTest": {
+  "r1448ON1447": {
+   "exact": 620,
+   "within1": 708,
+   "n": 708,
+   "worst": 1,
+   "exactPct": 87.6,
+   "within1Pct": 100
+  },
+  "r1448ON1448": {
+   "exact": 626,
+   "within1": 714,
+   "n": 714,
+   "worst": 1,
+   "exactPct": 87.7,
+   "within1Pct": 100
+  },
+  "r1447ON1448": {
+   "exact": 626,
+   "within1": 714,
+   "worst": 1,
+   "n": 714
+  },
+  "r1448ON1447reverse": {
+   "exact": 620,
+   "within1": 708,
+   "worst": 1,
+   "n": 708
+  },
+  "perPrayer1447": {
+   "fajr": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 112,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.051,
+    "n": 118
+   },
+   "sunrise": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 109,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.076,
+    "n": 118
+   },
+   "dhuhr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 115,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.025,
+    "n": 118
+   },
+   "asr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 59,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.5,
+    "n": 118
+   },
+   "magrib": {
+    "margin": 4,
+    "mode": "floor",
+    "exact": 112,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.051,
+    "n": 118
+   },
+   "isha": {
+    "margin": 5,
+    "mode": "nearest",
+    "exact": 113,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.042,
+    "n": 118
+   }
+  },
+  "perPrayer1448": {
+   "fajr": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 111,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.067,
+    "n": 119
+   },
+   "sunrise": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 113,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.05,
+    "n": 119
+   },
+   "dhuhr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 114,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.042,
+    "n": 119
+   },
+   "asr": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 62,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.479,
+    "n": 119
+   },
+   "magrib": {
+    "margin": 4,
+    "mode": "floor",
+    "exact": 111,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.067,
+    "n": 119
+   },
+   "isha": {
+    "margin": 5,
+    "mode": "nearest",
+    "exact": 115,
+    "within1": 119,
+    "worst": 1,
+    "mae": 0.034,
+    "n": 119
+   }
+  },
+  "byMonth": {
+   "2025-10": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 9,
+      "within1": 9,
+      "worst": 0,
+      "mae": 0,
+      "n": 9
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 9,
+      "within1": 9,
+      "worst": 0,
+      "mae": 0,
+      "n": 9
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 9,
+      "within1": 9,
+      "worst": 0,
+      "mae": 0,
+      "n": 9
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 4,
+      "within1": 9,
+      "worst": 1,
+      "mae": 0.556,
+      "n": 9
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 9,
+      "within1": 9,
+      "worst": 0,
+      "mae": 0,
+      "n": 9
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 9,
+      "within1": 9,
+      "worst": 0,
+      "mae": 0,
+      "n": 9
+     }
+    },
+    "totals": {
+     "exact": 49,
+     "within1": 54,
+     "n": 54,
+     "worst": 1
+    }
+   },
+   "2025-11": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 29,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.033,
+      "n": 30
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 26,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.133,
+      "n": 30
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 16,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.467,
+      "n": 30
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.067,
+      "n": 30
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 29,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.033,
+      "n": 30
+     }
+    },
+    "totals": {
+     "exact": 158,
+     "within1": 180,
+     "n": 180,
+     "worst": 1
+    }
+   },
+   "2025-12": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 27,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.129,
+      "n": 31
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 28,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.097,
+      "n": 31
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 29,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.065,
+      "n": 31
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.387,
+      "n": 31
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 29,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.065,
+      "n": 31
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 30,
+      "within1": 31,
+      "worst": 1,
+      "mae": 0.032,
+      "n": 31
+     }
+    },
+    "totals": {
+     "exact": 162,
+     "within1": 186,
+     "n": 186,
+     "worst": 1
+    }
+   },
+   "2026-01": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.053,
+      "n": 19
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 19,
+      "worst": 0,
+      "mae": 0,
+      "n": 19
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 19,
+      "worst": 0,
+      "mae": 0,
+      "n": 19
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 10,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.474,
+      "n": 19
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.053,
+      "n": 19
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 19,
+      "within1": 19,
+      "worst": 0,
+      "mae": 0,
+      "n": 19
+     }
+    },
+    "totals": {
+     "exact": 103,
+     "within1": 114,
+     "n": 114,
+     "worst": 1
+    }
+   },
+   "2026-02": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 10,
+      "within1": 10,
+      "worst": 0,
+      "mae": 0,
+      "n": 10
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 9,
+      "within1": 10,
+      "worst": 1,
+      "mae": 0.1,
+      "n": 10
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 10,
+      "within1": 10,
+      "worst": 0,
+      "mae": 0,
+      "n": 10
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 3,
+      "within1": 10,
+      "worst": 1,
+      "mae": 0.7,
+      "n": 10
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 10,
+      "within1": 10,
+      "worst": 0,
+      "mae": 0,
+      "n": 10
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 10,
+      "within1": 10,
+      "worst": 0,
+      "mae": 0,
+      "n": 10
+     }
+    },
+    "totals": {
+     "exact": 52,
+     "within1": 60,
+     "n": 60,
+     "worst": 1
+    }
+   },
+   "2026-03": {
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor",
+      "exact": 19,
+      "within1": 19,
+      "worst": 0,
+      "mae": 0,
+      "n": 19
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.053,
+      "n": 19
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.053,
+      "n": 19
+     },
+     "asr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 7,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.632,
+      "n": 19
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 18,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.053,
+      "n": 19
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "nearest",
+      "exact": 16,
+      "within1": 19,
+      "worst": 1,
+      "mae": 0.158,
+      "n": 19
+     }
+    },
+    "totals": {
+     "exact": 96,
+     "within1": 114,
+     "n": 114,
+     "worst": 1
+    }
+   }
+  },
+  "signedResidualByMonth": {
+   "2025-10": {
+    "fajr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "dhuhr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "asr": {
+     "mean": -0.56,
+     "min": -1,
+     "max": 0
+    },
+    "magrib": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "isha": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    }
+   },
+   "2025-11": {
+    "fajr": {
+     "mean": -0.03,
+     "min": -1,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": -0.13,
+     "min": -1,
+     "max": 0
+    },
+    "dhuhr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "asr": {
+     "mean": -0.47,
+     "min": -1,
+     "max": 0
+    },
+    "magrib": {
+     "mean": 0.07,
+     "min": 0,
+     "max": 1
+    },
+    "isha": {
+     "mean": -0.03,
+     "min": -1,
+     "max": 0
+    }
+   },
+   "2025-12": {
+    "fajr": {
+     "mean": -0.13,
+     "min": -1,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": -0.1,
+     "min": -1,
+     "max": 0
+    },
+    "dhuhr": {
+     "mean": -0.06,
+     "min": -1,
+     "max": 0
+    },
+    "asr": {
+     "mean": -0.13,
+     "min": -1,
+     "max": 1
+    },
+    "magrib": {
+     "mean": 0.06,
+     "min": 0,
+     "max": 1
+    },
+    "isha": {
+     "mean": -0.03,
+     "min": -1,
+     "max": 0
+    }
+   },
+   "2026-01": {
+    "fajr": {
+     "mean": -0.05,
+     "min": -1,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "dhuhr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "asr": {
+     "mean": 0.47,
+     "min": 0,
+     "max": 1
+    },
+    "magrib": {
+     "mean": 0.05,
+     "min": 0,
+     "max": 1
+    },
+    "isha": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    }
+   },
+   "2026-02": {
+    "fajr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": 0.1,
+     "min": 0,
+     "max": 1
+    },
+    "dhuhr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "asr": {
+     "mean": 0.7,
+     "min": 0,
+     "max": 1
+    },
+    "magrib": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "isha": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    }
+   },
+   "2026-03": {
+    "fajr": {
+     "mean": 0,
+     "min": 0,
+     "max": 0
+    },
+    "sunrise": {
+     "mean": 0.05,
+     "min": 0,
+     "max": 1
+    },
+    "dhuhr": {
+     "mean": -0.05,
+     "min": -1,
+     "max": 0
+    },
+    "asr": {
+     "mean": 0.63,
+     "min": 0,
+     "max": 1
+    },
+    "magrib": {
+     "mean": -0.05,
+     "min": -1,
+     "max": 0
+    },
+    "isha": {
+     "mean": -0.16,
+     "min": -1,
+     "max": 0
+    }
+   }
+  },
+  "anglesFrozenMarginsRefit": {
+   "exact": 621,
+   "within1": 708,
+   "n": 708,
+   "worst": 1,
+   "exactPct": 87.7,
+   "within1Pct": 100
+  }
+ },
+ "freeFit1447": {
+  "shafi": {
+   "fajr": {
+    "angle": 17.8,
+    "margin": 0,
+    "mode": "floor",
+    "exact": 112,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.051
+   },
+   "isha": {
+    "angle": 16.3,
+    "margin": 4,
+    "mode": "nearest",
+    "exact": 115,
+    "within1": 118,
+    "worst": 1,
+    "mae": 0.025
+   },
+   "recipe": {
+    "fajrAngle": 17.8,
+    "ishaAngle": 16.3,
+    "per": {
+     "fajr": {
+      "margin": 0,
+      "mode": "floor"
+     },
+     "isha": {
+      "margin": 4,
+      "mode": "nearest"
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor"
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor"
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil"
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor"
+     }
+    }
+   },
+   "scored": {
+    "exact": 631,
+    "within1": 708,
+    "n": 708,
+    "worst": 1,
+    "exactPct": 89.1,
+    "within1Pct": 100
+   },
+   "unconstrained": {
+    "fajrAngle": 16.91,
+    "ishaAngle": 16.21,
+    "madhab": "shafi",
+    "per": {
+     "fajr": {
+      "margin": -5,
+      "mode": "nearest",
+      "exact": 118,
+      "within1": 118,
+      "worst": 0,
+      "mae": 0,
+      "n": 118
+     },
+     "sunrise": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 109,
+      "within1": 118,
+      "worst": 1,
+      "mae": 0.076,
+      "n": 118
+     },
+     "dhuhr": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 115,
+      "within1": 118,
+      "worst": 1,
+      "mae": 0.025,
+      "n": 118
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 60,
+      "within1": 118,
+      "worst": 1,
+      "mae": 0.492,
+      "n": 118
+     },
+     "magrib": {
+      "margin": 4,
+      "mode": "floor",
+      "exact": 112,
+      "within1": 118,
+      "worst": 1,
+      "mae": 0.051,
+      "n": 118
+     },
+     "isha": {
+      "margin": 5,
+      "mode": "floor",
+      "exact": 117,
+      "within1": 118,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 118
+     }
+    }
+   }
+  },
+  "hanafi": {
+   "scored": {
+    "exact": 571,
+    "within1": 590,
+    "n": 708,
+    "worst": 36,
+    "exactPct": 80.6,
+    "within1Pct": 83.3
+   },
+   "note": "refuted, worst 36"
+  }
+ },
+ "frozenMarginRidge": {
+  "fajr": [
+   {
+    "angle": 15,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 15,
+    "n": 118
+   },
+   {
+    "angle": 15,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 15,
+    "n": 119
+   },
+   {
+    "angle": 16,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "n": 118
+   },
+   {
+    "angle": 16,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "n": 119
+   },
+   {
+    "angle": 16.5,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "n": 118
+   },
+   {
+    "angle": 16.5,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "n": 119
+   },
+   {
+    "angle": 17,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "n": 118
+   },
+   {
+    "angle": 17,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "n": 119
+   },
+   {
+    "angle": 17.5,
+    "year": "1447",
+    "exact": 0,
+    "within1": 55,
+    "worst": 2,
+    "n": 118
+   },
+   {
+    "angle": 17.5,
+    "year": "1448",
+    "exact": 0,
+    "within1": 63,
+    "worst": 2,
+    "n": 119
+   },
+   {
+    "angle": 17.8,
+    "year": "1447",
+    "exact": 112,
+    "within1": 118,
+    "worst": 1,
+    "n": 118
+   },
+   {
+    "angle": 17.8,
+    "year": "1448",
+    "exact": 111,
+    "within1": 119,
+    "worst": 1,
+    "n": 119
+   },
+   {
+    "angle": 18,
+    "year": "1447",
+    "exact": 0,
+    "within1": 110,
+    "worst": 2,
+    "n": 118
+   },
+   {
+    "angle": 18,
+    "year": "1448",
+    "exact": 2,
+    "within1": 112,
+    "worst": 2,
+    "n": 119
+   },
+   {
+    "angle": 18.5,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "n": 118
+   },
+   {
+    "angle": 18.5,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "n": 119
+   },
+   {
+    "angle": 19,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "n": 118
+   },
+   {
+    "angle": 19,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "n": 119
+   },
+   {
+    "angle": 20,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 12,
+    "n": 118
+   },
+   {
+    "angle": 20,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 12,
+    "n": 119
+   },
+   {
+    "angle": 21,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 17,
+    "n": 118
+   },
+   {
+    "angle": 21,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 17,
+    "n": 119
+   }
+  ],
+  "isha": [
+   {
+    "angle": 14,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 12,
+    "n": 118
+   },
+   {
+    "angle": 14,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 12,
+    "n": 119
+   },
+   {
+    "angle": 15,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 6,
+    "n": 118
+   },
+   {
+    "angle": 15,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 6,
+    "n": 119
+   },
+   {
+    "angle": 15.5,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "n": 118
+   },
+   {
+    "angle": 15.5,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 4,
+    "n": 119
+   },
+   {
+    "angle": 16,
+    "year": "1447",
+    "exact": 44,
+    "within1": 118,
+    "worst": 1,
+    "n": 118
+   },
+   {
+    "angle": 16,
+    "year": "1448",
+    "exact": 46,
+    "within1": 119,
+    "worst": 1,
+    "n": 119
+   },
+   {
+    "angle": 16.1,
+    "year": "1447",
+    "exact": 113,
+    "within1": 118,
+    "worst": 1,
+    "n": 118
+   },
+   {
+    "angle": 16.1,
+    "year": "1448",
+    "exact": 115,
+    "within1": 119,
+    "worst": 1,
+    "n": 119
+   },
+   {
+    "angle": 16.5,
+    "year": "1447",
+    "exact": 0,
+    "within1": 2,
+    "worst": 3,
+    "n": 118
+   },
+   {
+    "angle": 16.5,
+    "year": "1448",
+    "exact": 0,
+    "within1": 3,
+    "worst": 3,
+    "n": 119
+   },
+   {
+    "angle": 17,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "n": 118
+   },
+   {
+    "angle": 17,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 5,
+    "n": 119
+   },
+   {
+    "angle": 18,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "n": 118
+   },
+   {
+    "angle": 18,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 10,
+    "n": 119
+   },
+   {
+    "angle": 19,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 16,
+    "n": 118
+   },
+   {
+    "angle": 19,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 16,
+    "n": 119
+   },
+   {
+    "angle": 20,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 21,
+    "n": 118
+   },
+   {
+    "angle": 20,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 21,
+    "n": 119
+   },
+   {
+    "angle": 21,
+    "year": "1447",
+    "exact": 0,
+    "within1": 0,
+    "worst": 26,
+    "n": 118
+   },
+   {
+    "angle": 21,
+    "year": "1448",
+    "exact": 0,
+    "within1": 0,
+    "worst": 26,
+    "n": 119
+   }
+  ]
+ },
+ "copyTest": {
+  "question": "are 1447 and 1448 byte-identical on the same Hijri month-day cells, or independently computed?",
+  "finding": "independently computed. The printed difference between the same Hijri day one year apart reproduces adhan own year-to-year drift to a mean of 0.4 minutes and a worst of 1.15 minutes on every column, and no column repeats its values: a reprint would print a difference near zero instead of the 10-14 minute solar drift the pairing shows",
+  "summary": {
+   "jumada1": {
+    "n": 30,
+    "stat": {
+     "fajr": {
+      "printedMean": -9.83,
+      "printedMin": -10,
+      "printedMax": -9,
+      "predictedMean": -9.87,
+      "residMean": 0.04,
+      "residMaxAbs": 0.95,
+      "identicalCells": 0
+     },
+     "sunrise": {
+      "printedMean": -11.03,
+      "printedMin": -12,
+      "printedMax": -10,
+      "predictedMean": -11.15,
+      "residMean": 0.12,
+      "residMaxAbs": 0.57,
+      "identicalCells": 0
+     },
+     "dhuhr": {
+      "printedMean": 0.17,
+      "printedMin": -2,
+      "printedMax": 3,
+      "predictedMean": 0.2,
+      "residMean": -0.03,
+      "residMaxAbs": 0.92,
+      "identicalCells": 11
+     },
+     "asr": {
+      "printedMean": 8.8,
+      "printedMin": 6,
+      "printedMax": 11,
+      "predictedMean": 8.85,
+      "residMean": -0.05,
+      "residMaxAbs": 0.98,
+      "identicalCells": 0
+     },
+     "magrib": {
+      "printedMean": 11.37,
+      "printedMin": 7,
+      "printedMax": 15,
+      "predictedMean": 11.48,
+      "residMean": -0.11,
+      "residMaxAbs": 1.05,
+      "identicalCells": 0
+     },
+     "isha": {
+      "printedMean": 10.23,
+      "printedMin": 6,
+      "printedMax": 14,
+      "predictedMean": 10.23,
+      "residMean": 0.01,
+      "residMaxAbs": 0.85,
+      "identicalCells": 0
+     }
+    }
+   },
+   "jumada2": {
+    "n": 29,
+    "stat": {
+     "fajr": {
+      "printedMean": -9,
+      "printedMin": -10,
+      "printedMax": -7,
+      "predictedMean": -8.9,
+      "residMean": -0.1,
+      "residMaxAbs": 0.87,
+      "identicalCells": 0
+     },
+     "sunrise": {
+      "printedMean": -10.41,
+      "printedMin": -12,
+      "printedMax": -8,
+      "predictedMean": -10.12,
+      "residMean": -0.3,
+      "residMaxAbs": 0.87,
+      "identicalCells": 0
+     },
+     "dhuhr": {
+      "printedMean": -4.03,
+      "printedMin": -6,
+      "printedMax": -2,
+      "predictedMean": -4.01,
+      "residMean": -0.03,
+      "residMaxAbs": 0.95,
+      "identicalCells": 0
+     },
+     "asr": {
+      "printedMean": 1.03,
+      "printedMin": -3,
+      "printedMax": 5,
+      "predictedMean": 0.87,
+      "residMean": 0.16,
+      "residMaxAbs": 1.13,
+      "identicalCells": 5
+     },
+     "magrib": {
+      "printedMean": 2.03,
+      "printedMin": -3,
+      "printedMax": 7,
+      "predictedMean": 1.99,
+      "residMean": 0.04,
+      "residMaxAbs": 0.72,
+      "identicalCells": 2
+     },
+     "isha": {
+      "printedMean": 0.79,
+      "printedMin": -4,
+      "printedMax": 6,
+      "predictedMean": 0.84,
+      "residMean": -0.05,
+      "residMaxAbs": 0.82,
+      "identicalCells": 4
+     }
+    }
+   },
+   "rajab": {
+    "n": 29,
+    "stat": {
+     "fajr": {
+      "printedMean": -2.76,
+      "printedMin": -6,
+      "printedMax": 1,
+      "predictedMean": -2.84,
+      "residMean": 0.08,
+      "residMaxAbs": 0.88,
+      "identicalCells": 6
+     },
+     "sunrise": {
+      "printedMean": -2.24,
+      "printedMin": -7,
+      "printedMax": 2,
+      "predictedMean": -2.31,
+      "residMean": 0.06,
+      "residMaxAbs": 0.75,
+      "identicalCells": 5
+     },
+     "dhuhr": {
+      "printedMean": -4.69,
+      "printedMin": -5,
+      "printedMax": -4,
+      "predictedMean": -4.72,
+      "residMean": 0.03,
+      "residMaxAbs": 0.95,
+      "identicalCells": 0
+     },
+     "asr": {
+      "printedMean": -6.86,
+      "printedMin": -9,
+      "printedMax": -3,
+      "predictedMean": -7.02,
+      "residMean": 0.16,
+      "residMaxAbs": 1.15,
+      "identicalCells": 0
+     },
+     "magrib": {
+      "printedMean": -7.34,
+      "printedMin": -10,
+      "printedMax": -4,
+      "predictedMean": -7.24,
+      "residMean": -0.11,
+      "residMaxAbs": 0.83,
+      "identicalCells": 0
+     },
+     "isha": {
+      "printedMean": -6.69,
+      "printedMin": -9,
+      "printedMax": -3,
+      "predictedMean": -6.75,
+      "residMean": 0.06,
+      "residMaxAbs": 0.82,
+      "identicalCells": 0
+     }
+    }
+   },
+   "ramadan": {
+    "n": 29,
+    "stat": {
+     "fajr": {
+      "printedMean": 14.34,
+      "printedMin": 12,
+      "printedMax": 17,
+      "predictedMean": 14.27,
+      "residMean": 0.08,
+      "residMaxAbs": 0.88,
+      "identicalCells": 0
+     },
+     "sunrise": {
+      "printedMean": 14.69,
+      "printedMin": 12,
+      "printedMax": 17,
+      "predictedMean": 14.69,
+      "residMean": 0,
+      "residMaxAbs": 0.88,
+      "identicalCells": 0
+     },
+     "dhuhr": {
+      "printedMean": 1.79,
+      "printedMin": 0,
+      "printedMax": 3,
+      "predictedMean": 1.9,
+      "residMean": -0.11,
+      "residMaxAbs": 0.7,
+      "identicalCells": 3
+     },
+     "asr": {
+      "printedMean": -6.93,
+      "printedMin": -9,
+      "printedMax": -5,
+      "predictedMean": -6.91,
+      "residMean": -0.03,
+      "residMaxAbs": 0.92,
+      "identicalCells": 0
+     },
+     "magrib": {
+      "printedMean": -11.28,
+      "printedMin": -12,
+      "printedMax": -10,
+      "predictedMean": -10.92,
+      "residMean": -0.36,
+      "residMaxAbs": 0.93,
+      "identicalCells": 0
+     },
+     "isha": {
+      "printedMean": -10.59,
+      "printedMin": -11,
+      "printedMax": -10,
+      "predictedMean": -10.5,
+      "residMean": -0.09,
+      "residMaxAbs": 0.57,
+      "identicalCells": 0
+     }
+    }
+   }
+  }
+ },
+ "offsetRegister": {
+  "source1447": "dz-wilaya-offsets-1447.json (page 6 footer, 25 northern wilayas x 6 columns)",
+  "adrarInRegister": false,
+  "djelfaInRegister": false,
+  "regionalScores": {
+   "alger": {
+    "totals": {
+     "exact": 162,
+     "within1": 180,
+     "n": 180,
+     "worst": 1
+    },
+    "per": {
+     "fajr": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     },
+     "sunrise": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.07,
+      "n": 30
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     },
+     "asr": {
+      "exact": 15,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.5,
+      "n": 30
+     },
+     "magrib": {
+      "exact": 29,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.03,
+      "n": 30
+     },
+     "isha": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     }
+    }
+   },
+   "djelfa": {
+    "totals": {
+     "exact": 157,
+     "within1": 180,
+     "n": 180,
+     "worst": 1
+    },
+    "per": {
+     "fajr": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.07,
+      "n": 30
+     },
+     "sunrise": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.07,
+      "n": 30
+     },
+     "dhuhr": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     },
+     "asr": {
+      "exact": 14,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.53,
+      "n": 30
+     },
+     "magrib": {
+      "exact": 30,
+      "within1": 30,
+      "worst": 0,
+      "mae": 0,
+      "n": 30
+     },
+     "isha": {
+      "exact": 27,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.1,
+      "n": 30
+     }
+    }
+   },
+   "adrar": {
+    "totals": {
+     "exact": 144,
+     "within1": 180,
+     "n": 180,
+     "worst": 1
+    },
+    "per": {
+     "fajr": {
+      "exact": 29,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.03,
+      "n": 30
+     },
+     "sunrise": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.07,
+      "n": 30
+     },
+     "dhuhr": {
+      "exact": 28,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.07,
+      "n": 30
+     },
+     "asr": {
+      "exact": 18,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.4,
+      "n": 30
+     },
+     "magrib": {
+      "exact": 27,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.1,
+      "n": 30
+     },
+     "isha": {
+      "exact": 14,
+      "within1": 30,
+      "worst": 1,
+      "mae": 0.53,
+      "n": 30
+     }
+    }
+   }
+  },
+  "printedVsAlger": {
+   "djelfa": {
+    "fajr": {
+     "printedMean": -2.1,
+     "printedMin": -3,
+     "printedMax": -1,
+     "adhanMean": -2.13,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 0.93,
+     "residualVsLongitude": 3.8
+    },
+    "sunrise": {
+     "printedMean": -4.4,
+     "printedMin": -6,
+     "printedMax": -3,
+     "adhanMean": -4.42,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 0.8,
+     "residualVsLongitude": 6.8
+    },
+    "dhuhr": {
+     "printedMean": -0.9,
+     "printedMin": -1,
+     "printedMax": 0,
+     "adhanMean": -0.82,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 0.83,
+     "residualVsLongitude": 1.8
+    },
+    "asr": {
+     "printedMean": 3.03,
+     "printedMin": 2,
+     "printedMax": 4,
+     "adhanMean": 2.99,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 0.95,
+     "residualVsLongitude": 3.2
+    },
+    "magrib": {
+     "printedMean": 3.03,
+     "printedMin": 2,
+     "printedMax": 4,
+     "adhanMean": 2.82,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 0.88,
+     "residualVsLongitude": 3.2
+    },
+    "isha": {
+     "printedMean": 0.63,
+     "printedMin": -1,
+     "printedMax": 2,
+     "adhanMean": 0.74,
+     "longitudeRule": 0.8,
+     "residualVsAdhan": 1.02,
+     "residualVsLongitude": 1.8
+    }
+   },
+   "adrar": {
+    "fajr": {
+     "printedMean": 7.43,
+     "printedMin": 4,
+     "printedMax": 12,
+     "adhanMean": 7.45,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 0.75,
+     "residualVsLongitude": 25.4
+    },
+    "sunrise": {
+     "printedMean": -0.8,
+     "printedMin": -5,
+     "printedMax": 4,
+     "adhanMean": -0.8,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 0.97,
+     "residualVsLongitude": 17.4
+    },
+    "dhuhr": {
+     "printedMean": 13.3,
+     "printedMin": 13,
+     "printedMax": 14,
+     "adhanMean": 13.41,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 0.6,
+     "residualVsLongitude": 27.4
+    },
+    "asr": {
+     "printedMean": 27.47,
+     "printedMin": 23,
+     "printedMax": 31,
+     "adhanMean": 27.56,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 0.8,
+     "residualVsLongitude": 44.4
+    },
+    "magrib": {
+     "printedMean": 27.77,
+     "printedMin": 24,
+     "printedMax": 32,
+     "adhanMean": 27.73,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 0.85,
+     "residualVsLongitude": 45.4
+    },
+    "isha": {
+     "printedMean": 19.7,
+     "printedMin": 16,
+     "printedMax": 23,
+     "adhanMean": 20.28,
+     "longitudeRule": -13.4,
+     "residualVsAdhan": 1.33,
+     "residualVsLongitude": 36.4
+    }
+   }
+  },
+  "adrarVsOranEntry": {
+   "fajr": {
+    "printedMean": 7.43,
+    "oranEntry": 15,
+    "miss": -7.57
+   },
+   "sunrise": {
+    "printedMean": -0.8,
+    "oranEntry": 14,
+    "miss": -14.8
+   },
+   "dhuhr": {
+    "printedMean": 13.3,
+    "oranEntry": 15,
+    "miss": -1.7
+   },
+   "asr": {
+    "printedMean": 27.47,
+    "oranEntry": 18,
+    "miss": 9.47
+   },
+   "magrib": {
+    "printedMean": 27.77,
+    "oranEntry": 18,
+    "miss": 9.77
+   },
+   "isha": {
+    "printedMean": 19.7,
+    "oranEntry": 16,
+    "miss": 3.7
+   }
+  },
+  "verdict": "the register is a display aid for 25 northern wilayas, not the computation. Each regional book is computed at its own coordinates with the frozen Algiers recipe (Adrar 180/180 and Djelfa 180/180 within one minute), while the register longitude-only rule misses the same books by up to 45 minutes (Adrar asr) and by up to 6.8 (Djelfa sunrise), and neither regional wilaya appears in the 25"
+ },
+ "seasonal": {
+  "measuredSpanInHandMinutes": {
+   "fajr": 62,
+   "sunrise": 68,
+   "dhuhr": 30,
+   "asr": 68,
+   "magrib": 87,
+   "isha": 82
+  },
+  "measuredWindow": "October to March only, both years",
+  "modelledAnnualSpanMinutes": {
+   "fajr": 171.1,
+   "sunrise": 151.1,
+   "dhuhr": 29.5,
+   "asr": 89.4,
+   "magrib": 155.6,
+   "isha": 170.1
+  },
+  "janToJulFajrMinutes": 154.9,
+  "note": "the annual extremum of a 17.8 degree fajr at 36.75 N is unexercised by any printed month in hand"
+ },
+ "verdict": {
+  "betweenYear": "FROZEN",
+  "statement": "one recipe covers both Hijri years. Applied unchanged, the 1448 recipe reproduces 1447 at 620/708 exact and 708/708 within one minute, against 626/714 and 714/714 on its own year. Fitted independently on 1447 the same parameters come back: fajr 17.80 at margin 0 floor, its own 1448 value to the hundredth, and the solar columns on +1/+1/+4. Isha is the one column that moves: the 1447 fit prefers 16.30 at +4 (115/118) over the frozen 16.10 at +5 (113/118), a 0.2 degree step worth two cells of 118 and inside print resolution. The 1447 fit transfers back to 1448 at 626/714 exact, the same count the 1448 fit reaches on its own year, so the two fits describe one table.",
+  "generation": "the values are freshly computed each year, not reprinted: the two books share no Gregorian cell (1447 ends 2026-06-15, 1448 begins 2026-06-16), and the same Hijri cells one year apart differ by exactly the 11-day solar drift, matching adhan own year-to-year difference to a mean of 0.4 minutes and a worst of 1.15"
+ }
+}

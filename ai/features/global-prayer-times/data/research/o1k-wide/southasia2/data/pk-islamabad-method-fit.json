@@ -1,0 +1,86 @@
+{
+ "_source": "mora.gov.pk Nizam-e-Salat chart, Islamabad district, 366 rows",
+ "_method": "solar engine tools/solar.py (NOAA), 33.6844N 73.0479E, TZ +5, leap-anchored (2028) rows",
+ "columns": {
+  "fajr": {
+   "mean_err_min": -0.7,
+   "sd": 0.55,
+   "min": -2.1,
+   "max": 0.4
+  },
+  "sunrise": {
+   "mean_err_min": -0.94,
+   "sd": 0.63,
+   "min": -2.8,
+   "max": 0.3
+  },
+  "sunset": {
+   "mean_err_min": 1.12,
+   "sd": 0.65,
+   "min": -0.2,
+   "max": 2.7
+  },
+  "maghrib": {
+   "mean_err_min": 6.12,
+   "sd": 0.65,
+   "min": 4.8,
+   "max": 7.7
+  }
+ },
+ "asr_implied_shadow": {
+  "median": 2.061,
+  "mean": 2.069,
+  "sd": 0.03
+ },
+ "dhuhr": {
+  "states": [
+   "13:00 (Oct 15-Apr 14)",
+   "13:15 (Apr 15-Oct 14)"
+  ],
+  "switch_dates": [
+   "2026-04-15",
+   "2026-10-15"
+  ],
+  "adhan_minus_transit_min": [
+   37.9,
+   81.6
+  ]
+ },
+ "isha_vs_18deg": {
+  "mean": 18.51,
+  "sd": 8.87,
+  "min": -4.9,
+  "max": 43.9
+ },
+ "isha_structure": {
+  "distinct_clock_values": [
+   "18:45",
+   "19:00",
+   "19:15",
+   "19:30",
+   "19:45",
+   "20:00",
+   "20:15",
+   "20:30",
+   "20:45",
+   "21:00",
+   "21:15"
+  ],
+  "transitions": 19,
+  "note": "15-minute clock ladder; one 30-minute step on 2026-10-01 and one upward step on 2026-12-20"
+ },
+ "verdict": {
+  "pair": "Karachi 18/18 with Hanafi asr (shadow 2), i.e. the subcontinent 18/18 Hanafi family",
+  "reproduces": [
+   "fajr",
+   "sunrise",
+   "asr",
+   "maghrib"
+  ],
+  "does_not_reproduce": [
+   "dhuhr",
+   "isha"
+  ],
+  "mwl_18_17": "refuted: asr 58 min early, isha 24 min early"
+ }
+}

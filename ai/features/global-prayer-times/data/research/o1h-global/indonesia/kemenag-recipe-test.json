@@ -1,0 +1,110 @@
+{
+ "jakarta": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -2,
+   "ishaBias": -1.99,
+   "fajrWorst": 3,
+   "ishaWorst": 3,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0,
+   "ishaBias": 0.01,
+   "fajrWorst": 1,
+   "ishaWorst": 1,
+   "fajrExact": 99.7,
+   "ishaExact": 98.9
+  }
+ },
+ "medan": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -2,
+   "ishaBias": -2,
+   "fajrWorst": 2,
+   "ishaWorst": 3,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0,
+   "ishaBias": 0,
+   "fajrWorst": 0,
+   "ishaWorst": 1,
+   "fajrExact": 100,
+   "ishaExact": 99.7
+  }
+ },
+ "pontianak": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -2,
+   "ishaBias": -1.99,
+   "fajrWorst": 2,
+   "ishaWorst": 2,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0,
+   "ishaBias": 0.01,
+   "fajrWorst": 0,
+   "ishaWorst": 1,
+   "fajrExact": 100,
+   "ishaExact": 99.5
+  }
+ },
+ "surabaya": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -1.99,
+   "ishaBias": -2,
+   "fajrWorst": 3,
+   "ishaWorst": 2,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0.01,
+   "ishaBias": 0,
+   "fajrWorst": 1,
+   "ishaWorst": 0,
+   "fajrExact": 98.9,
+   "ishaExact": 100
+  }
+ },
+ "makassar": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -1.99,
+   "ishaBias": -1.99,
+   "fajrWorst": 2,
+   "ishaWorst": 2,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0.01,
+   "ishaBias": 0.01,
+   "fajrWorst": 1,
+   "ishaWorst": 1,
+   "fajrExact": 99.2,
+   "ishaExact": 99.2
+  }
+ },
+ "jayapura": {
+  "20/18 nearest, no margin": {
+   "fajrBias": -2,
+   "ishaBias": -2,
+   "fajrWorst": 3,
+   "ishaWorst": 3,
+   "fajrExact": 0,
+   "ishaExact": 0
+  },
+  "20/18 +2 minutes both (ihtiyat)": {
+   "fajrBias": 0,
+   "ishaBias": 0,
+   "fajrWorst": 1,
+   "ishaWorst": 1,
+   "fajrExact": 99.7,
+   "ishaExact": 99.7
+  }
+ }
+}

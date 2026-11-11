@@ -1,0 +1,2307 @@
+{
+ "towns": {
+  "Maputo": {
+   "coords": {
+    "lat": -25.9167,
+    "lon": 32.5833,
+    "printed": "25.9167S, 32.5833E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 303,
+    "of": 403,
+    "worst": 13
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 13
+    },
+    "zawaal": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "zuhr": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "asr_shafi": {
+     "exact": 19,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 22,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 21,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 25,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunrise",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 13,
+     "mae": 12.03,
+     "bias": -12.03,
+     "engineMargin": 195,
+     "fixingMargin": 205
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 19,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.39,
+     "bias": -0.39,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 22,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.29,
+     "bias": -0.29,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "sunset",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": -3,
+     "fixingMargin": -2.5
+    },
+    {
+     "col": "maghrib",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 3,
+     "fixingMargin": 3.5
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 21,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.32,
+     "bias": -0.32,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 25,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.19,
+     "bias": -0.19,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 10,
+    "max": 13,
+    "values": [
+     10,
+     11,
+     12,
+     13
+    ]
+   }
+  },
+  "Windhoek": {
+   "coords": {
+    "lat": -22.5667,
+    "lon": 17.1,
+    "printed": "22.5667S, 17.1000E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 329,
+    "of": 403,
+    "worst": 9
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "ishraaq": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 9
+    },
+    "zawaal": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 9,
+     "mae": 8.32,
+     "bias": -8.32,
+     "engineMargin": 195,
+     "fixingMargin": 203.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": 0.26,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": 0.26,
+     "engineMargin": 5,
+     "fixingMargin": 4.5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 7,
+    "max": 9,
+    "values": [
+     7,
+     8,
+     9
+    ]
+   }
+  },
+  "Luanda": {
+   "coords": {
+    "lat": -8.8167,
+    "lon": 13.2333,
+    "printed": "8.8167S, 13.2333E"
+   },
+   "utc_offset": 1,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 314,
+    "of": 403,
+    "worst": 5
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "fajr": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "sunrise": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 5
+    },
+    "zawaal": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "sunrise",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 5,
+     "mae": 4.65,
+     "bias": 4.65,
+     "engineMargin": 195,
+     "fixingMargin": 190.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": 0.23,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": 0.23,
+     "engineMargin": 5,
+     "fixingMargin": 4.5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": -5,
+    "max": -4,
+    "values": [
+     -5,
+     -4
+    ]
+   }
+  },
+  "Maseru": {
+   "coords": {
+    "lat": -29.3167,
+    "lon": 27.5167,
+    "printed": "29.3167S, 27.5167E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 342,
+    "of": 403,
+    "worst": 17
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "ishraaq": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 17
+    },
+    "zawaal": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 17,
+     "mae": 15.84,
+     "bias": -15.84,
+     "engineMargin": 195,
+     "fixingMargin": 204.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "sunset",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 14,
+    "max": 17,
+    "values": [
+     14,
+     15,
+     16,
+     17
+    ]
+   }
+  },
+  "Mbabane": {
+   "coords": {
+    "lat": -26.3,
+    "lon": 31.1333,
+    "printed": "26.3000S, 31.1333E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 343,
+    "of": 403,
+    "worst": 13
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "fajr": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "sunrise": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "ishraaq": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 13
+    },
+    "zawaal": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 13,
+     "mae": 12.39,
+     "bias": -12.39,
+     "engineMargin": 195,
+     "fixingMargin": 205
+    },
+    {
+     "col": "zawaal",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": 0.1,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": 0.1,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.06,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 11,
+    "max": 13,
+    "values": [
+     11,
+     12,
+     13
+    ]
+   }
+  },
+  "Harare": {
+   "coords": {
+    "lat": -17.825,
+    "lon": 31.0333,
+    "printed": "not printed (census city coords)"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 330,
+    "of": 403,
+    "worst": 4
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 4
+    },
+    "zawaal": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunrise",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 4,
+     "mae": 3.55,
+     "bias": -3.55,
+     "engineMargin": 195,
+     "fixingMargin": 198.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": 0.13,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 2,
+    "max": 4,
+    "values": [
+     2,
+     3,
+     4
+    ]
+   }
+  },
+  "Bulawayo": {
+   "coords": {
+    "lat": -20.15,
+    "lon": 28.5833,
+    "printed": "not printed (census city coords)"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 314,
+    "of": 403,
+    "worst": 7
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "ishraaq": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 7
+    },
+    "zawaal": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 19,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 19,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 7,
+     "mae": 6,
+     "bias": -6,
+     "engineMargin": 195,
+     "fixingMargin": 201
+    },
+    {
+     "col": "zawaal",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "sunset",
+     "exact": 19,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.39,
+     "bias": -0.39,
+     "engineMargin": -3,
+     "fixingMargin": -2.5
+    },
+    {
+     "col": "maghrib",
+     "exact": 19,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.39,
+     "bias": -0.39,
+     "engineMargin": 3,
+     "fixingMargin": 3.5
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 5,
+    "max": 7,
+    "values": [
+     5,
+     6,
+     7
+    ]
+   }
+  },
+  "Blantyre": {
+   "coords": {
+    "lat": -15.8167,
+    "lon": 35.0833,
+    "printed": "15.8167S, 35.0833E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 284,
+    "of": 403,
+    "worst": 3
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 14,
+     "of": 31,
+     "worst": 1
+    },
+    "zawaal": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 19,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 0,
+     "of": 31,
+     "worst": 3
+    },
+    "maghrib": {
+     "exact": 0,
+     "of": 31,
+     "worst": 3
+    },
+    "isha_shafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunrise",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": -0.03,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 14,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.55,
+     "bias": -0.55,
+     "engineMargin": 195,
+     "fixingMargin": 195.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 19,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.39,
+     "bias": -0.39,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "sunset",
+     "exact": 0,
+     "of": 31,
+     "worst": 3,
+     "mae": 2.84,
+     "bias": -2.84,
+     "engineMargin": -3,
+     "fixingMargin": 0
+    },
+    {
+     "col": "maghrib",
+     "exact": 0,
+     "of": 31,
+     "worst": 3,
+     "mae": 2.84,
+     "bias": -2.84,
+     "engineMargin": 3,
+     "fixingMargin": 6
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 0,
+    "max": 1,
+    "values": [
+     0,
+     1
+    ]
+   }
+  },
+  "Lilongwe": {
+   "coords": {
+    "lat": -13.9833,
+    "lon": 33.7833,
+    "printed": "13.9833S, 33.7833E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 348,
+    "of": 403,
+    "worst": 1
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "fajr": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "sunrise": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "ishraaq": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "dhuha": {
+     "exact": 22,
+     "of": 31,
+     "worst": 1
+    },
+    "zawaal": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 22,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 21,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 24,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 27,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "dhuha",
+     "exact": 22,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.29,
+     "bias": -0.1,
+     "engineMargin": 195,
+     "fixingMargin": 195
+    },
+    {
+     "col": "zawaal",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 22,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.29,
+     "bias": -0.29,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 21,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.32,
+     "bias": -0.32,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "sunset",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 24,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.23,
+     "bias": -0.23,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 27,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.13,
+     "bias": -0.13,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": -1,
+    "max": 1,
+    "values": [
+     -1,
+     0,
+     1
+    ]
+   }
+  },
+  "Mzuzu": {
+   "coords": {
+    "lat": -11.4667,
+    "lon": 34.0167,
+    "printed": "11.4667S, 34.0167E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 310,
+    "of": 403,
+    "worst": 3
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "fajr": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "sunrise": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 0,
+     "of": 31,
+     "worst": 3
+    },
+    "zawaal": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 21,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 21,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 21,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 23,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "suhoor",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.06,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "fajr",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.06,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunrise",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 0,
+     "of": 31,
+     "worst": 3,
+     "mae": 2.23,
+     "bias": 2.23,
+     "engineMargin": 195,
+     "fixingMargin": 193
+    },
+    {
+     "col": "zawaal",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 21,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.32,
+     "bias": -0.32,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 21,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.32,
+     "bias": -0.32,
+     "engineMargin": -3,
+     "fixingMargin": -2.5
+    },
+    {
+     "col": "maghrib",
+     "exact": 21,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.32,
+     "bias": -0.32,
+     "engineMargin": 3,
+     "fixingMargin": 3.5
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 23,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.26,
+     "bias": -0.26,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": -3,
+    "max": -2,
+    "values": [
+     -3,
+     -2
+    ]
+   }
+  },
+  "Zomba": {
+   "coords": {
+    "lat": -15.3833,
+    "lon": 35.3167,
+    "printed": "15.3833S, 35.3167E"
+   },
+   "utc_offset": 2,
+   "rows": 31,
+   "span": [
+    "2026-12-01",
+    "2026-12-31"
+   ],
+   "joint": {
+    "exact": 338,
+    "of": 403,
+    "worst": 2
+   },
+   "columns": {
+    "suhoor": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "fajr": {
+     "exact": 31,
+     "of": 31,
+     "worst": 0
+    },
+    "sunrise": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "ishraaq": {
+     "exact": 30,
+     "of": 31,
+     "worst": 1
+    },
+    "dhuha": {
+     "exact": 2,
+     "of": 31,
+     "worst": 2
+    },
+    "zawaal": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "zuhr": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_shafi": {
+     "exact": 22,
+     "of": 31,
+     "worst": 1
+    },
+    "asr_hanafi": {
+     "exact": 25,
+     "of": 31,
+     "worst": 1
+    },
+    "sunset": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "maghrib": {
+     "exact": 26,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_shafi": {
+     "exact": 28,
+     "of": 31,
+     "worst": 1
+    },
+    "isha_hanafi": {
+     "exact": 29,
+     "of": 31,
+     "worst": 1
+    }
+   },
+   "divergent": [
+    {
+     "col": "sunrise",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "ishraaq",
+     "exact": 30,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.03,
+     "bias": 0.03,
+     "engineMargin": 15,
+     "fixingMargin": 15
+    },
+    {
+     "col": "dhuha",
+     "exact": 2,
+     "of": 31,
+     "worst": 2,
+     "mae": 1.26,
+     "bias": -1.26,
+     "engineMargin": 195,
+     "fixingMargin": 196.5
+    },
+    {
+     "col": "zawaal",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": -5,
+     "fixingMargin": -5
+    },
+    {
+     "col": "zuhr",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": 0.06,
+     "engineMargin": 5,
+     "fixingMargin": 5
+    },
+    {
+     "col": "asr_shafi",
+     "exact": 22,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.29,
+     "bias": -0.29,
+     "engineMargin": 0,
+     "fixingMargin": 0.5
+    },
+    {
+     "col": "asr_hanafi",
+     "exact": 25,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.19,
+     "bias": -0.19,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "sunset",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": -3,
+     "fixingMargin": -3
+    },
+    {
+     "col": "maghrib",
+     "exact": 26,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.16,
+     "bias": -0.16,
+     "engineMargin": 3,
+     "fixingMargin": 3
+    },
+    {
+     "col": "isha_shafi",
+     "exact": 28,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.1,
+     "bias": -0.1,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    },
+    {
+     "col": "isha_hanafi",
+     "exact": 29,
+     "of": 31,
+     "worst": 1,
+     "mae": 0.06,
+     "bias": -0.06,
+     "engineMargin": 0,
+     "fixingMargin": 0
+    }
+   ],
+   "isha_hanafiModel": "adhan-evening",
+   "dhuhaOffsetFromSunrise": {
+    "min": 0,
+    "max": 2,
+    "values": [
+     0,
+     1,
+     2
+    ]
+   }
+  }
+ },
+ "engineVerdict": {
+  "confirmed": "fajr/sunrise bare 18/raw, isha Shafi 15 separate, zuhr transit+5, maghrib astro+3, split rounding (morning/noon nearest, afternoon/evening floor), suhoor fajr-5, ishraaq sunrise+15, zawaal transit-5, asr both schools bare, isha_hanafi evening 18",
+  "reach": "every one of the 11 towns reproduces on every column at worst 1 min, except dhuha and Blantyre evening pair",
+  "dhuhaLaw": "NOT sunrise+195: dhuha = astro_sunrise + (astro_sunset+3 - astro_sunrise)/4, nearest; 22-29/31 exact per town (adhan ruler), worst 1; on Blantyre the +3 marker is absent (its evening family runs +3: sunset col = astro, maghrib = astro+6, dhuha quarter marker = astro)",
+  "blantyreShift": "Blantyre sunset fixing margin 0 (engine -3), maghrib fixing margin 6 (engine 3) - the town-scoped +3 evening shift recurs in December",
+  "modelNote": "worst-1 stragglers on all non-divergent columns are the generator internal model vs adhan; the census solar.py ruler gives the same picture (solar.py crosscheck exact 3500/4433, worst 1 on non-divergent columns)"
+ }
+}

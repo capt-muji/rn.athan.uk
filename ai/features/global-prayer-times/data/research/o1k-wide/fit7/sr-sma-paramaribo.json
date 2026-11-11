@@ -1,0 +1,314 @@
+{
+ "id": "sr-sma-paramaribo",
+ "country": "Suriname",
+ "place": "Surinaamse Moeslim Associatie, Paramaribo",
+ "source_file": "americas2/data/sr_sma_paramaribo_2025-04-29_2025-05-27.json (image transcription, 29 rows)",
+ "coords": {
+  "lat": 5.8664,
+  "lon": -55.1668
+ },
+ "source_published_coords": null,
+ "tz": "America/Paramaribo",
+ "span": {
+  "first": "2025-04-29",
+  "last": "2025-05-27",
+  "days": 29,
+  "years_held": [
+   "2025"
+  ]
+ },
+ "rows": 29,
+ "fitting_engine": "adhan 4.4.6 (TZ per job, no real clock)",
+ "verified_recipe": {
+  "fajr_angle": 18,
+  "isha_rule": "maghrib+70",
+  "isha_angle": 18,
+  "asr_school": "Hanafi",
+  "rounding": "nearest minute",
+  "margins_minutes": {
+   "sunrise": 0.5
+  }
+ },
+ "verdict": "REFUTED on isha, confirmed elsewhere",
+ "publisher_engine": {
+  "note": "PrayTimes v2-family solar engine, which is what these tables are computed from. Zero margins reproduce the table exactly where the angles are the holding.",
+  "scores": {
+   "fajr": {
+    "exact": 26,
+    "mae": 0.269,
+    "worst": 1,
+    "bias": 0.099
+   },
+   "sunrise": {
+    "exact": 27,
+    "mae": 0.312,
+    "worst": 1,
+    "bias": 0.104
+   },
+   "dhuhr": {
+    "exact": 28,
+    "mae": 0.214,
+    "worst": 1,
+    "bias": -0.079
+   },
+   "asr": {
+    "exact": 24,
+    "mae": 0.276,
+    "worst": 1,
+    "bias": -0.173
+   },
+   "maghrib": {
+    "exact": 25,
+    "mae": 0.263,
+    "worst": 1,
+    "bias": -0.147
+   },
+   "isha": {
+    "exact": 25,
+    "mae": 0.263,
+    "worst": 1,
+    "bias": -0.147
+   }
+  },
+  "days_all_six_exact": 17
+ },
+ "adhan_side": {
+  "scores": {
+   "fajr": {
+    "exact": 25,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.272
+   },
+   "sunrise": {
+    "exact": 27,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.316
+   },
+   "dhuhr": {
+    "exact": 28,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.209
+   },
+   "asr": {
+    "exact": 26,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.249
+   },
+   "maghrib": {
+    "exact": 25,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.259
+   },
+   "isha": {
+    "exact": 25,
+    "within1": 29,
+    "worst": 1,
+    "mae": 0.259
+   }
+  },
+  "joint": {
+   "exact": 17,
+   "within1": 29,
+   "worst": 1,
+   "of": 174
+  },
+  "offsets_measured_minutes": {
+   "fajr": 0.099,
+   "sunrise": 0.104,
+   "dhuhr": -0.079,
+   "asr": -0.173,
+   "maghrib": -0.147,
+   "isha": -0.147
+  },
+  "note": "adhan carries its own meridian-transit offset against this engine, about +1.0 min on dhuhr and a +/-1.2 min seasonal skew on asr, so its margins are engine artefacts and not publisher margins"
+ },
+ "cross_check_at_source_coords": null,
+ "free_fit": {
+  "fajr": {
+   "best_angle": 17.98,
+   "best_mae": 0.26,
+   "mae_at_recipe_angle": 0.272
+  },
+  "isha": {
+   "angle_model": {
+    "best": 18,
+    "mae": 0.877
+   },
+   "interval_model": {
+    "best_from_sunset_minutes": 73.5,
+    "mae": 0.259
+   },
+   "better": "interval"
+  }
+ },
+ "asr_school_gap_minutes": 64,
+ "family_screen": {
+  "mwl_18_17": {
+   "mean_mae": 12.245,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.272,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 63.977,
+    "maghrib": 3.363,
+    "isha": 4.175
+   },
+   "per_column_exact": {
+    "fajr": 25,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "isna_15_15": {
+   "mean_mae": 15.776,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 12.826,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 63.977,
+    "maghrib": 3.363,
+    "isha": 12.807
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "mml_18_18": {
+   "mean_mae": 11.695,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.272,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 63.977,
+    "maghrib": 3.363,
+    "isha": 0.877
+   },
+   "per_column_exact": {
+    "fajr": 25,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 7
+   }
+  },
+  "umm_al_qura_18_5_90": {
+   "mean_mae": 14.656,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 2.275,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 63.977,
+    "maghrib": 3.363,
+    "isha": 16.637
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 0
+   }
+  },
+  "egypt_19_5_17_5": {
+   "mean_mae": 12.941,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 6.608,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 63.977,
+    "maghrib": 3.363,
+    "isha": 2.011
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 0,
+    "isha": 1
+   }
+  },
+  "karachi_18_18_hanafi": {
+   "mean_mae": 1.074,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.272,
+    "sunrise": 0.618,
+    "dhuhr": 1.066,
+    "asr": 0.249,
+    "maghrib": 3.363,
+    "isha": 0.877
+   },
+   "per_column_exact": {
+    "fajr": 25,
+    "sunrise": 10,
+    "dhuhr": 0,
+    "asr": 26,
+    "maghrib": 0,
+    "isha": 7
+   }
+  }
+ },
+ "family_ranking": [
+  {
+   "family": "karachi_18_18_hanafi",
+   "mean_mae": 1.074,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mml_18_18",
+   "mean_mae": 11.695,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mwl_18_17",
+   "mean_mae": 12.245,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "egypt_19_5_17_5",
+   "mean_mae": 12.941,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "umm_al_qura_18_5_90",
+   "mean_mae": 14.656,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "isna_15_15",
+   "mean_mae": 15.776,
+   "days_all_six_exact": 0
+  }
+ ],
+ "seasonal_amplitude_fajr": null,
+ "asr_monthly_bias_adhan_vs_table": {
+  "2025-04": 0.12,
+  "2025-05": -0.04
+ },
+ "limits": [
+  "29 days of one month (2025-04-29 to 2025-05-27): a season, not a year",
+  "near-equator span, where an isha angle and an isha interval are all but degenerate",
+  "transcribed from a JPG; a misread digit would show as a spike and none does"
+ ]
+}

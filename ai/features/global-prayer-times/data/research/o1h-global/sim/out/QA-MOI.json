@@ -1,0 +1,331 @@
+{
+ "id": "QA-MOI",
+ "asrCountry": "shafi",
+ "targetDays": {
+  "fajr": 365,
+  "isha": 365
+ },
+ "cells": {
+  "mwl": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 14.994520547945205,
+    "worst": 20,
+    "within2": 0
+   },
+   "combined": 7.997260273972603,
+   "asrMatch": true
+  },
+  "isna15": {
+   "fajr": {
+    "n": 365,
+    "mean": 13.271232876712329,
+    "worst": 16,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 24.53150684931507,
+    "worst": 29,
+    "within2": 0
+   },
+   "combined": 18.9013698630137,
+   "asrMatch": true
+  },
+  "isna2010": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 10.194520547945206,
+    "worst": 16,
+    "within2": 9.04109589041096
+   },
+   "combined": 5.597260273972603,
+   "asrMatch": true
+  },
+  "ummalqura": {
+   "fajr": {
+    "n": 365,
+    "mean": 3.4246575342465753,
+    "worst": 4,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 3.3013698630136985,
+    "worst": 29,
+    "within2": 91.78082191780823
+   },
+   "combined": 3.363013698630137,
+   "asrMatch": true
+  },
+  "egyptian": {
+   "fajr": {
+    "n": 365,
+    "mean": 8.24931506849315,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 12.64109589041096,
+    "worst": 18,
+    "within2": 0
+   },
+   "combined": 10.445205479452055,
+   "asrMatch": true
+  },
+  "karachi": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 10.194520547945206,
+    "worst": 16,
+    "within2": 9.04109589041096
+   },
+   "combined": 5.597260273972603,
+   "asrMatch": false
+  },
+  "moonsighting": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 14.868493150684932,
+    "worst": 21,
+    "within2": 0
+   },
+   "combined": 7.934246575342466,
+   "asrMatch": true
+  },
+  "diyanet-tr": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 14.994520547945205,
+    "worst": 20,
+    "within2": 0
+   },
+   "combined": 7.997260273972603,
+   "asrMatch": true
+  },
+  "diyanet-eu": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 19.742465753424657,
+    "worst": 24,
+    "within2": 0
+   },
+   "combined": 10.371232876712329,
+   "asrMatch": true
+  },
+  "mabims": {
+   "fajr": {
+    "n": 365,
+    "mean": 10.652054794520549,
+    "worst": 13,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 10.194520547945206,
+    "worst": 16,
+    "within2": 9.04109589041096
+   },
+   "combined": 10.423287671232877,
+   "asrMatch": true,
+   "kemenagInstance": true
+  },
+  "jakim": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 10.194520547945206,
+    "worst": 16,
+    "within2": 9.04109589041096
+   },
+   "combined": 5.597260273972603,
+   "asrMatch": true
+  },
+  "kuwait": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 12.64109589041096,
+    "worst": 18,
+    "within2": 0
+   },
+   "combined": 6.82054794520548,
+   "asrMatch": true
+  },
+  "qatar": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "combined": 1,
+   "asrMatch": true
+  },
+  "singapore": {
+   "fajr": {
+    "n": 365,
+    "mean": 10.126027397260273,
+    "worst": 12,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 9.715068493150685,
+    "worst": 15,
+    "within2": 11.232876712328768
+   },
+   "combined": 9.92054794520548,
+   "asrMatch": true
+  },
+  "dubai": {
+   "fajr": {
+    "n": 365,
+    "mean": 1.9835616438356165,
+    "worst": 3,
+    "within2": 97.26027397260275
+   },
+   "isha": {
+    "n": 365,
+    "mean": 9.252054794520548,
+    "worst": 15,
+    "within2": 13.150684931506849
+   },
+   "combined": 5.617808219178082,
+   "asrMatch": true
+  },
+  "tehran": {
+   "fajr": {
+    "n": 365,
+    "mean": 0.3917808219178082,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 29.284931506849315,
+    "worst": 33,
+    "within2": 0
+   },
+   "combined": 14.838356164383562,
+   "asrMatch": true
+  },
+  "fazilet-a": {
+   "fajr": {
+    "n": 365,
+    "mean": 9.668493150684931,
+    "worst": 12,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 11.145205479452056,
+    "worst": 16,
+    "within2": 1.917808219178082
+   },
+   "combined": 10.406849315068493,
+   "asrMatch": true
+  },
+  "fazilet-b": {
+   "fajr": {
+    "n": 365,
+    "mean": 14.487671232876712,
+    "worst": 17,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 7.304109589041096,
+    "worst": 12,
+    "within2": 18.08219178082192
+   },
+   "combined": 10.895890410958904,
+   "asrMatch": true
+  },
+  "ecfr": {
+   "fajr": {
+    "n": 365,
+    "mean": 1,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 14.994520547945205,
+    "worst": 20,
+    "within2": 0
+   },
+   "combined": 7.997260273972603,
+   "asrMatch": true
+  },
+  "russia": {
+   "fajr": {
+    "n": 365,
+    "mean": 8.572602739726028,
+    "worst": 11,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 24.53150684931507,
+    "worst": 29,
+    "within2": 0
+   },
+   "combined": 16.552054794520547,
+   "asrMatch": true
+  }
+ }
+}

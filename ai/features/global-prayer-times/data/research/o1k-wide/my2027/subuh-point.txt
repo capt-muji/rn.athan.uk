@@ -1,0 +1,11 @@
+my-jawi-klptj-2027               dhuhr point 101.4234  subuh point 101.665 (358/365 exact)   offset 0.242 deg   LampiranB west 101.383 east 101.7583
+my-jawi-labuan-2027              dhuhr point 115.1215  subuh point 115.145 (347/365 exact)   offset 0.023 deg   LampiranB west 115.1397 east 115.3428
+my-selangor-2027-gombak          dhuhr point 101.4247  subuh point 101.67 (356/365 exact)   offset 0.245 deg 
+my-selangor-2027-petaling        dhuhr point 101.4234  subuh point 101.665 (358/365 exact)   offset 0.242 deg 
+my-selangor-2027-sepang          dhuhr point 101.5662  subuh point 101.78 (327/365 exact)   offset 0.214 deg 
+my-selangor-2027-hulu-langat     dhuhr point 101.7188  subuh point 101.95 (337/365 exact)   offset 0.231 deg 
+my-selangor-2027-hulu-selangor   dhuhr point 101.3161  subuh point 101.55 (346/365 exact)   offset 0.234 deg 
+my-selangor-2027-kuala-selangor  dhuhr point 101.0818  subuh point 101.345 (358/365 exact)   offset 0.263 deg 
+my-selangor-2027-sabak-bernam    dhuhr point 100.8045  subuh point 101.055 (360/365 exact)   offset 0.251 deg 
+my-selangor-2027-klang           dhuhr point 101.2206  subuh point 101.46 (351/365 exact)   offset 0.239 deg 
+my-selangor-2027-kuala-langat    dhuhr point 101.2687  subuh point 101.54 (345/365 exact)   offset 0.271 deg 

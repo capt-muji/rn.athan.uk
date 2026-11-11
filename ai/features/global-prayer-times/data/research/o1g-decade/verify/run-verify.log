@@ -1,0 +1,58 @@
+STAGE1 {
+ "header": {
+  "magic": "LUPT",
+  "fmt": 1,
+  "epochDay": 20454,
+  "dayCount": 18628,
+  "cols": 6
+ },
+ "artifactRange": {
+  "first": "2026-01-01",
+  "last": "2076-12-31"
+ },
+ "extractedDays": 4018,
+ "truthDays": 4018,
+ "truthCells": 24108,
+ "cellMismatches": 0,
+ "mismatchesSample": [],
+ "missingFromTruth": 0,
+ "extraInTruth": 0,
+ "badDateField": 0,
+ "artifactVs2027Table": {
+  "cells": 2190,
+  "mismatches": 0,
+  "sample": []
+ }
+}
+STAGE2 overall {"n":24108,"exact":23690,"within1":24108,"worst":1,"mae":0.0173,"pctExact":98.27,"pctWithin1":100}
+STAGE2 byPrayer {"fajr":{"n":4018,"exact":3959,"within1":4018,"worst":1,"mae":0.0147,"pctExact":98.53,"pctWithin1":100},"sunrise":{"n":4018,"exact":3959,"within1":4018,"worst":1,"mae":0.0147,"pctExact":98.53,"pctWithin1":100},"dhuhr":{"n":4018,"exact":3964,"within1":4018,"worst":1,"mae":0.0134,"pctExact":98.66,"pctWithin1":100},"asr":{"n":4018,"exact":3953,"within1":4018,"worst":1,"mae":0.0162,"pctExact":98.38,"pctWithin1":100},"magrib":{"n":4018,"exact":3929,"within1":4018,"worst":1,"mae":0.0222,"pctExact":97.78,"pctWithin1":100},"isha":{"n":4018,"exact":3926,"within1":4018,"worst":1,"mae":0.0229,"pctExact":97.71,"pctWithin1":100}}
+STAGE2 byYear {"2028":"98.04%/1","2029":"98.58%/1","2030":"98.4%/1","2031":"98.95%/1","2032":"98.09%/1","2033":"98.17%/1","2034":"97.85%/1","2035":"98.08%/1","2036":"98.32%/1","2037":"98.13%/1","2038":"98.31%/1"}
+STAGE2 dist {"0":23690,"1":350,"-1":68}
+STAGE3 [{"year":2028,"truthOffsets":{"fajrLead_0228":97,"fajrLead_0229":97,"fajrLead_0301":97,"ishaLag_0228":87,"ishaLag_0229":86,"ishaLag_0301":86}},{"year":2032,"truthOffsets":{"fajrLead_0228":97,"fajrLead_0229":97,"fajrLead_0301":97,"ishaLag_0228":87,"ishaLag_0229":86,"ishaLag_0301":86}},{"year":2036,"truthOffsets":{"fajrLead_0228":97,"fajrLead_0229":97,"fajrLead_0301":97,"ishaLag_0228":87,"ishaLag_0229":86,"ishaLag_0301":86}}]
+STAGE3 scores {"shipped":{"exact":15,"cells":18},"copy0301":{"exact":18,"cells":18}}
+HAND 2028-12-21 match=true
+  transit=718.8387 (11:59) off=0 dec=-23.436086
+  HA_hz=234.753 asrAlt=11.966846 HA_asr=98.9317
+  raw sunrise=481.0857 dhuhr=723.8387 asr=819.7704 magrib=956.5918
+  computed={"fajr":"06:21","sunrise":"08:01","dhuhr":"12:04","asr":"13:40","magrib":"15:57","isha":"17:34"} truth={"fajr":"06:21","sunrise":"08:01","dhuhr":"12:04","asr":"13:40","magrib":"15:57","isha":"17:34"}
+HAND 2038-06-21 match=true
+  transit=782.3923 (13:02) off=60 dec=23.433593
+  HA_hz=499.1587 asrAlt=33.109839 HA_asr=262.8101
+  raw sunrise=280.2336 dhuhr=787.3923 asr=1047.2024 magrib=1284.5509
+  computed={"fajr":"02:40","sunrise":"04:40","dhuhr":"13:07","asr":"17:27","magrib":"21:25","isha":"22:43"} truth={"fajr":"02:40","sunrise":"04:40","dhuhr":"13:07","asr":"17:27","magrib":"21:25","isha":"22:43"}
+HAND 2028-03-26 match=true
+  transit=786.0215 (13:06) off=60 dec=2.523789
+  HA_hz=378.0835 asrAlt=24.945847 HA_asr=205.8909
+  raw sunrise=404.9381 dhuhr=791.0215 asr=993.9124 magrib=1167.105
+  computed={"fajr":"05:11","sunrise":"06:45","dhuhr":"13:11","asr":"16:34","magrib":"19:27","isha":"20:45"} truth={"fajr":"05:11","sunrise":"06:45","dhuhr":"13:11","asr":"16:34","magrib":"19:27","isha":"20:45"}
+HAND 2033-10-30 match=true
+  transit=704.1612 (11:44) off=0 dec=-13.97049
+  HA_hz=292.8571 asrAlt=17.393253 HA_asr=144.4687
+  raw sunrise=408.3041 dhuhr=709.1612 asr=850.6299 magrib=1000.0184
+  computed={"fajr":"05:11","sunrise":"06:48","dhuhr":"11:49","asr":"14:11","magrib":"16:40","isha":"18:07"} truth={"fajr":"05:11","sunrise":"06:48","dhuhr":"11:49","asr":"14:11","magrib":"16:40","isha":"18:07"}
+HAND 2032-02-29 match=false
+  transit=732.9036 (12:13) off=0 dec=-7.644862
+  HA_hz=326.598 asrAlt=20.50075 HA_asr=170.242
+  raw sunrise=403.3056 dhuhr=737.9036 asr=905.1456 magrib=1062.5017
+  computed={"fajr":"05:06","sunrise":"06:43","dhuhr":"12:18","asr":"15:05","magrib":"17:43","isha":"19:10"} truth={"fajr":"05:06","sunrise":"06:43","dhuhr":"12:18","asr":"15:05","magrib":"17:43","isha":"19:09"}
+DONE

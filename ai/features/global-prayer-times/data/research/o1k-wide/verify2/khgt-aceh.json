@@ -1,0 +1,345 @@
+{
+ "job": "khgt-nw-anchor",
+ "recipe": {
+  "source": "deep3 REPORT job 1 (Muhammadiyah KHGT, 2025-2035)",
+  "fajrDeg": 18,
+  "ishaDeg": 18,
+  "rounding": "ceil to the minute, plus one minute",
+  "asr": "Shafi",
+  "highLatitude": "not engaged at 5.5 N"
+ },
+ "coordinateUsed": {
+  "lat": 5.558704,
+  "lng": 95.327713
+ },
+ "years": {
+  "2026": {
+   "ceilMarginWindow": {
+    "fajr": {
+     "lo": 1,
+     "hi": 1,
+     "width": 0
+    },
+    "isha": {
+     "lo": 1,
+     "hi": 0.967,
+     "width": -0.033
+    }
+   },
+   "rows": 365,
+   "span": "2026-01-01..2026-12-31",
+   "fajr": {
+    "n": 365,
+    "exact": 360,
+    "exactPct": 98.6,
+    "within1": 365,
+    "within1Pct": 100,
+    "mae": 0.014,
+    "worst": 1,
+    "late": 0,
+    "early": 5
+   },
+   "isha": {
+    "n": 365,
+    "exact": 362,
+    "exactPct": 99.2,
+    "within1": 365,
+    "within1Pct": 100,
+    "mae": 0.008,
+    "worst": 1,
+    "late": 2,
+    "early": 1
+   },
+   "imsakEqualsFajrMinus10": {
+    "violations": 0,
+    "n": 365
+   },
+   "impliedFajrDepth": {
+    "median": 17.65,
+    "p05": 17.53
+   },
+   "impliedIshaDepth": {
+    "median": 18.35
+   },
+   "fajrJanMean": 340.6,
+   "fajrJulMean": 318.9,
+   "fajrJanJulSpanMin": 21.700000000000045
+  },
+  "2027": {
+   "ceilMarginWindow": {
+    "fajr": {
+     "lo": 1.017,
+     "hi": 1.017,
+     "width": 0
+    },
+    "isha": {
+     "lo": 1,
+     "hi": 0.967,
+     "width": -0.033
+    }
+   },
+   "rows": 365,
+   "span": "2027-01-01..2027-12-31",
+   "fajr": {
+    "n": 365,
+    "exact": 358,
+    "exactPct": 98.1,
+    "within1": 365,
+    "within1Pct": 100,
+    "mae": 0.019,
+    "worst": 1,
+    "late": 0,
+    "early": 7
+   },
+   "isha": {
+    "n": 365,
+    "exact": 359,
+    "exactPct": 98.4,
+    "within1": 365,
+    "within1Pct": 100,
+    "mae": 0.016,
+    "worst": 1,
+    "late": 3,
+    "early": 3
+   },
+   "imsakEqualsFajrMinus10": {
+    "violations": 0,
+    "n": 365
+   },
+   "impliedFajrDepth": {
+    "median": 17.66,
+    "p05": 17.52
+   },
+   "impliedIshaDepth": {
+    "median": 18.35
+   },
+   "fajrJanMean": 340.5,
+   "fajrJulMean": 318.8,
+   "fajrJanJulSpanMin": 21.69999999999999
+  }
+ },
+ "structure": {
+  "otherColumns": {
+   "sunrise": {
+    "best": {
+     "rounding": "floor",
+     "margin": 0,
+     "score": {
+      "n": 730,
+      "exact": 514,
+      "exactPct": 70.4,
+      "within1": 730,
+      "within1Pct": 100,
+      "mae": 0.296,
+      "worst": 1,
+      "late": 216,
+      "early": 0
+     }
+    },
+    "byYear": {
+     "2026": {
+      "n": 365,
+      "exact": 253,
+      "exactPct": 69.3,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.307,
+      "worst": 1,
+      "late": 112,
+      "early": 0
+     },
+     "2027": {
+      "n": 365,
+      "exact": 261,
+      "exactPct": 71.5,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.285,
+      "worst": 1,
+      "late": 104,
+      "early": 0
+     }
+    }
+   },
+   "dhuhr": {
+    "best": {
+     "rounding": "floor",
+     "margin": 2,
+     "score": {
+      "n": 730,
+      "exact": 651,
+      "exactPct": 89.2,
+      "within1": 730,
+      "within1Pct": 100,
+      "mae": 0.108,
+      "worst": 1,
+      "late": 42,
+      "early": 37
+     }
+    },
+    "byYear": {
+     "2026": {
+      "n": 365,
+      "exact": 325,
+      "exactPct": 89,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.11,
+      "worst": 1,
+      "late": 21,
+      "early": 19
+     },
+     "2027": {
+      "n": 365,
+      "exact": 326,
+      "exactPct": 89.3,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.107,
+      "worst": 1,
+      "late": 21,
+      "early": 18
+     }
+    }
+   },
+   "asr": {
+    "best": {
+     "rounding": "floor",
+     "margin": 2,
+     "score": {
+      "n": 730,
+      "exact": 548,
+      "exactPct": 75.1,
+      "within1": 726,
+      "within1Pct": 99.5,
+      "mae": 0.255,
+      "worst": 2,
+      "late": 63,
+      "early": 119
+     }
+    },
+    "byYear": {
+     "2026": {
+      "n": 365,
+      "exact": 274,
+      "exactPct": 75.1,
+      "within1": 363,
+      "within1Pct": 99.5,
+      "mae": 0.255,
+      "worst": 2,
+      "late": 32,
+      "early": 59
+     },
+     "2027": {
+      "n": 365,
+      "exact": 274,
+      "exactPct": 75.1,
+      "within1": 363,
+      "within1Pct": 99.5,
+      "mae": 0.255,
+      "worst": 2,
+      "late": 31,
+      "early": 60
+     }
+    }
+   },
+   "magrib": {
+    "best": {
+     "rounding": "nearest",
+     "margin": 2,
+     "score": {
+      "n": 730,
+      "exact": 581,
+      "exactPct": 79.6,
+      "within1": 730,
+      "within1Pct": 100,
+      "mae": 0.204,
+      "worst": 1,
+      "late": 149,
+      "early": 0
+     }
+    },
+    "byYear": {
+     "2026": {
+      "n": 365,
+      "exact": 298,
+      "exactPct": 81.6,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.184,
+      "worst": 1,
+      "late": 67,
+      "early": 0
+     },
+     "2027": {
+      "n": 365,
+      "exact": 283,
+      "exactPct": 77.5,
+      "within1": 365,
+      "within1Pct": 100,
+      "mae": 0.225,
+      "worst": 1,
+      "late": 82,
+      "early": 0
+     }
+    }
+   }
+  }
+ },
+ "briefedCoordinateSensitivity": {
+  "coordinate": {
+   "lat": 5.5483,
+   "lng": 95.3238
+  },
+  "years": {
+   "2026": {
+    "fajr": {
+     "n": 365,
+     "exact": 362,
+     "exactPct": 99.2,
+     "within1": 365,
+     "within1Pct": 100,
+     "mae": 0.008,
+     "worst": 1,
+     "late": 2,
+     "early": 1
+    },
+    "isha": {
+     "n": 365,
+     "exact": 357,
+     "exactPct": 97.8,
+     "within1": 365,
+     "within1Pct": 100,
+     "mae": 0.022,
+     "worst": 1,
+     "late": 8,
+     "early": 0
+    }
+   },
+   "2027": {
+    "fajr": {
+     "n": 365,
+     "exact": 361,
+     "exactPct": 98.9,
+     "within1": 365,
+     "within1Pct": 100,
+     "mae": 0.011,
+     "worst": 1,
+     "late": 1,
+     "early": 3
+    },
+    "isha": {
+     "n": 365,
+     "exact": 356,
+     "exactPct": 97.5,
+     "within1": 365,
+     "within1Pct": 100,
+     "mae": 0.025,
+     "worst": 1,
+     "late": 8,
+     "early": 1
+    }
+   }
+  }
+ }
+}

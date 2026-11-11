@@ -1,0 +1,98 @@
+
+== Karachi 18/18 (+dhuhr 1) [hanafi]  total exact 1161/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  70  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin +2.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact  18  within1  32  worst  34  (margin +10 floor)
+
+== MWL 18/17 (+dhuhr 1) [hanafi]  total exact 1147/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  70  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin +2.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact   4  within1  11  worst  38  (margin +10 ceil)
+
+== Turkey 18/17 temkin [hanafi]  total exact 1147/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin +6.5 floor)
+  dhuhr                  exact   0  within1   0  worst  66  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin -1.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin -0.5 floor)
+  isha                   exact   4  within1  11  worst  38  (margin +10 ceil)
+
+== Diyanet-Europe 18/16+temkin [hanafi]  total exact 1146/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin +6.5 floor)
+  dhuhr                  exact   0  within1   0  worst  66  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin -1.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin -0.5 floor)
+  isha                   exact   3  within1   8  worst  43  (margin +9.5 ceil)
+
+== Diyanet-Europe 18/16 bare [hanafi]  total exact 1146/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  71  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin +2.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact   3  within1   8  worst  43  (margin +9.5 ceil)
+
+== Umm al-Qura 18.5/+90 [hanafi]  total exact 1083/2196 ==
+  fajr                   exact 233  within1 365  worst   2  (margin +2.5 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  71  (margin +9.5 ceil)
+  asr                    exact 233  within1 366  worst   1  (margin +2.5 floor)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact  13  within1  31  worst  27  (margin +10 floor)
+
+== Karachi 18/18 (+dhuhr 1) [shafi]  total exact 928/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  70  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  68  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact  18  within1  32  worst  34  (margin +10 floor)
+
+== MWL 18/17 (+dhuhr 1) [shafi]  total exact 914/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  70  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  68  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact   4  within1  11  worst  38  (margin +10 ceil)
+
+== Turkey 18/17 temkin [shafi]  total exact 914/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin +6.5 floor)
+  dhuhr                  exact   0  within1   0  worst  66  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  64  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin -0.5 floor)
+  isha                   exact   4  within1  11  worst  38  (margin +10 ceil)
+
+== Diyanet-Europe 18/16+temkin [shafi]  total exact 913/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin +6.5 floor)
+  dhuhr                  exact   0  within1   0  worst  66  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  64  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin -0.5 floor)
+  isha                   exact   3  within1   8  worst  43  (margin +9.5 ceil)
+
+== Diyanet-Europe 18/16 bare [shafi]  total exact 913/2196 ==
+  fajr                   exact 306  within1 366  worst   1  (margin +0 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  71  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  68  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact   3  within1   8  worst  43  (margin +9.5 ceil)
+
+== Umm al-Qura 18.5/+90 [shafi]  total exact 850/2196 ==
+  fajr                   exact 233  within1 365  worst   2  (margin +2.5 floor)
+  sunrise                exact 301  within1 366  worst   1  (margin -0.5 floor)
+  dhuhr                  exact   0  within1   0  worst  71  (margin +9.5 ceil)
+  asr                    exact   0  within1   0  worst  68  (margin +9.5 ceil)
+  magrib                 exact 303  within1 364  worst   2  (margin +6.5 floor)
+  isha                   exact  13  within1  31  worst  27  (margin +10 floor)
+
+wrote pk-candidates.json

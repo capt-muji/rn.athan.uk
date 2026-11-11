@@ -1,0 +1,671 @@
+{
+ "portsaid": {
+  "meta": {
+   "lat": 31.2653,
+   "lng": 32.3019,
+   "label": "Port Said",
+   "file": "eg-esa-portsaid-2026.json",
+   "tz": "Africa/Cairo",
+   "rows": 365,
+   "first": "2026-01-01",
+   "last": "2026-12-31"
+  },
+  "columns": {
+   "fajr": {
+    "n": 365,
+    "exact": 364,
+    "w1": 365,
+    "mae": 0.0027397260273972603,
+    "maxAbs": 1,
+    "meanSigned": -0.0027397260273972603,
+    "worstPrinted": 297
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 336,
+    "w1": 365,
+    "mae": 0.07945205479452055,
+    "maxAbs": 1,
+    "meanSigned": -0.07945205479452055,
+    "worstPrinted": 410
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 363,
+    "w1": 365,
+    "mae": 0.005479452054794521,
+    "maxAbs": 1,
+    "meanSigned": -0.005479452054794521,
+    "worstPrinted": 713
+   },
+   "asr_shafi": {
+    "n": 365,
+    "exact": 260,
+    "w1": 365,
+    "mae": 0.2876712328767123,
+    "maxAbs": 1,
+    "meanSigned": 0.019178082191780823,
+    "worstPrinted": 881
+   },
+   "asr_hanafi": {
+    "n": 365,
+    "exact": 0,
+    "w1": 0,
+    "mae": 56.553424657534244,
+    "maxAbs": 78,
+    "meanSigned": -56.553424657534244,
+    "worstPrinted": 991
+   },
+   "maghrib": {
+    "n": 365,
+    "exact": 347,
+    "w1": 365,
+    "mae": 0.049315068493150684,
+    "maxAbs": 1,
+    "meanSigned": 0.049315068493150684,
+    "worstPrinted": 1031
+   },
+   "isha": {
+    "n": 365,
+    "exact": 352,
+    "w1": 365,
+    "mae": 0.03561643835616438,
+    "maxAbs": 1,
+    "meanSigned": 0.0027397260273972603,
+    "worstPrinted": 1109
+   }
+  },
+  "allSixWithin1": 365,
+  "allFiveNoAsrWithin1": 365,
+  "allSixExact": 223,
+  "n": 365,
+  "perMonth": {
+   "2026-01": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-02": {
+    "n": 28,
+    "allW1": 28,
+    "worst": 1
+   },
+   "2026-03": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-04": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-05": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-06": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-07": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-08": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-09": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-10": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-11": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-12": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   }
+  },
+  "bestPad": {
+   "fajr": {
+    "pad": 0,
+    "exact": 364,
+    "w1": 365,
+    "mae": 0
+   },
+   "sunrise": {
+    "pad": 0,
+    "exact": 336,
+    "w1": 365,
+    "mae": 0.08
+   },
+   "dhuhr": {
+    "pad": 0,
+    "exact": 363,
+    "w1": 365,
+    "mae": 0.01
+   },
+   "asr": {
+    "pad": 0,
+    "exact": 260,
+    "w1": 365,
+    "mae": 0.29
+   },
+   "maghrib": {
+    "pad": 0,
+    "exact": 347,
+    "w1": 365,
+    "mae": 0.05
+   },
+   "isha": {
+    "pad": 0,
+    "exact": 352,
+    "w1": 365,
+    "mae": 0.04
+   }
+  }
+ },
+ "luxor": {
+  "meta": {
+   "lat": 25.6872,
+   "lng": 32.6396,
+   "label": "Luxor",
+   "file": "eg-esa-luxor-2026.json",
+   "tz": "Africa/Cairo",
+   "rows": 365,
+   "first": "2026-01-01",
+   "last": "2026-12-31"
+  },
+  "columns": {
+   "fajr": {
+    "n": 365,
+    "exact": 346,
+    "w1": 365,
+    "mae": 0.052054794520547946,
+    "maxAbs": 1,
+    "meanSigned": -0.052054794520547946,
+    "worstPrinted": 309
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 322,
+    "w1": 365,
+    "mae": 0.1178082191780822,
+    "maxAbs": 1,
+    "meanSigned": -0.1178082191780822,
+    "worstPrinted": 397
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 348,
+    "w1": 365,
+    "mae": 0.04657534246575343,
+    "maxAbs": 1,
+    "meanSigned": -0.04657534246575343,
+    "worstPrinted": 716
+   },
+   "asr_shafi": {
+    "n": 365,
+    "exact": 259,
+    "w1": 365,
+    "mae": 0.29041095890410956,
+    "maxAbs": 1,
+    "meanSigned": -0.07123287671232877,
+    "worstPrinted": 890
+   },
+   "asr_hanafi": {
+    "n": 365,
+    "exact": 0,
+    "w1": 0,
+    "mae": 58.961643835616435,
+    "maxAbs": 81,
+    "meanSigned": -58.961643835616435,
+    "worstPrinted": 973
+   },
+   "maghrib": {
+    "n": 365,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.024657534246575342,
+    "maxAbs": 1,
+    "meanSigned": 0.0027397260273972603,
+    "worstPrinted": 1036
+   },
+   "isha": {
+    "n": 365,
+    "exact": 349,
+    "w1": 365,
+    "mae": 0.043835616438356165,
+    "maxAbs": 1,
+    "meanSigned": -0.0273972602739726,
+    "worstPrinted": 1126
+   }
+  },
+  "allSixWithin1": 365,
+  "allFiveNoAsrWithin1": 365,
+  "allSixExact": 189,
+  "n": 365,
+  "perMonth": {
+   "2026-01": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-02": {
+    "n": 28,
+    "allW1": 28,
+    "worst": 1
+   },
+   "2026-03": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-04": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-05": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-06": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-07": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-08": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-09": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-10": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-11": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-12": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   }
+  },
+  "bestPad": {
+   "fajr": {
+    "pad": 0,
+    "exact": 346,
+    "w1": 365,
+    "mae": 0.05
+   },
+   "sunrise": {
+    "pad": 0,
+    "exact": 322,
+    "w1": 365,
+    "mae": 0.12
+   },
+   "dhuhr": {
+    "pad": 0,
+    "exact": 348,
+    "w1": 365,
+    "mae": 0.05
+   },
+   "asr": {
+    "pad": 0,
+    "exact": 259,
+    "w1": 365,
+    "mae": 0.29
+   },
+   "maghrib": {
+    "pad": 0,
+    "exact": 356,
+    "w1": 365,
+    "mae": 0.02
+   },
+   "isha": {
+    "pad": 0,
+    "exact": 349,
+    "w1": 365,
+    "mae": 0.04
+   }
+  }
+ },
+ "assiut": {
+  "meta": {
+   "lat": 27.1809,
+   "lng": 31.1837,
+   "label": "Assiut",
+   "file": "eg-esa-assiut-2026.json",
+   "tz": "Africa/Cairo",
+   "rows": 365,
+   "first": "2026-01-01",
+   "last": "2026-12-31"
+  },
+  "columns": {
+   "fajr": {
+    "n": 365,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.021917808219178082,
+    "maxAbs": 1,
+    "meanSigned": 0.021917808219178082,
+    "worstPrinted": 318
+   },
+   "sunrise": {
+    "n": 365,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.021917808219178082,
+    "maxAbs": 1,
+    "meanSigned": -0.021917808219178082,
+    "worstPrinted": 405
+   },
+   "dhuhr": {
+    "n": 365,
+    "exact": 363,
+    "w1": 365,
+    "mae": 0.005479452054794521,
+    "maxAbs": 1,
+    "meanSigned": 0.005479452054794521,
+    "worstPrinted": 782
+   },
+   "asr_shafi": {
+    "n": 365,
+    "exact": 256,
+    "w1": 365,
+    "mae": 0.29863013698630136,
+    "maxAbs": 1,
+    "meanSigned": 0.024657534246575342,
+    "worstPrinted": 898
+   },
+   "asr_hanafi": {
+    "n": 365,
+    "exact": 0,
+    "w1": 0,
+    "mae": 58.19178082191781,
+    "maxAbs": 80,
+    "meanSigned": -58.19178082191781,
+    "worstPrinted": 984
+   },
+   "maghrib": {
+    "n": 365,
+    "exact": 337,
+    "w1": 365,
+    "mae": 0.07671232876712329,
+    "maxAbs": 1,
+    "meanSigned": 0.07671232876712329,
+    "worstPrinted": 1034
+   },
+   "isha": {
+    "n": 365,
+    "exact": 349,
+    "w1": 365,
+    "mae": 0.043835616438356165,
+    "maxAbs": 1,
+    "meanSigned": 0.038356164383561646,
+    "worstPrinted": 1254
+   }
+  },
+  "allSixWithin1": 365,
+  "allFiveNoAsrWithin1": 365,
+  "allSixExact": 214,
+  "n": 365,
+  "perMonth": {
+   "2026-01": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-02": {
+    "n": 28,
+    "allW1": 28,
+    "worst": 1
+   },
+   "2026-03": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-04": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-05": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-06": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-07": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-08": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-09": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-10": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   },
+   "2026-11": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   },
+   "2026-12": {
+    "n": 31,
+    "allW1": 31,
+    "worst": 1
+   }
+  },
+  "bestPad": {
+   "fajr": {
+    "pad": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.02
+   },
+   "sunrise": {
+    "pad": 0,
+    "exact": 357,
+    "w1": 365,
+    "mae": 0.02
+   },
+   "dhuhr": {
+    "pad": 0,
+    "exact": 363,
+    "w1": 365,
+    "mae": 0.01
+   },
+   "asr": {
+    "pad": 0,
+    "exact": 256,
+    "w1": 365,
+    "mae": 0.3
+   },
+   "maghrib": {
+    "pad": 0,
+    "exact": 337,
+    "w1": 365,
+    "mae": 0.08
+   },
+   "isha": {
+    "pad": 0,
+    "exact": 349,
+    "w1": 365,
+    "mae": 0.04
+   }
+  }
+ },
+ "cairo": {
+  "meta": {
+   "lat": 30.0444,
+   "lng": 31.2357,
+   "label": "Cairo (control, November)",
+   "file": "eg-esa-cairo-2026-11.json",
+   "tz": "Africa/Cairo",
+   "rows": 30,
+   "first": "2026-11-01",
+   "last": "2026-11-30"
+  },
+  "columns": {
+   "fajr": {
+    "n": 30,
+    "exact": 27,
+    "w1": 30,
+    "mae": 0.1,
+    "maxAbs": 1,
+    "meanSigned": -0.1,
+    "worstPrinted": 287
+   },
+   "sunrise": {
+    "n": 30,
+    "exact": 24,
+    "w1": 30,
+    "mae": 0.2,
+    "maxAbs": 1,
+    "meanSigned": -0.2,
+    "worstPrinted": 369
+   },
+   "dhuhr": {
+    "n": 30,
+    "exact": 22,
+    "w1": 30,
+    "mae": 0.26666666666666666,
+    "maxAbs": 1,
+    "meanSigned": -0.26666666666666666,
+    "worstPrinted": 698
+   },
+   "asr_shafi": {
+    "n": 30,
+    "exact": 24,
+    "w1": 30,
+    "mae": 0.2,
+    "maxAbs": 1,
+    "meanSigned": 0.2,
+    "worstPrinted": 884
+   },
+   "asr_hanafi": {
+    "n": 30,
+    "exact": 0,
+    "w1": 0,
+    "mae": 43.93333333333333,
+    "maxAbs": 46,
+    "meanSigned": -43.93333333333333,
+    "worstPrinted": 885
+   },
+   "maghrib": {
+    "n": 30,
+    "exact": 25,
+    "w1": 30,
+    "mae": 0.16666666666666666,
+    "maxAbs": 1,
+    "meanSigned": -0.16666666666666666,
+    "worstPrinted": 1026
+   },
+   "isha": {
+    "n": 30,
+    "exact": 26,
+    "w1": 30,
+    "mae": 0.13333333333333333,
+    "maxAbs": 1,
+    "meanSigned": -0.13333333333333333,
+    "worstPrinted": 1103
+   }
+  },
+  "allSixWithin1": 30,
+  "allFiveNoAsrWithin1": 30,
+  "allSixExact": 10,
+  "n": 30,
+  "perMonth": {
+   "2026-11": {
+    "n": 30,
+    "allW1": 30,
+    "worst": 1
+   }
+  },
+  "bestPad": {
+   "fajr": {
+    "pad": 0,
+    "exact": 27,
+    "w1": 30,
+    "mae": 0.1
+   },
+   "sunrise": {
+    "pad": 0,
+    "exact": 24,
+    "w1": 30,
+    "mae": 0.2
+   },
+   "dhuhr": {
+    "pad": 0,
+    "exact": 22,
+    "w1": 30,
+    "mae": 0.27
+   },
+   "asr": {
+    "pad": 0,
+    "exact": 24,
+    "w1": 30,
+    "mae": 0.2
+   },
+   "maghrib": {
+    "pad": 0,
+    "exact": 25,
+    "w1": 30,
+    "mae": 0.17
+   },
+   "isha": {
+    "pad": 0,
+    "exact": 26,
+    "w1": 30,
+    "mae": 0.13
+   }
+  }
+ }
+}

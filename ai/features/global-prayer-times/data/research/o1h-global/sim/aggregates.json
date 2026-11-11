@@ -1,0 +1,746 @@
+{
+ "schema": "o1h-global-sim-aggregates/1",
+ "scoredTargets": 49,
+ "populationCovered": 1527.9150000000002,
+ "authorityTargets": 44,
+ "table": [
+  {
+   "id": "mwl",
+   "label": "Muslim World League (Muslim World League, Makkah) [mwl]",
+   "weighted": 4.222935586324079,
+   "weightedNoPkIn": 4.9335314479046,
+   "weightedAuthorities": 5.122398200314524,
+   "unweighted": 8.712825202422076,
+   "constituency": 9,
+   "constituencyIds": [
+    "TR-DIYANET-DOMESTIC",
+    "GR-ATHENS",
+    "GR-KOMOTINI",
+    "BG-SOFIA",
+    "IQ-DIWAN",
+    "IT-UCOII",
+    "CY-KKTC",
+    "ES-CCIM",
+    "NG-SPA"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 6,
+   "rank_weightedNoPkIn": 5,
+   "rank_weightedAuthorities": 2,
+   "rank_unweighted": 1,
+   "finalRank": 6
+  },
+  {
+   "id": "isna15",
+   "label": "isna15",
+   "weighted": 14.981491893494377,
+   "weightedNoPkIn": 15.152771558869839,
+   "weightedAuthorities": 15.144458736634537,
+   "unweighted": 16.14116216669729,
+   "constituency": 0,
+   "constituencyIds": [],
+   "asrMatches": 39,
+   "rank_weighted": 20,
+   "rank_weightedNoPkIn": 20,
+   "rank_weightedAuthorities": 20,
+   "rank_unweighted": 19,
+   "finalRank": 20
+  },
+  {
+   "id": "isna2010",
+   "label": "isna2010",
+   "weighted": 3.3773442209463878,
+   "weightedNoPkIn": 4.712963924457424,
+   "weightedAuthorities": 5.219282593613051,
+   "unweighted": 9.20190250025259,
+   "constituency": 8,
+   "constituencyIds": [
+    "JERUSALEM-AWQAF",
+    "AE-AWQAF",
+    "TN-INM",
+    "OM-MARA",
+    "LY-MUAZZIN",
+    "JO-AWQAF",
+    "PK-DEFACTO",
+    "IN-DEFACTO"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 1,
+   "rank_weightedNoPkIn": 2,
+   "rank_weightedAuthorities": 5,
+   "rank_unweighted": 5,
+   "finalRank": 1
+  },
+  {
+   "id": "ummalqura",
+   "label": "ummalqura",
+   "weighted": 8.710303417201064,
+   "weightedNoPkIn": 9.518461237099492,
+   "weightedAuthorities": 7.829036177914323,
+   "unweighted": 11.448950572172013,
+   "constituency": 1,
+   "constituencyIds": [
+    "SA-KACST"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 16,
+   "rank_weightedNoPkIn": 16,
+   "rank_weightedAuthorities": 12,
+   "rank_unweighted": 12,
+   "finalRank": 16
+  },
+  {
+   "id": "egyptian",
+   "label": "Egyptian General Authority of Survey (ESA) [egyptian]",
+   "weighted": 5.87221596260091,
+   "weightedNoPkIn": 6.263948058172377,
+   "weightedAuthorities": 7.915088932034293,
+   "unweighted": 11.93948045739144,
+   "constituency": 2,
+   "constituencyIds": [
+    "EG-ESA",
+    "ME-IZMR"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 10,
+   "rank_weightedNoPkIn": 10,
+   "rank_weightedAuthorities": 13,
+   "rank_unweighted": 13,
+   "finalRank": 10
+  },
+  {
+   "id": "karachi",
+   "label": "University of Islamic Sciences, Karachi [karachi]",
+   "weighted": 3.3773442209463878,
+   "weightedNoPkIn": 4.712963924457424,
+   "weightedAuthorities": 5.219282593613051,
+   "unweighted": 9.20190250025259,
+   "constituency": 8,
+   "constituencyIds": [
+    "JERUSALEM-AWQAF",
+    "AE-AWQAF",
+    "TN-INM",
+    "OM-MARA",
+    "LY-MUAZZIN",
+    "JO-AWQAF",
+    "PK-DEFACTO",
+    "IN-DEFACTO"
+   ],
+   "asrMatches": 7,
+   "rank_weighted": 2,
+   "rank_weightedNoPkIn": 3,
+   "rank_weightedAuthorities": 6,
+   "rank_unweighted": 6,
+   "finalRank": 2
+  },
+  {
+   "id": "moonsighting",
+   "label": "Moonsighting Committee Worldwide (Khalid Shaukat) [moonsighting]",
+   "weighted": 5.05392250726202,
+   "weightedNoPkIn": 5.969202620418301,
+   "weightedAuthorities": 7.028678739631606,
+   "unweighted": 10.812717909144485,
+   "constituency": 0,
+   "constituencyIds": [],
+   "asrMatches": 39,
+   "rank_weighted": 9,
+   "rank_weightedNoPkIn": 9,
+   "rank_weightedAuthorities": 11,
+   "rank_unweighted": 11,
+   "finalRank": 9
+  },
+  {
+   "id": "diyanet-tr",
+   "label": "diyanet-tr",
+   "weighted": 4.222935586324079,
+   "weightedNoPkIn": 4.9335314479046,
+   "weightedAuthorities": 5.122398200314524,
+   "unweighted": 8.712825202422076,
+   "constituency": 9,
+   "constituencyIds": [
+    "TR-DIYANET-DOMESTIC",
+    "GR-ATHENS",
+    "GR-KOMOTINI",
+    "BG-SOFIA",
+    "IQ-DIWAN",
+    "IT-UCOII",
+    "CY-KKTC",
+    "ES-CCIM",
+    "NG-SPA"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 7,
+   "rank_weightedNoPkIn": 6,
+   "rank_weightedAuthorities": 3,
+   "rank_unweighted": 2,
+   "finalRank": 7
+  },
+  {
+   "id": "diyanet-eu",
+   "label": "diyanet-eu",
+   "weighted": 6.118446840010837,
+   "weightedNoPkIn": 6.618977170361777,
+   "weightedAuthorities": 6.596232949868017,
+   "unweighted": 9.601245811554659,
+   "constituency": 3,
+   "constituencyIds": [
+    "YE-AWQAF-SANAA",
+    "BA-RIJASET",
+    "KG-MUFTIYAT"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 11,
+   "rank_weightedNoPkIn": 11,
+   "rank_weightedAuthorities": 10,
+   "rank_unweighted": 8,
+   "finalRank": 11
+  },
+  {
+   "id": "mabims",
+   "label": "MABIMS (Menteri Agama Brunei, Indonesia, Malaysia, Singapore) [mabims]",
+   "weighted": 6.5246772633606,
+   "weightedNoPkIn": 7.169687908367386,
+   "weightedAuthorities": 9.657158602875693,
+   "unweighted": 13.69582348917644,
+   "constituency": 4,
+   "constituencyIds": [
+    "LK-ACJU",
+    "TH-CICOT",
+    "SG-MUIS",
+    "ID-KEMENAG"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 14,
+   "rank_weightedNoPkIn": 14,
+   "rank_weightedAuthorities": 16,
+   "rank_unweighted": 17,
+   "finalRank": 14
+  },
+  {
+   "id": "jakim",
+   "label": "Jabatan Kemajuan Islam Malaysia (JAKIM), e-Solat zone tables [jakim]",
+   "weighted": 3.3773442209463878,
+   "weightedNoPkIn": 4.712963924457424,
+   "weightedAuthorities": 5.219282593613051,
+   "unweighted": 9.20190250025259,
+   "constituency": 8,
+   "constituencyIds": [
+    "JERUSALEM-AWQAF",
+    "AE-AWQAF",
+    "TN-INM",
+    "OM-MARA",
+    "LY-MUAZZIN",
+    "JO-AWQAF",
+    "PK-DEFACTO",
+    "IN-DEFACTO"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 3,
+   "rank_weightedNoPkIn": 4,
+   "rank_weightedAuthorities": 7,
+   "rank_unweighted": 7,
+   "finalRank": 3
+  },
+  {
+   "id": "kuwait",
+   "label": "Kuwait Awqaf / Al-Ajiri calendar [kuwait]",
+   "weighted": 3.715528873499593,
+   "weightedNoPkIn": 4.7029046016392275,
+   "weightedAuthorities": 4.996372493699621,
+   "unweighted": 8.843720270875352,
+   "constituency": 3,
+   "constituencyIds": [
+    "KW-AJIRI",
+    "BG-SOFIA",
+    "CY-KKTC"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 4,
+   "rank_weightedNoPkIn": 1,
+   "rank_weightedAuthorities": 1,
+   "rank_unweighted": 4,
+   "finalRank": 4
+  },
+  {
+   "id": "qatar",
+   "label": "Qatar Ministry of Interior (Doha) [qatar]",
+   "weighted": 6.972740083659261,
+   "weightedNoPkIn": 8.062045149554294,
+   "weightedAuthorities": 6.054807813872563,
+   "unweighted": 9.642944457527932,
+   "constituency": 1,
+   "constituencyIds": [
+    "QA-MOI"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 15,
+   "rank_weightedNoPkIn": 15,
+   "rank_weightedAuthorities": 9,
+   "rank_unweighted": 9,
+   "finalRank": 15
+  },
+  {
+   "id": "singapore",
+   "label": "singapore",
+   "weighted": 6.474862914120931,
+   "weightedNoPkIn": 7.096340341028824,
+   "weightedAuthorities": 9.395075851234933,
+   "unweighted": 13.53283262906068,
+   "constituency": 4,
+   "constituencyIds": [
+    "LK-ACJU",
+    "TH-CICOT",
+    "SG-MUIS",
+    "ID-KEMENAG"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 13,
+   "rank_weightedNoPkIn": 13,
+   "rank_weightedAuthorities": 15,
+   "rank_unweighted": 16,
+   "finalRank": 13
+  },
+  {
+   "id": "dubai",
+   "label": "Dubai / UAE General Authority of Islamic Affairs and Endowments (AWQAF) [dubai]",
+   "weighted": 3.910839120508691,
+   "weightedNoPkIn": 5.075131835795582,
+   "weightedAuthorities": 5.625510410617019,
+   "unweighted": 9.762237693266833,
+   "constituency": 8,
+   "constituencyIds": [
+    "JERUSALEM-AWQAF",
+    "AE-AWQAF",
+    "TN-INM",
+    "OM-MARA",
+    "LY-MUAZZIN",
+    "JO-AWQAF",
+    "PK-DEFACTO",
+    "IN-DEFACTO"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 5,
+   "rank_weightedNoPkIn": 8,
+   "rank_weightedAuthorities": 8,
+   "rank_unweighted": 10,
+   "finalRank": 5
+  },
+  {
+   "id": "tehran",
+   "label": "Institute of Geophysics, University of Tehran [tehran]",
+   "weighted": 10.805387146251908,
+   "weightedNoPkIn": 10.956560228566941,
+   "weightedAuthorities": 10.672727218577256,
+   "unweighted": 13.124592894696129,
+   "constituency": 0,
+   "constituencyIds": [],
+   "asrMatches": 39,
+   "rank_weighted": 18,
+   "rank_weightedNoPkIn": 18,
+   "rank_weightedAuthorities": 17,
+   "rank_unweighted": 15,
+   "finalRank": 18
+  },
+  {
+   "id": "fazilet-a",
+   "label": "Fazilet Takvimi, Profile A (world) [fazilet-a]",
+   "weighted": 6.261600116793343,
+   "weightedNoPkIn": 6.805867274727111,
+   "weightedAuthorities": 8.950253641697271,
+   "unweighted": 12.949700705025904,
+   "constituency": 4,
+   "constituencyIds": [
+    "EG-ESA",
+    "LK-ACJU",
+    "TH-CICOT",
+    "ID-KEMENAG"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 12,
+   "rank_weightedNoPkIn": 12,
+   "rank_weightedAuthorities": 14,
+   "rank_unweighted": 14,
+   "finalRank": 12
+  },
+  {
+   "id": "fazilet-b",
+   "label": "Fazilet Takvimi, Profile B (Ottoman sphere) [fazilet-b]",
+   "weighted": 9.881285146097595,
+   "weightedNoPkIn": 10.395349472764835,
+   "weightedAuthorities": 12.890683823704114,
+   "unweighted": 17.516806824874834,
+   "constituency": 0,
+   "constituencyIds": [],
+   "asrMatches": 39,
+   "rank_weighted": 17,
+   "rank_weightedNoPkIn": 17,
+   "rank_weightedAuthorities": 19,
+   "rank_unweighted": 20,
+   "finalRank": 17
+  },
+  {
+   "id": "ecfr",
+   "label": "European Council for Fatwa and Research (ECFR) [ecfr]",
+   "weighted": 4.222935586324079,
+   "weightedNoPkIn": 4.9335314479046,
+   "weightedAuthorities": 5.122398200314524,
+   "unweighted": 8.712825202422076,
+   "constituency": 9,
+   "constituencyIds": [
+    "TR-DIYANET-DOMESTIC",
+    "GR-ATHENS",
+    "GR-KOMOTINI",
+    "BG-SOFIA",
+    "IQ-DIWAN",
+    "IT-UCOII",
+    "CY-KKTC",
+    "ES-CCIM",
+    "NG-SPA"
+   ],
+   "asrMatches": 39,
+   "rank_weighted": 8,
+   "rank_weightedNoPkIn": 7,
+   "rank_weightedAuthorities": 4,
+   "rank_unweighted": 3,
+   "finalRank": 8
+  },
+  {
+   "id": "russia",
+   "label": "russia",
+   "weighted": 12.541289211291764,
+   "weightedNoPkIn": 12.704349478617464,
+   "weightedAuthorities": 12.540777943625098,
+   "unweighted": 14.21463809768784,
+   "constituency": 0,
+   "constituencyIds": [],
+   "asrMatches": 39,
+   "rank_weighted": 19,
+   "rank_weightedNoPkIn": 19,
+   "rank_weightedAuthorities": 18,
+   "rank_unweighted": 18,
+   "finalRank": 19
+  }
+ ],
+ "indonesia": [
+  {
+   "id": "mwl",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 4.227397260273973,
+    "worst": 5,
+    "within2": 0
+   },
+   "combined": 6.324657534246575
+  },
+  {
+   "id": "isna15",
+   "fajr": {
+    "n": 365,
+    "mean": 21.12054794520548,
+    "worst": 23,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 12.687671232876712,
+    "worst": 14,
+    "within2": 0
+   },
+   "combined": 16.904109589041095
+  },
+  {
+   "id": "isna2010",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0,
+    "worst": 0,
+    "within2": 100
+   },
+   "combined": 4.210958904109589
+  },
+  {
+   "id": "ummalqura",
+   "fajr": {
+    "n": 365,
+    "mean": 6.2904109589041095,
+    "worst": 7,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 20.208219178082192,
+    "worst": 51,
+    "within2": 0
+   },
+   "combined": 13.24931506849315
+  },
+  {
+   "id": "egyptian",
+   "fajr": {
+    "n": 365,
+    "mean": 2.084931506849315,
+    "worst": 3,
+    "within2": 91.5068493150685
+   },
+   "isha": {
+    "n": 365,
+    "mean": 2.0986301369863014,
+    "worst": 3,
+    "within2": 90.13698630136986
+   },
+   "combined": 2.0917808219178085
+  },
+  {
+   "id": "karachi",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0,
+    "worst": 0,
+    "within2": 100
+   },
+   "combined": 4.210958904109589
+  },
+  {
+   "id": "moonsighting",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0.08767123287671233,
+    "worst": 1,
+    "within2": 100
+   },
+   "combined": 4.254794520547945
+  },
+  {
+   "id": "diyanet-tr",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 4.227397260273973,
+    "worst": 5,
+    "within2": 0
+   },
+   "combined": 6.324657534246575
+  },
+  {
+   "id": "diyanet-eu",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 8.476712328767123,
+    "worst": 10,
+    "within2": 0
+   },
+   "combined": 8.44931506849315
+  },
+  {
+   "id": "mabims",
+   "fajr": {
+    "n": 365,
+    "mean": 0,
+    "worst": 0,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0,
+    "worst": 0,
+    "within2": 100
+   },
+   "combined": 0
+  },
+  {
+   "id": "jakim",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0,
+    "worst": 0,
+    "within2": 100
+   },
+   "combined": 4.210958904109589
+  },
+  {
+   "id": "kuwait",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 2.0986301369863014,
+    "worst": 3,
+    "within2": 90.13698630136986
+   },
+   "combined": 5.260273972602739
+  },
+  {
+   "id": "qatar",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 17.742465753424657,
+    "worst": 21,
+    "within2": 0
+   },
+   "combined": 13.082191780821917
+  },
+  {
+   "id": "singapore",
+   "fajr": {
+    "n": 365,
+    "mean": 0.4767123287671233,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0.4520547945205479,
+    "worst": 1,
+    "within2": 100
+   },
+   "combined": 0.4643835616438356
+  },
+  {
+   "id": "dubai",
+   "fajr": {
+    "n": 365,
+    "mean": 7.6219178082191785,
+    "worst": 9,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0.8575342465753425,
+    "worst": 1,
+    "within2": 100
+   },
+   "combined": 4.239726027397261
+  },
+  {
+   "id": "tehran",
+   "fajr": {
+    "n": 365,
+    "mean": 9.747945205479452,
+    "worst": 11,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 16.898630136986302,
+    "worst": 19,
+    "within2": 0
+   },
+   "combined": 13.323287671232876
+  },
+  {
+   "id": "fazilet-a",
+   "fajr": {
+    "n": 365,
+    "mean": 0.8684931506849315,
+    "worst": 1,
+    "within2": 100
+   },
+   "isha": {
+    "n": 365,
+    "mean": 0.8410958904109589,
+    "worst": 1,
+    "within2": 100
+   },
+   "combined": 0.8547945205479452
+  },
+  {
+   "id": "fazilet-b",
+   "fajr": {
+    "n": 365,
+    "mean": 3.3917808219178083,
+    "worst": 4,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 2.9808219178082194,
+    "worst": 4,
+    "within2": 6.301369863013699
+   },
+   "combined": 3.186301369863014
+  },
+  {
+   "id": "ecfr",
+   "fajr": {
+    "n": 365,
+    "mean": 8.421917808219177,
+    "worst": 10,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 4.227397260273973,
+    "worst": 5,
+    "within2": 0
+   },
+   "combined": 6.324657534246575
+  },
+  {
+   "id": "russia",
+   "fajr": {
+    "n": 365,
+    "mean": 16.91780821917808,
+    "worst": 19,
+    "within2": 0
+   },
+   "isha": {
+    "n": 365,
+    "mean": 12.687671232876712,
+    "worst": 14,
+    "within2": 0
+   },
+   "combined": 14.802739726027397
+  }
+ ]
+}

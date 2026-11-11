@@ -1,0 +1,137 @@
+{
+ "country": "sn",
+ "publisher": "CERFI Dakar (Séminaire des Imams standard hours)",
+ "coords": {
+  "lat": 14.7167,
+  "lon": -17.4677
+ },
+ "tz": "Africa/Dakar (UTC+0, no DST)",
+ "edition_2011": {
+  "rows": 365,
+  "span": [
+   "2011-01-01",
+   "2011-12-31"
+  ]
+ },
+ "printed_fajr_to_sunrise_gap": {
+  "15": 365
+ },
+ "dawn1_fajr_column_angle_fit": {
+  "angle": 16.7,
+  "r": {
+   "margin": -9.5,
+   "mode": "floor",
+   "exact": 66,
+   "within1": 127,
+   "worst": 9
+  }
+ },
+ "dawn1_fajr_column": {
+  "K": 75.5,
+  "mode": "floor",
+  "exact": 277,
+  "within1": 365,
+  "worst": 1
+ },
+ "dawn2_sunrise_column_angle_fit": {
+  "angle": 13.4,
+  "r": {
+   "margin": -8,
+   "mode": "floor",
+   "exact": 75,
+   "within1": 152,
+   "worst": 7
+  }
+ },
+ "dawn2_sunrise_column": {
+  "K": 60.5,
+  "mode": "floor",
+  "exact": 277,
+  "within1": 365,
+  "worst": 1
+ },
+ "astronomical_sunrise_check": {
+  "margin": -10,
+  "mode": "floor",
+  "exact": 0,
+  "within1": 0,
+  "worst": 51
+ },
+ "isha_minus_maghrib_gap": {
+  "60": 365
+ },
+ "isha_as_maghrib_plus": {
+  "interval": 60,
+  "exact": 365,
+  "within1": 365,
+  "worst": 0,
+  "n": 365
+ },
+ "fits_2011": {
+  "dhuhr": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 280,
+   "within1": 365,
+   "worst": 1
+  },
+  "asr_shafi": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 211,
+   "within1": 364,
+   "worst": 2
+  },
+  "asr_hanafi": {
+   "margin": -10,
+   "mode": "floor",
+   "exact": 0,
+   "within1": 0,
+   "worst": 65
+  },
+  "maghrib": {
+   "margin": 1.5,
+   "mode": "floor",
+   "exact": 266,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "crosscheck_2026_11": {
+  "fajar_minus76": {
+   "K": 75.5,
+   "mode": "floor",
+   "exact": 26,
+   "within1": 30,
+   "worst": 1
+  },
+  "suba_minus61": {
+   "K": 60.5,
+   "mode": "floor",
+   "exact": 26,
+   "within1": 30,
+   "worst": 1
+  },
+  "tisbar_dhuhr": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 27,
+   "within1": 30,
+   "worst": 1
+  },
+  "takusan_asr": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 24,
+   "within1": 30,
+   "worst": 1
+  },
+  "timis_maghrib": {
+   "margin": 2,
+   "mode": "floor",
+   "exact": 28,
+   "within1": 30,
+   "worst": 1
+  }
+ }
+}

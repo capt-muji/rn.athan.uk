@@ -1,0 +1,529 @@
+{
+ "calibration": {
+  "month": "Rajab 1448",
+  "rows": 29,
+  "first": "2026-12-11",
+  "last": "2027-01-08"
+ },
+ "transcriptionCheck": {
+  "source": "fit2/dz-alger-1448-rajab.json",
+  "cells": 174,
+  "mismatch": 0,
+  "diffs": []
+ },
+ "fit": {
+  "rajabOnly": {
+   "fajr": {
+    "angle": 17.39,
+    "mode": "floor",
+    "margin": -2,
+    "n": 29,
+    "exact": 29,
+    "w1": 29,
+    "worst": 0,
+    "mae": 0
+   },
+   "sunrise": {
+    "angle": null,
+    "mode": "floor",
+    "margin": 1,
+    "n": 29,
+    "exact": 25,
+    "w1": 29,
+    "worst": 1,
+    "mae": 0.13793103448275862
+   },
+   "dhuhr": {
+    "angle": null,
+    "mode": "floor",
+    "margin": 1,
+    "n": 29,
+    "exact": 28,
+    "w1": 29,
+    "worst": 1,
+    "mae": 0.034482758620689655
+   },
+   "asr": {
+    "angle": null,
+    "mode": "floor",
+    "margin": 1,
+    "n": 29,
+    "exact": 22,
+    "w1": 29,
+    "worst": 1,
+    "mae": 0.2413793103448276
+   },
+   "asrHanafi": {
+    "angle": null,
+    "mode": "floor",
+    "margin": -2,
+    "n": 29,
+    "exact": 0,
+    "w1": 0,
+    "worst": 37,
+    "mae": 36.13793103448276
+   },
+   "maghrib": {
+    "angle": null,
+    "mode": "floor",
+    "margin": 4,
+    "n": 29,
+    "exact": 28,
+    "w1": 29,
+    "worst": 1,
+    "mae": 0.034482758620689655
+   },
+   "isha": {
+    "angle": 15.73,
+    "mode": "floor",
+    "margin": 7.5,
+    "n": 29,
+    "exact": 29,
+    "w1": 29,
+    "worst": 0,
+    "mae": 0
+   }
+  }
+ },
+ "scores": {
+  "1448-jumada1": {
+   "rows": 30,
+   "window": [
+    "2026-10-12",
+    "2026-11-10"
+   ],
+   "score": {
+    "fajr": {
+     "n": 30,
+     "exact": 26,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.13333333333333333
+    },
+    "sunrise": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "dhuhr": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "asr": {
+     "n": 30,
+     "exact": 14,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.5333333333333333
+    },
+    "maghrib": {
+     "n": 30,
+     "exact": 24,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "isha": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "joint": {
+     "n": 30,
+     "allSixWithin1": 30,
+     "pct": 100
+    }
+   }
+  },
+  "1448-jumada2": {
+   "rows": 30,
+   "window": [
+    "2026-11-11",
+    "2026-12-10"
+   ],
+   "score": {
+    "fajr": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "sunrise": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "dhuhr": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "asr": {
+     "n": 30,
+     "exact": 15,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.5
+    },
+    "maghrib": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "isha": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "joint": {
+     "n": 30,
+     "allSixWithin1": 30,
+     "pct": 100
+    }
+   }
+  },
+  "1448-ramadan": {
+   "rows": 30,
+   "window": [
+    "2027-02-08",
+    "2027-03-09"
+   ],
+   "score": {
+    "fajr": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "sunrise": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "dhuhr": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "asr": {
+     "n": 30,
+     "exact": 11,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.6333333333333333
+    },
+    "maghrib": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "isha": {
+     "n": 30,
+     "exact": 27,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.1
+    },
+    "joint": {
+     "n": 30,
+     "allSixWithin1": 30,
+     "pct": 100
+    }
+   }
+  },
+  "1447-jumada1": {
+   "rows": 30,
+   "window": [
+    "2025-10-23",
+    "2025-11-21"
+   ],
+   "score": {
+    "fajr": {
+     "n": 30,
+     "exact": 26,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.13333333333333333
+    },
+    "sunrise": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "dhuhr": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "asr": {
+     "n": 30,
+     "exact": 15,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.5
+    },
+    "maghrib": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "isha": {
+     "n": 30,
+     "exact": 27,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.1
+    },
+    "joint": {
+     "n": 30,
+     "allSixWithin1": 30,
+     "pct": 100
+    }
+   }
+  },
+  "1447-jumada2": {
+   "rows": 29,
+   "window": [
+    "2025-11-22",
+    "2025-12-20"
+   ],
+   "score": {
+    "fajr": {
+     "n": 29,
+     "exact": 29,
+     "w1": 29,
+     "worst": 0,
+     "mae": 0
+    },
+    "sunrise": {
+     "n": 29,
+     "exact": 25,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.13793103448275862
+    },
+    "dhuhr": {
+     "n": 29,
+     "exact": 27,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.06896551724137931
+    },
+    "asr": {
+     "n": 29,
+     "exact": 16,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.4482758620689655
+    },
+    "maghrib": {
+     "n": 29,
+     "exact": 27,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.06896551724137931
+    },
+    "isha": {
+     "n": 29,
+     "exact": 29,
+     "w1": 29,
+     "worst": 0,
+     "mae": 0
+    },
+    "joint": {
+     "n": 29,
+     "allSixWithin1": 29,
+     "pct": 100
+    }
+   }
+  },
+  "1447-rajab": {
+   "rows": 30,
+   "window": [
+    "2025-12-21",
+    "2026-01-19"
+   ],
+   "score": {
+    "fajr": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "sunrise": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "dhuhr": {
+     "n": 30,
+     "exact": 30,
+     "w1": 30,
+     "worst": 0,
+     "mae": 0
+    },
+    "asr": {
+     "n": 30,
+     "exact": 18,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.4
+    },
+    "maghrib": {
+     "n": 30,
+     "exact": 28,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.06666666666666667
+    },
+    "isha": {
+     "n": 30,
+     "exact": 29,
+     "w1": 30,
+     "worst": 1,
+     "mae": 0.03333333333333333
+    },
+    "joint": {
+     "n": 30,
+     "allSixWithin1": 30,
+     "pct": 100
+    }
+   }
+  },
+  "1447-ramadan": {
+   "rows": 29,
+   "window": [
+    "2026-02-19",
+    "2026-03-19"
+   ],
+   "score": {
+    "fajr": {
+     "n": 29,
+     "exact": 27,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.06896551724137931
+    },
+    "sunrise": {
+     "n": 29,
+     "exact": 27,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.06896551724137931
+    },
+    "dhuhr": {
+     "n": 29,
+     "exact": 28,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.034482758620689655
+    },
+    "asr": {
+     "n": 29,
+     "exact": 10,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.6551724137931034
+    },
+    "maghrib": {
+     "n": 29,
+     "exact": 28,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.034482758620689655
+    },
+    "isha": {
+     "n": 29,
+     "exact": 28,
+     "w1": 29,
+     "worst": 1,
+     "mae": 0.034482758620689655
+    },
+    "joint": {
+     "n": 29,
+     "allSixWithin1": 29,
+     "pct": 100
+    }
+   }
+  }
+ },
+ "reprintTest": {
+  "rajab1447": [
+   "2025-12-21",
+   "2026-01-19"
+  ],
+  "rajab1448": [
+   "2026-12-11",
+   "2027-01-08"
+  ],
+  "cells": 174,
+  "identical": 11,
+  "identicalPct": 6.32183908045977,
+  "meanAbsDiff": 5.539877300613497,
+  "maxAbsDiff": 10
+ },
+ "frozen": {
+  "fajr": {
+   "angle": 17.39,
+   "mode": "floor",
+   "margin": -2
+  },
+  "sunrise": {
+   "angle": null,
+   "mode": "floor",
+   "margin": 1
+  },
+  "dhuhr": {
+   "angle": null,
+   "mode": "floor",
+   "margin": 1
+  },
+  "asr": {
+   "angle": null,
+   "mode": "floor",
+   "margin": 1
+  },
+  "maghrib": {
+   "angle": null,
+   "mode": "floor",
+   "margin": 4
+  },
+  "isha": {
+   "angle": 15.73,
+   "mode": "floor",
+   "margin": 7.5
+  }
+ }
+}

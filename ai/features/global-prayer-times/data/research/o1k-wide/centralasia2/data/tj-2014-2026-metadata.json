@@ -1,0 +1,18 @@
+{
+  "authority": "Маркази Исломии Ҷумҳурии Тоҷикистон / Шӯрои уламо (shuroiulamo.tj)",
+  "surface": "POST https://shuroiulamo.tj/tj/namaz/ntime with fmonth=&fyear=&fday=0 -> the whole requested month as <tr> rows",
+  "discovered_via": "the inline getNamazTime() handler on https://shuroiulamo.tj/tj/namaz (which the page itself calls with the day/month/year form)",
+  "captured_utc": "2026-11-10",
+  "months_fetched": 143,
+  "archive_floor": "2014-12 (2014-11 and earlier return the literal string 'no')",
+  "archive_ceiling": "2026-11 (2026-12 onward returns 'no' - published only once the month begins)",
+  "days_parsed": 4343,
+  "date_range": ["2014-12-08", "2026-11-30"],
+  "gaps": ["2018-12", "2019-08-14", "2023-02-13"],
+  "columns": ["Бомдод (fajr)", "Пешин (dhuhr)", "Аср", "Фурӯ рафтани офтоб (disliked interval)", "Шом (maghrib)", "Хуфтан (isha)"],
+  "form": "windows, each 'HH:MM - HH:MM'",
+  "instant_form_found": "YES - the authority's own homepage widget publishes today's five prayer instants for Dushanbe (captures/home-shuroiulamo-tj.html, 11.11.2026: 05:32 / 12:40 / 15:32 / 17:26 / 18:56). Verified equal to the left bound of the same day's window row: data/tj-instants-derived-*.json is the left-bound derivation, valid by that check.",
+  "window_stability": "recomputed, not a fixed template: 0 of 365 month-days are byte-identical across years, median fajr-start spread 15 min across 2015-2026.",
+  "method_change_detected": "dhuhr window start 13:00 through 2019-06-30, 12:40 from 2019-07-01 onward (2020-10-01..10-31 transitional at 12:50).",
+  "defects": "104 cells printed as 00:00 (sparse publication nulls, e.g. 2019-03-21 fajr, 2023-05-19 dhuhr); isolated outliers 2017-06-23 dhuhr 00:13 and 2023-02-19 dhuhr 12:00."
+}

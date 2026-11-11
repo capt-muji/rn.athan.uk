@@ -1,0 +1,7741 @@
+{
+ "meta": {
+  "generated": "2026-11-10",
+  "tz": "Europe/London",
+  "captureRoot": "uktowns2/data + ukscotland/data (every UK capture either agent read, plus the fit14 extras)",
+  "luptReference": "fit14/lupt_fi.json, independently validated: 0 mismatches on all 181 days of the six captured LUPT months, and 365/365 fajr + 361/365 isha on the ELM capture",
+  "method": [
+   "printed F = sunrise - fajr and I = isha - maghrib, day by day",
+   "implied twilight depression at the printed minute (NOAA solar position, cross-checked against adhan to 0.0 min)",
+   "core window Nov-Feb: the window where a 15-18 deg twilight exists at every UK latitude held, so a summer cap or an invented summer value cannot enter the verdict",
+   "constancy measured as observed jitter divided by the local rate of change, so a true angle rounded to the minute scores about 1 and a stepping table scores far higher",
+   "recipe naming at zero offset only: a free offset proves the angle form, never the recipe"
+  ],
+  "thresholds": {
+   "angle": "a named angle reproduces the print at zero offset on >=95% of core days, or the implied depression is flat within the rounding floor",
+   "interval": "no angle holds the core print, and the implied depression swings >=2.5x the rounding floor, or the F/I array is constant",
+   "undecidable": "on a one-month span, no census angle holds and the jitter sits between 1.5x and 2.5x the floor"
+  },
+  "claims": {
+   "fit4_restated": "The English-Hanafi towns are one recipe FORM instantiated locally, but the form is not universal. Of 30 UK towns, 18 run a date-indexed interval table and 12 run an angle. Even inside the interval family the four fit4 towns split: Coventry and Bolton are LUPT plus a constant offset, Reading and Rochdale are their own arrays. The universal clause is what fails, not the form.",
+   "fit12_restated": "The modal form is the sunrise-anchored interval at 18 of 30 towns, the six-family map survives as an encoding-level description but not as a model-class one, because three of its members (Watford, Leicester, Blackpool, Stockport) are angles, and its isha \"angle near 15\" column is a free-offset artefact on the one-month prints: at zero offset a 15 deg isha hits 0 to 3 of 30 days at those towns.",
+   "verify3_restated": "The refutation holds and widens: Nottingham is one of 12 angle towns, not a lone counterexample, and the interval towns are 18 of 30 rather than all of them. The modal form holds, the universal does not.",
+   "vocabulary": "fit14 labels distance from LUPT, not model class. \"drift\" and \"offset\" can be true of an angle town (Watford +23, Leicester +24, Blackpool +11, Stockport +7 are all angles) because one month of an isha cannot separate the two. Any offset encoding read off a one-month print is model-agnostic."
+  },
+  "settled": {
+   "scotland": {
+    "note": "settled by fit4 and re-measured here, not part of the English mosaic",
+    "towns": [
+     "Glasgow: per-town fajr table (implied depression 17.3, not frozen) with a 01:33 wall-clock clamp, isha is an 18 deg angle",
+     "Dundee: 18 deg fajr every day it is defined, then a night-fraction of 0.307, isha is a weekly-stepped table (max step 11 min), not a frozen 15 deg angle",
+     "Edinburgh: MWL 18/17, November only",
+     "Aberdeen AMIC Central and Spital: Wifaqul 18/15 with 1/2 and 1/7 night caps, 318/333 and 319/333 within 1 min over the whole span, the two sheets differ on dhuhr for 29 rows and agree on every other column"
+    ]
+   },
+   "luptAdopters": {
+    "note": "the LUPT snapshot rows, held as the reference and not treated as findings",
+    "towns": [
+     "London East London Mosque: F and I exactly LUPT on 365/365 days",
+     "London ICC (61 days) and MWH North (30 days): offset 0 on both columns",
+     "Middlesbrough (November): LUPT itself on both columns, 30/30"
+    ]
+   }
+  }
+ },
+ "encoding": {
+  "townsByTier": {
+   "own-array": {
+    "n": 10,
+    "towns": [
+     "Birmingham",
+     "Brighton",
+     "Dudley",
+     "Glasgow",
+     "Ilford",
+     "Luton",
+     "Oldham",
+     "Preston",
+     "Reading",
+     "Rochdale"
+    ]
+   },
+   "recipe": {
+    "n": 10,
+    "towns": [
+     "Aberdeen",
+     "Blackpool",
+     "Bradford",
+     "Edinburgh",
+     "Leicester",
+     "Nottingham",
+     "Oxford",
+     "Stockport",
+     "Walsall",
+     "Watford"
+    ]
+   },
+   "lupt-point": {
+    "n": 2,
+    "towns": [
+     "London",
+     "Middlesbrough"
+    ]
+   },
+   "lupt-offset": {
+    "n": 3,
+    "towns": [
+     "Bolton",
+     "Cambridge",
+     "Coventry"
+    ]
+   },
+   "constant-plus-angle": {
+    "n": 1,
+    "towns": [
+     "Stoke"
+    ]
+   },
+   "recipe-plus-const": {
+    "n": 1,
+    "towns": [
+     "Slough"
+    ]
+   },
+   "lupt-offset-plus-const": {
+    "n": 1,
+    "towns": [
+     "Cardiff"
+    ]
+   },
+   "two-constants": {
+    "n": 1,
+    "towns": [
+     "Hull"
+    ]
+   },
+   "recipe-plus-array": {
+    "n": 1,
+    "towns": [
+     "Dundee"
+    ]
+   }
+  },
+  "sides": {
+   "fajrModels": {
+    "interval-table": 19,
+    "angle-named": 13,
+    "interval-const": 2,
+    "angle-noncensus": 1
+   },
+   "ishaModels": {
+    "undecidable-one-month": 6,
+    "absent": 1,
+    "angle-named": 13,
+    "angle-noncensus": 3,
+    "interval-table": 9,
+    "interval-const": 3
+   },
+   "tableSides": 20,
+   "tableSideArrays": 28
+  },
+  "bytes": {
+   "luptBaseOnce": 732,
+   "perTownArray": 732,
+   "perSideArray": 366,
+   "perTownOffset": 2,
+   "note": "F and I are 366 one-byte minutes each. Every capture as a full pair is 35 x 732 = 25.6 KB, and every town as a pair is 30 x 732 = 21.5 KB. Encoding only the table sides is 28 x 366 bytes plus the 732-byte LUPT base and about 60 parameter bytes."
+  }
+ },
+ "counts": {
+  "captures": 35,
+  "towns": 30,
+  "townFajrClass": {
+   "interval": 18,
+   "angle": 12
+  },
+  "townIshaClass": {
+   "undecidable-one-month": 6,
+   "absent": 1,
+   "angle": 13,
+   "interval": 10
+  },
+  "captureFajrClass": {
+   "interval": 21,
+   "angle": 14
+  },
+  "captureIshaClass": {
+   "undecidable-one-month": 6,
+   "absent": 1,
+   "angle": 16,
+   "interval": 12
+  },
+  "townSidesDiffer": 12,
+  "luptOffsetBothSides": 4,
+  "luptOffsetFajr": 8,
+  "angleTownsFullYear": 7,
+  "angleTownsOneMonthOnly": 5
+ },
+ "towns": [
+  {
+   "town": "Luton",
+   "townKey": "Luton",
+   "tag": "luton-central",
+   "region": "Home Counties",
+   "capture": "uktowns2/data/luton-central-mosque-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 51.8787,
+    "lng": -0.42
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "5 distinct values over 30 days, range 4 min, implied depression swings 0.79 deg in Nov-Feb (5.52x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.4
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 14.6,
+    "range": 0.33,
+    "ratio": 1.94,
+    "zeroOffsetWithin1": 0.1,
+    "lupt": {
+     "offset": 0,
+     "within1": 0.967
+    },
+    "detail": "implied depression 14.60 deg, spread 0.33 deg over 30 days, the census 15 deg angle is refuted at zero offset (3/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": -1,
+     "within1": 0.733,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 0,
+     "within1": 0.967,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "fit12's isha \"angle\" survives only with a free -3 min offset, at zero offset a 15 deg isha hits 3/30 days. A non-census 14.6 deg angle and the LUPT isha array both fit, the array is the parsimonious reading (I = LUPT + 0 on 29/30).",
+    "verify3's interval verdict holds on the fajr side and is under-determined on the isha side."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table (100 min), isha angle",
+    "verify3": "interval table, LUPT construction",
+    "fit14": "fajr drift, isha offset 0"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.22,
+      "range": 0.79,
+      "ratio": 5.52
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 98,
+      "max": 102,
+      "range": 4,
+      "distinct": 5,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 2,
+      "flatShare": 0.517
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 3,
+      "w1": 12,
+      "worst": 4,
+      "exactShare": 0.1,
+      "w1Share": 0.4
+     },
+     "lupt": {
+      "n": 30,
+      "median": -1,
+      "within1": 0.733,
+      "min": -2,
+      "max": 2,
+      "months": {
+       "11": -0.3
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 100.5,
+      "rms": 1.02,
+      "w1Share": 0.667,
+      "min": 98,
+      "max": 102,
+      "range": 4
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.6,
+      "range": 0.33,
+      "ratio": 1.94
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 89,
+      "max": 96,
+      "range": 7,
+      "distinct": 8,
+      "distinctValues": [
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96
+      ],
+      "maxStep": 1,
+      "flatShare": 0.517
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 3,
+      "worst": 3,
+      "exactShare": 0,
+      "w1Share": 0.1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 0.967,
+      "min": -1,
+      "max": 2,
+      "months": {
+       "11": 0.1
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 94,
+      "rms": 2.29,
+      "w1Share": 0.5,
+      "min": 89,
+      "max": 96,
+      "range": 7
+     }
+    }
+   }
+  },
+  {
+   "town": "Brighton",
+   "townKey": "Brighton",
+   "tag": "brighton-almedinah",
+   "region": "South Coast",
+   "capture": "uktowns2/data/brighton-almedinah-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 50.8225,
+    "lng": -0.1372
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "4 distinct values over 30 days, range 3 min, implied depression swings 0.75 deg in Nov-Feb (4.56x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.7
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 14.57,
+    "range": 0.36,
+    "ratio": 1.9,
+    "zeroOffsetWithin1": 0.1,
+    "lupt": {
+     "offset": -3,
+     "within1": 0.833
+    },
+    "detail": "implied depression 14.57 deg, spread 0.36 deg over 30 days, the census 15 deg angle is refuted at zero offset (3/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": -4,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    },
+    "isha": {
+     "offset": -3,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha angle",
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.06,
+      "range": 0.75,
+      "ratio": 4.56
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 95,
+      "max": 98,
+      "range": 3,
+      "distinct": 4,
+      "distinctValues": [
+       95,
+       96,
+       97,
+       98
+      ],
+      "maxStep": 1,
+      "flatShare": 0.517
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 5,
+      "w1": 21,
+      "worst": 3,
+      "exactShare": 0.16666666666666666,
+      "w1Share": 0.7
+     },
+     "lupt": {
+      "n": 30,
+      "median": -4,
+      "within1": 0.833,
+      "min": -6,
+      "max": -1,
+      "months": {
+       "11": -4.1
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 97,
+      "rms": 1.08,
+      "w1Share": 0.8,
+      "min": 95,
+      "max": 98,
+      "range": 3
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.57,
+      "range": 0.36,
+      "ratio": 1.9
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 87,
+      "max": 93,
+      "range": 6,
+      "distinct": 7,
+      "distinctValues": [
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93
+      ],
+      "maxStep": 1,
+      "flatShare": 0.586
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 3,
+      "worst": 4,
+      "exactShare": 0,
+      "w1Share": 0.1
+     },
+     "lupt": {
+      "n": 30,
+      "median": -3,
+      "within1": 0.833,
+      "min": -5,
+      "max": 0,
+      "months": {
+       "11": -2.7
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 90.5,
+      "rms": 1.75,
+      "w1Share": 0.3,
+      "min": 87,
+      "max": 93,
+      "range": 6
+     }
+    }
+   }
+  },
+  {
+   "town": "Dudley",
+   "townKey": "Dudley",
+   "tag": "dudley-mcc",
+   "region": "West Midlands",
+   "capture": "uktowns2/data/dudley-mcc-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 52.512,
+    "lng": -2.081
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "5 distinct values over 30 days, range 4 min, implied depression swings 0.75 deg in Nov-Feb (4.75x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.7
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 14.55,
+    "range": 0.37,
+    "ratio": 2.08,
+    "zeroOffsetWithin1": 0.067,
+    "lupt": {
+     "offset": 1,
+     "within1": 0.9
+    },
+    "detail": "implied depression 14.55 deg, spread 0.37 deg over 30 days, the census 15 deg angle is refuted at zero offset (2/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": 0,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    },
+    "isha": {
+     "offset": 1,
+     "within1": 0.9,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha angle",
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.06,
+      "range": 0.75,
+      "ratio": 4.75
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 99,
+      "max": 103,
+      "range": 4,
+      "distinct": 5,
+      "distinctValues": [
+       99,
+       100,
+       101,
+       102,
+       103
+      ],
+      "maxStep": 1,
+      "flatShare": 0.655
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 5,
+      "w1": 21,
+      "worst": 3,
+      "exactShare": 0.16666666666666666,
+      "w1Share": 0.7
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 0.833,
+      "min": -2,
+      "max": 2,
+      "months": {
+       "11": 0
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 100.5,
+      "rms": 1.18,
+      "w1Share": 0.5,
+      "min": 99,
+      "max": 103,
+      "range": 4
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.55,
+      "range": 0.37,
+      "ratio": 2.08
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 91,
+      "max": 97,
+      "range": 6,
+      "distinct": 7,
+      "distinctValues": [
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 1,
+      "flatShare": 0.759
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 2,
+      "worst": 4,
+      "exactShare": 0,
+      "w1Share": 0.06666666666666667
+     },
+     "lupt": {
+      "n": 30,
+      "median": 1,
+      "within1": 0.9,
+      "min": 0,
+      "max": 4,
+      "months": {
+       "11": 1.2
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 94,
+      "rms": 1.91,
+      "w1Share": 0.4,
+      "min": 91,
+      "max": 97,
+      "range": 6
+     }
+    }
+   }
+  },
+  {
+   "town": "Preston",
+   "townKey": "Preston",
+   "tag": "preston-jamea",
+   "region": "North West",
+   "capture": "uktowns2/data/preston-jamea-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 53.7632,
+    "lng": -2.7031
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "5 distinct values over 30 days, range 4 min, implied depression swings 0.85 deg in Nov-Feb (6.23x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.267
+   },
+   "isha": {
+    "model": "absent",
+    "detail": "the capture's last column runs 16.5 min before sunset all month, so it is not an isha",
+    "summer": null,
+    "zeroOffsetWithin1": 0,
+    "reason": "printed isha < printed maghrib on 30/30 rows, the column is a mis-read or another convention",
+    "overridden": true
+   },
+   "family": "interval",
+   "ishaClass": "absent",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + no isha column",
+   "lupt": {
+    "fajr": {
+     "offset": -1,
+     "within1": 0.8,
+     "relation": "offset-with-blocks"
+    },
+    "isha": null
+   },
+   "corrections": [
+    "fit12's exclusion of the isha column is confirmed: the printed value precedes sunset on all 30 days."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha unreadable",
+    "verify3": null,
+    "fit14": "fajr drift"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.49,
+      "range": 0.85,
+      "ratio": 6.23
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 98,
+      "max": 102,
+      "range": 4,
+      "distinct": 5,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 1,
+      "flatShare": 0.759
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 30,
+      "exact": 2,
+      "w1": 8,
+      "worst": 6,
+      "exactShare": 0.06666666666666667,
+      "w1Share": 0.26666666666666666
+     },
+     "lupt": {
+      "n": 30,
+      "median": -1,
+      "within1": 0.8,
+      "min": -2,
+      "max": 2,
+      "months": {
+       "11": -0.5
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 100,
+      "rms": 0.91,
+      "w1Share": 0.933,
+      "min": 98,
+      "max": 102,
+      "range": 4
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": -1.23,
+      "range": 1.32,
+      "ratio": 11.96
+     },
+     "arrayShape": null,
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 141,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": null,
+     "interval": null
+    }
+   }
+  },
+  {
+   "town": "Blackpool",
+   "townKey": "Blackpool",
+   "tag": "blackpool-central",
+   "region": "North West",
+   "capture": "uktowns2/data/blackpool-central-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 53.8175,
+    "lng": -3.0357
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 15.00 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 15.00 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "ISNA 15/15",
+   "lupt": {
+    "fajr": {
+     "offset": 3,
+     "within1": 0.733,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 11,
+     "within1": 0.967,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "fit14's \"isha offset +10\" is a distance label. ISNA 15/15 reproduces both columns at zero offset on 30/30 and 27/30 days."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "F: ISNA 15/15",
+    "verify3": null,
+    "fit14": "fajr drift, isha offset +10"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15,
+      "range": 0.14,
+      "ratio": 1.01
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 99,
+      "max": 108,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108
+      ],
+      "maxStep": 1,
+      "flatShare": 0.483
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 28,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9333333333333333,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 3,
+      "within1": 0.733,
+      "min": 1,
+      "max": 6,
+      "months": {
+       "11": 3.2
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 104,
+      "rms": 2.72,
+      "w1Share": 0.3,
+      "min": 99,
+      "max": 108,
+      "range": 9
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15,
+      "range": 0.26,
+      "ratio": 1.18
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 98,
+      "max": 108,
+      "range": 10,
+      "distinct": 11,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108
+      ],
+      "maxStep": 2,
+      "flatShare": 0.586
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 27,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 11,
+      "within1": 0.967,
+      "min": 9,
+      "max": 11,
+      "months": {
+       "11": 10.5
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 104,
+      "rms": 2.81,
+      "w1Share": 0.3,
+      "min": 98,
+      "max": 108,
+      "range": 10
+     }
+    }
+   }
+  },
+  {
+   "town": "Middlesbrough",
+   "townKey": "Middlesbrough",
+   "tag": "middlesbrough-central",
+   "region": "North East",
+   "capture": "uktowns2/data/middlesbrough-central-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 54.5742,
+    "lng": -1.235
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "6 distinct values over 30 days, range 5 min, implied depression swings 0.66 deg in Nov-Feb (4.56x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 13.6,
+    "range": 0.3,
+    "ratio": 1.74,
+    "zeroOffsetWithin1": 0,
+    "lupt": {
+     "offset": 0,
+     "within1": 1
+    },
+    "detail": "implied depression 13.60 deg, spread 0.3 deg over 30 days, the census 15 deg angle is refuted at zero offset (0/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "Stronger than fit14's \"exact both\": the November print is LUPT itself on both columns (30/30 at offset 0)."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha angle",
+    "verify3": null,
+    "fit14": "exact both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.4,
+      "range": 0.66,
+      "ratio": 4.56
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 97,
+      "max": 102,
+      "range": 5,
+      "distinct": 6,
+      "distinctValues": [
+       97,
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 1,
+      "flatShare": 0.828
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 30,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 1,
+      "min": 0,
+      "max": 0,
+      "months": {
+       "11": 0
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 101.5,
+      "rms": 2.06,
+      "w1Share": 0.6,
+      "min": 97,
+      "max": 102,
+      "range": 5
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 13.6,
+      "range": 0.3,
+      "ratio": 1.74
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 88,
+      "max": 97,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 1,
+      "flatShare": 0.69
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 31,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 1,
+      "min": 0,
+      "max": 0,
+      "months": {
+       "11": 0
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 93,
+      "rms": 2.58,
+      "w1Share": 0.4,
+      "min": 88,
+      "max": 97,
+      "range": 9
+     }
+    }
+   }
+  },
+  {
+   "town": "Stockport",
+   "townKey": "Stockport",
+   "tag": "stockport-ic",
+   "region": "North West",
+   "capture": "uktowns2/data/stockport-islamic-centre-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 53.4106,
+    "lng": -2.1575
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15.02,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 15.02 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 15.00 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "ISNA 15/15",
+   "lupt": {
+    "fajr": {
+     "offset": 2,
+     "within1": 0.767,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 7,
+     "within1": 0.967,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "fit14's \"isha offset +7\" is a distance label. ISNA 15/15 reproduces both columns on 30/30 and 28/30 days at zero offset."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "F: ISNA 15/15",
+    "verify3": null,
+    "fit14": "fajr drift, isha offset +7"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.02,
+      "range": 0.14,
+      "ratio": 1
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 98,
+      "max": 107,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107
+      ],
+      "maxStep": 1,
+      "flatShare": 0.517
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 26,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.8666666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 2,
+      "within1": 0.767,
+      "min": 0,
+      "max": 5,
+      "months": {
+       "11": 2
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 102.5,
+      "rms": 2.54,
+      "w1Share": 0.2,
+      "min": 98,
+      "max": 107,
+      "range": 9
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15,
+      "range": 0.14,
+      "ratio": 0.93
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 96,
+      "max": 104,
+      "range": 8,
+      "distinct": 9,
+      "distinctValues": [
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104
+      ],
+      "maxStep": 1,
+      "flatShare": 0.552
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 28,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9333333333333333,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 7,
+      "within1": 0.967,
+      "min": 5,
+      "max": 8,
+      "months": {
+       "11": 6.6
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 99.5,
+      "rms": 2.55,
+      "w1Share": 0.2,
+      "min": 96,
+      "max": 104,
+      "range": 8
+     }
+    }
+   }
+  },
+  {
+   "town": "Watford",
+   "townKey": "Watford",
+   "tag": "watford-jamia",
+   "region": "Home Counties",
+   "capture": "uktowns2/data/watford-jamia-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 51.6565,
+    "lng": -0.3903
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.91,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "Karachi 18/18 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 17.91 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18.24,
+    "zeroOffsetWithin1": 0.9,
+    "summer": null,
+    "detail": "Karachi 18/18 at zero offset: 27/30 within 1 min in Nov-Feb, fitted depression 18.24 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Karachi 18/18",
+   "lupt": {
+    "fajr": {
+     "offset": 14,
+     "within1": 0.8,
+     "relation": "offset-with-blocks"
+    },
+    "isha": {
+     "offset": 23,
+     "within1": 1,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "fit14's \"fajr drift, isha offset +23\" is a distance-from-LUPT label, not a model class. Both columns are angles: 30/30 and 27/30 within 1 of 18/18 at zero offset."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "E: Karachi 18/18",
+    "verify3": "angle 18, 30/30 within 1",
+    "fit14": "fajr drift, isha offset +23"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 17.91,
+      "range": 0.14,
+      "ratio": 0.95
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 111,
+      "max": 119,
+      "range": 8,
+      "distinct": 9,
+      "distinctValues": [
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119
+      ],
+      "maxStep": 1,
+      "flatShare": 0.241
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "ceil",
+      "n": 30,
+      "exact": 29,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9666666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 14,
+      "within1": 0.8,
+      "min": 12,
+      "max": 17,
+      "months": {
+       "11": 14.2
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 114.5,
+      "rms": 2.46,
+      "w1Share": 0.233,
+      "min": 111,
+      "max": 119,
+      "range": 8
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 18.24,
+      "range": 0.14,
+      "ratio": 1.01
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 111,
+      "max": 120,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120
+      ],
+      "maxStep": 1,
+      "flatShare": 0.655
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "ceil",
+      "n": 30,
+      "exact": 0,
+      "w1": 27,
+      "worst": 2,
+      "exactShare": 0,
+      "w1Share": 0.9
+     },
+     "lupt": {
+      "n": 30,
+      "median": 23,
+      "within1": 1,
+      "min": 22,
+      "max": 24,
+      "months": {
+       "11": 22.6
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 116,
+      "rms": 2.44,
+      "w1Share": 0.4,
+      "min": 111,
+      "max": 120,
+      "range": 9
+     }
+    }
+   }
+  },
+  {
+   "town": "Ilford",
+   "townKey": "Ilford",
+   "tag": "ilford-mosque",
+   "region": "London",
+   "capture": "uktowns2/data/ilford-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 51.559,
+    "lng": 0.0741
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "5 distinct values over 30 days, range 4 min, implied depression swings 0.77 deg in Nov-Feb (4.7x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.7
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 14.56,
+    "range": 0.35,
+    "ratio": 1.95,
+    "zeroOffsetWithin1": 0.033,
+    "lupt": {
+     "offset": -1,
+     "within1": 0.833
+    },
+    "detail": "implied depression 14.56 deg, spread 0.35 deg over 30 days, the census 15 deg angle is refuted at zero offset (1/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": -2.5,
+     "within1": 0.667,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -1,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha angle",
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.07,
+      "range": 0.77,
+      "ratio": 4.7
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 96,
+      "max": 100,
+      "range": 4,
+      "distinct": 5,
+      "distinctValues": [
+       96,
+       97,
+       98,
+       99,
+       100
+      ],
+      "maxStep": 1,
+      "flatShare": 0.414
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 5,
+      "w1": 21,
+      "worst": 3,
+      "exactShare": 0.16666666666666666,
+      "w1Share": 0.7
+     },
+     "lupt": {
+      "n": 30,
+      "median": -2.5,
+      "within1": 0.667,
+      "min": -4,
+      "max": 0,
+      "months": {
+       "11": -2.3
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 98,
+      "rms": 1.05,
+      "w1Share": 0.867,
+      "min": 96,
+      "max": 100,
+      "range": 4
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.56,
+      "range": 0.35,
+      "ratio": 1.95
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 89,
+      "max": 95,
+      "range": 6,
+      "distinct": 7,
+      "distinctValues": [
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95
+      ],
+      "maxStep": 1,
+      "flatShare": 0.517
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 1,
+      "worst": 4,
+      "exactShare": 0,
+      "w1Share": 0.03333333333333333
+     },
+     "lupt": {
+      "n": 30,
+      "median": -1,
+      "within1": 0.833,
+      "min": -3,
+      "max": 2,
+      "months": {
+       "11": -1
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 92,
+      "rms": 1.69,
+      "w1Share": 0.5,
+      "min": 89,
+      "max": 95,
+      "range": 6
+     }
+    }
+   }
+  },
+  {
+   "town": "Cambridge",
+   "townKey": "Cambridge",
+   "tag": "cambridge-central",
+   "region": "East",
+   "capture": "uktowns2/data/cambridge-central-2026-11.json",
+   "span": "2026-11-10..12-11 (32d)",
+   "rows": 32,
+   "coords": {
+    "lat": 52.2053,
+    "lng": 0.1218
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "4 distinct values over 32 days, range 3 min, implied depression swings 0.71 deg in Nov-Feb (5.23x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.469
+   },
+   "isha": {
+    "model": "angle-noncensus",
+    "recipe": "angle 13.61 deg (+/-0.2)",
+    "angle": 13.61,
+    "zeroOffsetWithin1": 0,
+    "summer": null,
+    "detail": "constant depression 13.61 deg at the rounding floor, no census angle fits"
+   },
+   "family": "interval",
+   "ishaClass": "angle",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + angle 13.61 deg (+/-0.2)",
+   "lupt": {
+    "fajr": {
+     "offset": -2,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": -6,
+     "within1": 0.875,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table, isha angle",
+    "verify3": null,
+    "fit14": "offset -2/-5"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 32,
+      "mean": 14.7,
+      "range": 0.71,
+      "ratio": 5.23
+     },
+     "arrayShape": {
+      "n": 32,
+      "min": 98,
+      "max": 101,
+      "range": 3,
+      "distinct": 4,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101
+      ],
+      "maxStep": 1,
+      "flatShare": 0.71
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 32,
+      "exact": 6,
+      "w1": 15,
+      "worst": 4,
+      "exactShare": 0.1875,
+      "w1Share": 0.46875
+     },
+     "lupt": {
+      "n": 32,
+      "median": -2,
+      "within1": 1,
+      "min": -3,
+      "max": -1,
+      "months": {
+       "11": -2.4,
+       "12": -1.4
+      }
+     },
+     "interval": {
+      "n": 32,
+      "offset": 100,
+      "rms": 0.97,
+      "w1Share": 0.906,
+      "min": 98,
+      "max": 101,
+      "range": 3
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 32,
+      "mean": 13.61,
+      "range": 0.17,
+      "ratio": 1.08
+     },
+     "arrayShape": {
+      "n": 32,
+      "min": 86,
+      "max": 93,
+      "range": 7,
+      "distinct": 8,
+      "distinctValues": [
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93
+      ],
+      "maxStep": 1,
+      "flatShare": 0.581
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 32,
+      "exact": 0,
+      "w1": 0,
+      "worst": 30,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 32,
+      "median": -6,
+      "within1": 0.875,
+      "min": -7,
+      "max": -4,
+      "months": {
+       "11": -6,
+       "12": -4.8
+      }
+     },
+     "interval": {
+      "n": 32,
+      "offset": 90,
+      "rms": 2.24,
+      "w1Share": 0.344,
+      "min": 86,
+      "max": 93,
+      "range": 7
+     }
+    }
+   }
+  },
+  {
+   "town": "Stoke",
+   "townKey": "Stoke",
+   "tag": "stoke-citycentral",
+   "region": "West Midlands",
+   "capture": "uktowns2/data/stoke-citycentral-month.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 53.0027,
+    "lng": -2.1794
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-const",
+    "value": 110,
+    "detail": "constant 110 min"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 14.93,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 14.93 deg"
+   },
+   "family": "interval",
+   "ishaClass": "angle",
+   "sidesDiffer": true,
+   "pairRecipe": "constant fajr 110 min + ISNA 15/15",
+   "lupt": {
+    "fajr": {
+     "offset": 8.5,
+     "within1": 0.6,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 1,
+     "within1": 0.9,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [
+    "fit12's \"fajr interval 112\" is 110.0 min exactly on all 30 days against the printed sunrise."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr interval 112, isha angle 15",
+    "verify3": null,
+    "fit14": "fajr drift, isha offset +2"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 16.62,
+      "range": 1.24,
+      "ratio": 8.98
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 110,
+      "max": 110,
+      "range": 0,
+      "distinct": 1,
+      "distinctValues": [
+       110
+      ],
+      "maxStep": 0,
+      "flatShare": 1
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 14,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 8.5,
+      "within1": 0.6,
+      "min": 8,
+      "max": 13,
+      "months": {
+       "11": 9.5
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 110,
+      "rms": 0,
+      "w1Share": 1,
+      "min": 110,
+      "max": 110,
+      "range": 0
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.93,
+      "range": 0.25,
+      "ratio": 1.52
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 91,
+      "max": 99,
+      "range": 8,
+      "distinct": 9,
+      "distinctValues": [
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99
+      ],
+      "maxStep": 1,
+      "flatShare": 0.655
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 25,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.8333333333333334,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 1,
+      "within1": 0.9,
+      "min": 0,
+      "max": 3,
+      "months": {
+       "11": 1.5
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 94,
+      "rms": 2.63,
+      "w1Share": 0.333,
+      "min": 91,
+      "max": 99,
+      "range": 8
+     }
+    }
+   }
+  },
+  {
+   "town": "Birmingham",
+   "townKey": "Birmingham",
+   "tag": "birmingham-central",
+   "region": "West Midlands",
+   "capture": "ukscotland/data/birmingham-central-mosque-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 52.4862,
+    "lng": -1.8904
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "5 distinct values over 30 days, range 4 min, implied depression swings 0.69 deg in Nov-Feb (4.06x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0
+   },
+   "isha": {
+    "model": "undecidable-one-month",
+    "angle": 14.34,
+    "range": 0.42,
+    "ratio": 2.18,
+    "zeroOffsetWithin1": 0,
+    "lupt": {
+     "offset": 3,
+     "within1": 0.967
+    },
+    "detail": "implied depression 14.34 deg, spread 0.42 deg over 30 days, the census 15 deg angle is refuted at zero offset (0/30 within 1) but a non-census angle at that depression and a LUPT-construction table both fit"
+   },
+   "family": "interval",
+   "ishaClass": "undecidable-one-month",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + isha undecidable on one month",
+   "lupt": {
+    "fajr": {
+     "offset": -12,
+     "within1": 0.8,
+     "relation": "offset-with-blocks"
+    },
+    "isha": {
+     "offset": 3,
+     "within1": 0.967,
+     "relation": "offset"
+    }
+   },
+   "corrections": [
+    "fit14's \"fajr drift\" is right about the distance but the fajr is a table (0/30 within 1 of any census angle), the isha is undecidable on one month."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T1: fajr table (88.4), isha angle",
+    "verify3": null,
+    "fit14": "fajr drift, isha offset -1"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 13.25,
+      "range": 0.69,
+      "ratio": 4.06
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 86,
+      "max": 90,
+      "range": 4,
+      "distinct": 5,
+      "distinctValues": [
+       86,
+       87,
+       88,
+       89,
+       90
+      ],
+      "maxStep": 1,
+      "flatShare": 0.724
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 35,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": -12,
+      "within1": 0.8,
+      "min": -14,
+      "max": -10,
+      "months": {
+       "11": -12.3
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 88,
+      "rms": 1.3,
+      "w1Share": 0.733,
+      "min": 86,
+      "max": 90,
+      "range": 4
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.34,
+      "range": 0.42,
+      "ratio": 2.18
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 91,
+      "max": 99,
+      "range": 8,
+      "distinct": 9,
+      "distinctValues": [
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99
+      ],
+      "maxStep": 2,
+      "flatShare": 0.69
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 25,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 3,
+      "within1": 0.967,
+      "min": 1,
+      "max": 3,
+      "months": {
+       "11": 2.9
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 96,
+      "rms": 2.52,
+      "w1Share": 0.367,
+      "min": 91,
+      "max": 99,
+      "range": 8
+     }
+    }
+   }
+  },
+  {
+   "town": "Leicester",
+   "townKey": "Leicester",
+   "tag": "leicester-umar",
+   "region": "East Midlands",
+   "capture": "ukscotland/data/leicester-masjid-umar-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 52.6369,
+    "lng": -1.1398
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "Karachi 18/18 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 18.00 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.99,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "Karachi 18/18 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 17.99 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Karachi 18/18",
+   "lupt": {
+    "fajr": {
+     "offset": 20,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    },
+    "isha": null
+   },
+   "corrections": [
+    "fit14's \"isha offset +24\" is likewise a distance label, the isha is an 18.0 deg angle on 28/30 days, which coincides with LUPT + 24 for one month."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "E: Karachi 18/18",
+    "verify3": null,
+    "fit14": "fajr drift, isha offset +24"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 18,
+      "range": 0.13,
+      "ratio": 0.98
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 116,
+      "max": 125,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125
+      ],
+      "maxStep": 1,
+      "flatShare": 0.483
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 30,
+      "w1": 30,
+      "worst": 0,
+      "exactShare": 1,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 20,
+      "within1": 0.833,
+      "min": 19,
+      "max": 23,
+      "months": {
+       "11": 20.2
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 121,
+      "rms": 2.68,
+      "w1Share": 0.333,
+      "min": 116,
+      "max": 125,
+      "range": 9
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 17.99,
+      "range": 0.15,
+      "ratio": 0.97
+     },
+     "arrayShape": null,
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 28,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9333333333333333,
+      "w1Share": 1
+     },
+     "lupt": null,
+     "interval": null
+    }
+   }
+  },
+  {
+   "town": "Nottingham",
+   "townKey": "Nottingham",
+   "tag": "nottingham-ic",
+   "region": "East Midlands",
+   "capture": "uktowns2/data/nottingham-ic-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 52.9548,
+    "lng": -1.1581
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18.14,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -0.91,
+      -4.16,
+      -2.29
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 18.14 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.99,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -6.14,
+      -9.89,
+      -8.01
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 17.99 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Karachi 18/18",
+   "lupt": {
+    "fajr": {
+     "offset": 30,
+     "within1": 0.121,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 29,
+     "within1": 0.137,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": "E: Karachi 18/18, summer invented",
+    "verify3": "angle 18/18, 244/273 within 1, refutes the universal",
+    "fit14": "angle-like both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 18.14,
+      "range": 0.16,
+      "ratio": 0.98
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 114,
+      "max": 243,
+      "range": 129,
+      "distinct": 93,
+      "distinctValues": [
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       154,
+       155,
+       156,
+       158,
+       161,
+       163,
+       165,
+       167,
+       168,
+       170,
+       171,
+       173,
+       177,
+       180,
+       183,
+       187,
+       188,
+       191,
+       192,
+       196,
+       197,
+       203,
+       210,
+       211,
+       212,
+       213,
+       214,
+       215,
+       216,
+       217,
+       218,
+       219,
+       220,
+       221,
+       222,
+       223,
+       224,
+       225,
+       226,
+       227,
+       228,
+       229,
+       230,
+       231,
+       232,
+       233,
+       234,
+       235,
+       236,
+       237,
+       239,
+       240,
+       241,
+       242,
+       243
+      ],
+      "maxStep": 23,
+      "flatShare": 0.376
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 58,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.48333333333333334,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 365,
+      "median": 30,
+      "within1": 0.121,
+      "min": 17,
+      "max": 138,
+      "months": {
+       "10": 23.3,
+       "11": 21.1,
+       "12": 28.1,
+       "01": 27.5,
+       "02": 19.5,
+       "03": 21.3,
+       "04": 43,
+       "05": 102.9,
+       "06": 95.8,
+       "07": 116,
+       "08": 59.7,
+       "09": 31.6
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 127,
+      "rms": 47.36,
+      "w1Share": 0.085,
+      "min": 114,
+      "max": 243,
+      "range": 129
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 17.99,
+      "range": 0.15,
+      "ratio": 1
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 68,
+      "max": 139,
+      "range": 71,
+      "distinct": 69,
+      "distinctValues": [
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       94,
+       95,
+       96,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       139
+      ],
+      "maxStep": 5,
+      "flatShare": 0.418
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 112,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.9333333333333333,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 365,
+      "median": 29,
+      "within1": 0.137,
+      "min": -12,
+      "max": 69,
+      "months": {
+       "10": 29.2,
+       "11": 25.5,
+       "12": 28.7,
+       "01": 24.5,
+       "02": 23.3,
+       "03": 33.8,
+       "04": 54.5,
+       "05": 28.9,
+       "06": -5.9,
+       "07": 19,
+       "08": 54.8,
+       "09": 44
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 115,
+      "rms": 17.71,
+      "w1Share": 0.118,
+      "min": 68,
+      "max": 139,
+      "range": 71
+     }
+    }
+   }
+  },
+  {
+   "town": "Reading",
+   "townKey": "Reading",
+   "tag": "reading-amic",
+   "region": "Home Counties",
+   "capture": "uktowns2/data/reading-amic-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 51.4543,
+    "lng": -0.9781
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "array, implied depression swings 1.1 deg in Nov-Feb (7.99x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.09,
+      -3.16,
+      -2.67
+     ]
+    },
+    "zeroOffsetWithin1": 0.35
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "34 distinct values over 365 days, range 33 min, implied depression swings 0.72 deg in Nov-Feb (2.83x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -4.82,
+      -5.03,
+      -4.87
+     ]
+    },
+    "zeroOffsetWithin1": 0
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": null,
+    "isha": {
+     "offset": -5,
+     "within1": 0.414,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "The fajr is a table too (implied depression swings 1.1 deg in Nov-Feb and 3.9 deg over the year), the capture carries no sunrise column, so F cannot be formed and the verdict uses the implied depression alone."
+   ],
+   "agents": {
+    "fit4": "LUPT family, own solar, +2..+4 / -4..-9 drifting",
+    "fit12": null,
+    "verify3": null,
+    "fit14": "fajr none (no sunrise), isha drift"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15.06,
+      "range": 1.1,
+      "ratio": 7.99
+     },
+     "arrayShape": null,
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 120,
+      "exact": 16,
+      "w1": 42,
+      "worst": 5,
+      "exactShare": 0.13333333333333333,
+      "w1Share": 0.35
+     },
+     "lupt": null,
+     "interval": null
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 13.88,
+      "range": 0.72,
+      "ratio": 2.83
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 63,
+      "max": 96,
+      "range": 33,
+      "distinct": 34,
+      "distinctValues": [
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96
+      ],
+      "maxStep": 1,
+      "flatShare": 0.593
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 28,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": -5,
+      "within1": 0.414,
+      "min": -11,
+      "max": 4,
+      "months": {
+       "10": -3,
+       "11": -5.9,
+       "12": -3.3,
+       "01": -7.3,
+       "02": -7.8,
+       "03": -5.5,
+       "04": -6.1,
+       "05": -5.4,
+       "06": -3,
+       "07": 2.9,
+       "08": -0.9,
+       "09": -2
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 75,
+      "rms": 9.49,
+      "w1Share": 0.112,
+      "min": 63,
+      "max": 96,
+      "range": 33
+     }
+    }
+   }
+  },
+  {
+   "town": "Coventry",
+   "townKey": "Coventry",
+   "tag": "coventry-zeenatul",
+   "region": "West Midlands",
+   "capture": "uktowns2/data/coventry-zeenatul-islam-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 52.4068,
+    "lng": -1.5197
+   },
+   "clockShiftDays": 3,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "37 distinct values over 365 days, range 67 min, implied depression swings 1.88 deg in Nov-Feb (13.45x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.66,
+      -3.48,
+      -3.14
+     ]
+    },
+    "zeroOffsetWithin1": 0.217
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "42 distinct values over 365 days, range 80 min, implied depression swings 1.29 deg in Nov-Feb (7.15x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -6.32,
+      -7.57,
+      -7.09
+     ]
+    },
+    "zeroOffsetWithin1": 0.442
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 3,
+     "within1": 0.986,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 3,
+     "within1": 0.723,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "verify3's \"seasonal table, F 90-157\" is inflated by three 26-28 March DST rows at +63 min, on the other 362 days F is LUPT + 3 within 1 on 98.6%. The table is LUPT +3/+3 plus a shared summer isha dip."
+   ],
+   "agents": {
+    "fit4": "LUPT +3/+3 (179/181, 146/181)",
+    "fit12": null,
+    "verify3": "seasonal table, plateaus",
+    "fit14": "offset+step +3, offset+dip +2"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15.14,
+      "range": 1.88,
+      "ratio": 13.45
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 90,
+      "max": 157,
+      "range": 67,
+      "distinct": 37,
+      "distinctValues": [
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       156,
+       157
+      ],
+      "maxStep": 61,
+      "flatShare": 0.745
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 12,
+      "w1": 26,
+      "worst": 7,
+      "exactShare": 0.1,
+      "w1Share": 0.21666666666666667
+     },
+     "lupt": {
+      "n": 365,
+      "median": 3,
+      "within1": 0.986,
+      "min": 2,
+      "max": 63,
+      "months": {
+       "10": 3,
+       "11": 3,
+       "12": 3,
+       "01": 3,
+       "02": 3,
+       "03": 12.7,
+       "04": 3,
+       "05": 3,
+       "06": 3,
+       "07": 3,
+       "08": 3,
+       "09": 3
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 100,
+      "rms": 10.76,
+      "w1Share": 0.31,
+      "min": 90,
+      "max": 157,
+      "range": 67
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 14.74,
+      "range": 1.29,
+      "ratio": 7.15
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 20,
+      "max": 100,
+      "range": 80,
+      "distinct": 42,
+      "distinctValues": [
+       20,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100
+      ],
+      "maxStep": 61,
+      "flatShare": 0.783
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 16,
+      "w1": 53,
+      "worst": 5,
+      "exactShare": 0.13333333333333333,
+      "w1Share": 0.44166666666666665
+     },
+     "lupt": {
+      "n": 365,
+      "median": 3,
+      "within1": 0.723,
+      "min": -57,
+      "max": 3,
+      "months": {
+       "10": 3,
+       "11": 3,
+       "12": 3,
+       "01": 3,
+       "02": 3,
+       "03": -0.9,
+       "04": 2.9,
+       "05": -8.3,
+       "06": -17.8,
+       "07": -7.4,
+       "08": 2.1,
+       "09": 2.6
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 80,
+      "rms": 15.29,
+      "w1Share": 0.066,
+      "min": 20,
+      "max": 100,
+      "range": 80
+     }
+    }
+   }
+  },
+  {
+   "town": "Rochdale",
+   "townKey": "Rochdale",
+   "tag": "rochdale-golden",
+   "region": "North West",
+   "capture": "uktowns2/data/rochdale-golden-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 53.6097,
+    "lng": -2.1561
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "30 distinct values over 365 days, range 29 min, implied depression swings 1.39 deg in Nov-Feb (10.45x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.29,
+      -3.59,
+      -3.01
+     ]
+    },
+    "zeroOffsetWithin1": 0.233
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "implied depression wanders 0.52 deg in Nov-Feb and 5.53 deg across the year, no frozen angle",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -4.83,
+      -5.17,
+      -4.98
+     ]
+    },
+    "zeroOffsetWithin1": 0
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 3,
+     "within1": 0.277,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -4,
+     "within1": 0.351,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": "LUPT family, seasonal drift +5..+3 / -3..-9",
+    "fit12": null,
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 14.36,
+      "range": 1.39,
+      "ratio": 10.45
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 93,
+      "max": 122,
+      "range": 29,
+      "distinct": 30,
+      "distinctValues": [
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122
+      ],
+      "maxStep": 2,
+      "flatShare": 0.61
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 13,
+      "w1": 28,
+      "worst": 9,
+      "exactShare": 0.10833333333333334,
+      "w1Share": 0.23333333333333334
+     },
+     "lupt": {
+      "n": 365,
+      "median": 3,
+      "within1": 0.277,
+      "min": -4,
+      "max": 10,
+      "months": {
+       "10": 4,
+       "11": -1.2,
+       "12": 1.5,
+       "01": 3.4,
+       "02": 0.4,
+       "03": -1.2,
+       "04": 7.6,
+       "05": 4.3,
+       "06": 0.5,
+       "07": 4.5,
+       "08": 7.7,
+       "09": 5.8
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 101,
+      "rms": 7.78,
+      "w1Share": 0.225,
+      "min": 93,
+      "max": 122,
+      "range": 29
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 13.26,
+      "range": 0.52,
+      "ratio": 2.47
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 63,
+      "max": 97,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 2,
+      "flatShare": 0.593
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 34,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": -4,
+      "within1": 0.351,
+      "min": -11,
+      "max": 4,
+      "months": {
+       "10": -2.9,
+       "11": -5.1,
+       "12": -2.3,
+       "01": -6.7,
+       "02": -7,
+       "03": -5.1,
+       "04": -6.2,
+       "05": -5.8,
+       "06": -2.7,
+       "07": 2.9,
+       "08": -1.2,
+       "09": -2
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 76,
+      "rms": 9.77,
+      "w1Share": 0.115,
+      "min": 63,
+      "max": 97,
+      "range": 34
+     }
+    }
+   }
+  },
+  {
+   "town": "Bolton",
+   "townKey": "Bolton",
+   "tag": "bolton-zakariyya",
+   "region": "North West",
+   "capture": "uktowns2/data/bolton-zakariyya-2026.json",
+   "span": "2026 (354d, 12h columns)",
+   "rows": 354,
+   "coords": {
+    "lat": 53.5769,
+    "lng": -2.4282
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "35 distinct values over 354 days, range 34 min, implied depression swings 2.02 deg in Nov-Feb (14.34x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.73,
+      -3.72,
+      -3.34
+     ]
+    },
+    "zeroOffsetWithin1": 0.316
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "41 distinct values over 354 days, range 42 min, implied depression swings 1.39 deg in Nov-Feb (8.31x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -6.97,
+      -7.96,
+      -7.4
+     ]
+    },
+    "zeroOffsetWithin1": 0.419
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 3,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 5,
+     "within1": 0.695,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": "LUPT +3/+5 (172/176, 134/176)",
+    "fit12": null,
+    "verify3": null,
+    "fit14": "offset +3, offset+dip +5"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 117,
+      "mean": 14.63,
+      "range": 2.02,
+      "ratio": 14.34
+     },
+     "arrayShape": {
+      "n": 354,
+      "min": 90,
+      "max": 124,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124
+      ],
+      "maxStep": 2,
+      "flatShare": 0.751
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 117,
+      "exact": 15,
+      "w1": 37,
+      "worst": 10,
+      "exactShare": 0.1282051282051282,
+      "w1Share": 0.3162393162393162
+     },
+     "lupt": {
+      "n": 354,
+      "median": 3,
+      "within1": 1,
+      "min": 2,
+      "max": 3,
+      "months": {
+       "10": 3,
+       "11": 2.9,
+       "12": 3,
+       "01": 3,
+       "02": 3,
+       "03": 3,
+       "04": 3,
+       "05": 3,
+       "06": 3,
+       "07": 3,
+       "08": 3,
+       "09": 3
+      }
+     },
+     "interval": {
+      "n": 354,
+      "offset": 100,
+      "rms": 8.49,
+      "w1Share": 0.311,
+      "min": 90,
+      "max": 124,
+      "range": 34
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 117,
+      "mean": 15.02,
+      "range": 1.39,
+      "ratio": 8.31
+     },
+     "arrayShape": {
+      "n": 354,
+      "min": 60,
+      "max": 102,
+      "range": 42,
+      "distinct": 41,
+      "distinctValues": [
+       60,
+       61,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 4,
+      "flatShare": 0.802
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 117,
+      "exact": 22,
+      "w1": 49,
+      "worst": 5,
+      "exactShare": 0.18803418803418803,
+      "w1Share": 0.4188034188034188
+     },
+     "lupt": {
+      "n": 354,
+      "median": 5,
+      "within1": 0.695,
+      "min": -21,
+      "max": 6,
+      "months": {
+       "10": 5,
+       "11": 4.9,
+       "12": 5,
+       "01": 5,
+       "02": 5,
+       "03": 5,
+       "04": 3.7,
+       "05": -11.7,
+       "06": -17.9,
+       "07": -7.2,
+       "08": 2.4,
+       "09": 5
+      }
+     },
+     "interval": {
+      "n": 354,
+      "offset": 82,
+      "rms": 15.79,
+      "w1Share": 0.071,
+      "min": 60,
+      "max": 102,
+      "range": 42
+     }
+    }
+   }
+  },
+  {
+   "town": "Oldham (OCMIC)",
+   "townKey": "Oldham",
+   "tag": "oldham-ocmic",
+   "region": "North West",
+   "capture": "uktowns2/data/oldham-ocmic-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 53.5409,
+    "lng": -2.1114
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "34 distinct values over 365 days, range 33 min, implied depression swings 1.19 deg in Nov-Feb (9.18x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.4,
+      -3.77,
+      -3.05
+     ]
+    },
+    "zeroOffsetWithin1": 0.317
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "35 distinct values over 365 days, range 34 min, implied depression swings 0.58 deg in Nov-Feb (2.63x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -4.99,
+      -6.21,
+      -5.75
+     ]
+    },
+    "zeroOffsetWithin1": 0
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 6,
+     "within1": 0.197,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -2,
+     "within1": 0.255,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 14.79,
+      "range": 1.19,
+      "ratio": 9.18
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 93,
+      "max": 126,
+      "range": 33,
+      "distinct": 34,
+      "distinctValues": [
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126
+      ],
+      "maxStep": 2,
+      "flatShare": 0.626
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 10,
+      "w1": 38,
+      "worst": 6,
+      "exactShare": 0.08333333333333333,
+      "w1Share": 0.31666666666666665
+     },
+     "lupt": {
+      "n": 365,
+      "median": 6,
+      "within1": 0.197,
+      "min": -4,
+      "max": 15,
+      "months": {
+       "10": 9.8,
+       "11": 3.4,
+       "12": 4.7,
+       "01": 4.5,
+       "02": -0.1,
+       "03": -1.8,
+       "04": 8.4,
+       "05": 6.3,
+       "06": 3.9,
+       "07": 10.3,
+       "08": 14.5,
+       "09": 11.7
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 104,
+      "rms": 8.75,
+      "w1Share": 0.241,
+      "min": 93,
+      "max": 126,
+      "range": 33
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 13.67,
+      "range": 0.58,
+      "ratio": 2.63
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 65,
+      "max": 99,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99
+      ],
+      "maxStep": 3,
+      "flatShare": 0.604
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 31,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": -2,
+      "within1": 0.255,
+      "min": -16,
+      "max": 5,
+      "months": {
+       "10": 2.8,
+       "11": -0.4,
+       "12": 0.7,
+       "01": -4.8,
+       "02": -5.5,
+       "03": -3,
+       "04": -4,
+       "05": -3.3,
+       "06": -11.1,
+       "07": -1,
+       "08": 4.1,
+       "09": 3.7
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 78,
+      "rms": 10.9,
+      "w1Share": 0.066,
+      "min": 65,
+      "max": 99,
+      "range": 34
+     }
+    }
+   }
+  },
+  {
+   "town": "Oldham (Westwood)",
+   "townKey": "Oldham",
+   "tag": "oldham-westwood",
+   "region": "North West",
+   "capture": "uktowns2/data/oldham-westwood-2026.json",
+   "span": "2026 (345d)",
+   "rows": 345,
+   "coords": {
+    "lat": 53.5409,
+    "lng": -2.1114
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "37 distinct values over 345 days, range 36 min, implied depression swings 1.42 deg in Nov-Feb (10.64x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.27,
+      -3.74,
+      -3.1
+     ]
+    },
+    "zeroOffsetWithin1": 0.223
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "35 distinct values over 345 days, range 34 min, implied depression swings 0.43 deg in Nov-Feb (2.74x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -4.9,
+      -6.27,
+      -5.9
+     ]
+    },
+    "zeroOffsetWithin1": 0
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 6,
+     "within1": 0.241,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -2,
+     "within1": 0.354,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "drift both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 112,
+      "mean": 14.77,
+      "range": 1.42,
+      "ratio": 10.64
+     },
+     "arrayShape": {
+      "n": 345,
+      "min": 90,
+      "max": 126,
+      "range": 36,
+      "distinct": 37,
+      "distinctValues": [
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126
+      ],
+      "maxStep": 4,
+      "flatShare": 0.555
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 112,
+      "exact": 6,
+      "w1": 25,
+      "worst": 5,
+      "exactShare": 0.05357142857142857,
+      "w1Share": 0.22321428571428573
+     },
+     "lupt": {
+      "n": 345,
+      "median": 6,
+      "within1": 0.241,
+      "min": -6,
+      "max": 13,
+      "months": {
+       "10": 7.9,
+       "11": 1.8,
+       "12": 4.6,
+       "01": 6.1,
+       "02": 2.1,
+       "03": -3.4,
+       "04": 8.8,
+       "05": 6.6,
+       "06": 4.2,
+       "07": 8.8,
+       "08": 12.2,
+       "09": 9.7
+      }
+     },
+     "interval": {
+      "n": 345,
+      "offset": 103,
+      "rms": 8.83,
+      "w1Share": 0.226,
+      "min": 90,
+      "max": 126,
+      "range": 36
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 112,
+      "mean": 13.74,
+      "range": 0.43,
+      "ratio": 2.74
+     },
+     "arrayShape": {
+      "n": 345,
+      "min": 65,
+      "max": 99,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99
+      ],
+      "maxStep": 3,
+      "flatShare": 0.567
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 112,
+      "exact": 0,
+      "w1": 0,
+      "worst": 31,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 345,
+      "median": -2,
+      "within1": 0.354,
+      "min": -16,
+      "max": 6,
+      "months": {
+       "10": 0.7,
+       "11": -1.6,
+       "12": 0.8,
+       "01": -5,
+       "02": -3.8,
+       "03": -2.2,
+       "04": -3.3,
+       "05": -1.5,
+       "06": -10.9,
+       "07": -1.2,
+       "08": 2.1,
+       "09": 1.4
+      }
+     },
+     "interval": {
+      "n": 345,
+      "offset": 76,
+      "rms": 11.12,
+      "w1Share": 0.055,
+      "min": 65,
+      "max": 99,
+      "range": 34
+     }
+    }
+   }
+  },
+  {
+   "town": "Oxford",
+   "townKey": "Oxford",
+   "tag": "oxford-coms",
+   "region": "Home Counties",
+   "capture": "uktowns2/data/oxford-coms-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 51.752,
+    "lng": -1.2577
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18.01,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -0.38,
+      -2.82,
+      -1.22
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 18.01 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "detail": "58 distinct values over 365 days, range 59 min, implied depression swings 5.42 deg in Nov-Feb (47.45x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -5.08,
+      -8.7,
+      -6.45
+     ]
+    },
+    "zeroOffsetWithin1": 0.767,
+    "recipe": "Karachi 18/18 (Nov-Jan), clock floor from February",
+    "pairRecipe": "Karachi 18/18 both sides, isha clock floor from February",
+    "reason": "implied depression is exactly 18.0 through Nov-Jan then drops to 13.1 and holds, that is a printed clock limit, not a seasonal array",
+    "overridden": true
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Karachi 18/18 both sides, isha clock floor from February",
+   "lupt": {
+    "fajr": {
+     "offset": 26,
+     "within1": 0.115,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 17,
+     "within1": 0.027,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "verify3's angle verdict holds (120/120 core days within 1 of 18 deg). New: the isha is 18 deg only to January, then a clock floor from February."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": "angle 18, 332/365 within 1",
+    "fit14": "angle-like both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 18.01,
+      "range": 0.36,
+      "ratio": 2.04
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 110,
+      "max": 411,
+      "range": 301,
+      "distinct": 99,
+      "distinctValues": [
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       153,
+       154,
+       155,
+       156,
+       157,
+       158,
+       159,
+       160,
+       162,
+       163,
+       164,
+       165,
+       167,
+       169,
+       171,
+       173,
+       175,
+       177,
+       179,
+       181,
+       183,
+       184,
+       187,
+       188,
+       192,
+       193,
+       196,
+       202,
+       204,
+       205,
+       208,
+       213,
+       218,
+       219,
+       220,
+       221,
+       222,
+       223,
+       224,
+       225,
+       226,
+       227,
+       228,
+       229,
+       230,
+       231,
+       232,
+       233,
+       234,
+       235,
+       236,
+       237,
+       238,
+       239,
+       241,
+       411
+      ],
+      "maxStep": 299,
+      "flatShare": 0.382
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 65,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.5416666666666666,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 365,
+      "median": 26,
+      "within1": 0.115,
+      "min": 13,
+      "max": 315,
+      "months": {
+       "10": 29.1,
+       "11": 16.9,
+       "12": 22.9,
+       "01": 22.8,
+       "02": 15.1,
+       "03": 16.9,
+       "04": 38.3,
+       "05": 86.6,
+       "06": 103,
+       "07": 109.4,
+       "08": 49.4,
+       "09": 27.1
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 123,
+      "rms": 49.4,
+      "w1Share": 0.137,
+      "min": 110,
+      "max": 411,
+      "range": 301
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 16.89,
+      "range": 5.42,
+      "ratio": 47.45
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 67,
+      "max": 126,
+      "range": 59,
+      "distinct": 58,
+      "distinctValues": [
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126
+      ],
+      "maxStep": 33,
+      "flatShare": 0.453
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 33,
+      "w1": 92,
+      "worst": 34,
+      "exactShare": 0.275,
+      "w1Share": 0.7666666666666667
+     },
+     "lupt": {
+      "n": 365,
+      "median": 17,
+      "within1": 0.027,
+      "min": -13,
+      "max": 44,
+      "months": {
+       "10": 3,
+       "11": 24.5,
+       "12": 27.4,
+       "01": 25.4,
+       "02": -7.6,
+       "03": 0.9,
+       "04": 15.6,
+       "05": 26.1,
+       "06": -6.8,
+       "07": 22.5,
+       "08": 27.9,
+       "09": 6.6
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 89,
+      "rms": 18.96,
+      "w1Share": 0.047,
+      "min": 67,
+      "max": 126,
+      "range": 59
+     }
+    }
+   }
+  },
+  {
+   "town": "Slough",
+   "townKey": "Slough",
+   "tag": "slough-jmic",
+   "region": "Home Counties",
+   "capture": "uktowns2/data/slough-jmic-2022.json",
+   "span": "2022 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 51.5103,
+    "lng": -0.595
+   },
+   "clockShiftDays": 217,
+   "fajr": {
+    "model": "angle-noncensus",
+    "recipe": "angle 18.51 deg (+/-0.2)",
+    "angle": 18.51,
+    "zeroOffsetWithin1": 0,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.08,
+      -5.43,
+      -3.85
+     ]
+    },
+    "detail": "constant depression 18.51 deg at the rounding floor, no census angle fits"
+   },
+   "isha": {
+    "model": "interval-const",
+    "value": 90,
+    "detail": "constant 90 min"
+   },
+   "family": "angle",
+   "ishaClass": "interval",
+   "sidesDiffer": true,
+   "pairRecipe": "angle 18.51 deg (+/-0.2) + constant isha 90 min",
+   "lupt": {
+    "fajr": {
+     "offset": 27,
+     "within1": 0.145,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 11,
+     "within1": 0.085,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit14's \"angle-like both\" holds on the fajr side, the isha is a constant 90-min interval, not an angle.",
+    "The capture prints the whole year on GMT (217 rows 60 min early), which corrupts any absolute-time fit but leaves F and I untouched."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "angle-like both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 18.51,
+      "range": 0.16,
+      "ratio": 0.9
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 114,
+      "max": 164,
+      "range": 50,
+      "distinct": 51,
+      "distinctValues": [
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       153,
+       154,
+       155,
+       156,
+       157,
+       158,
+       159,
+       160,
+       161,
+       162,
+       163,
+       164
+      ],
+      "maxStep": 3,
+      "flatShare": 0.423
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 3,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": 27,
+      "within1": 0.145,
+      "min": 16,
+      "max": 64,
+      "months": {
+       "10": 22.6,
+       "11": 19.9,
+       "12": 26.2,
+       "01": 26.1,
+       "02": 18.9,
+       "03": 20.6,
+       "04": 41.9,
+       "05": 48,
+       "06": 19.3,
+       "07": 36.7,
+       "08": 51.5,
+       "09": 30.4
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 126,
+      "rms": 14.77,
+      "w1Share": 0.118,
+      "min": 114,
+      "max": 164,
+      "range": 50
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 13.69,
+      "range": 1.91,
+      "ratio": 13.51
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 90,
+      "max": 90,
+      "range": 0,
+      "distinct": 1,
+      "distinctValues": [
+       90
+      ],
+      "maxStep": 0,
+      "flatShare": 1
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 5,
+      "worst": 14,
+      "exactShare": 0,
+      "w1Share": 0.041666666666666664
+     },
+     "lupt": {
+      "n": 365,
+      "median": 11,
+      "within1": 0.085,
+      "min": -7,
+      "max": 27,
+      "months": {
+       "10": 7.1,
+       "11": -3,
+       "12": -7,
+       "01": -7,
+       "02": -0.3,
+       "03": 9.1,
+       "04": 15.6,
+       "05": 18,
+       "06": 12.2,
+       "07": 22.6,
+       "08": 23.3,
+       "09": 15.6
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 90,
+      "rms": 0,
+      "w1Share": 1,
+      "min": 90,
+      "max": 90,
+      "range": 0
+     }
+    }
+   }
+  },
+  {
+   "town": "Walsall",
+   "townKey": "Walsall",
+   "tag": "walsall-wjmg",
+   "region": "West Midlands",
+   "capture": "uktowns2/data/walsall-wjmg-2020.json",
+   "span": "2020 full year (366d)",
+   "rows": 366,
+   "coords": {
+    "lat": 52.5862,
+    "lng": -1.9829
+   },
+   "clockShiftDays": 210,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.99,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.7,
+      -6.01,
+      -4.36
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 121/121 within 1 min in Nov-Feb, fitted depression 17.99 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18.01,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.85,
+      -6.04,
+      -4.27
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 121/121 within 1 min in Nov-Feb, fitted depression 18.01 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Karachi 18/18",
+   "lupt": {
+    "fajr": {
+     "offset": 25,
+     "within1": 0.104,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 40,
+     "within1": 0.027,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit14's \"angle-like both\" holds: 18/18 at zero offset on 116/121 core days, with a clock clamp in the summer months.",
+    "The capture prints the whole year on GMT (210 rows 60 min early), with that repaired the implied depression is 18.0 in every month outside the clamp."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "angle-like both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 121,
+      "mean": 17.99,
+      "range": 0.15,
+      "ratio": 0.94
+     },
+     "arrayShape": {
+      "n": 366,
+      "min": 113,
+      "max": 161,
+      "range": 48,
+      "distinct": 49,
+      "distinctValues": [
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       153,
+       154,
+       155,
+       156,
+       157,
+       158,
+       159,
+       160,
+       161
+      ],
+      "maxStep": 3,
+      "flatShare": 0.463
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 121,
+      "exact": 116,
+      "w1": 121,
+      "worst": 1,
+      "exactShare": 0.9586776859504132,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 366,
+      "median": 25,
+      "within1": 0.104,
+      "min": 8,
+      "max": 63,
+      "months": {
+       "10": 22.1,
+       "11": 20,
+       "12": 26.6,
+       "01": 26.5,
+       "02": 18.6,
+       "03": 20.4,
+       "04": 43.1,
+       "05": 41.8,
+       "06": 11.7,
+       "07": 29.9,
+       "08": 50.2,
+       "09": 30.1
+      }
+     },
+     "interval": {
+      "n": 366,
+      "offset": 126,
+      "rms": 12.77,
+      "w1Share": 0.107,
+      "min": 113,
+      "max": 161,
+      "range": 48
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 121,
+      "mean": 18.01,
+      "range": 0.16,
+      "ratio": 0.96
+     },
+     "arrayShape": {
+      "n": 366,
+      "min": 113,
+      "max": 161,
+      "range": 48,
+      "distinct": 49,
+      "distinctValues": [
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       153,
+       154,
+       155,
+       156,
+       157,
+       158,
+       159,
+       160,
+       161
+      ],
+      "maxStep": 3,
+      "flatShare": 0.51
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 121,
+      "exact": 116,
+      "w1": 121,
+      "worst": 1,
+      "exactShare": 0.9586776859504132,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 366,
+      "median": 40,
+      "within1": 0.027,
+      "min": 22,
+      "max": 96,
+      "months": {
+       "10": 31.5,
+       "11": 27.6,
+       "12": 30.5,
+       "01": 26.4,
+       "02": 25.3,
+       "03": 35.8,
+       "04": 62.6,
+       "05": 75.3,
+       "06": 52.4,
+       "07": 72.1,
+       "08": 79.7,
+       "09": 45.7
+      }
+     },
+     "interval": {
+      "n": 366,
+      "offset": 126,
+      "rms": 12.78,
+      "w1Share": 0.087,
+      "min": 113,
+      "max": 161,
+      "range": 48
+     }
+    }
+   }
+  },
+  {
+   "town": "Cardiff",
+   "townKey": "Cardiff",
+   "tag": "cardiff-swicc",
+   "region": "Wales",
+   "capture": "ukscotland/data/swicc-cardiff-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 51.4816,
+    "lng": -3.1791
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "6 distinct values over 30 days, range 5 min, implied depression swings 0.63 deg in Nov-Feb (3.76x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0
+   },
+   "isha": {
+    "model": "interval-const",
+    "value": 80,
+    "detail": "constant 80 min"
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + constant isha 80 min",
+   "lupt": {
+    "fajr": {
+     "offset": 3,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": -13,
+     "within1": 0.4,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit12's \"83 min isha\" is 80.0 min exactly on all 30 days against the printed maghrib."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T2: interval fajr, fixed 83 isha",
+    "verify3": null,
+    "fit14": "fajr offset +3, isha drift"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.96,
+      "range": 0.63,
+      "ratio": 3.76
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 100,
+      "max": 105,
+      "range": 5,
+      "distinct": 6,
+      "distinctValues": [
+       100,
+       101,
+       102,
+       103,
+       104,
+       105
+      ],
+      "maxStep": 1,
+      "flatShare": 0.621
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 16,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 3,
+      "within1": 1,
+      "min": 2,
+      "max": 3,
+      "months": {
+       "11": 2.9
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 104,
+      "rms": 1.87,
+      "w1Share": 0.667,
+      "min": 100,
+      "max": 105,
+      "range": 5
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 12.82,
+      "range": 1.07,
+      "ratio": 7.62
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 80,
+      "max": 80,
+      "range": 0,
+      "distinct": 1,
+      "distinctValues": [
+       80
+      ],
+      "maxStep": 0,
+      "flatShare": 1
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 38,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": -13,
+      "within1": 0.4,
+      "min": -17,
+      "max": -8,
+      "months": {
+       "11": -13
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 80,
+      "rms": 0,
+      "w1Share": 1,
+      "min": 80,
+      "max": 80,
+      "range": 0
+     }
+    }
+   }
+  },
+  {
+   "town": "Hull",
+   "townKey": "Hull",
+   "tag": "hull-mosque",
+   "region": "Yorkshire",
+   "capture": "ukscotland/data/hull-mosque-2026.json",
+   "span": "2026-01 + 2026-11..12 (62d)",
+   "rows": 62,
+   "coords": {
+    "lat": 53.7443,
+    "lng": -0.3325
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-const",
+    "value": 95,
+    "detail": "constant 95 min"
+   },
+   "isha": {
+    "model": "interval-const",
+    "value": 75,
+    "detail": "constant 75 min"
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "constant fajr 95 min + constant isha 75 min",
+   "lupt": {
+    "fajr": {
+     "offset": -2.5,
+     "within1": 0.516,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -22,
+     "within1": 0.694,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit12's \"99.5 / 80\" is measured against a computed sunrise, against the capture's own sunrise the intervals are exactly 95 and 75 min, and the capture prints sunrise 4.7 min early consistently."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": "T2: interval fajr 99.5, interval isha 80",
+    "verify3": null,
+    "fit14": "offset+dip -3, -21"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 62,
+      "mean": 14.15,
+      "range": 1.34,
+      "ratio": 9.28
+     },
+     "arrayShape": {
+      "n": 62,
+      "min": 95,
+      "max": 95,
+      "range": 0,
+      "distinct": 1,
+      "distinctValues": [
+       95
+      ],
+      "maxStep": 0,
+      "flatShare": 1
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 62,
+      "exact": 1,
+      "w1": 5,
+      "worst": 10,
+      "exactShare": 0.016129032258064516,
+      "w1Share": 0.08064516129032258
+     },
+     "lupt": {
+      "n": 62,
+      "median": -2.5,
+      "within1": 0.516,
+      "min": -7,
+      "max": -2,
+      "months": {
+       "11": -6.1,
+       "12": -7,
+       "01": -2
+      }
+     },
+     "interval": {
+      "n": 62,
+      "offset": 95,
+      "rms": 0,
+      "w1Share": 1,
+      "min": 95,
+      "max": 95,
+      "range": 0
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 62,
+      "mean": 11.36,
+      "range": 1.15,
+      "ratio": 8.07
+     },
+     "arrayShape": {
+      "n": 62,
+      "min": 75,
+      "max": 75,
+      "range": 0,
+      "distinct": 1,
+      "distinctValues": [
+       75
+      ],
+      "maxStep": 0,
+      "flatShare": 1
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 62,
+      "exact": 0,
+      "w1": 0,
+      "worst": 51,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 62,
+      "median": -22,
+      "within1": 0.694,
+      "min": -22,
+      "max": -15,
+      "months": {
+       "11": -18.8,
+       "12": -22,
+       "01": -22
+      }
+     },
+     "interval": {
+      "n": 62,
+      "offset": 75,
+      "rms": 0,
+      "w1Share": 1,
+      "min": 75,
+      "max": 75,
+      "range": 0
+     }
+    }
+   }
+  },
+  {
+   "town": "Bradford (Hanfia)",
+   "townKey": "Bradford",
+   "tag": "bradford-hanfia",
+   "region": "Yorkshire",
+   "capture": "ukscotland/data/jamia-masjid-hanfia-bradford-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 53.796,
+    "lng": -1.7594
+   },
+   "clockShiftDays": 1,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15.08,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -1.68,
+      -2.88,
+      -2.39
+     ]
+    },
+    "detail": "ISNA 15/15 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 15.08 deg"
+   },
+   "isha": {
+    "model": "angle-noncensus",
+    "detail": "implied depression wanders 0.48 deg in Nov-Feb and 1.99 deg across the year, no frozen angle",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -0.35,
+      -1.28,
+      -0.67
+     ]
+    },
+    "zeroOffsetWithin1": 0,
+    "recipe": "angle 9.0 deg, mild summer fallback",
+    "pairRecipe": "ISNA 15/15 fajr + 9.0 deg isha",
+    "reason": "Nov-Feb implied depression 8.95-9.02, the summer months fall only to 7.7, i.e. a cap, not a table",
+    "overridden": true
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "ISNA 15/15 fajr + 9.0 deg isha",
+   "lupt": {
+    "fajr": null,
+    "isha": {
+     "offset": -22,
+     "within1": 0.041,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit14's \"isha angle-like\" holds and resolves to 9.0 deg, the fajr resolves to ISNA 15/15 (120/120 core days within 1)."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "isha angle-like"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15.08,
+      "range": 0.28,
+      "ratio": 1.21
+     },
+     "arrayShape": null,
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 96,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.8,
+      "w1Share": 1
+     },
+     "lupt": null,
+     "interval": null
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 8.98,
+      "range": 0.48,
+      "ratio": 1.8
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 52,
+      "max": 82,
+      "range": 30,
+      "distinct": 31,
+      "distinctValues": [
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82
+      ],
+      "maxStep": 5,
+      "flatShare": 0.593
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 66,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": -22,
+      "within1": 0.041,
+      "min": -40,
+      "max": 11,
+      "months": {
+       "10": -26.5,
+       "11": -31.8,
+       "12": -30.9,
+       "01": -32.9,
+       "02": -35.5,
+       "03": -27.7,
+       "04": -12.8,
+       "05": 0.8,
+       "06": -3.5,
+       "07": 5.6,
+       "08": -1.3,
+       "09": -17.8
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 62,
+      "rms": 7.68,
+      "w1Share": 0.104,
+      "min": 52,
+      "max": 82,
+      "range": 30
+     }
+    }
+   }
+  },
+  {
+   "town": "Bradford (Victor St)",
+   "townKey": "Bradford",
+   "tag": "bradford-victor",
+   "region": "Yorkshire",
+   "capture": "ukscotland/data/victor-street-bradford-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 53.796,
+    "lng": -1.7594
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 15.11,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 15.11 deg"
+   },
+   "isha": {
+    "model": "angle-noncensus",
+    "recipe": "angle 9.03 deg (+/-0.2)",
+    "angle": 9.03,
+    "zeroOffsetWithin1": 0,
+    "summer": null,
+    "detail": "constant depression 9.03 deg at the rounding floor, no census angle fits"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "ISNA 15/15 + angle 9.03 deg (+/-0.2)",
+   "lupt": {
+    "fajr": {
+     "offset": 2,
+     "within1": 0.6,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": -37,
+     "within1": 0.833,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [
+    "fit14's \"isha offset -36\" is a distance label, the isha is a 9.03 deg angle, and the fajr is 15 deg on 30/30 days at zero offset."
+   ],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "fajr drift, isha offset -36"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.11,
+      "range": 0.34,
+      "ratio": 2.26
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 98,
+      "max": 106,
+      "range": 8,
+      "distinct": 9,
+      "distinctValues": [
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106
+      ],
+      "maxStep": 3,
+      "flatShare": 0.414
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 12,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.4,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 2,
+      "within1": 0.6,
+      "min": -1,
+      "max": 4,
+      "months": {
+       "11": 1.9
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 102,
+      "rms": 2.65,
+      "w1Share": 0.333,
+      "min": 98,
+      "max": 106,
+      "range": 8
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 9.03,
+      "range": 0.15,
+      "ratio": 1.1
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 53,
+      "max": 60,
+      "range": 7,
+      "distinct": 8,
+      "distinctValues": [
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60
+      ],
+      "maxStep": 1,
+      "flatShare": 0.552
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 64,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": -37,
+      "within1": 0.833,
+      "min": -38,
+      "max": -35,
+      "months": {
+       "11": -36.7
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 56,
+      "rms": 2,
+      "w1Share": 0.467,
+      "min": 53,
+      "max": 60,
+      "range": 7
+     }
+    }
+   }
+  },
+  {
+   "town": "London (East London Mosque)",
+   "townKey": "London",
+   "tag": "elm-london",
+   "region": "London",
+   "capture": "uktowns2/data/elm-london-2026.json",
+   "span": "2026 full year (365d, 12h)",
+   "rows": 365,
+   "coords": {
+    "lat": 51.5171,
+    "lng": -0.0544
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "35 distinct values over 365 days, range 34 min, implied depression swings 1.88 deg in Nov-Feb (12.6x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.55,
+      -3.31,
+      -3.11
+     ]
+    },
+    "zeroOffsetWithin1": 0.217
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "35 distinct values over 365 days, range 34 min, implied depression swings 1.2 deg in Nov-Feb (6.65x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -5.19,
+      -5.73,
+      -6.12
+     ]
+    },
+    "zeroOffsetWithin1": 0.533
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": "LUPT reference",
+    "fit14": "exact both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15.4,
+      "range": 1.88,
+      "ratio": 12.6
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 87,
+      "max": 121,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121
+      ],
+      "maxStep": 2,
+      "flatShare": 0.761
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 7,
+      "w1": 26,
+      "worst": 8,
+      "exactShare": 0.058333333333333334,
+      "w1Share": 0.21666666666666667
+     },
+     "lupt": {
+      "n": 365,
+      "median": 0,
+      "within1": 1,
+      "min": 0,
+      "max": 0,
+      "months": {
+       "10": 0,
+       "11": 0,
+       "12": 0,
+       "01": 0,
+       "02": 0,
+       "03": 0,
+       "04": 0,
+       "05": 0,
+       "06": 0,
+       "07": 0,
+       "08": 0,
+       "09": 0
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 97,
+      "rms": 8.51,
+      "w1Share": 0.31,
+      "min": 87,
+      "max": 121,
+      "range": 34
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 14.87,
+      "range": 1.2,
+      "ratio": 6.65
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 63,
+      "max": 97,
+      "range": 34,
+      "distinct": 35,
+      "distinctValues": [
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 2,
+      "flatShare": 0.764
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 120,
+      "exact": 25,
+      "w1": 64,
+      "worst": 4,
+      "exactShare": 0.20833333333333334,
+      "w1Share": 0.5333333333333333
+     },
+     "lupt": {
+      "n": 365,
+      "median": 0,
+      "within1": 1,
+      "min": -1,
+      "max": 1,
+      "months": {
+       "10": 0,
+       "11": 0,
+       "12": 0,
+       "01": 0,
+       "02": 0,
+       "03": 0,
+       "04": 0,
+       "05": 0,
+       "06": 0.1,
+       "07": 0,
+       "08": 0,
+       "09": 0
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 79,
+      "rms": 10.91,
+      "w1Share": 0.082,
+      "min": 63,
+      "max": 97,
+      "range": 34
+     }
+    }
+   }
+  },
+  {
+   "town": "London (Central Mosque ICC)",
+   "townKey": "London",
+   "tag": "london-icc",
+   "region": "London",
+   "capture": "ukscotland/data/london-central-mosque-icc-2026-11-12.json",
+   "span": "2026-11..12 (61d)",
+   "rows": 61,
+   "coords": {
+    "lat": 51.5325,
+    "lng": -0.165
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "6 distinct values over 61 days, range 5 min, implied depression swings 1.65 deg in Nov-Feb (11.45x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.262
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "10 distinct values over 61 days, range 9 min, implied depression swings 0.55 deg in Nov-Feb (3.86x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0.459
+   },
+   "family": "interval",
+   "ishaClass": "interval",
+   "sidesDiffer": false,
+   "pairRecipe": "fajr array + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "exact both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 61,
+      "mean": 15.45,
+      "range": 1.65,
+      "ratio": 11.45
+     },
+     "arrayShape": {
+      "n": 61,
+      "min": 97,
+      "max": 102,
+      "range": 5,
+      "distinct": 6,
+      "distinctValues": [
+       97,
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 2,
+      "flatShare": 0.85
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 61,
+      "exact": 3,
+      "w1": 16,
+      "worst": 7,
+      "exactShare": 0.04918032786885246,
+      "w1Share": 0.26229508196721313
+     },
+     "lupt": {
+      "n": 61,
+      "median": 0,
+      "within1": 1,
+      "min": 0,
+      "max": 0,
+      "months": {
+       "11": 0,
+       "12": 0
+      }
+     },
+     "interval": {
+      "n": 61,
+      "offset": 101,
+      "rms": 1.82,
+      "w1Share": 0.754,
+      "min": 97,
+      "max": 102,
+      "range": 5
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 61,
+      "mean": 14.63,
+      "range": 0.55,
+      "ratio": 3.86
+     },
+     "arrayShape": {
+      "n": 61,
+      "min": 88,
+      "max": 97,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 1,
+      "flatShare": 0.85
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 61,
+      "exact": 7,
+      "w1": 28,
+      "worst": 4,
+      "exactShare": 0.11475409836065574,
+      "w1Share": 0.45901639344262296
+     },
+     "lupt": {
+      "n": 61,
+      "median": 0,
+      "within1": 1,
+      "min": -1,
+      "max": 0,
+      "months": {
+       "11": 0,
+       "12": 0
+      }
+     },
+     "interval": {
+      "n": 61,
+      "offset": 97,
+      "rms": 3.34,
+      "w1Share": 0.607,
+      "min": 88,
+      "max": 97,
+      "range": 9
+     }
+    }
+   }
+  },
+  {
+   "town": "London (MWH North)",
+   "townKey": "London",
+   "tag": "mwh-north-london",
+   "region": "London",
+   "capture": "ukscotland/data/mwh-north-london-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 51.597,
+    "lng": -0.068
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "7 distinct values over 30 days, range 6 min, implied depression swings 0.59 deg in Nov-Feb (3.67x the rounding floor)",
+    "summer": null,
+    "zeroOffsetWithin1": 0
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "ISNA 15/15",
+    "angle": 14.83,
+    "zeroOffsetWithin1": 0.867,
+    "summer": null,
+    "detail": "ISNA 15/15 at zero offset: 26/30 within 1 min in Nov-Feb, fitted depression 14.83 deg"
+   },
+   "family": "interval",
+   "ishaClass": "angle",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + ISNA 15/15",
+   "lupt": {
+    "fajr": {
+     "offset": 0,
+     "within1": 0.967,
+     "relation": "offset"
+    },
+    "isha": {
+     "offset": 0,
+     "within1": 1,
+     "relation": "offset"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": null,
+    "fit12": null,
+    "verify3": null,
+    "fit14": "offset -1/-7"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 15.82,
+      "range": 0.59,
+      "ratio": 3.67
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 96,
+      "max": 102,
+      "range": 6,
+      "distinct": 7,
+      "distinctValues": [
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102
+      ],
+      "maxStep": 2,
+      "flatShare": 0.759
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 30,
+      "exact": 0,
+      "w1": 0,
+      "worst": 17,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 0.967,
+      "min": -2,
+      "max": 0,
+      "months": {
+       "11": -0.1
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 101.5,
+      "rms": 2.2,
+      "w1Share": 0.6,
+      "min": 96,
+      "max": 102,
+      "range": 6
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 14.83,
+      "range": 0.39,
+      "ratio": 2.25
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 88,
+      "max": 97,
+      "range": 9,
+      "distinct": 10,
+      "distinctValues": [
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97
+      ],
+      "maxStep": 1,
+      "flatShare": 0.69
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "floor",
+      "n": 30,
+      "exact": 14,
+      "w1": 26,
+      "worst": 2,
+      "exactShare": 0.4666666666666667,
+      "w1Share": 0.8666666666666667
+     },
+     "lupt": {
+      "n": 30,
+      "median": 0,
+      "within1": 1,
+      "min": -1,
+      "max": 1,
+      "months": {
+       "11": 0
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 93,
+      "rms": 2.53,
+      "w1Share": 0.4,
+      "min": 88,
+      "max": 97,
+      "range": 9
+     }
+    }
+   }
+  },
+  {
+   "town": "Glasgow",
+   "townKey": "Glasgow",
+   "tag": "glasgow-central",
+   "region": "Scotland",
+   "capture": "ukscotland/data/glasgow-central-mosque-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 55.8642,
+    "lng": -4.2518
+   },
+   "clockShiftDays": 3,
+   "fajr": {
+    "model": "interval-table",
+    "detail": "102 distinct values over 365 days, range 124 min, implied depression swings 0.44 deg in Nov-Feb (2.74x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -2.22,
+      -6.29,
+      -4.33
+     ]
+    },
+    "zeroOffsetWithin1": 0
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.96,
+    "zeroOffsetWithin1": 0.992,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -10.51,
+      -12.13,
+      -11.65
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 119/120 within 1 min in Nov-Feb, fitted depression 17.96 deg"
+   },
+   "family": "interval",
+   "ishaClass": "angle",
+   "sidesDiffer": true,
+   "pairRecipe": "fajr array + Karachi 18/18",
+   "lupt": {
+    "fajr": {
+     "offset": 32,
+     "within1": 0.096,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 28,
+     "within1": 0.104,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit12's \"E: Karachi 18/18\" does not survive: 0/120 core days within 1 of an 18 deg fajr, and the fajr lead sits 32 min off LUPT's. fit4's own-table verdict stands."
+   ],
+   "agents": {
+    "fit4": "own engine, ~18.2/18.1 with +-3 min drift, 01:33 clamp 96 days",
+    "fit12": "E: Karachi 18/18 (inherited, not refitted)",
+    "verify3": null,
+    "fit14": "fajr own-table, isha angle-like"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 17.29,
+      "range": 0.44,
+      "ratio": 2.74
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 113,
+      "max": 237,
+      "range": 124,
+      "distinct": 102,
+      "distinctValues": [
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       150,
+       152,
+       154,
+       155,
+       157,
+       159,
+       160,
+       162,
+       163,
+       165,
+       166,
+       168,
+       169,
+       171,
+       173,
+       174,
+       175,
+       176,
+       177,
+       178,
+       179,
+       180,
+       181,
+       182,
+       183,
+       184,
+       185,
+       186,
+       187,
+       188,
+       189,
+       190,
+       191,
+       192,
+       193,
+       194,
+       195,
+       196,
+       197,
+       198,
+       199,
+       200,
+       202,
+       204,
+       205,
+       207,
+       209,
+       210,
+       211,
+       212,
+       213,
+       214,
+       215,
+       216,
+       217,
+       218,
+       219,
+       221,
+       223,
+       225,
+       227,
+       229,
+       230,
+       231,
+       233,
+       235,
+       237
+      ],
+      "maxStep": 17,
+      "flatShare": 0.376
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "floor",
+      "n": 120,
+      "exact": 0,
+      "w1": 0,
+      "worst": 7,
+      "exactShare": 0,
+      "w1Share": 0
+     },
+     "lupt": {
+      "n": 365,
+      "median": 32,
+      "within1": 0.096,
+      "min": 16,
+      "max": 138,
+      "months": {
+       "10": 23.3,
+       "11": 21.4,
+       "12": 29.8,
+       "01": 28.3,
+       "02": 18.3,
+       "03": 20.2,
+       "04": 52,
+       "05": 96.8,
+       "06": 56.9,
+       "07": 87.5,
+       "08": 87.5,
+       "09": 34.8
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 129,
+      "rms": 38.9,
+      "w1Share": 0.082,
+      "min": 113,
+      "max": 237,
+      "range": 124
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 17.96,
+      "range": 0.38,
+      "ratio": 2.52
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 49,
+      "max": 135,
+      "range": 86,
+      "distinct": 81,
+      "distinctValues": [
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       73,
+       74,
+       76,
+       77,
+       79,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       100,
+       101,
+       102,
+       103,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135
+      ],
+      "maxStep": 3,
+      "flatShare": 0.478
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 38,
+      "w1": 119,
+      "worst": 2,
+      "exactShare": 0.31666666666666665,
+      "w1Share": 0.9916666666666667
+     },
+     "lupt": {
+      "n": 365,
+      "median": 28,
+      "within1": 0.104,
+      "min": -32,
+      "max": 51,
+      "months": {
+       "10": 35.4,
+       "11": 31.9,
+       "12": 36.4,
+       "01": 31,
+       "02": 28.3,
+       "03": 31.8,
+       "04": 4.3,
+       "05": -13,
+       "06": -26.9,
+       "07": -17.1,
+       "08": 1.5,
+       "09": 41.5
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 117,
+      "rms": 37.68,
+      "w1Share": 0.14,
+      "min": 49,
+      "max": 135,
+      "range": 86
+     }
+    }
+   }
+  },
+  {
+   "town": "Dundee",
+   "townKey": "Dundee",
+   "tag": "dundee-almaktoum",
+   "region": "Scotland",
+   "capture": "ukscotland/data/dundee-almaktoum-mosque-2026.json",
+   "span": "2026 full year (365d)",
+   "rows": 365,
+   "coords": {
+    "lat": 56.462,
+    "lng": -2.9707
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 17.97,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -5.49,
+      -9,
+      -7.38
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 17.97 deg"
+   },
+   "isha": {
+    "model": "interval-table",
+    "detail": "70 distinct values over 365 days, range 73 min, implied depression swings 2.32 deg in Nov-Feb (11.5x the rounding floor)",
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -8.07,
+      -9.68,
+      -9.34
+     ]
+    },
+    "zeroOffsetWithin1": 0.467
+   },
+   "family": "angle",
+   "ishaClass": "interval",
+   "sidesDiffer": true,
+   "pairRecipe": "Karachi 18/18 + isha array",
+   "lupt": {
+    "fajr": {
+     "offset": 37,
+     "within1": 0.082,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 17,
+     "within1": 0.14,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [
+    "fit12's \"W: Wifaqul 18/15 caps\" fails on both columns (fajr 216/365 within 1, isha 134/365). fit4's split regime stands: an 18 deg fajr every day it is defined, then a night-fraction of 0.307 (fajr) and 0.15 (isha) rounded to weekly plateaus.",
+    "The isha is a weekly-stepped table (max step 11 min), not a frozen 15 deg angle: 56/120 core days within 1 of 15 deg."
+   ],
+   "agents": {
+    "fit4": "split: 18 deg winter, night-fraction summer (0.307/0.15)",
+    "fit12": "W: Wifaqul 18/15 caps",
+    "verify3": null,
+    "fit14": "angle-like both"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 17.97,
+      "range": 0.18,
+      "ratio": 1.04
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 115,
+      "max": 173,
+      "range": 58,
+      "distinct": 57,
+      "distinctValues": [
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       153,
+       154,
+       155,
+       157,
+       158,
+       159,
+       160,
+       161,
+       162,
+       163,
+       164,
+       165,
+       166,
+       167,
+       168,
+       169,
+       170,
+       172,
+       173
+      ],
+      "maxStep": 11,
+      "flatShare": 0.404
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 98,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.8166666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 365,
+      "median": 37,
+      "within1": 0.082,
+      "min": -6,
+      "max": 79,
+      "months": {
+       "10": 34,
+       "11": 33.6,
+       "12": 43,
+       "01": 40.8,
+       "02": 30.3,
+       "03": 33.1,
+       "04": 64.4,
+       "05": 35.1,
+       "06": -1.2,
+       "07": 18.7,
+       "08": 61.6,
+       "09": 45.4
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 134,
+      "rms": 13.48,
+      "w1Share": 0.082,
+      "min": 115,
+      "max": 173,
+      "range": 58
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15.16,
+      "range": 2.32,
+      "ratio": 11.5
+     },
+     "arrayShape": {
+      "n": 365,
+      "min": 48,
+      "max": 121,
+      "range": 73,
+      "distinct": 70,
+      "distinctValues": [
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       71,
+       73,
+       75,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121
+      ],
+      "maxStep": 11,
+      "flatShare": 0.404
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "ceil",
+      "n": 120,
+      "exact": 3,
+      "w1": 56,
+      "worst": 12,
+      "exactShare": 0.025,
+      "w1Share": 0.4666666666666667
+     },
+     "lupt": {
+      "n": 365,
+      "median": 17,
+      "within1": 0.14,
+      "min": -26,
+      "max": 30,
+      "months": {
+       "10": 22.3,
+       "11": 19.9,
+       "12": 17.1,
+       "01": 18.2,
+       "02": 15.8,
+       "03": 20.4,
+       "04": 13.4,
+       "05": -9.7,
+       "06": -22.7,
+       "07": -13.9,
+       "08": 11.7,
+       "09": 24.3
+      }
+     },
+     "interval": {
+      "n": 365,
+      "offset": 102,
+      "rms": 25.22,
+      "w1Share": 0.085,
+      "min": 48,
+      "max": 121,
+      "range": 73
+     }
+    }
+   }
+  },
+  {
+   "town": "Edinburgh",
+   "townKey": "Edinburgh",
+   "tag": "edinburgh-central",
+   "region": "Scotland",
+   "capture": "ukscotland/data/edinburgh-central-mosque-2026-11.json",
+   "span": "2026-11 (30d)",
+   "rows": 30,
+   "coords": {
+    "lat": 55.9533,
+    "lng": -3.1883
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Karachi 18/18",
+    "angle": 18,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "Karachi 18/18 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 18.00 deg"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "MWL 18/17",
+    "angle": 17,
+    "zeroOffsetWithin1": 1,
+    "summer": null,
+    "detail": "MWL 18/17 at zero offset: 30/30 within 1 min in Nov-Feb, fitted depression 17.00 deg"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "MWL 18/17",
+   "lupt": {
+    "fajr": null,
+    "isha": {
+     "offset": 30,
+     "within1": 0.867,
+     "relation": "offset-with-blocks"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": "MWL 18/17, November only",
+    "fit12": "S: MWL 18/17",
+    "verify3": null,
+    "fit14": "isha offset +30"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 18,
+      "range": 0.13,
+      "ratio": 1.01
+     },
+     "arrayShape": null,
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 29,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9666666666666667,
+      "w1Share": 1
+     },
+     "lupt": null,
+     "interval": null
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 30,
+      "mean": 17,
+      "range": 0.13,
+      "ratio": 1.09
+     },
+     "arrayShape": {
+      "n": 30,
+      "min": 118,
+      "max": 128,
+      "range": 10,
+      "distinct": 11,
+      "distinctValues": [
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125,
+       126,
+       127,
+       128
+      ],
+      "maxStep": 1,
+      "flatShare": 0.586
+     },
+     "zeroOffset": {
+      "name": "mwl",
+      "mode": "nearest",
+      "n": 30,
+      "exact": 28,
+      "w1": 30,
+      "worst": 1,
+      "exactShare": 0.9333333333333333,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 30,
+      "median": 30,
+      "within1": 0.867,
+      "min": 28,
+      "max": 31,
+      "months": {
+       "11": 29.6
+      }
+     },
+     "interval": {
+      "n": 30,
+      "offset": 122.5,
+      "rms": 3.25,
+      "w1Share": 0.167,
+      "min": 118,
+      "max": 128,
+      "range": 10
+     }
+    }
+   }
+  },
+  {
+   "town": "Aberdeen (AMIC Central)",
+   "townKey": "Aberdeen",
+   "tag": "aberdeen-central",
+   "region": "Scotland",
+   "capture": "ukscotland/data/aberdeen-amic-central-2026.json",
+   "span": "2026 (333d)",
+   "rows": 333,
+   "coords": {
+    "lat": 57.1497,
+    "lng": -2.0943
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+    "angle": 18,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -3.99,
+      -8.25,
+      -6.3
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 18.00 deg",
+    "capped": true,
+    "capEvidence": "333/333 within 1 min over the whole span"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+    "angle": 15,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -8.13,
+      -9.94,
+      -8.98
+     ]
+    },
+    "detail": "ISNA 15/15 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 15.00 deg",
+    "capped": true,
+    "capEvidence": "333/333 within 1 min over the whole span"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+   "lupt": {
+    "fajr": {
+     "offset": 49,
+     "within1": 0.072,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 12,
+     "within1": 0.117,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": "Wifaqul 18/15 caps exact, 319/333",
+    "fit12": "W: Wifaqul 18/15 caps, 319/333",
+    "verify3": null,
+    "fit14": "fajr own-table, isha angle-like"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 18,
+      "range": 0.13,
+      "ratio": 0.97
+     },
+     "arrayShape": {
+      "n": 333,
+      "min": 127,
+      "max": 257,
+      "range": 130,
+      "distinct": 101,
+      "distinctValues": [
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       155,
+       156,
+       157,
+       158,
+       160,
+       162,
+       163,
+       164,
+       165,
+       166,
+       167,
+       168,
+       170,
+       172,
+       174,
+       178,
+       181,
+       182,
+       183,
+       184,
+       185,
+       186,
+       187,
+       188,
+       189,
+       190,
+       191,
+       192,
+       193,
+       194,
+       195,
+       196,
+       198,
+       199,
+       200,
+       201,
+       202,
+       203,
+       204,
+       205,
+       206,
+       207,
+       208,
+       209,
+       211,
+       212,
+       214,
+       216,
+       217,
+       218,
+       219,
+       220,
+       221,
+       222,
+       223,
+       225,
+       227,
+       229,
+       230,
+       231,
+       233,
+       235,
+       236,
+       237,
+       239,
+       241,
+       243,
+       244,
+       246,
+       248,
+       250,
+       252,
+       253,
+       255,
+       257
+      ],
+      "maxStep": 26,
+      "flatShare": 0.352
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 119,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.9916666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 333,
+      "median": 49,
+      "within1": 0.072,
+      "min": 30,
+      "max": 159,
+      "months": {
+       "10": 36.4,
+       "11": 36.4,
+       "12": 46.5,
+       "01": 44,
+       "02": 32.8,
+       "03": 36,
+       "04": 76.7,
+       "05": 116.6,
+       "06": 66.5,
+       "07": 96.1,
+       "08": 110.5,
+       "09": 63
+      }
+     },
+     "interval": {
+      "n": 333,
+      "offset": 147,
+      "rms": 40.77,
+      "w1Share": 0.09,
+      "min": 127,
+      "max": 257,
+      "range": 130
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15,
+      "range": 0.14,
+      "ratio": 0.99
+     },
+     "arrayShape": {
+      "n": 333,
+      "min": 47,
+      "max": 120,
+      "range": 73,
+      "distinct": 73,
+      "distinctValues": [
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120
+      ],
+      "maxStep": 19,
+      "flatShare": 0.539
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 119,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.9916666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 333,
+      "median": 12,
+      "within1": 0.117,
+      "min": -34,
+      "max": 23,
+      "months": {
+       "10": 17.8,
+       "11": 16.2,
+       "12": 22,
+       "01": 16.3,
+       "02": 12.5,
+       "03": 16,
+       "04": 3.1,
+       "05": -13.6,
+       "06": -29.9,
+       "07": -13.7,
+       "08": 4.4,
+       "09": 11
+      }
+     },
+     "interval": {
+      "n": 333,
+      "offset": 97,
+      "rms": 26.87,
+      "w1Share": 0.018,
+      "min": 47,
+      "max": 120,
+      "range": 73
+     }
+    }
+   }
+  },
+  {
+   "town": "Aberdeen (AMIC Spital)",
+   "townKey": "Aberdeen",
+   "tag": "aberdeen-spital",
+   "region": "Scotland",
+   "capture": "ukscotland/data/aberdeen-amic-spital-2026.json",
+   "span": "2026 (333d)",
+   "rows": 333,
+   "coords": {
+    "lat": 57.1497,
+    "lng": -2.0943
+   },
+   "clockShiftDays": 0,
+   "fajr": {
+    "model": "angle-named",
+    "recipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+    "angle": 18,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -3.99,
+      -8.25,
+      -6.3
+     ]
+    },
+    "detail": "Karachi 18/18 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 18.00 deg",
+    "capped": true,
+    "capEvidence": "333/333 within 1 min over the whole span"
+   },
+   "isha": {
+    "model": "angle-named",
+    "recipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+    "angle": 15,
+    "zeroOffsetWithin1": 1,
+    "summer": {
+     "kind": "capped",
+     "dev": [
+      -8.13,
+      -9.94,
+      -8.98
+     ]
+    },
+    "detail": "ISNA 15/15 at zero offset: 120/120 within 1 min in Nov-Feb, fitted depression 15.00 deg",
+    "capped": true,
+    "capEvidence": "333/333 within 1 min over the whole span"
+   },
+   "family": "angle",
+   "ishaClass": "angle",
+   "sidesDiffer": false,
+   "pairRecipe": "Wifaqul 18/15 + 1/2,1/7 caps",
+   "lupt": {
+    "fajr": {
+     "offset": 49,
+     "within1": 0.072,
+     "relation": "not-family"
+    },
+    "isha": {
+     "offset": 12,
+     "within1": 0.117,
+     "relation": "not-family"
+    }
+   },
+   "corrections": [],
+   "agents": {
+    "fit4": "Wifaqul 18/15 caps exact, 319/333",
+    "fit12": null,
+    "verify3": null,
+    "fit14": "fajr own-table, isha angle-like"
+   },
+   "evidence": {
+    "fajr": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 18,
+      "range": 0.13,
+      "ratio": 0.97
+     },
+     "arrayShape": {
+      "n": 333,
+      "min": 127,
+      "max": 257,
+      "range": 130,
+      "distinct": 101,
+      "distinctValues": [
+       127,
+       128,
+       129,
+       130,
+       131,
+       132,
+       133,
+       134,
+       135,
+       136,
+       137,
+       138,
+       139,
+       140,
+       141,
+       142,
+       143,
+       144,
+       145,
+       146,
+       147,
+       148,
+       149,
+       150,
+       151,
+       152,
+       155,
+       156,
+       157,
+       158,
+       160,
+       162,
+       163,
+       164,
+       165,
+       166,
+       167,
+       168,
+       170,
+       172,
+       174,
+       178,
+       181,
+       182,
+       183,
+       184,
+       185,
+       186,
+       187,
+       188,
+       189,
+       190,
+       191,
+       192,
+       193,
+       194,
+       195,
+       196,
+       198,
+       199,
+       200,
+       201,
+       202,
+       203,
+       204,
+       205,
+       206,
+       207,
+       208,
+       209,
+       211,
+       212,
+       214,
+       216,
+       217,
+       218,
+       219,
+       220,
+       221,
+       222,
+       223,
+       225,
+       227,
+       229,
+       230,
+       231,
+       233,
+       235,
+       236,
+       237,
+       239,
+       241,
+       243,
+       244,
+       246,
+       248,
+       250,
+       252,
+       253,
+       255,
+       257
+      ],
+      "maxStep": 26,
+      "flatShare": 0.352
+     },
+     "zeroOffset": {
+      "name": "karachi",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 119,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.9916666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 333,
+      "median": 49,
+      "within1": 0.072,
+      "min": 30,
+      "max": 159,
+      "months": {
+       "10": 36.4,
+       "11": 36.4,
+       "12": 46.5,
+       "01": 44,
+       "02": 32.8,
+       "03": 36,
+       "04": 76.7,
+       "05": 116.6,
+       "06": 66.5,
+       "07": 96.1,
+       "08": 110.5,
+       "09": 63
+      }
+     },
+     "interval": {
+      "n": 333,
+      "offset": 147,
+      "rms": 40.77,
+      "w1Share": 0.09,
+      "min": 127,
+      "max": 257,
+      "range": 130
+     }
+    },
+    "isha": {
+     "impliedAngleCore": {
+      "n": 120,
+      "mean": 15,
+      "range": 0.14,
+      "ratio": 0.99
+     },
+     "arrayShape": {
+      "n": 333,
+      "min": 47,
+      "max": 120,
+      "range": 73,
+      "distinct": 73,
+      "distinctValues": [
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56,
+       57,
+       58,
+       59,
+       60,
+       61,
+       62,
+       63,
+       64,
+       65,
+       66,
+       67,
+       68,
+       69,
+       70,
+       71,
+       72,
+       73,
+       74,
+       75,
+       76,
+       77,
+       78,
+       79,
+       80,
+       81,
+       82,
+       83,
+       84,
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120
+      ],
+      "maxStep": 19,
+      "flatShare": 0.539
+     },
+     "zeroOffset": {
+      "name": "isna",
+      "mode": "nearest",
+      "n": 120,
+      "exact": 119,
+      "w1": 120,
+      "worst": 1,
+      "exactShare": 0.9916666666666667,
+      "w1Share": 1
+     },
+     "lupt": {
+      "n": 333,
+      "median": 12,
+      "within1": 0.117,
+      "min": -34,
+      "max": 23,
+      "months": {
+       "10": 17.8,
+       "11": 16.2,
+       "12": 22,
+       "01": 16.3,
+       "02": 12.5,
+       "03": 16,
+       "04": 3.1,
+       "05": -13.6,
+       "06": -29.9,
+       "07": -13.7,
+       "08": 4.4,
+       "09": 11
+      }
+     },
+     "interval": {
+      "n": 333,
+      "offset": 97,
+      "rms": 26.87,
+      "w1Share": 0.018,
+      "min": 47,
+      "max": 120,
+      "range": 73
+     }
+    }
+   }
+  }
+ ]
+}

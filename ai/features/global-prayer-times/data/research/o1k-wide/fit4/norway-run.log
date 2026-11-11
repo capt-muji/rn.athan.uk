@@ -1,0 +1,129 @@
+
+### islamweb-oslo  (365/365 rows, 59.9139,10.7522, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 288  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 350  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  69  (margin +10 ceil)
+  asrHanafi  exact 162  within1 323  worst   2  (margin +1 floor)
+  maghrib    exact 271  within1 365  worst   1  (margin +5.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1304  fajr 148/365  isha 85/365  worst f43 i39
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1304  fajr 148/365  isha 85/365  worst f49 i39
+  IRN 16/15 bare                       16/  15             total 1071  fajr 0/255  isha 0/263  worst f138 i1323
+  mawaqeet 18/15 bare                  18/  15             total 1071  fajr 0/243  isha 0/263  worst f151 i1323
+  MWL 18/17 bare                       18/  17             total 1071  fajr 0/243  isha 0/249  worst f151 i1308
+free fit: bare best 12/12.1 sum 66 cov 283 | cap1/7 13.1/12 sum 265 | cap1/2+1/7 12/12 sum 118
+  portion scan best: 1/7/1/7 on 13.1/12 sum 265 (fajr 180, isha 85)
+diag: fajr 228 distinct, longest run 11 @03:10; isha 243 distinct, longest run 8 @23:31
+
+### islamweb-bergen  (365/365 rows, 60.3913,5.3221, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 257  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 345  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  69  (margin +10 ceil)
+  asrHanafi  exact 155  within1 348  worst   2  (margin +0.5 floor)
+  maghrib    exact 258  within1 365  worst   1  (margin +5.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1249  fajr 151/365  isha 83/365  worst f46 i42
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1249  fajr 151/365  isha 83/365  worst f50 i42
+  IRN 16/15 bare                       16/  15             total 1015  fajr 0/253  isha 0/259  worst f148 i1337
+  mawaqeet 18/15 bare                  18/  15             total 1015  fajr 0/241  isha 0/259  worst f162 i1337
+  MWL 18/17 bare                       18/  17             total 1015  fajr 0/241  isha 0/247  worst f162 i1319
+free fit: bare best 12.05/12.35 sum 65 cov 277 | cap1/7 12.95/12 sum 266 | cap1/2+1/7 12.05/12 sum 118
+  portion scan best: 1/7/1/7 on 12.95/12 sum 266 (fajr 183, isha 83)
+diag: fajr 209 distinct, longest run 7 @08:00; isha 262 distinct, longest run 10 @23:56
+
+### islamweb-stavanger  (365/365 rows, 58.97,5.7331, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 271  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 335  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  68  (margin +10 ceil)
+  asrHanafi  exact 168  within1 358  worst   2  (margin +0.5 floor)
+  maghrib    exact 273  within1 365  worst   1  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1280  fajr 151/365  isha 82/365  worst f37 i33
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1280  fajr 151/365  isha 82/365  worst f47 i33
+  IRN 16/15 bare                       16/  15             total 1047  fajr 0/263  isha 0/269  worst f162 i1340
+  mawaqeet 18/15 bare                  18/  15             total 1047  fajr 0/249  isha 0/269  worst f151 i1340
+  MWL 18/17 bare                       18/  17             total 1047  fajr 0/249  isha 0/255  worst f151 i1323
+free fit: bare best 12.2/12.3 sum 78 cov 289 | cap1/7 13.45/12 sum 266 | cap1/2+1/7 12.2/12 sum 119
+  portion scan best: 1/7/1/7 on 13.45/12 sum 266 (fajr 184, isha 82)
+diag: fajr 201 distinct, longest run 9 @03:37; isha 239 distinct, longest run 8 @17:23
+
+### islamweb-drammen  (365/365 rows, 59.744,10.2045, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 261  within1 365  worst   1  (margin +0 floor)
+  dhuhr      exact 288  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  68  (margin +10 ceil)
+  asrHanafi  exact 151  within1 337  worst   2  (margin +0 floor)
+  maghrib    exact 245  within1 365  worst   1  (margin +5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1156  fajr 140/365  isha 71/365  worst f41 i37
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1156  fajr 140/365  isha 71/365  worst f49 i37
+  IRN 16/15 bare                       16/  15             total  945  fajr 0/257  isha 0/263  worst f146 i1326
+  mawaqeet 18/15 bare                  18/  15             total  945  fajr 0/245  isha 0/263  worst f163 i1326
+  MWL 18/17 bare                       18/  17             total  945  fajr 0/245  isha 0/251  worst f163 i1311
+free fit: bare best 14.3/12.1 sum 71 cov 269 | cap1/7 13.2/12 sum 246 | cap1/2+1/7 14.3/12 sum 107
+  portion scan best: 1/7/1/7 on 13.2/12 sum 246 (fajr 175, isha 71)
+diag: fajr 227 distinct, longest run 7 @03:13; isha 258 distinct, longest run 11 @23:31
+
+### islamweb-kristiansand  (365/365 rows, 58.1461,7.9956, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 272  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 328  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  67  (margin +10 ceil)
+  asrHanafi  exact 178  within1 340  worst   2  (margin +0 floor)
+  maghrib    exact 270  within1 365  worst   1  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1268  fajr 148/365  isha 72/365  worst f33 i29
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1268  fajr 148/365  isha 72/365  worst f45 i29
+  IRN 16/15 bare                       16/  15             total 1048  fajr 0/267  isha 0/275  worst f137 i1337
+  mawaqeet 18/15 bare                  18/  15             total 1048  fajr 0/255  isha 0/275  worst f161 i1337
+  MWL 18/17 bare                       18/  17             total 1048  fajr 0/255  isha 0/261  worst f161 i1322
+free fit: bare best 12.5/12 sum 85 cov 295 | cap1/7 13.7/12 sum 283 | cap1/2+1/7 12.5/12 sum 140
+  portion scan best: 1/7/1/7 on 13.7/12 sum 283 (fajr 183, isha 100)
+diag: fajr 202 distinct, longest run 12 @03:34; isha 250 distinct, longest run 7 @17:20
+
+### islamweb-sandnes  (365/365 rows, 58.8524,5.7352, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 274  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 348  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  68  (margin +10 ceil)
+  asrHanafi  exact 182  within1 360  worst   2  (margin +0.5 floor)
+  maghrib    exact 272  within1 365  worst   1  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1320  fajr 163/365  isha 81/365  worst f36 i33
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1320  fajr 163/365  isha 81/365  worst f47 i33
+  IRN 16/15 bare                       16/  15             total 1076  fajr 0/263  isha 0/269  worst f145 i1339
+  mawaqeet 18/15 bare                  18/  15             total 1076  fajr 0/250  isha 0/269  worst f168 i1339
+  MWL 18/17 bare                       18/  17             total 1076  fajr 0/250  isha 0/257  worst f168 i1325
+free fit: bare best 12.35/12.15 sum 79 cov 290 | cap1/7 13.45/12 sum 280 | cap1/2+1/7 12.35/12 sum 121
+  portion scan best: 1/7/1/7 on 13.45/12 sum 280 (fajr 199, isha 81)
+diag: fajr 204 distinct, longest run 10 @03:38; isha 244 distinct, longest run 8 @17:24
+
+### islamweb-skien  (365/365 rows, 59.2095,9.609, TZ Europe/Oslo)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 275  within1 365  worst   1  (margin +0.5 floor)
+  dhuhr      exact 350  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact  96  within1 248  worst   3  (margin +0 floor)
+  asrHanafi  exact   0  within1   0  worst  69  (margin -10 floor)
+  maghrib    exact 266  within1 365  worst   1  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  IRN 16/15 caps 1/7+1/7               16/  15 cap 1/7/1/7 total 1217  fajr 153/365  isha 77/365  worst f38 i35
+  mawaqeet 18/15 caps 1/7+1/7          18/  15 cap 1/7/1/7 total 1217  fajr 153/365  isha 77/365  worst f48 i35
+  IRN 16/15 bare                       16/  15             total  987  fajr 0/261  isha 0/267  worst f152 i1330
+  mawaqeet 18/15 bare                  18/  15             total  987  fajr 0/247  isha 0/267  worst f148 i1330
+  MWL 18/17 bare                       18/  17             total  987  fajr 0/247  isha 0/254  worst f148 i1315
+free fit: bare best 12/12.1 sum 75 cov 289 | cap1/7 13.35/12 sum 263 | cap1/2+1/7 12/12 sum 114
+  portion scan best: 1/7/1/7 on 13.35/12 sum 263 (fajr 186, isha 77)
+diag: fajr 206 distinct, longest run 10 @03:20; isha 248 distinct, longest run 7 @23:30
+
+diff islamweb-vs-mawaqeet-oslo: days 243  fajr mean +57.1 [39..189] n=243  sunrise mean +0.5 [-1..1] n=243  dhuhr mean -0.6 [-1..0] n=243  maghrib mean +0.4 [0..1] n=243  isha mean -38 [-87..-26] n=243
+
+diff islamweb-vs-mawaqeet-bergen: days 241  fajr mean +59.4 [41..190] n=241  sunrise mean +0.4 [0..1] n=241  dhuhr mean -0.5 [-1..0] n=241  maghrib mean +0.6 [0..1] n=241  isha mean -40.1 [-102..-27] n=241
+
+diff islamweb-vs-mawaqeet-stavanger: days 249  fajr mean +53.4 [35..186] n=249  sunrise mean +0.4 [0..1] n=249  dhuhr mean -0.6 [-1..0] n=249  maghrib mean +1.5 [1..2] n=249  isha mean -34.7 [-86..-23] n=249
+
+diff islamweb-vs-IRN-bergen: days 365  fajr mean +33.6 [4..79] n=365  sunrise mean +0.6 [-1..2] n=365  dhuhr mean -1.9 [-5..1] n=365  maghrib mean +0.7 [0..2] n=365  isha mean -19.2 [-43..16] n=365
+
+wrote norway-fit.json

@@ -1,0 +1,310 @@
+{
+ "id": "mx-guadalajara-isa-ibn-maryam",
+ "country": "Mexico",
+ "place": "Mezquita de Guadalajara Isa Ibn Maryam, Zapopan",
+ "source_file": "americas2/data/mx_guadalajara_isa_ibn_maryam_masjidbox.json (7 dated rows)",
+ "coords": {
+  "lat": 20.6597,
+  "lon": -103.3496
+ },
+ "source_published_coords": null,
+ "tz": "America/Mexico_City",
+ "span": {
+  "first": "2026-11-09",
+  "last": "2026-11-15",
+  "days": 7,
+  "years_held": [
+   "2026"
+  ]
+ },
+ "rows": 7,
+ "fitting_engine": "adhan 4.4.6 (TZ per job, no real clock)",
+ "verified_recipe": {
+  "fajr_angle": 18,
+  "isha_rule": "angle",
+  "isha_angle": 17,
+  "asr_school": "Shafi",
+  "rounding": "nearest minute",
+  "margins_minutes": {}
+ },
+ "verdict": "LEAD, not a fit",
+ "publisher_engine": {
+  "note": "PrayTimes v2-family solar engine, which is what these tables are computed from. Zero margins reproduce the table exactly where the angles are the holding.",
+  "scores": {
+   "fajr": {
+    "exact": 7,
+    "mae": 0.238,
+    "worst": 0,
+    "bias": -0.018
+   },
+   "sunrise": {
+    "exact": 7,
+    "mae": 0.249,
+    "worst": 0,
+    "bias": 0.009
+   },
+   "dhuhr": {
+    "exact": 7,
+    "mae": 0.272,
+    "worst": 0,
+    "bias": -0.027
+   },
+   "asr": {
+    "exact": 2,
+    "mae": 0.618,
+    "worst": 1,
+    "bias": -0.618
+   },
+   "maghrib": {
+    "exact": 7,
+    "mae": 0.259,
+    "worst": 0,
+    "bias": 0.016
+   },
+   "isha": {
+    "exact": 7,
+    "mae": 0.21,
+    "worst": 0,
+    "bias": -0.032
+   }
+  },
+  "days_all_six_exact": 2
+ },
+ "adhan_side": {
+  "scores": {
+   "fajr": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.238
+   },
+   "sunrise": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.248
+   },
+   "dhuhr": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.271
+   },
+   "asr": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.217
+   },
+   "maghrib": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.262
+   },
+   "isha": {
+    "exact": 7,
+    "within1": 7,
+    "worst": 0,
+    "mae": 0.212
+   }
+  },
+  "joint": {
+   "exact": 7,
+   "within1": 7,
+   "worst": 0,
+   "of": 42
+  },
+  "offsets_measured_minutes": {
+   "fajr": -0.018,
+   "sunrise": 0.009,
+   "dhuhr": -0.027,
+   "asr": -0.618,
+   "maghrib": 0.016,
+   "isha": -0.032
+  },
+  "note": "adhan carries its own meridian-transit offset against this engine, about +1.0 min on dhuhr and a +/-1.2 min seasonal skew on asr, so its margins are engine artefacts and not publisher margins"
+ },
+ "cross_check_at_source_coords": null,
+ "free_fit": {
+  "fajr": {
+   "best_angle": 17.98,
+   "best_mae": 0.229,
+   "mae_at_recipe_angle": 0.238
+  },
+  "isha": {
+   "angle_model": {
+    "best": 17.02,
+    "mae": 0.21
+   },
+   "interval_model": {
+    "best_from_sunset_minutes": 72,
+    "mae": 0.314
+   },
+   "better": "angle"
+  }
+ },
+ "asr_school_gap_minutes": 48,
+ "family_screen": {
+  "mwl_18_17": {
+   "mean_mae": 0.366,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.238,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 0.217,
+    "maghrib": 0.262,
+    "isha": 0.212
+   },
+   "per_column_exact": {
+    "fajr": 7,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 7
+   }
+  },
+  "isna_15_15": {
+   "mean_mae": 3.955,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 13.207,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 0.217,
+    "maghrib": 0.262,
+    "isha": 8.779
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 0
+   }
+  },
+  "mml_18_18": {
+   "mean_mae": 1.063,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.238,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 0.217,
+    "maghrib": 0.262,
+    "isha": 4.395
+   },
+   "per_column_exact": {
+    "fajr": 7,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 0
+   }
+  },
+  "umm_al_qura_18_5_90": {
+   "mean_mae": 3.672,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 2.16,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 0.217,
+    "maghrib": 0.262,
+    "isha": 18.129
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 0
+   }
+  },
+  "egypt_19_5_17_5": {
+   "mean_mae": 1.748,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 6.538,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 0.217,
+    "maghrib": 0.262,
+    "isha": 2.205
+   },
+   "per_column_exact": {
+    "fajr": 0,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 7,
+    "maghrib": 7,
+    "isha": 0
+   }
+  },
+  "karachi_18_18_hanafi": {
+   "mean_mae": 9.025,
+   "days_all_six_exact": 0,
+   "per_column_mae": {
+    "fajr": 0.238,
+    "sunrise": 0.248,
+    "dhuhr": 1.019,
+    "asr": 47.988,
+    "maghrib": 0.262,
+    "isha": 4.395
+   },
+   "per_column_exact": {
+    "fajr": 7,
+    "sunrise": 7,
+    "dhuhr": 0,
+    "asr": 0,
+    "maghrib": 7,
+    "isha": 0
+   }
+  }
+ },
+ "family_ranking": [
+  {
+   "family": "mwl_18_17",
+   "mean_mae": 0.366,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "mml_18_18",
+   "mean_mae": 1.063,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "egypt_19_5_17_5",
+   "mean_mae": 1.748,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "umm_al_qura_18_5_90",
+   "mean_mae": 3.672,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "isna_15_15",
+   "mean_mae": 3.955,
+   "days_all_six_exact": 0
+  },
+  {
+   "family": "karachi_18_18_hanafi",
+   "mean_mae": 9.025,
+   "days_all_six_exact": 0
+  }
+ ],
+ "seasonal_amplitude_fajr": null,
+ "asr_monthly_bias_adhan_vs_table": {
+  "2026-11": 0
+ },
+ "limits": [
+  "seven rows: enough to name a family, never enough to bind a recipe",
+  "city-centre coordinates, because the platform publishes a street address and no coordinate pair"
+ ]
+}

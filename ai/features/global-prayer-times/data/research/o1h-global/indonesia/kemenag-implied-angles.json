@@ -1,0 +1,158 @@
+{
+ "jakarta": {
+  "name": "KOTA JAKARTA PUSAT",
+  "lat": -6.18120002746582,
+  "lon": 106.83512115478516,
+  "elevation": 6,
+  "tzField": "Asia/Jakarta",
+  "zoneUsed": "Asia/Jakarta",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 19.38,
+   "p25": 19.45,
+   "median": 19.5,
+   "p75": 19.56,
+   "max": 19.63,
+   "mean": 19.5
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 18.25,
+   "p25": 18.39,
+   "median": 18.46,
+   "p75": 18.52,
+   "max": 18.6,
+   "mean": 18.45
+  }
+ },
+ "medan": {
+  "name": "KOTA MEDAN",
+  "lat": 3.6290409564971924,
+  "lon": 98.66719818115234,
+  "elevation": 31,
+  "tzField": "Asia/Jakarta",
+  "zoneUsed": "Asia/Jakarta",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 19.38,
+   "p25": 19.45,
+   "median": 19.5,
+   "p75": 19.56,
+   "max": 19.62,
+   "mean": 19.5
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 18.3,
+   "p25": 18.39,
+   "median": 18.45,
+   "p75": 18.51,
+   "max": 18.6,
+   "mean": 18.45
+  }
+ },
+ "pontianak": {
+  "name": "KOTA PONTIANAK",
+  "lat": -0.025780638679862022,
+  "lon": 109.33169555664062,
+  "elevation": 3,
+  "tzField": "Asia/Jakarta",
+  "zoneUsed": "Asia/Pontianak",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 19.39,
+   "p25": 19.44,
+   "median": 19.49,
+   "p75": 19.56,
+   "max": 19.62,
+   "mean": 19.5
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 18.31,
+   "p25": 18.4,
+   "median": 18.45,
+   "p75": 18.52,
+   "max": 18.6,
+   "mean": 18.46
+  }
+ },
+ "surabaya": {
+  "name": "KOTA SURABAYA",
+  "lat": -7.274322986602783,
+  "lon": 112.72358703613281,
+  "elevation": 9,
+  "tzField": "Asia/Jakarta",
+  "zoneUsed": "Asia/Makassar",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 32.63,
+   "p25": 33.3,
+   "median": 33.68,
+   "p75": 34.2,
+   "max": 34.46,
+   "mean": 33.68
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 3.55,
+   "p25": 3.8,
+   "median": 4.24,
+   "p75": 4.64,
+   "max": 5.14,
+   "mean": 4.26
+  }
+ },
+ "makassar": {
+  "name": "KOTA MAKASSAR",
+  "lat": -5.135610103607178,
+  "lon": 119.46389770507812,
+  "elevation": 9,
+  "tzField": "Asia/Makassar",
+  "zoneUsed": "Asia/Makassar",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 19.37,
+   "p25": 19.45,
+   "median": 19.51,
+   "p75": 19.56,
+   "max": 19.63,
+   "mean": 19.51
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 18.28,
+   "p25": 18.39,
+   "median": 18.46,
+   "p75": 18.52,
+   "max": 18.6,
+   "mean": 18.45
+  }
+ },
+ "jayapura": {
+  "name": "KOTA JAYAPURA",
+  "lat": -2.6645259857177734,
+  "lon": 140.80014038085938,
+  "elevation": 19,
+  "tzField": "Asia/Jayapura",
+  "zoneUsed": "Asia/Jayapura",
+  "fajrImpliedAngle": {
+   "n": 365,
+   "min": 19.38,
+   "p25": 19.45,
+   "median": 19.51,
+   "p75": 19.57,
+   "max": 19.62,
+   "mean": 19.51
+  },
+  "ishaImpliedAngle": {
+   "n": 365,
+   "min": 18.31,
+   "p25": 18.39,
+   "median": 18.45,
+   "p75": 18.51,
+   "max": 18.61,
+   "mean": 18.45
+  }
+ }
+}

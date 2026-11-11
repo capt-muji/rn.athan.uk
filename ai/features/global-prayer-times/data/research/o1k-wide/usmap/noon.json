@@ -1,0 +1,149 @@
+[
+ {
+  "mosque": "Dar al-Hijrah (Falls Church VA)",
+  "c47Style": 14.84,
+  "fromNoon": 14.93,
+  "iqr": 0.46,
+  "n": 318
+ },
+ {
+  "mosque": "Islamic Center of Greater Toledo (2025)",
+  "c47Style": 14.91,
+  "fromNoon": 19.34,
+  "iqr": 9.67,
+  "n": 225
+ },
+ {
+  "mosque": "Muslim Center of San Antonio",
+  "c47Style": 14.95,
+  "fromNoon": 14.96,
+  "iqr": 0.67,
+  "n": 365
+ },
+ {
+  "mosque": "Islamic Association of North Texas (widget)",
+  "c47Style": 15,
+  "fromNoon": 15,
+  "iqr": 0.36,
+  "n": 365
+ },
+ {
+  "mosque": "Memphis Islamic Center",
+  "c47Style": 14.82,
+  "fromNoon": 14.92,
+  "iqr": 0.37,
+  "n": 365
+ },
+ {
+  "mosque": "Richmond Islamic Community Center TX",
+  "c47Style": 15.19,
+  "fromNoon": 15.29,
+  "iqr": 0.35,
+  "n": 365
+ },
+ {
+  "mosque": "MAS Tarbiyah Center (Livonia MI)",
+  "c47Style": 14.99,
+  "fromNoon": 15.01,
+  "iqr": 0.41,
+  "n": 294
+ },
+ {
+  "mosque": "Ethiopian Muslim Association (SeaTac WA)",
+  "c47Style": 15,
+  "fromNoon": 14.94,
+  "iqr": 0.53,
+  "n": 208
+ },
+ {
+  "mosque": "Islamic Center of Tennessee",
+  "c47Style": 15,
+  "fromNoon": 15.02,
+  "iqr": 0.36,
+  "n": 362
+ },
+ {
+  "mosque": "Islamic Center of South Bay (Lomita)",
+  "c47Style": 14.81,
+  "fromNoon": 14.92,
+  "iqr": 0.43,
+  "n": 365
+ },
+ {
+  "mosque": "Jamaica Muslim Center (NY)",
+  "c47Style": 15.01,
+  "fromNoon": 15,
+  "iqr": 0.38,
+  "n": 304
+ },
+ {
+  "mosque": "Ummah Masjid (Halifax, 2025)",
+  "c47Style": 15,
+  "fromNoon": 14.95,
+  "iqr": 0.4,
+  "n": 246
+ },
+ {
+  "mosque": "Centre Culturel Islamique de Quebec",
+  "c47Style": 14.99,
+  "fromNoon": 14.94,
+  "iqr": 0.43,
+  "n": 217
+ },
+ {
+  "mosque": "Mosquee de la Capitale (Quebec)",
+  "c47Style": 15,
+  "fromNoon": 15,
+  "iqr": 0.44,
+  "n": 216
+ },
+ {
+  "mosque": "Kitchener Masjid (MAC)",
+  "c47Style": 14.86,
+  "fromNoon": 14.93,
+  "iqr": 0.58,
+  "n": 270
+ },
+ {
+  "mosque": "Bilal Centre (Winnipeg)",
+  "c47Style": 14.76,
+  "fromNoon": 15.06,
+  "iqr": 1.06,
+  "n": 186
+ },
+ {
+  "mosque": "Manitoba Islamic Association (Winnipeg)",
+  "c47Style": 14.74,
+  "fromNoon": 14.8,
+  "iqr": 0.99,
+  "n": 173
+ },
+ {
+  "mosque": "Brandon Islamic Centre",
+  "c47Style": 14.73,
+  "fromNoon": 14.51,
+  "iqr": 1.36,
+  "n": 185
+ },
+ {
+  "mosque": "Saskatoon Mosque",
+  "c47Style": 14.74,
+  "fromNoon": 15.2,
+  "iqr": 1.16,
+  "n": 165
+ },
+ {
+  "mosque": "Islamic Institute of Toronto",
+  "c47Style": 14.86,
+  "fromNoon": 14.95,
+  "iqr": 0.5,
+  "n": 263
+ },
+ {
+  "mosque": "Masjid Toronto (MAC)",
+  "c47Style": 14.87,
+  "fromNoon": 14.95,
+  "iqr": 0.5,
+  "n": 263
+ }
+]

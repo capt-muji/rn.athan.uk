@@ -1,0 +1,403 @@
+{
+ "iant_widget_minus_dpt_2026": {
+  "sharedDays": 364,
+  "deltas": {
+   "fajr": {
+    "n": 364,
+    "min": 14,
+    "max": 19,
+    "mean": 15.57,
+    "p10": 14,
+    "p90": 18
+   },
+   "sunrise": {
+    "n": 364,
+    "min": -1,
+    "max": 1,
+    "mean": -0.16,
+    "p10": -1,
+    "p90": 0
+   },
+   "dhuhr": {
+    "n": 364,
+    "min": -1,
+    "max": 0,
+    "mean": -0.17,
+    "p10": -1,
+    "p90": 0
+   },
+   "asr": {
+    "n": 364,
+    "min": -2,
+    "max": 1,
+    "mean": -0.13,
+    "p10": -1,
+    "p90": 1
+   },
+   "maghrib": {
+    "n": 364,
+    "min": -1,
+    "max": 1,
+    "mean": -0.14,
+    "p10": -1,
+    "p90": 0
+   },
+   "isha": {
+    "n": 364,
+    "min": -13,
+    "max": -9,
+    "mean": -10.48,
+    "p10": -12,
+    "p90": -10
+   }
+  }
+ },
+ "isha_minus_maghrib": {
+  "daralhijrah": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 72,
+    "max": 95,
+    "mean": 79.9,
+    "p10": 73,
+    "p90": 92
+   },
+   "distinct": 24,
+   "values": [
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83
+   ]
+  },
+  "iit_toronto": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 89,
+    "max": 90,
+    "mean": 89.95,
+    "p10": 90,
+    "p90": 90
+   },
+   "distinct": 2,
+   "values": [
+    89,
+    90
+   ]
+  },
+  "masjid_toronto": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 80,
+    "max": 80,
+    "mean": 80,
+    "p10": 80,
+    "p90": 80
+   },
+   "distinct": 1,
+   "values": [
+    80
+   ]
+  },
+  "kitchener": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 63,
+    "max": 95,
+    "mean": 80.63,
+    "p10": 69,
+    "p90": 88
+   },
+   "distinct": 33,
+   "values": [
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74
+   ]
+  },
+  "halifax": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 79,
+    "max": 116,
+    "mean": 90.35,
+    "p10": 80,
+    "p90": 110
+   },
+   "distinct": 38,
+   "values": [
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90
+   ]
+  },
+  "bilal_winnipeg": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 76,
+    "max": 117,
+    "mean": 92.3,
+    "p10": 84,
+    "p90": 105
+   },
+   "distinct": 42,
+   "values": [
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87
+   ]
+  },
+  "toledo": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 75,
+    "max": 103,
+    "mean": 84.22,
+    "p10": 76,
+    "p90": 100
+   },
+   "distinct": 29,
+   "values": [
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86
+   ]
+  },
+  "san_antonio": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 5,
+    "max": 78,
+    "mean": 69.23,
+    "p10": 65,
+    "p90": 76
+   },
+   "distinct": 16,
+   "values": [
+    5,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74
+   ]
+  },
+  "cciq_quebec": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 83,
+    "max": 124,
+    "mean": 95.32,
+    "p10": 83,
+    "p90": 121
+   },
+   "distinct": 42,
+   "values": [
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94
+   ]
+  },
+  "capitale_quebec": {
+   "days": 365,
+   "gap": {
+    "n": 365,
+    "min": 83,
+    "max": 128,
+    "mean": 95.67,
+    "p10": 83,
+    "p90": 122
+   },
+   "distinct": 46,
+   "values": [
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94
+   ]
+  }
+ },
+ "kitchener_cap": {
+  "pinnedDays": 89,
+  "longestRun": {
+   "len": 89,
+   "from": "2026-05-11",
+   "to": "2026-08-07"
+  },
+  "ordinaryDays": 276,
+  "maxOrdinaryIsha": 1329
+ },
+ "toledo_halfdays_about_dhuhr": {
+  "2025-01": {
+   "morningMean": 287.3,
+   "eveningMean": 287.7
+  },
+  "2025-02": {
+   "morningMean": 319,
+   "eveningMean": 319.5
+  },
+  "2025-03": {
+   "morningMean": 314.5,
+   "eveningMean": 359.7
+  },
+  "2025-04": {
+   "morningMean": 340.7,
+   "eveningMean": 401.4
+  },
+  "2025-05": {
+   "morningMean": 376.2,
+   "eveningMean": 436.5
+  },
+  "2025-06": {
+   "morningMean": 394.1,
+   "eveningMean": 454.1
+  },
+  "2025-07": {
+   "morningMean": 384.8,
+   "eveningMean": 444.5
+  },
+  "2025-08": {
+   "morningMean": 355.4,
+   "eveningMean": 413
+  },
+  "2025-09": {
+   "morningMean": 313.7,
+   "eveningMean": 373
+  },
+  "2025-10": {
+   "morningMean": 276,
+   "eveningMean": 329.5
+  },
+  "2025-11": {
+   "morningMean": 295.7,
+   "eveningMean": 295.3
+  },
+  "2025-12": {
+   "morningMean": 276.7,
+   "eveningMean": 276.8
+  }
+ },
+ "certified_month_jumps": {
+  "brandon": {
+   "days": 365,
+   "jumps": [
+    {
+     "at": "2026-03-08",
+     "sunriseBefore": 428,
+     "sunriseAfter": 486,
+     "jump": 58
+    },
+    {
+     "at": "2026-12-01",
+     "sunriseBefore": 556,
+     "sunriseAfter": 497,
+     "jump": -59
+    }
+   ]
+  },
+  "bilal_winnipeg": {
+   "days": 365,
+   "jumps": [
+    {
+     "at": "2026-03-08",
+     "sunriseBefore": 418,
+     "sunriseAfter": 476,
+     "jump": 58
+    },
+    {
+     "at": "2026-12-01",
+     "sunriseBefore": 544,
+     "sunriseAfter": 485,
+     "jump": -59
+    }
+   ]
+  },
+  "mia_winnipeg": {
+   "days": 334,
+   "jumps": [
+    {
+     "at": "2026-03-08",
+     "sunriseBefore": 418,
+     "sunriseAfter": 476,
+     "jump": 58
+    }
+   ]
+  }
+ }
+}

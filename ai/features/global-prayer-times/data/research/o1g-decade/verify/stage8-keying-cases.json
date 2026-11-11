@@ -1,0 +1,112 @@
+[
+  {
+    "date": "2028-03-02",
+    "truthLead": 97,
+    "truthLag": 86,
+    "mmddOffset": {
+      "fajr": 97,
+      "isha": 86
+    },
+    "doyWouldBorrow": "03-03",
+    "doyOffset": {
+      "fajr": 97,
+      "isha": 85
+    },
+    "mmddErr": {
+      "fajr": 0,
+      "isha": 0
+    },
+    "doyErr": {
+      "fajr": 0,
+      "isha": -1
+    }
+  },
+  {
+    "date": "2028-06-30",
+    "truthLead": 117,
+    "truthLag": 73,
+    "mmddOffset": {
+      "fajr": 117,
+      "isha": 73
+    },
+    "doyWouldBorrow": "07-01",
+    "doyOffset": {
+      "fajr": 116,
+      "isha": 72
+    },
+    "mmddErr": {
+      "fajr": 0,
+      "isha": 0
+    },
+    "doyErr": {
+      "fajr": -1,
+      "isha": -1
+    }
+  },
+  {
+    "date": "2032-03-02",
+    "truthLead": 97,
+    "truthLag": 86,
+    "mmddOffset": {
+      "fajr": 97,
+      "isha": 86
+    },
+    "doyWouldBorrow": "03-03",
+    "doyOffset": {
+      "fajr": 97,
+      "isha": 85
+    },
+    "mmddErr": {
+      "fajr": 0,
+      "isha": 0
+    },
+    "doyErr": {
+      "fajr": 0,
+      "isha": -1
+    }
+  },
+  {
+    "date": "2036-12-25",
+    "truthLead": 100,
+    "truthLag": 97,
+    "mmddOffset": {
+      "fajr": 100,
+      "isha": 97
+    },
+    "doyWouldBorrow": "12-26",
+    "doyOffset": {
+      "fajr": 98,
+      "isha": 97
+    },
+    "mmddErr": {
+      "fajr": 0,
+      "isha": 0
+    },
+    "doyErr": {
+      "fajr": -2,
+      "isha": 0
+    }
+  },
+  {
+    "date": "2028-02-29",
+    "truthLead": 97,
+    "truthLag": 86,
+    "mmddOffset": {
+      "fajr": 97,
+      "isha": 87
+    },
+    "doyWouldBorrow": "03-01",
+    "doyOffset": {
+      "fajr": 97,
+      "isha": 86
+    },
+    "mmddErr": {
+      "fajr": 0,
+      "isha": 1
+    },
+    "doyErr": {
+      "fajr": 0,
+      "isha": 0
+    }
+  }
+]

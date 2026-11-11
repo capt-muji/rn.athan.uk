@@ -1,0 +1,439 @@
+{
+  "schema": "prayer-method-catalog/1",
+  "generated": "2026-11-10",
+  "notes": {
+    "angles": "Degrees of solar depression below the horizon. Larger fajr angle = earlier fajr; larger isha angle = later isha.",
+    "margins": "Whole minutes added to the computed instant, per prayer. null means the body publishes no margin and none was measured.",
+    "rounding": "How the computed instant becomes a printed minute: nearest | up (ceiling) | down (floor) | mixed (per-prayer).",
+    "effectiveAngle": "A fitted angle that reproduces a publisher whose nominal angle plus padding is not separable. Present only where the census fitted a publisher, never for a library preset.",
+    "confidence": "high = transcribed from code or a primary publisher page. medium = fitted from a publisher's tables by the census. low = single weak witness; do not score without corroboration.",
+    "adhanPreset": "Name of the bundled method in adhan-js 4.4.6 (CalculationMethod.js) that implements this body, or null."
+  },
+  "methods": [
+    {
+      "id": "mwl",
+      "body": "Muslim World League (Muslim World League, Makkah)",
+      "scope": "worldwide",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 17 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 1, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published", "libraryDefault": "middle-of-the-night" },
+      "adhanPreset": "MuslimWorldLeague",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('MuslimWorldLeague', 18, 17); methodAdjustments.dhuhr = 1",
+        "https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/ (MWL 18/17 table)",
+        "https://praytimes.org/docs/methods (MWL 18/17)"
+      ],
+      "confidence": "high",
+      "notes": "The library's +1 on dhuhr is an implementation margin, not a published MWL rule. The MWL Islamic Fiqh Academy's own high-latitude resolution (9th session, Rajab 1406) fixes 18/17 and adds -2 minutes to fajr and sunrise and +2 to dhuhr, asr, maghrib and isha, with 45 degrees as the reference latitude for the proportional (thirds) rule; no library applies those +-2 margins. The most widely deployed default in the world."
+    },
+    {
+      "id": "isna",
+      "body": "Islamic Society of North America / Fiqh Council of North America",
+      "scope": "multi-continent",
+      "scopeNote": "USA 15/15, Canada 13/13 (FCNA 2017). The 15/15 pair is exported worldwide under the ISNA label.",
+      "fajr": { "kind": "angle", "angle": 15 },
+      "isha": { "kind": "angle", "angle": 15 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 1, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published", "libraryDefault": "middle-of-the-night" },
+      "adhanPreset": "NorthAmerica",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('NorthAmerica', 15, 15); methodAdjustments.dhuhr = 1",
+        "https://fiqhcouncil.org/the-suggested-calculation-method-for-fajr-and-isha/ (15 deg USA, 13 deg Canada, decided at the 27-29 October 2017 Dallas general body meeting)",
+        "https://astronomycenter.net/articles/2010/12/26/33?l=en (ISNA Secretary General Zulfiqar Ali Shah to ICOP, 2010: 'the tentative consensus was on 18 degrees ... That is what is being followed at the present')"
+      ],
+      "confidence": "high",
+      "notes": "The pre-2015 convention was NOT 15/15. ISNA told ICOP in 2010 that 18 degrees for both was what it followed, while software bundled 15/15 under the ISNA name; FCNA's 2017 decision then fixed 15 for the USA and 13 for Canada. A scoring run must therefore treat the software label 'ISNA' as the 15/15 pair only from 2017 onward, and Canada is 13/13 with no library preset at all. The library's +1 dhuhr has no FCNA counterpart."
+    },
+    {
+      "id": "umm-al-qura",
+      "body": "Umm al-Qura University, Makkah / Saudi KACST calendar",
+      "scope": "national-bundled",
+      "scopeNote": "Saudi Arabia; exported worldwide as a preset.",
+      "fajr": { "kind": "angle", "angle": 18.5 },
+      "isha": { "kind": "interval", "intervalMinutes": 90, "ramadanIntervalMinutes": 120 },
+      "asr": "shafi",
+      "margins": { "fajr": 1, "sunrise": 0, "dhuhr": 1, "asr": 1, "maghrib": 1, "isha": 1 },
+      "rounding": "down",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "UmmAlQura",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('UmmAlQura', 18.5, 0, 90)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Saudi Arabia' (18.5; isha = maghrib + 120 every Ramadan day, + 90 otherwise; floor(raw+1); 1447/1448/1449)",
+        "https://praytimes.org/docs/methods (fajr was 19 degrees before Muharram 1430 / December 2008)"
+      ],
+      "confidence": "high",
+      "notes": "The library preset implements the 90-minute interval only and has no Ramadan switch, so it is 30 minutes early on every Ramadan night. The census measured the Ramadan form exactly across three Hijri years. Rounding is the single-formulation trap: floor(raw + 1 minute) equals ceil(raw), and applying both lands a minute late. The pre-2009 fajr angle was 19 degrees."
+    },
+    {
+      "id": "egyptian",
+      "body": "Egyptian General Authority of Survey (ESA)",
+      "scope": "multi-continent",
+      "scopeNote": "Egypt, Syria, Iraq, Lebanon, Malaysia, parts of Africa and the USA.",
+      "fajr": { "kind": "angle", "angle": 19.5 },
+      "isha": { "kind": "angle", "angle": 17.5 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published", "libraryDefault": "middle-of-the-night" },
+      "adhanPreset": "Egyptian",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Egyptian', 19.5, 17.5); methodAdjustments.dhuhr = 1",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.5 (Egypt's published dhuhr carries no +1; the library's +1 zeroes 71 of 92 exact matches)"
+      ],
+      "confidence": "high",
+      "notes": "The library's dhuhr +1 must be dropped for Egypt: the published table has no additive margin on dhuhr, and keeping the library margin costs almost every exact match."
+    },
+    {
+      "id": "karachi",
+      "body": "University of Islamic Sciences, Karachi",
+      "scope": "multi-continent",
+      "scopeNote": "Pakistan, India, Bangladesh, Afghanistan, parts of Europe and the Gulf diaspora.",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 18 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 1, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published", "libraryDefault": "middle-of-the-night" },
+      "adhanPreset": "Karachi",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Karachi', 18, 18); methodAdjustments.dhuhr = 1",
+        "https://praytimes.org/docs/methods (Karachi 18/18)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.14 (Pakistan 18/18; India Deoband 18/18 Hanafi; Bangladesh IFA 18.4/18.35 Hanafi)"
+      ],
+      "confidence": "high",
+      "notes": "The 18/18 pair is shared across South Asia, but the Asr school is not: Deoband and the Bangladesh Islamic Foundation publish Hanafi (shadow factor 2), so the pair alone scores a country wrongly by roughly 40-60 minutes at Asr. Pakistan's national tables are 18/18 Shafi."
+    },
+    {
+      "id": "moonsighting",
+      "body": "Moonsighting Committee Worldwide (Khalid Shaukat)",
+      "scope": "worldwide",
+      "fajr": { "kind": "angle-plus-season-curve", "angle": 18, "combine": "later-of-the-two" },
+      "isha": { "kind": "angle-plus-season-curve", "angle": 18, "combine": "earlier-of-the-two", "shafaq": "general (abyad in summer, ahmer in winter, transitions in spring and autumn)" },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 5, "asr": 0, "maghrib": 3, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "seventh-of-the-night", "thresholdLatitude": 55, "clampLatitude": 60, "note": "above 60 the latitude is slid to 60 and the 1/7 rule applied; 60-65 the site keeps 60; beyond 65 perpetual day/night uses the nearest balanced latitude" },
+      "adhanPreset": "MoonsightingCommittee",
+      "sources": [
+        "https://www.moonsighting.com/how-we.html (updated 2024-03-01; the body's own statement of method)",
+        "https://www.moonsighting.com/faq_pt.html (Aqrabul-Bilaad iteration, latitude table)",
+        "adhan-js 4.4.6 lib/cjs/Astronomical.js seasonAdjustedMorningTwilight / seasonAdjustedEveningTwilight (verbatim coefficients)",
+        "adhan-js 4.4.6 lib/cjs/PrayerTimes.js (methodAdjustments dhuhr +5, maghrib +3; HIGH_LATITUDE_THRESHOLD = 55)"
+      ],
+      "confidence": "high",
+      "curve": {
+        "morning": {
+          "unit": "minutes before sunrise",
+          "anchors": "a = 75 + 28.65/55*|lat|; b = 75 + 19.44/55*|lat|; c = 75 + 32.74/55*|lat|; d = 75 + 48.1/55*|lat|",
+          "piecewise": "days-since-solstice <91: a->b; <137: b->c; <183: c->d; <229: d->c; <275: c->b; else b->a"
+        },
+        "evening": {
+          "unit": "minutes after sunset",
+          "anchorsGeneral": "a = 75 + 25.6/55*|lat|; b = 75 + 2.05/55*|lat|; c = 75 - 9.21/55*|lat|; d = 75 + 6.14/55*|lat|",
+          "anchorsAhmer": "a = 62 + 17.4/55*|lat|; b = 62 - 7.16/55*|lat|; c = 62 + 5.12/55*|lat|; d = 62 + 19.44/55*|lat|",
+          "anchorsAbyad": "a = 75 + 25.6/55*|lat|; b = 75 + 7.16/55*|lat|; c = 75 + 36.84/55*|lat|; d = 75 + 81.84/55*|lat|"
+        }
+      },
+      "notes": "Not angle-only, and the distinction matters for scoring: the published rule compares the 18-degree instant with a latitude-and-season curve and takes the later fajr and the earlier isha, so the effective angle varies from about 12 to 18 degrees over the year. Above 55 degrees the site uses the last seventh of the night (the library does the same from 55), and above 60 it slides the latitude to 60. Maghrib is theoretical sunset plus 3 minutes for refraction, terrain and city extent; dhuhr is noon plus 5. The library's curve is the site's curve, transcribed."
+    },
+    {
+      "id": "diyanet-domestic",
+      "body": "Diyanet Isleri Baskanligi (Turkey, domestic tables)",
+      "scope": "national-bundled",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 17 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": -7, "dhuhr": 5, "asr": 4, "maghrib": 7, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "45th-parallel-thirds", "capMinutes": 80, "note": "quoted in the record from the 2009 Brussels derivation; never binds below 41N and is untested domestically" },
+      "adhanPreset": "Turkey",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Turkey', 18, 17) with sunrise -7, dhuhr +5, asr +4, maghrib +7",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Turkey' (18/17 exact on 730 days; no temkin on imsak or yatsi; imsak row IS fajr)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.6"
+      ],
+      "confidence": "high",
+      "notes": "The margins are temkin, not a rounding artifact: -7 attaches to sunrise only, and the doctrine page states no temkin on imsak or yatsi. Isha 16 gives 0/365 exact matches, so 18/17 is measured, not assumed. Rows key by ilce code, not coordinates."
+    },
+    {
+      "id": "diyanet-europe",
+      "body": "Diyanet European unified scheme (DITIB Germany, IFiS Sweden, unified European calendars)",
+      "scope": "transnational",
+      "scopeNote": "European diaspora only; the domestic Turkish tables keep 18/17.",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 16 },
+      "asr": "shafi",
+      "margins": null,
+      "rounding": "nearest",
+      "highLatitude": { "kind": "45th-parallel-thirds", "capMinutes": 80, "note": "frozen latitude 45 with the 80-minute plateau verified exact; the 2023 amendment abolished the summer tathbit" },
+      "adhanPreset": null,
+      "sources": [
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Diyanet European unified scheme' (18/16; DITIB tables, IFiS Stockholm exact; isha 17 before January 2023)",
+        "https://awqatsalah.com/sub/17/final-declarations (Final Declaration of the International Congress for Prayer Times, Istanbul, 26-27 September 2021: fajr 18 degrees, isha 16 degrees, one-third-of-night minimum with a five-hour day and night floor)"
+      ],
+      "confidence": "high",
+      "notes": "No margins are measured for this scheme; the domestic temkin set must not be transplanted. Every published 18/17 prose description of DITIB is the pre-2023 position, and the printed timetable wins: isha moved from 17 to 16 in January 2023. The 2021 declaration is the instrument, co-signed by the Diyanet and the European Council for Fatwa and Research."
+    },
+    {
+      "id": "mabims",
+      "body": "MABIMS (Menteri Agama Brunei, Indonesia, Malaysia, Singapore)",
+      "scope": "transnational",
+      "scopeNote": "Brunei, Indonesia, Malaysia, Singapore. The shared pair; each member applies its own margins (see the national instances).",
+      "fajr": { "kind": "angle", "angle": 20 },
+      "isha": { "kind": "angle", "angle": 18 },
+      "asr": "shafi",
+      "margins": null,
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": null,
+      "sources": [
+        "https://prosiding.ar-raniry.ac.id/index.php/ICONSTEAM/article/download/68/25 (MABIMS members use 20 degrees for fajr and 18 for isha)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.2-3.4 (Brunei fallback 20/18; Singapore 20/18; Indonesia 20/18)",
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js Singapore() = 20/18"
+      ],
+      "confidence": "medium",
+      "notes": "The agreement fixes the pair, not the output: Singapore ceils, Malaysia ceils with a +1.5 dhuhr ihtiyati, Indonesia rounds per field, Brunei publishes no margins. Malaysia's fitted fajr is 18 degrees, not 20, on a full 2026 year with MAE under 0.35 minutes, so JAKIM's practice does not follow the shared fajr angle even though it is a MABIMS member. That conflict is recorded, not resolved."
+    },
+    {
+      "id": "jakim",
+      "body": "Jabatan Kemajuan Islam Malaysia (JAKIM), e-Solat zone tables",
+      "scope": "national-bundled",
+      "scopeNote": "Malaysia, 59 zones. A MABIMS member whose fitted fajr is 18 degrees, not the agreement's 20.",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 18, "zoneException": "KTN01 at 17 degrees" },
+      "asr": "shafi",
+      "margins": { "fajr": 2, "sunrise": -1, "dhuhr": 1.5, "asr": 2, "maghrib": 0, "isha": 2 },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": null,
+      "sources": [
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Malaysia' (fajr 18 whole federation, KTN01 at 17, margins +2/-1/+1.5/+2/0/+2, MAE under 0.35 minutes over five zones and a full 2026)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.1 (eight published rows; imsak is fajr minus 10 except PLS01)"
+      ],
+      "confidence": "medium",
+      "notes": "The dhuhr ihtiyati is +1.5 minutes, not +2: round(transit + 1.5) matches 337-344 of 365 days against 200-223 for +2, and the library accepts fractional adjustment minutes. Maghrib carries no additive ihtiyati, only a ceiling of sunset. Prayers ceil and syuruk floors. Zone reference points are westernmost-point computations with a two-minute span cap, so one point per zone cannot reproduce the multi-point jitter. Single year, hence medium."
+    },
+    {
+      "id": "kemenag",
+      "body": "Kementerian Agama Republik Indonesia (Kemenag)",
+      "scope": "national-bundled",
+      "scopeNote": "Indonesia, 518 cities. MABIMS member.",
+      "fajr": { "kind": "angle", "angle": 20 },
+      "isha": { "kind": "angle", "angle": 18 },
+      "asr": "shafi",
+      "margins": { "fajr": 3, "sunrise": -3, "dhuhr": 4, "asr": 3, "maghrib": 3, "isha": 3 },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": null,
+      "sources": [
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.4 (20/18 with per-field rounding and margins +3/-3/+4/+3/+3/+3, measured through the third-party carriage)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Indonesia' (Subuh -20 central, Isya -18 regional)"
+      ],
+      "confidence": "medium",
+      "notes": "Rounding is per field: fajr down, sunrise nearest, dhuhr down, asr down, maghrib up, isha down. Imsak is fajr minus 10. The ministry's own endpoint is session-gated, so the fit is against a third-party carriage and its residual is the correction, which makes this the weakest of the three MABIMS national fits."
+    },
+    {
+      "id": "kuwait",
+      "body": "Kuwait Awqaf / Al-Ajiri calendar",
+      "scope": "national-bundled",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 17.5 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "Kuwait",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Kuwait', 18, 17.5), no adjustments",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Kuwait' (library-exact; 18-degree isha and the 77-minute interval both refuted)"
+      ],
+      "confidence": "medium",
+      "notes": "Rounding is mixed and must be emulated per row: fajr and sunrise floor, maghrib and isha nearest, dhuhr and asr unmeasured. Eleven-point-five degrees of isha is the measured pair; the widely repeated 18/18 and the 77-minute interval do not reproduce the calendar."
+    },
+    {
+      "id": "qatar",
+      "body": "Qatar Ministry of Interior (Doha)",
+      "scope": "national-bundled",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "interval", "intervalMinutes": 90 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 1, "dhuhr": 0, "asr": 0, "maghrib": 1, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "Qatar",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Qatar', 18, 0, 90)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Qatar' (interval after rounding; fitted fajr 17.8; the catalog's implied 20.8 is a fiction)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.10 (isha - maghrib == 90 exactly)"
+      ],
+      "confidence": "medium",
+      "notes": "The interval is added after rounding sunset, which is the ordering quirk; against computed sunset it reads +91. Fajr's fitted angle is 17.8-18. Asr drifts 0 to -2 minutes across the year and no constant absorbs it, so the Asr column is the one open defect. The library preset carries no margins."
+    },
+    {
+      "id": "singapore-muis",
+      "body": "Majlis Ugama Islam Singapura (MUIS)",
+      "scope": "national-bundled",
+      "fajr": { "kind": "angle", "angle": 20 },
+      "isha": { "kind": "angle", "angle": 18 },
+      "asr": "shafi",
+      "margins": { "fajr": 1, "sunrise": 1, "dhuhr": 2, "asr": 1, "maghrib": 1, "isha": 1 },
+      "rounding": "up",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "Singapore",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Singapore', 20, 18), dhuhr +1, Rounding.Up",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Singapore' (20/18, margins +1/+1/+2/+1/+1/+1, ceiling fits 60-78 pc over 1,096 days)",
+        "ai/features/global-prayer-times/data/census/bake-RUNBOOK.md 3.3"
+      ],
+      "confidence": "high",
+      "notes": "The library preset already sets ceiling rounding and dhuhr +1; the other five margins are the census's. This is the only preset in the library that changes the rounding mode."
+    },
+    {
+      "id": "dubai",
+      "body": "Dubai / UAE General Authority of Islamic Affairs and Endowments (AWQAF)",
+      "scope": "national-bundled",
+      "fajr": { "kind": "angle", "angle": 18.2 },
+      "isha": { "kind": "angle", "angle": 18.2 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": -3, "dhuhr": 2, "asr": 0, "maghrib": 2, "isha": -1 },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "Dubai",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Dubai', 18.2, 18.2) with sunrise -3, dhuhr +3, asr +3, maghrib +3",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'United Arab Emirates' (18.2/18.2; margins 0/-3/+2/0/+2/-1 score 64.9 pc exact against 17.5 pc for the library set; sunrise floor)",
+        "https://aladhan.com/calculation-methods (AlAdhan states the Dubai method is not official and comes from the library authors' own research)"
+      ],
+      "confidence": "medium",
+      "notes": "The pair is ridge-degenerate: many angle pairs fit equally, so the angles are a choice the data does not discriminate. The library's four adjustment margins are superseded by the census fit, which is 47 points better on exact minutes. Sunrise needs floor rounding, which the library cannot express. AlAdhan itself disclaims this method as unofficial."
+    },
+    {
+      "id": "tehran",
+      "body": "Institute of Geophysics, University of Tehran",
+      "scope": "national-bundled",
+      "scopeNote": "Iran. Recorded for completeness; Shia timings are out of scope downstream.",
+      "fajr": { "kind": "angle", "angle": 17.7 },
+      "isha": { "kind": "angle", "angle": 14, "published": false },
+      "maghrib": { "kind": "angle", "angle": 4.5 },
+      "asr": "shafi",
+      "margins": { "fajr": 0, "sunrise": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 0 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": "Tehran",
+      "sources": [
+        "adhan-js 4.4.6 lib/cjs/CalculationMethod.js: new CalculationParameters('Tehran', 17.7, 14, 0, 4.5)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Iran' (fajr 17.71 fit; maghrib at 4.47 degrees; NO isha row is printed)",
+        "https://praytimes.org/docs/methods ('Isha angle is not explicitly specified in Tehran method')"
+      ],
+      "confidence": "high",
+      "notes": "The 14-degree isha is a software default with no Iranian publisher: the national tables print no isha row at all. Maghrib is at 4.5 degrees of depression, not at sunset, so a consumer computing maghrib at the horizon runs minutes early. Use this entry for the parameters only."
+    },
+    {
+      "id": "fazilet-a",
+      "body": "Fazilet Takvimi, Profile A (world)",
+      "scope": "worldwide",
+      "scopeNote": "110 cities; the per-city content is only coordinates and timezone.",
+      "fajr": { "kind": "angle", "angle": 18, "effectiveAngle": 19.8 },
+      "isha": { "kind": "angle", "angle": 18, "effectiveAngle": 17.8 },
+      "asr": "shafi",
+      "margins": { "fajr": null, "sunrise": -3, "dhuhr": 7, "asr": 6, "maghrib": 8, "isha": null },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": null,
+      "sources": [
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Fazilet Takvimi - Profile A \"World\"' (imsak ~19.8 effective, sunrise -3, zuhr +7, ikindi Shafi +5..7, maghrib +8 up, yatsi ~17.8 effective; 132 rows / 129 cities / 67 countries)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Fazilet Takvimi - Profile B' (the A/B switch is Ottoman-sphere membership, not latitude)"
+      ],
+      "confidence": "medium",
+      "notes": "These are effective pairs, not the publisher's nominal degrees. Fajr and isha are carried as effectiveAngle with a null margin on purpose: applying the census's stated minute offsets (~+11 on fajr, ~-2 on isha) on top of the effective angle would count the padding twice. The other margins are the fitted ones. Fazilet-family generators pad sunrise 6-8 minutes early and maghrib 7-8 late. The live 2026 London engine prints Shafi ikindi while the 2010 print was Hanafi +6, so a UK madhab ruling is outstanding. Morocco rows compute at UTC+0 against civil +1, and Vancouver at UTC-7 against winter PST."
+    },
+    {
+      "id": "fazilet-b",
+      "body": "Fazilet Takvimi, Profile B (Ottoman sphere)",
+      "scope": "transnational",
+      "scopeNote": "19 cities: TR GR BG RS BA AL MK XK. Spanning Europe and Anatolia by sphere, not by latitude.",
+      "fajr": { "kind": "angle", "angle": 18, "effectiveAngle": 20.8 },
+      "isha": { "kind": "angle", "angle": 18, "effectiveAngle": 18.7 },
+      "asr": "shafi",
+      "margins": { "fajr": null, "sunrise": -7, "dhuhr": 10, "asr": 10, "maghrib": 8, "isha": null },
+      "rounding": "mixed",
+      "highLatitude": { "kind": "none-published" },
+      "adhanPreset": null,
+      "sources": [
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'Fazilet Takvimi - Profile B' (imsak ~20.8 effective; sunrise -7; zuhr +10; ikindi Shafi +10..11; maghrib +8; yatsi ~18.7 effective)",
+        "ai/features/global-prayer-times/data/census/world-table-v2.md, 'North Macedonia' and 'Greece (Komotini)' (Profile B is the only characterisation of Macedonian practice)"
+      ],
+      "confidence": "medium",
+      "notes": "Profile B's temkin is larger than Profile A's in every row, and each city carries its own per-prayer offset: no single margin set travels, and Istanbul's applied to London misses ikindi by 54 minutes. Fajr and isha are effective angles with a null margin, as in Profile A, so the padding is not applied twice. The membership test is Ottoman-sphere membership, proven by the fact that Novosibirsk, Stockholm and Tallinn all sit in Profile A."
+    },
+    {
+      "id": "ecfr",
+      "body": "European Council for Fatwa and Research (ECFR)",
+      "scope": "transnational",
+      "scopeNote": "Europe. Adopts the MWL Islamic Fiqh Academy resolution for high latitudes; co-signed the 2021 Istanbul 18/16 scheme with the Diyanet.",
+      "fajr": { "kind": "angle", "angle": 18 },
+      "isha": { "kind": "angle", "angle": 17 },
+      "asr": "shafi",
+      "margins": { "fajr": -2, "sunrise": -2, "dhuhr": 2, "asr": 2, "maghrib": 2, "isha": 2 },
+      "rounding": "nearest",
+      "highLatitude": { "kind": "45th-parallel-proportional", "zones": "45-48 unchanged; 48-66 proportional thirds from the 45th parallel; 66+ apply the 45th-parallel clock" },
+      "adhanPreset": null,
+      "sources": [
+        "https://fiqh.islamonline.net/en/praying-and-fasting-at-high-latitudes/ (ECFR statement, confirming the MWL Fiqh Academy 9th-session resolution: fajr 18, isha 17, +-2 minutes, 45-degree reference)",
+        "https://awqatsalah.com/sub/17/final-declarations (2021 Istanbul declaration, ECFR co-signatory, isha 16)",
+        "https://www.e-cfr.org/ (blocked by a Cloudflare interstitial on 2026-11-10; the resolution text above is read from the IslamOnline reproduction)"
+      ],
+      "confidence": "medium",
+      "notes": "The council's standing published parameters are the Fiqh Academy pair 18/17 with the +-2 minute margins, and its high-latitude rule is proportional estimation from the 45th parallel, not a fixed angle. It then co-signed the 2021 Istanbul scheme at 18/16, so an ECFR-labelled calendar may be either; the 18/17 form is the one the council's own resolution states. Its site is behind a Cloudflare challenge and could not be read directly."
+    },
+    {
+      "id": "russia-sam",
+      "body": "Spiritual Administration of Muslims of Russia",
+      "scope": "multi-continent",
+      "scopeNote": "Russia (Europe and Asia). Bundled by AlAdhan as method 14.",
+      "fajr": { "kind": "angle", "angle": 16 },
+      "isha": { "kind": "angle", "angle": 15 },
+      "asr": "shafi",
+      "margins": null,
+      "rounding": "nearest",
+      "highLatitude": { "kind": "none-published", "libraryDefault": "middle-of-the-night" },
+      "adhanPreset": null,
+      "sources": [
+        "https://praytimes.org/docs/methods (Russia 16/15)",
+        "https://aladhan.com/calculation-methods (Spiritual Administration of Muslims of Russia listed as a method)"
+      ],
+      "confidence": "low",
+      "notes": "The pair is only known from the PrayTimes and AlAdhan tables; no primary publication by the administration was found, and no census fit covers it. Included because Russia is a two-continent body with a published-looking pair, flagged low so the scorer can withhold it."
+    }
+  ],
+  "aggregators": {
+    "note": "Not methodologies. They republish the bodies above and are listed so a scoring script never treats an aggregator label as a publisher.",
+    "aladhan": {
+      "url": "https://aladhan.com/calculation-methods",
+      "menu": [
+        "Muslim World League", "Islamic Society of North America", "Egyptian General Authority of Survey",
+        "Umm Al-Qura University, Makkah", "University of Islamic Sciences, Karachi",
+        "Institute of Geophysics, University of Tehran", "Shia Ithna-Ashari, Leva Institute, Qum",
+        "Gulf Region", "Kuwait", "Qatar", "Majlis Ugama Islam Singapura", "Union Organization islamic de France",
+        "Diyanet Isleri Baskanligi", "Spiritual Administration of Muslims of Russia", "Moonsighting Committee",
+        "Dubai, UAE", "Jabatan Kemajuan Islam Malaysia (JAKIM)", "Tunisia", "Algeria",
+        "Kementerian Agama Republik Indonesia", "Morocco", "Comunidade Islamica de Lisboa"
+      ],
+      "asrSwitch": "Hanafi or Shafi, applied client-side to every method; the aggregator does not carry a body's own school choice.",
+      "quirks": "'Gulf Region' (19.5 degrees / 90 minutes) is an aggregator construct with no publishing body; 'Dubai' is disclaimed by AlAdhan as unofficial library research."
+    },
+    "islamicfinder": {
+      "url": "https://www.islamicfinder.org",
+      "note": "Same method menu family, plus a Hanafi/Shafi Asr switch and a per-prayer minute-tune grid. Menu labels only; no parameters of its own were found."
+    },
+    "praytimes": {
+      "url": "https://praytimes.org/docs/methods",
+      "note": "The reference table most libraries transcribe. Adds Jafari (Leva, Qom) 16/14 and France (UOIF) 12/12."
+    }
+  }
+}

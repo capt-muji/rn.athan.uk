@@ -1,0 +1,5 @@
+2027 in-sample {"fajr":{"n":365,"exact":360,"within1":365,"worst":1,"mae":0.0137,"pctExact":98.63},"sunrise":{"n":365,"exact":360,"within1":365,"worst":1,"mae":0.0137,"pctExact":98.63},"dhuhr":{"n":365,"exact":361,"within1":365,"worst":1,"mae":0.011,"pctExact":98.9},"asr":{"n":365,"exact":360,"within1":365,"worst":1,"mae":0.0137,"pctExact":98.63},"magrib":{"n":365,"exact":361,"within1":365,"worst":1,"mae":0.011,"pctExact":98.9},"isha":{"n":365,"exact":361,"within1":365,"worst":1,"mae":0.011,"pctExact":98.9},"overall":{"n":2190,"exact":2163,"within1":2190,"worst":1,"mae":0.0123,"pctExact":98.77}}
+decade baseline {"n":24108,"exact":23690,"within1":24108,"worst":1,"mae":0.0173,"pctExact":98.27}
+decade no margins {"n":24108,"exact":0,"within1":47,"worst":6,"mae":3.1631,"pctExact":0}
+decade lat 52.5 {"n":24108,"exact":5663,"within1":9159,"worst":6,"mae":2.4759,"pctExact":23.49}
+decade lon -0.35 {"n":24108,"exact":2624,"within1":24107,"worst":2,"mae":0.8912,"pctExact":10.88}

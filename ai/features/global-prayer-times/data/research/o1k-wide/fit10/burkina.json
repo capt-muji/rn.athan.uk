@@ -1,0 +1,1376 @@
+{
+ "job": "Burkina Faso year-2: MSBF 2021 annual against the 1447 (2025-2026) edition",
+ "coordinate": {
+  "lat": 12.3714,
+  "lng": -1.5197,
+  "tz": "Africa/Ouagadougou"
+ },
+ "month": "October 2025 (images, page 4 rows 1-22 Oct and page 5 rows 23-31 Oct) and October 2021 (annual PDF page 10)",
+ "transcription": {
+  "2021": [
+   {
+    "date": "2021-10-01",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1076,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-02",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1076,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-03",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1075,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-04",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1075,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-05",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1074,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-06",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1073,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-07",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1073,
+    "maghrib_iqama": 1083,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-08",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1072,
+    "maghrib_iqama": 1079,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-09",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1071,
+    "maghrib_iqama": 1079,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2021-10-10",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1071,
+    "maghrib_iqama": 1079,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-11",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1070,
+    "maghrib_iqama": 1079,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-12",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1070,
+    "maghrib_iqama": 1079,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-13",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1069,
+    "maghrib_iqama": 1079,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-14",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1069,
+    "maghrib_iqama": 1079,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-15",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1068,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-16",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1067,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-17",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1067,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-18",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1066,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-19",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1066,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-20",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1065,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-21",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1065,
+    "maghrib_iqama": 1075,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-22",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-23",
+    "fajr": 286,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-24",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-25",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1063,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-26",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1063,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-27",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-28",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-29",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-30",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1061,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   },
+   {
+    "date": "2021-10-31",
+    "fajr": 287,
+    "fajr_iqama": 300,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1061,
+    "maghrib_iqama": 1071,
+    "isha": 1145,
+    "isha_iqama": 1160
+   }
+  ],
+  "2025": [
+   {
+    "date": "2025-10-01",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1076,
+    "maghrib_iqama": 1083,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-02",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1076,
+    "maghrib_iqama": 1083,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-03",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1075,
+    "maghrib_iqama": 1083,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-04",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1075,
+    "maghrib_iqama": 1083,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-05",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1074,
+    "maghrib_iqama": 1083,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-06",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1073,
+    "maghrib_iqama": 1080,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-07",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1073,
+    "maghrib_iqama": 1080,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-08",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1072,
+    "maghrib_iqama": 1080,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-09",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1071,
+    "maghrib_iqama": 1080,
+    "isha": 1160,
+    "isha_iqama": 1175
+   },
+   {
+    "date": "2025-10-10",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1071,
+    "maghrib_iqama": 1080,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-11",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1070,
+    "maghrib_iqama": 1077,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-12",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1070,
+    "maghrib_iqama": 1077,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-13",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1069,
+    "maghrib_iqama": 1076,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-14",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1069,
+    "maghrib_iqama": 1076,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-15",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1069,
+    "maghrib_iqama": 1076,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-16",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1068,
+    "maghrib_iqama": 1075,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-17",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1067,
+    "maghrib_iqama": 1074,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-18",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1066,
+    "maghrib_iqama": 1073,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-19",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1066,
+    "maghrib_iqama": 1073,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-20",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1065,
+    "maghrib_iqama": 1072,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-21",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1065,
+    "maghrib_iqama": 1072,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-22",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 915,
+    "asr_iqama": 930,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1155,
+    "isha_iqama": 1170
+   },
+   {
+    "date": "2025-10-23",
+    "fajr": 291,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-24",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1064,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-25",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1063,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-26",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1063,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-27",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-28",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-29",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1062,
+    "maghrib_iqama": 1071,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-30",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1061,
+    "maghrib_iqama": 1068,
+    "isha": 1150,
+    "isha_iqama": 1165
+   },
+   {
+    "date": "2025-10-31",
+    "fajr": 292,
+    "fajr_iqama": 305,
+    "dhuhr": 745,
+    "dhuhr_iqama": 760,
+    "asr": 910,
+    "asr_iqama": 925,
+    "maghrib": 1061,
+    "maghrib_iqama": 1068,
+    "isha": 1150,
+    "isha_iqama": 1165
+   }
+  ]
+ },
+ "per_edition": {
+  "2021": {
+   "fajr": {
+    "angle": 17.6,
+    "margin": -1,
+    "mode": "floor",
+    "exact": 31,
+    "within1": 31,
+    "worst": 0,
+    "n": 31
+   },
+   "isha": {
+    "angle": 20.9,
+    "margin": -1,
+    "mode": "floor",
+    "exact": 6,
+    "within1": 15,
+    "worst": 7,
+    "n": 31
+   },
+   "fajr_depth": {
+    "n": 31,
+    "min": 17.687403691540883,
+    "max": 17.945136779963924,
+    "med": 17.76413995355919
+   },
+   "isha_depth": {
+    "n": 31,
+    "min": 18.937347270093742,
+    "max": 21.24055205826351,
+    "med": 20.362287015816968
+   }
+  },
+  "2025": {
+   "fajr": {
+    "angle": 17.6,
+    "margin": 4,
+    "mode": "floor",
+    "exact": 31,
+    "within1": 31,
+    "worst": 0,
+    "n": 31
+   },
+   "isha": {
+    "angle": 20.9,
+    "margin": 4,
+    "mode": "floor",
+    "exact": 8,
+    "within1": 20,
+    "worst": 4,
+    "n": 31
+   },
+   "fajr_depth": {
+    "n": 31,
+    "min": 16.4673753514129,
+    "max": 16.748126440621732,
+    "med": 16.548212229499335
+   },
+   "isha_depth": {
+    "n": 31,
+    "min": 21.274518145712808,
+    "max": 22.74050911756227,
+    "med": 22.000063109015848
+   }
+  }
+ },
+ "joint_fit": {
+  "fajr": {
+   "angle": 17.6,
+   "margin": -1,
+   "mode": "floor",
+   "exact": 31,
+   "within1": 31,
+   "worst": 5,
+   "n": 62
+  },
+  "isha": {
+   "angle": 20.9,
+   "margin": 4,
+   "mode": "floor",
+   "exact": 8,
+   "within1": 20,
+   "worst": 12,
+   "n": 62
+  }
+ },
+ "joint_applied": {
+  "fajr": {
+   "2021": {
+    "exact": 31,
+    "within1": 31,
+    "worst": 0,
+    "n": 31,
+    "meanErr": 0
+   },
+   "2025": {
+    "exact": 0,
+    "within1": 0,
+    "worst": -5,
+    "n": 31,
+    "meanErr": -5
+   }
+  },
+  "isha": {
+   "2021": {
+    "exact": 0,
+    "within1": 0,
+    "worst": 12,
+    "n": 31,
+    "meanErr": 6.39
+   },
+   "2025": {
+    "exact": 8,
+    "within1": 20,
+    "worst": -4,
+    "n": 31,
+    "meanErr": -0.71
+   }
+  }
+ },
+ "asr": {
+  "2021": {
+   "shafi": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 9,
+    "within1": 21,
+    "worst": 3,
+    "n": 31
+   },
+   "hanafi": {
+    "margin": -4,
+    "mode": "floor",
+    "exact": 0,
+    "within1": 0,
+    "worst": 56,
+    "n": 31
+   }
+  },
+  "2025": {
+   "shafi": {
+    "margin": 0,
+    "mode": "floor",
+    "exact": 9,
+    "within1": 17,
+    "worst": 4,
+    "n": 31
+   },
+   "hanafi": {
+    "margin": -4,
+    "mode": "floor",
+    "exact": 0,
+    "within1": 0,
+    "worst": 56,
+    "n": 31
+   }
+  }
+ },
+ "maghrib_is_sunset": {
+  "2021": {
+   "margin": 1,
+   "mode": "floor",
+   "exact": 18,
+   "within1": 31,
+   "worst": 1,
+   "n": 31
+  },
+  "2025": {
+   "margin": 1,
+   "mode": "floor",
+   "exact": 18,
+   "within1": 31,
+   "worst": 1,
+   "n": 31
+  }
+ },
+ "dhuhr_vs_true_noon": {
+  "2021": {
+   "min": 29.3,
+   "max": 35.3,
+   "mean": 33,
+   "printed_azan_constant": 745
+  },
+  "2025": {
+   "min": 29.3,
+   "max": 35.3,
+   "mean": 33,
+   "printed_azan_constant": 745
+  }
+ },
+ "per_date_delta": [
+  {
+   "date": "2025-10-01",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-02",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-03",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-04",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-05",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-06",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-07",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-08",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-09",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-10",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-11",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-12",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-13",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-14",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-15",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-16",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 1,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-17",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-18",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-19",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 5,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-20",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 5,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-21",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 5,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-22",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 5,
+   "maghrib": 0,
+   "isha": 10
+  },
+  {
+   "date": "2025-10-23",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-24",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-25",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-26",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-27",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-28",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-29",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-30",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  },
+  {
+   "date": "2025-10-31",
+   "fajr": 5,
+   "dhuhr": 0,
+   "asr": 0,
+   "maghrib": 0,
+   "isha": 5
+  }
+ ],
+ "delta_summary": {
+  "fajr": {
+   "min": 5,
+   "max": 5,
+   "counts": {
+    "5": 31
+   }
+  },
+  "dhuhr": {
+   "min": 0,
+   "max": 0,
+   "counts": {
+    "0": 31
+   }
+  },
+  "asr": {
+   "min": 0,
+   "max": 5,
+   "counts": {
+    "0": 27,
+    "5": 4
+   }
+  },
+  "maghrib": {
+   "min": 0,
+   "max": 1,
+   "counts": {
+    "0": 29,
+    "1": 2
+   }
+  },
+  "isha": {
+   "min": 5,
+   "max": 10,
+   "counts": {
+    "5": 18,
+    "10": 13
+   }
+  }
+ },
+ "verdict": {
+  "transcription": "October 2025 read in full from the banked 1447 images, 31/31 days, every row cross-checked against a second independent read and against the printed weekday; August 2025 read for the two twilight columns over 29 days",
+  "one_recipe_holds": "YES for every computed column",
+  "cross_edition_delta_minutes_october": {
+   "fajr": {
+    "min": 5,
+    "max": 5,
+    "counts": {
+     "5": 31
+    }
+   },
+   "dhuhr": {
+    "min": 0,
+    "max": 0,
+    "counts": {
+     "0": 31
+    }
+   },
+   "asr": {
+    "min": 0,
+    "max": 5,
+    "counts": {
+     "0": 27,
+     "5": 4
+    }
+   },
+   "maghrib": {
+    "min": 0,
+    "max": 1,
+    "counts": {
+     "0": 29,
+     "1": 2
+    }
+   },
+   "isha": {
+    "min": 5,
+    "max": 10,
+    "counts": {
+     "5": 18,
+     "10": 13
+    }
+   }
+  },
+  "detail": {
+   "fajr": "same twilight angle both editions (17.6 deg, margin -1 in 2021 and +4 in 2025, 31/31 exact each); printed 5 minutes later in 1447 on all 31 October days and on 25 of 29 August days, +4 or +6 on the four block-edge days",
+   "dhuhr": "the same 12:25 block in both editions, identical to the minute on all 31 days",
+   "asr": "Shafi (Hanafi refuted, worst 56 min), a coarse 5-minute block; identical values, block boundary one page apart",
+   "maghrib": "the printed azan is the sunset instant: 31/31 within 1 min in both editions, 18/31 exact each",
+   "isha": "not a computable column in either edition: a hand-set 5-minute block walk, re-set in 1447 (5-10 min later in October, identical values with boundaries one or two days apart in August)"
+  },
+  "what_changed": "the fajr azan gains a fixed 5 minutes in the 1447 edition with no change of angle; everything else sun-anchored is unchanged; the isha block walk was re-set",
+  "dhuhr_doctrine": {
+   "record": "the six byte-identical Ouagadougou platform records sit at noon +33, recorded as unresolved doctrine vs data entry",
+   "measured_2021_annual": "the printed dhuhr is a clock block, not a noon offset: 12:30 Jan-Mar and Jun-Aug, 12:45 in the two Ramadan months, 12:25 Sep-Dec",
+   "offsets_vs_true_noon": "block means run from +10.2 (February) to +42.2 (May); October is +33.0 and November +33.7",
+   "settlement": "noon +33 is the platform normalisation at the season of capture, not the federation printed convention"
+  }
+ },
+ "august_check": {
+  "purpose": "second-month confirmation of the fajr margin and of the isha block behaviour",
+  "source": "2025: msbf-1447-annual-page2.jpg rows 2-23 Aug and page3.jpg rows 25-31 Aug; 2021: annual page 8 (Août 2021, 31 rows)",
+  "days_compared": 29,
+  "fajr_delta_2025_minus_2021": {
+   "+5": 25,
+   "+4": 3,
+   "+6": 1
+  },
+  "isha_delta_2025_minus_2021": {
+   "0": 24,
+   "+5": 5
+  },
+  "isha_blocks_2021": "19:45 (1-2), 19:40 (3-12), 19:35 (13-20), 19:30 (21-27), 19:25 (28-31)",
+  "isha_blocks_2025": "19:45 (2-3), 19:40 (4-12), 19:35 (13-23), 19:30 (25-28), 19:25 (29-31)",
+  "note": "1 and 24 August 2025 fall outside the crops read and are excluded"
+ }
+}

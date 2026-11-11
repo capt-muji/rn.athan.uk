@@ -1,0 +1,363 @@
+
+### luton-central  (30/30 rows, 51.8787,-0.42, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  24  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  28  within1  30  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  29  (margin +9.5 ceil)
+  asrHanafi  exact  30  within1  30  worst   0  (margin +1 floor)
+  maghrib    exact  24  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  136  fajr 11/30  isha 19/30  worst f4 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  125  fajr 0/30  isha 19/30  worst f11 i1
+  Wifaqul 18/15 bare                   18/  15             total  125  fajr 0/30  isha 19/30  worst f11 i1
+  Diyanet-Europe 18/16 bare            18/  16             total  123  fajr 0/30  isha 17/30  worst f11 i1
+  MWL 18/17 bare                       18/  17             total  106  fajr 0/30  isha 0/30  worst f11 i6
+  Karachi 18/18 bare                   18/  18             total  106  fajr 0/30  isha 0/30  worst f11 i13
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  106  fajr 0/30  isha 0/30  worst f11 i13
+free fit: bare best 13.75/13.25 sum 32 cov 30 | cap1/7 13.75/13.25 sum 32 | cap1/2+1/7 13.75/13.25 sum 32
+  portion scan best: 1/2/1/2 on 13.75/13.25 sum 32 (fajr 12, isha 20)
+diag: fajr 30 distinct, longest run 1 @05:18; isha 27 distinct, longest run 2 @17:39
+
+### brighton-almedinah  (30/30 rows, 50.8225,-0.1372, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  29  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  28  within1  30  worst   1  (margin +5.5 floor)
+  asrShafi   exact  26  within1  30  worst   1  (margin +1.5 floor)
+  asrHanafi  exact   0  within1   0  worst  28  (margin -10 floor)
+  maghrib    exact  29  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  140  fajr 9/30  isha 19/30  worst f3 i2
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  131  fajr 0/30  isha 19/30  worst f11 i2
+  Wifaqul 18/15 bare                   18/  15             total  131  fajr 0/30  isha 19/30  worst f11 i2
+  Diyanet-Europe 18/16 bare            18/  16             total  130  fajr 0/30  isha 18/30  worst f11 i2
+  MWL 18/17 bare                       18/  17             total  112  fajr 0/30  isha 0/30  worst f11 i7
+  Karachi 18/18 bare                   18/  18             total  112  fajr 0/30  isha 0/30  worst f11 i13
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  112  fajr 0/30  isha 0/30  worst f11 i13
+free fit: bare best 13.6/13 sum 35 cov 30 | cap1/7 13.6/13 sum 35 | cap1/2+1/7 13.6/13 sum 35
+  portion scan best: 1/2/1/2 on 13.6/13 sum 35 (fajr 11, isha 24)
+diag: fajr 30 distinct, longest run 1 @05:17; isha 28 distinct, longest run 2 @17:38
+
+### dudley-mcc  (30/30 rows, 52.512,-2.081, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  27  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  30  within1  30  worst   0  (margin +5.5 floor)
+  asrShafi   exact  24  within1  30  worst   1  (margin +2 floor)
+  asrHanafi  exact   0  within1   0  worst  27  (margin -10 floor)
+  maghrib    exact  27  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  133  fajr 9/30  isha 16/30  worst f3 i2
+  Diyanet-Europe 18/16 bare            18/  16             total  125  fajr 0/30  isha 17/30  worst f12 i2
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  124  fajr 0/30  isha 16/30  worst f12 i2
+  Wifaqul 18/15 bare                   18/  15             total  124  fajr 0/30  isha 16/30  worst f12 i2
+  MWL 18/17 bare                       18/  17             total  108  fajr 0/30  isha 0/30  worst f12 i7
+  Karachi 18/18 bare                   18/  18             total  108  fajr 0/30  isha 0/30  worst f12 i14
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  108  fajr 0/30  isha 0/30  worst f12 i14
+free fit: bare best 14/13.25 sum 30 cov 30 | cap1/7 14/13.25 sum 30 | cap1/2+1/7 14/13.25 sum 30
+  portion scan best: 1/2/1/2 on 14/13.25 sum 30 (fajr 9, isha 21)
+diag: fajr 30 distinct, longest run 1 @05:25; isha 28 distinct, longest run 2 @17:41
+
+### preston-jamea  (30/30 rows, 53.7632,-2.7031, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  30  within1  30  worst   0  (margin +0.5 floor)
+  dhuhr      exact  30  within1  30  worst   0  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  29  (margin +9.5 ceil)
+  asrHanafi  exact  25  within1  30  worst   1  (margin +2 floor)
+  maghrib    exact   0  within1   0  worst 987  (margin -10 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total   91  fajr 6/30  isha 0/30  worst f5 i110
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total   85  fajr 0/30  isha 0/30  worst f17 i110
+  Wifaqul 18/15 bare                   18/  15             total   85  fajr 0/30  isha 0/30  worst f17 i110
+  MWL 18/17 bare                       18/  17             total   85  fajr 0/30  isha 0/30  worst f17 i124
+  Diyanet-Europe 18/16 bare            18/  16             total   85  fajr 0/30  isha 0/30  worst f17 i117
+  Karachi 18/18 bare                   18/  18             total   85  fajr 0/30  isha 0/30  worst f17 i131
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total   85  fajr 0/30  isha 0/30  worst f17 i131
+free fit: bare best 13.35/12 sum 7 cov 30 | cap1/7 13.35/12 sum 7 | cap1/2+1/7 13.35/12 sum 7
+  portion scan best: 1/2/1/12 on 13.35/12 sum 7 (fajr 7, isha 0)
+diag: fajr 30 distinct, longest run 1 @05:32; isha 28 distinct, longest run 2 @15:45
+
+### blackpool-central  (30/30 rows, 53.8175,-3.0357, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  29  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  30  within1  30  worst   0  (margin +5 floor)
+  asrShafi   exact   0  within1   0  worst  29  (margin +9.5 ceil)
+  asrHanafi  exact  28  within1  30  worst   1  (margin +2 floor)
+  maghrib    exact  27  within1  30  worst   1  (margin +0.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  169  fajr 28/30  isha 27/30  worst f1 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  141  fajr 0/30  isha 27/30  worst f11 i1
+  Wifaqul 18/15 bare                   18/  15             total  141  fajr 0/30  isha 27/30  worst f11 i1
+  Diyanet-Europe 18/16 bare            18/  16             total  139  fajr 0/30  isha 25/30  worst f11 i1
+  MWL 18/17 bare                       18/  17             total  114  fajr 0/30  isha 0/30  worst f11 i4
+  Karachi 18/18 bare                   18/  18             total  114  fajr 0/30  isha 0/30  worst f11 i11
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  114  fajr 0/30  isha 0/30  worst f11 i11
+free fit: bare best 14.5/14 sum 58 cov 30 | cap1/7 14.5/14 sum 58 | cap1/2+1/7 14.5/14 sum 58
+  portion scan best: 1/2/1/2 on 14.5/14 sum 58 (fajr 29, isha 29)
+diag: fajr 30 distinct, longest run 1 @05:33; isha 27 distinct, longest run 2 @18:15
+
+### middlesbrough-central  (30/30 rows, 54.5742,-1.235, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  27  within1  30  worst   1  (margin -0.5 floor)
+  dhuhr      exact  29  within1  30  worst   1  (margin +5.5 floor)
+  asrShafi   exact  25  within1  30  worst   1  (margin +1.5 floor)
+  asrHanafi  exact   0  within1   0  worst  26  (margin -10 floor)
+  maghrib    exact  29  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  145  fajr 17/30  isha 18/30  worst f4 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  128  fajr 0/30  isha 18/30  worst f19 i1
+  Wifaqul 18/15 bare                   18/  15             total  128  fajr 0/30  isha 18/30  worst f19 i1
+  MWL 18/17 bare                       18/  17             total  110  fajr 0/30  isha 0/30  worst f19 i14
+  Diyanet-Europe 18/16 bare            18/  16             total  110  fajr 0/30  isha 0/30  worst f19 i7
+  Karachi 18/18 bare                   18/  18             total  110  fajr 0/30  isha 0/30  worst f19 i21
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  110  fajr 0/30  isha 0/30  worst f19 i21
+free fit: bare best 13.1/12.35 sum 42 cov 30 | cap1/7 13.1/12.35 sum 42 | cap1/2+1/7 13.1/12.35 sum 42
+  portion scan best: 1/2/1/2 on 13.1/12.35 sum 42 (fajr 19, isha 23)
+diag: fajr 30 distinct, longest run 1 @05:29; isha 26 distinct, longest run 2 @17:43
+
+### stockport-ic  (30/30 rows, 53.4106,-2.1575, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  24  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  30  within1  30  worst   0  (margin +0.5 floor)
+  asrShafi   exact   0  within1   0  worst  28  (margin +10 ceil)
+  asrHanafi  exact  23  within1  30  worst   1  (margin +1.5 floor)
+  maghrib    exact  27  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  158  fajr 26/30  isha 28/30  worst f1 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  132  fajr 0/30  isha 28/30  worst f11 i1
+  Wifaqul 18/15 bare                   18/  15             total  132  fajr 0/30  isha 28/30  worst f11 i1
+  Diyanet-Europe 18/16 bare            18/  16             total  127  fajr 0/30  isha 23/30  worst f11 i1
+  MWL 18/17 bare                       18/  17             total  104  fajr 0/30  isha 0/30  worst f11 i4
+  Karachi 18/18 bare                   18/  18             total  104  fajr 0/30  isha 0/30  worst f11 i11
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  104  fajr 0/30  isha 0/30  worst f11 i11
+free fit: bare best 14.5/14.35 sum 60 cov 30 | cap1/7 14.5/14.35 sum 60 | cap1/2+1/7 14.5/14.35 sum 60
+  portion scan best: 1/2/1/2 on 14.5/14.35 sum 60 (fajr 30, isha 30)
+diag: fajr 30 distinct, longest run 1 @05:29; isha 28 distinct, longest run 2 @17:45
+
+### watford-jamia  (30/30 rows, 51.6565,-0.3903, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  29  within1  30  worst   1  (margin -2 floor)
+  dhuhr      exact  29  within1  30  worst   1  (margin +2 floor)
+  asrShafi   exact   0  within1   0  worst  32  (margin +10 ceil)
+  asrHanafi  exact  29  within1  30  worst   1  (margin +5 floor)
+  maghrib    exact  27  within1  30  worst   1  (margin +4 floor)
+candidates (fajr/isha with their best margin+mode):
+  Karachi 18/18 bare                   18/  18             total  171  fajr 29/30  isha 28/30  worst f1 i1
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  171  fajr 29/30  isha 28/30  worst f1 i1
+  MWL 18/17 bare                       18/  17             total  170  fajr 29/30  isha 27/30  worst f1 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  143  fajr 29/30  isha 0/30  worst f1 i11
+  Wifaqul 18/15 bare                   18/  15             total  143  fajr 29/30  isha 0/30  worst f1 i11
+  Diyanet-Europe 18/16 bare            18/  16             total  143  fajr 29/30  isha 0/30  worst f1 i5
+  ISNA 15/15 bare                      15/  15             total  114  fajr 0/30  isha 0/30  worst f9 i11
+free fit: bare best 18.15/18.25 sum 60 cov 30 | cap1/7 18.15/18.25 sum 60 | cap1/2+1/7 18.15/18.25 sum 60
+  portion scan best: 1/2/1/2 on 18.15/18.25 sum 60 (fajr 30, isha 30)
+diag: fajr 30 distinct, longest run 1 @05:02; isha 27 distinct, longest run 2 @18:03
+
+### ilford-mosque  (30/30 rows, 51.559,0.0741, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  26  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  30  within1  30  worst   0  (margin +5.5 floor)
+  asrShafi   exact  29  within1  30  worst   1  (margin +1.5 floor)
+  asrHanafi  exact   0  within1   0  worst  27  (margin -10 floor)
+  maghrib    exact  23  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  137  fajr 9/30  isha 20/30  worst f3 i2
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  128  fajr 0/30  isha 20/30  worst f11 i2
+  Wifaqul 18/15 bare                   18/  15             total  128  fajr 0/30  isha 20/30  worst f11 i2
+  Diyanet-Europe 18/16 bare            18/  16             total  126  fajr 0/30  isha 18/30  worst f11 i2
+  MWL 18/17 bare                       18/  17             total  108  fajr 0/30  isha 0/30  worst f11 i7
+  Karachi 18/18 bare                   18/  18             total  108  fajr 0/30  isha 0/30  worst f11 i13
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  108  fajr 0/30  isha 0/30  worst f11 i13
+free fit: bare best 13.75/13 sum 34 cov 30 | cap1/7 13.75/13 sum 34 | cap1/2+1/7 13.75/13 sum 34
+  portion scan best: 1/2/1/2 on 13.75/13 sum 34 (fajr 11, isha 23)
+diag: fajr 30 distinct, longest run 1 @05:16; isha 28 distinct, longest run 2 @17:35
+
+### cambridge-central  (32/32 rows, 52.2053,0.1218, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  25  within1  32  worst   1  (margin +0 floor)
+  dhuhr      exact  28  within1  32  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  26  (margin +10 ceil)
+  asrHanafi  exact  27  within1  32  worst   1  (margin +1 floor)
+  maghrib    exact  27  within1  32  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  143  fajr 9/32  isha 27/32  worst f4 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  134  fajr 0/32  isha 27/32  worst f14 i1
+  Wifaqul 18/15 bare                   18/  15             total  134  fajr 0/32  isha 27/32  worst f14 i1
+  MWL 18/17 bare                       18/  17             total  107  fajr 0/32  isha 0/32  worst f14 i13
+  Diyanet-Europe 18/16 bare            18/  16             total  107  fajr 0/32  isha 0/32  worst f14 i6
+  Karachi 18/18 bare                   18/  18             total  107  fajr 0/32  isha 0/32  worst f14 i20
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  107  fajr 0/32  isha 0/32  worst f14 i20
+free fit: bare best 13.1/12.8 sum 43 cov 32 | cap1/7 13.1/12.8 sum 43 | cap1/2+1/7 13.1/12.8 sum 43
+  portion scan best: 1/2/1/2 on 13.1/12.8 sum 43 (fajr 12, isha 31)
+diag: fajr 32 distinct, longest run 1 @05:33; isha 20 distinct, longest run 7 @17:23
+
+### stoke-citycentral  (30/30 rows, 53.0027,-2.1794, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  28  within1  30  worst   1  (margin -2 floor)
+  dhuhr      exact  23  within1  30  worst   1  (margin +3.5 floor)
+  asrShafi   exact   0  within1   0  worst  31  (margin +10 ceil)
+  asrHanafi  exact  22  within1  30  worst   1  (margin +4.5 floor)
+  maghrib    exact  28  within1  30  worst   1  (margin +7 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  131  fajr 5/30  isha 25/30  worst f8 i1
+  Wifaqul 18/15 bare                   18/  15             total  131  fajr 5/30  isha 25/30  worst f8 i1
+  ISNA 15/15 bare                      15/  15             total  131  fajr 5/30  isha 25/30  worst f6 i1
+  Diyanet-Europe 18/16 bare            18/  16             total  127  fajr 5/30  isha 21/30  worst f8 i1
+  MWL 18/17 bare                       18/  17             total  106  fajr 5/30  isha 0/30  worst f8 i4
+  Karachi 18/18 bare                   18/  18             total  106  fajr 5/30  isha 0/30  worst f8 i11
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  106  fajr 5/30  isha 0/30  worst f8 i11
+free fit: bare best 16.25/15 sum 31 cov 30 | cap1/7 16.25/15 sum 31 | cap1/2+1/7 16.25/15 sum 31
+  portion scan best: 1/2/1/2 on 16.25/15 sum 31 (fajr 6, isha 25)
+diag: fajr 30 distinct, longest run 1 @05:14; isha 26 distinct, longest run 2 @17:46
+
+### edinburgh-central  (30/30 rows, 55.9533,-3.1883, TZ undefined)
+solar (angle-independent, best margin+mode):
+  dhuhr      exact  30  within1  30  worst   0  (margin +2.5 floor)
+  asrShafi   exact  27  within1  30  worst   1  (margin +2.5 floor)
+  asrHanafi  exact   0  within1   0  worst  25  (margin -10 floor)
+  maghrib    exact  30  within1  30  worst   0  (margin +2.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  MWL 18/17 bare                       18/  17             total  144  fajr 29/30  isha 28/30  worst f1 i1
+  Karachi 18/18 bare                   18/  18             total  139  fajr 29/30  isha 23/30  worst f1 i1
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  139  fajr 29/30  isha 23/30  worst f1 i1
+  Diyanet-Europe 18/16 bare            18/  16             total  138  fajr 29/30  isha 22/30  worst f1 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  116  fajr 29/30  isha 0/30  worst f1 i5
+  Wifaqul 18/15 bare                   18/  15             total  116  fajr 29/30  isha 0/30  worst f1 i5
+  ISNA 15/15 bare                      15/  15             total   87  fajr 0/30  isha 0/30  worst f12 i5
+free fit: bare best 18.9/16.45 sum 60 cov 30 | cap1/7 17.8/16.45 sum 60 | cap1/2+1/7 18.9/16.45 sum 60
+  portion scan best: 1/2/1/2 on 18.9/16.45 sum 60 (fajr 30, isha 30)
+diag: fajr 30 distinct, longest run 1 @05:13; isha 28 distinct, longest run 2 @18:00
+
+### birmingham-central  (30/30 rows, 52.4862,-1.8904, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  25  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  24  within1  30  worst   1  (margin +5.5 floor)
+  asrShafi   exact   0  within1   0  worst  29  (margin +9.5 ceil)
+  asrHanafi  exact  27  within1  30  worst   1  (margin +1.5 floor)
+  maghrib    exact  24  within1  30  worst   1  (margin +0 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  123  fajr 5/30  isha 18/30  worst f4 i2
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  118  fajr 0/30  isha 18/30  worst f24 i2
+  Wifaqul 18/15 bare                   18/  15             total  118  fajr 0/30  isha 18/30  worst f24 i2
+  Diyanet-Europe 18/16 bare            18/  16             total  112  fajr 0/30  isha 12/30  worst f24 i2
+  MWL 18/17 bare                       18/  17             total  100  fajr 0/30  isha 0/30  worst f24 i9
+  Karachi 18/18 bare                   18/  18             total  100  fajr 0/30  isha 0/30  worst f24 i15
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  100  fajr 0/30  isha 0/30  worst f24 i15
+free fit: bare best 12/13 sum 35 cov 30 | cap1/7 12/13 sum 35 | cap1/2+1/7 12/13 sum 35
+  portion scan best: 1/2/1/2 on 12/13 sum 35 (fajr 16, isha 19)
+diag: fajr 30 distinct, longest run 1 @05:37; isha 26 distinct, longest run 2 @17:59
+
+### leicester-umar  (30/30 rows, 52.6369,-1.1398, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  28  within1  30  worst   1  (margin +0.5 floor)
+  dhuhr      exact  29  within1  30  worst   1  (margin +0.5 floor)
+  asrShafi   exact   0  within1   0  worst  29  (margin +10 ceil)
+  asrHanafi  exact  23  within1  30  worst   1  (margin +1.5 floor)
+  maghrib    exact   0  within1   0  worst 984  (margin -10 floor)
+candidates (fajr/isha with their best margin+mode):
+  Karachi 18/18 bare                   18/  18             total  138  fajr 30/30  isha 28/30  worst f0 i1
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  138  fajr 30/30  isha 28/30  worst f0 i1
+  MWL 18/17 bare                       18/  17             total  136  fajr 30/30  isha 26/30  worst f0 i1
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  110  fajr 30/30  isha 0/30  worst f0 i10
+  Wifaqul 18/15 bare                   18/  15             total  110  fajr 30/30  isha 0/30  worst f0 i10
+  Diyanet-Europe 18/16 bare            18/  16             total  110  fajr 30/30  isha 0/30  worst f0 i4
+  ISNA 15/15 bare                      15/  15             total   80  fajr 0/30  isha 0/30  worst f10 i10
+free fit: bare best 18/17.25 sum 59 cov 30 | cap1/7 18/17.25 sum 59 | cap1/2+1/7 18/17.25 sum 59
+  portion scan best: 1/2/1/2 on 18/17.25 sum 59 (fajr 30, isha 29)
+diag: fajr 30 distinct, longest run 1 @05:05; isha 27 distinct, longest run 2 @18:04
+
+### cardiff-swicc  (30/30 rows, 51.4816,-3.1791, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  30  within1  30  worst   0  (margin +0 floor)
+  dhuhr      exact  28  within1  30  worst   1  (margin +5.5 floor)
+  asrShafi   exact  19  within1  28  worst   2  (margin +3 floor)
+  asrHanafi  exact   0  within1   0  worst  27  (margin -10 floor)
+  maghrib    exact  24  within1  30  worst   1  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  117  fajr 14/30  isha 2/30  worst f3 i8
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  103  fajr 0/30  isha 2/30  worst f5 i8
+  Wifaqul 18/15 bare                   18/  15             total  103  fajr 0/30  isha 2/30  worst f5 i8
+  MWL 18/17 bare                       18/  17             total  101  fajr 0/30  isha 0/30  worst f5 i21
+  Diyanet-Europe 18/16 bare            18/  16             total  101  fajr 0/30  isha 0/30  worst f5 i14
+  Karachi 18/18 bare                   18/  18             total  101  fajr 0/30  isha 0/30  worst f5 i28
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  101  fajr 0/30  isha 0/30  worst f5 i28
+free fit: bare best 14.75/12 sum 21 cov 30 | cap1/7 14.75/12 sum 21 | cap1/2+1/7 14.75/12 sum 21
+  portion scan best: 1/2/1/2 on 14.75/12 sum 21 (fajr 15, isha 6)
+diag: fajr 30 distinct, longest run 1 @05:26; isha 29 distinct, longest run 2 @17:32
+
+### hull-mosque  (62/62 rows, 53.7443,-0.3325, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact  44  within1  62  worst   1  (margin -4 floor)
+  dhuhr      exact  58  within1  62  worst   1  (margin +10 nearest)
+  asrShafi   exact  33  within1  59  worst   2  (margin +1 floor)
+  asrHanafi  exact   0  within1   0  worst  25  (margin -10 floor)
+  maghrib    exact  47  within1  62  worst   1  (margin +5.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  ISNA 15/15 bare                      15/  15             total  192  fajr 10/62  isha 0/62  worst f9 i20
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total  182  fajr 0/62  isha 0/62  worst f21 i20
+  Wifaqul 18/15 bare                   18/  15             total  182  fajr 0/62  isha 0/62  worst f21 i20
+  MWL 18/17 bare                       18/  17             total  182  fajr 0/62  isha 0/62  worst f21 i34
+  Diyanet-Europe 18/16 bare            18/  16             total  182  fajr 0/62  isha 0/62  worst f21 i27
+  Karachi 18/18 bare                   18/  18             total  182  fajr 0/62  isha 0/62  worst f21 i41
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total  182  fajr 0/62  isha 0/62  worst f21 i41
+free fit: bare best 12.75/12 sum 24 cov 62 | cap1/7 12.75/12 sum 24 | cap1/2+1/7 12.75/12 sum 24
+  portion scan best: 1/2/1/12 on 12.75/12 sum 25 (fajr 11, isha 14)
+diag: fajr 51 distinct, longest run 3 @06:38; isha 47 distinct, longest run 2 @17:05
+
+### nottingham-ic  (273/273 rows, 52.9548,-1.1581, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 232  within1 244  worst   3  (margin -0.5 floor)
+  dhuhr      exact 261  within1 273  worst   1  (margin +1.5 floor)
+  asrShafi   exact   0  within1   0  worst  58  (margin +9.5 ceil)
+  asrHanafi  exact 134  within1 237  worst   3  (margin +1.5 floor)
+  maghrib    exact 219  within1 250  worst   2  (margin +3.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Karachi 18/18 bare                   18/  18             total 1261  fajr 220/273  isha 195/273  worst f4 i1359
+  MWL 18/17 bare                       18/  17             total 1207  fajr 220/273  isha 141/273  worst f4 i73
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total 1098  fajr 128/273  isha 124/273  worst f124 i57
+  Wifaqul 18/15 bare                   18/  15             total 1068  fajr 220/273  isha 2/273  worst f4 i41
+  Diyanet-Europe 18/16 bare            18/  16             total 1068  fajr 220/273  isha 2/273  worst f4 i49
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total 1066  fajr 220/273  isha 0/273  worst f4 i47
+  ISNA 15/15 bare                      15/  15             total  848  fajr 0/273  isha 2/273  worst f47 i41
+free fit: bare best 18/18.15 sum 417 cov 273 | cap1/7 16.6/16.9 sum 283 | cap1/2+1/7 18/16.9 sum 360
+  portion scan best: 1/2/1/4 on 18/16.9 sum 377 (fajr 220, isha 157)
+diag: fajr 155 distinct, longest run 7 @06:08; isha 176 distinct, longest run 13 @17:57
+
+### aberdeen-amic-central  (333/333 rows, 57.1497,-2.0943, TZ undefined)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 314  within1 333  worst   1  (margin +0.5 floor)
+  dhuhr      exact 316  within1 333  worst   1  (margin +4.5 floor)
+  asrShafi   exact 326  within1 333  worst   1  (margin +0 floor)
+  asrHanafi  exact   0  within1   0  worst  68  (margin -10 floor)
+  maghrib    exact 318  within1 333  worst   1  (margin +5.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Wifaqul 18/15 caps 1/2+1/7           18/  15 cap 1/2/1/7 total 1912  fajr 319/333  isha 319/333  worst f1 i1
+  Wifaqul 18/15 bare                   18/  15             total 1652  fajr 218/230  isha 160/252  worst f1 i1336
+  Diyanet-Europe 18/16 bare            18/  16             total 1630  fajr 218/230  isha 138/244  worst f1 i1340
+  Moonsighting 18/18 caps 1/7+1/7      18/  18 cap 1/7/1/7 total 1515  fajr 80/333  isha 161/333  worst f183 i24
+  MWL 18/17 bare                       18/  17             total 1492  fajr 218/230  isha 0/236  worst f1 i1314
+  Karachi 18/18 bare                   18/  18             total 1492  fajr 218/230  isha 0/230  worst f1 i1308
+  ISNA 15/15 bare                      15/  15             total 1435  fajr 1/252  isha 160/252  worst f94 i1336
+free fit: bare best 18/15 sum 378 cov 230 | cap1/7 16.6/15 sum 438 | cap1/2+1/7 18/15 sum 638
+  portion scan best: 1/2/1/7 on 18/15 sum 638 (fajr 319, isha 319)
+diag: fajr 155 distinct, longest run 29 @01:13; isha 214 distinct, longest run 6 @17:30
+
+== LUPT reference (2027 pages, same MM-DD) ==
+luton-central            days  30  fajr +6.1 [3,8]  dhuhr +1.3 [1,2]  asr +31.9 [29,36]  maghrib -1 [-1,0]  isha -0.9 [-2,1]
+brighton-almedinah       days  30  fajr +4.7 [3,6]  dhuhr +0.2 [0,1]  asr +0.4 [0,1]  maghrib +1.9 [1,3]  isha -0.8 [-2,1]
+dudley-mcc               days  30  fajr +14.6 [11,16]  dhuhr +7.9 [7,8]  asr +1.8 [1,3]  maghrib +3.4 [2,5]  isha +4.6 [2,8]
+preston-jamea            days  30  fajr +22.6 [18,25]  dhuhr +10.3 [10,11]  asr +32.9 [28,39]  isha -111.5 [-114,-108]
+blackpool-central        days  30  fajr +20.5 [18,22]  dhuhr +11.2 [11,12]  asr +34 [29,40]  maghrib -0.8 [-3,2]  isha +9.7 [8,13]
+middlesbrough-central    days  30  fajr +18.5 [15,22]  dhuhr +4.6 [4,5]  asr -10.3 [-12,-8]  maghrib -8.4 [-11,-5]  isha -8.4 [-11,-5]
+stockport-ic             days  30  fajr +16.3 [14,18]  dhuhr +3.2 [3,4]  asr +31.9 [27,37]  maghrib +0.1 [-2,2]  isha +6.8 [5,10]
+watford-jamia            days  30  fajr -11.9 [-14,-10]  dhuhr -2.3 [-3,-2]  asr +36.7 [34,40]  maghrib +0.5 [0,1]  isha +23.1 [22,25]
+ilford-mosque            days  30  fajr +4.7 [2,6]  dhuhr -0.8 [-1,0]  asr -3.2 [-4,-3]  maghrib -1.7 [-2,-1]  isha -2.7 [-4,0]
+cambridge-central        days  32  fajr +6.9 [6,8]  dhuhr -1 [-2,-1]  asr +25.8 [23,30]  maghrib -4.5 [-5,-4]  isha -10.1 [-11,-8]
+stoke-citycentral        days  30  fajr +5.1 [0,8]  dhuhr +6.1 [5,7]  asr +36.9 [33,42]  maghrib +5.5 [4,7]  isha +6.9 [6,10]
+edinburgh-central        days  30  fajr +2.2 [-1,4]  dhuhr +9.3 [9,10]  asr -7.9 [-10,-5]  maghrib -7.7 [-12,-3]  isha +21.9 [19,27]
+birmingham-central       days  30  fajr +26 [22,28]  dhuhr +6.9 [6,7]  asr +35.3 [32,40]  maghrib -0.4 [-1,1]  isha +2.4 [0,4]
+leicester-umar           days  30  fajr -8.7 [-11,-7]  dhuhr -0.9 [-1,0]  asr +31.9 [28,37]  isha +23.7 [23,26]
+cardiff-swicc            days  30  fajr +11.8 [11,12]  dhuhr +12.2 [12,13]  asr +11.1 [9,12]  maghrib +11.9 [11,12]  isha -1.1 [-5,4]
+hull-mosque              days  62  fajr +13 [9,18]  dhuhr +6 [5,6]  asr -10 [-12,-7]  maghrib -6.9 [-9,-4]  isha -27.6 [-31,-21]
+nottingham-ic            days 150  fajr -17.3 [-55,-8]  dhuhr +0.2 [0,1]  asr +36.5 [24,67]  maghrib +0.1 [-4,8]  isha +31.4 [19,71]
+aberdeen-amic-central    days 181  fajr -35.7 [-148,1]  dhuhr +7 [6,8]  asr -8.4 [-25,18]  maghrib +0.9 [-25,47]  isha +10.3 [-3,33]
+
+wrote uk-mosaic-fit.json

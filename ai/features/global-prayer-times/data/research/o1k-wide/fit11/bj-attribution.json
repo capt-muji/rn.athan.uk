@@ -1,0 +1,440 @@
+{
+ "source": "mosquee-c-interculturel-omar-el-farooq-gakpe-00000-benin",
+ "declared": {
+  "lat": 6.41612489208,
+  "lon": 2.1211123466492,
+  "timezone": "Africa/Porto-Novo"
+ },
+ "atDeclaredPoint": {
+  "score": {
+   "exact": 70,
+   "within1": 222,
+   "n": 2190,
+   "worst": 14,
+   "mae": 5.26
+  },
+  "fit": {
+   "lat": 6.41612489208,
+   "lon": 2.1211123466492,
+   "exact": 376,
+   "within1": 586,
+   "worst": 10,
+   "n": 2190,
+   "per": {
+    "fajr": {
+     "margin": -4,
+     "mode": "floor",
+     "exact": 17,
+     "within1": 43,
+     "worst": 10,
+     "mae": 5.49
+    },
+    "sunrise": {
+     "margin": -4,
+     "mode": "nearest",
+     "exact": 18,
+     "within1": 44,
+     "worst": 9,
+     "mae": 5.18
+    },
+    "dhuhr": {
+     "margin": -3,
+     "mode": "floor",
+     "exact": 293,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.2
+    },
+    "asr": {
+     "margin": -2,
+     "mode": "nearest",
+     "exact": 15,
+     "within1": 44,
+     "worst": 8,
+     "mae": 3.8
+    },
+    "magrib": {
+     "margin": -3,
+     "mode": "floor",
+     "exact": 17,
+     "within1": 49,
+     "worst": 9,
+     "mae": 5.18
+    },
+    "isha": {
+     "margin": -2,
+     "mode": "nearest",
+     "exact": 16,
+     "within1": 41,
+     "worst": 9,
+     "mae": 5.53
+    }
+   }
+  }
+ },
+ "gridBest": {
+  "lat": 11.2,
+  "lon": 2.9,
+  "exact": 1678,
+  "within1": 2190,
+  "n": 2190,
+  "worst": 1,
+  "mae": 0.23
+ },
+ "fineBest": {
+  "lat": 11.11,
+  "lon": 2.94,
+  "exact": 1852,
+  "within1": 2190,
+  "n": 2190,
+  "worst": 1,
+  "mae": 0.15
+ },
+ "fineBestFit": {
+  "lat": 11.11,
+  "lon": 2.94,
+  "exact": 1852,
+  "within1": 2190,
+  "worst": 1,
+  "n": 2190,
+  "per": {
+   "fajr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 333,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.09
+   },
+   "sunrise": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 325,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.11
+   },
+   "dhuhr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 338,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.07
+   },
+   "asr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 217,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.41
+   },
+   "magrib": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 325,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.11
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 314,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.14
+   }
+  }
+ },
+ "namedCities": {
+  "Cotonou": {
+   "lat": 6.3703,
+   "lon": 2.3912,
+   "exact": 70,
+   "within1": 216,
+   "worst": 13,
+   "mae": 4.84
+  },
+  "Cotonou-Gakpe": {
+   "lat": 6.4161,
+   "lon": 2.1211,
+   "exact": 70,
+   "within1": 222,
+   "worst": 14,
+   "mae": 5.26
+  },
+  "Porto-Novo": {
+   "lat": 6.4969,
+   "lon": 2.6289,
+   "exact": 76,
+   "within1": 493,
+   "worst": 12,
+   "mae": 4.42
+  },
+  "AbomeyCalavi": {
+   "lat": 6.4489,
+   "lon": 2.3556,
+   "exact": 70,
+   "within1": 210,
+   "worst": 13,
+   "mae": 4.84
+  },
+  "Kandi": {
+   "lat": 11.1342,
+   "lon": 2.9364,
+   "exact": 1845,
+   "within1": 2190,
+   "worst": 1,
+   "mae": 0.16
+  },
+  "Parakou": {
+   "lat": 9.3372,
+   "lon": 2.6303,
+   "exact": 175,
+   "within1": 940,
+   "worst": 6,
+   "mae": 2.05
+  },
+  "Djougou": {
+   "lat": 9.7085,
+   "lon": 1.6656,
+   "exact": 0,
+   "within1": 3,
+   "worst": 9,
+   "mae": 5.16
+  },
+  "Natitingou": {
+   "lat": 10.3042,
+   "lon": 1.3796,
+   "exact": 0,
+   "within1": 0,
+   "worst": 9,
+   "mae": 6.27
+  },
+  "Malanville": {
+   "lat": 11.8656,
+   "lon": 3.3833,
+   "exact": 226,
+   "within1": 808,
+   "worst": 4,
+   "mae": 1.77
+  },
+  "Banikoara": {
+   "lat": 11.2983,
+   "lon": 2.4386,
+   "exact": 0,
+   "within1": 222,
+   "worst": 3,
+   "mae": 2.02
+  }
+ },
+ "distances": {
+  "fineToKandi": 2.7,
+  "fineToCotonou": 530.5,
+  "fineToDeclared": 529.6,
+  "declaredToKandi": 532.2,
+  "declaredToCotonou": 30.3,
+  "declaredToPortoNovo": 56.8,
+  "declaredToOuidah": 6.9,
+  "pinIsTheCensusCity": false,
+  "pinNote": "the captured page never names Cotonou: name and label read Mosquee Omar El Farooq - GAKPe, countryCode BJ, timezone Africa/Porto-Novo, and the pin sits 30.3 km west of the Cotonou centre, 6.9 km from Ouidah"
+ },
+ "monthlyResidualDeclared": {
+  "10": {
+   "fajr": 1.1,
+   "sunrise": 0.4,
+   "dhuhr": 3.2,
+   "asr": 0.9,
+   "magrib": 6.1,
+   "isha": 5.3
+  },
+  "11": {
+   "fajr": -2.3,
+   "sunrise": -3,
+   "dhuhr": 3.3,
+   "asr": 5.3,
+   "magrib": 9.7,
+   "isha": 9.1
+  },
+  "12": {
+   "fajr": -4.1,
+   "sunrise": -4.7,
+   "dhuhr": 3.3,
+   "asr": 7.4,
+   "magrib": 11.5,
+   "isha": 10.9
+  },
+  "01": {
+   "fajr": -3.1,
+   "sunrise": -3.8,
+   "dhuhr": 3.4,
+   "asr": 6.9,
+   "magrib": 10.7,
+   "isha": 10
+  },
+  "02": {
+   "fajr": -0.4,
+   "sunrise": -1.2,
+   "dhuhr": 3.4,
+   "asr": 3.5,
+   "magrib": 7.6,
+   "isha": 6.9
+  },
+  "03": {
+   "fajr": 3.9,
+   "sunrise": 3,
+   "dhuhr": 3.4,
+   "asr": -1.2,
+   "magrib": 3.7,
+   "isha": 2.8
+  },
+  "04": {
+   "fajr": 8.1,
+   "sunrise": 6.9,
+   "dhuhr": 3.3,
+   "asr": 3.3,
+   "magrib": -0.2,
+   "isha": -1.4
+  },
+  "05": {
+   "fajr": 11.5,
+   "sunrise": 10,
+   "dhuhr": 3.1,
+   "asr": 5.4,
+   "magrib": -3.6,
+   "isha": -5
+  },
+  "06": {
+   "fajr": 13.3,
+   "sunrise": 11.6,
+   "dhuhr": 3.3,
+   "asr": 3.9,
+   "magrib": -5,
+   "isha": -6.6
+  },
+  "07": {
+   "fajr": 12.5,
+   "sunrise": 10.9,
+   "dhuhr": 3.2,
+   "asr": 4.9,
+   "magrib": -4.3,
+   "isha": -5.8
+  },
+  "08": {
+   "fajr": 9.3,
+   "sunrise": 8.1,
+   "dhuhr": 3.2,
+   "asr": 7.6,
+   "magrib": -1.5,
+   "isha": -2.8
+  },
+  "09": {
+   "fajr": 5.3,
+   "sunrise": 4.3,
+   "dhuhr": 3.2,
+   "asr": -3.9,
+   "magrib": 2.1,
+   "isha": 1.2
+  }
+ },
+ "monthlyResidualFine": {
+  "10": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": -0.1,
+   "asr": -0.6,
+   "magrib": -0.2,
+   "isha": -0.3
+  },
+  "11": {
+   "fajr": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": -0.2,
+   "magrib": 0,
+   "isha": 0
+  },
+  "12": {
+   "fajr": 0,
+   "sunrise": 0.1,
+   "dhuhr": 0.1,
+   "asr": 0.1,
+   "magrib": 0.1,
+   "isha": 0.2
+  },
+  "01": {
+   "fajr": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0.1,
+   "asr": 0.6,
+   "magrib": 0.3,
+   "isha": 0.2
+  },
+  "02": {
+   "fajr": -0.1,
+   "sunrise": -0.2,
+   "dhuhr": 0.1,
+   "asr": 0.5,
+   "magrib": 0.1,
+   "isha": 0.1
+  },
+  "03": {
+   "fajr": 0.2,
+   "sunrise": 0.2,
+   "dhuhr": 0.1,
+   "asr": 0.7,
+   "magrib": 0,
+   "isha": -0.1
+  },
+  "04": {
+   "fajr": 0.3,
+   "sunrise": 0.2,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "magrib": 0,
+   "isha": -0.1
+  },
+  "05": {
+   "fajr": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": -0.2,
+   "asr": -0.5,
+   "magrib": -0.2,
+   "isha": -0.1
+  },
+  "06": {
+   "fajr": 0,
+   "sunrise": 0.1,
+   "dhuhr": 0,
+   "asr": 0.1,
+   "magrib": 0,
+   "isha": 0.1
+  },
+  "07": {
+   "fajr": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": -0.1,
+   "asr": 0.1,
+   "magrib": -0.1,
+   "isha": -0.1
+  },
+  "08": {
+   "fajr": 0,
+   "sunrise": 0.2,
+   "dhuhr": -0.1,
+   "asr": -0.1,
+   "magrib": -0.1,
+   "isha": -0.2
+  },
+  "09": {
+   "fajr": 0.1,
+   "sunrise": 0.1,
+   "dhuhr": -0.1,
+   "asr": -0.7,
+   "magrib": -0.2,
+   "isha": -0.2
+  }
+ }
+}

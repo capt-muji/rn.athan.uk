@@ -1,0 +1,1130 @@
+{
+ "_job": "Job 1: Australia Diyanet diaspora — domestic vs European recipe fit",
+ "_engine": "adhan 4.4.6, second-resolution instants, explicit nearest-minute rounding, no real clock",
+ "verdict": {
+  "recipe": "DOMESTIC (Diyanet Turkey domestic): fajr 18 deg raw, isha 17 deg raw, temkin sunrise -7 min, dhuhr +5 min, asr (shadow 1) +4 min, maghrib +7 min; printed nearest minute. NOT the European unified 18/16.",
+  "evidence": "All four surfaces: every prayer within 1 minute on every held row; European 18/16 fails with exact 0 on sunrise/dhuhr/asr/maghrib/isha (worst 5-8 min). Residual medians vs raw astronomy at the stated coordinates: fajr +0.00/+0.13, sunrise -6.98/-6.93, dhuhr +5.07/+5.03, asr +4.02/+4.00, maghrib +7.00/+7.10, isha +0.02/+0.05 (Broadmeadows/Brisbane); Preston matches Broadmeadows (same calculation, second grid point).",
+  "temkinOrder": "The \"-7/+5/+4/+7\" temkin set lands on sunrise/dhuhr/asr/maghrib; fajr and isha carry the raw 18/17 angles with no minute offset (matches the adhan 4.4.6 \"Turkey\" method encoding exactly).",
+  "rounding": "Nearest minute (floor and ceil both degrade exact matches sharply).",
+  "surfacesAgree": true
+ },
+ "diyanetPlatform": {
+  "broadmeadows": {
+   "city": "Broadmeadows (Diyanet 11331)",
+   "file": "au-2026-diyanet-broadmeadows.json",
+   "lat": -37.6852,
+   "lon": 144.9146,
+   "zone": "Australia/Melbourne",
+   "rows": 365,
+   "span": [
+    "2026-01-01",
+    "2026-12-31"
+   ],
+   "rowsByYear": {
+    "2026": 365
+   },
+   "residualsVsRaw": {
+    "label": "Broadmeadows (Diyanet 11331)",
+    "fajr": {
+     "n": 365,
+     "min": -0.87,
+     "median": 0,
+     "max": 0.93,
+     "sd": 0.414,
+     "mode": -0.016666666666666666,
+     "modeCount": 13
+    },
+    "sunrise": {
+     "n": 365,
+     "min": -7.72,
+     "median": -6.98,
+     "max": -6.28,
+     "sd": 0.336,
+     "mode": -6.8,
+     "modeCount": 12
+    },
+    "dhuhr": {
+     "n": 365,
+     "min": 4.52,
+     "median": 5.07,
+     "max": 5.55,
+     "sd": 0.285,
+     "mode": 5.283333333333333,
+     "modeCount": 14
+    },
+    "asr": {
+     "n": 365,
+     "min": 3.23,
+     "median": 4.02,
+     "max": 5.03,
+     "sd": 0.434,
+     "mode": 4.033333333333333,
+     "modeCount": 11
+    },
+    "asr2": {
+     "n": 365,
+     "min": -71.12,
+     "median": -47.22,
+     "max": -33.87,
+     "sd": 12.448,
+     "mode": -34.53333333333333,
+     "modeCount": 3
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 6.17,
+     "median": 7,
+     "max": 8.05,
+     "sd": 0.419,
+     "mode": 6.8,
+     "modeCount": 12
+    },
+    "isha": {
+     "n": 365,
+     "min": -1.15,
+     "median": 0.02,
+     "max": 1.23,
+     "sd": 0.547,
+     "mode": -0.11666666666666667,
+     "modeCount": 7
+    },
+    "isha16": {
+     "n": 365,
+     "min": 4.28,
+     "median": 5.58,
+     "max": 8.07,
+     "sd": 0.921,
+     "mode": 5.616666666666666,
+     "modeCount": 7
+    }
+   },
+   "exactDomestic": {
+    "fajr": {
+     "total": 365,
+     "exact": 271,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 301,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-04"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 353,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-02-14"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 255,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-27"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 258,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-13"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 222,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-05"
+    }
+   },
+   "exactEuropean": {
+    "fajr": {
+     "total": 365,
+     "exact": 271,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-07-25"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 6,
+     "worstRow": "2026-02-14"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstRow": "2026-01-27"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-01-13"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-01-01"
+    }
+   },
+   "roundingModes": {
+    "nearest": {
+     "fajr": 271,
+     "sunrise": 301,
+     "dhuhr": 353,
+     "asr": 255,
+     "maghrib": 258,
+     "isha": 222
+    },
+    "floor": {
+     "fajr": 183,
+     "sunrise": 177,
+     "dhuhr": 159,
+     "asr": 177,
+     "maghrib": 184,
+     "isha": 174
+    },
+    "ceil": {
+     "fajr": 188,
+     "sunrise": 197,
+     "dhuhr": 209,
+     "asr": 190,
+     "maghrib": 186,
+     "isha": 178
+    }
+   },
+   "amplitude": {
+    "jan": {
+     "fajr": {
+      "min": 249,
+      "max": 291,
+      "spanMin": 2520
+     },
+     "isha": {
+      "min": 1330,
+      "max": 1351,
+      "spanMin": 1260
+     },
+     "sunrise": {
+      "min": 355,
+      "max": 386,
+      "spanMin": 1860
+     },
+     "magrib": {
+      "min": 1241,
+      "max": 1253,
+      "spanMin": 720
+     }
+    },
+    "jul": {
+     "fajr": {
+      "min": 351,
+      "max": 362,
+      "spanMin": 660
+     },
+     "isha": {
+      "min": 1121,
+      "max": 1138,
+      "spanMin": 1020
+     },
+     "sunrise": {
+      "min": 434,
+      "max": 449,
+      "spanMin": 900
+     },
+     "magrib": {
+      "min": 1039,
+      "max": 1059,
+      "spanMin": 1200
+     }
+    }
+   }
+  },
+  "preston": {
+   "city": "Preston (Diyanet 11281)",
+   "file": "au-2026-diyanet-preston.json",
+   "lat": -37.741,
+   "lon": 145.0183,
+   "zone": "Australia/Melbourne",
+   "rows": 365,
+   "span": [
+    "2026-01-01",
+    "2026-12-31"
+   ],
+   "rowsByYear": {
+    "2026": 365
+   },
+   "residualsVsRaw": {
+    "label": "Preston (Diyanet 11281)",
+    "fajr": {
+     "n": 365,
+     "min": -0.83,
+     "median": 0.15,
+     "max": 1,
+     "sd": 0.402,
+     "mode": 0.15,
+     "modeCount": 11
+    },
+    "sunrise": {
+     "n": 365,
+     "min": -7.67,
+     "median": -6.92,
+     "max": -6.2,
+     "sd": 0.336,
+     "mode": -7.033333333333333,
+     "modeCount": 11
+    },
+    "dhuhr": {
+     "n": 365,
+     "min": 4.57,
+     "median": 5.1,
+     "max": 5.62,
+     "sd": 0.299,
+     "mode": 4.7,
+     "modeCount": 14
+    },
+    "asr": {
+     "n": 365,
+     "min": 3.28,
+     "median": 4.12,
+     "max": 5.12,
+     "sd": 0.429,
+     "mode": 3.816666666666667,
+     "modeCount": 13
+    },
+    "asr2": {
+     "n": 365,
+     "min": -70.85,
+     "median": -47.22,
+     "max": -33.8,
+     "sd": 12.437,
+     "mode": -33.93333333333333,
+     "modeCount": 3
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 6.22,
+     "median": 7.08,
+     "max": 8.1,
+     "sd": 0.441,
+     "mode": 7.033333333333333,
+     "modeCount": 14
+    },
+    "isha": {
+     "n": 365,
+     "min": -1.08,
+     "median": 0.05,
+     "max": 1.28,
+     "sd": 0.584,
+     "mode": -0.5333333333333333,
+     "modeCount": 8
+    },
+    "isha16": {
+     "n": 365,
+     "min": 4.35,
+     "median": 5.63,
+     "max": 8.18,
+     "sd": 0.949,
+     "mode": 5.45,
+     "modeCount": 7
+    }
+   },
+   "exactDomestic": {
+    "fajr": {
+     "total": 365,
+     "exact": 261,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 300,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 324,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-08"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 262,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-14"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 257,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-12"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 189,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-05"
+    }
+   },
+   "exactEuropean": {
+    "fajr": {
+     "total": 365,
+     "exact": 261,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-08-13"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 6,
+     "worstRow": "2026-01-08"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstRow": "2026-01-14"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-01-12"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-01-01"
+    }
+   },
+   "roundingModes": {
+    "nearest": {
+     "fajr": 261,
+     "sunrise": 300,
+     "dhuhr": 324,
+     "asr": 262,
+     "maghrib": 257,
+     "isha": 189
+    },
+    "floor": {
+     "fajr": 139,
+     "sunrise": 156,
+     "dhuhr": 153,
+     "asr": 140,
+     "maghrib": 148,
+     "isha": 165
+    },
+    "ceil": {
+     "fajr": 233,
+     "sunrise": 214,
+     "dhuhr": 219,
+     "asr": 215,
+     "maghrib": 211,
+     "isha": 172
+    }
+   },
+   "amplitude": {
+    "jan": {
+     "fajr": {
+      "min": 248,
+      "max": 290,
+      "spanMin": 2520
+     },
+     "isha": {
+      "min": 1330,
+      "max": 1351,
+      "spanMin": 1260
+     },
+     "sunrise": {
+      "min": 355,
+      "max": 386,
+      "spanMin": 1860
+     },
+     "magrib": {
+      "min": 1241,
+      "max": 1252,
+      "spanMin": 660
+     }
+    },
+    "jul": {
+     "fajr": {
+      "min": 351,
+      "max": 362,
+      "spanMin": 660
+     },
+     "isha": {
+      "min": 1120,
+      "max": 1137,
+      "spanMin": 1020
+     },
+     "sunrise": {
+      "min": 434,
+      "max": 449,
+      "spanMin": 900
+     },
+     "magrib": {
+      "min": 1038,
+      "max": 1059,
+      "spanMin": 1260
+     }
+    }
+   }
+  },
+  "brisbane": {
+   "city": "Brisbane (Diyanet 11428)",
+   "file": "au-2026-diyanet-brisbane.json",
+   "lat": -27.4705,
+   "lon": 153.026,
+   "zone": "Australia/Brisbane",
+   "rows": 365,
+   "span": [
+    "2026-01-01",
+    "2026-12-31"
+   ],
+   "rowsByYear": {
+    "2026": 365
+   },
+   "residualsVsRaw": {
+    "label": "Brisbane (Diyanet 11428)",
+    "fajr": {
+     "n": 365,
+     "min": -0.73,
+     "median": 0.13,
+     "max": 0.87,
+     "sd": 0.338,
+     "mode": 0.25,
+     "modeCount": 11
+    },
+    "sunrise": {
+     "n": 365,
+     "min": -7.63,
+     "median": -6.93,
+     "max": -6.28,
+     "sd": 0.317,
+     "mode": -7.016666666666667,
+     "modeCount": 10
+    },
+    "dhuhr": {
+     "n": 365,
+     "min": 4.53,
+     "median": 5.03,
+     "max": 5.55,
+     "sd": 0.296,
+     "mode": 4.733333333333333,
+     "modeCount": 12
+    },
+    "asr": {
+     "n": 365,
+     "min": 3.37,
+     "median": 4,
+     "max": 4.87,
+     "sd": 0.372,
+     "mode": 3.9166666666666665,
+     "modeCount": 13
+    },
+    "asr2": {
+     "n": 365,
+     "min": -75.9,
+     "median": -50.37,
+     "max": -38.15,
+     "sd": 12.66,
+     "mode": -41.1,
+     "modeCount": 5
+    },
+    "maghrib": {
+     "n": 365,
+     "min": 6.25,
+     "median": 7.1,
+     "max": 7.9,
+     "sd": 0.378,
+     "mode": 6.933333333333334,
+     "modeCount": 10
+    },
+    "isha": {
+     "n": 365,
+     "min": -0.85,
+     "median": 0.05,
+     "max": 0.98,
+     "sd": 0.39,
+     "mode": 0.05,
+     "modeCount": 11
+    },
+    "isha16": {
+     "n": 365,
+     "min": 3.92,
+     "median": 4.9,
+     "max": 6.1,
+     "sd": 0.471,
+     "mode": 4.716666666666667,
+     "modeCount": 12
+    }
+   },
+   "exactDomestic": {
+    "fajr": {
+     "total": 365,
+     "exact": 312,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-03"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 317,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-06"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-19"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 285,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-05"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 281,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-01"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 279,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-12"
+    }
+   },
+   "exactEuropean": {
+    "fajr": {
+     "total": 365,
+     "exact": 312,
+     "within1": 365,
+     "worst": 1,
+     "worstRow": "2026-01-03"
+    },
+    "sunrise": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-07-20"
+    },
+    "dhuhr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 6,
+     "worstRow": "2026-01-19"
+    },
+    "asr": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 5,
+     "worstRow": "2026-01-28"
+    },
+    "maghrib": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 8,
+     "worstRow": "2026-02-04"
+    },
+    "isha": {
+     "total": 365,
+     "exact": 0,
+     "within1": 0,
+     "worst": 6,
+     "worstRow": "2026-01-01"
+    }
+   },
+   "roundingModes": {
+    "nearest": {
+     "fajr": 312,
+     "sunrise": 317,
+     "dhuhr": 343,
+     "asr": 285,
+     "maghrib": 281,
+     "isha": 279
+    },
+    "floor": {
+     "fajr": 151,
+     "sunrise": 162,
+     "dhuhr": 174,
+     "asr": 188,
+     "maghrib": 160,
+     "isha": 170
+    },
+    "ceil": {
+     "fajr": 219,
+     "sunrise": 211,
+     "dhuhr": 194,
+     "asr": 183,
+     "maghrib": 210,
+     "isha": 198
+    }
+   },
+   "amplitude": {
+    "jan": {
+     "fajr": {
+      "min": 204,
+      "max": 234,
+      "spanMin": 1800
+     },
+     "isha": {
+      "min": 1204,
+      "max": 1213,
+      "spanMin": 540
+     },
+     "sunrise": {
+      "min": 289,
+      "max": 313,
+      "spanMin": 1440
+     },
+     "magrib": {
+      "min": 1130,
+      "max": 1135,
+      "spanMin": 300
+     }
+    },
+    "jul": {
+     "fajr": {
+      "min": 309,
+      "max": 316,
+      "spanMin": 420
+     },
+     "isha": {
+      "min": 1103,
+      "max": 1115,
+      "spanMin": 720
+     },
+     "sunrise": {
+      "min": 383,
+      "max": 392,
+      "spanMin": 540
+     },
+     "magrib": {
+      "min": 1032,
+      "max": 1046,
+      "spanMin": 840
+     }
+    }
+   }
+  }
+ },
+ "gallipoli": {
+  "surface": "Auburn Gallipoli Mosque own API (gallipolimosque.org.au), method printed \"Diyanet İşleri Başkanlığı\"",
+  "lat": -33.8509,
+  "lon": 151.0034,
+  "zone": "Australia/Sydney",
+  "rows": 91,
+  "span": [
+   "2026-11-01",
+   "2027-06-30"
+  ],
+  "rowsByYear": {
+   "2026": 61,
+   "2027": 30
+  },
+  "residuals": {
+   "imsak vs fajr(18)": {
+    "n": 91,
+    "median": -0.1,
+    "min": -0.65,
+    "max": 0.42,
+    "sd": 0.288,
+    "mode": -0.4666666666666667,
+    "modeCount": 5
+   },
+   "imsak vs fajr(18-7m)": {
+    "n": 91,
+    "median": 6.9,
+    "min": 6.35,
+    "max": 7.42,
+    "sd": 0.288,
+    "mode": 6.533333333333333,
+    "modeCount": 5
+   },
+   "fajrIqamah vs fajr(18)": {
+    "n": 91,
+    "median": 59.13,
+    "min": 50.83,
+    "max": 67.73,
+    "sd": 6.144,
+    "mode": 58.233333333333334,
+    "modeCount": 2
+   },
+   "isha vs isha(17)": {
+    "n": 91,
+    "median": -0.15,
+    "min": -0.77,
+    "max": 0.38,
+    "sd": 0.315,
+    "mode": 0.15,
+    "modeCount": 5
+   },
+   "isha vs isha(16)": {
+    "n": 91,
+    "median": 5.75,
+    "min": 4.53,
+    "max": 6.98,
+    "sd": 0.668,
+    "mode": 6.05,
+    "modeCount": 3
+   },
+   "ishaIqamah vs isha(17)": {
+    "n": 91,
+    "median": 5.85,
+    "min": 5.23,
+    "max": 6.38,
+    "sd": 0.315,
+    "mode": 6.15,
+    "modeCount": 5
+   },
+   "sunrise vs sunrise(solar)": {
+    "n": 91,
+    "median": -7.07,
+    "min": -7.63,
+    "max": -6.58,
+    "sd": 0.28,
+    "mode": -6.866666666666666,
+    "modeCount": 5
+   },
+   "dhuhr vs dhuhr(solar)": {
+    "n": 91,
+    "median": 5.02,
+    "min": 4.4,
+    "max": 60.42,
+    "sd": 15.651,
+    "mode": 5.05,
+    "modeCount": 5
+   },
+   "dhuhrIqamah vs dhuhr(solar)": {
+    "n": 91,
+    "median": 11.02,
+    "min": 10.4,
+    "max": 60.42,
+    "sd": 13.65,
+    "mode": 11.05,
+    "modeCount": 5
+   },
+   "asr vs asr(1)": {
+    "n": 91,
+    "median": 3.63,
+    "min": 2.3,
+    "max": 4.95,
+    "sd": 0.606,
+    "mode": 3.9833333333333334,
+    "modeCount": 4
+   },
+   "asr vs asr(2)": {
+    "n": 91,
+    "median": -66.55,
+    "min": -72.2,
+    "max": -35.63,
+    "sd": 15.664,
+    "mode": -71.53333333333333,
+    "modeCount": 2
+   },
+   "asrIqamah vs asr(1)": {
+    "n": 91,
+    "median": 9.63,
+    "min": 8.3,
+    "max": 10.95,
+    "sd": 0.606,
+    "mode": 9.983333333333333,
+    "modeCount": 4
+   },
+   "magrib vs maghrib(solar)": {
+    "n": 91,
+    "median": 6.9,
+    "min": 6.35,
+    "max": 7.35,
+    "sd": 0.3,
+    "mode": 6.833333333333333,
+    "modeCount": 4
+   },
+   "magribIqamah vs maghrib(solar)": {
+    "n": 91,
+    "median": 8.9,
+    "min": 8.35,
+    "max": 9.35,
+    "sd": 0.3,
+    "mode": 8.833333333333334,
+    "modeCount": 4
+   }
+  },
+  "exactDomestic": {
+   "imsak <- {\"angle\":18,\"offsetMin\":0}": {
+    "total": 91,
+    "exact": 80,
+    "within1": 91,
+    "worst": 1,
+    "worstRow": "2026-11-02"
+   },
+   "imsak <- {\"angle\":18,\"offsetMin\":-7}": {
+    "total": 91,
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "worstRow": "2026-11-01"
+   },
+   "sunrise <- {\"offsetMin\":-7}": {
+    "total": 91,
+    "exact": 82,
+    "within1": 91,
+    "worst": 1,
+    "worstRow": "2026-11-07"
+   },
+   "dhuhr <- {\"offsetMin\":5}": {
+    "total": 91,
+    "exact": 67,
+    "within1": 79,
+    "worst": 55,
+    "worstRow": "2026-11-06"
+   },
+   "asr <- {\"shadow\":1,\"offsetMin\":4}": {
+    "total": 91,
+    "exact": 49,
+    "within1": 89,
+    "worst": 2,
+    "worstRow": "2026-11-01"
+   },
+   "magrib <- {\"offsetMin\":7}": {
+    "total": 91,
+    "exact": 79,
+    "within1": 91,
+    "worst": 1,
+    "worstRow": "2026-11-02"
+   },
+   "isha <- {\"angle\":17,\"offsetMin\":0}": {
+    "total": 91,
+    "exact": 69,
+    "within1": 91,
+    "worst": 1,
+    "worstRow": "2026-11-01"
+   },
+   "isha <- {\"angle\":16,\"offsetMin\":0}": {
+    "total": 91,
+    "exact": 0,
+    "within1": 0,
+    "worst": 7,
+    "worstRow": "2026-12-04"
+   }
+  },
+  "byYear": {
+   "2026": {
+    "rows": 61,
+    "span": [
+     "2026-11-01",
+     "2026-12-31"
+    ],
+    "imsak18": {
+     "total": 61,
+     "exact": 55,
+     "within1": 61,
+     "worst": 1,
+     "worstRow": "2026-11-02"
+    },
+    "isha17": {
+     "total": 61,
+     "exact": 41,
+     "within1": 61,
+     "worst": 1,
+     "worstRow": "2026-11-01"
+    },
+    "dhuhr5": {
+     "total": 61,
+     "exact": 44,
+     "within1": 53,
+     "worst": 55,
+     "worstRow": "2026-11-06"
+    },
+    "dhuhr5_nonFriday": {
+     "total": 61,
+     "exact": 44,
+     "within1": 53,
+     "worst": 55,
+     "worstRow": "2026-11-06"
+    },
+    "asr4": {
+     "total": 61,
+     "exact": 25,
+     "within1": 59,
+     "worst": 2,
+     "worstRow": "2026-11-01"
+    }
+   },
+   "2027": {
+    "rows": 30,
+    "span": [
+     "2027-06-01",
+     "2027-06-30"
+    ],
+    "imsak18": {
+     "total": 30,
+     "exact": 25,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2027-06-05"
+    },
+    "isha17": {
+     "total": 30,
+     "exact": 28,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2027-06-18"
+    },
+    "dhuhr5": {
+     "total": 30,
+     "exact": 23,
+     "within1": 26,
+     "worst": 41,
+     "worstRow": "2027-06-04"
+    },
+    "dhuhr5_nonFriday": {
+     "total": 30,
+     "exact": 23,
+     "within1": 26,
+     "worst": 41,
+     "worstRow": "2027-06-04"
+    },
+    "asr4": {
+     "total": 30,
+     "exact": 24,
+     "within1": 30,
+     "worst": 1,
+     "worstRow": "2027-06-02"
+    }
+   }
+  },
+  "iqamahOffsets": {
+   "imsak -> fajrIqamah": {
+    "n": 91,
+    "min": 51,
+    "max": 68,
+    "mean": 59.286,
+    "median": 59,
+    "mode": {
+     "value": 52,
+     "count": 18
+    },
+    "sd": 6.106
+   },
+   "dhuhr -> dhuhrIqamah": {
+    "n": 91,
+    "min": 0,
+    "max": 6,
+    "mean": 5.209,
+    "median": 6,
+    "mode": {
+     "value": 6,
+     "count": 79
+    },
+    "sd": 2.03
+   },
+   "asr -> asrIqamah": {
+    "n": 91,
+    "min": 6,
+    "max": 6,
+    "mean": 6,
+    "median": 6,
+    "mode": {
+     "value": 6,
+     "count": 91
+    },
+    "sd": 0
+   },
+   "magrib -> magribIqamah": {
+    "n": 91,
+    "min": 2,
+    "max": 2,
+    "mean": 2,
+    "median": 2,
+    "mode": {
+     "value": 2,
+     "count": 91
+    },
+    "sd": 0
+   },
+   "isha -> ishaIqamah": {
+    "n": 91,
+    "min": 6,
+    "max": 6,
+    "mean": 6,
+    "median": 6,
+    "mode": {
+     "value": 6,
+     "count": 91
+    },
+    "sd": 0
+   }
+  }
+ },
+ "stability": {
+  "diyanetPlatform": "Single-year span held (2026-01-01..2026-12-31, 365 rows each); between-year shift not testable from this surface — one recipe across the whole span.",
+  "gallipoli": "Two years held (2026-11..12 = 61 rows, 2027-06 = 30 rows); parameters frozen across both: imsak 18 deg raw (within1 61/61 and 30/30), isha 17 deg raw (within1 61/61 and 30/30)."
+ },
+ "amplitude": {
+  "broadmeadows": "Fajr clock Jan ~04:09-04:51 vs Jul ~05:51-06:02 (seasonal swing ~86 min); isha Jan ~22:10-22:31 vs Jul ~18:41-18:58.",
+  "brisbane": "Fajr Jan ~03:24-03:54 vs Jul ~05:09-05:16 (swing ~85 min at lower latitude, tighter July band)."
+ },
+ "gallipoliNotes": [
+  "Friday dhuhr rows are khutbah overrides (worst 55 min on 2026-11-06 / 2027-06-04); non-Friday dhuhr sits at transit +5.",
+  "Iqamah offsets constant: fajr +52, dhuhr +6, asr +6, maghrib +2, isha +6.",
+  "Gallipoli asr reads +3.6 min median over shadow-1 raw (expected +4; within1 89/91 overall, worst 2) — same recipe, slightly earlier rounding."
+ ],
+ "limits": [
+  "Diyanet platform tables are 2026 calendar years only; no second year on the surface to test between-year stability.",
+  "Coordinates are the census-stated grid points; Diyanet does not publish its internal grid coordinates on the page, so sub-minute residuals inherit that uncertainty.",
+  "Ramadan-window surfaces excluded here (Preston ISV sheet is a separate edition, not part of this job)."
+ ]
+}

@@ -1,0 +1,5758 @@
+{
+ "schema": "o1h-indonesia-grid/1",
+ "generated": "2026-11-10",
+ "year": 2026,
+ "sources": {
+  "target": "Kemenag public API https://bimasislam.kemenag.go.id/api/v1/public/prayer-times",
+  "methodCatalogue": "methods/methods.json (20) + ISNA-2010 18/18"
+ },
+ "references": {
+  "publishedParameters": {
+   "fajrAngle": 20,
+   "ishaAngle": 18,
+   "rounding": "nearest",
+   "margins": 0
+  },
+  "printedRecipe": {
+   "fajrAngle": 20,
+   "ishaAngle": 18,
+   "rounding": "nearest",
+   "marginMinutes": 2,
+   "note": "each prayer shifted 2 minutes later"
+  }
+ },
+ "basisSurvey": {
+  "citiesSurveyed": 516,
+  "uniformBasis": 510,
+  "upliftedBasis": [
+   "KAB. INTAN JAYA",
+   "KAB. LANNY JAYA",
+   "KAB. PANIAI",
+   "KAB. PEGUNUNGAN ARFAK",
+   "KAB. PUNCAK",
+   "KAB. PUNCAK JAYA"
+  ],
+  "fajrImpliedMean": 19.516,
+  "ishaImpliedMean": 18.467
+ },
+ "cities": [
+  {
+   "key": "jakarta",
+   "name": "Jakarta",
+   "region": "Java (west)",
+   "tz": "Asia/Jakarta",
+   "lat": -6.2088,
+   "lon": 106.8456,
+   "days": 365,
+   "kemenagIshaAngle": 18.48,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.003,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.011,
+     "worst": 1,
+     "within2": 100
+    },
+    "exactFajr": 99.7,
+    "exactIsha": 98.9
+   }
+  },
+  {
+   "key": "medan",
+   "name": "Medan",
+   "region": "Sumatra (north)",
+   "tz": "Asia/Jakarta",
+   "lat": 3.5952,
+   "lon": 98.6722,
+   "days": 365,
+   "kemenagIshaAngle": 18.45,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.003,
+     "worst": 1,
+     "within2": 100
+    },
+    "exactFajr": 100,
+    "exactIsha": 99.7
+   }
+  },
+  {
+   "key": "pontianak",
+   "name": "Pontianak",
+   "region": "Kalimantan (west)",
+   "tz": "Asia/Pontianak",
+   "lat": -0.0263,
+   "lon": 109.3425,
+   "days": 365,
+   "kemenagIshaAngle": 18.37,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.005,
+     "worst": 1,
+     "within2": 100
+    },
+    "exactFajr": 100,
+    "exactIsha": 99.5
+   }
+  },
+  {
+   "key": "surabaya",
+   "name": "Surabaya",
+   "region": "Java (east)",
+   "tz": "Asia/Jakarta",
+   "lat": -7.2575,
+   "lon": 112.7521,
+   "days": 365,
+   "kemenagIshaAngle": 18.43,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.011,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0,
+     "worst": 0,
+     "within2": 100
+    },
+    "exactFajr": 98.9,
+    "exactIsha": 100
+   }
+  },
+  {
+   "key": "makassar",
+   "name": "Makassar",
+   "region": "Sulawesi (south)",
+   "tz": "Asia/Makassar",
+   "lat": -5.1477,
+   "lon": 119.4327,
+   "days": 365,
+   "kemenagIshaAngle": 18.55,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.008,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.008,
+     "worst": 1,
+     "within2": 100
+    },
+    "exactFajr": 99.2,
+    "exactIsha": 99.2
+   }
+  },
+  {
+   "key": "jayapura",
+   "name": "Jayapura",
+   "region": "Papua",
+   "tz": "Asia/Jayapura",
+   "lat": -2.5337,
+   "lon": 140.7181,
+   "days": 365,
+   "kemenagIshaAngle": 18.44,
+   "printedRecipeReplay": {
+    "fajr": {
+     "n": 365,
+     "mean": 0.003,
+     "worst": 1,
+     "within2": 100
+    },
+    "isha": {
+     "n": 365,
+     "mean": 0.003,
+     "worst": 1,
+     "within2": 100
+    },
+    "exactFajr": 99.7,
+    "exactIsha": 99.7
+   }
+  }
+ ],
+ "table": [
+  {
+   "id": "mabims",
+   "label": "MABIMS (20/18)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "fajrWorstCity": 0,
+   "ishaWorstCity": 0,
+   "fajrWithin2WorstCity": 100,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 2.003,
+    "ishaWorstCity": 2.003,
+    "fajrWithin2WorstCity": 99.7,
+    "ishaWithin2WorstCity": 99.7
+   },
+   "combinedWorstCity": 0,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.205,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.211,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "MABIMS (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.195,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    }
+   ],
+   "verdict": "uniform",
+   "rank": 1
+  },
+  {
+   "id": "kemenag",
+   "label": "Kemenag RI (20/18)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "fajrWorstCity": 0,
+   "ishaWorstCity": 0,
+   "fajrWithin2WorstCity": 100,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 2.003,
+    "ishaWorstCity": 2.003,
+    "fajrWithin2WorstCity": 99.7,
+    "ishaWithin2WorstCity": 99.7
+   },
+   "combinedWorstCity": 0,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.205,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.211,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Kemenag RI (20/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.195,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    }
+   ],
+   "verdict": "uniform",
+   "rank": 2
+  },
+  {
+   "id": "singapore",
+   "label": "MUIS Singapore (20/18, ceil)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 0.5,
+    "max": 0.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0.47,
+    "max": 0.5
+   },
+   "fajrWorstCity": 0.534,
+   "ishaWorstCity": 0.521,
+   "fajrWithin2WorstCity": 100,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 1.559,
+    "ishaWorstCity": 1.548,
+    "fajrWithin2WorstCity": 100,
+    "ishaWithin2WorstCity": 100
+   },
+   "combinedWorstCity": 0.534,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.477,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.452,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.751,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.515,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.548,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.521,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.521,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.685,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.479,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.485,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.433,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.501,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.723,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.559,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.507,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.496,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.43,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.781,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.515,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.515,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.534,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.449,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.767,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.488,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.523,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "MUIS Singapore (20/18, ceil)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.523,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.493,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.701,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.474,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.466,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    }
+   ],
+   "verdict": "uniform",
+   "rank": 3
+  },
+  {
+   "id": "fazilet-a",
+   "label": "Fazilet Profile A (19.8/17.8 effective)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 0.84,
+    "max": 0.9
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0.85,
+    "max": 0.9
+   },
+   "fajrWorstCity": 0.868,
+   "ishaWorstCity": 0.888,
+   "fajrWithin2WorstCity": 100,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 1.148,
+    "ishaWorstCity": 2.874,
+    "fajrWithin2WorstCity": 100,
+    "ishaWithin2WorstCity": 12.6
+   },
+   "combinedWorstCity": 0.888,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.868,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.841,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.044,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.121,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.83,
+       "worst": 3,
+       "within2": 17
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.838,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.86,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.066,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.134,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.874,
+       "worst": 3,
+       "within2": 12.6
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.822,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.795,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.019,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.148,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.814,
+       "worst": 3,
+       "within2": 18.6
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.849,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.888,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.099,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.148,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.874,
+       "worst": 3,
+       "within2": 12.6
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.822,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.849,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.066,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.115,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.833,
+       "worst": 3,
+       "within2": 16.7
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Fazilet Profile A (19.8/17.8 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.827,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.847,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 5.041,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 1.14,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.825,
+       "worst": 3,
+       "within2": 17.5
+      }
+     }
+    }
+   ],
+   "verdict": "uniform",
+   "rank": 4
+  },
+  {
+   "id": "egyptian",
+   "label": "Egyptian General Authority (19.5/17.5)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 2.1,
+    "max": 2.1
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 2.11,
+    "max": 2.1
+   },
+   "fajrWorstCity": 2.126,
+   "ishaWorstCity": 2.121,
+   "fajrWithin2WorstCity": 87.4,
+   "ishaWithin2WorstCity": 87.9,
+   "printed": {
+    "fajrWorstCity": 0.132,
+    "ishaWorstCity": 4.11,
+    "fajrWithin2WorstCity": 100,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 2.126,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.085,
+       "worst": 3,
+       "within2": 91.5
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.099,
+       "worst": 3,
+       "within2": 90.1
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.301,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.093,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.101,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.077,
+       "worst": 3,
+       "within2": 92.3
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.09,
+       "worst": 3,
+       "within2": 91
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.296,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.09,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.104,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.079,
+       "worst": 3,
+       "within2": 92.1
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.096,
+       "worst": 3,
+       "within2": 90.4
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.321,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.09,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.101,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.126,
+       "worst": 3,
+       "within2": 87.4
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.121,
+       "worst": 3,
+       "within2": 87.9
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.332,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.132,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.11,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.126,
+       "worst": 3,
+       "within2": 87.4
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.115,
+       "worst": 3,
+       "within2": 88.5
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.332,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.115,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.104,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Egyptian General Authority (19.5/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 2.126,
+       "worst": 3,
+       "within2": 87.4
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.118,
+       "worst": 3,
+       "within2": 88.2
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.312,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 0.11,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.088,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 5
+  },
+  {
+   "id": "fazilet-b",
+   "label": "Fazilet Profile B (20.8/18.7 effective)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 3.38,
+    "max": 3.4
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 2.95,
+    "max": 3
+   },
+   "fajrWorstCity": 3.419,
+   "ishaWorstCity": 2.981,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 6.3,
+   "printed": {
+    "fajrWorstCity": 5.405,
+    "ishaWorstCity": 0.984,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 100
+   },
+   "combinedWorstCity": 3.419,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.392,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.981,
+       "worst": 4,
+       "within2": 6.3
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.222,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.375,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.984,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.351,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.948,
+       "worst": 4,
+       "within2": 6.8
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.258,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.334,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.937,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.419,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.926,
+       "worst": 4,
+       "within2": 10.1
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.299,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.389,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.918,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.403,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.951,
+       "worst": 4,
+       "within2": 7.7
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.26,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.405,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.967,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.364,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.956,
+       "worst": 4,
+       "within2": 7.9
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.26,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.321,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.948,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Fazilet Profile B (20.8/18.7 effective)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 3.359,
+       "worst": 4,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.923,
+       "worst": 4,
+       "within2": 9
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 1.271,
+       "worst": 2,
+       "within2": 100
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.329,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.934,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 6
+  },
+  {
+   "id": "dubai",
+   "label": "Dubai / UAE AWQAF (18.2/18.2)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 7.58,
+    "max": 7.6
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0.84,
+    "max": 0.9
+   },
+   "fajrWorstCity": 7.622,
+   "ishaWorstCity": 0.86,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 5.644,
+    "ishaWorstCity": 1.197,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 100
+   },
+   "combinedWorstCity": 7.622,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.622,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.858,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.345,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.636,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.134,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.564,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.86,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.345,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.592,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.159,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.499,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.822,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.403,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.562,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.197,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.597,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.833,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.378,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.608,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.123,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.614,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.841,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.375,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.644,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.175,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Dubai / UAE AWQAF (18.2/18.2)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.573,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.827,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 3.367,
+       "worst": 4,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 5.603,
+       "worst": 6,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.153,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 7
+  },
+  {
+   "id": "mwl",
+   "label": "Muslim World League",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 4.22,
+    "max": 4.2
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 4.238,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 6.236,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.227,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.43,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.214,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.408,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.189,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.208,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.238,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.449,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.441,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.236,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Muslim World League",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.219,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.186,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 8
+  },
+  {
+   "id": "isna2010",
+   "label": "ISNA-2010 (18/18 claim to ICOP)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 0,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 2.003,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 99.7
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.205,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.211,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "ISNA-2010 (18/18 claim to ICOP)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.195,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 9
+  },
+  {
+   "id": "karachi",
+   "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+   "asrMatch": false,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 0,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 2.003,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 99.7
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.205,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.211,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+     "asrMatch": false,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.195,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 10
+  },
+  {
+   "id": "moonsighting",
+   "label": "Moonsighting Committee Worldwide",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0.05,
+    "max": 0.1
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 0.137,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 2.14,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 86.3
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.088,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.29,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.077,
+       "worst": 3,
+       "within2": 92.1
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.03,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.236,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.027,
+       "worst": 3,
+       "within2": 97.3
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.345,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.003,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.227,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.362,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.008,
+       "worst": 3,
+       "within2": 98.9
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.137,
+       "worst": 2,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.348,
+       "worst": 6,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.14,
+       "worst": 4,
+       "within2": 86.3
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.044,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.26,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.055,
+       "worst": 3,
+       "within2": 93.7
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Moonsighting Committee Worldwide",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0.022,
+       "worst": 1,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.016,
+       "worst": 3,
+       "within2": 98.4
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 11
+  },
+  {
+   "id": "diyanet-tr",
+   "label": "Diyanet domestic (18/17, temkin)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 4.22,
+    "max": 4.2
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 4.238,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 6.236,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.227,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.43,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.214,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.408,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.189,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.208,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.238,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.449,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.441,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.236,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Diyanet domestic (18/17, temkin)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.219,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.186,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 12
+  },
+  {
+   "id": "jakim",
+   "label": "JAKIM e-Solat (18/18)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 0,
+    "max": 0
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 0,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 100,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 2.003,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 99.7
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.205,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.995,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.211,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.216,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 1.992,
+       "worst": 2,
+       "within2": 100
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "JAKIM e-Solat (18/18)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 0,
+       "worst": 0,
+       "within2": 100
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 4.195,
+       "worst": 5,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.003,
+       "worst": 3,
+       "within2": 99.7
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 13
+  },
+  {
+   "id": "kuwait",
+   "label": "Kuwait Awqaf (18/17.5)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 2.11,
+    "max": 2.1
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 2.121,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 87.9,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 4.11,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.099,
+       "worst": 3,
+       "within2": 90.1
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.301,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.101,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.09,
+       "worst": 3,
+       "within2": 91
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.296,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.104,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.096,
+       "worst": 3,
+       "within2": 90.4
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.321,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.101,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.121,
+       "worst": 3,
+       "within2": 87.9
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.332,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.11,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.115,
+       "worst": 3,
+       "within2": 88.5
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.332,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.104,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Kuwait Awqaf (18/17.5)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 2.118,
+       "worst": 3,
+       "within2": 88.2
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 6.312,
+       "worst": 7,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.088,
+       "worst": 5,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 14
+  },
+  {
+   "id": "ecfr",
+   "label": "ECFR (18/17, Fiqh Academy resolution)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 4.22,
+    "max": 4.2
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 4.238,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 6.236,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 8.479,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.227,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.43,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.214,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.203,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.408,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.189,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.208,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.238,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.449,
+       "worst": 10,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.216,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.225,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.441,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.236,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "ECFR (18/17, Fiqh Academy resolution)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 4.219,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 8.414,
+       "worst": 9,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 6.186,
+       "worst": 7,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 15
+  },
+  {
+   "id": "diyanet-eu",
+   "label": "Diyanet European unified (18/16)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 8.44,
+    "max": 8.5
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 8.521,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 10.455,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 8.521,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.477,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.679,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.438,
+       "worst": 11,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.419,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.625,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.43,
+       "worst": 11,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.389,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.614,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.4,
+       "worst": 11,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.521,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.732,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.455,
+       "worst": 12,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.46,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.677,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.452,
+       "worst": 11,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Diyanet European unified (18/16)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 8.381,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 12.575,
+       "worst": 14,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 10.381,
+       "worst": 11,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 16
+  },
+  {
+   "id": "russia",
+   "label": "Spiritual Administration of Russia (16/15)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 16.85,
+    "max": 16.9
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 12.64,
+    "max": 12.7
+   },
+   "fajrWorstCity": 16.923,
+   "ishaWorstCity": 12.734,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 14.942,
+    "ishaWorstCity": 14.679,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 16.923,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.918,
+       "worst": 19,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.688,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.89,
+       "worst": 19,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.932,
+       "worst": 16,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.677,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.844,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.581,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.786,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.871,
+       "worst": 16,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.595,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.737,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.578,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.803,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.784,
+       "worst": 16,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.597,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.923,
+       "worst": 19,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.734,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.945,
+       "worst": 19,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.942,
+       "worst": 17,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.679,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.879,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.668,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.885,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.901,
+       "worst": 16,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.644,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Spiritual Administration of Russia (16/15)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 16.789,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.584,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.778,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 14.808,
+       "worst": 16,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.567,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 17
+  },
+  {
+   "id": "tehran",
+   "label": "Tehran Geophysics (17.7 / 14 software default)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 9.69,
+    "max": 9.7
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 16.84,
+    "max": 17
+   },
+   "fajrWorstCity": 9.748,
+   "ishaWorstCity": 16.97,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 7.759,
+    "ishaWorstCity": 18.896,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 16.97,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.748,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.899,
+       "worst": 19,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 21.101,
+       "worst": 23,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.759,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.893,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.679,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.784,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 20.989,
+       "worst": 23,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.688,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.775,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.616,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.751,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 20.975,
+       "worst": 22,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.649,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.775,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.734,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.97,
+       "worst": 19,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 21.181,
+       "worst": 23,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.748,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.896,
+       "worst": 21,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.71,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.86,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 21.077,
+       "worst": 23,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.742,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.847,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Tehran Geophysics (17.7 / 14 software default)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 9.668,
+       "worst": 11,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.797,
+       "worst": 18,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 20.992,
+       "worst": 23,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 7.696,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.77,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 18
+  },
+  {
+   "id": "qatar",
+   "label": "Qatar MOI (18, isha +90)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 8.42,
+    "max": 8.5
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 17.94,
+    "max": 18.2
+   },
+   "fajrWorstCity": 8.479,
+   "ishaWorstCity": 18.249,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 6.455,
+    "ishaWorstCity": 16.238,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 18.249,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.422,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 17.742,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 13.54,
+       "worst": 17,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.436,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 15.775,
+       "worst": 19,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.4,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.077,
+       "worst": 22,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 13.871,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.43,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.066,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.342,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.249,
+       "worst": 22,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 14.025,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.359,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.238,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.447,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 17.553,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 13.342,
+       "worst": 17,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.444,
+       "worst": 8,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 15.559,
+       "worst": 19,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.479,
+       "worst": 10,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 17.863,
+       "worst": 22,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 13.647,
+       "worst": 17,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.455,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 15.879,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Qatar MOI (18, isha +90)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 8.427,
+       "worst": 9,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.167,
+       "worst": 22,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 13.973,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.438,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 16.151,
+       "worst": 20,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 19
+  },
+  {
+   "id": "ummalqura",
+   "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 6.31,
+    "max": 6.4
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 20.41,
+    "max": 20.7
+   },
+   "fajrWorstCity": 6.356,
+   "ishaWorstCity": 20.715,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 4.342,
+    "ishaWorstCity": 18.704,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 20.715,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.29,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.208,
+       "worst": 51,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.005,
+       "worst": 47,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.318,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.241,
+       "worst": 49,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.315,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.542,
+       "worst": 52,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.337,
+       "worst": 48,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.332,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.532,
+       "worst": 50,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.249,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.715,
+       "worst": 52,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.49,
+       "worst": 48,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.26,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.704,
+       "worst": 50,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.356,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.019,
+       "worst": 51,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 15.808,
+       "worst": 47,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.332,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.025,
+       "worst": 49,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.342,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.329,
+       "worst": 52,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.112,
+       "worst": 47,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.342,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.345,
+       "worst": 49,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "Umm al-Qura (18.5, isha +90 / +120 Ramadan)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 6.321,
+       "worst": 7,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 20.633,
+       "worst": 52,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.438,
+       "worst": 48,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 4.323,
+       "worst": 5,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 18.616,
+       "worst": 50,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 20
+  },
+  {
+   "id": "isna15",
+   "label": "ISNA / FCNA (15/15, 2017 onward)",
+   "asrMatch": true,
+   "fajrMeanAcrossCities": {
+    "mean": 21.05,
+    "max": 21.1
+   },
+   "ishaMeanAcrossCities": {
+    "mean": 12.64,
+    "max": 12.7
+   },
+   "fajrWorstCity": 21.148,
+   "ishaWorstCity": 12.734,
+   "fajrWithin2WorstCity": 0,
+   "ishaWithin2WorstCity": 0,
+   "printed": {
+    "fajrWorstCity": 19.186,
+    "ishaWorstCity": 14.679,
+    "fajrWithin2WorstCity": 0,
+    "ishaWithin2WorstCity": 0
+   },
+   "combinedWorstCity": 21.148,
+   "perCity": [
+    {
+     "city": "jakarta",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 21.121,
+       "worst": 23,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.688,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.89,
+       "worst": 19,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 19.145,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.677,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "medan",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 21.011,
+       "worst": 23,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.581,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.786,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 19.044,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.595,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "pontianak",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 20.94,
+       "worst": 22,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.578,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.803,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 18.953,
+       "worst": 20,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.597,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "surabaya",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 21.148,
+       "worst": 23,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.734,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.945,
+       "worst": 19,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 19.186,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.679,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "makassar",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 21.06,
+       "worst": 23,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.668,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.885,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 19.093,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.644,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    },
+    {
+     "city": "jayapura",
+     "label": "ISNA / FCNA (15/15, 2017 onward)",
+     "asrMatch": true,
+     "vsParam": {
+      "fajr": {
+       "n": 365,
+       "mean": 21.027,
+       "worst": 23,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 12.584,
+       "worst": 14,
+       "within2": 0
+      },
+      "isha19": {
+       "n": 365,
+       "mean": 16.778,
+       "worst": 18,
+       "within2": 0
+      }
+     },
+     "vsPrinted": {
+      "fajr": {
+       "n": 365,
+       "mean": 19,
+       "worst": 21,
+       "within2": 0
+      },
+      "isha": {
+       "n": 365,
+       "mean": 14.567,
+       "worst": 16,
+       "within2": 0
+      }
+     }
+    }
+   ],
+   "verdict": "varies",
+   "rank": 21
+  }
+ ],
+ "familyCost": [
+  {
+   "id": "mwl",
+   "label": "Muslim World League",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 4.22
+  },
+  {
+   "id": "isna2010",
+   "label": "ISNA-2010 (18/18 claim to ICOP)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 0
+  },
+  {
+   "id": "karachi",
+   "label": "University of Islamic Sciences, Karachi (18/18, Hanafi asr)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 0
+  },
+  {
+   "id": "moonsighting",
+   "label": "Moonsighting Committee Worldwide",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 0.05
+  },
+  {
+   "id": "diyanet-tr",
+   "label": "Diyanet domestic (18/17, temkin)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 4.22
+  },
+  {
+   "id": "jakim",
+   "label": "JAKIM e-Solat (18/18)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 0
+  },
+  {
+   "id": "ecfr",
+   "label": "ECFR (18/17, Fiqh Academy resolution)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 4.22
+  },
+  {
+   "id": "diyanet-eu",
+   "label": "Diyanet European unified (18/16)",
+   "fajrMeanAcrossCities": 8.42,
+   "fajrWorstCity": 8.479,
+   "ishaMeanAcrossCities": 8.44
+  }
+ ]
+}

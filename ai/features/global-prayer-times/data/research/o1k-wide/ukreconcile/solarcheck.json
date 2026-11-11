@@ -1,0 +1,235 @@
+{
+ "luton-central": {
+  "n": 30,
+  "sunriseBias": 0.2,
+  "sunriseBiasMin": -0.2333333333333485,
+  "sunriseBiasMax": 0.75,
+  "maghribBias": 2.8
+ },
+ "brighton-almedinah": {
+  "n": 30,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.5166666666666515,
+  "sunriseBiasMax": 0.46666666666664014,
+  "maghribBias": 3.1
+ },
+ "dudley-mcc": {
+  "n": 30,
+  "sunriseBias": -0.1,
+  "sunriseBiasMin": -0.6166666666666742,
+  "sunriseBiasMax": 0.3333333333333144,
+  "maghribBias": 2.9
+ },
+ "preston-jamea": {
+  "n": 30,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.44999999999998863,
+  "sunriseBiasMax": 0.5,
+  "maghribBias": null
+ },
+ "blackpool-central": {
+  "n": 30,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.5,
+  "sunriseBiasMax": 0.46666666666664014,
+  "maghribBias": 0.2
+ },
+ "middlesbrough-central": {
+  "n": 30,
+  "sunriseBias": -1.2,
+  "sunriseBiasMin": -1.6333333333333258,
+  "sunriseBiasMax": -0.7166666666666401,
+  "maghribBias": 3
+ },
+ "stockport-ic": {
+  "n": 30,
+  "sunriseBias": -0.2,
+  "sunriseBiasMin": -0.6666666666666856,
+  "sunriseBiasMax": 0.30000000000001137,
+  "maghribBias": 2.8
+ },
+ "watford-jamia": {
+  "n": 30,
+  "sunriseBias": -2.4,
+  "sunriseBiasMin": -2.96666666666664,
+  "sunriseBiasMax": -1.9166666666666856,
+  "maghribBias": 3.6
+ },
+ "ilford-mosque": {
+  "n": 30,
+  "sunriseBias": -0.1,
+  "sunriseBiasMin": -0.5833333333333144,
+  "sunriseBiasMax": 0.38333333333332575,
+  "maghribBias": 3
+ },
+ "cambridge-central": {
+  "n": 32,
+  "sunriseBias": -0.3,
+  "sunriseBiasMin": -0.6999999999999886,
+  "sunriseBiasMax": 0.2333333333333485,
+  "maghribBias": 2.9
+ },
+ "stoke-citycentral": {
+  "n": 30,
+  "sunriseBias": -2.4,
+  "sunriseBiasMin": -2.933333333333337,
+  "sunriseBiasMax": -1.9499999999999886,
+  "maghribBias": 6.5
+ },
+ "birmingham-central": {
+  "n": 30,
+  "sunriseBias": -0.1,
+  "sunriseBiasMin": -0.6666666666666856,
+  "sunriseBiasMax": 0.3333333333333144,
+  "maghribBias": -0.2
+ },
+ "leicester-umar": {
+  "n": 30,
+  "sunriseBias": 0.1,
+  "sunriseBiasMin": -0.46666666666664014,
+  "sunriseBiasMax": 0.5166666666666515,
+  "maghribBias": null
+ },
+ "nottingham-ic": {
+  "n": 365,
+  "sunriseBias": -0.9,
+  "sunriseBiasMin": -1.5500000000000114,
+  "sunriseBiasMax": 1.8166666666666629,
+  "maghribBias": 3
+ },
+ "reading-amic": {
+  "noSunrise": true
+ },
+ "coventry-zeenatul": {
+  "n": 365,
+  "sunriseBias": -0.7,
+  "sunriseBiasMin": -2.4166666666666856,
+  "sunriseBiasMax": 60.56666666666666,
+  "maghribBias": 1.9
+ },
+ "rochdale-golden": {
+  "n": 365,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -1.1166666666666742,
+  "sunriseBiasMax": 1.0333333333333599,
+  "maghribBias": 2.9
+ },
+ "bolton-zakariyya": {
+  "n": 354,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.5500000000000114,
+  "sunriseBiasMax": 0.5666666666666629,
+  "maghribBias": 5.1
+ },
+ "oldham-ocmic": {
+  "n": 365,
+  "sunriseBias": -0.2,
+  "sunriseBiasMin": -3.5,
+  "sunriseBiasMax": 1.6333333333333258,
+  "maghribBias": 2.7
+ },
+ "oldham-westwood": {
+  "n": 345,
+  "sunriseBias": 0.3,
+  "sunriseBiasMin": -5.933333333333337,
+  "sunriseBiasMax": 1.7166666666666401,
+  "maghribBias": 2.7
+ },
+ "oxford-coms": {
+  "n": 365,
+  "sunriseBias": -0.8,
+  "sunriseBiasMin": -3.4499999999999886,
+  "sunriseBiasMax": 1.3999999999999773,
+  "maghribBias": -0.4
+ },
+ "slough-jmic": {
+  "n": 365,
+  "sunriseBias": -59.6,
+  "sunriseBiasMin": -60.60000000000002,
+  "sunriseBiasMax": 0.5333333333333599,
+  "maghribBias": -59.7
+ },
+ "walsall-wjmg": {
+  "n": 366,
+  "sunriseBias": -59.6,
+  "sunriseBiasMin": -60.583333333333314,
+  "sunriseBiasMax": 0.7166666666666401,
+  "maghribBias": -59.5
+ },
+ "cardiff-swicc": {
+  "n": 30,
+  "sunriseBias": -0.5,
+  "sunriseBiasMin": -0.9833333333333485,
+  "sunriseBiasMax": -0.03333333333335986,
+  "maghribBias": 3.2
+ },
+ "hull-mosque": {
+  "n": 62,
+  "sunriseBias": -4.7,
+  "sunriseBiasMin": -5.566666666666663,
+  "sunriseBiasMax": -4.050000000000011,
+  "maghribBias": 5
+ },
+ "bradford-hanfia": {
+  "noSunrise": true
+ },
+ "bradford-victor": {
+  "n": 30,
+  "sunriseBias": -1.9,
+  "sunriseBiasMin": -3.1333333333333258,
+  "sunriseBiasMax": 0.35000000000002274,
+  "maghribBias": 5.3
+ },
+ "elm-london": {
+  "n": 365,
+  "sunriseBias": -2.5,
+  "sunriseBiasMin": -3.1000000000000227,
+  "sunriseBiasMax": -1.9499999999999886,
+  "maghribBias": 3.5
+ },
+ "london-icc": {
+  "n": 61,
+  "sunriseBias": -3.1,
+  "sunriseBiasMin": -3.5833333333333144,
+  "sunriseBiasMax": -2.6666666666666856,
+  "maghribBias": 3.2
+ },
+ "mwh-north-london": {
+  "n": 30,
+  "sunriseBias": -2.9,
+  "sunriseBiasMin": -3.4833333333333485,
+  "sunriseBiasMax": -1.2333333333333485,
+  "maghribBias": 3.8
+ },
+ "glasgow-central": {
+  "n": 365,
+  "sunriseBias": -4.8,
+  "sunriseBiasMin": -6.166666666666686,
+  "sunriseBiasMax": 56.366666666666674,
+  "maghribBias": 7.1
+ },
+ "dundee-almaktoum": {
+  "n": 365,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -9.566666666666663,
+  "sunriseBiasMax": 2,
+  "maghribBias": 1.6
+ },
+ "edinburgh-central": {
+  "noSunrise": true
+ },
+ "aberdeen-central": {
+  "n": 333,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.5500000000000114,
+  "sunriseBiasMax": 0.5666666666666629,
+  "maghribBias": 5
+ },
+ "aberdeen-spital": {
+  "n": 333,
+  "sunriseBias": 0,
+  "sunriseBiasMin": -0.5500000000000114,
+  "sunriseBiasMax": 0.5666666666666629,
+  "maghribBias": 5
+ }
+}

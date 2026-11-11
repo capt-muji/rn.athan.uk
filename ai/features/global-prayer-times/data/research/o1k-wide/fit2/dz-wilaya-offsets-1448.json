@@ -1,0 +1,287 @@
+{
+ "_meta": {
+  "source": "dz-marw-calendrier-1448-alger.pdf, page 7 (Jumada al-Thaniya 1448 / 2026)",
+  "caption": "الفروق الزمنية لمدينة الجزائر والولايات المرتبطة بها زيادة ونقصانا لشهر جمادى الثانية 1448هـ / 2026م",
+  "reading": "printed minutes to add to the ALGIERS column for each wilaya; Algiers is the base (0) and has no column",
+  "scope": "northern wilayas only, 25 columns; southern wilayas are not in this table",
+  "structure": "6 prayer rows x N wilaya columns, repeated on every month page",
+  "precision": "1 minute as printed; offsets are month-specific by caption, and the printed values track longitude at 4 min/degree"
+ },
+ "wilayas": [
+  {
+   "wilaya": "الطارف",
+   "minutes": {
+    "fajr": -21,
+    "sunrise": -21,
+    "dhuhr": -21,
+    "asr": -21,
+    "magrib": -21,
+    "isha": -21
+   }
+  },
+  {
+   "wilaya": "سوق أهراس",
+   "minutes": {
+    "fajr": -20,
+    "sunrise": -20,
+    "dhuhr": -19,
+    "asr": -18,
+    "magrib": -18,
+    "isha": -18
+   }
+  },
+  {
+   "wilaya": "عنابة",
+   "minutes": {
+    "fajr": -18,
+    "sunrise": -18,
+    "dhuhr": -18,
+    "asr": -19,
+    "magrib": -19,
+    "isha": -18
+   }
+  },
+  {
+   "wilaya": "قالمة",
+   "minutes": {
+    "fajr": -17,
+    "sunrise": -18,
+    "dhuhr": -17,
+    "asr": -16,
+    "magrib": -16,
+    "isha": -17
+   }
+  },
+  {
+   "wilaya": "أم البواقي",
+   "minutes": {
+    "fajr": -16,
+    "sunrise": -17,
+    "dhuhr": -16,
+    "asr": -13,
+    "magrib": -13,
+    "isha": -14
+   }
+  },
+  {
+   "wilaya": "سكيكدة",
+   "minutes": {
+    "fajr": -15,
+    "sunrise": -15,
+    "dhuhr": -15,
+    "asr": -15,
+    "magrib": -15,
+    "isha": -15
+   }
+  },
+  {
+   "wilaya": "قسنطينة",
+   "minutes": {
+    "fajr": -14,
+    "sunrise": -15,
+    "dhuhr": -14,
+    "asr": -13,
+    "magrib": -13,
+    "isha": -13
+   }
+  },
+  {
+   "wilaya": "ميلة",
+   "minutes": {
+    "fajr": -13,
+    "sunrise": -13,
+    "dhuhr": -12,
+    "asr": -12,
+    "magrib": -12,
+    "isha": -12
+   }
+  },
+  {
+   "wilaya": "جيجل",
+   "minutes": {
+    "fajr": -10,
+    "sunrise": -10,
+    "dhuhr": -10,
+    "asr": -10,
+    "magrib": -10,
+    "isha": -10
+   }
+  },
+  {
+   "wilaya": "سطيف",
+   "minutes": {
+    "fajr": -9,
+    "sunrise": -10,
+    "dhuhr": -9,
+    "asr": -7,
+    "magrib": -7,
+    "isha": -8
+   }
+  },
+  {
+   "wilaya": "بجاية",
+   "minutes": {
+    "fajr": -8,
+    "sunrise": -8,
+    "dhuhr": -8,
+    "asr": -8,
+    "magrib": -8,
+    "isha": -8
+   }
+  },
+  {
+   "wilaya": "برج بوعريريج",
+   "minutes": {
+    "fajr": -7,
+    "sunrise": -8,
+    "dhuhr": -6,
+    "asr": -5,
+    "magrib": -4,
+    "isha": -5
+   }
+  },
+  {
+   "wilaya": "المسيلة",
+   "minutes": {
+    "fajr": -6,
+    "sunrise": -8,
+    "dhuhr": -5,
+    "asr": -3,
+    "magrib": -3,
+    "isha": -4
+   }
+  },
+  {
+   "wilaya": "تيزي وزو",
+   "minutes": {
+    "fajr": -4,
+    "sunrise": -4,
+    "dhuhr": -4,
+    "asr": -3,
+    "magrib": -3,
+    "isha": -3
+   }
+  },
+  {
+   "wilaya": "دلس",
+   "minutes": {
+    "fajr": -3,
+    "sunrise": -3,
+    "dhuhr": -3,
+    "asr": -3,
+    "magrib": -3,
+    "isha": -3
+   }
+  },
+  {
+   "wilaya": "البويرة",
+   "minutes": {
+    "fajr": -3,
+    "sunrise": -4,
+    "dhuhr": -3,
+    "asr": -2,
+    "magrib": -2,
+    "isha": -2
+   }
+  },
+  {
+   "wilaya": "بومرداس",
+   "minutes": {
+    "fajr": -1,
+    "sunrise": -1,
+    "dhuhr": -1,
+    "asr": -1,
+    "magrib": -1,
+    "isha": -1
+   }
+  },
+  {
+   "wilaya": "البليدة",
+   "minutes": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 1,
+    "asr": 2,
+    "magrib": 2,
+    "isha": 2
+   }
+  },
+  {
+   "wilaya": "المدية",
+   "minutes": {
+    "fajr": 1,
+    "sunrise": 1,
+    "dhuhr": 2,
+    "asr": 3,
+    "magrib": 3,
+    "isha": 2
+   }
+  },
+  {
+   "wilaya": "تيارت",
+   "minutes": {
+    "fajr": 3,
+    "sunrise": 3,
+    "dhuhr": 3,
+    "asr": 3,
+    "magrib": 3,
+    "isha": 3
+   }
+  },
+  {
+   "wilaya": "عين الدفلى",
+   "minutes": {
+    "fajr": 4,
+    "sunrise": 4,
+    "dhuhr": 5,
+    "asr": 6,
+    "magrib": 6,
+    "isha": 6
+   }
+  },
+  {
+   "wilaya": "الشلف",
+   "minutes": {
+    "fajr": 7,
+    "sunrise": 6,
+    "dhuhr": 7,
+    "asr": 9,
+    "magrib": 9,
+    "isha": 8
+   }
+  },
+  {
+   "wilaya": "غليزان",
+   "minutes": {
+    "fajr": 10,
+    "sunrise": 9,
+    "dhuhr": 11,
+    "asr": 13,
+    "magrib": 13,
+    "isha": 12
+   }
+  },
+  {
+   "wilaya": "مستغانم",
+   "minutes": {
+    "fajr": 12,
+    "sunrise": 11,
+    "dhuhr": 12,
+    "asr": 15,
+    "magrib": 15,
+    "isha": 14
+   }
+  },
+  {
+   "wilaya": "وهران",
+   "minutes": {
+    "fajr": 14,
+    "sunrise": 13,
+    "dhuhr": 15,
+    "asr": 18,
+    "magrib": 18,
+    "isha": 17
+   }
+  }
+ ]
+}

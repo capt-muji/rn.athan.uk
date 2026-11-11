@@ -1,0 +1,26 @@
+{
+ "question": "does the BMA table set change across years (grade-A year path)?",
+ "answer": "No - the set is perpetual/static. Same finding as the Jamiat generator.",
+ "live_2026_11_10": {
+  "tables": 394
+ },
+ "wayback_2021_11_30": {
+  "tables": 151
+ },
+ "wayback_2023_02_06": {
+  "tables": 150
+ },
+ "shared_live_vs_2021": {
+  "total": 151,
+  "identical_rows": 146,
+  "differing": 5,
+  "differing_nature": "typo fixes only, e.g. \"12;:18; 3:46\" -> \"12:18; 3:46\" (stray semicolon moved); zero time values changed"
+ },
+ "shared_live_vs_2023": {
+  "total": 150,
+  "identical_rows": 145,
+  "differing": 5
+ },
+ "coverage_growth": "2021-11 snapshot carried full tables only for october+november (34 towns) plus 9 towns for other months; the live page now carries all 12 months x 34 towns.",
+ "defect": "a few tables (Bobonong jan/feb/march day 19 and kin) mash zawwal and shafi-asr into one cell (\"12:18; 3:46\")."
+}

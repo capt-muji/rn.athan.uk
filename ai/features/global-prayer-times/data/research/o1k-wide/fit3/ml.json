@@ -1,0 +1,83 @@
+{
+ "country": "ml",
+ "publisher": "Mosquee Al Madina Al Mounawara, Bamako via Mawaqit (community tier)",
+ "source": "sahel2/data/mali-bamako-al-madina-mounawara-mawaqit-2026.json",
+ "rows": 365,
+ "span": [
+  "2026-01-01",
+  "2026-12-31"
+ ],
+ "tz": "Africa/Bamako",
+ "coords": {
+  "lat": 12.608605403242,
+  "lon": -7.9542249441147
+ },
+ "problems": [
+  "2-29 extra"
+ ],
+ "fajr": {
+  "angle": 19,
+  "r": {
+   "margin": 7.5,
+   "mode": "floor",
+   "exact": 363,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "isha": {
+  "angle": 17,
+  "r": {
+   "margin": 5.5,
+   "mode": "floor",
+   "exact": 359,
+   "within1": 365,
+   "worst": 1
+  }
+ },
+ "solar": {
+  "sunrise": {
+   "margin": 0.5,
+   "mode": "floor",
+   "exact": 362,
+   "within1": 365,
+   "worst": 1
+  },
+  "magrib": {
+   "margin": 3.5,
+   "mode": "floor",
+   "exact": 363,
+   "within1": 365,
+   "worst": 1
+  },
+  "asr_shafi": {
+   "margin": 8,
+   "mode": "floor",
+   "exact": 137,
+   "within1": 297,
+   "worst": 2
+  },
+  "asr_hanafi": {
+   "margin": -10,
+   "mode": "floor",
+   "exact": 0,
+   "within1": 0,
+   "worst": 58
+  },
+  "dhuhr": {
+   "K": 29,
+   "r": {
+    "margin": 29,
+    "mode": "floor",
+    "exact": 187,
+    "within1": 365,
+    "worst": 1
+   }
+  }
+ },
+ "notes": {
+  "dhuhr": "transit + 28.5..29.5 through the whole year: computed, fixed ~+29 min allowance",
+  "asr": "Shafi asr with a +6.6..+9.6 seasonal drift band; best single margin +8 floor, worst 2 min",
+  "fajr_isha": "fajr at 19.0 deg +7.5 floor, isha at 17.0 deg +5.5 floor: 18/17-class angles with safety minutes"
+ }
+}

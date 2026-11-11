@@ -1,0 +1,2076 @@
+{
+ "leapFill2027": {
+  "fajr": "05:07",
+  "sunrise": "06:44",
+  "dhuhr": "12:18",
+  "asr": "15:05",
+  "magrib": "17:42",
+  "isha": "19:09"
+ },
+ "armNaive": {
+  "perYear": {
+   "2028": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 79,
+      "exactPct": 21.58,
+      "within1": 297,
+      "within1Pct": 81.15,
+      "worst": 59,
+      "mae": 1.5902,
+      "err1": 218,
+      "err2plus": 69,
+      "meanSigned": -0.2186
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 79,
+      "exactPct": 21.58,
+      "within1": 297,
+      "within1Pct": 81.15,
+      "worst": 59,
+      "mae": 1.5902,
+      "err1": 218,
+      "err2plus": 69,
+      "meanSigned": -0.2186
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 301,
+      "exactPct": 82.24,
+      "within1": 362,
+      "within1Pct": 98.91,
+      "worst": 60,
+      "mae": 0.8224,
+      "err1": 61,
+      "err2plus": 4,
+      "meanSigned": 0.0301
+     },
+     "asr": {
+      "days": 366,
+      "exact": 160,
+      "exactPct": 43.72,
+      "within1": 350,
+      "within1Pct": 95.63,
+      "worst": 61,
+      "mae": 1.2514,
+      "err1": 190,
+      "err2plus": 16,
+      "meanSigned": 0.2022
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 280,
+      "within1Pct": 76.5,
+      "worst": 62,
+      "mae": 1.6448,
+      "err1": 192,
+      "err2plus": 86,
+      "meanSigned": 0.3005
+     },
+     "isha": {
+      "days": 366,
+      "exact": 87,
+      "exactPct": 23.77,
+      "within1": 280,
+      "within1Pct": 76.5,
+      "worst": 62,
+      "mae": 1.6475,
+      "err1": 193,
+      "err2plus": 86,
+      "meanSigned": 0.3033
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 794,
+     "exactPct": 36.16,
+     "within1": 1866,
+     "within1Pct": 84.97,
+     "worst": 62,
+     "mae": 1.4244
+    }
+   },
+   "2029": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 92,
+      "exactPct": 25.21,
+      "within1": 353,
+      "within1Pct": 96.71,
+      "worst": 60,
+      "mae": 1.7178,
+      "err1": 261,
+      "err2plus": 12,
+      "meanSigned": 0.0192
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 92,
+      "exactPct": 25.21,
+      "within1": 353,
+      "within1Pct": 96.71,
+      "worst": 60,
+      "mae": 1.7178,
+      "err1": 261,
+      "err2plus": 12,
+      "meanSigned": 0.0192
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 312,
+      "exactPct": 85.48,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 60,
+      "mae": 1.1123,
+      "err1": 47,
+      "err2plus": 6,
+      "meanSigned": 0
+     },
+     "asr": {
+      "days": 365,
+      "exact": 179,
+      "exactPct": 49.04,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 61,
+      "mae": 1.4904,
+      "err1": 180,
+      "err2plus": 6,
+      "meanSigned": -0.0274
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 102,
+      "exactPct": 27.95,
+      "within1": 352,
+      "within1Pct": 96.44,
+      "worst": 61,
+      "mae": 1.726,
+      "err1": 250,
+      "err2plus": 13,
+      "meanSigned": 0.0329
+     },
+     "isha": {
+      "days": 365,
+      "exact": 102,
+      "exactPct": 27.95,
+      "within1": 352,
+      "within1Pct": 96.44,
+      "worst": 61,
+      "mae": 1.726,
+      "err1": 250,
+      "err2plus": 13,
+      "meanSigned": 0.0329
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 879,
+     "exactPct": 40.14,
+     "within1": 2128,
+     "within1Pct": 97.17,
+     "worst": 61,
+     "mae": 1.5817
+    }
+   },
+   "2030": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 212,
+      "exactPct": 58.08,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.5534,
+      "err1": 146,
+      "err2plus": 7,
+      "meanSigned": 1.1589
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 212,
+      "exactPct": 58.08,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.5534,
+      "err1": 146,
+      "err2plus": 7,
+      "meanSigned": 1.1589
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 333,
+      "exactPct": 91.23,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.2192,
+      "err1": 25,
+      "err2plus": 7,
+      "meanSigned": 1.1425
+     },
+     "asr": {
+      "days": 365,
+      "exact": 266,
+      "exactPct": 72.88,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.4082,
+      "err1": 92,
+      "err2plus": 7,
+      "meanSigned": 1.1562
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 221,
+      "exactPct": 60.55,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.5342,
+      "err1": 137,
+      "err2plus": 7,
+      "meanSigned": 1.1781
+     },
+     "isha": {
+      "days": 365,
+      "exact": 221,
+      "exactPct": 60.55,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.5342,
+      "err1": 137,
+      "err2plus": 7,
+      "meanSigned": 1.1781
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1465,
+     "exactPct": 66.89,
+     "within1": 2148,
+     "within1Pct": 98.08,
+     "worst": 61,
+     "mae": 1.4671
+    }
+   },
+   "2031": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 342,
+      "exactPct": 93.7,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1945,
+      "err1": 16,
+      "err2plus": 7,
+      "meanSigned": 1.1616
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 342,
+      "exactPct": 93.7,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1945,
+      "err1": 16,
+      "err2plus": 7,
+      "meanSigned": 1.1616
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 356,
+      "exactPct": 97.53,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1562,
+      "err1": 2,
+      "err2plus": 7,
+      "meanSigned": 1.1452
+     },
+     "asr": {
+      "days": 365,
+      "exact": 343,
+      "exactPct": 93.97,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1918,
+      "err1": 15,
+      "err2plus": 7,
+      "meanSigned": 1.1425
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 347,
+      "exactPct": 95.07,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1808,
+      "err1": 11,
+      "err2plus": 7,
+      "meanSigned": 1.1534
+     },
+     "isha": {
+      "days": 365,
+      "exact": 347,
+      "exactPct": 95.07,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 60,
+      "mae": 1.1808,
+      "err1": 11,
+      "err2plus": 7,
+      "meanSigned": 1.1534
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 2077,
+     "exactPct": 94.84,
+     "within1": 2148,
+     "within1Pct": 98.08,
+     "worst": 60,
+     "mae": 1.1831
+    }
+   },
+   "2032": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 287,
+      "within1Pct": 78.42,
+      "worst": 2,
+      "mae": 0.9918,
+      "err1": 205,
+      "err2plus": 79,
+      "meanSigned": -0.2158
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 287,
+      "within1Pct": 78.42,
+      "worst": 2,
+      "mae": 0.9918,
+      "err1": 205,
+      "err2plus": 79,
+      "meanSigned": -0.2158
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 304,
+      "exactPct": 83.06,
+      "within1": 366,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1694,
+      "err1": 62,
+      "err2plus": 0,
+      "meanSigned": 0.0328
+     },
+     "asr": {
+      "days": 366,
+      "exact": 159,
+      "exactPct": 43.44,
+      "within1": 353,
+      "within1Pct": 96.45,
+      "worst": 2,
+      "mae": 0.6011,
+      "err1": 194,
+      "err2plus": 13,
+      "meanSigned": 0.1967
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 269,
+      "within1Pct": 73.5,
+      "worst": 2,
+      "mae": 1.0246,
+      "err1": 181,
+      "err2plus": 97,
+      "meanSigned": 0.2869
+     },
+     "isha": {
+      "days": 366,
+      "exact": 89,
+      "exactPct": 24.32,
+      "within1": 269,
+      "within1Pct": 73.5,
+      "worst": 2,
+      "mae": 1.0219,
+      "err1": 180,
+      "err2plus": 97,
+      "meanSigned": 0.2896
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 804,
+     "exactPct": 36.61,
+     "within1": 1831,
+     "within1Pct": 83.38,
+     "worst": 2,
+     "mae": 0.8001
+    }
+   },
+   "2033": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 87,
+      "exactPct": 23.84,
+      "within1": 349,
+      "within1Pct": 95.62,
+      "worst": 59,
+      "mae": 1.1178,
+      "err1": 262,
+      "err2plus": 16,
+      "meanSigned": 0.0274
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 87,
+      "exactPct": 23.84,
+      "within1": 349,
+      "within1Pct": 95.62,
+      "worst": 59,
+      "mae": 1.1178,
+      "err1": 262,
+      "err2plus": 16,
+      "meanSigned": 0.0274
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 314,
+      "exactPct": 86.03,
+      "within1": 363,
+      "within1Pct": 99.45,
+      "worst": 60,
+      "mae": 0.463,
+      "err1": 49,
+      "err2plus": 2,
+      "meanSigned": 0.0027
+     },
+     "asr": {
+      "days": 365,
+      "exact": 177,
+      "exactPct": 48.49,
+      "within1": 363,
+      "within1Pct": 99.45,
+      "worst": 61,
+      "mae": 0.8411,
+      "err1": 186,
+      "err2plus": 2,
+      "meanSigned": -0.0301
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 91,
+      "exactPct": 24.93,
+      "within1": 351,
+      "within1Pct": 96.16,
+      "worst": 61,
+      "mae": 1.1123,
+      "err1": 260,
+      "err2plus": 14,
+      "meanSigned": 0.0219
+     },
+     "isha": {
+      "days": 365,
+      "exact": 91,
+      "exactPct": 24.93,
+      "within1": 351,
+      "within1Pct": 96.16,
+      "worst": 61,
+      "mae": 1.1123,
+      "err1": 260,
+      "err2plus": 14,
+      "meanSigned": 0.0219
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 847,
+     "exactPct": 38.68,
+     "within1": 2126,
+     "within1Pct": 97.08,
+     "worst": 61,
+     "mae": 0.9607
+    }
+   },
+   "2034": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 198,
+      "exactPct": 54.25,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 60,
+      "mae": 1.0986,
+      "err1": 163,
+      "err2plus": 4,
+      "meanSigned": 0.0192
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 198,
+      "exactPct": 54.25,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 60,
+      "mae": 1.0986,
+      "err1": 163,
+      "err2plus": 4,
+      "meanSigned": 0.0192
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 334,
+      "exactPct": 91.51,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 60,
+      "mae": 0.7315,
+      "err1": 27,
+      "err2plus": 4,
+      "meanSigned": -0.0027
+     },
+     "asr": {
+      "days": 365,
+      "exact": 257,
+      "exactPct": 70.41,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 61,
+      "mae": 0.9452,
+      "err1": 104,
+      "err2plus": 4,
+      "meanSigned": -0.0027
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 206,
+      "exactPct": 56.44,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 61,
+      "mae": 1.0904,
+      "err1": 155,
+      "err2plus": 4,
+      "meanSigned": 0.0493
+     },
+     "isha": {
+      "days": 365,
+      "exact": 206,
+      "exactPct": 56.44,
+      "within1": 361,
+      "within1Pct": 98.9,
+      "worst": 61,
+      "mae": 1.0904,
+      "err1": 155,
+      "err2plus": 4,
+      "meanSigned": 0.0493
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1399,
+     "exactPct": 63.88,
+     "within1": 2166,
+     "within1Pct": 98.9,
+     "worst": 61,
+     "mae": 1.0091
+    }
+   },
+   "2035": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 331,
+      "exactPct": 90.68,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 60,
+      "mae": 1.063,
+      "err1": 28,
+      "err2plus": 6,
+      "meanSigned": 0
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 331,
+      "exactPct": 90.68,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 60,
+      "mae": 1.063,
+      "err1": 28,
+      "err2plus": 6,
+      "meanSigned": 0
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 356,
+      "exactPct": 97.53,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 60,
+      "mae": 0.9918,
+      "err1": 3,
+      "err2plus": 6,
+      "meanSigned": 0
+     },
+     "asr": {
+      "days": 365,
+      "exact": 341,
+      "exactPct": 93.42,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 60,
+      "mae": 1.0356,
+      "err1": 18,
+      "err2plus": 6,
+      "meanSigned": 0
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 335,
+      "exactPct": 91.78,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 61,
+      "mae": 1.0548,
+      "err1": 24,
+      "err2plus": 6,
+      "meanSigned": 0.0192
+     },
+     "isha": {
+      "days": 365,
+      "exact": 335,
+      "exactPct": 91.78,
+      "within1": 359,
+      "within1Pct": 98.36,
+      "worst": 61,
+      "mae": 1.0548,
+      "err1": 24,
+      "err2plus": 6,
+      "meanSigned": 0.0192
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 2029,
+     "exactPct": 92.65,
+     "within1": 2154,
+     "within1Pct": 98.36,
+     "worst": 61,
+     "mae": 1.0438
+    }
+   },
+   "2036": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 270,
+      "within1Pct": 73.77,
+      "worst": 62,
+      "mae": 2.1393,
+      "err1": 188,
+      "err2plus": 96,
+      "meanSigned": 0.9372
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 270,
+      "within1Pct": 73.77,
+      "worst": 62,
+      "mae": 2.1393,
+      "err1": 188,
+      "err2plus": 96,
+      "meanSigned": 0.9372
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 297,
+      "exactPct": 81.15,
+      "within1": 359,
+      "within1Pct": 98.09,
+      "worst": 61,
+      "mae": 1.3197,
+      "err1": 62,
+      "err2plus": 7,
+      "meanSigned": 1.1776
+     },
+     "asr": {
+      "days": 366,
+      "exact": 156,
+      "exactPct": 42.62,
+      "within1": 343,
+      "within1Pct": 93.72,
+      "worst": 61,
+      "mae": 1.7541,
+      "err1": 187,
+      "err2plus": 23,
+      "meanSigned": 1.3497
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 260,
+      "within1Pct": 71.04,
+      "worst": 62,
+      "mae": 2.1776,
+      "err1": 172,
+      "err2plus": 106,
+      "meanSigned": 1.4454
+     },
+     "isha": {
+      "days": 366,
+      "exact": 89,
+      "exactPct": 24.32,
+      "within1": 260,
+      "within1Pct": 71.04,
+      "worst": 62,
+      "mae": 2.1749,
+      "err1": 171,
+      "err2plus": 106,
+      "meanSigned": 1.4481
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 794,
+     "exactPct": 36.16,
+     "within1": 1762,
+     "within1Pct": 80.24,
+     "worst": 62,
+     "mae": 1.9508
+    }
+   },
+   "2037": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 338,
+      "within1Pct": 92.6,
+      "worst": 61,
+      "mae": 1.9562,
+      "err1": 259,
+      "err2plus": 27,
+      "meanSigned": 1.1781
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 338,
+      "within1Pct": 92.6,
+      "worst": 61,
+      "mae": 1.9562,
+      "err1": 259,
+      "err2plus": 27,
+      "meanSigned": 1.1781
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 308,
+      "exactPct": 84.38,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.2932,
+      "err1": 50,
+      "err2plus": 7,
+      "meanSigned": 1.1507
+     },
+     "asr": {
+      "days": 365,
+      "exact": 169,
+      "exactPct": 46.3,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 61,
+      "mae": 1.6767,
+      "err1": 189,
+      "err2plus": 7,
+      "meanSigned": 1.1288
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 341,
+      "within1Pct": 93.42,
+      "worst": 62,
+      "mae": 1.9781,
+      "err1": 262,
+      "err2plus": 24,
+      "meanSigned": 1.1781
+     },
+     "isha": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 341,
+      "within1Pct": 93.42,
+      "worst": 62,
+      "mae": 1.9781,
+      "err1": 262,
+      "err2plus": 24,
+      "meanSigned": 1.1781
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 793,
+     "exactPct": 36.21,
+     "within1": 2074,
+     "within1Pct": 94.7,
+     "worst": 62,
+     "mae": 1.8064
+    }
+   },
+   "2038": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 190,
+      "exactPct": 52.05,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4795,
+      "err1": 175,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 190,
+      "exactPct": 52.05,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4795,
+      "err1": 175,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 334,
+      "exactPct": 91.51,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0849,
+      "err1": 31,
+      "err2plus": 0,
+      "meanSigned": -0.0082
+     },
+     "asr": {
+      "days": 365,
+      "exact": 251,
+      "exactPct": 68.77,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.3123,
+      "err1": 114,
+      "err2plus": 0,
+      "meanSigned": -0.011
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 189,
+      "exactPct": 51.78,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4822,
+      "err1": 176,
+      "err2plus": 0,
+      "meanSigned": 0.0384
+     },
+     "isha": {
+      "days": 365,
+      "exact": 189,
+      "exactPct": 51.78,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4822,
+      "err1": 176,
+      "err2plus": 0,
+      "meanSigned": 0.0384
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1343,
+     "exactPct": 61.32,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.3868
+    }
+   }
+  },
+  "perPrayerOverall": {
+   "fajr": {
+    "days": 4018,
+    "exact": 1774,
+    "exactPct": 44.15,
+    "within1": 3695,
+    "within1Pct": 91.96,
+    "worst": 62,
+    "mae": 1.3549,
+    "meanSigned": 0.3723,
+    "err1": 1921,
+    "err2plus": 323
+   },
+   "sunrise": {
+    "days": 4018,
+    "exact": 1774,
+    "exactPct": 44.15,
+    "within1": 3695,
+    "within1Pct": 91.96,
+    "worst": 62,
+    "mae": 1.3549,
+    "meanSigned": 0.3723,
+    "err1": 1921,
+    "err2plus": 323
+   },
+   "dhuhr": {
+    "days": 4018,
+    "exact": 3549,
+    "exactPct": 88.33,
+    "within1": 3968,
+    "within1Pct": 98.76,
+    "worst": 61,
+    "mae": 0.8512,
+    "meanSigned": 0.4246,
+    "err1": 419,
+    "err2plus": 50
+   },
+   "asr": {
+    "days": 4018,
+    "exact": 2458,
+    "exactPct": 61.17,
+    "within1": 3927,
+    "within1Pct": 97.74,
+    "worst": 61,
+    "mae": 1.1371,
+    "meanSigned": 0.4642,
+    "err1": 1469,
+    "err2plus": 91
+   },
+   "magrib": {
+    "days": 4018,
+    "exact": 1834,
+    "exactPct": 45.64,
+    "within1": 3654,
+    "within1Pct": 90.94,
+    "worst": 62,
+    "mae": 1.3644,
+    "meanSigned": 0.5187,
+    "err1": 1820,
+    "err2plus": 364
+   },
+   "isha": {
+    "days": 4018,
+    "exact": 1835,
+    "exactPct": 45.67,
+    "within1": 3654,
+    "within1Pct": 90.94,
+    "worst": 62,
+    "mae": 1.3641,
+    "meanSigned": 0.5194,
+    "err1": 1819,
+    "err2plus": 364
+   }
+  },
+  "overall": {
+   "days": 24108,
+   "exact": 13224,
+   "exactPct": 54.85,
+   "within1": 22593,
+   "within1Pct": 93.72,
+   "mae": 1.2378,
+   "worst": 62
+  }
+ },
+ "armNaiveAligned": {
+  "perYear": {
+   "2028": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 79,
+      "exactPct": 21.58,
+      "within1": 299,
+      "within1Pct": 81.69,
+      "worst": 2,
+      "mae": 0.9672,
+      "err1": 220,
+      "err2plus": 67,
+      "meanSigned": -0.2186
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 79,
+      "exactPct": 21.58,
+      "within1": 299,
+      "within1Pct": 81.69,
+      "worst": 2,
+      "mae": 0.9672,
+      "err1": 220,
+      "err2plus": 67,
+      "meanSigned": -0.2186
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 305,
+      "exactPct": 83.33,
+      "within1": 366,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1667,
+      "err1": 61,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "asr": {
+      "days": 366,
+      "exact": 160,
+      "exactPct": 43.72,
+      "within1": 354,
+      "within1Pct": 96.72,
+      "worst": 2,
+      "mae": 0.5956,
+      "err1": 194,
+      "err2plus": 12,
+      "meanSigned": 0.2022
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 282,
+      "within1Pct": 77.05,
+      "worst": 2,
+      "mae": 0.9891,
+      "err1": 194,
+      "err2plus": 84,
+      "meanSigned": 0.3005
+     },
+     "isha": {
+      "days": 366,
+      "exact": 87,
+      "exactPct": 23.77,
+      "within1": 282,
+      "within1Pct": 77.05,
+      "worst": 2,
+      "mae": 0.9918,
+      "err1": 195,
+      "err2plus": 84,
+      "meanSigned": 0.3033
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 798,
+     "exactPct": 36.34,
+     "within1": 1882,
+     "within1Pct": 85.7,
+     "worst": 2,
+     "mae": 0.7796
+    }
+   },
+   "2029": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 93,
+      "exactPct": 25.48,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 2,
+      "mae": 0.7644,
+      "err1": 265,
+      "err2plus": 7,
+      "meanSigned": 0.0192
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 93,
+      "exactPct": 25.48,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 2,
+      "mae": 0.7644,
+      "err1": 265,
+      "err2plus": 7,
+      "meanSigned": 0.0192
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 317,
+      "exactPct": 86.85,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1315,
+      "err1": 48,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "asr": {
+      "days": 365,
+      "exact": 181,
+      "exactPct": 49.59,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.5041,
+      "err1": 184,
+      "err2plus": 0,
+      "meanSigned": -0.0274
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 102,
+      "exactPct": 27.95,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 2,
+      "mae": 0.7397,
+      "err1": 256,
+      "err2plus": 7,
+      "meanSigned": 0.0329
+     },
+     "isha": {
+      "days": 365,
+      "exact": 102,
+      "exactPct": 27.95,
+      "within1": 358,
+      "within1Pct": 98.08,
+      "worst": 2,
+      "mae": 0.7397,
+      "err1": 256,
+      "err2plus": 7,
+      "meanSigned": 0.0329
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 888,
+     "exactPct": 40.55,
+     "within1": 2162,
+     "within1Pct": 98.72,
+     "worst": 2,
+     "mae": 0.6073
+    }
+   },
+   "2030": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 214,
+      "exactPct": 58.63,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4137,
+      "err1": 151,
+      "err2plus": 0,
+      "meanSigned": 0.0082
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 214,
+      "exactPct": 58.63,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4137,
+      "err1": 151,
+      "err2plus": 0,
+      "meanSigned": 0.0082
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 340,
+      "exactPct": 93.15,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0685,
+      "err1": 25,
+      "err2plus": 0,
+      "meanSigned": -0.0082
+     },
+     "asr": {
+      "days": 365,
+      "exact": 271,
+      "exactPct": 74.25,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.2575,
+      "err1": 94,
+      "err2plus": 0,
+      "meanSigned": 0.0055
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 223,
+      "exactPct": 61.1,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.389,
+      "err1": 142,
+      "err2plus": 0,
+      "meanSigned": 0.0274
+     },
+     "isha": {
+      "days": 365,
+      "exact": 223,
+      "exactPct": 61.1,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.389,
+      "err1": 142,
+      "err2plus": 0,
+      "meanSigned": 0.0274
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1485,
+     "exactPct": 67.81,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.3219
+    }
+   },
+   "2031": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 349,
+      "exactPct": 95.62,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0438,
+      "err1": 16,
+      "err2plus": 0,
+      "meanSigned": 0.011
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 349,
+      "exactPct": 95.62,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0438,
+      "err1": 16,
+      "err2plus": 0,
+      "meanSigned": 0.011
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 363,
+      "exactPct": 99.45,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0055,
+      "err1": 2,
+      "err2plus": 0,
+      "meanSigned": -0.0055
+     },
+     "asr": {
+      "days": 365,
+      "exact": 350,
+      "exactPct": 95.89,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0411,
+      "err1": 15,
+      "err2plus": 0,
+      "meanSigned": -0.0082
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 354,
+      "exactPct": 96.99,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0301,
+      "err1": 11,
+      "err2plus": 0,
+      "meanSigned": 0.0027
+     },
+     "isha": {
+      "days": 365,
+      "exact": 354,
+      "exactPct": 96.99,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0301,
+      "err1": 11,
+      "err2plus": 0,
+      "meanSigned": 0.0027
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 2119,
+     "exactPct": 96.76,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.0324
+    }
+   },
+   "2032": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 287,
+      "within1Pct": 78.42,
+      "worst": 2,
+      "mae": 0.9918,
+      "err1": 205,
+      "err2plus": 79,
+      "meanSigned": -0.2158
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 287,
+      "within1Pct": 78.42,
+      "worst": 2,
+      "mae": 0.9918,
+      "err1": 205,
+      "err2plus": 79,
+      "meanSigned": -0.2158
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 304,
+      "exactPct": 83.06,
+      "within1": 366,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1694,
+      "err1": 62,
+      "err2plus": 0,
+      "meanSigned": 0.0328
+     },
+     "asr": {
+      "days": 366,
+      "exact": 159,
+      "exactPct": 43.44,
+      "within1": 353,
+      "within1Pct": 96.45,
+      "worst": 2,
+      "mae": 0.6011,
+      "err1": 194,
+      "err2plus": 13,
+      "meanSigned": 0.1967
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 269,
+      "within1Pct": 73.5,
+      "worst": 2,
+      "mae": 1.0246,
+      "err1": 181,
+      "err2plus": 97,
+      "meanSigned": 0.2869
+     },
+     "isha": {
+      "days": 366,
+      "exact": 89,
+      "exactPct": 24.32,
+      "within1": 269,
+      "within1Pct": 73.5,
+      "worst": 2,
+      "mae": 1.0219,
+      "err1": 180,
+      "err2plus": 97,
+      "meanSigned": 0.2896
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 804,
+     "exactPct": 36.61,
+     "within1": 1831,
+     "within1Pct": 83.38,
+     "worst": 2,
+     "mae": 0.8001
+    }
+   },
+   "2033": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 87,
+      "exactPct": 23.84,
+      "within1": 351,
+      "within1Pct": 96.16,
+      "worst": 2,
+      "mae": 0.8,
+      "err1": 264,
+      "err2plus": 14,
+      "meanSigned": 0.0274
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 87,
+      "exactPct": 23.84,
+      "within1": 351,
+      "within1Pct": 96.16,
+      "worst": 2,
+      "mae": 0.8,
+      "err1": 264,
+      "err2plus": 14,
+      "meanSigned": 0.0274
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 316,
+      "exactPct": 86.58,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1342,
+      "err1": 49,
+      "err2plus": 0,
+      "meanSigned": 0.0027
+     },
+     "asr": {
+      "days": 365,
+      "exact": 178,
+      "exactPct": 48.77,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.5123,
+      "err1": 187,
+      "err2plus": 0,
+      "meanSigned": -0.0301
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 91,
+      "exactPct": 24.93,
+      "within1": 353,
+      "within1Pct": 96.71,
+      "worst": 2,
+      "mae": 0.7836,
+      "err1": 262,
+      "err2plus": 12,
+      "meanSigned": 0.0219
+     },
+     "isha": {
+      "days": 365,
+      "exact": 91,
+      "exactPct": 24.93,
+      "within1": 353,
+      "within1Pct": 96.71,
+      "worst": 2,
+      "mae": 0.7836,
+      "err1": 262,
+      "err2plus": 12,
+      "meanSigned": 0.0219
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 850,
+     "exactPct": 38.81,
+     "within1": 2138,
+     "within1Pct": 97.63,
+     "worst": 2,
+     "mae": 0.6356
+    }
+   },
+   "2034": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 200,
+      "exactPct": 54.79,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4521,
+      "err1": 165,
+      "err2plus": 0,
+      "meanSigned": 0.0192
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 200,
+      "exactPct": 54.79,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4521,
+      "err1": 165,
+      "err2plus": 0,
+      "meanSigned": 0.0192
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 338,
+      "exactPct": 92.6,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.074,
+      "err1": 27,
+      "err2plus": 0,
+      "meanSigned": -0.0027
+     },
+     "asr": {
+      "days": 365,
+      "exact": 260,
+      "exactPct": 71.23,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.2877,
+      "err1": 105,
+      "err2plus": 0,
+      "meanSigned": -0.0027
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 207,
+      "exactPct": 56.71,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4329,
+      "err1": 158,
+      "err2plus": 0,
+      "meanSigned": 0.0493
+     },
+     "isha": {
+      "days": 365,
+      "exact": 207,
+      "exactPct": 56.71,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4329,
+      "err1": 158,
+      "err2plus": 0,
+      "meanSigned": 0.0493
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1412,
+     "exactPct": 64.47,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.3553
+    }
+   },
+   "2035": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 337,
+      "exactPct": 92.33,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0767,
+      "err1": 28,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 337,
+      "exactPct": 92.33,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0767,
+      "err1": 28,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 361,
+      "exactPct": 98.9,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.011,
+      "err1": 4,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "asr": {
+      "days": 365,
+      "exact": 347,
+      "exactPct": 95.07,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0493,
+      "err1": 18,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 340,
+      "exactPct": 93.15,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0685,
+      "err1": 25,
+      "err2plus": 0,
+      "meanSigned": 0.0192
+     },
+     "isha": {
+      "days": 365,
+      "exact": 340,
+      "exactPct": 93.15,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0685,
+      "err1": 25,
+      "err2plus": 0,
+      "meanSigned": 0.0192
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 2062,
+     "exactPct": 94.16,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.0584
+    }
+   },
+   "2036": {
+    "days": 366,
+    "perPrayer": {
+     "fajr": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 273,
+      "within1Pct": 74.59,
+      "worst": 2,
+      "mae": 1.0301,
+      "err1": 191,
+      "err2plus": 93,
+      "meanSigned": -0.2104
+     },
+     "sunrise": {
+      "days": 366,
+      "exact": 82,
+      "exactPct": 22.4,
+      "within1": 273,
+      "within1Pct": 74.59,
+      "worst": 2,
+      "mae": 1.0301,
+      "err1": 191,
+      "err2plus": 93,
+      "meanSigned": -0.2104
+     },
+     "dhuhr": {
+      "days": 366,
+      "exact": 303,
+      "exactPct": 82.79,
+      "within1": 366,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1721,
+      "err1": 63,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "asr": {
+      "days": 366,
+      "exact": 156,
+      "exactPct": 42.62,
+      "within1": 350,
+      "within1Pct": 95.63,
+      "worst": 2,
+      "mae": 0.6175,
+      "err1": 194,
+      "err2plus": 16,
+      "meanSigned": 0.2022
+     },
+     "magrib": {
+      "days": 366,
+      "exact": 88,
+      "exactPct": 24.04,
+      "within1": 261,
+      "within1Pct": 71.31,
+      "worst": 2,
+      "mae": 1.0464,
+      "err1": 173,
+      "err2plus": 105,
+      "meanSigned": 0.2978
+     },
+     "isha": {
+      "days": 366,
+      "exact": 89,
+      "exactPct": 24.32,
+      "within1": 261,
+      "within1Pct": 71.31,
+      "worst": 2,
+      "mae": 1.0437,
+      "err1": 172,
+      "err2plus": 105,
+      "meanSigned": 0.3005
+     }
+    },
+    "overall": {
+     "days": 2196,
+     "exact": 800,
+     "exactPct": 36.43,
+     "within1": 1784,
+     "within1Pct": 81.24,
+     "worst": 2,
+     "mae": 0.8233
+    }
+   },
+   "2037": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 345,
+      "within1Pct": 94.52,
+      "worst": 2,
+      "mae": 0.8384,
+      "err1": 266,
+      "err2plus": 20,
+      "meanSigned": 0.0274
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 345,
+      "within1Pct": 94.52,
+      "worst": 2,
+      "mae": 0.8384,
+      "err1": 266,
+      "err2plus": 20,
+      "meanSigned": 0.0274
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 313,
+      "exactPct": 85.75,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.1425,
+      "err1": 52,
+      "err2plus": 0,
+      "meanSigned": 0
+     },
+     "asr": {
+      "days": 365,
+      "exact": 171,
+      "exactPct": 46.85,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.5315,
+      "err1": 194,
+      "err2plus": 0,
+      "meanSigned": -0.0219
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 347,
+      "within1Pct": 95.07,
+      "worst": 2,
+      "mae": 0.8329,
+      "err1": 268,
+      "err2plus": 18,
+      "meanSigned": 0.0274
+     },
+     "isha": {
+      "days": 365,
+      "exact": 79,
+      "exactPct": 21.64,
+      "within1": 347,
+      "within1Pct": 95.07,
+      "worst": 2,
+      "mae": 0.8329,
+      "err1": 268,
+      "err2plus": 18,
+      "meanSigned": 0.0274
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 800,
+     "exactPct": 36.53,
+     "within1": 2114,
+     "within1Pct": 96.53,
+     "worst": 2,
+     "mae": 0.6694
+    }
+   },
+   "2038": {
+    "days": 365,
+    "perPrayer": {
+     "fajr": {
+      "days": 365,
+      "exact": 190,
+      "exactPct": 52.05,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4795,
+      "err1": 175,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "sunrise": {
+      "days": 365,
+      "exact": 190,
+      "exactPct": 52.05,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4795,
+      "err1": 175,
+      "err2plus": 0,
+      "meanSigned": 0.0301
+     },
+     "dhuhr": {
+      "days": 365,
+      "exact": 334,
+      "exactPct": 91.51,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.0849,
+      "err1": 31,
+      "err2plus": 0,
+      "meanSigned": -0.0082
+     },
+     "asr": {
+      "days": 365,
+      "exact": 251,
+      "exactPct": 68.77,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.3123,
+      "err1": 114,
+      "err2plus": 0,
+      "meanSigned": -0.011
+     },
+     "magrib": {
+      "days": 365,
+      "exact": 189,
+      "exactPct": 51.78,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4822,
+      "err1": 176,
+      "err2plus": 0,
+      "meanSigned": 0.0384
+     },
+     "isha": {
+      "days": 365,
+      "exact": 189,
+      "exactPct": 51.78,
+      "within1": 365,
+      "within1Pct": 100,
+      "worst": 1,
+      "mae": 0.4822,
+      "err1": 176,
+      "err2plus": 0,
+      "meanSigned": 0.0384
+     }
+    },
+    "overall": {
+     "days": 2190,
+     "exact": 1343,
+     "exactPct": 61.32,
+     "within1": 2190,
+     "within1Pct": 100,
+     "worst": 1,
+     "mae": 0.3868
+    }
+   }
+  },
+  "perPrayerOverall": {
+   "fajr": {
+    "days": 4018,
+    "exact": 1792,
+    "exactPct": 44.6,
+    "within1": 3738,
+    "within1Pct": 93.03,
+    "worst": 2,
+    "mae": 0.6237,
+    "meanSigned": -0.0458,
+    "err1": 1946,
+    "err2plus": 280
+   },
+   "sunrise": {
+    "days": 4018,
+    "exact": 1792,
+    "exactPct": 44.6,
+    "within1": 3738,
+    "within1Pct": 93.03,
+    "worst": 2,
+    "mae": 0.6237,
+    "meanSigned": -0.0458,
+    "err1": 1946,
+    "err2plus": 280
+   },
+   "dhuhr": {
+    "days": 4018,
+    "exact": 3594,
+    "exactPct": 89.45,
+    "within1": 4018,
+    "within1Pct": 100,
+    "worst": 1,
+    "mae": 0.1055,
+    "meanSigned": 0.0065,
+    "err1": 424,
+    "err2plus": 0
+   },
+   "asr": {
+    "days": 4018,
+    "exact": 2484,
+    "exactPct": 61.82,
+    "within1": 3977,
+    "within1Pct": 98.98,
+    "worst": 2,
+    "mae": 0.392,
+    "meanSigned": 0.0461,
+    "err1": 1493,
+    "err2plus": 41
+   },
+   "magrib": {
+    "days": 4018,
+    "exact": 1849,
+    "exactPct": 46.02,
+    "within1": 3695,
+    "within1Pct": 91.96,
+    "worst": 2,
+    "mae": 0.6202,
+    "meanSigned": 0.1005,
+    "err1": 1846,
+    "err2plus": 323
+   },
+   "isha": {
+    "days": 4018,
+    "exact": 1850,
+    "exactPct": 46.04,
+    "within1": 3695,
+    "within1Pct": 91.96,
+    "worst": 2,
+    "mae": 0.62,
+    "meanSigned": 0.1013,
+    "err1": 1845,
+    "err2plus": 323
+   }
+  },
+  "overall": {
+   "days": 24108,
+   "exact": 13361,
+   "exactPct": 55.42,
+   "within1": 22861,
+   "within1Pct": 94.83,
+   "mae": 0.4975,
+   "worst": 2
+  }
+ }
+}

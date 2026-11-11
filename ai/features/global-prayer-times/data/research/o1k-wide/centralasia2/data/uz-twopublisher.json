@@ -1,0 +1,34 @@
+{
+  "captured_utc": "2026-11-10T~20:00Z",
+  "islom_uz": {
+    "publisher": "\"Islamic Portal\" MChJ (private) — islom.uz",
+    "tier": "private portal, computes in-browser (15.5/15.5, Hanafi) from a per-city coordinate list",
+    "site_notice": "Гувоҳнома №1566; Tashkent, Chilanzar; footer credits Sheikh Muhammad Sadiq Muhammad Yusuf",
+    "cities_offered": 90,
+    "date_rule": "the visitor's local calendar date (browser clock) — today only, no date picker",
+    "2026-11-10": {
+      "tashkent": {"fajr":"05:43","sunrise":"07:05","dhuhr":"12:07","asr":"15:27","maghrib":"17:13","isha":"18:30"},
+      "samarkand": {"fajr":"05:51","sunrise":"07:10","dhuhr":"12:16","asr":"15:40","maghrib":"17:25","isha":"18:40"},
+      "bukhara":  {"fajr":"06:01","sunrise":"07:21","dhuhr":"12:26","asr":"15:50","maghrib":"17:35","isha":"18:50"}
+    },
+    "2026-11-11": {
+      "tashkent": {"fajr":"05:45","sunrise":"07:06","dhuhr":"12:07","asr":"15:26","maghrib":"17:12","isha":"18:29"},
+      "samarkand": {"fajr":"05:52","sunrise":"07:12","dhuhr":"12:16","asr":"15:40","maghrib":"17:24","isha":"18:40"},
+      "bukhara":  {"fajr":"06:02","sunrise":"07:22","dhuhr":"12:26","asr":"15:49","maghrib":"17:34","isha":"18:50"}
+    }
+  },
+  "muslim_uz": {
+    "publisher": "Ўзбекистон мусулмонлари идораси (Muslim Board of Uzbekistan) — the state body",
+    "tier": "authority",
+    "cities_offered": 1,
+    "date_rule": "server-rendered for the current Asia/Tashkent day only",
+    "params_tested_and_ignored": ["?date=2026-11-20","?d=20&m=11&y=2026","?day=20&month=11&year=2026","?city=buxoro","?region=1..13"],
+    "2026-11-11": {
+      "tashkent": {"fajr":"05:45","sunrise":"07:06","dhuhr":"12:12","asr":"15:26","maghrib":"17:10","isha":"18:26"}
+    }
+  },
+  "shared_day_diff_2026_11_11_tashkent": {
+    "fajr": 0, "sunrise": 0, "dhuhr": -5, "asr": 0, "maghrib": 2, "isha": 3,
+    "note": "portal minus board, minutes. The board's dhuhr is 5 min LATER than the portal's; the portal's 12:07 is apparent solar noon for 69.24E on that date, so the +5 is the board's precaution margin, not the portal's."
+  }
+}

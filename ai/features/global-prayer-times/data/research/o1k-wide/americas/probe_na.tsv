@@ -1,0 +1,87 @@
+domain	verdict	detail
+iccny.org	miss	HTTP 000 
+masjidmalcolmshabazz.com	miss	HTTP 200 
+bayridgemasjid.org	miss	HTTP 000 
+masjidarrahman.org	miss	HTTP 404 
+islamiccenter.com	miss	HTTP 404 
+kingfahadmosque.org	miss	HTTP 200 
+masjidomar.org	miss	HTTP 200 
+icc-la.org	miss	HTTP 000 
+downtownislamiccenter.org	miss	HTTP 000 
+masjidalhuda.org	miss	HTTP 200 masjid_id=1QL0GKZD
+iccelgin.com	miss	HTTP 200 
+masjidihsan.org	miss	HTTP 200 masjid_id=oxdN0YLV
+iant.com	HIT_Dpt	rows=1 size=128859
+epicmasjid.org	miss	HTTP 404 
+valleyranchmasjid.org	miss	HTTP 404 
+dentonmasjid.com	miss	HTTP 404 
+adamscenter.org	miss	HTTP 404 
+alnoormasjid.org	miss	HTTP 404 
+isgh.org	miss	HTTP 403 
+masjidsalamhouston.org	miss	HTTP 000 
+theislamiccenter.org	miss	HTTP 000 
+hijrah.org	HIT_Dpt	rows=1 size=128848
+daralhijrah.org	miss	HTTP 200 
+masdc.org	miss	HTTP 200 masjid_id=YRKxVOAO
+masjidullah.org	miss	HTTP 200 
+neicphila.org	miss	HTTP 000 
+masjidmuhammad.org	miss	HTTP 000 
+msdvpa.org	miss	HTTP 404 
+miamimosque.org	miss	HTTP 404 
+masjidannoor.org	miss	HTTP 000 
+masjidmiami.org	miss	HTTP 000 
+alfarooqmasjid.org	miss	HTTP 200 
+atlantamasjid.org	miss	HTTP 000 
+suwaneemasjid.org	miss	HTTP 200 masjid_id=pQKMMBKB
+masjidibraaheem.com	miss	HTTP 404 
+isbcc.org	miss	HTTP 404 masjid_id=zVKp9PLP
+masjidsboston.org	miss	HTTP 000 
+islamicsocietyframingham.org	miss	HTTP 000 
+iccpaz.org	miss	HTTP 000 
+tempeislamiccenter.org	miss	HTTP 000 
+masjidalsalaamaz.org	miss	HTTP 000 
+issf.org	miss	HTTP 000 
+mcabayarea.org	miss	HTTP 404 
+masjidsf.org	miss	HTTP 000 
+sabamasjid.org	miss	HTTP 000 
+icsr.org	miss	HTTP 200 
+coronamasjid.org	miss	HTTP 000 
+masjidalnoor.org	miss	HTTP 404 masjid_id=XEdoEvL7
+iccmd.org	miss	HTTP 000 
+masjidmuadh.org	miss	HTTP 000 
+mcws.org	miss	HTTP 200 
+iagd.net	miss	HTTP 404 masjid_id=4nL1kgda
+mapswedmond.org	miss	HTTP 000 
+idrismosque.com	miss	HTTP 200 masjid_id=keLQjWAM
+ihseattle.org	miss	HTTP 200 
+annoorpdx.org	miss	HTTP 200 
+masmn.org	miss	HTTP 403 
+daralfarooq.org	miss	HTTP 000 
+masjidalisraa.org	miss	HTTP 404 masjid_id=XAlRwNKb
+icsd.org	miss	HTTP 200 
+masjidhamzasandiego.com	miss	HTTP 200 masjid_id=adJq9xAk
+masjidalnoor-sd.org	miss	HTTP 000 
+istaba.org	miss	HTTP 404 
+masjidtampabay.org	miss	HTTP 000 
+coloradomuslimsociety.org	miss	HTTP 200 
+denverislamiccenter.org	miss	HTTP 000 
+ndic.org	miss	HTTP 200 
+isb.org	miss	HTTP 404 
+masjidulhaqq.org	miss	HTTP 000 
+ricbaltimore.org	miss	HTTP 404 masjid_id=QKM5NGKB
+isgh.org	miss	HTTP 403 
+icna.org	miss	HTTP 404 
+whyislam.org	miss	HTTP 403 
+islamicinstitute.ca	HIT_Dpt	rows=1 size=135499
+masjidtoronto.com	HIT_Dpt	rows=1 size=130308
+isnacanada.com	miss	HTTP 403 
+jamicentre.ca	miss	HTTP 000 
+bcmasjid.com	miss	HTTP 000 
+masjidal-salaam.ca	miss	HTTP 000 
+richmondmasjid.ca	miss	HTTP 200 
+islamiccentre.ca	HIT_Dpt	rows=1 size=128859
+masjidaloumah.ca	miss	HTTP 000 
+calgaryislamiccentre.com	miss	HTTP 000 
+akramjomaa.com	miss	HTTP 404 
+snmc.ca	miss	HTTP 404 
+ottawamosque.ca	miss	HTTP 404 

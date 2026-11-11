@@ -1,0 +1,786 @@
+{
+ "job": "Muhammadiyah KHGT decade, 2025-2035",
+ "source": "https://api-khgt.muhammadiyah.or.id/api/sholat/schedule",
+ "method": "POST {lat,lng,date,mode:monthly_masehi}; whole month per request; elevation auto-detected",
+ "geometry": {
+  "jakarta": {
+   "lat": -6.2088,
+   "lng": 106.8456,
+   "tz": "Asia/Jakarta"
+  },
+  "surabaya": {
+   "lat": -7.2575,
+   "lng": 112.7521,
+   "tz": "Asia/Jakarta"
+  },
+  "jayapura": {
+   "lat": -2.5916,
+   "lng": 140.669,
+   "tz": "Asia/Jayapura"
+  }
+ },
+ "elevation": {
+  "jakarta": {
+   "elevation": 12,
+   "tz": 7,
+   "title": "Juli 2035",
+   "engine": "default"
+  },
+  "surabaya": {
+   "elevation": 8,
+   "tz": 7,
+   "title": "Juli 2035",
+   "engine": "default"
+  },
+  "jayapura": {
+   "elevation": 22,
+   "tz": 9,
+   "title": "Juli 2035",
+   "engine": "default"
+  }
+ },
+ "harvest": {
+  "years": [
+   2025,
+   2027,
+   2029,
+   2031,
+   2033,
+   2035
+  ],
+  "months": [
+   1,
+   7
+  ],
+  "rows": 1116,
+  "captures": 36
+ },
+ "rule": {
+  "angle": 18,
+  "mode": "ceil",
+  "margin": 1,
+  "note": "fitted cell; margin folds in before rounding"
+ },
+ "gridFit": {
+  "fajr": {
+   "angle": 17.9,
+   "mode": "ceil",
+   "margin": 0.6,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1102,
+   "within1": 1116,
+   "worst": 1,
+   "mean": 0.01,
+   "mae": 0.01,
+   "pctExact": 98.75,
+   "pctWithin1": 100
+  },
+  "isha": {
+   "angle": 18,
+   "mode": "ceil",
+   "margin": 1,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1109,
+   "within1": 1116,
+   "worst": 1,
+   "mean": 0,
+   "mae": 0.01,
+   "pctExact": 99.37,
+   "pctWithin1": 100
+  }
+ },
+ "overall": {
+  "fajr": {
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1084,
+   "within1": 1116,
+   "worst": 1,
+   "mean": -0.03,
+   "mae": 0.03,
+   "pctExact": 97.13,
+   "pctWithin1": 100
+  },
+  "isha": {
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1109,
+   "within1": 1116,
+   "worst": 1,
+   "mean": 0,
+   "mae": 0.01,
+   "pctExact": 99.37,
+   "pctWithin1": 100
+  }
+ },
+ "perYear": {
+  "2025": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 183,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.02,
+    "mae": 0.02,
+    "pctExact": 98.39,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 184,
+    "within1": 186,
+    "worst": 1,
+    "mean": 0.01,
+    "mae": 0.01,
+    "pctExact": 98.92,
+    "pctWithin1": 100
+   }
+  },
+  "2027": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 180,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.03,
+    "mae": 0.03,
+    "pctExact": 96.77,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 186,
+    "within1": 186,
+    "worst": 0,
+    "mean": 0,
+    "mae": 0,
+    "pctExact": 100,
+    "pctWithin1": 100
+   }
+  },
+  "2029": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 182,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.02,
+    "mae": 0.02,
+    "pctExact": 97.85,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 183,
+    "within1": 186,
+    "worst": 1,
+    "mean": 0.01,
+    "mae": 0.02,
+    "pctExact": 98.39,
+    "pctWithin1": 100
+   }
+  },
+  "2031": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 178,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.04,
+    "mae": 0.04,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 186,
+    "within1": 186,
+    "worst": 0,
+    "mean": 0,
+    "mae": 0,
+    "pctExact": 100,
+    "pctWithin1": 100
+   }
+  },
+  "2033": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 183,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.02,
+    "mae": 0.02,
+    "pctExact": 98.39,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 185,
+    "within1": 186,
+    "worst": 1,
+    "mean": 0.01,
+    "mae": 0.01,
+    "pctExact": 99.46,
+    "pctWithin1": 100
+   }
+  },
+  "2035": {
+   "n": 186,
+   "fajr": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 178,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.04,
+    "mae": 0.04,
+    "pctExact": 95.7,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 186,
+    "scored": 186,
+    "nulls": 0,
+    "exact": 185,
+    "within1": 186,
+    "worst": 1,
+    "mean": -0.01,
+    "mae": 0.01,
+    "pctExact": 99.46,
+    "pctWithin1": 100
+   }
+  }
+ },
+ "perCity": {
+  "jakarta": {
+   "lat": -6.2088,
+   "n": 372,
+   "fajr": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 364,
+    "within1": 372,
+    "worst": 1,
+    "mean": -0.02,
+    "mae": 0.02,
+    "pctExact": 97.85,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 370,
+    "within1": 372,
+    "worst": 1,
+    "mean": 0,
+    "mae": 0.01,
+    "pctExact": 99.46,
+    "pctWithin1": 100
+   }
+  },
+  "surabaya": {
+   "lat": -7.2575,
+   "n": 372,
+   "fajr": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 359,
+    "within1": 372,
+    "worst": 1,
+    "mean": -0.03,
+    "mae": 0.03,
+    "pctExact": 96.51,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 370,
+    "within1": 372,
+    "worst": 1,
+    "mean": 0.01,
+    "mae": 0.01,
+    "pctExact": 99.46,
+    "pctWithin1": 100
+   }
+  },
+  "jayapura": {
+   "lat": -2.5916,
+   "n": 372,
+   "fajr": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 361,
+    "within1": 372,
+    "worst": 1,
+    "mean": -0.03,
+    "mae": 0.03,
+    "pctExact": 97.04,
+    "pctWithin1": 100
+   },
+   "isha": {
+    "n": 372,
+    "scored": 372,
+    "nulls": 0,
+    "exact": 369,
+    "within1": 372,
+    "worst": 1,
+    "mean": 0,
+    "mae": 0.01,
+    "pctExact": 99.19,
+    "pctWithin1": 100
+   }
+  }
+ },
+ "marginWindows": {
+  "fajr": {
+   "2025": {
+    "lo": 1,
+    "hi": 1,
+    "width": 0,
+    "centre": 1
+   },
+   "2027": {
+    "lo": 1.017,
+    "hi": 1.017,
+    "width": 0,
+    "centre": 1.017
+   },
+   "2029": {
+    "lo": 1.033,
+    "hi": 1,
+    "width": -0.033,
+    "centre": 1.017
+   },
+   "2031": {
+    "lo": 1.017,
+    "hi": 1.017,
+    "width": 0,
+    "centre": 1.017
+   },
+   "2033": {
+    "lo": 1.017,
+    "hi": 1.017,
+    "width": 0,
+    "centre": 1.017
+   },
+   "2035": {
+    "lo": 1.033,
+    "hi": 1,
+    "width": -0.033,
+    "centre": 1.017
+   }
+  },
+  "isha": {
+   "2025": {
+    "lo": 0.983,
+    "hi": 0.983,
+    "width": 0,
+    "centre": 0.983
+   },
+   "2027": {
+    "lo": 0.983,
+    "hi": 1,
+    "width": 0.017,
+    "centre": 0.992
+   },
+   "2029": {
+    "lo": 1,
+    "hi": 0.967,
+    "width": -0.033,
+    "centre": 0.983
+   },
+   "2031": {
+    "lo": 0.983,
+    "hi": 1,
+    "width": 0.017,
+    "centre": 0.992
+   },
+   "2033": {
+    "lo": 0.95,
+    "hi": 0.983,
+    "width": 0.033,
+    "centre": 0.967
+   },
+   "2035": {
+    "lo": 1,
+    "hi": 1.017,
+    "width": 0.017,
+    "centre": 1.008
+   }
+  }
+ },
+ "kemenagDelta": {
+  "2025": {
+   "n": 186,
+   "min": -9,
+   "max": -7,
+   "mean": -7.77,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -9,
+     "max": -7,
+     "mean": -7.81
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.79
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.73
+    }
+   }
+  },
+  "2027": {
+   "n": 186,
+   "min": -9,
+   "max": -7,
+   "mean": -7.82,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -9,
+     "max": -7,
+     "mean": -7.9
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.82
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.73
+    }
+   }
+  },
+  "2029": {
+   "n": 186,
+   "min": -8,
+   "max": -7,
+   "mean": -7.78,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.77
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.82
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.74
+    }
+   }
+  },
+  "2031": {
+   "n": 186,
+   "min": -9,
+   "max": -7,
+   "mean": -7.83,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -9,
+     "max": -7,
+     "mean": -7.9
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -9,
+     "max": -7,
+     "mean": -7.85
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.74
+    }
+   }
+  },
+  "2033": {
+   "n": 186,
+   "min": -8,
+   "max": -7,
+   "mean": -7.77,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.77
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.84
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.71
+    }
+   }
+  },
+  "2035": {
+   "n": 186,
+   "min": -9,
+   "max": -7,
+   "mean": -7.84,
+   "byCity": {
+    "jakarta": {
+     "n": 62,
+     "min": -9,
+     "max": -7,
+     "mean": -7.9
+    },
+    "surabaya": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.85
+    },
+    "jayapura": {
+     "n": 62,
+     "min": -8,
+     "max": -7,
+     "mean": -7.77
+    }
+   }
+  },
+  "definition": "delta = Kemenag minute - KHGT printed minute; negative means the KHGT print is later"
+ },
+ "amplitude": {
+  "jakarta": {
+   "lat": -6.2088,
+   "printedJan": {
+    "fajrMean": 275.44,
+    "ishaMean": 1171.04,
+    "fajrFirst": 267,
+    "fajrLast": 283
+   },
+   "printedJul": {
+    "fajrMean": 292.15,
+    "ishaMean": 1147.51,
+    "fajrFirst": 290,
+    "fajrLast": 293
+   },
+   "janMinusJulFajr": -16.71,
+   "janMinusJulIsha": 23.53,
+   "modelled2027": {
+    "fajr": {
+     "min": 251.52,
+     "max": 291.45,
+     "span": 39.93
+    },
+    "isha": {
+     "min": 1135.65,
+     "max": 1170.75,
+     "span": 35.1
+    },
+    "sunrise": {
+     "min": 325.23,
+     "max": 364.87,
+     "span": 39.63
+    },
+    "sunset": {
+     "min": 1063.57,
+     "max": 1097.3,
+     "span": 33.73
+    }
+   }
+  },
+  "surabaya": {
+   "lat": -7.2575,
+   "printedJan": {
+    "fajrMean": 249.9,
+    "ishaMean": 1149.27,
+    "fajrFirst": 241,
+    "fajrLast": 258
+   },
+   "printedJul": {
+    "fajrMean": 270.12,
+    "ishaMean": 1122.37,
+    "fajrFirst": 268,
+    "fajrLast": 271
+   },
+   "janMinusJulFajr": -20.22,
+   "janMinusJulIsha": 26.9,
+   "modelled2027": {
+    "fajr": {
+     "min": 226.07,
+     "max": 269.25,
+     "span": 43.18
+    },
+    "isha": {
+     "min": 1111.73,
+     "max": 1148.9,
+     "span": 37.17
+    },
+    "sunrise": {
+     "min": 300.22,
+     "max": 342.88,
+     "span": 42.67
+    },
+    "sunset": {
+     "min": 1038.33,
+     "max": 1075.02,
+     "span": 36.68
+    }
+   }
+  },
+  "jayapura": {
+   "lat": -2.5916,
+   "printedJan": {
+    "fajrMean": 266.42,
+    "ishaMean": 1149.42,
+    "fajrFirst": 259,
+    "fajrLast": 273
+   },
+   "printedJul": {
+    "fajrMean": 271.33,
+    "ishaMean": 1137.79,
+    "fajrFirst": 269,
+    "fajrLast": 273
+   },
+   "janMinusJulFajr": -4.91,
+   "janMinusJulIsha": 11.63,
+   "modelled2027": {
+    "fajr": {
+     "min": 242.03,
+     "max": 275.6,
+     "span": 33.57
+    },
+    "isha": {
+     "min": 1117.45,
+     "max": 1149.82,
+     "span": 32.37
+    },
+    "sunrise": {
+     "min": 314.47,
+     "max": 345.68,
+     "span": 31.22
+    },
+    "sunset": {
+     "min": 1046.97,
+     "max": 1077.7,
+     "span": 30.73
+    }
+   }
+  }
+ },
+ "otherColumns": {
+  "sunrise": {
+   "mode": "ceil",
+   "margin": -1.4,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1044,
+   "within1": 1116,
+   "worst": 1,
+   "mean": 0.03,
+   "mae": 0.06,
+   "pctExact": 93.55,
+   "pctWithin1": 100
+  },
+  "dhuhr": {
+   "mode": "floor",
+   "margin": 2,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1104,
+   "within1": 1116,
+   "worst": 1,
+   "mean": 0.01,
+   "mae": 0.01,
+   "pctExact": 98.92,
+   "pctWithin1": 100
+  },
+  "asr": {
+   "mode": "floor",
+   "margin": 1.9,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1092,
+   "within1": 1116,
+   "worst": 1,
+   "mean": -0.01,
+   "mae": 0.02,
+   "pctExact": 97.85,
+   "pctWithin1": 100
+  },
+  "maghrib": {
+   "mode": "nearest",
+   "margin": 1.9,
+   "n": 1116,
+   "scored": 1116,
+   "nulls": 0,
+   "exact": 1025,
+   "within1": 1116,
+   "worst": 1,
+   "mean": -0.04,
+   "mae": 0.08,
+   "pctExact": 91.85,
+   "pctWithin1": 100
+  }
+ }
+}

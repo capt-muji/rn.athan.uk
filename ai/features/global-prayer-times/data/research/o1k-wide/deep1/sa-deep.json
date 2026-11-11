@@ -1,0 +1,1010 @@
+{
+ "job": "SA Hijri 1450-1500",
+ "recipe": {
+  "source": "umqserv.kacst.gov.sa GetPrayerHijriYear, one GET per Hijri year",
+  "coordinates": {
+   "lat": 21.4225,
+   "lng": 39.8262
+  },
+  "clock": "UTC+3 (zone=3)",
+  "fajr": "18.5 deg",
+  "isha": "maghrib + 90 min; + 120 on the API’s own Ramadan days (hijri month 9)",
+  "offsets": {
+   "fajr": 1,
+   "sunrise": 0,
+   "dhuhr": 1,
+   "asr": 1,
+   "maghrib": 1,
+   "isha": "inherits maghrib"
+  },
+  "rounding": "floor(raw + 1) single formulation; sunrise floor(raw)",
+  "highLat": "MiddleOfTheNight",
+  "madhab": "Shafi",
+  "engine": "adhan-js 4.4.6 (Other 18.5/interval)"
+ },
+ "years": {
+  "1450": {
+   "hijriYear": 1450,
+   "rows": 354,
+   "rawRows": 354,
+   "boundaryRowsOutsideYear": [],
+   "span": {
+    "from": "2028-05-25",
+    "to": "2029-05-13"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 67.8,
+      "w1Pct": 100,
+      "mae": 0.322,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 94.6,
+      "w1Pct": 100,
+      "mae": 0.054,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 98.6,
+      "w1Pct": 100,
+      "mae": 0.014,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 67.5,
+      "w1Pct": 100,
+      "mae": 0.325,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1851,
+     "w1": 2124,
+     "sum": 273,
+     "max": 1,
+     "exactPct": 87.1,
+     "w1Pct": 100,
+     "mae": 0.129
+    }
+   },
+   "intervalHistogram": {
+    "90": 325,
+    "120": 29
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 29,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2029-01-15",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2029-01-16",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2029-02-13",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2029-02-14",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 84,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 90
+   }
+  },
+  "1460": {
+   "hijriYear": 1460,
+   "rows": 354,
+   "rawRows": 355,
+   "boundaryRowsOutsideYear": [
+    {
+     "date": "2038-02-05",
+     "hy": 1459,
+     "hm": 12,
+     "hd": 30
+    }
+   ],
+   "span": {
+    "from": "2038-02-06",
+    "to": "2039-01-25"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 61.6,
+      "w1Pct": 100,
+      "mae": 0.384,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 94.1,
+      "w1Pct": 100,
+      "mae": 0.059,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 68.9,
+      "w1Pct": 100,
+      "mae": 0.311,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 97.2,
+      "w1Pct": 100,
+      "mae": 0.028,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1829,
+     "w1": 2124,
+     "sum": 295,
+     "max": 1,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139
+    }
+   },
+   "intervalHistogram": {
+    "90": 325,
+    "120": 29
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 29,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2038-09-29",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2038-09-30",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2038-10-28",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2038-10-29",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 90
+   }
+  },
+  "1470": {
+   "hijriYear": 1470,
+   "rows": 354,
+   "rawRows": 355,
+   "boundaryRowsOutsideYear": [
+    {
+     "date": "2047-10-20",
+     "hy": 1469,
+     "hm": 12,
+     "hd": 30
+    }
+   ],
+   "span": {
+    "from": "2047-10-21",
+    "to": "2048-10-08"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 57.9,
+      "w1Pct": 100,
+      "mae": 0.421,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 98.3,
+      "w1Pct": 100,
+      "mae": 0.017,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 99.2,
+      "w1Pct": 100,
+      "mae": 0.008,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 66.9,
+      "w1Pct": 100,
+      "mae": 0.331,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 99.7,
+      "w1Pct": 100,
+      "mae": 0.003,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 99.7,
+      "w1Pct": 100,
+      "mae": 0.003,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1847,
+     "w1": 2124,
+     "sum": 277,
+     "max": 1,
+     "exactPct": 87,
+     "w1Pct": 100,
+     "mae": 0.13
+    }
+   },
+   "intervalHistogram": {
+    "90": 324,
+    "120": 30
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 30,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2048-06-12",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2048-06-13",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2048-07-12",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2048-07-13",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 120
+   }
+  },
+  "1480": {
+   "hijriYear": 1480,
+   "rows": 354,
+   "rawRows": 354,
+   "boundaryRowsOutsideYear": [],
+   "span": {
+    "from": "2057-07-03",
+    "to": "2058-06-21"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 65,
+      "w1Pct": 100,
+      "mae": 0.35,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 94.9,
+      "w1Pct": 100,
+      "mae": 0.051,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 97.7,
+      "w1Pct": 100,
+      "mae": 0.023,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 68.9,
+      "w1Pct": 100,
+      "mae": 0.311,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 95.8,
+      "w1Pct": 100,
+      "mae": 0.042,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 95.8,
+      "w1Pct": 100,
+      "mae": 0.042,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1834,
+     "w1": 2124,
+     "sum": 290,
+     "max": 1,
+     "exactPct": 86.3,
+     "w1Pct": 100,
+     "mae": 0.137
+    }
+   },
+   "intervalHistogram": {
+    "90": 324,
+    "120": 30
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 30,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2058-02-23",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2058-02-24",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2058-03-25",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2058-03-26",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 90
+   }
+  },
+  "1490": {
+   "hijriYear": 1490,
+   "rows": 354,
+   "rawRows": 355,
+   "boundaryRowsOutsideYear": [
+    {
+     "date": "2067-03-16",
+     "hy": 1489,
+     "hm": 12,
+     "hd": 30
+    }
+   ],
+   "span": {
+    "from": "2067-03-17",
+    "to": "2068-03-04"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 63.6,
+      "w1Pct": 100,
+      "mae": 0.364,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 95.8,
+      "w1Pct": 100,
+      "mae": 0.042,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 70.1,
+      "w1Pct": 100,
+      "mae": 0.299,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 96,
+      "w1Pct": 100,
+      "mae": 0.04,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 96,
+      "w1Pct": 100,
+      "mae": 0.04,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1830,
+     "w1": 2124,
+     "sum": 294,
+     "max": 1,
+     "exactPct": 86.2,
+     "w1Pct": 100,
+     "mae": 0.138
+    }
+   },
+   "intervalHistogram": {
+    "90": 325,
+    "120": 29
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 29,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2067-11-08",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2067-11-09",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2067-12-07",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2067-12-08",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 89
+   }
+  },
+  "1500": {
+   "hijriYear": 1500,
+   "rows": 354,
+   "rawRows": 355,
+   "boundaryRowsOutsideYear": [
+    {
+     "date": "2076-11-27",
+     "hy": 1499,
+     "hm": 12,
+     "hd": 30
+    }
+   ],
+   "span": {
+    "from": "2076-11-28",
+    "to": "2077-11-16"
+   },
+   "score": {
+    "perColumn": {
+     "fajr": {
+      "exactPct": 62.1,
+      "w1Pct": 100,
+      "mae": 0.379,
+      "max": 1
+     },
+     "sunrise": {
+      "exactPct": 95.5,
+      "w1Pct": 100,
+      "mae": 0.045,
+      "max": 1
+     },
+     "dhuhr": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1
+     },
+     "asr": {
+      "exactPct": 68.1,
+      "w1Pct": 100,
+      "mae": 0.319,
+      "max": 1
+     },
+     "maghrib": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1
+     },
+     "isha": {
+      "exactPct": 96.9,
+      "w1Pct": 100,
+      "mae": 0.031,
+      "max": 1
+     }
+    },
+    "total": {
+     "n": 2124,
+     "exact": 1828,
+     "w1": 2124,
+     "sum": 296,
+     "max": 1,
+     "exactPct": 86.1,
+     "w1Pct": 100,
+     "mae": 0.139
+    }
+   },
+   "intervalHistogram": {
+    "90": 324,
+    "120": 30
+   },
+   "intervalByHijriMonth": {
+    "1": "90",
+    "2": "90",
+    "3": "90",
+    "4": "90",
+    "5": "90",
+    "6": "90",
+    "7": "90",
+    "8": "90",
+    "9": "120",
+    "10": "90",
+    "11": "90",
+    "12": "90"
+   },
+   "ramadanDays": 30,
+   "intervalViolations": [],
+   "switchRows": {
+    "on": [
+     {
+      "date": "2077-07-20",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2077-07-21",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2077-08-19",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2077-08-20",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "amplitudeMin": {
+    "fajr": 90,
+    "sunrise": 83,
+    "dhuhr": 30,
+    "asr": 39,
+    "maghrib": 90,
+    "isha": 117
+   }
+  }
+ },
+ "span": {
+  "perYearExact": [
+   87.1,
+   86.1,
+   87,
+   86.3,
+   86.2,
+   86.1
+  ],
+  "perYearMae": [
+   0.129,
+   0.139,
+   0.13,
+   0.137,
+   0.138,
+   0.139
+  ],
+  "exactSpread": 1,
+  "maeSpread": 0.01,
+  "intervalSets": [
+   "90",
+   "120"
+  ],
+  "ramadanViolations": [],
+  "heldOneRecipe": true
+ },
+ "ramadan": {
+  "rule": "hijri month 9 => 120, every other month => 90, on the API’s own boundaries",
+  "daysPerYear": {
+   "1450": 29,
+   "1460": 29,
+   "1470": 30,
+   "1480": 30,
+   "1490": 29,
+   "1500": 30
+  },
+  "intervalHistogramPerYear": {
+   "1450": {
+    "90": 325,
+    "120": 29
+   },
+   "1460": {
+    "90": 325,
+    "120": 29
+   },
+   "1470": {
+    "90": 324,
+    "120": 30
+   },
+   "1480": {
+    "90": 324,
+    "120": 30
+   },
+   "1490": {
+    "90": 325,
+    "120": 29
+   },
+   "1500": {
+    "90": 324,
+    "120": 30
+   }
+  },
+  "violations": 0,
+  "switchRows": {
+   "1450": {
+    "on": [
+     {
+      "date": "2029-01-15",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2029-01-16",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2029-02-13",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2029-02-14",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "1460": {
+    "on": [
+     {
+      "date": "2038-09-29",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2038-09-30",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2038-10-28",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2038-10-29",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "1470": {
+    "on": [
+     {
+      "date": "2048-06-12",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2048-06-13",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2048-07-12",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2048-07-13",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "1480": {
+    "on": [
+     {
+      "date": "2058-02-23",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2058-02-24",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2058-03-25",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2058-03-26",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "1490": {
+    "on": [
+     {
+      "date": "2067-11-08",
+      "hm": 8,
+      "hd": 30,
+      "interval": 90
+     },
+     {
+      "date": "2067-11-09",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2067-12-07",
+      "hm": 9,
+      "hd": 29,
+      "interval": 120
+     },
+     {
+      "date": "2067-12-08",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   },
+   "1500": {
+    "on": [
+     {
+      "date": "2077-07-20",
+      "hm": 8,
+      "hd": 29,
+      "interval": 90
+     },
+     {
+      "date": "2077-07-21",
+      "hm": 9,
+      "hd": 1,
+      "interval": 120
+     }
+    ],
+    "off": [
+     {
+      "date": "2077-08-19",
+      "hm": 9,
+      "hd": 30,
+      "interval": 120
+     },
+     {
+      "date": "2077-08-20",
+      "hm": 10,
+      "hd": 1,
+      "interval": 90
+     }
+    ]
+   }
+  },
+  "switchDayCheck": "on = last day of Sha’ban 90, first day of Ramadan 120; off = last day of Ramadan 120, first day of Shawwal 90"
+ }
+}

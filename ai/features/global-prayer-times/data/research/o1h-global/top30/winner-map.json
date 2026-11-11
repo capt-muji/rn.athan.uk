@@ -1,0 +1,4095 @@
+{
+ "schema": "o1h-top30-winner-map/1",
+ "generated": "2026-11-10",
+ "scoring": "best method per country by combined mean absolute deviation over fajr and isha, wall clock, 2026",
+ "population30": 1637.3,
+ "populationScored": 1514.1,
+ "coverage": {
+  "scored": 24,
+  "noTarget": 3,
+  "notScorable": 3
+ },
+ "headline": {
+  "countriesWithin1": 16,
+  "countriesWithin2": 18,
+  "countriesWithin5": 21,
+  "countriesWithNoCloseMethod": [
+   {
+    "country": "Morocco",
+    "pop": 36.4,
+    "best": "egyptian",
+    "mean": 7.493
+   },
+   {
+    "country": "Russia",
+    "pop": 15,
+    "best": "ecfr",
+    "mean": 13.308
+   },
+   {
+    "country": "Kazakhstan",
+    "pop": 13.2,
+    "best": "isna",
+    "mean": 9.121
+   }
+  ]
+ },
+ "winners": [
+  {
+   "rank": 1,
+   "country": "Indonesia",
+   "targetId": "ID-KEMENAG",
+   "pop": 249.8,
+   "grade": "candidate",
+   "status": "scored",
+   "best": "mabims",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "mabims",
+    "singapore-muis",
+    "fazilet-a"
+   ],
+   "methodsWithin5": [
+    "mabims",
+    "singapore-muis",
+    "fazilet-a",
+    "egyptian",
+    "kemenag",
+    "fazilet-b",
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "moonsighting",
+    "ecfr"
+   ],
+   "targetPair": "20.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "fazilet-a",
+    "mean": 0.855
+   },
+   "tiedAtBest": [
+    "mabims"
+   ]
+  },
+  {
+   "rank": 2,
+   "country": "Pakistan",
+   "targetId": "PK-DEFACTO",
+   "pop": 233,
+   "grade": "community de facto",
+   "status": "scored",
+   "best": "isna-2010",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait"
+   ],
+   "methodsWithin5": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait",
+    "moonsighting",
+    "mwl",
+    "diyanet-domestic",
+    "ecfr",
+    "jakim",
+    "diyanet-europe",
+    "qatar",
+    "egyptian",
+    "fazilet-a",
+    "mabims",
+    "kemenag",
+    "singapore-muis"
+   ],
+   "targetPair": "18.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 0.937
+   },
+   "tiedAtBest": [
+    "isna-2010",
+    "karachi"
+   ]
+  },
+  {
+   "rank": 3,
+   "country": "India",
+   "targetId": "IN-DEFACTO",
+   "pop": 200,
+   "grade": "community de facto",
+   "status": "scored",
+   "best": "isna-2010",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait"
+   ],
+   "methodsWithin5": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait",
+    "jakim",
+    "mwl",
+    "diyanet-domestic",
+    "ecfr",
+    "moonsighting",
+    "qatar",
+    "diyanet-europe"
+   ],
+   "targetPair": "18.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 1.001
+   },
+   "tiedAtBest": [
+    "isna-2010",
+    "karachi"
+   ]
+  },
+  {
+   "rank": 4,
+   "country": "Bangladesh",
+   "targetId": "BD-IFB",
+   "pop": 150.8,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "jakim",
+   "bestMean": 0.396,
+   "bestWorst": 2,
+   "bestWithin2": 1,
+   "fajrMean": 0.392,
+   "ishaMean": 0.4,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [
+    "jakim"
+   ],
+   "methodsWithin5": [
+    "jakim",
+    "dubai",
+    "isna-2010",
+    "karachi",
+    "kuwait",
+    "moonsighting",
+    "mwl",
+    "diyanet-domestic",
+    "ecfr",
+    "kemenag"
+   ],
+   "targetPair": "19.25/18.65",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "jakim",
+    "mean": 0.396
+   },
+   "tiedAtBest": [
+    "jakim"
+   ]
+  },
+  {
+   "rank": 5,
+   "country": "Nigeria",
+   "targetId": "NG-SPA",
+   "pop": 96,
+   "grade": "community",
+   "status": "scored",
+   "best": "mwl",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "moonsighting",
+    "ecfr"
+   ],
+   "methodsWithin5": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "moonsighting",
+    "ecfr",
+    "isna-2010",
+    "karachi",
+    "diyanet-europe",
+    "dubai",
+    "egyptian",
+    "jakim"
+   ],
+   "targetPair": "18.00/17.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "kuwait",
+    "mean": 1.349
+   },
+   "tiedAtBest": [
+    "mwl",
+    "diyanet-domestic"
+   ]
+  },
+  {
+   "rank": 6,
+   "country": "Egypt",
+   "targetId": "EG-ESA",
+   "pop": 87.5,
+   "grade": "A",
+   "status": "scored",
+   "best": "egyptian",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "egyptian",
+    "fazilet-a"
+   ],
+   "methodsWithin5": [
+    "egyptian",
+    "fazilet-a",
+    "singapore-muis",
+    "mabims",
+    "kemenag",
+    "ecfr",
+    "kuwait"
+   ],
+   "targetPair": "19.50/17.50",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "fazilet-a",
+    "mean": 1.53
+   },
+   "tiedAtBest": [
+    "egyptian"
+   ]
+  },
+  {
+   "rank": 7,
+   "country": "Iran",
+   "targetId": "IR-NATIONAL",
+   "pop": 85.7,
+   "grade": "provisional",
+   "status": "scored-fajr-only",
+   "best": "tehran",
+   "bestMean": 0.049,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0.049,
+   "ishaMean": null,
+   "asrMatch": "n/a",
+   "methodsWithin2": [
+    "tehran",
+    "jakim",
+    "moonsighting",
+    "mwl",
+    "isna-2010",
+    "karachi",
+    "diyanet-domestic",
+    "diyanet-europe",
+    "qatar"
+   ],
+   "methodsWithin5": [
+    "tehran",
+    "jakim",
+    "moonsighting",
+    "mwl",
+    "isna-2010",
+    "karachi",
+    "diyanet-domestic",
+    "diyanet-europe",
+    "qatar",
+    "kuwait",
+    "dubai",
+    "ecfr",
+    "umm-al-qura"
+   ],
+   "targetPair": "17.71/none",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "tehran",
+    "mean": 0.049
+   },
+   "tiedAtBest": [
+    "tehran"
+   ]
+  },
+  {
+   "rank": 8,
+   "country": "Turkey",
+   "targetId": "TR-DIYANET-DOMESTIC",
+   "pop": 81.2,
+   "grade": "A",
+   "status": "scored",
+   "best": "mwl",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "ecfr"
+   ],
+   "methodsWithin5": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "ecfr",
+    "diyanet-europe",
+    "isna-2010",
+    "karachi",
+    "qatar",
+    "dubai"
+   ],
+   "targetPair": "18.00/17.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "kuwait",
+    "mean": 1.83
+   },
+   "tiedAtBest": [
+    "mwl",
+    "diyanet-domestic"
+   ]
+  },
+  {
+   "rank": 10,
+   "country": "Iraq",
+   "targetId": "IQ-DIWAN",
+   "pop": 39,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "mwl",
+   "bestMean": 0.259,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0.077,
+   "ishaMean": 0.441,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "ecfr"
+   ],
+   "methodsWithin5": [
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "ecfr",
+    "isna-2010",
+    "karachi",
+    "diyanet-europe",
+    "dubai",
+    "qatar",
+    "moonsighting",
+    "jakim"
+   ],
+   "targetPair": "18.10/16.90",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "mwl",
+    "mean": 0.259
+   },
+   "tiedAtBest": [
+    "mwl",
+    "diyanet-domestic"
+   ]
+  },
+  {
+   "rank": 11,
+   "country": "Sudan",
+   "targetId": "SD-MINISTRY",
+   "pop": 38.6,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "qatar",
+   "bestMean": 1.911,
+   "bestWorst": 5,
+   "bestWithin2": 0.5,
+   "fajrMean": 3.822,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "qatar"
+   ],
+   "methodsWithin5": [
+    "qatar",
+    "umm-al-qura"
+   ],
+   "targetPair": "18.87/+90",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "qatar",
+    "mean": 1.911
+   },
+   "tiedAtBest": [
+    "qatar"
+   ]
+  },
+  {
+   "rank": 13,
+   "country": "Morocco",
+   "targetId": "MA-HABOUS",
+   "pop": 36.4,
+   "grade": "A (conditional)",
+   "status": "scored",
+   "best": "egyptian",
+   "bestMean": 7.493,
+   "bestWorst": 61,
+   "bestWithin2": 0.608,
+   "fajrMean": 7.033,
+   "ishaMean": 7.953,
+   "asrMatch": "match",
+   "methodsWithin2": [],
+   "methodsWithin5": [],
+   "targetPair": "19.00/17.00",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "egyptian",
+    "mean": 7.493
+   },
+   "tiedAtBest": [
+    "egyptian"
+   ]
+  },
+  {
+   "rank": 14,
+   "country": "Saudi Arabia",
+   "targetId": "SA-KACST",
+   "pop": 31.5,
+   "grade": "A",
+   "status": "scored",
+   "best": "umm-al-qura",
+   "bestMean": 1,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 1,
+   "ishaMean": 1,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "umm-al-qura"
+   ],
+   "methodsWithin5": [
+    "umm-al-qura",
+    "qatar"
+   ],
+   "targetPair": "18.50/+90|+120",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "qatar",
+    "mean": 2.375
+   },
+   "tiedAtBest": [
+    "umm-al-qura"
+   ]
+  },
+  {
+   "rank": 15,
+   "country": "Uzbekistan",
+   "targetId": "UZ-ISLOM",
+   "pop": 29.9,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "isna",
+   "bestMean": 3.108,
+   "bestWorst": 5,
+   "bestWithin2": 0.17,
+   "fajrMean": 3.112,
+   "ishaMean": 3.104,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [],
+   "methodsWithin5": [
+    "isna",
+    "russia-sam"
+   ],
+   "targetPair": "15.50/15.50",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "isna",
+    "mean": 3.108
+   },
+   "tiedAtBest": [
+    "isna"
+   ]
+  },
+  {
+   "rank": 16,
+   "country": "Yemen",
+   "targetId": "YE-AWQAF-SANAA",
+   "pop": 26.8,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "diyanet-europe",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "diyanet-europe"
+   ],
+   "methodsWithin5": [
+    "diyanet-europe",
+    "mwl",
+    "diyanet-domestic",
+    "kuwait",
+    "moonsighting",
+    "ecfr",
+    "isna-2010",
+    "karachi"
+   ],
+   "targetPair": "18.00/16.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "mwl",
+    "mean": 2.196
+   },
+   "tiedAtBest": [
+    "diyanet-europe"
+   ]
+  },
+  {
+   "rank": 17,
+   "country": "Niger",
+   "targetId": "NE-BUTIN",
+   "pop": 21.1,
+   "grade": "A",
+   "status": "scored",
+   "best": "moonsighting",
+   "bestMean": 1.032,
+   "bestWorst": 5,
+   "bestWithin2": 0.821,
+   "fajrMean": 0,
+   "ishaMean": 2.063,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "moonsighting",
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait"
+   ],
+   "methodsWithin5": [
+    "moonsighting",
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait",
+    "mwl",
+    "diyanet-domestic",
+    "jakim",
+    "ecfr",
+    "kemenag",
+    "diyanet-europe",
+    "egyptian"
+   ],
+   "targetPair": "18.00/+75",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "moonsighting",
+    "mean": 1.032
+   },
+   "tiedAtBest": [
+    "moonsighting"
+   ]
+  },
+  {
+   "rank": 18,
+   "country": "Malaysia",
+   "targetId": "MY-JAKIM",
+   "pop": 20.1,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "jakim",
+   "bestMean": 0,
+   "bestWorst": 0,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 0,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "jakim"
+   ],
+   "methodsWithin5": [
+    "jakim",
+    "isna-2010",
+    "karachi",
+    "moonsighting",
+    "dubai",
+    "kuwait",
+    "kemenag",
+    "mwl",
+    "diyanet-domestic",
+    "ecfr"
+   ],
+   "targetPair": "18.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 2.484
+   },
+   "tiedAtBest": [
+    "jakim"
+   ]
+  },
+  {
+   "rank": 19,
+   "country": "Tanzania",
+   "targetId": "JAMIAT-KZN",
+   "pop": 19.4,
+   "grade": "community",
+   "status": "scored-anchor",
+   "best": "diyanet-europe",
+   "bestMean": 2.767,
+   "bestWorst": 7,
+   "bestWithin2": 0.5,
+   "fajrMean": 0,
+   "ishaMean": 5.534,
+   "asrMatch": "match",
+   "methodsWithin2": [],
+   "methodsWithin5": [
+    "diyanet-europe",
+    "tehran",
+    "moonsighting"
+   ],
+   "targetPair": "18.00/15.00",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "diyanet-europe",
+    "mean": 2.767
+   },
+   "tiedAtBest": [
+    "diyanet-europe"
+   ]
+  },
+  {
+   "rank": 21,
+   "country": "Russia",
+   "targetId": "RU-DUMRT",
+   "pop": 15,
+   "grade": "A",
+   "status": "scored",
+   "best": "ecfr",
+   "bestMean": 13.308,
+   "bestWorst": 101,
+   "bestWithin2": 0.378,
+   "fajrMean": 6.175,
+   "ishaMean": 20.441,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [],
+   "methodsWithin5": [],
+   "targetPair": "18.00/15.00",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "ecfr",
+    "mean": 13.308
+   },
+   "tiedAtBest": [
+    "ecfr"
+   ]
+  },
+  {
+   "rank": 22,
+   "country": "Kazakhstan",
+   "targetId": "KZ-MUFTIYAT",
+   "pop": 13.2,
+   "grade": "A",
+   "status": "scored",
+   "best": "isna",
+   "bestMean": 9.121,
+   "bestWorst": 77,
+   "bestWithin2": 0.792,
+   "fajrMean": 9.118,
+   "ishaMean": 9.123,
+   "asrMatch": "mismatch",
+   "methodsWithin2": [],
+   "methodsWithin5": [],
+   "targetPair": "15.00/15.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "moonsighting",
+    "mean": 13.749
+   },
+   "tiedAtBest": [
+    "isna"
+   ]
+  },
+  {
+   "rank": 24,
+   "country": "Tunisia",
+   "targetId": "TN-INM",
+   "pop": 10.2,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "isna-2010",
+   "bestMean": 0.478,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0.518,
+   "ishaMean": 0.438,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait"
+   ],
+   "methodsWithin5": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait",
+    "jakim",
+    "ecfr",
+    "mwl",
+    "diyanet-domestic",
+    "qatar"
+   ],
+   "targetPair": "18.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 0.662
+   },
+   "tiedAtBest": [
+    "isna-2010",
+    "karachi"
+   ]
+  },
+  {
+   "rank": 25,
+   "country": "Jordan",
+   "targetId": "JO-AWQAF",
+   "pop": 10.2,
+   "grade": "A",
+   "status": "scored",
+   "best": "isna-2010",
+   "bestMean": 0.467,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0.493,
+   "ishaMean": 0.441,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait"
+   ],
+   "methodsWithin5": [
+    "isna-2010",
+    "karachi",
+    "dubai",
+    "kuwait",
+    "ecfr",
+    "mwl",
+    "diyanet-domestic",
+    "jakim",
+    "qatar",
+    "egyptian",
+    "moonsighting",
+    "fazilet-a"
+   ],
+   "targetPair": "18.00/18.00",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 1.029
+   },
+   "tiedAtBest": [
+    "isna-2010",
+    "karachi"
+   ]
+  },
+  {
+   "rank": 28,
+   "country": "Libya",
+   "targetId": "LY-MUAZZIN",
+   "pop": 6.6,
+   "grade": "provisional",
+   "status": "scored",
+   "best": "dubai",
+   "bestMean": 0.577,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0.734,
+   "ishaMean": 0.419,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "dubai",
+    "isna-2010",
+    "karachi"
+   ],
+   "methodsWithin5": [
+    "dubai",
+    "isna-2010",
+    "karachi",
+    "ecfr",
+    "jakim",
+    "kuwait",
+    "qatar",
+    "kemenag",
+    "mwl",
+    "diyanet-domestic",
+    "umm-al-qura",
+    "singapore-muis"
+   ],
+   "targetPair": "18.15/18.10",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "dubai",
+    "mean": 0.577
+   },
+   "tiedAtBest": [
+    "dubai"
+   ]
+  },
+  {
+   "rank": 29,
+   "country": "United Arab Emirates",
+   "targetId": "AE-AWQAF",
+   "pop": 6.3,
+   "grade": "A",
+   "status": "scored",
+   "best": "dubai",
+   "bestMean": 0.5,
+   "bestWorst": 1,
+   "bestWithin2": 1,
+   "fajrMean": 0,
+   "ishaMean": 1,
+   "asrMatch": "match",
+   "methodsWithin2": [
+    "dubai",
+    "isna-2010",
+    "karachi",
+    "kuwait",
+    "ecfr"
+   ],
+   "methodsWithin5": [
+    "dubai",
+    "isna-2010",
+    "karachi",
+    "kuwait",
+    "ecfr",
+    "moonsighting",
+    "mwl",
+    "diyanet-domestic",
+    "jakim",
+    "egyptian",
+    "fazilet-a",
+    "singapore-muis",
+    "kemenag",
+    "mabims"
+   ],
+   "targetPair": "18.20/18.20",
+   "angleCoincident": true,
+   "nonCoincidentBest": {
+    "method": "isna-2010",
+    "mean": 0.512
+   },
+   "tiedAtBest": [
+    "dubai"
+   ]
+  },
+  {
+   "rank": 30,
+   "country": "Mozambique",
+   "targetId": "JAMIAT-KZN",
+   "pop": 5.8,
+   "grade": "community",
+   "status": "scored-anchor",
+   "best": "diyanet-europe",
+   "bestMean": 2.767,
+   "bestWorst": 7,
+   "bestWithin2": 0.5,
+   "fajrMean": 0,
+   "ishaMean": 5.534,
+   "asrMatch": "match",
+   "methodsWithin2": [],
+   "methodsWithin5": [
+    "diyanet-europe",
+    "tehran",
+    "moonsighting"
+   ],
+   "targetPair": "18.00/15.00",
+   "angleCoincident": false,
+   "nonCoincidentBest": {
+    "method": "diyanet-europe",
+    "mean": 2.767
+   },
+   "tiedAtBest": [
+    "diyanet-europe"
+   ]
+  }
+ ],
+ "populationWeightedRanking": [
+  {
+   "method": "isna-2010",
+   "score": 3.619,
+   "covered": 1514.1
+  },
+  {
+   "method": "karachi",
+   "score": 3.619,
+   "covered": 1514.1
+  },
+  {
+   "method": "kuwait",
+   "score": 4.063,
+   "covered": 1514.1
+  },
+  {
+   "method": "ecfr",
+   "score": 4.104,
+   "covered": 1514.1
+  },
+  {
+   "method": "dubai",
+   "score": 4.16,
+   "covered": 1514.1
+  },
+  {
+   "method": "mwl",
+   "score": 4.464,
+   "covered": 1514.1
+  },
+  {
+   "method": "diyanet-domestic",
+   "score": 4.464,
+   "covered": 1514.1
+  },
+  {
+   "method": "moonsighting",
+   "score": 5.082,
+   "covered": 1514.1
+  },
+  {
+   "method": "jakim",
+   "score": 5.203,
+   "covered": 1514.1
+  },
+  {
+   "method": "egyptian",
+   "score": 6.114,
+   "covered": 1514.1
+  },
+  {
+   "method": "diyanet-europe",
+   "score": 6.323,
+   "covered": 1514.1
+  },
+  {
+   "method": "fazilet-a",
+   "score": 6.497,
+   "covered": 1514.1
+  },
+  {
+   "method": "kemenag",
+   "score": 6.636,
+   "covered": 1514.1
+  },
+  {
+   "method": "singapore-muis",
+   "score": 6.712,
+   "covered": 1514.1
+  },
+  {
+   "method": "mabims",
+   "score": 6.756,
+   "covered": 1514.1
+  },
+  {
+   "method": "qatar",
+   "score": 7.176,
+   "covered": 1514.1
+  },
+  {
+   "method": "umm-al-qura",
+   "score": 8.838,
+   "covered": 1514.1
+  },
+  {
+   "method": "fazilet-b",
+   "score": 10.081,
+   "covered": 1514.1
+  },
+  {
+   "method": "tehran",
+   "score": 10.932,
+   "covered": 1514.1
+  },
+  {
+   "method": "russia-sam",
+   "score": 12.663,
+   "covered": 1514.1
+  },
+  {
+   "method": "isna",
+   "score": 15.086,
+   "covered": 1514.1
+  }
+ ],
+ "populationWeightedRankingWithoutPakistanIndia": [
+  {
+   "method": "ecfr",
+   "score": 4.776,
+   "covered": 1081.1
+  },
+  {
+   "method": "isna-2010",
+   "score": 5.069,
+   "covered": 1081.1
+  },
+  {
+   "method": "karachi",
+   "score": 5.069,
+   "covered": 1081.1
+  },
+  {
+   "method": "kuwait",
+   "score": 5.106,
+   "covered": 1081.1
+  },
+  {
+   "method": "mwl",
+   "score": 5.28,
+   "covered": 1081.1
+  },
+  {
+   "method": "diyanet-domestic",
+   "score": 5.28,
+   "covered": 1081.1
+  },
+  {
+   "method": "dubai",
+   "score": 5.439,
+   "covered": 1081.1
+  },
+  {
+   "method": "moonsighting",
+   "score": 6.021,
+   "covered": 1081.1
+  },
+  {
+   "method": "jakim",
+   "score": 6.286,
+   "covered": 1081.1
+  },
+  {
+   "method": "egyptian",
+   "score": 6.607,
+   "covered": 1081.1
+  },
+  {
+   "method": "diyanet-europe",
+   "score": 6.912,
+   "covered": 1081.1
+  },
+  {
+   "method": "fazilet-a",
+   "score": 7.143,
+   "covered": 1081.1
+  },
+  {
+   "method": "kemenag",
+   "score": 7.329,
+   "covered": 1081.1
+  },
+  {
+   "method": "singapore-muis",
+   "score": 7.437,
+   "covered": 1081.1
+  },
+  {
+   "method": "mabims",
+   "score": 7.502,
+   "covered": 1081.1
+  },
+  {
+   "method": "qatar",
+   "score": 8.36,
+   "covered": 1081.1
+  },
+  {
+   "method": "umm-al-qura",
+   "score": 9.689,
+   "covered": 1081.1
+  },
+  {
+   "method": "fazilet-b",
+   "score": 10.682,
+   "covered": 1081.1
+  },
+  {
+   "method": "tehran",
+   "score": 11.135,
+   "covered": 1081.1
+  },
+  {
+   "method": "russia-sam",
+   "score": 12.877,
+   "covered": 1081.1
+  },
+  {
+   "method": "isna",
+   "score": 15.302,
+   "covered": 1081.1
+  }
+ ],
+ "methodPopulationShares": [
+  {
+   "method": "mwl",
+   "label": "Muslim World League 18/17",
+   "within1": {
+    "pop": 216.2,
+    "shareOf30": 0.132,
+    "shareOfScored": 0.143,
+    "countries": 3
+   },
+   "within2": {
+    "pop": 301.9,
+    "shareOf30": 0.184,
+    "shareOfScored": 0.199,
+    "countries": 4
+   },
+   "within5": {
+    "pop": 987.0000000000001,
+    "shareOf30": 0.603,
+    "shareOfScored": 0.652,
+    "countries": 14
+   },
+   "weightedMean": 4.464
+  },
+  {
+   "method": "isna",
+   "label": "ISNA / FCNA 15/15",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within5": {
+    "pop": 29.9,
+    "shareOf30": 0.018,
+    "shareOfScored": 0.02,
+    "countries": 1
+   },
+   "weightedMean": 15.086
+  },
+  {
+   "method": "isna-2010",
+   "label": "ISNA 2010 position 18/18",
+   "within1": {
+    "pop": 459.7,
+    "shareOf30": 0.281,
+    "shareOfScored": 0.304,
+    "countries": 5
+   },
+   "within2": {
+    "pop": 573.1000000000001,
+    "shareOf30": 0.35,
+    "shareOfScored": 0.379,
+    "countries": 8
+   },
+   "within5": {
+    "pop": 1236.7999999999997,
+    "shareOf30": 0.755,
+    "shareOfScored": 0.817,
+    "countries": 15
+   },
+   "weightedMean": 3.619
+  },
+  {
+   "method": "umm-al-qura",
+   "label": "Umm al-Qura 18.5 / maghrib+90 (+120 Ramadan)",
+   "within1": {
+    "pop": 31.5,
+    "shareOf30": 0.019,
+    "shareOfScored": 0.021,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 31.5,
+    "shareOf30": 0.019,
+    "shareOfScored": 0.021,
+    "countries": 1
+   },
+   "within5": {
+    "pop": 162.4,
+    "shareOf30": 0.099,
+    "shareOfScored": 0.107,
+    "countries": 4
+   },
+   "weightedMean": 8.838
+  },
+  {
+   "method": "egyptian",
+   "label": "Egyptian General Authority 19.5/17.5",
+   "within1": {
+    "pop": 87.5,
+    "shareOf30": 0.053,
+    "shareOfScored": 0.058,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 87.5,
+    "shareOf30": 0.053,
+    "shareOfScored": 0.058,
+    "countries": 1
+   },
+   "within5": {
+    "pop": 703.9,
+    "shareOf30": 0.43,
+    "shareOfScored": 0.465,
+    "countries": 7
+   },
+   "weightedMean": 6.114
+  },
+  {
+   "method": "karachi",
+   "label": "Karachi 18/18",
+   "within1": {
+    "pop": 459.7,
+    "shareOf30": 0.281,
+    "shareOfScored": 0.304,
+    "countries": 5
+   },
+   "within2": {
+    "pop": 573.1000000000001,
+    "shareOf30": 0.35,
+    "shareOfScored": 0.379,
+    "countries": 8
+   },
+   "within5": {
+    "pop": 1236.7999999999997,
+    "shareOf30": 0.755,
+    "shareOfScored": 0.817,
+    "countries": 15
+   },
+   "weightedMean": 3.619
+  },
+  {
+   "method": "moonsighting",
+   "label": "Moonsighting Committee 18/18 + season curve",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 202.79999999999998,
+    "shareOf30": 0.124,
+    "shareOfScored": 0.134,
+    "countries": 3
+   },
+   "within5": {
+    "pop": 1163.9999999999998,
+    "shareOf30": 0.711,
+    "shareOfScored": 0.769,
+    "countries": 14
+   },
+   "weightedMean": 5.082
+  },
+  {
+   "method": "diyanet-domestic",
+   "label": "Diyanet domestic 18/17 + temkin",
+   "within1": {
+    "pop": 216.2,
+    "shareOf30": 0.132,
+    "shareOfScored": 0.143,
+    "countries": 3
+   },
+   "within2": {
+    "pop": 301.9,
+    "shareOf30": 0.184,
+    "shareOfScored": 0.199,
+    "countries": 4
+   },
+   "within5": {
+    "pop": 987.0000000000001,
+    "shareOf30": 0.603,
+    "shareOfScored": 0.652,
+    "countries": 14
+   },
+   "weightedMean": 4.464
+  },
+  {
+   "method": "diyanet-europe",
+   "label": "Diyanet European unified 18/16",
+   "within1": {
+    "pop": 26.8,
+    "shareOf30": 0.016,
+    "shareOfScored": 0.018,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 112.5,
+    "shareOf30": 0.069,
+    "shareOfScored": 0.074,
+    "countries": 2
+   },
+   "within5": {
+    "pop": 808,
+    "shareOf30": 0.493,
+    "shareOfScored": 0.534,
+    "countries": 10
+   },
+   "weightedMean": 6.323
+  },
+  {
+   "method": "mabims",
+   "label": "MABIMS 20/18",
+   "within1": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "within5": {
+    "pop": 576.5999999999999,
+    "shareOf30": 0.352,
+    "shareOfScored": 0.381,
+    "countries": 4
+   },
+   "weightedMean": 6.756
+  },
+  {
+   "method": "jakim",
+   "label": "JAKIM 18/18 + ihtiyati",
+   "within1": {
+    "pop": 256.6,
+    "shareOf30": 0.157,
+    "shareOfScored": 0.169,
+    "countries": 3
+   },
+   "within2": {
+    "pop": 256.6,
+    "shareOf30": 0.157,
+    "shareOfScored": 0.169,
+    "countries": 3
+   },
+   "within5": {
+    "pop": 879.0000000000001,
+    "shareOf30": 0.537,
+    "shareOfScored": 0.581,
+    "countries": 12
+   },
+   "weightedMean": 5.203
+  },
+  {
+   "method": "kemenag",
+   "label": "Kemenag 20/18 + ihtiyati",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within5": {
+    "pop": 775.2,
+    "shareOf30": 0.473,
+    "shareOfScored": 0.512,
+    "countries": 8
+   },
+   "weightedMean": 6.636
+  },
+  {
+   "method": "kuwait",
+   "label": "Kuwait 18/17.5",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 697.0000000000001,
+    "shareOf30": 0.426,
+    "shareOfScored": 0.46,
+    "countries": 9
+   },
+   "within5": {
+    "pop": 1074.5,
+    "shareOf30": 0.656,
+    "shareOfScored": 0.71,
+    "countries": 15
+   },
+   "weightedMean": 4.063
+  },
+  {
+   "method": "qatar",
+   "label": "Qatar 18/1.5h (interval after rounding)",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 124.30000000000001,
+    "shareOf30": 0.076,
+    "shareOfScored": 0.082,
+    "countries": 2
+   },
+   "within5": {
+    "pop": 736.0000000000002,
+    "shareOf30": 0.45,
+    "shareOfScored": 0.486,
+    "countries": 10
+   },
+   "weightedMean": 7.176
+  },
+  {
+   "method": "singapore-muis",
+   "label": "MUIS Singapore 20/18, ceiling",
+   "within1": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "within5": {
+    "pop": 583.1999999999999,
+    "shareOf30": 0.356,
+    "shareOfScored": 0.385,
+    "countries": 5
+   },
+   "weightedMean": 6.712
+  },
+  {
+   "method": "dubai",
+   "label": "Dubai / UAE AWQAF 18.2/18.2",
+   "within1": {
+    "pop": 256.09999999999997,
+    "shareOf30": 0.156,
+    "shareOfScored": 0.169,
+    "countries": 4
+   },
+   "within2": {
+    "pop": 487.40000000000003,
+    "shareOf30": 0.298,
+    "shareOfScored": 0.322,
+    "countries": 7
+   },
+   "within5": {
+    "pop": 1209.9999999999998,
+    "shareOf30": 0.739,
+    "shareOfScored": 0.799,
+    "countries": 14
+   },
+   "weightedMean": 4.16
+  },
+  {
+   "method": "tehran",
+   "label": "Tehran 17.7/14",
+   "within1": {
+    "pop": 85.7,
+    "shareOf30": 0.052,
+    "shareOfScored": 0.057,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 85.7,
+    "shareOf30": 0.052,
+    "shareOfScored": 0.057,
+    "countries": 1
+   },
+   "within5": {
+    "pop": 110.89999999999999,
+    "shareOf30": 0.068,
+    "shareOfScored": 0.073,
+    "countries": 3
+   },
+   "weightedMean": 10.932
+  },
+  {
+   "method": "fazilet-a",
+   "label": "Fazilet Profile A (world) 19.8/17.8",
+   "within1": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "within2": {
+    "pop": 337.3,
+    "shareOf30": 0.206,
+    "shareOfScored": 0.223,
+    "countries": 2
+   },
+   "within5": {
+    "pop": 586.8,
+    "shareOf30": 0.358,
+    "shareOfScored": 0.388,
+    "countries": 5
+   },
+   "weightedMean": 6.497
+  },
+  {
+   "method": "fazilet-b",
+   "label": "Fazilet Profile B (Ottoman) 20.8/18.7",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within5": {
+    "pop": 249.8,
+    "shareOf30": 0.153,
+    "shareOfScored": 0.165,
+    "countries": 1
+   },
+   "weightedMean": 10.081
+  },
+  {
+   "method": "ecfr",
+   "label": "ECFR 18/17 +-2, proportional",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 222.5,
+    "shareOf30": 0.136,
+    "shareOfScored": 0.147,
+    "countries": 4
+   },
+   "within5": {
+    "pop": 1324.2999999999997,
+    "shareOf30": 0.809,
+    "shareOfScored": 0.875,
+    "countries": 16
+   },
+   "weightedMean": 4.104
+  },
+  {
+   "method": "russia-sam",
+   "label": "Russia SAM 16/15",
+   "within1": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within2": {
+    "pop": 0,
+    "shareOf30": 0,
+    "shareOfScored": 0,
+    "countries": 0
+   },
+   "within5": {
+    "pop": 29.9,
+    "shareOf30": 0.018,
+    "shareOfScored": 0.02,
+    "countries": 1
+   },
+   "weightedMean": 12.663
+  }
+ ],
+ "sensitivity": [
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "mwl",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.879,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 1.995,
+    "worst": 4,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 1
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "isna",
+   "fajr": {
+    "days": 365,
+    "mean": 26.847,
+    "worst": 100,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.197
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.063,
+    "worst": 87,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 21.955,
+    "worst": 100,
+    "within1": 0.099,
+    "within2": 0.099,
+    "within5": 0.197
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "isna-2010",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 7.101,
+    "worst": 58,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.105,
+    "worst": 58,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.621
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "umm-al-qura",
+   "fajr": {
+    "days": 365,
+    "mean": 2.471,
+    "worst": 31,
+    "within1": 0.474,
+    "within2": 0.679,
+    "within5": 0.934
+   },
+   "isha": {
+    "days": 365,
+    "mean": 59.94,
+    "worst": 157,
+    "within1": 0.022,
+    "within2": 0.063,
+    "within5": 0.082
+   },
+   "combined": {
+    "days": 730,
+    "mean": 31.205,
+    "worst": 157,
+    "within1": 0.248,
+    "within2": 0.371,
+    "within5": 0.508
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "egyptian",
+   "fajr": {
+    "days": 365,
+    "mean": 9.526,
+    "worst": 64,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.422,
+    "worst": 50,
+    "within1": 0.241,
+    "within2": 0.345,
+    "within5": 0.899
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.474,
+    "worst": 64,
+    "within1": 0.121,
+    "within2": 0.173,
+    "within5": 0.578
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "karachi",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 7.101,
+    "worst": 58,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.105,
+    "worst": 58,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.621
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "moonsighting",
+   "fajr": {
+    "days": 365,
+    "mean": 75.392,
+    "worst": 183,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 74.258,
+    "worst": 180,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 74.825,
+    "worst": 183,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "diyanet-domestic",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.879,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 1.995,
+    "worst": 4,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 1
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "diyanet-europe",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.841,
+    "worst": 64,
+    "within1": 0.219,
+    "within2": 0.219,
+    "within5": 0.219
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.975,
+    "worst": 64,
+    "within1": 0.11,
+    "within2": 0.11,
+    "within5": 0.61
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "mabims",
+   "fajr": {
+    "days": 365,
+    "mean": 13.099,
+    "worst": 75,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 7.101,
+    "worst": 58,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.1,
+    "worst": 75,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.249
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "jakim",
+   "fajr": {
+    "days": 365,
+    "mean": 5.573,
+    "worst": 6,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.427
+   },
+   "isha": {
+    "days": 365,
+    "mean": 9.132,
+    "worst": 60,
+    "within1": 0.101,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.352,
+    "worst": 60,
+    "within1": 0.051,
+    "within2": 0.121,
+    "within5": 0.334
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "kemenag",
+   "fajr": {
+    "days": 365,
+    "mean": 11.836,
+    "worst": 73,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.096
+   },
+   "isha": {
+    "days": 365,
+    "mean": 9.151,
+    "worst": 60,
+    "within1": 0.096,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.493,
+    "worst": 73,
+    "within1": 0.048,
+    "within2": 0.121,
+    "within5": 0.168
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "kuwait",
+   "fajr": {
+    "days": 365,
+    "mean": 2.584,
+    "worst": 3,
+    "within1": 0,
+    "within2": 0.416,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.422,
+    "worst": 50,
+    "within1": 0.241,
+    "within2": 0.345,
+    "within5": 0.899
+   },
+   "combined": {
+    "days": 730,
+    "mean": 3.003,
+    "worst": 50,
+    "within1": 0.121,
+    "within2": 0.381,
+    "within5": 0.949
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "qatar",
+   "fajr": {
+    "days": 365,
+    "mean": 3.11,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 61.622,
+    "worst": 157,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 32.366,
+    "worst": 157,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "singapore-muis",
+   "fajr": {
+    "days": 365,
+    "mean": 12.825,
+    "worst": 75,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 7.334,
+    "worst": 58,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.079,
+    "worst": 75,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.249
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "dubai",
+   "fajr": {
+    "days": 365,
+    "mean": 1.978,
+    "worst": 11,
+    "within1": 0.375,
+    "within2": 0.718,
+    "within5": 0.989
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.652,
+    "worst": 65,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.315,
+    "worst": 65,
+    "within1": 0.308,
+    "within2": 0.479,
+    "within5": 0.615
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "tehran",
+   "fajr": {
+    "days": 365,
+    "mean": 5.37,
+    "worst": 26,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.625
+   },
+   "isha": {
+    "days": 365,
+    "mean": 25.707,
+    "worst": 105,
+    "within1": 0.17,
+    "within2": 0.173,
+    "within5": 0.173
+   },
+   "combined": {
+    "days": 730,
+    "mean": 15.538,
+    "worst": 105,
+    "within1": 0.085,
+    "within2": 0.086,
+    "within5": 0.399
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "fazilet-a",
+   "fajr": {
+    "days": 365,
+    "mean": 11.671,
+    "worst": 70,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 5.674,
+    "worst": 58,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.726
+   },
+   "combined": {
+    "days": 730,
+    "mean": 8.673,
+    "worst": 70,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.492
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "fazilet-b",
+   "fajr": {
+    "days": 365,
+    "mean": 18.704,
+    "worst": 93,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 12.373,
+    "worst": 78,
+    "within1": 0.241,
+    "within2": 0.241,
+    "within5": 0.241
+   },
+   "combined": {
+    "days": 730,
+    "mean": 15.538,
+    "worst": 93,
+    "within1": 0.121,
+    "within2": 0.121,
+    "within5": 0.249
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "ecfr",
+   "fajr": {
+    "days": 365,
+    "mean": 25.584,
+    "worst": 101,
+    "within1": 0.605,
+    "within2": 0.674,
+    "within5": 0.679
+   },
+   "isha": {
+    "days": 365,
+    "mean": 25.186,
+    "worst": 106,
+    "within1": 0.603,
+    "within2": 0.688,
+    "within5": 0.688
+   },
+   "combined": {
+    "days": 730,
+    "mean": 25.385,
+    "worst": 106,
+    "within1": 0.604,
+    "within2": 0.681,
+    "within5": 0.684
+   }
+  },
+  {
+   "country": "Russia (CDUM at Moscow)",
+   "targetId": "RU-CDUM",
+   "method": "russia-sam",
+   "fajr": {
+    "days": 365,
+    "mean": 18.63,
+    "worst": 80,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.219
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.063,
+    "worst": 87,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 17.847,
+    "worst": 87,
+    "within1": 0.099,
+    "within2": 0.099,
+    "within5": 0.208
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "mwl",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 16.184,
+    "worst": 86,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 8.092,
+    "worst": 86,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "isna",
+   "fajr": {
+    "days": 365,
+    "mean": 23.737,
+    "worst": 97,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 11.868,
+    "worst": 97,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "isna-2010",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 23.737,
+    "worst": 101,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 11.868,
+    "worst": 101,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "umm-al-qura",
+   "fajr": {
+    "days": 365,
+    "mean": 4.227,
+    "worst": 34,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.827
+   },
+   "isha": {
+    "days": 365,
+    "mean": 45.436,
+    "worst": 141,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 24.832,
+    "worst": 141,
+    "within1": 0.129,
+    "within2": 0.129,
+    "within5": 0.414
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "egyptian",
+   "fajr": {
+    "days": 365,
+    "mean": 11.019,
+    "worst": 67,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 20.058,
+    "worst": 96,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 15.538,
+    "worst": 96,
+    "within1": 0.227,
+    "within2": 0.227,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "karachi",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 23.737,
+    "worst": 101,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 11.868,
+    "worst": 101,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "moonsighting",
+   "fajr": {
+    "days": 365,
+    "mean": 72.282,
+    "worst": 180,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 57.195,
+    "worst": 164,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 64.738,
+    "worst": 180,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "diyanet-domestic",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 16.184,
+    "worst": 86,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 8.092,
+    "worst": 86,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "diyanet-europe",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.222,
+    "worst": 62,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 4.111,
+    "worst": 62,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "mabims",
+   "fajr": {
+    "days": 365,
+    "mean": 14.592,
+    "worst": 78,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 23.737,
+    "worst": 101,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 19.164,
+    "worst": 101,
+    "within1": 0.227,
+    "within2": 0.227,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "jakim",
+   "fajr": {
+    "days": 365,
+    "mean": 2.463,
+    "worst": 3,
+    "within1": 0,
+    "within2": 0.537,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 26.195,
+    "worst": 103,
+    "within1": 0,
+    "within2": 0.104,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 14.329,
+    "worst": 103,
+    "within1": 0,
+    "within2": 0.321,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "kemenag",
+   "fajr": {
+    "days": 365,
+    "mean": 13.329,
+    "worst": 76,
+    "within1": 0,
+    "within2": 0.132,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 26.214,
+    "worst": 103,
+    "within1": 0,
+    "within2": 0.099,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 19.771,
+    "worst": 103,
+    "within1": 0,
+    "within2": 0.115,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "kuwait",
+   "fajr": {
+    "days": 365,
+    "mean": 0.526,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 20.058,
+    "worst": 96,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.292,
+    "worst": 96,
+    "within1": 0.599,
+    "within2": 0.599,
+    "within5": 0.599
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "qatar",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 44.559,
+    "worst": 140,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 22.279,
+    "worst": 140,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "singapore-muis",
+   "fajr": {
+    "days": 365,
+    "mean": 14.318,
+    "worst": 78,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 24.195,
+    "worst": 101,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 19.256,
+    "worst": 101,
+    "within1": 0.227,
+    "within2": 0.227,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "dubai",
+   "fajr": {
+    "days": 365,
+    "mean": 1.51,
+    "worst": 14,
+    "within1": 0.532,
+    "within2": 0.899,
+    "within5": 0.975
+   },
+   "isha": {
+    "days": 365,
+    "mean": 25.288,
+    "worst": 104,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 13.399,
+    "worst": 104,
+    "within1": 0.364,
+    "within2": 0.548,
+    "within5": 0.586
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "tehran",
+   "fajr": {
+    "days": 365,
+    "mean": 2.26,
+    "worst": 23,
+    "within1": 0.252,
+    "within2": 0.685,
+    "within5": 0.953
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.644,
+    "worst": 64,
+    "within1": 0.173,
+    "within2": 0.173,
+    "within5": 0.173
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.452,
+    "worst": 64,
+    "within1": 0.212,
+    "within2": 0.429,
+    "within5": 0.563
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "fazilet-a",
+   "fajr": {
+    "days": 365,
+    "mean": 13.164,
+    "worst": 73,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 22.31,
+    "worst": 101,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 17.737,
+    "worst": 101,
+    "within1": 0.227,
+    "within2": 0.227,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "fazilet-b",
+   "fajr": {
+    "days": 365,
+    "mean": 20.197,
+    "worst": 96,
+    "within1": 0.258,
+    "within2": 0.258,
+    "within5": 0.258
+   },
+   "isha": {
+    "days": 365,
+    "mean": 29.008,
+    "worst": 113,
+    "within1": 0.197,
+    "within2": 0.197,
+    "within5": 0.197
+   },
+   "combined": {
+    "days": 730,
+    "mean": 24.603,
+    "worst": 113,
+    "within1": 0.227,
+    "within2": 0.227,
+    "within5": 0.227
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "ecfr",
+   "fajr": {
+    "days": 365,
+    "mean": 25.164,
+    "worst": 98,
+    "within1": 0.005,
+    "within2": 0.679,
+    "within5": 0.682
+   },
+   "isha": {
+    "days": 365,
+    "mean": 32.37,
+    "worst": 98,
+    "within1": 0.005,
+    "within2": 0.005,
+    "within5": 0.016
+   },
+   "combined": {
+    "days": 730,
+    "mean": 28.767,
+    "worst": 98,
+    "within1": 0.005,
+    "within2": 0.342,
+    "within5": 0.349
+   }
+  },
+  {
+   "country": "Russia (DUM RF at Moscow)",
+   "targetId": "RU-DUMRF-MOSCOW",
+   "method": "russia-sam",
+   "fajr": {
+    "days": 365,
+    "mean": 15.521,
+    "worst": 77,
+    "within1": 0.219,
+    "within2": 0.219,
+    "within5": 0.219
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.76,
+    "worst": 77,
+    "within1": 0.61,
+    "within2": 0.61,
+    "within5": 0.61
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "mwl",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.956,
+    "worst": 10,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 4.478,
+    "worst": 10,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "isna",
+   "fajr": {
+    "days": 365,
+    "mean": 12.685,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.501,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.593,
+    "worst": 14,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "isna-2010",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.222,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.611,
+    "worst": 14,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "umm-al-qura",
+   "fajr": {
+    "days": 365,
+    "mean": 2.636,
+    "worst": 3,
+    "within1": 0,
+    "within2": 0.364,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 32.827,
+    "worst": 63,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 17.732,
+    "worst": 63,
+    "within1": 0,
+    "within2": 0.182,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "egyptian",
+   "fajr": {
+    "days": 365,
+    "mean": 6.373,
+    "worst": 7,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 11.088,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 8.73,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "karachi",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.222,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.611,
+    "worst": 14,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "moonsighting",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.104,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.552,
+    "worst": 14,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "diyanet-domestic",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 8.956,
+    "worst": 10,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 4.478,
+    "worst": 10,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "diyanet-europe",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 4.721,
+    "worst": 5,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 2.36,
+    "worst": 5,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 1
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "mabims",
+   "fajr": {
+    "days": 365,
+    "mean": 8.493,
+    "worst": 10,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.222,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.858,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "jakim",
+   "fajr": {
+    "days": 365,
+    "mean": 2.477,
+    "worst": 3,
+    "within1": 0,
+    "within2": 0.523,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 15.682,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 9.079,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0.262,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "kemenag",
+   "fajr": {
+    "days": 365,
+    "mean": 5.942,
+    "worst": 7,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.17
+   },
+   "isha": {
+    "days": 365,
+    "mean": 15.693,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.818,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.085
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "kuwait",
+   "fajr": {
+    "days": 365,
+    "mean": 0.507,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 11.088,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.797,
+    "worst": 12,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "qatar",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 30.822,
+    "worst": 34,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 15.411,
+    "worst": 34,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "singapore-muis",
+   "fajr": {
+    "days": 365,
+    "mean": 7.948,
+    "worst": 9,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.682,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 10.815,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "dubai",
+   "fajr": {
+    "days": 365,
+    "mean": 0.816,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 14.022,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.419,
+    "worst": 15,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "tehran",
+   "fajr": {
+    "days": 365,
+    "mean": 1.29,
+    "worst": 2,
+    "within1": 0.71,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 3.69,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 2.49,
+    "worst": 4,
+    "within1": 0.355,
+    "within2": 0.5,
+    "within5": 1
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "fazilet-a",
+   "fajr": {
+    "days": 365,
+    "mean": 7.619,
+    "worst": 9,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 12.351,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 9.985,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "fazilet-b",
+   "fajr": {
+    "days": 365,
+    "mean": 11.836,
+    "worst": 13,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 16.17,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 14.003,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "ecfr",
+   "fajr": {
+    "days": 365,
+    "mean": 2,
+    "worst": 2,
+    "within1": 0,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 10.956,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.478,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Tanzania (at Dar es Salaam)",
+   "targetId": "JAMIAT-KZN",
+   "method": "russia-sam",
+   "fajr": {
+    "days": 365,
+    "mean": 8.46,
+    "worst": 10,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.501,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 4.481,
+    "worst": 10,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "mwl",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 10.104,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.052,
+    "worst": 12,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "isna",
+   "fajr": {
+    "days": 365,
+    "mean": 14.34,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.526,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.433,
+    "worst": 17,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "isna-2010",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 14.874,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.437,
+    "worst": 18,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "umm-al-qura",
+   "fajr": {
+    "days": 365,
+    "mean": 2.967,
+    "worst": 4,
+    "within1": 0,
+    "within2": 0.162,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 25.611,
+    "worst": 57,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 14.289,
+    "worst": 57,
+    "within1": 0,
+    "within2": 0.081,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "egyptian",
+   "fajr": {
+    "days": 365,
+    "mean": 7.274,
+    "worst": 9,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 12.51,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 9.892,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "karachi",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 14.874,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.437,
+    "worst": 18,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "moonsighting",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 10.038,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0.019,
+    "within5": 0.299
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.019,
+    "worst": 15,
+    "within1": 0.5,
+    "within2": 0.51,
+    "within5": 0.649
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "diyanet-domestic",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 10.104,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.052,
+    "worst": 12,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "diyanet-europe",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 5.299,
+    "worst": 7,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0.69
+   },
+   "combined": {
+    "days": 730,
+    "mean": 2.649,
+    "worst": 7,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.845
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "mabims",
+   "fajr": {
+    "days": 365,
+    "mean": 9.682,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 14.874,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 12.278,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "jakim",
+   "fajr": {
+    "days": 365,
+    "mean": 2.455,
+    "worst": 3,
+    "within1": 0,
+    "within2": 0.545,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.403,
+    "worst": 20,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 9.929,
+    "worst": 20,
+    "within1": 0,
+    "within2": 0.273,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "kemenag",
+   "fajr": {
+    "days": 365,
+    "mean": 7.192,
+    "worst": 9,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 17.414,
+    "worst": 20,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 12.303,
+    "worst": 20,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "kuwait",
+   "fajr": {
+    "days": 365,
+    "mean": 0.532,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 12.51,
+    "worst": 15,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 6.521,
+    "worst": 15,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "qatar",
+   "fajr": {
+    "days": 365,
+    "mean": 0,
+    "worst": 0,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 23.636,
+    "worst": 28,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 11.818,
+    "worst": 28,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "singapore-muis",
+   "fajr": {
+    "days": 365,
+    "mean": 9.208,
+    "worst": 11,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 15.403,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 12.305,
+    "worst": 18,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "dubai",
+   "fajr": {
+    "days": 365,
+    "mean": 0.978,
+    "worst": 2,
+    "within1": 0.945,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 15.847,
+    "worst": 19,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 8.412,
+    "worst": 19,
+    "within1": 0.473,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "tehran",
+   "fajr": {
+    "days": 365,
+    "mean": 1.408,
+    "worst": 2,
+    "within1": 0.592,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 4.236,
+    "worst": 5,
+    "within1": 0,
+    "within2": 0,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 2.822,
+    "worst": 5,
+    "within1": 0.296,
+    "within2": 0.5,
+    "within5": 1
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "fazilet-a",
+   "fajr": {
+    "days": 365,
+    "mean": 8.718,
+    "worst": 11,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 13.932,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 11.325,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "fazilet-b",
+   "fajr": {
+    "days": 365,
+    "mean": 13.584,
+    "worst": 17,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 18.288,
+    "worst": 22,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 15.936,
+    "worst": 22,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "ecfr",
+   "fajr": {
+    "days": 365,
+    "mean": 2,
+    "worst": 2,
+    "within1": 0,
+    "within2": 1,
+    "within5": 1
+   },
+   "isha": {
+    "days": 365,
+    "mean": 12.104,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "combined": {
+    "days": 730,
+    "mean": 7.052,
+    "worst": 14,
+    "within1": 0,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  },
+  {
+   "country": "Mozambique (at Maputo)",
+   "targetId": "JAMIAT-KZN",
+   "method": "russia-sam",
+   "fajr": {
+    "days": 365,
+    "mean": 9.556,
+    "worst": 12,
+    "within1": 0,
+    "within2": 0,
+    "within5": 0
+   },
+   "isha": {
+    "days": 365,
+    "mean": 0.526,
+    "worst": 1,
+    "within1": 1,
+    "within2": 1,
+    "within5": 1
+   },
+   "combined": {
+    "days": 730,
+    "mean": 5.041,
+    "worst": 12,
+    "within1": 0.5,
+    "within2": 0.5,
+    "within5": 0.5
+   }
+  }
+ ]
+}

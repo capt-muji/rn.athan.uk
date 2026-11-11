@@ -1,0 +1,302 @@
+{
+ "2026-11-01": {
+  "fajr_window": "05:22 - 06:51",
+  "dhuhr_window": "12:40 - 15:41",
+  "asr_window": "15:42 - 17:15",
+  "makruh_sunset_window": "17:16 - 17:35",
+  "magrib_window": "17:36 - 18:16",
+  "isha_window": "19:06 - 05:21",
+  "weekday": "Якшанбе",
+  "hijri": "20.05.1448"
+ },
+ "2026-11-02": {
+  "fajr_window": "05:23 - 06:52",
+  "dhuhr_window": "12:40 - 15:40",
+  "asr_window": "15:41 - 17:14",
+  "makruh_sunset_window": "17:15 - 17:34",
+  "magrib_window": "17:35 - 18:15",
+  "isha_window": "19:05 - 05:22",
+  "weekday": "Душанбе",
+  "hijri": "21.05.1448"
+ },
+ "2026-11-03": {
+  "fajr_window": "05:24 - 06:53",
+  "dhuhr_window": "12:40 - 15:39",
+  "asr_window": "15:40 - 17:13",
+  "makruh_sunset_window": "17:14 - 17:33",
+  "magrib_window": "17:34 - 18:14",
+  "isha_window": "19:04 - 05:23",
+  "weekday": "Сешанбе",
+  "hijri": "22.05.1448"
+ },
+ "2026-11-04": {
+  "fajr_window": "05:25 - 06:54",
+  "dhuhr_window": "12:40 - 15:38",
+  "asr_window": "15:39 - 17:12",
+  "makruh_sunset_window": "17:13 - 17:32",
+  "magrib_window": "17:33 - 18:13",
+  "isha_window": "19:03 - 05:24",
+  "weekday": "Чоршанбе",
+  "hijri": "23.05.1448"
+ },
+ "2026-11-05": {
+  "fajr_window": "05:26 - 06:55",
+  "dhuhr_window": "12:40 - 15:37",
+  "asr_window": "15:38 - 17:11",
+  "makruh_sunset_window": "17:12 - 17:31",
+  "magrib_window": "17:32 - 18:12",
+  "isha_window": "19:02 - 05:25",
+  "weekday": "Панҷшанбе",
+  "hijri": "24.05.1448"
+ },
+ "2026-11-06": {
+  "fajr_window": "05:27 - 06:56",
+  "dhuhr_window": "12:40 - 15:36",
+  "asr_window": "15:37 - 17:10",
+  "makruh_sunset_window": "17:11 - 17:30",
+  "magrib_window": "17:31 - 18:11",
+  "isha_window": "19:01 - 05:26",
+  "weekday": "Ҷумъа",
+  "hijri": "25.05.1448"
+ },
+ "2026-11-07": {
+  "fajr_window": "05:28 - 06:57",
+  "dhuhr_window": "12:40 - 15:35",
+  "asr_window": "15:36 - 17:09",
+  "makruh_sunset_window": "17:10 - 17:29",
+  "magrib_window": "17:30 - 18:10",
+  "isha_window": "19:00 - 05:27",
+  "weekday": "Шанбе",
+  "hijri": "26.05.1448"
+ },
+ "2026-11-08": {
+  "fajr_window": "05:29 - 06:58",
+  "dhuhr_window": "12:40 - 15:34",
+  "asr_window": "15:35 - 17:08",
+  "makruh_sunset_window": "17:09 - 17:28",
+  "magrib_window": "17:29 - 18:09",
+  "isha_window": "18:59 - 05:28",
+  "weekday": "Якшанбе",
+  "hijri": "27.05.1448"
+ },
+ "2026-11-09": {
+  "fajr_window": "05:30 - 06:59",
+  "dhuhr_window": "12:40 - 15:33",
+  "asr_window": "15:34 - 17:07",
+  "makruh_sunset_window": "17:08 - 17:27",
+  "magrib_window": "17:28 - 18:08",
+  "isha_window": "18:58 - 05:29",
+  "weekday": "Душанбе",
+  "hijri": "28.05.1448"
+ },
+ "2026-11-10": {
+  "fajr_window": "05:31 - 07:00",
+  "dhuhr_window": "12:40 - 15:32",
+  "asr_window": "15:33 - 17:06",
+  "makruh_sunset_window": "17:07 - 17:26",
+  "magrib_window": "17:27 - 18:07",
+  "isha_window": "18:57 - 05:30",
+  "weekday": "Сешанбе",
+  "hijri": "29.05.1448"
+ },
+ "2026-11-11": {
+  "fajr_window": "05:32 - 07:01",
+  "dhuhr_window": "12:40 - 15:31",
+  "asr_window": "15:32 - 17:05",
+  "makruh_sunset_window": "17:06 - 17:25",
+  "magrib_window": "17:26 - 18:06",
+  "isha_window": "18:56 - 05:31",
+  "weekday": "Чоршанбе",
+  "hijri": "30.05.1448"
+ },
+ "2026-11-12": {
+  "fajr_window": "05:33 - 07:02",
+  "dhuhr_window": "12:40 - 15:30",
+  "asr_window": "15:31 - 17:04",
+  "makruh_sunset_window": "17:05 - 17:24",
+  "magrib_window": "17:25 - 18:05",
+  "isha_window": "18:55 - 05:32",
+  "weekday": "Панҷшанбе",
+  "hijri": "01.06.1448"
+ },
+ "2026-11-13": {
+  "fajr_window": "05:34 - 07:03",
+  "dhuhr_window": "12:40 - 15:30",
+  "asr_window": "15:31 - 17:04",
+  "makruh_sunset_window": "17:05 - 17:24",
+  "magrib_window": "17:25 - 18:05",
+  "isha_window": "18:55 - 05:33",
+  "weekday": "Ҷумъа",
+  "hijri": "02.06.1448"
+ },
+ "2026-11-14": {
+  "fajr_window": "05:35 - 07:04",
+  "dhuhr_window": "12:40 - 15:29",
+  "asr_window": "15:30 - 17:03",
+  "makruh_sunset_window": "17:04 - 17:23",
+  "magrib_window": "17:24 - 18:04",
+  "isha_window": "18:54 - 05:34",
+  "weekday": "Шанбе",
+  "hijri": "03.06.1448"
+ },
+ "2026-11-15": {
+  "fajr_window": "05:36 - 07:05",
+  "dhuhr_window": "12:40 - 15:28",
+  "asr_window": "15:29 - 17:02",
+  "makruh_sunset_window": "17:03 - 17:21",
+  "magrib_window": "17:23 - 18:03",
+  "isha_window": "18:53 - 05:35",
+  "weekday": "Якшанбе",
+  "hijri": "04.06.1448"
+ },
+ "2026-11-16": {
+  "fajr_window": "05:37 - 07:06",
+  "dhuhr_window": "12:40 - 15:27",
+  "asr_window": "15:28 - 17:01",
+  "makruh_sunset_window": "17:02 - 17:21",
+  "magrib_window": "17:22 - 18:02",
+  "isha_window": "18:52 - 05:36",
+  "weekday": "Душанбе",
+  "hijri": "05.06.1448"
+ },
+ "2026-11-17": {
+  "fajr_window": "05:38 - 07:07",
+  "dhuhr_window": "12:40 - 15:27",
+  "asr_window": "15:28 - 17:01",
+  "makruh_sunset_window": "17:01 - 17:21",
+  "magrib_window": "17:22 - 18:02",
+  "isha_window": "18:52 - 05:37",
+  "weekday": "Сешанбе",
+  "hijri": "06.06.1448"
+ },
+ "2026-11-18": {
+  "fajr_window": "05:39 - 07:09",
+  "dhuhr_window": "12:40 - 15:26",
+  "asr_window": "15:27 - 17:00",
+  "makruh_sunset_window": "17:01 - 17:20",
+  "magrib_window": "17:21 - 18:01",
+  "isha_window": "18:51 - 05:38",
+  "weekday": "Чоршанбе",
+  "hijri": "07.06.1448"
+ },
+ "2026-11-19": {
+  "fajr_window": "05:40 - 07:10",
+  "dhuhr_window": "12:40 - 15:25",
+  "asr_window": "15:26 - 16:59",
+  "makruh_sunset_window": "17:00 - 17:19",
+  "magrib_window": "17:20 - 18:00",
+  "isha_window": "18:50 - 05:39",
+  "weekday": "Панҷшанбе",
+  "hijri": "08.06.1448"
+ },
+ "2026-11-20": {
+  "fajr_window": "05:41 - 07:11",
+  "dhuhr_window": "12:40 - 15:25",
+  "asr_window": "15:26 - 16:59",
+  "makruh_sunset_window": "17:00 - 17:19",
+  "magrib_window": "17:20 - 18:00",
+  "isha_window": "18:50 - 05:40",
+  "weekday": "Ҷумъа",
+  "hijri": "09.06.1448"
+ },
+ "2026-11-21": {
+  "fajr_window": "05:42 - 07:12",
+  "dhuhr_window": "12:40 - 15:24",
+  "asr_window": "15:25 - 16:58",
+  "makruh_sunset_window": "16:59 - 17:18",
+  "magrib_window": "17:19 - 17:59",
+  "isha_window": "18:49 - 05:41",
+  "weekday": "Шанбе",
+  "hijri": "10.06.1448"
+ },
+ "2026-11-22": {
+  "fajr_window": "05:43 - 07:13",
+  "dhuhr_window": "12:40 - 15:24",
+  "asr_window": "15:25 - 16:58",
+  "makruh_sunset_window": "16:59 - 17:18",
+  "magrib_window": "17:19 - 17:59",
+  "isha_window": "18:49 - 05:42",
+  "weekday": "Якшанбе",
+  "hijri": "11.06.1448"
+ },
+ "2026-11-23": {
+  "fajr_window": "05:44 - 07:14",
+  "dhuhr_window": "12:40 - 15:23",
+  "asr_window": "15:24 - 16:57",
+  "makruh_sunset_window": "16:58 - 17:17",
+  "magrib_window": "17:18 - 17:58",
+  "isha_window": "18:48 - 05:43",
+  "weekday": "Душанбе",
+  "hijri": "12.06.1448"
+ },
+ "2026-11-24": {
+  "fajr_window": "05:45 - 07:15",
+  "dhuhr_window": "12:40 - 15:23",
+  "asr_window": "15:24 - 16:57",
+  "makruh_sunset_window": "16:58 - 17:17",
+  "magrib_window": "17:18 - 17:58",
+  "isha_window": "18:48 - 05:44",
+  "weekday": "Сешанбе",
+  "hijri": "13.06.1448"
+ },
+ "2026-11-25": {
+  "fajr_window": "05:46 - 07:16",
+  "dhuhr_window": "12:40 - 15:22",
+  "asr_window": "15:23 - 16:56",
+  "makruh_sunset_window": "16:57 - 17:16",
+  "magrib_window": "17:17 - 17:57",
+  "isha_window": "18:47 - 05:45",
+  "weekday": "Чоршанбе",
+  "hijri": "14.06.1448"
+ },
+ "2026-11-26": {
+  "fajr_window": "05:47 - 07:17",
+  "dhuhr_window": "12:40 - 15:22",
+  "asr_window": "15:23 - 16:56",
+  "makruh_sunset_window": "16:57 - 17:16",
+  "magrib_window": "17:17 - 17:57",
+  "isha_window": "18:47 - 05:46",
+  "weekday": "Панҷшанбе",
+  "hijri": "15.06.1448"
+ },
+ "2026-11-27": {
+  "fajr_window": "05:48 - 07:18",
+  "dhuhr_window": "12:40 - 15:21",
+  "asr_window": "15:22 - 16:55",
+  "makruh_sunset_window": "16:56 - 17:15",
+  "magrib_window": "17:16 - 17:56",
+  "isha_window": "18:46 - 05:47",
+  "weekday": "Ҷумъа",
+  "hijri": "16.06.1448"
+ },
+ "2026-11-28": {
+  "fajr_window": "05:49 - 07:19",
+  "dhuhr_window": "12:40 - 15:21",
+  "asr_window": "15:22 - 16:55",
+  "makruh_sunset_window": "16:56 - 17:15",
+  "magrib_window": "17:16 - 17:56",
+  "isha_window": "18:46 - 05:48",
+  "weekday": "Шанбе",
+  "hijri": "17.06.1448"
+ },
+ "2026-11-29": {
+  "fajr_window": "05:50 - 07:21",
+  "dhuhr_window": "12:40 - 15:21",
+  "asr_window": "15:22 - 16:55",
+  "makruh_sunset_window": "16:56 - 17:15",
+  "magrib_window": "17:16 - 17:56",
+  "isha_window": "18:46 - 05:49",
+  "weekday": "Якшанбе",
+  "hijri": "18.06.1448"
+ },
+ "2026-11-30": {
+  "fajr_window": "05:51 - 07:22",
+  "dhuhr_window": "12:40 - 15:21",
+  "asr_window": "15:22 - 16:55",
+  "makruh_sunset_window": "16:56 - 17:15",
+  "magrib_window": "17:16 - 17:56",
+  "isha_window": "18:46 - 05:50",
+  "weekday": "Душанбе",
+  "hijri": "19.06.1448"
+ }
+}

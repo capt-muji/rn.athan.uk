@@ -1,0 +1,828 @@
+{
+ "job": "saudi-off-anchor",
+ "recipe": {
+  "source": "deep1 REPORT job 3 (Saudi, Hijri 1450-1500)",
+  "fajrAngle": 18.5,
+  "asr": "Shafi",
+  "highLatitude": "MiddleOfTheNight",
+  "rounding": "fajr, dhuhr, asr, maghrib = floor(raw + 1); sunrise = floor(raw)",
+  "isha": "maghrib + 90, + 120 on the capture hijriDate.month 9"
+ },
+ "cities": {
+  "makkah": {
+   "coordinate": {
+    "lat": 21.4267,
+    "lng": 39.8317
+   },
+   "rows": 709,
+   "span": "2026-06-16..2028-05-24",
+   "intervalHistogram": {
+    "90": 651,
+    "120": 58,
+    "other": 0
+   },
+   "intervalMismatch": 0,
+   "requiredFloorMargin": {
+    "fajr": {
+     "medianLowEndpoint": 0.57,
+     "p05": -0.42,
+     "p95": 1.32,
+     "exactWindowWidth": -1.15
+    },
+    "sunrise": {
+     "medianLowEndpoint": -0.5,
+     "p05": -0.93,
+     "p95": 0,
+     "exactWindowWidth": -1.48
+    },
+    "dhuhr": {
+     "medianLowEndpoint": 0.55,
+     "p05": 0.08,
+     "p95": 0.97,
+     "exactWindowWidth": -0.55
+    },
+    "asr": {
+     "medianLowEndpoint": 0.53,
+     "p05": -0.17,
+     "p95": 1.35,
+     "exactWindowWidth": -1.33
+    },
+    "maghrib": {
+     "medianLowEndpoint": 0.52,
+     "p05": 0.05,
+     "p95": 0.97,
+     "exactWindowWidth": -1.08
+    },
+    "isha": {
+     "medianLowEndpoint": 0.52,
+     "p05": 0.05,
+     "p95": 0.97,
+     "exactWindowWidth": -1.08
+    }
+   },
+   "pooled": {
+    "cells": 4254,
+    "exact": 3649,
+    "exactPct": 85.8,
+    "within1Pct": 100
+   },
+   "recipeRaw": {
+    "fajr": {
+     "n": 709,
+     "exact": 429,
+     "exactPct": 60.5,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.395,
+     "worst": 1,
+     "late": 131,
+     "early": 149
+    },
+    "sunrise": {
+     "n": 709,
+     "exact": 671,
+     "exactPct": 94.6,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.054,
+     "worst": 1,
+     "late": 7,
+     "early": 31
+    },
+    "dhuhr": {
+     "n": 709,
+     "exact": 694,
+     "exactPct": 97.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.021,
+     "worst": 1,
+     "late": 5,
+     "early": 10
+    },
+    "asr": {
+     "n": 709,
+     "exact": 479,
+     "exactPct": 67.6,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.324,
+     "worst": 1,
+     "late": 101,
+     "early": 129
+    },
+    "maghrib": {
+     "n": 709,
+     "exact": 688,
+     "exactPct": 97,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.03,
+     "worst": 1,
+     "late": 10,
+     "early": 11
+    },
+    "isha": {
+     "n": 709,
+     "exact": 688,
+     "exactPct": 97,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.03,
+     "worst": 1,
+     "late": 10,
+     "early": 11
+    }
+   },
+   "recipePrintedMaghrib": {
+    "isha": {
+     "n": 709,
+     "exact": 688,
+     "exactPct": 97,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.03,
+     "worst": 1,
+     "late": 10,
+     "early": 11
+    }
+   },
+   "perYear": {
+    "1448": {
+     "n": 355,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 59.7,
+      "sunrise": 94.1,
+      "dhuhr": 97.5,
+      "asr": 67.6,
+      "maghrib": 96.9,
+      "isha": 96.9
+     }
+    },
+    "1449": {
+     "n": 354,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 61.3,
+      "sunrise": 95.2,
+      "dhuhr": 98.3,
+      "asr": 67.5,
+      "maghrib": 97.2,
+      "isha": 97.2
+     }
+    }
+   },
+   "impliedFajrDepth": {
+    "median": 18.39,
+    "p05": 18.19,
+    "p95": 18.59
+   },
+   "fajrJanMean": 340.3,
+   "fajrJulMean": 262.6,
+   "fajrJanJulSpanMin": 78,
+   "fajrAnnualSwingMin": 89,
+   "freeFajrFit": {
+    "angle": 18.46,
+    "score": {
+     "n": 709,
+     "exact": 440,
+     "exactPct": 62.1,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.379,
+     "worst": 1,
+     "late": 196,
+     "early": 73
+    }
+   }
+  },
+  "riyadh": {
+   "coordinate": {
+    "lat": 24.7136,
+    "lng": 46.6753
+   },
+   "rows": 709,
+   "span": "2026-06-16..2028-05-24",
+   "intervalHistogram": {
+    "90": 651,
+    "120": 58,
+    "other": 0
+   },
+   "intervalMismatch": 0,
+   "requiredFloorMargin": {
+    "fajr": {
+     "medianLowEndpoint": 0.62,
+     "p05": -0.45,
+     "p95": 1.38,
+     "exactWindowWidth": -1.35
+    },
+    "sunrise": {
+     "medianLowEndpoint": -0.5,
+     "p05": -0.93,
+     "p95": -0.02,
+     "exactWindowWidth": -1.3
+    },
+    "dhuhr": {
+     "medianLowEndpoint": 0.48,
+     "p05": 0.05,
+     "p95": 0.97,
+     "exactWindowWidth": -0.63
+    },
+    "asr": {
+     "medianLowEndpoint": 0.53,
+     "p05": -0.18,
+     "p95": 1.32,
+     "exactWindowWidth": -1.68
+    },
+    "maghrib": {
+     "medianLowEndpoint": 0.5,
+     "p05": 0.05,
+     "p95": 0.98,
+     "exactWindowWidth": -1.15
+    },
+    "isha": {
+     "medianLowEndpoint": 0.5,
+     "p05": 0.05,
+     "p95": 0.98,
+     "exactWindowWidth": -1.15
+    }
+   },
+   "pooled": {
+    "cells": 4254,
+    "exact": 3620,
+    "exactPct": 85.1,
+    "within1Pct": 100
+   },
+   "recipeRaw": {
+    "fajr": {
+     "n": 709,
+     "exact": 400,
+     "exactPct": 56.4,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.436,
+     "worst": 1,
+     "late": 144,
+     "early": 165
+    },
+    "sunrise": {
+     "n": 709,
+     "exact": 677,
+     "exactPct": 95.5,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.045,
+     "worst": 1,
+     "late": 8,
+     "early": 24
+    },
+    "dhuhr": {
+     "n": 709,
+     "exact": 697,
+     "exactPct": 98.3,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.017,
+     "worst": 1,
+     "late": 7,
+     "early": 5
+    },
+    "asr": {
+     "n": 709,
+     "exact": 486,
+     "exactPct": 68.5,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.315,
+     "worst": 1,
+     "late": 101,
+     "early": 122
+    },
+    "maghrib": {
+     "n": 709,
+     "exact": 680,
+     "exactPct": 95.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.041,
+     "worst": 1,
+     "late": 10,
+     "early": 19
+    },
+    "isha": {
+     "n": 709,
+     "exact": 680,
+     "exactPct": 95.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.041,
+     "worst": 1,
+     "late": 10,
+     "early": 19
+    }
+   },
+   "recipePrintedMaghrib": {
+    "isha": {
+     "n": 709,
+     "exact": 680,
+     "exactPct": 95.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.041,
+     "worst": 1,
+     "late": 10,
+     "early": 19
+    }
+   },
+   "perYear": {
+    "1448": {
+     "n": 355,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 53.8,
+      "sunrise": 96.3,
+      "dhuhr": 98.6,
+      "asr": 67.3,
+      "maghrib": 96.1,
+      "isha": 96.1
+     }
+    },
+    "1449": {
+     "n": 354,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 59,
+      "sunrise": 94.6,
+      "dhuhr": 98,
+      "asr": 69.8,
+      "maghrib": 95.8,
+      "isha": 95.8
+     }
+    }
+   },
+   "impliedFajrDepth": {
+    "median": 18.38,
+    "p05": 18.18,
+    "p95": 18.6
+   },
+   "fajrJanMean": 316.8,
+   "fajrJulMean": 225.6,
+   "fajrJanJulSpanMin": 91,
+   "fajrAnnualSwingMin": 103,
+   "freeFajrFit": {
+    "angle": 18.46,
+    "score": {
+     "n": 709,
+     "exact": 409,
+     "exactPct": 57.7,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.423,
+     "worst": 1,
+     "late": 209,
+     "early": 91
+    }
+   }
+  },
+  "medina": {
+   "coordinate": {
+    "lat": 24.4672,
+    "lng": 39.6111
+   },
+   "rows": 709,
+   "span": "2026-06-16..2028-05-24",
+   "intervalHistogram": {
+    "90": 651,
+    "120": 58,
+    "other": 0
+   },
+   "intervalMismatch": 0,
+   "requiredFloorMargin": {
+    "fajr": {
+     "medianLowEndpoint": 0.62,
+     "p05": -0.48,
+     "p95": 1.37,
+     "exactWindowWidth": -1.32
+    },
+    "sunrise": {
+     "medianLowEndpoint": -0.43,
+     "p05": -0.93,
+     "p95": 0,
+     "exactWindowWidth": -1.45
+    },
+    "dhuhr": {
+     "medianLowEndpoint": 0.53,
+     "p05": 0.05,
+     "p95": 0.98,
+     "exactWindowWidth": -0.68
+    },
+    "asr": {
+     "medianLowEndpoint": 0.5,
+     "p05": -0.2,
+     "p95": 1.35,
+     "exactWindowWidth": -1.72
+    },
+    "maghrib": {
+     "medianLowEndpoint": 0.52,
+     "p05": 0.05,
+     "p95": 0.97,
+     "exactWindowWidth": -1.48
+    },
+    "isha": {
+     "medianLowEndpoint": 0.52,
+     "p05": 0.05,
+     "p95": 0.97,
+     "exactWindowWidth": -1.48
+    }
+   },
+   "pooled": {
+    "cells": 4254,
+    "exact": 3627,
+    "exactPct": 85.3,
+    "within1Pct": 100
+   },
+   "recipeRaw": {
+    "fajr": {
+     "n": 709,
+     "exact": 390,
+     "exactPct": 55,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.45,
+     "worst": 1,
+     "late": 154,
+     "early": 165
+    },
+    "sunrise": {
+     "n": 709,
+     "exact": 670,
+     "exactPct": 94.5,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.055,
+     "worst": 1,
+     "late": 9,
+     "early": 30
+    },
+    "dhuhr": {
+     "n": 709,
+     "exact": 690,
+     "exactPct": 97.3,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.027,
+     "worst": 1,
+     "late": 4,
+     "early": 15
+    },
+    "asr": {
+     "n": 709,
+     "exact": 497,
+     "exactPct": 70.1,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.299,
+     "worst": 1,
+     "late": 99,
+     "early": 113
+    },
+    "maghrib": {
+     "n": 709,
+     "exact": 690,
+     "exactPct": 97.3,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.027,
+     "worst": 1,
+     "late": 6,
+     "early": 13
+    },
+    "isha": {
+     "n": 709,
+     "exact": 690,
+     "exactPct": 97.3,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.027,
+     "worst": 1,
+     "late": 6,
+     "early": 13
+    }
+   },
+   "recipePrintedMaghrib": {
+    "isha": {
+     "n": 709,
+     "exact": 690,
+     "exactPct": 97.3,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.027,
+     "worst": 1,
+     "late": 6,
+     "early": 13
+    }
+   },
+   "perYear": {
+    "1448": {
+     "n": 355,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 55.8,
+      "sunrise": 94.1,
+      "dhuhr": 97.2,
+      "asr": 70.4,
+      "maghrib": 96.9,
+      "isha": 96.9
+     }
+    },
+    "1449": {
+     "n": 354,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 54.2,
+      "sunrise": 94.9,
+      "dhuhr": 97.5,
+      "asr": 69.8,
+      "maghrib": 97.7,
+      "isha": 97.7
+     }
+    }
+   },
+   "impliedFajrDepth": {
+    "median": 18.38,
+    "p05": 18.18,
+    "p95": 18.6
+   },
+   "fajrJanMean": 344.8,
+   "fajrJulMean": 254.7,
+   "fajrJanJulSpanMin": 90,
+   "fajrAnnualSwingMin": 102,
+   "freeFajrFit": {
+    "angle": 18.46,
+    "score": {
+     "n": 709,
+     "exact": 417,
+     "exactPct": 58.8,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.412,
+     "worst": 1,
+     "late": 208,
+     "early": 84
+    }
+   }
+  },
+  "jeddah": {
+   "coordinate": {
+    "lat": 21.4858,
+    "lng": 39.1925
+   },
+   "rows": 709,
+   "span": "2026-06-16..2028-05-24",
+   "intervalHistogram": {
+    "90": 651,
+    "120": 58,
+    "other": 0
+   },
+   "intervalMismatch": 0,
+   "requiredFloorMargin": {
+    "fajr": {
+     "medianLowEndpoint": 0.53,
+     "p05": -0.3,
+     "p95": 1.3,
+     "exactWindowWidth": -1.07
+    },
+    "sunrise": {
+     "medianLowEndpoint": -0.47,
+     "p05": -0.93,
+     "p95": 0,
+     "exactWindowWidth": -1.2
+    },
+    "dhuhr": {
+     "medianLowEndpoint": 0.48,
+     "p05": 0.05,
+     "p95": 0.95,
+     "exactWindowWidth": -0.63
+    },
+    "asr": {
+     "medianLowEndpoint": 0.5,
+     "p05": -0.22,
+     "p95": 1.4,
+     "exactWindowWidth": -1.48
+    },
+    "maghrib": {
+     "medianLowEndpoint": 0.48,
+     "p05": 0.07,
+     "p95": 0.97,
+     "exactWindowWidth": -1.32
+    },
+    "isha": {
+     "medianLowEndpoint": 0.48,
+     "p05": 0.07,
+     "p95": 0.97,
+     "exactWindowWidth": -1.32
+    }
+   },
+   "pooled": {
+    "cells": 4254,
+    "exact": 3663,
+    "exactPct": 86.1,
+    "within1Pct": 100
+   },
+   "recipeRaw": {
+    "fajr": {
+     "n": 709,
+     "exact": 455,
+     "exactPct": 64.2,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.358,
+     "worst": 1,
+     "late": 119,
+     "early": 135
+    },
+    "sunrise": {
+     "n": 709,
+     "exact": 673,
+     "exactPct": 94.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.051,
+     "worst": 1,
+     "late": 11,
+     "early": 25
+    },
+    "dhuhr": {
+     "n": 709,
+     "exact": 694,
+     "exactPct": 97.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.021,
+     "worst": 1,
+     "late": 7,
+     "early": 8
+    },
+    "asr": {
+     "n": 709,
+     "exact": 467,
+     "exactPct": 65.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.341,
+     "worst": 1,
+     "late": 121,
+     "early": 121
+    },
+    "maghrib": {
+     "n": 709,
+     "exact": 687,
+     "exactPct": 96.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.031,
+     "worst": 1,
+     "late": 7,
+     "early": 15
+    },
+    "isha": {
+     "n": 709,
+     "exact": 687,
+     "exactPct": 96.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.031,
+     "worst": 1,
+     "late": 7,
+     "early": 15
+    }
+   },
+   "recipePrintedMaghrib": {
+    "isha": {
+     "n": 709,
+     "exact": 687,
+     "exactPct": 96.9,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.031,
+     "worst": 1,
+     "late": 7,
+     "early": 15
+    }
+   },
+   "perYear": {
+    "1448": {
+     "n": 355,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 67,
+      "sunrise": 94.4,
+      "dhuhr": 98.6,
+      "asr": 65.1,
+      "maghrib": 96.9,
+      "isha": 96.9
+     }
+    },
+    "1449": {
+     "n": 354,
+     "within1": {
+      "fajr": 100,
+      "sunrise": 100,
+      "dhuhr": 100,
+      "asr": 100,
+      "maghrib": 100,
+      "isha": 100
+     },
+     "exact": {
+      "fajr": 61.3,
+      "sunrise": 95.5,
+      "dhuhr": 97.2,
+      "asr": 66.7,
+      "maghrib": 96.9,
+      "isha": 96.9
+     }
+    }
+   },
+   "impliedFajrDepth": {
+    "median": 18.39,
+    "p05": 18.19,
+    "p95": 18.57
+   },
+   "fajrJanMean": 342.9,
+   "fajrJulMean": 264.9,
+   "fajrJanJulSpanMin": 78,
+   "fajrAnnualSwingMin": 89,
+   "freeFajrFit": {
+    "angle": 18.49,
+    "score": {
+     "n": 709,
+     "exact": 464,
+     "exactPct": 65.4,
+     "within1": 709,
+     "within1Pct": 100,
+     "mae": 0.346,
+     "worst": 1,
+     "late": 127,
+     "early": 118
+    }
+   }
+  }
+ },
+ "hijriCheck": {
+  "surface": "Intl islamic-umalqura vs capture hijriDate.month",
+  "checked": 2836,
+  "agree": 2836,
+  "examples": [],
+  "agreePct": 100
+ }
+}

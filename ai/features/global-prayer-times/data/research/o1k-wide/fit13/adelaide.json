@@ -1,0 +1,32 @@
+{
+ "_job": "Job 4: Islamic Society of South Australia (Adelaide) — Nov+Dec 2026 fitted",
+ "lat": -34.9285,
+ "lon": 138.6007,
+ "zone": "Australia/Adelaide",
+ "rows": 61,
+ "span": [
+  "2026-11-01",
+  "2026-12-31"
+ ],
+ "recipe": {
+  "fajr": "18 deg raw, nearest minute — implied 17.98 deg (sd 0.057); exact 38/61, within-1 61/61",
+  "isha": "17 deg raw, nearest minute — implied 17.13 deg (sd 0.073); exact 36/61, within-1 61/61 (18 deg fails, worst 8 min)",
+  "sunrise": "solar sunrise floored to the minute — exact 56/61, within-1 61/61",
+  "dhuhr": "transit raw, nearest minute — exact 22/61, within-1 61/61 (median +0.55); NOT a constant column: 13:00 -> 13:19 across the window",
+  "asr": "shadow-1 raw, nearest minute — exact 42/61, within-1 61/61 (shadow-2 73 min off)",
+  "maghrib": "sunset raw, nearest minute — exact 36/61, within-1 61/61 (median +0.35)"
+ },
+ "verdict": "bare MWL-class calculator: 18/17, Shafi asr, zero temkin or offsets on any prayer. Contrast with Diyanet Australia, which serves the domestic recipe with temkin on sunrise/dhuhr/asr/maghrib — the two South Australian surfaces differ in kind, not just angles.",
+ "confidence": {
+  "perPrayer": "every prayer within 1 minute on all 61 rows; exact rates 36-56/61 (minute-rounding remainder)",
+  "lowConfidenceRows": "the 9 dark-banded Nov rows (2026-11-03/05/09/13/15/19/23/25/29) still fit the recipe within 1 minute (worst deviation 1 min on 3 rows) — transcription risk does not break the fit"
+ },
+ "limits": [
+  "Two months fitted (Nov+Dec 2026, 61 rows); between-year stability and full seasonal amplitude untested on this surface.",
+  "Seven more months (Apr-Oct 2026 monthly PDFs) are banked raw in the census captures for a follow-up full-year fit — transcription from PDF into the same JSON shape is the remaining work.",
+  "Within the window fajr moves 04:41 (Nov 1) -> ~04:44 (Dec 31) with its solstice trough between: a ~11-minute span, so the fit constrains the summer side of the annual cycle only."
+ ],
+ "amplitude": {
+  "windowFajr": "Nov 1 04:41 -> Dec 31 04:19, solstice trough ~04:09 mid-window: ~32-minute span; the fit constrains the summer side of the cycle only"
+ }
+}

@@ -1,0 +1,56 @@
+
+### diyanet-koeln  (365/365 rows, 50.9375,6.9603, TZ Europe/Berlin)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 249  within1 365  worst   1  (margin -6.5 floor)
+  dhuhr      exact 317  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact 104  within1 183  worst   4  (margin +3 floor)
+  asrHanafi  exact   0  within1   0  worst  61  (margin -10 floor)
+  maghrib    exact 153  within1 215  worst   3  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Diyanet-Europe 18/16 bare            18/  16             total 1081  fajr 172/312  isha 86/344  worst f133 i1386
+  Diyanet domestic 18/17 bare          18/  17             total 1065  fajr 172/312  isha 70/325  worst f133 i1390
+  MWL 18/17 bare                       18/  17             total 1065  fajr 172/312  isha 70/325  worst f133 i1390
+  Karachi 18/18 bare                   18/  18             total 1008  fajr 172/312  isha 13/312  worst f133 i1390
+free fit: bare best 17.9/15.6 sum 283 cov 313 | cap1/7 16.45/17.25 sum 199 | cap1/2+1/7 17.9/17.25 sum 258
+  portion scan best: 1/4/1/4 on 17.9/17.25 sum 262 (fajr 182, isha 80)
+diag: fajr 158 distinct, longest run 15 @03:42; isha 214 distinct, longest run 6 @23:16
+  stock stock Turkey 18/17 hanafi: total 791  fajr 172/365 sunrise 249/365 dhuhr 317/365 asr 0/365 maghrib 53/365 isha 0/365
+  stock stock Turkey 18/17 shafi: total 855  fajr 172/365 sunrise 249/365 dhuhr 317/365 asr 64/365 maghrib 53/365 isha 0/365
+
+### diyanet-berlin  (365/365 rows, 52.52,13.405, TZ Europe/Berlin)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 265  within1 365  worst   1  (margin -6.5 floor)
+  dhuhr      exact 313  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact 107  within1 190  worst   4  (margin +3 floor)
+  asrHanafi  exact   0  within1   0  worst  61  (margin -10 floor)
+  maghrib    exact 142  within1 211  worst   3  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Diyanet domestic 18/17 bare          18/  17             total 1064  fajr 165/296  isha 72/305  worst f137 i1366
+  MWL 18/17 bare                       18/  17             total 1064  fajr 165/296  isha 72/305  worst f137 i1366
+  Diyanet-Europe 18/16 bare            18/  16             total 1063  fajr 165/296  isha 71/317  worst f137 i1364
+  Karachi 18/18 bare                   18/  18             total  992  fajr 165/296  isha 0/296  worst f137 i1368
+free fit: bare best 17.9/15.55 sum 261 cov 297 | cap1/7 16.5/17.3 sum 190 | cap1/2+1/7 17.9/16 sum 241
+  portion scan best: 1/4/1/5 on 17.9/16 sum 255 (fajr 175, isha 80)
+diag: fajr 161 distinct, longest run 16 @03:10; isha 209 distinct, longest run 14 @22:57
+  stock stock Turkey 18/17 hanafi: total 794  fajr 165/365 sunrise 265/365 dhuhr 313/365 asr 0/365 maghrib 51/365 isha 0/365
+  stock stock Turkey 18/17 shafi: total 853  fajr 165/365 sunrise 265/365 dhuhr 313/365 asr 59/365 maghrib 51/365 isha 0/365
+
+### diyanet-frankfurt  (365/365 rows, 50.1109,8.6821, TZ Europe/Berlin)
+solar (angle-independent, best margin+mode):
+  sunrise    exact 268  within1 365  worst   1  (margin -6.5 floor)
+  dhuhr      exact 315  within1 365  worst   1  (margin +5.5 floor)
+  asrShafi   exact  96  within1 211  worst   3  (margin +3.5 floor)
+  asrHanafi  exact   0  within1   0  worst  60  (margin -10 floor)
+  maghrib    exact 150  within1 217  worst   3  (margin +6.5 floor)
+candidates (fajr/isha with their best margin+mode):
+  Diyanet-Europe 18/16 bare            18/  16             total 1096  fajr 180/323  isha 87/365  worst f132 i1379
+  Diyanet domestic 18/17 bare          18/  17             total 1086  fajr 180/323  isha 77/339  worst f132 i1383
+  MWL 18/17 bare                       18/  17             total 1086  fajr 180/323  isha 77/339  worst f132 i1383
+  Karachi 18/18 bare                   18/  18             total 1037  fajr 180/323  isha 28/323  worst f132 i1384
+free fit: bare best 18.2/15.6 sum 296 cov 319 | cap1/7 16.35/15.3 sum 221 | cap1/2+1/7 18.2/15.3 sum 273
+  portion scan best: 1/4/1/5 on 18.2/15.3 sum 291 (fajr 192, isha 99)
+diag: fajr 152 distinct, longest run 15 @03:38; isha 207 distinct, longest run 9 @18:09
+  stock stock Turkey 18/17 hanafi: total 824  fajr 180/365 sunrise 268/365 dhuhr 315/365 asr 0/365 maghrib 61/365 isha 0/365
+  stock stock Turkey 18/17 shafi: total 884  fajr 180/365 sunrise 268/365 dhuhr 315/365 asr 60/365 maghrib 61/365 isha 0/365
+
+wrote germany-fit.json

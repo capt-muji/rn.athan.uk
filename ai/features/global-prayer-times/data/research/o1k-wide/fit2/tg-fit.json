@@ -1,0 +1,3736 @@
+{
+ "_meta": {
+  "country": "TG",
+  "city": "Sokode",
+  "latitude": 8.970919667098,
+  "longitude": 1.1726188659668,
+  "timezone": "Africa/Lome",
+  "engine": "adhan-js 4.4.6",
+  "engine_path": "$HOME/athan-gitree/census/adhan-build/node_modules/adhan",
+  "mode": "Rounding.None everywhere, then per-prayer integer margin and rounding applied in the comparison",
+  "marginSearch": "-15..+15 minutes, integer; a margin of magnitude 15 means the search bound was hit",
+  "days": 365,
+  "window": [
+   "2026-01-01",
+   "2026-12-31"
+  ],
+  "fitted_at": "2026-11-10 (no clock read: every date comes from the data)",
+  "limits": [
+   "365 days of 2026, community tier (Mawaqit mosque-platform table, not a state body)",
+   "coordinates are the mosque page's own, which sit 1.6 km from the town point"
+  ],
+  "reading": "margins are minutes added to the raw computed time before the printed rounding; exact/within1/worst are per-prayer day counts; zeroMargin is the recipe as published with no margin and nearest rounding"
+ },
+ "best": {
+  "fajrAngle": 18,
+  "ishaAngle": 17,
+  "madhab": "shafi",
+  "perPrayer": {
+   "fajr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "sunrise": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 362,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.008,
+    "n": 365,
+    "misses": []
+   },
+   "dhuhr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "asr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 76,
+    "within1": 294,
+    "worst": 2,
+    "mae": 0.986,
+    "n": 365,
+    "misses": [
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     }
+    ]
+   },
+   "magrib": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "isha": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 355,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.027,
+    "n": 365,
+    "misses": []
+   }
+  },
+  "totals": {
+   "exact": 1885,
+   "within1": 2119,
+   "n": 2190,
+   "worst": 2,
+   "maeSum": 375.95000000000005,
+   "mae": 0.172,
+   "exactPct": 86.1,
+   "within1Pct": 96.8
+  }
+ },
+ "bestUnconstrained": {
+  "fajrAngle": 18,
+  "ishaAngle": 16.88,
+  "madhab": "shafi",
+  "perPrayer": {
+   "fajr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "sunrise": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 362,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.008,
+    "n": 365,
+    "misses": []
+   },
+   "dhuhr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "asr": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 76,
+    "within1": 294,
+    "worst": 2,
+    "mae": 0.986,
+    "n": 365,
+    "misses": [
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     },
+     {
+      "err": 2
+     }
+    ]
+   },
+   "magrib": {
+    "margin": 0,
+    "mode": "nearest",
+    "exact": 364,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.003,
+    "n": 365,
+    "misses": []
+   },
+   "isha": {
+    "margin": 1,
+    "mode": "floor",
+    "exact": 360,
+    "within1": 365,
+    "worst": 1,
+    "mae": 0.014,
+    "n": 365,
+    "misses": []
+   }
+  },
+  "totals": {
+   "exact": 1890,
+   "within1": 2119,
+   "n": 2190,
+   "worst": 2,
+   "maeSum": 371.20500000000004,
+   "mae": 0.17,
+   "exactPct": 86.3,
+   "within1Pct": 96.8
+  }
+ },
+ "freeFit": {
+  "shafi": {
+   "fajrScanTop": [
+    {
+     "angle": 18,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 364,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.003,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.65,
+     "margin": -2,
+     "mode": "ceil",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.35,
+     "margin": 1,
+     "mode": "ceil",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.9,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.25,
+     "margin": 1,
+     "mode": "nearest",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.1,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 337,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.077,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.45,
+     "margin": 2,
+     "mode": "nearest",
+     "exact": 334,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.085,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.55,
+     "margin": -2,
+     "mode": "nearest",
+     "exact": 332,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.09,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.6,
+     "margin": 3,
+     "mode": "floor",
+     "exact": 331,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.093,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.75,
+     "margin": -1,
+     "mode": "nearest",
+     "exact": 328,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.101,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ishaScanTop": [
+    {
+     "angle": 17,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 355,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.027,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.65,
+     "margin": 1,
+     "mode": "ceil",
+     "exact": 350,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.041,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.75,
+     "margin": 1,
+     "mode": "nearest",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.4,
+     "margin": 2,
+     "mode": "ceil",
+     "exact": 341,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.066,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.1,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 339,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.071,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.35,
+     "margin": -1,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.9,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 333,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.088,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.25,
+     "margin": -1,
+     "mode": "nearest",
+     "exact": 331,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.093,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.5,
+     "margin": 2,
+     "mode": "nearest",
+     "exact": 329,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.099,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.3,
+     "margin": 3,
+     "mode": "nearest",
+     "exact": 327,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.104,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "fajrRefinedTop": [
+    {
+     "angle": 18,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 364,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.003,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.88,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.11,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.12,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.89,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 354,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.01,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 348,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.047,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.87,
+     "margin": -1,
+     "mode": "ceil",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.99,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.13,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 340,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.068,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.9,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ishaRefinedTop": [
+    {
+     "angle": 16.88,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 360,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.014,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.89,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 356,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.025,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 355,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.027,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.99,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.11,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.12,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.87,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.13,
+     "margin": -1,
+     "mode": "ceil",
+     "exact": 345,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.055,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.01,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 341,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.066,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.98,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 339,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.071,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ridge": {
+    "fajr": [
+     {
+      "angle": 18,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003
+     },
+     {
+      "angle": 18.25,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074
+     },
+     {
+      "angle": 17.75,
+      "margin": -1,
+      "mode": "nearest",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.101
+     },
+     {
+      "angle": 18.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.129
+     },
+     {
+      "angle": 17.5,
+      "margin": -2,
+      "mode": "nearest",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.148
+     },
+     {
+      "angle": 18.75,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.175
+     },
+     {
+      "angle": 17.25,
+      "margin": -3,
+      "mode": "nearest",
+      "exact": 291,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.203
+     },
+     {
+      "angle": 19.25,
+      "margin": 5,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.216
+     },
+     {
+      "angle": 19.5,
+      "margin": 6,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.216
+     },
+     {
+      "angle": 16.75,
+      "margin": -5,
+      "mode": "floor",
+      "exact": 285,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.219
+     },
+     {
+      "angle": 16.5,
+      "margin": -7,
+      "mode": "ceil",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 19,
+      "margin": 4,
+      "mode": "nearest",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 17,
+      "margin": -4,
+      "mode": "floor",
+      "exact": 281,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.23
+     },
+     {
+      "angle": 19.75,
+      "margin": 8,
+      "mode": "floor",
+      "exact": 280,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.233
+     },
+     {
+      "angle": 16.25,
+      "margin": -7,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.238
+     },
+     {
+      "angle": 16,
+      "margin": -9,
+      "mode": "ceil",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.266
+     },
+     {
+      "angle": 20,
+      "margin": 9,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.277
+     },
+     {
+      "angle": 15.75,
+      "margin": -10,
+      "mode": "ceil",
+      "exact": 258,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.293
+     },
+     {
+      "angle": 20.25,
+      "margin": 10,
+      "mode": "floor",
+      "exact": 253,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.307
+     },
+     {
+      "angle": 20.5,
+      "margin": 11,
+      "mode": "floor",
+      "exact": 242,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.337
+     },
+     {
+      "angle": 15.5,
+      "margin": -10,
+      "mode": "floor",
+      "exact": 240,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.342
+     },
+     {
+      "angle": 15,
+      "margin": -13,
+      "mode": "nearest",
+      "exact": 191,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.477
+     },
+     {
+      "angle": 15.25,
+      "margin": -12,
+      "mode": "nearest",
+      "exact": 186,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.49
+     },
+     {
+      "angle": 20.75,
+      "margin": 12,
+      "mode": "nearest",
+      "exact": 180,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.507
+     },
+     {
+      "angle": 21,
+      "margin": 13,
+      "mode": "nearest",
+      "exact": 172,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.529
+     }
+    ],
+    "isha": [
+     {
+      "angle": 17,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027
+     },
+     {
+      "angle": 16.75,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06
+     },
+     {
+      "angle": 17.25,
+      "margin": -1,
+      "mode": "nearest",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.093
+     },
+     {
+      "angle": 16.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.099
+     },
+     {
+      "angle": 17.5,
+      "margin": -2,
+      "mode": "nearest",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.137
+     },
+     {
+      "angle": 16.25,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.173
+     },
+     {
+      "angle": 15.5,
+      "margin": 6,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.197
+     },
+     {
+      "angle": 17.75,
+      "margin": -3,
+      "mode": "nearest",
+      "exact": 290,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.205
+     },
+     {
+      "angle": 15.25,
+      "margin": 7,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.211
+     },
+     {
+      "angle": 15.75,
+      "margin": 5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.211
+     },
+     {
+      "angle": 18.5,
+      "margin": -6,
+      "mode": "floor",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 16,
+      "margin": 4,
+      "mode": "nearest",
+      "exact": 280,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.233
+     },
+     {
+      "angle": 15,
+      "margin": 8,
+      "mode": "ceil",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.236
+     },
+     {
+      "angle": 18.25,
+      "margin": -5,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.238
+     },
+     {
+      "angle": 18,
+      "margin": -4,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.252
+     },
+     {
+      "angle": 18.75,
+      "margin": -7,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.277
+     },
+     {
+      "angle": 14.75,
+      "margin": 10,
+      "mode": "floor",
+      "exact": 262,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.282
+     },
+     {
+      "angle": 19,
+      "margin": -9,
+      "mode": "ceil",
+      "exact": 251,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.312
+     },
+     {
+      "angle": 14.5,
+      "margin": 11,
+      "mode": "floor",
+      "exact": 249,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.318
+     },
+     {
+      "angle": 19.25,
+      "margin": -9,
+      "mode": "floor",
+      "exact": 238,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.348
+     },
+     {
+      "angle": 14.25,
+      "margin": 12,
+      "mode": "floor",
+      "exact": 231,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.367
+     },
+     {
+      "angle": 19.5,
+      "margin": -11,
+      "mode": "ceil",
+      "exact": 223,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.389
+     },
+     {
+      "angle": 14,
+      "margin": 13,
+      "mode": "nearest",
+      "exact": 205,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.438
+     },
+     {
+      "angle": 19.75,
+      "margin": -12,
+      "mode": "nearest",
+      "exact": 182,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.501
+     },
+     {
+      "angle": 20,
+      "margin": -13,
+      "mode": "nearest",
+      "exact": 173,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.526
+     },
+     {
+      "angle": 20.25,
+      "margin": -14,
+      "mode": "nearest",
+      "exact": 170,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.534
+     },
+     {
+      "angle": 20.5,
+      "margin": -15,
+      "mode": "nearest",
+      "exact": 166,
+      "within1": 360,
+      "worst": 2,
+      "mae": 0.559
+     },
+     {
+      "angle": 20.75,
+      "margin": -15,
+      "mode": "floor",
+      "exact": 178,
+      "within1": 320,
+      "worst": 2,
+      "mae": 0.636
+     },
+     {
+      "angle": 21,
+      "margin": -15,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 191,
+      "worst": 3,
+      "mae": 1.586
+     }
+    ]
+   },
+   "constrained": {
+    "range": [
+     0,
+     5
+    ],
+    "fajrTop": [
+     {
+      "angle": 18,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.35,
+      "margin": 1,
+      "mode": "ceil",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 17.9,
+      "margin": 0,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.25,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.1,
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.077,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.45,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 334,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.085,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.6,
+      "margin": 3,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.093,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.7,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.101,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.8,
+      "margin": 3,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.115,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.15,
+      "margin": 1,
+      "mode": "floor",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.126,
+      "n": 365,
+      "misses": []
+     }
+    ],
+    "ishaTop": [
+     {
+      "angle": 17,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.65,
+      "margin": 1,
+      "mode": "ceil",
+      "exact": 350,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.041,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.75,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.4,
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.066,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 17.1,
+      "margin": 0,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.071,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.9,
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.088,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.099,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.3,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.104,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.55,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.104,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.15,
+      "margin": 4,
+      "mode": "floor",
+      "exact": 325,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.11,
+      "n": 365,
+      "misses": []
+     }
+    ],
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "madhab": "shafi",
+     "perPrayer": {
+      "fajr": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.008,
+       "n": 365,
+       "misses": []
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "asr": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 76,
+       "within1": 294,
+       "worst": 2,
+       "mae": 0.986,
+       "n": 365,
+       "misses": [
+        {
+         "err": 2
+        },
+        {
+         "err": 2
+        },
+        {
+         "err": 2
+        },
+        {
+         "err": 2
+        },
+        {
+         "err": 2
+        }
+       ]
+      },
+      "magrib": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "isha": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 355,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.027,
+       "n": 365,
+       "misses": []
+      }
+     },
+     "totals": {
+      "exact": 1885,
+      "within1": 2119,
+      "n": 2190,
+      "worst": 2,
+      "maeSum": 375.95000000000005,
+      "mae": 0.172,
+      "exactPct": 86.1,
+      "within1Pct": 96.8
+     }
+    }
+   },
+   "recipe": {
+    "fajrAngle": 18,
+    "ishaAngle": 16.88,
+    "madhab": "shafi",
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.014,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1890,
+     "within1": 2119,
+     "n": 2190,
+     "worst": 2,
+     "maeSum": 371.20500000000004,
+     "mae": 0.17,
+     "exactPct": 86.3,
+     "within1Pct": 96.8
+    }
+   }
+  },
+  "hanafi": {
+   "fajrScanTop": [
+    {
+     "angle": 18,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 364,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.003,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.65,
+     "margin": -2,
+     "mode": "ceil",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.35,
+     "margin": 1,
+     "mode": "ceil",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.9,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.25,
+     "margin": 1,
+     "mode": "nearest",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.1,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 337,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.077,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.45,
+     "margin": 2,
+     "mode": "nearest",
+     "exact": 334,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.085,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.55,
+     "margin": -2,
+     "mode": "nearest",
+     "exact": 332,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.09,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.6,
+     "margin": 3,
+     "mode": "floor",
+     "exact": 331,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.093,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.75,
+     "margin": -1,
+     "mode": "nearest",
+     "exact": 328,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.101,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ishaScanTop": [
+    {
+     "angle": 17,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 355,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.027,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.65,
+     "margin": 1,
+     "mode": "ceil",
+     "exact": 350,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.041,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.75,
+     "margin": 1,
+     "mode": "nearest",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.4,
+     "margin": 2,
+     "mode": "ceil",
+     "exact": 341,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.066,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.1,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 339,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.071,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.35,
+     "margin": -1,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.9,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 333,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.088,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.25,
+     "margin": -1,
+     "mode": "nearest",
+     "exact": 331,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.093,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.5,
+     "margin": 2,
+     "mode": "nearest",
+     "exact": 329,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.099,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.3,
+     "margin": 3,
+     "mode": "nearest",
+     "exact": 327,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.104,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "fajrRefinedTop": [
+    {
+     "angle": 18,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 364,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.003,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.88,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.11,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.12,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 358,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.019,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.89,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 354,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.03,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.01,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 348,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.047,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.87,
+     "margin": -1,
+     "mode": "ceil",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.99,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 343,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.06,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 18.13,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 340,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.068,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.9,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 338,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.074,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ishaRefinedTop": [
+    {
+     "angle": 16.88,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 360,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.014,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.89,
+     "margin": 0,
+     "mode": "ceil",
+     "exact": 356,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.025,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 355,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.027,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.99,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.11,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.12,
+     "margin": 0,
+     "mode": "floor",
+     "exact": 347,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.049,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.87,
+     "margin": 1,
+     "mode": "floor",
+     "exact": 346,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.052,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.13,
+     "margin": -1,
+     "mode": "ceil",
+     "exact": 345,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.055,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 17.01,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 341,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.066,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    },
+    {
+     "angle": 16.98,
+     "margin": 0,
+     "mode": "nearest",
+     "exact": 339,
+     "within1": 365,
+     "worst": 1,
+     "mae": 0.071,
+     "n": 365,
+     "misses": [],
+     "boundHit": false
+    }
+   ],
+   "ridge": {
+    "fajr": [
+     {
+      "angle": 18,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003
+     },
+     {
+      "angle": 18.25,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074
+     },
+     {
+      "angle": 17.75,
+      "margin": -1,
+      "mode": "nearest",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.101
+     },
+     {
+      "angle": 18.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 318,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.129
+     },
+     {
+      "angle": 17.5,
+      "margin": -2,
+      "mode": "nearest",
+      "exact": 311,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.148
+     },
+     {
+      "angle": 18.75,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 301,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.175
+     },
+     {
+      "angle": 17.25,
+      "margin": -3,
+      "mode": "nearest",
+      "exact": 291,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.203
+     },
+     {
+      "angle": 19.25,
+      "margin": 5,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.216
+     },
+     {
+      "angle": 19.5,
+      "margin": 6,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.216
+     },
+     {
+      "angle": 16.75,
+      "margin": -5,
+      "mode": "floor",
+      "exact": 285,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.219
+     },
+     {
+      "angle": 16.5,
+      "margin": -7,
+      "mode": "ceil",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 19,
+      "margin": 4,
+      "mode": "nearest",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 17,
+      "margin": -4,
+      "mode": "floor",
+      "exact": 281,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.23
+     },
+     {
+      "angle": 19.75,
+      "margin": 8,
+      "mode": "floor",
+      "exact": 280,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.233
+     },
+     {
+      "angle": 16.25,
+      "margin": -7,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.238
+     },
+     {
+      "angle": 16,
+      "margin": -9,
+      "mode": "ceil",
+      "exact": 268,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.266
+     },
+     {
+      "angle": 20,
+      "margin": 9,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.277
+     },
+     {
+      "angle": 15.75,
+      "margin": -10,
+      "mode": "ceil",
+      "exact": 258,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.293
+     },
+     {
+      "angle": 20.25,
+      "margin": 10,
+      "mode": "floor",
+      "exact": 253,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.307
+     },
+     {
+      "angle": 20.5,
+      "margin": 11,
+      "mode": "floor",
+      "exact": 242,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.337
+     },
+     {
+      "angle": 15.5,
+      "margin": -10,
+      "mode": "floor",
+      "exact": 240,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.342
+     },
+     {
+      "angle": 15,
+      "margin": -13,
+      "mode": "nearest",
+      "exact": 191,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.477
+     },
+     {
+      "angle": 15.25,
+      "margin": -12,
+      "mode": "nearest",
+      "exact": 186,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.49
+     },
+     {
+      "angle": 20.75,
+      "margin": 12,
+      "mode": "nearest",
+      "exact": 180,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.507
+     },
+     {
+      "angle": 21,
+      "margin": 13,
+      "mode": "nearest",
+      "exact": 172,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.529
+     }
+    ],
+    "isha": [
+     {
+      "angle": 17,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027
+     },
+     {
+      "angle": 16.75,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06
+     },
+     {
+      "angle": 17.25,
+      "margin": -1,
+      "mode": "nearest",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.093
+     },
+     {
+      "angle": 16.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.099
+     },
+     {
+      "angle": 17.5,
+      "margin": -2,
+      "mode": "nearest",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.137
+     },
+     {
+      "angle": 16.25,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 302,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.173
+     },
+     {
+      "angle": 15.5,
+      "margin": 6,
+      "mode": "ceil",
+      "exact": 293,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.197
+     },
+     {
+      "angle": 17.75,
+      "margin": -3,
+      "mode": "nearest",
+      "exact": 290,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.205
+     },
+     {
+      "angle": 15.25,
+      "margin": 7,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.211
+     },
+     {
+      "angle": 15.75,
+      "margin": 5,
+      "mode": "ceil",
+      "exact": 288,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.211
+     },
+     {
+      "angle": 18.5,
+      "margin": -6,
+      "mode": "floor",
+      "exact": 284,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.222
+     },
+     {
+      "angle": 16,
+      "margin": 4,
+      "mode": "nearest",
+      "exact": 280,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.233
+     },
+     {
+      "angle": 15,
+      "margin": 8,
+      "mode": "ceil",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.236
+     },
+     {
+      "angle": 18.25,
+      "margin": -5,
+      "mode": "floor",
+      "exact": 278,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.238
+     },
+     {
+      "angle": 18,
+      "margin": -4,
+      "mode": "floor",
+      "exact": 273,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.252
+     },
+     {
+      "angle": 18.75,
+      "margin": -7,
+      "mode": "floor",
+      "exact": 264,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.277
+     },
+     {
+      "angle": 14.75,
+      "margin": 10,
+      "mode": "floor",
+      "exact": 262,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.282
+     },
+     {
+      "angle": 19,
+      "margin": -9,
+      "mode": "ceil",
+      "exact": 251,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.312
+     },
+     {
+      "angle": 14.5,
+      "margin": 11,
+      "mode": "floor",
+      "exact": 249,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.318
+     },
+     {
+      "angle": 19.25,
+      "margin": -9,
+      "mode": "floor",
+      "exact": 238,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.348
+     },
+     {
+      "angle": 14.25,
+      "margin": 12,
+      "mode": "floor",
+      "exact": 231,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.367
+     },
+     {
+      "angle": 19.5,
+      "margin": -11,
+      "mode": "ceil",
+      "exact": 223,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.389
+     },
+     {
+      "angle": 14,
+      "margin": 13,
+      "mode": "nearest",
+      "exact": 205,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.438
+     },
+     {
+      "angle": 19.75,
+      "margin": -12,
+      "mode": "nearest",
+      "exact": 182,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.501
+     },
+     {
+      "angle": 20,
+      "margin": -13,
+      "mode": "nearest",
+      "exact": 173,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.526
+     },
+     {
+      "angle": 20.25,
+      "margin": -14,
+      "mode": "nearest",
+      "exact": 170,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.534
+     },
+     {
+      "angle": 20.5,
+      "margin": -15,
+      "mode": "nearest",
+      "exact": 166,
+      "within1": 360,
+      "worst": 2,
+      "mae": 0.559
+     },
+     {
+      "angle": 20.75,
+      "margin": -15,
+      "mode": "floor",
+      "exact": 178,
+      "within1": 320,
+      "worst": 2,
+      "mae": 0.636
+     },
+     {
+      "angle": 21,
+      "margin": -15,
+      "mode": "floor",
+      "exact": 20,
+      "within1": 191,
+      "worst": 3,
+      "mae": 1.586
+     }
+    ]
+   },
+   "constrained": {
+    "range": [
+     0,
+     5
+    ],
+    "fajrTop": [
+     {
+      "angle": 18,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.35,
+      "margin": 1,
+      "mode": "ceil",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 17.9,
+      "margin": 0,
+      "mode": "floor",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.25,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 338,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.074,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.1,
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 337,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.077,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.45,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 334,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.085,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.6,
+      "margin": 3,
+      "mode": "floor",
+      "exact": 331,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.093,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.7,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 328,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.101,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.8,
+      "margin": 3,
+      "mode": "ceil",
+      "exact": 323,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.115,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 18.15,
+      "margin": 1,
+      "mode": "floor",
+      "exact": 319,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.126,
+      "n": 365,
+      "misses": []
+     }
+    ],
+    "ishaTop": [
+     {
+      "angle": 17,
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.65,
+      "margin": 1,
+      "mode": "ceil",
+      "exact": 350,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.041,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.75,
+      "margin": 1,
+      "mode": "nearest",
+      "exact": 343,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.06,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.4,
+      "margin": 2,
+      "mode": "ceil",
+      "exact": 341,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.066,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 17.1,
+      "margin": 0,
+      "mode": "floor",
+      "exact": 339,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.071,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.9,
+      "margin": 0,
+      "mode": "ceil",
+      "exact": 333,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.088,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.5,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 329,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.099,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.3,
+      "margin": 3,
+      "mode": "nearest",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.104,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.55,
+      "margin": 2,
+      "mode": "nearest",
+      "exact": 327,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.104,
+      "n": 365,
+      "misses": []
+     },
+     {
+      "angle": 16.15,
+      "margin": 4,
+      "mode": "floor",
+      "exact": 325,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.11,
+      "n": 365,
+      "misses": []
+     }
+    ],
+    "recipe": {
+     "fajrAngle": 18,
+     "ishaAngle": 17,
+     "madhab": "hanafi",
+     "perPrayer": {
+      "fajr": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "sunrise": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 362,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.008,
+       "n": 365,
+       "misses": []
+      },
+      "dhuhr": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "asr": {
+       "margin": -15,
+       "mode": "floor",
+       "exact": 0,
+       "within1": 0,
+       "worst": 60,
+       "mae": 46.2,
+       "n": 365,
+       "misses": [
+        {
+         "err": 36
+        },
+        {
+         "err": 36
+        },
+        {
+         "err": 36
+        },
+        {
+         "err": 36
+        },
+        {
+         "err": 37
+        }
+       ]
+      },
+      "magrib": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 364,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.003,
+       "n": 365,
+       "misses": []
+      },
+      "isha": {
+       "margin": 0,
+       "mode": "nearest",
+       "exact": 355,
+       "within1": 365,
+       "worst": 1,
+       "mae": 0.027,
+       "n": 365,
+       "misses": []
+      }
+     },
+     "totals": {
+      "exact": 1809,
+      "within1": 1825,
+      "n": 2190,
+      "worst": 60,
+      "maeSum": 16879.06,
+      "mae": 7.707,
+      "exactPct": 82.6,
+      "within1Pct": 83.3
+     }
+    }
+   },
+   "recipe": {
+    "fajrAngle": 18,
+    "ishaAngle": 16.88,
+    "madhab": "hanafi",
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": -15,
+      "mode": "floor",
+      "exact": 0,
+      "within1": 0,
+      "worst": 60,
+      "mae": 46.2,
+      "n": 365,
+      "misses": [
+       {
+        "err": 36
+       },
+       {
+        "err": 36
+       },
+       {
+        "err": 36
+       },
+       {
+        "err": 36
+       },
+       {
+        "err": 37
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 1,
+      "mode": "floor",
+      "exact": 360,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.014,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1814,
+     "within1": 1825,
+     "n": 2190,
+     "worst": 60,
+     "maeSum": 16874.315000000002,
+     "mae": 7.705,
+     "exactPct": 82.8,
+     "within1Pct": 83.3
+    }
+   }
+  }
+ },
+ "candidates": [
+  {
+   "name": "MWL 18/17",
+   "best": {
+    "fajrAngle": 18,
+    "ishaAngle": 17,
+    "madhab": "shafi",
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1885,
+     "within1": 2119,
+     "n": 2190,
+     "worst": 2,
+     "maeSum": 375.95000000000005,
+     "mae": 0.172,
+     "exactPct": 86.1,
+     "within1Pct": 96.8
+    }
+   },
+   "zeroMargin": {
+    "fajrAngle": 18,
+    "ishaAngle": 17,
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 355,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.027,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1885,
+     "within1": 2119,
+     "n": 2190,
+     "worst": 2,
+     "maeSum": 375.95000000000005,
+     "mae": 0.172,
+     "exactPct": 86.1,
+     "within1Pct": 96.8
+    }
+   }
+  },
+  {
+   "name": "ISNA 15/15",
+   "best": {
+    "fajrAngle": 15,
+    "ishaAngle": 15,
+    "madhab": "shafi",
+    "perPrayer": {
+     "fajr": {
+      "margin": -13,
+      "mode": "nearest",
+      "exact": 191,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.477,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 8,
+      "mode": "ceil",
+      "exact": 279,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.236,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1636,
+     "within1": 2119,
+     "n": 2190,
+     "worst": 2,
+     "maeSum": 625.245,
+     "mae": 0.285,
+     "exactPct": 74.7,
+     "within1Pct": 96.8
+    }
+   },
+   "zeroMargin": {
+    "fajrAngle": 15,
+    "ishaAngle": 15,
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 14,
+      "mae": 12.781,
+      "n": 365,
+      "misses": [
+       {
+        "err": 13
+       },
+       {
+        "err": 13
+       },
+       {
+        "err": 13
+       },
+       {
+        "err": 13
+       },
+       {
+        "err": 13
+       }
+      ]
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 10,
+      "mae": 8.499,
+      "n": 365,
+      "misses": [
+       {
+        "err": -9
+       },
+       {
+        "err": -8
+       },
+       {
+        "err": -9
+       },
+       {
+        "err": -8
+       },
+       {
+        "err": -9
+       }
+      ]
+     }
+    },
+    "totals": {
+     "exact": 1166,
+     "within1": 1389,
+     "n": 2190,
+     "worst": 14,
+     "maeSum": 8132.200000000002,
+     "mae": 3.713,
+     "exactPct": 53.2,
+     "within1Pct": 63.4
+    }
+   }
+  },
+  {
+   "name": "Egyptian 19.5/17.5",
+   "best": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "madhab": "shafi",
+    "perPrayer": {
+     "fajr": {
+      "margin": 6,
+      "mode": "ceil",
+      "exact": 286,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.216,
+      "n": 365,
+      "misses": []
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": -2,
+      "mode": "nearest",
+      "exact": 315,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.137,
+      "n": 365,
+      "misses": []
+     }
+    },
+    "totals": {
+     "exact": 1767,
+     "within1": 2119,
+     "n": 2190,
+     "worst": 2,
+     "maeSum": 493.845,
+     "mae": 0.226,
+     "exactPct": 80.7,
+     "within1Pct": 96.8
+    }
+   },
+   "zeroMargin": {
+    "fajrAngle": 19.5,
+    "ishaAngle": 17.5,
+    "perPrayer": {
+     "fajr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 7,
+      "mae": 6.356,
+      "n": 365,
+      "misses": [
+       {
+        "err": -6
+       },
+       {
+        "err": -7
+       },
+       {
+        "err": -6
+       },
+       {
+        "err": -7
+       },
+       {
+        "err": -6
+       }
+      ]
+     },
+     "sunrise": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 362,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.008,
+      "n": 365,
+      "misses": []
+     },
+     "dhuhr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "asr": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 76,
+      "within1": 294,
+      "worst": 2,
+      "mae": 0.986,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 2
+       }
+      ]
+     },
+     "magrib": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 364,
+      "within1": 365,
+      "worst": 1,
+      "mae": 0.003,
+      "n": 365,
+      "misses": []
+     },
+     "isha": {
+      "margin": 0,
+      "mode": "nearest",
+      "exact": 0,
+      "within1": 0,
+      "worst": 3,
+      "mae": 2.137,
+      "n": 365,
+      "misses": [
+       {
+        "err": 2
+       },
+       {
+        "err": 3
+       },
+       {
+        "err": 2
+       },
+       {
+        "err": 3
+       },
+       {
+        "err": 2
+       }
+      ]
+     }
+    },
+    "totals": {
+     "exact": 1166,
+     "within1": 1389,
+     "n": 2190,
+     "worst": 7,
+     "maeSum": 3464.9449999999997,
+     "mae": 1.582,
+     "exactPct": 53.2,
+     "within1Pct": 63.4
+    }
+   }
+  }
+ ],
+ "monthlyResidualOfBest": {
+  "2026-01": {
+   "fajr": 0,
+   "sunrise": 0.03,
+   "dhuhr": 0,
+   "asr": 0.81,
+   "magrib": 0.03,
+   "isha": 0
+  },
+  "2026-02": {
+   "fajr": 0,
+   "sunrise": -0.04,
+   "dhuhr": 0,
+   "asr": 1.32,
+   "magrib": 0,
+   "isha": 0.04
+  },
+  "2026-03": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1.35,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-04": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.27,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-05": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.81,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-06": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.07,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-07": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 0.65,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-08": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": 1.03,
+   "magrib": 0,
+   "isha": -0.1
+  },
+  "2026-09": {
+   "fajr": 0.03,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -1.5,
+   "magrib": 0,
+   "isha": -0.03
+  },
+  "2026-10": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0.03,
+   "asr": -1.39,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-11": {
+   "fajr": 0,
+   "sunrise": 0,
+   "dhuhr": 0,
+   "asr": -0.87,
+   "magrib": 0,
+   "isha": 0
+  },
+  "2026-12": {
+   "fajr": 0,
+   "sunrise": 0.03,
+   "dhuhr": 0,
+   "asr": 0.03,
+   "magrib": 0,
+   "isha": 0
+  }
+ }
+}
