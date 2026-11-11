@@ -1,7 +1,7 @@
 # RESEARCH-ROUNDS.md — the standing orders for every worldwide prayer-times research round
 
 THE REAL GOAL (owner, 2026-11-11): cover every single province, every single city, every single
-region and every single area of every single country. Nothing less. That is why the 50 GB cap is
+region and every single area of every single country. Nothing less. That is why the 100 GB cap is
 soft and may not be enough.
 
 Owner order 2026-11-11: every instruction in this file is standing. A fresh session started with
@@ -28,7 +28,7 @@ prior round) and extends it with that round's own territory list.
   the work finished. A round ends only at the owner's word or the round's named deadline — a
   mechanical commit point, never a conclusion — and the queue row re-arms the next round the
   moment the owner runs `/athan-next` again.
-- THE 50 GB CAP IS SOFT. When the raw archive crosses it, the parent SAYS SO in the next report
+- THE 100 GB CAP IS SOFT. When the raw archive crosses it, the parent SAYS SO in the next report
   to the owner and keeps going. Crossing the cap changes nothing; only the owner's word stops
   anything.
 - Duration: the owner names it per round (o1l runs to 2026-11-16 ~02:50Z); default one session
@@ -101,7 +101,7 @@ prior round) and extends it with that round's own territory list.
 
 ## Volume and the close
 
-- Raw archive target: tens of GB per multi-day round (owner target 50 GB cumulative). Git
+- Raw archive target: tens of GB per multi-day round (owner target 100 GB cumulative, raised from 50 on 2026-11-11). Git
   carries reports, fits and normalized rows only — captures never enter the repo.
 - Close (owner's word or the round's deadline): integrity pass, world-table diff, fit index,
   decisions addenda, round summary; then rsync the citable layer to
